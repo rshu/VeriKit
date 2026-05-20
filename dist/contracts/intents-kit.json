@@ -4,8 +4,8 @@
   "source_path": "skills/intents-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:55:13.370Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:17:22.033Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,12 +43,7 @@
       "管理意图框架的联调、自测试和技能接入验证 / Manage intent framework debugging, self-test, and skill integration verification",
       "通过配置文件或装饰器方式声明可被小艺调用的技能 / Declare Celia-callable skills with config files or decorators"
     ],
-    "do_not_use_when": [
-      "需求是实现语音采集、语音识别、语音合成或唤醒等底层语音能力，而不是接入小艺对话/搜索/建议分发；应改用 speech-kit 或 core-speech-kit / The need is low-level audio speech capture, ASR, TTS, or wake-up capabilities rather than integrating Celia/search/suggestion distribution; use speech-kit or core-speech-kit instead",
-      "需求是做图像识别、拍摄处理、视觉检测或相机/图像理解等底层视觉能力，而不是意图分发入口接入；应改用 vision-kit 或 core-vision-kit / The task is image recognition, camera processing, visual detection, or low-level vision understanding rather than intent distribution entry integration; use vision-kit or core-vision-kit instead",
-      "需求是进行文本分析、分词、实体识别、语义理解等独立自然语言处理，而不是把应用能力声明为系统意图；应改用 natural-language-kit / The requirement is standalone NLP such as text analysis, tokenization, entity recognition, or semantic parsing rather than exposing app capabilities as system intents; use natural-language-kit instead",
-      "需求是本地部署或运行 AI 模型做推理/加速，而不是配置意图协议、技能调用或本地搜索接入；应改用 mindspore-lite-kit、neural-network-runtime-kit 或 cann-kit / The need is to deploy or run AI models for inference/acceleration rather than configure intent schemas, skill invocation, or local search integration; use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "工程已集成可用的 HarmonyOS Intents Kit 能力，并使用支持该能力的 API/SDK 版本 / The project has integrated the HarmonyOS Intents Kit capability and uses an API/SDK version that supports it",
       "应用已按所选接入方式完成必要的配置文件、意图声明、域/意图元数据或装饰器基础结构 / The app has the required configuration files, intent declarations, domain/intent metadata, or decorator scaffolding for the chosen integration mode",

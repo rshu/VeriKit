@@ -4,8 +4,8 @@
   "source_path": "skills/notification-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:57:25.393Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:19:30.386Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -46,10 +46,7 @@
       "按会话或业务分组显示多条通知 / Group multiple notifications by conversation or business type"
     ],
     "do_not_use_when": [
-      "应用需要在进程终止、未运行或设备离线时由云侧下发通知，此时应使用 push-kit / The app needs cloud-delivered notifications when the process is terminated, not running, or the device is offline; use push-kit instead",
-      "需求是服务端远程推送到用户设备，而不是应用运行时发布本地通知，此时应使用 push-kit / The requirement is server-side remote push to user devices rather than app-runtime local notifications; use push-kit instead",
-      "需求是展示持续更新的实时卡片或锁屏/桌面实时视图，而非标准通知栏通知，此时应使用 live-view-kit / The goal is to show continuously updating live cards or lock-screen/home-screen live views rather than standard notification-center notifications; use live-view-kit instead",
-      "需要长时间、高频率地动态展示状态且强调沉浸式实时呈现，不适合普通通知样式，此时应使用 live-view-kit / The feature needs long-running, high-frequency dynamic status presentation with immersive real-time display, which is not suited to ordinary notifications; use live-view-kit instead"
+      "需求是识别或生成二维码、条形码，处理暗光、模糊、曲面码等复杂扫码场景，应改用 scan-kit / The task is to recognize or generate QR codes and barcodes, including difficult scanning cases like low light, blur, or curved codes; use scan-kit instead"
     ],
     "preconditions": [
       "工程已引入并可使用 Notification Kit 相关 SDK 接口 / The project has the Notification Kit SDK APIs available",

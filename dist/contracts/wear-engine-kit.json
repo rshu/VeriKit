@@ -4,8 +4,8 @@
   "source_path": "skills/wear-engine-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T08:00:39.113Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:22:59.326Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -38,10 +38,8 @@
       "管理 Wear Engine 用户授权流程并在授权后访问设备能力 / Manage the Wear Engine user authorization flow and access device capabilities after consent"
     ],
     "do_not_use_when": [
-      "应用不需要与华为穿戴设备交互，只处理本机功能 / The app does not need to interact with Huawei wearable devices and only uses local device features",
-      "目标是实现通用手机到手机或应用内网络通信，而非手机与穿戴设备之间通信 / The goal is general phone-to-phone or in-app network communication rather than phone-to-wearable communication",
-      "需要操作系统级通知栏通知而不是向穿戴设备发送模板化通知 / You need system notification bar notifications rather than templated notifications sent to a wearable device",
-      "需要读取手机自身传感器数据而不是穿戴设备传感器数据 / You need to read sensors on the phone itself rather than sensor data from a wearable device"
+      "需求是获取经纬度、GNSS/基站/WLAN/蓝牙融合定位，或实现地理围栏与地理编码，应改用 location-kit / The task is to obtain coordinates via GNSS/cell/WLAN/Bluetooth positioning, or implement geofencing and geocoding; use location-kit instead",
+      "需求是在应用中展示地图、添加标记和覆盖物、搜索POI或进行驾车/步行/骑行/公交路径规划，应改用 map-kit / The task is to display maps, add markers and overlays, search POIs, or plan driving/walking/cycling/transit routes; use map-kit instead"
     ],
     "preconditions": [
       "已在华为开发者平台申请接入Wear Engine服务，并为工程正确配置Client ID / Wear Engine service access has been applied for on Huawei Developer platform and the project has a correctly configured Client ID",

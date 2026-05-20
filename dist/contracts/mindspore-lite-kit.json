@@ -4,8 +4,8 @@
   "source_path": "skills/mindspore-lite-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:56:31.754Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:18:37.846Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,12 +43,7 @@
       "把预训练模型打包进应用实现离线智能能力 / Bundle a pretrained model into the app for offline intelligence"
     ],
     "do_not_use_when": [
-      "需求是直接调用系统级视觉能力（如人脸检测、OCR、条码、图像分析）而不是加载或转换自有AI模型时，应改用 vision-kit 或 core-vision-kit / Use vision-kit or core-vision-kit when the task is to call built-in vision capabilities (such as face detection, OCR, barcode, or image analysis) rather than load or convert your own AI model",
-      "需求是直接使用系统级语音能力（如ASR、TTS、唤醒、语音服务）而不是部署自定义语音模型时，应改用 speech-kit 或 core-speech-kit / Use speech-kit or core-speech-kit when the task is to use built-in speech capabilities (such as ASR, TTS, wakeup, or speech services) rather than deploy a custom speech model",
-      "需求是调用现成的自然语言理解/文本处理能力，而不是将NLP模型转换并在端侧运行时，应改用 natural-language-kit / Use natural-language-kit when the task is to use built-in NLP or text-processing capabilities instead of converting and running an NLP model on-device",
-      "需求是仅通过 Neural Network Runtime 直接加载 MindIR/NNRt 模型并做运行时设备加速调度，而不涉及 MindSpore Lite 的模型转换、训练或其运行时接口时，应改用 neural-network-runtime-kit / Use neural-network-runtime-kit when the task is only to load MindIR/NNRt models and perform runtime acceleration scheduling, without MindSpore Lite conversion, training, or runtime APIs",
-      "需求是使用昇腾/CANN 的训练、编译或服务器侧推理能力，而非 HarmonyOS 端侧轻量部署时，应改用 cann-kit / Use cann-kit when the task is to use Ascend/CANN training, compilation, or server-side inference rather than lightweight HarmonyOS on-device deployment",
-      "需求是依赖系统多模态感知融合能力（如跨传感器场景理解）而不是单独部署某个AI模型时，应改用 multimodal-awareness-kit / Use multimodal-awareness-kit when the task depends on system multimodal perception fusion rather than deploying a single AI model"
+      "需求是处理中英文文本分词、实体抽取，识别日期、地址、电话号码、邮箱等命名实体，应改用 natural-language-kit / The requirement is Chinese/English tokenization and entity extraction, including named entities like dates, addresses, phone numbers, and email addresses; use natural-language-kit instead"
     ],
     "preconditions": [
       "待部署模型已是 .ms 格式，或已准备好通过转换工具先转换为 .ms / The model to deploy is already in .ms format, or it is ready to be converted to .ms with the conversion tool first",

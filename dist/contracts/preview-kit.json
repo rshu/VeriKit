@@ -4,8 +4,8 @@
   "source_path": "skills/preview-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:58:04.601Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:20:18.995Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -40,11 +40,9 @@
       "接入文件打开加速能力，优化大文件首屏展示时间 / Integrate file open acceleration to improve first-screen display time for large files"
     ],
     "do_not_use_when": [
-      "需求是应用内自行读写、复制、移动、删除或遍历文件，而不是调用系统预览/加速能力；应改用 Core File Kit / The task is to read, write, copy, move, delete, or enumerate files inside the app rather than invoke system preview/acceleration; use Core File Kit instead",
-      "需求是系统级文件管理、文档挑选或跨应用文件访问流程，而不是直接预览文件；应改用 File Manager Service Kit / The need is system-level file management, document picking, or cross-app file access flow rather than direct preview; use File Manager Service Kit instead",
-      "重点是对文件或数据进行加密、权限隔离、密钥保护等安全治理，而不是预览或缓存加速；应改用 Data Protection Kit / The focus is encrypting files or data, permission isolation, or key protection rather than preview or cache acceleration; use Data Protection Kit instead",
-      "需求是结构化数据存储、查询、同步或关系型/键值数据管理，而不是打开文件内容；应改用 ArkData / The task is structured data storage, querying, synchronization, or relational/key-value data management rather than opening file content; use ArkData instead",
-      "需求是访问应用内置资源包、资产下载或分发静态资源，而不是预览用户文件；应改用 Asset Store Kit / The need is to access bundled assets, download assets, or distribute static resources rather than preview user files; use Asset Store Kit instead"
+      "需求是安全保存密码、令牌、凭据等短敏感数据，并需要AES256-GCM加密、属主/群组访问控制或用户认证授权，应改用 asset-store-kit / The task is to securely store short sensitive data like passwords, tokens, or credentials with AES256-GCM encryption, owner/group access control, or user authentication; use asset-store-kit instead",
+      "需求是解析txt、epub、mobi、azw、azw3电子书，进行排版、分页或阅读器交互构建，应改用 reader-kit / The requirement is to parse txt, epub, mobi, azw, or azw3 e-books and provide layout, pagination, or reader interactions; use reader-kit instead",
+      "需求是实现跨应用数据共享、标准化数据定义，或让多设备之间的数据一致分发，应改用 arkdata / The requirement is to enable cross-application data sharing, standardized data definitions, or consistent data distribution across devices; use arkdata instead"
     ],
     "preconditions": [
       "目标设备与能力受支持：文件预览仅支持中国境内的 Phone、Tablet、2in1，文件打开加速仅支持 2in1 / The target device and capability are supported: file preview is only supported in mainland China on Phone, Tablet, and 2in1, while file open acceleration is only supported on 2in1",

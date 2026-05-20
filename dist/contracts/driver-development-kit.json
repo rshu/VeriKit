@@ -4,8 +4,8 @@
   "source_path": "skills/driver-development-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:53:21.308Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:15:07.226Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -44,12 +44,8 @@
       "读取外设描述信息并按设备类型加载对应驱动 / Read peripheral descriptor information and load the matching driver by device type"
     ],
     "do_not_use_when": [
-      "需求是访问系统已抽象的传感器数据（如加速度计、陀螺仪、环境光）而不是为外设编写驱动时，应使用 sensor-service-kit / If the need is to access system-abstracted sensor data (such as accelerometer, gyroscope, or ambient light) rather than write a peripheral driver, use sensor-service-kit",
-      "需求是处理标准输入事件、按键、触摸或输入设备事件分发，而不是开发 USB/HID/串口/SCSI 外设驱动时，应使用 input-kit / If the need is to handle standard input events, keys, touch, or input-device event dispatch rather than develop USB/HID/serial/SCSI peripheral drivers, use input-kit",
-      "需求是实现输入法、键盘法框架或文本输入服务，而不是外设驱动生命周期与协议通信时，应使用 ime-kit / If the need is to implement an input method, keyboard framework, or text input service rather than peripheral driver lifecycle and protocol communication, use ime-kit",
-      "需求是对手写笔能力进行上层接入或笔迹/压感业务处理，而不是为非标手写板或 HID 设备开发底层驱动时，应使用 pen-kit / If the need is high-level stylus capability access or handwriting/pressure handling rather than low-level drivers for nonstandard tablets or HID devices, use pen-kit",
-      "需求是接入游戏手柄按键、摇杆、震动等游戏控制器能力，而不是为控制器编写底层驱动时，应使用 game-controller-kit / If the need is to integrate game controller buttons, sticks, vibration, and related capabilities rather than write the controller's low-level driver, use game-controller-kit",
-      "需求是访问设备运动/机械执行相关上层能力或控制逻辑，而不是开发专业外设协议驱动时，应使用 mechanic-kit / If the need is high-level device motion/mechanical actuation capability or control logic rather than professional peripheral protocol drivers, use mechanic-kit"
+      "需求是获取GNSS/基站/WLAN/蓝牙融合定位、设置地理围栏，或做经纬度与地址解析；应改用 location-kit / The requirement is to obtain positioning from GNSS, cell tower, WLAN, or Bluetooth, set geofences, or perform coordinate-address conversion; use location-kit instead",
+      "需求是在应用中展示地图、添加标记与覆盖物、搜索POI，或进行驾车/步行/骑行/公交路径规划；应改用 map-kit / The requirement is to display maps in an app, add markers and overlays, search POIs, or plan driving, walking, cycling, or transit routes; use map-kit instead"
     ],
     "preconditions": [
       "工程已配置 Driver Development Kit 相关 SDK/能力并使用支持的 HarmonyOS 版本 / The project has the Driver Development Kit SDK/capability configured and uses a supported HarmonyOS version",

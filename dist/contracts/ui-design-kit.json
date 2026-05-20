@@ -4,8 +4,8 @@
   "source_path": "skills/ui-design-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:59:56.878Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:22:15.175Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -44,11 +44,7 @@
       "优化深色模式下的界面对比度、光效和层次表现 / Optimize contrast, lighting effects, and visual depth for dark mode"
     ],
     "do_not_use_when": [
-      "需求是做界面自动化、单元测试、截图回归或测试框架接入，应改用 test-kit / If the goal is UI automation, unit testing, screenshot regression, or test framework integration, use test-kit instead",
-      "需求是分析界面卡顿、渲染耗时、启动速度或资源性能瓶颈，应改用 performance-analysis-kit / If the task is to analyze UI jank, render time, startup speed, or performance bottlenecks, use performance-analysis-kit instead",
-      "需求是实现无障碍语义、读屏适配、焦点导航或辅助功能增强，应改用 accessibility-kit / If the requirement is accessibility semantics, screen reader support, focus navigation, or assistive enhancements, use accessibility-kit instead",
-      "需求是做多语言翻译、区域化格式、RTL适配或本地化资源管理，应改用 localization-kit / If the need is multilingual translation, locale formatting, RTL adaptation, or localization resource management, use localization-kit instead",
-      "需求是接入日历事件、天气数据或屏幕使用时长管控等业务能力，而不是界面样式本身，应分别改用 calendar-kit、weather-service-kit 或 screen-time-guard-kit / If the task is business capability integration such as calendar events, weather data, or screen-time control rather than UI styling itself, use calendar-kit, weather-service-kit, or screen-time-guard-kit instead"
+      "需求是处理触控、鼠标、键盘等多模输入事件，或做光标控制与事件拦截，应改用 input-kit / The task is to handle multimodal input events such as touch, mouse, and keyboard, or manage cursors and event interception; use input-kit instead"
     ],
     "preconditions": [
       "工程已集成并启用可用的HarmonyOS UI Design Kit相关SDK能力 / The project has integrated and enabled the required HarmonyOS UI Design Kit SDK capability",

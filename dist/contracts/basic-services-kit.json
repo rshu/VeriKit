@@ -4,8 +4,8 @@
   "source_path": "skills/basic-services-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:50:52.084Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:12:31.716Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -45,12 +45,9 @@
       "通过 USB 批量传输和控制传输与外设通信 / Communicate with peripherals through USB bulk transfer and control transfer"
     ],
     "do_not_use_when": [
-      "需求是实现无障碍能力（如读屏、辅助事件、无障碍节点操作），应使用 accessibility-kit / If the goal is accessibility features such as screen reading, accessibility events, or accessibility node operations, use accessibility-kit instead",
-      "需求是国际化与本地化（多语言资源、地区格式化、翻译适配），应使用 localization-kit / If the goal is internationalization or localization such as multilingual resources, locale formatting, or translation adaptation, use localization-kit instead",
-      "需求是编写测试、自动化用例或测试框架集成，应使用 test-kit / If the goal is writing tests, test automation, or integrating test frameworks, use test-kit instead",
-      "需求是分析应用性能瓶颈、采集性能指标或性能调优，应使用 performance-analysis-kit / If the goal is performance profiling, metric collection, or optimization, use performance-analysis-kit instead",
-      "需求是处理日历日程、提醒或日历数据，应使用 calendar-kit / If the goal is calendar events, reminders, or calendar data handling, use calendar-kit instead",
-      "需求是获取天气数据、天气服务或气象信息展示，应使用 weather-service-kit / If the goal is weather data, weather services, or meteorological information display, use weather-service-kit instead"
+      "需求是管理UIAbility/ServiceAbility生命周期、基于Want做页面拉起或多窗口编排，应改用 ability-kit / The task is to manage UIAbility or ServiceAbility lifecycle, launch pages with Want, or orchestrate multi-window behavior; use ability-kit instead",
+      "需求是在应用内嵌入Web组件、加载网页、进行JavaScript桥接或使用DevTools调试页面，应改用 arkweb / The task is to embed a Web component, load web pages, perform JavaScript bridging, or debug pages with DevTools; use arkweb instead",
+      "需求是使用FFRT串行队列、并发队列、任务依赖图或任务伙伴协作优化C/C++并行执行，应改用 function-flow-runtime-kit / The task is to optimize C/C++ parallel execution with FFRT serial queues, concurrent queues, task dependency graphs, or task companion cooperation; use function-flow-runtime-kit instead"
     ],
     "preconditions": [
       "工程已集成对应HarmonyOS SDK能力，且目标API版本支持所用基础服务接口 / The project has the required HarmonyOS SDK capability integrated, and the target API version supports the selected basic service APIs",

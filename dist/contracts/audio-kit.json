@@ -4,8 +4,8 @@
   "source_path": "skills/audio-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:50:17.471Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:12:00.764Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -51,11 +51,7 @@
       "实现后台音频播放并正确响应系统音频策略 / Implement background audio playback and respond correctly to system audio policies"
     ],
     "do_not_use_when": [
-      "任务是做音视频编解码、封装解封装或轨道级媒体处理，应改用 avcodec-kit / The task is audio-video codec, muxing-demuxing, or track-level media processing; use avcodec-kit instead",
-      "任务核心是管理系统媒体会话、锁屏/通知栏媒体控件或跨设备播放控制，应改用 avsession-kit / The main task is managing system media sessions, lock-screen/notification media controls, or cross-device playback control; use avsession-kit instead",
-      "任务是拍照、预览、录像或访问摄像头传感器数据，应改用 camera-kit / The task is taking photos, previewing, recording video, or accessing camera sensor data; use camera-kit instead",
-      "任务是浏览、查询、导入导出或持久化管理媒体文件资源库，应改用 media-library-kit / The task is browsing, querying, importing/exporting, or persistently managing the media file library; use media-library-kit instead",
-      "任务是设置、查询或管理系统铃声资源，而不是应用内音频播放/录制，应改用 ringtone-kit / The task is setting, querying, or managing system ringtone resources rather than in-app audio playback/recording; use ringtone-kit instead"
+      "需求是做图片解码、编码、编辑、EXIF元数据处理、HDR转换或AI超分辨率增强；应改用 image-kit / The requirement is for image decoding, encoding, editing, EXIF metadata processing, HDR conversion, or AI super-resolution enhancement; use image-kit instead"
     ],
     "preconditions": [
       "应用已集成可用的 HarmonyOS Audio Kit 能力与对应 API 版本 / The app has integrated the required HarmonyOS Audio Kit capability and matching API version",

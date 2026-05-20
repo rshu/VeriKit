@@ -4,8 +4,8 @@
   "source_path": "skills/crypto-architecture-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:52:26.657Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:14:10.109Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -49,13 +49,7 @@
       "实现国密 SM2 SM3 SM4 的加密签名与摘要 / Implement encryption, signing, and hashing with SM2 SM3 SM4",
       "校验签名证明确认数据来源未被伪造 / Verify signatures to confirm data origin and authenticity"
     ],
-    "do_not_use_when": [
-      "需要系统级密钥安全存储、密钥生命周期管理或硬件保护密钥别名时，应改用 Universal Keystore Kit / If you need system-level secure key storage, key lifecycle management, or hardware-protected key aliases, use Universal Keystore Kit instead",
-      "需要设备证书申请、导入、证书链管理或基于设备身份证书进行认证时，应改用 Device Certificate Kit / If you need device certificate enrollment, import, certificate chain management, or authentication based on device identity certificates, use Device Certificate Kit instead",
-      "需要生物认证、锁屏凭据校验或以用户存在性解锁密钥时，应改用 User Authentication Kit / If you need biometric authentication, lock-screen credential verification, or user-presence-based key unlocking, use User Authentication Kit instead",
-      "需要在线身份认证、令牌交换、服务端登录态接入或云侧账号认证时，应改用 Online Authentication Kit / If you need online identity authentication, token exchange, server-side sign-in integration, or cloud account authentication, use Online Authentication Kit instead",
-      "需要数字版权管理、受保护媒体内容分发或许可证控制播放时，应改用 DRM Kit / If you need digital rights management, protected media distribution, or license-controlled playback, use DRM Kit instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "工程已集成可用的 Crypto Architecture Kit 接口并与当前 API 版本兼容 / The project has integrated available Crypto Architecture Kit APIs and they are compatible with the current API version",
       "调用方已准备好所选算法要求的合法参数，例如密钥长度、IV、AAD、填充模式或曲线参数 / The caller has prepared valid parameters required by the chosen algorithm, such as key length, IV, AAD, padding mode, or curve parameters",

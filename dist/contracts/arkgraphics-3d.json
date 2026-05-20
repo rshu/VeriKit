@@ -4,8 +4,8 @@
   "source_path": "skills/arkgraphics-3d/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:49:27.492Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:11:20.732Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,11 +43,8 @@
       "优化3D渲染性能并管理模型、纹理和材质资源 / Optimize 3D rendering performance and manage model, texture, and material assets"
     ],
     "do_not_use_when": [
-      "需求仅涉及2D画布、位图、文本或矢量绘制，应改用 arkgraphics-2d / If the requirement is only 2D canvas, bitmap, text, or vector drawing, use arkgraphics-2d instead",
-      "需求是相机驱动的AR内容叠加、平面识别或现实世界锚定，应改用 ar-engine / If the task is camera-driven AR overlay, plane detection, or real-world anchoring, use ar-engine instead",
-      "需求重点是图形计算加速、并行/GPU通用计算而非构建3D场景，应改用 graphics-accelerate-kit / If the focus is graphics acceleration or parallel/GPU compute rather than building a 3D scene, use graphics-accelerate-kit instead",
-      "需求是高性能游戏运行时、游戏循环或整套游戏框架能力，而不只是3D渲染场景，应改用 xengine-kit / If the need is a full game runtime, game loop, or broader game framework rather than just 3D scene rendering, use xengine-kit instead",
-      "需求是空间扫描、环境重建、网格/点云感知或空间理解，应改用 spatial-recon-kit / If the need is spatial scanning, environment reconstruction, mesh/point-cloud sensing, or spatial understanding, use spatial-recon-kit instead"
+      "需求是音视频编解码、封装/解封装、硬件编解码加速或处理HDR Vivid、Audio Vivid、可变帧率媒体流，应改用 avcodec-kit / The requirement is audio/video encoding-decoding, muxing-demuxing, hardware codec acceleration, or handling HDR Vivid, Audio Vivid, and variable-frame-rate streams; use avcodec-kit instead",
+      "需求是媒体播放、录制、屏幕录制、转码、元数据提取、缩略图生成或HDR视频处理，应改用 media-kit / The task is media playback, recording, screen recording, transcoding, metadata extraction, thumbnail generation, or HDR video processing; use media-kit instead"
     ],
     "preconditions": [
       "工程已集成并启用 ArkGraphics 3D 对应SDK/能力，目标设备支持3D渲染 / The project has integrated and enabled the ArkGraphics 3D SDK/capability, and the target device supports 3D rendering",

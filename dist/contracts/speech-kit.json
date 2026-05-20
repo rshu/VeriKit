@@ -4,8 +4,8 @@
   "source_path": "skills/speech-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:59:35.229Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:21:52.849Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -41,11 +41,8 @@
       "管理语音朗读的后台任务避免切到后台后中断 / Manage background speech tasks so playback does not stop when the app goes to background"
     ],
     "do_not_use_when": [
-      "需要底层语音识别、唤醒、录音转写或语音合成API而不是场景化朗读/字幕控件时，应使用core-speech-kit / If you need low-level speech recognition, wakeup, transcription, or TTS APIs rather than scenario-based reading/caption components, use core-speech-kit",
-      "需要对图像、视频帧或摄像头内容做视觉识别而非音频字幕时，应使用vision-kit或core-vision-kit / If you need visual recognition on images, video frames, or camera content rather than audio captions, use vision-kit or core-vision-kit",
-      "需要文本分类、分词、翻译、意图识别等自然语言处理，而不是把文本朗读或把音频转成字幕时，应使用natural-language-kit / If you need NLP such as text classification, tokenization, translation, or intent analysis rather than reading text aloud or converting audio to captions, use natural-language-kit",
-      "需要部署或调用自定义AI模型进行推理，而不是直接集成现成朗读控件/AI字幕控件时，应使用mindspore-lite-kit、neural-network-runtime-kit或cann-kit / If you need to deploy or run custom AI models instead of integrating ready-made reading/caption components, use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit",
-      "需要融合多模态传感器上下文进行场景感知，而不是单纯语音朗读或音频字幕展示时，应使用multimodal-awareness-kit / If you need multimodal context sensing rather than simple speech reading or audio caption display, use multimodal-awareness-kit"
+      "需求是做OCR文字识别、人脸检测与比对、主体分割、多目标识别或17点人体姿态分析，应改用 core-vision-kit / The task is OCR text recognition, face detection and comparison, subject segmentation, multi-object recognition, or 17-point human pose analysis; use core-vision-kit instead",
+      "需求是卡证OCR、文档扫描自动裁剪、人脸活体检测或识图搜索等视觉功能，应改用 vision-kit / The requirement is visual features such as card/document OCR, document scan auto-cropping, face liveness detection, or image-based search; use vision-kit instead"
     ],
     "preconditions": [
       "工程已集成Speech Kit对应SDK能力，且目标设备为Phone、Tablet或PC/2in1 / The project has integrated the Speech Kit SDK capability, and the target device is Phone, Tablet, or PC/2in1",

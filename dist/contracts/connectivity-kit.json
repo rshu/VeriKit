@@ -4,8 +4,8 @@
   "source_path": "skills/connectivity-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:51:42.979Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:13:30.806Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -44,12 +44,7 @@
       "获取本机蓝牙和 Wi‑Fi 开关状态并引导用户开启 / Get local Bluetooth and Wi‑Fi power states and guide users to enable them"
     ],
     "do_not_use_when": [
-      "需求是蜂窝移动数据、SIM/基站、短信或电话网络能力时，应改用 telephony-kit / If the task is about cellular data, SIM/baseband, SMS, or telephony network capabilities, use telephony-kit instead",
-      "需求是拨打、接听、控制通话界面或通话状态管理时，应改用 call-service-kit / If the task is about placing, answering, controlling calls, or managing call UI/state, use call-service-kit instead",
-      "需求是互联网套接字、HTTP/HTTPS、WebSocket 或常规 IP 网络编程，而非蓝牙/Wi-Fi/NFC 短距能力时，应改用 network-kit / If the task is about Internet sockets, HTTP/HTTPS, WebSocket, or general IP networking rather than Bluetooth/Wi-Fi/NFC proximity features, use network-kit instead",
-      "需求是网络链路质量优化、双网并发、弱网加速或连接保活增强时，应改用 network-boost-kit / If the task is about link quality optimization, multipath acceleration, weak-network boosting, or enhanced connection keepalive, use network-boost-kit instead",
-      "需求是跨设备远程服务调用、分布式通信或设备间高层消息协同时，应改用 remote-communication-kit / If the task is about cross-device remote service invocation, distributed communication, or high-level inter-device messaging, use remote-communication-kit instead",
-      "需求明确指定使用星闪/NearLink 协议与设备通信时，应改用 nearlink-kit / If the task explicitly requires communicating over the NearLink protocol, use nearlink-kit instead"
+      "需求是使用 URPC 远程调用、请求缓存、拦截器、流式传输或断点续传下载上传；应改用 remote-communication-kit / The requirement is URPC remote invocation, request caching, interceptors, streaming transfer, or resumable upload/download; use remote-communication-kit instead"
     ],
     "preconditions": [
       "应用已在 module.json5 中声明所需权限，并完成对应能力申请 / Required permissions are declared in module.json5 and the corresponding capabilities are requested",

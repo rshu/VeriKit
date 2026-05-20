@@ -4,8 +4,8 @@
   "source_path": "skills/media-library-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:56:23.582Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:18:31.084Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,13 +43,7 @@
       "通过 PhotoPicker 组件实现图片视频浏览与多选 / Implement image and video browsing with multi-select using PhotoPicker",
       "使用 AlbumPicker 和 PickerController 串联相册选择与保存流程 / Combine AlbumPicker and PickerController for album selection and save flow"
     ],
-    "do_not_use_when": [
-      "需求是实时拍照、录像或控制相机预览，而不是访问已有媒体库资源；应改用 camera-kit / The task is real-time photo capture, video recording, or camera preview control rather than accessing existing library assets; use camera-kit instead",
-      "需求是图片编解码、像素处理、格式转换或图像编辑算法，而不是图库选择/相册管理；应改用 image-kit / The task is image encoding/decoding, pixel processing, format conversion, or editing algorithms rather than gallery picking/album management; use image-kit instead",
-      "需求是音视频编解码、封装解封装、转码或码流处理，而不是管理相册中的媒体文件；应改用 avcodec-kit / The task is audio/video codec, mux/demux, transcoding, or elementary stream processing rather than managing gallery media files; use avcodec-kit instead",
-      "需求是媒体播放、录播控制或通用媒体会话处理，而不是查询/选择/保存图库资源；应改用 media-kit 或 avsession-kit / The task is media playback, recording-playback control, or general media session handling rather than querying/picking/saving library assets; use media-kit or avsession-kit instead",
-      "需求是音频文件、铃声设置或铃声管理，而不是图片/视频/动态照片媒体库访问；应改用 audio-kit 或 ringtone-kit / The task is audio file handling, ringtone setting, or ringtone management rather than image/video/moving photo library access; use audio-kit or ringtone-kit instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "工程已引入可用的 Media Library Kit 能力，并使用匹配的 HarmonyOS SDK API 版本 / The project includes the Media Library Kit capability and uses a compatible HarmonyOS SDK API version",
       "若涉及读取、查询、修改或保存媒体资源，module.json5 中已声明所需权限或已采用系统 Picker/安全控件流程 / If reading, querying, modifying, or saving media assets, the required permissions are declared in module.json5 or the system picker/save-button flow is used",

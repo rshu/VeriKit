@@ -4,8 +4,8 @@
   "source_path": "skills/file-manager-service-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:53:57.758Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:15:48.117Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -36,11 +36,7 @@
       "用系统文件类型图标优化文档浏览器的文件展示 / Improve a document browser by using system file-type icons"
     ],
     "do_not_use_when": [
-      "需求是读写、复制、移动、枚举或监听应用沙箱/普通文件本身，而不是回收站、文件类型图标或快捷方式解析；应改用 Core File Kit / If the task is to read, write, copy, move, enumerate, or watch regular app-sandbox/common files themselves rather than recycle-bin deletion, file-type icons, or shortcut resolution, use Core File Kit instead",
-      "需求是对文件内容做预览、打开文档/图片/视频或生成预览界面，而不是仅获取文件类型图标；应改用 Preview Kit / If the task is to preview file contents, open documents/images/videos, or provide a preview UI rather than only fetch a file-type icon, use Preview Kit instead",
-      "需求是对文件或数据进行加密、密钥管理、访问控制或隐私保护，而不是文件管理服务；应改用 Data Protection Kit / If the task is to encrypt files/data, manage keys, enforce access control, or provide privacy protection rather than file-management services, use Data Protection Kit instead",
-      "需求是管理应用资源资产、下载/分发素材或资源包，而不是处理公共目录文件的回收站、图标或快捷方式；应改用 Asset Store Kit / If the task is to manage app assets, download/distribute media packages, or handle resource bundles rather than recycle-bin, icon, or shortcut handling for public-directory files, use Asset Store Kit instead",
-      "需求是结构化数据存储、查询或关系型/对象型数据管理，而不是文件管理服务；应改用 ArkData / If the task is structured data storage, querying, or relational/object data management rather than file-management services, use ArkData instead"
+      "需求是实现用户首选项、KV-Store、关系型数据库或向量数据库存储，或做跨应用/跨设备/端云数据同步，应改用 arkdata / The requirement is to use user preferences, KV-Store, relational database, or vector database storage, or to enable cross-app, cross-device, or cloud sync; use arkdata instead"
     ],
     "preconditions": [
       "设备与系统版本支持 File Manager Service Kit，且服务区域受限于中国境内（不含港澳台） / The device and OS version support File Manager Service Kit, and the service is region-limited to mainland China",

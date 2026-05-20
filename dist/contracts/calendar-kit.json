@@ -4,8 +4,8 @@
   "source_path": "skills/calendar-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:50:58.439Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:12:41.790Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -37,11 +37,8 @@
       "接入 Calendar Kit 实现活动提醒和服务跳转联动 / Integrate Calendar Kit for event reminders and service deep-link navigation"
     ],
     "do_not_use_when": [
-      "需求是获取天气数据、天气预报或气象服务，而不是管理日历事件；请改用 weather-service-kit / The task is to get weather data, forecasts, or meteorological services rather than manage calendar events; use weather-service-kit instead",
-      "需求是实现无障碍适配、辅助功能事件处理或读屏支持，而不是读写系统日历；请改用 accessibility-kit / The task is to implement accessibility adaptation, accessibility event handling, or screen-reader support rather than read/write the system calendar; use accessibility-kit instead",
-      "需求是做多语言翻译、区域格式化或国际化适配，而不是创建日历账户或日程；请改用 localization-kit / The task is localization, regional formatting, or internationalization rather than creating calendar accounts or events; use localization-kit instead",
-      "需求是编写测试用例、测试框架接入或自动化验证，而不是实现生产日历功能；请改用 test-kit / The task is to write tests, integrate test frameworks, or perform automated validation rather than implement production calendar features; use test-kit instead",
-      "需求是分析性能瓶颈、启动耗时或资源占用，而不是管理日程提醒与DeepLink服务；请改用 performance-analysis-kit / The task is to analyze performance bottlenecks, startup latency, or resource usage rather than manage schedule reminders and DeepLink services; use performance-analysis-kit instead"
+      "需求是识别或生成二维码、条形码，处理暗光、模糊、曲面码等复杂扫码场景；应改用 scan-kit / The task is to scan or generate QR codes and barcodes, including difficult cases like low light, blur, or curved codes; use scan-kit instead",
+      "需求是进行消耗型、非消耗型或订阅型数字商品购买，并处理应用内支付生命周期；应改用 iap-kit / The task is to sell consumable, non-consumable, or subscription digital goods and handle the in-app purchase lifecycle; use iap-kit instead"
     ],
     "preconditions": [
       "应用已在配置文件中声明日历读写权限（ohos.permission.READ_CALENDAR 和 ohos.permission.WRITE_CALENDAR） / The app has declared calendar read/write permissions in the config file (ohos.permission.READ_CALENDAR and ohos.permission.WRITE_CALENDAR)",

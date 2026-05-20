@@ -4,8 +4,8 @@
   "source_path": "skills/test-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:59:49.378Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:22:09.002Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,10 +43,8 @@
       "测试窗口缩放、移动和多窗口场景下的界面行为 / Test UI behavior under window resize, move, and multi-window scenarios"
     ],
     "do_not_use_when": [
-      "需求是分析真实运行中的CPU、内存、卡顿或性能瓶颈，而不是编写自动化测试脚本；应改用 performance-analysis-kit / The need is to analyze real runtime CPU, memory, jank, or bottlenecks rather than write automated test scripts; use performance-analysis-kit instead",
-      "需求是实现无障碍能力、读屏适配或辅助功能检查，而不是执行通用UI自动化测试；应改用 accessibility-kit / The task is to implement accessibility features, screen reader support, or accessibility checks rather than general UI automation; use accessibility-kit instead",
-      "需求是进行界面视觉设计、组件样式定义或页面原型设计，而不是验证界面行为；应改用 ui-design-kit / The task is visual UI design, component styling, or page prototyping rather than validating UI behavior; use ui-design-kit instead",
-      "需求是处理日历事件、天气服务或系统基础能力接入等业务功能开发，而不是测试这些功能；应分别改用 calendar-kit、weather-service-kit 或 basic-services-kit / The task is implementing business features such as calendar events, weather services, or basic system services rather than testing them; use calendar-kit, weather-service-kit, or basic-services-kit instead"
+      "需求是做事件打点、链路跟踪、崩溃故障定位、健康监控，或使用 HiLog、HiTraceMeter、hdc 等 DFX 工具排查问题；应改用 performance-analysis-kit / The task is about event instrumentation, trace analysis, crash diagnosis, health monitoring, or troubleshooting with DFX tools such as HiLog, HiTraceMeter, and hdc; use performance-analysis-kit instead",
+      "需求是处理多语言资源、区域格式适配、文化差异呈现，或进行伪本地化检查；应改用 localization-kit / The requirement is to manage multilingual resources, adapt regional formats and cultural presentation, or run pseudolocalization checks; use localization-kit instead"
     ],
     "preconditions": [
       "工程已集成HarmonyOS测试框架并可编译运行ArkTS测试代码 / The project has integrated the HarmonyOS testing framework and can compile and run ArkTS test code",

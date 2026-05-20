@@ -4,8 +4,8 @@
   "source_path": "skills/account-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:47:33.638Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:10:18.594Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -48,10 +48,7 @@
       "订阅用户资料更新事件并实时刷新昵称头像展示 / Subscribe to user profile update events and refresh displayed nickname and avatar in real time"
     ],
     "do_not_use_when": [
-      "需求是读取、选择或管理设备联系人，而不是华为账号登录或账号资料；应改用 contacts-kit / The requirement is to read, pick, or manage device contacts rather than Huawei account sign-in or account profile data; use contacts-kit instead",
-      "需求是实现应用内商品购买、订阅、消耗型商品发货或订单校验；应改用 iap-kit / The requirement is to implement in-app purchases, subscriptions, consumables fulfillment, or order verification; use iap-kit instead",
-      "需求是发起真实支付、收银台支付流程或商户交易扣款，而不是账号认证；应改用 payment-kit / The requirement is to initiate real payments, checkout flows, or merchant transaction charging rather than account authentication; use payment-kit instead",
-      "需求是访问或管理卡券、证件、交通卡、会员卡等数字钱包资产；应改用 wallet-kit / The requirement is to access or manage digital wallet assets such as passes, IDs, transit cards, or membership cards; use wallet-kit instead"
+      "需求是做加解密、消息摘要、MAC、密钥派生、密钥协商或安全随机数生成等密码算法能力，应改用 crypto-architecture-kit / The requirement is for cryptographic operations such as encryption/decryption, hashing, MAC, key derivation, key agreement, or secure random generation; use crypto-architecture-kit instead"
     ],
     "preconditions": [
       "已在 AppGallery Connect 中开通账号服务并为应用配置有效的 Client ID / Account service is enabled in AppGallery Connect and a valid Client ID is configured for the app",

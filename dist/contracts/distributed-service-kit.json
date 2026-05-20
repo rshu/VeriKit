@@ -4,8 +4,8 @@
   "source_path": "skills/distributed-service-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:53:13.880Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:14:58.765Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,9 +43,8 @@
       "使用增强连接能力提升蓝牙跨设备连接稳定性 / Use enhanced connection capability to improve Bluetooth cross-device stability"
     ],
     "do_not_use_when": [
-      "需求是云侧账号、数据库、云存储或云函数等云服务集成，应改用 cloud-foundation-kit / The need is for cloud services integration such as cloud account, database, storage, or functions; use cloud-foundation-kit instead",
-      "协同发生在应用内服务编排、意图协作或原子化服务流转，而不是发现认证周边设备或跨设备拉起同应用UIAbility，应改用 service-collaboration-kit / The collaboration is about in-app service orchestration, intent collaboration, or atomic service handoff rather than nearby device discovery/authentication or cross-device launching of the same app's UIAbility; use service-collaboration-kit instead",
-      "目标是与远端云资源通信而非同账号已组网设备之间的分布式协同，应改用 cloud-foundation-kit / The goal is to communicate with remote cloud resources rather than perform distributed collaboration between same-account networked devices; use cloud-foundation-kit instead"
+      "需求是发起HTTP请求、建立WebSocket或TCP/UDP/TLS Socket、做DNS/MDNS解析、VPN或防火墙配置，应改用 network-kit / The task is to make HTTP requests, open WebSocket or TCP/UDP/TLS sockets, perform DNS/MDNS resolution, or configure VPN or firewall features; use network-kit instead",
+      "需求是做多路并发联网、无缝迁移、QoS评估、弱网感知或流量优化加速，应改用 network-boost-kit / The requirement is multi-path acceleration, seamless handover, QoS evaluation, weak-network awareness, or traffic optimization; use network-boost-kit instead"
     ],
     "preconditions": [
       "应用已在 module.json5 中声明所需分布式相关权限，且能力在目标设备与 API 版本上可用 / Required distributed-related permissions are declared in module.json5, and the capability is available on the target devices and API version",

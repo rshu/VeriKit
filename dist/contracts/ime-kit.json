@@ -4,8 +4,8 @@
   "source_path": "skills/ime-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:55:00.898Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:17:04.414Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -39,13 +39,7 @@
       "适配安全输入场景，限制输入法能力并保护敏感内容 / Adapt to secure input scenarios, restrict IME capabilities, and protect sensitive content",
       "在不可聚焦浮窗或特殊窗口里完成文字输入交互 / Enable text input interaction in non-focusable floating or special windows"
     ],
-    "do_not_use_when": [
-      "需求是处理触摸、鼠标、键盘等通用输入事件分发，而不是输入法应用或自绘编辑框与IME通信；请改用 input-kit / The need is to handle generic input event dispatch for touch, mouse, or keyboard rather than IME apps or IME communication with custom editors; use input-kit instead",
-      "需求是接入或解析手写笔能力（如压感、倾角、笔迹）而非软键盘输入；请改用 pen-kit / The need is to access stylus capabilities such as pressure, tilt, or ink rather than soft-keyboard text input; use pen-kit instead",
-      "需求是处理游戏手柄按键、摇杆或振动等控制器能力，而不是文本输入；请改用 game-controller-kit / The need is to handle game controller buttons, sticks, or vibration rather than text input; use game-controller-kit instead",
-      "需求是开发或调试底层硬件驱动、设备接入或内核级输入支持，而不是应用层输入法框架；请改用 driver-development-kit / The need is to develop or debug low-level hardware drivers, device bring-up, or kernel-level input support rather than the app-layer IME framework; use driver-development-kit instead",
-      "需求是获取传感器数据（如加速度计、陀螺仪、环境传感器）而非编辑框文本输入；请改用 sensor-service-kit / The need is to read sensor data such as accelerometer, gyroscope, or ambient sensors rather than editor text input; use sensor-service-kit instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "工程已集成HarmonyOS对应版本的IME Kit能力并可解析相关API / The project has integrated the target HarmonyOS IME Kit capability and its APIs are resolvable",
       "若开发输入法应用，应用类型、能力配置及必要声明已在module.json5等配置中完成 / If developing an IME app, the app type, capability configuration, and necessary declarations have been completed in module.json5 and related config",

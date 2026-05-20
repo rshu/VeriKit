@@ -4,8 +4,8 @@
   "source_path": "skills/spatial-recon-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:59:28.035Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:21:44.222Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -41,13 +41,7 @@
       "创建会话后开始空间建模并在结束时释放重建资源 / Start spatial modeling after creating a session and release reconstruction resources when finished",
       "获取空间重建百分比进度并在扫描页面实时刷新 / Get spatial reconstruction percentage progress and refresh it live on the scanning page"
     ],
-    "do_not_use_when": [
-      "需求仅是基础3D场景、材质、相机或通用模型渲染，不涉及3DGS加载或空间重建时，应改用 arkgraphics-3d / If the need is only basic 3D scenes, materials, cameras, or general model rendering without 3DGS loading or spatial reconstruction, use arkgraphics-3d instead",
-      "需求仅是2D绘制、画布、矢量图形或普通图像处理，不涉及三维空间建模时，应改用 arkgraphics-2d / If the task is only 2D drawing, canvas, vector graphics, or ordinary image processing without 3D spatial modeling, use arkgraphics-2d instead",
-      "需求是实时AR跟踪、平面识别、锚点、姿态感知或相机AR交互，而不是离线重建与3DGS处理时，应改用 ar-engine / If the need is real-time AR tracking, plane detection, anchors, pose sensing, or camera AR interaction rather than offline reconstruction and 3DGS processing, use ar-engine instead",
-      "需求主要是通用图形/图像计算加速或性能优化，而非空间重建、3DGS渲染和专用滤镜时，应改用 graphics-accelerate-kit / If the main need is general graphics/image compute acceleration or performance optimization rather than spatial reconstruction, 3DGS rendering, and dedicated filters, use graphics-accelerate-kit instead",
-      "需求是游戏引擎级别的场景、实体组件、动画或交互逻辑开发，而不是调用空间重建C/C++能力时，应改用 xengine-kit / If the task is game-engine-level scene, entity-component, animation, or interaction development rather than using spatial reconstruction C/C++ capabilities, use xengine-kit instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "工程已集成ArkGraphics 3D模块并可与本Kit联合编译链接 / The project has integrated the ArkGraphics 3D module and can build/link together with this Kit",
       "目标设备与系统版本支持Spatial Recon能力，且已完成能力支持检查 / The target device and system version support Spatial Recon, and capability support has been checked",

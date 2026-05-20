@@ -4,8 +4,8 @@
   "source_path": "skills/ability-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:47:20.996Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:10:01.253Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -52,11 +52,7 @@
       "管理组件冷启动、热启动时的初始化逻辑 / Manage initialization logic for cold start and warm start of abilities"
     ],
     "do_not_use_when": [
-      "需求仅是编写TypeScript/ArkTS语法、类型、类或语言特性，而不是应用模型或Ability组件时，应改用 arkts / If the need is only TypeScript/ArkTS syntax, types, classes, or language features rather than the application model or Ability components, use arkts instead",
-      "需求仅是构建声明式界面、页面布局、状态管理或UI组件交互，而不是UIAbility生命周期或Want跳转时，应改用 arkui / If the need is only declarative UI, page layout, state management, or UI component interaction rather than UIAbility lifecycle or Want-based navigation, use arkui instead",
-      "需求是实现Web页面承载、Web组件配置、JS桥接或网页与应用交互时，应改用 arkweb / If the task is to host web pages, configure web components, build JS bridges, or handle web-app interaction, use arkweb instead",
-      "需求是跨进程远程调用、IDL接口定义或RPC消息通信，而不是通过Want启动Ability时，应改用 ipc-kit / If the task is cross-process remote calls, IDL interface definition, or RPC-style messaging rather than launching abilities via Want, use ipc-kit instead",
-      "需求是定时任务、延迟执行、持续后台任务或受系统调度的后台工作，而不是Ability/Service组件模型本身时，应改用 background-tasks-kit / If the need is scheduled work, deferred execution, long-running background jobs, or system-managed background work rather than the Ability/Service component model itself, use background-tasks-kit instead"
+      "需求是使用TaskPool、Worker、Sendable、ArkGuard或模块加载来处理ArkTS语言特性与并发编程，应改用 arkts instead / The need is about ArkTS language features and concurrency such as TaskPool, Worker, Sendable, ArkGuard, or module loading; use arkts instead"
     ],
     "preconditions": [
       "工程已启用与目标范式匹配的应用模型与配置文件（Stage使用app.json5/module.json5，FA使用config.json） / The project has enabled the application model and configuration files matching the target paradigm (Stage uses app.json5/module.json5, FA uses config.json)",

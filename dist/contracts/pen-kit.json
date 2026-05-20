@@ -4,8 +4,8 @@
   "source_path": "skills/pen-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:57:51.910Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:20:03.445Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,11 +43,8 @@
       "管理手写墨迹的撤销重做与笔迹编辑 / Manage handwritten ink undo/redo and stroke editing"
     ],
     "do_not_use_when": [
-      "需求是采集或订阅通用传感器数据（如加速度计、陀螺仪、环境传感器），而不是手写笔书写能力时，应改用 sensor-service-kit / If the need is to collect or subscribe to general sensor data (such as accelerometer, gyroscope, or environmental sensors) rather than stylus writing features, use sensor-service-kit instead",
-      "需求是处理键盘、鼠标、触摸等通用输入事件分发，而不是手写笔笔刷、报点预测或一笔成形时，应改用 input-kit / If the need is to handle general keyboard, mouse, or touch input event dispatch rather than stylus brushes, point prediction, or stroke-to-shape, use input-kit instead",
-      "需求是实现输入法、文本输入法编辑或候选词能力，而不是手写画布/手写交互时，应改用 ime-kit / If the need is to implement an input method, text IME editing, or candidate word features rather than handwriting canvas/pen interaction, use ime-kit instead",
-      "需求是开发或适配底层设备驱动、触控笔硬件驱动或内核侧能力，而不是在应用层集成手写功能时，应改用 driver-development-kit / If the need is to develop or adapt low-level device drivers, stylus hardware drivers, or kernel-side capabilities rather than integrate handwriting features at the app layer, use driver-development-kit instead",
-      "需求是接入游戏手柄、按键映射或摇杆输入，而不是手写笔事件时，应改用 game-controller-kit / If the need is to integrate game controllers, button mapping, or joystick input rather than stylus events, use game-controller-kit instead"
+      "需求是使用设计规范组件、导航栏/侧边栏/页签、光影视觉、图标资源处理或应用内多窗界面方案，应改用 ui-design-kit / The requirement is to use design-system components, navigation bars/sidebars/tabs, lighting visual effects, icon asset handling, or in-app multi-window UI patterns; use ui-design-kit instead",
+      "需求是开发桌面、锁屏等系统面的服务卡片，包含声明式卡片、互动卡片、透明卡片或卡片动效展示，应改用 form-kit / The task is to build service widgets for system surfaces such as desktop or lock screen, including declarative cards, interactive cards, transparent cards, or card animations; use form-kit instead"
     ],
     "preconditions": [
       "运行环境为Phone、Tablet或2in1真机，且不使用模拟器 / The runtime environment is a real Phone, Tablet, or 2in1 device, and not an emulator",

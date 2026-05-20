@@ -4,8 +4,8 @@
   "source_path": "skills/core-speech-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:52:14.520Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:13:53.331Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -39,11 +39,7 @@
       "将现场发言实时转成字幕用于直播或课堂展示 / Turn spoken audio into real-time subtitles for live streams or classroom display"
     ],
     "do_not_use_when": [
-      "需求是联网语音能力、云端识别/合成或跨区域在线语音服务，应改用 speech-kit / The requirement is online speech capability, cloud ASR/TTS, or cross-region online speech services; use speech-kit instead",
-      "任务主要是文本理解、分词、翻译、摘要或实体分析，而不是语音输入输出，应改用 natural-language-kit / The task is primarily text understanding, tokenization, translation, summarization, or entity analysis rather than speech I/O; use natural-language-kit instead",
-      "需求是图像/视频内容识别、OCR、检测或视觉分析，应改用 core-vision-kit 或 vision-kit / The requirement is image/video recognition, OCR, detection, or visual analysis; use core-vision-kit or vision-kit instead",
-      "需要自定义部署或运行通用AI模型推理，而非直接使用现成语音服务接口，应改用 mindspore-lite-kit、neural-network-runtime-kit 或 cann-kit / You need to deploy or run custom AI model inference rather than use ready-made speech service APIs; use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit instead",
-      "需求是多模态场景感知、跨传感器融合或上下文感知决策，而非单纯语音合成/识别，应改用 multimodal-awareness-kit / The requirement is multimodal scene awareness, cross-sensor fusion, or context-aware decisions rather than plain speech synthesis/recognition; use multimodal-awareness-kit instead"
+      "需求是做OCR取字、卡片文字抓取、人脸检测比对、主体分割或17点骨骼姿态分析，应改用 core-vision-kit / The task is OCR text extraction, card text capture, face detection and matching, subject segmentation, or 17-keypoint pose analysis; use core-vision-kit instead"
     ],
     "preconditions": [
       "应用运行环境位于中国大陆且设备类型受支持（Phone、Tablet、PC/2in1） / The app runs in Mainland China and on a supported device type (Phone, Tablet, or PC/2in1)",

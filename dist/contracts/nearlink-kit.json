@@ -4,8 +4,8 @@
   "source_path": "skills/nearlink-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:56:55.321Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:19:01.603Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -40,11 +40,9 @@
       "查询设备是否支持 NearLink 能力后再启用相关功能 / Check whether the device supports NearLink before enabling related features"
     ],
     "do_not_use_when": [
-      "需求是通用互联网网络访问、HTTP/TCP/UDP套接字或Wi‑Fi/蜂窝网络管理，应改用 network-kit / If the task is general internet access, HTTP/TCP/UDP sockets, or Wi‑Fi/cellular network management, use network-kit instead",
-      "需求是网络链路加速、弱网优化、传输加速或QoS增强，应改用 network-boost-kit / If the task is network acceleration, poor-network optimization, transfer acceleration, or QoS enhancement, use network-boost-kit instead",
-      "需求是跨设备远程分布式通信、设备间能力调用或远端服务协同，而不是星闪近距离链路，应改用 remote-communication-kit / If the task is cross-device distributed communication, remote capability invocation, or remote service collaboration rather than a NearLink short-range link, use remote-communication-kit instead",
-      "需求是蓝牙、Wi‑Fi直连、NFC或其他通用连接能力，而非星闪协议栈与SSAP通信，应改用 connectivity-kit / If the task involves Bluetooth, Wi‑Fi Direct, NFC, or other general connectivity instead of the NearLink protocol stack and SSAP communication, use connectivity-kit instead",
-      "需求是蜂窝通话、拨号、来电或通话控制，应改用 telephony-kit 或 call-service-kit / If the task is cellular calling, dialing, incoming-call handling, or call control, use telephony-kit or call-service-kit instead"
+      "需求是做多路并发联网、无缝连接迁移、网络质量评估（QoS）、弱网感知或流量优化加速，应改用 network-boost-kit / The requirement is multi-path concurrent networking, seamless connection migration, QoS evaluation, weak-network awareness, or traffic optimization and acceleration; use network-boost-kit instead",
+      "需求是使用传统蓝牙/BLE、Wi‑Fi STA/P2P/AP模式，或进行NFC标签读写与卡模拟，应改用 connectivity-kit / The need is classic Bluetooth/BLE, Wi‑Fi STA/P2P/AP modes, or NFC tag read/write and card emulation; use connectivity-kit instead",
+      "需求是做进程间IPC、基于Binder的本地RPC，或依托软总线进行跨进程/跨设备远程调用，应改用 ipc-kit / The task is inter-process IPC, Binder-based local RPC, or SoftBus-based cross-process/cross-device remote invocation; use ipc-kit instead"
     ],
     "preconditions": [
       "目标真机支持星闪功能，且不能在模拟器中运行 / The target physical device supports NearLink, and the app is not running in an emulator",

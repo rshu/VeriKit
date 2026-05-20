@@ -4,8 +4,8 @@
   "source_path": "skills/location-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:55:42.876Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:17:49.955Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -45,11 +45,7 @@
       "实现到店到家到站等到达提醒功能 / Implement arrival reminders for stores, home, or stations",
       "读取卫星定位信息并提升户外定位精度 / Read satellite positioning data and improve outdoor location accuracy"
     ],
-    "do_not_use_when": [
-      "需求是地图底图展示、标注、路线绘制、交互缩放或地图可视化，而不是获取位置或围栏能力；应改用 map-kit / The need is map rendering, markers, route drawing, interactive zooming, or map visualization rather than location acquisition or geofencing; use map-kit instead",
-      "任务核心是在界面中嵌入地图组件并展示地点信息，定位仅是附带信息；应改用 map-kit / The core task is embedding a map component in the UI and displaying places, with location only incidental; use map-kit instead",
-      "用户要实现POI展示、地图选点或基于地图的路径交互，而不是调用系统定位、地理编码或围栏接口；应改用 map-kit / The user wants POI display, map point selection, or map-based route interaction rather than system location, geocoding, or geofence APIs; use map-kit instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "应用已在 module.json5 中声明位置相关权限，且与所需精度/后台场景匹配 / The app has declared location-related permissions in module.json5, matching the required accuracy and background scenario",
       "用户已开启系统位置开关并授予应用相应位置权限 / The user has enabled the system location switch and granted the app the required location permission",

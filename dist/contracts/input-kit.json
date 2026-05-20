@@ -4,8 +4,8 @@
   "source_path": "skills/input-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:55:06.751Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:17:12.717Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -39,11 +39,8 @@
       "在录屏或辅助工具中订阅全局输入事件流 / Subscribe to the global input event stream for screen recording or assistive tools"
     ],
     "do_not_use_when": [
-      "需求是管理输入法、软键盘显示或文本输入法框架能力，此时应使用 ime-kit / If the task is to manage IME, soft keyboard display, or text input method framework features, use ime-kit instead",
-      "需求聚焦手写笔/触控笔特有能力（如笔压、倾斜、笔迹语义），而非通用输入事件时，应使用 pen-kit / If the task focuses on stylus-specific capabilities such as pressure, tilt, or pen semantics rather than generic input events, use pen-kit instead",
-      "需求是读取加速度计、陀螺仪等环境或运动传感器数据，而不是键鼠触控输入时，应使用 sensor-service-kit / If the task is to read accelerometer, gyroscope, or other sensor data rather than keyboard/mouse/touch input, use sensor-service-kit instead",
-      "需求是处理游戏手柄按键、摇杆、扳机等专用控制器输入时，应使用 game-controller-kit / If the task is to handle dedicated game controller input such as buttons, sticks, or triggers, use game-controller-kit instead",
-      "需求是开发或适配底层输入设备驱动，而不是在应用层监听或拦截输入事件时，应使用 driver-development-kit / If the task is to develop or adapt low-level input device drivers rather than listen to or intercept input events at app level, use driver-development-kit instead"
+      "需求是使用设计系统组件完成导航、侧边栏、页签、图标处理、光影效果或应用内多窗界面，应改用 ui-design-kit / The need is to use design-system components for navigation, sidebars, tabs, icon handling, lighting effects, or in-app multi-window UI; use ui-design-kit instead",
+      "需求是实现TalkBack适配、无障碍焦点、语义标注、朗读反馈或面向障碍用户的可达性能力，应改用 accessibility-kit / The task is about TalkBack support, accessibility focus, semantic annotations, spoken feedback, or inclusive accessibility features; use accessibility-kit instead"
     ],
     "preconditions": [
       "工程已集成可用的 Input Kit 相关 SDK/头文件与链接配置 / The project has the required Input Kit SDK, headers, and linking configuration available",

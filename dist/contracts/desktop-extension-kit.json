@@ -4,8 +4,8 @@
   "source_path": "skills/desktop-extension-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:52:49.831Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:14:33.986Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -40,11 +40,8 @@
       "为桌面快捷栏任务提供新增更新删除等管理能力 / Provide add, update, and remove management for desktop quick bar tasks"
     ],
     "do_not_use_when": [
-      "需求是通用界面布局、视觉规范或组件样式设计，而不是接入PC/2in1系统状态栏或快捷栏；请改用 ui-design-kit / The need is general UI layout, visual guidelines, or component styling rather than integration with the PC/2in1 system tray or dock; use ui-design-kit instead",
-      "需求是应用无障碍适配，如屏幕朗读、焦点导航或语义补充，而不是桌面级入口集成；请改用 accessibility-kit / The need is accessibility adaptation such as screen reader support, focus navigation, or semantic annotations rather than desktop-level entry integration; use accessibility-kit instead",
-      "需求是多语言文案、地区化格式或资源本地化，而不是状态栏图标、弹窗或快捷栏菜单管理；请改用 localization-kit / The need is multilingual text, locale formatting, or resource localization rather than tray icons, popups, or dock menu management; use localization-kit instead",
-      "需求是性能采集、卡顿分析、启动优化或资源占用分析，而不是桌面扩展功能接入；请改用 performance-analysis-kit / The need is performance tracing, jank analysis, startup optimization, or resource usage analysis rather than desktop extension integration; use performance-analysis-kit instead",
-      "需求是日历事件或天气数据等垂直服务能力，而不是为现有应用增加桌面状态栏/快捷栏入口；请改用 calendar-kit 或 weather-service-kit / The need is vertical service capability such as calendar events or weather data rather than adding desktop tray/dock entry points to an app; use calendar-kit or weather-service-kit instead"
+      "需求是进行文本、图片、视频或链接的跨应用/跨设备分享，或需要智能联系人推荐和附近设备传输，应改用 share-kit / The task is cross-app or cross-device sharing of text, images, videos, or links, or needing smart contact suggestions and nearby device transfer; use share-kit instead",
+      "需求是识别或生成二维码、条形码，或处理暗光、模糊、曲面码等复杂扫码场景，应改用 scan-kit / The task is to scan or generate QR codes and barcodes, or handle low-light, blurry, or curved-code recognition scenarios; use scan-kit instead"
     ],
     "preconditions": [
       "目标设备为PC或2in1，且系统支持桌面拓展服务能力 / The target device is a PC or 2-in-1 and the system supports desktop extension service capabilities",

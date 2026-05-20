@@ -4,8 +4,8 @@
   "source_path": "skills/map-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:55:50.971Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:17:58.712Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -48,9 +48,11 @@
       "叠加圆形围栏多边形区域和折线边界范围 / Overlay circles, polygons, and polylines to mark geofences or boundaries"
     ],
     "do_not_use_when": [
-      "需求仅是获取设备当前位置、持续定位、地理围栏或GNSS能力，而不需要地图展示、POI搜索或路径规划时，应改用 location-kit / If the need is only device location, continuous tracking, geofencing, or GNSS capabilities without map display, POI search, or route planning, use location-kit instead",
-      "任务是申请或处理定位权限、管理定位开关与定位回调，本Kit不是首选，应改用 location-kit / If the task is to request or handle location permissions, manage location settings, or process location callbacks, this kit is not the first choice; use location-kit instead",
-      "只需在后台采集坐标、监听位置变化或获取卫星状态，不涉及地图组件或地图服务接口时，应改用 location-kit / If you only need background coordinate collection, location change monitoring, or satellite status without map components or map service APIs, use location-kit instead"
+      "需求是订阅加速度计、陀螺仪、磁力计、气压计等本地或动态传感器数据，或控制设备振动反馈；应改用 sensor-service-kit / The requirement is to subscribe to accelerometer, gyroscope, magnetometer, barometer, or other local/dynamic sensor data, or control vibrator feedback; use sensor-service-kit instead",
+      "需求是开发USB、HID、Serial、SCSI等外设驱动，处理即插即用或专业办公/医疗设备接入；应改用 driver-development-kit / The requirement is to develop drivers for USB, HID, Serial, or SCSI peripherals, handling plug-and-play or professional office/medical device integration; use driver-development-kit instead",
+      "需求是连接和控制云台等机械设备，执行人脸/物体目标追踪、跟踪布局或蓝牙精准角度运动控制；应改用 mechanic-kit / The requirement is to connect to and control gimbals or other mechanical devices for face/object target tracking, tracking layouts, or precise Bluetooth angle and motion control; use mechanic-kit instead",
+      "需求是实现手机与穿戴设备之间的消息通信、通知推送、设备状态监控、文件传输或读取穿戴侧传感数据；应改用 wear-engine-kit / The requirement is to enable phone-to-wearable message communication, notification push, device status monitoring, file transfer, or reading wearable-side sensor data; use wear-engine-kit instead",
+      "需求是对接运动健康开放数据，读取日常活动、锻炼记录、健康指标或实时生理数据；应改用 health-service-kit / The requirement is to integrate with the fitness and health data platform for daily activity, workout records, health metrics, or real-time physiological data; use health-service-kit instead"
     ],
     "preconditions": [
       "工程已集成并启用 Map Kit 能力，且应用已完成地图服务相关配置 / The project has integrated and enabled Map Kit capabilities, and the app has completed the required map service configuration",

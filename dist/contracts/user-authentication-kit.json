@@ -4,8 +4,8 @@
   "source_path": "skills/user-authentication-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T08:00:15.329Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:22:35.964Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -44,13 +44,7 @@
       "从系统生物认证切换到自定义验证界面继续流程 / Switch from system biometric authentication to a custom verification UI",
       "管理应用内高风险操作的二次身份校验 / Manage step-up identity verification for high-risk in-app actions"
     ],
-    "do_not_use_when": [
-      "需求是服务端账号登录、令牌校验、单点登录或联网身份验证，而不是设备本地生物/口令认证；请改用 online-authentication-kit / The need is server-side account login, token validation, SSO, or online identity verification rather than on-device biometric/passcode authentication; use online-authentication-kit instead",
-      "需求是生成、存储、导入、导出或使用密钥进行加解密/签名验签，而不是触发用户认证流程；请改用 universal-keystore-kit / The need is to generate, store, import, export, or use keys for encryption/decryption or signing/verification rather than trigger user authentication; use universal-keystore-kit instead",
-      "需求是设备证书申请、安装、查询或基于证书建立设备身份信任，而不是验证当前用户身份；请改用 device-certificate-kit / The need is device certificate enrollment, installation, query, or certificate-based device identity trust rather than verifying the current user; use device-certificate-kit instead",
-      "需求是检查设备安全状态、风险检测、系统完整性或安全配置，而不是执行一次用户认证；请改用 device-security-kit / The need is to inspect device security status, risk signals, system integrity, or security configuration rather than perform a user authentication; use device-security-kit instead",
-      "需求是DRM内容授权、许可证处理或受保护媒体播放控制，而不是通用敏感操作的人机身份校验；请改用 drm-kit / The need is DRM content authorization, license handling, or protected media playback control rather than human identity verification for a general sensitive action; use drm-kit instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "应用已集成并可访问 User Authentication Kit 对应SDK接口 / The app has integrated and can access the User Authentication Kit SDK APIs",
       "设备已设置至少一种本地认证凭据（锁屏口令、人脸或指纹）且相关能力可用 / The device has at least one local authenticator enrolled (lock screen credential, face, or fingerprint) and the capability is available",

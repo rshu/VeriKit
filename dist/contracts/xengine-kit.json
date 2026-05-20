@@ -4,8 +4,8 @@
   "source_path": "skills/xengine-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T08:00:55.904Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:23:14.728Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -44,11 +44,10 @@
       "在GPU和NPU协同下实现更高质量的图像重建 / Implement higher-quality image reconstruction with GPU and NPU collaboration"
     ],
     "do_not_use_when": [
-      "需求是通用2D绘制、画布、文本或基础图像渲染，而不是马良GPU上的3D渲染加速；请改用 arkgraphics-2d / The need is general 2D drawing, canvas, text, or basic image rendering rather than 3D rendering acceleration on Maleoon GPU; use arkgraphics-2d instead",
-      "需求是构建3D场景、模型、材质、相机或基础3D渲染框架，而不是启用超分、VRS、光追或GPU排序特性；请改用 arkgraphics-3d / The need is to build 3D scenes, models, materials, cameras, or a basic 3D rendering framework rather than enabling super resolution, VRS, ray tracing, or GPU sorting features; use arkgraphics-3d instead",
-      "需求是AR会话、平面识别、锚点、跟踪或AR交互能力，而不是底层GPU渲染优化；请改用 ar-engine / The need is AR sessions, plane detection, anchors, tracking, or AR interaction rather than low-level GPU rendering optimization; use ar-engine instead",
-      "需求是通用图形/媒体加速或非马良GPU专属优化，且不依赖XEngine特性集合；请改用 graphics-accelerate-kit / The need is general graphics/media acceleration or optimization not specific to Maleoon GPU, without relying on XEngine feature set; use graphics-accelerate-kit instead",
-      "需求是空间扫描、环境重建、网格/点云重建或场景理解，而不是渲染特效与图形管线优化；请改用 spatial-recon-kit / The need is spatial scanning, environment reconstruction, mesh/point-cloud reconstruction, or scene understanding rather than rendering effects and graphics pipeline optimization; use spatial-recon-kit instead"
+      "需求是音视频播放、录制、屏幕录制、转码、提取媒体元数据或生成缩略图，应改用 media-kit / The requirement is media playback, recording, screen recording, transcoding, media metadata extraction, or thumbnail generation; use media-kit instead",
+      "需求是管理相册中的图片或视频、调用Picker选择资源、使用安全保存控件或处理动态照片，应改用 media-library-kit / The task is to manage photo library images or videos, invoke Picker selection, use the secure save control, or handle moving photos; use media-library-kit instead",
+      "需求是调用相机进行预览、拍照、录像，或控制对焦、闪光灯、变焦、HDR及多摄同开，应改用 camera-kit / The requirement is camera preview, photo capture, video recording, or control of focus, flash, zoom, HDR, and multi-camera operation; use camera-kit instead",
+      "需求是管理媒体会话、统一播控、投播到Cast+/DLNA设备、后台播放或桌面歌词显示，应改用 avsession-kit / The requirement is media session management, unified playback controls, casting to Cast+/DLNA devices, background playback, or desktop lyrics; use avsession-kit instead"
     ],
     "preconditions": [
       "目标设备支持 SystemCapability.Graphic.XEngine 系统能力 / The target device supports the SystemCapability.Graphic.XEngine system capability",

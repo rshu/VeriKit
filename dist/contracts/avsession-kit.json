@@ -4,8 +4,8 @@
   "source_path": "skills/avsession-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:50:36.844Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:12:16.579Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -45,13 +45,7 @@
       "适配系统音频焦点和中断事件，来电时自动暂停后恢复 / Handle system audio focus and interruptions, pausing for calls and resuming afterward",
       "为音频或视频应用接入统一播控面板和会话生命周期管理 / Add a unified playback control panel and session lifecycle management for an audio or video app"
     ],
-    "do_not_use_when": [
-      "需求是音频采集、播放渲染、音效处理或音频路由，而非媒体会话/播控中心接入时，应改用 audio-kit / If the task is audio capture, playback rendering, audio effects, or audio routing rather than media-session/control-center integration, use audio-kit instead",
-      "需求是音视频编解码、封装解封装、转码或流媒体处理，而非统一播控或投播管理时，应改用 avcodec-kit / If the task is audio/video encoding-decoding, muxing-demuxing, transcoding, or stream processing rather than unified playback control or casting management, use avcodec-kit instead",
-      "需求是拍照、录像、相机预览或相机设备控制，而非媒体会话管理时，应改用 camera-kit / If the task is photo capture, video recording, camera preview, or camera device control rather than media session management, use camera-kit instead",
-      "需求是访问媒体文件库、查询相册/音视频资产或读写系统媒体资源，而非播控会话时，应改用 media-library-kit / If the task is accessing the media library, querying album/audio-video assets, or reading-writing system media resources rather than playback sessions, use media-library-kit instead",
-      "需求是图片编解码、编辑、显示处理，或通用媒体播放录制能力而不是系统级播控中心接入时，应分别改用 image-kit 或 media-kit / If the task is image encoding-decoding, editing, display processing, or general media playback/recording rather than system-level control-center integration, use image-kit or media-kit respectively instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "工程已引入并启用 AVSession Kit 对应能力，所用 API 版本在目标 HarmonyOS SDK 中可用 / The project has added and enabled AVSession Kit capability, and the required APIs are available in the target HarmonyOS SDK",
       "若要实现后台持续播放，应用已同时接入 Background Tasks 长时任务相关配置，否则退到后台可能被系统暂停 / For continuous background playback, the app has also integrated long-running task configuration from Background Tasks; otherwise playback may be paused when sent to background",

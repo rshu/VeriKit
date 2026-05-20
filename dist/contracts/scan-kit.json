@@ -4,8 +4,8 @@
   "source_path": "skills/scan-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:58:38.838Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:20:57.978Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,13 +43,7 @@
       "根据扫描内容识别URL、文本或Wi‑Fi配置信息 / Parse scanned content as URL, text, or Wi‑Fi configuration",
       "调节扫码相机的闪光灯、对焦和缩放提升识别率 / Control flashlight, focus, and zoom to improve scan recognition"
     ],
-    "do_not_use_when": [
-      "需求是实现通用深度链接、URL跳转或跨端唤起，而不是识别/生成条码二维码；应使用 app-linking-kit / The need is generic deep linking, URL routing, or cross-device app invocation rather than barcode/QR scanning or generation; use app-linking-kit",
-      "需求是配置应用分享、分享面板或把内容分享到其他应用，而不是扫描码或生成码图；应使用 share-kit / The need is app sharing, share panels, or sending content to other apps rather than scanning codes or generating code images; use share-kit",
-      "需求是接入广告投放、广告归因或广告变现能力，而不是扫码识别；应使用 ads-kit / The need is ad delivery, attribution, or monetization capabilities rather than scan recognition; use ads-kit",
-      "需求是实现游戏登录、成就、排行榜或其他游戏服务，而不是扫码功能；应使用 game-service-kit / The need is game sign-in, achievements, leaderboards, or other game services rather than scanning features; use game-service-kit",
-      "需求是做场景感知、意图推荐或多设备场景协同，而不是相机/图片中的码识别；应使用 scenario-fusion-kit / The need is scene awareness, intent recommendation, or multi-device scenario orchestration rather than code recognition from camera/images; use scenario-fusion-kit"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "工程已集成Scan Kit对应SDK/依赖，且目标设备支持所选能力 / The project has integrated the Scan Kit SDK/dependencies and the target device supports the chosen capability",
       "若使用相机扫码，module.json5已声明相机权限且用户已授权 / If camera-based scanning is used, camera permission is declared in module.json5 and granted by the user",

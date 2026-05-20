@@ -4,8 +4,8 @@
   "source_path": "skills/vision-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T08:00:24.530Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:22:43.884Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -44,11 +44,8 @@
       "读取票据合同表单图片并识别其中的文字与表格 / Read receipt, contract, or form images and recognize their text and tables"
     ],
     "do_not_use_when": [
-      "需要自行部署、训练或优化底层AI模型与算子，而不是调用现成场景化视觉服务时，应改用 cann-kit、mindspore-lite-kit 或 neural-network-runtime-kit / If you need to deploy, train, or optimize underlying AI models and operators yourself rather than use packaged scenario-based vision services, use cann-kit, mindspore-lite-kit, or neural-network-runtime-kit instead",
-      "需求是通用基础视觉能力或底层视觉接口集成，而非人脸活体、证件OCR、文档扫描或AI识图控件时，应改用 core-vision-kit / If the need is for general foundational vision capabilities or low-level vision API integration rather than liveness detection, ID OCR, document scanning, or AI image analyzer components, use core-vision-kit instead",
-      "主要任务是语音识别、语音合成、语音唤醒或音频语义处理，而不是图像/文档视觉分析时，应改用 core-speech-kit 或 speech-kit / If the primary task is speech recognition, speech synthesis, voice wake-up, or audio semantic processing rather than image/document visual analysis, use core-speech-kit or speech-kit instead",
-      "主要任务是文本理解、翻译、摘要、对话或其他自然语言处理，而不是从图像中提取视觉信息时，应改用 natural-language-kit / If the primary task is text understanding, translation, summarization, dialogue, or other natural language processing rather than extracting visual information from images, use natural-language-kit instead",
-      "需求依赖跨模态场景感知、环境/行为综合感知或多传感器融合决策，而不是单一视觉场景化能力时，应改用 multimodal-awareness-kit / If the requirement depends on cross-modal context awareness, environment/behavior perception, or multi-sensor fusion decisions rather than single visual scenario services, use multimodal-awareness-kit instead"
+      "需求是将中文音频离线转写为文字，或进行多音色中英文语音合成朗读，应改用 core-speech-kit / The requirement is offline Chinese audio transcription or multi-voice Chinese and English speech synthesis; use core-speech-kit instead",
+      "需求是部署并优化端侧神经网络模型，进行模型转换、轻量训练，或通过ArkTS与Native接口完成推理集成，应改用 mindspore-lite-kit / The requirement is to deploy and optimize on-device neural models, perform model conversion or lightweight training, or integrate inference through ArkTS and Native interfaces; use mindspore-lite-kit instead"
     ],
     "preconditions": [
       "工程已集成 Vision Kit 对应能力，并且目标设备/系统版本支持所选视觉服务 / The project has integrated the Vision Kit capability and the target device/system version supports the selected visual service",

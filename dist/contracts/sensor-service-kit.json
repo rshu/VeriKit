@@ -4,8 +4,8 @@
   "source_path": "skills/sensor-service-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:59:05.116Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:21:22.164Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,11 +43,8 @@
       "监听动态马达设备上下线并切换振动输出目标 / Listen for dynamic motor device connection changes and switch vibration output targets"
     ],
     "do_not_use_when": [
-      "需求是处理按键、触摸、鼠标或通用输入事件而非读取底层传感器或控制振动，应使用 input-kit / If the task is to handle key, touch, mouse, or generic input events rather than read low-level sensors or control vibration, use input-kit",
-      "需求是输入法、软键盘、文本编辑联想或候选词处理，应使用 ime-kit / If the task is about input methods, soft keyboard behavior, text composition, or candidate handling, use ime-kit",
-      "需求是手写笔事件、笔压、悬停或绘制交互，应使用 pen-kit / If the task is about stylus events, pressure, hover, or drawing interactions, use pen-kit",
-      "需求是开发或适配硬件驱动、提供新的传感器驱动能力，而不是在应用层订阅现有传感器，应使用 driver-development-kit / If the task is to develop or adapt hardware drivers and expose new sensor driver capability rather than subscribe to existing sensors at app level, use driver-development-kit",
-      "需求是读取游戏手柄按键/摇杆输入或手柄专用交互，而非通用动态传感器或振动器控制，应使用 game-controller-kit / If the task is to read gamepad buttons/sticks or game-controller-specific interactions rather than generic dynamic sensors or vibrator control, use game-controller-kit"
+      "需求是获取经纬度、GNSS/WLAN/蓝牙融合定位、地理围栏触发或地址解析，应改用 location-kit / The requirement is to obtain coordinates, use GNSS/WLAN/Bluetooth positioning, trigger geofences, or perform address lookup; use location-kit instead",
+      "需求是展示地图底图、添加标记/覆盖物、进行POI搜索或驾步骑公交路径规划，应改用 map-kit / The task is to render map views, add markers/overlays, perform POI search, or plan driving, walking, cycling, or transit routes; use map-kit instead"
     ],
     "preconditions": [
       "目标设备具备所需的传感器或振动器硬件能力，且系统版本支持对应 Sensor Service Kit 接口 / The target device has the required sensor or vibrator hardware capability, and the OS version supports the relevant Sensor Service Kit APIs",

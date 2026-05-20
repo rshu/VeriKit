@@ -4,8 +4,8 @@
   "source_path": "skills/arkweb/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:49:49.283Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:11:47.029Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -49,11 +49,8 @@
       "定位 Web 页面白屏、崩溃或脚本报错问题 / Troubleshoot blank pages, crashes, or script errors in web content"
     ],
     "do_not_use_when": [
-      "需求是构建原生界面组件、布局、状态驱动界面而不是嵌入网页内容时，应使用 arkui / Use arkui when the task is to build native UI components, layouts, or state-driven interfaces rather than embed web content",
-      "需求仅涉及ArkTS语言语法、类型系统、并发模型或通用代码实现而不需要Web组件能力时，应使用 arkts / Use arkts when the work is only about ArkTS language syntax, typing, concurrency, or general coding without Web component capabilities",
-      "需求是实现跨Ability或跨进程对象通信、消息传递、远程调用，而不是应用与网页JavaScript交互时，应使用 ipc-kit / Use ipc-kit when the task is cross-Ability or cross-process object communication, messaging, or RPC rather than app-to-web JavaScript interaction",
-      "需求是开发卡片服务或在桌面卡片中展示轻量内容，而不是在页面中加载完整网页时，应使用 form-kit / Use form-kit when building widget/card experiences or showing lightweight card content instead of loading full web pages in-app",
-      "需求是调度长时间后台任务、延迟任务或资源条件触发任务，而不是前台Web页面加载与渲染时，应使用 background-tasks-kit / Use background-tasks-kit when scheduling long-running background, deferred, or condition-triggered tasks instead of foreground web page loading and rendering"
+      "需求是把应用能力接入小艺对话、小艺搜索或小艺建议，由AI意图识别进行功能分发；应改用 intents-kit / The task is to expose app capabilities to Xiaoyi Dialog, Xiaoyi Search, or Xiaoyi Suggestions and rely on AI intent recognition for capability routing; use intents-kit instead",
+      "需求是用FFRT做并发编排，例如串行队列、并发队列、任务依赖图、任务伙伴协作，或在C/C++中做超时与长耗时任务诊断；应改用 function-flow-runtime-kit / The task is to orchestrate concurrency with FFRT, such as serial queues, concurrent queues, task dependency graphs, companion task coordination, or timeout and long-task diagnostics in C/C++; use function-flow-runtime-kit instead"
     ],
     "preconditions": [
       "工程已集成ArkWeb能力，目标设备与API版本支持Web组件相关接口 / The project has ArkWeb capability integrated and the target device/API version supports Web component APIs",

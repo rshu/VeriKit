@@ -4,8 +4,8 @@
   "source_path": "skills/contacts-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:52:02.308Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:13:37.796Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -36,10 +36,8 @@
       "同步企业通讯录到系统联系人并维护更新 / Sync an enterprise directory to system contacts and keep it updated"
     ],
     "do_not_use_when": [
-      "需求是管理用户账号、登录态或账号身份信息，而不是系统通讯录联系人；应使用 account-kit / The requirement is to manage user accounts, sign-in state, or account identity rather than device contacts; use account-kit",
-      "需求是实现应用内商品购买、订阅或消耗型购买流程，而不是选择或编辑联系人；应使用 iap-kit / The requirement is to implement in-app product purchases, subscriptions, or consumables rather than selecting or editing contacts; use iap-kit",
-      "需求是发起支付、收银台或订单付款流程，而不是读取或写入联系人；应使用 payment-kit / The requirement is to initiate payments, checkout, or order payment flows rather than reading or writing contacts; use payment-kit",
-      "需求是管理卡券、证件、数字资产或钱包容器内容，而不是通讯录数据；应使用 wallet-kit / The requirement is to manage passes, credentials, digital assets, or wallet container content rather than contact data; use wallet-kit"
+      "需求是在锁屏、通知中心或状态栏持续展示打车、配送、航班或导航等进行中状态，应改用 live-view-kit / The requirement is to show ongoing status for rides, delivery, flights, or navigation on the lock screen, notification center, or status bar; use live-view-kit instead",
+      "需求是分享文本、图片、视频或链接到其他应用/设备，或使用智能推荐与附近设备传输，应改用 share-kit / The requirement is to share text, images, videos, or links across apps/devices, or use smart recommendations and nearby transfer; use share-kit instead"
     ],
     "preconditions": [
       "设备具备联系人服务能力，目标API在当前HarmonyOS版本可用 / The device has contact service capability and the target API is available in the current HarmonyOS version",

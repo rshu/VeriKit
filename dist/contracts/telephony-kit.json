@@ -4,8 +4,8 @@
   "source_path": "skills/telephony-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:59:42.674Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:22:00.079Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -42,13 +42,7 @@
       "获取当前语音网络或数据网络的服务状态 / Get the current voice network or data network service state",
       "基于 telephony API 显示通话状态、SIM 信息和信号信息 / Display call state, SIM info, and signal details with telephony APIs"
     ],
-    "do_not_use_when": [
-      "需求是管理Wi‑Fi、以太网或通用网络连接而非蜂窝通话/短信/SIM时，应改用 network-kit / If the task is to manage Wi‑Fi, Ethernet, or general network connectivity rather than cellular calling/SMS/SIM, use network-kit instead",
-      "需求是做网络加速、弱网优化、链路质量提升或传输性能调优时，应改用 network-boost-kit / If the task is about network acceleration, poor-network optimization, link quality improvement, or transmission performance tuning, use network-boost-kit instead",
-      "需求是设备间远程通信、分布式消息或跨端协同时，而不是运营商蜂窝通信能力时，应改用 remote-communication-kit / If the task is cross-device remote communication, distributed messaging, or inter-device collaboration rather than carrier cellular capabilities, use remote-communication-kit instead",
-      "需求是蓝牙、NFC、USB或局域近距离连接管理，而不是SIM/短信/蜂窝数据时，应改用 connectivity-kit 或 nearlink-kit / If the task is Bluetooth, NFC, USB, or local proximity connection management rather than SIM/SMS/cellular data, use connectivity-kit or nearlink-kit instead",
-      "需求是实现系统级通话服务、来电界面或拨号器服务扩展，而不是普通应用调用拨号/监听状态时，应改用 call-service-kit / If the task is to build system-level calling services, incoming-call UI, or dialer service extensions rather than a normal app making calls/listening to state, use call-service-kit instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "工程已集成 Telephony Kit 对应SDK能力，且目标设备支持蜂窝通信或相关模块能力 / The project includes the Telephony Kit SDK capability, and the target device supports cellular communication or the relevant module capability",
       "module.json5 中已声明所需权限，且涉及受限能力时用户或系统已授予相应权限 / Required permissions are declared in module.json5, and the user or system has granted any needed restricted permissions",

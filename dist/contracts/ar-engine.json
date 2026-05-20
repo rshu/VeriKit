@@ -4,8 +4,8 @@
   "source_path": "skills/ar-engine/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:49:04.640Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:10:58.960Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -46,11 +46,9 @@
       "用 ArkTS 或 C++ 接入移动端增强现实能力 / Integrate mobile AR capabilities with ArkTS or C++"
     ],
     "do_not_use_when": [
-      "仅需实现普通2D界面、画布绘制或矢量/位图渲染，不涉及相机空间感知或AR跟踪时，应改用 arkgraphics-2d / If you only need standard 2D UI, canvas drawing, or vector/bitmap rendering without camera-based spatial awareness or AR tracking, use arkgraphics-2d instead",
-      "仅需加载、渲染或交互3D模型/场景，而不需要平面检测、6DoF跟踪、命中检测或真实环境融合时，应改用 arkgraphics-3d / If you only need to load, render, or interact with 3D models/scenes without plane detection, 6DoF tracking, hit testing, or real-world fusion, use arkgraphics-3d instead",
-      "需求是图形计算加速、通用GPU/图像处理或性能优化，而不是AR会话与环境跟踪时，应改用 graphics-accelerate-kit / If the task is graphics compute acceleration, general GPU/image processing, or performance optimization rather than AR sessions and environment tracking, use graphics-accelerate-kit instead",
-      "需求是游戏引擎层面的场景管理、动画、物理或跨平台游戏开发，而非调用系统AR跟踪能力时，应改用 xengine-kit / If the need is engine-level scene management, animation, physics, or cross-platform game development rather than system AR tracking capabilities, use xengine-kit instead",
-      "重点是空间重建/扫描结果的重建数据处理与空间建模，而不需要完整AR会话中的实时跟踪、图像/人脸/人体AR能力时，应改用 spatial-recon-kit / If the focus is reconstruction-data processing and spatial modeling from scanning results rather than full AR-session real-time tracking and image/face/body AR capabilities, use spatial-recon-kit instead"
+      "需求是音视频编解码、封装/解封装、硬件加速，或处理HDR Vivid、Audio Vivid、可变帧率、时域可分层编码；应改用 avcodec-kit / The task is audio/video encoding-decoding, muxing-demuxing, hardware acceleration, or handling HDR Vivid, Audio Vivid, variable frame rate, or temporal scalability; use avcodec-kit instead",
+      "需求是音视频播放、录制、屏幕录制、转码、元数据提取、缩略图生成或HDR视频处理；应改用 media-kit / The requirement is media playback, recording, screen recording, transcoding, metadata extraction, thumbnail generation, or HDR video processing; use media-kit instead",
+      "需求是DRM插件管理、证书下载、许可证获取、节目授权与解密，或处理HLS/DASH及安全视频通路保护；应改用 drm-kit / The requirement is DRM plugin management, certificate download, license acquisition, entitlement/decryption, or handling HLS/DASH with secure video path protection; use drm-kit instead"
     ],
     "preconditions": [
       "目标设备与HarmonyOS版本支持AR Engine相关能力，且工程已正确集成对应SDK / The target device and HarmonyOS version support AR Engine capabilities, and the project has integrated the relevant SDK correctly",

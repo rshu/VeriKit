@@ -4,8 +4,8 @@
   "source_path": "skills/multimodal-awareness-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:56:42.451Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:18:45.715Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -40,10 +40,9 @@
       "管理设备状态感知的订阅与取消订阅生命周期 / Manage the lifecycle of subscribing and unsubscribing to device state awareness events"
     ],
     "do_not_use_when": [
-      "需要进行语音识别、语音唤醒、语音合成或音频语义处理时，应改用 speech-kit 或 core-speech-kit / If the task is speech recognition, wakeup, speech synthesis, or audio semantic processing, use speech-kit or core-speech-kit instead",
-      "需要进行图像/视频内容检测、目标识别、人脸分析或相机画面理解时，应改用 vision-kit 或 core-vision-kit / If the task is image/video analysis, object recognition, face analysis, or camera scene understanding, use vision-kit or core-vision-kit instead",
-      "需要进行文本分词、实体识别、翻译、摘要或其他自然语言理解时，应改用 natural-language-kit / If the task is tokenization, entity extraction, translation, summarization, or other natural language understanding, use natural-language-kit instead",
-      "需要部署或运行自定义AI模型、进行端侧推理或模型加速时，应改用 mindspore-lite-kit、neural-network-runtime-kit 或 cann-kit / If the task is deploying or running custom AI models, on-device inference, or model acceleration, use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit instead"
+      "需求是离线中文语音转文字、长短音频识别，或多音色中英文文本转语音播报，应改用 core-speech-kit / The requirement is offline Chinese speech-to-text for short or long audio, or multi-voice Chinese/English text-to-speech playback; use core-speech-kit instead",
+      "需求是对中英文文本做分词、实体抽取，识别日期、地址、电话、邮箱等命名实体，应改用 natural-language-kit / The requirement is Chinese/English tokenization and entity extraction, including named entities such as dates, addresses, phone numbers, and emails; use natural-language-kit instead",
+      "需求是进行模型推理与优化、AscendC自定义算子开发，或面向Kirin芯片做端到端AI部署，应改用 cann-kit / The requirement is model inference and optimization, AscendC custom operator development, or end-to-end AI deployment targeting Kirin chips; use cann-kit instead"
     ],
     "preconditions": [
       "应用已在 module.json5 中声明所需权限，并在运行时获得用户授权 / The app has declared required permissions in module.json5 and obtained runtime user consent",

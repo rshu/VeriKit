@@ -4,8 +4,8 @@
   "source_path": "skills/service-collaboration-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:59:13.408Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:21:29.627Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -39,10 +39,11 @@
       "排查跨设备能力接入后搜不到周边可协同手机的问题 / Troubleshoot nearby collaborative phones not appearing after integrating cross-device capabilities"
     ],
     "do_not_use_when": [
-      "需求是云端账号、云存储、云数据库或云函数等云服务集成，应改用 cloud-foundation-kit / The need is cloud account, cloud storage, cloud database, or cloud function integration, so use cloud-foundation-kit instead",
-      "需求是分布式数据管理、分布式任务调度、跨设备拉起Ability或通用分布式应用协同，而不是共享远端相机/扫码/图库能力，应改用 distributed-service-kit / The need is distributed data management, distributed task scheduling, cross-device ability launch, or general distributed app collaboration rather than sharing remote camera/scan/gallery capabilities, so use distributed-service-kit instead",
-      "设备不在同一华为账号下，无法满足同账号跨设备互通前提，不应选择本Kit / The devices are not logged in with the same Huawei account, so the same-account cross-device collaboration prerequisite is not met and this Kit should not be chosen",
-      "仅需本地设备上的相机、扫码或图库功能，不涉及远端设备能力共享，不应选择本Kit / Only local device camera, scanning, or gallery features are needed, with no remote device capability sharing, so this Kit should not be chosen"
+      "需求是发起HTTP/WebSocket请求、建立TCP/UDP/TLS套接字，或做DNS、mDNS、VPN、防火墙与流量统计，应改用 network-kit / The task is to issue HTTP/WebSocket requests, open TCP/UDP/TLS sockets, or handle DNS, mDNS, VPN, firewall, and traffic statistics; use network-kit instead",
+      "需求是做多路并发联网、无缝切网迁移、QoS评估、弱网感知或链路流量优化，应改用 network-boost-kit / The requirement is for multi-path networking, seamless connection migration, QoS evaluation, weak-network awareness, or traffic optimization; use network-boost-kit instead",
+      "需求是使用URPC远程过程调用，或需要缓存、拦截器、流式传输、断点续传等请求能力，应改用 remote-communication-kit / The scenario needs URPC remote procedure calls or request features such as cache, interceptors, streaming, and resumable transfer; use remote-communication-kit instead",
+      "需求是接入蓝牙/BLE、WLAN的STA/P2P/AP模式，或进行NFC标签读写与卡模拟，应改用 connectivity-kit / The job is about Bluetooth/BLE, WLAN STA/P2P/AP modes, or NFC tag read/write and card emulation; use connectivity-kit instead",
+      "需求是使用星闪进行低功耗高速率设备发现、SSAP连接管理、加密配对或可靠数据传输，应改用 nearlink-kit / The requirement is to use NearLink for low-power high-rate discovery, SSAP connection management, secure pairing, or reliable data transport; use nearlink-kit instead"
     ],
     "preconditions": [
       "参与协同的设备已登录同一华为账号 / The participating devices are logged in to the same Huawei account",

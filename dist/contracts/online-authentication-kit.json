@@ -4,8 +4,8 @@
   "source_path": "skills/online-authentication-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:57:30.628Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:19:41.120Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -42,11 +42,7 @@
       "完成 Passkey 凭据创建、断言获取和登录验证 / Complete passkey credential creation, assertion retrieval, and sign-in verification"
     ],
     "do_not_use_when": [
-      "需求只是做本地设备解锁、生物特征门禁或屏幕内二次确认，而不需要对接FIDO/IFAA/SOTER/Passkey服务端时，应改用 user-authentication-kit / If the need is only local device unlock, biometric gating, or on-device confirmation without integrating a FIDO/IFAA/SOTER/Passkey server, use user-authentication-kit instead",
-      "需求是生成密钥、加解密、签名验签或设计密码协议，而不是实现免密身份认证流程时，应改用 crypto-architecture-kit 或 universal-keystore-kit / If the task is key generation, encryption/decryption, signing/verification, or cryptographic protocol design rather than passwordless authentication flows, use crypto-architecture-kit or universal-keystore-kit instead",
-      "需求是管理设备证书、证书链、TLS客户端证书或设备身份证明，而不是用户免密登录/支付时，应改用 device-certificate-kit / If the task is device certificate management, certificate chains, TLS client certificates, or device identity attestation rather than user passwordless login/payment, use device-certificate-kit instead",
-      "需求是检测设备安全状态、风险评估、完整性校验或安全加固，而不是发起在线免密认证时，应改用 device-security-kit / If the goal is device security posture checks, risk assessment, integrity verification, or hardening rather than initiating online passwordless authentication, use device-security-kit instead",
-      "需求是实现数字版权保护、内容加密分发或许可证控制，而不是身份认证时，应改用 drm-kit / If the need is digital rights protection, encrypted content distribution, or license control rather than identity authentication, use drm-kit instead"
+      "需求是做数据防泄漏治理，如 .dlp 加密文件、只读/编辑/拥有者级权限控制，或限制网络外发、剪切板、截屏沙箱的授权分享；应改用 data-protection-kit / The requirement is data loss prevention, such as .dlp protected files, read/edit/owner permission control, or governed sharing with restrictions on network exfiltration, clipboard, and screenshot sandbox; use data-protection-kit instead"
     ],
     "preconditions": [
       "应用已完成对应认证方式所需的服务端对接与业务配置（FIDO、IFAA、SOTER或Passkey） / The app has completed required server-side integration and business configuration for the chosen method (FIDO, IFAA, SOTER, or Passkey)",

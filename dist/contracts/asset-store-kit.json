@@ -4,8 +4,8 @@
   "source_path": "skills/asset-store-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:49:59.086Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:11:53.657Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,11 +43,8 @@
       "为自动登录和自动填充功能读取本地安全凭据 / Load local secure credentials for auto-login and autofill"
     ],
     "do_not_use_when": [
-      "需要管理结构化业务数据、关系型表或大规模持久化记录时，应使用 arkdata / If you need structured business data, relational tables, or large-scale persistent records, use arkdata instead",
-      "需要读写普通文件、媒体文件或大体积二进制内容时，应使用 core-file-kit / If you need to read or write ordinary files, media files, or large binary content, use core-file-kit instead",
-      "需要通过系统文件管理能力让用户选择、移动、分享或管理文档文件时，应使用 file-manager-service-kit / If you need system file-management capabilities for users to pick, move, share, or manage documents, use file-manager-service-kit instead",
-      "需求是对应用文件或数据目录做整体加密、防拷贝或设备级数据保护，而不是保存短敏感条目时，应使用 data-protection-kit / If the goal is whole-file or app-data protection, anti-exfiltration, or device-level data protection rather than storing short sensitive entries, use data-protection-kit instead",
-      "需要预览文档、图片、音视频等内容而不是安全保存凭据时，应使用 preview-kit / If you need to preview documents, images, audio, or video rather than securely store credentials, use preview-kit instead"
+      "需求是把公共目录文件移入回收站、获取文件类型图标，或解析文件快捷方式得到原始 URI，应改用 file-manager-service-kit / The task is to move public-directory files to trash, get file-type icons, or resolve file shortcuts to the original URI; use file-manager-service-kit instead",
+      "需求是解析和排版 txt、epub、mobi、azw、azw3 电子书并提供翻页、目录等阅读交互，应改用 reader-kit / The task is to parse and lay out txt, epub, mobi, azw, or azw3 e-books and provide reading interactions such as page turning and table of contents; use reader-kit instead"
     ],
     "preconditions": [
       "工程已集成可用的 Asset Store Kit SDK/API，并在目标 HarmonyOS 版本上受支持 / The project has integrated the Asset Store Kit SDK/API and it is supported on the target HarmonyOS version",

@@ -4,8 +4,8 @@
   "source_path": "skills/ads-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:48:34.255Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:10:24.381Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -46,11 +46,8 @@
       "排查广告展示失败、白屏和错误码问题 / Troubleshoot ad display failures, blank screens, and error codes"
     ],
     "do_not_use_when": [
-      "需求是应用分发、应用内更新、评分评论或商店上架能力，应改用 appgallery-kit / If the need is app distribution, in-app updates, ratings/reviews, or store listing capabilities, use appgallery-kit instead",
-      "需求是生成或处理深度链接、通用跳转链接或营销落地页唤起，应改用 app-linking-kit / If the task is to create or handle deep links, universal links, or campaign landing-page app launches, use app-linking-kit instead",
-      "需求是游戏成就、排行榜、玩家账号或游戏运营服务，而不是广告变现，应改用 game-service-kit / If the requirement is game achievements, leaderboards, player accounts, or game operations rather than ad monetization, use game-service-kit instead",
-      "需求是内容分享、系统分享面板或将文本图片链接分享给其他应用，应改用 share-kit / If the task is content sharing, system share sheet integration, or sharing text/images/links to other apps, use share-kit instead",
-      "需求是扫码、识别二维码/条形码或相机扫描入口，而不是展示广告或获取OAID，应改用 scan-kit / If the need is scanning QR/barcodes or camera-based code recognition rather than showing ads or getting OAID, use scan-kit instead"
+      "需求是处理订单交易、数字人民币收款、身份校验或优惠券营销能力，应改用 payment-kit / The task involves order transactions, e-CNY payment, identity verification, or coupon-based marketing capabilities; use payment-kit instead",
+      "需求是购买消耗型、非消耗型或订阅型数字商品，并管理购买状态与发货流程，应改用 iap-kit / The need is to sell consumables, non-consumables, or subscriptions and manage purchase state and fulfillment; use iap-kit instead"
     ],
     "preconditions": [
       "项目已集成Ads Kit相关SDK与依赖，并在DevEco/工程配置中启用对应能力 / The project has integrated Ads Kit SDK dependencies and enabled the required capability in project configuration",

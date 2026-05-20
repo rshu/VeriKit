@@ -4,8 +4,8 @@
   "source_path": "skills/arkgraphics-2d/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:49:21.314Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:11:13.895Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -44,13 +44,7 @@
       "用 NativeWindow 和 NativeBuffer 管理原生图形缓冲区绘制流程 / Manage native graphics buffer drawing with NativeWindow and NativeBuffer",
       "处理多语言文本和缺字回退，确保特殊字符正常显示 / Handle multilingual text and glyph fallback so special characters render correctly"
     ],
-    "do_not_use_when": [
-      "需求是3D场景、模型、材质、光照或三维渲染而非二维绘制，应改用 arkgraphics-3d / The task is about 3D scenes, models, materials, lighting, or 3D rendering rather than 2D drawing, so use arkgraphics-3d instead",
-      "需求是相机实景叠加、AR跟踪、识别或虚实融合体验，应改用 ar-engine / The task is about camera-based AR overlay, tracking, recognition, or mixed reality experiences, so use ar-engine instead",
-      "主要目标是通用计算加速、并行数值处理或非显示型图形/媒体加速，而不是把二维内容绘制到界面上，应改用 graphics-accelerate-kit / The main goal is general compute acceleration, parallel numeric processing, or non-display graphics/media acceleration rather than drawing 2D content to the UI, so use graphics-accelerate-kit instead",
-      "需求是完整游戏引擎能力，如场景管理、物理、资源管线或游戏运行框架，而不只是底层2D绘制，应改用 xengine-kit / The need is for full game-engine capabilities such as scene management, physics, asset pipeline, or a game runtime framework, not just low-level 2D drawing, so use xengine-kit instead",
-      "需求是空间扫描、环境重建、深度/网格理解或空间感知数据获取，应改用 spatial-recon-kit / The task is about spatial scanning, environment reconstruction, depth/mesh understanding, or spatial sensing data acquisition, so use spatial-recon-kit instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "工程已集成ArkGraphics 2D相关SDK/API，且目标API版本支持所用能力 / The project has integrated the ArkGraphics 2D SDK/APIs, and the target API version supports the required features",
       "ArkTS场景已具备RenderNode挂载条件，或C/C++场景已具备XComponent/Native图形承载环境 / For ArkTS, a RenderNode hosting path is available, or for C/C++, an XComponent/native graphics host environment is available",

@@ -4,8 +4,8 @@
   "source_path": "skills/network-boost-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:57:03.766Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:19:09.979Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,11 +43,8 @@
       "设置业务场景标签让系统智能决策是否启用网络加速 / Set business scenario hints so the system can decide when to enable network acceleration"
     ],
     "do_not_use_when": [
-      "只需要普通网络请求、Socket通信、HTTP管理或基础网络状态查询时，应改用 network-kit / If you only need ordinary network requests, socket communication, HTTP management, or basic network status queries, use network-kit instead",
-      "需求是设备发现、配网、局域网互联或跨设备连接管理，而不是Wi‑Fi/蜂窝多网加速与QoS感知时，应改用 connectivity-kit / If the task is device discovery, network provisioning, LAN interconnection, or cross-device connection management rather than Wi-Fi/cellular acceleration and QoS sensing, use connectivity-kit instead",
-      "需求是近距离低功耗高速连接或NearLink设备通信，而不是互联网链路迁移与网络质量优化时，应改用 nearlink-kit / If you need short-range low-power high-speed links or NearLink device communication rather than Internet link migration and network quality optimization, use nearlink-kit instead",
-      "需求是蜂窝通话、拨号、号码/通话状态管理时，应改用 telephony-kit 或 call-service-kit / If the requirement is cellular calling, dialing, or number/call state management, use telephony-kit or call-service-kit instead",
-      "需求是构建分布式远程服务调用、RPC或跨设备业务协同，而不是网络加速策略时，应改用 remote-communication-kit / If you need distributed remote service invocation, RPC, or cross-device business collaboration rather than network acceleration policies, use remote-communication-kit instead"
+      "需求是做蓝牙、BLE、Wi‑Fi STA/P2P/AP 或 NFC 标签读写与卡模拟等短距无线交互；应改用 connectivity-kit / The task is about short-range wireless features such as Bluetooth, BLE, Wi‑Fi STA/P2P/AP, or NFC tag reading/writing and card emulation; use connectivity-kit instead",
+      "需求是同账号设备间共享相机、扫描或图库能力，在手机、平板和PC之间实现协同使用；应改用 service-collaboration-kit / The task is to share camera, scanning, or gallery capabilities across same-account phones, tablets, and PCs for collaborative use; use service-collaboration-kit instead"
     ],
     "preconditions": [
       "应用运行在Phone、Tablet或PC/2in1设备，且目标网络类型为Wi‑Fi或Cellular / The app runs on a Phone, Tablet, or PC/2in1 device, and the target network types are Wi-Fi or Cellular",

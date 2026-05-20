@@ -4,8 +4,8 @@
   "source_path": "skills/car-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:51:29.718Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:13:12.376Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -35,9 +35,8 @@
       "适配HiCar认证车机，使应用可在车载中控环境运行 / Adapt the app for HiCar-certified vehicles so it can run in the in-car console environment"
     ],
     "do_not_use_when": [
-      "应用只需要普通手机内导航、定位或路线规划，不涉及手机与车机之间的流转或HiCar连接 / The app only needs on-phone navigation, location, or route planning and does not involve phone-to-car transfer or HiCar connectivity",
-      "目标设备不是鸿蒙智行车机或HiCar认证车机，无法提供车机场景能力 / The target device is not a HarmonyOS Smart Cockpit vehicle unit or a HiCar-certified head unit, so in-car capabilities are unavailable",
-      "需求仅是通用跨设备文件、数据或页面流转，而不是车机导航流转、车机屏幕共享或车载硬件接入 / The requirement is only generic cross-device file, data, or page transfer rather than in-car navigation handoff, car-screen sharing, or vehicle hardware access"
+      "需求是控制云台等机械体设备，进行人脸/物体目标追踪、跟踪构图，或通过蓝牙做精准角度与运动控制；应改用 mechanic-kit / The requirement is to control gimbals or other robotic devices, perform face/object target tracking, tracking composition, or precise angle and motion control over Bluetooth; use mechanic-kit instead",
+      "需求是接入运动健康开放数据，读取日常活动、锻炼记录、健康指标或实时健康数据；应改用 health-service-kit / The requirement is to access open fitness and health data, including daily activity, workout records, health metrics, or real-time health data; use health-service-kit instead"
     ],
     "preconditions": [
       "工程已按开发准备完成Car Kit相关编译模式、能力和依赖配置 / The project has completed the required Car Kit build mode, capability, and dependency configuration",

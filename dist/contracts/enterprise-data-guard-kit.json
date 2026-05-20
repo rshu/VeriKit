@@ -4,8 +4,8 @@
   "source_path": "skills/enterprise-data-guard-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:53:34.894Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:15:23.175Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -41,10 +41,7 @@
       "限制受保护文件通过第三方应用打开或转发 / Restrict protected files from being opened or forwarded through third-party apps"
     ],
     "do_not_use_when": [
-      "需求是建设企业工作容器、工作资料隔离或企业空间生命周期管理，而不是KIA文件分级/外发管控；应改用 enterprise-space-kit / The requirement is to build an enterprise workspace, isolate work data, or manage enterprise space lifecycle rather than KIA file classification/export control; use enterprise-space-kit instead",
-      "需求是通用设备管理，如设备注册、策略下发、应用安装卸载、远程管控等，而不是企业数据防泄漏或恢复密钥；应改用 mdm-kit / The requirement is general device management such as enrollment, policy deployment, app install/uninstall, or remote management rather than DLP or recovery keys; use mdm-kit instead",
-      "目标设备不是中国境内支持的华为擎云PC/2in1，或需要模拟器验证，此Kit不适用 / The target device is not a supported Huawei Qingyun PC/2in1 in mainland China, or emulator-based validation is required; this Kit is not applicable",
-      "需求仅是普通文件读写、媒体处理或通用存储访问，并不涉及企业敏感文件识别、KIA标签、水印或恢复密钥 / The need is only ordinary file I/O, media processing, or general storage access, without enterprise-sensitive file identification, KIA labels, watermarking, or recovery keys"
+      "需求是做高性能渲染加速、游戏资源下载加速或游戏启动加速，提升图形密集型体验，应改用 graphics-accelerate-kit / The goal is high-performance rendering acceleration, game asset download acceleration, or startup acceleration for graphics-intensive experiences; use graphics-accelerate-kit instead"
     ],
     "preconditions": [
       "应用已具备企业安全管控类MDM应用资质，并完成相关能力申请与开通 / The app has enterprise security-management MDM qualifications and the required capability has been applied for and enabled",

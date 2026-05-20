@@ -4,8 +4,8 @@
   "source_path": "skills/live-view-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:55:25.041Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:17:34.910Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -42,10 +42,7 @@
       "集成跨端框架应用的实况窗能力 / Integrate Live View capability into a cross-platform app"
     ],
     "do_not_use_when": [
-      "只是需要发送普通通知、提醒或一次性消息，而不是展示持续进行中的服务状态；应改用 notification-kit / The goal is only to send a regular notification, reminder, or one-off message rather than show an ongoing service state; use notification-kit instead",
-      "需求是实现通用消息推送、离线通知到达或服务端下发消息能力，而不是管理实况窗本身；应改用 push-kit / The need is generic message push, offline delivery, or server-to-device messaging rather than managing Live View itself; use push-kit instead",
-      "展示内容属于营销、广告或促销信息，不是用户正在进行中的服务追踪 / The content is marketing, advertising, or promotional information rather than tracking a service currently in progress",
-      "任务没有明确开始与结束，或预计持续时间超过8小时，不符合实况窗时效性要求 / The task has no clear start and end, or is expected to last more than 8 hours, which does not fit Live View time-bounded requirements"
+      "需求是进行二维码/条形码扫描、识别或生成，并处理暗光、模糊、曲面码等复杂识读场景，应改用 scan-kit / The task is QR/barcode scanning, recognition, or generation, including difficult cases like low light, blur, or curved codes; use scan-kit instead"
     ],
     "preconditions": [
       "应用已开通实况窗服务权益，且目标设备为 HarmonyOS 5 及以上的 Phone 或 Tablet / The app has Live View service entitlement enabled, and the target device is a HarmonyOS 5+ Phone or Tablet",

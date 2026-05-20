@@ -4,8 +4,8 @@
   "source_path": "skills/reader-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:58:16.963Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:20:33.982Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -44,10 +44,7 @@
       "展示书籍封面页和详情信息后进入阅读内容 / Show the book cover and details before entering the reading content"
     ],
     "do_not_use_when": [
-      "要处理PDF文档的解析、渲染、批注或预览时，应改用 pdf-kit / If the task is to parse, render, annotate, or preview PDF documents, use pdf-kit instead",
-      "输入内容是在线文件流、网络直链或边下载边阅读的数据源时，不应使用 Reader Kit / Do not use Reader Kit when the input is an online file stream, network URL, or streaming source",
-      "需要对书籍提供DRM加密、版权保护或受保护内容分发能力时，不应使用 Reader Kit / Do not use Reader Kit when DRM, copyright protection, or protected content delivery is required",
-      "目标设备不是 HarmonyOS NEXT 5.0.4+ 的Phone、PC/2in1或Tablet，或服务区域不在中国大陆时，不应使用 Reader Kit / Do not use Reader Kit when the target device is not HarmonyOS NEXT 5.0.4+ Phone, PC/2in1, or Tablet, or when the service region is outside mainland China"
+      "需求是安全存放密码、令牌、密钥或凭据，并基于属主/群组做访问控制或用户认证授权，应改用 asset-store-kit / The task is to securely store passwords, tokens, keys, or credentials with owner/group-based access control or user authentication; use asset-store-kit instead"
     ],
     "preconditions": [
       "工程运行环境满足 HarmonyOS NEXT 5.0.4 及以上，且设备类型受 Reader Kit 支持 / The project runs on HarmonyOS NEXT 5.0.4 or later and on a device type supported by Reader Kit",

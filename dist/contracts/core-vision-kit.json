@@ -4,8 +4,8 @@
   "source_path": "skills/core-vision-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:52:20.599Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:14:02.073Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -44,11 +44,10 @@
       "分析用户动作姿态用于健身计数和运动纠正 / Analyze body pose for workout counting and exercise correction"
     ],
     "do_not_use_when": [
-      "需要自定义训练、转换、部署或优化深度学习模型，而不是调用开箱即用视觉能力时，应改用 mindspore-lite-kit、neural-network-runtime-kit 或 cann-kit / If you need to train, convert, deploy, or optimize custom deep learning models rather than use ready-made vision APIs, use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit instead",
-      "需求是语音识别、语音合成、唤醒或音频语义处理，而非图像视觉分析时，应改用 core-speech-kit 或 speech-kit / If the task is speech recognition, speech synthesis, wake-up, or audio semantic processing rather than image vision analysis, use core-speech-kit or speech-kit instead",
-      "需要文本理解、分词、翻译、摘要或实体分析等自然语言处理，而不是从图片中提取视觉结果时，应改用 natural-language-kit / If you need natural language processing such as text understanding, tokenization, translation, summarization, or entity analysis rather than extracting visual results from images, use natural-language-kit instead",
-      "需要更广义的计算机视觉或视频流/相机场景能力，且不局限于本Kit提供的OCR、人脸、分割、目标识别、骨骼点等基础AI接口时，应改用 vision-kit / If you need broader computer vision or video/camera scenario capabilities not limited to this kit's OCR, face, segmentation, object recognition, and pose APIs, use vision-kit instead",
-      "需要融合视觉、语音、环境等多模态上下文感知与联动，而不是单纯处理静态图片视觉分析时，应改用 multimodal-awareness-kit / If you need multimodal context awareness combining vision, speech, and environment rather than standalone image analysis, use multimodal-awareness-kit instead"
+      "需求是离线把中文短语音或长录音转成文字，或进行多音色中英文语音合成播报，应改用 core-speech-kit / The need is offline Chinese speech transcription for short or long audio, or multi-voice Chinese/English speech synthesis playback; use core-speech-kit instead",
+      "需求是部署自有模型并做端侧推理优化、AscendC自定义算子开发或面向Kirin芯片的异构计算适配，应改用 cann-kit / The need is to deploy custom models with on-device inference optimization, develop AscendC custom operators, or target Kirin heterogeneous computing; use cann-kit instead",
+      "需求是导入 ONNX、TFLite 或 Caffe 模型，在端侧通过 ArkTS 或 Native 接口执行轻量推理/训练并利用 CPU、NNRt 加速，应改用 mindspore-lite-kit / The task is to import ONNX, TFLite, or Caffe models and run lightweight on-device inference/training via ArkTS or Native APIs with CPU or NNRt acceleration; use mindspore-lite-kit instead",
+      "需求是基于知识库做多路召回、重排序、RAG问答或端侧大模型检索增强生成，应改用 data-augmentation-kit / The requirement is knowledge-base retrieval with multi-route recall, reranking, RAG question answering, or on-device LLM retrieval-augmented generation; use data-augmentation-kit instead"
     ],
     "preconditions": [
       "应用运行在支持的真机设备上，且设备类型为Phone、Tablet或PC/2in1，不使用模拟器 / The app runs on a supported physical device of type Phone, Tablet, or PC/2in1, not an emulator",

@@ -4,8 +4,8 @@
   "source_path": "skills/localization-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:55:35.754Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:17:42.415Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -44,11 +44,11 @@
       "根据区域格式校验和展示电话号码邮编等本地信息 / Validate and display phone numbers and postal codes in regional formats"
     ],
     "do_not_use_when": [
-      "需求是实现无障碍朗读、焦点导航、语义标签或颜色对比适配，应改用 accessibility-kit / If the task is about screen reader support, focus navigation, semantic labels, or color-contrast accessibility, use accessibility-kit instead",
-      "需求是做通用测试框架、自动化用例、测试执行或测试管理，而非国际化伪本地化验证，应改用 test-kit / If the task is about general test frameworks, automated test cases, test execution, or test management rather than i18n pseudolocalization checks, use test-kit instead",
-      "需求是接入日程事件、提醒、日历数据读写或系统日历同步，应改用 calendar-kit / If the task is about calendar events, reminders, calendar data CRUD, or system calendar sync, use calendar-kit instead",
-      "需求是提供天气数据、天气预报或按地区获取气象信息，而不是做地区格式化显示，应改用 weather-service-kit / If the task is about weather data, forecasts, or region-based meteorological information rather than locale-aware formatting, use weather-service-kit instead",
-      "需求是进行界面视觉规范、布局设计系统或组件样式方案制定，而不是实现语言资源与区域格式适配，应改用 ui-design-kit / If the task is about visual design rules, layout design systems, or component styling rather than language resources and locale formatting, use ui-design-kit instead"
+      "需求是下发设备策略、管控应用安装卸载、限制系统能力或集中监控企业终端状态；应改用 mdm-kit / The requirement is to push device policies, control app installation and removal, restrict system capabilities, or centrally monitor enterprise endpoints; use mdm-kit instead",
+      "需求是接入游戏联合登录、实名认证、防沉迷、游戏场景感知优化，或进行设备间游戏近场快传；应改用 game-service-kit / The requirement is to integrate game joint sign-in, real-name verification, anti-addiction, game scene awareness optimization, or nearby game fast transfer between devices; use game-service-kit instead",
+      "需求是提升高性能图形渲染效率、加速游戏资源下载，或缩短游戏启动时延；应改用 graphics-accelerate-kit / The task is to improve high-performance graphics rendering efficiency, accelerate game asset downloads, or reduce game startup latency; use graphics-accelerate-kit instead",
+      "需求是做事件打点、链路追踪、故障检测、性能监控，或使用HiLog、HiTraceMeter、hdc等DFX工具排查问题；应改用 performance-analysis-kit / The requirement is event instrumentation, trace tracking, fault detection, performance monitoring, or troubleshooting with DFX tools such as HiLog, HiTraceMeter, and hdc; use performance-analysis-kit instead",
+      "需求是使用云函数、云数据库、云存储或预加载能力，构建端云一体的Serverless业务；应改用 cloud-foundation-kit / The task is to use cloud functions, cloud database, cloud storage, or preload capabilities to build a device-cloud integrated Serverless service; use cloud-foundation-kit instead"
     ],
     "preconditions": [
       "工程已启用 HarmonyOS Localization Kit 相关能力并可导入对应国际化接口 / The project has HarmonyOS Localization Kit capability available and the relevant i18n APIs can be imported",

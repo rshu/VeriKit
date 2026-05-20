@@ -4,8 +4,8 @@
   "source_path": "skills/accessibility-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:47:27.679Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:10:10.155Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -44,11 +44,8 @@
       "接入屏幕阅读器友好的错误提示和成功反馈播报 / Integrate screen-reader-friendly announcements for errors and success feedback"
     ],
     "do_not_use_when": [
-      "需求只是做界面视觉样式、布局规范、颜色字体或交互视觉设计，而不是实现无障碍语义与播报时，改用 ui-design-kit / If the task is only about visual UI styling, layout rules, colors, typography, or interaction design rather than accessibility semantics and announcements, use ui-design-kit instead",
-      "需求是应用多语言翻译、字符串资源国际化或本地化适配，而不是屏幕朗读语义与多语种无障碍播报时，改用 localization-kit / If the task is about app translation, string resource internationalization, or localization rather than screen-reader semantics and multilingual accessibility announcements, use localization-kit instead",
-      "需求主要是编写测试用例、自动化验证或测试流程，而不是实现无障碍能力本身时，改用 test-kit / If the main task is writing test cases, automated verification, or test workflows rather than implementing accessibility features themselves, use test-kit instead",
-      "需求主要是分析卡顿、耗时、内存或性能瓶颈，而不是处理TalkBack焦点、标注或无障碍事件时，改用 performance-analysis-kit / If the main task is analyzing jank, latency, memory, or performance bottlenecks rather than handling TalkBack focus, labels, or accessibility events, use performance-analysis-kit instead",
-      "需求属于日历日程能力、天气服务能力或屏幕使用时长管控等垂直业务，而非无障碍适配时，分别改用 calendar-kit、weather-service-kit 或 screen-time-guard-kit / If the request belongs to vertical business capabilities such as calendar scheduling, weather services, or screen-time control rather than accessibility adaptation, use calendar-kit, weather-service-kit, or screen-time-guard-kit respectively"
+      "需求是开发桌面、锁屏等系统面上的服务卡片，包含声明式卡片、互动卡片、透明卡片或卡片动效；应改用 form-kit / The task is to develop service widgets for desktop or lock screen surfaces, including declarative cards, interactive cards, transparent cards, or card animations; use form-kit instead",
+      "需求是实现手写笔书写、笔刷效果、报点预测、一笔成形、全局取色或手写绘图/笔记体验；应改用 pen-kit / The requirement is stylus handwriting with brush effects, point prediction, stroke completion, global color picking, or pen-based drawing/note-taking experiences; use pen-kit instead"
     ],
     "preconditions": [
       "工程已集成HarmonyOS Accessibility Kit相关能力，目标API版本支持所用无障碍接口 / The project has integrated the HarmonyOS Accessibility Kit capability and the target API level supports the accessibility APIs being used",

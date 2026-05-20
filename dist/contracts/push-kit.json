@@ -4,8 +4,8 @@
   "source_path": "skills/push-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:58:10.844Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:20:26.275Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -44,12 +44,7 @@
       "按用户标签或分组定向发送个性化推送 / Send personalized push notifications by user tags or segments",
       "统计推送送达点击打开效果并分析消息转化 / Track push delivery, clicks, opens, and analyze conversion"
     ],
-    "do_not_use_when": [
-      "只需要在设备本地创建或管理通知，不涉及服务端到终端的云端推送时，应改用 notification-kit / If you only need to create or manage local device notifications without cloud-to-device delivery, use notification-kit instead",
-      "需求是本地通知栏样式、通知渠道、角标或前台服务通知配置，而不是获取Push Token或调用云侧推送接口时，应改用 notification-kit / If the task is about local notification styles, channels, badges, or foreground service notifications rather than obtaining a Push Token or calling cloud push APIs, use notification-kit instead",
-      "需要在应用前台直接管理实况窗生命周期与界面更新，而非通过服务端推送实况窗消息触发更新时，应改用 live-view-kit / If you need to manage Live View lifecycle and UI updates directly on the client foreground rather than trigger updates via server push messages, use live-view-kit instead",
-      "需求是创建、更新或关闭实况窗本身的端侧能力，而不是建设端云推送通道时，应改用 live-view-kit / If the task is about the client-side capability to create, update, or close a Live View itself rather than building a cloud push channel, use live-view-kit instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "已在 AppGallery Connect 为应用开通 Push 服务并完成项目配置 / Push service has been enabled for the app in AppGallery Connect and project configuration is completed",
       "工程已集成 Push Kit 相关 SDK/依赖，且设备与系统版本支持该能力 / The project has integrated Push Kit SDK dependencies, and the device/system version supports the capability",

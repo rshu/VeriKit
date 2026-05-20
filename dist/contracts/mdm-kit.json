@@ -4,8 +4,8 @@
   "source_path": "skills/mdm-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:55:56.967Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:18:05.484Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,10 +43,9 @@
       "下发系统设置策略如亮度、状态栏、开发者选项限制 / Push system setting policies such as brightness, status bar, and developer options restrictions"
     ],
     "do_not_use_when": [
-      "需求仅是管理企业工作资料、工作空间或企业容器，而不是设备级策略与系统管控；应改用 enterprise-space-kit / The requirement is only to manage enterprise work data, workspace, or enterprise container isolation rather than device-level policy and system control; use enterprise-space-kit instead",
-      "需求聚焦于企业数据文件的加密、访问控制、分享保护或数据泄露防护，而不是远程锁定、应用禁用或系统设置控制；应改用 enterprise-data-guard-kit / The requirement focuses on enterprise file encryption, access control, sharing protection, or data loss prevention rather than remote lock, app disabling, or system settings control; use enterprise-data-guard-kit instead",
-      "应用并非企业/政府场景的MDM或EMM管理端，不需要COPE/BYOD下的管理员激活与集中设备治理 / The app is not an enterprise/government MDM or EMM management app and does not need admin activation and centralized device governance in COPE/BYOD scenarios",
-      "目标设备不是HarmonyOS NEXT，或项目不是Stage模型，或API版本低于12，无法满足本Kit运行约束 / The target device is not HarmonyOS NEXT, or the project is not Stage model, or the API version is below 12, so this Kit's runtime constraints are not met"
+      "需求是接入游戏联合登录、实名认证、防沉迷、场景感知优化或近场快传，应改用 game-service-kit / The task is to integrate game sign-in, real-name verification, anti-addiction, game scene awareness optimization, or nearby fast transfer; use game-service-kit instead",
+      "需求是提升高帧率渲染、图形密集型负载表现、资源下载提速或启动加速，应改用 graphics-accelerate-kit / The goal is high-frame-rate rendering, better graphics-heavy workload performance, faster asset delivery, or startup acceleration; use graphics-accelerate-kit instead",
+      "需求是编写ArkTS单元测试、UI自动化测试、断言脚本或性能测试采集，应改用 test-kit / The requirement is to write ArkTS unit tests, UI automation tests, assertion scripts, or performance test collection; use test-kit instead"
     ],
     "preconditions": [
       "工程为Stage模型，目标SDK版本为5.0.0(API 12)及以上，且部署目标支持HarmonyOS NEXT / The project uses the Stage model, targets SDK 5.0.0 (API 12) or later, and deploys to a HarmonyOS NEXT device",

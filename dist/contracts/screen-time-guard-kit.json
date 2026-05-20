@@ -4,8 +4,8 @@
   "source_path": "skills/screen-time-guard-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:58:53.535Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:21:12.988Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,11 +43,7 @@
       "按工作日和周末分别配置不同的应用使用限制 / Configure different app usage limits for weekdays and weekends"
     ],
     "do_not_use_when": [
-      "需求是实现无障碍能力（如读屏、辅助操作、界面辅助服务）而非屏幕使用时长管控，请改用 accessibility-kit / If the need is accessibility features (such as screen reading, assistive actions, or accessibility services) rather than screen-time control, use accessibility-kit instead",
-      "需求是做多语言、本地化、地区文案或资源适配，而不是管理应用使用限制，请改用 localization-kit / If the need is multilingual support, localization, or regional resource adaptation rather than app usage restriction management, use localization-kit instead",
-      "需求是分析应用性能、卡顿、耗时或资源消耗，而不是设置守护策略，请改用 performance-analysis-kit / If the need is to analyze app performance, jank, latency, or resource usage rather than configure guard policies, use performance-analysis-kit instead",
-      "需求是编写测试用例、自动化测试或测试框架集成，而不是面向终端用户实施家长控制，请改用 test-kit / If the need is writing test cases, test automation, or integrating test frameworks rather than enforcing end-user parental controls, use test-kit instead",
-      "需求是设计界面样式、组件规范或交互布局，本身不涉及授权、选应用或时间限制能力，请改用 ui-design-kit / If the need is UI styling, component guidelines, or interaction layout without actual authorization, app picking, or time-limit capabilities, use ui-design-kit instead"
+      "需求是扫码、识别或生成条形码和二维码，并处理暗光、模糊、曲面码等复杂识别场景；应改用 scan-kit / The task is to scan, recognize, or generate barcodes and QR codes, including difficult cases like low light, blur, or curved codes; use scan-kit instead"
     ],
     "preconditions": [
       "应用已完成Screen Time Guard Kit所需签名配置并获批受限ACL权限 / The app has completed the required signing configuration for Screen Time Guard Kit and obtained the restricted ACL permission",

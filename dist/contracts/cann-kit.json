@@ -4,8 +4,8 @@
   "source_path": "skills/cann-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:51:17.759Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:13:04.167Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -47,12 +47,7 @@
       "在麒麟或昇腾平台上落地实时视频 AI 分析 / Deliver real-time video AI analytics on Kirin or Ascend platforms"
     ],
     "do_not_use_when": [
-      "只需要在应用内直接调用已集成模型做轻量级端侧推理，而不涉及AscendC、自定义算子或CANN工具链时，应改用 neural-network-runtime-kit / If you only need lightweight on-device inference with an already integrated model and do not need AscendC, custom operators, or the CANN toolchain, use neural-network-runtime-kit instead",
-      "任务是基于MindSpore Lite模型与其推理接口完成端侧部署，而不是进行CANN格式转换或AscendC开发时，应改用 mindspore-lite-kit / If the task is to deploy and run MindSpore Lite models with its inference APIs rather than CANN conversion or AscendC development, use mindspore-lite-kit instead",
-      "需求是调用现成的语音识别、语音合成或语音理解能力，而不是部署或优化自定义AI模型时，应改用 speech-kit、core-speech-kit / If the need is ready-made speech recognition, speech synthesis, or speech understanding rather than deploying or optimizing custom AI models, use speech-kit or core-speech-kit instead",
-      "需求是调用现成的图像识别、检测、OCR或视觉分析服务，而不是进行模型转换、NPU推理或算子开发时，应改用 vision-kit、core-vision-kit / If the need is ready-made image recognition, detection, OCR, or visual analysis services rather than model conversion, NPU inference, or operator development, use vision-kit or core-vision-kit instead",
-      "需求是使用现成的文本分类、分词、翻译等自然语言能力，而不是自行部署NLP模型到Kirin/NPU时，应改用 natural-language-kit / If the need is built-in NLP capabilities such as text classification, tokenization, or translation rather than deploying your own NLP model to Kirin/NPU, use natural-language-kit instead",
-      "需求是多模态感知或设备场景感知结果订阅，而不是底层AI模型部署与异构计算优化时，应改用 multimodal-awareness-kit / If the need is multimodal perception or device context-awareness result subscription rather than low-level AI model deployment and heterogeneous compute optimization, use multimodal-awareness-kit instead"
+      "需求是处理中英文文本分词、实体抽取，识别日期、地址、电话号码或电子邮件等命名实体，应改用 natural-language-kit / The requirement is Chinese/English tokenization and entity extraction, including named entities like dates, addresses, phone numbers, or emails; use natural-language-kit instead"
     ],
     "preconditions": [
       "目标设备与开发环境支持CANN Kit及对应Kirin/NPU能力，且版本兼容性已确认 / The target device and development environment support CANN Kit and the corresponding Kirin/NPU capabilities, and version compatibility has been confirmed",

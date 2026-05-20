@@ -4,8 +4,8 @@
   "source_path": "skills/neural-network-runtime-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:57:19.291Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:19:22.797Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -42,12 +42,7 @@
       "为重复推理任务复用已编译模型减少初始化耗时 / Reuse compiled models for repeated inference tasks to reduce initialization time"
     ],
     "do_not_use_when": [
-      "需求是训练模型、进行昇腾AI计算开发或使用CANN算子/图引擎能力，而不是通过HarmonyOS NNRt做设备侧推理；应改用 cann-kit / The task is model training, Ascend AI computing, or using CANN operator/graph-engine capabilities rather than HarmonyOS NNRt on-device inference; use cann-kit instead",
-      "只需要加载并运行MindSpore Lite模型，无需直接管理NNRt构图、编译、设备或缓存细节；应优先用 mindspore-lite-kit / You only need to load and run MindSpore Lite models and do not need direct NNRt graph, compilation, device, or cache control; prefer mindspore-lite-kit",
-      "目标是实现语音识别、语音合成、唤醒或音频语义能力，而不是搭建底层NPU推理运行时；应改用 speech-kit 或 core-speech-kit / The goal is speech recognition, synthesis, wakeup, or audio semantic features rather than building a low-level NPU inference runtime; use speech-kit or core-speech-kit instead",
-      "目标是图像分类、检测、OCR、人脸或视频分析等现成视觉AI能力，而不是接入底层神经网络运行时；应改用 vision-kit 或 core-vision-kit / The goal is ready-made visual AI features such as classification, detection, OCR, face, or video analysis rather than integrating a low-level neural runtime; use vision-kit or core-vision-kit instead",
-      "需求是文本分类、分词、翻译、对话理解等自然语言能力，而不是执行自定义NPU推理图；应改用 natural-language-kit / The need is natural language capabilities such as text classification, tokenization, translation, or dialog understanding rather than executing a custom NPU inference graph; use natural-language-kit instead",
-      "需求是多模态感知融合或高级场景理解，而不是单独对接神经网络硬件推理接口；应改用 multimodal-awareness-kit / The need is multimodal perception fusion or high-level scene understanding rather than directly integrating neural hardware inference APIs; use multimodal-awareness-kit instead"
+      "需求是做中英文分词、实体抽取，识别日期、地址、电话号码或电子邮件等命名实体，应改用 natural-language-kit / The task is Chinese/English tokenization and entity extraction, including dates, addresses, phone numbers, or email named entities; use natural-language-kit instead"
     ],
     "preconditions": [
       "目标设备与HarmonyOS版本已提供Neural Network Runtime能力，且设备实际支持NPU/相关AI加速硬件 / The target device and HarmonyOS version provide Neural Network Runtime capability, and the device actually supports an NPU or relevant AI acceleration hardware",

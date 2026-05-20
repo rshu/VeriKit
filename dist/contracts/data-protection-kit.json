@@ -4,8 +4,8 @@
   "source_path": "skills/data-protection-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:52:43.044Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:14:25.543Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -41,11 +41,8 @@
       "保护合同、报表、客户资料等敏感文件避免二次泄露 / Protect contracts, reports, and customer data from secondary leakage"
     ],
     "do_not_use_when": [
-      "需求只是普通应用数据持久化、关系型/键值型存储或跨设备数据同步，应使用 arkdata / The need is only regular app data persistence, relational/key-value storage, or cross-device data sync; use arkdata instead",
-      "需求是安全保存应用自己的密钥、令牌、证书等小型敏感凭据，而不是对文件进行DLP权限管控，应使用 asset-store-kit / The need is to securely store small app credentials such as keys, tokens, or certificates rather than apply DLP control to files; use asset-store-kit instead",
-      "需求仅涉及常规文件读写、目录遍历、URI/路径处理或文件复制移动，不涉及.dlp加密与授权，应使用 core-file-kit / The task only involves normal file I/O, directory traversal, URI/path handling, or file copy/move without .dlp encryption and authorization; use core-file-kit instead",
-      "需求是调用系统文件管理器进行文件选择、打开、保存或系统级文件操作入口，而不是配置DLP权限策略，应使用 file-manager-service-kit / The need is to invoke the system file manager for picking, opening, saving, or system-level file operations rather than configuring DLP policies; use file-manager-service-kit instead",
-      "需求只是预览文档、图片、音视频等内容，不需要DLP授权分享或防泄漏限制，应使用 preview-kit / The task is only to preview documents, images, audio, or video without DLP-authorized sharing or leakage controls; use preview-kit instead"
+      "需求是调用系统身份认证控件，基于锁屏口令、人脸或指纹凭据做本机身份核验，应改用 user-authentication-kit / The requirement is to use system authentication prompts and verify the local user with lock-screen credential, face, or fingerprint; use user-authentication-kit instead",
+      "需求是处理 X509 证书、CRL、证书链、CA 凭据生命周期，或创建解析 CMS/PKCS12 内容，应改用 device-certificate-kit / The task is about X509 certificates, CRLs, certificate chains, CA credential lifecycle, or creating/parsing CMS or PKCS12 content; use device-certificate-kit instead"
     ],
     "preconditions": [
       "目标设备与系统版本支持 Data Protection Kit/DLP 服务能力 / The target device and OS version support Data Protection Kit/DLP service capabilities",

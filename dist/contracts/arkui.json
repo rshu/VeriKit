@@ -4,8 +4,8 @@
   "source_path": "skills/arkui/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:49:43.188Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:11:39.296Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -50,14 +50,7 @@
       "实现画中画小窗播放界面 / Implement a picture-in-picture floating playback window",
       "封装可复用业务组件并在多个页面复用 / Package reusable business components for multiple pages"
     ],
-    "do_not_use_when": [
-      "需求主要是实现应用生命周期、UIAbility/ServiceExtensionAbility、拉起页面或系统级Ability编排时，应改用 ability-kit / If the task is mainly about application lifecycle, UIAbility/ServiceExtensionAbility, launching pages, or system-level Ability orchestration, use ability-kit instead",
-      "需求主要是编写通用ArkTS语言逻辑、类型系统、语法、并发或基础模块代码，而不是构建界面时，应改用 arkts / If the task is mainly about general ArkTS language logic, type system, syntax, concurrency, or base module code rather than building UI, use arkts instead",
-      "需要嵌入或控制Web页面、H5内容、WebView或前端网页渲染时，应改用 arkweb / If the task requires embedding or controlling web pages, H5 content, WebView, or browser-style rendering, use arkweb instead",
-      "目标是开发卡片/服务卡片（Form）而不是完整应用页面界面时，应改用 form-kit / If the goal is to build cards/service widgets (Forms) rather than full app page UI, use form-kit instead",
-      "需求核心是进程间通信、跨Ability消息传递或远程对象调用，而不是界面呈现时，应改用 ipc-kit / If the core requirement is inter-process communication, cross-Ability messaging, or remote object invocation rather than UI presentation, use ipc-kit instead",
-      "任务重点是后台任务调度、长时任务或延迟执行而非前台交互界面时，应改用 background-tasks-kit / If the focus is background task scheduling, long-running work, or deferred execution rather than foreground interactive UI, use background-tasks-kit instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "工程已启用HarmonyOS对应API版本并具备ArkUI开发能力，且目标模块为可承载UI的模块 / The project targets a HarmonyOS API version that supports ArkUI and the target module can host UI",
       "相关页面或组件源码位于ArkUI支持的工程结构中，并可使用ArkTS或类Web范式进行编译 / The relevant page or component source is placed in an ArkUI-supported project structure and can be compiled with ArkTS or the web-like paradigm",

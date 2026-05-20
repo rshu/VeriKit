@@ -4,8 +4,8 @@
   "source_path": "skills/call-service-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:51:04.957Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:12:49.968Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -41,11 +41,7 @@
       "将自定义通话状态同步到系统通话管理 / Sync custom call states into the system call management"
     ],
     "do_not_use_when": [
-      "需求是运营商蜂窝语音通话、SIM拨号、呼叫状态或电话号码能力时，应改用 telephony-kit / If the requirement is carrier cellular calling, SIM-based dialing, call state, or phone number capabilities, use telephony-kit instead",
-      "需求只是建立设备/网络连接、发现网络状态或配置传输链路，而不是展示应用内通话界面时，应改用 connectivity-kit 或 network-kit / If the task is only to establish device/network connectivity, inspect network state, or configure transport links rather than present in-app call UI, use connectivity-kit or network-kit instead",
-      "需求是提升网络加速、弱网优化、选路或时延稳定性，而非通话来去电展示与控制时，应改用 network-boost-kit / If the goal is network acceleration, poor-network optimization, routing, or latency stabilization rather than incoming/outgoing call presentation and controls, use network-boost-kit instead",
-      "需求是跨设备近距离互联、发现、配对或近场数据传输，而不是音视频通话服务管理时，应改用 nearlink-kit / If the requirement is nearby cross-device discovery, pairing, or short-range data transfer instead of audio/video call service management, use nearlink-kit instead",
-      "需求是远程通信底层会话、消息或传输能力，而非系统来电横幅、锁屏通知或通话胶囊时，应改用 remote-communication-kit / If the need is low-level remote communication sessions, messaging, or transport rather than system incoming-call banners, lock-screen notifications, or call capsules, use remote-communication-kit instead"
+      "需求是对条形码、二维码进行扫描、识别或生成，并处理暗光、模糊、曲面码等复杂识读场景；应改用 scan-kit / The requirement is to scan, recognize, or generate barcodes and QR codes, including difficult cases like low light, blur, or curved codes; use scan-kit instead"
     ],
     "preconditions": [
       "应用运行在标准系统真机上，且设备类型受支持（Phone、Tablet、Wearable），不支持模拟器 / The app runs on a real device with standard system and a supported form factor (Phone, Tablet, Wearable); emulators are not supported",

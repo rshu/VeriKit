@@ -4,8 +4,8 @@
   "source_path": "skills/mechanic-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:56:07.688Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:18:12.955Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -41,12 +41,7 @@
       "管理机械体设备会话并在重连后恢复控制 / Manage mechanical device sessions and restore control after reconnection"
     ],
     "do_not_use_when": [
-      "需求是读取通用传感器数据（如加速度计、陀螺仪、环境传感器）而不是控制云台等机械体设备时，应使用 sensor-service-kit / If the task is to read general sensor data (such as accelerometer, gyroscope, or environmental sensors) rather than control gimbals or other mechanical devices, use sensor-service-kit",
-      "需求是处理触摸、按键、鼠标等通用输入事件而非机械体蓝牙控制与跟踪时，应使用 input-kit / If the task is to handle general input events like touch, key, or mouse instead of mechanical Bluetooth control and tracking, use input-kit",
-      "需求是输入法开发、软键盘能力或文本输入框架集成时，应使用 ime-kit / If the task is IME development, soft keyboard capability, or text input framework integration, use ime-kit",
-      "需求是手写笔事件、压感、悬停或笔迹能力而非云台/机械体控制时，应使用 pen-kit / If the task is stylus events, pressure, hover, or ink capabilities rather than gimbal/mechanic control, use pen-kit",
-      "需求是开发硬件驱动、适配底层设备协议或内核级接入而不是调用上层机械体控制API时，应使用 driver-development-kit / If the task is to develop hardware drivers, adapt low-level device protocols, or perform kernel-level integration instead of calling high-level mechanic control APIs, use driver-development-kit",
-      "需求是处理游戏手柄按键、摇杆、震动等控制器能力而非机械体设备操控时，应使用 game-controller-kit / If the task is to handle game controller buttons, sticks, vibration, or related controller features rather than mechanic device operation, use game-controller-kit"
+      "需求是获取GNSS、基站或WLAN/蓝牙定位结果，做地理围栏触发、逆地理编码或地址解析；应改用 location-kit / The requirement is to obtain GNSS, cellular, or WLAN/Bluetooth location results, handle geofence triggers, or perform geocoding and reverse geocoding; use location-kit instead"
     ],
     "preconditions": [
       "目标设备与应用运行环境支持 API version 20 及以上并提供 Mechanic Kit 能力 / The target device and app runtime support API version 20 or later and provide Mechanic Kit capability",

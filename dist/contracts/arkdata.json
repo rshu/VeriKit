@@ -4,8 +4,8 @@
   "source_path": "skills/arkdata/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:49:13.654Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:11:06.953Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -50,11 +50,7 @@
       "管理应用数据模型、持久化方案和数据共享链路 / Manage app data models, persistence choices, and data sharing flows"
     ],
     "do_not_use_when": [
-      "需求是管理媒体文件、文档等文件本体的创建/复制/移动/删除，而不是保存结构化数据；应改用 core-file-kit / The task is to create/copy/move/delete actual files such as media or documents rather than persist structured data; use core-file-kit instead",
-      "需求是接入系统级文件管理、选择或浏览用户文件，而不是实现应用内数据库、首选项或数据同步；应改用 file-manager-service-kit / The task is to access system file management, file picking, or user file browsing rather than app-internal databases, preferences, or data sync; use file-manager-service-kit instead",
-      "需求是对图片、视频、文档等文件资源做资产入库、检索或统一管理，而不是保存业务键值/关系型数据；应改用 asset-store-kit / The task is to ingest, index, or manage asset resources like images, videos, or documents rather than store business key-value or relational data; use asset-store-kit instead",
-      "主要目标是文件或数据的安全隔离、权限保护、加密策略合规，而不是数据存储模型或同步机制；应改用 data-protection-kit / The primary goal is secure isolation, permission protection, or encryption policy compliance for files/data rather than choosing a storage model or sync mechanism; use data-protection-kit instead",
-      "需求只是预览文件或媒体内容，而不是对数据进行持久化、共享或同步；应改用 preview-kit / The task is only to preview files or media content rather than persist, share, or synchronize data; use preview-kit instead"
+      "需求是解析txt、epub、mobi、azw或azw3电子书，并提供排版、翻页、书签等阅读交互；应改用 reader-kit / The requirement is to parse txt, epub, mobi, azw, or azw3 ebooks and provide layout, page turning, bookmarks, and reading interactions; use reader-kit instead"
     ],
     "preconditions": [
       "工程已集成可用的ArkData相关SDK/API，并与目标语言接口（ArkTS或C/C++）匹配 / The project has the required ArkData SDK/APIs integrated and matched to the target language interface (ArkTS or C/C++)",

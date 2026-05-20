@@ -4,8 +4,8 @@
   "source_path": "skills/performance-analysis-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:57:58.399Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:20:12.777Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -45,12 +45,9 @@
       "定位点击无响应、渲染慢和交互延迟 / Diagnose unresponsive taps, slow rendering, and interaction latency"
     ],
     "do_not_use_when": [
-      "需求是编写自动化测试、单元测试、UI测试或测试框架集成，应改用 test-kit / The task is to write automated tests, unit tests, UI tests, or integrate a testing framework; use test-kit instead",
-      "需求是实现无障碍能力如读屏、语义辅助、焦点导航或辅助功能适配，应改用 accessibility-kit / The task is to implement accessibility features such as screen reader support, semantic assistance, focus navigation, or accessibility adaptation; use accessibility-kit instead",
-      "需求是做界面布局、组件样式、交互动效或视觉规范设计，而不是埋点、日志或性能跟踪，应改用 ui-design-kit / The task is about UI layout, component styling, interaction effects, or visual design rather than instrumentation, logging, or performance tracing; use ui-design-kit instead",
-      "需求是处理日期日程、提醒或日历数据读写，应改用 calendar-kit / The task is to handle schedules, reminders, or calendar data read/write; use calendar-kit instead",
-      "需求是获取天气数据、天气服务接入或天气展示，应改用 weather-service-kit / The task is to obtain weather data, integrate weather services, or display weather information; use weather-service-kit instead",
-      "需求是做多语言、本地化资源、翻译或区域格式适配，应改用 localization-kit / The task is localization, translated resources, or locale-specific formatting adaptation; use localization-kit instead"
+      "需求是对企业终端执行策略下发、应用管控、网络通信限制或COPE/BYOD统一管理，应改用 mdm-kit / The requirement is to enforce device policies, manage apps, restrict network communication, or centrally govern COPE/BYOD fleets; use mdm-kit instead",
+      "需求是创建或移除企业数字空间、配置深度冻结、管控空间互传文件审批，或处理企业账号认证与后台用户数据访问限制，应改用 enterprise-space-kit / The requirement is to create or remove enterprise spaces, configure deep freeze, govern cross-space file transfer with approval, or handle enterprise account auth and background user-data access control; use enterprise-space-kit instead",
+      "需求是接入联合登录、实名认证、防沉迷、游戏场景感知优化协作，或做设备间游戏近场快传与小游戏支付，应改用 game-service-kit / The task is to integrate game sign-in federation, real-name verification, anti-addiction, game scene awareness optimization, or nearby game transfer and mini-game payment; use game-service-kit instead"
     ],
     "preconditions": [
       "工程已集成可用的 HarmonyOS Performance Analysis Kit/DFX 相关 API 或命令行工具环境 / The project has the required HarmonyOS Performance Analysis Kit/DFX APIs or command-line tooling available",

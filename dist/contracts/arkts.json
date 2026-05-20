@@ -4,8 +4,8 @@
   "source_path": "skills/arkts/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:49:37.786Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:11:30.349Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -49,14 +49,7 @@
       "编写高性能 ArkTS 并发代码处理大数据计算 / Write high-performance ArkTS concurrent code for large-data processing",
       "在 ArkTS 中实现类型安全的业务逻辑和模块开发 / Implement type-safe business logic and modules in ArkTS"
     ],
-    "do_not_use_when": [
-      "需求是声明式页面布局、组件状态管理或界面交互实现，应优先使用 arkui / The task is primarily about declarative UI layout, component state management, or interaction implementation, so use arkui instead",
-      "需求是Ability生命周期、页面跳转、Want参数传递或应用组件模型集成，应优先使用 ability-kit / The task is mainly about Ability lifecycle, navigation, Want parameters, or application component model integration, so use ability-kit instead",
-      "需求是进程间通信、跨进程对象传递或RPC调用，而不是ArkTS线程内/线程间并发，应优先使用 ipc-kit / The task is about inter-process communication, cross-process object transfer, or RPC rather than ArkTS in-process concurrency, so use ipc-kit instead",
-      "需求是卡片（Form）创建、更新或卡片生命周期管理，应优先使用 form-kit / The task is about form/widget creation, update, or lifecycle management, so use form-kit instead",
-      "需求是Web页面承载、H5-JS桥接或Web内核能力调用，应优先使用 arkweb / The task is about hosting web content, JS bridge integration, or web engine capabilities, so use arkweb instead",
-      "需求是系统级后台任务调度、延迟执行或条件触发任务，而不是ArkTS并发API，应优先使用 background-tasks-kit / The task is about system-scheduled background work, deferred execution, or condition-triggered jobs rather than ArkTS concurrency APIs, so use background-tasks-kit instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "工程已使用HarmonyOS支持的ArkTS应用工程并可正常编译构建 / The project is an ArkTS-based HarmonyOS app project that can compile and build successfully",
       "DevEco Studio/SDK版本包含所需ArkTS语言特性与相关API能力 / The installed DevEco Studio/SDK version includes the required ArkTS language features and related APIs",

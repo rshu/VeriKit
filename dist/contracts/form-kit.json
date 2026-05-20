@@ -4,8 +4,8 @@
   "source_path": "skills/form-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:54:03.980Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:16:01.048Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,14 +43,7 @@
       "拉起卡片添加页面引导用户把小组件放到桌面 / Launch the add-form page to guide users to place the widget on the desktop",
       "开发带动画和自定义绘制效果的 ArkTS 卡片 / Build an ArkTS form with animations and custom drawing effects"
     ],
-    "do_not_use_when": [
-      "需求是开发普通应用页面、UIAbility生命周期或页面路由，而不是桌面/锁屏服务卡片；请改用 ability-kit / The task is to build normal app pages, UIAbility lifecycle, or in-app routing rather than desktop/lock-screen forms; use ability-kit instead",
-      "需求只是编写ArkTS语言逻辑或通用语法特性，没有卡片形态、form_config.json或卡片生命周期相关内容；请改用 arkts / The task is only about ArkTS language logic or general syntax features, with no form surface, form_config.json, or form lifecycle concerns; use arkts instead",
-      "需求是构建常规ArkUI界面组件与布局，而非服务卡片UI；请改用 arkui / The task is to build standard ArkUI components and layouts rather than a service form UI; use arkui instead",
-      "需求是开发完整Web页面、WebView承载内容或网页能力，而不是JS类Web卡片；请改用 arkweb / The task is to develop full web pages, WebView-hosted content, or web capabilities rather than JS-style forms; use arkweb instead",
-      "需求重点是进程/设备间通信机制本身，如RPC、消息通道或跨进程数据交换，而不是卡片的message/router/call交互；请改用 ipc-kit / The focus is on IPC mechanisms themselves, such as RPC, message channels, or cross-process data exchange, not form message/router/call interactions; use ipc-kit instead",
-      "需求主要是后台定时任务、长时运行或任务调度，本身不涉及卡片展示与刷新；请改用 background-tasks-kit / The requirement is mainly background scheduling, long-running work, or task orchestration, without form presentation or refresh; use background-tasks-kit instead"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "工程已集成HarmonyOS Form Kit能力，且目标设备形态支持服务卡片（不含轻量级智能穿戴） / The project includes HarmonyOS Form Kit capability, and the target device type supports forms (excluding lightweight wearables)",
       "卡片提供方模块已正确声明并配置卡片相关文件与元数据（如 form_config.json 及对应资源） / The form provider module has correctly declared and configured form-related files and metadata (such as form_config.json and related resources)",

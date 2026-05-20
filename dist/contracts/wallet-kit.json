@@ -4,8 +4,8 @@
   "source_path": "skills/wallet-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T08:00:31.971Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:22:51.651Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,11 +43,9 @@
       "在应用中检查设备是否支持钱包卡片或车钥匙能力 / Check whether the device supports wallet passes or car key capabilities in the app"
     ],
     "do_not_use_when": [
-      "需求只是让用户登录华为账号或获取账号身份信息，应使用 account-kit / If the need is only to sign in with a Huawei account or obtain account identity, use account-kit",
-      "需求是发起通用应用内商品购买、订阅或消耗型商品结算，而不是交通卡充值/开卡业务流程，应使用 iap-kit / If the need is generic in-app purchase, subscription, or consumable checkout rather than transit-card top-up/issuance workflows, use iap-kit",
-      "需求是接入通用支付收银、订单付款或线下/线上支付能力，而不是钱包交通卡或数字车钥匙服务，应使用 payment-kit / If the need is general payment checkout, order payment, or online/offline payment capability rather than wallet transit-card or digital car key services, use payment-kit",
-      "需求只是读取、选择或管理通讯录联系人，与钱包卡片或车钥匙无关，应使用 contacts-kit / If the need is only to read, pick, or manage contacts and is unrelated to wallet cards or car keys, use contacts-kit",
-      "目标设备不是中国境内手机，或需要在模拟器上验证能力，此时不应选用 wallet-kit / If the target device is not a phone in mainland China, or the capability must be validated on an emulator, wallet-kit is not the right choice"
+      "需求是提升高性能游戏或图形密集型应用的渲染效率，或进行游戏资源下载加速、启动加速，应改用 graphics-accelerate-kit / The requirement is to improve rendering efficiency for high-performance games or graphics-intensive apps, or to accelerate game asset downloading and startup; use graphics-accelerate-kit instead",
+      "需求是做事件打点、链路跟踪、故障检测、性能瓶颈分析，或使用HiLog、HiTraceMeter、hdc等DFX工具排查问题，应改用 performance-analysis-kit / The task is about event instrumentation, trace analysis, fault detection, performance bottleneck investigation, or troubleshooting with DFX tools such as HiLog, HiTraceMeter, and hdc; use performance-analysis-kit instead",
+      "需求是使用ArkTS编写单元测试、UI自动化测试或性能测试，并进行断言、控件操作和性能数据采集，应改用 test-kit / The requirement is to write unit tests, UI automation tests, or performance tests in ArkTS, including assertions, component operations, and performance data collection; use test-kit instead"
     ],
     "preconditions": [
       "已在 AppGallery Connect 开通并配置 Wallet Kit 服务参数及公钥 / Wallet Kit service parameters and public keys have been enabled and configured in AppGallery Connect",

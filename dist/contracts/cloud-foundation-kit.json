@@ -4,8 +4,8 @@
   "source_path": "skills/cloud-foundation-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:51:36.354Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:13:22.479Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -42,11 +42,7 @@
       "配置安装预加载和周期性预加载，提前准备云侧资源 / Configure install-time and periodic preloading to prepare cloud resources in advance",
       "通过应用日志排查预加载失败和云侧接入问题 / Troubleshoot preload failures and cloud integration issues through app logs"
     ],
-    "do_not_use_when": [
-      "需求是设备间能力发现、连接、分布式数据或跨设备任务流转，应改用 distributed-service-kit / If the need is device discovery, connection, distributed data, or cross-device task handoff, use distributed-service-kit instead",
-      "需求是拉起系统服务、与其他应用/原子化服务协同或基于意图进行服务调用，应改用 service-collaboration-kit / If the need is to invoke system services, collaborate with other apps/atomic services, or perform intent-based service calls, use service-collaboration-kit instead",
-      "后端服务由开发者自建且只需对接现有HTTP API、无需AGC云函数/云数据库/云存储/预加载时，不应选择 cloud-foundation-kit / If the backend is self-hosted and only existing HTTP APIs are needed without AGC cloud functions, cloud DB, cloud storage, or prefetch, cloud-foundation-kit is the wrong choice"
-    ],
+    "do_not_use_when": [],
     "preconditions": [
       "已在AGC控制台开通并正确配置所需云开发服务（云函数、云数据库、云存储或预加载） / The required AGC cloud services (cloud function, cloud DB, cloud storage, or prefetch) have been enabled and configured in AppGallery Connect",
       "工程已集成Cloud Foundation相关SDK与应用配置，且App ID/项目环境匹配 / The project has integrated the Cloud Foundation SDKs and app configuration, and the App ID/project environment match",

@@ -4,8 +4,8 @@
   "source_path": "skills/ringtone-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:58:31.559Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:20:51.602Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -38,11 +38,8 @@
       "集成系统铃声设置组件而不自己处理底层音频逻辑 / Integrate the system ringtone-setting component without handling low-level audio logic"
     ],
     "do_not_use_when": [
-      "需求是播放、录制、管理音频流或音频设备，而不是设置系统铃声；应改用 audio-kit / The task is to play, record, or manage audio streams/devices rather than set system ringtones; use audio-kit instead",
-      "需求是进行音视频编解码、转封装或格式转换，而不是应用铃声；应改用 avcodec-kit / The task is audio/video encoding, decoding, remuxing, or format conversion rather than applying a ringtone; use avcodec-kit instead",
-      "需求是控制媒体会话、后台播放状态或与系统媒体控制中心集成，而不是设置铃声；应改用 avsession-kit / The task is to manage media sessions, background playback state, or system media controls rather than set ringtones; use avsession-kit instead",
-      "需求是拍摄音视频、选择图片，或浏览/查询媒体资源库，而不是设置铃声；应根据场景改用 camera-kit、image-kit、media-kit 或 media-library-kit / The task is to capture media, pick images, or browse/query the media library rather than set ringtones; use camera-kit, image-kit, media-kit, or media-library-kit as appropriate",
-      "应用目标地区不是中国大陆，或设备/形态不受该服务支持时，不应使用本Kit / Do not use this Kit when the target region is not mainland China or the device/form factor is not supported by the service"
+      "需求是分享文本、图片、视频或链接到其他应用或附近设备，并结合联系人推荐进行分发，应改用 share-kit / The task is to share text, images, videos, or links to other apps or nearby devices, with contact recommendations for delivery; use share-kit instead",
+      "需求是进行条形码或二维码的扫描、识别与生成，并处理暗光、模糊或曲面码场景，应改用 scan-kit / The requirement is to scan, recognize, or generate barcodes and QR codes, including low-light, blurry, or curved-code cases; use scan-kit instead"
     ],
     "preconditions": [
       "应用运行在支持该能力的 Phone 或 Tablet 上，且服务地区为中国大陆 / The app runs on a supported Phone or Tablet, and the service region is mainland China",

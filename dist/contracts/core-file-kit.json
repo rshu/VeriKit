@@ -4,8 +4,8 @@
   "source_path": "skills/core-file-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:52:07.776Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:13:43.853Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -43,11 +43,7 @@
       "配置应用沙箱共享目录并读写共享文件 / Configure a shared app sandbox directory and read-write shared files"
     ],
     "do_not_use_when": [
-      "需求是结构化数据建模、关系型数据库或键值数据持久化，而不是文件读写；应改用 arkdata / The task is structured data modeling, relational database, or key-value persistence rather than file operations; use arkdata instead",
-      "需求是数字资产资源的上架、分发、下载或资产包管理，而不是本地/用户文件访问；应改用 asset-store-kit / The task is asset publishing, distribution, download, or asset package management rather than local or user file access; use asset-store-kit instead",
-      "需求是调用系统文件管理器提供的系统级文件浏览或管理服务，而不是应用侧文件API或FilePicker；应改用 file-manager-service-kit / The task is to invoke system file manager capabilities for system-level file browsing or management rather than app-side file APIs or FilePicker; use file-manager-service-kit instead",
-      "重点是文件加密、密钥管理、访问控制策略或数据安全合规，而不是文件访问流程本身；应改用 data-protection-kit / The main need is file encryption, key management, access-control policy, or data protection compliance rather than file access itself; use data-protection-kit instead",
-      "需求是预览图片、视频、音频或文档内容，而不是选择、保存、读写或分享文件；应改用 preview-kit / The task is to preview image, video, audio, or document content rather than select, save, read/write, or share files; use preview-kit instead"
+      "需求是解析txt、epub、mobi、azw、azw3电子书，进行排版分页并提供阅读交互；应改用 reader-kit / The task is to parse txt, epub, mobi, azw, or azw3 ebooks, perform layout and pagination, and provide reading interactions; use reader-kit instead"
     ],
     "preconditions": [
       "工程已集成可用的 HarmonyOS Core File Kit 能力并使用匹配的 API 版本 / The project has the HarmonyOS Core File Kit capability available and uses a compatible API version",

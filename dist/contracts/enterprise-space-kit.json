@@ -4,8 +4,8 @@
   "source_path": "skills/enterprise-space-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:53:43.746Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:15:31.770Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -42,10 +42,7 @@
       "订阅企业空间切换和状态变化事件 / Subscribe to enterprise space switch and state change events"
     ],
     "do_not_use_when": [
-      "需求是设备通用的MDM管控（如应用安装卸载、设备限制、策略下发），而不是企业数字空间/工作空间生命周期与互传管控；应改用 mdm-kit / The need is general device MDM management (such as app install/uninstall, device restrictions, policy deployment) rather than enterprise digital space/workspace lifecycle and inter-space transfer control; use mdm-kit instead",
-      "需求聚焦于企业数据文件级安全、防泄漏、加解密或文档权限保护，而非空间隔离与空间间传输策略；应改用 enterprise-data-guard-kit / The task focuses on file-level enterprise data security, DLP, encryption/decryption, or document rights protection rather than space isolation and inter-space transfer policy; use enterprise-data-guard-kit instead",
-      "目标设备不是华为擎云 PC/2in1，或需要在手机、平板、模拟器上运行；此时不应使用 enterprise-space-kit / The target device is not a Huawei Qingyun PC/2in1, or the app must run on phone, tablet, or emulator; in that case enterprise-space-kit should not be used",
-      "场景不涉及企业工作空间、双空间、一机两用或一企多网隔离，仅需普通用户账号或应用内权限管理；应改用 mdm-kit 或其他账号方案 / The scenario does not involve enterprise workspace, dual-space, one-device-for-dual-use, or multi-network isolation, and only needs normal user account or in-app permission management; use mdm-kit or another account solution instead"
+      "需求是编写ArkTS单元测试、UI自动化脚本、断言校验或采集性能测试数据，应改用 test-kit / The requirement is to write ArkTS unit tests, UI automation scripts, assertion-based checks, or collect performance test metrics; use test-kit instead"
     ],
     "preconditions": [
       "应用已具备企业MDM/企业数字空间服务所需资质，并在设备与服务端完成使能配置 / The app has the required enterprise MDM/Enterprise Space entitlements, and the device and backend service are enabled accordingly",

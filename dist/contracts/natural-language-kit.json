@@ -4,8 +4,8 @@
   "source_path": "skills/natural-language-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:56:49.506Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:18:53.181Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -40,10 +40,7 @@
       "接入 NLP 能力对文本做语义分析和信息抽取 / Integrate NLP capabilities for semantic analysis and information extraction"
     ],
     "do_not_use_when": [
-      "任务是语音转文字、语音识别或语音命令理解，应改用 speech-kit 或 core-speech-kit / The task is speech-to-text, speech recognition, or spoken command understanding; use speech-kit or core-speech-kit instead",
-      "输入主要是图像、视频、相机画面中的文字或目标识别，应改用 vision-kit 或 core-vision-kit / The input is primarily images, video, or camera frames for OCR or object recognition; use vision-kit or core-vision-kit instead",
-      "需要联合处理文本、语音、图像等多模态上下文进行综合感知，应改用 multimodal-awareness-kit / The task requires joint understanding across text, speech, and images with multimodal context; use multimodal-awareness-kit instead",
-      "需要部署或运行自定义AI模型、进行模型推理加速，而不是直接调用现成分词/实体抽取能力，应改用 mindspore-lite-kit、neural-network-runtime-kit 或 cann-kit / You need to deploy or run custom AI models or accelerate model inference rather than call built-in tokenization/entity extraction; use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit instead"
+      "需求是部署或优化端侧模型，进行算子开发、异构计算加速，或打通从训练到推理的端到端流程，应改用 cann-kit / The work is about on-device model deployment or optimization, custom operator development, heterogeneous compute acceleration, or an end-to-end train-to-inference pipeline; use cann-kit instead"
     ],
     "preconditions": [
       "设备与地区满足Natural Language Kit限制：Phone、Tablet、PC/2in1且在中国境内可用 / The device and region satisfy Natural Language Kit limits: Phone, Tablet, or PC/2in1 and available only in mainland China",

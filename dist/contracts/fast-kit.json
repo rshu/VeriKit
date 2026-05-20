@@ -4,8 +4,8 @@
   "source_path": "skills/fast-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:53:52.213Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:15:40.538Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -38,11 +38,13 @@
       "把多个不重叠矩形重组为更优的最小划分结果 / Reorganize multiple non-overlapping rectangles into a more optimal minimal partition"
     ],
     "do_not_use_when": [
-      "需求是进行性能采样、卡顿定位或运行时瓶颈分析，而不是引入线段表或矩形划分算法；应改用 performance-analysis-kit / The need is performance sampling, jank diagnosis, or runtime bottleneck analysis rather than adding SegmentMap or rectangle partition algorithms; use performance-analysis-kit instead",
-      "需求是做界面布局、组件样式或可视化设计产物生成，而不是计算最少矩形划分结果；应改用 ui-design-kit / The task is UI layout, component styling, or visual design artifact generation rather than computing a minimal rectangle partition; use ui-design-kit instead",
-      "需求是编写测试用例、测试框架集成或自动化验证，而不是在应用逻辑中调用算法加速接口；应改用 test-kit / The task is writing test cases, integrating test frameworks, or automated verification rather than invoking algorithm-acceleration APIs in app logic; use test-kit instead",
-      "需求是无障碍语义、读屏支持或可访问性交互适配，而不是区间查询或矩形合并求解；应改用 accessibility-kit / The need is accessibility semantics, screen-reader support, or accessible interaction adaptation rather than interval querying or rectangle merge solving; use accessibility-kit instead",
-      "需求是日历日程、天气数据、本地化文本等业务服务接入，而不是通用算法求解；应分别改用 calendar-kit、weather-service-kit 或 localization-kit / The need is business-service integration such as calendar events, weather data, or localization text rather than general algorithm solving; use calendar-kit, weather-service-kit, or localization-kit instead"
+      "需求是管理 UIAbility/ServiceAbility 生命周期、通过 Want 拉起页面或服务、处理 Deep Linking、跨端流转或多窗口形态；应改用 ability-kit / The work is about UIAbility or ServiceAbility lifecycle, launching pages or services with Want, handling Deep Linking, cross-device continuation, or multi-window behavior; use ability-kit instead",
+      "需求是使用 ArkTS 语言能力，如 TaskPool、Worker、Sendable、ArkGuard、字节码编译或模块加载机制；应改用 arkts / The task is about ArkTS language features such as TaskPool, Worker, Sendable, ArkGuard, bytecode compilation, or module loading; use arkts instead",
+      "需求是在应用内嵌网页并处理 Web 组件的页面加载、JavaScript 交互、媒体播放、文件选择、安全权限或 DevTools 调试；应改用 arkweb / The requirement is to embed web content and handle Web component page loading, JavaScript interaction, media playback, file picking, security permissions, or DevTools debugging; use arkweb instead",
+      "需求是实现通用链接、延迟深链、落地应用市场或用于分享投放的聚合链接跳转；应改用 app-linking-kit / The need is for universal links, deferred deep links, store landing flows, or aggregated links for sharing and campaign attribution; use app-linking-kit instead",
+      "需求是把应用能力接入小艺对话、小艺搜索或小艺建议，并通过 AI 意图识别完成功能分发；应改用 intents-kit / The scenario is exposing app capabilities to Xiaoyi Chat, Xiaoyi Search, or Xiaoyi Suggestions and routing them through AI intent recognition; use intents-kit instead",
+      "需求是编排短时任务、长时任务、延迟任务或代理提醒，让应用在后台受约束地继续执行；应改用 background-tasks-kit / The job is to schedule transient tasks, long-running tasks, deferred tasks, or agent reminders so the app can continue under background constraints; use background-tasks-kit instead",
+      "需求是用 FFRT 做并发编排，包括串行队列、并发队列、任务依赖图、任务伙伴协作，且需要 C/C++ 接口与运行时诊断；应改用 function-flow-runtime-kit / The work is parallel orchestration with FFRT, including serial queues, concurrent queues, task dependency graphs, and cooperative task groups, with C/C++ APIs and runtime diagnostics; use function-flow-runtime-kit instead"
     ],
     "preconditions": [
       "工程能够链接并调用该 Kit 提供的 C/C++ 接口与对应头文件/库文件 / The project can link against and call the Kit's C/C++ interfaces with the required headers and libraries",

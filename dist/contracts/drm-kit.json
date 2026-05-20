@@ -4,8 +4,8 @@
   "source_path": "skills/drm-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:53:28.193Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:15:13.857Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -42,11 +42,7 @@
       "在播放前向许可证服务器发送 challenge 并导入响应 / Send a challenge to the license server before playback and import the response"
     ],
     "do_not_use_when": [
-      "需求是通用加密算法、摘要、签名或随机数等密码能力，而不是DRM节目授权解密；应改用 crypto-architecture-kit / The need is for general cryptographic algorithms, hashing, signing, or random generation rather than DRM content licensing and decryption; use crypto-architecture-kit instead",
-      "需求是设备证书申请、安装、查询或设备身份认证，而不是媒体内容的DRM证书与许可证流程；应改用 device-certificate-kit / The need is device certificate enrollment, installation, query, or device identity authentication rather than DRM media certificate and license flow; use device-certificate-kit instead",
-      "需求是密钥生成、导入、存储或应用通用密钥管理，而不是DRM MediaKeySystem或MediaKeySession；应改用 universal-keystore-kit / The need is key generation, import, storage, or app-level key management rather than DRM MediaKeySystem or MediaKeySession; use universal-keystore-kit instead",
-      "需求是用户本地身份验证（如指纹、口令、人脸）以控制访问，而不是DRM内容授权；应改用 user-authentication-kit / The need is local user authentication such as fingerprint, PIN, or face for access control rather than DRM content authorization; use user-authentication-kit instead",
-      "需求是账号在线登录、令牌校验或服务器侧身份认证，而不是DRM许可证获取与内容解密；应改用 online-authentication-kit / The need is online account sign-in, token validation, or server-side identity authentication rather than DRM license acquisition and content decryption; use online-authentication-kit instead"
+      "需求是图片解码、编码、编辑、EXIF元数据处理、HDR转换或AI超分辨率增强，应改用 image-kit / The task is image decoding, encoding, editing, EXIF metadata handling, HDR conversion, or AI super-resolution enhancement; use image-kit instead"
     ],
     "preconditions": [
       "目标设备或系统已集成并启用对应的DRM解决方案/插件能力 / The target device or system has integrated and enabled the required DRM solution/plugin capability",

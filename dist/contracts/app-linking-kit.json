@@ -4,8 +4,8 @@
   "source_path": "skills/app-linking-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:48:48.453Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:10:43.363Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -41,11 +41,8 @@
       "接入通用链接让浏览器中的链接优先唤起应用 / Integrate universal links so browser links open the app first"
     ],
     "do_not_use_when": [
-      "需求只是打开应用市场详情页、上架分发或处理应用市场运营能力，且不涉及深度链接或延迟链接时，应改用 appgallery-kit / If the need is only to open AppGallery detail pages, app distribution, or marketplace operations without deep links or deferred links, use appgallery-kit instead",
-      "需求是广告投放、广告归因或广告变现场景，本Kit只负责链接跳转时，应改用 ads-kit / If the need is ad serving, ad attribution, or monetization and this kit would only handle a link hop, use ads-kit instead",
-      "需求是系统分享面板、分享内容到其他应用，而不是生成或解析可唤起应用的营销链接时，应改用 share-kit / If the need is invoking the system share sheet or sharing content to other apps rather than generating or handling app-invoking marketing links, use share-kit instead",
-      "需求核心是扫码识别二维码或条码内容，本Kit不负责扫描采集时，应改用 scan-kit / If the core need is scanning QR codes or barcodes and not handling the resulting deep link, use scan-kit instead",
-      "需求是基于时空、出行、设备状态等上下文触发服务卡片或场景联动，而非通过链接拉起应用时，应改用 scenario-fusion-kit / If the need is context-driven cards or scenario orchestration based on time, location, travel, or device state rather than link-based app launching, use scenario-fusion-kit instead"
+      "需求是用FFRT进行并发编程，建立串行队列、并发队列、任务依赖图或任务伙伴协作，并做超时与长耗时诊断；应改用 function-flow-runtime-kit / The task is to use FFRT for concurrency with serial queues, concurrent queues, task dependency graphs, or task companion cooperation, plus timeout and long-running diagnostics; use function-flow-runtime-kit instead",
+      "需求是做Segment Map区间更新查询或用RectPartition求最优矩形划分，以优化UI渲染或游戏输出数量；应改用 fast-kit / The requirement is to perform interval updates/queries with Segment Map or compute optimal rectangle partitioning with RectPartition to optimize UI rendering or game output counts; use fast-kit instead"
     ],
     "preconditions": [
       "已在AppGallery Connect中开通并配置App Linking服务 / App Linking service has been enabled and configured in AppGallery Connect",

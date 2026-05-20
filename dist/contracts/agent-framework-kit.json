@@ -4,8 +4,8 @@
   "source_path": "skills/agent-framework-kit/SKILL.md",
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
-    "at": "2026-05-12T07:48:40.981Z",
-    "refinement": "auto+llm",
+    "at": "2026-05-20T09:10:33.408Z",
+    "refinement": "auto+llm+gate-2026-05-20",
     "use_when_bilingual": true
   },
   "contract": {
@@ -38,10 +38,10 @@
       "在应用里接入自然语言交互能力处理咨询和操作指引 / Add natural language interaction in the app for support and action guidance"
     ],
     "do_not_use_when": [
-      "需求是在设备端训练、转换或部署底层AI模型，而不是拉起已上线智能体；应改用 mindspore-lite-kit、neural-network-runtime-kit 或 cann-kit / The need is to train, convert, or deploy low-level AI models on device rather than launch a published agent; use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit instead",
-      "需求是语音识别、语音合成或语音交互能力本身，而不是提供智能体入口；应改用 core-speech-kit 或 speech-kit / The need is speech recognition, speech synthesis, or speech interaction itself rather than an agent entry point; use core-speech-kit or speech-kit instead",
-      "需求是图像采集、视觉分析、OCR或通用视觉能力，而不是通过Function组件打开智能体；应改用 core-vision-kit 或 vision-kit / The need is image capture, vision analysis, OCR, or general vision capabilities rather than opening an agent through a Function component; use core-vision-kit or vision-kit instead",
-      "需求是文本分类、分词、翻译、实体识别等自然语言处理API，而不是接入小艺开放平台智能体；应改用 natural-language-kit / The need is NLP APIs such as text classification, tokenization, translation, or entity recognition rather than integrating a Xiaoyi Open Platform agent; use natural-language-kit instead"
+      "需求是做OCR文字识别、人脸检测比对、主体分割、多目标识别或17点骨骼人体姿态分析，应改用 core-vision-kit / The task is OCR, face detection and comparison, subject segmentation, multi-object recognition, or 17-point human pose analysis; use core-vision-kit instead",
+      "需求是离线语音转文字、长短音频识别，或多音色中英文文本转语音朗读，应改用 core-speech-kit / The requirement is offline speech-to-text for short or long audio, or multi-voice Chinese and English text-to-speech playback; use core-speech-kit instead",
+      "需求是做人脸活体检测、卡证OCR、文档扫描自动裁剪，或识图搜索等视觉处理，应改用 vision-kit / The job is face liveness detection, card/document OCR, document scan auto-cropping, or image search style visual processing; use vision-kit instead",
+      "需求是对中英文文本做分词、实体抽取，识别日期、地址、电话号码或电子邮件等命名实体，应改用 natural-language-kit / The task is Chinese or English tokenization and entity extraction, including named entities such as dates, addresses, phone numbers, or email addresses; use natural-language-kit instead"
     ],
     "preconditions": [
       "目标智能体已在小艺开放平台创建、配置并成功上线 / The target agent has been created, configured, and successfully published on the Xiaoyi Open Platform",
