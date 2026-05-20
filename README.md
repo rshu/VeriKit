@@ -15,7 +15,7 @@ VeriKit 是一个 Claude Code 插件，在 agent 写代码之前，先帮开发�
 - **冲突确认机制**：当排序器的首选 Kit 与配方不一致时，VeriKit 拒绝静默替换，而是请用户决定。
 - **二级参考选择器**：对每个相关 Kit 的约 30 篇参考文档再次排序，给出最相关的 5 篇。
 
-`skills/<kit>/references/` 下的 HarmonyOS SDK 文档 © 华为终端有限公司，本仓库重新分发这些文档仅为方便 VeriKit Kit 选择排序器对其定位；以官方 HarmonyOS 开发者站点上的版本为准。详见 [`LICENSE`](./LICENSE)。
+`skills/<kit>/references/` 下的 HarmonyOS SDK 文档来自 HarmonyOS 开发者公开文档，本仓库重新分发仅为方便 VeriKit Kit 选择排序器对其定位；以官方 HarmonyOS 开发者站点上的版本为准。详见 [`LICENSE`](./LICENSE)。
 
 ## 2. 安装
 
@@ -33,18 +33,6 @@ VeriKit 是一个 Claude Code 插件，在 agent 写代码之前，先帮开发�
 ### 前置条件
 
 - **Node ≥ 20** 在 `PATH` 中（Windows：`winget install OpenJS.NodeJS`，或使用 DevEco Studio 自带的 `node.exe`）。
-- Windows 上 UserPromptSubmit 钩子通过 `hooks/run-hook.cmd`（bash/批处理双语包装器）运行。若钩子无响应，请改用 `/verikit-route` 斜杠命令兜底。
-
-### 验证安装
-
-首次加载插件时，Claude Code 会在 stderr 打印：
-
-```
-verikit: discovered 101 skill(s) under <plugin-path>
-verikit: loaded 100/100 sidecar contract(s) from <plugin-path>/dist/contracts
-```
-
-`101 / 100/100` 中 101 = 100 个 Kit + 1 个导航元索引（`harmonyos-sdk-skill`）。
 
 ## 3. 三种使用入口
 
@@ -60,17 +48,17 @@ Claude 会回复：该用哪个 Kit，哪个配方（若有）适用，先读哪
 
 ### b) 自动 UserPromptSubmit 钩子
 
-每次提示都会运行，结果以 `<verikit-routing>` 块的形式注入到 agent 上下文。想看到内容，用 `--debug` 启动 Claude Code：
+每次你给 Claude Code 发消息时，这个钩子会自动运行完整的 VeriKit 排序器（与 `/verikit-route` 输出相同），并以 `<verikit-routing>` 块的形式将结果注入到 agent 的上下文中——agent 据此挑选 Kit、读参考文档，你无需手动调用。
+
+该块默认不显示在终端上。若想自己也看到注入的内容，用 `--debug` 启动 Claude Code：
 
 ```bash
 claude --debug
 ```
 
-不加 `--debug` 时，该块依然注入，只是不会回显给你。
-
 ### c) 直接调用 CLI
 
-适合脚本化和验证：
+用于脚本化、批量测试，或不通过 Claude Code 直接查看排序结果（例如在 CI 中验证某个新任务的 Kit 选择是否符合预期）：
 
 ```bash
 node <plugin>/dist/verikit-cli.js route \
@@ -78,91 +66,104 @@ node <plugin>/dist/verikit-cli.js route \
   --top 5 --compose --deep --refs 5
 ```
 
-参数：
-- `--top N`——返回前 N 个候选 Kit。
-- `--compose`——同时返回匹配的配方，并运行冲突确认检测器。
-- `--deep --refs K`——为每个相关 Kit 再对参考文档排序，返回前 K 篇。
+上面这串 `--top 5 --compose --deep --refs 5` 就是斜杠命令和钩子默认使用的完整策略，逐个参数的作用：
 
-`--top 5 --compose --deep --refs 5` 是斜杠命令与钩子默认使用的完整策略。
+- `--top N`——返回排序器打分最高的前 N 个候选 Kit。
+- `--compose`——额外返回匹配的多 Kit 组合配方，并运行冲突确认检测器（详见示例 ii）。
+- `--deep --refs K`——对每个相关 Kit 的约 30 篇参考文档进行二级排序，返回前 K 篇最相关的（agent 据此知道先读哪些文档）。
 
-## 4. 四个完整示例
+## 4. 三个代表性示例
 
-### 示例 (i)——单 Kit 直击（中文任务）
+### 示例 (i)——端到端：从一句话到能跑的代码
 
-**任务：** `保存待办事项让应用重启后还能读出来`
+在 Claude Code 里你输入一句普通需求：
 
-**调用：** `route --task "保存待办事项让应用重启后还能读出来" --top 3`
+> 帮我做一个待办事项 App，重启后还能读到之前保存的待办项。
 
-**输出（关键字段）：**
-
-```json
-{
-  "top": [
-    {"name": "arkdata", "combinedScore": 0.527, "triggerScore": 0.054, "bm25Score": 1, "positiveHits": 2},
-    {"name": "form-kit", "combinedScore": 0.304},
-    {"name": "asset-store-kit", "combinedScore": 0.202}
-  ]
-}
-```
-
-**解读：** `arkdata` 完胜——BM25 完全匹配，并命中两条独特的正触发子句（`"实现本地离线数据持久化"`、`"同步待办事项"`）。直接用 `arkdata` 实现持久化即可。
-
-### 示例 (ii)——多 Kit 特性，配方一致（`--compose --deep`）
-
-**任务：** 同 (i)。
-
-**调用：** `route --task "保存待办事项让应用重启后还能读出来" --top 5 --compose --deep --refs 5`
-
-**输出（关键字段）：**
+UserPromptSubmit 钩子自动触发，跑完整的 VeriKit 排序器，并把 `<verikit-routing>` 块注入到 agent 上下文（用 `claude --debug` 可看到原始内容；以下为关键字段）：
 
 ```json
 {
-  "top": [{"name": "arkdata"}, "..."],
-  "compositions": [{"id": "local-persistence", "skills": ["arkdata", "arkts"], "score": 1, "lifecycle": "validated"}],
+  "compositions": [{"id": "local-persistence", "skills": ["arkdata", "arkts"], "lifecycle": "validated"}],
   "routing": {"status": "agree", "top_in_recipe": true},
   "bundle": ["arkdata", "arkts"],
-  "bundle_source": "recipe",
-  "deep_references": {"arkdata": "[5 篇文档]", "arkts": "[5 篇文档]"}
+  "deep_references": {
+    "arkdata": [
+      {"path": "references/通过用户首选项实现数据持久化(ArkTS).md", "score": 0.48},
+      {"path": "references/通过关系型数据库实现数据持久化(ArkTS).md", "score": 0.44}
+    ],
+    "arkts": ["..."]
+  }
 }
 ```
 
-**解读：** `arkdata` 既是首选 Kit，又出现在 `local-persistence` 配方中——冲突检测器返回 `routing.status: "agree"`，bundle 为完整配方 `[arkdata, arkts]`，每个 Kit 附 5 篇参考。读完参考再实现即可。这就是 UserPromptSubmit 钩子每轮注入的完整载荷。
+agent 读到该块后会先告诉你接下来要做什么：
 
-### 示例 (iii)——多 Kit 特性，**冲突**（英文任务）
+> 这是单设备本地持久化场景。匹配到 `local-persistence` 配方（已验证），用：
+> - **arkdata** 做存储——用 `@ohos.data.preferences` 把待办项序列化为 JSON 持久化；
+> - **arkts** 组织异步存取代码。
+>
+> 我先读 `arkdata` 列出的两篇核心参考，然后开始实现。
 
-**任务：** `send a local notification when a task is due`
+随后 agent 自主调用 `Skill(verikit:arkdata)` 加载完整的 SKILL.md（含上面提到的参考链接），读完后直接生成 ArkTS 代码：
 
-**调用：** `route --task "send a local notification when a task is due" --compose --top 3`
+```typescript
+import preferences from '@ohos.data.preferences';
 
-**输出（关键字段）：**
+export class TodoStore {
+  private readonly storeName = 'todo_store';
+  // ... agent 写出的 saveAll / loadAll 实现
+}
+```
+
+**这就是 VeriKit 的核心价值：** 用户只写一句中文需求，agent 在动手写代码之前就拿到了对的 Kit、对的参考文档、（必要时）对的多 Kit 组合配方——不必在 100 个 Kit 里靠运气猜。
+
+### 示例 (ii)——冲突：VeriKit 拒绝静默挑错 Kit
+
+在 Claude Code 里你输入：
+
+> 帮我做一个本地通知，任务到期时弹出提醒。
+
+钩子触发后，注入的块显示排序器与配方不一致：
 
 ```json
 {
   "top": [{"name": "ringtone-kit", "combinedScore": 0.514, "positiveHits": 4}, "..."],
-  "compositions": [{"id": "notification-with-action", "skills": ["notification-kit", "ability-kit", "arkts"], "score": 1, "lifecycle": "validated"}],
+  "compositions": [{"id": "notification-with-action", "skills": ["notification-kit", "ability-kit", "arkts"], "lifecycle": "validated"}],
   "routing": {
     "status": "conflict",
     "top_in_recipe": false,
-    "directive": "CONFLICT: the curated recipe and the top-ranked Kit disagree. Do NOT silently pick. Ask the human to choose one of: ..."
+    "directive": "CONFLICT: ... ask the user to choose one of: 1. recipe ..., 2. top-ranked Kit ringtone-kit, 3. specify own."
   },
   "bundle": ["ringtone-kit"],
   "bundle_source": "ask-human"
 }
 ```
 
-**解读：** 排序器选了 `ringtone-kit`（`通知` / "notification" 在 notification-kit / ringtone-kit / push-kit 之间共享，BM25 无法区分），但配方建议用 `notification-kit + ability-kit + arkts`。VeriKit 拒绝静默替换——将 `bundle_source` 设为 `"ask-human"` 并发出 directive，让 agent 询问用户怎么选。这就是冲突确认机制存在的意义——静默走配方在这类任务上有过半概率出错。
+agent 不会静默挑——而是直接问你：
 
-### 示例 (iv)——使用自定义目录（进阶）
+> 排序器的首选是 `ringtone-kit`（一个铃声相关的 Kit），但精选配方 `notification-with-action` 用 `notification-kit + ability-kit + arkts` 实现「带跳转的本地通知」。两边不一致。
+>
+> 你想用哪个？
+> 1. 配方推荐 `[notification-kit, ability-kit, arkts]`——推荐（已验证的多 Kit 方案）；
+> 2. 排序器的 `ringtone-kit`（单 Kit，但本任务大概率跑偏）；
+> 3. 你自己指定 Kit。
 
-VeriKit 默认走内置的 100 Kit HarmonyOS 目录。若想指向其他目录（分叉、自定义技能集、追加的产品 SDK）：
+你选 1。agent 加载 `notification-kit + ability-kit` 的 SKILL.md，参考其中的文档实现 `NotificationRequest.publish()` 和 `WantAgent`（点击通知的跳转目标）。
+
+**这一机制存在的意义：** "通知" / "notification" 在 100 个 Kit 里被多个 Kit 用到（notification / ringtone / push / live-view / localization），BM25 单凭词无法区分。VeriKit 不静默替换，而是把模糊性暴露给用户——比让 agent 凭直觉猜可靠。
+
+### 示例 (iii)——使用自定义目录（进阶）
+
+如果你有自己的 SDK 和对应的技能目录（分叉、企业内部产品、追加的供应商 SDK），可以让 VeriKit 跑在你的目录上而不必改源码——同一套排序器、冲突检测器和二级参考逻辑会照常工作：
 
 ```bash
-export VERIKIT_SKILL_ROOT=/path/to/your/skills      # 包含 <skill>/SKILL.md
+export VERIKIT_SKILL_ROOT=/path/to/your/skills      # 含 <skill>/SKILL.md
 export VERIKIT_CONTRACTS_DIR=/path/to/contracts     # JSON 边车合约
-node <plugin>/dist/verikit-cli.js route --task "..." --top 5
+node <plugin>/dist/verikit-cli.js route --task "你的任务描述" --top 5
 ```
 
-同一套排序器 / 冲突检测器 / 二级参考逻辑会在你的目录上运行。完整的环境变量清单（`VERIKIT_SKILL_ROOT`、`VERIKIT_CONTRACTS_DIR`、`VERIKIT_MANIFESTS_DIR`、`VERIKIT_COMPOSITIONS_FILE`）见 `bin/verikit-cli.ts`（TS 源码已包含在仓库中以便审计）。
+完整环境变量清单：`VERIKIT_SKILL_ROOT`、`VERIKIT_CONTRACTS_DIR`、`VERIKIT_MANIFESTS_DIR`、`VERIKIT_COMPOSITIONS_FILE`——详见 `bin/verikit-cli.ts`（仓库内已含 TS 源码以便审计）。
 
 ## 5. 许可
 
@@ -181,7 +182,7 @@ VeriKit is a Claude Code plugin that selects which **HarmonyOS Kit(s)** and **re
 - A **conflict-confirmation gate**: when the ranker's top Kit disagrees with the recipe, VeriKit refuses to silently substitute and asks the user to choose.
 - A **second-stage reference selector** that ranks each relevant Kit's ~30 reference docs and surfaces the top 5 task-relevant ones.
 
-The HarmonyOS SDK documentation under `skills/<kit>/references/` is © Huawei Device Co., Ltd. and is redistributed here as developer reference material; refer to the upstream HarmonyOS Developer site for authoritative versions. See [`LICENSE`](./LICENSE).
+The HarmonyOS SDK documentation under `skills/<kit>/references/` is sourced from the public HarmonyOS developer documentation and redistributed here as developer reference material; refer to the upstream HarmonyOS Developer site for authoritative versions. See [`LICENSE`](./LICENSE).
 
 ## 2. Setup
 
@@ -199,18 +200,6 @@ Restart Claude Code if it doesn't auto-reload. That's it — `dist/` and `skills
 ### Prerequisites
 
 - **Node ≥ 20** on `PATH` (Windows: `winget install OpenJS.NodeJS`, or use the bundled `node.exe` from DevEco Studio).
-- On Windows, the UserPromptSubmit hook runs through `hooks/run-hook.cmd` (a polyglot bash/batch wrapper). If the hook silently does nothing, fall back to the `/verikit-route` slash command.
-
-### Verify it works
-
-Expected behaviour after install: opening Claude Code prints these lines to stderr on first plugin load:
-
-```
-verikit: discovered 101 skill(s) under <plugin-path>
-verikit: loaded 100/100 sidecar contract(s) from <plugin-path>/dist/contracts
-```
-
-The `101 / 100/100` numbers are 100 Kits + a navigation meta-index (`harmonyos-sdk-skill`).
 
 ## 3. Usage — three entry points
 
@@ -226,17 +215,17 @@ Claude replies with: which Kit to load, which recipe (if any) governs, and which
 
 ### b) The automatic UserPromptSubmit hook
 
-Runs on every prompt; the result is injected into the agent's context as a `<verikit-routing>` block. To see the block, start Claude Code with `--debug`:
+Fires on every message you send to Claude Code. Runs the full VeriKit router (same payload as `/verikit-route`) and injects the result as a `<verikit-routing>` block into the agent's context — the agent uses it to pick the right Kit and reference docs without you typing anything.
+
+The block isn't echoed in the terminal by default. To see it yourself, start Claude Code with `--debug`:
 
 ```bash
 claude --debug
 ```
 
-Without `--debug`, the block is still injected — just not echoed to you.
-
 ### c) The raw CLI
 
-For scripting and verification:
+For scripting, batch testing, or inspecting the ranker's output outside Claude Code (e.g. in CI, verifying that a new task selects the expected Kit):
 
 ```bash
 node <plugin>/dist/verikit-cli.js route \
@@ -244,91 +233,104 @@ node <plugin>/dist/verikit-cli.js route \
   --top 5 --compose --deep --refs 5
 ```
 
-Flags:
-- `--top N` — return up to N ranked Kits.
-- `--compose` — also return matched curated recipe bundles and run the conflict-confirmation detector.
-- `--deep --refs K` — for every relevant Kit, also rank its reference docs and return the top K.
+That `--top 5 --compose --deep --refs 5` combination is the full default the slash command and hook also run. Each flag in turn:
 
-`--top 5 --compose --deep --refs 5` is the full default the slash command and hook run.
+- `--top N` — return the N highest-scoring Kit candidates.
+- `--compose` — additionally return matched multi-Kit recipes and run the conflict-confirmation detector (see Example ii).
+- `--deep --refs K` — second-stage rank each relevant Kit's ~30 reference docs and return the top K (so the agent knows which docs to read first).
 
-## 4. Examples (four worked end-to-end)
+## 4. Three representative walkthroughs
 
-### Example (i) — Clean single-Kit (Chinese task)
+### Example (i) — End-to-end: from one sentence to working code
 
-**Task:** `保存待办事项让应用重启后还能读出来` ("save todos so the app can read them back after restart")
+In Claude Code, you type a plain request:
 
-**Invocation:** `route --task "保存待办事项让应用重启后还能读出来" --top 3`
+> Build me a todo-list app that remembers entries across restarts.
 
-**What you get (salient fields):**
-
-```json
-{
-  "top": [
-    {"name": "arkdata", "combinedScore": 0.527, "triggerScore": 0.054, "bm25Score": 1, "positiveHits": 2},
-    {"name": "form-kit", "combinedScore": 0.304},
-    {"name": "asset-store-kit", "combinedScore": 0.202}
-  ]
-}
-```
-
-**Read:** `arkdata` wins decisively — both BM25 (perfect lexical match) and two distinctive trigger clauses fired (`"实现本地离线数据持久化"`, `"同步待办事项"`). Use `arkdata` for the persistence work.
-
-### Example (ii) — Multi-Kit feature, recipe agrees (`--compose --deep`)
-
-**Task:** same as (i).
-
-**Invocation:** `route --task "保存待办事项让应用重启后还能读出来" --top 5 --compose --deep --refs 5`
-
-**What you get (salient fields):**
+The UserPromptSubmit hook fires, runs the full VeriKit router, and injects a `<verikit-routing>` block into the agent's context (run `claude --debug` to see it raw; salient fields below):
 
 ```json
 {
-  "top": [{"name": "arkdata"}, "..."],
-  "compositions": [{"id": "local-persistence", "skills": ["arkdata", "arkts"], "score": 1, "lifecycle": "validated"}],
+  "compositions": [{"id": "local-persistence", "skills": ["arkdata", "arkts"], "lifecycle": "validated"}],
   "routing": {"status": "agree", "top_in_recipe": true},
   "bundle": ["arkdata", "arkts"],
-  "bundle_source": "recipe",
-  "deep_references": {"arkdata": "[5 docs]", "arkts": "[5 docs]"}
+  "deep_references": {
+    "arkdata": [
+      {"path": "references/通过用户首选项实现数据持久化(ArkTS).md", "score": 0.48},
+      {"path": "references/通过关系型数据库实现数据持久化(ArkTS).md", "score": 0.44}
+    ],
+    "arkts": ["..."]
+  }
 }
 ```
 
-**Read:** `arkdata` is the top Kit AND it is in the `local-persistence` recipe — so the conflict detector emits `routing.status: "agree"` and the bundle is the full recipe `[arkdata, arkts]` with the top 5 reference docs per Kit. Read those refs, then implement. This is the full payload the UserPromptSubmit hook injects on every prompt.
+Having read the block, the agent first tells you what it's going to do:
 
-### Example (iii) — Multi-Kit feature, **conflict** (English task)
+> This is single-device local persistence. Matched the validated `local-persistence` recipe; I'll use:
+> - **arkdata** for storage — `@ohos.data.preferences` to persist todos serialized as JSON;
+> - **arkts** for the async-IO code organization.
+>
+> I'll read the two key references arkdata suggests, then start implementing.
 
-**Task:** `send a local notification when a task is due`
+The agent then autonomously calls `Skill(verikit:arkdata)` to load the full SKILL.md (which links the references above), reads them, and produces ArkTS code:
 
-**Invocation:** `route --task "send a local notification when a task is due" --compose --top 3`
+```typescript
+import preferences from '@ohos.data.preferences';
 
-**What you get (salient fields):**
+export class TodoStore {
+  private readonly storeName = 'todo_store';
+  // ... agent's saveAll / loadAll implementation
+}
+```
+
+**The value:** one sentence in, working code out — with the right Kits, the right reference docs, and (when needed) the right multi-Kit recipe selected *before* the agent writes anything, instead of guessing among 100 Kits.
+
+### Example (ii) — Conflict: VeriKit refuses to silently pick the wrong Kit
+
+In Claude Code, you type:
+
+> Send me a local notification when a todo is due.
+
+After the hook fires, the injected block shows ranker-vs-recipe disagreement:
 
 ```json
 {
   "top": [{"name": "ringtone-kit", "combinedScore": 0.514, "positiveHits": 4}, "..."],
-  "compositions": [{"id": "notification-with-action", "skills": ["notification-kit", "ability-kit", "arkts"], "score": 1, "lifecycle": "validated"}],
+  "compositions": [{"id": "notification-with-action", "skills": ["notification-kit", "ability-kit", "arkts"], "lifecycle": "validated"}],
   "routing": {
     "status": "conflict",
     "top_in_recipe": false,
-    "directive": "CONFLICT: the curated recipe and the top-ranked Kit disagree. Do NOT silently pick. Ask the user to choose one of: ..."
+    "directive": "CONFLICT: ... ask the user to choose one of: 1. recipe ..., 2. top-ranked Kit ringtone-kit, 3. specify own."
   },
   "bundle": ["ringtone-kit"],
   "bundle_source": "ask-human"
 }
 ```
 
-**Read:** the ranker picked `ringtone-kit` (the words `通知` / "notification" are shared across notification-kit / ringtone-kit / push-kit, and BM25 cannot separate them). But the curated recipe says use `notification-kit + ability-kit + arkts`. VeriKit refuses to silently substitute — it sets `bundle_source: "ask-human"` and emits a directive instructing the agent to ask the user which to use. This is the conflict-confirmation gate; it exists precisely because silent recipe substitution is wrong on a documented fraction of this shape of task.
+The agent doesn't silently pick — it asks you directly:
 
-### Example (iv) — Bring your own catalog (advanced)
+> The ranker's top pick is `ringtone-kit` (a ringtone-related Kit), but the curated recipe `notification-with-action` uses `notification-kit + ability-kit + arkts` for "local notification with a tap action." They disagree.
+>
+> Which do you want?
+> 1. Recipe bundle `[notification-kit, ability-kit, arkts]` — recommended (validated multi-Kit solution);
+> 2. Ranker's `ringtone-kit` (single-Kit, but likely off-task here);
+> 3. Specify your own.
 
-VeriKit defaults to the bundled HarmonyOS 100-Kit catalog. To point at a different one (a fork, a custom skill set, an additional product SDK):
+You pick (1). The agent loads the `notification-kit + ability-kit` SKILL.mds and implements `NotificationRequest.publish()` plus a `WantAgent` for the tap action.
+
+**Why this matters:** "notification" / `通知` is shared vocabulary across several Kits (notification / ringtone / push / live-view / localization), and BM25 alone can't disambiguate them. VeriKit doesn't silently swap; it surfaces the ambiguity to you — more reliable than letting the agent guess.
+
+### Example (iii) — Bring your own catalog (advanced)
+
+If you have your own SDK and its own skill catalog (a fork, an internal product, an additional vendor SDK), VeriKit's ranker / conflict detector / two-stage reference logic can run against it without source changes — just point at two directories:
 
 ```bash
 export VERIKIT_SKILL_ROOT=/path/to/your/skills      # contains <skill>/SKILL.md
 export VERIKIT_CONTRACTS_DIR=/path/to/contracts     # JSON sidecar contracts
-node <plugin>/dist/verikit-cli.js route --task "..." --top 5
+node <plugin>/dist/verikit-cli.js route --task "your task description" --top 5
 ```
 
-The same ranker / conflict detector / two-level reference logic runs against your catalog. See `bin/verikit-cli.ts` (the TS source is included in the repo for transparency) for the full list of env vars: `VERIKIT_SKILL_ROOT`, `VERIKIT_CONTRACTS_DIR`, `VERIKIT_MANIFESTS_DIR`, `VERIKIT_COMPOSITIONS_FILE`.
+Full env-var list: `VERIKIT_SKILL_ROOT`, `VERIKIT_CONTRACTS_DIR`, `VERIKIT_MANIFESTS_DIR`, `VERIKIT_COMPOSITIONS_FILE` — see `bin/verikit-cli.ts` (TS source included in the repo for audit).
 
 ## 5. License
 
