@@ -1,0 +1,180 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "image-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.890Z"
+  },
+  "references": [
+    {
+      "path": "references/Image Kit常见崩溃报错问题.md",
+      "title": "Image Kit常见崩溃报错问题",
+      "snippet": "本文档展示了Image Kit接口的典型错误用法案例，帮助开发者避免常见的开发问题，提高应用的稳定性和性能。 #### 编码过程中PixelMap被释放/修改导致崩溃 **典型崩溃堆栈示例：** Fault thread info: Tid:5005, Name:OS_FFRT_3_0 #00 pc 000000000006d1f0 /system/lib64/platformsdk/libextplugin.z.so(OHOS::ImagePlugin::ExtWStream::write(void const*, unsigned long)+24)(300e33eb41735f2d3c8fe2259a671217) #01 pc 0000000001828c94 /system/lib64/libskia_canvaskit.z.so(sk_empty_output_buffer(jpeg_compress_struct*)+48)(484139254f1cae74fd86fe798dbea128) #02 pc 00000000010d1bb4 /system/lib64/libskia_canvaskit.z.so(encode_mcu_huff+692)(484139254f1cae74fd86fe798dbea128) #03 pc 00000000010c8a88 "
+    },
+    {
+      "path": "references/Image Kit异常处理.md",
+      "title": "Image Kit异常处理",
+      "snippet": "Image Kit 提供 **ArkTS接口** 和 **C接口** 。在遇到特殊情况时（例如输入参数无效、内存不足或函数无法处理请求等），系统会通过异常（ArkTS）或错误码（C接口）来反馈错误。开发者需要在应用层合理捕获和处理这些错误，以避免应用崩溃或出现未定义行为。在 Image错误码 中给出了Image Kit错误码对应的错误信息、可能原因、处理步骤。但由于部分场景引发错误的原因较为复杂，还需要开发者结合日志进一步定位。例如：401参数错误，可能是函数入参存在问题，也可能是由于缺少特定的文件读写权限导致无法访问或修改图片文件（Image Kit不感知权限，表现为传入文件异常的参数错误）。 #### ArkTS接口异常处理 ArkTS接口调用时，如果传入的参数不符合要求，或者底层执行过程中出现不可恢复的错误，系统会返回或抛出 BusinessError 异常，又或者在异步场景中返回一个 Promise 的rejected状态。如果开发者忽略了异常处理，可能会出现功能问题或数据丢失，甚至直接导致应用崩溃。 典型的ArkTS接口形态及API示例和处理方法如下所示。 1. AsyncCallback异步接口示例。 import { image } from '@kit.ImageKit'; import { BusinessError } from '@kit.BasicServi"
+    },
+    {
+      "path": "references/Image Kit简介.md",
+      "title": "Image Kit简介",
+      "snippet": "开发者通过调用Image Kit（图片处理服务）提供的接口，可以实现图片的解码、编码、编辑、元数据处理和图片接收等功能。 #### 亮点/特征 - 编解码支持HEIF、JPEG、PNG、WebP等主流图片格式。 - 支持HDR图片编解码，给用户带来更高质量的色彩体验，还可以使用AI能力将SDR图片转换成HDR图片。 - 提供丰富的图片编辑和处理的能力，包括：图像变换、位图操作、滤镜效果等。 - 采用了高效的算法和优化策略，提高了图片处理的速度和效率。 #### 基础概念 在开发前，需要了解以下基础概念： - PixelMap 位图对象。可用于读取或写入像素数据，可以进行裁剪、缩放、平移、旋转、镜像等操作，并可直接传给 Image组件 用于显示。还提供了获取图片信息、获取和设置图片色域、HDR元数据的方法。 - Picture 多图对象。包含主图、辅助图和元数据。其中，主图包含了主要图像信息；辅助图用于存储与主图相关的附加信息；元数据用于存储与图片相关的其他信息。Picture提供获取主图、合成HDR图、获取辅助图、设置辅助图、获取元数据、设置元数据等方法。 - 图片解码 将所支持格式的图片文件解码成PixelMap或Picture，以便在应用或系统中进行图片显示或图片处理。 - 图片编辑和处理 对PixelMap进行相关的操作，如旋转、缩放、设置透明度、获取图片信息、读写像素数据等"
+    },
+    {
+      "path": "references/位图操作.md",
+      "title": "位图操作",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/92/v3/j78m3bCDQJyN8G9zDgpJRw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111336Z&HW-CC-Expire=86400&HW-CC-Sign=CC5BA0B3E18BBA6E83BB303C66EA458EB4003780A69EAFD7E4194633D6E2CFBF) 当前开发指导使用的接口为 Image 模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能， **不再推荐使用** 。 开发者可使用 Image_NativeModule 模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考 图片开发指导(C/C++) 节点下的内容。这部分API从API version 12开始支持，并将持续演进， **推荐开发者使用** 。 两套C API不建议同时使用，在部分场景下存在不兼容的问题。 开发者可以通过本指导了解如何使用Native Image的接口完成位图操作。 #### 开发步骤"
+    },
+    {
+      "path": "references/使用ImageEffect编辑图片.md",
+      "title": "使用ImageEffect编辑图片",
+      "snippet": "ImageEffect提供了一系列接口用于图像的编辑。开发者可以通过ImageEffect接口处理不同图像输入类型Pixelmap、NativeWindow、NativeBuffer或Uri，获得滤镜处理效果。 针对ImageEffect，常见的开发场景如下： - 通过ImageEffect提供的Native API接口添加滤镜或滤镜链，设置输入图像，最终生效滤镜效果。 - 通过注册自定义滤镜，实现开发者的定制化滤镜效果。 - 通过EffectFilter提供的Native API接口快速实现单个滤镜的处理效果。 #### 接口说明 详细的接口说明请参考 ImageEffect 。 #### 开发步骤 **添加动态链接库** CMakeLists.txt中添加以下lib。 target_link_libraries(entry PUBLIC libace_ndk.z.so libimage_effect.so libpixelmap.so libnative_window.so libnative_buffer.so ) 根据处理的图像类型添加对应动态链接库：Pixelmap(libpixelmap.so)、NativeWindow(libnative_window.so)、NativeBuffer(libnative_buffer.so) **添加头文件** #include <"
+    },
+    {
+      "path": "references/使用ImagePacker完成图片编码.md",
+      "title": "使用ImagePacker完成图片编码",
+      "snippet": "图片编码指将PixelMap压缩成不同格式的图片文件，用于保存和传输。 支持使用 PackToData 和 PackToFile 将 PixelMap 编码为JPEG、WebP、PNG和HEIC格式。 从API version 18开始，支持使用 PackToDataFromPixelmapSequence 和 PackToFileFromPixelmapSequence 将多个PixelMap编码为GIF格式。 #### 开发步骤 图片编码相关API的详细介绍请参见 ImagePacker 。 #### 图片编码进文件流 1. 导入相关模块包。 // 导入相关模块包。 import { image } from '@kit.ImageKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { common } from '@kit.AbilityKit'; import { fileIo as fs } from '@kit.CoreFileKit'; import { resourceManager } from '@kit.LocalizationKit'; 2. 设置编码选项 PackingOption 。 2.1 这里以编码成jpeg图片为例。编码的目标格式format遵循MIME标准定义，因"
+    },
+    {
+      "path": "references/使用ImagePacker完成多图对象编码.md",
+      "title": "使用ImagePacker完成多图对象编码",
+      "snippet": "图片编码指将 Picture 对象编码成不同格式的图片文件（当前仅支持编码为JPEG 和 HEIF 格式），用于后续处理，如保存、传输等。 #### 开发步骤 图片编码相关API的详细介绍请参见 ImagePacker 。 1. 导入相关模块包。 // 导入相关模块包。 import { image } from '@kit.ImageKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { common } from '@kit.AbilityKit'; import { fileIo as fs } from '@kit.CoreFileKit'; import { resourceManager } from '@kit.LocalizationKit'; 2. 设置编码选项 PackingOption 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a2/v3/AiLeDXTXRlaqUdPXJ6SFXA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111330Z&HW-CC-Expire=86400&HW-CC-"
+    },
+    {
+      "path": "references/使用ImageReceiver完成图片接收.md",
+      "title": "使用ImageReceiver完成图片接收",
+      "snippet": "图片接收类ImageReceiver用于获取组件SurfaceId，接收最新的图片和读取下一张图片，以及释放ImageReceiver实例。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ce/v3/wv91kY7dSfm7hc9T6Drxbw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111331Z&HW-CC-Expire=86400&HW-CC-Sign=EEC01269B0EB78EF726BF8B3677D0CD0D4442A83109AFD9E0580C1EDFA7E7ACC) Receiver作为消费者，需要有对应的生产者提供数据才能实现完整功能。常见的生产者是相机的拍照流或预览流。ImageReceiver只作为图片的接收方、消费者，在ImageReceiver设置的size、format等属性实际上并不会生效，图片createImageReceiver时传入的参数不产生实际影响。图片属性需要在发送方、生产者进行设置，如 相机创建预览流 时配置 profile 。 ImageReceiver可以接收相机预览流中的图片，实现 双路预览 。 相关API的详细介绍请参见 ImageReceiv"
+    },
+    {
+      "path": "references/使用ImageSource完成图片解码.md",
+      "title": "使用ImageSource完成图片解码",
+      "snippet": "将所支持格式的图片文件解码成 PixelMap ，以便在应用或系统中显示或处理图片。当前支持的图片文件格式包括JPEG、PNG、GIF、WebP、BMP、SVG、ICO、DNG、HEIC、TIFF 23+ 、HEIFS 23+ 、WBMP 23+ 。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用 image.getImageSourceSupportedFormats20+ 接口，动态查询当前设备上的解码能力。 从API version 22开始，支持对专业相机拍摄的CR2、CR3、ARW、NEF、RAF、NRW、ORF、RW2、PEF、SRW格式图片内嵌的预览图（通常为JPEG格式）进行解码。该解码能力不受运行设备类型限制。 #### 开发步骤 图片解码相关API的详细介绍请参见 ImageSource 。 1. 全局导入Image模块。 // 导入相关模块包。 import { image } from '@kit.ImageKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { common } from '@kit.AbilityKit'; import { fileIo as fs } from '@kit.CoreFileKit'; import { resourceManag"
+    },
+    {
+      "path": "references/使用ImageSource完成多图对象解码.md",
+      "title": "使用ImageSource完成多图对象解码",
+      "snippet": "将所支持格式的图片文件解码成 Picture 。当前支持的图片文件格式包括JPEG、HEIF。 #### 开发步骤 图片解码相关API的详细介绍请参见 ImageSource 。 1. 全局导入Image模块。 // 导入相关模块包。 import { image } from '@kit.ImageKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { common } from '@kit.AbilityKit'; import { fileIo as fs } from '@kit.CoreFileKit'; import { resourceManager } from '@kit.LocalizationKit'; 2. 获取图片。 - 方法一：通过沙箱路径直接获取。该方法仅适用于应用沙箱中的图片。更多细节请参考 获取应用文件路径 。应用沙箱的介绍及如何向应用沙箱推送文件，请参考 文件管理 。 function getFilePath(context: Context, fileName: string): string { const filePath: string = context.cacheDir + '/' + fileName; return filePath; } - 方法"
+    },
+    {
+      "path": "references/使用Image_NativeModule完成位图操作.md",
+      "title": "使用Image_NativeModule完成位图操作",
+      "snippet": "创建位图，获取位图的宽、高、pixelFormat、alphaType、rowStride信息、对位图进行操作以及释放位图实例。 #### 开发步骤 #### 添加链接库 在进行应用开发之前，开发者需要打开native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libpixelmap.so以及日志依赖libhilog_ndk.z.so。 target_link_libraries(entry PUBLIC libhilog_ndk.z.so libpixelmap.so) #### Native接口调用 具体接口说明请参考 Image_NativeModule 。 在DevEco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\\src\\main\\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下： **位图接口使用示例** 在初始化参数后创建Pixelmap实例，进行图片像素数据的读写，对图片进行缩放、位置变换、反转、旋转、裁剪等操作。 #include <hilog/log.h> #include <multimedia/"
+    },
+    {
+      "path": "references/使用Image_NativeModule完成图片接收.md",
+      "title": "使用Image_NativeModule完成图片接收",
+      "snippet": "图像接收类，用于获取组件的surfaceId、接收最新的图片、读取下一张图片以及释放ImageReceiver实例。结合camera API实现的相机预览示例代码可参考 预览流二次处理(C/C++) 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/da/v3/aEV0ANnpRReTLxxhWp34YA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111335Z&HW-CC-Expire=86400&HW-CC-Sign=E1C6D51DCD54F12D676421119CDF154A4DC45F4E20AAF1CCCCD7444A7A5D89AD) ImageReceiver只作为图片的接收方、消费者，在ImageReceiver设置的size、format等属性实际上并不会生效。图片属性需要在发送方、生产者进行设置，可参考 预览(C/C++) 设置previewProfiles。 #### 开发步骤 #### 添加依赖 在进行应用开发之前，开发者需要打开native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libohimage"
+    },
+    {
+      "path": "references/使用Image_NativeModule完成图片编码.md",
+      "title": "使用Image_NativeModule完成图片编码",
+      "snippet": "图像编码类，用于创建以及释放ImagePacker实例。 #### 开发步骤 #### 添加链接库 在进行应用开发之前，开发者需要打开native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libimage_packer.so 以及日志依赖libhilog_ndk.z.so。 target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage_packer.so libpixelmap.so) #### Native接口调用 具体接口说明请参考 Image_NativeModule 。 在Deveco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\\src\\main\\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下： **编码接口使用示例** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f8/v3/_ltRQ"
+    },
+    {
+      "path": "references/使用Image_NativeModule完成图片解码.md",
+      "title": "使用Image_NativeModule完成图片解码",
+      "snippet": "创建ImageSource，获取位图的宽、高信息，以及释放ImageSource实例。 从API version 22开始支持对部分专业相机格式图片的预览图解码，具体格式包括：CR2、CR3、ARW、NEF、RAF、NRW、ORF、RW2、PEF、SRW。 #### 开发步骤 #### 添加链接库 在进行应用开发之前，开发者需要打开native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libimage_source.so、libpixelmap.so以及日志功能依赖的libhilog_ndk.z.so。 target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixelmap.so) #### Native接口调用 具体接口说明请参考 Image_NativeModule 。 在Deveco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\\src\\main\\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下： **解码接口使用示例"
+    },
+    {
+      "path": "references/使用Image_NativeModule完成多图对象编码.md",
+      "title": "使用Image_NativeModule完成多图对象编码",
+      "snippet": "图像编码类，用于创建以及释放ImagePacker实例，并编码多图对象。 #### 开发步骤 #### 添加链接库 在进行应用开发之前，开发者需要打开native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libimage_packer.so 以及日志依赖libhilog_ndk.z.so。 target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage_packer.so libpixelmap.so) #### Native接口调用 具体接口说明请参考 Image_NativeModule 。 在DevEco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\\src\\main\\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下： **编码接口使用示例** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d0/"
+    },
+    {
+      "path": "references/使用Image_NativeModule完成多图对象解码.md",
+      "title": "使用Image_NativeModule完成多图对象解码",
+      "snippet": "创建ImageSource实例，解码获取Picture，然后释放ImageSource实例。 #### 开发步骤 #### 添加链接库 在进行应用开发之前，开发者需要打开native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libimage_source.so 以及日志依赖libhilog_ndk.z.so。 target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so) #### Native接口调用 具体接口说明请参考 Image_NativeModule 。 在Deveco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\\src\\main\\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下： **解码接口使用示例** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/31/v3/B8JqR4uQT0q6TK1uv6K8Z"
+    },
+    {
+      "path": "references/使用Image_NativeModule编辑图片Exif信息.md",
+      "title": "使用Image_NativeModule编辑图片Exif信息",
+      "snippet": "Image Kit提供图片Exif信息的读取与编辑能力。 Exif（Exchangeable image file format）是专门为数码相机的照片设定的文件格式，可以记录数码照片的属性信息和拍摄数据。当前支持JPEG、PNG、HEIF、WEBP 23+ 、DNG 23+ 格式，且需要图片包含Exif信息。 在图库等应用中，需要查看或修改数码照片的Exif信息。当摄像机的手动镜头参数无法自动写入到Exif信息中，或者相机断电等原因会导致拍摄时间出错时，可手动修改错误的Exif数据。 系统目前仅支持对部分Exif信息的查看和修改，具体支持的范围请参见： 变量 里的OHOS_IMAGE_PROPERTY_XXX类型。需要注意的是，DNG格式图片仅支持读取Exif信息，不支持修改。 #### 开发步骤 #### 添加链接库 在进行应用开发之前，开发者需要打开native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libimage_source.so 以及日志依赖libhilog_ndk.z.so。 target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so) #### Native接口调用 Exif信息的读取与编辑相关C API接"
+    },
+    {
+      "path": "references/使用PixelMap完成位图操作.md",
+      "title": "使用PixelMap完成位图操作",
+      "snippet": "当需要对目标图片中的部分区域进行处理时，可以使用位图操作功能。此功能常用于图片美化等操作。 如下图所示，一张图片中，将指定的矩形区域像素数据读取出来，进行修改后，再写回原图片对应区域。 **图1** 位图操作示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6d/v3/awgCM4spQiebscnQhVf0Pg/zh-cn_image_0000002573854535.png?HW-CC-KV=V1&HW-CC-Date=20260421T111331Z&HW-CC-Expire=86400&HW-CC-Sign=55C9DFCBE8A9C92636FCA4245B24C4070FAE475E299C4542CB634E9157E9C7D7) #### 开发步骤 位图操作相关API的详细介绍请参见 PixelMap 。 1. 完成 图片解码 ，获取PixelMap位图对象。 2. 从PixelMap位图对象中获取信息。 import { image } from '@kit.ImageKit'; import { BusinessError } from '@kit.BasicServicesKit'; // 获取图像像素的总字节数。 let pixelB"
+    },
+    {
+      "path": "references/使用PixelMap完成图像变换.md",
+      "title": "使用PixelMap完成图像变换",
+      "snippet": "图片处理指对PixelMap进行相关的操作，如获取图片信息、裁剪、缩放、偏移、旋转、翻转、设置透明度、读写像素数据等。图片处理主要包括图像变换、 位图操作 ，本文介绍图像变换。 #### 开发步骤 图像变换相关API的详细介绍请参见 API参考 。 1. 完成 图片解码 ，获取PixelMap对象。 2. 获取图片信息。 import { BusinessError } from '@kit.BasicServicesKit'; // 获取图片大小。 pixelMap.getImageInfo().then( (info : image.ImageInfo) => { console.info('info.width = ' + info.size.width); console.info('info.height = ' + info.size.height); }).catch((err : BusinessError) => { console.error(\"Failed to obtain the image pixel map information.And the error is: \" + err); }); 3. 进行图像变换操作。 原图： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/Developer"
+    },
+    {
+      "path": "references/使用VideoProcessingEngine完成图片超分.md",
+      "title": "使用VideoProcessingEngine完成图片超分",
+      "snippet": "本模块提供图片细节增强的 ArkTS接口 ，通过调用本模块，可以实现图片内容的清晰度增强及缩放功能，处理后的数据可以用于送显和输出。 典型应用场景如：从URL获取图片源 > 图片细节增强 > 显示。 #### 约束与限制 1. 当前仅支持处理同时满足以下条件的图片： - 图片为SDR（Standard dynamic range）图片。 - 图片的像素格式为RGBA、BGRA、NV12、NV21，输出格式与输入格式一致。 - 处理的PixelMap对象需为DMA内存。 2. 本模块提供4个质量档位的算法，处理效果逐渐变优，但性能也会逐渐下降。 #### 开发步骤 1. 添加引用文件。 import { image, videoProcessingEngine } from '@kit.ImageKit'; 2. 初始化环境。 let promise: Promise<void> = videoProcessingEngine.initializeEnvironment(); 3. （可选）配置输入。 let scale: number = 0.5; let width: number = 512; // 示例代码，配置宽为512。 let height: number = 512;// 示例代码，配置高为512。 const color: ArrayBuffer = new Arr"
+    },
+    {
+      "path": "references/单层HDR图片转换双层.md",
+      "title": "单层HDR图片转换双层",
+      "snippet": "调用者可以调用本模块提供的 C API接口 ，实现Decompose单层HDR图片转双层HDR图片。 该能力常用于图片分享中，如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8e/v3/LxNK37XIQf-ieIQUNpSM6Q/zh-cn_image_0000002543214622.png?HW-CC-KV=V1&HW-CC-Date=20260421T111334Z&HW-CC-Expire=86400&HW-CC-Sign=8D1E9FC13A2AE0E767449C6B071EAF6AA2784C3B59A23D466FB2EF8F2F6150E6) #### 规格说明 **支持的数据输入格式：** 使用图片单层HDR转双层HDR转换算法Decompose。 **分辨率规格：** **内存规格：** 处理的PixelMap对象需为 DMA内存 。 #### 开发指导 具体实现可参考 示例工程 。 #### 在 CMake 脚本中链接动态库 add_library(entry SHARED napi_init.cpp ImageProcessing/ImageProcessing.cpp) target_link_libraries(ent"
+    },
+    {
+      "path": "references/双层HDR图片转换单层.md",
+      "title": "双层HDR图片转换单层",
+      "snippet": "调用者可以调用本模块提供的 C API接口 ，实现将双层HDR图片转换为单层HDR图片。 该能力常用于图片分享中，如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fb/v3/eTiwbAUxQ7y80ONPPwhEOA/zh-cn_image_0000002573854537.png?HW-CC-KV=V1&HW-CC-Date=20260421T111334Z&HW-CC-Expire=86400&HW-CC-Sign=F5F4D697877B59BA69579F81C4CDB707359D00F40EFA53C394D1D465A88A45E5) #### 规格说明 **支持的数据输入格式：** 使用图片双层HDR转单层HDR转换算法Compose。 **分辨率规格：** **内存规格：** 处理的PixelMap对象需为 DMA内存 。 #### 开发指导 具体实现可参考 示例工程 。 #### 在 CMake 脚本中链接动态库 add_library(entry SHARED napi_init.cpp ImageProcessing/ImageProcessing.cpp) target_link_libraries(entry PUBLI"
+    },
+    {
+      "path": "references/图像变换.md",
+      "title": "图像变换",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/eb/v3/Vu3QkKnNQIaw3Ar-13xeyA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111336Z&HW-CC-Expire=86400&HW-CC-Sign=B19B2BCD7AE501605A0B1C5C2AB956460FCCDD0183142F80F6D8A82D4F9B0324) 当前开发指导使用的接口为 Image 模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能， **不再推荐使用** 。 开发者可使用 Image_NativeModule 模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考 图片开发指导(C/C++) 节点下的内容。这部分API从API version 12开始支持，并将持续演进， **推荐开发者使用** 。 两套C API不建议同时使用，在部分场景下存在不兼容的问题。 开发者可以通过本指导了解如何使用Native Image的接口完成图像变换。 #### 开发步骤"
+    },
+    {
+      "path": "references/图片动态元数据生成.md",
+      "title": "图片动态元数据生成",
+      "snippet": "调用者可以调用本模块提供的 C API接口 ，实现HDR图片动态元数据生成。 该能力常用于图片编辑中，如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3b/v3/hK0euGHdQLqC4NeqEio4hA/zh-cn_image_0000002573974511.png?HW-CC-KV=V1&HW-CC-Date=20260421T111334Z&HW-CC-Expire=86400&HW-CC-Sign=129EC0239572AB616684597B8CE748D88E1F3E86CFE444569A0F7DD97CAC694D) #### 规格说明 **支持的数据输入格式：** **分辨率规格：** **内存规格：** 处理的PixelMap对象需为 DMA内存 。 #### 开发指导 具体实现可参考 示例工程 。 #### 在 CMake 脚本中链接动态库 add_library(entry SHARED napi_init.cpp ImageProcessing/ImageProcessing.cpp) target_link_libraries(entry PUBLIC ${BASE_LIBRARY}) #### ArkTS侧调用的开"
+    },
+    {
+      "path": "references/图片接收.md",
+      "title": "图片接收",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1c/v3/GYB1ckkoRjOeHM90LruVCA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111337Z&HW-CC-Expire=86400&HW-CC-Sign=9A18FEE7D3C01485C363962DC1B28FD7F0CF72FB7394F329542E46B2772B65F8) 当前开发指导使用的接口为 Image 模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能， **不再推荐使用** 。 开发者可使用 Image_NativeModule 模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考 图片开发指导(C/C++) 节点下的内容。这部分API从API version 12开始支持，并将持续演进， **推荐开发者使用** 。 两套C API不建议同时使用，在部分场景下存在不兼容的问题。 图片接收类，用于获取组件surface id，接收最新的图片和读取下一张图片，以及释放Image"
+    },
+    {
+      "path": "references/图片编码.md",
+      "title": "图片编码",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b4/v3/wqc8LAQATtupHXuznLeoIQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111336Z&HW-CC-Expire=86400&HW-CC-Sign=B18902B2B4F8885EC8C12EF835AC9EF07C789B2FABFE8F45408F82EDDE5AA569) 当前开发指导使用的接口为 Image 模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能， **不再推荐使用** 。 开发者可使用 Image_NativeModule 模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考 图片开发指导(C/C++) 节点下的内容。这部分API从API version 12开始支持，并将持续演进， **推荐开发者使用** 。 两套C API不建议同时使用，在部分场景下存在不兼容的问题。 开发者可以调用本模块的Native API接口，完成图片编码，即将PixelMap压缩成不同格式"
+    },
+    {
+      "path": "references/图片缩放.md",
+      "title": "图片缩放",
+      "snippet": "本模块提供图片细节增强的 C API接口 ，通过调用本模块，可以实现图片内容的清晰度增强及缩放功能，处理后的数据可以用于送显和编码保存。 典型应用场景如：图片解码获取图片buffer > 图片超分 > 显示。 #### 约束与限制 1. 为保证处理能够实时响应，建议只创建一个实例。 2. 当前仅支持处理同时满足以下条件的图片： - 图片为SDR（Standard dynamic range）图片。 - 图片的像素格式为RGBA、BGRA、NV12、NV21，输出格式与输入格式一致。 - 处理的PixelMap对象需为DMA内存。 3. 本模块提供4个质量档位的算法，处理效果逐渐变优，但性能也会逐渐下降。 #### 开发指导 具体实现可参考 示例工程 。 #### 在 CMake 脚本中链接动态库 add_library(entry SHARED napi_init.cpp ImageProcessing/ImageProcessing.cpp) target_link_libraries(entry PUBLIC ${BASE_LIBRARY}) #### 开发步骤 1. 添加头文件。 #include <hilog/log.h> #include <multimedia/image_framework/image_pixel_map_mdk.h> #include <multim"
+    },
+    {
+      "path": "references/图片色彩空间转换.md",
+      "title": "图片色彩空间转换",
+      "snippet": "调用者可以调用本模块提供的 C API接口 ，实现HDR2SDR、SDR2HDR、SDR2SDR的图片色彩空间转换。 该能力常用于图片编辑中，如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a7/v3/xN_61yd3QvW4ZDdr7Mu5nA/zh-cn_image_0000002543374284.png?HW-CC-KV=V1&HW-CC-Date=20260421T111334Z&HW-CC-Expire=86400&HW-CC-Sign=6A5BED3D83C4A3C6F2DB3DB0C47F1DF3CF9099091357FC9EE6569D3F23CEDD36) #### 规格说明 **支持的数据输入格式：** - 图片色彩空间转换算法为HDR2SDR： - 图片色彩空间转换算法为SDR2HDR： - 图片色彩空间转换算法为SDR2SDR： **分辨率规格：** **内存规格：** 处理的PixelMap对象需为 DMA内存 。 #### 开发指导 具体实现可参考 示例工程 。 #### 在 CMake 脚本中链接动态库 add_library(entry SHARED napi_init.cpp ImageProcessing/Im"
+    },
+    {
+      "path": "references/图片解码.md",
+      "title": "图片解码",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5a/v3/YbbnXoSBSNmfd0PQAKzn7w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111336Z&HW-CC-Expire=86400&HW-CC-Sign=845966429AE3FFDB835189B77D1C20B88C06975D173B5DC09CA5408DD413B4C7) 当前开发指导使用的接口为 Image 模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能， **不再推荐使用** 。 开发者可使用 Image_NativeModule 模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考 图片开发指导(C/C++) 节点下的内容。这部分API从API version 12开始支持，并将持续演进， **推荐开发者使用** 。 两套C API不建议同时使用，在部分场景下存在不兼容的问题。 将所支持格式的图片文件解码成PixelMap，以便在应用或系统中进行图片显示或 图片处理 。当前"
+    },
+    {
+      "path": "references/图片解码内存优化(ArkTS).md",
+      "title": "图片解码内存优化(ArkTS)",
+      "snippet": "应用在进行图片解码操作时，需要申请对应内存。当前指导将介绍不同的内存类型，以及如何进行申请。 应用侧通过解码API接口获取PixelMap，并将其传递给 Image组件 以进行显示。 当PixelMap较大且使用共享内存时，RS主线程将经历较长的纹理上传时间，导致卡顿现象。图形侧提供了DMA内存零拷贝功能，可在绘制图片时避免纹理上传时间消耗。 #### 内存类型介绍 当前PixelMap的内存类型包括以下两种。 - SHARE_MEMORY：共享内存。需要进行纹理上传。 - DMA_ALLOC：DMA内存。无需纹理上传。 系统提供了 createPixelMapUsingAllocator 接口，以便用户能够自定义内存分配类型进行解码。接口定义及使用示例详见 图片解码接口说明 。 #### SHARE_MEMORY和DMA_ALLOC的区别 #### 使用DMA_ALLOC的优势 - **减少纹理上传时间** 当使用SHARE_MEMORY时，图片数据需通过CPU复制到GPU显存，增加了纹理上传的时间。而采用DMA_ALLOC后，数据直接保存在GPU可访问的内存中，避免了耗时的复制过程。 - SHARE_MEMORY耗时：4K图片单帧渲染耗时约为20ms。 - DMA_ALLOC耗时：4K图片单帧渲染时间可降至约4ms。此项优化在大尺寸图片显示和高频动态图片加载场景中效果尤为显著。"
+    },
+    {
+      "path": "references/图片解码内存优化(C_C++).md",
+      "title": "图片解码内存优化(C/C++)",
+      "snippet": "应用在进行图片解码操作时，需要申请解码所需的内存。当前指导将介绍不同的内存类型，以及如何进行申请。 应用侧通过解码API接口获取PixelMap，并将其传递给Image组件以进行显示。 当PixelMap占用的内存空间较大且使用共享内存时，RenderScript主线程将经历较长的纹理上传时间，导致卡顿现象。图形侧提供了DMA（Direct Memory Access）内存零拷贝功能，可在绘制图片时避免这一消耗。 #### 内存类型介绍 当前PixelMap的内存类型包括以下两种。 - SHARE_MEMORY：共享内存。需要进行纹理上传。 - DMA_ALLOC：DMA内存。无需纹理上传。 系统提供了 OH_ImageSourceNative_CreatePixelmapUsingAllocator 接口，以便用户能够自定义内存分配类型进行解码。 #### SHARE_MEMORY和DMA_ALLOC的区别 #### 使用DMA_ALLOC的优势 - **减少纹理上传时间** 当使用SHARE_MEMORY时，图片数据需通过CPU复制到GPU显存，增加了纹理上传的时间。而采用DMA_ALLOC后，数据直接保存在GPU可访问的内存中，避免了耗时的复制过程。 - SHARE_MEMORY耗时：4K图片单帧渲染耗时约为20ms。 - DMA_ALLOC耗时：4K图片单帧渲染时间可降至约"
+    },
+    {
+      "path": "references/如何处理HEIF图片.md",
+      "title": "如何处理HEIF图片",
+      "snippet": "HEIF图片（High Efficiency Image File Format，HEIF，也称高效图像文件格式），是一个用于单张图像或图像序列的文件格式。它由动态影像专家小组（MPEG）开发，并在MPEG-H Part 12（ISO/IEC 23008-12）中定义。 目前主流的HEIF图片均使用HEVC（H.265）编码，这也是系统当前支持的HEIF图片。HEIF图片在压缩效率上具有明显优势，能够在保证图像质量的同时显著减小文件体积，通常比JPEG节省约50%的存储空间。 系统从API12开始支持HEIF图片的编解码与显示，如果应用基于系统Image Kit、ArkUI Image组件、ArkWeb等模块实现图片处理功能，则可以像处理JPEG、PNG等格式的图片一样，处理HEIF图片。 HEIF图片解码可参考： 图片解码指南（ArkTS） 和 图片解码指南（C/C++） 。 HEIF图片显示可参考： ArkUI Image组件图片显示 。 HEIF图片编码可参考： 图片编码指南（ArkTS） 和 图片编码指南（C/C++） 。 ArkWeb图片上传可参考： 使用Web组件上传文件 。 #### 常见问题 #### 上传HEIF图片时提示：“不支持的格式” 可以使用ImageSource 属性 中的supportedFormats和ImagePacker 属性 中的support"
+    },
+    {
+      "path": "references/如何获取图片的旋转角度信息.md",
+      "title": "如何获取图片的旋转角度信息",
+      "snippet": "在数码摄影中，拍摄设备（如手机、相机）会将图片的旋转角度（方向）信息保存在图片的Exif（Exchangeable image file format）数据的Orientation字段。 该信息不会直接改变图片的像素内容，但会告诉图像查看器如何正确地显示图像方向。 Exif标准中定义了8个Orientation值和它们的字符串表示。 要将图片正确显示需要执行与之对应的特定的操作，如下表所示： ArkTS场景下读取和编辑图片的旋转角度信息，可参考： 编辑图片Exif信息 ，对应的propertyKey需要设置为：ORIENTATION。 C/C++场景下读取和编辑图片的旋转角度信息，可参考： 使用Image_NativeModule编辑图片Exif信息 ，对应的key需要设置为：OHOS_IMAGE_PROPERTY_ORIENTATION。 #### 常见问题 #### 读取图片旋转角度为空怎么办 部分图片可能没有Exif数据，或者Exif数据中没有写入Orientation字段，这些图片无需旋转（与Orientation值为1的情况保持一致）。 #### 为什么会出现Exif数据丢失 与图片来源有关，网络传输的图片可能进行了二次编码，在编码时未保存Exif数据，导致无法获取旋转角度。 #### 图片编码时，如何保存Exif数据 在调用图片编码接口时，需要设置 packingOpt"
+    },
+    {
+      "path": "references/编辑图片Exif信息.md",
+      "title": "编辑图片Exif信息",
+      "snippet": "Image Kit提供图片Exif信息的读取与编辑能力。 Exif（Exchangeable image file format）是专门为数码相机的照片设定的文件格式，可以记录数码照片的属性信息和拍摄数据。当前支持JPEG、PNG、HEIF、WEBP 23+ 、DNG 23+ 格式，且需要图片包含Exif信息。 在图库等应用中，需要查看或修改数码照片的Exif信息。当摄像机的手动镜头参数无法自动写入到Exif信息中，或者相机断电等原因会导致拍摄时间出错时，可手动修改错误的Exif数据。 系统目前仅支持对部分Exif信息的查看和修改，具体支持的范围请参见： Exif信息 。需要注意的是，DNG格式图片仅支持读取Exif信息，不支持修改。 #### 开发步骤 Exif信息的读取与编辑相关的API详细介绍请参考 getImageProperty 等接口。 获取图片，创建ImageSource。读取、编辑Exif信息。示例代码如下： 1. 导入相关模块包。 // 导入相关模块包。 import { image } from '@kit.ImageKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 获取指定key的Exif信息接口示例。 // 获取指定key的Exif信息接口示例 async getExif(imag"
+    }
+  ]
+}

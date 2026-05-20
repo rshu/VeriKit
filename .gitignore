@@ -1,0 +1,4 @@
+# The standalone VeriKit repo IS the built artifact — `dist/` and `skills/`
+# are tracked here (unlike the monorepo where they are generated). Only
+# transient install state should be ignored.
+node_modules/

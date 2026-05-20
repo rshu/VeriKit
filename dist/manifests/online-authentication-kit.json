@@ -1,0 +1,55 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "online-authentication-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:29.028Z"
+  },
+  "references": [
+    {
+      "path": "references/FIDO免密身份认证.md",
+      "title": "FIDO免密身份认证",
+      "snippet": "- 开通FIDO免密身份认证功能，使用用户已有的生物特征开通FIDO免密身份认证能力。 - 使用FIDO免密身份认证功能，使用用户已开通的生物特征进行FIDO免密身份认证。 - 关闭FIDO免密身份认证功能，使用用户已开通的生物特征注销FIDO免密身份认证能力。 #### 基本概念 在开发FIDO免密身份认证功能前，开发者应了解以下基本概念： - FIDO协议 FIDO（Fast Identity Online）是一套身份认证框架协议，它由FIDO联盟推出并持续维护。FIDO规范定义了一套在线身份认证的技术架构。 - UAF身份认证框架 UAF（Universal Authentication Framework）意为通用身份认证框架，目的是通过生物识别（如指纹识别）和加密技术方式，为用户提供无密码的身份认证体验。 #### 相关权限 获取生物识别权限：ohos.permission.ACCESS_BIOMETRIC。 #### 约束与限制 需满足以下条件，才能使用该功能。 - 移动端设备需要支持生物特征（指纹/3D人脸），查询当前移动端设备是否支持ATL4级别的认证可信等级。 import { BusinessError } from '@kit.BasicServicesKit'; import { userAuth } from '@kit.UserAuthenticatio"
+    },
+    {
+      "path": "references/IFAA免密身份认证.md",
+      "title": "IFAA免密身份认证",
+      "snippet": "- 开通：提供移动端开通生物特征（指纹/3D人脸）IFAA免密身份认证的能力。使用用户已有的生物特征类型进行开通，会开通移动端对应生物特征类型的IFAA免密身份认证能力。 - 认证：提供移动端认证生物特征（指纹/3D人脸）IFAA免密身份认证的能力。使用用户已开通的生物特征进行认证，认证成功；使用未开通的生物特征进行认证，认证失败。 - 注销：提供移动端注销生物特征（指纹/3D人脸）IFAA免密身份认证的能力。使用用户已开通的生物特征类型进行注销，会注销移动端对应生物特征类型的IFAA免密身份认证能力。 #### 基本概念 互联网金融身份认证联盟（IIFAA），全称为International Internet Finance Authentication Alliance，是一个生物识别框架，它由IIFAA联盟推出并持续维护。 #### 相关权限 获取生物识别权限：ohos.permission.ACCESS_BIOMETRIC。 #### 约束与限制 - 开发者应用已接入IIFAA联盟，可以从IIFAA中心服务器获取签名数据。 - 移动端设备需要支持生物特征（指纹/3D人脸），查询当前移动端设备是否支持ATL4级别的认证可信等级。 import { BusinessError } from '@kit.BasicServicesKit'; import { userAuth }"
+    },
+    {
+      "path": "references/Online Authentication Kit简介.md",
+      "title": "Online Authentication Kit简介",
+      "snippet": "Online Authentication Kit（在线认证服务）遵循FIDO（Fast Identity Online）、FIDO2、IIFAA（互联网可信认证联盟）和SOTER标准免密认证规范，提供免密身份认证的移动端能力。用户应用接入FIDO、FIDO2、IFAA或SOTER服务器后，可以使用相应的移动端能力，用生物特征（例如指纹、3D人脸）代替密码，实现免密登录、免密支付等业务场景。 #### FIDO FIDO是一种国际主流的免密认证标准，几乎所有的设备厂商都支持FIDO免密认证协议，同时众多生态APP厂商也广泛使用依赖该能力，包括中国工商银行，中国银行，农业银行，交通银行等各大行，以及众多证券，金融APP。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/77/v3/NjtnUBsQTwSZsU9KGog8bA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111119Z&HW-CC-Expire=86400&HW-CC-Sign=EF8291EEBBA8FACC23C03538154D24B53023502F78F584A39E1798EEF1E5E282) 请参考 sample-FIDOcli"
+    },
+    {
+      "path": "references/SOTER免密身份认证.md",
+      "title": "SOTER免密身份认证",
+      "snippet": "用户可以利用生物特征来代替传统的密码验证，实现免密身份认证。 - 开通：提供移动端开通SOTER生物特征（指纹/3D人脸）免密身份认证的能力。 - 认证：提供移动端采用生物特征（指纹/3D人脸）进行SOTER免密身份认证的能力。 - 注销：提供移动端注销SOTER生物特征（指纹/3D人脸）免密身份认证的能力。 #### 基本概念 SOTER旨在提供一套生物认证平台和标准，使得业务可以采用设备上的传感器（如人脸传感器/指纹传感器）进行安全、高效的免密登录、免密支付等操作，当前已广泛应用于微信小程序/公众号、指纹支付等业务场景。 #### 相关权限 - 获取网络权限：ohos.permission.INTERNET。 - 获取振动权限：ohos.permission.VIBRATE。 - 获取生物识别权限：ohos.permission.ACCESS_BIOMETRIC。 #### 约束与限制 - 开发者应用需要部署SOTER服务器。 - 移动端设备需要支持生物特征（指纹/3D人脸），查询当前移动端设备是否支持ATL4级别的认证可信等级。 import { BusinessError } from '@kit.BasicServicesKit'; import { userAuth } from '@kit.UserAuthenticationKit'; try { // 示例，查询设"
+    },
+    {
+      "path": "references/开发准备.md",
+      "title": "开发准备",
+      "snippet": "开发者的业务需要接入符合FIDO UAF标准的协议，并部署符合FIDO UAF标准协议的FIDO服务端。FIDO网址: https://fidoalliance.org/ （见 网站链接免责声明 ）。 #### IFAA开发准备 开发者的业务接入IIFAA联盟，并接入IIFAA中心服务器。IIFAA网址： https://www.iifaa.org.cn/technical#paper （见 网站链接免责声明 ）。 #### SOTER开发准备 开发者的业务接入SOTER服务器。SOTER github： https://github.com/Tencent/soter （见 网站链接免责声明 ）。 #### 通行密钥开发准备 - 开发者基于FIDO2的CAPI接口开发时（调用ArkTs接口时不涉及），需要申请如下通行密钥服务权限。在申请权限前，请保证符合 权限使用的基本原则 。申请方式请参考： 申请受限权限 。 - FIDO2协议基于应用的网址域名开通应用的通行密钥，开发者的应用需要关联网址域名，才可使用通行密钥服务。接入需完成四步： 在AGC开通App Linking服务 > 在开发者网站上关联应用 > 在AGC创建关联的网址域名 > 在module.json5中配置关联的网址域名 。"
+    },
+    {
+      "path": "references/概述.md",
+      "title": "概述",
+      "snippet": "从HarmonyOS 6.0.0(20)开始，在线认证服务提供了通行密钥特性。通行密钥主要提供了以下能力： - 通行密钥注册：支持使用用户身份认证特征（如人脸、指纹、PIN码）作为平台认证器，在本设备上创建应用或网页的通行密钥。 - 本地免密认证：支持使用用户身份认证特征（如人脸、指纹、PIN码）作为平台认证器，使用通行密钥在本设备上进行应用或网页的免密认证。 - 跨设备扫码认证：支持使用已注册通行密钥的移动设备作为漫游认证器，使用跨设备扫码的方式，在其他设备上进行应用或网页的免密认证。 #### 场景介绍 具体应用场景如下： #### 注册通行密钥 需要提供方便、快速、安全的本地应用或网页登录方式时，可以使用通行密钥服务的通行密钥注册能力为用户创建通行密钥。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a1/v3/-elg2Q-aQjOcJ3cDpkUaJg/zh-cn_image_0000002543214440.png?HW-CC-KV=V1&HW-CC-Date=20260421T111120Z&HW-CC-Expire=86400&HW-CC-Sign=4B80A7D761363F4B104E705181A65BBEC209B2993ABD812B5"
+    },
+    {
+      "path": "references/网站链接免责声明.md",
+      "title": "网站链接免责声明",
+      "snippet": "本网站可能含有其他独立第三方网站的链接，该类链接仅为方便本网站的访问者而提供。华为不对链接网站的内容、服务、信息等提供任何明示和暗示的保证，此类链接也不视为华为对链接网站的推荐或授权。您需自行独立判断您与链接网站的互动行为，华为对此不承担任何责任。"
+    },
+    {
+      "path": "references/通行密钥身份认证（ArkTS）.md",
+      "title": "通行密钥身份认证（ArkTS）",
+      "snippet": "通行密钥服务主要接口如下表。 #### 开发步骤 通行密钥服务提供基于FIDO2标准协议的FIDO客户端实现，这里仅演示FIDO客户端相关API的使用，涉及FIDO服务器的相关处理由开发者自行实现，请参考 FIDO2标准协议 （见 网站链接免责声明 ）。 1. 需要业务方自行根据FIDO2标准协议部署FIDO服务器。 2. 导入相关模块。 import { common } from '@kit.AbilityKit'; import { fido2 } from '@kit.OnlineAuthenticationKit'; import { BusinessError } from '@kit.BasicServicesKit'; 3. 注册通行密钥。 1. @Entry @Component struct PasskeyInvokePage { private uiContext = this.getUIContext().getHostContext(); private async invokeGetClientCapabilities() { try { // 获取客户端能力列表 let clientCapabilities: Map<fido2.ClientCapability, boolean> = await fido2.getClientCapabilities"
+    },
+    {
+      "path": "references/通行密钥身份认证（C_C++）.md",
+      "title": "通行密钥身份认证（C/C++）",
+      "snippet": "通行密钥服务主要接口如下表。 #### 开发步骤 通行密钥服务提供基于FIDO2标准协议的FIDO客户端实现，这里仅演示FIDO客户端相关API的使用，涉及FIDO服务器的相关处理由开发者自行实现，这里不做介绍，请参考 FIDO2标准协议 （见 网站链接免责声明 ）。 在CMake脚本中链接相关动态库。 target_link_libraries(projectName libfido2_ndk.z.so) 1. 需要业务方自行根据FIDO2标准协议部署FIDO服务器。 2. 注册通行密钥。 1. #include \"OnlineAuthenticationKit/fido2_api.h\" FIDO2_ErrorCode TestGetClientCapability() { // 获取客户端能力列表 FIDO2_CapabilityArray *capability = NULL; FIDO2_ErrorCode ret = HMS_FIDO2_getClientCapability(&capability); // 业务根据错误码判断异常类型，进行相应处理，详见错误码参考 if (ret != FIDO2_SUCCESS) { HMS_FIDO2_CapabilityArray_Destroy(capability); return ret; } return FIDO2_SU"
+    }
+  ]
+}

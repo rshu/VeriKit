@@ -1,0 +1,250 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "arkgraphics-2d",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:27.949Z"
+  },
+  "references": [
+    {
+      "path": "references/ArkGraphics 2D简介.md",
+      "title": "ArkGraphics 2D简介",
+      "snippet": "ArkGraphics 2D（方舟2D图形服务 ）主要提供图形绘制与显示相关的能力。开发者可以基于一套统一的图形接口进行应用开发，使应用开发更简单、高效。 #### 能力范围 - 提供图像处理的一些基本能力，包括对当前图像的亮度调节、模糊化、灰度调节、智能取色等。具体可见 @ohos.effectKit (图像效果) 。 - 提供管理抽象化色域对象的基础能力，包括色域的创建、色域基础属性的获取等。具体可见 @ohos.graphics.colorSpaceManager (色彩管理) 与 @ohos.graphics.sendableColorSpaceManager (可共享的色彩管理) 。 - 提供可针对不同形式的内容指定帧率的能力，可用于开发者自绘制内容。具体可见 可变帧率简介 。 - 提供高动态显示的相关能力，具体可见 @ohos.graphics.hdrCapability (HDR能力) 。 - 提供自绘制的相关能力，开发者可根据需要，自定义绘制实现UI效果，可自定义绘制基础形状、文本、图片等。具体可见 @ohos.graphics.drawing (绘制模块) 。 - 提供图形绘制与显示相关的Native能力，包括 NativeWindow 、 NativeBuffer 、 NativeImage 、 NativeVsync 、 Drawing 等模块。 #### 使"
+    },
+    {
+      "path": "references/GPU_CPU内存访问同步操作开发指南 (C_C++).md",
+      "title": "GPU/CPU内存访问同步操作开发指南 (C/C++)",
+      "snippet": "NativeFence是管理fenceFd同步状态的模块。开发者可通过其接口实现以下功能：设置阻塞时间、永久阻塞、关闭fenceFd以及检查其有效性。 #### 接口说明 详细的接口说明请参考 NativeFence 。 #### 开发步骤 以下步骤描述了如何使用NativeFence提供的Native API接口。 **添加动态链接库** CMakeLists.txt中添加以下库文件。 libnative_fence.so **头文件** #include <native_fence/native_fence.h> #include <cstring> #include <iostream> #include <linux/sync_file.h> #include <signal.h> #include <sys/signalfd.h> #include <unistd.h> 1. **使用signalfd()接口创建fenceFd** 。 sigset_t mask; sigemptyset(&mask); sigaddset(&mask, SIGINT); // Monitor SIGINT signal (Ctrl C) sigaddset(&mask, SIGURG); // Generated when urgent data or out of band data "
+    },
+    {
+      "path": "references/NativeBuffer开发指导 (C_C++).md",
+      "title": "NativeBuffer开发指导 (C/C++)",
+      "snippet": "NativeBuffer模块提供 **共享内存** 功能，支持内存的申请、使用、查询和释放等操作。 NativeBuffer的常见开发场景：通过Native API申请OH_NativeBuffer实例，获取内存属性，将ION内存映射到进程空间。 #### 接口说明 详细的接口说明请参考 native_buffer 。 #### 开发步骤 以下步骤描述了如何使用NativeBuffer提供的Native API接口创建OH_NativeBuffer实例，获取内存属性信息，并将ION内存映射到进程空间。 **添加动态链接库** CMakeLists.txt中添加以下lib。 libnative_buffer.so **头文件** #include <native_buffer/native_buffer.h> 1. **创建OH_NativeBuffer实例** 。 OH_NativeBuffer_Config config { .width = 0x100, .height = 0x100, .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888, .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA, }; OH"
+    },
+    {
+      "path": "references/NativeDisplaySoloist开发指导 (C_C++).md",
+      "title": "NativeDisplaySoloist开发指导 (C/C++)",
+      "snippet": "如果开发者想在独立线程中实现帧率控制的Native侧业务，可以通过DisplaySoloist来实现，如游戏、自绘制UI框架对接等场景。 开发者可以选择多个DisplaySoloist实例共享一个线程，也可以选择每个DisplaySoloist实例独占一个线程。 #### 接口说明 详细的接口说明请参考 NativeDisplaySoloist 。 #### 开发示例 本范例是通过Drawing在Native侧实现图形的绘制，通过异步线程设置期望的帧率，再根据帧率进行图形的绘制并将其呈现在NativeWindow上，图形绘制部分可参考 使用Drawing实现图形绘制与显示 。 #### 添加开发依赖 **添加动态链接库** CMakeLists.txt中添加以下lib。 target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnative_window.so libace_ndk.z.so libnative_display_soloist.so) **头文件** #include <ace/xcomponent/native_interface_xcomponent.h> #include <arpa/nameser.h> #include <bits/alltypes.h> #inc"
+    },
+    {
+      "path": "references/NativeImage开发指导 (C_C++).md",
+      "title": "NativeImage开发指导 (C/C++)",
+      "snippet": "NativeImage是提供 **Surface与OpenGL外部纹理相互绑定** 的模块，表示图形队列的消费者端。开发者可以通过NativeImage接口接收和使用Buffer，并将Buffer关联输出到绑定的OpenGL外部纹理。 NativeImage常见的开发场景如下： - 通过NativeImage提供的Native API接口创建NativeImage实例作为消费者端，获取与该实例对应的NativeWindow作为生产者端。NativeWindow相关接口可用于填充Buffer内容并提交，NativeImage将Buffer内容更新到OpenGL外部纹理上。本模块需要配合NativeWindow、NativeBuffer、EGL、GLES3模块一起使用。 #### 接口说明 详细的接口说明请参考 native_image 。 #### 开发步骤 以下步骤描述了如何使用NativeImage提供的Native API接口，创建OH_NativeImage实例作为消费者端，将数据内容更新到OpenGL外部纹理上。 **添加动态链接库** CMakeLists.txt中添加以下库文件。 libEGL.so libGLESv3.so libnative_image.so libnative_window.so libnative_buffer.so **头文件** #inclu"
+    },
+    {
+      "path": "references/NativeVSync开发指导 (C_C++).md",
+      "title": "NativeVSync开发指导 (C/C++)",
+      "snippet": "NativeVSync模块用于获取系统VSync信号，提供OH_NativeVSync实例的创建、销毁及设置VSync回调函数的功能。VSync信号触发时，将调用已设置的回调函数。 #### 接口说明 详细的接口说明请参考 native_vsync 。 #### 开发步骤 以下步骤描述如何使用NativeVSync提供的Native API接口创建和销毁OH_NativeVSync实例，以及如何设置VSync回调函数。 **添加动态链接库** CMakeLists.txt中添加以下库文件。 libnative_vsync.so **头文件** #include <native_vsync/native_vsync.h> 1. **首先需要定义一个VSync回调函数** 。 void RenderEngine::OnVsync(long long timestamp, void *data) { OH_LOG_Print(LOG_APP, LOG_DEBUG, LOG_PRINT_DOMAIN, \"RenderEngine\", \"OnVsync %{public}lld.\", timestamp); auto renderEngine = reinterpret_cast<RenderEngine *>(data); if (renderEngine == nullptr) { re"
+    },
+    {
+      "path": "references/NativeWindow开发指导 (C_C++).md",
+      "title": "NativeWindow开发指导 (C/C++)",
+      "snippet": "NativeWindow是 **本地平台化窗口** ，表示图形队列的生产者端。开发者可以通过NativeWindow接口进行申请和提交Buffer，配置Buffer属性信息。 针对NativeWindow，常见的开发场景如下： - 通过NativeWindow提供的Native API接口申请图形Buffer，并将生成的图形内容写入图形Buffer，最终提交Buffer到图形队列。 - 在适配EGL层的eglswapbuffer接口时，进行申请和提交Buffer。 #### 接口说明 详细的接口说明请参考 native_window 。 #### 开发步骤 以下步骤描述了如何使用NativeWindow提供的Native API接口申请图形Buffer，写入图形内容，并提交Buffer到图形队列。 **添加动态链接库** CMakeLists.txt中添加以下lib。 libace_ndk.z.so libnative_window.so **头文件** #include <sys/poll.h> #include <sys/mman.h> #include <unistd.h> #include <ace/xcomponent/native_interface_xcomponent.h> #include <native_window/external_window.h> 1. "
+    },
+    {
+      "path": "references/使用主题字体（ArkTS）.md",
+      "title": "使用主题字体（ArkTS）",
+      "snippet": "主题字体，特指系统 **主题应用** 中能使用的字体，属于一种特殊的自定义字体，可以通过相关接口调用使能主题应用中的主题字体。 #### 实现机制 **图1** 主题字体的切换和使用 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2d/v3/XSE12Ni7RHm-EjejsjthpA/zh-cn_image_0000002543374364.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111407Z&HW-CC-Expire=86400&HW-CC-Sign=22A1CB50A2DC0A2BDCD895C0A00A50111A02BA958A2A5ED2A67535FF6CFB7318) 针对主题字的切换使用，应用方应确保订阅主题字体变更事件，当接收到字体变更事件后，由应用方主动调用页面刷新才能实现主题字的切换，否则主题字只能在重启应用后才生效。 #### 接口说明 注册使用主题字体的常用接口如下表所示，详细接口说明请见 @ohos.graphics.text (文本模块) 。 #### 开发步骤 1. 请确保在设备系统 **主题应用** 中，能成功应用一项主题字体。 2. 导入依赖的相关模块。 import { text } fr"
+    },
+    {
+      "path": "references/使用主题字体（C_C++）.md",
+      "title": "使用主题字体（C/C++）",
+      "snippet": "主题字体，特指系统 **主题应用** 中能使用的字体，属于一种特殊的自定义字体。可以通过相关接口调用使能主题应用中的主题字体。 #### 实现机制 **图1** 主题字体的切换和使用 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cc/v3/SpGwL6KfT8a4IApIC5VStw/zh-cn_image_0000002543374364.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111408Z&HW-CC-Expire=86400&HW-CC-Sign=D3C948613C52ADC5123FA23B479E210BFD2BFA7EE8FB0179E7A23B44AD8E9D2B) 针对主题字的切换使用，应用方应确保订阅主题字变更事件，当接收字体变更事件后，由应用方主动调用页面刷新才能实现主题字的切换，否则主题字只能在重启应用后才生效；主题字的绘制需要使用OH_Drawing_GetFontCollectionGlobalInstance来获取全局字体集对象，仅该接口返回的对象拥有主题字体信息。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAll"
+    },
+    {
+      "path": "references/几何形状绘制（ArkTS）.md",
+      "title": "几何形状绘制（ArkTS）",
+      "snippet": "当前支持绘制的几何形状，主要包括以下几种： - 点 - 圆弧 - 圆 - 路径 - 区域 - 矩形 - 圆角矩形 大部分的几何形状均可以选择使用画笔或使用画刷来实现绘制，其中点的绘制只能使用画笔。 #### 接口说明 几何形状绘制的常用接口如下表所示，详细的使用和参数说明请见 drawing.Canvas 。 #### 绘制点 点只能基于画笔在画布上进行绘制，通过使用drawPoint()接口绘制点。绘制点需要接受两个参数，分别为需要绘制的点的x坐标和y坐标。 简单示例如下： // 设置画笔 let pen = new drawing.Pen(); // 设置颜色 pen.setColor(0xFF, 0xFF, 0x00, 0x00); // 设置线宽 pen.setStrokeWidth(40); // 设置画笔描边效果 canvas.attachPen(pen); // 绘制5个点 canvas.drawPoint(VALUE_200, VALUE_200); canvas.drawPoint(VALUE_400, VALUE_400); canvas.drawPoint(VALUE_600, VALUE_600); canvas.drawPoint(VALUE_800, VALUE_800); canvas.drawPoint(VALUE_1000, VALUE_1000)"
+    },
+    {
+      "path": "references/几何形状绘制（C_C++）.md",
+      "title": "几何形状绘制（C/C++）",
+      "snippet": "当前支持绘制的几何形状，主要包括以下几种： - 点 - 圆弧 - 圆 - 路径 - 区域 - 矩形 - 圆角矩形 大部分的几何形状均可以选择使用画笔或者使用画刷来实现绘制，其中点的绘制只能使用画笔。 #### 接口说明 几何形状绘制的常用接口如下表所示，详细的使用和参数说明请见 drawing_canvas.h 。 #### 绘制点 点只能基于画笔在画布上进行绘制，通过使用OH_Drawing_CanvasDrawPoint()接口绘制点。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见 画布的获取与绘制结果的显示（C/C++） ；另一个是要绘制的点的指针。 简单示例如下： // 创建画笔对象 OH_Drawing_Pen* pen = OH_Drawing_PenCreate(); // 设置画笔颜色 OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN)); // 设置画笔线宽为40 OH_Drawing_PenSetWidth(pen, 40); // 设置画布的画笔 OH_Drawing_CanvasAttachPen(canvas, pen); // 绘制5个点 AdaptationUtil* ada"
+    },
+    {
+      "path": "references/可变帧率简介.md",
+      "title": "可变帧率简介",
+      "snippet": "随着设备屏幕的不断演进，当前主流设备采用LTPO屏幕，此类屏幕支持在多个档位之间切换屏幕帧率。 对于快速变化的内容，如射击游戏，交互动画等，显示帧率越高，画面越流畅，但是相对的功耗也会越高。 而低速变化的内容，如游戏大厅，时钟更新动画等，画面更新频率较低，使用相对低的显示帧率，用户也不会觉得卡顿，但是相对的功耗就比较低。 基于显示内容的可变帧率能力，在具备LTPO屏幕的设备上，可以达到性能体验和功耗间的平衡。 HarmonyOS支持可变帧率能力，开发者通过使用可变帧率接口，进行相关业务开发，可以享受可变帧率特性带来的功耗收益。 #### 使用场景 可变帧率能力支持开发者自定义应用业务的帧率，其常见的使用场景： - 通过配置属性动画/显示动画的帧率属性参数，用于动画的绘制，具体可见请求动画绘制帧率。 - 通过申请一个独立的绘制帧率，用于UI的绘制，具体可见请求UI绘制帧率。 - 通过XComponent在Native侧申请独立的绘制帧率，用于游戏等自绘制内容的绘制，具体可见请求自绘制内容绘制帧率。 - 通过NativeVsync在Native侧申请独立的绘制帧率，用于非UI线程的绘制，具体可见NativeDisplaySoloist开发指导 (C/C++)。 #### 运作机制 可变帧率为应用开发中的动画组件、XComponent组件、UI绘制等提供一种基础帧率配置和能力。 开发者通"
+    },
+    {
+      "path": "references/图元绘制概述.md",
+      "title": "图元绘制概述",
+      "snippet": "无论多复杂的图形，都是由基础的图元组合而来。Canvas画布提供了丰富的图元绘制功能，可以满足各种基础图元的绘制需求。本节介绍了几何形状绘制（点、圆、矩形等），图片绘制和字块绘制，并提供了示例代码，开发者可以在此基础上实现需要的UI效果。 图元绘制是图形绘制的最后一步，图元绘制之前需要先创建Canvas并按需设置必要的绘制效果。"
+    },
+    {
+      "path": "references/图形开发术语.md",
+      "title": "图形开发术语",
+      "snippet": "BlendMode，混合模式，定义当前内容和已有内容如何相互作用产生新的效果，不同的混合模式相互作用叠加的计算方式和效果也会对应有所不同。 #### 字块 字块，TextBlob，是指使用相同字体的字形元素及其位置的集合。 #### 字型 字型，Font，用于管理字体绘制相关属性，包括字体、大小、缩放比例等。 #### 字体 字体，Typeface，是用于将字符以特定视觉图形样式呈现出来的设计集合，它包括字体名称、粗体、斜体等属性。 #### 字形 字形，Glyph，是字符在特定字体中的具体图形表示，同一字符在不同的字体中通常会对应不同的字形。 #### 着色器 着色器，Shader，是一种运行程序，主要用于显示图像渲染和处理。其能够控制顶点或像素的处理方式，包括颜色计算、阴影效果等一系列视觉效果。可以针对绘制内容添加不同的着色器效果，从而实现丰富不同的视觉效果。 #### 图像滤波 图像滤波，一种非常重要的图像处理技术，通过滤波操作，可以突出或去除图像中的一些元素成分。可以针对绘制效果添加不同的滤波器，从而实现不同的滤波效果。"
+    },
+    {
+      "path": "references/图形绘制与显示开发概述.md",
+      "title": "图形绘制与显示开发概述",
+      "snippet": "应用在开发中，经常需要针对不同的元素内容进行绘制，开发者通常可以选择直接使用ArkUI组件来绘制想要的元素或效果，但有些自定义图形或效果无法满足，此时可以选择使用Drawing来实现灵活的自定义绘制效果。另外，ArkUI组件具备直接上屏显示的能力，而Drawing更加关注绘制，需要依靠其他模块来完成绘制结果的上屏显示。 #### 绘制能力范围及实现流程 **图1** 图形绘制主要能力 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d5/v3/vPX_OYqvQ02fevqo7hyyUg/zh-cn_image_0000002543374326.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111403Z&HW-CC-Expire=86400&HW-CC-Sign=36D30123AD7E5934199435C169AC2140BC491AD28A05E3D6A1891F024D4DF18E) ArkGraphics 2D基于2D图像渲染引擎为开发者提供了一系列灵活多样的图形绘制接口。主要分为画布操作、绘制效果、图元绘制几方面，各部分支持能力关键列举如上图所示，后续可能支持更多相关能力，此处不再一一呈现，具体可关注对应API参考文档。 画"
+    },
+    {
+      "path": "references/图形缓冲区常见稳定性问题 (C_C++).md",
+      "title": "图形缓冲区常见稳定性问题 (C/C++)",
+      "snippet": "本文档主要针对NativeWindow、NativeBuffer和NativeImage开发过程中的常见问题进行说明，帮助开发者及时避免或定位对应问题，提高应用稳定性。 #### OHNativeWindow与NativeWindowBuffer OHNativeWindow与NativeWindowBuffer在系统多个模块与应用之间传递，通过增加与减少引用计数的NDK接口实现伪智能指针，由各模块维护自己的引用计数，超过90%的问题都是由于增减引用计数接口未匹配导致的。 增加NativeWindow引用计数的接口： int32_t OH_NativeWindow_NativeObjectReference(void *obj) int32_t OH_NativeWindow_CreateNativeWindowFromSurfaceId(uint64_t surfaceId, OHNativeWindow **window) OHNativeWindow* OH_NativeImage_AcquireNativeWindow(OH_NativeImage* image) int32_t OH_NativeWindow_ReadFromParcel(OHIPCParcel *parcel, OHNativeWindow **window) 减少NativeWindow引用计数的接口"
+    },
+    {
+      "path": "references/图片绘制（ArkTS）.md",
+      "title": "图片绘制（ArkTS）",
+      "snippet": "位图是一种用于在内存中存储和表示图像的数据结构，它是一个未经过压缩的像素集合，而JPEG或PNG等格式的图片是压缩格式的，两者并不相同。如果需要将JPEG或PNG绘制到屏幕上，需要先解码成位图格式，具体可参考 图片处理服务（Image Kit） 图片解码相关章节。 目前Drawing（ArkTS）中位图绘制需要依赖PixelMap，它可以用于读取或写入图像数据以及获取图像信息。详细的API介绍请参考 PixelMap 。 1. 创建PixelMap。 有多个API接口可以创建PixelMap，下文以createPixelMapSync()为例。更多创建方式和接口请见 @ohos.multimedia.image (图片处理) 模块。 // 图片宽高 let width = 600; let height = 400; // 字节长度，RGBA_8888每个像素占4字节 let byteLength = width * height * 4; const color: ArrayBuffer = new ArrayBuffer(byteLength); let bufferArr = new Uint8Array(color); for (let i = 0; i < bufferArr.length; i += 4) { // 遍历并编辑每个像素，从而形成红绿蓝相间的条纹 buff"
+    },
+    {
+      "path": "references/图片绘制（C_C++）.md",
+      "title": "图片绘制（C/C++）",
+      "snippet": "位图是一种用于在内存中存储和表示图像的数据结构，它是一个未经过压缩的像素集合，而JPEG或PNG等图片是压缩格式的，两者并不相同。如果需要将JPEG或PNG绘制到屏幕上，需要先解码成位图格式，具体可参考 图片处理服务（Image Kit） 图片解码相关章节。 目前Drawing（C/C++）中位图绘制需要依赖PixelMap，它可以用于读取或写入图像数据以及获取图像信息。详细的API介绍请参考 drawing_pixel_map.h 。 有多个API接口可以创建PixelMap，下文以使用OH_Drawing_PixelMapGetFromOhPixelMapNative()为例。 1. 添加链接库。 在Native工程的src/main/cpp/CMakeLists.txt，添加如下链接库： target_link_libraries(entry PUBLIC libnative_drawing.so) target_link_libraries(entry PUBLIC libhilog_ndk.z.so) target_link_libraries(entry PUBLIC libpixelmap.so) 2. 导入依赖的相关头文件。 #include <multimedia/image_framework/image/pixelmap_native.h> 3. 创建OH_P"
+    },
+    {
+      "path": "references/基础绘制效果（ArkTS）.md",
+      "title": "基础绘制效果（ArkTS）",
+      "snippet": "在进行绘制时，可以进行一些基础效果的设置，比如设置填充颜色、设置抗锯齿、设置图形描边、设置图形线条连接样式等。 主要通过画刷（Brush）设置填充基础效果，通过画笔（Pen）设置描边基础效果。 #### 填充效果 可以通过画刷设置基础的填充颜色，还可以通过画刷使用混合模式、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见 复杂绘制效果 。 #### 接口说明 使用画刷（Brush）设置绘制效果的常用接口如下表所示，详细的使用和参数请见 drawing.Brush 。 #### 开发步骤 1. 创建画刷Brush对象。 // 设置画刷 const brush = new drawing.Brush(); 2. 使用画刷设置基础绘制效果，例如设置填充颜色、开启抗锯齿效果等。 可使用setColor()接口设置填充颜色。 // 填充颜色设为红色 brush.setColor(0xFF, 0xFF, 0x00, 0x00); 可使用setAntiAlias()接口开启抗锯齿效果，以使图形边缘更加平滑。 // 开启抗锯齿效果 brush.setAntiAlias(true); 3. 使用attachBrush()接口给Canvas画布设置画刷。 // 为画布设置画刷 canvas.attachBrush(brush); 4. 按需绘制图元，具体可见 图元绘制 一节。 5. 当不需要填充"
+    },
+    {
+      "path": "references/基础绘制效果（C_C++）.md",
+      "title": "基础绘制效果（C/C++）",
+      "snippet": "在进行绘制时，可以进行一些基础效果的设置，比如设置填充颜色、设置抗锯齿、设置图形描边、设置图形线条连接样式等。 主要通过画刷（Brush）设置填充基础效果，通过画笔（Pen）设置描边基础效果。 #### 填充效果 可以通过画刷设置基础的填充颜色，还可以通过画刷使用混合模式、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见 复杂绘制效果 。 #### 接口说明 使用画刷（Brush）设置绘制效果的常用接口如下表所示，详细的使用和参数请见 drawing_brush 。 #### 开发步骤 1. 使用OH_Drawing_BrushCreate()接口创建画刷Brush对象。 // 创建画刷 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate(); 2. 使用画刷设置基础绘制效果（可选以下的一个或者多个效果）。 - 可使用OH_Drawing_BrushSetColor()接口设置填充颜色。 // 设置填充颜色为红色 uint32_t color = 0xffff0000; OH_Drawing_BrushSetColor(brush, color); color是一个32位（ARGB）的变量，例如0xffff0000。 - 可使用OH_Drawing_BrushSetAntiAlias()接口开启抗锯齿效果，以使图形边缘更加平滑。 "
+    },
+    {
+      "path": "references/复杂文本绘制与显示（ArkTS）.md",
+      "title": "复杂文本绘制与显示（ArkTS）",
+      "snippet": "在进行文本绘制时，可以通过选择合适的字体、大小和颜色完成简单文本的绘制与显示；此外，还支持通过设置其他丰富的样式、语言、段落等进行复杂文本的绘制。 复杂文本绘制主要包含以下几个场景： - 多语言文本绘制与显示 - 多行文本绘制与显示 - 多样式文本绘制与显示 #### 多语言文本绘制与显示 多语言支持是全球化应用的基础。多语言文本绘制需要支持不同语言的字符集及其独特的显示需求，例如右到左语言（如阿拉伯语）或竖排文本（如中文）。开发者需要理解不同语言的渲染特性，确保文本的正确显示。 在多语言文本使用的场景下，主要通过指定 TextStyle 文本样式中的 **locale** 字段来实现，可直接通过locale字段的值优先匹配对应字体，跳过遍历列表匹配字体的过程，从而降低匹配时间和内存使用。 #### 开发步骤 1. 通过context获取到Canvas画布对象。 // 绘制代码逻辑写在这里 let canvas = context.canvas; 2. 初始化文本样式。 let myTextStyle: text.TextStyle = { color: { alpha: 255, red: 255, green: 0, blue: 0 }, fontSize: 50, // 设置语言偏好为简体中文 locale: 'zh-Hans' }; 3. 初始化段落样式。 let myPa"
+    },
+    {
+      "path": "references/复杂文本绘制与显示（C_C++）.md",
+      "title": "复杂文本绘制与显示（C/C++）",
+      "snippet": "在进行文本绘制时，可以通过选择合适的字体、大小和颜色完成简单文本的绘制与显示；此外，还支持通过设置其他丰富的样式、语言、段落等进行复杂文本的绘制。 复杂文本绘制主要包含以下几个场景： - 多语言文本绘制与显示 - 多行文本绘制与显示 - 多样式文本绘制与显示 - 样式的拷贝、绘制与显示 #### 多语言文本绘制与显示 多语言支持是全球化应用的基础。多语言文本绘制需要支持不同语言的字符集及其独特的显示需求，例如右到左语言（如阿拉伯语）或竖排文本（如中文）。开发者需要理解不同语言的渲染特性，确保文本的正确显示。 在多语言文本使用的场景下，主要通过指定TextStyle文本样式中的 **locale** 字段来实现，可直接通过locale字段的值优先匹配对应字体，跳过遍历列表匹配字体的过程，从而降低匹配时间和内存使用。 #### 接口说明 #### 开发步骤 画布Canvas对象具体可见 画布的获取与绘制结果的显示 。 // 创建一个 TypographyStyle，创建 TypographyCreate 时需要使用 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle(); // 设置文本对齐方式为居中 OH_Drawing_SetTypographyTextAlign(typoStyle, T"
+    },
+    {
+      "path": "references/复杂绘制效果（ArkTS）.md",
+      "title": "复杂绘制效果（ArkTS）",
+      "snippet": "除了基础填充颜色、描边颜色和一些样式设置的绘制效果外，还支持通过画刷和画笔实现更多复杂的绘制效果。比如： - 混合模式。 - 路径效果，如虚线效果。 - 着色器效果，如线性渐变、径向渐变等。 - 滤波效果，如模糊效果等。 #### 混合模式 混合模式可以用于画笔或画刷，它定义了如何将源像素（要绘制的内容）与目标像素（已存在于画布上的内容）进行组合。 可以使用setBlendMode()接口将混合模式应用于画刷或画笔中，该接口需要接受一个参数BlendMode，即混合模式的类型，具体可参考 BlendMode 。 关键示例和效果示意图如下所示： import { DrawContext, FrameNode, NodeController, RenderNode, UIContext } from '@kit.ArkUI'; import { common2D, drawing } from '@kit.ArkGraphics2D'; function drawRenderNode(canvas: drawing.Canvas) { canvas.saveLayer(null, null); const brushCircle = new drawing.Brush(); const colorCircle: common2D.Color = {alpha: 255, red: 0,"
+    },
+    {
+      "path": "references/复杂绘制效果（C_C++）.md",
+      "title": "复杂绘制效果（C/C++）",
+      "snippet": "除了基础填充颜色、描边颜色和一些样式设置的绘制效果外，还支持通过画刷和画笔实现更多复杂的绘制效果。比如： - 混合模式。 - 路径效果，如虚线效果。 - 着色器效果，如线性渐变、径向渐变等。 - 滤波效果，如模糊效果等。 #### 混合模式 混合模式可以用于画笔或画刷，它定义了如何将源像素（要绘制的内容）与目标像素（已存在于画布上的内容）进行组合。 可以使用OH_Drawing_BrushSetBlendMode()接口将混合模式应用于画刷中，使用OH_Drawing_PenSetBlendMode()接口将混合模式应用于画笔中。这两个接口都需要接受一个参数OH_Drawing_BlendMode，即混合模式的类型，具体可参考 OH_Drawing_BlendMode 。 此处以使用画刷设置叠加混合模式为例（为了防止混合模式的效果被背景色干扰，示例中的canvas并未设置背景色，使用的是默认的黑色背景），关键示例和效果示意图如下所示： // 创建画刷对象 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate(); // 设置目标像素颜色 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN)); // 将"
+    },
+    {
+      "path": "references/字块绘制（ArkTS）.md",
+      "title": "字块绘制（ArkTS）",
+      "snippet": "字块（TextBlob）是指文本的集合。无论是单个的文字还是大块的文本，都可以通过字块来绘制。 除了基本的字块绘制之外，还可以给文字添加各种绘制效果。常见的字块绘制场景包括 文字描边 、 文字渐变 等，更多效果请见 绘制效果 。 本节不涉及文本测量和布局排版相关内容，如需在开发中处理此类文本绘制需求，可参考 文本开发概述 ，该文档系统讲解了排版策略与相关使用指导。 #### 基本字块绘制 Canvas通过drawTextBlob()来绘制字块。函数接受三个参数：TextBlob字块对象，以及文字基线左端点的x坐标和y坐标。 画布Canvas对象具体可见 画布的获取与绘制结果的显示（ArkTS） 。 字块对象可以通过多种方式创建得到，详细的字块创建方式和接口使用请参考 TextBlob 。 此处以使用makeFromString()接口创建字块为例，接口接受3个参数，分别为： - 需要显示的字符串text。 - font字型对象。其中font用于设置和获取字体的各种属性，如字体大小、文本样式、字体对齐方式、字体渲染方式、字体描边方式等，详细的API介绍请参考 Font 。 - 文本编码方式。当前支持的文本编码方式如下： - TEXT_ENCODING_UTF8：使用1个字节表示UTF-8或ASCII； - TEXT_ENCODING_UTF16：使用2个字节表示大部分unicode；"
+    },
+    {
+      "path": "references/字块绘制（C_C++）.md",
+      "title": "字块绘制（C/C++）",
+      "snippet": "字块（TextBlob）是指文本的集合。无论是单个的文字还是大块的文本，都可以通过字块来绘制。 除了基本的字块绘制之外，还可以给文字添加各种绘制效果。常见的字块绘制场景包括 文字描边 、 文字渐变 等，更多效果请见 绘制效果 。 本节不涉及文本测量和布局排版相关内容，如需在开发中处理此类文本绘制需求，可参考 文本开发概述 ，该文档系统讲解了排版策略与相关使用指导。 #### 基本字块绘制 使用OH_Drawing_CanvasDrawTextBlob()接口绘制字块，接口接受4个参数，分别为：画布Canvas对象、字块对象、文字基线左端点的x坐标和y坐标。 画布Canvas对象具体可见 画布的获取与绘制结果的显示（C/C++） 。 字块对象可以通过多种方式创建得到，详细的字块创建方式请参考 drawing_text_blob.h 。 此处以使用OH_Drawing_TextBlobCreateFromString()接口创建字块为例，接口接受3个参数，分别为： - 需要显示的文本字符串内容。 - 指向OH_Drawing_Font字体对象的指针。OH_Drawing_Font用于设置和获取字体的各种属性，如字体大小、文本样式、字体对齐方式、字体渲染方式、字体描边方式等，详细的API介绍请参考 draw_font 。 - 文本编码方式。 简单示例和示意图如下所示： // 创建字体对象"
+    },
+    {
+      "path": "references/文本开发常见问题.md",
+      "title": "文本开发常见问题",
+      "snippet": "目前对于找不到字形的字符默认显示为空白，可能让用户感到困惑。 系统提供开关，开启后，未找到字形的字符会显示为豆腐块。 - 在ArkTS环境中，可以使用setTextUndefinedGlyphDisplay接口开启开关，找不到字形的字符会强制显示为豆腐块。 import { text } from \"@kit.ArkGraphics2D\"; text.setTextUndefinedGlyphDisplay(text.TextUndefinedGlyphDisplay.USE_TOFU); - 在C/C++环境中，可以使用OH_Drawing_SetTextUndefinedGlyphDisplay接口开启开关，找不到字形的字符会强制显示为豆腐块。 #include \"drawing/drawing_text_global.h\" OH_Drawing_SetTextUndefinedGlyphDisplay(TEXT_NO_GLYPH_USE_TOFU); 上述两个接口控制同一个开关，使用其一即可。 以\"\\uffffHello World\\uffff\"文本为例，其中\\uffff表示一个找不到字形的字符。 对比效果如下："
+    },
+    {
+      "path": "references/文本开发概述.md",
+      "title": "文本开发概述",
+      "snippet": "应用在开发和布局时，经常需要针对文本元素和内容进行排版、测量、绘制和显示等。字体引擎开发框架提供了一系列接口能力用于支持应用布局文本和管理字体。 #### 能力范围 **图1** 字体引擎能力结构图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c9/v3/N3hLLMTkRX6vp7JlWQQkRw/zh-cn_image_0000002573854615.png?HW-CC-KV=V1&HW-CC-Date=20260421T111407Z&HW-CC-Expire=86400&HW-CC-Sign=202DD697A1B47CE1D275129F8275F1FF9F63191A25340F4606E69BDDF4DE55E3) 当前字体引擎开发框架支持在应用中对文字、emoji表情、placeholder等文本元素进行塑形、排版、测量和绘制显示。 开发者可以选择使用不同的ArkTS语言或者C/C++语言，来使用字体引擎的相关能力以实现对应场景。 文本相关的能力场景主要分为以下几个方面具体展开： - **字体管理** ：文本的绘制显示离不开字体的使用和管理，当前支持对各种字体资源的注册和使用。主要包括主题字体、自定义字体、系统字体。 - **字体样式** ："
+    },
+    {
+      "path": "references/文本测量（ArkTS）.md",
+      "title": "文本测量（ArkTS）",
+      "snippet": "文本测量指的是在图形绘制中，对文本的尺寸和布局进行评估，计算文本在给定字体和样式下占用的空间（例如宽度、高度和其他相关信息）的过程。文本测量用于文本排版、布局、渲染以及调整文本显示的位置和大小等场景，便于更精准地控制与调整界面的布局和呈现，以达到设计预期。 当前主要支持以下方面的文本测量能力： - **文本宽度** ：测量给定文本在特定字体、大小和样式下的水平长度。 - **文本高度** ：测量给定文本的垂直高度，通常涉及文本的上升线、下降线等。 - **行间距** ：测量多行文本之间的垂直距离，通常与文本的行距相关。 - **字符间距** ：测量单个字符之间的水平距离，通常与字形和字体设计有关。 #### 接口说明 文本测量中常用接口如下表所示，详细接口说明参考 @ohos.graphics.text (文本模块) 。 #### 开发步骤 1. 导入依赖的相关模块。 import { text } from '@kit.ArkGraphics2D'; 2. 创建段落样式，并使用构造段落生成器ParagraphBuilder生成段落实例。 // 设置文本样式 let myTextStyle: text.TextStyle = { color: { alpha: 255, red: 255, green: 0, blue: 0 }, fontSize: 100 }; // 创建一个段"
+    },
+    {
+      "path": "references/文本测量（C_C++）.md",
+      "title": "文本测量（C/C++）",
+      "snippet": "文本测量指的是在图形绘制中，对文本的尺寸和布局进行评估，计算文本在给定字体和样式下占用的空间（例如宽度、高度和其他相关信息）的过程。文本测量用于文本排版、布局、渲染以及调整文本显示的位置和大小等场景，便于更精准地控制与调整界面的布局和呈现，以达到设计预期。 当前主要支持以下方面的文本测量能力： - **文本宽度** ：测量给定文本在特定字体、大小和样式下的水平长度。 - **文本高度** ：测量给定文本的垂直高度，通常涉及字体的上升线、下降线等。 - **行间距** ：测量多行文本之间的垂直距离，通常与字体的行距相关。 - **字符间距** ：测量单个字符之间的水平距离，通常与字形和字体设计有关。 #### 接口说明 文本测量中常用接口如下表所示，详细接口说明参考 drawing_text_typography.h 。 #### 开发步骤 1. 在工程的src/main/cpp/CMakeLists.txt文件中添加以下lib。 libnative_drawing.so 2. 导入依赖的相关头文件。 #include <native_drawing/drawing_font_collection.h> #include <native_drawing/drawing_text_typography.h> #include <native_drawing/drawing_text_d"
+    },
+    {
+      "path": "references/添加图像效果（C_C++）.md",
+      "title": "添加图像效果（C/C++）",
+      "snippet": "在离线处理图像时，可以进行一些图像效果的设置以获取视觉上的不同呈现，比如设置图像模糊程度、调节图像亮度和灰度、设置图像反色等。 主要基于滤镜（Filter）设置不同的图像效果。 #### 接口说明 使用滤镜（Filter）设置图像效果的常用接口如下表所示，详细使用和参数请见 effect_filter 。 #### 开发步骤 1. 在Native工程的src/main/cpp/CMakeLists.txt中添加如下链接库： target_link_libraries(entry PUBLIC libnative_drawing.so) target_link_libraries(entry PUBLIC libhilog_ndk.z.so) target_link_libraries(entry PUBLIC libnative_effect.so) target_link_libraries(entry PUBLIC libpixelmap.so) 2. 导入依赖的相关头文件。 #include \"multimedia/image_framework/image/pixelmap_native.h\" #include \"native_effect/effect_filter.h\" 3. 创建OH_PixelmapNative像素图对象。 创建滤镜需要一个图像框架定义的像素图对象（"
+    },
+    {
+      "path": "references/画布操作及状态处理（ArkTS）.md",
+      "title": "画布操作及状态处理（ArkTS）",
+      "snippet": "创建或获取Canvas画布之后，可以基于画布进一步地进行图形操作和状态处理。画布操作属于可选操作，开发者可以根据场景需要进行。需要先进行画布操作，再进行后续绘制，只有这样画布操作才有效果。 常见的画布操作如下： - 裁剪。 - 矩阵变换，如平移、缩放、旋转等。 - 状态保存与恢复。 更多画布操作和具体接口参数使用，请见 drawing.Canvas 。 #### 裁剪操作 裁剪是图形处理中的常见操作，裁剪针对的是画布本身，可以用于限制绘图区域，只在指定的区域进行绘制。需要先进行裁剪操作，再进行绘制，才会有对应效果。 当前支持的裁剪操作主要如下： - 裁剪矩形。 - 裁剪圆角矩形。 - 裁剪自定义路径。 - 裁剪一个区域。 #### 接口说明 裁剪操作常用接口如下表所示，详细的使用和参数说明请见 drawing.Canvas 。 #### 开发示例 此处以在画布上裁剪矩形为例给出示例和效果图，其他裁剪操作的逻辑基本相同，注意调用对应的接口并确保要裁剪的数据类型对应准确即可，此处不再一一展开。详细的使用和参数说明请见 drawing.Canvas 。 使用clipRect()接口裁剪矩形。有以下3个入参： - rect是要裁剪的矩形区域。 - clipOp是裁剪方式，包括交集（INTERSECT）和差集（DIFFERENCE），具体可见 ClipOp 。 - doAntiAlias表示"
+    },
+    {
+      "path": "references/画布操作及状态处理（C_C++）.md",
+      "title": "画布操作及状态处理（C/C++）",
+      "snippet": "创建或获取Canvas画布之后，可以基于画布进一步地进行图形操作和状态处理。画布操作属于可选操作，开发者可以根据场景需要进行。需要先进行画布操作，再进行后续绘制，只有这样画布操作才有效果。 常见的画布操作如下： - 裁剪。 - 矩阵变换，如平移、缩放、旋转等。 - 状态保存与恢复。 #### 裁剪操作 裁剪是图形处理中的常见操作，裁剪针对的是画布本身，可以用于限制绘图区域，只在指定的区域内进行绘制。需要先进行裁剪操作，再进行绘制，才会有对应效果。 当前支持的裁剪操作主要如下： - 裁剪矩形。 - 裁剪圆角矩形。 - 裁剪自定义路径。 - 裁剪一个区域。 #### 接口说明 裁剪操作常用接口如下表所示，详细的使用和参数说明请见 drawing_canvas.h 。 #### 开发示例 此处以在画布上裁剪矩形为例给出示例和效果图，其他裁剪操作的逻辑基本相同，注意调用对应的接口并确保要裁剪的数据类型对应准确即可，此处不再一一展开。详细的使用和参数说明请见 drawing_canvas.h 。 使用OH_Drawing_CanvasClipRect接口裁剪矩形。有以下四个入参： - 第一个参数是画布Canvas，裁剪操作将在这个画布上进行。请确保已创建或获取得到画布Canvas，具体可见 画布的获取与绘制结果的显示（C/C++） 。 - 第二个参数是要裁剪的矩形区域。 - 第三个参数是裁剪"
+    },
+    {
+      "path": "references/画布的获取与绘制结果的显示（ArkTS）.md",
+      "title": "画布的获取与绘制结果的显示（ArkTS）",
+      "snippet": "Canvas即画布，提供绘制基本图形的能力，用于在屏幕上绘制图形和处理图形。开发者可以通过Canvas实现自定义的绘图效果，增强应用的用户体验。 Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括基本图形的绘制、文字的绘制、图片的绘制、图形变换等）都是基于Canvas的。 目前ArkTS有两种获取Canvas的方式： 获取可直接显示的Canvas画布 、 获取离屏的Canvas ，前者在调用绘制接口之后无需进行额外的操作即可完成绘制结果的上屏显示，而后者需要依靠已有的显示手段来显示绘制结果。 #### 获取可直接显示的Canvas画布 通过 RenderNode 获取可直接上屏显示的Canvas画布。 1. 导入依赖的相关文件。 import { UIContext, NodeController, FrameNode, RenderNode, DrawContext} from '@kit.ArkUI'; import { drawing } from '@kit.ArkGraphics2D'; 2. 添加自定义RenderNode。 // 2. 自定义 RenderNode class MyRenderNodeDirectDisplay extends RenderNode { async draw(context: DrawContext) { const canv"
+    },
+    {
+      "path": "references/画布的获取与绘制结果的显示（C_C++）.md",
+      "title": "画布的获取与绘制结果的显示（C/C++）",
+      "snippet": "Canvas即画布，提供绘制基本图形的能力，用于在屏幕上绘制图形和处理图形。开发者可以通过Canvas实现自定义的绘图效果，增强应用的用户体验。 Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括基本图形的绘制、文字的绘制、图片的绘制、图形变换等）都是基于Canvas的。 目前C/C++有两种获取Canvas的方式：获取可直接上屏显示的Canvas、获取离屏的Canvas，前者在调用绘制接口之后无需进行额外的操作即可完成绘制结果的上屏显示，而后者需要依靠已有的显示手段来显示绘制结果。 #### 接口说明 创建Canvas常用接口如下表所示，详细的使用和参数说明请见 drawing_canvas.h 。 #### 获取可直接显示的Canvas画布 通过XComponent获取可直接显示的Canvas画布。 1. 添加链接库。 在Native工程的src/main/cpp/CMakeLists.txt，添加如下链接库： // CMakeLists.txt target_link_libraries(entry PUBLIC libnative_drawing.so) 2. 导入依赖的相关头文件。 #include <native_drawing/drawing_canvas.h> #include <native_drawing/drawing_surface.h> 3. 从"
+    },
+    {
+      "path": "references/简单文本绘制与显示（ArkTS）.md",
+      "title": "简单文本绘制与显示（ArkTS）",
+      "snippet": "在一个简单的用户界面中，可能只需要展示几行静态文本，例如标签、按钮上的文字、菜单项或状态栏中的提示信息。此时，开发者只需要选择合适的字体、大小和颜色即可完成渲染。 #### 相关属性 此场景示例，涉及到的文本样式属性如下，具体及更多文本样式可参考 TextStyle 。 - color：字体颜色，默认为白色。请注意与画布颜色进行区分，以保证文本的正常显示。 - fontSize：字体大小，浮点数，默认为14.0，单位为物理像素px。 #### 开发步骤 1. 通过context获取到Canvas画布对象。 let canvas = context.canvas; 2. 初始化文本样式，此处设置字体颜色为红色，字体大小为50。 // 获取文本样式 let myTextStyle: text.TextStyle = { // 文本颜色 color: { alpha: 255, red: 255, green: 0, blue: 0 }, // 文本大小 fontSize: 100 }; 3. 初始化段落样式。 let myParagraphStyle: text.ParagraphStyle = { textStyle: myTextStyle, }; 4. 初始化段落对象，并添加文本。 let fontCollection = text.FontCollection.getGloba"
+    },
+    {
+      "path": "references/简单文本绘制与显示（C_C++）.md",
+      "title": "简单文本绘制与显示（C/C++）",
+      "snippet": "在一个简单的用户界面中，可能只需要展示几行静态文本，例如标签、按钮上的文字、菜单项或状态栏中的提示信息。此时，开发者只需要选择合适的字体、大小和颜色即可完成渲染。 #### 接口说明 #### 开发步骤 1. 创建Canvas画布对象，画布Canvas对象创建方法具体可见 画布的获取与绘制结果的显示 。 2. 初始化段落样式，设置文本对齐方式为居中对齐。 // 创建一个 TypographyStyle 创建 Typography 时需要使用 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle(); // 设置文本对齐方式为居中 OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER); 3. 初始化文本样式，此处设置字体颜色为纯黑色，字体大小为60，字重为400。 // 设置文字颜色、大小、字重，不设置 TextStyle 会使用 TypographyStyle 中的默认 TextStyle OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle(); OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_Col"
+    },
+    {
+      "path": "references/系统字体的信息获取和使用（ArkTS）.md",
+      "title": "系统字体的信息获取和使用（ArkTS）",
+      "snippet": "系统字体是指操作系统预设的字体，用于在没有指定自定义字体时显示文本，确保文本的可读性和一致性。 **使用系统字体** 的情况通常是在应用未注册自定义字体，或在没有显式指定文本样式时，系统会使用默认的系统字体。另外，系统字体有多种，开发者可以先获取系统字体的配置信息，并根据信息中的字体家族名来进行系统字体的切换和使用。 当前ArkTS侧暂不支持禁用系统字体，Native侧支持禁用系统字体。 #### 接口说明 以下是系统字体相关的常用接口和结构体，ArkTS侧对外接口由ArkUI提供，详细接口说明请见 @ohos.font 。 #### 获取系统字体信息 1. 导入依赖的相关模块。 import { font } from '@kit.ArkUI' 2. 获取系统字体信息。 let fontConfig = font.getUIFontConfig(); 3. 在获取系统字体信息之后通过日志打印字体信息。 console.info('sysFontMfg::font-dir -----------' + String(fontConfig.fontDir.length)); for (let i = 0; i < fontConfig.fontDir.length; i++) { console.info(fontConfig.fontDir[i]); } console.info("
+    },
+    {
+      "path": "references/系统字体的信息获取和使用（C_C++）.md",
+      "title": "系统字体的信息获取和使用（C/C++）",
+      "snippet": "系统字体是指操作系统预设的字体，用于在没有指定自定义字体时显示文本，确保文本的可读性和一致性。默认的系统字体为“HarmonyOS Sans”。 **使用系统字体** 的情况通常是在应用未注册自定义字体，或在没有显式指定文本样式时，系统会使用默认的系统字体。另外，系统字体有多种，开发者可以先获取系统字体的配置信息，并根据信息中的字体家族名来进行系统字体的切换和使用。 **禁用系统字体** 的情况通常发生在开发者希望确保应用中仅使用自定义字体，而不受操作系统默认字体影响的场景。当自定义字体不存在时，不禁用系统字体，系统则会自动回退到默认字体。通过禁用系统字体，开发者可以在任何场景避免字体回退为系统默认字体，确保文本渲染符合设计预期，从而统一应用的视觉风格。 #### 接口说明 以下是系统字体相关的常用接口和结构体，详细接口说明请参考 Drawing 。 #### 获取系统字体信息 1. 在工程的src/main/cpp/CMakeLists.txt文件中添加以下lib。 libnative_drawing.so 2. 导入依赖的相关头文件。 #include <native_drawing/drawing_font_collection.h> #include <native_drawing/drawing_text_typography.h> #include <native_dr"
+    },
+    {
+      "path": "references/绘制效果概述.md",
+      "title": "绘制效果概述",
+      "snippet": "Canvas在创建后会有默认的填充和描边效果，可以直接进行图元的绘制。但多数情况下默认的效果并不能满足需要，比如默认的颜色是黑色，只能绘制黑色的图形，默认没有模糊或渐变效果等。如果需要更多的绘制效果，比如绘制红色的图形、添加模糊效果或渐变效果等，则需要给Canvas设置自定义的画刷（Brush）或者画笔（Pen）。 画刷（Brush）用于实现填充效果，针对的是图形的内部区域，基础效果包括填充颜色、抗锯齿等。 画笔（Pen）用于实现描边效果，针对的是图形的轮廓，基础效果包括描边颜色、宽度、线条连接方式、线条端点样式等。 同时，画刷和画笔还可以实现更多更复杂的效果，比如： - 混合模式。 - 路径效果（虚线效果等）。 - 着色器效果（线性渐变、径向渐变等）。 - 滤波效果（模糊效果等）。 画刷和画笔可以根据需要二选一，也可以都设置或都不设置，不设置即使用默认的黑色画刷。"
+    },
+    {
+      "path": "references/自定义字体的注册和使用（ArkTS）.md",
+      "title": "自定义字体的注册和使用（ArkTS）",
+      "snippet": "自定义字体是指开发者根据应用需求创建或选择的字体，通常用于实现特定的文字风格或满足独特的设计要求。当应用需要使用特定的文本样式和字符集时，可以注册并使用自定义字体进行文本渲染。 #### 实现流程 **自定义字体的注册** 是指将字体文件（如ttf、otf文件等）从应用资源注册到系统中，使得应用能够使用这些字体进行文本渲染。注册过程是将字体文件通过字体管理接口注册到系统字体库中，以便在应用中进行调用。 **自定义字体的使用** 是指在应用中显式指定使用已注册的自定义字体进行文本渲染。开发者可以根据需要选择特定的文本样式（如常规、粗体、斜体等），并将其应用到UI元素、文本控件或其他文本展示区域，以满足设计要求并提供视觉效果的一致性。 #### 接口说明 自定义字体注册和使用的常用接口如下表所示，详细接口说明请见 @ohos.graphics.text (文本模块) 。 #### 开发步骤 1. 导入依赖的相关模块。 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI' import { UIContext } from '@kit.ArkUI' import { text } from '@kit.ArkGraphics2D' 2. 注册自定义字体。有以下两种方式： // 注册自"
+    },
+    {
+      "path": "references/自定义字体的注册和使用（C_C++）.md",
+      "title": "自定义字体的注册和使用（C/C++）",
+      "snippet": "自定义字体是指开发者根据应用需求创建或选择的字体，通常用于实现特定的文字风格或满足独特的设计要求。当应用需要使用特定的文本样式和字符集时，可以注册并使用自定义字体进行文本渲染。 #### 实现流程 **自定义字体的注册** 是指将字体文件（如ttf、otf文件等）从应用资源注册到系统中，使得应用能够使用这些字体进行文本渲染。注册过程通常指将字体文件通过字体管理接口注册到系统字体库中，以便在应用中进行调用。 **自定义字体的使用** 是指在应用中显式指定使用已注册的自定义字体进行文本绘制。开发者可以根据需要选择特定的文本样式（如常规、粗体、斜体等），并将其应用到UI元素、文本控件或其他文本展示区域，以确保符合设计要求并提供一致的视觉效果。 #### 接口说明 注册使用自定义字体的相关接口如下所示，详细接口说明请参考 Drawing 。 #### 开发步骤 1. 在工程的src/main/cpp/CMakeLists.txt文件中添加以下lib。 libnative_drawing.so 2. 导入依赖的相关头文件。 #include <native_drawing/drawing_font_collection.h> #include <native_drawing/drawing_text_typography.h> #include <native_drawing/drawing"
+    },
+    {
+      "path": "references/自定义文本绘制与显示（ArkTS）.md",
+      "title": "自定义文本绘制与显示（ArkTS）",
+      "snippet": "在复杂的文本排版场景中，当系统提供的标准文本组件无法满足特定的视觉或交互需求时，开发者可以利用ArkGraphics 2D提供的底层文本绘制能力，通过直接控制画布（Canvas）和文本样式，实现对文本外观、布局的精细控制。这种能力适用于需要高度定制化文本渲染效果的场景，例如艺术字体、复杂的富文本编排或特殊的动态文字效果。 字体引擎作为图形系统中的核心组件，负责将字符代码转换为可视化的字形，并精确计算每个字形的布局和位置，为自定义文本绘制提供底层支持。通过文本测量接口，开发者可以获取文本的精确尺寸，这是实现精准布局（如居中显示）的基础。 #### 文本塑形 #### 场景介绍 文本塑形是字体引擎提供的一项关键能力，它允许开发者不经过系统默认的文本排版流程，直接获取文本的底层字形信息（如宽度、方向等测量信息）。这使得开发者能够基于这些原始数据，实现完全自定义的排版逻辑、绘制操作以及断行策略。 这种能力适用于以下场景： - 自定义富文本渲染：例如在社交媒体、新闻客户端等应用中，需要实现图文混排、多样式文本混合显示。 - 跨平台一致性排版需求应用：确保文本在不同平台或设备上呈现一致的视觉效果。 - 精细化排版管理：如实现艺术排版、动态文字布局等系统标准文本组件难以达到的效果。 #### 接口说明 文本塑形中常用接口如下表所示，详细接口说明参考 @ohos.graphics.text (文本"
+    },
+    {
+      "path": "references/自定义文本绘制与显示（C_C++）.md",
+      "title": "自定义文本绘制与显示（C/C++）",
+      "snippet": "在复杂的文本排版场景中，当系统提供的标准文本组件无法满足特定的视觉或交互需求时，开发者可以利用ArkGraphics 2D提供的底层文本绘制能力，通过直接控制画布（Canvas）和文本样式，实现对文本外观、布局的精细控制。这种能力适用于需要高度定制化文本渲染效果的场景，例如艺术字体、复杂的富文本编排或特殊的动态文字效果。 字体引擎作为图形系统中的核心组件，负责将字符代码转换为可视化的字形，并精确计算每个字形的布局和位置，为自定义文本绘制提供底层支持。通过文本测量接口，开发者可以获取文本的精确尺寸，这是实现精准布局（如居中显示）的基础。 #### 文本塑形 #### 场景介绍 文本塑形是字体引擎提供的一项关键能力，它允许开发者不经过系统默认的文本排版流程，直接获取文本的底层字形信息（如宽度、方向等测量信息）。这使得开发者能够基于这些原始数据，实现完全自定义的排版逻辑、绘制操作以及断行策略。 这种能力适用于以下场景： - 自定义富文本渲染：例如在社交媒体、新闻客户端等应用中，需要实现图文混排、多样式文本混合显示。 - 跨平台一致性排版需求应用：确保文本在不同平台或设备上呈现一致的视觉效果。 - 精细化排版管理：如实现艺术排版、动态文字布局等系统标准文本组件难以达到的效果。 #### 接口说明 文本塑形中常用接口如下表所示，详细接口说明参考 drawing_text_typography"
+    },
+    {
+      "path": "references/请求UI绘制帧率.md",
+      "title": "请求UI绘制帧率",
+      "snippet": "如果开发者需要以独立的帧率绘制更新操作UI界面时，可以通过DisplaySync来实现。应用中绘制内容的帧率可以使用DisplaySync实例来控制，具体请查阅 @ohos.graphics.displaySync (可变帧率) 。 #### 开发步骤 此处以不同帧率改变文件组件字体大小为例，来模拟不同UI绘制帧率的效果。 1. 导入模块。 import { displaySync } from '@kit.ArkGraphics2D'; 2. 定义和构建DisplaySync对象。 @Entry @Component struct Index { // ... private backDisplaySyncSlow: displaySync.DisplaySync | undefined = undefined; private backDisplaySyncFast: displaySync.DisplaySync | undefined = undefined; // ... } 3. 定义两个文本组件。 @State drawFirstSize: number = 25; @State drawSecondSize: number = 25; // ... @Builder doSomeRenderFirst() { Text('30') .fontSize(this.dr"
+    },
+    {
+      "path": "references/请求动画绘制帧率.md",
+      "title": "请求动画绘制帧率",
+      "snippet": "在应用开发中， 属性动画 和 显式动画 能够使用可选参数 ExpectedFrameRateRange ，为不同的动画配置不同的期望绘制帧率。 #### 请求属性动画的绘制帧率 定义文本组件的属性动画，请求绘制帧率为60，范例如下： Text('60') // ... .animation({ duration: 1200, iterations: 10, // ... expectedFrameRateRange: { expected: 60, min: 0, max: 120, }, }) #### 请求显式动画的绘制帧率 定义按钮组件的显式动画，请求绘制帧率为30，范例如下： Button('Start') // ... .onClick(() => { // ... this.uiContext?.animateTo({ duration: 1200, iterations: 10, // ... expectedFrameRateRange: { expected: 30, min: 0, max: 120, }, }, () => { // ... }) // ... })"
+    },
+    {
+      "path": "references/请求自绘制内容绘制帧率.md",
+      "title": "请求自绘制内容绘制帧率",
+      "snippet": "对于基于 XComponent 进行Native开发的业务，可以请求独立的绘制帧率进行内容开发，如游戏、自绘制UI框架对接等场景。 #### 接口说明 详细的接口说明请参考 OH_NativeXComponent Native XComponent 。 #### 开发步骤 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/86/v3/82Tb1shXTumCQrcYbkooRg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111403Z&HW-CC-Expire=86400&HW-CC-Sign=4EE71366482669094CE50BA50AF7AAF636F02AA805C75728BB30376733D53C24) 本范例是通过Drawing在Native侧实现图形的绘制，并将其呈现在NativeWindow上，具体可参考 使用Drawing实现图形绘制与显示 。 1. 添加开发依赖。 CMakeLists.txt中添加以下lib。 target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnative_w"
+    },
+    {
+      "path": "references/过度绘制调试使用指导.md",
+      "title": "过度绘制调试使用指导",
+      "snippet": "当应用页面布局的嵌套程度过深时，应用渲染阶段会存在一些组件的绘制指令被其他组件的绘制指令部分或完全覆盖遮挡的情况，造成冗余的CPU、GPU等计算资源的使用。这种一个屏幕上的像素点被重复绘制了多次的情况被称为过度绘制（Overdraw）。开发者可通过系统提供的过度绘制调试指令，查看引起过度绘制的组件位置及其层级，从而减轻应用渲染时的负载。 本文将分别介绍过度绘制调试功能的使用方式，以及如何进行过度绘制的分析和优化。 #### 使用方式 系统提供的过度绘制调试功能，可通过shell进行开启或者关闭。 - 使用前提：需在系统设置中开启开发者模式。 - 开启过度绘制调试功能： param set debug.graphic.overdraw true ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b4/v3/K3yqkHv9SzeX3OaVAcybyw/zh-cn_image_0000002543374324.png?HW-CC-KV=V1&HW-CC-Date=20260421T111403Z&HW-CC-Expire=86400&HW-CC-Sign=5502FCA17C7E63C7961B7D2A3F9775EF52EB73329649D787F61CA01E87"
+    }
+  ]
+}

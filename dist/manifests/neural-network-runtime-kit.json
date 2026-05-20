@@ -1,0 +1,20 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "neural-network-runtime-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:29.017Z"
+  },
+  "references": [
+    {
+      "path": "references/Neural Network Runtime Kit简介.md",
+      "title": "Neural Network Runtime Kit简介",
+      "snippet": "Neural Network Runtime（NNRt, 神经网络运行时）是面向AI领域的跨芯片推理计算运行时，作为中间桥梁连通上层AI推理框架和底层加速芯片，实现AI模型的跨芯片推理计算。 Neural Network Runtime的Native接口主要面向AI推理框架的开发者，或者希望直接使用AI加速硬件实现模型推理加速的应用开发者。 AI推理框架可以调用NNRt的构图接口将推理框架的模型图转换为NNRt内部使用的模型图，然后调用NNRt的编译和执行接口在NNRt底层对接的AI加速硬件上进行模型推理。该方式可以实现无感知的跨AI硬件推理，但是首次加载模型速度较慢。 AI推理框架和应用开发者也可以无需调用NNRt构图接口，直接使用某款具体硬件对应的离线模型在NNRt上执行模型推理。该方式仅能实现在特定AI硬件上执行推理，但是首次加载模型速度较快。 #### NNRt架构 如图1所示，除了Native开放接口，NNRt软件架构包含如下几个功能模块： 1. **在线构图**：AI推理框架需要调用NNRt的构图接口将推理框架的模型图转换为NNRt内部模型图。而系统内置的MindSpore Lite推理框架（具体可参考MindSpore Lite Kit）通过MindIR模型图对接NNRt。由于MindIR模型图和NNRt内部模型图格式兼容，因此MindSpore Lite无需调用NN"
+    },
+    {
+      "path": "references/Neural Network Runtime对接AI推理框架开发指导.md",
+      "title": "Neural Network Runtime对接AI推理框架开发指导",
+      "snippet": "Neural Network Runtime作为AI推理引擎和加速芯片的桥梁，为AI推理引擎提供精简的Native接口，满足推理引擎通过加速芯片执行端到端推理的需求。 本文以图1展示的Add单算子模型为例，介绍Neural Network Runtime的开发流程。Add算子包含两个输入、一个参数和一个输出，其中的activation参数用于指定Add算子中激活函数的类型。 **图1** Add单算子网络示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0/v3/kM8GW3UKSBigdhYIwh2qeQ/zh-cn_image_0000002543215386.png?HW-CC-KV=V1&HW-CC-Date=20260421T111946Z&HW-CC-Expire=86400&HW-CC-Sign=7F36DB3FC9E216CC3A39534CDFB7E11D84AEE8E822F694179772873E514AD461) #### 环境准备 #### 环境要求 Neural Network Runtime部件的环境要求如下： - 开发环境：Ubuntu 18.04及以上。 - 接入设备：系统定义的标准设备，系统中内置AI硬件驱动并已接入Ne"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "arkdata",
+  "source_path": "skills/arkdata/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:49:13.654Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "数据管理",
+      "Preferences",
+      "KV存储",
+      "关系型数据库",
+      "向量数据库",
+      "数据共享",
+      "UDMF",
+      "跨设备同步",
+      "如何选择合适的数据持久化方式（用户首选项、键值型数据库、关系型数据库、向量数据库）",
+      "如何使用关系型数据库实现数据的增删改查和自定义SQL操作",
+      "如何实现数据库加密和备份恢复以保障数据安全",
+      "如何通过标准化数据通路（UDMF）实现跨应用数据共享",
+      "如何实现同应用跨设备数据同步（键值型、关系型、分布式数据对象）",
+      "如何部署云侧环境并实现端云数据同步",
+      "如何使用向量数据库实现数据向量化存储和相似度检索",
+      "如何查看关系型数据库的SQL执行异常信息和生成的SQL语句",
+      "如何使用SQLite、preferences、vector-store等数据库调试工具",
+      "如何基于标准化数据结构实现控件的数据交互",
+      "当应用需要将数据持久化保存到设备本地时，请使用ArkData的数据持久化能力",
+      "根据数据特点选择合适的存储方式：轻量级配置数据使用用户首选项，键值对数据使用KV-Store，结构化数据使用关系型数据库，向量数据使用向量数据库",
+      "当应用需要加密数据库、备份恢复数据，或需要基于设备分类和数据分级进行访问控制时，请使用数据可靠性与安全性相关能力",
+      "当应用需要在不同应用间共享数据、在不同设备间同步数据，或需要实现端云数据协同时，请使用ArkData的跨应用数据共享和跨设备/端云同步能力",
+      "特别是当应用需要构建跨设备分布式体验（如手机与手表数据同步）或接入云端数据库实现多端数据一致时，ArkData提供了完整的开发指导",
+      "用 Preferences 保存用户设置并在下次启动时恢复 / Save user settings with Preferences and restore them on next launch",
+      "实现本地离线数据持久化，应用重启后仍可读取 / Persist local offline data so it remains available after app restart",
+      "用关系型数据库管理商品、订单或聊天记录并做增删改查 / Manage products, orders, or chat messages with a relational database and CRUD operations",
+      "执行自定义 SQL 查询、排序和分页读取本地数据 / Run custom SQL queries with sorting and pagination on local data",
+      "给本地数据库加密并支持备份恢复用户数据 / Encrypt the local database and support backup and restore of user data",
+      "存储结构化业务数据并建立表之间的关联关系 / Store structured business data and define relations between tables",
+      "接入分布式数据能力，让同一应用在多设备间同步数据 / Integrate distributed data so the same app syncs data across multiple devices",
+      "同步待办事项、笔记或收藏夹到手机和平板 / Sync todos, notes, or favorites between phone and tablet",
+      "通过 UDMF 在应用之间共享文本、图片或文件数据 / Share text, images, or files across apps through UDMF",
+      "实现跨应用的数据传递与标准化交换 / Implement cross-app data transfer and standardized data exchange",
+      "用键值存储保存登录态、开关状态和轻量缓存 / Store login state, toggle flags, and lightweight cache with key-value storage",
+      "接入端云数据同步，把本地记录上传到云端并回流更新 / Enable device-cloud sync to upload local records and pull back updates",
+      "使用向量数据库保存嵌入向量并做相似内容检索 / Store embedding vectors in a vector database and perform similarity search",
+      "管理应用数据模型、持久化方案和数据共享链路 / Manage app data models, persistence choices, and data sharing flows"
+    ],
+    "do_not_use_when": [
+      "需求是管理媒体文件、文档等文件本体的创建/复制/移动/删除，而不是保存结构化数据；应改用 core-file-kit / The task is to create/copy/move/delete actual files such as media or documents rather than persist structured data; use core-file-kit instead",
+      "需求是接入系统级文件管理、选择或浏览用户文件，而不是实现应用内数据库、首选项或数据同步；应改用 file-manager-service-kit / The task is to access system file management, file picking, or user file browsing rather than app-internal databases, preferences, or data sync; use file-manager-service-kit instead",
+      "需求是对图片、视频、文档等文件资源做资产入库、检索或统一管理，而不是保存业务键值/关系型数据；应改用 asset-store-kit / The task is to ingest, index, or manage asset resources like images, videos, or documents rather than store business key-value or relational data; use asset-store-kit instead",
+      "主要目标是文件或数据的安全隔离、权限保护、加密策略合规，而不是数据存储模型或同步机制；应改用 data-protection-kit / The primary goal is secure isolation, permission protection, or encryption policy compliance for files/data rather than choosing a storage model or sync mechanism; use data-protection-kit instead",
+      "需求只是预览文件或媒体内容，而不是对数据进行持久化、共享或同步；应改用 preview-kit / The task is only to preview files or media content rather than persist, share, or synchronize data; use preview-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成可用的ArkData相关SDK/API，并与目标语言接口（ArkTS或C/C++）匹配 / The project has the required ArkData SDK/APIs integrated and matched to the target language interface (ArkTS or C/C++)",
+      "若使用DataShare、跨设备同步或端云同步，module.json5中已声明对应权限、能力或元数据配置 / If using DataShare, cross-device sync, or cloud sync, the corresponding permissions, capabilities, or metadata are declared in module.json5",
+      "若涉及分布式或端云能力，设备互联、账号登录、网络连接及相关服务环境已就绪 / If distributed or cloud capabilities are involved, device connectivity, account sign-in, network access, and related service environments are ready",
+      "若访问受保护数据或系统共享数据，用户授权及访问控制条件已满足 / If accessing protected data or system-shared data, required user consent and access control conditions have been satisfied"
+    ],
+    "inputs": [
+      "数据模型或存储类型选择（Preferences/KV-Store/RelationalStore/VectorStore） / Data model or storage type choice (Preferences/KV-Store/RelationalStore/VectorStore)",
+      "待写入、查询、共享或同步的数据内容 / Data content to be written, queried, shared, or synchronized",
+      "数据库名称、表结构、键名或集合配置 / Database name, table schema, key names, or collection configuration",
+      "共享或同步目标信息，如URI、设备标识或云端配置 / Sharing or synchronization target info such as URI, device identifiers, or cloud configuration"
+    ],
+    "outputs": [
+      "Kit简介与术语",
+      "数据持久化",
+      "数据可靠性与安全性",
+      "标准化数据定义",
+      "跨应用数据共享",
+      "跨设备数据同步",
+      "端云数据同步",
+      "调试工具"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已接入至少一种ArkData能力，并包含对应的数据读写、查询、共享或同步调用 / The code integrates at least one ArkData capability and includes corresponding data read/write, query, sharing, or synchronization calls",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code to call ArkData-related APIs (such as preferences, KV-Store, relational store, vector store, DataShare, UDMF, or sync APIs) rather than unrelated file/preview APIs?"
+      },
+      {
+        "statement": "所选实现与目标场景一致，例如轻量配置用首选项、结构化数据用关系库、向量检索用向量库 / The chosen implementation matches the target scenario, e.g. preferences for lightweight settings, relational store for structured data, vector store for vector retrieval",
+        "verifier": "model_judge",
+        "judge_prompt": "Based on the edits, is the selected ArkData storage or sharing mechanism appropriate for the described data shape and task rather than an obviously mismatched choice?"
+      },
+      {
+        "statement": "若使用共享或同步能力，工程中已补充必要的配置、权限声明或连接初始化代码 / If sharing or synchronization is used, the project includes the necessary configuration, permission declarations, or connection initialization code",
+        "verifier": "model_judge",
+        "judge_prompt": "When the edits introduce DataShare, cross-device sync, or cloud sync, do they also add the supporting configuration, permission, or initialization changes needed for those features to work?"
+      }
+    ],
+    "overlaps_with": [
+      "asset-store-kit",
+      "core-file-kit",
+      "file-manager-service-kit",
+      "data-protection-kit",
+      "preview-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

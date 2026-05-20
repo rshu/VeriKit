@@ -1,0 +1,100 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "fast-kit",
+  "source_path": "skills/fast-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:53:52.213Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "算法加速",
+      "Segment Map",
+      "矩形划分",
+      "高性能数据结构",
+      "如何使用SegmentMap线段表实现区间数据的快速更新和查询",
+      "如何在股票K线图、甘特图等数据可视化场景中使用线段表加速渲染",
+      "如何使用RectPartition求解器计算最优矩形划分方案",
+      "如何在UI渲染、游戏开发中合并相邻矩形区域减少GPU绘制调用",
+      "如何在表格处理应用中利用矩形划分自动合并相邻格式相同的单元格",
+      "当您的应用需要高效处理大量区间段数据的更新和查询操作时，应使用 FAST Kit 的线段表数据结构",
+      "典型场景包括：金融类应用中需要快速响应 K 线图标记请求、项目管理应用中需要高效渲染大量任务的甘特图时间区间、性能监控工具中需要聚合分析异常发生的时间区间、以及游戏中需要管理大量持续生效技能或碰撞区间检测等",
+      "当您的应用需要将多个不相交的矩形区域合并为数量最少的等价矩形划分方案时，应使用矩形划分求解器",
+      "典型场景包括：UI 渲染引擎中合并相邻绘制区域减少 GPU 调用次数、游戏中合并地形区域优化碰撞检测、表格处理应用中自动合并相邻格式相同的单元格区域等",
+      "用 SegmentMap 维护时间轴区间状态并快速查询命中范围 / Use SegmentMap to maintain timeline interval states and query overlapping ranges fast",
+      "实现大量时间段的批量打标和区间统计 / Implement batch tagging and interval aggregation over massive time ranges",
+      "为甘特图任务条做高频区间更新而不卡顿 / Support high-frequency interval updates for Gantt bars without lag",
+      "加速日志异常时间窗的合并查询和范围检索 / Speed up merged querying and range lookup for log anomaly time windows",
+      "管理 Buff 持续时间或技能生效区间并快速判定覆盖 / Manage buff durations or active effect intervals and quickly check coverage",
+      "对价格区间、预约时段或日程片段做快速插入和查找 / Perform fast insert and lookup for price ranges, booking slots, or schedule segments",
+      "用 RectPartition 合并相邻脏区域以减少重绘次数 / Use RectPartition to merge adjacent dirty regions and reduce redraw calls",
+      "优化画布或地图瓦片的矩形区域合并与裁剪 / Optimize rectangle merging and clipping for canvas or map tiles",
+      "将零散选区压缩成更少的矩形块便于渲染 / Compress scattered selections into fewer rectangle blocks for easier rendering",
+      "自动合并相邻且属性一致的网格单元区域 / Automatically merge adjacent grid cell regions with identical attributes",
+      "减少游戏场景中矩形碰撞区域数量以提升性能 / Reduce the number of rectangular collision regions in a game scene to improve performance",
+      "把多个不重叠矩形重组为更优的最小划分结果 / Reorganize multiple non-overlapping rectangles into a more optimal minimal partition"
+    ],
+    "do_not_use_when": [
+      "需求是进行性能采样、卡顿定位或运行时瓶颈分析，而不是引入线段表或矩形划分算法；应改用 performance-analysis-kit / The need is performance sampling, jank diagnosis, or runtime bottleneck analysis rather than adding SegmentMap or rectangle partition algorithms; use performance-analysis-kit instead",
+      "需求是做界面布局、组件样式或可视化设计产物生成，而不是计算最少矩形划分结果；应改用 ui-design-kit / The task is UI layout, component styling, or visual design artifact generation rather than computing a minimal rectangle partition; use ui-design-kit instead",
+      "需求是编写测试用例、测试框架集成或自动化验证，而不是在应用逻辑中调用算法加速接口；应改用 test-kit / The task is writing test cases, integrating test frameworks, or automated verification rather than invoking algorithm-acceleration APIs in app logic; use test-kit instead",
+      "需求是无障碍语义、读屏支持或可访问性交互适配，而不是区间查询或矩形合并求解；应改用 accessibility-kit / The need is accessibility semantics, screen-reader support, or accessible interaction adaptation rather than interval querying or rectangle merge solving; use accessibility-kit instead",
+      "需求是日历日程、天气数据、本地化文本等业务服务接入，而不是通用算法求解；应分别改用 calendar-kit、weather-service-kit 或 localization-kit / The need is business-service integration such as calendar events, weather data, or localization text rather than general algorithm solving; use calendar-kit, weather-service-kit, or localization-kit instead"
+    ],
+    "preconditions": [
+      "工程能够链接并调用该 Kit 提供的 C/C++ 接口与对应头文件/库文件 / The project can link against and call the Kit's C/C++ interfaces with the required headers and libraries",
+      "应用运行地区需位于中国境内（不含香港、澳门和台湾），否则能力不可用 / The app must run in mainland China (excluding Hong Kong, Macao, and Taiwan), otherwise the capability is unavailable",
+      "输入数据需满足算法前提：RectPartition 的输入矩形彼此不相交，SegmentMap 的区间边界定义明确 / Input data must satisfy algorithm assumptions: RectPartition rectangles are pairwise non-overlapping, and SegmentMap interval boundaries are well defined"
+    ],
+    "inputs": [
+      "区间段序列、更新操作或查询范围 / interval sequence, update operations, or query ranges",
+      "若干彼此不相交的矩形区域 / multiple pairwise non-overlapping rectangular regions",
+      "求解或数据结构配置参数（不透明配置对象） / solver or data-structure configuration parameters (opaque configuration object)"
+    ],
+    "outputs": [
+      "Kit 简介",
+      "高阶数据结构",
+      "规划求解"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已接入 FAST Kit 的 C/C++ API 调用，而非仅停留在伪代码描述 / The code integrates FAST Kit C/C++ API calls rather than remaining as pseudocode only",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify real C/C++ code that invokes FAST Kit APIs or types for SegmentMap or RectPartition, instead of only comments or high-level descriptions?"
+      },
+      {
+        "statement": "若使用 RectPartition，已对输入矩形集合进行构造并将其提交给求解流程 / If RectPartition is used, the input rectangle set is constructed and submitted to the solving flow",
+        "verifier": "model_judge",
+        "judge_prompt": "When the agent claims to use RectPartition, do the edits show code that builds rectangle inputs and passes them into a solver/configuration/execution path?"
+      },
+      {
+        "statement": "若使用 SegmentMap，已实现区间更新或区间查询中的至少一种实际操作 / If SegmentMap is used, at least one real interval update or interval query operation is implemented",
+        "verifier": "model_judge",
+        "judge_prompt": "When the agent claims to use SegmentMap, do the edits include at least one concrete interval update or interval query invocation on the data structure?"
+      }
+    ],
+    "overlaps_with": [
+      "basic-services-kit",
+      "accessibility-kit",
+      "localization-kit",
+      "test-kit",
+      "performance-analysis-kit",
+      "calendar-kit",
+      "weather-service-kit",
+      "ui-design-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "wear-engine-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:29.290Z"
+  },
+  "references": [
+    {
+      "path": "references/HR传感器数据中，存在数值为0或255的异常情况.md",
+      "title": "HR传感器数据中，存在数值为0或255的异常情况",
+      "snippet": "0和255为瞬时异常数据，出现异常数据的原因可能是手表佩戴的位置有误或佩戴较松，请开发者对此异常数据进行过滤。"
+    },
+    {
+      "path": "references/业务简介.md",
+      "title": "业务简介",
+      "snippet": "Wear Engine（穿戴服务）面向手机和穿戴设备的应用与服务开发者，提供华为穿戴设备开放能力。 开发者通过调用Wear Engine开放能力，可以实现手机上的生态应用与服务给华为穿戴设备发消息、发通知、传输数据，并获取穿戴设备状态、读取传感器数据等，也可以实现华为穿戴设备上的生态应用与服务给手机发消息、传输数据等。 Wear Engine将手机上的生态应用和服务延展到智能穿戴设备，也将智能穿戴的设备能力开放给手机应用，实现手机与穿戴设备能力共享，给用户提供更丰富的应用场景、更便捷的业务体验、更流畅的人机交互，为应用与服务带来更多流量，创造更多新业务、新交互、新体验。 #### 开放能力 Wear Engine聚焦华为穿戴设备能力开放，目前提供了以下能力： 1. **获取穿戴设备基础信息（设备基础能力）** - 开放范围：个人开发者、企业开发者 - 手机侧应用：支持获取已配对穿戴设备列表并选定设备，查询与订阅穿戴设备连接状态、电量、充电状态等 2. **应用间消息通信（设备基础能力）** - 开放范围：个人开发者、企业开发者 - 手机侧应用：支持双向传输消息与文件，如：图片、音乐等 - 轻量级智能穿戴设备侧应用：支持双向传输消息与文件，如：图片、音乐等 - 智能穿戴设备侧应用：支持双向传输消息与文件，如：图片、音乐等 3. **穿戴设备模板化通知** - 开放范围：个人开发者、企"
+    },
+    {
+      "path": "references/个人数据处理说明.md",
+      "title": "个人数据处理说明",
+      "snippet": "华为是数据处理者，不是数据控制者，数据使用目的和方式由用户自己决定。 此文档针对华为作为最终用户数据处理者，开发者作为最终用户数据控制者的数据处理进行说明，包括： - 华为处理的个人数据清单。 - 指导开发者如何帮助最终用户实现对数据的控制。 #### 华为处理的个人数据清单 最后修改时间：2024/6/11"
+    },
+    {
+      "path": "references/使用AppInfo时，如何获取应用身份标识.md",
+      "title": "使用AppInfo时，如何获取应用身份标识",
+      "snippet": "应用开发中需要使用AppInfo时，其中fingerprint可采用AppGallery Connect平台提供的应用ID值来标识应用的唯一身份。 可通过登录 AppGallery Connect 平台，在“开发与服务”中选择目标应用，获取“项目设置 > 常规 > 应用”的APP ID。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/20/v3/NYXjtvh8SVWI5-qx9xhx9g/zh-cn_image_0000002543214520.png?HW-CC-KV=V1&HW-CC-Date=20260421T111235Z&HW-CC-Expire=86400&HW-CC-Sign=DA4CC11EB1DC01E8C06BA1E2BC46226D9614BDFA142D4C00C1E6717A41558688)"
+    },
+    {
+      "path": "references/场景介绍.md",
+      "title": "场景介绍",
+      "snippet": "- 重要通知实现腕上提醒，实现即时通知推送，如：在手机侧App中设置日程提醒、用药提醒、任务提醒等数据，可以同步到穿戴设备侧App中，不用打开手机，也可以随时在穿戴设备上查看重要信息。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c8/v3/Z3rsEIIKRROqGUtE3XPbaQ/zh-cn_image_0000002573854429.png?HW-CC-KV=V1&HW-CC-Date=20260421T111231Z&HW-CC-Expire=86400&HW-CC-Sign=55E505158DEE1BFDF7BE494E88898B3C6AB6433FE2687E8683D719C6BECA4C6A) - 为手机应用带来全新的“腕上交互”，如：用手机侧App看视频、听音频时，可以通过穿戴设备侧App操控手机侧App，比如暂停，下一首，停止等。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8a/v3/kfJd_ya6Ti6ZeAQZddq5sw/zh-cn_image_0000002573974405.png?HW-CC-K"
+    },
+    {
+      "path": "references/如果工程已有APP ID，是否需要重新申请，填写新的APP ID.md",
+      "title": "如果工程已有APP ID，是否需要重新申请，填写新的APP ID",
+      "snippet": "若APP ID已在华为开发者联盟官网完成注册，则无需重复申请。但需确保应用包名、APP ID及证书指纹信息与注册开发者账号时提交的数据完全一致。"
+    },
+    {
+      "path": "references/已连接对端设备查询.md",
+      "title": "已连接对端设备查询",
+      "snippet": "Wear Engine提供查询用户在穿戴侧已连接的对端设备列表的接口。 建议开发者在使用Wear Engine其他API接口前先实现该接口功能，从已连接的对端设备列表中选定设备。 1. 调用 getDeviceClient 方法，获取 DeviceClient 对象。 2. 调用 getConnectedDevices 方法，查询用户已连接的穿戴设备列表。 3. 从已连接设备列表中选定需要通信的对端设备。 4. 查询对端设备的操作系统类型。 // 在使用Wear Engine服务前，请导入wearEngine与相关模块 import { wearEngine } from '@kit.WearEngine'; import { BusinessError } from '@kit.BasicServicesKit'; // 步骤1：获取DeviceClient对象 // this.getUIContext().getHostContext() 表示应用上下文Context对象 let deviceClient: wearEngine.DeviceClient = wearEngine.getDeviceClient(this.getUIContext().getHostContext()); // 声明目标设备 let targetDevice: wearEngine.Device"
+    },
+    {
+      "path": "references/已连接穿戴设备查询.md",
+      "title": "已连接穿戴设备查询",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/88/v3/EsgYUKHiQuifn6gNNpXwGg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111232Z&HW-CC-Expire=86400&HW-CC-Sign=C7C4DDC13705C82355E141D60657382DFAF1CC440621FDA5A0B7F1BECA1DDF77) 该接口的调用前，需要在开发者联盟申请设备基础信息权限（具体请参考 申请接入Wear Engine服务 ）。 Wear Engine提供查询用户已连接的穿戴设备列表（即支持Wear Engine能力且与手机侧运动健康App处于连接状态的穿戴设备）的接口。 建议开发者在使用Wear Engine其他API接口前先实现该接口功能。 1. 应用调用 wearEngine 中的 getDeviceClient 方法，获取 DeviceClient 对象。 2. 调用 getConnectedDevices 方法，查询用户已连接的穿戴设备列表。 // 在使用Wear Engine服务前，请导入WearEngine与相关模块 import { wearEngine } "
+    },
+    {
+      "path": "references/应用间消息通信-1.md",
+      "title": "应用间消息通信",
+      "snippet": "- 使用该功能前，请确保对端设备侧已有对应的应用。 - 对端设备侧应用和穿戴设备应用必须同时处于已启动状态。 #### 穿戴侧应用检测对端设备侧应用是否安装 1. 参见 已连接对端设备查询 章节，从已连接设备列表中选定需要通信的对端设备。 2. 调用 getP2pClient 方法，获取 P2pClient 对象。 3. 调用 isRemoteAppInstalled 方法，查看对端设备是否安装指定应用。 // 将对端应用包名定义为remoteBundleName let remoteBundleName: string = ''; // 步骤2 获取P2pClient对象 let p2pClient: wearEngine.P2pClient = wearEngine.getP2pClient(this.getUIContext().getHostContext()); // 步骤3 查看是否安装指定的对端应用 p2pClient.isRemoteAppInstalled(targetDevice.randomId, remoteBundleName).then((isInstall) => { console.info(`Succeeded in checking remote app install, result is ${isInstall}.`); }).catch(("
+    },
+    {
+      "path": "references/应用间消息通信.md",
+      "title": "应用间消息通信",
+      "snippet": "在手机侧与穿戴设备侧构建应用到应用的通信隧道，用于收发应用自定义的报文消息以及文件。实现手机应用和穿戴设备应用间的交互，为用户提供分布式场景和体验。比如手机应用发送音频文件到穿戴设备侧应用，实现在穿戴设备侧应用上播放音乐；手机应用发送暂停指令，实现穿戴设备音乐播放暂停等。 收发点对点消息前，需要确保应用已在开发者联盟申请获取设备基础信息权限（参见 申请接入Wear Engine服务 ），否则接口将调用失败。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d1/v3/wpgaIGaqTWKMt2GLFblEdw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111233Z&HW-CC-Expire=86400&HW-CC-Sign=C4DF11D45A9847EA17DE842CA7043E54DDA1C5DAB49509C7F0048DD6B7C5C985) - 使用该功能前，请确保穿戴设备支持应用安装能力（参见 目标设备选择 ），同时穿戴设备侧已有对应的应用（参见 穿戴侧应用开发 ）。 - 手机App和穿戴设备App必须同时处于启动状态。 - 当手机App启动且穿戴设备App没有启动时，手机App可以通过"
+    },
+    {
+      "path": "references/手机侧应用发送文件给穿戴设备侧应用时，提示错误码1008500011.md",
+      "title": "手机侧应用发送文件给穿戴设备侧应用时，提示错误码1008500011",
+      "snippet": "手机侧应用发送文件需要文件访问权限，请检查应用是否具有相关文件的访问权限。"
+    },
+    {
+      "path": "references/手机和轻量级智能穿戴设备通信，提示错误码206.md",
+      "title": "手机和轻量级智能穿戴设备通信，提示错误码206",
+      "snippet": "- 手机和穿戴设备的包名或证书指纹不匹配 - 轻量级智能穿戴设备侧：需要把手机的包名和指纹信息放到白名单中 - 手机侧：需要把轻量级智能穿戴设备侧应用的包名和指纹信息配置正确 - 轻量级智能穿戴设备侧应用不在前台 - 手机或轻量级智能穿戴设备侧应用没有注册消息接收器 - 发送的消息为空 - 蓝牙未连接"
+    },
+    {
+      "path": "references/打开HR传感器后，没有立刻上报数据.md",
+      "title": "打开HR传感器后，没有立刻上报数据",
+      "snippet": "设备底层计算HR数据需要一定的时间，不同的设备由于性能差异所需时间不同，等待一段时间后方可收到上报数据。"
+    },
+    {
+      "path": "references/接口调用时返回App has not applied for the Wear Engine service错误信息.md",
+      "title": "接口调用时返回App has not applied for the Wear Engine service错误信息",
+      "snippet": "1. 请确保已在华为开发者联盟网站完成了 申请接入Wear Engine服务 ，并已审批通过。 2. 如果已申请了Wear Engine服务并且通过审批，仍返回App has not applied for the Wear Engine service错误信息，可能是您在华为联盟网站上申请Wear Engine服务前已经调用过相关接口，申请审核通过后，本地已缓存的未申请权限的记录未更新（每24小时自动刷新一次）。请在应用管理中清除华为运动健康App数据，或卸载重装华为运动健康App后重试。 3. 如仍无法解决，请通过华为开发者联盟的“ 在线提单 ”获取人工帮助。"
+    },
+    {
+      "path": "references/更多：若以上FAQ仍不能解决，可通过在线提单反馈.md",
+      "title": "更多：若以上FAQ仍不能解决，可通过在线提单反馈",
+      "snippet": "打开华为开发者联盟的“ 在线提单 ”页面，根据遇到的问题情况填写“概述”，问题分类选择“HarmonyOS NEXT > 系统 > Wear Engine Kit”，描述问题详情并单击“提交问题”。提交问题后，有时需要您进一步澄清问题，请及时关注进展并予以回复，以便更好地解决问题。"
+    },
+    {
+      "path": "references/没有弹出用户授权界面.md",
+      "title": "没有弹出用户授权界面",
+      "snippet": "1. 首次使用运动健康App，请打开App同意相关的隐私声明。 2. 请确保已按照 请求用户授权 章节，完成功能开发。"
+    },
+    {
+      "path": "references/状态查询与订阅.md",
+      "title": "状态查询与订阅",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6e/v3/VUNUtnBqQuWeyumyJ4g3RA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111233Z&HW-CC-Expire=86400&HW-CC-Sign=5BA7FEDFBB41A61BF0CA38EE05D40C1F4208E1748B591FE3FC615CD918515706) 该接口的调用需要在开发者联盟申请设备基础信息权限与穿戴用户状态权限（请参考 申请接入Wear Engine服务 ），穿戴用户状态权限还需获得用户授权。 - 实时查询穿戴设备可用空间、电量状态。 - 订阅穿戴设备连接状态、低电量告警、用户心率告警。 - 查询和订阅穿戴设备充电状态、佩戴状态、设备模式。 使用该接口前，需要确保应用已申请相应权限（参见 申请接入Wear Engine服务 ）同时向手机侧用户申请获取对应权限的授权（参见 请求用户授权 ），否则接口将调用失败。 **表1** 申请权限：设备基础信息 **表2** 申请权限：穿戴用户状态USER_STATUS（仅限企业开发者） ![](https://contentcenter-vali-drcn.d"
+    },
+    {
+      "path": "references/申请接入Wear Engine服务.md",
+      "title": "申请接入Wear Engine服务",
+      "snippet": "申请Wear Engine服务前，请先参考 应用开发准备 （开发者需实名认证为个人开发者或者企业开发者，认证前，请先了解二者的 权益区别 ），确认开发环境并完成创建项目、创建HarmonyOS应用等基本准备工作，再继续进行以下开发活动。 1. 进入华为开发者联盟的“管理中心”，点击“ 应用服务 ”页签下的“Wear Engine”卡片。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/af/v3/ow_4DYefSfatrTZSHWhaTg/zh-cn_image_0000002573854431.png?HW-CC-KV=V1&HW-CC-Date=20260421T111232Z&HW-CC-Expire=86400&HW-CC-Sign=173A25B0279C7C1079F9FF2C2D342A34CE6C659AE16CF282BA447B8B151FE7A4) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ef/v3/DRKQCmGwQyKWNOOmcKbyhw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-C"
+    },
+    {
+      "path": "references/目标设备选择.md",
+      "title": "目标设备选择",
+      "snippet": "当获取到的已连接设备列表中包含多个设备时，需要根据业务需求正确挑选目标设备。 #### 选择某种类型的设备 获取到的设备 Device 类中，包含有 DeviceCategory 字段，表明了当前设备的类型，可根据设备的类型挑选目标设备。 1. 参见 已连接穿戴设备查询 章节，获取已连接设备列表。 2. 从已连接设备列表中根据设备类型选定需要通信的设备。 // 声明目标设备 let targetDevice: wearEngine.Device; for (let index = 0; index < deviceList.length; index++) { // 挑选类型为手表的设备 if (deviceList[index].category === wearEngine.DeviceCategory.WATCH) { targetDevice = deviceList[index]; break; } if (index === deviceList.length - 1) { // 若不存在目标设备则抛出错误 throw new Error('cannot find target device'); } } // targetDevice为undefined则抛出错误 if (!targetDevice) { throw new Error('The value of t"
+    },
+    {
+      "path": "references/穿戴设备传感器获取.md",
+      "title": "穿戴设备传感器获取",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/86/v3/Mzia2zIASUehSOJptS84rQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111233Z&HW-CC-Expire=86400&HW-CC-Sign=9B88509AFA3D76378C3C1E49E9F3CA3CD96B958509BF300D1406B6A26F788D21) 人体传感器功能仅限专业研究机构使用。 手机侧应用可以通过Wear Engine获取穿戴设备上的传感器信息，并通过打开、关闭命令控制获取传感器数据。 使用传感器相关接口前，需要向手机侧用户申请获取对应权限的授权（参见 请求用户授权 ），否则接口将调用失败。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9d/v3/wX8SzuvMQdWAf3SFEhNycg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111233Z&HW-CC-Expire=86400&HW-CC-Sign=37"
+    },
+    {
+      "path": "references/穿戴设备信息查询.md",
+      "title": "穿戴设备信息查询",
+      "snippet": "// 在使用Wear Engine服务前，请导入WearEngine与相关模块 import { wearEngine } from '@kit.WearEngine'; import { BusinessError } from '@kit.BasicServicesKit'; #### 查询穿戴设备是否支持某种WearEngine能力集 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a3/v3/bGU7jeNGRrijri_LxoKw1Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111232Z&HW-CC-Expire=86400&HW-CC-Sign=EDA0C743DC71D6D7C0002B68BF566ABF2CD2B88A0AE3BEA9A3645A3E3A2BB37D) 该接口的调用需要在开发者联盟申请设备基础信息权限（请参考 申请接入Wear Engine服务 ）。 通过 Device 对象中的方法 isWearEngineCapabilitySupported 查询穿戴设备是否支持某种WearEngine能力集。 1. 应用调用 wearEngine 中的 getDeviceCli"
+    },
+    {
+      "path": "references/穿戴设备模板化通知.md",
+      "title": "穿戴设备模板化通知",
+      "snippet": "手机侧应用向穿戴设备发送通知，并在穿戴设备上按模板显示，支持穿戴设备收到通知后同步振动或响铃（跟随穿戴设备系统设置）。执行成功后，穿戴设备上会显示下图所示通知界面。 该接口无需用户授权，仅需要确保应用已申请消息通知权限（参见 申请接入Wear Engine服务 ），否则接口将调用失败。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6f/v3/MRV8NMMWR4-tA11Qiu-gAA/zh-cn_image_0000002543374182.png?HW-CC-KV=V1&HW-CC-Date=20260421T111233Z&HW-CC-Expire=86400&HW-CC-Sign=C34454067873F78249F9F317F21C8781BB9076EAC5F9D3E85002D470A68DA69F) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2c/v3/nsYE9CZYQCu97VcTjmmjeQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111233Z&HW"
+    },
+    {
+      "path": "references/管理应用与Wear Engine服务的连接状态.md",
+      "title": "管理应用与Wear Engine服务的连接状态",
+      "snippet": "华为运动健康App在后台停止服务（如功耗过高），从而导致应用与Wear Engine服务的连接状态发生变化。对于类似这种不确定的断开情况，开发者可以通过本功能特性了解当前应用和Wear Engine的连接状态。前提是在服务断开前，开发者已经使用该功能订阅过对Wear Engine服务连接状态的监测。 1. 在使用Wear Engine服务前，请导入WearEngine与相关模块。 import { wearEngine } from '@kit.WearEngine'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 构造当服务连接断开时执行的回调函数。 let callback = () => { console.info(`The service destruction event`); } 3. 调用 wearEngine 中的 on 方法，订阅监听应用与Wear Engine服务的断联事件。 try { wearEngine.on('serviceDie', callback); console.info(`Succeeded in subscribing the service destruction event.`); } catch (error) { const err: BusinessError"
+    },
+    {
+      "path": "references/请求用户授权.md",
+      "title": "请求用户授权",
+      "snippet": "为保护用户隐私，Wear Engine的API需要用户授权才可以正常访问。建议开发者在用户首次调用Wear Engine开放能力的时候执行本章节操作。 #### 申请用户穿戴设备权限 应用拉起华为账号登录和授权界面，由用户授权相应的数据访问权限。用户可以自主选择授权的数据类型，可以只授权部分数据权限。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/85/v3/-m5sHqfJSKuCBCl8EvQK5Q/zh-cn_image_0000002573974409.png?HW-CC-KV=V1&HW-CC-Date=20260421T111232Z&HW-CC-Expire=86400&HW-CC-Sign=19EAEB830488A20626F99E552483EC3CCFE980D6EED4A1DFC3D0CD97E8285015) 1. 应用调用 wearEngine 中的 getAuthClient 方法，获取 AuthClient 对象。 2. 定义需要用户授权的权限请求类 AuthorizationRequest 。 3. 调用 requestAuthorization 方法，向用户请求权限。执行成功后，会弹出授权界面，让用户选择授予权限（若未登录华为"
+    },
+    {
+      "path": "references/调测验证.md",
+      "title": "调测验证",
+      "snippet": "按照预置条件进行分类。 **预置条件一：** 1. 手机已安装华为运动健康App，已登录华为账号。 2. 手机侧已安装三方App。 **预置条件二：** 1. 手机已安装华为运动健康App，已登录华为账号。 2. 手机侧已安装三方App。 3. 穿戴设备侧安装对应的穿戴设备三方App。 4. 穿戴设备已在华为运动健康App绑定，连接正常。 5. 已完成用户授权。 **预置条件三：** 1. 手机已安装华为运动健康App，已登录华为账号。 2. 手机侧已安装三方App。 3. 穿戴设备侧安装对应的穿戴设备三方App。 4. 穿戴设备已在华为运动健康App绑定，连接正常。 5. 已完成用户授权。"
+    },
+    {
+      "path": "references/配置Client ID.md",
+      "title": "配置Client ID",
+      "snippet": "1. 登录 AppGallery Connect 平台，在“开发与服务”中选择目标应用，获取“项目设置 > 常规 > 应用”的Client ID。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ca/v3/ETv9CNNRSu-u91J2rERLUg/zh-cn_image_0000002573854433.png?HW-CC-KV=V1&HW-CC-Date=20260421T111232Z&HW-CC-Expire=86400&HW-CC-Sign=3AB3F27BFE7BE9553D8F4E90039C80F1BBADF5EEE313E6B65C2DBAA0756B179A) 2. 在工程中entry模块的module.json5文件中，新增metadata，配置name为client_id，value为上一步获取的Client ID的值，如下所示： { \"module\": { \"name\": \"xxxx\", \"type\": \"entry\", \"description\": \"xxxx\", \"mainElement\": \"xxxx\", \"deviceTypes\": [], \"pages\": \"xxxx\", \"abilities\": [], \"metadata"
+    }
+  ]
+}

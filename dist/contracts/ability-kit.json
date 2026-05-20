@@ -1,0 +1,124 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "ability-kit",
+  "source_path": "skills/ability-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:47:20.996Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "应用模型",
+      "UIAbility",
+      "AbilityStage",
+      "FA模型",
+      "Stage模型",
+      "应用生命周期",
+      "组件启动",
+      "Want",
+      "跨设备迁移",
+      "Deep Linking",
+      "意图框架",
+      "如何创建和管理UIAbility组件的生命周期（Create、Foreground、Background、Destroy）",
+      "如何使用Want实现应用间跳转和组件间数据传递",
+      "如何通过Deep Linking和App Linking实现跨应用跳转",
+      "如何使用startAbilityByType拉起金融、邮件、航班、快递、导航、图片编辑等指定类型应用",
+      "如何使用Stage模型和FA模型开发应用，两者有什么区别",
+      "如何通过意图框架（配置文件或装饰器方式）开发意图并接入标准意图",
+      "如何使用应用启动框架AppStartup优化应用启动性能",
+      "如何创建和管理ServiceAbility、DataAbility、PageAbility等FA模型组件",
+      "如何通过Call调用实现多端协同和跨设备迁移",
+      "如何申请运行时权限、获取应用异常退出原因、管理Native子进程",
+      "当开发者需要构建HarmonyOS应用程序时，Ability Kit是必不可少的框架",
+      "无论你是开发简单的单页面应用还是复杂的多组件协作应用，都需要通过Ability Kit定义应用模型、管理组件生命周期和配置应用权限",
+      "如果你需要实现UIAbility组件的开发、页面间导航或应用间跳转，应使用Ability Kit提供的Stage模型和Want机制",
+      "当开发者需要实现跨应用协作或拉起指定类型应用时，应使用Ability Kit的意图框架和应用链接能力",
+      "例如需要拉起金融类、邮件类、航班类、快递类、导航类或图片编辑类应用时，可以通过startAbilityByType接口实现",
+      "如果你需要实现Deep Linking或App Linking跳转，或者需要通过意图框架接入标准意图，Ability Kit提供了完整的开发指导",
+      "创建应用入口并管理 UIAbility 生命周期回调 / Create the app entry and manage UIAbility lifecycle callbacks",
+      "在 AbilityStage 中初始化全局资源和应用级配置 / Initialize global resources and app-level setup in AbilityStage",
+      "用 Want 启动页面并携带路由参数 / Launch a page with Want and pass routing parameters",
+      "实现应用内不同 Ability 之间的跳转 / Implement navigation between different abilities in the app",
+      "接收启动参数并根据 Want 决定打开哪个页面 / Read launch parameters and open the right page based on Want",
+      "处理应用切前台、退后台时的状态恢复与释放 / Handle state restore and cleanup when the app enters foreground or background",
+      "配置 Deep Link 让外部链接直接拉起指定页面 / Configure deep links to open a specific page from external URLs",
+      "接入 App Linking 从浏览器或其他应用唤起应用 / Integrate app linking to launch the app from a browser or another app",
+      "实现跨应用跳转并传递业务数据 / Implement cross-app navigation and pass business data",
+      "支持跨设备迁移把任务状态延续到另一台设备 / Support cross-device migration to continue task state on another device",
+      "基于意图框架响应系统或其他应用发起的能力调用 / Respond to system or third-party ability invocations with the intent framework",
+      "管理组件冷启动、热启动时的初始化逻辑 / Manage initialization logic for cold start and warm start of abilities"
+    ],
+    "do_not_use_when": [
+      "需求仅是编写TypeScript/ArkTS语法、类型、类或语言特性，而不是应用模型或Ability组件时，应改用 arkts / If the need is only TypeScript/ArkTS syntax, types, classes, or language features rather than the application model or Ability components, use arkts instead",
+      "需求仅是构建声明式界面、页面布局、状态管理或UI组件交互，而不是UIAbility生命周期或Want跳转时，应改用 arkui / If the need is only declarative UI, page layout, state management, or UI component interaction rather than UIAbility lifecycle or Want-based navigation, use arkui instead",
+      "需求是实现Web页面承载、Web组件配置、JS桥接或网页与应用交互时，应改用 arkweb / If the task is to host web pages, configure web components, build JS bridges, or handle web-app interaction, use arkweb instead",
+      "需求是跨进程远程调用、IDL接口定义或RPC消息通信，而不是通过Want启动Ability时，应改用 ipc-kit / If the task is cross-process remote calls, IDL interface definition, or RPC-style messaging rather than launching abilities via Want, use ipc-kit instead",
+      "需求是定时任务、延迟执行、持续后台任务或受系统调度的后台工作，而不是Ability/Service组件模型本身时，应改用 background-tasks-kit / If the need is scheduled work, deferred execution, long-running background jobs, or system-managed background work rather than the Ability/Service component model itself, use background-tasks-kit instead"
+    ],
+    "preconditions": [
+      "工程已启用与目标范式匹配的应用模型与配置文件（Stage使用app.json5/module.json5，FA使用config.json） / The project has enabled the application model and configuration files matching the target paradigm (Stage uses app.json5/module.json5, FA uses config.json)",
+      "待启动或被拉起的Ability/Extension已在配置文件中正确定义，包含必要的名称、类型、导出属性和skills/uri配置 / The target Ability/Extension to launch or expose is correctly declared in configuration, including required name, type, export attributes, and skills/uri settings",
+      "若涉及跨应用跳转、Deep Linking或受保护组件访问，调用方与被调方所需权限及可见性声明已完成配置 / If cross-app launch, Deep Linking, or protected component access is involved, required permissions and visibility declarations for caller and callee are configured",
+      "若涉及运行时权限申请，相关权限已在配置中声明且用户授权流程可被触发 / If runtime permission requests are involved, the relevant permissions are declared in config and the user-grant flow can be triggered"
+    ],
+    "inputs": [
+      "Want对象或跳转参数 / Want object or launch parameters",
+      "目标Ability或Extension的bundleName、moduleName、abilityName等标识 / Target Ability or Extension identifiers such as bundleName, moduleName, and abilityName",
+      "应用配置内容（app.json5、module.json5或config.json） / Application configuration content (app.json5, module.json5, or config.json)",
+      "生命周期回调或启动模式需求 / Lifecycle callback or launch mode requirements"
+    ],
+    "outputs": [
+      "Kit简介与术语",
+      "应用模型与配置",
+      "Stage模型开发",
+      "UIAbility组件",
+      "FA模型开发",
+      "PageAbility组件",
+      "ServiceAbility组件",
+      "DataAbility组件",
+      "Want与应用间跳转",
+      "拉起指定应用",
+      "意图框架",
+      "多端协同与其他能力"
+    ],
+    "postconditions": [
+      {
+        "statement": "已新增或修改Ability相关配置，使目标UIAbility/ServiceAbility/DataAbility/Extension可被系统识别 / Ability-related configuration has been added or updated so the target UIAbility/ServiceAbility/DataAbility/Extension can be recognized by the system",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify HarmonyOS app configuration files to declare an Ability or Extension component with recognizable metadata such as name, type, or skills?"
+      },
+      {
+        "statement": "已实现或更新基于Want的启动、跳转或参数传递代码 / Want-based launch, navigation, or parameter-passing code has been implemented or updated",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits include code that constructs, passes, or handles a Want (or equivalent launch parameters) for starting an ability or navigating between components/apps?"
+      },
+      {
+        "statement": "已补充与场景匹配的生命周期、启动模式或链接处理逻辑 / Lifecycle, launch-mode, or link-handling logic appropriate to the scenario has been added",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the changes add or update lifecycle callbacks, launch mode settings, or deep/app link handling related to Ability Kit usage?"
+      }
+    ],
+    "overlaps_with": [
+      "arkts",
+      "arkui",
+      "arkweb",
+      "form-kit",
+      "ipc-kit",
+      "function-flow-runtime-kit",
+      "background-tasks-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

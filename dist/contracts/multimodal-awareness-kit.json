@@ -1,0 +1,102 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "multimodal-awareness-kit",
+  "source_path": "skills/multimodal-awareness-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:56:42.451Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "多模态感知",
+      "活动检测",
+      "用户状态",
+      "设备状态",
+      "记忆绑定",
+      "如何检测设备是否处于支架态（屏幕与水平面角度45°-135°）以调整UI布局？",
+      "如何感知用户的年龄组信息以提供差异化的内容展示？",
+      "如何获取用户的操作手信息（左手/右手操作）以优化交互设计？",
+      "如何检测设备是否处于绝对静止或相对静止状态以触发省电策略？",
+      "如何将鸿蒙App Linking链接与用户当前浏览内容进行关联保存？",
+      "如何订阅和取消订阅设备状态感知事件？",
+      "如何根据设备传感器数据判断用户的握持姿态？",
+      "当您的应用需要感知设备物理状态或用户行为状态来优化交互体验时，应使用Multimodal Awareness Kit",
+      "典型场景包括：检测设备是否处于支架态以调整UI布局、感知用户年龄组以提供差异化内容、识别用户的操作手（左手/右手）以优化交互设计、检测设备是否静止以触发省电或提醒策略等",
+      "当您需要将App Linking链接与用户浏览内容进行关联保存，实现跨设备内容无缝接续时，也应使用该Kit的记忆链接能力",
+      "实现设备支架态识别并自动切换横竖屏布局 / Implement stand-state detection and switch layouts automatically",
+      "获取用户左手或右手操作偏好来调整按钮位置 / Get the user's left- or right-hand usage preference to adjust button placement",
+      "检测手机处于静止状态时暂停计步或动画更新 / Detect when the device is stationary to pause step tracking or animation updates",
+      "订阅设备物理状态变化事件并在姿态改变时刷新界面 / Subscribe to device physical-state changes and refresh the UI when posture changes",
+      "根据握持姿态识别优化单手操作交互 / Optimize one-handed interactions based on detected holding posture",
+      "感知用户年龄段并动态展示适龄内容或提醒 / Sense the user's age group and dynamically show age-appropriate content or prompts",
+      "在设备进入支架模式时显示视频或会议专用界面 / Show a video or meeting-specific UI when the device enters stand mode",
+      "结合传感器数据判断设备是否被拿起、放下或持续握持 / Use sensor data to determine whether the device is picked up, put down, or continuously held",
+      "保存当前浏览页面与 App Linking 链接的记忆绑定关系 / Save a memory binding between the current browsing page and an App Linking link",
+      "读取已保存的链接记忆并恢复用户上次关联内容 / Load saved link memory and restore the user's previously associated content",
+      "接入多模态感知能力，根据用户状态和设备状态调整交互 / Integrate multimodal awareness to adapt interactions based on user and device state",
+      "管理设备状态感知的订阅与取消订阅生命周期 / Manage the lifecycle of subscribing and unsubscribing to device state awareness events"
+    ],
+    "do_not_use_when": [
+      "需要进行语音识别、语音唤醒、语音合成或音频语义处理时，应改用 speech-kit 或 core-speech-kit / If the task is speech recognition, wakeup, speech synthesis, or audio semantic processing, use speech-kit or core-speech-kit instead",
+      "需要进行图像/视频内容检测、目标识别、人脸分析或相机画面理解时，应改用 vision-kit 或 core-vision-kit / If the task is image/video analysis, object recognition, face analysis, or camera scene understanding, use vision-kit or core-vision-kit instead",
+      "需要进行文本分词、实体识别、翻译、摘要或其他自然语言理解时，应改用 natural-language-kit / If the task is tokenization, entity extraction, translation, summarization, or other natural language understanding, use natural-language-kit instead",
+      "需要部署或运行自定义AI模型、进行端侧推理或模型加速时，应改用 mindspore-lite-kit、neural-network-runtime-kit 或 cann-kit / If the task is deploying or running custom AI models, on-device inference, or model acceleration, use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit instead"
+    ],
+    "preconditions": [
+      "应用已在 module.json5 中声明所需权限，并在运行时获得用户授权 / The app has declared required permissions in module.json5 and obtained runtime user consent",
+      "目标设备具备对应感知能力所需的传感器或系统能力 / The target device provides the sensors or system capabilities required by the selected awareness feature",
+      "工程已集成 Multimodal Awareness Kit 对应 SDK，并可访问相关 API / The project includes the Multimodal Awareness Kit SDK and can access its APIs"
+    ],
+    "inputs": [
+      "待订阅的感知类型 / awareness capability to subscribe to",
+      "订阅参数或过滤条件 / subscription parameters or filters",
+      "感知结果回调对象 / awareness result callback object",
+      "用于记忆链接的 App Linking 链接与内容元数据 / App Linking URL and content metadata for metadata binding"
+    ],
+    "outputs": [
+      "简介",
+      "感知能力开发",
+      "记忆链接"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已对目标感知能力建立订阅，并注册结果回调处理逻辑 / The code subscribes to the target awareness capability and registers result callback handling",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add code that starts or registers a Multimodal Awareness subscription and includes a callback/listener to receive awareness results?"
+      },
+      {
+        "statement": "在业务结束、页面销毁或不再需要时，代码包含取消订阅或释放监听的处理 / The code includes unsubscription or listener cleanup when the feature is no longer needed, such as on teardown or end of use",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set include cleanup logic that unsubscribes, unregisters, or stops listening to the awareness service when appropriate?"
+      },
+      {
+        "statement": "感知结果被用于业务逻辑、界面调整或状态更新，而非仅打印日志 / Awareness results are wired into app behavior, UI adaptation, or state updates rather than only being logged",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, are the received awareness results used to drive application logic, UI changes, or state updates instead of only console logging?"
+      }
+    ],
+    "overlaps_with": [
+      "cann-kit",
+      "mindspore-lite-kit",
+      "neural-network-runtime-kit",
+      "core-speech-kit",
+      "core-vision-kit",
+      "natural-language-kit",
+      "speech-kit",
+      "vision-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

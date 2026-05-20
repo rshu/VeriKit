@@ -1,0 +1,4 @@
+# AppGallery Connect中可以配置多个关键事件通知接收地址吗？
+---
+# AppGallery Connect中可以配置多个关键事件通知接收地址吗？
+不可以。

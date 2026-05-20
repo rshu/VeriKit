@@ -1,0 +1,113 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "media-kit",
+  "source_path": "skills/media-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:56:16.078Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "媒体",
+      "音视频播放",
+      "录制",
+      "录屏",
+      "转码",
+      "视频处理",
+      "如何使用AVPlayer实现端到端的音频播放功能（本地文件、网络点播、直播）？",
+      "如何使用AVPlayer实现视频播放，包括HDR视频和外挂字幕？",
+      "如何使用SoundPool实现短音频（如相机快门音效、通知音效）的低时延播放？",
+      "如何使用AVRecorder录制音频或视频？",
+      "如何使用AVScreenCapture实现屏幕录制（包括矩形区域录制）？",
+      "如何使用AVTranscoder实现视频转码（含异步线程执行）？",
+      "如何从媒体资源中提取元数据信息（如时长、分辨率、编码格式等）？",
+      "如何获取视频指定时间点的缩略图或视频帧？",
+      "如何实现视频色彩空间转换（HDR2SDR/SDR2HDR）和视频缩放增强？",
+      "如何使用LPP低功耗播放器播放视频？",
+      "当您的应用需要开发任何音视频相关功能时，应使用Media Kit",
+      "具体场景包括：音乐播放器、视频播放器、流媒体直播应用、音视频录制应用、屏幕录制工具、视频转码工具等",
+      "如果您需要实现HDR视频播放、低时延音效播放、视频缩略图提取、元数据解析、视频色彩空间转换等高级功能，也应使用Media Kit",
+      "当您需要构建完整的音视频应用（如短视频应用、直播平台、音乐播放器、视频编辑器等）时，Media Kit提供了从播放、录制到转码处理的全链路能力支持",
+      "实现本地音乐和网络流媒体播放，支持暂停、拖动和倍速 / Implement local music and streaming playback with pause, seek, and playback speed control",
+      "集成 AVPlayer 播放在线视频并切换清晰度或字幕轨道 / Integrate AVPlayer to play online videos and switch quality levels or subtitle tracks",
+      "用 AVRecorder 录制麦克风音频并保存到文件 / Record microphone audio with AVRecorder and save it to a file",
+      "实现拍摄视频时同步录音并生成可分享的媒体文件 / Capture video with synchronized audio and generate a shareable media file",
+      "添加屏幕录制功能并保存应用操作过程视频 / Add screen recording and save app interaction videos",
+      "提取音视频文件的时长、封面、分辨率和编码信息 / Extract duration, cover art, resolution, and codec info from media files",
+      "按时间点截取视频帧并显示为预览缩略图 / Capture video frames at specific timestamps and show them as preview thumbnails",
+      "将录制的视频转码为更小体积或不同格式 / Transcode recorded videos to a smaller size or a different format",
+      "实现短提示音和按键音的低延迟播放 / Implement low-latency playback for short alert sounds and button click effects",
+      "播放直播流或点播资源并处理缓冲和播放状态回调 / Play live streams or on-demand media and handle buffering and playback state callbacks",
+      "读取媒体文件信息用于构建播放器详情页 / Read media file metadata to build a player details screen",
+      "生成视频封面图用于列表展示或分享预览 / Generate video cover images for list display or share previews"
+    ],
+    "do_not_use_when": [
+      "需求是访问、查询、分类或管理系统媒体文件库（相册/音视频资产），而不是播放、录制或转码；应改用 media-library-kit / The task is to access, query, organize, or manage the system media library rather than play, record, or transcode media; use media-library-kit instead",
+      "需求是相机取景、拍照、录像采集或相机参数控制，媒体处理仅是后续环节；应改用 camera-kit / The task is camera preview, photo capture, video capture, or camera control, with media handling only as a downstream step; use camera-kit instead",
+      "需求是对原始音视频码流做编解码、封装解封装或更底层编解码管线控制，而不是使用高级播放器/录制器/转码器；应改用 avcodec-kit / The task requires raw audio/video encode-decode, mux-demux, or lower-level codec pipeline control rather than high-level player/recorder/transcoder APIs; use avcodec-kit instead",
+      "需求是管理媒体会话、响应耳机/车机/锁屏等外部媒体控制与播放状态协同，而不是实现播放能力本身；应改用 avsession-kit / The task is to manage media sessions and coordinate external playback controls from headsets, cars, or lock screen rather than implement playback itself; use avsession-kit instead",
+      "需求仅是播放铃声、通知音或系统来电铃声配置，且不需要通用媒体播放/录制能力；应改用 ringtone-kit / The task is only ringtone, notification sound, or incoming-call ringtone configuration/playback and does not need general media playback or recording; use ringtone-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成可用的HarmonyOS Media Kit接口，并与目标API版本兼容 / The project has integrated available HarmonyOS Media Kit APIs and is compatible with the target API version",
+      "已在module.json5声明所需权限，并在运行时获得用户授权（如麦克风、相机、录屏相关权限） / Required permissions have been declared in module.json5 and runtime user grants have been obtained where needed, such as microphone, camera, or screen-capture permissions",
+      "输入媒体源或输出路径可访问，若使用网络流媒体则网络连接可用 / The input media source or output path is accessible, and network connectivity is available when using streaming media",
+      "所选设备与系统版本支持目标能力及格式（如HDR、外挂字幕、转码、录屏） / The selected device and OS version support the target capability and formats, such as HDR, external subtitles, transcoding, or screen recording"
+    ],
+    "inputs": [
+      "媒体资源URI、URL或文件描述符 / media resource URI, URL, or file descriptor",
+      "播放、录制、转码或截图相关配置参数 / playback, recording, transcoding, or frame-extraction configuration parameters",
+      "输出文件路径、保存位置或目标容器格式 / output file path, save location, or target container format",
+      "视频帧时间点、区域范围或元数据提取键 / video frame timestamp, region range, or metadata extraction keys"
+    ],
+    "outputs": [
+      "简介",
+      "音视频播放（ArkTS）",
+      "音视频播放（C/C++）",
+      "音视频录制",
+      "屏幕录制",
+      "视频转码",
+      "元数据与缩略图",
+      "视频处理"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已创建并配置与目标场景匹配的Media Kit能力对象（如AVPlayer、SoundPool、AVRecorder、AVScreenCapture、AVTranscoder、AVMetadataExtractor或AVImageGenerator） / The code creates and configures a Media Kit capability object appropriate for the target scenario, such as AVPlayer, SoundPool, AVRecorder, AVScreenCapture, AVTranscoder, AVMetadataExtractor, or AVImageGenerator",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set instantiate and configure a relevant Media Kit API class matching the requested media task?"
+      },
+      {
+        "statement": "媒体源或输出目标已在代码中显式绑定，并包含关键启动调用（如prepare/start/play/record/transcode等） / The media source or output target is explicitly bound in code, and the essential start call is present, such as prepare, start, play, record, or transcode",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there explicit source/output setup plus an operational call that actually starts playback, recording, screen capture, extraction, or transcoding?"
+      },
+      {
+        "statement": "已补充与该媒体流程相关的必要权限声明或授权处理代码 / Required permission declarations or permission-request handling for the media workflow have been added",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits add or reference the permissions and authorization handling needed for the requested media operation?"
+      }
+    ],
+    "overlaps_with": [
+      "audio-kit",
+      "avcodec-kit",
+      "avsession-kit",
+      "camera-kit",
+      "image-kit",
+      "media-library-kit",
+      "ringtone-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

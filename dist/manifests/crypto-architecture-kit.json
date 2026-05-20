@@ -1,0 +1,580 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "crypto-architecture-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.704Z"
+  },
+  "references": [
+    {
+      "path": "references/AES解密失败返回17630001.md",
+      "title": "AES解密失败返回17630001",
+      "snippet": "开发者使用加解密算法库经常遇到对称算法解密报错17630001，下文将对其失败原因进行详细分析。 #### AES-GCM算法 **问题现象** AES解密时调用doFinal失败，返回错误码17630001，无法得到正确明文。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1a/v3/M8hjvZ6dTUKOAqhcM3BCCg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111100Z&HW-CC-Expire=86400&HW-CC-Sign=012792327673E1BEDA4BF7E5BF7939FD252DF760C03C7730733835944C7A9C73) 建议开发者使用update接口加密数据，最后调用doFinal接口完成本次加密，获取tag。 建议开发者使用update接口解密数据，最后调用doFinal接口完成本次解密，doFinal接口内将会对tag进行验证，若失败，接口会抛出异常。 **可能原因** doFinal失败，表示校验tag失败，解密输入的tag和解密过程中计算的tag不一致。解密输入的key、iv、aad、tag和ciphertext，任意一个不正确，都会导致"
+    },
+    {
+      "path": "references/Crypto Architecture Kit简介.md",
+      "title": "Crypto Architecture Kit简介",
+      "snippet": "Crypto Architecture Kit屏蔽了第三方密码学算法库实现差异的算法框架，提供加解密、签名验签、消息认证码、哈希、安全随机数、密钥派生等相关功能。 开发者可以通过调用加解密算法框架服务，忽略底层不同第三方密码学算法库的差异，实现迅捷开发。 #### 约束与限制 - Crypto Architecture Kit不支持多线程并发操作。 - Crypto Architecture Kit当前只支持OpenSSL。 - Crypto Architecture Kit提供了大部分常用的算法。然而，部分算法和规格并不适用于对安全要求较高的场景，例如 MD5。请开发者根据实际需求选择合适的算法。 #### 能力范围 加解密算法库为开发者提供了以下相关功能，并提供了对应的算法规格说明和开发指导，请开发者参照开发。 - 密钥生成和转换 - 加解密 - 签名验签 - 密钥协商 - 消息摘要计算 - 消息认证码计算 - 安全随机数生成 - 密钥派生 #### 基本概念 开发具体功能前，需要了解以下基本概念。 - 对称密钥 加解密双方使用同一个密钥完成数据加密、解密的操作。即数据发送方使用某个加密密钥对明文进行特殊加密算法处理后，使其变成复杂的加密密文发送出去，接收方需使用同一个密钥及相同算法的逆算法解密，才能得到原来的可读明文。 - 非对称密钥 非对称密钥使用公钥和私钥两个密钥来进行算"
+    },
+    {
+      "path": "references/SM2签名数据格式转换 (C_C++).md",
+      "title": "SM2签名数据格式转换 (C/C++)",
+      "snippet": "当前支持DER格式与r、s格式互转的能力。 开发者可指定SM2密文的参数，将其转换成DER格式密文。反之，也可以从DER格式密文中提取出SM2的具体密文参数。 **指定密文参数，转换为DER格式** 1. 调用 OH_CryptoEccSignatureSpec_Create ，创建 OH_CryptoEccSignatureSpec 对象，用于设置SM2密文参数。 2. 调用 OH_CryptoEccSignatureSpec_SetRAndS ，将R、S设置到OH_CryptoEccSignatureSpec对象中。 3. 调用 OH_CryptoEccSignatureSpec_Encode 得到转换后的DER格式的密文。 4. 调用 OH_CryptoEccSignatureSpec_Destroy 释放对象。 #include \"CryptoArchitectureKit/crypto_common.h\" #include \"CryptoArchitectureKit/crypto_asym_key.h\" #include \"CryptoArchitectureKit/crypto_signature.h\" OH_Crypto_ErrCode DoTestSm2RStoDER() { static unsigned char rCoordinate[] = { 107, "
+    },
+    {
+      "path": "references/SM2签名数据格式转换(ArkTS).md",
+      "title": "SM2签名数据格式转换(ArkTS)",
+      "snippet": "当前支持DER格式与（r、s）格式互转的能力。 开发者可指定SM2签名数据，将其转换成DER格式密文。反之，也可以从DER格式密文中取出具体的SM2签名数据。 **指定密文参数，转换为DER格式** 1. 构造 EccSignatureSpec 对象，用于指定SM2密文参数。 2. 调用 genEccSignature ，将EccSignatureSpec对象传入，转换为DER格式的SM2密文。 import { cryptoFramework } from '@kit.CryptoArchitectureKit'; import { BusinessError } from '@kit.BasicServicesKit'; function testSm2SignDataRsToDer() { try { let spec: cryptoFramework.EccSignatureSpec = { r: BigInt('97726608965854271693043443511967021777934035174185659091642456228829830775155'), s: BigInt('23084224202834231287427338597254751764391338275617140205467537273296855150376'), }; let dat"
+    },
+    {
+      "path": "references/使用3DES对称密钥加解密(ArkTS).md",
+      "title": "使用3DES对称密钥加解密(ArkTS)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：3DES 。 #### 开发步骤 **加密** 1. 调用 cryptoFramework.createSymKeyGenerator 和 SymKeyGenerator.convertKey ，生成密钥算法为3DES、密钥长度为192位的对称密钥（SymKey）。 如何生成3DES对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：3DES 和 指定二进制数据转换对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'3DES192|ECB|PKCS7'，创建对称密钥类型为3DES192、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey），初始化加密Cipher实例。 ECB模式无加密参数，传入null。 4. 调用 Cipher.update ，更新数据（明文）。 - 当数据量较小时，可以在init完成后直接调用doFinal。 - 当数据量较大时，可以多次调用update，即分段加解密。 - 用户可以自行决定数据量大小。例如，数据量大于20字节时使用upda"
+    },
+    {
+      "path": "references/使用3DES对称密钥加解密(C_C++).md",
+      "title": "使用3DES对称密钥加解密(C/C++)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：3DES 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 **创建对象** 调用 OH_CryptoSymKeyGenerator_Create 、 OH_CryptoSymKeyGenerator_Generate ，生成密钥算法为3DES、密钥长度为192位的对称密钥（OH_CryptoSymKey）。 如何生成3DES对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：3DES 和 指定二进制数据转换对称密钥 理解，参考文档与当前示例可能存在入参差异，请注意区分。 **加密** 1. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'3DES192|ECB|PKCS7'，创建对称密钥类型为3DES192、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成加密操作。 2. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoSymKey），初始化加密Cipher实例。 ECB模式无加密参数，params直接传入null。 3. 调用 OH_CryptoSymCiphe"
+    },
+    {
+      "path": "references/使用AES-WRAP算法对对称密钥加解密(ArkTS).md",
+      "title": "使用AES-WRAP算法对对称密钥加解密(ArkTS)",
+      "snippet": "从API version 22开始，算法库支持使用该算法进行加密和解密操作。 对应的算法规格请参见 AES-WRAP加解密算法规格 。 **加密** 1. 调用 cryptoFramework.createSymKeyGenerator 、 SymKeyGenerator.generateSymKey ，生成密钥算法为AES、密钥长度为128位的对称密钥（SymKey）。 如何生成AES对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：AES 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'AES128-WRAP'，创建类型为AES128-WRAP的Cipher实例，用于完成加密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和对应的加密参数（IvParamsSpec），初始化加密Cipher实例。 4. 当加密内容长度较短时，可以直接调用 Cipher.doFinal 而无需调用update，以获取加密后的数据。 **解密** 1. 调用 cryptoFramework.createCipher ，指定字符串参数'AES128-WRAP'，创建类型为A"
+    },
+    {
+      "path": "references/使用AES-WRAP算法对对称密钥加解密(C_C++).md",
+      "title": "使用AES-WRAP算法对对称密钥加解密(C/C++)",
+      "snippet": "从API version 22开始，算法库支持使用该算法进行加密和解密操作。 请查看 AES-WRAP加解密算法规格 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 **创建对象** 调用 OH_CryptoSymKeyGenerator_Create 和 OH_CryptoSymKeyGenerator_Generate ，生成密钥算法为AES、密钥长度为128位的对称密钥（OH_CryptoSymKey）。 如何生成AES对称密钥，请参考以下示例，并结合 对称密钥生成和转换规格：AES 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请注意区分。 **加密** 1. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'AES128-WRAP'，创建对称密钥类型为AES128-WRAP的Cipher实例，用于加密操作。 2. 调用 OH_CryptoSymCipherParams_Create 创建参数对象，并调用 OH_CryptoSymCipherParams_SetParam 设置加密参数。 3. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定"
+    },
+    {
+      "path": "references/使用AES对称密钥（CBC模式）加解密(ArkTS).md",
+      "title": "使用AES对称密钥（CBC模式）加解密(ArkTS)",
+      "snippet": "对应的算法规格请参见 对称密钥加解密算法规格：AES 。 **加密** 1. 调用 cryptoFramework.createSymKeyGenerator 、 SymKeyGenerator.generateSymKey ，生成密钥算法为AES、密钥长度为128位的对称密钥（SymKey）。 如何生成AES对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：AES 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'AES128|CBC|PKCS7'，创建对称密钥类型为AES128、分组模式为CBC、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和CBC模式对应的加密参数（IvParamsSpec），初始化加密Cipher实例。 4. 当加密内容长度较短时，可以直接调用 Cipher.doFinal 而无需调用update，以获取加密后的数据。 **解密** 1. 调用 cryptoFramework.createCipher ，指定字符串参数'AES128|CBC|PKCS7'，创建对称密钥类型为AE"
+    },
+    {
+      "path": "references/使用AES对称密钥（CBC模式）加解密(C_C++).md",
+      "title": "使用AES对称密钥（CBC模式）加解密(C/C++)",
+      "snippet": "请查看 对称密钥加解密算法规格：AES 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 **创建对象** 调用 OH_CryptoSymKeyGenerator_Create 和 OH_CryptoSymKeyGenerator_Generate ，生成密钥算法为AES、密钥长度为128位的对称密钥（OH_CryptoSymKey）。 如何生成AES对称密钥，请参考以下示例，并结合 对称密钥生成和转换规格：AES 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请注意区分。 **加密** 1. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'AES128|CBC|PKCS7'，创建对称密钥类型为AES128、分组模式为CBC、填充模式为PKCS7的Cipher实例，用于加密操作。 2. 调用 OH_CryptoSymCipherParams_Create 创建参数对象，并调用 OH_CryptoSymCipherParams_SetParam 设置加密参数。 3. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoSymKe"
+    },
+    {
+      "path": "references/使用AES对称密钥（CCM模式）加解密(ArkTS).md",
+      "title": "使用AES对称密钥（CCM模式）加解密(ArkTS)",
+      "snippet": "查看 对称密钥加解密算法规格：AES 。 **加密** 1. 调用 cryptoFramework.createSymKeyGenerator 、 SymKeyGenerator.generateSymKey ，生成密钥算法为AES、密钥长度为128位的对称密钥（SymKey）。 如何生成AES对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：AES 和 随机生成对称密钥 进行理解，参考文档与当前示例可能存在入参差异，请注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'AES128|CCM'，创建对称密钥为AES128、分组模式为CCM的Cipher实例，用于执行加密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定密钥（SymKey）和CCM模式对应的加密参数（CcmParamsSpec），初始化加密Cipher实例。 4. 调用 Cipher.update ，更新数据（明文）。 当前单次update没有长度限制，开发者可以根据数据量决定如何调用update。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/75/v3/SFzn1UH"
+    },
+    {
+      "path": "references/使用AES对称密钥（CCM模式）加解密(C_C++).md",
+      "title": "使用AES对称密钥（CCM模式）加解密(C/C++)",
+      "snippet": "请查看 对称密钥加解密算法规格：AES 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 **创建对象** 调用 OH_CryptoSymKeyGenerator_Create 、 OH_CryptoSymKeyGenerator_Generate ，生成密钥算法为AES、密钥长度为128位的对称密钥（OH_CryptoSymKey）。 如何生成AES对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：AES 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 **加密** 1. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'AES128|CCM'，创建对称密钥类型为AES128、分组模式为CCM的Cipher实例，用于完成加密操作。 2. 调用 OH_CryptoSymCipherParams_Create 创建参数对象，调用 OH_CryptoSymCipherParams_SetParam 设置对应的加密参数。 3. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoSymKey）和CCM"
+    },
+    {
+      "path": "references/使用AES对称密钥（ECB模式）加解密(ArkTS).md",
+      "title": "使用AES对称密钥（ECB模式）加解密(ArkTS)",
+      "snippet": "请查看 对称密钥加解密算法规格：AES 。 **加密** 1. 调用 cryptoFramework.createSymKeyGenerator 、 SymKeyGenerator.generateSymKey ，生成密钥算法为AES、密钥长度为128位的对称密钥（SymKey）。 如何生成AES对称密钥，开发者可以参考以下示例，并结合 对称密钥生成和转换规格：AES 和 随机生成对称密钥 进行理解。参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'AES128|ECB|PKCS7'，创建对称密钥类型为AES128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey），ECB模式Params为空，初始化加密Cipher实例。 4. 加密内容较短时，可以不调用update，直接调用 Cipher.doFinal ，获取加密后的数据。 **解密** 1. 调用 cryptoFramework.createCipher ，指定字符串参数'AES128|ECB|PKCS7'，创建对称密钥类型为AES128、分组模式为ECB、填充模式为PKC"
+    },
+    {
+      "path": "references/使用AES对称密钥（ECB模式）加解密(C_C++).md",
+      "title": "使用AES对称密钥（ECB模式）加解密(C/C++)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：AES 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 **创建对象** 调用 OH_CryptoSymKeyGenerator_Create 和 OH_CryptoSymKeyGenerator_Generate ，生成AES算法、128位的对称密钥（OH_CryptoSymKey）。 如何生成AES对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：AES 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 **加密** 1. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'AES128|ECB|PKCS7'，创建对称密钥类型为AES128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成加密操作。 2. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoSymKey），初始化加密Cipher实例。 3. 加密内容较短时，可以直接调用 OH_CryptoSymCipher_Final 获取加密后的数据，无需调用 OH_Crypt"
+    },
+    {
+      "path": "references/使用AES对称密钥（GCM模式）分段加解密(ArkTS).md",
+      "title": "使用AES对称密钥（GCM模式）分段加解密(ArkTS)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：AES 。 **加密** 1. 调用 cryptoFramework.createSymKeyGenerator 、 SymKeyGenerator.generateSymKey ，生成密钥算法为AES、密钥长度为128位的对称密钥（SymKey）。 如何生成AES对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：AES 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'AES128|GCM|PKCS7'，创建对称密钥类型为AES128、分组模式为GCM、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和GCM模式对应的加密参数（GcmParamsSpec），初始化加密Cipher实例。 4. 将一次传入数据量设置为20字节，多次调用 Cipher.update ，更新数据（明文）。 - 当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。 - 建议开发者对每次update的结果都判断是否为null，并在结果不为null时取出其中的"
+    },
+    {
+      "path": "references/使用AES对称密钥（GCM模式）分段加解密(C_C++).md",
+      "title": "使用AES对称密钥（GCM模式）分段加解密(C/C++)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：AES 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 **创建对象** 调用 OH_CryptoSymKeyGenerator_Create 和 OH_CryptoSymKeyGenerator_Generate ，生成密钥算法为AES、密钥长度为128位的对称密钥（OH_CryptoSymKey）。 如何生成AES对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：AES 和 随机生成对称密钥 文档进行理解。参考文档与当前示例可能存在入参差异，请注意区分。 **加密** 1. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'AES128|GCM|PKCS7'，创建对称密钥算法为AES128、分组模式为GCM、填充模式为PKCS7的Cipher实例，用于完成加密操作。 2. 调用 OH_CryptoSymCipherParams_Create 创建参数对象，调用 OH_CryptoSymCipherParams_SetParam 设置对应的加密参数。 3. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定对"
+    },
+    {
+      "path": "references/使用AES对称密钥（GCM模式）加解密(ArkTS).md",
+      "title": "使用AES对称密钥（GCM模式）加解密(ArkTS)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：AES 。 **加密** 1. 调用 cryptoFramework.createSymKeyGenerator ，生成密钥算法为AES、密钥长度为128位的对称密钥（SymKey）。然后调用 SymKeyGenerator.generateSymKey 生成对称密钥。 如何生成AES对称密钥，开发者可以参考以下示例，并结合 对称密钥生成和转换规格：AES 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'AES128|GCM|PKCS7'，创建对称密钥类型为AES128、分组模式为GCM、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和GCM模式对应的加密参数（GcmParamsSpec），以初始化加密Cipher实例。 4. 调用 Cipher.update ，更新数据（明文）。 当前单次update无长度限制，开发者可根据数据量调用update。 - 当数据量较小时，可以在init完成后直接调用doFinal。 - 当数据量较大时，可以多次调用update，即分段加"
+    },
+    {
+      "path": "references/使用AES对称密钥（GCM模式）加解密(C_C++).md",
+      "title": "使用AES对称密钥（GCM模式）加解密(C/C++)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：AES 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 **创建对象** 调用 OH_CryptoSymKeyGenerator_Create 和 OH_CryptoSymKeyGenerator_Generate ，生成密钥算法为AES、密钥长度为128位的对称密钥（OH_CryptoSymKey）。 生成AES对称密钥，参考以下示例，并结合 对称密钥生成和转换规格：AES 和 随机生成对称密钥 理解。注意，参考文档与示例可能有入参差异 1. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'AES128|GCM|PKCS7'，创建对称密钥类型为AES128、分组模式为GCM、填充模式为PKCS7的Cipher实例，用于完成加密操作。 2. 调用 OH_CryptoSymCipherParams_Create 创建参数对象，调用 OH_CryptoSymCipherParams_SetParam 设置对应的加密参数。 3. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定对称密钥（OH_CryptoSymKey）和GCM"
+    },
+    {
+      "path": "references/使用ChaCha20对称密钥加解密(ArkTS).md",
+      "title": "使用ChaCha20对称密钥加解密(ArkTS)",
+      "snippet": "从API22开始，算法库支持该算法。 对应的算法规格请查看 对称密钥加解密算法规格：ChaCha20 。 #### 开发步骤 **创建对象** 调用 cryptoFramework.createSymKeyGenerator 、 SymKeyGenerator.generateSymKey ，生成密钥算法为ChaCha20的对称密钥（SymKey）。 如何生成ChaCha20对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：ChaCha20 和 随机生成对称密钥 理解。参考文档与示例可能存在入参差异，请注意区分。 **加密** 1. 调用 cryptoFramework.createCipher ，指定字符串参数'ChaCha20'，创建对称密钥的Cipher实例，用于完成加密操作。 2. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和对应的加密参数（IvParamsSpec），初始化加密Cipher实例。 3. 调用 Cipher.update ，更新数据（明文）。 4. 调用 Cipher.doFinal ，获取加密后的数据。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_1"
+    },
+    {
+      "path": "references/使用ChaCha20对称密钥加解密(C_C++).md",
+      "title": "使用ChaCha20对称密钥加解密(C/C++)",
+      "snippet": "从API22开始，算法库支持该算法。 对应的算法规格请查看 对称密钥加解密算法规格：ChaCha20 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 **创建对象** 调用 OH_CryptoSymKeyGenerator_Create 、 OH_CryptoSymKeyGenerator_Generate ，生成密钥算法为ChaCha20的对称密钥（OH_CryptoSymKey）。 如何生成ChaCha20对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：ChaCha20 和 随机生成对称密钥 理解。参考文档与示例可能存在入参差异，请注意区分。 **加密** 1. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'ChaCha20'，创建对称密钥类型为ChaCha20的Cipher实例，用于完成加密操作。 2. 调用 OH_CryptoSymCipherParams_Create 创建参数对象，调用 OH_CryptoSymCipherParams_SetParam 设置对应的加密参数。 3. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥"
+    },
+    {
+      "path": "references/使用ChaCha20对称密钥（Poly1305模式）加解密(ArkTS).md",
+      "title": "使用ChaCha20对称密钥（Poly1305模式）加解密(ArkTS)",
+      "snippet": "从API22开始，算法库支持该算法。 对应的算法规格请查看 对称密钥加解密算法规格：ChaCha20 。 #### 开发步骤 **创建对象** 调用 cryptoFramework.createSymKeyGenerator 、 SymKeyGenerator.generateSymKey ，生成密钥算法为ChaCha20的对称密钥（SymKey）。 如何生成ChaCha20对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：ChaCha20 和 随机生成对称密钥 理解。参考文档与示例可能存在入参差异，请注意区分。 **加密** 1. 调用 cryptoFramework.createCipher ，指定字符串参数'ChaCha20|Poly1305'，创建对称密钥类型为ChaCha20、模式为Poly1305的Cipher实例，用于完成加密操作。 2. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和Poly1305模式对应的加密参数（Poly1305ParamsSpec），初始化加密Cipher实例。 3. 调用 Cipher.update ，更新数据（明文）。 4. 调用 Cipher.doFinal ，获取加密后的数据。 ![](https://contentcenter-vali-"
+    },
+    {
+      "path": "references/使用ChaCha20对称密钥（Poly1305模式）加解密(C_C++).md",
+      "title": "使用ChaCha20对称密钥（Poly1305模式）加解密(C/C++)",
+      "snippet": "从API22开始，算法库支持该算法。 对应的算法规格请查看 对称密钥加解密算法规格：ChaCha20 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 **创建对象** 调用 OH_CryptoSymKeyGenerator_Create 、 OH_CryptoSymKeyGenerator_Generate ，生成密钥算法为ChaCha20的对称密钥（OH_CryptoSymKey）。 如何生成ChaCha20对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：ChaCha20 和 随机生成对称密钥 理解。参考文档与示例可能存在入参差异，请注意区分。 **加密** 1. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'ChaCha20|Poly1305'，创建对称密钥类型为ChaCha20、模式为Poly1305的Cipher实例，用于完成加密操作。 2. 调用 OH_CryptoSymCipherParams_Create 创建参数对象，调用 OH_CryptoSymCipherParams_SetParam 设置对应的加密参数。 3. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO"
+    },
+    {
+      "path": "references/使用DES对称密钥（ECB模式）加解密(ArkTS).md",
+      "title": "使用DES对称密钥（ECB模式）加解密(ArkTS)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：DES 。 **加密** 1. 调用 cryptoFramework.createSymKeyGenerator 、 SymKeyGenerator.convertKey ，生成密钥算法为DES、密钥长度为64位的对称密钥（SymKey）。 如何生成DES对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：DES 和 指定二进制数据转换对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'DES64|ECB|PKCS7'，创建对称密钥类型为DES64、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey），初始化加密Cipher实例。 ECB模式无加密参数，直接传入null。 4. 调用 Cipher.update ，更新数据（明文）。 - 当数据量较小时，可以在init完成后直接调用doFinal。 - 当数据量较大时，可以多次调用update，即分段加解密。 - 数据量大小可以使用者自行决定。比如大于20字节使用update。 5. 调用 Cipher.doFi"
+    },
+    {
+      "path": "references/使用DES对称密钥（ECB模式）加解密(C_C++).md",
+      "title": "使用DES对称密钥（ECB模式）加解密(C/C++)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：DES 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 **创建对象** 调用 OH_CryptoSymKeyGenerator_Create 、 OH_CryptoSymKeyGenerator_Generate ，生成密钥算法为DES、密钥长度为64位的对称密钥（OH_CryptoSymKey）。 如何生成DES对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：DES 和 指定二进制数据转换对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 **加密** 1. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'DES64|ECB|PKCS7'，创建对称密钥类型为DES64、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成加密操作。 2. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoSymKey），初始化加密Cipher实例。 ECB模式无加密参数，params直接传入null。 3. 调用 OH_CryptoSymCipher_Upd"
+    },
+    {
+      "path": "references/使用DH进行密钥协商(ArkTS).md",
+      "title": "使用DH进行密钥协商(ArkTS)",
+      "snippet": "对应的算法规格请查看 密钥协商算法规格：DH 。 #### 开发步骤 1. 调用 cryptoFramework.createAsyKeyGenerator 、 AsyKeyGenerator.generateKeyPair 生成密钥算法为DH、采用知名安全素数群modp1536的非对称密钥（KeyPair）。 如何生成DH非对称密钥，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：DH 和 随机生成非对称密钥对 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createKeyAgreement ，指定字符串参数'DH_modp1536'，创建密钥算法为DH、采用知名安全素数群modp1536的密钥协议生成器（KeyAgreement）。 3. 调用 KeyAgreement.generateSecret ，基于传入的私钥（KeyPair.priKey）与公钥（KeyPair.pubKey）进行密钥协商，返回共享秘密。 - 异步方法示例： import { cryptoFramework } from '@kit.CryptoArchitectureKit'; async function dhAwait() { let keyGen = cryptoFramework.createAsyKeyGenerator"
+    },
+    {
+      "path": "references/使用DH进行密钥协商(C_C++).md",
+      "title": "使用DH进行密钥协商(C/C++)",
+      "snippet": "对应的算法规格请查看 密钥协商算法规格：DH 。 #### 开发步骤 1. 调用 OH_CryptoAsymKeyGenerator_Create 、 OH_CryptoAsymKeyGenerator_Generate 生成密钥算法为DH_modp1536的非对称密钥（keyPair）。 如何生成DH非对称密钥，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：DH 和 随机生成非对称密钥对 理解。参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 OH_CryptoKeyAgreement_Create ，指定字符串参数'DH_modp1536'，创建密钥算法为DH_modp1536的密钥协议生成器。 3. 调用 OH_CryptoKeyAgreement_GenerateSecret ，基于传入的私钥（keyPair.priKey）与公钥（keyPair.pubKey）进行密钥协商，返回共享密钥。 #include \"CryptoArchitectureKit/crypto_architecture_kit.h\" #include \"CryptoArchitectureKit/crypto_key_agreement.h\" #include \"file.h\" #include <cstdio> #include <cstring> static OH_"
+    },
+    {
+      "path": "references/使用ECC压缩_非压缩公钥格式转换(ArkTS).md",
+      "title": "使用ECC压缩/非压缩公钥格式转换(ArkTS)",
+      "snippet": "可通过指定ECC公钥数据生成公钥对象（PubKey），也可以从公钥对象（PubKey）中获取ECC公钥数据。 当前仅支持满足X509规范的ECC算法压缩和非压缩格式的公钥数据。此处的公钥数据应当是完整的X509公钥，对于只使用点数据的情况，请参考 使用ECC压缩/非压缩点格式转换 。 ECC的算法规格请查看 非对称密钥生成和转换规格：ECC 。 通过传入字符串参数format，可指定需要获取的ECC公钥数据格式。如果需要获取满足X509规范的压缩格式数据，则指定format为：\"X509|COMPRESSED\"；需要获取非压缩格式，则指定format为：\"X509|UNCOMPRESSED\"。 #### 指定非压缩公钥数据转换为压缩公钥数据 1. 将Uint8Array类型的ECC非压缩公钥数据封装成 DataBlob 对象。 公钥和私钥可只传入其中一个。此处示例传入非压缩公钥。 2. 调用cryptoFramework.createAsyKeyGenerator，指定字符串参数'ECC_BrainPoolP256r1'，创建密钥算法为ECC、密钥长度为256位的非对称密钥生成器（AsyKeyGenerator）。 3. 调用AsyKeyGenerator.convertKey，传入封装后的DataBlob对象，生成非对称密钥对象（KeyPair）。 4. 调用PubKey.get"
+    },
+    {
+      "path": "references/使用ECC压缩_非压缩公钥格式转换(C_C++).md",
+      "title": "使用ECC压缩/非压缩公钥格式转换(C/C++)",
+      "snippet": "可通过指定ECC公钥数据生成公钥对象（ PubKey ），也可从公钥对象中获取ECC公钥数据。 当前仅支持满足X509规范的ECC算法的压缩或非压缩格式的完整公钥数据。此处的公钥数据应当是完整的X509公钥，对于仅使用点数据的情况，请参考 使用ECC压缩/非压缩点格式转换 。 查看 非对称密钥生成和转换规格：ECC 。 通过传入字符串参数，可指定需要获取的ECC公钥数据格式。如果需要获取满足X509规范的压缩格式数据，则指定参数为：\"X509|COMPRESSED\"；需要获取非压缩格式，则指定参数为：\"X509|UNCOMPRESSED\"。 #### 指定非压缩公钥数据转换为压缩公钥数据 1. 指定uint8_t类型的ECC非压缩公钥数据，封装成 Crypto_DataBlob 。 公钥和私钥可单独传入，此处示例传入非压缩公钥。 2. 调用OH_CryptoAsymKeyGenerator_Create，指定字符串参数'ECC_BrainPoolP256r1'，创建密钥算法为ECC、密钥长度为256位的非对称密钥生成器（OH_CryptoAsymKeyGenerator）。 3. 调用OH_CryptoAsymKeyGenerator_Convert，传入封装后的Crypto_DataBlob，生成非对称密钥对象（OH_CryptoKeyPair）。 4. 调用OH_CryptoP"
+    },
+    {
+      "path": "references/使用ECC压缩_非压缩点格式转换(ArkTS).md",
+      "title": "使用ECC压缩/非压缩点格式转换(ArkTS)",
+      "snippet": "支持将压缩/非压缩的点数据转换为Point对象，用于密钥对象生成；也支持将Point对象转换为压缩/非压缩的点数据。 ECC的算法规格请查看 非对称密钥生成和转换规格：ECC 。 通过传入字符串参数format，可指定需要获取的点数据格式。如果需要获取压缩格式，则指定format为：\"COMPRESSED\"；需要获取非压缩格式，则指定format为：\"UNCOMPRESSED\"。 #### 指定非压缩点数据转换为压缩点数据 1. 指定Uint8Array类型的ECC非压缩点数据，调用 ECCKeyUtil.convertPoint ，构造 Point 对象，用于生成点数据。 2. 调用 ECCKeyUtil.getEncodedPoint ，获取压缩点数据。 import { cryptoFramework } from '@kit.CryptoArchitectureKit'; async function eccPubUncompressedToCompressed() { let pkData = new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4, 143, 39, 57, 249, 145, 50, "
+    },
+    {
+      "path": "references/使用ECC压缩_非压缩点格式转换(C_C++).md",
+      "title": "使用ECC压缩/非压缩点格式转换(C/C++)",
+      "snippet": "支持将压缩/非压缩的点数据，转换为Point对象，用于密钥对象生成；也支持将Point对象转换为压缩/非压缩的点数据。 ECC的算法规格请查看 非对称密钥生成和转换规格：ECC 。 通过传入字符串参数format，可指定获取的点数据格式。如果获取压缩格式，则指定format为：\"COMPRESSED\"；获取非压缩格式，则指定format为：\"UNCOMPRESSED\"。 #### 指定非压缩点数据转换为压缩点数据 1. 指定uint8_t类型的ECC非压缩点数据，调用OH_CryptoEcPoint_Create，构造OH_CryptoEcPoint对象，用于生成点数据。 2. 调用OH_CryptoEcPoint_Encode，获取压缩点数据。 #include \"CryptoArchitectureKit/crypto_architecture_kit.h\" OH_Crypto_ErrCode doTestEccPointUncompressedToCompressed() { uint8_t pk[] = { 4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, "
+    },
+    {
+      "path": "references/使用ECDH进行密钥协商(ArkTS).md",
+      "title": "使用ECDH进行密钥协商(ArkTS)",
+      "snippet": "对应的算法规格请查看 密钥协商算法规格：ECDH 。 #### 开发步骤 1. 调用 cryptoFramework.createAsyKeyGenerator 、 AsyKeyGenerator.generateKeyPair 、 AsyKeyGenerator.convertKey 生成密钥算法为ECC、密钥长度为256位的非对称密钥（KeyPair）。 如何生成ECC非对称密钥，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：ECC 和 随机生成非对称密钥对 理解。参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createKeyAgreement ，指定字符串参数'ECC256'，创建密钥算法为ECC、密钥长度为256位的密钥协议生成器（KeyAgreement）。 3. 调用 KeyAgreement.generateSecret ，基于传入的私钥（KeyPair.priKey）与公钥（KeyPair.pubKey）进行密钥协商，返回共享密钥。 - 以使用await方式，完成密钥协商为例： import { cryptoFramework } from '@kit.CryptoArchitectureKit'; async function ecdhAwait() { // 假设此公私钥对数据为外部传入 let"
+    },
+    {
+      "path": "references/使用ECDH进行密钥协商(C_C++).md",
+      "title": "使用ECDH进行密钥协商(C/C++)",
+      "snippet": "对应的算法规格请查看 密钥协商算法规格：ECDH 。 #### 开发步骤 1. 调用 OH_CryptoAsymKeyGenerator_Create 、 OH_CryptoAsymKeyGenerator_Generate 、 OH_CryptoAsymKeyGenerator_Convert 生成密钥算法为ECC、密钥长度为256位的非对称密钥（keyPair）。 如何生成ECC非对称密钥，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：ECC 和 随机生成非对称密钥对 理解。参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 OH_CryptoKeyAgreement_Create ，指定字符串参数'ECC256'，创建密钥算法为ECC、密钥长度为256位的密钥协议生成器。 3. 调用 OH_CryptoKeyAgreement_GenerateSecret ，基于传入的私钥（keyPair.priKey）与公钥（keyPair.pubKey）进行密钥协商，返回共享密钥。 #include \"CryptoArchitectureKit/crypto_architecture_kit.h\" #include \"CryptoArchitectureKit/crypto_key_agreement.h\" #include \"file.h\" #include"
+    },
+    {
+      "path": "references/使用ECDSA密钥对签名验签 (C_C++).md",
+      "title": "使用ECDSA密钥对签名验签 (C/C++)",
+      "snippet": "对应的算法规格请查看 签名验签算法规格：ECDSA 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 签名开发步骤 1. 调用 OH_CryptoSign_Create ，指定字符串参数'RSA2048|PSS|SHA256|MGF1_SHA256'，创建非对称密钥类型为RSA2048、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256的Sign实例，用于完成签名操作。 2. 调用 OH_CryptoSign_Init ，使用私钥 OH_CryptoPrivKey 初始化Sign实例。 3. 调用 OH_CryptoSign_Update ，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update，如果数据量较小，可以直接调用OH_CryptoSign_Final接口一次性传入。 4. 调用 OH_CryptoSign_Final ，对数据进行签名。 5. 调用 OH_CryptoSign_Destroy 等释放内存。 #include \"CryptoArchitectureKit/crypto_common.h\" #include \"CryptoArchitectureKit/crypto_signature"
+    },
+    {
+      "path": "references/使用ECDSA密钥对签名验签(ArkTS).md",
+      "title": "使用ECDSA密钥对签名验签(ArkTS)",
+      "snippet": "对应的算法规格请查看 签名验签算法规格：ECDSA 。 **签名** 1. 调用 cryptoFramework.createAsyKeyGenerator 、 AsyKeyGenerator.generateKeyPair ，生成非对称密钥算法为ECC、密钥长度为256位的密钥对（KeyPair）。 如何生成ECC非对称密钥，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：ECC 和 随机生成非对称密钥对 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createSign ，指定字符串参数'ECC256|SHA256'，创建非对称密钥类型为ECC256、摘要算法为SHA256的Sign实例，用于完成签名操作。 3. 调用 Sign.init ，使用私钥（PriKey）初始化Sign实例。 4. 调用 Sign.update ，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。 5. 调用 Sign.sign ，生成数据签名。 **验签** 1. 调用 cryptoFramework.createVerify ，指定字符串参数'ECC256|SHA256'，创建非对称密钥类型为ECC256、摘要算法为SHA256的Verify实例，用于完成验签操作。 2. 调用 V"
+    },
+    {
+      "path": "references/使用HKDF进行密钥派生(ArkTS).md",
+      "title": "使用HKDF进行密钥派生(ArkTS)",
+      "snippet": "对应算法规格请查看 密钥派生算法规格：HKDF 。 #### 开发步骤 1. 构造 HKDFSpec 对象，作为密钥派生参数进行密钥派生。 HKDFSpec是 KdfSpec 的子类，需要指定： - algName：指定算法'HKDF'。 - key：原始密钥材料。 如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型。同时需要确保该字符串为utf-8编码，否则派生结果会有差异。 - salt：盐值。 - info：可选的上下文与应用相关信息， 可为空，用于拓展短密钥。 - keySize：目标密钥的字节长度，需要为正整数。 2. 调用 cryptoFramework.createKdf ，指定字符串参数'HKDF|SHA256|EXTRACT_AND_EXPAND'，创建密钥派生算法为HKDF、HMAC函数摘要算法为SHA256、模式为提取和拓展的密钥派生函数对象（Kdf）。 3. 输入HKDFSpec对象，调用 Kdf.generateSecret 进行密钥派生。 Kdf.generateSecret的多种调用形式如表所示。 - 通过await返回结果： import { cryptoFramework } from '@kit.CryptoArchitectureKit'; import { buffer } from "
+    },
+    {
+      "path": "references/使用HKDF进行密钥派生(C_C++).md",
+      "title": "使用HKDF进行密钥派生(C/C++)",
+      "snippet": "对应算法规格请查看 密钥派生算法规格：HKDF 。 #### 开发步骤 1. 调用 OH_CryptoKdfParams_Create ，指定字符串参数'HKDF'，创建密钥派生参数对象。 2. 调用 OH_CryptoKdfParams_SetParam ，设置HKDF所需的参数。示例如下： - CRYPTO_KDF_KEY_DATABLOB：用于生成派生密钥的原始密钥材料。 - CRYPTO_KDF_SALT_DATABLOB：盐值。 - CRYPTO_KDF_INFO_DATABLOB：应用程序特定的信息（可选）。 3. 调用 OH_CryptoKdf_Create ，指定字符串参数'HKDF|SHA256|EXTRACT_AND_EXPAND'，创建密钥派生函数对象。 4. 调用 OH_CryptoKdf_Derive ，指定目标密钥的字节长度，进行密钥派生。 #include \"CryptoArchitectureKit/crypto_architecture_kit.h\" #include <cstdio> #include <cstring> #include \"file.h\" static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params) { const char *keyData = \"0123456"
+    },
+    {
+      "path": "references/使用PBKDF2进行密钥派生(ArkTS).md",
+      "title": "使用PBKDF2进行密钥派生(ArkTS)",
+      "snippet": "对应的算法规格请查看 密钥派生算法规格：PBKDF2 。 #### 开发步骤 1. 构造 PBKDF2Spec 对象，作为密钥派生参数进行密钥派生。 PBKDF2Spec是 KdfSpec 的子类，需要指定： - algName：指定算法'PBKDF2'。 - password：用于生成派生密钥的原始密码。 如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型。同时需要确保该字符串为utf-8编码，否则派生结果会有差异。 - salt：盐值。 - iterations：重复运算的次数，需要为正整数。 - keySize：目标密钥的字节长度，需要为正整数。 2. 调用 cryptoFramework.createKdf ，指定字符串参数'PBKDF2|SHA256'，创建密钥派生算法为PBKDF2、HMAC函数摘要算法为SHA256的密钥派生函数对象（Kdf）。 3. 输入PBKDF2Spec对象，调用 Kdf.generateSecret 进行密钥派生。 Kdf.generateSecret的多种调用形式如表所示。 - 通过await返回结果： import { cryptoFramework } from '@kit.CryptoArchitectureKit'; async function kdfAwait() { le"
+    },
+    {
+      "path": "references/使用PBKDF2进行密钥派生(C_C++).md",
+      "title": "使用PBKDF2进行密钥派生(C/C++)",
+      "snippet": "对应的算法规格请查看 密钥派生算法规格：PBKDF2 。 #### 开发步骤 1. 调用 OH_CryptoKdfParams_Create ，指定字符串参数'PBKDF2'，创建密钥派生参数对象。 2. 调用 OH_CryptoKdfParams_SetParam ，设置PBKDF2所需的参数。示例如下： - CRYPTO_KDF_KEY_DATABLOB：用于生成派生密钥的原始密码。 - CRYPTO_KDF_SALT_DATABLOB：盐值。 - CRYPTO_KDF_ITER_COUNT_INT：重复运算的次数，需要为正整数。 3. 调用 OH_CryptoKdf_Create ，指定字符串参数'PBKDF2|SHA256'，创建密钥派生函数对象。 4. 调用 OH_CryptoKdf_Derive ，指定目标密钥的字节长度，进行密钥派生。 #include \"CryptoArchitectureKit/crypto_architecture_kit.h\" #include <cstdio> #include <cstring> #include \"file.h\" static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params) { // 设置密码。 const char *password = \"123456\""
+    },
+    {
+      "path": "references/使用RSA密钥对分段签名验签 (PKCS1模式)(C_C++).md",
+      "title": "使用RSA密钥对分段签名验签 (PKCS1模式)(C/C++)",
+      "snippet": "对应的算法规格请查看 签名验签算法规格：RSA 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 签名开发步骤 1. 调用 OH_CryptoSign_Create ，指定字符串参数'RSA1024|PKCS1|SHA256'，创建Sign实例，用于完成签名操作。 2. 调用 OH_CryptoSign_Init ，使用私钥（OH_CryptoPrivKey）初始化Sign实例。 3. 调用 OH_CryptoSign_Update ，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。如果数据量较小，可以直接调用OH_CryptoSign_Final接口一次性传入。 4. 调用 OH_CryptoSign_Final ，获取签名后的数据。 5. 调用 OH_CryptoSign_Destroy 等释放内存。 #include \"CryptoArchitectureKit/crypto_common.h\" #include \"CryptoArchitectureKit/crypto_asym_key.h\" #include \"CryptoArchitectureKit/crypto_signature.h\" static OH_"
+    },
+    {
+      "path": "references/使用RSA密钥对分段签名验签（PKCS1模式）(ArkTS).md",
+      "title": "使用RSA密钥对分段签名验签（PKCS1模式）(ArkTS)",
+      "snippet": "对应的算法规格请查看 签名验签算法规格：RSA 。 **签名** 1. 调用 cryptoFramework.createAsyKeyGenerator 、 AsyKeyGenerator.generateKeyPair ，生成密钥算法为RSA、密钥长度为1024位、素数个数为2的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。 如何生成RSA非对称密钥，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：RSA 和 随机生成非对称密钥对 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createSign ，指定字符串参数'RSA1024|PKCS1|SHA256'，创建非对称密钥类型为RSA1024、填充模式为PKCS1、摘要算法为SHA256的Sign实例，用于完成签名操作。 3. 调用 Sign.init ，使用私钥（PriKey）初始化Sign实例。 4. 将一次传入数据量设置为64字节，多次调用 Sign.update ，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。 5. 调用 Sign.sign ，生成数据签名。 **验签** 1. 调用 cryptoFramework.createVerify ，指定字符串参数'RS"
+    },
+    {
+      "path": "references/使用RSA密钥对签名验签 (PKCS1模式)(C_C++).md",
+      "title": "使用RSA密钥对签名验签 (PKCS1模式)(C/C++)",
+      "snippet": "对应的算法规格请查看 签名验签算法规格：RSA 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 签名开发步骤 1. 调用 OH_CryptoSign_Create ，指定字符串参数'RSA1024|PKCS1|SHA256'，创建Sign实例，用于完成签名操作。 2. 调用 OH_CryptoSign_Init ，使用私钥（OH_CryptoPrivKey）初始化Sign实例。 3. 调用 OH_CryptoSign_Update ，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。如果数据量较小，可以直接调用OH_CryptoSign_Final接口一次性传入。 4. 调用 OH_CryptoSign_Final ，获取签名后的数据。 5. 调用 OH_CryptoSign_Destroy 等释放内存。 #include \"CryptoArchitectureKit/crypto_common.h\" #include \"CryptoArchitectureKit/crypto_signature.h\" #include \"CryptoArchitectureKit/crypto_asym_key.h\" static OH_"
+    },
+    {
+      "path": "references/使用RSA密钥对签名验签 (PSS模式)(C_C++).md",
+      "title": "使用RSA密钥对签名验签 (PSS模式)(C/C++)",
+      "snippet": "对应的算法规格请查看 签名验签算法规格：RSA 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 签名开发步骤 1. 调用OH_CryptoSign_Create，指定字符串参数'RSA2048|PSS|SHA256|MGF1_SHA256'，创建非对称密钥类型为RSA2048、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256的Sign实例，用于完成签名操作。 2. 调用OH_CryptoSign_Init，使用私钥（OH_CryptoPrivKey）初始化Sign实例。 3. 调用OH_CryptoSign_Update，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。如果数据量较小，可以直接调用OH_CryptoSign_Final接口一次性传入。 4. 调用OH_CryptoSign_Final，获取签名后的数据。 5. 调用OH_CryptoSign_Destroy等释放内存。 #include \"CryptoArchitectureKit/crypto_common.h\" #include \"CryptoArchitectureKit/crypto_signature.h\" #includ"
+    },
+    {
+      "path": "references/使用RSA密钥对签名验签（PSS模式）(ArkTS).md",
+      "title": "使用RSA密钥对签名验签（PSS模式）(ArkTS)",
+      "snippet": "对应的算法规格请查看 签名验签算法规格：RSA 。 **签名** 1. 调用 cryptoFramework.createAsyKeyGeneratorBySpec 、 AsyKeyGeneratorBySpec.generateKeyPair ，指定密钥参数，生成RSA非对称密钥对（KeyPair）。 如何生成RSA非对称密钥，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：RSA 和 指定密钥参数生成非对称密钥对 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createSign ，指定字符串参数'RSA|PSS|SHA256|MGF1_SHA256'，创建非对称密钥类型为不带长度的RSA、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256的Sign实例，用于完成签名操作。 3. 调用 Sign.init ，使用私钥（PriKey）初始化Sign实例。 4. 调用 Sign.setSignSpec ，设置签名参数。此处设置盐值的长度（SignSpecItem.PSS_SALT_LEN_NUM）为32字节。在验签时将校验此数据。 5. 调用 Sign.getSignSpec ，获取其他签名参数。 6. 调用 Sign.update ，传入待签名的数据。当前单次update长度没有限制，开"
+    },
+    {
+      "path": "references/使用RSA密钥对（PKCS1模式）签名及签名恢复(ArkTS).md",
+      "title": "使用RSA密钥对（PKCS1模式）签名及签名恢复(ArkTS)",
+      "snippet": "对应的算法规格请查看 签名验签算法规格：RSA 。 **签名** 1. 调用 cryptoFramework.createAsyKeyGenerator 、 AsyKeyGenerator.generateKeyPair ，生成密钥算法为RSA、密钥长度为1024位、素数个数为2的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。 如何生成RSA非对称密钥，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：RSA 和 随机生成非对称密钥对 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createSign ，指定字符串参数'RSA1024|PKCS1|SHA256|SignOnly'，创建非对称密钥类型为RSA1024、填充模式为PKCS1、摘要算法为SHA256的Sign实例，用于完成仅签名操作。 3. 调用 Sign.init ，使用私钥（PriKey）初始化Sign实例。 4. 调用 Sign.sign ，生成数据签名。 **验签** 1. 调用 cryptoFramework.createVerify ，指定字符串参数'RSA1024|PKCS1|SHA256|Recover'，与签名的Sign实例保持一致。创建Verify实例，用于完成验签操作。 2. 调用 Verify."
+    },
+    {
+      "path": "references/使用RSA密钥对（PKCS1模式）签名恢复(C_C++).md",
+      "title": "使用RSA密钥对（PKCS1模式）签名恢复(C/C++)",
+      "snippet": "对应的算法规格请查看 验签算法规格：RSA 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 1. 调用 OH_CryptoVerify_Create ，指定字符串参数'RSA1024|PKCS1|SHA256|Recover'，与签名的Sign实例保持一致。创建Verify实例，用于完成验签操作。 2. 调用 OH_CryptoVerify_Init ，使用公钥（OH_CryptoPubKey）初始化Verify实例。 3. 调用 OH_CryptoVerify_Recover ，对数据进行签名恢复。 #include \"signing_signature_verification.h\" OH_Crypto_ErrCode DoTestRsaSignatureRecover() { OH_CryptoAsymKeyGenerator *keyCtx = nullptr; OH_CryptoKeyPair *keyPair = nullptr; OH_CryptoVerify *verify = nullptr; uint8_t plainText[] = {0xc4, 0xa5, 0xe5, 0x45, 0xee, 0x71, 0x5e, 0x3b, 0x24,"
+    },
+    {
+      "path": "references/使用RSA密钥对（PKCS1模式）签名验签(ArkTS).md",
+      "title": "使用RSA密钥对（PKCS1模式）签名验签(ArkTS)",
+      "snippet": "对应的算法规格请查看 签名验签算法规格：RSA 。 **签名** 1. 调用 cryptoFramework.createAsyKeyGenerator 、 AsyKeyGenerator.generateKeyPair ，生成密钥算法为RSA、密钥长度为1024位、素数个数为2的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。 如何生成RSA非对称密钥，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：RSA 和 随机生成非对称密钥对 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createSign ，指定字符串参数'RSA1024|PKCS1|SHA256'，创建非对称密钥类型为RSA1024、填充模式为PKCS1、摘要算法为SHA256的Sign实例，用于完成签名操作。 3. 调用 Sign.init ，使用私钥（PriKey）初始化Sign实例。 4. 调用 Sign.update ，传入待签名的数据。 当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。 - 当待签名的数据较短时，可以在init完成后直接调用sign。 - 当数据量较大时，可以多次调用update，即分段签名验签。 5. 调用 Sign.sign ，生成数据签名。 **验签*"
+    },
+    {
+      "path": "references/使用RSA私钥进行编码解码(ArkTS).md",
+      "title": "使用RSA私钥进行编码解码(ArkTS)",
+      "snippet": "**编码** 1. 调用 cryptoFramework.createAsyKeyGenerator 、 AsyKeyGenerator.generateKeyPair ，生成RSA密钥类型为RSA1024、素数个数为2的非对称密钥对（KeyPair）。KeyPair对象中包括公钥PubKey、私钥PriKey。 如何生成RSA非对称密钥对，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：RSA 和 随机生成非对称密钥对 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 传入参数 KeyEncodingConfig ，参数PKCS1/PKCS8，调用 prikey.getEncodedPem 生成编码后的私钥字符串。 **解码** 1. 调用 cryptoFramework.createAsyKeyGenerator 生成RSA非对称密钥生成器asyKeyGenerator。 如何生成RSA非对称密钥对，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：RSA 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a4/v3/vMXA6JcsROS699gdJNp0Xw/caution_3.0-zh-cn.png?HW-CC-KV="
+    },
+    {
+      "path": "references/使用RSA私钥进行编码解码(C_C++).md",
+      "title": "使用RSA私钥进行编码解码(C/C++)",
+      "snippet": "**编码** 1. 调用 OH_CryptoAsymKeyGenerator_Create 、 OH_CryptoAsymKeyGenerator_Generate ，生成RSA密钥类型为RSA2048、素数个数为2的非对称密钥对（keyPair）。keyPair对象中包括公钥PubKey、私钥PriKey。 如何生成RSA非对称密钥对，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：RSA 和 随机生成非对称密钥对(C/C++) 理解。参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 OH_CryptoPrivKeyEncodingParams_Create 创建参数对象（params），并通过 OH_CryptoPrivKeyEncodingParams_SetParam 设置加密算法和密码。 3. 调用 OH_CryptoPrivKey_Encode ，传入参数CRYPTO_PEM/CRYPTO_DER、PKCS1/PKCS8和参数对象（params）生成编码后的私钥字符串。 **解码** 1. 调用 OH_CryptoAsymKeyGenerator_Create 生成RSA非对称密钥生成器keyGen。 如何生成RSA非对称密钥对，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：RSA 。 2. 调用[OH_CryptoAsymKeyG"
+    },
+    {
+      "path": "references/使用RSA非对称密钥分段加解密(ArkTS).md",
+      "title": "使用RSA非对称密钥分段加解密(ArkTS)",
+      "snippet": "对应的算法规格请查看 非对称密钥加解密算法规格：RSA 。 **加密** 1. 调用 cryptoFramework.createAsyKeyGenerator 、 AsyKeyGenerator.generateKeyPair ，生成RSA密钥类型为RSA1024、素数个数为2（不填默认）的非对称密钥对（KeyPair）。KeyPair对象中包括公钥PubKey、私钥PriKey。 如何生成RSA非对称密钥对，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：RSA 和 随机生成非对称密钥对 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'RSA1024|PKCS1'，创建非对称密钥类型为RSA1024、填充模式为PKCS1的Cipher实例，用于完成加解密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。 4. 多次调用 Cipher.doFinal ，传入明文，获取加密后的数据。 doFinal输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。 此处将明文按64个字节一组拆分，多次加密。使用1024"
+    },
+    {
+      "path": "references/使用RSA非对称密钥分段加解密(C_C++).md",
+      "title": "使用RSA非对称密钥分段加解密(C/C++)",
+      "snippet": "对应的算法规格请查看 非对称密钥加解密算法规格：RSA 。 **加密** 1. 调用 OH_CryptoAsymKeyGenerator_Create 、 OH_CryptoAsymKeyGenerator_Generate ，生成RSA密钥类型为RSA1024、素数个数为2的非对称密钥对（keyPair）。keyPair对象中包括公钥PubKey、私钥PriKey。 如何生成RSA非对称密钥对，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：RSA 和 随机生成非对称密钥对 理解。参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 OH_CryptoAsymCipher_Create ，指定字符串参数'RSA1024|PKCS1'，创建非对称密钥类型为RSA1024、填充模式为PKCS1的Cipher实例，用于完成加解密操作。 3. 调用 OH_CryptoAsymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（keyPair），初始化加密Cipher实例。 4. 多次调用 OH_CryptoAsymCipher_Final ，传入明文，获取加密后的数据。 - OH_CryptoAsymCipher_Final输出结果可能为NULL，在访问具体数据前，需要先判断结果是否为NULL，避免产生异常。 - 此处"
+    },
+    {
+      "path": "references/使用RSA非对称密钥（PKCS1_OAEP模式）加解密.md",
+      "title": "使用RSA非对称密钥（PKCS1_OAEP模式）加解密",
+      "snippet": "对应的算法规格请查看 非对称密钥加解密算法规格：RSA 。 **加密** 1. 调用 cryptoFramework.createAsyKeyGeneratorBySpec 、 AsyKeyGeneratorBySpec.generateKeyPair ，指定密钥参数，生成RSA非对称密钥对（KeyPair）。 如何生成RSA非对称密钥对，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：RSA 和 指定密钥参数生成非对称密钥对 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1'，创建非对称密钥类型为RSA2048、填充模式为PKCS1_OAEP、摘要算法为SHA256、掩码摘要为MGF1_SHA1的RSA密钥的Cipher实例，用于完成加解密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。 非对称密钥无加密参数，直接传入null。 4. 在调用Cipher.doFinal前，调用 Cipher.setCipherSpec 设置PKCS1_OAEP填充参数pSource"
+    },
+    {
+      "path": "references/使用RSA非对称密钥（PKCS1模式）加解密(ArkTS).md",
+      "title": "使用RSA非对称密钥（PKCS1模式）加解密(ArkTS)",
+      "snippet": "对应的算法规格请查看 非对称密钥加解密算法规格：RSA 。 **加密** 1. 调用 cryptoFramework.createAsyKeyGenerator 、 AsyKeyGenerator.generateKeyPair ，生成RSA密钥类型为RSA1024、素数个数为2的非对称密钥对（KeyPair）。KeyPair对象中包括公钥PubKey、私钥PriKey。 如何生成RSA非对称密钥对，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：RSA 和 随机生成非对称密钥对 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'RSA1024|PKCS1'，创建非对称密钥类型为RSA1024、填充模式为PKCS1的Cipher实例，用于完成加解密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。 非对称密钥无加密参数，直接传入null。 4. 调用 Cipher.doFinal ，传入明文，获取加密后的数据。 - doFinal输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。 - 当数据量较大时，可以"
+    },
+    {
+      "path": "references/使用RSA非对称密钥（PKCS1模式）加解密(C_C++).md",
+      "title": "使用RSA非对称密钥（PKCS1模式）加解密(C/C++)",
+      "snippet": "对应的算法规格请查看 非对称密钥加解密算法规格：RSA 。 **加密** 1. 调用 OH_CryptoAsymKeyGenerator_Create 、 OH_CryptoAsymKeyGenerator_Generate ，生成RSA密钥类型为RSA1024、素数个数为2的非对称密钥对（keyPair）。keyPair对象中包括公钥PubKey、私钥PriKey。 如何生成RSA非对称密钥对，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：RSA 和 随机生成非对称密钥对 理解。参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 OH_CryptoAsymCipher_Create ，指定字符串参数'RSA1024|PKCS1'，创建非对称密钥类型为RSA1024、填充模式为PKCS1的Cipher实例，用于完成加解密操作。 3. 调用 OH_CryptoAsymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（keyPair），初始化加密Cipher实例。 4. 调用 OH_CryptoAsymCipher_Final ，传入明文，获取加密后的数据。 - OH_CryptoAsymCipher_Final输出结果可能为NULL，在访问具体数据前，需要先判断结果是否为NULL，避免产生异常。 - 当数据量"
+    },
+    {
+      "path": "references/使用SCRYPT进行密钥派生(ArkTS).md",
+      "title": "使用SCRYPT进行密钥派生(ArkTS)",
+      "snippet": "对应的算法规格请查看 密钥派生算法规格：SCRYPT 。 #### 开发步骤 1. 构造 ScryptSpec 对象，作为密钥派生参数进行密钥派生。 ScryptSpec是 KdfSpec 的子类，需要指定： - algName：指定算法名为'SCRYPT'。 - passphrase：用于生成派生密钥的原始密码。 如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型。同时需要确保该字符串为utf-8编码，否则派生结果会有差异。 - salt：盐值。 - n：迭代次数，需要为正整数。 - p：并行化参数，需要为正整数。 - r：块大小参数，需要为正整数。 - maxMemory：最大内存限制参数，需要为正整数。 - keySize：目标密钥的字节长度，需要为正整数。 2. 调用 cryptoFramework.createKdf ，指定字符串参数'SCRYPT'，创建密钥派生算法为SCRYPT的密钥派生函数对象（Kdf）。 3. 输入SCRYPT对象，调用 Kdf.generateSecret 进行密钥派生。 Kdf.generateSecret的多种调用形式如表所示。 - 通过await返回结果： import { cryptoFramework } from '@kit.CryptoArchitectureKit'; im"
+    },
+    {
+      "path": "references/使用SCRYPT进行密钥派生(C_C++).md",
+      "title": "使用SCRYPT进行密钥派生(C/C++)",
+      "snippet": "对应的算法规格请查看 密钥派生算法规格：SCRYPT 。 #### 开发步骤 1. 调用 OH_CryptoKdfParams_Create ，指定字符串参数'SCRYPT'，创建密钥派生参数对象。 2. 调用 OH_CryptoKdfParams_SetParam ，设置Scrypt所需的参数。 密钥派生失败原因：下列参数未设置。 - CRYPTO_KDF_KEY_DATABLOB：用于生成派生密钥的原始密码。 - CRYPTO_KDF_SALT_DATABLOB：盐值。 - CRYPTO_KDF_SCRYPT_N_UINT64：CPU/内存开销参数，必须是2的幂次方。 - CRYPTO_KDF_SCRYPT_R_UINT64：块大小参数，影响并行度。 - CRYPTO_KDF_SCRYPT_P_UINT64：并行化参数。 - CRYPTO_KDF_SCRYPT_MAX_MEM_UINT64：最大内存限制（字节）。 3. 调用 OH_CryptoKdf_Create ，指定字符串参数'SCRYPT'，创建密钥派生函数对象。 4. 调用 OH_CryptoKdf_Derive ，指定目标密钥的字节长度，进行密钥派生。 #include \"CryptoArchitectureKit/crypto_architecture_kit.h\" #include \"CryptoArchitec"
+    },
+    {
+      "path": "references/使用SM2密文格式转换(ArkTS).md",
+      "title": "使用SM2密文格式转换(ArkTS)",
+      "snippet": "当前支持的SM2密文格式为国密标准的ASN.1格式，其中各参数组合顺序为C1C3C2，具体参数含义请参考 转换SM2密文格式 。 开发者可指定SM2密文的参数，将其转换成符合国密标准的ASN.1格式密文。反之，也可以从国密标准的ASN.1格式密文中取出具体的SM2密文参数，便于开发者自行组合成其他格式的SM2密文。 **指定密文参数，生成标准ASN.1密文** 1. 构造 SM2CipherTextSpec 对象，用于指定SM2密文参数。如果开发者使用的不是国密标准的ASN.1格式密文，需自行提取所需要的参数。 2. 调用 genCipherTextBySpec ，将SM2CipherTextSpec对象传入，生成符合国密标准的ASN.1格式的SM2密文。 3. 生成的密文可直接使用cryptoFramework进行SM2解密。 import { cryptoFramework } from '@kit.CryptoArchitectureKit'; function testGenCipherTextBySpec() { let spec: cryptoFramework.SM2CipherTextSpec = { xCoordinate: BigInt('20625015362595980457695435345498579729138244358573902431560627"
+    },
+    {
+      "path": "references/使用SM2密文格式转换(C_C++).md",
+      "title": "使用SM2密文格式转换(C/C++)",
+      "snippet": "当前支持的SM2密文格式为国密标准的ASN.1格式，其中各参数组合顺序为C1C3C2，具体参数含义请参考 转换SM2密文格式 。 开发者可指定SM2密文的参数，将其转换成符合国密标准的ASN.1格式密文。反之，也可以从国密标准的ASN.1格式密文中取出具体的SM2密文参数，便于开发者自行组合成其他格式的SM2密文。 **指定密文参数，生成标准ASN.1密文** 1. 调用 OH_CryptoSm2CiphertextSpec_Create ，创建空的SM2密文规格对象。 2. 调用 OH_CryptoSm2CiphertextSpec_SetItem ，设置密文的各个参数（C1.x、C1.y、C2、C3）。 3. 调用 OH_CryptoSm2CiphertextSpec_Encode ，生成ASN.1格式的密文（当前密文转换仅支持SM3，实现中只校验hash长度是否为32字节）。 4. 使用完毕后，调用 OH_CryptoSm2CiphertextSpec_Destroy 销毁SM2密文规格对象。 #include \"CryptoArchitectureKit/crypto_architecture_kit.h\" OH_Crypto_ErrCode doTestGenCipherTextBySpec() { // 准备SM2密文参数。 uint8_t c1x[] = {45, 1"
+    },
+    {
+      "path": "references/使用SM2密钥对签名验签 (C_C++).md",
+      "title": "使用SM2密钥对签名验签 (C/C++)",
+      "snippet": "对应的算法规格请查看 签名验签算法规格：SM2 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 签名开发步骤 1. 调用 OH_CryptoSign_Create ，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Sign实例，用于完成签名操作。 2. 调用 OH_CryptoSign_Init ，使用私钥 OH_CryptoPrivKey 初始化Sign实例。 3. 调用 OH_CryptoSign_Update ，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。如果数据量较小，可以直接调用OH_CryptoSign_Final接口一次性传入。 4. 调用 OH_CryptoSign_Final ，获取签名后的数据。 5. 调用 OH_CryptoSign_Destroy 等释放内存。 #include \"CryptoArchitectureKit/crypto_common.h\" #include \"CryptoArchitectureKit/crypto_asym_key.h\" #include \"CryptoArchitectureKit/crypto_signatu"
+    },
+    {
+      "path": "references/使用SM2密钥对签名验签(ArkTS).md",
+      "title": "使用SM2密钥对签名验签(ArkTS)",
+      "snippet": "对应的算法规格请查看 签名验签算法规格：SM2 。 **签名** 1. 调用 cryptoFramework.createAsyKeyGenerator 、 AsyKeyGenerator.generateKeyPair ，生成非对称密钥算法为SM2、密钥长度为256位的密钥对（KeyPair）。 如何生成SM2非对称密钥，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：SM2 和 随机生成非对称密钥对 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createSign ，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Sign实例，用于完成签名操作。 3. 调用 Sign.init ，使用私钥（PriKey）初始化Sign实例。 4. 调用 Sign.update ，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。 5. 调用 Sign.sign ，生成数据签名。 **验签** 1. 调用 cryptoFramework.createVerify ，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Verify实例，用于完成验签操作。 2. 调用 Verify.init"
+    },
+    {
+      "path": "references/使用SM2非对称密钥加解密(ArkTS).md",
+      "title": "使用SM2非对称密钥加解密(ArkTS)",
+      "snippet": "对应的算法规格请查看 非对称密钥加解密算法规格：SM2 。 **加密** 1. 调用 cryptoFramework.createAsyKeyGenerator 、 AsyKeyGenerator.generateKeyPair ，生成SM2密钥类型为SM2_256的非对称密钥对（KeyPair）。KeyPair对象中包括公钥PubKey、私钥PriKey。 如何生成SM2非对称密钥对，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：SM2 和 随机生成非对称密钥对 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Cipher实例，用于完成加解密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。 非对称密钥无加密参数，直接传入null。 4. 调用 Cipher.doFinal ，传入明文，获取加密后的数据。 doFinal输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。 **解密** 1. 由于SM2算法的Cipher实"
+    },
+    {
+      "path": "references/使用SM2非对称密钥加解密(C_C++).md",
+      "title": "使用SM2非对称密钥加解密(C/C++)",
+      "snippet": "对应的算法规格请查看 非对称密钥加解密算法规格：SM2 。 **加密** 1. 调用 OH_CryptoAsymKeyGenerator_Create 、 OH_CryptoAsymKeyGenerator_Generate ，生成SM2密钥类型为SM2_256的非对称密钥对（keyPair）。keyPair对象中包括公钥PubKey、私钥PriKey。 如何生成SM2非对称密钥对，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：SM2 和 随机生成非对称密钥对 理解。参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 OH_CryptoAsymCipher_Create ，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Cipher实例，用于完成加解密操作。 3. 调用 OH_CryptoAsymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（keyPair），初始化加密Cipher实例。 4. 调用 OH_CryptoAsymCipher_Final ，传入明文，获取加密后的数据。 OH_CryptoAsymCipher_Final输出结果可能为NULL，在访问具体数据前，需要先判断结果是否为NULL，避免产生异常。 **解密** 1. 由于SM2算法的C"
+    },
+    {
+      "path": "references/使用SM4对称密钥（CBC模式）加解密(ArkTS).md",
+      "title": "使用SM4对称密钥（CBC模式）加解密(ArkTS)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：SM4 。 **加密** 1. 调用 cryptoFramework.createSymKeyGenerator 、 SymKeyGenerator.generateSymKey ，生成密钥算法为SM4、密钥长度为128位的对称密钥（SymKey）。 如何生成SM4对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：SM4 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'SM4_128|CBC|PKCS7'，创建对称密钥类型为SM4_128、分组模式为CBC、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和CBC模式对应的加密参数（IvParamsSpec），初始化加密Cipher实例。 4. 调用 Cipher.update ，更新数据（明文）。 - 当数据量较小时，可以在init完成后直接调用doFinal。 - 当数据量较大时，可以多次调用update，即分段加解密。 5. 调用 Cipher.doFinal ，获取加密后的数据。 - 由于已使用upd"
+    },
+    {
+      "path": "references/使用SM4对称密钥（CBC模式）加解密(C_C++).md",
+      "title": "使用SM4对称密钥（CBC模式）加解密(C/C++)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：SM4 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) **加密** 1. 调用 OH_CryptoSymKeyGenerator_Create 、 OH_CryptoSymKeyGenerator_Generate ，生成密钥算法为SM4、密钥长度为128位的对称密钥（OH_CryptoSymKey）。 如何生成SM4对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：SM4 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'SM4_128|CBC|PKCS7'，创建对称密钥类型为SM4_128、分组模式为CBC、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 OH_CryptoSymCipherParams_Create 创建参数对象，调用 OH_CryptoSymCipherParams_SetParam 设置对应的加密参数。 4. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoS"
+    },
+    {
+      "path": "references/使用SM4对称密钥（ECB模式）加解密(ArkTS).md",
+      "title": "使用SM4对称密钥（ECB模式）加解密(ArkTS)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：SM4 。 **加密** 1. 调用 cryptoFramework.createSymKeyGenerator 、 SymKeyGenerator.generateSymKey ，生成密钥算法为SM4、密钥长度为128位的对称密钥（SymKey）。 如何生成SM4对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：SM4 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'SM4_128|ECB|PKCS7'，创建对称密钥类型为SM4_128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey），初始化加密Cipher实例。 ECB模式无加密参数，直接传入null。 4. 调用 Cipher.update ，更新数据（明文）。 - 当数据量较小时，可以在init完成后直接调用doFinal。 - 当数据量较大时，可以多次调用update，即分段加解密。 5. 调用 Cipher.doFinal ，获取加密后的数据。 - 由于已使用update传入数"
+    },
+    {
+      "path": "references/使用SM4对称密钥（ECB模式）加解密(C_C++).md",
+      "title": "使用SM4对称密钥（ECB模式）加解密(C/C++)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：SM4 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) **加密** 1. 调用 OH_CryptoSymKeyGenerator_Create 、 OH_CryptoSymKeyGenerator_Generate ，生成密钥算法为SM4、密钥长度为128位的对称密钥（OH_CryptoSymKey）。 如何生成SM4对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：SM4 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'SM4_128|ECB|PKCS7'，创建对称密钥类型为SM4_128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoSymKey），初始化加密Cipher实例。 ECB模式无加密参数，直接传入null。 4. 调用 OH_CryptoSymCipher_Update ，更新数据（明文）。 - 当数据量较"
+    },
+    {
+      "path": "references/使用SM4对称密钥（GCM模式）分段加解密(ArkTS).md",
+      "title": "使用SM4对称密钥（GCM模式）分段加解密(ArkTS)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：SM4 。 **加密** 1. 调用 cryptoFramework.createSymKeyGenerator 、 SymKeyGenerator.generateSymKey ，生成密钥算法为SM4、密钥长度为128位的对称密钥（SymKey）。 如何生成SM4对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：SM4 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'SM4_128|GCM|PKCS7'，创建对称密钥类型为SM4_128、分组模式为GCM、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和GCM模式对应的加密参数（GcmParamsSpec），初始化加密Cipher实例。 4. 将一次传入数据量设置为20字节，多次调用 Cipher.update ，更新数据（明文）。 - 当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。 - 建议开发者对每次update的结果都判断是否为null，并在结果不为null时取出其"
+    },
+    {
+      "path": "references/使用SM4对称密钥（GCM模式）分段加解密(C_C++).md",
+      "title": "使用SM4对称密钥（GCM模式）分段加解密(C/C++)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：SM4 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) **加密** 1. 调用 OH_CryptoSymKeyGenerator_Create 、 OH_CryptoSymKeyGenerator_Generate ，生成密钥算法为SM4、密钥长度为128位的对称密钥（OH_CryptoSymKey）。 如何生成SM4对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：SM4 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'SM4_128|GCM|PKCS7'，创建对称密钥类型为SM4_128、分组模式为GCM、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 OH_CryptoSymCipherParams_Create 创建参数对象，调用 OH_CryptoSymCipherParams_SetParam 设置对应的加密参数。 4. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoS"
+    },
+    {
+      "path": "references/使用SM4对称密钥（GCM模式）加解密(ArkTS).md",
+      "title": "使用SM4对称密钥（GCM模式）加解密(ArkTS)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：SM4 。 **加密** 1. 调用 cryptoFramework.createSymKeyGenerator 、 SymKeyGenerator.generateSymKey ，生成密钥算法为SM4、密钥长度为128位的对称密钥（SymKey）。 如何生成SM4对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：SM4 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createCipher ，指定字符串参数'SM4_128|GCM|PKCS7'，创建对称密钥类型为SM4_128、分组模式为GCM、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 Cipher.init ，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和GCM模式对应的加密参数（GcmParamsSpec），初始化加密Cipher实例。 4. 调用 Cipher.update ，更新数据（明文）。 当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。 - 当数据量较小时，可以在init完成后直接调用doFinal。 - 当数据量较大时，可以多次调用update，即分段加解密。 "
+    },
+    {
+      "path": "references/使用SM4对称密钥（GCM模式）加解密(C_C++).md",
+      "title": "使用SM4对称密钥（GCM模式）加解密(C/C++)",
+      "snippet": "对应的算法规格请查看 对称密钥加解密算法规格：SM4 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) **加密** 1. 调用 OH_CryptoSymKeyGenerator_Create 、 OH_CryptoSymKeyGenerator_Generate ，生成密钥算法为SM4、密钥长度为128位的对称密钥（OH_CryptoSymKey）。 如何生成SM4对称密钥，开发者可参考下文示例，并结合 对称密钥生成和转换规格：SM4 和 随机生成对称密钥 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 OH_CryptoSymCipher_Create ，指定字符串参数'SM4_128|GCM|PKCS7'，创建对称密钥类型为SM4_128、分组模式为GCM、填充模式为PKCS7的Cipher实例，用于完成加密操作。 3. 调用 OH_CryptoSymCipherParams_Create 创建参数对象，调用 OH_CryptoSymCipherParams_SetParam 设置对应的加密参数。 4. 调用 OH_CryptoSymCipher_Init ，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoS"
+    },
+    {
+      "path": "references/使用X25519进行密钥协商(ArkTS).md",
+      "title": "使用X25519进行密钥协商(ArkTS)",
+      "snippet": "对应的算法规格请查看 密钥协商算法规格：X25519 。 #### 开发步骤 1. 调用 cryptoFramework.createAsyKeyGenerator 、 AsyKeyGenerator.generateKeyPair 、 AsyKeyGenerator.convertKey 生成密钥算法为X25519的非对称密钥（KeyPair）。 如何生成X25519非对称密钥，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：X25519 和 随机生成非对称密钥对 理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 cryptoFramework.createKeyAgreement ，指定字符串参数'X25519'，创建密钥算法为X25519的密钥协议生成器（KeyAgreement）。 3. 调用 KeyAgreement.generateSecret ，基于传入的私钥（KeyPair.priKey）与公钥（KeyPair.pubKey）进行密钥协商，返回共享密钥。 - 异步方法示例： import { cryptoFramework } from '@kit.CryptoArchitectureKit'; async function x25519Await() { // 假设此公私钥对数据为外部传入 let pubKeyArray = ne"
+    },
+    {
+      "path": "references/使用X25519进行密钥协商(C_C++).md",
+      "title": "使用X25519进行密钥协商(C/C++)",
+      "snippet": "对应的算法规格请查看 密钥协商算法规格：X25519 。 #### 开发步骤 1. 调用 OH_CryptoAsymKeyGenerator_Create 、 OH_CryptoAsymKeyGenerator_Generate 、 OH_CryptoAsymKeyGenerator_Convert 生成密钥算法为X25519的非对称密钥（keyPair）。 如何生成X25519非对称密钥，开发者可参考下文示例，并结合 非对称密钥生成和转换规格：X25519 和 随机生成非对称密钥对 理解。参考文档与当前示例可能存在入参差异，请在阅读时注意区分。 2. 调用 OH_CryptoKeyAgreement_Create ，指定字符串参数'X25519'，创建密钥算法为X25519的密钥协议生成器。 3. 调用 OH_CryptoKeyAgreement_GenerateSecret ，基于传入的私钥（keyPair.priKey）与公钥（keyPair.pubKey）进行密钥协商，返回共享密钥。 #include \"CryptoArchitectureKit/crypto_architecture_kit.h\" #include \"CryptoArchitectureKit/crypto_key_agreement.h\" #include \"file.h\" #include <cstd"
+    },
+    {
+      "path": "references/使用X963KDF进行密钥派生(ArkTS).md",
+      "title": "使用X963KDF进行密钥派生(ArkTS)",
+      "snippet": "从API version 22开始，算法库支持使用该算法进行密钥派生操作。 对应的算法规格请查看 密钥派生算法规格：X963KDF 。 #### 开发步骤 1. 构造 X963KdfSpec 对象，作为密钥派生参数进行密钥派生。 X963KdfSpec是 KdfSpec 的子类，需要指定： - algName：指定算法'X963Kdf'。 - key：原始密钥材料。 如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型。同时需要确保该字符串为utf-8编码，否则派生结果会有差异。 - info：可选的上下文与应用相关信息，可为空，用于拓展短密钥。 - keySize：目标密钥的字节长度，需要为正整数。 2. 调用 cryptoFramework.createKdf ，指定字符串参数'X963KDF|SHA256'，创建密钥派生算法为X963KDF、HMAC函数摘要算法为SHA256的密钥派生函数对象（Kdf）。 3. 输入X963KdfSpec对象，调用 Kdf.generateSecret 进行密钥派生。 Kdf.generateSecret的多种调用形式如表所示。 - 通过await返回结果： import { cryptoFramework } from '@kit.CryptoArchitectureKit'; imp"
+    },
+    {
+      "path": "references/使用X963KDF进行密钥派生(C_C++).md",
+      "title": "使用X963KDF进行密钥派生(C/C++)",
+      "snippet": "从API version 22开始，算法库支持使用该算法进行密钥派生操作。 对应算法规格请查看 密钥派生算法规格：X963KDF 。 #### 开发步骤 1. 调用 OH_CryptoKdfParams_Create ，指定字符串参数'X963KDF'，创建密钥派生参数对象。 2. 调用 OH_CryptoKdfParams_SetParam ，设置X963KDF所需的参数。示例如下： - CRYPTO_KDF_KEY_DATABLOB：用于生成派生密钥的原始密钥材料。 - CRYPTO_KDF_INFO_DATABLOB：应用程序特定的信息（可选）。 3. 调用 OH_CryptoKdf_Create ，指定字符串参数'X963KDF|SHA256'，创建密钥派生函数对象。 4. 调用 OH_CryptoKdf_Derive ，指定目标密钥的字节长度，进行密钥派生。 #include \"CryptoArchitectureKit/crypto_architecture_kit.h\" #include <cstdio> #include <cstring> #include \"file.h\" OH_Crypto_ErrCode doTestX963Kdf() { // 创建X963KDF参数对象。 OH_CryptoKdfParams *params = nullptr; OH_C"
+    },
+    {
+      "path": "references/使用硬件熵源生成安全随机数(ArkTS).md",
+      "title": "使用硬件熵源生成安全随机数(ArkTS)",
+      "snippet": "从API version 21开始，可以选择使用硬件熵源生成安全随机数。 随机数主要用于临时会话密钥生成和非对称加密算法密钥生成等场景。在加解密场景中，安全随机数生成器需要具备随机性、不可预测性和不可重现性。 使用更安全的熵源，对随机数而言，就意味着 “结果难以被猜测或复现”，是 “真随机性” 的量化体现。 当前硬件熵源通过调用 HUKS 接口实现。 开发者可以调用接口，完成以下具体功能： - 生成指定长度的安全随机数，并将其用于生成对应的密钥。 - 开启硬件熵源。 - 指定随机种子，生成一系列的随机序列。 在开发前，开发者应该先对加解密基础知识有一定了解，并熟知以下随机数相关的基本概念： - **内部状态** 代表随机数生成器内存中的数值，当内部状态相同时，随机数生成器会生成固定的随机数序列。 - **随机种子** 一个用来对伪随机数的内部状态进行初始化的数据，随机数生成器通过种子来生成一系列的随机序列。 当前OpenSSL实现方式，随机数生成器内部状态是不断变化的，即使设置相同的种子，生成的随机数序列也不会相同。 #### 支持的算法与规格 安全随机数生成，设置硬件熵源之后，使用OpenSSL的RAND_priv_bytes接口生成。 #### 开发步骤 1. 调用 cryptoFramework.createRandom ，生成随机数实例。 2. 调用 cryptoFrame"
+    },
+    {
+      "path": "references/使用硬件熵源生成安全随机数(C_C++).md",
+      "title": "使用硬件熵源生成安全随机数(C/C++)",
+      "snippet": "从API version 21开始，可以选择使用硬件熵源生成安全随机数。 随机数主要用于临时会话密钥生成和非对称加密算法密钥生成等场景。在加解密场景中，安全随机数生成器需要具备随机性、不可预测性和不可重现性。 使用更安全的熵源，对随机数而言，就意味着 “结果难以被猜测或复现”，是 “真随机性” 的量化体现。 当前硬件熵源通过调用 HUKS 接口实现。 开发者可以调用接口，完成以下具体功能： - 生成指定长度的安全随机数，并将其用于生成对应的密钥。 - 开启硬件熵源。 - 指定随机种子，生成一系列的随机序列。 在开发前，开发者应该先对加解密基础知识有一定了解，并熟知以下随机数相关的基本概念： - **内部状态** 代表随机数生成器内存中的数值，当内部状态相同时，随机数生成器会生成固定的随机数序列。 - **随机种子** 一个用来对伪随机数的内部状态进行初始化的数据，随机数生成器通过种子来生成一系列的随机序列。 当前OpenSSL实现方式，随机数生成器内部状态是不断变化的，即使设置相同的种子，生成的随机数序列也不会相同。 #### 支持的算法与规格 安全随机数生成，设置硬件熵源之后，使用OpenSSL的RAND_priv_bytes接口生成。 #### 开发步骤 1. 调用 OH_CryptoRand_Create ，创建随机数生成器。 2. 调用 OH_CryptoRand_Enab"
+    },
+    {
+      "path": "references/使用私钥对象获取公钥对象(ArkTS).md",
+      "title": "使用私钥对象获取公钥对象(ArkTS)",
+      "snippet": "从API version 23开始，算法库支持从私钥对象中获取公钥对象的操作。 以RSA为例，根据私钥对象获取公钥对象。 对应的算法规格请查看 非对称密钥加解密算法规格：RSA 。 #### 开发步骤 1. 调用 cryptoFramework.createAsyKeyGenerator ，指定字符串参数'RSA1024'，创建RSA密钥类型为RSA1024、素数个数为2的非对称密钥生成器（AsyKeyGenerator）。 生成RSA非对称密钥时，默认素数为2，此处省略了参数PRIMES_2。 2. 调用 AsyKeyGenerator.generateKeyPair ，随机生成非对称密钥对象（KeyPair）。 KeyPair对象中包括公钥PubKey、私钥PriKey。 3. 调用 PubKey.getEncoded 获取KeyPair中公钥对象的二进制数据。 4. 调用 PriKey.getPubKey 从私钥中获取公钥对象为PubKey。 5. 调用 PubKey.getEncoded 获取PubKey对象的二进制数据。 6. 比较两个公钥对象的二进制数据。 - 以异步方式生成RSA密钥对为例（调用方法 getPubKey ）： import { cryptoFramework } from '@kit.CryptoArchitectureKit'; import { b"
+    },
+    {
+      "path": "references/使用私钥对象获取公钥对象(C_C++).md",
+      "title": "使用私钥对象获取公钥对象(C/C++)",
+      "snippet": "从API version 23开始，算法库支持从私钥对象中获取公钥对象的操作。 以RSA为例，根据私钥对象获取公钥对象。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) 对应的算法规格请查看 非对称密钥生成和转换规格：RSA 。 #### 开发步骤 1. 调用 OH_CryptoAsymKeyGenerator_Create ，指定字符串参数'RSA1024|PRIMES_2'，创建RSA密钥类型为RSA1024、素数个数为2的非对称密钥生成器（OH_CryptoAsymKeyGenerator）。 2. 调用 OH_CryptoAsymKeyGenerator_Convert ，传入私钥数据，生成非对称密钥对象（OH_CryptoKeyPair）。 3. 调用 OH_CryptoKeyPair_GetPubKey 获取公钥对象 (OH_CryptoPubKey)。 4. 调用 OH_CryptoPubKey_Encode 获取公钥对象的二进制数据。 5. 比较公钥数据与期望值是否相等。 #include \"CryptoArchitectureKit/crypto_common.h\" #include \"CryptoArchitectureKit/crypto_asym_key.h\" "
+    },
+    {
+      "path": "references/分段加解密说明.md",
+      "title": "分段加解密说明",
+      "snippet": "在加解密的过程中，算法库没有对单次或累计的传入数据量设置大小限制，但在传入的数据量较大时（如数据量大于2M），建议开发者将数据分段，完成分段加解密，提高效率。 #### 对称加解密 对称密钥的分段加解密，通过调用 Cipher.update 实现。 开发者可自定义单次传入的数据量（示例中的updateLength），多次调用update传入数据。 当前单次支持传入的最大长度为INT_MAX（Uint8Array类型的最大长度）。 **开发者应当对每次update和doFinal的结果都判断是否为null，并在结果不为null时取出其中的数据进行拼接，形成完整的密文/明文。** **开发示例：** 使用AES对称密钥（GCM模式）分段加解密 **开发示例：** 使用SM4对称密钥（GCM模式）分段加解密 #### 非对称加解密 非对称加解密，不支持update操作，仅需要调用 Cipher.init 和 Cipher.doFinal 完成加解密。 非对称密钥的分段加密是指当明文大于单次加密支持的数据长度时（具体长度请查 非对称密钥加解密算法规格 ），需要将待加密数据分为合适长度的数据段，并对每个数据段执行加密操作，即创建Cipher，然后调用 Cipher.init 和 Cipher.doFinal 接口。 严格意义上说，是数据的拆分加解密，此时单次传入的数据量长度与密钥规格的长度相"
+    },
+    {
+      "path": "references/加解密介绍.md",
+      "title": "加解密介绍",
+      "snippet": "在数据存储或传输场景中，可以使用加解密操作用于保证数据的机密性，防止敏感数据泄露。 使用加解密操作时，典型的场景有： 1. 使用对称密钥的加解密操作。 2. 使用非对称密钥的加解密操作。 3. 使用RSA（PKCS1_OAEP填充模式）时，获取、设置CipherSpecItem参数。"
+    },
+    {
+      "path": "references/安全随机数生成(ArkTS).md",
+      "title": "安全随机数生成(ArkTS)",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/68/v3/AKCh_xj_SbOO7e14n1gpHg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111057Z&HW-CC-Expire=86400&HW-CC-Sign=A7842A8CA20B6D6CD31E6AE3CE8FE2ED479D3AF7D7C207E52C0FA445B930A035) 从API version 12开始，轻量级智能穿戴设备支持获取随机数相关操作。 随机数主要用于临时会话密钥生成和非对称加密算法密钥生成等场景。在加解密场景中，安全随机数生成器需要具备随机性、不可预测性与不可重现性。当前系统生成的随机数满足密码学安全伪随机性要求。 开发者可以调用接口，完成以下功能： - 生成指定长度的安全随机数，并将其用于生成对应的密钥。 - 指定随机种子，生成一系列的随机序列。 在开发前，开发者应该先对加解密基础知识有一定了解，并熟知以下随机数相关的基本概念： - **内部状态** 代表随机数生成器内存中的数值，当内部状态相同时，随机数生成器会生成固定的随机数序列。 - **随机种子** 一个用来对伪随机数的内部状态进行初始化的数据，随机"
+    },
+    {
+      "path": "references/安全随机数生成(C_C++).md",
+      "title": "安全随机数生成(C/C++)",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9e/v3/ltcdK_9OS8C_sFbOWTvZXA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111058Z&HW-CC-Expire=86400&HW-CC-Sign=50DCFB61637BBDC7AA1A3F3A7912A29CCF394514C1093B308FD440643027824D) 从API version 12开始，轻量级智能穿戴设备支持获取随机数相关操作。 随机数主要用于临时会话密钥生成和非对称加密算法密钥生成等场景。在加解密场景中，安全随机数生成器需要具备随机性、不可预测性与不可重现性。当前系统生成的随机数满足密码学安全伪随机性要求。 开发者可以调用接口，完成以下功能： - 生成指定长度的安全随机数，并将其用于生成对应的密钥。 - 指定随机种子，生成一系列的随机序列。 在开发前，开发者应该先对加解密基础知识有一定了解，并熟知以下随机数相关的基本概念： - **内部状态** 代表随机数生成器内存中的数值，当内部状态相同时，随机数生成器会生成固定的随机数序列。 - **随机种子** 一个用来对伪随机数的内部状态进行初始化的数据，随机"
+    },
+    {
+      "path": "references/密钥协商介绍及算法规格.md",
+      "title": "密钥协商介绍及算法规格",
+      "snippet": "在非安全通道环境中，需要不共享任何秘密的情况下，协商出一个安全的共享密钥，可以使用密钥协商算法。 接下来将说明系统目前支持的算法及其对应的规格。 #### ECDH ECDH（Elliptic Curve Diffie–Hellman key exchange），算法库框架提供了多种椭圆曲线的ECDH能力。 当创建密钥协商时，需要使用表中“字符串参数”一列，指定密钥协商算法规格。 如表中最后一行所示，为了兼容由密钥参数生成的密钥，ECDH密钥协商参数输入密钥类型时支持不指定长度和曲线，密钥协商运算取决于实际输入的密钥。 #### X25519 算法库框架提供了X25519密钥协商的能力。 当创建密钥协商时，需要使用表中“字符串参数”一列，指定密钥协商算法规格。 #### DH DH（Diffie–Hellman key exchange），算法库框架提供了DH密钥协商的能力。 当创建密钥协商时，需要使用表中“字符串参数”一列，指定密钥协商算法规格。 如表中最后一行所示，为了兼容由密钥参数生成的密钥，DH密钥协商参数输入密钥类型时支持不指定知名安全素数群，密钥协商运算结果由实际输入的密钥决定，且该场景支持非标准群组的密钥协商。"
+    },
+    {
+      "path": "references/密钥派生介绍及算法规格.md",
+      "title": "密钥派生介绍及算法规格",
+      "snippet": "密钥派生函数（key derivation function）是指使用伪随机函数从秘密值中导出一个或多个密钥。密钥派生函数可用于将密钥扩展到更长的密钥或获得所需格式的密钥。 #### PBKDF2算法 PBKDF（Password-Based Key Derivation Function）是具有可变计算成本的密钥派生函数，PBKDF2是PKCS系列的标准之一。 PBKDF2是将伪随机函数PRF（Pseudo-Random Function，例如基于散列的 HMAC ），输入密码明文和盐值，重复多次运算来进行密钥派生。 当前支持以字符串参数进行密钥派生，具体的“字符串参数”由“密钥派生算法”和“HMAC函数摘要算法”使用符号“|”拼接而成，用于在创建密钥派生函数生成器时，指定算法规格。 #### HKDF算法 HKDF（HMAC-based Extract-and-Expand Key Derivation Function，是基于 HMAC ）消息身份验证代码的简单密钥派生算法。 输入原始的密钥材料和盐值来提取、输入原始的密钥材料和拓展信息来扩展。它是一种密钥派生函数，用于从较短的输入密钥中派生出更长的输出密钥。 HKDF包含三个模式，提取（EXTRACT_ONLY）、拓展（EXPAND_ONLY）、提取和拓展（EXTRACT_AND_EXPAND）。 - 提取：使用原始的密钥材"
+    },
+    {
+      "path": "references/密钥生成与转换介绍.md",
+      "title": "密钥生成与转换介绍",
+      "snippet": "在以下场景中，经常需要使用密钥生成操作： 1. 随机生成算法库密钥对象。该对象可用于后续的加解密等操作。 2. 根据指定数据生成算法库密钥对象（即从外部源或存储系统中获取的二进制数据转换为算法库的密钥对象）。该对象可用于后续的加解密等操作。 3. 根据密钥参数生成指定的算法库密钥对象。该对象可用于后续的加解密等操作。 4. 获取算法库密钥对象的二进制数据，用于存储或传输。 5. 对于非对称密钥，获取密钥对象的参数属性，用于存储或传输。 其中，密钥对象Key包括对称密钥SymKey和非对称密钥（公钥PubKey和私钥PriKey），其中公钥和私钥组成密钥对KeyPair。"
+    },
+    {
+      "path": "references/对称密钥加解密算法规格.md",
+      "title": "对称密钥加解密算法规格",
+      "snippet": "当前章节将说明系统目前支持的算法及其对应的规格。 对于每种算法采用支持的加密模式，将会在具体的每个算法规格中介绍。 #### AES 算法库当前提供了 AES 加解密常用的7种加密模式：ECB、CBC、OFB、CFB、CTR、GCM和CCM。不同的加密模式适用的加解密参数不同，具体请参考 ParamsSpec 。 由于AES为分组加密算法，分组长度为128位。在实际应用中，最后一组明文可能不足128位（16字节），此时可以通过不同的 填充模式 进行数据填充。 由于需要填充至分组大小，所以实际算法库中的PKCS5和PKCS7都是以分组大小作为填充长度的，即AES加密填充至16字节。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/43/v3/TtuUPbNVTxyhi2eX2G9loA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111042Z&HW-CC-Expire=86400&HW-CC-Sign=9B8A12F006A09C494797A53783D0ECCB8535DFD3045A847947FEF4176FB2C080) ECB、CBC加密模式，明文长度不是128位整数倍，必须使用填充方法补足。 "
+    },
+    {
+      "path": "references/对称密钥生成和转换规格.md",
+      "title": "对称密钥生成和转换规格",
+      "snippet": "当前章节将说明系统目前支持的算法及其对应的规格。 开发者可以通过字符串参数承载密钥规格，来生成对应的密钥。对于每种算法支持的字符串参数，将会在具体的每个算法规格中介绍。 #### AES AES（Advanced Encryption Standard），最常见的对称加密算法。 基本特点： - 分组密码算法，分组长度为128位。 - 密钥长度为128位、192位或256位。 - 与3DES相比，安全性更高，处理速度更快。 当前支持以字符串参数生成AES密钥，具体的“字符串参数”由“对称密钥算法”和“密钥长度”拼接而成，用于在创建对称密钥生成器时，指定密钥规格。 #### DES DES（Data Encryption Standard）算法。 基本特点： DES是一种分组加密算法，它将明文分成64位的块，然后对每个块进行加密操作。 当前支持以字符串参数生成DES密钥，具体的“字符串参数”由“对称密钥算法”和“密钥长度”拼接而成，用于在创建对称密钥生成器时，指定密钥规格。 #### 3DES 3DES（Triple Data Encryption Algorithm），也称为3DESede或TripleDES。 基本特点： - 使用3个64位的密钥对数据库进行三次加密，相当于对每个数据块执行三次DES（Data Encryption Standard）加密算法。 - 与DES相比，3"
+    },
+    {
+      "path": "references/指定PEM格式字符串数据转换非对称密钥对(ArkTS).md",
+      "title": "指定PEM格式字符串数据转换非对称密钥对(ArkTS)",
+      "snippet": "以RSA为例，根据指定的非对称密钥字符串数据，生成非对称密钥对（KeyPair）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c1/v3/TFFwdCuGQyiA980_Lu8DgQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111041Z&HW-CC-Expire=86400&HW-CC-Sign=C55B2E8231AA9145A01FD0A3F82CFE248312E002B902C7EFD41E36B2B7370888) 针对非对称密钥的convertPemKey操作： - 公钥需满足X.509规范、PKCS#1规范、PEM编码格式。 - 私钥需满足PKCS#8规范、PKCS#1规范、PEM编码格式。 #### 指定PEM格式字符串数据转换密钥对 对应的算法规格请查看 非对称密钥生成和转换规格 。 1. 调用 cryptoFramework.createAsyKeyGenerator ，指定字符串参数'RSA1024'，创建RSA密钥类型为RSA1024、素数个数为2的非对称密钥生成器（AsyKeyGenerator）。 生成RSA非对称密钥时，默认素数为2，此处省略了参数PRIMES_2。"
+    },
+    {
+      "path": "references/指定PEM格式字符串数据转换非对称密钥对(C_C++).md",
+      "title": "指定PEM格式字符串数据转换非对称密钥对(C/C++)",
+      "snippet": "以RSA为例，根据指定的非对称密钥字符串数据，生成非对称密钥对（OH_CryptoKeyPair）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e1/v3/a9yAqBQ9RPWKFWF5W3fbcA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111041Z&HW-CC-Expire=86400&HW-CC-Sign=68EA8B20401660B8372ED7895C26D45EF09F5C190042AFBF5207A21310DCA5CC) 针对非对称密钥的convertPemKey操作： - 公钥需满足X.509规范、PKCS#1规范、PEM编码格式。 - 私钥需满足PKCS#8规范、PKCS#1规范、PEM编码格式。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 指定PEM格式字符串数据转换RSA密钥对 对应的算法规格请查看 非对称密钥生成和转换规格：RSA 。 1. 调用 OH_CryptoAsymKeyGenerator_Create ，指定字符串参数'RSA1024'，创建R"
+    },
+    {
+      "path": "references/指定二进制数据转换对称密钥(ArkTS).md",
+      "title": "指定二进制数据转换对称密钥(ArkTS)",
+      "snippet": "以3DES和HMAC为例，根据指定的对称密钥二进制数据，生成对称密钥对象（SymKey），即将外部或存储的二进制数据转换为算法库的密钥对象，该对象可用于后续的加解密等操作。 #### 指定二进制数据转换3DES密钥 对应的算法规格请查看 对称密钥生成和转换规格：3DES 。 1. 获取3DES二进制密钥数据，封装成 DataBlob 对象。 2. 调用 cryptoFramework.createSymKeyGenerator ，指定字符串参数'3DES192'，创建密钥算法为3DES、密钥长度为192位的对称密钥生成器（SymKeyGenerator）。 3. 调用 SymKeyGenerator.convertKey ，根据指定的对称密钥二进制数据生成对称密钥对象（SymKey）。 4. 调用 SymKey.getEncoded ，获取密钥对象的二进制数据。 - 以使用callback方式生成3DES密钥为例： import { cryptoFramework } from '@kit.CryptoArchitectureKit'; import { BusinessError } from '@kit.BasicServicesKit'; function genKeyMaterialBlob(): cryptoFramework.DataBlob { let arr = ["
+    },
+    {
+      "path": "references/指定二进制数据转换对称密钥(C_C++).md",
+      "title": "指定二进制数据转换对称密钥(C/C++)",
+      "snippet": "以3DES和HMAC为例，根据指定的对称密钥二进制数据生成密钥（OH_CryptoSymKey），将外部或存储的二进制数据转换为算法库的密钥对象，该对象可用于后续的加解密操作。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 指定二进制数据转换3DES密钥 查看 对称密钥生成和转换规格：3DES 。 1. 获取3DES二进制密钥数据，封装成 Crypto_DataBlob 。 2. 调用 OH_CryptoSymKeyGenerator_Create ，指定字符串参数'3DES192'，创建密钥算法为3DES、密钥长度为192位的对称密钥生成器（OH_CryptoSymKeyGenerator）。 3. 调用 OH_CryptoSymKeyGenerator_Convert ，根据指定的对称密钥二进制数据生成对称密钥对象（OH_CryptoSymKey）。 4. 调用 OH_CryptoSymKey_GetKeyData ，获取密钥对象的二进制数据。 以下以生成3DES密钥为例： #include \"CryptoArchitectureKit/crypto_common.h\" #include \"CryptoArchitectureKit/crypto_sym_key.h\" "
+    },
+    {
+      "path": "references/指定二进制数据转换非对称密钥对(ArkTS).md",
+      "title": "指定二进制数据转换非对称密钥对(ArkTS)",
+      "snippet": "以RSA、ECC、SM2为例，根据指定的非对称密钥二进制数据，生成非对称密钥对（KeyPair），即将外部或存储的二进制数据转换为算法库的密钥对象，该对象可用于后续的加解密等操作。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/97/v3/-np0enRTRhGwPM9oW9oeMg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111039Z&HW-CC-Expire=86400&HW-CC-Sign=B5EE08A1B4840C8D36FE58514FD096811041AC5102ED1C203E7DA41757775C45) 针对非对称密钥的convertKey操作： - 公钥需满足：ASN.1语法、X.509规范、DER编码格式。 - 私钥需满足：ASN.1语法、PKCS#8规范、DER编码格式。 #### 指定二进制数据转换RSA密钥对 对应的算法规格请查看 非对称密钥生成和转换规格：RSA 。 1. 获取RSA公钥或私钥二进制数据，封装成 DataBlob 对象。 公钥和私钥可单独传入，此处示例传入公钥。 2. 调用 cryptoFramework.createAsyKeyGenerator "
+    },
+    {
+      "path": "references/指定二进制数据转换非对称密钥对(C_C++).md",
+      "title": "指定二进制数据转换非对称密钥对(C/C++)",
+      "snippet": "以RSA、ECC、SM2为例，根据指定的非对称密钥二进制数据，生成非对称密钥对（OH_CryptoKeyPair），即将外部或存储的二进制数据转换为算法库的密钥对象，该对象可用于后续的加解密等操作。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/52/v3/WoQuP50JRJaryKWtuYbu9A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111039Z&HW-CC-Expire=86400&HW-CC-Sign=38A8DEA389A9A33B43003117CDBB8E135A40811CDB65EB57CBEC1A7E707CC524) 针对非对称密钥的convertKey操作： - 公钥需满足：ASN.1语法、X.509规范、DER编码格式。 - 私钥需满足：ASN.1语法、PKCS#8规范、DER编码格式。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 指定二进制数据转换RSA密钥对 对应的算法规格请查看 非对称密钥生成和转换规格：RSA 。 1. 获取RSA公钥或私钥二进制数据，"
+    },
+    {
+      "path": "references/指定密钥参数生成非对称密钥对(ArkTS).md",
+      "title": "指定密钥参数生成非对称密钥对(ArkTS)",
+      "snippet": "以RSA、ECC、SM2为例，根据指定的密钥参数，生成非对称密钥对（KeyPair），并获取密钥参数属性。 该对象可用于后续的加解密等操作。获取的密钥参数属性可用于存储或传输。 #### 指定密钥参数生成RSA公钥 对应的算法规格请查看 非对称密钥生成和转换规格：RSA 。 1. 构造 RSACommonParamsSpec 对象，用于指定RSA算法中公私钥包含的公共参数（n）。 RSACommonParamsSpec是AsyKeySpec的子类。需要通过参数algName指定算法'RSA'；指定密钥参数类型AsyKeySpecType.COMMON_PARAMS_SPEC，表示是公私钥中包含的公共参数。 使用密钥参数生成密钥时，用到的bigint类型需要以大端模式输入，且必须为正数。 2. 创建 RSAPubKeySpec 对象，用于指定RSA算法中公钥包含的参数（n, pk）。 RSAPubKeySpec是AsyKeySpec的子类。通过参数algName指定算法'RSA'；指定密钥参数类型AsyKeySpecType.PUBLIC_KEY_SPEC，表示是公钥中包含的参数。 3. 调用 cryptoFramework.createAsyKeyGeneratorBySpec ，将RSAPubKeySpec对象传入，创建非对称密钥生成器（AsyKeyGeneratorBySpec"
+    },
+    {
+      "path": "references/指定密钥参数生成非对称密钥对(C_C++).md",
+      "title": "指定密钥参数生成非对称密钥对(C/C++)",
+      "snippet": "以RSA、ECC、SM2为例，根据指定的密钥参数，生成非对称密钥对（KeyPair），并获取密钥参数属性。 该对象可用于后续的加解密等操作。获取的密钥参数属性可用于存储或传输。 #### 指定密钥参数生成RSA密钥对 对应的算法规格请查看 非对称密钥生成和转换规格：RSA 。 1. 调用 OH_CryptoAsymKeySpec_Create ，指定算法名为\"RSA\"， 密钥参数类型为CRYPTO_ASYM_KEY_KEY_PAIR_SPEC，创建参数对象（keySpec）。 2. 指定uint8_t类型的RSA密钥对数据（pk、sk、n），分别封装成 Crypto_DataBlob 。 3. 调用 OH_CryptoAsymKeySpec_SetParam ，指定参数类型分别为CRYPTO_RSA_E_DATABLOB（pk）、CRYPTO_RSA_D_DATABLOB（sk）、CRYPTO_RSA_N_DATABLOB（n）, 依次传入封装后的 Crypto_DataBlob ，设置参数对象（keySpec）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/92/v3/t__agC6ZT2-CpXv1z2oY5A/caution_3.0-zh-cn.png?"
+    },
+    {
+      "path": "references/消息摘要计算MD5(ArkTS).md",
+      "title": "消息摘要计算MD5(ArkTS)",
+      "snippet": "对应的算法规格请查看 消息摘要计算算法规格 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/90/v3/VXrPEpHAR4WkvKXIvyGS0Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111055Z&HW-CC-Expire=86400&HW-CC-Sign=762D76D6BEA9E2B6F1CE55EBAAEE31405EDD6ADACAEDC9EB87161B29E471E0DF) 从API version 12开始，轻量级智能穿戴设备支持消息摘要的计算与操作。 #### 开发步骤 在调用update接口传入数据时，可以 一次性传入所有数据 ，也可以把数据人工分段，然后 分段update 。对于同一段数据而言，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。 下面分别提供两种方式的示例代码。 #### 摘要算法（一次性传入） 1. 调用 cryptoFramework.createMd ，指定摘要算法MD5，生成摘要实例（Md）。 2. 调用 Md.update ，传入自定义消息，进行摘要更新计算。单次update长度没有限制。 3. 调用 Md.dige"
+    },
+    {
+      "path": "references/消息摘要计算MD5(C_C++).md",
+      "title": "消息摘要计算MD5(C/C++)",
+      "snippet": "对应的算法规格请查看 消息摘要计算算法规格 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 在调用update接口传入数据时，可以 一次性传入所有数据 ，也可以把数据人工分段，然后 分段update 。对于同一段数据而言，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。 下面分别提供两种方式的示例代码。 #### 摘要算法（一次性传入） 1. 调用 OH_CryptoDigest_Create ，指定摘要算法MD5，生成摘要实例（OH_CryptoDigest）。 2. 调用 OH_CryptoDigest_Update ，传入自定义消息，进行摘要更新计算。单次update长度没有限制。 3. 调用 OH_CryptoDigest_Final ，获取摘要计算结果。 4. 调用 OH_CryptoDigest_GetLength ，获取摘要计算长度，单位为字节。 5. 调用 OH_DigestCrypto_Destroy ，销毁摘要实例（OH_CryptoDigest）。 以下使用单次传入数据，获取摘要计算结果为例： #include \"CryptoArchitectureKit/crypto_common.h\" #include "
+    },
+    {
+      "path": "references/消息摘要计算SHA256(ArkTS).md",
+      "title": "消息摘要计算SHA256(ArkTS)",
+      "snippet": "对应的算法规格请查看 消息摘要计算算法规格 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c8/v3/SKrakTXSTWCotggn_55ywQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111055Z&HW-CC-Expire=86400&HW-CC-Sign=05B4378839C0C228BBF65BA9A2F7EF48F3A9B93E4CF20231BA2FE344314DFE4B) 从API version 12开始，轻量级智能穿戴设备支持消息摘要的计算与操作。 #### 开发步骤 在调用update接口传入数据时，可以 一次性传入所有数据 ，也可以把数据人工分段，然后 分段update 。对于同一段数据而言，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。 下面分别提供两种方式的示例代码。 #### 摘要算法（一次性传入） 1. 调用 cryptoFramework.createMd ，指定摘要算法SHA256，生成摘要实例（Md）。 2. 调用 Md.update ，传入自定义消息，进行摘要更新计算。单次update长度没有限制。 3. 调用 Md.d"
+    },
+    {
+      "path": "references/消息摘要计算SHA256(C_C++).md",
+      "title": "消息摘要计算SHA256(C/C++)",
+      "snippet": "对应的算法规格请查看 消息摘要计算算法规格 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 在调用update接口传入数据时，可以 一次性传入所有数据 ，也可以把数据人工分段，然后 分段update 。对于同一段数据而言，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。 下面分别提供两种方式的示例代码。 #### 摘要算法（一次性传入） 1. 调用 OH_CryptoDigest_Create ，指定摘要算法SHA256，生成摘要实例（OH_CryptoDigest）。 2. 调用 OH_CryptoDigest_Update ，传入自定义消息，进行摘要更新计算。单次update长度没有限制。 3. 调用 OH_CryptoDigest_Final ，获取摘要计算结果。 4. 调用 OH_CryptoDigest_GetLength ，获取摘要计算长度，单位为字节。 5. 调用 OH_DigestCrypto_Destroy ，销毁摘要实例（OH_CryptoDigest）。 - 以下使用单次传入数据，获取摘要计算结果为例： #include \"CryptoArchitectureKit/crypto_common.h\" #inc"
+    },
+    {
+      "path": "references/消息摘要计算SHA3(ArkTS).md",
+      "title": "消息摘要计算SHA3(ArkTS)",
+      "snippet": "从API version 22开始，算法库支持使用该算法进行摘要计算操作。 对应的算法规格请查看 消息摘要计算算法规格 。 #### 开发步骤 在调用update接口传入数据时，可以 一次性传入所有数据 ，也可以把数据人工分段，然后 分段update 。对于同一段数据而言，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。 下面分别提供两种方式的示例代码。 #### 摘要算法（一次性传入） 1. 调用 cryptoFramework.createMd ，指定摘要算法SHA3-256，生成摘要实例（Md）。 2. 调用 Md.update ，传入自定义消息，进行摘要更新计算。单次update长度没有限制。 3. 调用 Md.digest ，获取摘要计算结果。 4. 调用 Md.getMdLength ，获取摘要计算长度，单位为字节。 - 以使用await方式单次传入数据，获取摘要计算结果为例： import { cryptoFramework } from '@kit.CryptoArchitectureKit'; import { buffer } from '@kit.ArkTS'; async function doMd() { let mdAlgName = 'SHA3-256'; // 摘要算法名。 let message = 'mdTestM"
+    },
+    {
+      "path": "references/消息摘要计算SHA3-256(C_C++).md",
+      "title": "消息摘要计算SHA3-256(C/C++)",
+      "snippet": "从API version 22开始，算法库支持使用该算法进行摘要计算操作。 对应的算法规格请查看 消息摘要计算算法规格 。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 开发步骤 在调用update接口传入数据时，可以 摘要算法一次性传入 ，也可以把数据人工分段，然后 分段摘要算法 。对于同一段数据而言，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。 下面分别提供两种方式的示例代码。 #### 摘要算法（一次性传入） 1. 调用 OH_CryptoDigest_Create ，指定摘要算法SHA3-256，生成摘要实例（OH_CryptoDigest）。 2. 调用 OH_CryptoDigest_Update ，传入自定义消息，进行摘要更新计算。单次update长度没有限制。 3. 调用 OH_CryptoDigest_Final ，获取摘要计算结果。 4. 调用 OH_CryptoDigest_GetLength ，获取摘要计算长度，单位为字节。 5. 调用 OH_DigestCrypto_Destroy ，销毁摘要实例（OH_CryptoDigest）。 以单次传入数据获取摘要计算结果为例： #include \"CryptoArchi"
+    },
+    {
+      "path": "references/消息摘要计算介绍及算法规格.md",
+      "title": "消息摘要计算介绍及算法规格",
+      "snippet": "消息摘要算法是一种能将任意长度的输入消息，通过特定运算生成固定长度摘要的算法。消息摘要算法也被称为哈希算法或单向散列算法。 在摘要算法相同时，生成的摘要值主要有下列特点： - 当输入消息相同时，生成摘要序列相同。 - 当输入消息的长度不一致时，生成摘要序列长度固定（摘要长度由算法决定）。例如SHA256会生成256位，即32字节。 #### 支持的算法与规格 当创建MD消息摘要时，需要使用表中“支持种类”一列，指定MD消息摘要算法规格。"
+    },
+    {
+      "path": "references/消息认证码计算CMAC(ArkTS).md",
+      "title": "消息认证码计算CMAC(ArkTS)",
+      "snippet": "CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保消息在传输过程中未被篡改。 #### 开发步骤 在调用update接口传入数据时，可以 一次性传入所有数据 ，也可以把数据人工分段，然后 分段update 。对于同一段数据而言，是否分段，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。 下面分别提供两种方式的示例代码。 #### CMAC（一次性传入数据） 1. 调用 cryptoFramework.createMac ，指定消息认证码算法为CMAC，指定对称算法为AES128，生成消息认证码实例（Mac）。 2. 调用 cryptoFramework.createSymKeyGenerator 和 SymKeyGenerator.convertKey ，生成密钥算法为AES256的对称密钥（SymKey）。 生成对称密钥的详细开发指导，请参考 指定二进制数据生成对称密钥 。 3. 调用 Mac.init ，指定共享对称密钥（SymKey），初始化Mac对象。 4. 调用 Mac.update ，传入自定义消息，进行消息认证码计算。单次update的长度没有限制。 5. 调用 Mac.doFinal ，获取Mac计算结果。 6. 调用 Mac.getMacLength ，获取Mac长度，单位为字节。 - 以使用await方式一次性传入数据"
+    },
+    {
+      "path": "references/消息认证码计算CMAC(C_C++).md",
+      "title": "消息认证码计算CMAC(C/C++)",
+      "snippet": "CMAC通过使用分组密码（如AES）和一个密钥来生成认证码，确保消息在传输过程中未被篡改。 #### 开发步骤 在调用update接口传入数据时，可以 一次性传入 ，也可以把数据人工 分段传入 。对于同一段数据而言，是否分段，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。 下面分别提供两种方式的示例代码。 #### CMAC（一次性传入） 1. 调用 OH_CryptoSymKeyGenerator_Create 、 OH_CryptoSymKeyGenerator_Generate 生成密钥算法为AES128的对称密钥（symKey）。 2. 调用 OH_CryptoMac_Create ，指定字符串参数'CMAC'，创建MAC算法为CMAC的MAC生成器。 3. 调用 OH_CryptoMac_SetParam ，指定参数CRYPTO_MAC_CIPHER_NAME_STR，设置分组密码算法名称。 4. 调用 OH_CryptoMac_Init ，指定共享对称密钥（symKey），初始化MAC对象。 5. 调用 OH_CryptoMac_Update ，传入自定义消息，进行消息认证码计算。 6. 调用 OH_CryptoMac_Final ，获取MAC计算结果。 7. 调用 OH_CryptoMac_GetLength ，获取MAC消息认证码的"
+    },
+    {
+      "path": "references/消息认证码计算HMAC(ArkTS).md",
+      "title": "消息认证码计算HMAC(ArkTS)",
+      "snippet": "HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成固定长度的消息认证码，用于检验报文的完整性。HMAC在消息摘要算法基础上增加密钥输入，确保信息正确性。 #### 开发步骤 在调用update接口传入数据时，可以 一次性传入所有数据 ，也可以把数据人工分段，然后 分段update 。对于同一段数据而言，是否分段，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。 下面分别提供两种方式的示例代码。 #### HMAC（一次性传入） 1. 调用 cryptoFramework.createMac ，指定摘要算法SHA256，生成消息认证码实例（Mac）。 2. 调用 cryptoFramework.createSymKeyGenerator 、 SymKeyGenerator.convertKey ，生成密钥算法为HMAC的对称密钥（SymKey）。 详细开发指导请参考 指定二进制数据生成对称密钥 。 3. 调用 Mac.init ，指定共享对称密钥（SymKey），初始化Mac对象。 4. 调用 Mac.update ，传入自定义消息，进行消息认证码计算。单次update长度没有限制。 5. 调用 Mac.doFinal ，获取Mac计算结果。 6. 调用 Mac.getMacLength ，获取Mac消息认证码的长度，单位为字节。 - 以使用a"
+    },
+    {
+      "path": "references/消息认证码计算HMAC(C_C++).md",
+      "title": "消息认证码计算HMAC(C/C++)",
+      "snippet": "HMAC通过指定摘要算法，以通信双方共享密钥与消息作为输入，生成消息认证码用于检验传递报文的完整性。HMAC在消息摘要算法的基础上增加了密钥的输入，确保了信息的正确性。生成的消息认证码为固定长度。 #### 开发步骤 在调用update接口传入数据时，可以 一次性传入 ，也可以把数据人工 分段传入 。对于同一段数据而言，是否分段，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。 下面分别提供两种方式的示例代码。 #### HMAC（一次性传入） 1. 调用 OH_CryptoSymKeyGenerator_Create 、 OH_CryptoSymKeyGenerator_Generate 生成密钥算法为HMAC的对称密钥（symKey）。 2. 调用 OH_CryptoMac_Create ，指定字符串参数'HMAC'，创建MAC算法为HMAC的MAC生成器。 3. 调用 OH_CryptoMac_SetParam ，指定参数CRYPTO_MAC_DIGEST_NAME_STR，设置摘要算法名称。 4. 调用 OH_CryptoMac_Init ，指定共享对称密钥（symKey），初始化MAC对象。 5. 调用 OH_CryptoMac_Update ，传入自定义消息，进行消息认证码计算。 6. 调用 OH_CryptoMac_Final ，获取M"
+    },
+    {
+      "path": "references/消息认证码计算介绍及算法规格.md",
+      "title": "消息认证码计算介绍及算法规格",
+      "snippet": "MAC（Message Authentication Code，消息认证码）可以对消息进行完整性校验，通过使用双方共享的密钥，识别出信息伪装篡改等行为。 接下来将说明系统目前支持的算法及其对应的规格。 #### HMAC HMAC（Hash-based Message Authentication Code）是一种基于哈希的消息认证码算法。 HMAC通过指定的摘要算法，以通信双方共享的密钥和消息作为输入，生成消息认证码，用于检验传递报文的完整性。HMAC在消息摘要算法基础上增加了密钥输入，确保信息的正确性。生成的消息认证码长度固定。 当创建HMAC消息认证码时，需要根据表中“支持种类”一列指定算法规格。 #### CMAC ‌CMAC（Cipher-based Message Authentication Code）是一种基于密码的消息认证码算法，主要用于确保消息的完整性和真实性。 CMAC通过使用分组密码（如AES）和一个密钥来生成消息认证码，确保消息在传输过程中未被篡改‌。"
+    },
+    {
+      "path": "references/签名验签介绍及算法规格.md",
+      "title": "签名验签介绍及算法规格",
+      "snippet": "当需要判断接收的数据是否被篡改、数据是否为指定对象发送的数据时，可以使用签名验签操作。 接下来将说明系统目前支持的算法及其对应的规格。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/53/v3/eDQyj0IbR6apRxs6rvnciA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111050Z&HW-CC-Expire=86400&HW-CC-Sign=E267CE9E33F874F2051738186DCAB13EA600ADA3868D7D6F33D7C4DF2AD68DAB) 当前使用C/C++的方式开发只支持验签，不支持签名。 #### RSA 算法库框架目前提供了两种RSA签名验签的填充模式： - PKCS1 ：即RFC3447规范中的RSAES-PKCS1-V1_5模式，对应OpenSSL中的RSA_PKCS1_PADDING。 使用该模式时需要设置摘要（md），摘要算法输出的长度需要小于RSA密钥长度。例如RSA2048的密钥字节长度为256。 - PSS ： 即RFC3447规范中的RSASSA-PSS模式，对应OpenSSL中的RSA_PKCS1_PSS_PADDING。 使用该模式"
+    },
+    {
+      "path": "references/跨平台数据兼容实践指导.md",
+      "title": "跨平台数据兼容实践指导",
+      "snippet": "开发者可以参考以下开发实践，学习相关场景开发，在HarmonyOS平台上更高效、准确地开发加解密的功能。 #### 加解密跨平台数据兼容性开发实践 为确保数据安全，在数据传输过程中对数据进行加解密操作至关重要。为确保跨平台数据兼容，实现加密和解密操作在不同环境下的一致性和互操作性，同样极为关键。加解密跨平台数据兼容性开发实践将从以下两方面讲解如何适配差异： - 适配数据编码格式差异 鉴于加解密往往会跨平台操作，例如服务端加密的数据需要在移动设备上解密，而HarmonyOS平台的加解密API要求密钥和待处理的数据必须为Uint8Array格式。为此，需要将Uint8Array字节数据与其他编码格式数据相转换，确保编码格式的一致性。 当前开发实践将提供多种数据格式之间的转换方法。 - 适配加解密算法使用差异 不同平台都会支持相同的算法，但不同平台的加解密算法可能在使用时有所不同，这些差异可能会导致加解密无法正常的跨平台使用。 当前开发实践将以SM2、AES为例，讲解HarmonyOS平台与其他平台在加解密过程中的差异。"
+    },
+    {
+      "path": "references/随机生成对称密钥(ArkTS).md",
+      "title": "随机生成对称密钥(ArkTS)",
+      "snippet": "以AES和SM4为例，随机生成对称密钥（SymKey），并获得二进制数据。 对称密钥对象可用于后续加解密操作，二进制数据可用于存储或传输。 #### 随机生成AES密钥 对应的算法规格请查看 对称密钥生成和转换规格：AES 。 1. 调用 cryptoFramework.createSymKeyGenerator ，指定字符串参数'AES256'，创建密钥算法为AES、密钥长度为256位的对称密钥生成器（SymKeyGenerator）。 2. 调用 SymKeyGenerator.generateSymKey ，随机生成对称密钥对象（SymKey）。 3. 调用 SymKey.getEncoded ，获取密钥对象的二进制数据。 - 以使用Promise方式随机生成AES密钥为例： import { cryptoFramework } from '@kit.CryptoArchitectureKit'; function testGenerateAesKey() { // 创建SymKeyGenerator实例 let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256'); // 使用密钥生成器随机生成对称密钥 let promiseSymKey = symKeyGenerator.generateSym"
+    },
+    {
+      "path": "references/随机生成对称密钥(C_C++).md",
+      "title": "随机生成对称密钥(C/C++)",
+      "snippet": "以AES和SM4为例，随机生成对称密钥（OH_CryptoSymKey）。 对称密钥对象可用于后续加解密操作，二进制数据可用于存储或传输。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 随机生成AES密钥 对应的算法规格请查看 对称密钥生成和转换规格：AES 。 1. 调用 OH_CryptoSymKeyGenerator_Create ，指定字符串参数'AES256'，创建密钥算法为AES、密钥长度为256位的对称密钥生成器（OH_CryptoSymKeyGenerator）。 2. 调用 OH_CryptoSymKeyGenerator_Generate ，随机生成对称密钥对象（OH_CryptoSymKey）。 3. 调用 OH_CryptoSymKey_GetKeyData ，获取密钥对象的二进制数据。 #include \"CryptoArchitectureKit/crypto_common.h\" #include \"CryptoArchitectureKit/crypto_sym_key.h\" #include \"file.h\" OH_Crypto_ErrCode testGenerateSymKey() { OH_CryptoSymKeyGenerator *"
+    },
+    {
+      "path": "references/随机生成非对称密钥对(ArkTS).md",
+      "title": "随机生成非对称密钥对(ArkTS)",
+      "snippet": "以RSA和SM2为例，随机生成非对称密钥对（KeyPair），并获得二进制数据。 非对称密钥对可用于后续加解密等操作，二进制数据可用于存储或传输。 #### 随机生成RSA密钥对 对应的算法规格请查看 非对称密钥生成和转换规格：RSA 。 1. 调用 cryptoFramework.createAsyKeyGenerator ，指定字符串参数'RSA1024|PRIMES_2'，创建RSA密钥类型为RSA1024、素数个数为2的非对称密钥生成器（AsyKeyGenerator）。 2. 调用 AsyKeyGenerator.generateKeyPair ，随机生成非对称密钥对象（KeyPair）。 KeyPair对象中包括公钥PubKey、私钥PriKey。 3. 调用 PubKey.getEncoded 和 PriKey.getEncoded ，分别获取密钥对象的二进制数据。 - 以使用Promise方式随机生成RSA密钥对为例： import { cryptoFramework } from '@kit.CryptoArchitectureKit'; function generateAsyKey() { // 创建一个AsyKeyGenerator实例 let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA"
+    },
+    {
+      "path": "references/随机生成非对称密钥对(C_C++).md",
+      "title": "随机生成非对称密钥对(C/C++)",
+      "snippet": "以RSA和SM2为例，随机生成非对称密钥对（OH_CryptoKeyPair），并获得二进制数据。 非对称密钥对可用于后续加解密等操作，二进制数据可用于存储或传输。 #### 在CMake脚本中链接相关动态库 target_link_libraries(entry PUBLIC libohcrypto.so) #### 随机生成RSA密钥对 对应的算法规格请查看 非对称密钥生成和转换规格：RSA 。 1. 调用 OH_CryptoAsymKeyGenerator_Create ，指定字符串参数'RSA1024|PRIMES_2'，创建RSA密钥类型为RSA1024、素数个数为2的非对称密钥生成器（OH_CryptoAsymKeyGenerator）。 2. 调用 OH_CryptoAsymKeyGenerator_Generate ，随机生成非对称密钥对象（OH_CryptoKeyPair）。 3. 调用 OH_CryptoPubKey_Encode 获取公钥密钥对象的二进制数据。 #include \"CryptoArchitectureKit/crypto_common.h\" #include \"CryptoArchitectureKit/crypto_asym_key.h\" #include \"file.h\" OH_Crypto_ErrCode randomGenerateAs"
+    },
+    {
+      "path": "references/非对称密钥加解密算法规格.md",
+      "title": "非对称密钥加解密算法规格",
+      "snippet": "本章说明系统支持的算法及其规格。 每种算法支持的加密模式在具体规格中介绍。 #### RSA RSA 为非对称加密算法，加密长度需要在固定长度进行，在实际应用中，如果数据量无法达到固定的长度要求，可以通过不同的填充模式进行数据填充。 算法库目前提供了RSA加解密常用的三种模式。 - NoPadding ：不带填充，输入的数据必须与RSA密钥字节长度一样长；输出数据长度与RSA密钥字节长度一样长。 - PKCS1 ：即RFC3447规范中的RSAES-PKCS1-V1_5模式，对应OpenSSL中的RSA_PKCS1_PADDING。 RSA运算时，源数据D转化为Encryption block（EB），加密时，输入数据最大长度 <= RSA密钥字节长度 - 11；输出数据长度与RSA密钥字节长度相同。 - PKCS1_OAEP ：即RFC3447规范中的RSAES-OAEP模式，对应OpenSSL中的RSA_PKCS1_OAEP_PADDING。 此模式需要设置两个摘要（md和mgf1_md），加密时，输入数据长度必须小于RSA密钥字节长度 - 2 *md摘要字节长度 - 2；输出数据长度与RSA密钥字节长度相同。 此模式可设置pSource字节流以定义OAEP填充的编码输入，并获取PKCS1_OAEP的相关参数。 - 以RSA2048|SHA256举例说明输入数据长度与算法之间的"
+    },
+    {
+      "path": "references/非对称密钥生成和转换规格.md",
+      "title": "非对称密钥生成和转换规格",
+      "snippet": "当前章节说明系统支持的算法及其对应规格。密钥生成指定规格的方式有两种： - 字符串参数：以字符串的形式描述开发者需要生成的密钥规格。 - 密钥参数：使用密钥的详细密码学信息，构造密钥对象。 对于每种算法采用哪种方式，将会在具体的每个算法规格中介绍。 #### RSA RSA（Rivest–Shamir–Adleman），当前支持使用字符串参数和密钥参数两种方式生成RSA密钥。 #### 使用字符串参数生成 以字符串参数生成RSA密钥，具体的“字符串参数”由“RSA密钥类型”和“素数个数”使用符号“|”拼接而成，用于在创建非对称密钥生成器时，指定密钥规格。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/99/v3/uUjsv-7MQf27B4Aq1y4pNQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111038Z&HW-CC-Expire=86400&HW-CC-Sign=32D5F1B13BC4689D0F0FDD6FAF1DBED70CF309F1C615A5CF5F6B7B1B8D4126B7) 生成RSA非对称密钥时，默认素数为2，PRIMES_2参数可省略。 ![](https://conte"
+    }
+  ]
+}

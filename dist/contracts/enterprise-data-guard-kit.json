@@ -1,0 +1,104 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "enterprise-data-guard-kit",
+  "source_path": "skills/enterprise-data-guard-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:53:34.894Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "企业数据保护",
+      "文件分类",
+      "安全策略",
+      "水印",
+      "恢复密钥",
+      "如何扫描和分级标识企业敏感文件并设置KIA标签",
+      "如何为KIA文件设置水印图片实现外发保护",
+      "如何配置和更新安全管控策略限制敏感文件外发行为",
+      "如何订阅KIA文件的拷贝、重命名和压缩事件实现操作追踪",
+      "如何获取企业恢复密钥解密已加密的硬盘数据或重置锁屏密码",
+      "如何更新企业公钥证书和进行挑战值签名完成企业身份验证",
+      "如何排查Enterprise Data Guard Kit权限获取失败等问题",
+      "当您正在开发企业安全管控类 MDM 应用，需要对终端设备上的企业敏感文件进行识别、分级、管控和水印保护时，应使用 Enterprise Data Guard Kit",
+      "典型场景包括企业数据防泄漏（DLP）解决方案开发、企业资产地图构建、KIA 文件外发审计与拦截等",
+      "当您需要为企业设备提供恢复密钥管理能力时，例如 IT 管理员需要在员工忘记密码时重置锁屏密码，或在设备维护时解密已加密的硬盘数据，也应使用该 Kit 提供的恢复密钥管理功能",
+      "请注意，该 Kit 仅适用于华为擎云系列 PC/2in1 设备的中国境内部署场景，如果您的目标设备不在此范围内，请考虑其他数据保护方案",
+      "实现企业敏感文档识别分级并自动加密保护 / Implement classification of sensitive enterprise documents and automatically encrypt them",
+      "给导出的办公文件添加公司水印防止截图和泄露 / Add corporate watermarks to exported office files to deter screenshots and leakage",
+      "配置禁止复制分享打印企业机密文件的管控策略 / Configure policies to block copying, sharing, or printing confidential enterprise files",
+      "订阅涉密文件的打开、复制、移动和删除审计事件 / Subscribe to audit events for opening, copying, moving, and deleting sensitive files",
+      "扫描终端存储中的文件并标记为 KIA 受保护文档 / Scan on-device storage and mark files as KIA-protected documents",
+      "管理 KIA 文件标签和密级元数据用于 DLP 管控 / Manage KIA file labels and classification metadata for DLP control",
+      "实现企业文件外发前审批校验和风险拦截 / Implement pre-share approval checks and risk blocking for enterprise file exfiltration",
+      "更新企业证书和公钥以完成受管设备身份校验 / Update enterprise certificates and public keys to complete managed-device identity verification",
+      "通过恢复密钥解锁受保护数据并恢复企业设备访问 / Unlock protected data with a recovery key and restore enterprise device access",
+      "追踪 KIA 文件重命名压缩传输等流转操作日志 / Track operation logs for KIA file rename, compression, and transfer workflows",
+      "为 MDM 应用接入企业数据防泄漏和文件安全审计能力 / Integrate enterprise DLP and file security auditing into an MDM app",
+      "限制受保护文件通过第三方应用打开或转发 / Restrict protected files from being opened or forwarded through third-party apps"
+    ],
+    "do_not_use_when": [
+      "需求是建设企业工作容器、工作资料隔离或企业空间生命周期管理，而不是KIA文件分级/外发管控；应改用 enterprise-space-kit / The requirement is to build an enterprise workspace, isolate work data, or manage enterprise space lifecycle rather than KIA file classification/export control; use enterprise-space-kit instead",
+      "需求是通用设备管理，如设备注册、策略下发、应用安装卸载、远程管控等，而不是企业数据防泄漏或恢复密钥；应改用 mdm-kit / The requirement is general device management such as enrollment, policy deployment, app install/uninstall, or remote management rather than DLP or recovery keys; use mdm-kit instead",
+      "目标设备不是中国境内支持的华为擎云PC/2in1，或需要模拟器验证，此Kit不适用 / The target device is not a supported Huawei Qingyun PC/2in1 in mainland China, or emulator-based validation is required; this Kit is not applicable",
+      "需求仅是普通文件读写、媒体处理或通用存储访问，并不涉及企业敏感文件识别、KIA标签、水印或恢复密钥 / The need is only ordinary file I/O, media processing, or general storage access, without enterprise-sensitive file identification, KIA labels, watermarking, or recovery keys"
+    ],
+    "preconditions": [
+      "应用已具备企业安全管控类MDM应用资质，并完成相关能力申请与开通 / The app has enterprise security-management MDM qualifications and the required capability has been applied for and enabled",
+      "运行环境为受支持的华为擎云PC/2in1真机，且部署地区满足中国境内限制，不使用模拟器 / The runtime is a supported Huawei Qingyun PC/2in1 physical device and the deployment region satisfies the mainland China restriction, with no emulator used",
+      "module.json5及工程配置中已声明并授予本Kit所需权限/能力，权限校验已通过 / The required permissions/capabilities for this Kit have been declared in module.json5 and project config, and permission checks pass",
+      "待操作文件路径位于本Kit支持的扫描范围或用户个人数据目录允许的绝对路径子集内 / The target file paths are within this Kit's supported scan scope or the allowed absolute-path subset under the user's personal data directory"
+    ],
+    "inputs": [
+      "文件绝对路径或目录路径 / file absolute path or directory path",
+      "KIA文件列表或文件URI / KIA file list or file URI",
+      "文件属性标签与安全等级配置 / file attribute labels and security-level configuration",
+      "安全管控策略或水印图片资源 / security control policy or watermark image resource",
+      "企业公钥证书、挑战值或恢复密钥请求参数 / enterprise public-key certificate, challenge value, or recovery-key request parameters"
+    ],
+    "outputs": [
+      "Kit 简介与开发准备",
+      "文件分级管控",
+      "企业恢复密钥管理"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码中调用Enterprise Data Guard Kit相关API完成目标操作，而非仅停留在说明层面 / Enterprise Data Guard Kit APIs are actually invoked in code to perform the target operation, not merely described",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the agent's edit set include concrete code changes that import or call Enterprise Data Guard Kit APIs for scanning/labeling/policy/watermark/event subscription/recovery-key operations?"
+      },
+      {
+        "statement": "若涉及文件管控，已明确目标路径、KIA标签/水印/策略中的至少一项具体配置 / If file protection is involved, the target path and at least one concrete KIA label/watermark/policy configuration are specified",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there a specific target file or directory and at least one concrete protection configuration such as a KIA label, watermark asset, or control policy?"
+      },
+      {
+        "statement": "若涉及恢复密钥管理，已实现证书/挑战值/签名/获取或删除流程中的至少一个完整调用链路 / If recovery-key management is involved, at least one complete call flow for certificate/challenge/signature/get/delete is implemented",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task concerns recovery keys, do the edits implement at least one end-to-end flow using the relevant Enterprise Data Guard Kit APIs, such as challenge retrieval plus signing, certificate update, key retrieval, or key deletion?"
+      },
+      {
+        "statement": "已补充或校验本Kit所需的权限/环境前置说明或配置，避免在不支持环境中直接调用 / Required permissions/environment prerequisites for this Kit are added or validated, avoiding direct calls in unsupported environments",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits add or verify permissions, capability checks, supported-device/region constraints, or related setup needed before calling Enterprise Data Guard Kit APIs?"
+      }
+    ],
+    "overlaps_with": [
+      "enterprise-space-kit",
+      "mdm-kit"
+    ],
+    "safety_tier": "high-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

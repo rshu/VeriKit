@@ -1,0 +1,102 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "calendar-kit",
+  "source_path": "skills/calendar-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:50:58.439Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "日历",
+      "日程管理",
+      "日历账户",
+      "事件管理",
+      "如何创建应用专属的日历账户",
+      "如何在日历账户下创建、删除、修改和查询日程",
+      "如何实现日程一键服务（DeepLink跳转）",
+      "如何注册并管理一键服务日程的跳转链接",
+      "如何实现会议一键入会、一键追剧、一键购物等场景",
+      "如何通过日程提醒通知引导用户跳转到应用",
+      "当你的应用需要将时间相关的服务（如出行、餐饮、运动、娱乐等）与系统日历集成时，可以使用Calendar Kit创建日历账户并管理日程，让用户在系统日历中查看和接收应用相关的日程提醒",
+      "当你希望为用户提供\"一键服务\"体验时（如会议一键入会、直播一键观看、还款一键跳转等），可以通过Calendar Kit的一键服务功能，将DeepLink写入日历日程，用户在日历通知或桌面卡片中直接点击服务按钮即可跳转到应用落地页",
+      "在系统日历里创建应用自己的日程源并同步活动安排 / Create an app-owned calendar source in the system Calendar and sync events",
+      "新增会议行程并设置开始结束时间、地点和备注 / Add meeting events with start/end time, location, and notes",
+      "读取某个时间范围内的日程列表并在应用中展示 / Load events in a time range and display them in the app",
+      "修改已创建的日程内容并更新提醒时间 / Update existing calendar events and change reminder times",
+      "删除取消的预约或活动避免继续提醒用户 / Delete canceled appointments or activities to stop further reminders",
+      "给订单、还款、出行计划写入系统日历并自动提醒 / Write orders, repayments, or travel plans into the system calendar with reminders",
+      "为直播、会议、观影等活动配置一键直达 DeepLink / Configure one-tap DeepLink entry for live streams, meetings, or movie sessions",
+      "从日历通知点击后直接跳转到应用详情页 / Jump from a calendar notification directly to an app detail page",
+      "管理日历账户下的事件增删改查 / Manage CRUD operations for events under a calendar account",
+      "给日程附加入会链接、观看链接或服务跳转链接 / Attach join links, watch links, or service links to calendar events",
+      "把用户报名成功后的活动自动加入手机日历 / Automatically add registered events to the user's phone calendar",
+      "接入 Calendar Kit 实现活动提醒和服务跳转联动 / Integrate Calendar Kit for event reminders and service deep-link navigation"
+    ],
+    "do_not_use_when": [
+      "需求是获取天气数据、天气预报或气象服务，而不是管理日历事件；请改用 weather-service-kit / The task is to get weather data, forecasts, or meteorological services rather than manage calendar events; use weather-service-kit instead",
+      "需求是实现无障碍适配、辅助功能事件处理或读屏支持，而不是读写系统日历；请改用 accessibility-kit / The task is to implement accessibility adaptation, accessibility event handling, or screen-reader support rather than read/write the system calendar; use accessibility-kit instead",
+      "需求是做多语言翻译、区域格式化或国际化适配，而不是创建日历账户或日程；请改用 localization-kit / The task is localization, regional formatting, or internationalization rather than creating calendar accounts or events; use localization-kit instead",
+      "需求是编写测试用例、测试框架接入或自动化验证，而不是实现生产日历功能；请改用 test-kit / The task is to write tests, integrate test frameworks, or perform automated validation rather than implement production calendar features; use test-kit instead",
+      "需求是分析性能瓶颈、启动耗时或资源占用，而不是管理日程提醒与DeepLink服务；请改用 performance-analysis-kit / The task is to analyze performance bottlenecks, startup latency, or resource usage rather than manage schedule reminders and DeepLink services; use performance-analysis-kit instead"
+    ],
+    "preconditions": [
+      "应用已在配置文件中声明日历读写权限（ohos.permission.READ_CALENDAR 和 ohos.permission.WRITE_CALENDAR） / The app has declared calendar read/write permissions in the config file (ohos.permission.READ_CALENDAR and ohos.permission.WRITE_CALENDAR)",
+      "用户已授予应用访问系统日历的权限 / The user has granted the app permission to access the system calendar",
+      "工程已集成并可使用 Calendar Kit 对应能力 / The project has integrated and can access the Calendar Kit capability",
+      "若使用日程一键服务，相关 DeepLink 跳转配置与服务端注册信息已准备完成 / If one-click calendar services are used, the related DeepLink configuration and server-side registration are already prepared"
+    ],
+    "inputs": [
+      "日历账户信息 / calendar account information",
+      "日程数据（标题、开始时间、结束时间、提醒规则等） / event data (title, start time, end time, reminder rules, etc.)",
+      "日程标识或查询条件 / event identifier or query criteria",
+      "一键服务跳转链接或 DeepLink 信息 / one-click service link or DeepLink information"
+    ],
+    "outputs": [
+      "服务概述",
+      "日历账户管理",
+      "日程管理",
+      "一键服务"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已接入 Calendar Kit 相关 API 以创建、查询、更新或删除日历账户或日程 / The code integrates Calendar Kit APIs to create, query, update, or delete calendar accounts or events",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add or modify code that calls Calendar Kit APIs for calendar account or event management?"
+      },
+      {
+        "statement": "工程配置中包含日历读写权限声明 / The project configuration includes calendar read/write permission declarations",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, were READ_CALENDAR and WRITE_CALENDAR permissions added or confirmed in the app configuration?"
+      },
+      {
+        "statement": "若实现一键服务，日程数据中已写入可拉起应用的 DeepLink 或对应跳转配置 / If one-click service is implemented, the event data includes a DeepLink or equivalent launch configuration",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task involves one-click calendar service, do the edits show a DeepLink or equivalent jump configuration being attached to the calendar event flow?"
+      }
+    ],
+    "overlaps_with": [
+      "basic-services-kit",
+      "accessibility-kit",
+      "localization-kit",
+      "test-kit",
+      "performance-analysis-kit",
+      "weather-service-kit",
+      "ui-design-kit",
+      "screen-time-guard-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "scan-kit",
+  "source_path": "skills/scan-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:58:38.838Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "扫码",
+      "条码",
+      "二维码",
+      "二维码生成",
+      "AI扫码",
+      "如何接入\"扫码直达\"服务实现系统级扫码跳转到应用？",
+      "如何使用默认界面扫码功能快速集成扫码能力？",
+      "如何实现自定义界面的扫码功能并渲染相机预览流？",
+      "如何实现连续扫码和扫码重试机制？",
+      "如何识别本地图片中的二维码或条形码？",
+      "如何通过文本或字节数组生成码图？",
+      "如何在H5场景中接入扫码能力？",
+      "如何通过手势缩放调整扫码时的变焦比？",
+      "如何将码图背景颜色设置成透明色？",
+      "如何排查默认界面扫码相册识别多码失败的问题？",
+      "当你需要让用户通过系统级扫码入口（如控制中心）直接扫码跳转到你的应用服务页时，应优先使用扫码直达能力，接入简单且用户体验最佳",
+      "当你需要在应用内集成扫码功能时，可根据是否需要自定义界面选择默认界面扫码或自定义界面扫码",
+      "当你需要对本地图片或图像数据中的码图进行识别，或者需要根据文本或字节数组生成码图时，Scan Kit提供了相应的图像识码和码图生成能力",
+      "对于H5场景中的扫码需求，Scan Kit也提供了对应的接入方案",
+      "集成应用内扫码入口以识别商品条码和二维码 / Add an in-app scanner to recognize barcodes and QR codes",
+      "实现扫一扫后自动解析结果并跳转到对应页面 / Implement scan-to-parse and navigate to the target page",
+      "从相册读取图片并识别其中的二维码内容 / Decode QR content from images picked from the gallery",
+      "生成用于分享链接或设备配网的二维码图片 / Generate QR images for sharing links or device onboarding",
+      "批量识别图片里的多个码值并返回结果列表 / Detect multiple codes in an image and return a result list",
+      "在自定义相机页面叠加扫码框并实时识别画面中的码 / Overlay a scan box on a custom camera view and detect codes in real time",
+      "接入连续扫码用于仓储盘点或门票核销 / Enable continuous scanning for inventory counting or ticket verification",
+      "保存生成的码图到相册或导出为图片文件 / Save generated code images to the gallery or export them as files",
+      "在Web页面中调用原生扫码能力并将结果回传H5 / Invoke native scanning from a web page and pass results back to H5",
+      "实现扫描结果去重和同码过滤，避免重复处理 / Implement duplicate scan filtering to avoid processing the same code twice",
+      "根据扫描内容识别URL、文本或Wi‑Fi配置信息 / Parse scanned content as URL, text, or Wi‑Fi configuration",
+      "调节扫码相机的闪光灯、对焦和缩放提升识别率 / Control flashlight, focus, and zoom to improve scan recognition"
+    ],
+    "do_not_use_when": [
+      "需求是实现通用深度链接、URL跳转或跨端唤起，而不是识别/生成条码二维码；应使用 app-linking-kit / The need is generic deep linking, URL routing, or cross-device app invocation rather than barcode/QR scanning or generation; use app-linking-kit",
+      "需求是配置应用分享、分享面板或把内容分享到其他应用，而不是扫描码或生成码图；应使用 share-kit / The need is app sharing, share panels, or sending content to other apps rather than scanning codes or generating code images; use share-kit",
+      "需求是接入广告投放、广告归因或广告变现能力，而不是扫码识别；应使用 ads-kit / The need is ad delivery, attribution, or monetization capabilities rather than scan recognition; use ads-kit",
+      "需求是实现游戏登录、成就、排行榜或其他游戏服务，而不是扫码功能；应使用 game-service-kit / The need is game sign-in, achievements, leaderboards, or other game services rather than scanning features; use game-service-kit",
+      "需求是做场景感知、意图推荐或多设备场景协同，而不是相机/图片中的码识别；应使用 scenario-fusion-kit / The need is scene awareness, intent recommendation, or multi-device scenario orchestration rather than code recognition from camera/images; use scenario-fusion-kit"
+    ],
+    "preconditions": [
+      "工程已集成Scan Kit对应SDK/依赖，且目标设备支持所选能力 / The project has integrated the Scan Kit SDK/dependencies and the target device supports the chosen capability",
+      "若使用相机扫码，module.json5已声明相机权限且用户已授权 / If camera-based scanning is used, camera permission is declared in module.json5 and granted by the user",
+      "若使用“扫码直达”，已按要求完成服务接入与相关配置 / If Scan-to-App is used, the service onboarding and required configuration have been completed",
+      "若处理本地图片或输出码图，应用具备相应文件访问/保存能力与可用路径 / If processing local images or outputting code images, the app has the necessary file access/save capability and a valid path"
+    ],
+    "inputs": [
+      "扫码模式与能力类型（扫码直达/默认界面/自定义界面/图像识码/码图生成） / Scan mode and capability type (Scan-to-App/default UI/custom UI/image recognition/code generation)",
+      "待识别的图片URI、像素缓冲区或相机预览帧 / Image URI, pixel buffer, or camera preview frame to be recognized",
+      "待生成码图的文本或字节数组 / Text or byte array used to generate the code image",
+      "识别或生成参数（码制式、尺寸、颜色、是否连续扫码等） / Recognition or generation parameters (symbology, size, colors, continuous scan, etc.)"
+    ],
+    "outputs": [
+      "入门与概述",
+      "扫码直达",
+      "默认界面扫码",
+      "自定义界面扫码",
+      "图像识别与码图生成",
+      "常见问题与技巧"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已接入至少一种Scan Kit能力调用，并与目标场景一致 / The code integrates at least one Scan Kit capability invocation matching the intended scenario",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code/configuration that clearly invokes a Scan Kit capability (scan-to-app, default UI scan, custom scan, image recognition, or code generation) appropriate to the user's request?"
+      },
+      {
+        "statement": "若涉及相机扫码，已补充权限声明或授权处理逻辑 / If camera-based scanning is involved, permission declaration or grant-handling logic has been added",
+        "verifier": "model_judge",
+        "judge_prompt": "If the changes implement camera scanning, do they also include camera permission declaration/configuration or runtime permission handling?"
+      },
+      {
+        "statement": "扫码或识码结果已被应用消费，如跳转、展示、回调处理或错误处理 / Scan/recognition results are consumed by the app, such as navigation, display, callback handling, or error handling",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show that scan or recognition results are handled in application logic, including success and optionally cancellation/error cases?"
+      },
+      {
+        "statement": "若为码图生成，已产出可显示或保存的码图对象/文件并设置关键参数 / If code generation is implemented, a displayable or savable code image object/file is produced with key parameters set",
+        "verifier": "model_judge",
+        "judge_prompt": "If the edits generate a barcode/QR image, do they create an output image/file and set relevant generation parameters such as content, size, or colors?"
+      }
+    ],
+    "overlaps_with": [
+      "appgallery-kit",
+      "app-linking-kit",
+      "ads-kit",
+      "game-service-kit",
+      "share-kit",
+      "scenario-fusion-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "data-augmentation-kit",
+  "source_path": "skills/data-augmentation-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:52:35.881Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "知识库",
+      "智能检索",
+      "RAG",
+      "检索增强生成",
+      "端侧大模型",
+      "LLM问答",
+      "如何使用RAG技术实现知识问答功能？",
+      "如何对业务数据进行知识加工并生成知识库？",
+      "如何配置RAG的超参数、提示词模板和分析过程模板？",
+      "如何实现基于多路召回和重排序的智慧化数据检索？",
+      "如何接入端侧问答模型实现数据不出端的智能问答？",
+      "如何使用向量检索实现语义级别的数据查询？",
+      "如何快速切换不同领域的知识库以适配不同业务场景？",
+      "如何构建企业客服、医疗辅助等领域的知识问答系统？",
+      "当你的应用需要构建基于知识库的智能问答系统时使用RAG能力",
+      "RAG的优势在于知识实时性（无需重新训练模型即可动态更新知识库）、可信度增强（生成内容基于检索结果，减少模型\"幻觉\"）和灵活适配（同一模型可快速切换不同领域知识库），适用于新闻、政策等高频变化领域",
+      "当你的应用需要高效的数据检索能力时使用智慧化数据检索，支持图片、文本等多种数据的融合查询，提供基于倒排检索和向量检索的多路召回与重排序",
+      "当你的应用需要数据不出端的智能问答能力时，可选择接入端侧问答模型，保障用户数据隐私安全",
+      "给应用接入本地知识库问答能力 / Integrate on-device knowledge base Q&A into the app",
+      "把业务文档切片并向量化后建立可检索知识库 / Chunk and embed business documents into a searchable knowledge base",
+      "实现基于向量召回和重排序的语义搜索 / Implement semantic search with vector retrieval and reranking",
+      "导入 PDF、Word、网页内容生成 RAG 检索数据 / Ingest PDFs, Word files, and web content to build RAG retrieval data",
+      "配置检索问答流程中的提示词模板和召回参数 / Configure prompt templates and retrieval parameters for the QA pipeline",
+      "让大模型回答时结合企业私有数据 / Ground LLM responses with private enterprise data",
+      "在端侧部署离线知识问答并保证数据不出设备 / Deploy offline on-device knowledge Q&A so data stays on the device",
+      "为客服助手接入多知识库切换和按领域检索 / Add multi-knowledge-base switching and domain-specific retrieval for a support assistant",
+      "实现上传资料后自动解析并同步到知识库 / Parse uploaded materials and sync them into the knowledge base automatically",
+      "对产品手册和 FAQ 建立向量索引供智能问答检索 / Build vector indexes for product manuals and FAQs for intelligent Q&A",
+      "集成混合检索能力同时支持关键词和语义召回 / Integrate hybrid retrieval supporting both keyword and semantic recall",
+      "管理知识库的数据导入、更新和增量构建 / Manage knowledge base ingestion, updates, and incremental indexing"
+    ],
+    "do_not_use_when": [
+      "需求是通用分词、实体识别、文本分类、翻译等自然语言处理，而不是知识库/RAG检索问答；应改用 natural-language-kit / The requirement is generic NLP such as tokenization, entity recognition, text classification, or translation rather than knowledge-base/RAG retrieval QA; use natural-language-kit instead",
+      "需求是语音识别、语音合成或音频流处理，而不是基于知识库的问答；应改用 speech-kit 或 core-speech-kit / The requirement is speech recognition, speech synthesis, or audio stream processing rather than knowledge-grounded QA; use speech-kit or core-speech-kit instead",
+      "需求是图像理解、检测、OCR、视频分析等视觉能力，而不是知识加工后的检索增强问答；应改用 vision-kit 或 core-vision-kit / The requirement is visual capabilities such as image understanding, detection, OCR, or video analysis rather than retrieval-augmented QA over processed knowledge; use vision-kit or core-vision-kit instead",
+      "需求是直接部署、转换或加速通用AI模型推理管线，而不是构建知识库、检索或RAG流程；应改用 mindspore-lite-kit、neural-network-runtime-kit 或 cann-kit / The requirement is to deploy, convert, or accelerate general AI model inference pipelines rather than build knowledge bases, retrieval, or RAG flows; use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成Data Augmentation Kit对应SDK，并且目标设备/系统版本支持该能力 / The project has integrated the Data Augmentation Kit SDK and the target device/system version supports this capability",
+      "若使用知识加工或检索问答，待处理数据源、知识库存储与相关服务在应用运行环境中可访问 / If using knowledge processing or retrieval QA, the data sources, knowledge base storage, and related services are reachable in the app runtime environment",
+      "若接入端侧问答模型，目标设备已具备可用的端侧模型资源与满足运行所需的算力/内存条件 / If using the on-device QA model, the target device has usable on-device model resources and sufficient compute/memory to run them"
+    ],
+    "inputs": [
+      "用户问题或检索查询文本 / user question or retrieval query text",
+      "知识源数据（文本、办公文档、图片等） / knowledge source data (text, office documents, images, etc.)",
+      "知识库或索引标识 / knowledge base or index identifier",
+      "RAG配置参数（提示词模板、超参数、分析过程模板等） / RAG configuration parameters (prompt templates, hyperparameters, analysis-process templates, etc.)"
+    ],
+    "outputs": [
+      "简介",
+      "RAG检索增强生成",
+      "智慧化数据检索",
+      "端侧问答模型"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码中接入Data Augmentation Kit相关API，用于知识加工、智慧检索、RAG问答或端侧问答之一 / The code integrates Data Augmentation Kit APIs for at least one of knowledge processing, intelligent retrieval, RAG QA, or on-device QA",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add or modify code/configuration that invokes Data Augmentation Kit capabilities for knowledge processing, intelligent retrieval, RAG question answering, or on-device question answering?"
+      },
+      {
+        "statement": "若实现RAG流程，代码中已显式传入知识库/检索相关配置以及用户问题输入 / If a RAG flow is implemented, the code explicitly passes knowledge-base/retrieval-related configuration and the user question input",
+        "verifier": "model_judge",
+        "judge_prompt": "If the changes implement a RAG or retrieval-based QA flow, do they clearly include both the user's query input and knowledge-base or retrieval configuration in the invocation path?"
+      },
+      {
+        "statement": "若实现知识加工，代码中已声明并处理至少一种支持的数据来源（文本、办公文件或图片）以生成知识库内容 / If knowledge processing is implemented, the code declares and handles at least one supported data source (text, office file, or image) to generate knowledge-base content",
+        "verifier": "model_judge",
+        "judge_prompt": "If the edits add knowledge processing, do they show at least one supported input type such as text, office documents, or images being processed into knowledge-base content?"
+      }
+    ],
+    "overlaps_with": [
+      "cann-kit",
+      "mindspore-lite-kit",
+      "neural-network-runtime-kit",
+      "core-speech-kit",
+      "core-vision-kit",
+      "natural-language-kit",
+      "speech-kit",
+      "vision-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

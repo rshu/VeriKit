@@ -1,0 +1,111 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "vision-kit",
+  "source_path": "skills/vision-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T08:00:24.530Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "场景化视觉",
+      "人脸活体检测",
+      "证件识别",
+      "文档扫描",
+      "AI图像分析",
+      "如何实现人脸活体检测，通过引导用户完成指定动作验证真实身份？",
+      "如何使用卡证识别功能提取身份证、银行卡、护照等证件的结构化信息？",
+      "如何实现文档扫描，自动裁剪并生成高清扫描件？",
+      "如何使用文档扫描的表格识别功能生成可编辑的表格文档？",
+      "如何使用AI识图控件实现OCR文本识别？",
+      "如何使用AI识图控件实现主体分割（抠图）功能？",
+      "如何使用AI识图控件实现识图搜索功能？",
+      "如何在考勤打卡、辅助登录场景中集成活体检测？",
+      "如何在金融开户场景中实现身份证信息自动采集？",
+      "当你的应用需要进行身份真实性验证时，例如在线开户、远程签约、考勤打卡等场景，你应该使用 Vision Kit 的人脸活体检测能力",
+      "该能力可以有效防止照片攻击和视频回放攻击，确保用户身份的真实性",
+      "当你的应用需要处理证件信息录入或文档数字化时，例如开户时的身份证信息采集、报销时的发票和文档扫描、商品搜索时的图片识别等场景，你应该使用 Vision Kit 的卡证识别、文档扫描或 AI 识图能力",
+      "这些能力可以大幅减少用户的手动输入工作量，提升应用的交互体验和数据采集效率",
+      "集成人脸动作活体校验完成实名验证流程 / Integrate face liveness action checks for real-name identity verification",
+      "识别身份证护照银行卡并自动回填表单信息 / Recognize ID cards, passports, and bank cards to auto-fill form fields",
+      "扫描纸质文件并自动矫正裁边生成清晰PDF或图片 / Scan paper documents with auto crop and perspective correction to generate clear PDFs or images",
+      "提取扫描表格内容并导出为可编辑电子表格 / Extract scanned table content and export it as an editable spreadsheet",
+      "在拍照后做OCR文字识别并复制或搜索内容 / Run OCR on captured images so text can be copied or searched",
+      "实现图片主体分割抠图并替换背景 / Perform subject segmentation to cut out a person or object and replace the background",
+      "接入拍图识物或识图搜索能力返回相似结果 / Add visual search from a photo and return similar matches",
+      "获取证件上的姓名证号有效期等结构化字段 / Extract structured fields like name, ID number, and expiry date from identity documents",
+      "在开户审核流程中自动检测证件边框并采集清晰证件照 / Detect document edges and capture a clear ID photo in onboarding flows",
+      "实现移动端文档拍摄增强去阴影去反光 / Enhance mobile document capture by removing shadows and glare",
+      "用AI视觉组件完成文本识别、抠图和搜图入口 / Use AI vision widgets for OCR, cutout, and image search entry points",
+      "在门禁考勤或登录场景中接入刷脸活体检测 / Integrate face liveness detection for access control, attendance, or login",
+      "读取票据合同表单图片并识别其中的文字与表格 / Read receipt, contract, or form images and recognize their text and tables"
+    ],
+    "do_not_use_when": [
+      "需要自行部署、训练或优化底层AI模型与算子，而不是调用现成场景化视觉服务时，应改用 cann-kit、mindspore-lite-kit 或 neural-network-runtime-kit / If you need to deploy, train, or optimize underlying AI models and operators yourself rather than use packaged scenario-based vision services, use cann-kit, mindspore-lite-kit, or neural-network-runtime-kit instead",
+      "需求是通用基础视觉能力或底层视觉接口集成，而非人脸活体、证件OCR、文档扫描或AI识图控件时，应改用 core-vision-kit / If the need is for general foundational vision capabilities or low-level vision API integration rather than liveness detection, ID OCR, document scanning, or AI image analyzer components, use core-vision-kit instead",
+      "主要任务是语音识别、语音合成、语音唤醒或音频语义处理，而不是图像/文档视觉分析时，应改用 core-speech-kit 或 speech-kit / If the primary task is speech recognition, speech synthesis, voice wake-up, or audio semantic processing rather than image/document visual analysis, use core-speech-kit or speech-kit instead",
+      "主要任务是文本理解、翻译、摘要、对话或其他自然语言处理，而不是从图像中提取视觉信息时，应改用 natural-language-kit / If the primary task is text understanding, translation, summarization, dialogue, or other natural language processing rather than extracting visual information from images, use natural-language-kit instead",
+      "需求依赖跨模态场景感知、环境/行为综合感知或多传感器融合决策，而不是单一视觉场景化能力时，应改用 multimodal-awareness-kit / If the requirement depends on cross-modal context awareness, environment/behavior perception, or multi-sensor fusion decisions rather than single visual scenario services, use multimodal-awareness-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成 Vision Kit 对应能力，并且目标设备/系统版本支持所选视觉服务 / The project has integrated the Vision Kit capability and the target device/system version supports the selected visual service",
+      "应用已在 module.json5 中声明并获得所需权限（如相机、照片访问等） / The app has declared and obtained required permissions in module.json5, such as camera and photo access",
+      "涉及拍摄、证件识别或文档扫描时，设备相机可正常使用且用户已授权 / For capture, ID recognition, or document scanning, the device camera is available and user authorization has been granted",
+      "输入的图片、视频或控件宿主组件可被应用正常访问，且格式符合对应接口要求 / Input images, videos, or host UI components are accessible to the app and their formats meet the relevant API requirements"
+    ],
+    "inputs": [
+      "图像、视频帧或相机采集内容 / Image, video frames, or camera-captured content",
+      "待识别的证件或文档内容 / ID card or document content to be recognized",
+      "AI识图控件宿主组件或界面上下文 / AI image analyzer host component or UI context",
+      "所选视觉任务类型与相关配置参数 / Selected visual task type and related configuration parameters"
+    ],
+    "outputs": [
+      "简介",
+      "人脸活体检测",
+      "卡证识别",
+      "文档扫描",
+      "AI识图",
+      "数据隐私"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码或界面流程中接入明确的 Vision Kit 场景化能力（如活体检测、卡证识别、文档扫描或AI识图） / A specific Vision Kit scenario-based capability has been integrated into code or UI flow, such as liveness detection, card recognition, document scanning, or AI image analysis",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add or configure a Vision Kit feature/API/component for one of these tasks: liveness detection, card recognition, document scanning, or AI image analyzer?"
+      },
+      {
+        "statement": "输入媒体或界面组件已与所选视觉能力正确绑定，形成可执行调用链路 / The input media or UI component is correctly bound to the selected visual capability, forming an executable invocation flow",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there a clear wiring from image/video/camera input or host component to the corresponding Vision Kit invocation or component usage?"
+      },
+      {
+        "statement": "工程中已补充该视觉能力运行所需的关键声明或权限处理 / The project includes the key declarations or permission handling required to run the chosen visual capability",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits add or reference the necessary permissions, capability setup, or runtime authorization handling needed for the selected Vision Kit feature?"
+      }
+    ],
+    "overlaps_with": [
+      "cann-kit",
+      "mindspore-lite-kit",
+      "neural-network-runtime-kit",
+      "core-speech-kit",
+      "core-vision-kit",
+      "natural-language-kit",
+      "speech-kit",
+      "multimodal-awareness-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

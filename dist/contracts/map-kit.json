@@ -1,0 +1,107 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "map-kit",
+  "source_path": "skills/map-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:55:50.971Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "地图",
+      "地图展示",
+      "标记",
+      "覆盖物",
+      "POI搜索",
+      "路线规划",
+      "地理编码",
+      "如何在HarmonyOS应用中创建和显示地图组件？",
+      "如何在地图上添加标记、折线、多边形、圆形等绘制元素？",
+      "如何实现POI关键字搜索和周边搜索功能？",
+      "如何进行驾车、步行、骑行路径规划？",
+      "如何实现正地理编码（地址转坐标）和逆地理编码（坐标转地址）？",
+      "如何在地图上显示用户当前位置？",
+      "如何实现热力图、点聚合、海量点等图层展示？",
+      "如何使用地点选取和区划选择等场景化控件？",
+      "如何实现地图手势交互和事件监听？",
+      "如何切换地图类型（标准地图、卫星地图）和设置深色模式？",
+      "当应用需要在界面上展示地图并进行交互操作时使用本Kit，典型场景包括地图导航、周边服务查找、位置标注、轨迹展示、区域划分可视化等",
+      "MapComponent组件提供了完整的地图UI能力，支持深色模式、室内图、3D地球等多种展示效果",
+      "当应用需要实现位置搜索或路径规划功能时使用本Kit",
+      "支持关键字搜索、周边搜索、自动补全等POI搜索能力，以及驾车、步行、骑行和公共交通四种出行方式的路径规划",
+      "驾车路径规划支持途经点和多种路线偏好",
+      "当需要使用地点选取、地点详情展示、区划选择等场景化控件，或需要获取静态地图图片、调用花瓣地图应用实现导航时，也可使用Map Kit提供的相关能力",
+      "在页面中嵌入交互式地图并支持缩放拖动 / Embed an interactive map view with zoom and pan support",
+      "显示当前定位并让地图跟随用户位置移动 / Show current location and keep the map centered on the user",
+      "在地图上绘制轨迹路线和运动路径回放 / Draw trip tracks on the map and replay movement routes",
+      "添加自定义标注气泡和点击地图点位事件 / Add custom map markers with callouts and handle map tap events",
+      "按关键词搜索附近餐厅商场医院等地点 / Search nearby places like restaurants, malls, and hospitals by keyword",
+      "根据起点终点生成导航路线并展示距离时间 / Generate routes between origin and destination and show distance and duration",
+      "把经纬度解析成详细地址并显示城市街道信息 / Resolve latitude and longitude into a full address with city and street info",
+      "把用户输入的地址转换为地图坐标并定位到该位置 / Convert a typed address into map coordinates and move the map to it",
+      "在地图上展示热力图聚合点和海量点图层 / Display heatmaps, clustered markers, and massive point layers on the map",
+      "限制地图可视区域并设置初始中心点和缩放级别 / Restrict the visible map region and set initial center and zoom level",
+      "显示多个门店网点位置并支持一键查看最近门店 / Show multiple store locations and let users find the nearest branch",
+      "叠加圆形围栏多边形区域和折线边界范围 / Overlay circles, polygons, and polylines to mark geofences or boundaries"
+    ],
+    "do_not_use_when": [
+      "需求仅是获取设备当前位置、持续定位、地理围栏或GNSS能力，而不需要地图展示、POI搜索或路径规划时，应改用 location-kit / If the need is only device location, continuous tracking, geofencing, or GNSS capabilities without map display, POI search, or route planning, use location-kit instead",
+      "任务是申请或处理定位权限、管理定位开关与定位回调，本Kit不是首选，应改用 location-kit / If the task is to request or handle location permissions, manage location settings, or process location callbacks, this kit is not the first choice; use location-kit instead",
+      "只需在后台采集坐标、监听位置变化或获取卫星状态，不涉及地图组件或地图服务接口时，应改用 location-kit / If you only need background coordinate collection, location change monitoring, or satellite status without map components or map service APIs, use location-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成并启用 Map Kit 能力，且应用已完成地图服务相关配置 / The project has integrated and enabled Map Kit capabilities, and the app has completed the required map service configuration",
+      "设备网络可用，能够访问地图、搜索或路径规划服务 / Network connectivity is available so the device can reach map, search, or routing services",
+      "若要显示“我的位置”或基于当前位置搜索，module.json5 已声明定位权限且用户已授权 / If showing “my location” or searching based on current position, location permissions are declared in module.json5 and granted by the user"
+    ],
+    "inputs": [
+      "地图组件或地图控制器对象 / map component or map controller object",
+      "坐标、地址、关键字或POI查询参数 / coordinates, address, keyword, or POI query parameters",
+      "起点、终点、途经点及出行方式等路径规划参数 / origin, destination, waypoint, and travel mode routing parameters"
+    ],
+    "outputs": [
+      "概述与准备",
+      "地图显示",
+      "地图交互",
+      "地图绘制元素",
+      "图层",
+      "搜索与编码",
+      "路径规划与计算",
+      "场景化控件",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已接入地图显示、地图搜索/编码或路径规划中的至少一种 Map Kit 能力 / The code integrates at least one Map Kit capability among map display, map search/geocoding, or route planning",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify HarmonyOS code/configuration that clearly uses Map Kit APIs or components for map rendering, POI/geocoding, or route planning?"
+      },
+      {
+        "statement": "若需求涉及地图界面，已新增或配置可展示地图的组件并绑定必要参数 / If the requirement involves a map UI, a component capable of displaying a map has been added or configured with necessary parameters",
+        "verifier": "model_judge",
+        "judge_prompt": "If the requested task involves showing a map, do the edits add or configure a map UI component or its initialization logic rather than only unrelated business code?"
+      },
+      {
+        "statement": "若需求涉及当前位置展示，已同时体现定位权限或定位数据接入与地图展示的衔接 / If the requirement involves showing current location, the edits reflect both location permission/data hookup and its integration with the map display",
+        "verifier": "model_judge",
+        "judge_prompt": "When the task mentions showing the user's current location, do the edits include both location-related setup/usage and code that applies that location to the map?"
+      }
+    ],
+    "overlaps_with": [
+      "location-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

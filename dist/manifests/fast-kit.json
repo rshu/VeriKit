@@ -1,0 +1,25 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "fast-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.778Z"
+  },
+  "references": [
+    {
+      "path": "references/FAST Kit简介.md",
+      "title": "FAST Kit简介",
+      "snippet": "FAST Kit（算法加速服务）以理论计算机为基础、面向开发者提供算法加速能力。当前开放线段表与矩形划分求解器接口，支撑应用的开发体验和用户体验提升。 当前FAST Kit包括以下两个功能域： - 高阶数据结构（Advanced Data Structure）加速功能域旨在融合理论计算机科学中具有理论保证的高级数据结构与现代硬件特性，当前提供 线段表数据结构 。 - 规划求解（Solver）加速功能域旨在将理论计算机科学与运筹学中的优化求解能力运用到鸿蒙生态中的各类场景，当前提供 矩形划分求解器 。 #### 场景介绍 FAST Kit基于理论计算机科学，通过理论算法优化，为应用的性能、负载与功耗优化提供算法加速能力支持，当前Kit提供“高阶数据结构-线段表”与“规划求解-矩形划分求解器”，具体如下： - 线段表：是一种用于高效处理区间段信息的数据结构，支持数据序列区间段的快速更新和快速查询。以下是一些典型使用场景： - 数据可视化：股票K线图中快速响应用户对于标记特定价格或时间区间的请求；甘特图/时间轴渲染中高效渲染大量任务的时间区间等。 - 资源监控与日志分析：在APP性能监控中记录卡顿或异常发生的时间区间，聚合分析高频问题时段；统计用户在特定页面停留的连续时间区间、分析行为模式等。 - 游戏开发：管理游戏中多个持续生效的技能或状态，检查是否重叠或冲突；将物体在轴上的投影作为区"
+    },
+    {
+      "path": "references/使用RectPartition求解矩形划分.md",
+      "title": "使用RectPartition求解矩形划分",
+      "snippet": "矩形划分求解器（Rectangular Partition Solver）用于解决矩形划分问题。其接收若干个彼此不相交的矩形作为输入（主要关注这些矩形共同定义的区域的并集），计算出覆盖相同区域的矩形划分方案，并使输出的矩形数量尽可能少（但不保证最优）。形如下方示意图。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e3/v3/XduGzOTsQqy1e0yt3wp_1Q/zh-cn_image_0000002543374144.png?HW-CC-KV=V1&HW-CC-Date=20260421T111215Z&HW-CC-Expire=86400&HW-CC-Sign=218F5A5F2ED760F6D40B0B448CA6BE228E6778E66373621118F2BDC4467C8783) 其相关定义如下：一个矩形 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/74/v3/6M3Li1jzRhWNEwrsrHb5tw/zh-cn_image_0000002543214482.png?HW-CC-KV=V1&HW-CC-Date=2"
+    },
+    {
+      "path": "references/使用SegmentMap查询维护区间信息.md",
+      "title": "使用SegmentMap查询维护区间信息",
+      "snippet": "FAST Kit提供Segment Map用于查询维护区间信息，实现数据序列区间段的快速更新和快速查询。线段表（Segment Map）是一种用于高效处理区间段信息的数据结构，适用于需要频繁对数据序列的某个区间段进行统计或修改的场景。其典型操作包括单点修改、区间修改、区间查询等。 线段表有多种实现方式，其中最常见的是使用二分树的方案，也被称为线段树（Segment Tree）。与直接遍历区间相比，线段表能将许多区间操作的时间复杂度从 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6a/v3/I3RfztD0RHW8fIsvplcahw/zh-cn_image_0000002573854395.png?HW-CC-KV=V1&HW-CC-Date=20260421T111214Z&HW-CC-Expire=86400&HW-CC-Sign=B8A69E08B6E8A872188E506294F256D7486EE21E93595400118CBDC761510C8D) 优化至 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d3/v3/AZHbO"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "core-file-kit",
+  "source_path": "skills/core-file-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:52:07.776Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "文件管理",
+      "应用文件",
+      "用户文件",
+      "数据备份恢复",
+      "分布式文件",
+      "云文件同步",
+      "如何使用ArkTS或C/C++进行应用文件的创建、读写、删除操作",
+      "如何通过FilePicker选择图片、文档、音频等用户文件",
+      "如何通过FilePicker保存文件到用户目录",
+      "如何实现应用间文件分享（基于URI）",
+      "如何实现应用数据的备份和恢复",
+      "如何适配HarmonyOS到HarmonyOS NEXT的应用数据迁移",
+      "如何实现跨设备文件拷贝和共享访问",
+      "如何配置应用沙箱共享目录权限",
+      "如何实现文件访问授权的持久化",
+      "如何适配端云文件协同功能",
+      "当你的应用需要读写自身沙箱内的应用文件（如配置文件、缓存数据、日志等），或需要通过FilePicker让用户选择、保存文件到用户目录时，可以使用Core File Kit提供的应用文件访问和FilePicker接口",
+      "当你的应用需要实现数据备份恢复、需要适配HarmonyOS到HarmonyOS NEXT的数据迁移、或需要实现跨设备文件访问和端云文件同步等高级功能时，可以使用Core File Kit提供的相应能力",
+      "创建并读写应用沙箱里的本地文件 / Create and read-write local files in the app sandbox",
+      "把日志、缓存或导出内容保存成文件到应用目录 / Save logs, cache, or exported content as files in the app directory",
+      "读取文档、图片或音频文件内容并在应用内处理 / Load document, image, or audio file content for in-app processing",
+      "删除临时文件并清理应用存储空间 / Delete temporary files and clean up app storage",
+      "遍历文件夹并管理目录下的文件列表 / Traverse folders and manage files in a directory",
+      "用 FilePicker 让用户选择要导入的图片或文档 / Let users pick images or documents to import with FilePicker",
+      "用 FilePicker 把生成的文件另存到用户可见目录 / Save generated files to a user-visible location with FilePicker",
+      "通过 URI 向其他应用分享附件或导出文件 / Share attachments or exported files with other apps via URI",
+      "实现应用数据备份并在重装后恢复文件 / Back up app data and restore files after reinstall",
+      "迁移旧版本应用的本地文件数据到 HarmonyOS NEXT / Migrate local app file data from an older version to HarmonyOS NEXT",
+      "接入跨设备文件传输并同步共享文件内容 / Integrate cross-device file transfer and sync shared file content",
+      "配置应用沙箱共享目录并读写共享文件 / Configure a shared app sandbox directory and read-write shared files"
+    ],
+    "do_not_use_when": [
+      "需求是结构化数据建模、关系型数据库或键值数据持久化，而不是文件读写；应改用 arkdata / The task is structured data modeling, relational database, or key-value persistence rather than file operations; use arkdata instead",
+      "需求是数字资产资源的上架、分发、下载或资产包管理，而不是本地/用户文件访问；应改用 asset-store-kit / The task is asset publishing, distribution, download, or asset package management rather than local or user file access; use asset-store-kit instead",
+      "需求是调用系统文件管理器提供的系统级文件浏览或管理服务，而不是应用侧文件API或FilePicker；应改用 file-manager-service-kit / The task is to invoke system file manager capabilities for system-level file browsing or management rather than app-side file APIs or FilePicker; use file-manager-service-kit instead",
+      "重点是文件加密、密钥管理、访问控制策略或数据安全合规，而不是文件访问流程本身；应改用 data-protection-kit / The main need is file encryption, key management, access-control policy, or data protection compliance rather than file access itself; use data-protection-kit instead",
+      "需求是预览图片、视频、音频或文档内容，而不是选择、保存、读写或分享文件；应改用 preview-kit / The task is to preview image, video, audio, or document content rather than select, save, read/write, or share files; use preview-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成可用的 HarmonyOS Core File Kit 能力并使用匹配的 API 版本 / The project has the HarmonyOS Core File Kit capability available and uses a compatible API version",
+      "若访问用户文件或使用 FilePicker，相关权限与模块配置已在 module.json5 中正确声明 / If accessing user files or using FilePicker, the required permissions and module configuration have been correctly declared in module.json5",
+      "若访问受用户授权保护的文件或目录，用户已完成授权，且持久化授权已按需保存 / If accessing user-protected files or directories, the user has granted permission and persistent authorization has been stored when needed",
+      "若使用分布式文件、备份恢复或端云协同，目标设备/服务可达且对应系统能力已启用 / If using distributed files, backup/restore, or device-cloud collaboration, the target devices/services are reachable and the required system capability is enabled"
+    ],
+    "inputs": [
+      "应用沙箱文件路径或文件描述符 / App sandbox file path or file descriptor",
+      "用户文件 URI、媒体 URI 或 FilePicker 返回结果 / User file URI, media URI, or FilePicker result",
+      "文件操作参数（读写模式、复制/移动目标、过滤类型等） / File operation parameters such as read/write mode, copy/move destination, and picker filters",
+      "备份恢复、迁移、分布式访问或端云协同的配置参数 / Configuration parameters for backup/restore, migration, distributed access, or device-cloud collaboration"
+    ],
+    "outputs": [
+      "服务概述",
+      "应用文件",
+      "用户文件",
+      "应用数据备份恢复",
+      "应用数据迁移",
+      "分布式文件系统",
+      "端云文件协同"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已新增或修改为使用 Core File Kit 相关 API 完成文件访问、FilePicker、备份恢复、分布式文件或端云协同逻辑 / The code has been added or updated to use Core File Kit APIs for file access, FilePicker, backup/restore, distributed files, or device-cloud collaboration",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly introduce or modify HarmonyOS file-related code using Core File Kit style APIs or configuration for file access, FilePicker, backup/restore, distributed files, or device-cloud collaboration?"
+      },
+      {
+        "statement": "若场景需要权限或能力声明，工程配置已同步补充必要的 module.json5 或相关声明 / If the scenario requires permissions or capability declarations, the project configuration has been updated with the necessary module.json5 or related declarations",
+        "verifier": "model_judge",
+        "judge_prompt": "If the requested file scenario needs permissions or capability declarations, do the edits include the necessary project configuration changes such as module.json5 updates?"
+      },
+      {
+        "statement": "文件来源与目标路径/URI 在实现中被明确处理，避免将用户文件与应用沙箱文件混用 / File source and destination paths/URIs are handled explicitly in the implementation, avoiding confusion between user files and app sandbox files",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show clear handling of file paths or URIs and keep user-file flows distinct from app sandbox file flows?"
+      }
+    ],
+    "overlaps_with": [
+      "arkdata",
+      "asset-store-kit",
+      "file-manager-service-kit",
+      "data-protection-kit",
+      "preview-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

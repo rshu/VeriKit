@@ -1,0 +1,104 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "location-kit",
+  "source_path": "skills/location-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:55:42.876Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "定位",
+      "GNSS",
+      "地理围栏",
+      "逆地理编码",
+      "位置追踪",
+      "如何在HarmonyOS应用中获取设备的实时位置信息？",
+      "如何实现持续定位追踪用户运动轨迹？",
+      "如何使用C/C++接口开发Native定位功能？",
+      "如何创建地理围栏并在设备进出围栏时收到通知？",
+      "如何使用云侧公共围栏实现商圈到达提醒？",
+      "如何将地址文字转换为经纬度坐标（正地理编码）？",
+      "如何将经纬度坐标转换为可读的地址信息（逆地理编码）？",
+      "如何申请位置权限和后台定位长时任务？",
+      "如何申请室内高精度定位等开放能力权限？",
+      "如何判断位置服务是否可用以及位置开关是否开启？",
+      "当应用需要获取设备当前位置或持续追踪位置变化时使用本Kit，典型场景包括驾车导航、运动轨迹记录、签到打卡、附近服务推荐等",
+      "单次定位适用于查看当前位置，持续定位适用于导航和轨迹记录场景",
+      "当需要基于地理位置实现自动提醒功能时，可使用地理围栏能力",
+      "例如在企业或商圈周围创建围栏区域，用户进入或离开时自动推送通知",
+      "端侧GNSS围栏适合个性化围栏场景，云侧围栏适合使用公共围栏（如商圈、景点）的场景",
+      "当需要在经纬度坐标与可读地址之间进行转换时，使用正地理编码和逆地理编码能力",
+      "获取用户当前经纬度并在页面上实时刷新 / Get the user's current latitude and longitude and refresh it in real time",
+      "实现后台持续定位记录跑步或骑行轨迹 / Implement background continuous location tracking for running or cycling routes",
+      "订阅位置变化并按距离或时间间隔上报 / Subscribe to location updates and report by distance or time interval",
+      "接入地理围栏在进入或离开指定区域时触发提醒 / Integrate geofencing to trigger alerts when entering or leaving a specified area",
+      "用 Place Search 和地址解析实现地点搜索与选址 / Implement place search and address lookup with Place Search and geocoding",
+      "将用户输入的详细地址解析成地图坐标 / Convert a typed street address into map coordinates",
+      "根据经纬度显示省市区街道等可读地址 / Show a readable address from latitude and longitude",
+      "获取设备最后一次已知位置用于快速定位 / Get the device's last known location for fast startup positioning",
+      "管理定位权限并申请前台或后台位置访问 / Manage location permissions and request foreground or background access",
+      "在 Native/C++ 层调用定位能力获取坐标 / Access location capabilities from Native/C++ to obtain coordinates",
+      "实现到店到家到站等到达提醒功能 / Implement arrival reminders for stores, home, or stations",
+      "读取卫星定位信息并提升户外定位精度 / Read satellite positioning data and improve outdoor location accuracy"
+    ],
+    "do_not_use_when": [
+      "需求是地图底图展示、标注、路线绘制、交互缩放或地图可视化，而不是获取位置或围栏能力；应改用 map-kit / The need is map rendering, markers, route drawing, interactive zooming, or map visualization rather than location acquisition or geofencing; use map-kit instead",
+      "任务核心是在界面中嵌入地图组件并展示地点信息，定位仅是附带信息；应改用 map-kit / The core task is embedding a map component in the UI and displaying places, with location only incidental; use map-kit instead",
+      "用户要实现POI展示、地图选点或基于地图的路径交互，而不是调用系统定位、地理编码或围栏接口；应改用 map-kit / The user wants POI display, map point selection, or map-based route interaction rather than system location, geocoding, or geofence APIs; use map-kit instead"
+    ],
+    "preconditions": [
+      "应用已在 module.json5 中声明位置相关权限，且与所需精度/后台场景匹配 / The app has declared location-related permissions in module.json5, matching the required accuracy and background scenario",
+      "用户已开启系统位置开关并授予应用相应位置权限 / The user has enabled the system location switch and granted the app the required location permission",
+      "设备与当前HarmonyOS版本支持所调用的定位、围栏或地理编码能力 / The device and current HarmonyOS version support the requested positioning, geofence, or geocoding capability",
+      "如使用后台定位、云侧围栏或开放能力，已完成对应长时任务、服务开通或AGC开放能力申请 / If using background location, cloud geofencing, or advanced capabilities, the required long-running task, service enablement, or AGC capability approval is completed"
+    ],
+    "inputs": [
+      "定位请求参数 / location request parameters",
+      "位置回调或监听器对象 / location callback or listener object",
+      "地理围栏定义信息（中心点、半径、事件类型等） / geofence definition data (center point, radius, event types, etc.)",
+      "地址文本或经纬度坐标 / address text or latitude-longitude coordinates"
+    ],
+    "outputs": [
+      "概述",
+      "权限与配置",
+      "定位开发",
+      "地理围栏",
+      "地理编码",
+      "示例与参考"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码或配置中接入位置服务、地理围栏或地理编码相关API，而非仅停留在通用描述 / The code or configuration integrates location, geofence, or geocoding APIs rather than staying at a generic description level",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the agent's edit set add or modify concrete HarmonyOS Location Kit API usage or related configuration for positioning, geofencing, or geocoding?"
+      },
+      {
+        "statement": "已体现权限或可用性检查，包括位置权限、位置开关或相关前置判断 / Permission or availability checks are reflected, including location permission, location switch, or related prerequisite checks",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there evidence that the agent added permission declarations, permission requests, or service-availability/location-switch checks needed for Location Kit?"
+      },
+      {
+        "statement": "若任务涉及持续定位或围栏监听，已添加订阅、回调处理或事件监听逻辑 / If the task involves continuous location or geofence monitoring, subscription, callback handling, or event listener logic has been added",
+        "verifier": "model_judge",
+        "judge_prompt": "If the requested task is about continuous tracking or geofence events, do the edits include listener/subscription/callback handling rather than only a one-time call?"
+      }
+    ],
+    "overlaps_with": [
+      "map-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

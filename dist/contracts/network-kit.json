@@ -1,0 +1,110 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "network-kit",
+  "source_path": "skills/network-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:57:11.364Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "HTTP",
+      "WebSocket",
+      "Socket",
+      "DNS",
+      "VPN",
+      "MDNS",
+      "防火墙",
+      "流量统计",
+      "如何通过HTTP协议发起GET、POST等数据请求？",
+      "如何使用HTTP流式传输实现大文件的上传和下载？",
+      "如何使用WebSocket建立客户端与服务端的双向持久连接？",
+      "如何通过Socket进行TCP、UDP、TLS数据传输？",
+      "如何监听网络连接状态变化、查询网络连接信息和进行DNS解析？",
+      "如何使用MDNS在局域网内发现、添加、删除和解析本地服务？",
+      "如何开发VPN客户端应用，配置虚拟网卡和路由信息？",
+      "如何配置和管理网络防火墙规则？",
+      "如何查询应用和网卡的数据流量使用统计？",
+      "当您的应用需要进行任何形式的网络通信时，应使用Network Kit",
+      "典型场景包括：通过HTTP协议请求后端API数据、通过WebSocket实现实时双向通信（聊天、推送、协作）、通过Socket进行底层TCP/UDP数据传输、管理多网络连接并监控网络状态变化等",
+      "当您需要开发VPN客户端应用、在局域网中通过MDNS发现和解析服务、配置网络防火墙规则、统计应用流量使用情况、或者进行域名解析时，也应使用Network Kit提供的相应能力",
+      "发起 REST API 请求并处理 GET/POST/PUT/DELETE 响应 / Send REST API requests and handle GET/POST/PUT/DELETE responses",
+      "下载大文件并显示下载进度，支持断点续传 / Download large files with progress display and resume support",
+      "上传图片或日志文件到服务器，支持流式上传 / Upload images or log files to a server with streaming upload",
+      "建立 WebSocket 长连接实现实时聊天或消息推送 / Create a WebSocket long-lived connection for real-time chat or push messages",
+      "用 TCP 或 UDP 与自定义服务端通信传输二进制数据 / Communicate with a custom backend over TCP or UDP for binary data transfer",
+      "通过 TLS 加密 Socket 连接安全传输敏感数据 / Secure sensitive data transfer over a TLS-encrypted socket connection",
+      "监听 Wi‑Fi 和蜂窝网络切换并根据网络状态调整请求 / Monitor Wi-Fi and cellular network changes and adapt requests accordingly",
+      "获取当前网络类型、连接状态和 IP 或 DNS 信息 / Get current network type, connectivity status, and IP or DNS information",
+      "解析域名获取服务器地址并处理 DNS 查询结果 / Resolve domain names to server addresses and handle DNS lookup results",
+      "在局域网内发布和发现设备服务，使用 mDNS 做零配置连接 / Publish and discover local device services over mDNS for zero-config connectivity",
+      "实现应用级流量统计并按网络接口监控数据使用量 / Implement app-level traffic statistics and monitor data usage by network interface",
+      "配置 VPN 连接让应用流量走指定隧道 / Configure a VPN connection so app traffic goes through a designated tunnel"
+    ],
+    "do_not_use_when": [
+      "需求是网络加速、链路优化、弱网增强或传输性能调优，应优先使用 network-boost-kit / If the need is network acceleration, link optimization, weak-network enhancement, or transmission performance tuning, use network-boost-kit instead",
+      "需求是设备间分布式发现、连接或跨设备协同，而非通用IP网络通信，应优先使用 connectivity-kit / If the need is distributed device discovery, connection, or cross-device collaboration rather than general IP networking, use connectivity-kit instead",
+      "需求是基于星闪的近距离低时延连接与数据传输，而非HTTP/WebSocket/TCP/UDP通信，应优先使用 nearlink-kit / If the need is NearLink-based short-range low-latency connection and data transfer rather than HTTP/WebSocket/TCP/UDP communication, use nearlink-kit instead",
+      "需求是蜂窝电话、短信、SIM、基站或移动通信业务控制，而非通用网络访问，应优先使用 telephony-kit / If the need is cellular calling, SMS, SIM, base-station, or mobile service control rather than general network access, use telephony-kit instead",
+      "需求是系统通话能力、拨号界面或呼叫状态管理，而非底层网络请求与连接，应优先使用 call-service-kit / If the need is system calling capability, dialer UI, or call state management rather than low-level network requests and connections, use call-service-kit instead"
+    ],
+    "preconditions": [
+      "应用已在 module.json5 中声明所需网络权限（如 ohos.permission.INTERNET、ohos.permission.GET_NETWORK_INFO） / Required network permissions (such as ohos.permission.INTERNET and ohos.permission.GET_NETWORK_INFO) are declared in module.json5",
+      "目标设备或模拟器具备可用网络环境，且目标主机、端口或局域网服务可达 / The target device or emulator has available network connectivity, and the target host, port, or LAN service is reachable",
+      "若使用受限能力（如VPN、防火墙或部分网络管理能力），应用已满足对应系统能力与授权条件 / If restricted features are used (such as VPN, firewall, or some network management capabilities), the app satisfies the corresponding system capability and authorization requirements"
+    ],
+    "inputs": [
+      "网络请求地址或域名 / request URL or domain name",
+      "请求方法与请求头 / request method and headers",
+      "请求体、流数据或二进制负载 / request body, stream data, or binary payload",
+      "连接参数（如端口、协议、TLS配置、WebSocket地址） / connection parameters (such as port, protocol, TLS config, and WebSocket endpoint)",
+      "网络管理参数（如DNS名称、MDNS服务类型、VPN或防火墙配置） / network management parameters (such as DNS name, MDNS service type, VPN, or firewall configuration)"
+    ],
+    "outputs": [
+      "简介",
+      "网络连接管理",
+      "网络访问",
+      "DNS与MDNS",
+      "VPN与安全",
+      "流量与认证"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已调用 Network Kit 相关API来发起网络请求、建立连接或查询网络信息 / The code invokes Network Kit APIs to send requests, establish connections, or query network information",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code that clearly uses HarmonyOS Network Kit APIs (for example HTTP, WebSocket, Socket, DNS, MDNS, VPN, firewall, or traffic statistics APIs)?"
+      },
+      {
+        "statement": "已为所用网络能力补充必要权限或配置声明 / Necessary permission or configuration declarations have been added for the network capability being used",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set include the required HarmonyOS permission/configuration changes, such as adding INTERNET or GET_NETWORK_INFO in module.json5 when the feature needs them?"
+      },
+      {
+        "statement": "网络调用结果被接收并进行成功、失败或状态变化处理 / Results of the network operation are received and handled for success, failure, or state changes",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set include response handling, error handling, or connection/status event handling for the added Network Kit operation?"
+      }
+    ],
+    "overlaps_with": [
+      "network-boost-kit",
+      "remote-communication-kit",
+      "connectivity-kit",
+      "nearlink-kit",
+      "telephony-kit",
+      "call-service-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

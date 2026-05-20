@@ -1,0 +1,122 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "arkts",
+  "source_path": "skills/arkts/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:49:37.786Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "ArkTS",
+      "方舟语言",
+      "并发",
+      "Sendable",
+      "字节码",
+      "代码混淆",
+      "TypeScript",
+      "TaskPool",
+      "Worker",
+      "如何选择TaskPool和Worker进行多线程并发开发",
+      "如何使用Sendable对象实现线程间高性能数据传递",
+      "如何使用异步锁和异步等待解决并发场景下的数据同步问题",
+      "如何使用ArkGuard进行源码混淆和字节码混淆保护应用代码",
+      "如何使用延迟加载（lazy import）优化应用启动性能",
+      "如何实现ArkTS与C/C++的跨语言交互和Native模块加载",
+      "如何使用XML/JSON/ASON进行数据解析与生成",
+      "如何使用容器类库（线性容器、非线性容器）管理数据",
+      "如何排查TaskPool任务不执行等并发常见问题",
+      "如何使用方舟字节码和Disassembler反汇编工具进行调试分析",
+      "当开发HarmonyOS应用时，ArkTS是必须使用的编程语言",
+      "无论是UI开发、业务逻辑编写还是系统能力调用，都需要使用ArkTS语言",
+      "当应用中存在耗时任务（CPU密集型、I/O密集型）需要避免阻塞UI主线程时，请使用TaskPool或Worker进行多线程并发处理",
+      "当需要在线程间高效传递数据时，请使用Sendable对象和共享容器",
+      "当需要对应用代码进行混淆保护以防止逆向工程时，请使用ArkGuard的源码混淆或字节码混淆能力",
+      "当需要优化应用的启动性能和模块加载效率时，请使用延迟加载和动态加载能力",
+      "用 TaskPool 把图片压缩或 JSON 解析放到后台线程执行 / Offload image compression or JSON parsing to a background thread with TaskPool",
+      "用 Worker 处理长期运行的计算任务并避免阻塞 UI / Run long-lived compute work in a Worker to avoid blocking the UI",
+      "在线程之间传递 Sendable 数据对象减少拷贝开销 / Pass Sendable objects across threads to reduce copy overhead",
+      "实现异步锁保护共享状态避免并发读写冲突 / Protect shared state with async locks to avoid concurrent read-write conflicts",
+      "使用 async/await 编排多个异步请求和顺序任务 / Coordinate multiple async requests and sequential tasks with async/await",
+      "给 ArkTS 应用接入源码混淆和字节码混淆保护 / Integrate source and bytecode obfuscation for an ArkTS app",
+      "用 ArkGuard 混淆发布包代码防止逆向分析 / Obfuscate release builds with ArkGuard to resist reverse engineering",
+      "通过 lazy import 延迟加载页面或模块优化冷启动 / Lazy-load pages or modules with lazy import to improve cold start",
+      "把 CPU 密集型排序或加密计算迁移到多线程执行 / Move CPU-intensive sorting or encryption work to multithreaded execution",
+      "管理 Worker 与主线程之间的消息通信和生命周期 / Manage messaging and lifecycle between Workers and the main thread",
+      "编写高性能 ArkTS 并发代码处理大数据计算 / Write high-performance ArkTS concurrent code for large-data processing",
+      "在 ArkTS 中实现类型安全的业务逻辑和模块开发 / Implement type-safe business logic and modules in ArkTS"
+    ],
+    "do_not_use_when": [
+      "需求是声明式页面布局、组件状态管理或界面交互实现，应优先使用 arkui / The task is primarily about declarative UI layout, component state management, or interaction implementation, so use arkui instead",
+      "需求是Ability生命周期、页面跳转、Want参数传递或应用组件模型集成，应优先使用 ability-kit / The task is mainly about Ability lifecycle, navigation, Want parameters, or application component model integration, so use ability-kit instead",
+      "需求是进程间通信、跨进程对象传递或RPC调用，而不是ArkTS线程内/线程间并发，应优先使用 ipc-kit / The task is about inter-process communication, cross-process object transfer, or RPC rather than ArkTS in-process concurrency, so use ipc-kit instead",
+      "需求是卡片（Form）创建、更新或卡片生命周期管理，应优先使用 form-kit / The task is about form/widget creation, update, or lifecycle management, so use form-kit instead",
+      "需求是Web页面承载、H5-JS桥接或Web内核能力调用，应优先使用 arkweb / The task is about hosting web content, JS bridge integration, or web engine capabilities, so use arkweb instead",
+      "需求是系统级后台任务调度、延迟执行或条件触发任务，而不是ArkTS并发API，应优先使用 background-tasks-kit / The task is about system-scheduled background work, deferred execution, or condition-triggered jobs rather than ArkTS concurrency APIs, so use background-tasks-kit instead"
+    ],
+    "preconditions": [
+      "工程已使用HarmonyOS支持的ArkTS应用工程并可正常编译构建 / The project is an ArkTS-based HarmonyOS app project that can compile and build successfully",
+      "DevEco Studio/SDK版本包含所需ArkTS语言特性与相关API能力 / The installed DevEco Studio/SDK version includes the required ArkTS language features and related APIs",
+      "若使用TaskPool、Worker或Sendable，目标设备与API版本需支持对应并发能力 / If TaskPool, Worker, or Sendable is used, the target device and API version must support those concurrency capabilities"
+    ],
+    "inputs": [
+      "ArkTS源码文件或模块路径 / ArkTS source files or module paths",
+      "并发任务逻辑与执行方式需求（Promise、TaskPool、Worker） / Concurrency task logic and execution mode requirements (Promise, TaskPool, Worker)",
+      "线程间传递的数据结构或对象类型 / Data structures or object types to be transferred across threads",
+      "构建与混淆配置文件（如build-profile.json5、ArkGuard配置） / Build and obfuscation config files (such as build-profile.json5 and ArkGuard config)"
+    ],
+    "outputs": [
+      "简介与概述",
+      "并发编程",
+      "并发场景与开发指导",
+      "并发高级场景",
+      "Sendable并发对象",
+      "线程间通信",
+      "高级应用场景",
+      "模块加载",
+      "方舟字节码",
+      "ArkGuard源码混淆",
+      "ArkGuard字节码混淆",
+      "编译工具链"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在ArkTS源码或配置中实现所请求的语言/并发/加载/混淆改动 / The requested language, concurrency, module-loading, or obfuscation changes are implemented in ArkTS source or configuration",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits add or modify ArkTS code or related build/config files to implement the requested ArkTS capability rather than only providing explanation?"
+      },
+      {
+        "statement": "所选并发模型与需求匹配，未将UI相关实现误替换为非对应Kit能力 / The chosen concurrency model matches the requirement, and the edits do not incorrectly replace UI-oriented work with unrelated kit functionality",
+        "verifier": "model_judge",
+        "judge_prompt": "From the edit set, is the solution centered on ArkTS language/runtime features (such as async/await, TaskPool, Worker, Sendable, lazy import, or ArkGuard) and not primarily on UI, Ability, Form, Web, or IPC APIs?"
+      },
+      {
+        "statement": "若涉及构建、懒加载或混淆，相关配置项已同步更新到对应工程文件 / If build, lazy loading, or obfuscation is involved, the relevant project configuration has been updated accordingly",
+        "verifier": "model_judge",
+        "judge_prompt": "When the request involves build options, lazy import/dynamic loading, or ArkGuard, do the edits also update the appropriate project configuration files or import/loading statements?"
+      }
+    ],
+    "overlaps_with": [
+      "ability-kit",
+      "arkui",
+      "arkweb",
+      "form-kit",
+      "ipc-kit",
+      "function-flow-runtime-kit",
+      "background-tasks-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

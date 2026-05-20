@@ -1,0 +1,30 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "core-speech-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.647Z"
+  },
+  "references": [
+    {
+      "path": "references/Core Speech Kit简介.md",
+      "title": "Core Speech Kit简介",
+      "snippet": "Core Speech Kit（基础语音服务）集成了语音类基础AI能力，包括文本转语音（TextToSpeech）及语音识别（SpeechRecognizer）能力，便于用户与设备进行互动，实现将实时输入的语音与文本之间相互转换。 #### 场景介绍 - 文本转语音：将一段不超过10000字符数的文本合成为语音并进行播报。实现效果可参考 朗读控件 。 - 语音识别：将一段音频信息（短语音模式不超过60s，长语音模式不超过8h）转换为文本，可以将pcm音频文件或者实时语音转换为文字。实现效果可参考 AI字幕控件 。 #### 约束与限制 #### 支持的设备 Phone、Tablet、PC/2in1。 #### 支持的国家/地区 仅适用于中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）。 #### 能力限制 #### 模拟器支持情况 本Kit能力从6.0.0(20)版本开始支持模拟器。"
+    },
+    {
+      "path": "references/个人数据处理说明.md",
+      "title": "个人数据处理说明",
+      "snippet": "此文档针对华为作为最终用户数据处理者，客户作为最终用户数据控制者的数据处理进行说明，包括： - 华为处理的个人数据清单； - 指导开发者如何帮助最终用户实现对数据的控制。 #### 华为处理的个人数据清单 最后修改时间：2025/6/13 #### 指导开发者如何帮助最终用户实现对数据的控制 云端不存储用户数据，由数据控制者面向最终用户提供相应的数据主体权利及其相关解释。 在您接入、使用Core Speech Kit服务前， **我们要求您在隐私政策中向用户告知我们是如何处理其个人数据的，并获取用户同意或取得其他合法性基础** 。"
+    },
+    {
+      "path": "references/文本转语音.md",
+      "title": "文本转语音",
+      "snippet": "Core Speech Kit支持将一篇不超过10000字符数的中英文文本（简体中文、繁体中文、数字、英文）合成为语音，并以选定音色进行播报。 开发者可对播报的策略进行设置，包括单词播报、数字播报、静音停顿、汉字发音策略。 #### 场景介绍 手机/平板等设备在无网状态下，系统应用无障碍（屏幕朗读）接入文本转语音能力，为视障人士或不方便阅读场景提供播报能力。 #### 约束与限制 #### 开发步骤 1. 在使用文本转语音时，将实现文本转语音相关的类添加至工程。 import { textToSpeech } from '@kit.CoreSpeechKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 调用createEngine接口，创建 TextToSpeechEngine 实例。 createEngine接口提供了两种调用形式，当前以其中一种作为示例，其他方式可参考 API参考 。 let ttsEngine: textToSpeech.TextToSpeechEngine; // 设置创建引擎参数 let extraParam: Record<string, Object> = {\"style\": 'interaction-broadcast', \"locate\": 'CN', \"name\": 'E"
+    },
+    {
+      "path": "references/语音识别.md",
+      "title": "语音识别",
+      "snippet": "将一段中文音频信息（中文、中文语境下的英文；短语音模式不超过60s，长语音模式不超过8h）转换为文本，音频信息可以为PCM音频文件或者实时语音。 #### 场景介绍 手机/平板等设备在无网状态下，为听障人士或不方便收听音频场景提供音频转文本能力。 #### 约束与限制 #### 开发步骤 1. 在使用语音识别时，将实现语音识别相关的类添加至工程。 import { speechRecognizer } from '@kit.CoreSpeechKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 调用 createEngine 方法，对引擎进行初始化，并创建 SpeechRecognitionEngine 实例。 createEngine方法提供了两种调用形式，当前以其中一种作为示例，其他方式可参考 API参考 。 let asrEngine: speechRecognizer.SpeechRecognitionEngine | undefined = undefined; // 设置独立的sessionId let sessionId: string = '123456'; // 创建引擎，通过callback形式返回 // 设置创建引擎参数 let extraParam: Record<string, O"
+    }
+  ]
+}

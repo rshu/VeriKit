@@ -1,0 +1,103 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "ipc-kit",
+  "source_path": "skills/ipc-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:55:18.983Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "进程间通信",
+      "IPC",
+      "RPC",
+      "跨进程",
+      "跨设备通信",
+      "序列化",
+      "如何使用ArkTS实现IPC跨进程通信，包括Proxy和Stub的开发？",
+      "如何使用C/C++实现IPC/RPC跨进程通信？",
+      "如何实现远端Stub对象的死亡通知订阅？",
+      "如何在后台服务中通过IPC机制提供跨进程接口调用？",
+      "如何在多端协同场景中通过RPC实现跨设备远程调用？",
+      "单次IPC通信的数据量超过200KB时如何使用匿名共享内存传输？",
+      "当您需要实现设备内的跨进程通信（如后台服务与前台应用之间的接口调用和数据传递）时，可使用 IPC Kit 的 IPC 能力",
+      "当您需要实现跨设备的远程过程调用（如多端协同场景下的远端接口调用和数据传递）时，可使用 RPC 能力",
+      "当您需要监听远端服务进程的死亡状态以便及时处理连接中断时，可使用远端状态订阅能力",
+      "实现前台页面调用后台服务能力并返回结果 / Implement front-end page calls to a background service and get results back",
+      "用 RemoteObject 暴露应用服务接口给其他进程调用 / Expose app service APIs to other processes with RemoteObject",
+      "通过 MessageParcel 传递自定义对象和参数 / Pass custom objects and arguments with MessageParcel",
+      "在 ArkTS 中编写 Proxy/Stub 封装跨进程接口 / Build Proxy/Stub wrappers for cross-process APIs in ArkTS",
+      "用匿名共享内存传输大块图片或二进制数据 / Transfer large images or binary data with anonymous shared memory",
+      "订阅远程对象死亡回调并在服务断开后重连 / Subscribe to remote object death notifications and reconnect after service loss",
+      "实现应用与系统能力之间的远程方法调用 / Implement remote method invocation between the app and system abilities",
+      "在不同应用进程之间发送请求并接收回包 / Send requests and receive replies between different app processes",
+      "接入跨设备远程服务调用以同步数据或执行操作 / Integrate cross-device remote service calls to sync data or perform actions",
+      "管理 IPC 接口码和事务分发逻辑 / Manage IPC interface codes and transaction dispatch logic",
+      "序列化复杂结构体后通过 Parcel 跨进程传输 / Serialize complex structs and send them across processes via Parcel",
+      "让独立进程中的模块共享同一套服务能力 / Let modules in separate processes share the same service capability"
+    ],
+    "do_not_use_when": [
+      "需求是页面界面开发、组件布局或用户交互，而不是进程间/跨设备调用；应改用 arkui / The task is UI page development, component layout, or user interaction rather than inter-process or cross-device calls; use arkui instead",
+      "需求是实现 Stage/FA Ability 生命周期、拉起能力或 Want/Ability 结构编排，而不是定义 IPC/RPC 接口；应改用 ability-kit / The task is to manage Stage/FA Ability lifecycle, launch abilities, or structure Want/Ability flows rather than define IPC/RPC interfaces; use ability-kit instead",
+      "需求只是编写通用 ArkTS 语言逻辑、类型定义或语法修复，未涉及 Proxy、Stub、MessageParcel 等通信机制；应改用 arkts / The task is only about general ArkTS language logic, type definitions, or syntax fixes without Proxy, Stub, MessageParcel, or communication mechanisms; use arkts instead",
+      "需求是后台延迟任务、定时任务或资源约束下的任务调度，而不是进程间消息传递；应改用 background-tasks-kit / The requirement is deferred background work, scheduled jobs, or resource-constrained task scheduling rather than inter-process message passing; use background-tasks-kit instead",
+      "需求是卡片服务、Form 展示与卡片交互，而不是客户端-服务端 IPC/RPC；应改用 form-kit / The requirement is Form rendering, card service, or card interaction rather than client-server IPC/RPC; use form-kit instead"
+    ],
+    "preconditions": [
+      "应用工程已具备 HarmonyOS IPC/RPC 可用的 API 版本与对应 SDK 能力 / The project targets an HarmonyOS API version and SDK capability that support IPC/RPC",
+      "客户端与服务端已约定一致的接口描述、事务码和序列化数据结构 / The client and service have agreed on the same interface contract, transaction codes, and parcelable data structures",
+      "若进行跨设备 RPC，相关设备发现/连接环境已就绪且分布式通信链路可用 / For cross-device RPC, device discovery/connection setup is ready and the distributed communication link is available",
+      "若使用远端状态订阅，已持有有效远端对象引用并完成回调注册条件准备 / If remote death subscription is used, a valid remote object reference is available and callback registration prerequisites are met"
+    ],
+    "inputs": [
+      "远端对象或服务端对象引用 / remote object or service-side object reference",
+      "MessageParcel/序列化请求数据 / MessageParcel or serialized request data",
+      "接口描述符与事务码 / interface descriptor and transaction code",
+      "跨设备目标标识（如设备信息） / cross-device target identifier (such as device information)",
+      "死亡通知回调对象 / death recipient callback object"
+    ],
+    "outputs": [
+      "简介",
+      "开发指导"
+    ],
+    "postconditions": [
+      {
+        "statement": "已新增或修改 Proxy/Stub、IRemoteObject、MessageParcel 等 IPC/RPC 相关代码，而非仅停留在普通业务逻辑 / IPC/RPC-specific code such as Proxy/Stub, IRemoteObject, or MessageParcel has been added or modified rather than only general business logic",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly introduce or modify HarmonyOS IPC/RPC constructs such as Proxy, Stub, IRemoteObject, MessageParcel, sendRequest, or equivalent C/C++ IPC APIs?"
+      },
+      {
+        "statement": "客户端请求与服务端处理的接口契约保持一致，包含相同的接口标识、事务码或读写顺序 / The client request and service handler use a consistent interface contract, including matching interface identifier, transaction code, or parcel read/write order",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there evidence that the client and server sides follow the same IPC/RPC contract, such as matching descriptor/transaction IDs and compatible parcel serialization order?"
+      },
+      {
+        "statement": "跨设备或远端场景下已补充连接异常/远端死亡等失败处理逻辑（如适用） / Failure handling for remote scenarios, such as connection interruption or remote object death, has been added when applicable",
+        "verifier": "model_judge",
+        "judge_prompt": "If the edits involve remote or cross-device IPC/RPC, do they also add handling for failures such as remote death, connection interruption, or request errors?"
+      }
+    ],
+    "overlaps_with": [
+      "ability-kit",
+      "arkts",
+      "arkui",
+      "arkweb",
+      "form-kit",
+      "function-flow-runtime-kit",
+      "background-tasks-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

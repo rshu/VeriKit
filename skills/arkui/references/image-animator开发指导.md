@@ -1,0 +1,294 @@
+# image-animator开发指导
+---
+# image-animator开发指导
+image-animator组件为图片帧动画播放器。具体用法请参考 [image-animator](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-components-basic-image-animator) 。
+#### 创建image-animator组件
+在pages/index目录下的hml文件中创建一个image-animator组件，css文件中编写组件样式，js文件中引用图片。
+```html
+<!-- xxx.hml -->
+<div class="container">
+  <image-animator class="animator" images="{{frames}}" duration="3s"/>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #F1F3F5;
+}
+.animator {
+  width: 500px;
+  height: 500px;
+}
+```
+```
+// index.js
+export default {
+  data: {
+    frames: [
+      {
+        src: "/common/landscape1.jpg",
+      },
+      {
+        src: "/common/landscape2.jpg",
+      }
+    ],
+  },
+};
+```
+![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b5/v3/XP4bIW8IRFGWkrLG4HyfXA/zh-cn_image_0000002573854057.gif?HW-CC-KV=V1&HW-CC-Date=20260421T110925Z&HW-CC-Expire=86400&HW-CC-Sign=0F656B08AC7D734D6FC90D983CD2FECDDF2B273411167FCDA9CB8E8B858FCD86)
+#### 设置image-animator组件属性
+添加iteration（播放次数）、reverse（播放顺序）、fixedsize（图片大小是否固定为组件大小）、duration（播放时长）和fillmode（执行结束后的状态）属性，控制图片的播放效果。
+```html
+<!-- xxx.hml -->
+<div class="container">
+  <image-animator class="animator" fixedsize="false" iteration='2' reverse="false" ref="animator" fillmode="none" images="{{frames}}"   duration="5s" />
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  background-color: #F1F3F5;
+}
+.animator {
+  width: 500px;
+  height: 500px;
+}
+```
+```
+// index.js
+export default {
+  data: {
+    frames: [
+      {
+        src: 'common/landscape1.jpg',
+        width: '250px',
+        height: '250px',
+        left: '150px',
+        top: '50px',
+      },
+      {
+        src: 'common/landscape2.jpg',
+        width: '300px',
+        height: '300px',
+        left: '150px',
+        top: '100px',
+      },
+      {
+        src: 'common/landscape1.jpg',
+        width: '350px',
+        height: '350px',
+        left: '150px',
+        top: '150px',
+      },
+      {
+        src: 'common/landscape2.jpg',
+        width: '400px',
+        height: '400px',
+        left: '150px',
+        top: '200px',
+      },
+      {
+        src: 'common/landscape3.jpg',
+        width: '450px',
+        height: '450px',
+        left: '150px',
+        top: '250px',
+      },
+      {
+        src: 'common/landscape4.jpg',
+        width: '500px',
+        height: '500px',
+        left: '150px',
+        top: '300px',
+      },
+    ],
+  },
+};
+```
+![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b6/v3/oeEUjiiwT8-g2WIAVmWqZQ/zh-cn_image_0000002573974033.gif?HW-CC-KV=V1&HW-CC-Date=20260421T110925Z&HW-CC-Expire=86400&HW-CC-Sign=DCFA403DDF955D83B6B83327484CEBE4A5BCDA19DEBEB325AC77475D5EB48432)
+![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ef/v3/qOVPFWniTMu-GhlJ9TW1kQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110925Z&HW-CC-Expire=86400&HW-CC-Sign=910B01B6ED076CE3EA1DE77C83EF9DA67F2418B5D93FAEB72273E0909702416A)
+-
+如果在images属性中设置了单独的duration属性，在image-animator组件中设置的duration属性无效。
+-
+如果fixedsize属性值设置为true，图片的width 、height 、top 和left属性无效。
+-
+如果reverse属性值设置为false，表示从第1张图片播放到最后1张图片。 如果reverse属性值设置为true，表示从最后1张图片播放到第1张图片。
+#### 绑定事件
+向image-animator组件添加start、pause、stop和resume事件。当图片播放器开始播放时触发start事件，当图片播放器被点击时触发pause事件，长按图片播放器触发resume事件，图片播放器停止播放时触发stop事件。
+```html
+<!-- xxx.hml -->
+<div class="doc-page">
+  <image-animator class="img" id="img" images="{{imginfo}}" iteration="1" duration="10s" onstart="popstart" onpause="poppause"   onstop="popstop" onresume="popresume" onlongpress="setresume" onclick="setpause">
+  </image-animator>
+</div>
+```
+```css
+/* xxx.css */
+.doc-page {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+   background-color: #F1F3F5;
+}
+.img {
+  width: 600px;
+  height: 600px;
+  border: 3px solid orange;
+}
+```
+```
+// index.js
+import promptAction from '@ohos.promptAction';
+export default {
+  data: {
+    imginfo: [
+      {
+        src: 'common/landscape1.jpg',
+      },{
+        src: 'common/landscape2.jpg',
+      },{
+        src: 'common/landscape3.jpg',
+      },{
+        src: 'common/landscape4.jpg',
+      }
+    ],
+  },
+  onInit() {
+  },
+  setpause(e) {
+    this.$element('img').pause()
+  },
+  setresume(e) {
+    this.$element('img').resume()
+  },
+  popstart(e) {
+    promptAction.showToast({
+      message: '开始'
+    })
+  },
+  poppause(e) {
+    promptAction.showToast({
+      message: '暂停'
+    })
+  },
+  popstop(e) {
+    promptAction.showToast({
+      message: '停止'
+    })
+  },
+  popresume(e) {
+    promptAction.showToast({
+      message: '恢复'
+    })
+  }
+}
+```
+![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/be/v3/HBm-LfRqSH6Fla9-gfEljA/zh-cn_image_0000002543373806.gif?HW-CC-KV=V1&HW-CC-Date=20260421T110925Z&HW-CC-Expire=86400&HW-CC-Sign=1386B90DA9FB1B10BD618C06CF61F64DE8E23E5C48E9F04C8364DDED5E38220E)
+#### 场景示例
+在本场景中，开发者可通过开始播放、停止播放等按钮切换图片的播放状态。
+image-animator组件通过调用start、pause、stop和resume方法控制图片的开始、暂停、停止和重新播放，通过getState方法查询图片的播放状态。
+```html
+<!-- xxx.hml -->
+<div class="doc-page">
+  <image-animator class="img" id="img" images="{{imginfo}}" iteration="2" reverse="{{rev}}" duration="10s">
+  </image-animator>
+  <div style="width: 700px;height:450px;margin-top: 40px;flex-direction:column;justify-content:space-around;">
+    <div class="container">
+      <button type="capsule" value="开始播放" onclick="startimg"></button>
+      <button type="capsule" value="暂停播放" onclick="pauseimg"></button>
+    </div>
+    <div class="container">
+      <button type="capsule" value="停止播放" onclick="stopimg"></button>
+      <button type="capsule" value="重新播放" onclick="resumeimg"></button>
+    </div>
+    <div class="container">
+      <button type="capsule" value="获取播放状态" onclick="getimgstate"></button>
+      <button type="capsule" value="{{revVal}}" onclick="revimg"></button>
+    </div>
+  </div>
+</div>
+```
+```css
+/* xxx.css */
+.doc-page {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #F1F3F5;
+}
+.img {
+  width: 600px;
+  height: 600px;
+  border: 3px solid orange;
+}
+button{
+  width: 260px
+}
+.container {
+  width: 100%;
+  height: 120px;
+  align-items: center;
+  justify-content: space-around;
+}
+```
+```
+// index.js
+import promptAction from '@ohos.promptAction';
+export default {
+  data: {
+    rev:false,
+    imginfo: [
+      {
+        src: 'common/landscape1.jpg',
+      },{
+        src: 'common/landscape2.jpg',
+      },{
+        src: 'common/landscape3.jpg',
+      },{
+        src: 'common/landscape4.jpg',
+      }
+    ],
+    revVal: '反向播放'
+  },
+  onInit() {
+  },
+  startimg(e) {
+    this.$element('img').start()
+  },
+  pauseimg(e) {
+    this.$element('img').pause()
+  },
+  stopimg(e) {
+    this.$element('img').stop()
+  },
+  resumeimg(e) {
+    this.$element('img').resume()
+  },
+  getimgstate(e) {
+    promptAction.showToast({
+      message: '当前状态：' + this.$element('img').getState()
+    })
+  },
+  revimg(e) {
+    this.rev = !this.rev
+    if (this.rev) {
+      this.revVal = '正向播放'
+    } else {
+      this.revVal = '反向播放'
+    }
+  }
+}
+```
+![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3b/v3/TdSs5DHNQDe-DylxaVd8pA/zh-cn_image_0000002543214144.gif?HW-CC-KV=V1&HW-CC-Date=20260421T110925Z&HW-CC-Expire=86400&HW-CC-Sign=1D9B6EC9A30EEF9B327BD70BA8B83CFF7E374944C9D4DB8E56DE29A05EE8E8F3)

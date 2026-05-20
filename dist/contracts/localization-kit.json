@@ -1,0 +1,112 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "localization-kit",
+  "source_path": "skills/localization-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:55:35.754Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "国际化",
+      "本地化",
+      "I18n",
+      "L10n",
+      "多语言",
+      "区域设置",
+      "如何获取和设置系统语言与区域，以及应用级别的偏好语言？",
+      "如何进行时间日期的国际化格式处理，适配不同地区的日期显示格式？",
+      "如何获取和设置时区，以及处理夏令时跳变问题？",
+      "如何设置和使用不同地区的日历和历法？",
+      "如何进行数字和度量衡的国际化格式处理？",
+      "如何实现电话号码的国际化格式化？",
+      "如何进行多语言适配，避免字符串硬编码与拼接？",
+      "如何按本地习惯进行多语言排序和创建索引？",
+      "如何使用伪本地化测试发现未翻译字符串和RTL布局问题？",
+      "如何处理多语言单复数和为翻译人员提供翻译上下文？",
+      "当您的应用需要面向不同地区和语言的用户发布时，可使用 Localization Kit 的国际化能力来正确处理时间日期格式、数字格式、度量衡单位、电话号码格式、日历历法等区域特性差异",
+      "当您需要进行多语言资源适配、多语言排序索引、本地化语言和地区名称显示时，可使用本地化相关能力",
+      "当您需要在发布前验证应用的国际化质量，发现未翻译字符串和排版问题时，可使用伪本地化测试",
+      "实现应用中英文切换并跟随系统语言自动更新界面 / Implement app language switching and auto-refresh UI based on system language",
+      "加载不同语言的资源文件并按地区显示对应文案 / Load localized resource files and show locale-specific text",
+      "用 LocaleConfig 获取当前语言国家信息并适配页面内容 / Get current language and region with LocaleConfig and adapt page content",
+      "格式化货币金额为不同国家的本地显示样式 / Format currency amounts in locale-specific styles for different countries",
+      "按用户地区显示 12 小时或 24 小时时间格式 / Show 12-hour or 24-hour time based on user locale",
+      "根据国家地区切换周起始日和日历展示规则 / Adjust first day of week and calendar display rules by region",
+      "把地址姓名等信息按当地书写顺序显示 / Display names and addresses in local writing order",
+      "实现阿拉伯语等从右到左语言的界面适配 / Adapt the UI for right-to-left languages such as Arabic",
+      "按本地规则比较和排序联系人名称 / Compare and sort contact names using locale-aware collation rules",
+      "读取系统时区并在跨时区场景正确显示时间 / Read the system time zone and display time correctly across time zones",
+      "避免文案硬编码，使用资源实现可翻译字符串管理 / Avoid hardcoded text and manage translatable strings with resources",
+      "根据区域格式校验和展示电话号码邮编等本地信息 / Validate and display phone numbers and postal codes in regional formats"
+    ],
+    "do_not_use_when": [
+      "需求是实现无障碍朗读、焦点导航、语义标签或颜色对比适配，应改用 accessibility-kit / If the task is about screen reader support, focus navigation, semantic labels, or color-contrast accessibility, use accessibility-kit instead",
+      "需求是做通用测试框架、自动化用例、测试执行或测试管理，而非国际化伪本地化验证，应改用 test-kit / If the task is about general test frameworks, automated test cases, test execution, or test management rather than i18n pseudolocalization checks, use test-kit instead",
+      "需求是接入日程事件、提醒、日历数据读写或系统日历同步，应改用 calendar-kit / If the task is about calendar events, reminders, calendar data CRUD, or system calendar sync, use calendar-kit instead",
+      "需求是提供天气数据、天气预报或按地区获取气象信息，而不是做地区格式化显示，应改用 weather-service-kit / If the task is about weather data, forecasts, or region-based meteorological information rather than locale-aware formatting, use weather-service-kit instead",
+      "需求是进行界面视觉规范、布局设计系统或组件样式方案制定，而不是实现语言资源与区域格式适配，应改用 ui-design-kit / If the task is about visual design rules, layout design systems, or component styling rather than language resources and locale formatting, use ui-design-kit instead"
+    ],
+    "preconditions": [
+      "工程已启用 HarmonyOS Localization Kit 相关能力并可导入对应国际化接口 / The project has HarmonyOS Localization Kit capability available and the relevant i18n APIs can be imported",
+      "应用已按多语言方案组织资源文件，包含默认语言资源及目标 locale 资源目录 / The app has organized resources for multilingual support, including default resources and target locale resource directories",
+      "若要读取系统语言、区域、时区或用户偏好，运行环境能够提供这些系统设置值 / If system language, region, time zone, or user preferences are queried, the runtime environment can provide those system setting values"
+    ],
+    "inputs": [
+      "语言代码、地区代码或 locale 标识 / language code, region code, or locale identifier",
+      "待国际化的日期时间、数字、度量值或电话号码 / date-time, number, measurement value, or phone number to localize",
+      "多语言字符串资源键值与翻译文本 / multilingual string resource keys and translated texts",
+      "排序或索引所需的文本列表 / text list for collation or index creation"
+    ],
+    "outputs": [
+      "概述",
+      "区域与语言设置",
+      "时间与日期",
+      "数字与格式化",
+      "字符与排序",
+      "本地化名称",
+      "多语言资源与翻译",
+      "伪本地化测试"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码或资源修改体现了基于 locale 的国际化处理，而不是硬编码语言或格式 / The code or resource changes implement locale-aware internationalization rather than hard-coded language or formats",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show locale-aware APIs, locale-dependent formatting, or resource-based string usage instead of hard-coded language-specific text or date/number formats?"
+      },
+      {
+        "statement": "新增或调整了多语言资源、应用偏好语言配置或区域适配逻辑 / Multilingual resources, app preferred-language configuration, or locale adaptation logic has been added or updated",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits add or modify language resource files, preferred-language settings, or locale/region adaptation logic relevant to HarmonyOS internationalization?"
+      },
+      {
+        "statement": "若任务涉及伪本地化或 RTL 检查，修改中包含相应测试或配置痕迹 / If the task involves pseudolocalization or RTL checks, the edits include corresponding test or configuration evidence",
+        "verifier": "model_judge",
+        "judge_prompt": "When the requested task mentions pseudolocalization or RTL validation, do the edits include related test setup, resource/config changes, or code paths for such checks?"
+      }
+    ],
+    "overlaps_with": [
+      "basic-services-kit",
+      "accessibility-kit",
+      "test-kit",
+      "performance-analysis-kit",
+      "calendar-kit",
+      "weather-service-kit",
+      "ui-design-kit",
+      "screen-time-guard-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

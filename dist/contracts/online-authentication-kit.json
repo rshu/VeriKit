@@ -1,0 +1,104 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "online-authentication-kit",
+  "source_path": "skills/online-authentication-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:57:30.628Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "在线认证",
+      "FIDO",
+      "Passkey",
+      "无密码认证",
+      "生物识别",
+      "IFAA",
+      "如何接入FIDO协议实现指纹/人脸免密登录？",
+      "如何接入IFAA协议实现免密支付？",
+      "如何接入SOTER协议实现微信小程序生物认证？",
+      "如何实现通行密钥（Passkey）注册功能？",
+      "如何使用通行密钥进行本地免密认证？",
+      "如何实现跨设备扫码认证？",
+      "如何注销已开通的免密身份认证？",
+      "如何使用C/C++接口开发通行密钥功能？",
+      "当应用需要实现免密登录或免密支付功能时使用本Kit",
+      "根据业务需求选择合适的认证协议：FIDO适用于国际标准化的免密认证场景，IFAA适用于互联网金融场景，SOTER适用于微信生态相关的生物认证，通行密钥适用于现代化的无密码登录体验",
+      "当需要实现通行密钥（Passkey）功能时也可使用本Kit，支持ArkTS和C/C++两套开发接口，可以实现通行密钥注册、本地免密认证和跨设备扫码认证三种场景",
+      "接入通行密钥注册和登录流程 / Integrate passkey sign-up and sign-in",
+      "实现指纹或人脸识别的一键免密登录 / Implement one-tap passwordless login with fingerprint or face recognition",
+      "添加基于 FIDO2/WebAuthn 的账号认证 / Add account authentication based on FIDO2/WebAuthn",
+      "绑定设备生物凭证用于后续快速登录 / Bind device biometric credentials for future fast sign-in",
+      "实现跨设备扫码确认登录 / Implement cross-device QR code sign-in approval",
+      "为支付场景接入 IFAA 生物认证验签 / Integrate IFAA biometric authentication for payment verification",
+      "管理用户已注册的 Passkey 凭据 / Manage users' registered passkey credentials",
+      "注销或删除设备上的免密认证凭据 / Revoke or delete passwordless authentication credentials on the device",
+      "在 ArkTS 或 C/C++ 中调用通行密钥认证接口 / Call passkey authentication APIs in ArkTS or C/C++",
+      "实现本地生物认证后放行敏感操作 / Allow sensitive actions after local biometric authentication",
+      "接入无密码账号登录替代短信或密码 / Integrate passwordless account login instead of SMS or passwords",
+      "完成 Passkey 凭据创建、断言获取和登录验证 / Complete passkey credential creation, assertion retrieval, and sign-in verification"
+    ],
+    "do_not_use_when": [
+      "需求只是做本地设备解锁、生物特征门禁或屏幕内二次确认，而不需要对接FIDO/IFAA/SOTER/Passkey服务端时，应改用 user-authentication-kit / If the need is only local device unlock, biometric gating, or on-device confirmation without integrating a FIDO/IFAA/SOTER/Passkey server, use user-authentication-kit instead",
+      "需求是生成密钥、加解密、签名验签或设计密码协议，而不是实现免密身份认证流程时，应改用 crypto-architecture-kit 或 universal-keystore-kit / If the task is key generation, encryption/decryption, signing/verification, or cryptographic protocol design rather than passwordless authentication flows, use crypto-architecture-kit or universal-keystore-kit instead",
+      "需求是管理设备证书、证书链、TLS客户端证书或设备身份证明，而不是用户免密登录/支付时，应改用 device-certificate-kit / If the task is device certificate management, certificate chains, TLS client certificates, or device identity attestation rather than user passwordless login/payment, use device-certificate-kit instead",
+      "需求是检测设备安全状态、风险评估、完整性校验或安全加固，而不是发起在线免密认证时，应改用 device-security-kit / If the goal is device security posture checks, risk assessment, integrity verification, or hardening rather than initiating online passwordless authentication, use device-security-kit instead",
+      "需求是实现数字版权保护、内容加密分发或许可证控制，而不是身份认证时，应改用 drm-kit / If the need is digital rights protection, encrypted content distribution, or license control rather than identity authentication, use drm-kit instead"
+    ],
+    "preconditions": [
+      "应用已完成对应认证方式所需的服务端对接与业务配置（FIDO、IFAA、SOTER或Passkey） / The app has completed required server-side integration and business configuration for the chosen method (FIDO, IFAA, SOTER, or Passkey)",
+      "目标设备与系统环境支持所选认证能力，且具备可用的生物特征或PIN能力；通行密钥场景需在支持的真机与地区环境中运行 / The target device and system support the selected authentication capability and have usable biometrics or PIN; Passkey scenarios must run on supported real devices and regions",
+      "用户已在设备上录入并启用所需生物特征或系统认证因子，且设备满足认证可信等级要求 / The user has enrolled and enabled the required biometrics or system authentication factors on the device, and the device meets the required authentication assurance level",
+      "应用具有可用网络连接并能访问认证业务服务器 / The app has working network connectivity and can reach the authentication service backend"
+    ],
+    "inputs": [
+      "认证方式类型 / authentication method type",
+      "服务端下发的挑战参数或注册请求数据 / server-issued challenge parameters or registration request data",
+      "业务用户标识 / business user identifier",
+      "认证场景类型（开通、认证、注销、跨设备扫码） / authentication scenario type (enrollment, authentication, deregistration, cross-device QR flow)"
+    ],
+    "outputs": [
+      "概述",
+      "通行密钥（Passkey）",
+      "免密认证"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已调用在线认证Kit相关接口以发起所选协议的开通、认证或注销流程 / The code invokes Online Authentication Kit APIs to start the selected protocol's enrollment, authentication, or deregistration flow",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code that clearly calls Online Authentication Kit APIs for FIDO, IFAA, SOTER, or Passkey rather than only local biometric APIs?"
+      },
+      {
+        "statement": "实现中已处理认证结果回调或返回值，并区分成功、失败或取消等状态 / The implementation handles authentication result callbacks or return values and distinguishes success, failure, or cancellation states",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there explicit handling of authentication outcomes such as success, failure, or cancellation for the Online Authentication flow?"
+      },
+      {
+        "statement": "客户端向服务端透传或提交了认证所需的挑战结果、凭据或响应数据 / The client forwards or submits the required challenge result, credential, or response payload to the backend",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show that data produced by the Online Authentication Kit flow is packaged, returned, or sent to backend/business logic instead of being ignored?"
+      }
+    ],
+    "overlaps_with": [
+      "crypto-architecture-kit",
+      "device-certificate-kit",
+      "device-security-kit",
+      "universal-keystore-kit",
+      "user-authentication-kit",
+      "drm-kit"
+    ],
+    "safety_tier": "high-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

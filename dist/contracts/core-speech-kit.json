@@ -1,0 +1,109 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "core-speech-kit",
+  "source_path": "skills/core-speech-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:52:14.520Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "基础语音",
+      "TTS",
+      "语音识别",
+      "离线语音",
+      "文字转语音",
+      "如何在无网环境下将文本转换为语音并播报？",
+      "如何使用语音识别将麦克风实时语音转换为文字？",
+      "如何将PCM音频文件识别为中文文本？",
+      "如何配置文本转语音的音色、语速、音量和音调？",
+      "如何实现长语音（超过60秒）的识别功能？",
+      "如何为视障用户提供无障碍屏幕朗读功能？",
+      "如何实现AI字幕功能，将实时语音转为字幕？",
+      "当你的应用需要将文本内容转换为语音进行播报时使用文本转语音能力，典型场景包括无障碍屏幕朗读、新闻播报、电子书朗读、语音通知等，特别是为视障人士或不方便阅读的用户提供语音辅助服务",
+      "当你的应用需要将音频转换为文字时使用语音识别能力，典型场景包括AI字幕生成、语音输入法、会议记录转写、听障人士辅助等，支持实时麦克风输入和PCM音频文件两种方式",
+      "实现语音输入，把用户说的话实时转成文本填入搜索框 / Implement voice input to transcribe live speech into a search box",
+      "接入屏幕朗读，为页面内容和按钮标签提供语音播报 / Integrate screen reading to speak page content and button labels",
+      "用 TTS 播报消息提醒、导航提示或订单状态更新 / Use TTS to announce notifications, navigation prompts, or order status updates",
+      "离线合成语音，在没有网络时也能朗读文本内容 / Generate speech offline so text can still be read aloud without network access",
+      "识别麦克风连续语音并实时显示字幕 / Recognize continuous microphone speech and show live captions",
+      "转写会议录音或 PCM 音频文件生成文字纪要 / Transcribe meeting recordings or PCM audio files into text notes",
+      "配置语音播报的发音人、语速、音调和音量 / Configure the TTS voice, speaking rate, pitch, and volume",
+      "实现长时语音转写，持续识别超过一分钟的讲话内容 / Implement long-form speech transcription for audio longer than one minute",
+      "为电子书、新闻或文章添加自动朗读功能 / Add read-aloud playback for ebooks, news, or articles",
+      "把语音命令识别成文本后触发搜索、发送或控制操作 / Convert voice commands to text and trigger search, send, or control actions",
+      "生成无障碍语音反馈，让视障用户听到界面信息 / Provide accessible spoken feedback so visually impaired users can hear UI information",
+      "将现场发言实时转成字幕用于直播或课堂展示 / Turn spoken audio into real-time subtitles for live streams or classroom display"
+    ],
+    "do_not_use_when": [
+      "需求是联网语音能力、云端识别/合成或跨区域在线语音服务，应改用 speech-kit / The requirement is online speech capability, cloud ASR/TTS, or cross-region online speech services; use speech-kit instead",
+      "任务主要是文本理解、分词、翻译、摘要或实体分析，而不是语音输入输出，应改用 natural-language-kit / The task is primarily text understanding, tokenization, translation, summarization, or entity analysis rather than speech I/O; use natural-language-kit instead",
+      "需求是图像/视频内容识别、OCR、检测或视觉分析，应改用 core-vision-kit 或 vision-kit / The requirement is image/video recognition, OCR, detection, or visual analysis; use core-vision-kit or vision-kit instead",
+      "需要自定义部署或运行通用AI模型推理，而非直接使用现成语音服务接口，应改用 mindspore-lite-kit、neural-network-runtime-kit 或 cann-kit / You need to deploy or run custom AI model inference rather than use ready-made speech service APIs; use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit instead",
+      "需求是多模态场景感知、跨传感器融合或上下文感知决策，而非单纯语音合成/识别，应改用 multimodal-awareness-kit / The requirement is multimodal scene awareness, cross-sensor fusion, or context-aware decisions rather than plain speech synthesis/recognition; use multimodal-awareness-kit instead"
+    ],
+    "preconditions": [
+      "应用运行环境位于中国大陆且设备类型受支持（Phone、Tablet、PC/2in1） / The app runs in Mainland China and on a supported device type (Phone, Tablet, or PC/2in1)",
+      "工程已集成可用的 Core Speech Kit SDK/API 版本能力 / The project has integrated an available Core Speech Kit SDK/API capability",
+      "若使用麦克风实时识别，module.json5 已声明录音权限且用户已授权 / If using real-time microphone recognition, the recording permission is declared in module.json5 and granted by the user",
+      "输入内容满足能力约束：TTS 文本不超过10000字符，ASR 音频为中文普通话且时长符合短语音或长语音限制 / Inputs satisfy capability limits: TTS text is within 10,000 characters, and ASR audio is Mandarin Chinese with duration within short- or long-audio limits"
+    ],
+    "inputs": [
+      "待合成的文本内容 / text content to synthesize",
+      "音色与播报参数 / voice timbre and playback parameters",
+      "麦克风音频流或PCM音频文件 / microphone audio stream or PCM audio file",
+      "识别模式与会话配置 / recognition mode and session configuration"
+    ],
+    "outputs": [
+      "简介",
+      "语音识别",
+      "文本转语音",
+      "隐私合规"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已调用 Core Speech Kit 的文本转语音或语音识别相关 API，而非无关 Kit 的接口 / The code calls Core Speech Kit text-to-speech or speech-recognition APIs rather than unrelated Kit interfaces",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set introduce or modify code to use Core Speech Kit speech APIs (TTS and/or ASR), instead of primarily using unrelated kits such as vision or NLP APIs?"
+      },
+      {
+        "statement": "若实现文本转语音，已传入待播报文本并配置至少一项播报参数或音色 / If text-to-speech is implemented, the spoken text is provided and at least one voice or playback parameter is configured",
+        "verifier": "model_judge",
+        "judge_prompt": "If the agent implemented TTS, does the edit set show text being supplied to a speech synthesis/playback call and at least one configurable option such as voice, speed, volume, pitch, or strategy being set?"
+      },
+      {
+        "statement": "若实现语音识别，已接入麦克风流或PCM文件输入并处理识别结果文本 / If speech recognition is implemented, microphone stream or PCM file input is wired in and recognized text results are handled",
+        "verifier": "model_judge",
+        "judge_prompt": "If the agent implemented ASR, does the edit set show an audio source (microphone or PCM file) being connected to recognition and the resulting text being received, stored, or displayed?"
+      },
+      {
+        "statement": "若使用实时录音识别，已补充录音权限声明或授权处理逻辑 / If real-time recording recognition is used, recording permission declaration or grant-handling logic is added",
+        "verifier": "model_judge",
+        "judge_prompt": "When microphone-based recognition is introduced, does the edit set also add or update permission declaration and/or runtime permission handling for audio recording?"
+      }
+    ],
+    "overlaps_with": [
+      "cann-kit",
+      "mindspore-lite-kit",
+      "neural-network-runtime-kit",
+      "core-vision-kit",
+      "natural-language-kit",
+      "speech-kit",
+      "vision-kit",
+      "multimodal-awareness-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

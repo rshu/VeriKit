@@ -1,0 +1,123 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "arkui",
+  "source_path": "skills/arkui/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:49:43.188Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "ArkUI",
+      "声明式UI",
+      "自定义组件",
+      "状态管理V1/V2",
+      "布局",
+      "动画",
+      "手势",
+      "Navigation",
+      "自定义渲染",
+      "画中画",
+      "如何选择状态管理方案（V1与V2的区别、装饰器选型）",
+      "如何使用Navigation实现页面路由和导航管理",
+      "如何使用@State、@Link、@Prop等装饰器实现父子组件数据同步",
+      "如何实现属性动画、帧动画、转场动画和弹簧动画效果",
+      "如何使用List、Grid、WaterFlow等容器组件实现列表和网格布局",
+      "如何使用自定义组件、自定义节点和自定义渲染实现复杂UI需求",
+      "如何处理手势事件冲突和实现多层级手势交互",
+      "如何实现应用沉浸式效果和窗口管理",
+      "如何进行V1到V2状态管理的迁移",
+      "如何使用NDK接口在C/C++中构建UI界面",
+      "开发HarmonyOS应用的UI界面时，请使用ArkUI框架",
+      "对于新项目，推荐使用声明式开发范式（ArkTS语言）",
+      "当需要构建动态交互界面时，请使用状态管理装饰器（V1或V2）驱动UI更新",
+      "当需要页面导航和路由管理时，请使用Navigation组件替代Router",
+      "当需要实现自定义绘制效果时，可使用Canvas组件或自定义渲染节点（RenderNode）",
+      "当标准组件无法满足需求时，请使用自定义能力：自定义组件、自定义节点（FrameNode、BuilderNode、RenderNode）、自定义绘制修改器（DrawModifier）、属性修改器（AttributeModifier）等",
+      "实现应用页面和自定义组件界面 / Build app screens and custom UI components",
+      "用 ArkUI 声明式方式搭建列表、表单和详情页 / Build lists, forms, and detail pages with ArkUI declarative UI",
+      "实现页面间跳转并管理返回栈 / Implement page navigation and manage the back stack",
+      "用 Navigation 组织多页面路由结构 / Organize multi-page routing with Navigation",
+      "用 @State、@Link、@Prop 管理组件状态和数据联动 / Manage component state and data binding with @State, @Link, and @Prop",
+      "实现父子组件参数传递和界面自动刷新 / Implement parent-child data passing and automatic UI updates",
+      "给按钮、卡片和页面添加点击滑动等手势交互 / Add tap, swipe, and other gesture interactions to buttons, cards, and pages",
+      "实现列表、弹窗和页面切换动画效果 / Add animations for lists, dialogs, and page transitions",
+      "自定义页面布局以适配不同屏幕尺寸 / Create custom layouts that adapt to different screen sizes",
+      "绘制自定义图形和复杂界面效果 / Render custom graphics and complex visual effects",
+      "实现画中画小窗播放界面 / Implement a picture-in-picture floating playback window",
+      "封装可复用业务组件并在多个页面复用 / Package reusable business components for multiple pages"
+    ],
+    "do_not_use_when": [
+      "需求主要是实现应用生命周期、UIAbility/ServiceExtensionAbility、拉起页面或系统级Ability编排时，应改用 ability-kit / If the task is mainly about application lifecycle, UIAbility/ServiceExtensionAbility, launching pages, or system-level Ability orchestration, use ability-kit instead",
+      "需求主要是编写通用ArkTS语言逻辑、类型系统、语法、并发或基础模块代码，而不是构建界面时，应改用 arkts / If the task is mainly about general ArkTS language logic, type system, syntax, concurrency, or base module code rather than building UI, use arkts instead",
+      "需要嵌入或控制Web页面、H5内容、WebView或前端网页渲染时，应改用 arkweb / If the task requires embedding or controlling web pages, H5 content, WebView, or browser-style rendering, use arkweb instead",
+      "目标是开发卡片/服务卡片（Form）而不是完整应用页面界面时，应改用 form-kit / If the goal is to build cards/service widgets (Forms) rather than full app page UI, use form-kit instead",
+      "需求核心是进程间通信、跨Ability消息传递或远程对象调用，而不是界面呈现时，应改用 ipc-kit / If the core requirement is inter-process communication, cross-Ability messaging, or remote object invocation rather than UI presentation, use ipc-kit instead",
+      "任务重点是后台任务调度、长时任务或延迟执行而非前台交互界面时，应改用 background-tasks-kit / If the focus is background task scheduling, long-running work, or deferred execution rather than foreground interactive UI, use background-tasks-kit instead"
+    ],
+    "preconditions": [
+      "工程已启用HarmonyOS对应API版本并具备ArkUI开发能力，且目标模块为可承载UI的模块 / The project targets a HarmonyOS API version that supports ArkUI and the target module can host UI",
+      "相关页面或组件源码位于ArkUI支持的工程结构中，并可使用ArkTS或类Web范式进行编译 / The relevant page or component source is placed in an ArkUI-supported project structure and can be compiled with ArkTS or the web-like paradigm",
+      "若涉及页面导航、窗口适配、手势或系统组件能力，工程依赖与模块配置已正确声明 / If page navigation, window adaptation, gestures, or system component features are involved, the project dependencies and module configuration are correctly declared"
+    ],
+    "inputs": [
+      "页面或组件需求描述 / page or component requirements",
+      "ArkUI页面、组件或样式源码文件 / ArkUI page, component, or style source files",
+      "状态模型与数据绑定关系 / state model and data-binding relationships",
+      "导航结构或页面路由信息 / navigation structure or page routing information"
+    ],
+    "outputs": [
+      "Kit简介与概述",
+      "状态管理V2（装饰器）",
+      "状态管理V1（装饰器）",
+      "全局状态管理",
+      "状态管理框架与迁移",
+      "状态管理工具接口",
+      "自定义构建函数与样式",
+      "Navigation路由",
+      "渲染控制",
+      "布局",
+      "列表与网格",
+      "组件 - 按钮、文本、输入"
+    ],
+    "postconditions": [
+      {
+        "statement": "已新增或修改ArkUI页面、组件、布局、样式或交互相关代码，而非仅停留在纯逻辑层 / ArkUI page, component, layout, style, or interaction code has been added or modified rather than only pure logic",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set include HarmonyOS ArkUI UI code such as @Entry, @Component, build(), layout/container components, modifiers, or other page/component declarations?"
+      },
+      {
+        "statement": "界面结构与需求对应，包含可识别的组件树、布局或导航实现 / The UI structure matches the request and includes an identifiable component tree, layout, or navigation implementation",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there a concrete UI structure implementing the requested screen, component composition, layout, or Navigation-based flow?"
+      },
+      {
+        "statement": "若需求包含交互或状态更新，代码中已接入状态管理或事件处理以驱动UI刷新 / If the request includes interaction or state updates, the code wires in state management or event handling to drive UI refresh",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task involved interactivity or dynamic updates, do the edits show ArkUI state decorators, bound variables, callbacks, or event handlers connected to UI changes?"
+      }
+    ],
+    "overlaps_with": [
+      "ability-kit",
+      "arkts",
+      "arkweb",
+      "form-kit",
+      "ipc-kit",
+      "function-flow-runtime-kit",
+      "background-tasks-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

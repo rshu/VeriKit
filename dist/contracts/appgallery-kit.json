@@ -1,0 +1,119 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "appgallery-kit",
+  "source_path": "skills/appgallery-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:48:55.411Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "应用市场",
+      "数字商品",
+      "应用推荐",
+      "按需分发",
+      "应用归因",
+      "如何接入数字商品服务实现消耗型、非消耗型和订阅型商品的内购功能",
+      "如何通过AppGallery Connect或Server API配置数字商品",
+      "如何实现购买数字商品的完整流程并发放商品权益",
+      "如何使用沙箱环境测试数字商品服务",
+      "如何实现产品特性按需分发以减小应用初始安装体积",
+      "如何接入应用归因服务追踪用户来源和转化效果",
+      "如何实现应用市场推荐、应用更新检测、应用评论等辅助功能",
+      "如何动态切换应用图标（节日主题、会员特权等场景）",
+      "如何排查按需加载模块失败、归因接口报错、更新功能异常等常见问题",
+      "当开发者需要在应用中实现内购和数字商品销售时，应使用AppGallery Kit的数字商品服务",
+      "如果你需要销售消耗型商品（如游戏币、道具）、非消耗型商品（如去广告、解锁功能）或订阅型商品（如会员、定期服务），AppGallery Kit提供了完整的商品配置、展示、购买和权益发放流程",
+      "当开发者需要优化应用安装体积或实现功能模块的按需加载时，应使用AppGallery Kit的产品特性按需分发能力",
+      "如果你的应用包含部分用户可能不需要的大体积功能模块，可以将其配置为按需加载模块，在用户使用时才下载安装",
+      "当开发者需要分析应用的用户来源和转化效果时，应使用AppGallery Kit的应用归因服务",
+      "如果你需要追踪用户从哪个渠道（广告、推荐、分享等）安装了应用，或者需要记录和分析用户的转化行为，归因服务提供了完整的事件登记和结果回传能力",
+      "接入应用内购买卖会员、道具和订阅 / Integrate in-app purchases for memberships, consumables, and subscriptions",
+      "实现购买后校验订单并给用户发放权益 / Verify purchase orders and grant entitlements after payment",
+      "恢复用户已购的非消耗型商品和订阅状态 / Restore previously purchased non-consumables and subscription status",
+      "查询商品列表并在应用内展示价格和订阅套餐 / Load product catalog and show prices and subscription plans in app",
+      "用沙箱环境联调支付流程和订阅续费场景 / Test payment flows and subscription renewal in the sandbox",
+      "把大型功能拆成按需下载安装的动态模块 / Split large features into on-demand downloadable dynamic modules",
+      "按用户操作再下载地图包、编辑器等功能组件 / Download feature components like map packs or editors only when needed",
+      "统计安装来源、广告投放效果和首次打开转化 / Track install sources, campaign performance, and first-open conversion",
+      "接入归因数据判断用户是从哪个渠道拉新过来的 / Use attribution data to identify which channel acquired the user",
+      "在应用内检查新版本并引导用户去应用市场更新 / Check for app updates in-app and guide users to AppGallery to upgrade",
+      "拉起应用市场展示评分评论或推荐更多应用 / Open AppGallery to show ratings, reviews, or more app recommendations",
+      "根据节日活动或会员身份动态切换应用图标 / Dynamically switch the app icon for holidays or membership status"
+    ],
+    "do_not_use_when": [
+      "需求是广告投放、广告变现或广告归因，而不是应用市场内购或应用市场归因时，应改用 ads-kit / If the need is ad delivery, ad monetization, or ad attribution rather than AppGallery IAP or AppGallery attribution, use ads-kit instead",
+      "需求是游戏成就、排行榜、游戏登录或游戏运营能力，而不是应用市场商品购买时，应改用 game-service-kit / If the need is game achievements, leaderboards, game login, or game operations rather than AppGallery purchases, use game-service-kit instead",
+      "需求是深度链接拉起、落地页跳转或跨端链接分发，而不是应用市场推荐、更新或归因时，应改用 app-linking-kit / If the need is deep linking, landing-page routing, or cross-end link distribution rather than AppGallery recommendation, update, or attribution, use app-linking-kit instead",
+      "需求是分享内容到其他应用或系统分享面板，而不是应用市场评论、推荐或更新提示时，应改用 share-kit / If the need is sharing content to other apps or the system share panel rather than AppGallery reviews, recommendations, or update prompts, use share-kit instead",
+      "需求是扫码识别二维码或条码获取内容，而不是应用市场生态查询、按需分发或购买流程时，应改用 scan-kit / If the need is scanning QR codes or barcodes to obtain content rather than AppGallery ecosystem query, on-demand delivery, or purchase flow, use scan-kit instead",
+      "需求是融合设备/场景感知来触发服务编排，而不是应用市场场景值查询或归因分析时，应改用 scenario-fusion-kit / If the need is fused device/context awareness for service orchestration rather than AppGallery scene value lookup or attribution analysis, use scenario-fusion-kit instead"
+    ],
+    "preconditions": [
+      "已在 AppGallery Connect 开通并正确配置对应服务（如数字商品、归因、更新、评论等） / The corresponding service (such as IAP, attribution, update, or reviews) has been enabled and configured correctly in AppGallery Connect",
+      "工程已集成 AppGallery Kit 相关依赖并完成应用签名、包名与项目配置匹配 / The project has integrated the relevant AppGallery Kit dependencies and the app signing, package name, and project configuration match",
+      "设备具备华为应用市场相关运行环境且目标服务在当前国家/地区可用 / The device has the required Huawei AppGallery runtime environment and the target service is available in the current country or region",
+      "涉及联网能力的场景下，设备网络可用且用户登录/授权状态满足接口要求 / For network-dependent scenarios, device connectivity is available and the user's sign-in/authorization state satisfies API requirements"
+    ],
+    "inputs": [
+      "商品ID或商品列表参数 / product ID or product list parameters",
+      "购买请求参数或订单信息 / purchase request parameters or order information",
+      "动态特性模块名称或模块请求参数 / dynamic feature module name or module request parameters",
+      "归因来源数据、转化事件或场景值查询参数 / attribution source data, conversion event, or scene-value query parameters",
+      "应用更新、评论、推荐或图标管理相关请求参数 / app update, review, recommendation, or icon-management request parameters"
+    ],
+    "outputs": [
+      "Kit简介",
+      "数字商品服务",
+      "产品特性按需分发",
+      "应用归因服务",
+      "其他服务",
+      "数字商品常见问题",
+      "按需分发常见问题",
+      "归因与其他常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码或配置中接入至少一个 AppGallery Kit 能力入口，并包含与目标场景对应的调用或初始化逻辑 / At least one AppGallery Kit capability entry point is integrated in code or configuration, with invocation or initialization logic matching the target scenario",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show concrete integration of an AppGallery Kit feature (such as IAP, attribution, update, reviews, recommendation, or on-demand delivery) rather than only generic placeholder text?"
+      },
+      {
+        "statement": "若为数字商品场景，购买后处理链路已覆盖结果处理以及权益发放/校验相关逻辑 / For digital goods scenarios, the post-purchase handling flow covers result processing and entitlement delivery/verification logic",
+        "verifier": "model_judge",
+        "judge_prompt": "For an IAP-related task, do the edits include purchase-result handling and a follow-up step for entitlement delivery, consumption, or verification?"
+      },
+      {
+        "statement": "若为按需分发场景，已添加模块加载请求及状态监听或失败处理逻辑 / For on-demand delivery scenarios, module load requests and status-listening or failure-handling logic have been added",
+        "verifier": "model_judge",
+        "judge_prompt": "For a feature-delivery task, do the edits include requesting a dynamic module and handling load status, success, or failure?"
+      },
+      {
+        "statement": "若为归因或其他市场服务场景，已补充与该服务匹配的请求参数、回调或异常处理代码 / For attribution or other marketplace-service scenarios, request parameters, callbacks, or exception handling matching that service have been added",
+        "verifier": "model_judge",
+        "judge_prompt": "For attribution, update, review, recommendation, or icon-management tasks, do the edits add service-specific parameters and callback/error-handling logic?"
+      }
+    ],
+    "overlaps_with": [
+      "app-linking-kit",
+      "ads-kit",
+      "game-service-kit",
+      "share-kit",
+      "scan-kit",
+      "scenario-fusion-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

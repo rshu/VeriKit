@@ -1,0 +1,103 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "pen-kit",
+  "source_path": "skills/pen-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:57:51.910Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "手写笔",
+      "触控笔",
+      "笔刷效果",
+      "压感",
+      "即时形状识别",
+      "全局取色",
+      "如何接入Pen Kit手写套件实现完整的绘图和笔记功能？",
+      "如何集成报点预测提高手写跟手性？",
+      "如何使用一笔成形功能将手绘图形自动识别为规整图形？",
+      "如何接入全局取色功能？",
+      "如何监听手写笔的双击和轻捏事件？",
+      "手写套件是否支持自定义笔刷、笔宽和颜色？",
+      "手写套件的工具栏是否可以单独使用？",
+      "报点预测的程度是否可以调整？",
+      "当应用需要集成完整的手写体验时使用本Kit的手写套件能力",
+      "手写套件提供了开箱即用的画布和工具栏组件，包含多种笔刷效果、橡皮擦、套索编辑等工具，适合笔记、绘图、签名等手写场景",
+      "当需要单独使用报点预测、一笔成形、全局取色或手写交互等独立能力时也可使用本Kit",
+      "这些能力可以按需集成，不一定需要完整的套件组件",
+      "实现手写批注和自由涂鸦画布 / Implement handwritten annotation and a freehand drawing canvas",
+      "接入触控笔低延迟书写并优化跟手效果 / Integrate low-latency stylus writing and improve ink responsiveness",
+      "添加压感和倾斜角控制线条粗细与笔触 / Add pressure and tilt support to control stroke width and brush feel",
+      "实现橡皮擦、荧光笔和钢笔等多种笔工具切换 / Implement switching between eraser, highlighter, pen, and other ink tools",
+      "显示可独立复用的手写工具栏 / Show a reusable standalone handwriting toolbar",
+      "监听手写笔双击、轻捏等笔端快捷手势 / Listen for stylus shortcut gestures like double-tap and squeeze",
+      "把手绘圆形、矩形和箭头自动矫正成规则图形 / Auto-correct hand-drawn circles, rectangles, and arrows into regular shapes",
+      "接入一笔成形将随手画图案识别为标准图形 / Integrate one-stroke shape recognition to turn sketches into standard shapes",
+      "实现全局取色从屏幕内容吸取画笔颜色 / Implement global color picking to sample brush colors from screen content",
+      "自定义笔刷样式、颜色和笔宽参数 / Customize brush style, color, and pen width settings",
+      "在笔记应用中加入手写输入和绘图能力 / Add handwriting input and drawing capabilities to a note-taking app",
+      "管理手写墨迹的撤销重做与笔迹编辑 / Manage handwritten ink undo/redo and stroke editing"
+    ],
+    "do_not_use_when": [
+      "需求是采集或订阅通用传感器数据（如加速度计、陀螺仪、环境传感器），而不是手写笔书写能力时，应改用 sensor-service-kit / If the need is to collect or subscribe to general sensor data (such as accelerometer, gyroscope, or environmental sensors) rather than stylus writing features, use sensor-service-kit instead",
+      "需求是处理键盘、鼠标、触摸等通用输入事件分发，而不是手写笔笔刷、报点预测或一笔成形时，应改用 input-kit / If the need is to handle general keyboard, mouse, or touch input event dispatch rather than stylus brushes, point prediction, or stroke-to-shape, use input-kit instead",
+      "需求是实现输入法、文本输入法编辑或候选词能力，而不是手写画布/手写交互时，应改用 ime-kit / If the need is to implement an input method, text IME editing, or candidate word features rather than handwriting canvas/pen interaction, use ime-kit instead",
+      "需求是开发或适配底层设备驱动、触控笔硬件驱动或内核侧能力，而不是在应用层集成手写功能时，应改用 driver-development-kit / If the need is to develop or adapt low-level device drivers, stylus hardware drivers, or kernel-side capabilities rather than integrate handwriting features at the app layer, use driver-development-kit instead",
+      "需求是接入游戏手柄、按键映射或摇杆输入，而不是手写笔事件时，应改用 game-controller-kit / If the need is to integrate game controllers, button mapping, or joystick input rather than stylus events, use game-controller-kit instead"
+    ],
+    "preconditions": [
+      "运行环境为Phone、Tablet或2in1真机，且不使用模拟器 / The runtime environment is a real Phone, Tablet, or 2in1 device, and not an emulator",
+      "设备与服务区域满足Pen Kit可用范围（中国境内支持） / The device and service region satisfy Pen Kit availability constraints (supported in mainland China)",
+      "工程已集成Pen Kit对应SDK能力并完成所需依赖配置 / The project has integrated the required Pen Kit SDK capability and completed necessary dependency configuration"
+    ],
+    "inputs": [
+      "手写画布或承载组件上下文 / Handwriting canvas or host component context",
+      "手写笔轨迹点与触控事件数据 / Stylus stroke points and touch event data",
+      "所选能力的配置参数（如笔刷、预测、一笔成形、取色或交互监听） / Configuration parameters for the selected capability (such as brush, prediction, stroke-to-shape, color picking, or interaction listening)"
+    ],
+    "outputs": [
+      "概述",
+      "功能接入",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "工程中已添加Pen Kit相关导入、依赖或API调用，以接入目标手写能力 / The project adds Pen Kit-related imports, dependencies, or API calls to integrate the target handwriting capability",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show Pen Kit-specific imports, dependencies, or API invocations being added for handwriting, point prediction, stroke-to-shape, color picking, or pen interaction?"
+      },
+      {
+        "statement": "界面或事件处理逻辑已连接到至少一种Pen Kit能力（手写套件、报点预测、一笔成形、全局取色或手写交互） / The UI or event-handling logic is wired to at least one Pen Kit capability (handwriting suite, point prediction, stroke-to-shape, global color picking, or pen interaction)",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is at least one Pen Kit capability actually connected to UI rendering or event handling rather than only mentioned in comments or docs?"
+      },
+      {
+        "statement": "若接入完整手写套件，则代码未重复额外实现其已内置的报点预测或一笔成形逻辑 / If the full handwriting suite is integrated, the code does not redundantly implement separate point prediction or stroke-to-shape logic already built in",
+        "verifier": "model_judge",
+        "judge_prompt": "If the edits integrate the full Pen Kit handwriting suite, do they avoid separately adding duplicate point prediction or stroke-to-shape integration that the suite already includes?"
+      }
+    ],
+    "overlaps_with": [
+      "sensor-service-kit",
+      "input-kit",
+      "ime-kit",
+      "driver-development-kit",
+      "game-controller-kit",
+      "mechanic-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

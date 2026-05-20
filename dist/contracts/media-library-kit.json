@@ -1,0 +1,112 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "media-library-kit",
+  "source_path": "skills/media-library-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:56:23.582Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "媒体库",
+      "相册管理",
+      "照片管理",
+      "视频管理",
+      "Picker",
+      "媒体文件",
+      "如何使用系统图库Picker让用户选择图片或视频资源？",
+      "如何在应用中嵌入PhotoPicker组件实现图片/视频浏览和选择？",
+      "如何使用AlbumPicker组件展示相册列表供用户选择？",
+      "如何使用RecentPhoto组件快速获取最近一张图片或视频？",
+      "如何将图片或视频保存到系统图库（通过安全控件或授权弹窗）？",
+      "如何使用PickerController将编辑后的图片替换原图并保存？",
+      "如何访问和管理动态照片资源（保存、获取、读取、播放）？",
+      "如何查询和获取指定的媒体资源、缩略图，或对媒体资源进行重命名？",
+      "如何管理用户相册（查询、重命名、添加和删除媒体资源）？",
+      "如何使用MediaAssetManager C/C++接口请求媒体资源到沙箱路径？",
+      "当您的应用需要访问、管理或展示用户设备上的图片、视频、动态照片等媒体资源时，应使用Media Library Kit",
+      "典型场景包括：通过系统图库Picker让用户选择图片或视频、在应用中嵌入相册浏览组件、将图片或视频保存到系统图库、播放动态照片、管理用户相册等",
+      "当您需要开发相册应用、图片编辑器、短视频应用、文件管理器等需要操作媒体文件的场景，或者需要使用MovingPhotoView组件播放动态照片、使用RecentPhoto组件获取最近一张图片时，也应使用Media Library Kit",
+      "接入系统照片选择器让用户从图库选择图片或视频 / Integrate the system photo picker so users can choose images or videos from the gallery",
+      "在页面中显示相册列表并按相册选择媒体资源 / Show album lists in a page and let users pick media by album",
+      "获取最近拍摄的一张照片用于头像或封面默认图 / Get the most recent photo for a default avatar or cover image",
+      "把应用生成的图片或视频保存到系统相册 / Save app-generated images or videos to the system gallery",
+      "编辑图片后覆盖原文件并回写到媒体库 / Replace the original image after editing and write it back to the media library",
+      "读取图库中的照片视频并生成缩略图列表 / Load photos and videos from the gallery and build a thumbnail list",
+      "按条件查询指定媒体文件并获取其详情信息 / Query specific media assets by conditions and fetch their details",
+      "重命名图库中的图片或视频文件 / Rename image or video files in the media library",
+      "管理动态照片资源并读取静态图和视频内容 / Manage moving photo assets and read both still image and video content",
+      "在应用内预览并播放从媒体库选中的视频 / Preview and play videos selected from the media library in the app",
+      "通过 PhotoPicker 组件实现图片视频浏览与多选 / Implement image and video browsing with multi-select using PhotoPicker",
+      "使用 AlbumPicker 和 PickerController 串联相册选择与保存流程 / Combine AlbumPicker and PickerController for album selection and save flow"
+    ],
+    "do_not_use_when": [
+      "需求是实时拍照、录像或控制相机预览，而不是访问已有媒体库资源；应改用 camera-kit / The task is real-time photo capture, video recording, or camera preview control rather than accessing existing library assets; use camera-kit instead",
+      "需求是图片编解码、像素处理、格式转换或图像编辑算法，而不是图库选择/相册管理；应改用 image-kit / The task is image encoding/decoding, pixel processing, format conversion, or editing algorithms rather than gallery picking/album management; use image-kit instead",
+      "需求是音视频编解码、封装解封装、转码或码流处理，而不是管理相册中的媒体文件；应改用 avcodec-kit / The task is audio/video codec, mux/demux, transcoding, or elementary stream processing rather than managing gallery media files; use avcodec-kit instead",
+      "需求是媒体播放、录播控制或通用媒体会话处理，而不是查询/选择/保存图库资源；应改用 media-kit 或 avsession-kit / The task is media playback, recording-playback control, or general media session handling rather than querying/picking/saving library assets; use media-kit or avsession-kit instead",
+      "需求是音频文件、铃声设置或铃声管理，而不是图片/视频/动态照片媒体库访问；应改用 audio-kit 或 ringtone-kit / The task is audio file handling, ringtone setting, or ringtone management rather than image/video/moving photo library access; use audio-kit or ringtone-kit instead"
+    ],
+    "preconditions": [
+      "工程已引入可用的 Media Library Kit 能力，并使用匹配的 HarmonyOS SDK API 版本 / The project includes the Media Library Kit capability and uses a compatible HarmonyOS SDK API version",
+      "若涉及读取、查询、修改或保存媒体资源，module.json5 中已声明所需权限或已采用系统 Picker/安全控件流程 / If reading, querying, modifying, or saving media assets, the required permissions are declared in module.json5 or the system picker/save-button flow is used",
+      "对受用户授权控制的媒体访问场景，用户已完成授权或将通过系统界面完成选择/授予 / For user-consent-controlled media access, the user has granted permission or will grant/select through the system UI",
+      "若使用嵌入式 Picker/RecentPhoto/MovingPhotoView 等组件，页面 UI 上下文与组件依赖已正确配置 / If using embedded components such as PhotoPicker, RecentPhoto, or MovingPhotoView, the page UI context and component dependencies are properly configured"
+    ],
+    "inputs": [
+      "媒体资源URI、资产ID或文件标识 / media asset URI, asset ID, or file identifier",
+      "选择器或组件配置参数 / picker or component configuration options",
+      "待保存或替换的图片、视频或动态照片数据 / image, video, or moving photo data to save or replace",
+      "目标相册信息或媒体筛选条件 / target album information or media filtering criteria"
+    ],
+    "outputs": [
+      "简介",
+      "开发准备",
+      "媒体资源管理",
+      "相册管理",
+      "Picker与组件",
+      "资源保存与编辑",
+      "动态照片",
+      "其他"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已接入至少一种媒体库能力：系统Picker、嵌入式Picker组件、保存到图库、媒体资源查询/相册管理或动态照片处理 / The code integrates at least one media-library capability: system picker, embedded picker component, save-to-gallery, media query/album management, or moving photo handling",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add or modify HarmonyOS code/config to use Media Library Kit APIs or components for picking, saving, querying, album management, or moving photo handling?"
+      },
+      {
+        "statement": "媒体访问路径采用系统授权、安全控件或已声明权限的合规方式，而非绕过授权直接操作用户媒体 / Media access follows a compliant path using system authorization, secure controls, or declared permissions rather than bypassing consent to manipulate user media directly",
+        "verifier": "model_judge",
+        "judge_prompt": "From the edits, is media access implemented through declared permissions, a system picker, a save button, or another authorized Media Library flow instead of an obvious unauthorized direct access pattern?"
+      },
+      {
+        "statement": "实现结果与用户目标的媒体对象类型一致，如图片、视频、相册或动态照片 / The implementation targets the media object type the user asked for, such as image, video, album, or moving photo",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits operate on the requested media type and scenario (for example image/video picking, album operations, saving to gallery, or moving photo access) rather than an unrelated media domain?"
+      }
+    ],
+    "overlaps_with": [
+      "audio-kit",
+      "avcodec-kit",
+      "avsession-kit",
+      "camera-kit",
+      "image-kit",
+      "media-kit",
+      "ringtone-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

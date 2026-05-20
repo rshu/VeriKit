@@ -1,0 +1,109 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "mindspore-lite-kit",
+  "source_path": "skills/mindspore-lite-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:56:31.754Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "MindSpore",
+      "昇思",
+      "端侧推理",
+      "端侧训练",
+      "模型转换",
+      "轻量AI",
+      "如何将TensorFlow Lite、Caffe、ONNX等第三方框架模型转换为.ms格式？",
+      "如何使用C/C++接口加载.ms模型并进行推理？",
+      "如何使用ArkTS接口在UI代码中直接加载模型并推理？",
+      "如何使用MindSpore Lite实现图像分类应用（判断图像所属类别）？",
+      "如何使用MindSpore Lite实现语音识别应用？",
+      "如何在端侧进行模型训练（微调和增量训练）？",
+      "如何利用NNRt专用芯片加速模型推理？",
+      "如何实现CPU/GPU与NNRt之间的模型异构推理？",
+      "MindSpore Lite Kit支持哪些CPU后端算子？",
+      "当您需要在HarmonyOS设备上进行端侧AI模型推理或训练时，应使用MindSpore Lite Kit",
+      "典型场景包括：图像分类（判断图像所属类别）、目标检测（检测并标识图像中的对象）、图像分割（检测像素级目标位置）、人脸识别、文字识别、语音识别等计算机视觉和自然语言处理应用",
+      "当您需要将已有的TensorFlow、Caffe、ONNX等框架训练好的模型部署到HarmonyOS设备上运行，或者需要在端侧进行模型微调和增量训练时，也应使用MindSpore Lite Kit",
+      "在设备本地集成离线AI推理能力 / Integrate on-device offline AI inference",
+      "加载 .ms 模型文件并对输入数据执行预测 / Load a .ms model file and run prediction on input data",
+      "把图片送入本地神经网络做分类或检测 / Feed images into a local neural network for classification or detection",
+      "在应用里接入文字识别、语音识别等端侧模型 / Add on-device models for OCR, speech recognition, and similar tasks",
+      "将 ONNX 或 TensorFlow 模型转换后部署到 HarmonyOS 端侧 / Convert ONNX or TensorFlow models and deploy them on HarmonyOS devices",
+      "用 ArkTS 调用 MindSpore Lite 在页面中直接跑 AI 模型 / Use ArkTS to run an AI model directly in the UI with MindSpore Lite",
+      "使用 C++ 接口初始化推理会话并执行模型前向计算 / Initialize an inference session and run model forward pass with the C++ API",
+      "在手机或 IoT 设备上做低功耗本地 AI 计算 / Run low-power local AI computation on phones or IoT devices",
+      "启用 NNRt、CPU 或 GPU 后端加速模型推理 / Enable NNRt, CPU, or GPU backends to accelerate model inference",
+      "实现端侧模型微调和增量训练以适配用户数据 / Implement on-device fine-tuning and incremental training for user data",
+      "管理模型输入输出张量并处理推理结果 / Manage model input and output tensors and process inference results",
+      "把预训练模型打包进应用实现离线智能能力 / Bundle a pretrained model into the app for offline intelligence"
+    ],
+    "do_not_use_when": [
+      "需求是直接调用系统级视觉能力（如人脸检测、OCR、条码、图像分析）而不是加载或转换自有AI模型时，应改用 vision-kit 或 core-vision-kit / Use vision-kit or core-vision-kit when the task is to call built-in vision capabilities (such as face detection, OCR, barcode, or image analysis) rather than load or convert your own AI model",
+      "需求是直接使用系统级语音能力（如ASR、TTS、唤醒、语音服务）而不是部署自定义语音模型时，应改用 speech-kit 或 core-speech-kit / Use speech-kit or core-speech-kit when the task is to use built-in speech capabilities (such as ASR, TTS, wakeup, or speech services) rather than deploy a custom speech model",
+      "需求是调用现成的自然语言理解/文本处理能力，而不是将NLP模型转换并在端侧运行时，应改用 natural-language-kit / Use natural-language-kit when the task is to use built-in NLP or text-processing capabilities instead of converting and running an NLP model on-device",
+      "需求是仅通过 Neural Network Runtime 直接加载 MindIR/NNRt 模型并做运行时设备加速调度，而不涉及 MindSpore Lite 的模型转换、训练或其运行时接口时，应改用 neural-network-runtime-kit / Use neural-network-runtime-kit when the task is only to load MindIR/NNRt models and perform runtime acceleration scheduling, without MindSpore Lite conversion, training, or runtime APIs",
+      "需求是使用昇腾/CANN 的训练、编译或服务器侧推理能力，而非 HarmonyOS 端侧轻量部署时，应改用 cann-kit / Use cann-kit when the task is to use Ascend/CANN training, compilation, or server-side inference rather than lightweight HarmonyOS on-device deployment",
+      "需求是依赖系统多模态感知融合能力（如跨传感器场景理解）而不是单独部署某个AI模型时，应改用 multimodal-awareness-kit / Use multimodal-awareness-kit when the task depends on system multimodal perception fusion rather than deploying a single AI model"
+    ],
+    "preconditions": [
+      "待部署模型已是 .ms 格式，或已准备好通过转换工具先转换为 .ms / The model to deploy is already in .ms format, or it is ready to be converted to .ms with the conversion tool first",
+      "工程已集成 MindSpore Lite 对应的 ArkTS 或 Native C/C++ 开发能力与依赖 / The project has integrated the required MindSpore Lite ArkTS or native C/C++ development capability and dependencies",
+      "模型文件及其相关资源已正确打包到应用可访问位置，并具备可读路径 / The model file and related resources are packaged into an app-accessible location with readable paths",
+      "若使用 NNRt 或异构推理，目标设备与运行环境已提供相应硬件加速能力 / If using NNRt or heterogeneous inference, the target device and runtime environment provide the required hardware acceleration capability"
+    ],
+    "inputs": [
+      ".ms模型文件路径或原始第三方模型文件 / .ms model file path or original third-party model file",
+      "模型输入张量数据 / model input tensor data",
+      "推理或训练上下文配置 / inference or training context configuration",
+      "输入输出张量形状、类型或预处理参数 / input-output tensor shapes, types, or preprocessing parameters"
+    ],
+    "outputs": [
+      "简介",
+      "模型转换",
+      "模型推理",
+      "模型训练"
+    ],
+    "postconditions": [
+      {
+        "statement": "工程中已新增或修改代码以加载 MindSpore Lite 模型并创建推理或训练流程 / The project code has been added or modified to load a MindSpore Lite model and create an inference or training flow",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show code or configuration that loads a MindSpore Lite model and sets up an inference or training pipeline?"
+      },
+      {
+        "statement": "代码已向模型写入输入数据并读取输出结果，形成可执行的端侧AI调用链路 / The code writes input data into the model and reads output results, forming an executable on-device AI invocation path",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show that input data is fed into the model and output tensors or prediction results are read back?"
+      },
+      {
+        "statement": "若原始需求涉及第三方框架模型部署，产物或流程中已明确转换为 .ms 格式 / If the original request involved deploying a third-party framework model, the artifacts or workflow explicitly convert it to .ms format",
+        "verifier": "model_judge",
+        "judge_prompt": "If the request mentioned TensorFlow Lite, Caffe, ONNX, or another third-party model, do the edits explicitly include a conversion-to-.ms step or reference a .ms output model?"
+      }
+    ],
+    "overlaps_with": [
+      "cann-kit",
+      "neural-network-runtime-kit",
+      "core-speech-kit",
+      "core-vision-kit",
+      "natural-language-kit",
+      "speech-kit",
+      "vision-kit",
+      "multimodal-awareness-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "mechanic-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.962Z"
+  },
+  "references": [
+    {
+      "path": "references/Mechanic Kit简介.md",
+      "title": "Mechanic Kit简介",
+      "snippet": "Mechanic Kit 是机械体设备控制器提供的API集合。从API version 20起，应用可使用Mechanic Kit控制机械体设备。Mechanic Kit 提供了完整的三方机械体设备配件集成方案，满足手机与云台等设备间的交互需求。 Mechanic Kit 通过 mechanicManager 模块，实现设备连接管理、目标追踪和状态监控，支持精准控制，帮助开发者构建高质量的设备交互应用。 Mechanic Kit 通过 mechanicManager 模块支持对连接的机械体设备进行控制和交互，包括连接管理、控制和监控。 #### 场景介绍 机械体设备管理主要面向云台等机械体设备的交互控制场景： - **物体跟踪**：通过机械体设备实现人脸跟踪和物体追踪，提升拍摄质量。 - **拍摄控制**：手机作为控制终端，操控云台等机械体设备进行精准的角度调整和运动轨迹控制。 Mechanic Kit提供设备连接、目标跟踪和精准控制功能，构建机械配件控制应用更便捷。 #### 能力范围 Mechanic Kit为开发者提供全面的机械体设备操控能力，核心功能包括： #### 设备连接管理 - **设备发现**：获取当前连接的机械体设备列表，支持云台等多种机械体设备类型。 - **连接状态监听**：实时监听设备连接和断开状态变化。 - **设备信息查询**：获取设备ID、名称、类型等"
+    },
+    {
+      "path": "references/目标拍摄跟踪开发指南.md",
+      "title": "目标拍摄跟踪开发指南",
+      "snippet": "从API version 20开始，支持使用机械体设备控制器，提供更丰富的拍摄体验，如目标跟踪和自动构图等专业功能，支持第三方应用。 目标拍摄跟踪功能通过机械体设备实现人脸和物体的自动化跟踪，提升拍摄质量和用户体验，助力开发者构建更自动化、高效的拍摄解决方案。 #### 接口介绍 机械体设备控制器API的接口使用指导请参见 MechanicManager API参考 。 #### 开发步骤 #### 开发准备 1. 支持Mechanic Kit协议的机械体设备。 2. 若要验证目标跟踪功能，主设备的相机驱动必须支持人脸检测。 3. 请将SDK更新到API 20或以上版本，具体操作参见更新指南。 4. 请确保机械体设备已通过蓝牙与主设备连接。 #### 管理设备连接状态 确保机械体设备连接或断开时，应用能及时响应，支持设备连接状态的动态管理。 1. 导入机械体设备管理模块。 import { mechanicManager } from '@kit.MechanicKit'; 2. 获取已连接的机械体列表。 let savedMechanicIds: number[] = []; try { const devices = mechanicManager.getAttachedMechDevices(); console.info('Connected devices:', devi"
+    }
+  ]
+}

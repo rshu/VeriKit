@@ -1,0 +1,40 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "multimodal-awareness-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.995Z"
+  },
+  "references": [
+    {
+      "path": "references/Multimodal Awareness Kit简介.md",
+      "title": "Multimodal Awareness Kit简介",
+      "snippet": "多模态融合感知是利用设备上的多种传感器数据，如加速度计和陀螺仪等，来识别活动、状态和姿态等信息，例如，判断设备是否处于静止状态。 #### 运作机制 多模态融合感知能力作为系统为应用提供的一种基础服务，需要应用在所使用的业务场景，向系统主动发起订阅服务，并在业务场景结束时，主动取消订阅服务，在此过程中系统会将实时的设备状态结果上报给应用。 #### 约束与限制 使用多模态融合感知，需要用户进行相关权限的申请。设备需要支持对应能力所需的传感器。"
+    },
+    {
+      "path": "references/Stationary开发指导.md",
+      "title": "Stationary开发指导",
+      "snippet": "当应用需要获取当前设备状态时，可以调用Stationary模块，例如：需要判断当前设备处于绝对静止状态或者相对静止状态。 详细的接口介绍请参考 @ohos.stationary (设备状态感知框架) 。 #### 设备状态类型参数说明 #### 订阅设备状态事件参数说明 #### 返回设备状态参数说明 #### 接口说明 #### 约束与限制 设备需要支持加速度传感器。 目前只提供了算法框架，api接口测试框架的调用返回结果为:data={\"type\":3,\"value\":-1}; 如需相对静止和绝对静止能力，则具体算法需要开发者自己在device_status/libs/src/algorithm实现，可参考案例如下： algoPara_.resultantAcc = sqrt((algoPara_.x * algoPara_.x) + (algoPara_.y * algoPara_.y) + (algoPara_.z * algoPara_.z)); if ((algoPara_.resultantAcc > RESULTANT_ACC_LOW_THRHD) && (algoPara_.resultantAcc < RESULTANT_ACC_UP_THRHD)) { if (state_ == STILL) { return; } counter_--; if (count"
+    },
+    {
+      "path": "references/用户状态感知开发指导.md",
+      "title": "用户状态感知开发指导",
+      "snippet": "UserStatus（用户状态感知）模块提供用户感知能力，可以感知到操作者特定状态，例如：检测用户年龄组。 详细的接口介绍请参考 @ohos.multimodalAwareness.userStatus (用户状态感知) 。 #### 感知用户年龄组开发指导 #### 场景介绍 当应用需要获取用户年龄分类时，可以调用userStatus模块，例如判断设备具体操作者是儿童还是成年人。 从API version 20开始，支持获取用户年龄组。 #### 接口说明 #### 约束与限制 - 此功能如果设备不支持，将返回801错误码。 - 此功能涉及安全隐私，如需使用，请 联系技术人员 。 #### 开发步骤 1. 导入模块。 import { userStatus } from '@kit.MultimodalAwarenessKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 定义回调函数，监听年龄群组检测结果变化。 let callback : Callback<userStatus.UserClassification> = (data : userStatus.UserClassification) => { console.info('callback succeeded, ageGroup:' + d"
+    },
+    {
+      "path": "references/获取用户动作开发指导.md",
+      "title": "获取用户动作开发指导",
+      "snippet": "当应用需要获取用户动作时，可以调用motion模块，例如判断用户当前是用左手还是右手操作设备屏幕。 详细的接口介绍请参考 @ohos.multimodalAwareness.motion (动作感知能力) 。 从API version 15开始，支持获取操作手状态。从API version 20开始，支持获取握持手状态。 #### 获取操作手状态开发指导 #### 接口说明 #### 需要权限 使用motion模块获取用户操作手时，需要权限：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE，具体申请方式请参考 声明权限 。 \"requestPermissions\":[ { \"name\" : \"ohos.permission.ACTIVITY_MOTION\" }, { \"name\" : \"ohos.permission.DETECT_GESTURE\" } ] #### 约束与限制 - 此功能如果设备不支持，将返回801错误码。 - 指关节操作不属于使用手操作场景。 - 窗口旋转场景，多指同时操作场景不支持。 - 能力有效范围：不包含距离屏幕边缘8mm内区域。 - 结果上报条件：首次订阅或切换操作手后，连续点数次触发。 - 触控响应说明：屏幕四周边缘8mm范围内不支持触控响应。 #### 开发步骤 1. 导"
+    },
+    {
+      "path": "references/记忆链接开发指导.md",
+      "title": "记忆链接开发指导",
+      "snippet": "MetadataBinding（记忆链接）指由第三方应用提供 鸿蒙App Linking链接 ，系统将当前用户浏览的内容与鸿蒙App Linking链接进行关联并保存的功能。 详细的接口介绍请参考 @ohos.multimodalAwareness.metadataBinding (记忆链接) 。 #### 场景介绍 第三方应用可使用记忆链接功能，将鸿蒙App Linking链接映射到调用接口的系统应用或服务。例如，用户在【电商应用】中浏览某个商品时，截图保存了该商品的图片，系统将记录图片与【电商应用】提供的鸿蒙App Linking链接的映射关系。当用户再次浏览该图片时，系统会提醒用户是否需要返回【电商应用】查看商品详情。 #### 演示示例 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b8/v3/jYzjdLmNSheOoQt03uT68g/zh-cn_image_0000002573974395.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111225Z&HW-CC-Expire=86400&HW-CC-Sign=EDC9DD5DCEBC608A70BF5B12348FFA881AC7E0DA79AED291696DF092A"
+    },
+    {
+      "path": "references/设备状态感知开发指导.md",
+      "title": "设备状态感知开发指导",
+      "snippet": "DeviceStatus（设备状态感知）模块提供设备状态感知能力，可以获取到设备的信息，例如：获取设备静止姿态感知状态（支架态）。 详细的接口介绍请参考 @ohos.multimodalAwareness.deviceStatus (设备状态感知) 。 #### 基本概念 在进行设备状态感知模块的使用前，开发者应了解以下基本概念： - 支架态 设备进入支架态指设备静止，且屏幕与水平面角度处于45度-135度。折叠屏手机需处于折叠状态或者完全展开状态。 #### 获取设备静止姿态感知状态（支架态）开发指导 #### 场景介绍 开发过程中，需要订阅设备静止姿态（支架态）感知，并且通过订阅时传入的回调函数来获取到当前的状态值。 从API version 18开始，支持获取设备静止姿态（支架态）。 #### 约束与限制 设备需要支持加速度计。 #### 接口说明 #### 开发步骤 1. 导入模块。 import { deviceStatus } from '@kit.MultimodalAwarenessKit'; 2. 订阅设备静止姿态（支架态）感知事件。 try { deviceStatus.on('steadyStandingDetect', (data:deviceStatus.SteadyStandingStatus) => { console.info('succeed to"
+    }
+  ]
+}

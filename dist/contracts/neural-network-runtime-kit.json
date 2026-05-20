@@ -1,0 +1,111 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "neural-network-runtime-kit",
+  "source_path": "skills/neural-network-runtime-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:57:19.291Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "NN Runtime",
+      "跨芯片推理",
+      "AI推理运行时",
+      "硬件加速",
+      "如何将AI推理框架对接到NNRt实现跨硬件推理？",
+      "如何使用NNRt的构图接口构造AI模型？",
+      "如何在指定AI加速芯片上编译和执行模型推理？",
+      "如何使用离线模型文件进行推理以加快加载速度？",
+      "如何设置模型缓存以加速重复模型的编译过程？",
+      "如何配置推理的性能模式、优先级和FP16精度？",
+      "如何查询和管理NNRt对接的AI硬件设备？",
+      "如何使用共享内存实现推理数据的零拷贝？",
+      "当需要将AI推理框架对接到HarmonyOS的AI加速硬件（NPU）上执行模型推理时使用本Kit",
+      "NNRt提供统一的Native接口，让AI推理框架无需关心底层硬件差异，实现跨芯片推理计算",
+      "开发者可以按照模型构造、模型编译、推理执行三个阶段完成开发流程",
+      "当需要直接使用离线模型在特定AI硬件上执行推理时也可使用本Kit",
+      "通过离线模型编译接口传入硬件厂商提供的离线模型文件，可以在特定AI硬件上快速加载和执行推理，适合对模型加载速度要求较高的场景",
+      "接入 NNRt 让模型在 NPU/GPU/CPU 上统一执行 / Integrate NNRt to run models uniformly on NPU/GPU/CPU",
+      "加载离线 AI 模型文件并在端侧完成推理 / Load an offline AI model file and perform on-device inference",
+      "编译神经网络模型并缓存编译结果提升二次启动速度 / Compile a neural network model and cache artifacts to speed up subsequent launches",
+      "为图像分类或目标检测接入硬件加速推理 / Add hardware-accelerated inference for image classification or object detection",
+      "用共享内存传递输入输出张量减少数据拷贝 / Pass input and output tensors with shared memory to reduce data copying",
+      "设置推理性能模式、功耗策略和 FP16 精度 / Configure inference performance mode, power policy, and FP16 precision",
+      "指定在某个 AI 加速设备上运行模型 / Run a model on a specific AI accelerator device",
+      "查询设备支持的 AI 计算后端并选择可用硬件 / Query supported AI compute backends and choose available hardware",
+      "构建自定义计算图并执行端侧神经网络推理 / Build a custom computation graph and execute on-device neural network inference",
+      "让应用里的 OCR、语音或视觉模型跨芯片运行 / Make OCR, speech, or vision models run across different chips",
+      "管理模型输入输出张量和推理会话生命周期 / Manage model input-output tensors and the inference session lifecycle",
+      "为重复推理任务复用已编译模型减少初始化耗时 / Reuse compiled models for repeated inference tasks to reduce initialization time"
+    ],
+    "do_not_use_when": [
+      "需求是训练模型、进行昇腾AI计算开发或使用CANN算子/图引擎能力，而不是通过HarmonyOS NNRt做设备侧推理；应改用 cann-kit / The task is model training, Ascend AI computing, or using CANN operator/graph-engine capabilities rather than HarmonyOS NNRt on-device inference; use cann-kit instead",
+      "只需要加载并运行MindSpore Lite模型，无需直接管理NNRt构图、编译、设备或缓存细节；应优先用 mindspore-lite-kit / You only need to load and run MindSpore Lite models and do not need direct NNRt graph, compilation, device, or cache control; prefer mindspore-lite-kit",
+      "目标是实现语音识别、语音合成、唤醒或音频语义能力，而不是搭建底层NPU推理运行时；应改用 speech-kit 或 core-speech-kit / The goal is speech recognition, synthesis, wakeup, or audio semantic features rather than building a low-level NPU inference runtime; use speech-kit or core-speech-kit instead",
+      "目标是图像分类、检测、OCR、人脸或视频分析等现成视觉AI能力，而不是接入底层神经网络运行时；应改用 vision-kit 或 core-vision-kit / The goal is ready-made visual AI features such as classification, detection, OCR, face, or video analysis rather than integrating a low-level neural runtime; use vision-kit or core-vision-kit instead",
+      "需求是文本分类、分词、翻译、对话理解等自然语言能力，而不是执行自定义NPU推理图；应改用 natural-language-kit / The need is natural language capabilities such as text classification, tokenization, translation, or dialog understanding rather than executing a custom NPU inference graph; use natural-language-kit instead",
+      "需求是多模态感知融合或高级场景理解，而不是单独对接神经网络硬件推理接口；应改用 multimodal-awareness-kit / The need is multimodal perception fusion or high-level scene understanding rather than directly integrating neural hardware inference APIs; use multimodal-awareness-kit instead"
+    ],
+    "preconditions": [
+      "目标设备与HarmonyOS版本已提供Neural Network Runtime能力，且设备实际支持NPU/相关AI加速硬件 / The target device and HarmonyOS version provide Neural Network Runtime capability, and the device actually supports an NPU or relevant AI acceleration hardware",
+      "工程可使用Native/C接口进行开发，并已正确链接NNRt相关头文件与库 / The project can use Native/C APIs and has correctly linked the NNRt headers and libraries",
+      "待执行的模型或离线模型格式与目标硬件及NNRt支持范围兼容，所需算子在支持列表内 / The model or offline model to run is compatible with the target hardware and NNRt support scope, and its required operators are within the supported set",
+      "如果使用模型缓存、离线模型或共享内存，应用已具备对应文件路径与内存资源的可访问性 / If model cache, offline models, or shared memory are used, the app has access to the required file paths and memory resources"
+    ],
+    "inputs": [
+      "模型图定义或NNRt构图参数 / model graph definition or NNRt graph-building parameters",
+      "离线模型文件路径或模型缓存文件路径 / offline model file path or model cache file path",
+      "输入张量数据及其维度、数据类型、布局信息 / input tensor data with shapes, data types, and layout information",
+      "设备选择、性能模式、优先级、FP16等编译与执行配置 / device selection, performance mode, priority, FP16, and other compilation/execution options"
+    ],
+    "outputs": [
+      "概述",
+      "开发指导"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已接入NNRt Native接口以创建/加载模型并执行推理流程 / The code integrates NNRt native APIs to create/load a model and execute an inference flow",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show NNRt native API usage for model creation/loading plus inference execution, rather than only high-level AI service calls?"
+      },
+      {
+        "statement": "实现中明确配置或处理了编译/执行阶段的关键参数或设备选择逻辑 / The implementation explicitly configures or handles key compile/execution parameters or device selection logic",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits include explicit handling of runtime compilation/execution options such as device choice, performance mode, priority, FP16, or similar NNRt settings?"
+      },
+      {
+        "statement": "推理输入输出张量或共享内存数据通路已被正确接线到NNRt执行过程 / Inference input/output tensors or a shared-memory data path are correctly wired into the NNRt execution process",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there a clear data path from prepared input buffers/tensors into NNRt execution and retrieval or handling of outputs?"
+      },
+      {
+        "statement": "若场景涉及离线模型或缓存，代码已体现相应的加载、保存或复用逻辑 / If the scenario involves offline models or caching, the code includes the corresponding load, save, or reuse logic",
+        "verifier": "model_judge",
+        "judge_prompt": "If the edits mention offline models or caching, do they actually implement load/save/reuse handling for those artifacts?"
+      }
+    ],
+    "overlaps_with": [
+      "cann-kit",
+      "mindspore-lite-kit",
+      "core-speech-kit",
+      "core-vision-kit",
+      "natural-language-kit",
+      "speech-kit",
+      "vision-kit",
+      "multimodal-awareness-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

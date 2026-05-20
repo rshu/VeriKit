@@ -1,0 +1,20 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "ringtone-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:29.145Z"
+  },
+  "references": [
+    {
+      "path": "references/Ringtone Kit简介.md",
+      "title": "Ringtone Kit简介",
+      "snippet": "Ringtone Kit（铃声服务）是一个用于设置铃声的工具库。通过使用Ringtone Kit，开发者可以在HarmonyOS应用中提供铃声设置的功能，为用户提供简单一致、安全高品质的铃声设置体验。 #### 场景介绍 Ringtone Kit支持将音频文件设置成多种铃声类型，满足各类铃声需求场景。 - 多种铃声类型：可设置来电铃声、通知铃声、信息铃声、闹钟铃声。 - 支持双卡铃声：可对双卡分别设置不同来电铃声和信息铃声。 - 铃声快捷管理：点击我的铃声按钮快速跳转“设置-声音与振动”管理铃声。 铃声设置组件效果图： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3a/v3/X40qblI2QKG38hpgRJuFCw/zh-cn_image_0000002573974531.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111349Z&HW-CC-Expire=86400&HW-CC-Sign=9DEA51FED04A66EEC51C9D07B7C0929A671FD4F3C484A2587897D12A180EFD92) #### 约束与限制 #### 支持的国家/地区 当前仅支持在中国境内（香港特别行政区、澳门特别行政区、中国台"
+    },
+    {
+      "path": "references/设置铃声.md",
+      "title": "设置铃声",
+      "snippet": "1. 导入ringtone模块和相关公共模块。 import { common } from '@kit.AbilityKit'; import { ringtone } from '@kit.RingtoneKit' import { uniformTypeDescriptor } from '@kit.ArkData'; import { JSON } from '@kit.ArkTS'; import { hilog } from '@kit.PerformanceAnalysisKit'; const APP_TAG = \"Msc_Demo\" const DOMAIN = 0x0001 2. 调用 ringtone.getSupportedRingtoneTypes 接口，查询支持设置的铃声类型。 let ringtoneTypeList: Array<ringtone.RingtoneType> = ringtone.getSupportedRingtoneTypes(); hilog.info(DOMAIN, APP_TAG,'getSupportedRingtoneTypes : ' + JSON.stringify(ringtoneTypeList)); 3. 调用 ringtone.getSupportedDataTypes 接口，查询支持的数据类型。当前支持格式"
+    }
+  ]
+}

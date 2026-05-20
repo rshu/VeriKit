@@ -1,0 +1,94 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "file-manager-service-kit",
+  "source_path": "skills/file-manager-service-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:53:57.758Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "文件管理服务",
+      "回收站",
+      "文件图标",
+      "文件快捷方式",
+      "如何将公共目录文件删除到回收站而非永久删除以支持恢复",
+      "如何根据文件类型（文档、图片、视频等）获取对应的文件图标",
+      "如何解析文件快捷方式获取其指向原文件的URI",
+      "当您正在开发文件管理类应用，需要提供将文件移入回收站而非永久删除的安全删除功能时，应使用 File Manager Service Kit 的删除文件到回收站能力",
+      "这适用于文件浏览器、文件清理工具等需要管理公共目录文件的应用场景",
+      "当您的应用需要根据文件扩展名或 MIME 类型展示对应的文件图标，或需要解析快捷方式文件以获取其指向的原文件 URI 时，也应使用该 Kit 提供的相应功能",
+      "这常见于文件管理器、桌面启动器、文档查看器等应用",
+      "实现文件删除后进入系统回收站并支持后续恢复 / Move deleted files to the system recycle bin and allow later recovery",
+      "把公共目录里的照片或文档安全删除到回收站 / Safely delete photos or documents in public directories to the recycle bin",
+      "在文件列表中按文件类型显示系统文件图标 / Show system file icons by file type in a file list",
+      "根据扩展名或 MIME 类型获取对应的文件缩略图标识 / Get the matching file icon indicator by extension or MIME type",
+      "为文档、压缩包、音视频等文件展示统一图标 / Display consistent icons for documents, archives, audio, and video files",
+      "解析桌面快捷方式文件并拿到原始文件的 URI / Resolve a desktop shortcut file and get the original file URI",
+      "读取快捷方式指向的目标路径用于打开原文件 / Read the target path referenced by a shortcut to open the original file",
+      "接入系统回收站删除能力替代直接永久删除 / Integrate system recycle-bin deletion instead of direct permanent delete",
+      "在文件管理器中为每个条目加载对应的系统图标 / Load the corresponding system icon for each item in a file manager",
+      "处理 shortcut 文件并跳转到它关联的源文件 / Handle shortcut files and navigate to their linked source files",
+      "给下载目录和共享目录文件提供可恢复删除功能 / Provide recoverable deletion for files in Downloads and shared directories",
+      "用系统文件类型图标优化文档浏览器的文件展示 / Improve a document browser by using system file-type icons"
+    ],
+    "do_not_use_when": [
+      "需求是读写、复制、移动、枚举或监听应用沙箱/普通文件本身，而不是回收站、文件类型图标或快捷方式解析；应改用 Core File Kit / If the task is to read, write, copy, move, enumerate, or watch regular app-sandbox/common files themselves rather than recycle-bin deletion, file-type icons, or shortcut resolution, use Core File Kit instead",
+      "需求是对文件内容做预览、打开文档/图片/视频或生成预览界面，而不是仅获取文件类型图标；应改用 Preview Kit / If the task is to preview file contents, open documents/images/videos, or provide a preview UI rather than only fetch a file-type icon, use Preview Kit instead",
+      "需求是对文件或数据进行加密、密钥管理、访问控制或隐私保护，而不是文件管理服务；应改用 Data Protection Kit / If the task is to encrypt files/data, manage keys, enforce access control, or provide privacy protection rather than file-management services, use Data Protection Kit instead",
+      "需求是管理应用资源资产、下载/分发素材或资源包，而不是处理公共目录文件的回收站、图标或快捷方式；应改用 Asset Store Kit / If the task is to manage app assets, download/distribute media packages, or handle resource bundles rather than recycle-bin, icon, or shortcut handling for public-directory files, use Asset Store Kit instead",
+      "需求是结构化数据存储、查询或关系型/对象型数据管理，而不是文件管理服务；应改用 ArkData / If the task is structured data storage, querying, or relational/object data management rather than file-management services, use ArkData instead"
+    ],
+    "preconditions": [
+      "设备与系统版本支持 File Manager Service Kit，且服务区域受限于中国境内（不含港澳台） / The device and OS version support File Manager Service Kit, and the service is region-limited to mainland China",
+      "待处理文件位于该能力支持的公共目录，且应用对目标文件具有可访问权限 / The target file is in a supported public directory, and the app has access permission to that file",
+      "工程已引入并可使用 File Manager Service Kit 对应 SDK 能力 / The project has added and can access the File Manager Service Kit SDK capability"
+    ],
+    "inputs": [
+      "目标文件URI或文件路径 / target file URI or file path",
+      "文件类型信息（扩展名或MIME类型） / file type information (extension or MIME type)",
+      "快捷方式文件URI / shortcut file URI"
+    ],
+    "outputs": [
+      "Kit 简介",
+      "文件管理功能"
+    ],
+    "postconditions": [
+      {
+        "statement": "实现了将公共目录文件移至回收站的调用，而非直接永久删除 / A call is implemented to move a public-directory file to the recycle bin rather than permanently deleting it",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show the agent using File Manager Service Kit APIs or code paths for recycle-bin deletion of a public-directory file, instead of direct permanent deletion logic?"
+      },
+      {
+        "statement": "实现了根据文件类型获取图标资源的调用 / A call is implemented to obtain an icon resource based on file type",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show code that uses File Manager Service Kit to retrieve a file icon from file type information such as extension or MIME type?"
+      },
+      {
+        "statement": "实现了从快捷方式文件解析原文件URI的调用 / A call is implemented to resolve the original file URI from a shortcut file",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show code that uses File Manager Service Kit to parse a shortcut file and obtain the original target file URI?"
+      }
+    ],
+    "overlaps_with": [
+      "arkdata",
+      "asset-store-kit",
+      "core-file-kit",
+      "data-protection-kit",
+      "preview-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

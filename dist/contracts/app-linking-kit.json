@@ -1,0 +1,102 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "app-linking-kit",
+  "source_path": "skills/app-linking-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:48:48.453Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "应用链接",
+      "延时链接",
+      "通用链接",
+      "AppGallery跳转",
+      "如何通过App Linking应用链接拉起指定应用并传递参数",
+      "如何实现应用未安装时直达应用市场下载详情页",
+      "如何使用延迟链接在用户安装应用后自动跳转到原始目标页面",
+      "如何创建聚合链接实现跨平台统一链接分发",
+      "如何开通App Linking服务并完成基本准备工作",
+      "如何实现扫码直达、社交分享、沉默唤醒、广告引流等链接跳转场景",
+      "当开发者需要实现跨应用或跨平台的链接跳转能力时，应使用App Linking Kit",
+      "如果你的应用需要通过链接从浏览器、短信、邮件或社交媒体直接拉起应用内指定页面，App Linking Kit提供了标准化的App Linking链接方案",
+      "适用于内容分享、营销推广、广告引流等需要通过链接引导用户进入应用指定页面的场景",
+      "当开发者需要处理应用未安装时的链接跳转场景时，应使用App Linking Kit的直达应用市场能力和延迟链接能力",
+      "如果希望未安装应用的用户点击链接后直接跳转应用市场下载，并在安装后自动跳转到原始目标页面，App Linking Kit提供了完整的解决方案",
+      "当你需要通过一条链接适配多个平台和安装状态时，应使用App Linking Kit的聚合链接能力，实现跨平台的统一链接分发",
+      "配置深度链接把用户直接带到商品详情页 / Configure deep links to open the product detail page directly",
+      "生成可分享的活动推广链接并回流到应用内指定页面 / Generate shareable campaign links that route back to a specific in-app page",
+      "实现从短信邮件社媒链接一键打开应用内容 / Open app content from links in SMS, email, or social media",
+      "接入延迟深链让新用户安装后继续原来的落地页 / Integrate deferred deep links so new users continue to the original landing page after install",
+      "未安装应用时跳转到 AppGallery 下载并安装后回到目标页面 / Redirect to AppGallery when the app is not installed and return to the target page after install",
+      "为扫码海报或线下物料创建拉起应用的短链接 / Create short links for QR codes or offline posters that open the app",
+      "给邀请拉新或裂变分享链接附带渠道参数 / Attach campaign or referral parameters to invite and growth-share links",
+      "解析打开应用时携带的链接参数并跳转对应页面 / Parse incoming link parameters on app launch and navigate to the right page",
+      "统一管理 Android iOS Web 的同一套落地链接 / Use one unified landing link across Android, iOS, and web",
+      "实现广告投放链接点击后直达应用内活动会场 / Route ad-click links directly to an in-app campaign page",
+      "为内容文章视频商品生成可被外部打开的链接入口 / Create externally openable links for articles, videos, or products",
+      "接入通用链接让浏览器中的链接优先唤起应用 / Integrate universal links so browser links open the app first"
+    ],
+    "do_not_use_when": [
+      "需求只是打开应用市场详情页、上架分发或处理应用市场运营能力，且不涉及深度链接或延迟链接时，应改用 appgallery-kit / If the need is only to open AppGallery detail pages, app distribution, or marketplace operations without deep links or deferred links, use appgallery-kit instead",
+      "需求是广告投放、广告归因或广告变现场景，本Kit只负责链接跳转时，应改用 ads-kit / If the need is ad serving, ad attribution, or monetization and this kit would only handle a link hop, use ads-kit instead",
+      "需求是系统分享面板、分享内容到其他应用，而不是生成或解析可唤起应用的营销链接时，应改用 share-kit / If the need is invoking the system share sheet or sharing content to other apps rather than generating or handling app-invoking marketing links, use share-kit instead",
+      "需求核心是扫码识别二维码或条码内容，本Kit不负责扫描采集时，应改用 scan-kit / If the core need is scanning QR codes or barcodes and not handling the resulting deep link, use scan-kit instead",
+      "需求是基于时空、出行、设备状态等上下文触发服务卡片或场景联动，而非通过链接拉起应用时，应改用 scenario-fusion-kit / If the need is context-driven cards or scenario orchestration based on time, location, travel, or device state rather than link-based app launching, use scenario-fusion-kit instead"
+    ],
+    "preconditions": [
+      "已在AppGallery Connect中开通并配置App Linking服务 / App Linking service has been enabled and configured in AppGallery Connect",
+      "工程已集成对应App Linking SDK依赖且项目签名配置正确 / The project has integrated the required App Linking SDK dependency and has correct signing configuration",
+      "应用已完成与链接域名、URI前缀或跳转规则相关的关联配置 / The app has completed association configuration for link domains, URI prefixes, or routing rules",
+      "若依赖联网解析或获取延迟链接，设备网络可用 / Device network is available if online resolution or deferred link retrieval is required"
+    ],
+    "inputs": [
+      "应用链接或聚合链接URL / app link or unified link URL",
+      "目标页面路由与业务参数 / target page route and business parameters",
+      "未安装时的回退地址或应用市场目标信息 / fallback URL or AppGallery target information for uninstalled cases",
+      "延迟链接场景的安装后拉起参数 / post-install launch parameters for deferred deep link scenarios"
+    ],
+    "outputs": [
+      "Kit简介与配置",
+      "链接跳转能力"
+    ],
+    "postconditions": [
+      {
+        "statement": "已添加用于接收和处理App Linking链接的代码路径，并将链接参数映射到应用内目标页面 / A code path has been added to receive and handle App Linking URLs and map link parameters to an in-app destination",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code/config so the app can receive an App Linking URL or intent/want and route its parameters to a specific in-app page?"
+      },
+      {
+        "statement": "已为未安装场景配置回退处理，如网页、应用市场详情页或聚合链接目标 / Fallback handling for uninstalled cases has been configured, such as a web page, AppGallery detail page, or unified-link target",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits configure or reference a fallback destination for users without the app installed, such as a web URL, AppGallery page, or unified-link behavior?"
+      },
+      {
+        "statement": "若实现延迟链接，已添加安装后获取原始链接参数并继续跳转的处理逻辑 / If deferred deep linking is implemented, logic has been added to retrieve original link parameters after installation and continue navigation",
+        "verifier": "model_judge",
+        "judge_prompt": "If deferred deep linking is part of the task, do the edits include logic to fetch deferred link data after install and navigate using those recovered parameters?"
+      }
+    ],
+    "overlaps_with": [
+      "appgallery-kit",
+      "ads-kit",
+      "game-service-kit",
+      "share-kit",
+      "scan-kit",
+      "scenario-fusion-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "distributed-service-kit",
+  "source_path": "skills/distributed-service-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:53:13.880Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "分布式",
+      "跨设备",
+      "设备管理",
+      "UIAbility连接",
+      "多设备协同",
+      "如何发现周边设备并进行设备认证和绑定？",
+      "如何查询已认证设备的信息和监听设备状态变化？",
+      "如何跨设备拉起UIAbility实现应用间数据交互？",
+      "如何在设备间传输信息、字节流、图片和传输流？",
+      "如何使用增强连接能力实现更稳定的蓝牙连接？",
+      "如何在航空、远洋等网络受限场景下实现设备间通信？",
+      "如何申请和使用分布式设备管理所需的权限？",
+      "当你的应用需要发现、认证和管理周边设备时使用分布式设备管理能力",
+      "典型场景包括多设备协同办公、跨设备文件分享、智能家居设备管理等",
+      "开发者通过设备发现和认证后，可以查询设备信息和监听设备状态变化",
+      "当你的应用需要跨设备连接UIAbility实现应用间协同时使用跨设备连接能力",
+      "设备间登录同账号并组网成功后，可以跨设备拉起同应用进行数据交互",
+      "当需要在不稳定的蓝牙环境下维持设备连接时使用增强连接能力，适用于网络受限的特殊场景",
+      "发现附近设备并完成配对绑定 / Discover nearby devices and pair or bind them",
+      "获取已连接设备列表并监听上下线状态 / Get the list of connected devices and listen for online or offline status",
+      "在手机和平板之间同步会话数据 / Sync session data between phone and tablet",
+      "跨设备启动目标端页面并传递参数 / Launch a page on another device and pass parameters",
+      "把图片文件从本机发送到另一台设备 / Send image files from this device to another device",
+      "在设备间传输消息、字节数组和数据流 / Transfer messages, byte arrays, and data streams across devices",
+      "接入分布式设备管理实现设备发现认证和管理 / Integrate distributed device management for discovery, authentication, and device control",
+      "实现应用内的跨端接续和多设备协同操作 / Implement cross-device continuation and multi-device collaboration in the app",
+      "监听设备连接变化并在界面上显示设备状态 / Monitor device connection changes and show device status in the UI",
+      "通过 UIAbility 跨设备拉起应用功能 / Invoke app features across devices through UIAbility",
+      "在弱网或受限网络环境下保持设备间通信 / Keep device-to-device communication working under weak or restricted networks",
+      "使用增强连接能力提升蓝牙跨设备连接稳定性 / Use enhanced connection capability to improve Bluetooth cross-device stability"
+    ],
+    "do_not_use_when": [
+      "需求是云侧账号、数据库、云存储或云函数等云服务集成，应改用 cloud-foundation-kit / The need is for cloud services integration such as cloud account, database, storage, or functions; use cloud-foundation-kit instead",
+      "协同发生在应用内服务编排、意图协作或原子化服务流转，而不是发现认证周边设备或跨设备拉起同应用UIAbility，应改用 service-collaboration-kit / The collaboration is about in-app service orchestration, intent collaboration, or atomic service handoff rather than nearby device discovery/authentication or cross-device launching of the same app's UIAbility; use service-collaboration-kit instead",
+      "目标是与远端云资源通信而非同账号已组网设备之间的分布式协同，应改用 cloud-foundation-kit / The goal is to communicate with remote cloud resources rather than perform distributed collaboration between same-account networked devices; use cloud-foundation-kit instead"
+    ],
+    "preconditions": [
+      "应用已在 module.json5 中声明所需分布式相关权限，且能力在目标设备与 API 版本上可用 / Required distributed-related permissions are declared in module.json5, and the capability is available on the target devices and API version",
+      "涉及设备发现、认证或跨设备连接时，相关设备已开启分布式能力并满足系统安全策略 / For device discovery, authentication, or cross-device connection, the involved devices have distributed capabilities enabled and satisfy system security policies",
+      "使用跨设备连接 UIAbility 时，设备间已登录同一账号并完成组网 / When using cross-device UIAbility connection, the devices are signed in to the same account and have successfully formed a network",
+      "使用增强连接时，蓝牙及相关系统连接能力已开启并可用 / When using enhanced connection, Bluetooth and related system connectivity capabilities are enabled and available"
+    ],
+    "inputs": [
+      "设备发现或认证参数 / device discovery or authentication parameters",
+      "目标设备标识或设备信息 / target device identifier or device information",
+      "跨设备拉起所需的 UIAbility/Want 参数 / UIAbility/Want parameters for cross-device launch",
+      "待传输的数据内容（信息、字节流、图片或传输流） / data payload to transfer (message, byte stream, image, or transport stream)"
+    ],
+    "outputs": [
+      "简介与概述",
+      "设备管理",
+      "跨设备协同",
+      "增强连接"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已接入分布式设备发现、认证、查询或状态监听相关调用之一 / The code integrates at least one distributed device discovery, authentication, query, or state-listening call",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code/config that clearly uses distributed device management APIs for discovering, authenticating, querying, or listening to nearby devices?"
+      },
+      {
+        "statement": "若实现跨设备协同，代码已新增或修改跨设备连接同应用 UIAbility 的调用与参数传递逻辑 / If cross-device collaboration is implemented, the code adds or updates calls and parameter passing logic for connecting to or launching the same app's UIAbility on another device",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task involves cross-device collaboration, do the edits clearly implement launching or connecting to the same app's UIAbility on another device and pass data through the appropriate parameters?"
+      },
+      {
+        "statement": "若使用增强连接，代码已体现增强蓝牙连接相关配置或调用以提升连接稳定性 / If enhanced connection is used, the code reflects enhanced Bluetooth connection configuration or API usage to improve link stability",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task mentions enhanced connection or unstable Bluetooth scenarios, do the edits clearly add configuration or API usage for the enhanced connection capability?"
+      }
+    ],
+    "overlaps_with": [
+      "cloud-foundation-kit",
+      "service-collaboration-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

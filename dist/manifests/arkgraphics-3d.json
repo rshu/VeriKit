@@ -1,0 +1,50 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "arkgraphics-3d",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:27.954Z"
+  },
+  "references": [
+    {
+      "path": "references/.shader资源文件格式要求.md",
+      "title": ".shader资源文件格式要求",
+      "snippet": "ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时需符合JSON语法要求。文件包含以下部分： #### compatibility_info - 类型：object - \"compatibility_info\": { \"version\": \"22.00\", \"type\": \"shader\" } #### vert - 类型：string - 说明：指定使用该shader的DrawCall中使用的vertex shader文件。 - \"vert\": \"3dshaders://shader/core3d_dm_fw.vert.spv\" - \"vert\": \"appshaders://yourDir/yourShader.vert.spv\" #### frag - 类型：string - 说明：指定使用该shader的DrawCall中使用的fragment shader文件。 - \"frag\": \"3dshaders://shader/core3d_dm_fw.frag.spv\" - \"frag\": \"appshaders://yourDir/yourShader.frag.spv\" #### vertexInputDeclaration - 类型：string - 说明：指定输入vertex数据中的attributes排布方式。 - 当前"
+    },
+    {
+      "path": "references/ArkGraphics 3D场景动画控制以及管理.md",
+      "title": "ArkGraphics 3D场景动画控制以及管理",
+      "snippet": "动画（animation）：动画是3D场景中重要的资源类型，用于控制场景中各种元素的运动。比如想要场景中的人物进行走路这个动作，每帧计算人物每一个关节的旋转角并进行设置是难以实现的。所以在完成类似的要求时，3D场景资源的制作者会将动画制作好，在模型文件中保存动画的关键帧数据以及关键帧间的插值器类型。 ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活地控制动画的状态，达到预期的渲染效果。 #### 开发步骤 1. 导入相关模块。 在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建和控制3D场景、相机以及动画资源。 import { Animation, Camera, Scene, SceneResourceFactory } from '@kit.ArkGraphics3D'; 2. 加载场景资源。 调用Scene.load()方法从应用的resources/rawfile/目录加载.glb（或.gltf）模型，并在加载完成后获取Scene对象。 Scene.load($rawfile('gltf/BrainStem/glTF/BrainStem.glb')) .then(async (result: Scene) => { this.scene = result; let rf: SceneResourceFactory = this.s"
+    },
+    {
+      "path": "references/ArkGraphics 3D场景搭建以及管理.md",
+      "title": "ArkGraphics 3D场景搭建以及管理",
+      "snippet": "一个3D场景通常由光源、相机、模型三个关键部分组成。 - 光源：为整个3D场景提供光照，使得3D场景中的模型变得可见。与真实物理场景一致，没有光源场景将变得一片漆黑，得到的渲染结果也就是全黑色。 - 相机：为3D场景提供一个观察者。3D渲染本质上是从一个角度观察3D场景并投影到2D图片上。没有相机就没有3D场景的观察者，也就不会得到渲染结果。 - 模型：3D场景中的模型用于描述对象的形状、结构和外观，一般具有网格、材质、纹理、动画等属性。一些常见的3D模型格式有OBJ、FBX、glTF等。 模型加载后，可以通过ArkUI的 Component3D 渲染组件呈现给用户，Component3D负责将ArkGraphics 3D场景渲染到界面中。在自定义场景模式下，开发者可以使用ArkTS API创建并管理相机和光源节点，从而设置合适的观察角度和光照效果；在自动场景模式下，框架会根据模型自动创建基础相机和光照。ArkTS API可通过napi调用AGP中由C++实现的相应能力。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4c/v3/Gya85nYaRFKmWf2tm4CRrw/zh-cn_image_0000002573854649.png?HW-CC-KV=V1"
+    },
+    {
+      "path": "references/ArkGraphics 3D简介.md",
+      "title": "ArkGraphics 3D简介",
+      "snippet": "ArkGraphics 3D（方舟3D图形）基于轻量级的3D引擎以及渲染管线为开发者提供基础3D场景绘制能力，供开发者便捷、高效地构建3D场景并完成渲染。 ArkGraphics 3D以自定义场景模式为核心能力，支持开发者自行构建和管理Scene、Camera、Light等节点，从而对3D场景的渲染效果与交互行为进行完全控制。同时，为了便于快速预览和展示模型，也提供自动场景模式，允许开发者直接加载glTF（.gltf文件和.glb文件）模型，由框架自动创建基础相机、光源及交互控制。 #### 功能介绍 - 提供加载并解析标准glTF（GL Transmission Format）模型（.gltf文件和.glb文件）的能力，支持开发者将glTF模型文件置于应用文件沙盒中，并通过ArkGraphics 3D提供的异步接口完成模型的加载以及渲染。具体可见Scene (场景管理)，glTF相关介绍请参见glTF-Specification。 - 提供自定义灯光（Light）、相机（Camera）节点以及通用节点（Node）的能力，可支撑开发者自定义场景灯光、渲染视角等信息，同时支撑用户动态地调整场景树结构以及节点属性进而调整3D场景。具体可见Scene (场景管理)以及SceneNode (节点管理)。 - 提供创建图片（Image）、材质（Material）、环境（Environment"
+    },
+    {
+      "path": "references/ArkGraphics Editor插件及编辑器的下载与安装.md",
+      "title": "ArkGraphics Editor插件及编辑器的下载与安装",
+      "snippet": "3D编辑器ArkGraphics Editor提供3D模型、动画、ShaderGraph等核心编辑能力，可供设计师、开发者快速接入使用。支持通过拖拽等操作，利用3D编辑器可视化能力，完成3D场景开发，3D设计效果所见即所得。无需代码编写，支持从PC到移动端设备的快速流转， 可大幅提升3D应用开发效率。 #### 主要功能 ArkGraphics Editor编辑器当前主要支持功能如下： - 编辑器工程的新建、打开、保存功能。 - 支持导入gltf格式的3D模型和image图片。 - 支持相机新增、修改、删除。 - 支持3D场景里模型的缩放、移动、旋转等拖动操作。 - 支持3D场景节点新增、修改、删除功能。 - 支持3D场景节点的属性设置，包括位置、颜色，旋转、缩放功能。 - 支持3D模型的动画新增、修改、删除功能。 - 支持3D模型的材质新增、修改、删除功能。 - 支持3D模型的ShaderGraph新增、修改、删除功能。 - 支持环境光的添加和设置。 ArkGraphics Editor插件支持的主要功能如下： - 支持在DevEco中预览3D场景文件(.Scene)。 - 可点击“Open ArkGraphicsEditor”打开编辑器程序编辑3D资源。 #### 插件的安装及编辑器的使用 1. 前往 下载中心 下载最新版本ArkGraphics Editor插件。 2. 点击"
+    },
+    {
+      "path": "references/创建并使用图片资源.md",
+      "title": "创建并使用图片资源",
+      "snippet": "图片（Image）：图片本质上是一个储存信息的二维内存块(buffer)，用于储存3D渲染计算过程需要的相关信息，比如基础色、法线等等。 ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支持用户自定义需要的Image资源。 #### 开发步骤 1. 导入相关模块。 在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建场景、相机、材质、图片等对象。 import { Camera, Environment, Geometry, Image, Material, MaterialType, Scene, SceneResourceFactory, SceneResourceParameters, Shader, ShaderMaterial, EnvironmentBackgroundType } from '@kit.ArkGraphics3D'; 2. 加载场景并设置渲染参数。 调用Scene.load()方法加载.glb或.gltf格式的模型文件，并在加载完成后获取Scene对象。随后构建SceneOptions对象，指定场景及渲染模式，用于后续通过Component3D将场景内容渲染到界面中。 if (this.scene === null) { // Switched from .gltf to .glb; same c"
+    },
+    {
+      "path": "references/创建并使用材质资源.md",
+      "title": "创建并使用材质资源",
+      "snippet": "材质（Material）：材质是用于定义物体表面视觉效果的重要资源。材质决定了物体如何与光线交互，从而影响其最终的渲染效果，如颜色、金属感、粗糙度等外观属性。 ArkGraphics 3D采用基于物理的渲染（PBR, Physically-Based Rendering）模型，其材质实现遵循通用的PBR原理。开发者既可以使用标准材质快速实现真实感效果，也可以通过自定义Shader材质灵活控制渲染逻辑。 #### 基本概念 着色器（Shader）：着色器是GPU上可以执行的一段程序，可以控制GPU执行哪些并行计算操作。AGP引擎提供的默认着色器实现了PBR渲染，开发者只需要指定对应的参数就可以完成不同的PBR渲染。 ArkGraphics 3D支持开发者创建自定义的着色器，开发者可以通过自定义着色器自定义渲染计算过程，完全控制渲染计算流程，比如控制某物体不受某光源的影响、自定义边缘描边、高亮效果等个性化视觉呈现。 着色器通常配合MaterialType.SHADER材质使用，是实现个性化渲染的重要手段。其创建依赖名称及沙箱路径，创建后可绑定至材质上，替代默认的渲染行为。 #### 材质类型（MaterialType） ArkGraphics 3D中的材质类型通过 MaterialType 枚举指定，目前支持以下两种类型： - MaterialType.SHADER：基于Shader（"
+    },
+    {
+      "path": "references/创建并使用环境资源.md",
+      "title": "创建并使用环境资源",
+      "snippet": "环境（Environment）：环境是3D场景背景的一种描述，可以基于图片进行创建。通过将一张图片进行正方体或者球体的映射处理，将图片贴在正方体或者球体上，在3D场景中模拟真实的环境。 ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。 #### 开发步骤 1. 导入相关模块。 在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建场景、相机、材质、图片等对象。 import { Camera, Environment, Geometry, Image, Material, MaterialType, Scene, SceneResourceFactory, SceneResourceParameters, Shader, ShaderMaterial, EnvironmentBackgroundType } from '@kit.ArkGraphics3D'; 2. 加载场景并设置渲染参数。 调用Scene.load()方法加载.glb或.gltf格式的模型文件，并在加载完成后获取Scene对象。随后构建SceneOptions对象，指定场景及渲染模式，用于后续通过Component3D将场景内容渲染到界面中。 if (this.scene === null) { // Switched from .gltf to .glb; same cont"
+    }
+  ]
+}

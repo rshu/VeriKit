@@ -1,0 +1,35 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "calendar-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.293Z"
+  },
+  "references": [
+    {
+      "path": "references/Calendar Kit简介.md",
+      "title": "Calendar Kit简介",
+      "snippet": "Calendar Kit（日历服务）提供日历与日程管理能力，通常是指可以用于访问和操作日历数据的API（应用程序接口）。这些接口允许开发者将其他应用中的工作、生活中与时间相关的日程服务（如出行、餐饮、运动、娱乐等）与系统日历进行集成，从而实现日程管理、事件创建、查询等功能。 #### 能力范围 Calendar Kit包括账户管理和日程管理。 - 创建日历账户。 开发者可以创建属于本应用特有的日历账户，账户创建成功后会返回一个账户id，账户id是数据表自增主键，作为账户的唯一标识符。 - 获取日历账户。 开发者可以获取指定的日历账户信息或者获取当前应用创建的所有日历账户信息。 - 删除日历账户。 开发者可以删除指定的日历账户，日历账户删除后，和该日历账户所关联的全部日程都会被删除。 - 创建日程。 开发者获取到日历账号信息后，可以在获取到的日历账户下创建日程。创建日程时可以设置日程提醒时间，到达日程提醒时间时会有日程提醒通知弹出。 日程创建成功后会返回一个日程id，日程id是数据表自增主键，作为日程的唯一标识符。 - 删除日程。 开发者可以指定日程id进行日程的删除，可以同时删除一条或者多条日程。 - 更新日程。 开发者可以根据日程id对日程信息进行更新，包括更新日程标题、日程地点、日程开始时间、日程结束时间、日程提醒时间等信息。 - 查询日程。 查询日程支持三种方式：根据日程id"
+    },
+    {
+      "path": "references/日历服务实践案例.md",
+      "title": "日历服务实践案例",
+      "snippet": "通过日历服务，开发者可将带有时间属性的事件作为日程写入，并支持通过“ 一键服务 ”功能快速跳转，帮助用户快速直达对应服务，并完成各类信息的归一化管理。各典型场景选择适用的模板，并按照模板格式填写各个字段信息，确保用户体验完整、一致。 写入日历的日程可通过通知中心、桌面卡片以及日历应用内部等多种入口向用户展示。 不同场景下，一键服务按钮出现时机如下： - 桌面卡片、月视图日程列表卡片：日程开始时间前15分钟显示，日程结束时自动隐藏。 - 日程详情：始终显示。 - 日程通知：通知弹出时显示，通知中心内点击对应日程卡片后显示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/96/v3/E32BKVAIST23eDChpu83RQ/zh-cn_image_0000002543374516.png?HW-CC-KV=V1&HW-CC-Date=20260421T111500Z&HW-CC-Expire=86400&HW-CC-Sign=75466EE8AF03F8FF9B79F6FBC5D0BC6D4053F609B0A197C845D43AF71502D542) #### 开发准备 请参考日程管理前三步的 开发步骤 ： 1. 导入相关依赖。 2. 申请权限。使用Cale"
+    },
+    {
+      "path": "references/日历账户管理.md",
+      "title": "日历账户管理",
+      "snippet": "日历账户‌用于存储和管理个人或团队的日程，通过日历账户，用户可以方便地查看、编辑和共享日程信息。 日历管理器 CalendarManager 用于管理日历账户 Calendar 。日历账户主要包含账户信息 CalendarAccount 和配置信息 CalendarConfig 。 开发者可以创建属于应用特有的日历账户，还可以对日历账户进行新增、删除、更新和查询。此外，每个日程 Event 归属于某一个特定的日历账户，可以通过日历账户对该账户下面的日程进行管理，具体相关指导可见 日程管理 。 #### 接口说明 以下是日历账户管理的相关接口，更多详细接口及使用请参考 @ohos.calendarManager 。 #### 开发步骤 1. 导入相关依赖。 import { abilityAccessCtrl, AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { calendarManager } from '@kit.CalendarKit'; import { window } from '@kit"
+    },
+    {
+      "path": "references/日程管理.md",
+      "title": "日程管理",
+      "snippet": "日程指特定的事件或者活动安排，日程管理即对这些事件、活动进行规划和控制，能更有效地利用相关资源、提高生产力和效率，使人们更好地管理时间和任务。 Calendar Kit中的日程 Event 归属于某个对应的日历账户 Calendar ，一个日历账户下可以有多个日程，一个日程只属于一个Calendar。 获取到日历账户对象之后，即可对该账户下的日程进行管理，包括日程的创建、删除、修改、查询等操作。在创建、修改日程时，支持对日程的标题、开始时间、结束时间、日程类型、日程地点、日程提醒时间、日程重复规则等相关信息进行设置，以便进行更丰富更有效的日程管理。 #### 接口说明 以下是日程管理的相关接口，更多详细接口及使用请参考 @ohos.calendarManager 。 #### 开发步骤 1. 导入相关依赖。 import { abilityAccessCtrl, AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { calendarManager } from '@kit.CalendarKit'; i"
+    },
+    {
+      "path": "references/注册并管理一键服务日程.md",
+      "title": "注册并管理一键服务日程",
+      "snippet": "Calendar Kit提供日程一键服务功能，比如一键入会、一键追剧、一键购物、一键查看等。注册日程一键服务后，用户可通过点击对应按钮拉起跳转链接，一步直达服务落地页，方便快捷。 #### 服务器注册（配置一键服务跳转链接） 若需使用“日程一键服务”功能，需要按照以下步骤完成注册。 1. 进入 开发者管理中心 ，登录 企业账号 （暂不支持个人开发者）。企业主账号无需手动添加权限；若使用团队成员账号，请确保使用企业主账号为其添加“小艺开放平台”的管理员权限，具体添加可见下图。 选择团队账号，点击编辑，为对应的账号添加权限。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6a/v3/h4T42M7pRX2VbQnnFSBL-g/zh-cn_image_0000002543214846.png?HW-CC-KV=V1&HW-CC-Date=20260421T111500Z&HW-CC-Expire=86400&HW-CC-Sign=37E2E2EED976E3DF022782F6D3FE19FED464F8310C9B50569DCCF32636B9F0A8) 确认对应的信息后，点击下一步。 ![](https://contentcenter-vali-drcn.db"
+    }
+  ]
+}

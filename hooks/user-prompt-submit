@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+# VeriKit UserPromptSubmit hook for Claude Code.
+#
+# Reads the JSON input Claude Code provides on stdin, extracts the user's
+# prompt text, runs the VeriKit router against it, and emits a JSON object
+# whose `additionalContext` field becomes part of the agent's view for the
+# turn (a <verikit-routing> block: ranked Kits + matched recipe bundle +
+# the top task-relevant reference docs per Kit).
+#
+# Failure modes: this hook MUST NOT block the user's turn. Any failure
+# emits an empty/continue payload so Claude proceeds as if VeriKit wasn't
+# installed.
+
+set -uo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+HOOK_INPUT="$(cat)"
+
+# Extract + codepoint-truncate the prompt (NOT byte-truncate — `head -c`
+# would split a multi-byte CJK char; HarmonyOS prompts are CJK-heavy).
+PROMPT_TRIMMED="$(node -e "
+let buf=''; process.stdin.on('data', c=>buf+=c); process.stdin.on('end', ()=>{
+  try { const o = JSON.parse(buf); process.stdout.write([...(o.prompt || '')].slice(0, 4000).join('')); }
+  catch { process.stdout.write(''); }
+});
+" <<<"$HOOK_INPUT" 2>/dev/null)"
+
+if [ -z "$PROMPT_TRIMMED" ]; then
+  echo '{"continue": true}'
+  exit 0
+fi
+
+# Full VeriKit selection strategy on every prompt:
+#   --top 5      ranked candidate Kits (single-Kit tasks)
+#   --compose    matched curated recipe bundle (multi-Kit features)
+#   --deep       second-stage references for top-1 Kit AND every bundle Kit
+#   --refs 5     top-5 task-relevant reference docs per Kit
+#
+# Prefer the built bundle (dist/verikit-cli.js — plain `node`, fully
+# self-contained, the only form that survives a copy to another machine).
+# Fall back to this plugin's own TS source via `npx tsx` on a dev checkout
+# that hasn't run `npm run build`. Timeout via the node wrapper (GNU
+# `timeout` is absent on macOS).
+TIMEOUT_CLI="${PLUGIN_ROOT}/hooks/run-with-timeout.cjs"
+ROUTER_JSON=""
+if [ -f "${PLUGIN_ROOT}/dist/verikit-cli.js" ]; then
+  ROUTER_JSON="$(node "${TIMEOUT_CLI}" 15000 node "${PLUGIN_ROOT}/dist/verikit-cli.js" \
+    route --task "$PROMPT_TRIMMED" --top 5 --compose --deep --refs 5 2>/dev/null)" || ROUTER_JSON=""
+elif [ -f "${PLUGIN_ROOT}/bin/verikit-cli.ts" ]; then
+  ROUTER_JSON="$(node "${TIMEOUT_CLI}" 30000 npx --yes tsx "${PLUGIN_ROOT}/bin/verikit-cli.ts" \
+    route --task "$PROMPT_TRIMMED" --top 5 --compose --deep --refs 5 2>/dev/null)" || ROUTER_JSON=""
+fi
+
+if [ -z "$ROUTER_JSON" ]; then
+  echo '{"continue": true}'
+  exit 0
+fi
+
+node -e "
+const router = process.argv[1];
+const payload = {
+  hookSpecificOutput: {
+    hookEventName: 'UserPromptSubmit',
+    additionalContext: '<verikit-routing>\\n' + router + '\\n</verikit-routing>'
+  }
+};
+process.stdout.write(JSON.stringify(payload));
+" "$ROUTER_JSON"

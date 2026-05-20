@@ -1,0 +1,115 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "ads-kit",
+  "source_path": "skills/ads-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:48:34.255Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "广告",
+      "Banner广告",
+      "插屏广告",
+      "激励广告",
+      "开屏广告",
+      "原生广告",
+      "OAID",
+      "如何在应用中接入横幅广告、插屏广告、激励广告、开屏广告、原生广告和贴片广告",
+      "如何获取OAID开放匿名设备标识符用于个性化广告投放和转化归因",
+      "如何通过鲸鸿动能平台配置广告位和进行开发准备",
+      "如何接入实时竞价广告机制最大化广告收益",
+      "如何排查广告展示白屏、PC设备801错误码等常见问题",
+      "如何处理激励广告的用户观看完成回调和服务端验证",
+      "如何使用原生广告自定义广告展示样式融入应用界面",
+      "广告服务的个人数据处理和隐私合规要求是什么",
+      "当开发者需要通过应用内广告实现流量变现时，应使用Ads Kit",
+      "如果你的应用需要展示横幅广告、插屏广告、激励广告、开屏广告、原生广告或贴片广告中的任何一种，Ads Kit提供了完整的接入指导和API",
+      "适用于免费应用通过广告变现、游戏应用通过激励广告提供虚拟奖励、内容类应用通过开屏广告和原生广告展示品牌推广等场景",
+      "当开发者需要获取设备标识符用于广告投放和归因分析时，应使用Ads Kit的开放匿名设备标识服务",
+      "如果你需要实现个性化广告推荐或转化跟踪，OAID提供了符合隐私规范的设备标识解决方案",
+      "当你需要在鲸鸿动能平台上进行广告开发和调试时，Ads Kit提供了开发准备、实时竞价接入和常见问题排查的完整指导",
+      "接入开屏广告并在应用启动时展示 / Integrate splash ads and show them on app launch",
+      "在列表页嵌入原生广告卡片 / Embed native ad cards in a feed or list page",
+      "实现横幅广告自动加载与定时刷新 / Implement banner ad auto-loading and timed refresh",
+      "在页面切换时展示插屏广告 / Show interstitial ads during page transitions",
+      "接入激励视频广告解锁金币或会员权益 / Integrate rewarded video ads to unlock coins or premium benefits",
+      "监听广告加载、点击、关闭和发奖回调 / Handle ad load, click, close, and reward callbacks",
+      "获取 OAID 用于广告归因和个性化投放 / Obtain OAID for ad attribution and personalized delivery",
+      "配置广告位 ID 并请求对应类型的广告素材 / Configure ad slot IDs and request creatives for specific ad formats",
+      "实现广告预加载减少展示等待时间 / Preload ads to reduce wait time before display",
+      "接入实时竞价广告提升广告填充率和收益 / Integrate real-time bidding ads to improve fill rate and revenue",
+      "处理激励广告服务端验证防止刷奖励 / Implement server-side verification for rewarded ads to prevent reward abuse",
+      "排查广告展示失败、白屏和错误码问题 / Troubleshoot ad display failures, blank screens, and error codes"
+    ],
+    "do_not_use_when": [
+      "需求是应用分发、应用内更新、评分评论或商店上架能力，应改用 appgallery-kit / If the need is app distribution, in-app updates, ratings/reviews, or store listing capabilities, use appgallery-kit instead",
+      "需求是生成或处理深度链接、通用跳转链接或营销落地页唤起，应改用 app-linking-kit / If the task is to create or handle deep links, universal links, or campaign landing-page app launches, use app-linking-kit instead",
+      "需求是游戏成就、排行榜、玩家账号或游戏运营服务，而不是广告变现，应改用 game-service-kit / If the requirement is game achievements, leaderboards, player accounts, or game operations rather than ad monetization, use game-service-kit instead",
+      "需求是内容分享、系统分享面板或将文本图片链接分享给其他应用，应改用 share-kit / If the task is content sharing, system share sheet integration, or sharing text/images/links to other apps, use share-kit instead",
+      "需求是扫码、识别二维码/条形码或相机扫描入口，而不是展示广告或获取OAID，应改用 scan-kit / If the need is scanning QR/barcodes or camera-based code recognition rather than showing ads or getting OAID, use scan-kit instead"
+    ],
+    "preconditions": [
+      "项目已集成Ads Kit相关SDK与依赖，并在DevEco/工程配置中启用对应能力 / The project has integrated Ads Kit SDK dependencies and enabled the required capability in project configuration",
+      "开发者已在鲸鸿动能媒体服务平台完成应用与广告位配置，具备有效的广告位ID / The developer has configured the app and ad slots in the HMS Ads platform and has valid ad slot IDs",
+      "设备网络可用，且广告请求所需的华为移动服务环境可正常访问 / Network connectivity is available and the Huawei Mobile Services environment required for ad requests is reachable",
+      "若涉及OAID或个性化广告，应用已完成隐私声明与用户同意流程并满足相关权限/合规要求 / If OAID or personalized ads are involved, the app has completed privacy disclosure and user consent flow and meets related permission/compliance requirements"
+    ],
+    "inputs": [
+      "广告类型 / ad type",
+      "广告位ID / ad slot ID",
+      "页面上下文或UI容器 / page context or UI container",
+      "广告请求参数与监听回调 / ad request parameters and event callbacks",
+      "OAID获取请求或归因相关配置 / OAID request or attribution-related configuration"
+    ],
+    "outputs": [
+      "Kit简介与准备",
+      "流量变现服务",
+      "开放匿名设备标识",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "工程中已加入Ads Kit接入代码，并引用了对应广告或OAID能力的API / The project contains Ads Kit integration code and references the relevant ad or OAID APIs",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code/configuration that clearly integrates HarmonyOS Ads Kit APIs for ad loading/showing or OAID retrieval?"
+      },
+      {
+        "statement": "已配置可用于请求广告的关键参数（如广告位ID、请求配置或回调处理） / Key parameters required to request ads (such as ad slot ID, request config, or callback handling) are configured",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there clear evidence that ad request essentials such as slot IDs, request options, or event callback handlers were added or wired up?"
+      },
+      {
+        "statement": "若实现激励、插屏、横幅、开屏、原生或贴片广告，代码中已包含对应展示流程或事件处理 / If implementing rewarded, interstitial, banner, splash, native, or instream ads, the code includes the corresponding display flow or event handling",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the changes show ad-type-specific logic for displaying the selected ad format and handling its lifecycle/events?"
+      },
+      {
+        "statement": "若涉及OAID，已加入获取标识符的调用，并未将其替换为无关Kit的能力 / If OAID is involved, a call to obtain the identifier is added and it is not substituted with an unrelated Kit's capability",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task mentions OAID or attribution, do the edits add OAID retrieval logic specifically via Ads Kit rather than unrelated kits or generic placeholders?"
+      }
+    ],
+    "overlaps_with": [
+      "appgallery-kit",
+      "app-linking-kit",
+      "game-service-kit",
+      "share-kit",
+      "scan-kit",
+      "scenario-fusion-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

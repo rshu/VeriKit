@@ -1,0 +1,99 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "input-kit",
+  "source_path": "skills/input-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:55:06.751Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "多模输入",
+      "触摸",
+      "鼠标",
+      "键盘",
+      "光标管理",
+      "输入事件分发",
+      "如何设置和切换鼠标光标的显示隐藏和样式？",
+      "如何监听输入设备的热插拔事件并查询键盘类型？",
+      "如何使用C/C++接口监听按键、鼠标、触屏和轴事件？",
+      "如何使用C/C++接口拦截特定的输入事件（如按键、鼠标、触摸和轴事件）？",
+      "如何定制系统功能键的优先响应行为？",
+      "如何获取当前连接的输入设备列表？",
+      "当您的应用需要自定义鼠标光标样式、监听输入设备的热插拔事件时，可使用 Input Kit 的鼠标光标和输入设备管理能力",
+      "当您需要在录屏类应用中监听全局输入事件（按键、鼠标、触摸、轴事件），或在云桌面等应用中拦截特定输入事件进行自定义处理时，可使用 C/C++ 的事件监听和事件拦截能力",
+      "监听键盘按键和组合键输入并做自定义响应 / Listen for keyboard keys and shortcuts and handle them customly",
+      "处理鼠标点击、移动、滚轮和拖拽事件 / Handle mouse click, move, wheel, and drag events",
+      "接入触摸屏手指按下、滑动和抬起事件 / Integrate touchscreen down, move, and up events",
+      "在 C/C++ 层采集全局按键和指针输入事件 / Capture global key and pointer input events in C/C++",
+      "拦截指定按键或鼠标事件防止继续分发 / Intercept specific key or mouse events and stop further dispatch",
+      "获取外接键盘、鼠标等输入设备信息和连接状态 / Get connected input device info and connection status for keyboards and mice",
+      "监听输入设备插入拔出并动态更新设备列表 / Listen for input device plug and unplug events and refresh the device list",
+      "根据场景切换鼠标光标样式并控制显示隐藏 / Switch mouse cursor style by scenario and control its visibility",
+      "查询当前键盘类型并适配不同按键布局 / Query the current keyboard type and adapt to different key layouts",
+      "自定义系统功能键的优先级和响应行为 / Customize the priority and handling of system function keys",
+      "为远程桌面或云游戏转发本地键鼠触控输入 / Forward local keyboard, mouse, and touch input for remote desktop or cloud gaming",
+      "在录屏或辅助工具中订阅全局输入事件流 / Subscribe to the global input event stream for screen recording or assistive tools"
+    ],
+    "do_not_use_when": [
+      "需求是管理输入法、软键盘显示或文本输入法框架能力，此时应使用 ime-kit / If the task is to manage IME, soft keyboard display, or text input method framework features, use ime-kit instead",
+      "需求聚焦手写笔/触控笔特有能力（如笔压、倾斜、笔迹语义），而非通用输入事件时，应使用 pen-kit / If the task focuses on stylus-specific capabilities such as pressure, tilt, or pen semantics rather than generic input events, use pen-kit instead",
+      "需求是读取加速度计、陀螺仪等环境或运动传感器数据，而不是键鼠触控输入时，应使用 sensor-service-kit / If the task is to read accelerometer, gyroscope, or other sensor data rather than keyboard/mouse/touch input, use sensor-service-kit instead",
+      "需求是处理游戏手柄按键、摇杆、扳机等专用控制器输入时，应使用 game-controller-kit / If the task is to handle dedicated game controller input such as buttons, sticks, or triggers, use game-controller-kit instead",
+      "需求是开发或适配底层输入设备驱动，而不是在应用层监听或拦截输入事件时，应使用 driver-development-kit / If the task is to develop or adapt low-level input device drivers rather than listen to or intercept input events at app level, use driver-development-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成可用的 Input Kit 相关 SDK/头文件与链接配置 / The project has the required Input Kit SDK, headers, and linking configuration available",
+      "若使用全局事件监听、事件拦截等 C/C++ 能力，工程已启用对应 Native 开发环境 / If using global event listening or interception via C/C++, the project has the corresponding native development environment enabled",
+      "应用运行在支持鼠标、键盘、触摸或相关输入设备管理能力的 HarmonyOS 环境中 / The app runs in a HarmonyOS environment that supports mouse, keyboard, touch, or related input device management capabilities"
+    ],
+    "inputs": [
+      "输入事件类型与回调处理逻辑 / Input event types and callback handling logic",
+      "鼠标光标显示状态或样式参数 / Mouse cursor visibility state or style parameters",
+      "目标输入设备标识、设备列表查询条件或热插拔监听配置 / Target input device identifiers, device list query criteria, or hot-plug listener configuration",
+      "需要拦截的按键、鼠标、触摸或轴事件规则 / Rules for keyboard, mouse, touch, or axis events to intercept"
+    ],
+    "outputs": [
+      "简介",
+      "开发指导"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码中接入 Input Kit 相关 API，用于监听/拦截输入事件、管理光标或查询输入设备 / Input Kit APIs are integrated in code to listen for or intercept input events, manage the cursor, or query input devices",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code that clearly calls Input Kit-related APIs for input event handling, cursor control, or input device management?"
+      },
+      {
+        "statement": "已实现与需求对应的输入处理逻辑，例如注册监听器、设置光标样式、查询设备列表或处理热插拔事件 / The requested input handling logic is implemented, such as registering listeners, setting cursor styles, querying device lists, or handling hot-plug events",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there concrete logic implementing the requested Input Kit behavior (listener registration, cursor style changes, device queries, or hot-plug handling)?"
+      },
+      {
+        "statement": "未将需求误实现为输入法、传感器、手写笔专属或游戏手柄专属方案 / The solution is not incorrectly implemented as an IME, sensor, stylus-specific, or game-controller-specific solution",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits stay within generic Input Kit scope rather than switching to IME, sensor, stylus-only, or game-controller-only APIs for the core task?"
+      }
+    ],
+    "overlaps_with": [
+      "sensor-service-kit",
+      "ime-kit",
+      "pen-kit",
+      "driver-development-kit",
+      "game-controller-kit",
+      "mechanic-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "natural-language-kit",
+  "source_path": "skills/natural-language-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:56:49.506Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "自然语言理解",
+      "文本分词",
+      "实体提取",
+      "NLP",
+      "如何对中文文本进行分词处理，将句子切分为独立的词语单元？",
+      "如何从文本中自动识别日期时间实体（如\"2024年6月18日\"）？",
+      "如何从文本中提取电子邮件地址、手机号码等联系信息？",
+      "如何识别文本中的快递单号、航班号等特定格式的实体？",
+      "如何从聊天消息或文档中自动提取地址、人名等关键信息？",
+      "如何识别文本中的身份证号和验证码？",
+      "如何从文本中抽取网址链接？",
+      "如何在搜索引擎中对用户输入进行分词和关键词提取？",
+      "当您的应用需要对中文或英文文本进行语义分析和信息提取时，应使用Natural Language Kit",
+      "典型场景包括：搜索引擎对用户输入文本进行分词处理后提取关键词、从聊天消息或文档中自动识别日期地址电话等实体信息、新闻阅读应用提取关键人物和地点、客户服务系统自动识别订单号和联系方式等",
+      "当您需要构建智能文本处理功能，如自动提取文本中的结构化信息、实现文本关键词标注、构建知识图谱等场景时，也应使用Natural Language Kit的分词和实体抽取能力",
+      "实现聊天消息里的时间地点人名抽取 / Extract time, location, and person names from chat messages",
+      "从用户输入中提取关键词用于搜索召回 / Extract keywords from user input for search recall",
+      "对中文句子做分词并生成检索词条 / Tokenize Chinese sentences and generate search terms",
+      "识别评论文本中的邮箱电话和网址 / Detect emails, phone numbers, and URLs in review text",
+      "从工单内容里解析订单号快递单号等结构化信息 / Parse order numbers and tracking numbers from ticket text",
+      "给新闻正文做命名实体识别提取人物机构地点 / Run named entity recognition on news articles for people, organizations, and places",
+      "从自由文本中抽取日期时间方便创建提醒 / Extract dates and times from free text to create reminders",
+      "清洗客服对话并自动识别联系方式和地址 / Process support conversations and identify contact info and addresses",
+      "对中英文混合文本做词法分析 / Perform lexical analysis on mixed Chinese and English text",
+      "把自然语言句子拆成词语后用于高亮和索引 / Split natural language text into tokens for highlighting and indexing",
+      "从表单备注或聊天记录中识别证件号验证码等敏感字段 / Identify ID numbers, verification codes, and other sensitive fields in notes or chats",
+      "接入 NLP 能力对文本做语义分析和信息抽取 / Integrate NLP capabilities for semantic analysis and information extraction"
+    ],
+    "do_not_use_when": [
+      "任务是语音转文字、语音识别或语音命令理解，应改用 speech-kit 或 core-speech-kit / The task is speech-to-text, speech recognition, or spoken command understanding; use speech-kit or core-speech-kit instead",
+      "输入主要是图像、视频、相机画面中的文字或目标识别，应改用 vision-kit 或 core-vision-kit / The input is primarily images, video, or camera frames for OCR or object recognition; use vision-kit or core-vision-kit instead",
+      "需要联合处理文本、语音、图像等多模态上下文进行综合感知，应改用 multimodal-awareness-kit / The task requires joint understanding across text, speech, and images with multimodal context; use multimodal-awareness-kit instead",
+      "需要部署或运行自定义AI模型、进行模型推理加速，而不是直接调用现成分词/实体抽取能力，应改用 mindspore-lite-kit、neural-network-runtime-kit 或 cann-kit / You need to deploy or run custom AI models or accelerate model inference rather than call built-in tokenization/entity extraction; use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit instead"
+    ],
+    "preconditions": [
+      "设备与地区满足Natural Language Kit限制：Phone、Tablet、PC/2in1且在中国境内可用 / The device and region satisfy Natural Language Kit limits: Phone, Tablet, or PC/2in1 and available only in mainland China",
+      "工程已集成并可访问Natural Language Kit相关SDK能力 / The project has integrated and can access the Natural Language Kit SDK capability",
+      "待处理文本为支持语言且长度不超过1000字符 / The input text is in a supported language and no longer than 1000 characters",
+      "同一用户未并发调用同一特性，避免系统繁忙错误 / The same user is not invoking the same feature concurrently, avoiding system busy errors"
+    ],
+    "inputs": [
+      "待分析文本 / text to analyze",
+      "处理类型（分词或实体抽取） / processing type (tokenization or entity extraction)",
+      "文本语言或语境信息 / text language or locale context",
+      "实体类型结果需求 / desired entity types in the result"
+    ],
+    "outputs": [
+      "简介",
+      "文本处理能力"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已调用Natural Language Kit的分词或实体抽取相关接口，而非无关Kit接口 / The code invokes Natural Language Kit tokenization or entity extraction APIs rather than unrelated Kit APIs",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add or modify code to call Natural Language Kit APIs for tokenization or entity extraction, instead of using speech, vision, or custom model runtime APIs?"
+      },
+      {
+        "statement": "输出处理了输入文本并返回结构化分析结果，如词项列表或实体列表 / The implementation processes the input text and returns structured analysis results such as a token list or entity list",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there a result path that takes text input and produces structured tokenization or named-entity extraction output?"
+      },
+      {
+        "statement": "实现中体现了该Kit约束检查或防护，如文本长度、支持语言或并发失败处理 / The implementation reflects guardrails for kit constraints such as text length, supported language, or busy/concurrency error handling",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits include validation or error-handling for Natural Language Kit constraints like maximum text length, supported language/context, or system busy failures?"
+      }
+    ],
+    "overlaps_with": [
+      "cann-kit",
+      "mindspore-lite-kit",
+      "neural-network-runtime-kit",
+      "core-speech-kit",
+      "core-vision-kit",
+      "speech-kit",
+      "vision-kit",
+      "multimodal-awareness-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

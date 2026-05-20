@@ -1,0 +1,175 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "ar-engine",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:27.903Z"
+  },
+  "references": [
+    {
+      "path": "references/AR物体摆放-1.md",
+      "title": "AR物体摆放",
+      "snippet": "从5.0.0(12)开始，AR Engine支持物体摆放能力。 本章节通过AR Engine识别设备周围的平面，并允许用户在平面上放置虚拟物体，实现虚拟和现实的融合。AR物体摆放可用于虚拟家具、数字展厅等应用，给用户提供虚实结合的新体验。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 **图1** AR物体摆放示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f1/v3/x0DqtOEhQvyDxtahXrC4gw/zh-cn_image_0000002543374320.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111400Z&HW-CC-Expire=86400&HW-CC-Sign=612371D8E39B979FF47051DD8DC9386E415232A216EDB5BA1D7A97F80B63C787) 本章节涉及的AR Engine能力如下： - 运动跟踪能力 - 环境跟踪能力（平面检测） - 命中检测能力 #### 约束与限制 物体摆放能力支持部分Phone、Tablet设备。请参考 硬件要求 判断设备是否支持。 #### 接口说明 以下接口为AR物体摆放相关接口。详细接口和说明，请参考 AR En"
+    },
+    {
+      "path": "references/AR物体摆放.md",
+      "title": "AR物体摆放",
+      "snippet": "从5.1.0(18)开始，AR Engine支持物体摆放能力。 本章节通过AR Engine识别设备周围的平面，并允许用户在平面上放置虚拟物体，实现虚拟和现实的融合。AR物体摆放可用于虚拟家具、数字展厅等应用，给用户提供虚实结合的新体验。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 **图1** AR物体摆放示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/45/v3/df3Fh7reRRiMK7Cwr0-p8A/zh-cn_image_0000002543374320.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111357Z&HW-CC-Expire=86400&HW-CC-Sign=2F5496382FC26B5573E319FF6E4C14A85681784B197E995D449FD0A3D4EE498E) 本章节涉及的AR Engine能力如下： - 运动跟踪能力 - 环境跟踪能力（平面检测） - 命中检测能力 #### 约束与限制 物体摆放能力支持部分Phone、部分Tablet设备。请参考 硬件要求 判断设备是否支持。 #### 接口说明 AR物体摆放主要依赖 ARViewContext ，以下接口为"
+    },
+    {
+      "path": "references/个人数据处理说明.md",
+      "title": "个人数据处理说明",
+      "snippet": "此文档针对华为作为最终用户数据处理者，开发者作为最终用户数据控制者的数据处理进行说明，包括： - 华为处理的个人数据清单 - 指导开发者如何帮助最终用户实现对数据的控制 #### 华为处理的个人数据清单 最后修改时间：2025/11/18 #### 指导开发者如何帮助最终用户实现对数据的控制 AR Engine不存储用户数据，由数据控制者面向最终用户提供相应的数据主体权利及其相关解释。"
+    },
+    {
+      "path": "references/人体跟踪与骨骼关键点识别-1.md",
+      "title": "人体跟踪与骨骼关键点识别",
+      "snippet": "从6.1.0(23)开始，AR Engine支持人体跟踪与骨骼关键点识别能力。 本章节通过AR Engine人体跟踪与骨骼关键点识别能力来获取人体对象与关键点AR信息。 #### 约束与限制 人体跟踪与骨骼关键点识别能力支持部分Phone、部分Tablet设备、TV设备。请参考 硬件要求 判断设备是否支持。 #### 接口说明 人体跟踪与骨骼关键点识别主要依赖ARBody，以下接口为AR Engine人体跟踪与骨骼关键点识别相关接口，详细接口和说明，请参考 AR Engine API参考 。 #### 开发步骤 #### 引入AR Engine 开发者可参考管理AR会话章节的 引入AR Engine 。 #### 检查设备是否支持人体骨骼特性 调用 HMS_AREngine_CheckSupported 方法，检查设备是否支持 ARENGINE_FEATURE_TYPE_BODY 人体骨骼特性。 #### 创建UI界面 创建一个UI界面，使用 XComponent 组件显示相机预览画面，定时触发每一帧绘制。 // 此代码可参考示例代码：ARSample/entry/src/main/ets/pages/ARBody.ets。 import { Landmark } from '../body/ArBodyInterface'; import { arEngine, arViewCo"
+    },
+    {
+      "path": "references/人体跟踪与骨骼关键点识别.md",
+      "title": "人体跟踪与骨骼关键点识别",
+      "snippet": "从6.1.0(23)开始，AR Engine支持人体跟踪与骨骼关键点识别能力。 本章节通过AR Engine人体跟踪与骨骼关键点识别能力来获取人体对象与关键点AR信息。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/88/v3/d4-dABH8QRmn0ofVZCA7gg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111358Z&HW-CC-Expire=86400&HW-CC-Sign=567D425C0F5712BED0E5586CE14BAB23D5C4F91141001F6F7F08B5A917295C91) 本功能仅提供能力，接入该功能不构成对产品的质量保证或任何承诺，详见 AR Engine人体跟踪与骨骼关键点识别功能技术局限性及免责声明 。 #### 约束与限制 管理AR会话能力支持部分Phone、部分Tablet、TV设备。请参考 硬件要求 判断设备是否支持。 #### 接口说明 人体跟踪与骨骼关键点识别主要依赖ARBody，以下接口为人体跟踪与骨骼关键点识别的相关接口。详细接口和说明，请参考 AR Engine API参考 。 #### 开发步骤 对于使用ArkTS的任何AR应用，首先"
+    },
+    {
+      "path": "references/人脸跟踪-1.md",
+      "title": "人脸跟踪",
+      "snippet": "从6.1.0(23)开始，AR Engine支持人脸识别与跟踪能力。 本章节通过AR Engine人脸识别与跟踪能力来获取脸部AR信息。 #### 约束与限制 人脸识别与跟踪能力支持部分Phone、部分Tablet设备、TV设备。请参考 硬件要求 判断设备是否支持。 #### 接口说明 以下接口为AR Engine人脸跟踪相关接口，详细接口和说明，请参考 AR Engine API参考 。 #### 开发步骤 开发者在开发前可参考AR特性检查章节的 使用特性检查接口 。若当前设备支持，则可参考管理AR会话章节的 引入AR Engine 。 #### 创建UI界面 创建一个UI界面，使用XComponent组件用于显示相机预览画面，并定时触发每一帧绘制。 // 此代码可参考示例代码：ARSample/entry/src/main/ets/pages/ARFace.ets import { display } from '@kit.ArkUI'; import { resourceManager } from '@kit.LocalizationKit'; import { systemDateTime } from '@kit.BasicServicesKit'; import arEngineDemo from 'libentry.so'; @Builder export func"
+    },
+    {
+      "path": "references/人脸跟踪.md",
+      "title": "人脸跟踪",
+      "snippet": "从6.1.0(23)开始，AR Engine支持人脸跟踪能力。 本章节通过AR Engine人脸跟踪能力来获取脸部AR信息。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/85/v3/fK3FkbJZQwanyBMaTesONw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111357Z&HW-CC-Expire=86400&HW-CC-Sign=3C462913315109C5D861BCD4C89E635CAF4C4A92834E1AE085A7B3DE8DF070AD) 本功能仅提供能力，接入该功能不构成对产品的质量保证或任何承诺，详见 AR Engine人脸跟踪功能技术局限性及免责声明 。 #### 约束与限制 人脸跟踪能力支持部分Phone、部分Tablet、TV设备。请参考 硬件要求 判断设备是否支持。 #### 接口说明 人脸跟踪主要依赖ARFace，以下接口为人脸跟踪的相关接口。详细接口和说明，请参考 AR Engine API参考 。 #### 开发步骤 对于使用ArkTS的任何AR应用，首先需要参考 AR特性检查 接口检查当前设备是否支持该特性。若设备支持，创建一个AR会话 ARVie"
+    },
+    {
+      "path": "references/反光、光线暗或者弱纹理场景（输入图像颜色变化小）下无法识别平面.md",
+      "title": "反光、光线暗或者弱纹理场景（输入图像颜色变化小）下无法识别平面",
+      "snippet": "使用环境跟踪能力时，如果输入图像中有反光、光线暗、有弱纹理（输入图像颜色变化小），识别到的点云数量会变少甚至没有，出平面时间也会变长或无法生成平面。 1. 反光：镜面，光滑的大理石地板等 **图1** 镜面 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d4/v3/UMbt-r9CTv6bgD_9X0XEfw/zh-cn_image_0000002543214658.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111401Z&HW-CC-Expire=86400&HW-CC-Sign=952E55463AECAC3090D7AEA33CB349E6CC3886897E97B2EA764C514417743A51) 2. 光线暗：夜晚的路面或摄像头遮挡等。 **图2** 夜晚的路面 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b6/v3/VWFQhbJFQkCMpMvMgY0FmA/zh-cn_image_0000002573854573.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T11"
+    },
+    {
+      "path": "references/图像跟踪-1.md",
+      "title": "图像跟踪",
+      "snippet": "从5.1.0(18)开始，AR Engine支持图像跟踪能力。 本章节介绍如何识别和跟踪2D图像的位姿信息，通过学习本章节，可以检测场景中是否存在输入的图像，识别之后输出图像的位姿。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 **图1** 图像跟踪示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5f/v3/JVwyM2mqTTSMEYIcd2TlGA/zh-cn_image_0000002543214650.png?HW-CC-KV=V1&HW-CC-Date=20260421T111359Z&HW-CC-Expire=86400&HW-CC-Sign=133C0C1563D3481DE0FC70656544C463B7867418832A615E293B72C8C212BD1B) 本章节涉及的AR Engine能力如下： - 运动跟踪能力 - 环境跟踪能力（平面检测） #### 约束与限制 图像跟踪能力支持部分Phone、部分Tablet设备。请参考 硬件要求 判断设备是否支持。 #### 接口说明 以下接口为AR图像跟踪相关接口。详细接口和说明，请参考 AR Engine API参考 。 #### 开发步骤 #### 声明Native接"
+    },
+    {
+      "path": "references/图像跟踪.md",
+      "title": "图像跟踪",
+      "snippet": "从5.1.0(18)开始，AR Engine支持图像跟踪能力。 本章节介绍如何识别2D图像（二维图像）并跟踪其位姿信息，通过学习本章节，可以检测场景中是否存在输入的图像，识别之后输出图像的位姿。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 **图1** 图像跟踪示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/72/v3/0I5UZ_MITdyPCmOxFFXJuA/zh-cn_image_0000002543214650.png?HW-CC-KV=V1&HW-CC-Date=20260421T111357Z&HW-CC-Expire=86400&HW-CC-Sign=7EA72330DCD6F7094894456AB471635A469437A1996D7883A78F65EA1D3AC929) 本章节涉及的AR Engine能力如下： - 运动跟踪能力 - 环境跟踪能力（平面检测） #### 约束与限制 图像跟踪能力支持部分Phone、部分Tablet设备。请参考 硬件要求 判断设备是否支持。 #### 接口说明 图像识别主要依赖 ARAugmentedImageDatabase 、 ARImage ，以下接口为图像识别相关接口。详细接口和"
+    },
+    {
+      "path": "references/坐标系说明.md",
+      "title": "坐标系说明",
+      "snippet": "- 以相机启动时相机中心为坐标原点； - 重力方向为Y轴，向上+Y，向下-Y； - 设备水平前后移动为X轴，由近及远+X，由远及近-X； - 设备水平左右移动为Z轴，向右+Z，向左-Z。 **图1** 重力对齐世界坐标系示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/58/v3/AXOCo3JmT_C4h5viPAoSLA/zh-cn_image_0000002573854567.png?HW-CC-KV=V1&HW-CC-Date=20260421T111355Z&HW-CC-Expire=86400&HW-CC-Sign=3152CA10AA57A4FD4A210B6CE51108ADE60BB02C5C851252D1AA4FAEED025915) #### AR Engine重力对齐北向坐标系 - 以相机启动时相机中心为坐标原点； - 重力方向为Y轴，向上+Y，向下-Y； - 指南针北向为+X轴，南向为-X轴； - 指南针东向为+Z轴，西向为-Z轴； - 重力对齐北向坐标系为固定坐标系，不受设备位姿变化影响。 **图2** 重力对齐北向坐标系示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pv"
+    },
+    {
+      "path": "references/开发准备.md",
+      "title": "开发准备",
+      "snippet": "开发者可根据实际的开发语言，选择对应接口判断当前设备是否支持AR Engine。接口的调用参考如下方式： ArkTS（ arViewController.isARTypeSupported ）： import { arEngine, arViewController } from '@kit.AREngine'; let ret: boolean = arViewController.isARTypeSupported(arEngine.ARFeatureType.ARENGINE_FEATURE_TYPE_FACE); C/C++（ HMS_AREngine_CheckSupported ）： #include \"ar/ar_engine_core.h\" auto ret = HMS_AREngine_CheckSupported(ARENGINE_FEATURE_TYPE_FACE); 若对应接口返回错误码为801或ARENGINE_ERROR_DEVICE_NOT_SUPPORTED，则表示AR Engine不支持当前设备。 #### 环境搭建 请参考 应用开发准备 完成基本准备工作。 #### 申请权限 在开发AR应用时，需要先申请相机相关权限，确保应用拥有访问相机硬件及其他功能的权限，需要的权限如下表。在申请权限前，请保证符合 权限使用的基本原则 。 - 使用相机拍摄前，"
+    },
+    {
+      "path": "references/摄像头被遮挡一段时间后再放开，输出的位姿有跳变.md",
+      "title": "摄像头被遮挡一段时间后再放开，输出的位姿有跳变",
+      "snippet": "使用运动跟踪能力时，摄像头被遮挡一段时间后再放开遮挡，调用 HMS_AREngine_ARPose_GetPoseRaw 函数获取的平移分量或旋转分量存在较大跳变。 #### 可能原因 AR Engine通过摄像头采集数据感知当前设备在现实世界中的位姿，摄像头被遮挡后，AR Engine无法准确感知设备在现实世界的位姿变化，放开遮挡后，如果继续调用 HMS_AREngine_ARSession_Update ，AR Engine会尝试基于遮挡前识别到的数据进行恢复，如果当前摄像头采集数据和遮挡前类似，就可能会导致错误匹配到旧的结果，从而产生数据跳变。 #### 处理步骤 如果开发者通过 HMS_AREngine_ARCamera_GetTrackingState 函数获取的状态为ARENGINE_TRACKING_STATE_PAUSED，可以通过函数 HMS_AREngine_ARCamera_GetTrackingStateReason 进一步获取暂停原因，如暂停原因是ARENGINE_TRACKING_STATE_REASON_INSUFFICIENT_FEATURES或ARENGINE_TRACKING_STATE_REASON_EXCESSIVE_MOTION，建议在您的应用中提示用户，并在恢复后（ HMS_AREngine_ARCamera_GetTrackingSta"
+    },
+    {
+      "path": "references/数据类型转换说明.md",
+      "title": "数据类型转换说明",
+      "snippet": "在开发AR应用时，部分数据类型需要转换才能使用，以下进行汇总及示例。 #### ArrayBuffer 在一些不支持接收ArrayBuffer数据类型的方法中，需要将其反序列化为int32或者float32类型，涉及转换的接口列表如下： 转换的示例如下： // ArrayBuffer转float32 function arrayBufferFloat32ToNumber(buffer: ArrayBuffer): number[] { let view: Float32Array = new Float32Array(buffer); let numberArray: number[] = Array.from(view); return numberArray; } // ArrayBuffer转int32 function arrayBufferInt32ToNumber(buffer: ArrayBuffer): number[] { let view: Int32Array = new Int32Array(buffer); let numberArray: number[] = Array.from(view); return numberArray; }"
+    },
+    {
+      "path": "references/某些特殊场景下（如附近存在磁场干扰、手机发烫或扫描到重复纹理等），出现平面漂移或者位姿数据跳变现象.md",
+      "title": "某些特殊场景下（如附近存在磁场干扰、手机发烫或扫描到重复纹理等），出现平面漂移或者位姿数据跳变现象",
+      "snippet": "某些特殊场景下，如使用环境附近存在强磁场，手机处于高负载场景下（后台开启很多应用或长时间使用导致手机发烫），或者扫描到重复纹理（见下图）时，可能出现识别到的平面无法锚定到现实世界中，或者通过 HMS_AREngine_ARCamera_GetPose 接口获取的位姿信息出现大幅度跳变等现象。 **图1** 重复纹理的地板 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/dd/v3/8jVrDY2yTuqzrAyMz9-zgA/zh-cn_image_0000002543214660.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111401Z&HW-CC-Expire=86400&HW-CC-Sign=5AD3ECDC07565768DF635C425BD4095F112972D8E5747F5D9AE88306A831AC44) #### 可能原因 AR Engine通过获取到的加速度计传感器和磁力计传感器的信息进行平面计算和相机位姿计算，上述特殊场景下，系统传感器数据可能会存在异常，从而导致平面漂移或者位姿跳变的现象发生。 #### 处理步骤 建议应用对通过 HMS_AREngine_ARCamera_GetPose 接口获取到的位姿"
+    },
+    {
+      "path": "references/检测环境中的平面-1.md",
+      "title": "检测环境中的平面",
+      "snippet": "从5.0.0(12)开始，AR Engine支持检测环境平面能力。 本章节介绍如何通过AR Engine进行平面检测。通过学习本章节，开发者可以检测当前环境中的平面，并在应用中处理这些平面。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 #### 约束与限制 检测环境平面能力支持部分Phone、部分Tablet设备。请参考 硬件要求 判断设备是否支持。 #### 引入AR Engine 开发者在开发前可参考AR特性检查章节的 使用特性检查接口 。若当前设备支持，则可参考管理AR会话章节的 引入AR Engine 。 #### 创建ARSession 开发者可以参考 管理AR会话 创建ARSession。 #### 创建平面对象列表 1. 创建一个平面对象列表planeList，用于存放AR Engine运行过程中检测到的所有平面。 AREngine_ARTrackableList *planeList = nullptr; HMS_AREngine_ARTrackableList_Create(arSession, &planeList); 2. 设置可跟踪对象类型为ARENGINE_TRACKABLE_PLANE。 AREngine_ARTrackableType planeTrackedType = ARENGINE_TRACKABLE_PLANE; #### 识别"
+    },
+    {
+      "path": "references/检测环境中的平面.md",
+      "title": "检测环境中的平面",
+      "snippet": "从5.1.0(18)开始，AR Engine支持检测环境平面能力。请参考 硬件要求 判断设备是否支持。 本章节介绍如何通过AR Engine进行平面检测。通过学习本章节，可以检测当前环境中的平面，并在应用中处理这些平面。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 本章节涉及的AR Engine能力如下： - 运动跟踪能力 - 环境跟踪能力（平面检测） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/78/v3/UTMYBI8SRKuapsCB5kMcYQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111356Z&HW-CC-Expire=86400&HW-CC-Sign=8786DD951AECB6E9B1F2784CF6BE4F7CF8F2FEE7328A0F375856B29821C061FE) 初始化之后需要缓慢移动相机来寻找平面。 #### 约束与限制 检测环境平面能力支持部分Phone、部分Tablet设备。 #### 接口说明 检测平面通过 ARPlane 平面对象进行，以下接口为平面相关接口。详细接口和说明，请参考 AR Engine API参考 。 #### 开发步骤 AR"
+    },
+    {
+      "path": "references/管理AR会话-1.md",
+      "title": "管理AR会话",
+      "snippet": "对于任何AR应用，都需要创建一个AR会话 AREngine_ARSession ，用于管理AR Engine的系统状态。 从6.1.0(23)开始，使用任何AR特性都需要通过 HMS_AREngine_CheckSupported 接口来查询当前设备是否支持该特性。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 #### 使用特性检查接口 1. 引入头文件。 #include \"ar/ar_engine_core.h\" 2. 调用接口，根据返回值判断当前设备是否支持使用该特性。 AREngine_ARStatus ret = HMS_AREngine_CheckSupported(ARENGINE_FEATURE_TYPE_SLAM); #### 引入AR Engine 1. 引入头文件。 #include \"ar/ar_engine_core.h\" 2. 编写CMakeLists.txt。 find_library( # Sets the name of the path variable. arengine-lib # Specifies the name of the NDK library that # you want CMake to locate. libarengine_ndk.z.so ) target_link_libraries(entry PUB"
+    },
+    {
+      "path": "references/管理AR会话.md",
+      "title": "管理AR会话",
+      "snippet": "从5.1.0(18)开始，AR Engine支持管理AR会话能力。 在开发AR应用之前，需调用AR会话接口创建一个独立的AR会话，供后续操作与管理使用。在整个AR应用生命周期中，AR会话扮演着至关重要的角色。 开发者可以使用 ARViewContext 来进行AR会话session的创建与销毁等操作。 ARViewContext 和 ARSession 的不同之处在于， ARViewContext 不仅封装了AR会话session，还集成了AR场景的创建与管理，从而使得开发更为便捷。 在进行后续功能开发前，请确保已创建一个可用的AR会话。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 #### 约束与限制 管理AR会话能力支持部分Phone、部分Tablet设备。并且从6.1.0(23)版本开始，新增支持TV设备。请参考 硬件要求 判断设备是否支持。 #### 接口说明 AR会话主要依赖 ARViewContext ，以下接口为AR会话相关接口。详细接口和说明，请参考 arViewController（AR场景管理能力） 。 #### 开发步骤 对于使用ArkTS的任何AR应用，从6.1.0(23)开始，AREngine对于任何AR特性，都可以通过 arViewController.isARTypeSupported 接口来查询当前设备是否支持该特性，当判断该设备支持特"
+    },
+    {
+      "path": "references/能力介绍.md",
+      "title": "能力介绍",
+      "snippet": "AR Engine（AR引擎服务）是一个用于在HarmonyOS上构建增强现实应用的引擎，提供了运动跟踪、环境跟踪和命中检测等空间计算能力。 通过这些能力，应用可以实现虚拟世界与现实世界的融合，给用户提供全新的视觉体验和交互方式。 AR Engine包含三大能力，分别是运动跟踪能力、环境跟踪能力和命中检测能力。 #### 运动跟踪能力 AR Engine通过获取终端设备摄像头数据，结合图像特征和惯性传感器（IMU），计算设备位置（沿x、y、z轴方向位移）和姿态（绕x、y、z轴旋转），实现6自由度（6DoF）运动跟踪能力。 **图1** 6DoF运动跟踪能力示意图（红色线代表设备运动方向） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3b/v3/QCKTRfE8RwKNyKDtP1TSrA/zh-cn_image_0000002573974537.png?HW-CC-KV=V1&HW-CC-Date=20260421T111355Z&HW-CC-Expire=86400&HW-CC-Sign=8F5DAE6BC455DBB64979A5CBF5F9D8327AAB5A2976C32E6CFD3692768958B417) #### 环境跟踪能力 AR Engin"
+    },
+    {
+      "path": "references/获取检测平面的二维顶点数组时报错：“plane is nullptr!”，返回错误码：401.md",
+      "title": "获取检测平面的二维顶点数组时报错：“plane is nullptr!”，返回错误码：401",
+      "snippet": "调用 HMS_AREngine_ARPlane_GetPolygonSize 获取检测到平面的二维顶点数组大小时报错：“plane is nullptr!”，返回错误码：401。 #### 可能原因 初次打开应用还未识别到平面，调用 HMS_AREngine_ARSession_GetAllTrackables 获取的可跟踪对象列表为空，导致后续 HMS_AREngine_ARTrackableList_AcquireItem 获取对应索引的对象也为空，使用前未做有效性判断，使用时出现无效参数错误。 #### 处理步骤 开发者从AR Engine获取平面之后需判断其有效性后使用，例如，进行非空判断。"
+    },
+    {
+      "path": "references/获取深度估计信息.md",
+      "title": "获取深度估计信息",
+      "snippet": "从5.1.0(18)开始，AR Engine支持获取深度估计信息能力。 AR Engine提供的深度估计功能通过算法输出深度估计数据（物体表面离相机的距离）和深度置信度信息，为开发者提供环境三维感知能力。该技术可应用于测量、体积估算、场景重建等场景。基于空间物体的深度信息，开发者可完成一些空间计算任务，比如计算物体体积等。 开发者如果需要使用获取深度图功能请使用NAPI进行开发，参见 获取深度图 。ArkTS API将于后期版本上线深度图能力。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 **图1** 深度估计信息示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/11/v3/oIgKv9dXSHiFxfoncnOPPA/zh-cn_image_0000002573854571.png?HW-CC-KV=V1&HW-CC-Date=20260421T111356Z&HW-CC-Expire=86400&HW-CC-Sign=216B33FDA3E3F81C897CD0AF3BA43C1DEBFD6773A49D02723A5700ED1735ECD0) ![](https://contentcenter-vali-drcn.dbankcdn.cn"
+    },
+    {
+      "path": "references/获取深度图.md",
+      "title": "获取深度图",
+      "snippet": "从5.0.5(17)开始，AR Engine支持获取深度估计信息能力。 AR Engine提供的深度估计功能通过算法输出深度图数据（物体表面离相机的距离组成的图）和深度置信度图信息，为开发者提供环境三维感知能力。该技术可应用于例如测量、体积估算、场景重建等获取空间物体深度信息场景，基于此信息完成一些空间计算任务，比如计算物体体积等。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 **图1** 深度渲染示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/76/v3/5_k1z6l4Tm-S1m2GUEfslA/zh-cn_image_0000002573974539.png?HW-CC-KV=V1&HW-CC-Date=20260421T111359Z&HW-CC-Expire=86400&HW-CC-Sign=FFE020949B642318B352C99ACC0C184DD31260FE81A439BDDBFAC0D5379D9A1F) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/84/v3/OCC2z3EdTVqUMtbd"
+    },
+    {
+      "path": "references/获取网格扫描信息-1.md",
+      "title": "获取网格扫描信息",
+      "snippet": "从5.1.0(18)开始，AR Engine支持获取网格扫描信息能力。 本章节介绍如何获取目标物体的网格扫描（mesh）数据信息，通过学习本章节，可以检测当前环境中包括平面在内的自由曲面，并在应用中处理这些曲面信息。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 **图1** 环境网格扫描示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4a/v3/q3j8PlRnTIWEhHLoGbMUng/zh-cn_image_0000002543374312.png?HW-CC-KV=V1&HW-CC-Date=20260421T111359Z&HW-CC-Expire=86400&HW-CC-Sign=8139FD2BA78E1F37484210E79B10FC03DC44A597B1AF18A107516DEE881E6EE3) 本章节涉及的AR Engine能力如下： - 运动跟踪能力 - 环境跟踪能力（平面检测） - 命中检测能力 #### 约束与限制 获取网格扫描信息能力支持部分Phone、部分Tablet设备。请参考 硬件要求 判断设备是否支持。 #### 接口说明 以下接口为AR网格扫描相关接口。详细接口和说明，请参考 AR Engine "
+    },
+    {
+      "path": "references/获取网格扫描信息.md",
+      "title": "获取网格扫描信息",
+      "snippet": "从5.1.0(18)开始，AR Engine支持获取网格扫描信息能力。 本章节介绍如何获取目标物体的网格（mesh）扫描数据信息，通过学习本章节，可以检测当前环境中的自由曲面，并在应用中处理这些曲面信息。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 **图1** 环境网格扫描示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/03/v3/5T90FzjEShigErSH-WqlCg/zh-cn_image_0000002573974547.png?HW-CC-KV=V1&HW-CC-Date=20260421T111357Z&HW-CC-Expire=86400&HW-CC-Sign=011712C7301993FA2763AEA57F00558B184F86E415244552247C59EFF87B7911) 本章节涉及的AR Engine能力如下： - 运动跟踪能力 - 环境跟踪能力（平面检测） - 命中检测能力 #### 约束与限制 获取网格扫描信息能力支持部分Phone、部分Tablet设备。请参考 硬件要求 判断设备是否支持。 #### 接口说明 网格扫描主要依赖 ARSceneMesh ，以下接口为AR网格扫描相关接口。详细接口和说"
+    },
+    {
+      "path": "references/获取设备位姿-1.md",
+      "title": "获取设备位姿",
+      "snippet": "从5.0.0(12)开始，AR Engine支持获取设备位姿能力。 设备位姿描述了物体在真实世界中的位置和朝向。AR Engine提供了世界坐标下6自由度（6DoF）的位姿计算，包括物体的位置（沿x、y、z轴方向位移）和朝向（绕x、y、z轴旋转）。通过AR Engine，开发者可以实时获取设备在空间中任意时刻的位姿。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 #### 约束与限制 获取设备位姿能力支持部分Phone、部分Tablet设备。请参考 硬件要求 判断设备是否支持。 #### 世界坐标系与位姿示意 设备位姿一般在世界坐标系下进行表示。世界坐标系描述了真实物理空间中物体的绝对位置，其正方向如图所示。 **图1** 世界坐标系示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/11/v3/rCdZJnSFTm68J2MoIVs_Rg/zh-cn_image_0000002543374316.png?HW-CC-KV=V1&HW-CC-Date=20260421T111358Z&HW-CC-Expire=86400&HW-CC-Sign=1360667859B5331FF962136EDA45AEB1930D1572337F957646318"
+    },
+    {
+      "path": "references/获取设备位姿.md",
+      "title": "获取设备位姿",
+      "snippet": "从5.1.0(18)开始，AR Engine支持获取设备位姿能力。 设备位姿描述了物体在真实世界中的位置和朝向。AR Engine提供了世界坐标下6自由度（6DoF）的位姿计算，包括物体的位置（沿x、y、z轴方向位移）和朝向（绕x、y、z轴旋转）。通过AR Engine，开发者可以实时获取设备在空间中任意时刻的位姿。 本章节给出了关键开发步骤，完整代码可以参考 示例代码 。 #### 约束与限制 获取设备位姿能力支持部分Phone、部分Tablet设备。请参考 硬件要求 判断设备是否支持。 #### 世界坐标系与位姿示意 设备位姿一般在世界坐标系下进行表示。世界坐标系描述了真实物理空间中物体的绝对位置，其正方向如图所示。 **图1** 世界坐标系示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6f/v3/cdj3mtOATzaX7fdMRVr8tA/zh-cn_image_0000002543374316.png?HW-CC-KV=V1&HW-CC-Date=20260421T111356Z&HW-CC-Expire=86400&HW-CC-Sign=CE39958BBEB608AF8F2D1A010003114714CD50CD6D5B257D41020"
+    },
+    {
+      "path": "references/识别平面语义-1.md",
+      "title": "识别平面语义",
+      "snippet": "从5.0.0(12)开始，AR Engine支持识别平面语义能力。 对于检测到的平面，开发者可以通过AR Engine识别该平面的语义，语义类型包括墙面、地面、座椅、桌面、天花板、门、窗户、床、平面空间、立方体体积、立方体空间容积和未知类型（平面空间、立方体体积和立方体空间容积仅在高精几何重建模式下支持）。 #### 约束与限制 识别平面语义能力支持部分Phone、部分Tablet设备。请参考 硬件要求 判断设备是否支持。 #### 引入AR Engine 开发者在开发前可参考AR特性检查章节的 使用特性检查接口 。若当前设备支持，则可参考管理AR会话章节的 引入AR Engine 。 #### 创建AR会话 创建AR会话并配置为平面语义识别模式。 AREngine_ARSession *arSession = nullptr; // 创建AR会话。 HMS_AREngine_ARSession_Create(nullptr, nullptr, &arSession); AREngine_ARConfig *arConfig = nullptr; // 创建AR会话配置器。 HMS_AREngine_ARConfig_Create(arSession, &arConfig); // 设置语义识别模式为平面语义识别。 HMS_AREngine_ARConfig_SetSemantic"
+    },
+    {
+      "path": "references/识别平面语义.md",
+      "title": "识别平面语义",
+      "snippet": "从5.1.0(18)开始，AR Engine支持识别平面语义能力。 对于检测到的平面，开发者可以通过AR Engine识别该平面的语义，语义类型包括墙面、地面、座椅、桌面、天花板、门、窗户、床、平面空间、立方体体积、立方体空间容积和未知类型（平面空间、立方体体积和立方体空间容积仅在高精几何重建模式下支持）。 #### 约束与限制 识别平面语义能力支持部分Phone、部分Tablet设备。请参考 硬件要求 判断设备是否支持。 #### 接口说明 获取平面语义信息可以通过 ARPlane 平面对象获取，以下接口为平面相关接口。详细接口和说明，请参考 AR Engine API参考 。 #### 开发步骤 AR Engine仅输出识别到的平面数据。为便于用户观察，可使用AGP（Ark Graphics Platform）渲染引擎或者 XComponent 绘制识别的平面。关于AGP的介绍可以查看 ArkGraphics 3D简介 和 AGP引擎 。 对于使用ArkTS的任何AR应用，首先需要参考 AR特性检查 接口检查当前设备是否支持该特性。若设备支持，创建一个AR会话 ARViewContext ，用于管理AR Engine的系统状态。AR会话 ARViewContext 的创建可以参考 管理AR会话 章节。 识别平面语义之前需要先检测识别环境中的平面，如何检测识别环境中的平面请参考 "
+    },
+    {
+      "path": "references/识别目标形状.md",
+      "title": "识别目标形状",
+      "snippet": "从5.0.0(12)开始，AR Engine支持识别目标形状能力。 本章节介绍如何对目标物体进行形状识别，可识别的形状包括矩形和圆形。 #### 约束与限制 识别目标形状能力支持部分Phone、部分Tablet设备。请参考 硬件要求 判断设备是否支持。 #### 引入AR Engine 开发者在开发前可参考AR特性检查章节的 使用特性检查接口 。若当前设备支持，则可参考管理AR会话章节的 引入AR Engine 。 #### 创建AR会话 创建AR会话并配置为目标形状识别模式。 AREngine_ARSession *arSession = nullptr; // 创建AR会话。 HMS_AREngine_ARSession_Create(nullptr, nullptr, &arSession); AREngine_ARConfig *arConfig = nullptr; // 创建AR会话配置器。 HMS_AREngine_ARConfig_Create(arSession, &arConfig); // 设置语义识别模式为目标形状识别。 HMS_AREngine_ARConfig_SetSemanticMode(arSession, arConfig, ARENGINE_SEMANTIC_MODE_TARGET); // 配置器设置给AR会话。 HMS_AREngine_A"
+    },
+    {
+      "path": "references/附录.md",
+      "title": "附录",
+      "snippet": "1. 技术局限性声明：本功能提供的能力，涉及深度估计精度可能受以下因素影响： 1. 环境光照条件（例如强光/弱光/反光场景）。 2. 物体表面材质特性（例如透明/镜面/单色物体）。 3. 设备硬件性能差异（例如摄像头/传感器参数）。 4. 动态场景下的实时性限制等。 2. 免责声明： 本深度估计仅提供功能，并不构成对产品的质量保证或任何承诺。开发者自主选择是否使用HarmonyOS提供的功能开发应用软件，开发者对应用软件的使用目的、效果和责任自行负责。若开发用于视障人士避障、残疾人辅助等场景的应用软件，开发者应承担开展多场景压力测试，并建立数据校验机制，特别在安全相关场景需部署冗余保障方案，并确保应用合法合规的开发和运营。HarmonyOS不承担由此产生的任何直接或间接责任。 深度估计提供的功能： 1. 不作为医疗设备或生命安全系统设计。 2. 未经认证，不作为医疗辅助设备；不作为医疗器材；未经无障碍设施认证或生命安全认证。 #### AR Engine高精几何重建功能技术局限性及免责声明 1. 技术局限性声明：本功能提供的能力，涉及几何数值精度可能受以下因素影响： 1. 环境光照条件（例如强光/弱光/反光场景）。 2. 物体表面材质特性（例如透明/镜面/单色物体）。 3. 设备硬件性能差异（例如摄像头/传感器参数）。 4. 动态场景下的实时性限制等。 2. 免责声明： 本高精几何"
+    },
+    {
+      "path": "references/高精几何重建-1.md",
+      "title": "高精几何重建",
+      "snippet": "从6.0.0(20)开始，AR Engine支持高精几何重建能力。 本章节通过AR Engine高精几何重建能力来识别空间中的立方体物体或者嵌入式立方体空间，计算出被识别物体或空间的长、宽、高以及体积。可以用于测量立方体体积以及嵌入式空间的大小。 **图1** 稠密点云绘制示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e/v3/PPUeLWWwTbWCenS_Bl22Mg/zh-cn_image_0000002573854565.png?HW-CC-KV=V1&HW-CC-Date=20260421T111400Z&HW-CC-Expire=86400&HW-CC-Sign=54EDA63C9582B1E51A80E5B7C662CF4C99C563FEC89F6EB34E186CAA5E13B18B) **图2** 体积测量示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/18/v3/Am1NBTU_RrCAPOzWTkz2wA/zh-cn_image_0000002573974541.png?HW-CC-KV=V1&HW-CC"
+    },
+    {
+      "path": "references/高精几何重建.md",
+      "title": "高精几何重建",
+      "snippet": "从6.0.0(20)开始，AR Engine支持高精几何重建能力。 本章节通过AR Engine高精几何重建能力来识别空间中的立方体物体或者嵌入式立方体空间，计算出被识别物体或空间的长、宽、高以及体积。可以用于测量立方体体积以及嵌入式空间的大小。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5f/v3/-3eXQP1kTr6R5wOepJ0ndg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111357Z&HW-CC-Expire=86400&HW-CC-Sign=E7884BE7CBF2DFB08D30848482E3409A3BF873325D324423432C4B6372306514) 本功能仅提供能力，接入该功能不构成对产品的质量保证或任何承诺，详见 AR Engine高精几何重建功能技术局限性及免责声明 。 #### 约束与限制 高精几何重建能力支持部分Phone、部分Tablet设备。请参考 硬件要求 判断设备是否支持。 #### 接口说明 高精几何重建主要依赖 ARSemanticDenseData ，以下接口为高精几何重建的相关接口。详细接口和说明，请参考 AR Engine API参"
+    }
+  ]
+}

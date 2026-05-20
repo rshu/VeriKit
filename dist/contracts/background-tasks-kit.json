@@ -1,0 +1,106 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "background-tasks-kit",
+  "source_path": "skills/background-tasks-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:50:46.485Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "后台任务",
+      "长时任务",
+      "短时任务",
+      "延迟任务",
+      "后台提醒",
+      "AgentReminder",
+      "如何选择合适的后台任务类型（短时任务、长时任务、延迟任务、代理提醒）",
+      "如何申请和使用短时任务执行状态保存等短暂操作",
+      "如何申请长时任务实现后台音乐播放和导航",
+      "如何使用延迟任务执行数据同步等非实时性操作",
+      "如何实现闹钟、倒计时和日历提醒等代理提醒功能",
+      "如何合理使用后台硬件资源避免进程被系统终止",
+      "如何处理应用退至后台后进程被挂起或终止的问题",
+      "当应用退至后台后仍需要继续执行任务时，请使用Background Tasks Kit选择合适的后台任务类型",
+      "当应用需要保存状态或执行短暂的实时性任务时，请使用短时任务",
+      "当应用需要长时间在后台运行用户可感知的任务（如音乐播放、导航、位置追踪）时，请申请长时任务",
+      "当应用有实时性要求不高但需要最终执行的任务（如数据同步、日志上传）时，请使用延迟任务",
+      "当应用需要在退后台或进程终止后仍能按时发出提醒（闹钟、倒计时、日历提醒）时，请使用代理提醒功能",
+      "当音视频应用需要实现后台播放时，需要同时接入AVSession Kit和Background Tasks Kit的长时任务",
+      "实现应用切到后台后继续上传文件 / Keep file uploads running after the app goes to the background",
+      "保存草稿时申请短时后台任务避免切后台被中断 / Use a transient background task to finish saving a draft when the app is backgrounded",
+      "接入后台播放让音频离开前台后持续运行 / Enable background playback so audio keeps running outside the foreground",
+      "实现后台导航定位持续更新 / Keep navigation and location updates running in the background",
+      "用延迟任务在夜间批量同步数据 / Schedule deferred tasks to batch sync data overnight",
+      "把非实时刷新改成系统调度的后台同步任务 / Move non-urgent refresh work to system-scheduled background sync",
+      "添加闹钟和倒计时到点提醒 / Add alarm and countdown reminders that fire at the scheduled time",
+      "实现日历事件的代理提醒通知 / Create agent reminders for calendar events",
+      "管理后台任务的申请、取消和执行状态 / Manage background task requests, cancellation, and execution state",
+      "处理应用退到后台后下载被暂停的问题 / Handle downloads being paused when the app moves to the background",
+      "在锁屏或应用退出前完成关键数据落盘 / Finish persisting critical data before lock screen or app exit",
+      "控制后台任务使用定位音频等资源避免被系统杀死 / Control background use of location or audio resources to avoid being killed by the system"
+    ],
+    "do_not_use_when": [
+      "需求只是实现页面生命周期、前后台状态感知或Ability启动流转，应改用 ability-kit / If the need is only page lifecycle handling, foreground-background state awareness, or Ability launch flow, use ability-kit instead",
+      "需求只是编写通用ArkTS语法、Promise/定时器或基础并发逻辑，而非申请系统级后台任务，应改用 arkts / If the need is only general ArkTS syntax, promises/timers, or basic concurrency logic rather than requesting system-managed background tasks, use arkts instead",
+      "需求是构建界面、提醒展示样式或用户交互页面，而不是让任务在后台继续执行，应改用 arkui / If the need is to build UI, reminder presentation, or interaction pages rather than keep work running in background, use arkui instead",
+      "需求是卡片持续展示信息或通过卡片触发轻量交互，而不是管理后台运行时长，应改用 form-kit / If the requirement is persistent widget display or lightweight widget-triggered interaction rather than managing background execution time, use form-kit instead",
+      "需求是进程间通信、跨Ability消息传递或远程服务调用，而不是短时/长时/延迟任务调度，应改用 ipc-kit / If the requirement is inter-process communication, cross-Ability messaging, or remote service calls rather than short/long/deferred task scheduling, use ipc-kit instead",
+      "需求是云端或服务端函数编排、定时工作流与后端自动化，而非设备本地后台任务，应改用 function-flow-runtime-kit / If the need is cloud/server-side function orchestration, scheduled workflows, or backend automation rather than on-device background tasks, use function-flow-runtime-kit instead"
+    ],
+    "preconditions": [
+      "应用已集成并可访问Background Tasks Kit相关SDK接口 / The app has integrated and can access the Background Tasks Kit SDK APIs",
+      "模块配置已声明所选后台任务类型所需的权限与能力，并通过校验 / The module configuration has declared the permissions and capabilities required by the selected background task type and passed validation",
+      "若所选任务类型需要用户可感知能力或系统授权，相关授权已获得 / If the selected task type requires user-visible capability or system authorization, the required consent has been granted"
+    ],
+    "inputs": [
+      "后台任务类型 / background task type",
+      "任务配置参数（如开始/结束时机、延迟条件、提醒时间） / task configuration parameters (such as start/end timing, delay conditions, reminder time)",
+      "任务执行逻辑或回调 / task execution logic or callback",
+      "任务标识或提醒标识 / task ID or reminder ID"
+    ],
+    "outputs": [
+      "Kit简介",
+      "后台任务开发"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已显式选择并接入一种合适的后台任务机制（短时任务、长时任务、延迟任务或代理提醒） / The code explicitly selects and integrates an appropriate background task mechanism (short-term, long-term, deferred task, or agent reminder)",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show that one specific Background Tasks Kit mechanism was chosen and wired into the app code rather than only adding generic comments or timers?"
+      },
+      {
+        "statement": "后台任务的启动、注册或请求逻辑已写入应用代码并与业务场景关联 / The background task start, registration, or request logic is implemented in app code and tied to the business scenario",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there concrete code that starts, registers, or requests the background task/reminder and connects it to the intended feature flow?"
+      },
+      {
+        "statement": "若任务需要配置项或权限，工程中已补充对应配置或声明 / If the task requires configuration or permissions, the project includes the corresponding configuration or declarations",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits include the necessary configuration or permission declarations when the chosen background task type requires them?"
+      }
+    ],
+    "overlaps_with": [
+      "ability-kit",
+      "arkts",
+      "arkui",
+      "arkweb",
+      "form-kit",
+      "ipc-kit",
+      "function-flow-runtime-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

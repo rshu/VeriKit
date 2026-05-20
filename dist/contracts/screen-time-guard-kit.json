@@ -1,0 +1,110 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "screen-time-guard-kit",
+  "source_path": "skills/screen-time-guard-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:58:53.535Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "屏幕时间",
+      "应用限制",
+      "守护策略",
+      "家长控制",
+      "如何请求用户授权以获取健康使用设备的管理权限？",
+      "如何取消用户已授予的授权？",
+      "如何拉起应用选择页让用户勾选需要管理的应用？",
+      "如何添加守护策略来限制应用使用时间？",
+      "如何修改、查询或删除已有的守护策略？",
+      "如何启动和停止守护策略？",
+      "如何设置应用访问限制来立即禁止或允许应用？",
+      "如何解除应用访问限制？",
+      "如何配置应用签名以使用Screen Time Guard Kit？",
+      "如何申请受限ACL权限？",
+      "当你需要开发一款家长控制或时间管理类应用时，应使用Screen Time Guard Kit",
+      "它提供了完整的应用使用时间管控方案，从用户授权、应用选择到策略管理和访问限制，覆盖了健康使用设备的全部流程",
+      "当你需要对特定应用设置使用时间限制（如限制儿童使用游戏应用的时间）时，可以通过守护策略的三种类型灵活配置",
+      "当你需要立即禁止或允许某个应用的访问时，可以使用应用访问限制能力实现即时生效的管控",
+      "接入家长管控功能并限制孩子使用指定应用的时长 / Integrate parental controls to limit how long selected apps can be used",
+      "实现每日应用使用时长配额并在超时后自动禁用 / Implement daily app time quotas and automatically block apps after the limit",
+      "拉起受管控应用选择器让用户挑选要限制的应用 / Launch the managed app picker so users can choose which apps to restrict",
+      "创建按天重复生效的屏幕使用守护计划 / Create a recurring daily screen-time guard schedule",
+      "暂停和恢复某个应用的使用限制策略 / Pause and resume a usage restriction policy for a specific app",
+      "立即封禁某些应用并在需要时一键解禁 / Instantly block certain apps and unblock them when needed",
+      "查询当前生效的应用管控规则和剩余可用时长 / Query active app control rules and remaining allowed time",
+      "更新已有的守护策略时段、目标应用和限制时长 / Update an existing guard policy's time window, target apps, and duration",
+      "删除不再需要的屏幕时间限制规则 / Remove screen-time restriction rules that are no longer needed",
+      "获取健康使用设备授权并管理用户授予的管理权限 / Obtain Device Usage management authorization and manage granted permissions",
+      "在达到使用上限时触发应用不可访问状态 / Make apps inaccessible once the usage limit is reached",
+      "按工作日和周末分别配置不同的应用使用限制 / Configure different app usage limits for weekdays and weekends"
+    ],
+    "do_not_use_when": [
+      "需求是实现无障碍能力（如读屏、辅助操作、界面辅助服务）而非屏幕使用时长管控，请改用 accessibility-kit / If the need is accessibility features (such as screen reading, assistive actions, or accessibility services) rather than screen-time control, use accessibility-kit instead",
+      "需求是做多语言、本地化、地区文案或资源适配，而不是管理应用使用限制，请改用 localization-kit / If the need is multilingual support, localization, or regional resource adaptation rather than app usage restriction management, use localization-kit instead",
+      "需求是分析应用性能、卡顿、耗时或资源消耗，而不是设置守护策略，请改用 performance-analysis-kit / If the need is to analyze app performance, jank, latency, or resource usage rather than configure guard policies, use performance-analysis-kit instead",
+      "需求是编写测试用例、自动化测试或测试框架集成，而不是面向终端用户实施家长控制，请改用 test-kit / If the need is writing test cases, test automation, or integrating test frameworks rather than enforcing end-user parental controls, use test-kit instead",
+      "需求是设计界面样式、组件规范或交互布局，本身不涉及授权、选应用或时间限制能力，请改用 ui-design-kit / If the need is UI styling, component guidelines, or interaction layout without actual authorization, app picking, or time-limit capabilities, use ui-design-kit instead"
+    ],
+    "preconditions": [
+      "应用已完成Screen Time Guard Kit所需签名配置并获批受限ACL权限 / The app has completed the required signing configuration for Screen Time Guard Kit and obtained the restricted ACL permission",
+      "运行环境为中国大陆主空间的Phone或Tablet设备，且不是隐私空间、子空间或分身应用 / The runtime environment is a Phone or Tablet in mainland China main space, and not privacy space, subspace, or a cloned app",
+      "目标设备和当前HarmonyOS版本已提供健康使用设备服务相关能力 / The target device and current HarmonyOS version provide the Health Device Usage service capabilities",
+      "执行策略管理或访问限制前，用户已完成相应授权并且授权状态有效 / Before policy management or access restriction, the user has granted the required authorization and the authorization remains valid"
+    ],
+    "inputs": [
+      "用户授权状态或授权请求参数 / user authorization status or authorization request parameters",
+      "受管控应用列表或应用选择结果 / managed app list or app selection result",
+      "守护策略配置 / guard policy configuration",
+      "策略标识、启停动作或访问限制参数 / policy identifier, start-stop action, or access restriction parameters"
+    ],
+    "outputs": [
+      "入门与概述",
+      "开发准备",
+      "用户授权管理",
+      "应用选择页",
+      "守护策略管理",
+      "应用访问限制"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中接入了健康使用设备服务相关API调用，用于授权、应用选择、策略管理或访问限制中的至少一种能力 / The code integrates Health Device Usage service API calls for at least one of authorization, app selection, policy management, or access restriction",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add or modify code that calls Screen Time Guard Kit related APIs for authorization, app selection, guard policy management, or app access restriction?"
+      },
+      {
+        "statement": "若涉及新增或变更守护策略，代码中明确体现了策略类型或生效参数（如起止时间、总时长、共享时长） / If a guard policy is added or changed, the code explicitly specifies the policy type or effective parameters (such as start-end time, total duration, or shared duration)",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task adds or updates a guard policy, do the edits explicitly define the policy type or its effective timing parameters such as start/end time, total duration, or shared duration?"
+      },
+      {
+        "statement": "若涉及受限能力接入，工程配置或调用流程中体现了前置校验，如授权状态检查、能力可用性判断或相关配置补充 / If restricted capability integration is involved, the project configuration or call flow includes prerequisite checks such as authorization state verification, capability availability checks, or related configuration updates",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show prerequisite handling for this restricted kit, such as checking authorization status, verifying capability availability, or adding required project configuration?"
+      }
+    ],
+    "overlaps_with": [
+      "basic-services-kit",
+      "accessibility-kit",
+      "localization-kit",
+      "test-kit",
+      "performance-analysis-kit",
+      "calendar-kit",
+      "weather-service-kit",
+      "ui-design-kit"
+    ],
+    "safety_tier": "high-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

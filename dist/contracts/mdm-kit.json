@@ -1,0 +1,101 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "mdm-kit",
+  "source_path": "skills/mdm-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:55:56.967Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "企业设备管理",
+      "MDM",
+      "设备管控",
+      "策略管理",
+      "应用管理",
+      "如何开发企业MDM应用，实现设备集中管理和远程配置？",
+      "如何创建EnterpriseAdminExtensionAbility组件作为MDM应用的必备组件？",
+      "如何实现企业设备的应用管理（安装/卸载/禁用指定应用）？",
+      "如何设置设备安全策略，如密码策略、设备加密等？",
+      "如何远程控制设备，如锁屏、恢复出厂设置？",
+      "如何管理设备硬件外设，如禁用USB、限制相机使用？",
+      "如何配置设备的蓝牙、WiFi、屏幕亮度等系统设置？",
+      "如何实现COPE（企业派发设备）和BYOD（自带设备办公）场景下的设备管理？",
+      "如何处理多家EMM厂商共同管理设备时的角色激活与策略冲突？",
+      "如何申请MDM应用资质和声明所需权限？",
+      "当您的应用需要为企业或政府机构提供设备集中管理能力时，应使用MDM Kit",
+      "典型场景包括：企业统一采购并分发设备给员工使用（COPE），需要远程配置设备策略、管控应用安装、限制设备功能、设置安全策略等；以及允许员工携带个人设备接入办公环境（BYOD），需要在员工设备上部署企业安全策略、隔离企业数据等",
+      "当您需要开发MDM管理类应用（如EMM客户端）、实现设备安全合规检查、批量配置企业设备、或者需要对设备进行远程锁定/擦除等安全操作时，也应当使用MDM Kit",
+      "创建企业管理后台批量下发设备限制策略 / Build an enterprise admin console to push device restriction policies in bulk",
+      "实现 EnterpriseAdminExtensionAbility 作为设备管理员入口 / Implement EnterpriseAdminExtensionAbility as the device admin entry point",
+      "远程锁定企业终端并支持一键清除数据 / Remotely lock corporate devices and support one-tap data wipe",
+      "批量安装卸载工作应用并禁止员工自行移除 / Install or uninstall work apps in bulk and prevent employees from removing them",
+      "配置密码复杂度、锁屏时长和存储加密要求 / Configure password complexity, screen lock timeout, and storage encryption requirements",
+      "禁用相机、USB、蓝牙共享等高风险硬件能力 / Disable high-risk hardware features such as camera, USB, and Bluetooth sharing",
+      "统一管控 Wi‑Fi、VPN、代理和系统网络配置 / Centrally manage Wi‑Fi, VPN, proxy, and system network settings",
+      "限制应用白名单黑名单并控制应用运行权限 / Enforce app allowlists or blocklists and control app runtime permissions",
+      "接入企业设备注册激活流程并绑定组织信息 / Integrate enterprise device enrollment and activation with organization binding",
+      "实现 COPE 或 BYOD 场景下的工作资料隔离管理 / Implement work data separation management for COPE or BYOD scenarios",
+      "管理多家 EMM 共管时的管理员角色激活与冲突处理 / Handle admin role activation and policy conflicts in multi-EMM co-management",
+      "下发系统设置策略如亮度、状态栏、开发者选项限制 / Push system setting policies such as brightness, status bar, and developer options restrictions"
+    ],
+    "do_not_use_when": [
+      "需求仅是管理企业工作资料、工作空间或企业容器，而不是设备级策略与系统管控；应改用 enterprise-space-kit / The requirement is only to manage enterprise work data, workspace, or enterprise container isolation rather than device-level policy and system control; use enterprise-space-kit instead",
+      "需求聚焦于企业数据文件的加密、访问控制、分享保护或数据泄露防护，而不是远程锁定、应用禁用或系统设置控制；应改用 enterprise-data-guard-kit / The requirement focuses on enterprise file encryption, access control, sharing protection, or data loss prevention rather than remote lock, app disabling, or system settings control; use enterprise-data-guard-kit instead",
+      "应用并非企业/政府场景的MDM或EMM管理端，不需要COPE/BYOD下的管理员激活与集中设备治理 / The app is not an enterprise/government MDM or EMM management app and does not need admin activation and centralized device governance in COPE/BYOD scenarios",
+      "目标设备不是HarmonyOS NEXT，或项目不是Stage模型，或API版本低于12，无法满足本Kit运行约束 / The target device is not HarmonyOS NEXT, or the project is not Stage model, or the API version is below 12, so this Kit's runtime constraints are not met"
+    ],
+    "preconditions": [
+      "工程为Stage模型，目标SDK版本为5.0.0(API 12)及以上，且部署目标支持HarmonyOS NEXT / The project uses the Stage model, targets SDK 5.0.0 (API 12) or later, and deploys to a HarmonyOS NEXT device",
+      "应用已创建并配置EnterpriseAdminExtensionAbility组件，作为MDM管理能力入口 / The app has created and configured an EnterpriseAdminExtensionAbility component as the entry point for MDM management capabilities",
+      "应用已完成MDM所需资质申请、ACL授权及module.json5中的相关权限声明 / The app has completed required MDM qualification application, ACL authorization, and relevant permission declarations in module.json5",
+      "目标管理员组件已在设备上完成激活，且具备相应管理员角色权限 / The target admin component has been activated on the device and has the required administrator role permissions"
+    ],
+    "inputs": [
+      "企业管理员组件信息 / enterprise admin component information",
+      "设备管理策略参数 / device management policy parameters",
+      "目标应用包名或应用标识 / target app bundle name or application identifier",
+      "目标设备设置项或硬件能力标识 / target device setting item or hardware capability identifier"
+    ],
+    "outputs": [
+      "简介",
+      "开发指南",
+      "架构与模型",
+      "合规与隐私"
+    ],
+    "postconditions": [
+      {
+        "statement": "工程中已新增或修改EnterpriseAdminExtensionAbility相关实现与配置 / The project contains added or modified EnterpriseAdminExtensionAbility implementation and configuration",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add or modify an EnterpriseAdminExtensionAbility class or its registration/configuration for MDM administration?"
+      },
+      {
+        "statement": "代码已调用MDM Kit相关企业设备管理API以实施设备、应用、安全或设置策略 / The code invokes MDM Kit enterprise device management APIs to enforce device, app, security, or settings policies",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there clear usage of enterprise device management APIs from MDM Kit to apply or manage policies?"
+      },
+      {
+        "statement": "工程中体现了管理员激活、权限声明或ACL授权等MDM前置接入要求 / The project reflects MDM onboarding requirements such as admin activation, permission declarations, or ACL authorization",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show concrete handling or configuration for MDM prerequisites such as admin activation flow, permission declarations, or ACL-related setup?"
+      }
+    ],
+    "overlaps_with": [
+      "enterprise-space-kit",
+      "enterprise-data-guard-kit"
+    ],
+    "safety_tier": "high-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

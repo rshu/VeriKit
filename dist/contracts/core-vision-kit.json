@@ -1,0 +1,108 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "core-vision-kit",
+  "source_path": "skills/core-vision-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:52:20.599Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "基础视觉",
+      "OCR",
+      "文字识别",
+      "人脸检测",
+      "人脸比对",
+      "主体分割",
+      "骨架检测",
+      "如何使用OCR通用文字识别实现文档扫描和票据识别功能",
+      "如何实现人脸检测和人脸比对用于身份认证和考勤打卡",
+      "如何使用主体分割实现前景提取和背景替换",
+      "如何使用多目标识别检测图片中的多种目标对象",
+      "如何使用骨骼点检测实现人体姿态分析和运动辅助",
+      "通用文字识别支持哪些语言，输入图像有哪些质量要求",
+      "多用户并发调用同一AI特性时的排队和错误处理机制",
+      "当你的应用需要处理图像中的文字信息时，例如实现文档扫描、票据识别、名片管理、表单自动录入等功能，可以使用通用文字识别能力",
+      "当需要构建基于人脸的身份验证系统，如门禁管理、考勤打卡、实名认证等场景时，可以组合使用人脸检测和人脸比对能力",
+      "当你的应用涉及智能相册管理、照片美化、前景提取、图片编辑等功能时，可以使用主体分割能力来实现背景替换或前景提取",
+      "多目标识别适用于端到端业务场景的前置检测，根据检测结果完成后续功能入口提示，例如视觉搜索和文本检测",
+      "骨骼点检测则适用于智能视频监控、病人监护、虚拟现实、人体动画、智能家居、运动员辅助训练等需要人体姿态分析的场景",
+      "实现拍照取字并提取图片里的文字内容 / Implement text capture from camera and extract text from images",
+      "识别身份证票据表单内容并自动录入字段 / Recognize IDs, receipts, and forms and auto-fill fields",
+      "接入人脸活体检测与人脸比对做登录核验 / Integrate face liveness and face matching for login verification",
+      "检测照片中的人脸位置并提取人脸特征值 / Detect face locations in photos and extract face embeddings",
+      "做人像抠图并把人物从背景中分离出来 / Perform portrait cutout and separate people from the background",
+      "实现视频流中的人体骨骼点识别与姿态跟踪 / Implement body keypoint detection and pose tracking in video streams",
+      "识别画面里的多个物体并给出类别和框选结果 / Detect multiple objects in an image and return classes with bounding boxes",
+      "在相册图片上做文字扫描并生成可复制文本 / Scan text from gallery images and generate copyable text",
+      "用通用文字识别批量处理文档图片并导出结构化结果 / Use general OCR to batch-process document images and export structured results",
+      "为考勤或门禁实现刷脸认证流程 / Build face-based authentication for attendance or access control",
+      "给直播或拍照场景添加实时背景替换效果 / Add real-time background replacement for live streaming or camera scenes",
+      "分析用户动作姿态用于健身计数和运动纠正 / Analyze body pose for workout counting and exercise correction"
+    ],
+    "do_not_use_when": [
+      "需要自定义训练、转换、部署或优化深度学习模型，而不是调用开箱即用视觉能力时，应改用 mindspore-lite-kit、neural-network-runtime-kit 或 cann-kit / If you need to train, convert, deploy, or optimize custom deep learning models rather than use ready-made vision APIs, use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit instead",
+      "需求是语音识别、语音合成、唤醒或音频语义处理，而非图像视觉分析时，应改用 core-speech-kit 或 speech-kit / If the task is speech recognition, speech synthesis, wake-up, or audio semantic processing rather than image vision analysis, use core-speech-kit or speech-kit instead",
+      "需要文本理解、分词、翻译、摘要或实体分析等自然语言处理，而不是从图片中提取视觉结果时，应改用 natural-language-kit / If you need natural language processing such as text understanding, tokenization, translation, summarization, or entity analysis rather than extracting visual results from images, use natural-language-kit instead",
+      "需要更广义的计算机视觉或视频流/相机场景能力，且不局限于本Kit提供的OCR、人脸、分割、目标识别、骨骼点等基础AI接口时，应改用 vision-kit / If you need broader computer vision or video/camera scenario capabilities not limited to this kit's OCR, face, segmentation, object recognition, and pose APIs, use vision-kit instead",
+      "需要融合视觉、语音、环境等多模态上下文感知与联动，而不是单纯处理静态图片视觉分析时，应改用 multimodal-awareness-kit / If you need multimodal context awareness combining vision, speech, and environment rather than standalone image analysis, use multimodal-awareness-kit instead"
+    ],
+    "preconditions": [
+      "应用运行在支持的真机设备上，且设备类型为Phone、Tablet或PC/2in1，不使用模拟器 / The app runs on a supported physical device of type Phone, Tablet, or PC/2in1, not an emulator",
+      "应用场景位于中国大陆可用区域，相关Core Vision服务在设备与系统中可访问 / The app is used in mainland China where the Core Vision service is available and reachable on the device and system",
+      "输入图片资源已可被应用读取，相关文件访问权限或URI访问授权已准备就绪 / The input image resources are readable by the app, with required file permissions or URI grants already in place",
+      "同一用户同一特性未在同一进程中并发调用，避免系统繁忙错误 / The same feature is not being invoked concurrently for the same user within the same process, to avoid system busy errors"
+    ],
+    "inputs": [
+      "待分析的图片数据、图片文件路径或图片URI / image data, image file path, or image URI to be analyzed",
+      "所选视觉能力类型（OCR、人脸检测、人脸比对、主体分割、多目标识别、骨骼点检测） / selected vision capability type (OCR, face detection, face comparison, subject segmentation, multi-object recognition, or skeleton detection)",
+      "能力对应的请求参数与阈值配置 / request parameters and threshold configuration for the chosen capability",
+      "人脸比对时的两张人脸图片输入 / two face images for face comparison"
+    ],
+    "outputs": [
+      "简介",
+      "AI视觉能力",
+      "隐私合规"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码中接入Core Vision Kit相关API，并发起与目标能力匹配的视觉分析调用 / The code integrates Core Vision Kit APIs and issues a vision analysis call matching the intended capability",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show HarmonyOS code that imports or references Core Vision Kit and calls an OCR, face detection, face comparison, segmentation, object recognition, or pose detection API appropriate to the user's task?"
+      },
+      {
+        "statement": "已对输入图片进行传递或封装，并将识别结果写入回调、Promise、状态变量或后续处理流程 / The input image is passed or wrapped properly, and the recognition result is wired into a callback, Promise, state variable, or downstream processing flow",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show image input being supplied to the vision request and the returned result being handled, stored, or forwarded for later use?"
+      },
+      {
+        "statement": "已加入基础错误处理或系统繁忙处理分支，避免调用失败后无反馈 / Basic error handling or system-busy handling is added so failures do not go unhandled",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set include try/catch, error callbacks, Promise rejection handling, or explicit handling for busy/failure cases around the Core Vision invocation?"
+      }
+    ],
+    "overlaps_with": [
+      "cann-kit",
+      "mindspore-lite-kit",
+      "neural-network-runtime-kit",
+      "core-speech-kit",
+      "natural-language-kit",
+      "speech-kit",
+      "vision-kit",
+      "multimodal-awareness-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

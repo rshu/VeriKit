@@ -1,0 +1,25 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "speech-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:29.207Z"
+  },
+  "references": [
+    {
+      "path": "references/AI字幕控件.md",
+      "title": "AI字幕控件",
+      "snippet": "AI字幕控件应用广泛，例如在用户不熟悉音频源语言或者静音的时候，为用户提供字幕服务。 本章节将向您介绍如何使用AI字幕组件 AICaptionComponent 和 AICaptionController 展示AI字幕，效果如下图所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/da/v3/AefbbhRpRpmZhw_pVC2biw/zh-cn_image_0000002573975281.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111946Z&HW-CC-Expire=86400&HW-CC-Sign=6E512CEA9EF269DE89830D505FE7C3644064460874939554476C966BC018823E) #### 接口说明 AI字幕功能主要由 AICaptionComponent 提供，更多接口及使用方法请参见 API参考 。 #### 开发步骤 1. 从项目根目录进入/src/main/ets/pages/Index.ets文件，在使用AI字幕控件前，将实现AI字幕控件和其他相关的类添加至工程。 import { AICaptionComponent, AICaptionController,"
+    },
+    {
+      "path": "references/Speech Kit简介.md",
+      "title": "Speech Kit简介",
+      "snippet": "Speech Kit（场景化语音服务）集成了语音类AI能力，包括朗读控件（TextReader）和AI字幕控件（AICaptionComponent）能力，便于用户与设备进行互动，为用户实现朗读文章。 #### 场景介绍 - 朗读控件应用广泛，例如在用户不方便或者无法查看屏幕文字时，为用户朗读新闻，提供资讯。 - AI字幕控件应用广泛，例如在用户不熟悉音频源语言或者静音时，为用户提供字幕服务。 #### 约束与限制 #### 支持的设备 Phone、Tablet、PC/2in1。 #### 支持的国家/地区 仅适用于中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）。 #### 能力限制 #### 模拟器支持情况 本kit暂不支持模拟器。"
+    },
+    {
+      "path": "references/朗读控件.md",
+      "title": "朗读控件",
+      "snippet": "朗读控件应用广泛，例如在用户不方便或者无法查看屏幕文字的时候，为用户朗读新闻，提供资讯。 本章节将向您介绍如何使用朗读组件，效果如下图所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/04/v3/ZWm5V1KcRkGOgIEOzFH_5Q/zh-cn_image_0000002573855301.png?HW-CC-KV=V1&HW-CC-Date=20260421T111946Z&HW-CC-Expire=86400&HW-CC-Sign=205552C4730A0E7A31340B57692A879A2ECB3ADB171EDE0EF27CB1A13FCA14D0) #### 接口说明 以下仅列出demo中调用的部分主要接口，具体API说明详见 API参考 。 #### 开发步骤 1. 首先从项目根目录进入/src/main/ets/entryability/EntryAbility.ets文件，将WindowManager添加至工程。 import { WindowManager } from '@kit.SpeechKit'; import { ConfigurationConstant } from '@kit.AbilityKit'; 2. （"
+    }
+  ]
+}

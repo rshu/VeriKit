@@ -1,0 +1,105 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "weather-service-kit",
+  "source_path": "skills/weather-service-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T08:00:45.935Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "天气",
+      "天气预报",
+      "分钟级降水",
+      "天气预警",
+      "天文数据",
+      "如何开通天气服务并申请权限和配置Profile文件？",
+      "如何通过经纬度查询当前位置的实况天气和预警数据？",
+      "如何获取指定城市的天气数据？",
+      "如何请求分钟级降水预报、天气预警或潮汐数据？",
+      "如何使用limitedDatasets参数请求特定的天气数据集？",
+      "Weather Service Kit接口是否具有定位功能？",
+      "请求了分钟级降水预报/天气预警/潮汐但未返回数据如何排查？",
+      "如何在worker或taskpool子线程中请求天气数据？",
+      "当你的系统级应用需要获取天气数据以提供本地生活服务时使用本Kit，例如天气类应用、出行类应用、旅游类应用等需要展示天气信息的场景",
+      "当需要获取特定位置的实况天气、未来天气预报、降水预报或天气预警信息时，应通过经纬度查询获取",
+      "当你的应用需要根据天气指数提供个性化建议（如晾晒建议、穿衣建议、紫外线防护等）时，或者需要天文数据（日出日落时间、月相信息）时，也应使用本Kit",
+      "在应用里显示当前位置的实时天气和未来几天预报 / Show current-location weather and multi-day forecast in the app",
+      "根据经纬度拉取天气信息并刷新天气卡片 / Fetch weather by latitude and longitude and refresh a weather card",
+      "按城市名称或行政区查询天气数据 / Query weather data by city name or administrative region",
+      "获取分钟级降雨预测用于出行提醒 / Get minute-level precipitation forecast for commute alerts",
+      "订阅或展示暴雨台风高温等天气预警 / Subscribe to or display weather alerts like heavy rain, typhoon, and heat",
+      "读取日出日落月相等天文信息并展示 / Load and display astronomical info like sunrise, sunset, and moon phase",
+      "获取潮汐数据给海边出行或钓鱼场景使用 / Get tide data for seaside travel or fishing scenarios",
+      "只请求需要的天气字段以减少流量和耗时，使用 limitedDatasets / Request only needed weather fields to reduce traffic and latency with limitedDatasets",
+      "在 worker 或 taskpool 中后台请求天气接口 / Request weather APIs in the background from a worker or taskpool",
+      "给旅游或出行应用接入天气服务能力 / Integrate weather service capabilities into a travel or mobility app",
+      "根据定位结果同步周边地区天气和预警信息 / Sync nearby weather and alert information based on location results",
+      "管理天气服务开通、权限申请和 Profile 配置 / Manage weather service enablement, permission application, and Profile configuration"
+    ],
+    "do_not_use_when": [
+      "需求是获取设备当前位置、持续定位或地理围栏，而不是基于已有经纬度查询天气；应改用 basic-services-kit / The need is to obtain device location, continuous positioning, or geofencing rather than query weather from existing coordinates; use basic-services-kit instead",
+      "任务是做界面布局、天气卡片视觉样式或交互动效设计，而不是接入天气数据服务；应改用 ui-design-kit / The task is to design layouts, weather card visuals, or interaction effects rather than integrate weather data; use ui-design-kit instead",
+      "目标是做多语言文案、地区格式化或本地化适配，而不是拉取天气数据；应改用 localization-kit / The goal is multilingual copy, regional formatting, or localization adaptation rather than fetching weather data; use localization-kit instead",
+      "目标是编写测试用例、Mock天气响应或验证自动化测试，而不是在应用中实际调用天气接口；应改用 test-kit / The goal is to write tests, mock weather responses, or validate automated testing rather than actually call weather APIs in the app; use test-kit instead",
+      "重点是分析天气页面卡顿、耗时、功耗或网络性能问题，而不是实现天气查询能力；应改用 performance-analysis-kit / The focus is analyzing jank, latency, power, or network performance of weather pages rather than implementing weather queries; use performance-analysis-kit instead"
+    ],
+    "preconditions": [
+      "应用为系统应用，且运行环境不是模拟器 / The app is a system app and the runtime environment is not an emulator",
+      "已开通天气服务并按要求完成Profile文件配置 / Weather service has been enabled and the required Profile configuration is completed",
+      "已申请并获得调用天气服务所需权限 / The permissions required to call the weather service have been declared and granted",
+      "设备网络可用，且请求所用经纬度参数有效 / Network connectivity is available and the latitude/longitude used in requests are valid"
+    ],
+    "inputs": [
+      "经度和纬度 / longitude and latitude",
+      "天气数据集请求范围或limitedDatasets参数 / requested weather dataset scope or limitedDatasets parameter",
+      "目标位置标识信息（如城市对应坐标） / target location identifier information (such as coordinates for a city)",
+      "请求上下文（主线程、worker或taskpool） / request context (main thread, worker, or taskpool)"
+    ],
+    "outputs": [
+      "开发指南",
+      "常见问题",
+      "其他"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码通过经纬度发起天气数据请求，而不是依赖本Kit进行定位 / The code initiates weather data requests using latitude and longitude rather than relying on this Kit for positioning",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show Weather Service Kit usage built around explicit latitude/longitude inputs, without claiming that the kit itself obtains device location?"
+      },
+      {
+        "statement": "已按需求限定请求的数据集或处理返回数据，仅覆盖实况、预报、降水、预警、指数、天文或潮汐中的相关部分 / The request scope or response handling is constrained to the needed datasets only, covering relevant subsets such as current weather, forecast, precipitation, alerts, indices, astronomy, or tides",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set specify or clearly handle only the weather datasets needed for the task, rather than making an unconstrained generic request?"
+      },
+      {
+        "statement": "对天气服务调用结果进行了成功或空结果/异常处理 / The weather service call result includes handling for success and empty-result/error cases",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set include logic for successful weather responses and also handle empty data, failure, or exception scenarios?"
+      }
+    ],
+    "overlaps_with": [
+      "basic-services-kit",
+      "accessibility-kit",
+      "localization-kit",
+      "test-kit",
+      "performance-analysis-kit",
+      "calendar-kit",
+      "ui-design-kit",
+      "screen-time-guard-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

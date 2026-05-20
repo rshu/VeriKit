@@ -1,0 +1,45 @@
+# H5/三方框架和HarmonyOS配置项映射关系
+---
+# H5/三方框架和HarmonyOS配置项映射关系
+#### H5 autocomplete和HarmonyOS的ContentType的映射关系
+| 输入场景 | 【H5】autocomplete | 【ArkUI】ContentType | 说明 |
+| --- | --- | --- | --- |
+| 昵称 | nickname | NICKNAME | 昵称，如“Vivian”。 |
+| 姓名 | name | PERSON_FULL_NAME | 姓名，如“张三”。 |
+| 姓氏 | family-name | PERSON_LAST_NAME | 姓氏，如“张”。 |
+| 名字 | given-name | PERSON_FIRST_NAME | 名字，如“三”。 |
+| 手机号 | tel-national | PHONE_NUMBER | 手机号，如“188******88”。 |
+| 邮件地址 | email | EMAIL_ADDRESS | 邮箱地址，如“a****t@huawei.com”。 |
+| 身份证号 | id-card-number | ID_CARD_NUMBER | 身份证号，如“3201***********123”。 |
+| 地址 | street-address | FULL_STREET_ADDRESS | 带街道详细地址，如“雨花街道玉兰路98号”。 |
+| 国籍 | country | COUNTRY_ADDRESS | 国籍，如“中国”。 |
+| 护照号 | passport-number | PASSPORT_NUMBER | 护照号，如“G*******1”。 |
+| 有效期至 | validity | VALIDITY | 有效期至，如“2025-1-1”。 |
+| 签发地 | issue-at | ISSUE_AT | 签发地，如“广东”。 |
+| 车牌号 | license-plate | LICENSE_PLATE | 车牌号，如“粤A*****1”。 |
+| 名称 | organization | ORGANIZATION | 名称，如“深圳市xx公司”。 |
+| 税号 | tax-id | TAX_ID | 税号，如“2020***********000”。 |
+![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ad/v3/E-7ykNe3QO2RIasWW7GrZg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111643Z&HW-CC-Expire=86400&HW-CC-Sign=764C6AD506D525D66BCDC92DAF688F5C6BC83E6165A3D795B2FEFDE56911D5D7)
+autocomplete配置项name和（family-name，given-name）不能同时在同一个表单中使用（在护照信息场景中可以同时使用）。
+#### React Native textContentType和HarmonyOS的ContentType的映射关系
+| 输入场景 | 【React Native】textContentType | 【ArkUI】ContentType | 说明 |
+| --- | --- | --- | --- |
+| 昵称 | nickname | NICKNAME | 昵称，如“Vivian”。 |
+| 姓名 | name | PERSON_FULL_NAME | 姓名，如“张三”。 |
+| 姓氏 | familyName | PERSON_LAST_NAME | 姓氏，如“张”。 |
+| 名字 | givenName | PERSON_FIRST_NAME | 名字，如“三”。 |
+| 手机号 | telephoneNumber | PHONE_NUMBER | 手机号，如“188******88”。 |
+| 邮件地址 | emailAddress | EMAIL_ADDRESS | 邮箱地址，如“a****t@huawei.com”。 |
+| 身份证号 | idCardNumber | ID_CARD_NUMBER | 身份证号，如“3201***********123”。 |
+| 全量地址 | formatAddress | FORMAT_ADDRESS | 全量地址，如“中国江苏省南京市雨花台区雨花街道玉兰路98号”。 |
+| 街道详细地址 | fullStreetAddress | FULL_STREET_ADDRESS | 带街道详细地址，如“雨花街道玉兰路98号”。 |
+| 详细地址 | detailInfoWithoutStreet | DETAIL_INFO_WITHOUT_STREET | 不带街道详细地址，如“玉兰路98号”。 |
+| 国籍 | countryName | COUNTRY_ADDRESS | 国籍，如“中国”。 |
+| 护照号 | passportNumber | PASSPORT_NUMBER | 护照号，如“G*******1”。 |
+| 有效期至 | validity | VALIDITY | 有效期至，如“2025-1-1”。 |
+| 签发地 | issueAt | ISSUE_AT | 签发地，如“广东”。 |
+| 车牌号 | licensePlate | LICENSE_PLATE | 车牌号，如“粤A*****1”。 |
+| 名称 | organization | ORGANIZATION | 名称，如“深圳市xx公司”。 |
+| 税号 | taxId | TAX_ID | 税号，如“2020***********000”。 |
+![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ac/v3/3m9l5noCTvKr-b4gxOC-QQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111643Z&HW-CC-Expire=86400&HW-CC-Sign=D8E8C942F2EFEB711083B1BC79675B779F697C550D344F0D79E266BA7C27EED3)
+textContentType配置项name和（familyName，givenName）不能同时在同一个表单中使用（在护照信息场景中可以同时使用）。

@@ -1,0 +1,104 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "wallet-kit",
+  "source_path": "skills/wallet-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T08:00:31.971Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "钱包",
+      "数字车钥匙",
+      "公交卡",
+      "NFC",
+      "蓝牙控车",
+      "如何在AppGallery Connect上创建Wallet Kit服务并配置参数？",
+      "如何开发车钥匙的添加和激活功能？",
+      "如何通过蓝牙连接远程控制车辆开门等操作？",
+      "如何开发交通卡的开通、充值、更新和删卡功能？",
+      "如何对接支付机构和交通卡公司SP TSM系统？",
+      "如何查看用户已添加的卡券？",
+      "用户领取同一商户多张卡券但只显示一张怎么处理？",
+      "用户删卡时会删除哪些信息？",
+      "开发者应用使用Wallet Kit是否需要集成华为Account Kit？",
+      "用户没有登录华为账号时如何处理卡券添加？",
+      "当你的应用需要集成数字车钥匙功能时使用本Kit的车钥匙服务，例如汽车厂商需要在手机端实现蓝牙解锁、启动车辆等功能",
+      "当需要为用户提供交通卡电子化服务时，使用交通卡服务完成开卡、充值、更新和删卡操作",
+      "当你是支付机构或交通卡公司的合作伙伴，需要在HarmonyOS应用中对接交通卡SP TSM系统时，应参考本Kit的交通卡云侧开发和客户端开发指导",
+      "在应用里添加会员卡或优惠券到华为钱包 / Add loyalty cards or coupons to Huawei Wallet from the app",
+      "接入数字车钥匙并完成车辆绑定与激活 / Integrate a digital car key and complete vehicle pairing and activation",
+      "实现公交卡开卡、充值和迁移到新设备 / Implement transit card issuance, top-up, and migration to a new device",
+      "通过 Wallet Kit 查询用户已开通的卡片列表 / Get the list of cards a user has added with Wallet Kit",
+      "下发卡券到钱包并展示卡面信息 / Push passes into Wallet and display card face information",
+      "集成车钥匙后用蓝牙执行解锁、闭锁和寻车 / Use Bluetooth with a car key integration to unlock, lock, and locate the vehicle",
+      "管理钱包卡券的更新、失效和删除流程 / Manage pass updates, expiration, and deletion flows in Wallet",
+      "同步交通卡状态并处理余额或有效期变化 / Sync transit card status and handle balance or validity changes",
+      "接入商户卡券服务让用户一键领卡入钱包 / Integrate merchant pass services so users can claim a card into Wallet with one tap",
+      "实现手机与车辆的近场通信开门体验 / Implement a phone-to-car proximity entry experience",
+      "对接 TSM 或发卡系统完成卡片发行和生命周期管理 / Connect to a TSM or issuer system for card provisioning and lifecycle management",
+      "在应用中检查设备是否支持钱包卡片或车钥匙能力 / Check whether the device supports wallet passes or car key capabilities in the app"
+    ],
+    "do_not_use_when": [
+      "需求只是让用户登录华为账号或获取账号身份信息，应使用 account-kit / If the need is only to sign in with a Huawei account or obtain account identity, use account-kit",
+      "需求是发起通用应用内商品购买、订阅或消耗型商品结算，而不是交通卡充值/开卡业务流程，应使用 iap-kit / If the need is generic in-app purchase, subscription, or consumable checkout rather than transit-card top-up/issuance workflows, use iap-kit",
+      "需求是接入通用支付收银、订单付款或线下/线上支付能力，而不是钱包交通卡或数字车钥匙服务，应使用 payment-kit / If the need is general payment checkout, order payment, or online/offline payment capability rather than wallet transit-card or digital car key services, use payment-kit",
+      "需求只是读取、选择或管理通讯录联系人，与钱包卡片或车钥匙无关，应使用 contacts-kit / If the need is only to read, pick, or manage contacts and is unrelated to wallet cards or car keys, use contacts-kit",
+      "目标设备不是中国境内手机，或需要在模拟器上验证能力，此时不应选用 wallet-kit / If the target device is not a phone in mainland China, or the capability must be validated on an emulator, wallet-kit is not the right choice"
+    ],
+    "preconditions": [
+      "已在 AppGallery Connect 开通并配置 Wallet Kit 服务参数及公钥 / Wallet Kit service parameters and public keys have been enabled and configured in AppGallery Connect",
+      "应用运行在支持的钱包环境中：仅中国境内手机设备，且非模拟器 / The app runs in a supported wallet environment: mainland China phone device only, not an emulator",
+      "相关云侧合作与后端已完成对接，例如车企平台或交通卡 SP TSM、支付机构系统 / Required cloud-side partnerships and backend integrations are completed, such as OEM platforms or transit-card SP TSM and payment institution systems",
+      "设备具备所需硬件与连接条件，例如车钥匙场景的蓝牙/NFC能力和可用网络 / The device has the required hardware and connectivity, such as Bluetooth/NFC for car-key scenarios and available network access"
+    ],
+    "inputs": [
+      "卡片或钥匙产品标识 / card or key product identifier",
+      "用户开卡、激活、充值、更新或删卡请求参数 / user request parameters for issuance, activation, top-up, update, or deletion",
+      "云侧返回的订单、令牌或凭证数据 / order, token, or credential data returned by the cloud side",
+      "车控操作类型与车辆连接信息 / vehicle control action type and vehicle connection information"
+    ],
+    "outputs": [
+      "简介",
+      "车钥匙",
+      "交通卡",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "工程中已加入 Wallet Kit 相关依赖或导入对应钱包接口包 / Wallet Kit dependencies or corresponding wallet interface imports are added to the project",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add Wallet Kit dependencies, SDK references, or imports for wallet-related APIs rather than unrelated kits?"
+      },
+      {
+        "statement": "已实现至少一个钱包业务入口流程：车钥匙开通/激活/车控，或交通卡开通/充值/更新/删卡 / At least one wallet business entry flow is implemented: car key issuance/activation/control, or transit card issuance/top-up/update/deletion",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there at least one concrete flow implemented for a Wallet Kit operation such as car key activation/control or transit card issuance/top-up/update/deletion?"
+      },
+      {
+        "statement": "代码中体现了对云侧结果或钱包操作结果的处理，而非仅停留在静态页面 / The code handles cloud-side results or wallet operation outcomes rather than only showing static UI",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show handling of callback/results/errors from backend or wallet operations instead of only adding placeholder UI?"
+      }
+    ],
+    "overlaps_with": [
+      "account-kit",
+      "contacts-kit",
+      "iap-kit",
+      "payment-kit"
+    ],
+    "safety_tier": "high-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

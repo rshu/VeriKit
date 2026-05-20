@@ -1,0 +1,115 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "audio-kit",
+  "source_path": "skills/audio-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:50:17.471Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "音频",
+      "AudioRenderer",
+      "OHAudio",
+      "OpenSL ES",
+      "音频录制",
+      "音量管理",
+      "音频会话",
+      "空间音频",
+      "如何选择合适的音频播放接口（AudioRenderer、OHAudio、OpenSL ES）",
+      "如何实现低时延音频播放和录制",
+      "如何开发音频通话功能",
+      "如何管理音频播放音量和音频设备路由切换",
+      "如何使用音振协同（AudioHaptic）实现音频与振动同步",
+      "如何处理多应用音频并发的焦点策略",
+      "如何实现音频耳返功能",
+      "如何从OpenSL ES接口迁移到OHAudio接口",
+      "如何选择合适的音频流使用场景类型（StreamUsage）",
+      "如何提升音频性能体验和实现低功耗音频播放",
+      "当应用需要播放或录制音频时，请使用Audio Kit",
+      "根据开发语言选择合适的接口：ArkTS应用使用AudioRenderer播放和AudioCapturer录制；C/C++应用推荐使用OHAudio接口",
+      "当应用需要低时延音频播放（如游戏音效、K歌）时，请使用低时延播放接口",
+      "当应用需要实现音振协同效果（如输入法按键音振、来电铃音振动同步）时，请使用AudioHaptic接口",
+      "当应用需要管理音频播放的并发策略、音量、设备路由时，请使用Audio Kit的音频焦点、会话管理和设备管理能力",
+      "当应用需要查询和监听其他应用的录制状态，或需要处理多应用录音并发场景时，请使用对应的录音并发策略和监听能力",
+      "实现音乐播放器的播放、暂停、进度拖动和停止 / Implement music playback with play, pause, seek, and stop",
+      "添加麦克风录音并将音频保存为文件 / Add microphone recording and save audio to a file",
+      "实现实时采集音频数据做波形显示或音量计 / Capture live audio data for waveform display or a level meter",
+      "接入低时延音频流用于乐器、节拍器或实时监听 / Integrate low-latency audio streaming for instruments, metronomes, or live monitoring",
+      "管理耳机、扬声器和蓝牙设备之间的音频输出切换 / Manage audio output switching between headphones, speaker, and Bluetooth devices",
+      "监听插拔耳机和音频设备变化并自动切换播放路由 / Listen for headset or audio device changes and switch playback routes automatically",
+      "实现通话场景的录音、播放和回声控制 / Implement call audio with recording, playback, and echo control",
+      "设置媒体音量、静音状态和应用内独立音量控制 / Set media volume, mute state, and in-app volume controls",
+      "处理来电、通知和其他应用抢占时的音频焦点 / Handle audio focus when calls, notifications, or other apps interrupt playback",
+      "实现边播边录或双向语音的音频会话管理 / Manage audio sessions for simultaneous playback and recording or two-way voice",
+      "为游戏添加空间音频或3D声场效果 / Add spatial audio or 3D sound effects to a game",
+      "让音效和震动在点击或节奏点上同步触发 / Synchronize sound effects and vibration on taps or beat points",
+      "用 AudioRenderer 或 OHAudio 播放 PCM 流和自定义音频数据 / Play PCM streams and custom audio data with AudioRenderer or OHAudio",
+      "实现后台音频播放并正确响应系统音频策略 / Implement background audio playback and respond correctly to system audio policies"
+    ],
+    "do_not_use_when": [
+      "任务是做音视频编解码、封装解封装或轨道级媒体处理，应改用 avcodec-kit / The task is audio-video codec, muxing-demuxing, or track-level media processing; use avcodec-kit instead",
+      "任务核心是管理系统媒体会话、锁屏/通知栏媒体控件或跨设备播放控制，应改用 avsession-kit / The main task is managing system media sessions, lock-screen/notification media controls, or cross-device playback control; use avsession-kit instead",
+      "任务是拍照、预览、录像或访问摄像头传感器数据，应改用 camera-kit / The task is taking photos, previewing, recording video, or accessing camera sensor data; use camera-kit instead",
+      "任务是浏览、查询、导入导出或持久化管理媒体文件资源库，应改用 media-library-kit / The task is browsing, querying, importing/exporting, or persistently managing the media file library; use media-library-kit instead",
+      "任务是设置、查询或管理系统铃声资源，而不是应用内音频播放/录制，应改用 ringtone-kit / The task is setting, querying, or managing system ringtone resources rather than in-app audio playback/recording; use ringtone-kit instead"
+    ],
+    "preconditions": [
+      "应用已集成可用的 HarmonyOS Audio Kit 能力与对应 API 版本 / The app has integrated the required HarmonyOS Audio Kit capability and matching API version",
+      "若涉及录音，module.json5 已声明麦克风权限且用户已授权 / If recording is involved, microphone permission is declared in module.json5 and granted by the user",
+      "待播放或录制所需的音频源、设备与系统音频服务在目标设备上可用 / The required audio source, devices, and system audio service are available on the target device"
+    ],
+    "inputs": [
+      "音频源信息（文件路径、URI、流或缓冲区） / Audio source information (file path, URI, stream, or buffer)",
+      "音频参数配置（采样率、声道数、编码格式、StreamUsage 等） / Audio parameter configuration (sample rate, channel count, encoding format, StreamUsage, etc.)",
+      "播放或录制控制需求（开始、暂停、停止、低时延、耳返、设备路由） / Playback or recording control requirements (start, pause, stop, low latency, monitoring, device routing)"
+    ],
+    "outputs": [
+      "Kit简介",
+      "音频播放",
+      "音频录制",
+      "音频通话与编创",
+      "音频管理与策略",
+      "音频设备管理"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已创建并配置适合场景的音频播放、录制或管理对象 / The code creates and configures audio playback, recording, or management objects appropriate to the scenario",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set introduce Audio Kit APIs such as AudioRenderer, AudioCapturer, OHAudio, SoundPlayer, AudioHaptic, or audio manager/session/device-routing objects that match the requested audio scenario?"
+      },
+      {
+        "statement": "涉及录音时，代码包含权限申请或授权检查流程 / When recording is involved, the code includes permission request or authorization checking flow",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task includes audio recording, do the edits add or update permission handling for microphone access, including request or grant checking logic?"
+      },
+      {
+        "statement": "已实现至少一个明确的音频控制路径，如播放/录制启动停止、音量、焦点或设备路由处理 / At least one concrete audio control path is implemented, such as start-stop playback/recording, volume, focus, or device routing handling",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits implement actionable audio control logic rather than only declarations or comments, for example starting/stopping audio, handling volume/focus, or switching/listening to audio devices?"
+      }
+    ],
+    "overlaps_with": [
+      "avcodec-kit",
+      "avsession-kit",
+      "camera-kit",
+      "image-kit",
+      "media-kit",
+      "media-library-kit",
+      "ringtone-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

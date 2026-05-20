@@ -1,0 +1,103 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "desktop-extension-kit",
+  "source_path": "skills/desktop-extension-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:52:49.831Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "桌面拓展",
+      "状态栏",
+      "快捷栏",
+      "PC桌面",
+      "2in1设备",
+      "如何在PC设备的系统状态栏上显示应用自定义图标？",
+      "如何实现状态栏图标的左键弹窗和右键菜单功能？",
+      "如何动态添加和删除状态栏图标？",
+      "如何在桌面快捷栏中添加自定义菜单项并分组管理？",
+      "如何对快捷栏中的任务进行添加、更新和删除操作？",
+      "如何配置状态栏弹出窗口的自定义内容？",
+      "当你的应用需要在PC/2in1设备的系统状态栏上显示图标并提供快捷操作时使用状态栏接入能力",
+      "典型场景包括系统工具类应用在状态栏显示状态信息、后台服务通过状态栏图标提供快捷入口、通过右键菜单提供功能选项等",
+      "当你的应用需要在桌面快捷栏区域添加自定义菜单项以提供便捷操作时使用快捷栏接入能力",
+      "典型场景包括办公软件在快捷栏提供常用功能入口、工具类应用通过分组管理组织多项快捷操作等",
+      "在PC端系统托盘显示应用图标并提供快速入口 / Show an app icon in the PC system tray with quick actions",
+      "实现托盘图标点击弹出面板和右键上下文菜单 / Implement tray icon click popups and right-click context menus",
+      "动态更新桌面状态栏图标的提示信息和显示状态 / Dynamically update desktop status bar icon tooltip and display state",
+      "接入电脑桌面右下角常驻图标用于后台运行控制 / Integrate a persistent icon in the desktop corner for background service control",
+      "添加桌面快捷栏操作项让用户一键执行常用功能 / Add desktop quick bar actions for one-click access to common features",
+      "管理快捷栏菜单分组并按场景展示不同入口 / Manage quick bar menu groups and show different entries by scenario",
+      "在2in1设备桌面环境中扩展状态栏交互能力 / Extend status bar interactions in a 2-in-1 desktop environment",
+      "让应用最小化后驻留托盘并从托盘恢复窗口 / Keep the app in the tray after minimizing and restore the window from the tray",
+      "通过状态栏扩展显示同步状态下载进度或连接状态 / Display sync status, download progress, or connection state through a status bar extension",
+      "配置托盘弹窗内容展示通知摘要和快捷按钮 / Configure tray popup content to show notification summaries and quick buttons",
+      "根据应用运行状态添加删除或刷新托盘入口 / Add, remove, or refresh tray entries based on app runtime state",
+      "为桌面快捷栏任务提供新增更新删除等管理能力 / Provide add, update, and remove management for desktop quick bar tasks"
+    ],
+    "do_not_use_when": [
+      "需求是通用界面布局、视觉规范或组件样式设计，而不是接入PC/2in1系统状态栏或快捷栏；请改用 ui-design-kit / The need is general UI layout, visual guidelines, or component styling rather than integration with the PC/2in1 system tray or dock; use ui-design-kit instead",
+      "需求是应用无障碍适配，如屏幕朗读、焦点导航或语义补充，而不是桌面级入口集成；请改用 accessibility-kit / The need is accessibility adaptation such as screen reader support, focus navigation, or semantic annotations rather than desktop-level entry integration; use accessibility-kit instead",
+      "需求是多语言文案、地区化格式或资源本地化，而不是状态栏图标、弹窗或快捷栏菜单管理；请改用 localization-kit / The need is multilingual text, locale formatting, or resource localization rather than tray icons, popups, or dock menu management; use localization-kit instead",
+      "需求是性能采集、卡顿分析、启动优化或资源占用分析，而不是桌面扩展功能接入；请改用 performance-analysis-kit / The need is performance tracing, jank analysis, startup optimization, or resource usage analysis rather than desktop extension integration; use performance-analysis-kit instead",
+      "需求是日历事件或天气数据等垂直服务能力，而不是为现有应用增加桌面状态栏/快捷栏入口；请改用 calendar-kit 或 weather-service-kit / The need is vertical service capability such as calendar events or weather data rather than adding desktop tray/dock entry points to an app; use calendar-kit or weather-service-kit instead"
+    ],
+    "preconditions": [
+      "目标设备为PC或2in1，且系统支持桌面拓展服务能力 / The target device is a PC or 2-in-1 and the system supports desktop extension service capabilities",
+      "工程已接入对应SDK能力并能导入 desktop-extension-kit 相关接口 / The project has the required SDK capability added and can import the desktop-extension-kit APIs",
+      "应用运行在允许创建桌面状态栏或快捷栏入口的桌面环境中 / The app is running in a desktop environment that permits creating system tray or dock entries"
+    ],
+    "inputs": [
+      "状态栏图标资源与标识 / status bar icon resource and identifier",
+      "弹窗内容或弹窗页面配置 / popup content or popup page configuration",
+      "右键菜单项或快捷栏菜单分组配置 / context menu items or dock menu group configuration",
+      "待添加、更新或删除的快捷任务定义 / dock task definitions to add, update, or remove"
+    ],
+    "outputs": [
+      "简介与概述",
+      "状态栏接入",
+      "快捷栏接入"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已接入桌面拓展相关API，用于状态栏或快捷栏能力 / The code integrates desktop extension APIs for tray or dock capabilities",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add imports, API calls, or configuration that belong to desktop extension tray or dock integration rather than unrelated UI-only changes?"
+      },
+      {
+        "statement": "若目标是状态栏接入，已实现图标创建以及点击弹窗或右键菜单中的至少一种交互 / If the goal is tray integration, the code implements icon creation and at least one interaction: click popup or right-click menu",
+        "verifier": "model_judge",
+        "judge_prompt": "If the requested task is about the system tray, do the edits show a tray icon being registered and at least one associated interaction such as popup display or context menu handling?"
+      },
+      {
+        "statement": "若目标是快捷栏接入，已实现菜单分组或任务的添加、更新、删除中的相关操作 / If the goal is dock integration, the code implements the relevant add, update, or delete operations for menu groups or tasks",
+        "verifier": "model_judge",
+        "judge_prompt": "If the requested task is about the dock/quick bar, do the edits include concrete operations for creating, updating, or removing dock groups, menu items, or tasks?"
+      }
+    ],
+    "overlaps_with": [
+      "basic-services-kit",
+      "accessibility-kit",
+      "localization-kit",
+      "test-kit",
+      "performance-analysis-kit",
+      "calendar-kit",
+      "weather-service-kit",
+      "ui-design-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

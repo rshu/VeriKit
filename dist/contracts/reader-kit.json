@@ -1,0 +1,100 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "reader-kit",
+  "source_path": "skills/reader-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:58:16.963Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "阅读器",
+      "电子书",
+      "epub",
+      "txt",
+      "排版",
+      "阅读交互",
+      "如何解析epub或txt格式电子书并获取书名、作者、书封等书籍信息？",
+      "如何使用ReadPageComponent构建一个完整的阅读器页面？",
+      "如何获取书籍目录列表并实现目录跳转功能？",
+      "如何修改翻页方式（仿真翻页、横滑翻页）和调整字体大小、行间距？",
+      "如何通过耳机播控等自定义方式触发翻页？",
+      "如何监听阅读进度并获取当前页码信息？",
+      "如何设置自定义字体文件路径实现字体切换？",
+      "如何自定义阅读页面的背景色和背景图片？",
+      "如何根据设备深浅色模式动态切换阅读器主题？",
+      "如何在智慧多窗等场景下响应文本缩放因子变化？",
+      "当你需要开发一款电子书阅读应用时，应使用Reader Kit",
+      "它提供从书籍解析、排版到阅读交互的完整能力链，开发者无需自行实现复杂的排版引擎和翻页动效，只需集成ReadPageComponent即可快速构建专业的阅读体验",
+      "当你需要解析epub、txt等格式书籍并获取书名、目录、正文内容时，或者需要对富文本内容进行仿真/横滑分页排版时，Reader Kit提供了高效的标准解析和排版能力",
+      "接入 EPUB/TXT 书籍解析并在应用里打开本地电子书 / Integrate EPUB/TXT parsing and open local ebooks in the app",
+      "显示小说正文并实现分页阅读界面 / Display novel content and implement a paginated reading view",
+      "读取电子书元数据并展示封面、书名和作者 / Read ebook metadata and show cover, title, and author",
+      "实现章节目录列表并支持点击跳转到指定章节 / Implement a chapter catalog and jump to a selected chapter",
+      "保存阅读进度并在下次打开时自动续读 / Save reading progress and resume automatically next time",
+      "监听当前阅读位置变化并同步页码或进度条 / Listen to reading position changes and sync page number or progress bar",
+      "用 ReadPageComponent 搭建自定义小说阅读页 / Build a custom novel reader page with ReadPageComponent",
+      "切换仿真翻页和横向滑动翻页效果 / Switch between curl page turning and horizontal swipe paging",
+      "调整阅读主题、字体大小、行距和背景样式 / Adjust reading theme, font size, line spacing, and background style",
+      "加载自定义字体文件用于阅读器字体切换 / Load custom font files for reader font switching",
+      "接入耳机按键或外部控制来翻下一页上一页 / Add headset button or external controls for next and previous page turning",
+      "展示书籍封面页和详情信息后进入阅读内容 / Show the book cover and details before entering the reading content"
+    ],
+    "do_not_use_when": [
+      "要处理PDF文档的解析、渲染、批注或预览时，应改用 pdf-kit / If the task is to parse, render, annotate, or preview PDF documents, use pdf-kit instead",
+      "输入内容是在线文件流、网络直链或边下载边阅读的数据源时，不应使用 Reader Kit / Do not use Reader Kit when the input is an online file stream, network URL, or streaming source",
+      "需要对书籍提供DRM加密、版权保护或受保护内容分发能力时，不应使用 Reader Kit / Do not use Reader Kit when DRM, copyright protection, or protected content delivery is required",
+      "目标设备不是 HarmonyOS NEXT 5.0.4+ 的Phone、PC/2in1或Tablet，或服务区域不在中国大陆时，不应使用 Reader Kit / Do not use Reader Kit when the target device is not HarmonyOS NEXT 5.0.4+ Phone, PC/2in1, or Tablet, or when the service region is outside mainland China"
+    ],
+    "preconditions": [
+      "工程运行环境满足 HarmonyOS NEXT 5.0.4 及以上，且设备类型受 Reader Kit 支持 / The project runs on HarmonyOS NEXT 5.0.4 or later and on a device type supported by Reader Kit",
+      "待处理书籍已存在于本地存储，应用可访问对应本地文件路径或URI / The book to be processed already exists in local storage, and the app can access the local file path or URI",
+      "项目已正确集成 Reader Kit 相关依赖与能力，能够创建解析、排版或阅读组件实例 / The project has correctly integrated Reader Kit dependencies and capabilities so parsing, layout, or reading component instances can be created"
+    ],
+    "inputs": [
+      "本地电子书文件路径或URI / local ebook file path or URI",
+      "电子书格式类型（txt、epub、mobi、azw、azw3） / ebook format type (txt, epub, mobi, azw, azw3)",
+      "阅读器配置参数（翻页方式、字体大小、行间距、主题等） / reader configuration parameters (page-turn mode, font size, line spacing, theme, etc.)",
+      "阅读页组件或其挂载上下文 / reading page component or its hosting context"
+    ],
+    "outputs": [
+      "简介",
+      "阅读器构建",
+      "阅读交互",
+      "个性化设置"
+    ],
+    "postconditions": [
+      {
+        "statement": "工程中已接入 Reader Kit 的解析、排版或 ReadPageComponent 阅读能力 / The project integrates Reader Kit parsing, layout, or ReadPageComponent reading capabilities",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show Reader Kit APIs, imports, dependencies, or a ReadPageComponent being added or configured for ebook reading?"
+      },
+      {
+        "statement": "代码面向本地电子书文件进行处理，而不是网络流或在线PDF / The code handles local ebook files rather than network streams or online PDFs",
+        "verifier": "model_judge",
+        "judge_prompt": "From the edits, is the input source a local ebook file/path/URI and not a network stream, remote URL, or PDF workflow?"
+      },
+      {
+        "statement": "实现了至少一项阅读结果能力：书籍信息/目录获取、分页排版、或阅读页展示与翻页配置 / At least one reading outcome is implemented: book metadata/TOC retrieval, pagination layout, or reading page display with page-turn configuration",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits implement at least one of the following with Reader Kit: retrieving metadata or TOC, paginating content, or displaying/configuring a reading page?"
+      }
+    ],
+    "overlaps_with": [
+      "pdf-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "ime-kit",
+  "source_path": "skills/ime-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:55:00.898Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "输入法",
+      "IME框架",
+      "文本输入",
+      "键盘",
+      "输入法应用",
+      "如何实现一个完整的输入法应用，包括生命周期管理和Panel创建？",
+      "如何配置输入法子类型以支持多语言和多模式切换？",
+      "如何在自绘编辑框（ArkTS/C/C++）中绑定输入法实现文字输入？",
+      "如何实现输入法应用的沉浸模式通信机制？",
+      "输入法安全模式（基础模式和完整体验模式）有什么区别？",
+      "如何在不可获焦窗口中实现输入框与输入法的交互？",
+      "如何切换输入法应用？",
+      "如何使用Ime调试工具进行输入法开发调试？",
+      "当您需要开发一款输入法应用时，可使用 IME Kit 的输入法服务 API 来创建软键盘窗口、插入删除字符、选中文本、监听物理键盘按键事件等",
+      "当您的应用使用自绘编辑框（如游戏内的聊天输入框、富文本编辑器等）需要绑定输入法进行文字输入时，可使用 IME Kit 的输入法框架 API，支持 ArkTS 和 C/C++ 两种开发方式",
+      "开发自定义软键盘并处理候选词上屏 / Build a custom soft keyboard and commit candidate text",
+      "在输入法扩展里创建键盘面板和候选栏界面 / Create keyboard panels and candidate bar UI in an input method extension",
+      "实现拼音联想、候选词更新和选词提交 / Implement Pinyin suggestions, candidate updates, and candidate commit",
+      "监听物理键盘按键并把按键转换成输入内容 / Listen for hardware key events and turn them into input text",
+      "向当前编辑框插入文字、删除字符和替换选中内容 / Insert text, delete characters, and replace selected text in the active editor",
+      "获取光标位置和选中文本以驱动输入法编辑逻辑 / Get cursor position and selected text to drive IME editing logic",
+      "让自定义编辑控件接入系统输入法并弹出键盘 / Connect a custom editor to the system IME and show the keyboard",
+      "实现多语言键盘布局切换和输入模式切换 / Implement multilingual keyboard layout switching and input mode switching",
+      "管理输入法扩展的激活、切前台和生命周期状态 / Manage IME extension activation, foreground switching, and lifecycle state",
+      "在沉浸式场景下让键盘与宿主应用通信 / Enable communication between the keyboard and host app in immersive scenarios",
+      "适配安全输入场景，限制输入法能力并保护敏感内容 / Adapt to secure input scenarios, restrict IME capabilities, and protect sensitive content",
+      "在不可聚焦浮窗或特殊窗口里完成文字输入交互 / Enable text input interaction in non-focusable floating or special windows"
+    ],
+    "do_not_use_when": [
+      "需求是处理触摸、鼠标、键盘等通用输入事件分发，而不是输入法应用或自绘编辑框与IME通信；请改用 input-kit / The need is to handle generic input event dispatch for touch, mouse, or keyboard rather than IME apps or IME communication with custom editors; use input-kit instead",
+      "需求是接入或解析手写笔能力（如压感、倾角、笔迹）而非软键盘输入；请改用 pen-kit / The need is to access stylus capabilities such as pressure, tilt, or ink rather than soft-keyboard text input; use pen-kit instead",
+      "需求是处理游戏手柄按键、摇杆或振动等控制器能力，而不是文本输入；请改用 game-controller-kit / The need is to handle game controller buttons, sticks, or vibration rather than text input; use game-controller-kit instead",
+      "需求是开发或调试底层硬件驱动、设备接入或内核级输入支持，而不是应用层输入法框架；请改用 driver-development-kit / The need is to develop or debug low-level hardware drivers, device bring-up, or kernel-level input support rather than the app-layer IME framework; use driver-development-kit instead",
+      "需求是获取传感器数据（如加速度计、陀螺仪、环境传感器）而非编辑框文本输入；请改用 sensor-service-kit / The need is to read sensor data such as accelerometer, gyroscope, or ambient sensors rather than editor text input; use sensor-service-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成HarmonyOS对应版本的IME Kit能力并可解析相关API / The project has integrated the target HarmonyOS IME Kit capability and its APIs are resolvable",
+      "若开发输入法应用，应用类型、能力配置及必要声明已在module.json5等配置中完成 / If developing an IME app, the app type, capability configuration, and necessary declarations have been completed in module.json5 and related config",
+      "若绑定自绘编辑框，编辑组件已具备可接收与同步文本、选区、光标状态的实现基础 / If binding a custom editor, the editor implementation is ready to receive and synchronize text, selection, and cursor state",
+      "若涉及输入法切换、启用或安全/沉浸模式能力，设备系统版本与系统授权条件满足要求 / If IME switching, enablement, or security/immersive mode features are involved, the device OS version and required system authorization conditions are satisfied"
+    ],
+    "inputs": [
+      "编辑框实例或自绘编辑上下文 / editor instance or custom editing context",
+      "文本内容、光标位置与选区信息 / text content, cursor position, and selection information",
+      "输入法Panel类型与界面配置 / IME panel type and UI configuration",
+      "输入法子类型配置（语言、模式等） / IME subtype configuration such as language and mode"
+    ],
+    "outputs": [
+      "简介",
+      "输入法应用开发",
+      "自绘编辑框",
+      "工具"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已建立应用编辑框与输入法之间的绑定或通信通道 / The code establishes a binding or communication channel between the app editor and the IME",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code/configuration that connects a custom editor or app text input flow with IME APIs, rather than only handling generic input events?"
+      },
+      {
+        "statement": "已实现至少一项输入法文本交互能力，如插入、删除、选中或光标移动 / At least one IME text interaction capability is implemented, such as insert, delete, selection, or cursor movement",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there evidence that IME-driven text operations such as inserting text, deleting text, updating selection, or moving the cursor are handled?"
+      },
+      {
+        "statement": "若目标是输入法应用，已新增或完善输入法生命周期、Panel或子类型相关实现 / If the target is an IME app, IME lifecycle, panel, or subtype related implementation has been added or refined",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task is about building an IME app, do the edits include IME-specific app logic such as lifecycle handling, panel creation, or subtype configuration?"
+      }
+    ],
+    "overlaps_with": [
+      "sensor-service-kit",
+      "input-kit",
+      "pen-kit",
+      "driver-development-kit",
+      "game-controller-kit",
+      "mechanic-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "graphics-accelerate-kit",
+  "source_path": "skills/graphics-accelerate-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:54:32.097Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "图形加速",
+      "超帧",
+      "插帧",
+      "游戏渲染",
+      "资源包下载",
+      "游戏启动加速",
+      "如何为OpenGL ES平台的游戏接入超帧内插或外插模式以提升帧率？",
+      "如何为Vulkan平台的游戏接入超帧增强模式并使用运动估计能力？",
+      "如何开发ABR自适应稳态渲染功能，根据设备状态动态调整分辨率？",
+      "如何接入OpenGTX动态帧率调整能力，降低游戏功耗？",
+      "如何使用ExtensionAbility实现游戏资源包的后台托管下载？",
+      "如何实现游戏前台下载资源包，并支持切后台接续下载？",
+      "如何实现游戏秒级启动（快速启动）功能？",
+      "超帧外插模式下运动物体边缘出现拖影如何排查和解决？",
+      "集成ABR后Native纹理内容为空或渲染异常如何处理？",
+      "游戏秒级启动后出现闪退、黑屏、无法热更等问题如何解决？",
+      "当您的游戏应用需要提升渲染性能、解决卡顿掉帧问题时，可使用游戏渲染加速服务的超帧、ABR、OpenGTX能力",
+      "当需要实现游戏资源包的静默后台下载和高效更新时，可使用游戏资源加速服务",
+      "当希望实现游戏冷启动秒级打开时，可接入游戏启动加速服务",
+      "本Kit适用于各种游戏类型，从休闲游戏到重度GPU渲染的大型3D游戏均可受益，也适用于使用Unity等游戏引擎开发的应用",
+      "为游戏接入超分辨率提升画质并降低原生渲染分辨率 / Integrate super resolution for a game to improve image quality while lowering native render resolution",
+      "实现动态分辨率缩放让帧率保持稳定 / Implement dynamic resolution scaling to keep frame rate stable",
+      "接入 OpenGL ES 游戏的插帧能力提升高刷屏流畅度 / Add frame interpolation to an OpenGL ES game for smoother high-refresh gameplay",
+      "为 Vulkan 游戏启用运动估计和补帧优化渲染性能 / Enable motion estimation and frame generation for a Vulkan game to optimize rendering performance",
+      "集成 OpenGTX 根据负载自动调节帧率和功耗 / Integrate OpenGTX to automatically tune frame rate and power usage based on workload",
+      "实现游戏快速启动减少首帧等待时间 / Implement fast game startup to reduce time to first frame",
+      "后台托管下载大型游戏资源包并支持断点续传 / Host large game asset pack downloads in the background with resume support",
+      "前台下载纹理和地图资源切到后台后继续拉取 / Download textures and map assets in the foreground and continue fetching them after moving to background",
+      "按设备温度和性能档位自适应调整渲染策略 / Adapt rendering strategy based on device temperature and performance level",
+      "管理游戏资源包的下载任务状态和进度回调 / Manage game asset pack download tasks, status, and progress callbacks",
+      "降低高负载场景的 GPU 压力并减少掉帧 / Reduce GPU pressure in heavy scenes and minimize frame drops",
+      "为大型 3D 游戏接入稳态渲染以平衡画质与功耗 / Add steady-state rendering for a large 3D game to balance visual quality and power consumption"
+    ],
+    "do_not_use_when": [
+      "需求是开发普通2D界面、Canvas、位图、文本或矢量绘制，而非游戏渲染加速；应改用 arkgraphics-2d / The need is standard 2D UI, canvas, bitmap, text, or vector drawing rather than game rendering acceleration; use arkgraphics-2d instead",
+      "需求是构建3D场景、模型、材质、光照或通用3D渲染能力，而不是超帧、ABR、OpenGTX或游戏启动/资源加速；应改用 arkgraphics-3d / The task is to build 3D scenes, models, materials, lighting, or general 3D rendering rather than frame generation, ABR, OpenGTX, or game startup/resource acceleration; use arkgraphics-3d instead",
+      "需求是实现AR跟踪、相机融合、虚实叠加或AR交互体验，而非游戏图形性能优化；应改用 ar-engine / The task is AR tracking, camera fusion, mixed reality overlay, or AR interaction rather than game graphics performance optimization; use ar-engine instead",
+      "需求是接入游戏引擎级运行时、组件系统或引擎框架能力，而不是调用图形加速服务；应改用 xengine-kit / The need is engine-level runtime, component system, or engine framework capabilities rather than graphics acceleration services; use xengine-kit instead",
+      "需求是进行空间扫描、环境重建、网格/平面感知或空间地图构建，而非渲染与下载启动加速；应改用 spatial-recon-kit / The task is spatial scanning, environment reconstruction, mesh/plane perception, or spatial map building rather than rendering/download/startup acceleration; use spatial-recon-kit instead"
+    ],
+    "preconditions": [
+      "目标应用为游戏或图形密集型应用，且运行设备属于本Kit支持的设备类型 / The target app is a game or graphics-intensive app, and the runtime device is among the device types supported by this Kit",
+      "应用图形栈已采用受支持的图形API（OpenGL ES或Vulkan）并具备可接入的渲染流程 / The app graphics stack already uses a supported graphics API (OpenGL ES or Vulkan) and has a render pipeline that can be integrated",
+      "若使用资源包加速，module.json5中已声明网络权限，且相关ExtensionAbility组件类型配置正确 / If resource package acceleration is used, network permission is declared in module.json5 and the related ExtensionAbility component type is configured correctly",
+      "若使用秒级启动，应用已获得并开通对应开放能力，且按开发准备完成相关配置 / If instant game startup is used, the app has obtained the required access entitlement and completed the necessary setup"
+    ],
+    "inputs": [
+      "图形API与渲染模式信息（OpenGL ES/Vulkan、超帧/ABR/OpenGTX） / Graphics API and rendering mode information (OpenGL ES/Vulkan, frame generation/ABR/OpenGTX)",
+      "游戏渲染管线接入点与纹理/Buffer信息 / Game render pipeline integration points and texture/buffer information",
+      "资源包描述信息（manifestUrl、资源包URL、任务参数） / Resource package descriptors (manifestUrl, package URL, task parameters)",
+      "ExtensionAbility或前台下载流程配置 / ExtensionAbility or foreground download flow configuration",
+      "快速启动所需的应用启动流程与内存镜像相关配置 / App startup flow and memory-image-related configuration for fast launch"
+    ],
+    "outputs": [
+      "Kit 简介",
+      "业务概述",
+      "超帧概述",
+      "开发准备",
+      "ABR 功能开发",
+      "OpenGTX 功能开发",
+      "OpenGL ES 平台超帧开发",
+      "Vulkan 平台超帧开发",
+      "游戏资源加速服务 - 功能开发",
+      "游戏启动加速服务",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码或配置中接入至少一种图形加速能力、资源下载加速能力或游戏启动加速能力 / At least one graphics acceleration, resource download acceleration, or game startup acceleration capability is integrated in code or configuration",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show concrete integration of this kit by adding or modifying code/config for at least one of: frame generation, ABR, OpenGTX, resource package accelerated download, or instant startup?"
+      },
+      {
+        "statement": "若实现资源包加速，已补齐网络权限与ExtensionAbility相关声明或下载任务发布逻辑 / If resource package acceleration is implemented, the necessary network permission and ExtensionAbility declarations or download task publishing logic are added",
+        "verifier": "model_judge",
+        "judge_prompt": "If the changes target resource package acceleration, do the edits include the required permission/config declarations and/or code to publish or manage download tasks?"
+      },
+      {
+        "statement": "若实现渲染加速，改动中明确绑定到受支持的OpenGL ES或Vulkan渲染路径，而非停留在通用占位说明 / If rendering acceleration is implemented, the changes are clearly tied to a supported OpenGL ES or Vulkan render path rather than generic placeholders",
+        "verifier": "model_judge",
+        "judge_prompt": "If the changes target rendering acceleration, do they modify a concrete OpenGL ES or Vulkan rendering path with kit-specific integration rather than only adding comments or vague stubs?"
+      },
+      {
+        "statement": "若实现秒级启动，已加入相应启动恢复流程或配置，而不是仅修改普通启动文案 / If instant startup is implemented, the corresponding startup restore flow or configuration is added rather than only changing ordinary launch text",
+        "verifier": "model_judge",
+        "judge_prompt": "If the changes target instant startup, do the edits add real startup-acceleration flow/configuration related to restore or memory-image launch instead of superficial UI/text changes?"
+      }
+    ],
+    "overlaps_with": [
+      "arkgraphics-2d",
+      "arkgraphics-3d",
+      "ar-engine",
+      "xengine-kit",
+      "spatial-recon-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

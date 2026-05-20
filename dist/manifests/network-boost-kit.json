@@ -1,0 +1,135 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "network-boost-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:29.008Z"
+  },
+  "references": [
+    {
+      "path": "references/Network Boost Kit简介.md",
+      "title": "Network Boost Kit简介",
+      "snippet": "Network Boost Kit（网络加速服务）提供网络加速能力以及网络感知、网络质量预测等能力，通过软、硬、芯、端、管、云等全方位的协同解决方案实现网络资源的调优和加速，从而构筑更可靠、更流畅、更高速的上网体验。 #### 约束与限制 #### 支持的设备 本Kit仅适用于Phone、Tablet和PC/2in1设备。 #### 功能使用限制 本Kit功能只支持Wi-Fi和Cellular网络，不支持有线网络、蓝牙等其他的网络。 #### 模拟器支持情况 本Kit暂不支持模拟器。"
+    },
+    {
+      "path": "references/业务场景设置(C_C++).md",
+      "title": "业务场景设置(C/C++)",
+      "snippet": "从6.0.2(22)开始，支持业务场景设置。 #### 场景介绍 应用在请求多网并发之前，通过设置业务场景，可以帮助系统进行多网并发管控和业务时长分析。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 #include \"NetworkBoostKit/network_boost.h\" #include <cstdio> 2. CMakeLists.txt中添加以下lib，具体请见 C API开发准备 。 libnetwork_boost.so 3. 调用SetSceneDesc接口。 int32_t SetSceneDesc() { NetworkBoost_SceneDesc sceneDesc; sceneDesc.duration = 0; sceneDesc.startTime = 0; sceneDesc.scene = NB_SERVICE_LOGIN; sceneDesc.sceneEvent = SCENE_EVENT_ENTER; int32_t ret = HMS_NetworkBoost_SetSceneDesc(sceneDesc); printf(\"业务场景设置结果: %d\\n\", ret); return ret; }"
+    },
+    {
+      "path": "references/业务场景设置.md",
+      "title": "业务场景设置",
+      "snippet": "应用在请求多网并发之前，通过设置业务场景，可以帮助系统进行多网并发管控和业务时长分析。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 import { netBoost } from '@kit.NetworkBoostKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 设置业务场景。 try { let sceneDesc : netBoost.SceneDesc = { scene : 'realtimeVoice', sceneEvent : netBoost.SceneEvent.SCENE_EVENT_ENTER } netBoost.setSceneDesc(sceneDesc); } catch (err) { console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message); }"
+    },
+    {
+      "path": "references/多网发起和释放(C_C++).md",
+      "title": "多网发起和释放(C/C++)",
+      "snippet": "从6.0.2(22)开始，支持多网发起和释放。 #### 场景介绍 应用可根据自身业务的需要，以及系统的建议来发起多网络加速的请求，并在使用结束后及时释放。支持WiFi和蜂窝并发以及主卡和副卡并发，不支持开发者指定并发组合，并发组合由系统决定。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7e/v3/BM58q4bOR0e7Fy9YWfqUWA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111157Z&HW-CC-Expire=86400&HW-CC-Sign=A958E7E1C8F1BCE55EFF913BB62BBA56743AD0F4C371BAA27235FDCF9B0B06B0) - 主卡和副卡并发需要开启智能切换上网卡开关，并依赖主卡和副卡驻留网络的频点，若不满足并发条件（例如主副卡插入同运营商卡场景），多网发起会失败。 - 受限于硬件，部分设备不支持双卡场景下的多网并发，开发者可通过错误码进行排查。 - 如果要使用的传输协议接口不支持指定网络，则新发起的网络无法使用。如 HTTP 当前只支持默认网络传输，不支持指定网络，所以无法使用。 #### 开发前准备 多网发起需要开启网络加速开关，"
+    },
+    {
+      "path": "references/多网发起和释放.md",
+      "title": "多网发起和释放",
+      "snippet": "应用可根据自身业务的需要，以及系统的建议来发起多网络加速的请求，并在使用结束后及时释放。支持WiFi和蜂窝并发以及主卡和副卡并发，不支持开发者指定并发组合，并发组合由系统决定。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/59/v3/kKFX4T6hQnivjWb-GfJ1zg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111155Z&HW-CC-Expire=86400&HW-CC-Sign=6D57FAA9FBC9EC99BD9315B50B9064F7BE1F0D68A812B676165717CC46F6C5F8) - 主卡和副卡并发需要开启智能切换上网卡开关，并依赖主卡和副卡驻留网络的频点，若不满足并发条件（例如主副卡插入同运营商卡场景），多网发起会失败。 - 受限于硬件，部分设备不支持双卡场景下的多网并发，开发者可通过错误码进行排查。 - 如果要使用的传输协议接口不支持指定网络，则新发起的网络无法使用。如 HTTP 当前只支持默认网络传输，不支持指定网络，所以无法使用。 #### 开发前准备 多网发起需要开启网络加速开关，操作路径为：设置->移动网络->网络加速->允许使用移动数据加速网络"
+    },
+    {
+      "path": "references/多网建议监听(C_C++).md",
+      "title": "多网建议监听(C/C++)",
+      "snippet": "从6.0.2(22)开始，支持多网建议监听。 #### 场景介绍 系统感知到应用可能需要使用多网络加速的场景时，如弱网、网络切换等特定场景，会给出建议。应用通过监听多网络加速的建议，决策发起多网络加速的请求。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 #include \"NetworkBoostKit/network_boost_handover.h\" #include <cstdio> 2. CMakeLists.txt中添加以下lib，具体请见 C API开发准备 。 libnetwork_boost.so 3. 调用HMS_NetworkBoost_RegisterMultiPathRecommendationCallback接口，获取多网建议变化信息。 uint32_t callbackId = 0; void onMultiPathRecommendationCallback(NetworkBoost_MultiPathRecommendation* recommendation) { // 多网建议变化回调处理 } int32_t RegisterMultiPathRecommendation() { // 注册回调，获取回调Id int32_t ret = HMS_NetworkBoo"
+    },
+    {
+      "path": "references/多网建议监听.md",
+      "title": "多网建议监听",
+      "snippet": "系统感知到应用可能需要使用多网络加速的场景时，如弱网、网络切换等特定场景，会给出建议。应用通过监听多网络加速的建议，决策发起多网络加速的请求。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 import { netHandover } from '@kit.NetworkBoostKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 通过订阅的方式监听系统多网建议变化信息。 try { netHandover.on('multiPathRecommendation', (data: netHandover.MultiPathRecommendationInfo) => { // 回调信息处理 console.info(\"on multiPathRecommendation: \" + JSON.stringify(data)); }); } catch (err) { console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message); } 3. 当应用业务流程结束，取消订阅系统多网建"
+    },
+    {
+      "path": "references/多网状态监听(C_C++).md",
+      "title": "多网状态监听(C/C++)",
+      "snippet": "从6.0.2(22)开始，支持多网状态监听。 #### 场景介绍 应用通过监听多网络状态的变化，感知可用网络的变化，从而选择在多网络上传输数据的策略。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 #include \"NetworkBoostKit/network_boost_handover.h\" #include <cstdio> 2. CMakeLists.txt中添加以下lib，具体请见 C API开发准备 。 libnetwork_boost.so 3. 调用HMS_NetworkBoost_RegisterMultiPathStateChangeCallback接口，获取多网状态变化信息。 uint32_t callbackId = 0; void onMultiPathStateChangeCallback(NetworkBoost_MultiPathStateChange* result) { // 多网状态变化回调处理 } int32_t RegisterMultiPathStateChange() { // 注册回调，获取回调Id int32_t ret = HMS_NetworkBoost_RegisterMultiPathStateChangeCallback(onMultiPa"
+    },
+    {
+      "path": "references/多网状态监听.md",
+      "title": "多网状态监听",
+      "snippet": "应用通过监听多网络状态的变化，感知可用网络的变化，从而选择在多网络上传输数据的策略。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 import { netHandover } from '@kit.NetworkBoostKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 通过订阅的方式监听多网状态变化信息。 try { netHandover.on('multiPathStateChange', (data: netHandover.MultiPathStateInfo) => { // 回调信息处理 console.info(\"on multiPathStateChange: \" + JSON.stringify(data)); }); } catch (err) { console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message); } 3. 当应用业务流程结束和应用退出时，取消订阅多网状态变化信息。 try { netHandover.off('multiPathSta"
+    },
+    {
+      "path": "references/多网配额查询(C_C++).md",
+      "title": "多网配额查询(C/C++)",
+      "snippet": "从6.0.2(22)开始，支持多网配额查询。 #### 场景介绍 由于多网络加速受到配额的管控，应用可以获取当前剩余的多网并发配额信息，合理分配使用多网络加速的次数和时长。应用配额以24小时的周期进行刷新。配额（次数或时长）耗尽会限制使用，此时请求多网会抛出错误码，24小时后会重新分配。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 #include \"NetworkBoostKit/network_boost_handover.h\" #include <cstdio> 2. CMakeLists.txt中添加以下lib，具体请见 C API开发准备 。 libnetwork_boost.so 3. 调用GetMultiPathQuotaStats接口，获取多网配额信息。 int32_t GetMultiPathQuotaStats() { NetworkBoost_MultiPathQuota quota = { 0 }; int32_t ret = HMS_NetworkBoost_GetMultiPathQuotaStats(&quota); printf(\"获取多网配额信息结果: %d\\n\", ret); printf(\"获取多网配额信息已使用时长: %d\\n\", quota.used.dura"
+    },
+    {
+      "path": "references/多网配额查询.md",
+      "title": "多网配额查询",
+      "snippet": "由于多网络加速受到配额的管控，应用可以获取当前剩余的多网并发配额信息，合理分配使用多网络加速的次数和时长。应用配额以24小时的周期进行刷新。配额（次数或时长）耗尽会限制使用，此时请求多网会抛出错误码，24小时后会重新分配。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 import { netHandover } from '@kit.NetworkBoostKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 获取多网配额。 try { let multiquota : netHandover.MultiPathQuota = netHandover.getMultiPathQuotaStats(); // 已使用配额次数 console.info('getMultiPathQuotaStats multiPathQuota.used.count is:' + multiquota.used.count) // 已使用配额时间，单位为秒 console.info('getMultiPathQuotaStats multiPathQuota.used.duration is:' + multiquota.used.duration"
+    },
+    {
+      "path": "references/应用传输体验反馈 (C_C++).md",
+      "title": "应用传输体验反馈 (C/C++)",
+      "snippet": "当应用传输体验发生变化时，应用将传输体验和传输的业务类型信息通过实时反馈接口传输给系统网络业务模块，系统网络业务模块进行精细化调度，实现网络加速。 例如：视频类App播放过程中卡顿，将卡顿信息上报后，Network Boost Kit将信息反馈给系统网络加速模块，该模块会记录播放卡顿信息，并根据当前网络情况，启用网络加速能力。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 #include \"NetworkBoostKit/network_boost_quality.h\" #include <cstdio> 2. CMakeLists.txt中添加以下lib，具体请见 C API开发准备 。 libnetwork_boost.so 3. 调用ReportQoe接口将应用传输体验信息通知给系统。 int32_t ReportQoe() { NetworkBoost_ServiceType serviceType = NB_SERVICE_SHORT_VIDEO; NetworkBoost_QoeType qoeType = NB_QOE_BAD_SERVER_ERROR; int32_t ret = HMS_NetworkBoost_ReportQoe(serviceType, qoeType); pri"
+    },
+    {
+      "path": "references/应用传输体验反馈.md",
+      "title": "应用传输体验反馈",
+      "snippet": "当应用传输体验发生变化时，应用将传输体验和传输的业务类型信息通过实时反馈接口传输给系统网络业务模块，系统网络业务模块进行精细化调度，实现网络加速。 例如：视频类App播放过程中卡顿，将卡顿信息上报后，Network Boost Kit将信息反馈给系统网络加速模块，该模块会记录播放卡顿信息，并根据当前网络情况，启用网络加速能力。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 import { netQuality } from '@kit.NetworkBoostKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 调用reportQoe接口将应用传输体验信息通知给系统。 try{ let serviceType: netQuality.ServiceType = 'shortVideo'; let qoeType: netQuality.BadQoeCause = 'serverErr'; let appQoE: netQuality.AppQoe = { serviceType, qoeType }; netQuality.reportQoe(appQoE); } catch (err) { console.error('err"
+    },
+    {
+      "path": "references/开发准备.md",
+      "title": "开发准备",
+      "snippet": "应用在使用Network Boost Kit能力前需要检查是否已经获取对应权限。如未获得授权，需要声明对应权限。 Network Boost Kit所需权限有： ohos.permission.GET_NETWORK_INFO：用户获取设备网络信息。 ohos.permission.INTERNET：允许使用因特网访问网络。 ohos.permission.LINKTURBO: 允许应用使用多网并发等网络加速能力，连接迁移能力部分接口需要该权限，如果不使用该能力，不需要申请该权限。 必须手动配置上述权限后才能使用，详细配置参见 申请权限步骤 。 其中ohos.permission.LINKTURBO权限为受限ACL权限，需要特别配置和申请，具体操作步骤参考 配置签名 和 受限ACL权限申请 。 #### 申请权限步骤 需要在entry/src/main路径下的module.json5中配置所需申请的权限。示例代码如下所示： { \"module\": { \"requestPermissions\": [ { \"name\": \"ohos.permission.GET_NETWORK_INFO\" }, { \"name\": \"ohos.permission.INTERNET\" }, { \"name\": \"ohos.permission.LINKTURBO\" } ] } } #### C API"
+    },
+    {
+      "path": "references/弱网感知判决 (C_C++).md",
+      "title": "弱网感知判决 (C/C++)",
+      "snippet": "通过 网络质量评估（C++） 和 网络场景识别（C++） 章节，弱网感知判决可归纳为3种方式获取： **监听系统实时判决** ： 根据网络场景识别信息，如NetworkBoost_Scene(NB_SCENE_WEAK_SIGNAL/NB_SCENE_CONGESTION)，系统直接判决为弱网。 **监听系统预测判决：** 根据网络场景识别中的弱信号预测信息，如NetworkBoost_WeakSignalPrediction，系统预测即将进入弱网区域。 **应用自定义判决：** 根据网络质量评估信息，如NetworkBoost_NetworkQos(linkUpBandwidth/linkDownBandwidth/rttMs/linkUpBufferDelayMs/linkUpBufferCongestionPercent)，应用自定义门限来判决为弱网。 应用可根据自身业务特点，选择其中一种或多种使用。"
+    },
+    {
+      "path": "references/弱网感知判决.md",
+      "title": "弱网感知判决",
+      "snippet": "通过 网络质量评估 和 网络场景识别 章节，弱网感知判决可归纳为3种方式获取： **监听系统实时判决** ： 根据网络场景识别信息，如NetworkScene.scene(weakSignal/congestion)，系统直接判决为弱网。 **监听系统预测判决：** 根据网络场景识别中的弱信号预测信息，如NetworkScene.weakSignalPrediction，系统预测即将进入弱网区域。 **应用自定义判决：** 根据网络质量评估信息，如NetworkQos(linkUpBandwidth/linkDownBandwidth/rttMs/linkUpBufferDelayMs/linkUpBufferCongestionPercent)，应用自定义门限来判决为弱网。 应用可根据自身业务特点，选择其中一种或多种使用。"
+    },
+    {
+      "path": "references/概述.md",
+      "title": "概述",
+      "snippet": "从6.0.0(20)版本开始，支持连接迁移（多网并发）功能。 多网并发是系统提供接口可以建立多个网络通路，应用发起多网请求后，系统依据业务场景决定并发组合和实施相应的并发管控，并对并发做收益度量。使用多网并发功能的原则是应用申请（受限权限）、系统管控、最小化使用。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/23/v3/puerA9CETRmGdybCcqVxXQ/zh-cn_image_0000002573974351.png?HW-CC-KV=V1&HW-CC-Date=20260421T111154Z&HW-CC-Expire=86400&HW-CC-Sign=305B522D9A7FD310ED05919117623B0617AAFAEA614B1EBDB26B0A82095C7C4D) 其中各步骤功能如下： 监听并发：应用监听多网状态通知获得状态变更信息；同时网络子系统会给出多网拉起和释放等建议措施。 查询配额：应用获取多网并发配额信息(已使用和剩余的多网次数和时长)，自主实现合理使用多网并发能力。 启动并发：应用启动多网并发前，可主动调用业务场景设置接口，告知系统进入特定业务场景，并通过显式的多网发起接口来触发多网并发。 网卡绑定：在多网状态监听接"
+    },
+    {
+      "path": "references/网络场景识别 (C_C++).md",
+      "title": "网络场景识别 (C/C++)",
+      "snippet": "应用在订阅网络场景识别后，系统在网络场景实时信息或预测信息发生变化后回调给应用，回调的网络场景信息包括数据传输的链路类型、网络场景类型、数传策略建议、弱信号信息等。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 #include \"NetworkBoostKit/network_boost_quality.h\" #include <cstdio> 2. CMakeLists.txt中添加以下lib，具体请见 C API开发准备 。 libnetwork_boost.so 3. 通过注册回调的方式监听网络场景识别信息。 uint32_t callbackId = 0; void onNetworkSceneChanged(NetworkBoost_NetworkScene *ns) { // 网络场景识别回调信息处理 printf(\"数据路径类型: %d\\n\", ns->pathType); printf(\"网络场景: %d\\n\", ns->scene); switch (ns->scene) { case NB_SCENE_NORMAL: // 普通场景处理 break; case NB_SCENE_CONGESTION: // 拥塞场景处理 break; case NB_SCENE_FREQUENT_"
+    },
+    {
+      "path": "references/网络场景识别.md",
+      "title": "网络场景识别",
+      "snippet": "应用在订阅网络场景识别后，系统在网络场景实时信息或预测信息发生变化后回调给应用，回调的网络场景信息包括数据传输的链路类型、网络场景类型、数传策略建议、弱信号信息等。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 import { netQuality } from '@kit.NetworkBoostKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 通过订阅的方式监听网络场景识别信息。 try { netQuality.on('netSceneChange', (list: Array<netQuality.NetworkScene>) => { if (list.length > 0) { list.forEach((sceneInfo) => { // 网络场景识别回调信息处理 if (sceneInfo.scene == 'congestion') { // 网络拥塞分支处理 } if (sceneInfo.weakSignalPrediction) { // 存在弱信号预测信息，对弱信号预测信息进行处理 } }); } }); } catch (err) { console.error('errCode: ' + (e"
+    },
+    {
+      "path": "references/网络质量评估 (C_C++).md",
+      "title": "网络质量评估 (C/C++)",
+      "snippet": "应用在订阅网络质量Qos评估后，系统按照一定的周期或Qos变化后回调给应用。回调的Qos信息包括数据传输的链路类型、上下行空口实时带宽、上下行空口实时速率、RTT时延等。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 #include \"NetworkBoostKit/network_boost_quality.h\" #include <cstdio> 2. CMakeLists.txt中添加以下lib，具体请见 C API开发准备 。 libnetwork_boost.so 3. 通过注册回调的方式监听网络质量评估信息。 uint32_t callbackId = 0; void onNetworkQoSChanged(NetworkBoost_NetworkQosArray *msg) { for (int32_t i = 0; i < msg->pathNum; i++) { // 回调信息处理 printf(\"数据链路类型: %d\\n\", msg->networkQos[i].pathType); printf(\"该数据链路类型的上行带宽: %ld\\n\", msg->networkQos[i].linkUpBandwidth); printf(\"该数据链路类型的下行带宽: %ld\\n\", msg"
+    },
+    {
+      "path": "references/网络质量评估.md",
+      "title": "网络质量评估",
+      "snippet": "应用在订阅网络质量Qos（Quality of Service）评估后，系统按照一定的周期或Qos变化后回调给应用。回调的Qos信息包括数据传输的链路类型、上下行空口实时带宽、上下行空口实时速率、RTT时延等。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 import { netQuality } from '@kit.NetworkBoostKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 通过订阅的方式监听网络质量评估信息。 try { netQuality.on('netQosChange', (list: Array<netQuality.NetworkQos>) => { if (list.length > 0) { list.forEach((qos) => { // 回调信息处理 console.info(`数据链路类型: ${JSON.stringify(qos.pathType )}.` ); console.info(`该数据链路类型的上行带宽: ${JSON.stringify(qos.linkUpBandwidth)}.` ); console.info(`该数据链路类型的下行带宽: ${JSON.s"
+    },
+    {
+      "path": "references/迁移模式设置 (C_C++).md",
+      "title": "迁移模式设置 (C/C++)",
+      "snippet": "应用可通过迁移模式设置接口变更连接迁移模式，包括委托模式（由系统发起连接迁移）和自主模式（由应用发起连接迁移）。应用未调用SetHandoverMode则默认为委托模式，应用可以通过该接口禁止系统发起连接迁移。在某些场景下，比如该应用切换到后台时，依旧有可能由系统触发切换。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 #include \"NetworkBoostKit/network_boost_handover.h\" #include <cstdio> 2. CMakeLists.txt中添加以下lib，具体请见 C API开发准备 。 libnetwork_boost.so 3. 调用SetHandoverMode接口，设置为自主模式，禁止系统发起连接迁移。 int32_t SetHandoverMode() { NetworkBoost_HandoverMode mode = NB_MODE_DISCRETION; int32_t ret = HMS_NetworkBoost_SetHandoverMode(mode); printf(\"设置连接迁移模式结果: %d\\n\", ret); return ret; }"
+    },
+    {
+      "path": "references/迁移模式设置.md",
+      "title": "迁移模式设置",
+      "snippet": "应用可通过该接口变更连接迁移模式，包括委托模式由系统发起连接迁移，和自主模式由应用发起连接迁移。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 import { netHandover} from '@kit.NetworkBoostKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 调用setHandoverMode接口，设置为自主模式，禁止系统发起连接迁移。 try{ let mode: netHandover.HandoverMode = netHandover.HandoverMode.DISCRETION; netHandover.setHandoverMode(mode); } catch (err) { console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message); }"
+    },
+    {
+      "path": "references/连接迁移通知 (C_C++).md",
+      "title": "连接迁移通知 (C/C++)",
+      "snippet": "在弱网环境下，系统发起多网迁移（WiFi<->蜂窝，主卡<->副卡等）的过程中，给应用提供连接迁移开始和完成通知，应用根据连接迁移通知的建议进行网络连接重建，快速恢复业务，给用户带来平滑、高速、低时延的上网体验。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 #include \"NetworkBoostKit/network_boost_handover.h\" #include <cstdio> 2. CMakeLists.txt中添加以下lib，具体请见 C API开发准备 。 libnetwork_boost.so 3. 通过注册回调的方式获取连接迁移信息。 uint32_t callbackId = 0; void onNetworkHandoverStart(NetworkBoost_HandoverStart* handoverStart) { // 连接迁移开始回调，应用按照HandoverStart的建议调整数传策略 } void onNetworkHandoverComplete(NetworkBoost_HandoverComplete* handoverComplete) { // 连接迁移完成回调，应用按照HandoverComplete的建议进行调速和重建恢复 } int32_t"
+    },
+    {
+      "path": "references/连接迁移通知.md",
+      "title": "连接迁移通知",
+      "snippet": "在弱网环境下，系统发起多网迁移（WiFi<->蜂窝，主卡<->副卡等）的过程中，给应用提供连接迁移开始和完成通知，应用根据连接迁移通知的建议进行重建，快速恢复业务，给用户带来平滑、高速、低时延的上网体验。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 导入Network Boost Kit模块。 import { netHandover } from '@kit.NetworkBoostKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 通过订阅的方式监听连接迁移信息。 try { netHandover.on('handoverChange', (info: netHandover.HandoverInfo) => { if (info.handoverStart) { // 连接迁移开始回调，应用按照HandoverStart的建议调整数传策略 console.info('handover start'); } else if (info.handoverComplete) { // 连接迁移完成回调，应用按照HandoverComplete的建议进行调速和重建恢复 console.info('handover complete'); } }); } catch (er"
+    }
+  ]
+}

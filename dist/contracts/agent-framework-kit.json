@@ -1,0 +1,98 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "agent-framework-kit",
+  "source_path": "skills/agent-framework-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:48:40.981Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "智能体框架",
+      "AI Agent",
+      "Function组件",
+      "应用+智能体",
+      "如何使用Function组件拉起小艺开放平台上线的智能体",
+      "如何在应用中集成AI智能体入口实现应用+智能体组合服务",
+      "如何将智能客服、智能助手、内容生成等AI能力嵌入到应用界面中",
+      "如何在小艺开放平台创建和配置智能体后绑定到应用Function组件",
+      "如何通过Function组件传递参数与智能体进行自然语言交互",
+      "当开发者需要将AI智能体能力集成到应用中时，应使用Agent Framework Kit",
+      "如果你已经在小艺开放平台上线了智能体，并希望用户能够在应用内直接与智能体交互，Agent Framework Kit提供了Function组件作为标准化的智能体入口",
+      "适用于需要为应用添加AI对话、智能客服、智能助手、内容生成等AI增强功能的场景",
+      "如果你的应用需要根据用户当前的操作上下文，在合适的时机引导用户使用智能体服务，Agent Framework Kit提供了灵活的组件集成方案",
+      "在应用页面嵌入 AI 对话入口并拉起已发布的智能体 / Embed an AI chat entry in the app and launch a published agent",
+      "接入 Function 组件让用户在应用内直接调用小艺智能体服务 / Integrate the Function component so users can invoke Xiaoyi agent services inside the app",
+      "把智能客服助手集成到订单页或服务页 / Add an AI customer service assistant to the order page or service page",
+      "根据当前页面上下文向智能体传参并发起对话 / Pass current page context to the agent and start a conversation",
+      "在应用中展示内容生成、问答或推荐类智能体能力 / Show content generation, Q&A, or recommendation agent capabilities in the app",
+      "绑定小艺开放平台已配置的智能体到应用功能入口 / Bind an agent configured on the Xiaoyi Open Platform to an app function entry",
+      "实现应用内的 AI 助手面板用于咨询、生成和任务指引 / Build an in-app AI assistant panel for help, generation, and task guidance",
+      "在合适的操作时机引导用户使用智能体服务 / Guide users to agent services at the right moment in a workflow",
+      "给现有业务页面增加一个可交互的智能体卡片或入口按钮 / Add an interactive agent card or entry button to an existing business page",
+      "让应用和智能体组合提供连续服务体验 / Combine the app and agent to deliver a continuous service experience",
+      "通过 Function 组件拉起与业务场景相关的 AI 助理 / Launch a scenario-specific AI assistant through the Function component",
+      "在应用里接入自然语言交互能力处理咨询和操作指引 / Add natural language interaction in the app for support and action guidance"
+    ],
+    "do_not_use_when": [
+      "需求是在设备端训练、转换或部署底层AI模型，而不是拉起已上线智能体；应改用 mindspore-lite-kit、neural-network-runtime-kit 或 cann-kit / The need is to train, convert, or deploy low-level AI models on device rather than launch a published agent; use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit instead",
+      "需求是语音识别、语音合成或语音交互能力本身，而不是提供智能体入口；应改用 core-speech-kit 或 speech-kit / The need is speech recognition, speech synthesis, or speech interaction itself rather than an agent entry point; use core-speech-kit or speech-kit instead",
+      "需求是图像采集、视觉分析、OCR或通用视觉能力，而不是通过Function组件打开智能体；应改用 core-vision-kit 或 vision-kit / The need is image capture, vision analysis, OCR, or general vision capabilities rather than opening an agent through a Function component; use core-vision-kit or vision-kit instead",
+      "需求是文本分类、分词、翻译、实体识别等自然语言处理API，而不是接入小艺开放平台智能体；应改用 natural-language-kit / The need is NLP APIs such as text classification, tokenization, translation, or entity recognition rather than integrating a Xiaoyi Open Platform agent; use natural-language-kit instead"
+    ],
+    "preconditions": [
+      "目标智能体已在小艺开放平台创建、配置并成功上线 / The target agent has been created, configured, and successfully published on the Xiaoyi Open Platform",
+      "工程已集成Agent Framework Kit并具备可使用Function组件的HarmonyOS API环境 / The project has integrated Agent Framework Kit and has a HarmonyOS API environment that supports the Function component",
+      "应用具备拉起小艺开放平台智能体所需的标识与绑定配置 / The app has the required identifiers and binding configuration for launching the Xiaoyi Open Platform agent"
+    ],
+    "inputs": [
+      "智能体标识或绑定配置 / agent identifier or binding configuration",
+      "Function组件配置参数 / Function component configuration parameters",
+      "传递给智能体的上下文参数 / context parameters passed to the agent",
+      "承载入口的页面或界面位置 / page or UI location hosting the entry"
+    ],
+    "outputs": [
+      "Kit简介与开发"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在应用界面中添加并配置可用的Function组件入口 / A usable Function component entry has been added and configured in the app UI",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show that a Function component from Agent Framework Kit was added or configured in a UI/page file to serve as an agent entry?"
+      },
+      {
+        "statement": "Function组件已绑定到指定的已上线智能体 / The Function component has been bound to the specified published agent",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits include explicit binding or identification of the target published agent in the Function component configuration?"
+      },
+      {
+        "statement": "如有业务需要，已配置向智能体传递启动上下文或参数 / If required by the business flow, launch context or parameters are configured to be passed to the agent",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task mentions passing context, do the edits show parameters or contextual data being wired into the Function component or agent launch configuration?"
+      }
+    ],
+    "overlaps_with": [
+      "cann-kit",
+      "mindspore-lite-kit",
+      "neural-network-runtime-kit",
+      "core-speech-kit",
+      "core-vision-kit",
+      "natural-language-kit",
+      "speech-kit",
+      "vision-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

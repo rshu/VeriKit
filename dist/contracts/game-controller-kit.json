@@ -1,0 +1,102 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "game-controller-kit",
+  "source_path": "skills/game-controller-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:54:18.969Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "游戏手柄",
+      "游戏控制器",
+      "手柄输入",
+      "外设连接",
+      "如何在游戏中监听手柄设备的连接和断开事件？",
+      "如何查询当前所有在线的手柄设备信息（设备类型、厂商信息等）？",
+      "如何监听游戏手柄的按键事件（A/B/X/Y、肩键、扳机键、方向键等）？",
+      "如何监听游戏手柄左右摇杆的X/Y轴位移事件？",
+      "如何在动作游戏中通过手柄实现精确的操控响应？",
+      "如何在赛车游戏中利用摇杆轴事件控制方向和加速？",
+      "如何在射击游戏中绑定手柄按键实现瞄准和射击功能？",
+      "如何注册和取消设备状态变化事件监听？",
+      "当您正在开发需要支持手柄操控的游戏应用，需要监听手柄设备的连接和断开事件、查询在线手柄设备信息、以及捕获手柄的按键输入和摇杆轴位移输入时，应使用 Game Controller Kit",
+      "该 Kit 适用于所有需要将手柄作为输入设备的游戏场景，包括动作游戏、赛车游戏、射击游戏、格斗游戏等各类游戏类型，帮助游戏实现完整的手柄操控支持",
+      "接入蓝牙游戏手柄控制角色移动和攻击 / Integrate a Bluetooth gamepad to control character movement and attacks",
+      "监听手柄按键并映射到游戏操作指令 / Listen for controller button presses and map them to in-game actions",
+      "读取左右摇杆和扳机的模拟量输入 / Read analog input from both sticks and triggers",
+      "实现手柄热插拔后自动识别并切换输入源 / Handle controller hot-plugging and automatically switch input sources",
+      "获取已连接控制器的厂商名和设备标识 / Get vendor name and device identifiers for connected controllers",
+      "为双人同屏游戏管理多个手柄设备 / Manage multiple game controllers for local multiplayer",
+      "订阅控制器连接状态变化以更新游戏内提示 / Subscribe to controller connection changes to update in-game prompts",
+      "实现手柄按键自定义绑定和重映射 / Implement custom controller key binding and remapping",
+      "根据摇杆死区过滤输入避免角色漂移 / Apply stick deadzone filtering to prevent character drift",
+      "用手柄方向键和确认返回键操作游戏菜单 / Use the D-pad plus confirm/back buttons to navigate game menus",
+      "在游戏启动时扫描并选择可用的手柄设备 / Scan for and select available controllers when the game starts",
+      "统一处理手柄输入与触屏输入的切换 / Seamlessly switch between controller input and touch input"
+    ],
+    "do_not_use_when": [
+      "需求是处理触摸屏、键盘、鼠标等通用输入事件而非游戏手柄事件，应改用 input-kit / The need is to handle general input events such as touchscreen, keyboard, or mouse rather than game controller events, so use input-kit instead",
+      "需求是获取加速度计、陀螺仪、方向等传感器数据，而不是手柄按键或摇杆轴输入，应改用 sensor-service-kit / The need is to obtain sensor data such as accelerometer, gyroscope, or orientation rather than controller buttons or stick axes, so use sensor-service-kit instead",
+      "需求是实现文本输入法、软键盘唤起或候选词处理，应改用 ime-kit / The need is to implement input methods, show soft keyboards, or handle candidate text, so use ime-kit instead",
+      "需求是支持手写笔设备、笔尖/压感/悬停等笔输入能力，应改用 pen-kit / The need is to support stylus devices and pen input features such as pressure or hover, so use pen-kit instead",
+      "需求是开发或适配底层设备驱动、内核级硬件接入，而不是在应用中监听已接入手柄事件，应改用 driver-development-kit / The need is to develop or adapt low-level device drivers and kernel-level hardware integration rather than listen to controller events in an app, so use driver-development-kit instead",
+      "需求是处理游戏震动、力反馈或机械外设控制而非手柄输入监听，应改用 mechanic-kit / The need is to handle game vibration, force feedback, or mechanical peripheral control rather than controller input listening, so use mechanic-kit instead"
+    ],
+    "preconditions": [
+      "项目已集成支持该能力的 HarmonyOS SDK，并可使用对应的 C/C++ 原生接口 / The project has integrated a HarmonyOS SDK version that supports this capability and can use the corresponding C/C++ native APIs",
+      "应用工程已配置 Native/C++ 开发环境，相关源码与构建脚本可正常编译链接 / The app project has a native C/C++ development environment configured, and the relevant source files and build scripts can compile and link correctly",
+      "若要监听按键和轴事件，必须先完成设备上下线监听注册流程 / If button and axis events are to be monitored, the device online/offline listener registration flow must be completed first",
+      "测试或运行环境中存在可连接的受支持游戏手柄设备 / A supported game controller is available in the test or runtime environment"
+    ],
+    "inputs": [
+      "设备状态变化监听回调 / device status change callback",
+      "手柄按键事件监听回调 / controller key event callback",
+      "手柄轴事件监听回调 / controller axis event callback",
+      "在线设备查询结果接收对象或遍历逻辑 / online device query receiver or iteration logic",
+      "手柄设备标识或设备信息结构 / controller device identifier or device info structure"
+    ],
+    "outputs": [
+      "Kit 简介",
+      "功能开发"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已注册手柄设备上下线监听，能够感知连接与断开事件 / The code registers a controller online/offline listener and can detect connect and disconnect events",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the agent's edit set add or wire up code that registers a game controller device connection/disconnection listener callback?"
+      },
+      {
+        "statement": "代码包含在线手柄设备信息查询逻辑，能够获取当前已连接设备信息 / The code includes logic to query online controller device information and can obtain currently connected device details",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the agent's edit set add code that queries or enumerates currently online game controller devices and accesses their information?"
+      },
+      {
+        "statement": "代码已在设备监听之后注册手柄按键或摇杆轴事件监听，用于处理游戏输入 / The code registers controller button or stick axis event listeners after device monitoring is set up, for handling game input",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there registration of controller key and/or axis event callbacks, and is it placed after or dependent on device listener setup?"
+      }
+    ],
+    "overlaps_with": [
+      "sensor-service-kit",
+      "input-kit",
+      "ime-kit",
+      "pen-kit",
+      "driver-development-kit",
+      "mechanic-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

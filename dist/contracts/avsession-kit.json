@@ -1,0 +1,115 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "avsession-kit",
+  "source_path": "skills/avsession-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:50:36.844Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "音视频播控",
+      "媒体会话",
+      "投播",
+      "后台播放",
+      "播控中心",
+      "如何接入AVSession实现音视频应用的统一播控管理",
+      "如何实现音视频投播到远端设备（Cast+和DLNA）",
+      "如何实现后台音频播放并确保不被系统暂停",
+      "如何使用投播组件AVCastPicker接入投播功能",
+      "如何使用音频模板快速接入播控中心",
+      "如何实现桌面歌词悬浮窗展示",
+      "如何进行应用接入播控功能的自检验证",
+      "如何实现扩展屏投播场景",
+      "当开发音视频播放应用时，请接入AVSession Kit以实现统一的媒体播放控制",
+      "应用接入后，用户可通过系统播控中心查看和控制播放状态，提升用户体验",
+      "当应用需要实现后台音频播放时，必须接入AVSession并配合Background Tasks Kit的长时任务，否则退到后台后将被强制暂停",
+      "当应用需要将音视频内容投播到远端设备（如电视、音箱）时，请使用AVSession Kit的音视频投播能力和投播组件AVCastPicker",
+      "当应用需要以悬浮窗形式在桌面显示歌词时，请使用桌面歌词功能",
+      "当希望通过音频模板减少播控接入的开发工作量时，请使用音频模板",
+      "接入系统媒体控制，让锁屏和通知栏可以控制播放暂停 / Integrate system media controls so lock screen and notifications can play and pause media",
+      "实现耳机线控和蓝牙按键控制音视频播放 / Handle headset remote buttons and Bluetooth media keys for playback",
+      "同步当前歌曲信息、封面和播放进度到系统播控卡片 / Sync track metadata, artwork, and playback progress to the system media card",
+      "注册 MediaSession 让多个播放器状态统一受系统管理 / Register a media session so player state is managed consistently by the system",
+      "实现后台继续播歌并响应系统的上一首下一首指令 / Keep audio playing in background and respond to previous/next commands from the system",
+      "把应用播放器接入播控中心显示标题、歌手和专辑封面 / Connect the app player to the control center to show title, artist, and album art",
+      "添加投屏按钮，把当前视频投送到电视或音箱播放 / Add a cast button to send the current video to a TV or speaker",
+      "实现从手机切换到远端设备继续播放并同步播放状态 / Transfer playback from phone to a remote device and keep playback state in sync",
+      "管理播放队列和跳转上一曲下一曲的系统控制事件 / Manage the playback queue and handle system previous/next track events",
+      "在锁屏界面展示正在播放内容并支持快进快退 / Show now playing content on the lock screen with seek forward and backward support",
+      "接入 AVCastPicker 让用户选择可投播的设备 / Integrate AVCastPicker so users can choose available cast devices",
+      "实现桌面歌词悬浮显示并随播放进度实时更新 / Show floating desktop lyrics and update them in real time with playback",
+      "适配系统音频焦点和中断事件，来电时自动暂停后恢复 / Handle system audio focus and interruptions, pausing for calls and resuming afterward",
+      "为音频或视频应用接入统一播控面板和会话生命周期管理 / Add a unified playback control panel and session lifecycle management for an audio or video app"
+    ],
+    "do_not_use_when": [
+      "需求是音频采集、播放渲染、音效处理或音频路由，而非媒体会话/播控中心接入时，应改用 audio-kit / If the task is audio capture, playback rendering, audio effects, or audio routing rather than media-session/control-center integration, use audio-kit instead",
+      "需求是音视频编解码、封装解封装、转码或流媒体处理，而非统一播控或投播管理时，应改用 avcodec-kit / If the task is audio/video encoding-decoding, muxing-demuxing, transcoding, or stream processing rather than unified playback control or casting management, use avcodec-kit instead",
+      "需求是拍照、录像、相机预览或相机设备控制，而非媒体会话管理时，应改用 camera-kit / If the task is photo capture, video recording, camera preview, or camera device control rather than media session management, use camera-kit instead",
+      "需求是访问媒体文件库、查询相册/音视频资产或读写系统媒体资源，而非播控会话时，应改用 media-library-kit / If the task is accessing the media library, querying album/audio-video assets, or reading-writing system media resources rather than playback sessions, use media-library-kit instead",
+      "需求是图片编解码、编辑、显示处理，或通用媒体播放录制能力而不是系统级播控中心接入时，应分别改用 image-kit 或 media-kit / If the task is image encoding-decoding, editing, display processing, or general media playback/recording rather than system-level control-center integration, use image-kit or media-kit respectively instead"
+    ],
+    "preconditions": [
+      "工程已引入并启用 AVSession Kit 对应能力，所用 API 版本在目标 HarmonyOS SDK 中可用 / The project has added and enabled AVSession Kit capability, and the required APIs are available in the target HarmonyOS SDK",
+      "若要实现后台持续播放，应用已同时接入 Background Tasks 长时任务相关配置，否则退到后台可能被系统暂停 / For continuous background playback, the app has also integrated long-running task configuration from Background Tasks; otherwise playback may be paused when sent to background",
+      "若要使用投播能力，设备与目标端满足 Cast+ 或 DLNA 发现/连接条件，相关网络环境可用 / To use casting, the device and target endpoint satisfy Cast+ or DLNA discovery/connection requirements and the network environment is available",
+      "若要展示桌面歌词，应用已具备系统桌面悬浮展示所需的窗口/权限前置条件 / To show desktop lyrics, the app already meets the window/permission prerequisites required for floating display on the system desktop"
+    ],
+    "inputs": [
+      "媒体会话配置 / media session configuration",
+      "播放状态与媒体元数据（如标题、封面、时长） / playback state and media metadata (such as title, artwork, duration)",
+      "播控命令回调或控制器请求 / playback-control callbacks or controller requests",
+      "投播目标设备信息或投播组件上下文 / cast target device information or cast-picker component context"
+    ],
+    "outputs": [
+      "Kit简介与概述",
+      "媒体会话开发",
+      "播控与投播",
+      "高级功能"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已创建并接入 AVSession，会话能够承载媒体元数据与播放状态更新 / The code creates and integrates an AVSession that can carry media metadata and playback state updates",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show AVSession-related APIs/classes being added and wired so a media session is created or obtained and updated with playback information?"
+      },
+      {
+        "statement": "代码中已注册或处理系统播控命令，使应用可被播控中心、语音助手或控制器统一控制 / The code registers or handles system playback-control commands so the app can be controlled by Control Center, voice assistant, or controllers",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set include handling or registration for play/pause/seek/next/previous or similar AVSession control callbacks/controllers?"
+      },
+      {
+        "statement": "若实现后台播放，修改中同时体现了 AVSession 与后台长时任务的协同接入 / If background playback is implemented, the changes also reflect coordinated integration of AVSession and long-running background task support",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task mentions background playback, do the edits include both AVSession integration and background long-running task/keep-alive related setup rather than only one side?"
+      },
+      {
+        "statement": "若实现投播，修改中接入了投播能力或 AVCastPicker 等统一投播组件 / If casting is implemented, the changes integrate casting capability or the unified AVCastPicker component",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task mentions casting, do the edits add AVSession casting-related APIs, device-selection flow, or AVCastPicker integration?"
+      }
+    ],
+    "overlaps_with": [
+      "audio-kit",
+      "avcodec-kit",
+      "camera-kit",
+      "image-kit",
+      "media-kit",
+      "media-library-kit",
+      "ringtone-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

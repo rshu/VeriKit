@@ -1,0 +1,102 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "test-kit",
+  "source_path": "skills/test-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:59:49.378Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "测试框架",
+      "单元测试",
+      "UI测试",
+      "性能测试",
+      "自动化测试",
+      "如何编写ArkTS单元测试用例，使用断言验证业务逻辑的正确性？",
+      "如何定义测试套件（suite）和测试用例（spec）来组织测试代码？",
+      "如何使用预置动作（beforeEach、afterEach、beforeAll、afterAll）进行测试初始化和清理？",
+      "如何通过控件属性（ID、文本、类型等）查找UI控件？",
+      "如何模拟用户操作（点击、双击、长按、滑动、拖拽等）进行UI自动化测试？",
+      "如何模拟窗口操作（调整大小、移动等）进行UI测试？",
+      "如何采集代码段执行耗时、CPU和内存占用等性能数据？",
+      "如何测量应用启动时延和页面切换帧率？",
+      "如何使用shell命令方式模拟UI操作？",
+      "当你的应用需要编写单元测试来验证业务逻辑和代码质量时，你应该使用 Test Kit 的单元测试框架",
+      "通过定义测试套件和断言，可以自动化地验证函数返回值、数据处理流程等逻辑的正确性，确保代码在迭代过程中不会引入回归缺陷",
+      "当你的应用需要进行 UI 自动化测试或性能基准测试时，你应该使用 Test Kit 的 UI 测试框架和性能测试框架",
+      "UI 测试可以模拟用户操作验证界面交互行为是否符合预期，性能测试可以量化应用的启动速度、页面流畅度和资源消耗等关键指标",
+      "给 ArkTS 业务方法补充单元测试并校验返回结果 / Add unit tests for ArkTS business methods and verify return values",
+      "为登录流程编写端到端 UI 自动化脚本 / Create end-to-end UI automation scripts for the login flow",
+      "用 suite 和 spec 拆分并管理测试用例文件 / Organize and manage test cases with suite and spec",
+      "在 beforeEach 里初始化测试数据并在 afterEach 清理状态 / Initialize test data in beforeEach and clean up state in afterEach",
+      "通过组件 ID、文本和类型定位页面元素做自动化点击 / Locate UI elements by component ID, text, and type for automated taps",
+      "模拟点击、滑动、输入文本和拖拽来回归测试页面交互 / Simulate tap, swipe, text input, and drag actions for UI regression testing",
+      "编写应用启动耗时和页面切换流畅度的性能测试 / Write performance tests for app startup time and page transition smoothness",
+      "统计关键代码路径的执行时间以及 CPU、内存占用 / Measure execution time and CPU and memory usage of critical code paths",
+      "批量执行自动化测试并输出测试结果报告 / Run automated tests in batch and generate test result reports",
+      "接入 UI 测试脚本验证按钮点击后页面跳转是否正确 / Integrate UI test scripts to verify navigation after button clicks",
+      "用 shell 命令驱动界面操作做自动化回归 / Drive UI actions with shell commands for automated regression",
+      "测试窗口缩放、移动和多窗口场景下的界面行为 / Test UI behavior under window resize, move, and multi-window scenarios"
+    ],
+    "do_not_use_when": [
+      "需求是分析真实运行中的CPU、内存、卡顿或性能瓶颈，而不是编写自动化测试脚本；应改用 performance-analysis-kit / The need is to analyze real runtime CPU, memory, jank, or bottlenecks rather than write automated test scripts; use performance-analysis-kit instead",
+      "需求是实现无障碍能力、读屏适配或辅助功能检查，而不是执行通用UI自动化测试；应改用 accessibility-kit / The task is to implement accessibility features, screen reader support, or accessibility checks rather than general UI automation; use accessibility-kit instead",
+      "需求是进行界面视觉设计、组件样式定义或页面原型设计，而不是验证界面行为；应改用 ui-design-kit / The task is visual UI design, component styling, or page prototyping rather than validating UI behavior; use ui-design-kit instead",
+      "需求是处理日历事件、天气服务或系统基础能力接入等业务功能开发，而不是测试这些功能；应分别改用 calendar-kit、weather-service-kit 或 basic-services-kit / The task is implementing business features such as calendar events, weather services, or basic system services rather than testing them; use calendar-kit, weather-service-kit, or basic-services-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成HarmonyOS测试框架并可编译运行ArkTS测试代码 / The project has integrated the HarmonyOS testing framework and can compile and run ArkTS test code",
+      "若执行UI自动化测试，目标应用或页面可被测试进程启动并访问 / For UI automation, the target app or page can be launched and accessed by the test process",
+      "若采集性能数据，测试设备或模拟器支持相应性能指标采集能力 / For performance collection, the device or emulator supports the required performance metric collection capabilities"
+    ],
+    "inputs": [
+      "测试套件与测试用例定义 / test suite and spec definitions",
+      "待验证的业务逻辑、页面流程或性能场景 / business logic, UI flows, or performance scenarios to validate",
+      "断言条件、控件定位条件或性能指标阈值 / assertion conditions, UI selectors, or performance metric thresholds"
+    ],
+    "outputs": [
+      "简介"
+    ],
+    "postconditions": [
+      {
+        "statement": "已新增或修改ArkTS测试代码，包含测试套件或测试用例定义 / ArkTS test code has been added or updated with suite or spec definitions",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify ArkTS test files that define automated tests such as suite/spec or equivalent test case structure?"
+      },
+      {
+        "statement": "测试代码包含可执行的验证逻辑，如断言、UI操作步骤或性能采集语句 / The test code includes executable verification logic such as assertions, UI actions, or performance collection statements",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there concrete verification logic present, such as assert calls, UI interaction steps, or performance measurement code?"
+      },
+      {
+        "statement": "测试代码与被测场景建立了明确对应关系，而非仅添加业务实现代码 / The test code is clearly tied to the target scenario rather than merely adding production business code",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits primarily introduce or update test artifacts that target a described scenario, instead of only changing production feature code?"
+      }
+    ],
+    "overlaps_with": [
+      "basic-services-kit",
+      "accessibility-kit",
+      "localization-kit",
+      "performance-analysis-kit",
+      "calendar-kit",
+      "weather-service-kit",
+      "ui-design-kit",
+      "screen-time-guard-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

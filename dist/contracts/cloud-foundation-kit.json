@@ -1,0 +1,102 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "cloud-foundation-kit",
+  "source_path": "skills/cloud-foundation-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:51:36.354Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "云开发",
+      "Serverless",
+      "云函数",
+      "云数据库",
+      "云存储",
+      "如何在AGC控制台开通和创建云函数",
+      "如何在应用端调用云函数",
+      "如何在本地启动和调试云函数",
+      "如何开通云数据库并创建对象类型和存储区",
+      "如何使用谓词查询云数据库中的数据",
+      "如何上传文件到云存储和从云存储下载文件",
+      "如何获取和管理云存储中的文件元数据",
+      "如何配置和调用安装预加载、周期性预加载和跳链安装预加载",
+      "如何通过应用侧日志定位预加载问题",
+      "如何排查云存储上传失败和调用超时等常见问题",
+      "当你的应用需要后端服务支持但又不想搭建和管理服务器时，可以使用Cloud Foundation Kit提供的云函数、云数据库和云存储能力，快速构建应用后端",
+      "当你需要优化应用首屏加载速度，希望在安装时或周期性地预加载页面数据时，可以使用预加载服务",
+      "当你需要处理计算密集型任务（如数据渲染、报表处理、数据同步等）时，可以配置云函数定时触发器来执行任务",
+      "接入 AGC 云开发后端并在应用里调用云函数 / Integrate AGC Cloud Foundation backend and invoke cloud functions from the app",
+      "实现免服务器的业务逻辑处理，把计算放到云函数里 / Implement serverless business logic by moving computation into cloud functions",
+      "把用户资料和业务数据存到云数据库并按条件查询 / Store user profiles and app data in Cloud DB and query them with filters",
+      "用 Cloud DB 同步结构化数据，支持对象类型建模和读写 / Sync structured data with Cloud DB using object type modeling and CRUD",
+      "上传图片、视频或附件到云存储并在需要时下载 / Upload images, videos, or attachments to Cloud Storage and download them when needed",
+      "管理云存储文件的元数据、路径和访问状态 / Manage Cloud Storage file metadata, paths, and access state",
+      "为应用实现云端文件备份和跨设备取回 / Implement cloud file backup and restore across devices",
+      "在本地启动并调试云函数，验证接口逻辑后再发布 / Run and debug cloud functions locally before deployment",
+      "在 AGC 控制台开通云数据库、云存储和云函数服务 / Enable Cloud DB, Cloud Storage, and Cloud Functions in the AGC console",
+      "用谓词查询从云数据库筛选列表、分页读取数据 / Filter lists and paginate data from Cloud DB with predicate queries",
+      "配置安装预加载和周期性预加载，提前准备云侧资源 / Configure install-time and periodic preloading to prepare cloud resources in advance",
+      "通过应用日志排查预加载失败和云侧接入问题 / Troubleshoot preload failures and cloud integration issues through app logs"
+    ],
+    "do_not_use_when": [
+      "需求是设备间能力发现、连接、分布式数据或跨设备任务流转，应改用 distributed-service-kit / If the need is device discovery, connection, distributed data, or cross-device task handoff, use distributed-service-kit instead",
+      "需求是拉起系统服务、与其他应用/原子化服务协同或基于意图进行服务调用，应改用 service-collaboration-kit / If the need is to invoke system services, collaborate with other apps/atomic services, or perform intent-based service calls, use service-collaboration-kit instead",
+      "后端服务由开发者自建且只需对接现有HTTP API、无需AGC云函数/云数据库/云存储/预加载时，不应选择 cloud-foundation-kit / If the backend is self-hosted and only existing HTTP APIs are needed without AGC cloud functions, cloud DB, cloud storage, or prefetch, cloud-foundation-kit is the wrong choice"
+    ],
+    "preconditions": [
+      "已在AGC控制台开通并正确配置所需云开发服务（云函数、云数据库、云存储或预加载） / The required AGC cloud services (cloud function, cloud DB, cloud storage, or prefetch) have been enabled and configured in AppGallery Connect",
+      "工程已集成Cloud Foundation相关SDK与应用配置，且App ID/项目环境匹配 / The project has integrated the Cloud Foundation SDKs and app configuration, and the App ID/project environment match",
+      "应用具备可用网络连接；若使用云存储，还需在module.json5中声明网络等所需权限 / The app has working network connectivity; if cloud storage is used, required permissions such as network access are declared in module.json5",
+      "若进行本地调试或模拟器调试，调试凭据与本地云函数环境已按要求准备完成 / If local or emulator debugging is used, the required debug credentials and local cloud function environment have been prepared"
+    ],
+    "inputs": [
+      "云函数名称与调用参数 / Cloud function name and invocation parameters",
+      "云数据库对象类型、存储区与查询谓词或数据对象 / Cloud DB object type, zone, and query predicates or data objects",
+      "本地文件URI或云侧文件路径及元数据 / Local file URI or cloud file path and metadata",
+      "预加载配置、资源接口地址或触发模式 / Prefetch configuration, resource endpoint, or trigger mode"
+    ],
+    "outputs": [
+      "服务概述",
+      "云函数",
+      "云数据库",
+      "云存储",
+      "预加载",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "工程中已接入并调用目标云开发能力，而非仅停留在概念说明 / The project integrates and invokes the target cloud capability rather than only describing it conceptually",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify concrete HarmonyOS code or configuration that initializes or calls Cloud Foundation features such as cloud functions, cloud DB, cloud storage, or prefetch?"
+      },
+      {
+        "statement": "所需AGC/应用侧配置已被补充或更新，以支持所选云服务正常运行 / Required AGC-side/app-side configuration has been added or updated to support the selected cloud service",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the changes include project configuration, initialization code, permissions, environment values, or related setup necessary for the chosen Cloud Foundation capability?"
+      },
+      {
+        "statement": "对云端操作的关键参数与结果处理已落到代码中，例如函数入参、查询条件、文件路径或回调结果 / Key parameters and result handling for cloud operations are implemented in code, such as function arguments, query conditions, file paths, or callback results",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there concrete handling of operation inputs and outputs for the cloud call rather than a placeholder or TODO?"
+      }
+    ],
+    "overlaps_with": [
+      "distributed-service-kit",
+      "service-collaboration-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

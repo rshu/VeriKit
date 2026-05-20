@@ -1,0 +1,109 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "scenario-fusion-kit",
+  "source_path": "skills/scenario-fusion-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:58:46.710Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "融合场景",
+      "智能表单",
+      "按钮交互",
+      "系统API访问",
+      "如何使用快速验证手机号Button实现一键手机号验证？",
+      "如何集成选择收货地址Button让用户快速选择地址？",
+      "如何使用地图选点Button实现地图选点功能？",
+      "如何使用省市区选择器Input实现地区选择？",
+      "如何通过API获取系统信息属性和系统设置属性？",
+      "如何在H5页面中接入智能填充服务？",
+      "如何在Flutter、React Native等三方框架中接入智能填充？",
+      "如何实现自动补全地址表单所在地区？",
+      "如何实现推荐车牌号场景的智能填充？",
+      "如何排查单击快速验证手机号按钮无法拉起页面的问题？",
+      "当你需要快速集成常用业务场景的UI组件时，应使用Scenario Fusion Kit的场景化Button和Input组件",
+      "例如需要一键验证用户手机号、选择用户头像、选择收货地址、地图选点等高频场景，只需一行代码即可启用，大幅提升开发效率",
+      "当你需要为应用提供智能表单填充能力时，应使用Scenario Fusion Kit的智能填充服务",
+      "它可以根据用户历史数据智能推荐输入建议，实现复杂表单一键填充，支持多种前端框架和H5页面接入",
+      "当你需要获取系统信息属性或系统设置属性时，该Kit提供的场景化API可以简化开发流程",
+      "接入一键获取本机手机号的快速验证按钮 / Integrate a one-tap button to verify and fetch the device phone number",
+      "添加选择收货地址组件并自动回填姓名电话和地址 / Add an address picker and auto-fill recipient name, phone, and shipping address",
+      "实现地图选点后回填经纬度和详细地址 / Implement map location picking and write back latitude, longitude, and the full address",
+      "用省市区选择器快速填写地区字段 / Use a province-city-district picker to quickly fill regional fields",
+      "在注册或下单表单中接入智能填充减少手动输入 / Integrate smart autofill into registration or checkout forms to reduce manual typing",
+      "自动补全联系人信息和地址信息到表单 / Auto-fill contact details and address information into a form",
+      "在 Web 页面里调用智能表单组件完成地址和手机号填写 / Invoke smart form components in a web page to fill address and phone fields",
+      "在 Flutter 或 React Native 页面嵌入 HarmonyOS 智能填充能力 / Embed HarmonyOS smart autofill capabilities in Flutter or React Native pages",
+      "获取设备系统信息和系统设置用于场景化表单展示 / Get device system info and settings for scenario-based form presentation",
+      "实现推荐车牌号并一键填入车辆信息表单 / Implement suggested license plate numbers and fill them into a vehicle information form with one tap",
+      "集成系统级智能输入控件提升下单填写效率 / Integrate system-level smart input controls to speed up checkout form entry",
+      "管理按钮点击后拉起系统融合场景页面的交互流程 / Manage the interaction flow that launches a system fusion scenario page after a button tap"
+    ],
+    "do_not_use_when": [
+      "需求是拉起深度链接、通用链接或跨应用跳转编排，而不是使用场景化“打开APP Button”；应改用 app-linking-kit / The requirement is deep links, universal links, or cross-app navigation orchestration rather than the scenario-based \"Open App Button\"; use app-linking-kit instead",
+      "需求是实现扫码/识码、解析二维码或条码能力，而不是地图选点、地址选择或智能填充；应改用 scan-kit / The requirement is scanning or decoding QR/bar codes rather than map point selection, address selection, or smart autofill; use scan-kit instead",
+      "需求是广告展示、投放、归因或广告变现，而不是场景化表单与按钮组件；应改用 ads-kit / The requirement is ad display, delivery, attribution, or monetization rather than scenario-based form and button components; use ads-kit instead",
+      "需求是社交分享、系统分享面板或内容分发，而不是选择头像/地址/发票抬头等场景组件；应改用 share-kit / The requirement is social sharing, system share sheets, or content distribution rather than scenario components like avatar, address, or invoice title selection; use share-kit instead",
+      "需求聚焦游戏登录、成就、排行榜、支付或游戏运营服务，而不是通用业务场景UI与自动填充；应改用 game-service-kit / The requirement focuses on game login, achievements, leaderboards, payments, or game operations rather than generic business-scenario UI and autofill; use game-service-kit instead",
+      "应用面向中国大陆以外地区部署，或必须在港澳台提供同等服务能力时，不应选用本Kit / The app targets regions outside Mainland China, or must provide the same service capability in Hong Kong, Macau, or Taiwan, so this Kit should not be chosen"
+    ],
+    "preconditions": [
+      "工程已接入Scenario Fusion Kit对应SDK能力，并在当前HarmonyOS版本与设备形态上受支持 / The project has integrated the Scenario Fusion Kit SDK capability and the current HarmonyOS version and device form are supported",
+      "若使用按钮拉起系统页面、账号相关能力或系统属性访问，所需权限、配置项与拉起条件已在module.json5等工程配置中正确声明 / If using buttons that launch system pages, account-related capabilities, or system property access, the required permissions, config entries, and launch conditions have been correctly declared in module.json5 and related project files",
+      "若使用智能填充，应用或H5页面已按接入文档完成ContentType及相关映射配置 / If using smart autofill, the app or H5 page has completed ContentType and related mapping configuration according to the integration docs"
+    ],
+    "inputs": [
+      "场景化组件类型与参数 / scenario component type and parameters",
+      "表单字段定义及ContentType映射 / form field definitions and ContentType mappings",
+      "目标页面或目标应用标识信息 / target page or target app identification",
+      "待读取的系统信息键或系统设置属性键 / system info keys or system settings property keys"
+    ],
+    "outputs": [
+      "入门与概述",
+      "场景化Button组件",
+      "场景化Input组件",
+      "场景化API",
+      "智能填充",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在ArkUI界面中接入目标场景化Button、Input或相关API调用，并与对应业务事件绑定 / The target scenario Button, Input, or related API call has been integrated into the ArkUI UI and bound to the corresponding business event",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify ArkUI/component code or invocation code that integrates a Scenario Fusion button, input, or API and connects it to a user flow?"
+      },
+      {
+        "statement": "若使用智能填充，表单字段已配置合适的ContentType或框架映射关系，以支持推荐与自动填充 / If smart autofill is used, form fields have appropriate ContentType or framework mapping configured to support recommendations and autofill",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task involves smart autofill, do the edits show ContentType annotations or equivalent framework-to-HarmonyOS mapping configuration for the relevant form fields?"
+      },
+      {
+        "statement": "实现中体现了该场景组件或API的必要前置校验、失败处理或降级路径 / The implementation includes necessary prechecks, failure handling, or fallback paths for the chosen scenario component or API",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits include checks, error handling, or fallback logic for cases where the Scenario Fusion capability cannot be launched, is unsupported, or returns failure?"
+      }
+    ],
+    "overlaps_with": [
+      "appgallery-kit",
+      "app-linking-kit",
+      "ads-kit",
+      "game-service-kit",
+      "share-kit",
+      "scan-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "driver-development-kit",
+  "source_path": "skills/driver-development-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:53:21.308Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "驱动开发",
+      "USB驱动",
+      "HID驱动",
+      "串口驱动",
+      "外设驱动",
+      "如何开发无UI界面的即插即用设备驱动？",
+      "如何开发带UI界面的复合设备驱动，支持扩展外设查询绑定？",
+      "如何使用UsbDdk开发USB协议的设备驱动？",
+      "如何使用HidDdk开发HID协议的设备驱动？",
+      "如何使用USBSerialDDK开发USB串口设备驱动？",
+      "如何使用ScsiPeripheralDDK开发SCSI协议的存储设备驱动？",
+      "如何为高拍仪、身份证扫描仪开发即插即用驱动？",
+      "如何为手写板、鼠标等非标HID外设定制扩展增强能力？",
+      "如何申请和使用驱动开发所需的权限？",
+      "当你是专业外设设备厂商，需要为你的设备开发HarmonyOS驱动时使用本Kit",
+      "典型场景包括为银行柜台开发高拍仪和身份证扫描仪驱动、为医疗机构开发血氧血糖监测设备驱动、为办公场景开发指纹识别仪驱动等即插即用的专业外设驱动",
+      "当你的应用需要为非标HID外设提供增强能力时使用本Kit",
+      "典型场景包括手写板快捷键定制、压感和绘图区域设置、鼠标灯光效果和DPI设置等厂商私有非标外设的扩展增强能力开放",
+      "开发者可基于DDK能力开发带UI界面或无UI界面的驱动应用",
+      "开发USB设备即插即用驱动并在插入后自动识别 / Build a plug-and-play driver for a USB device with automatic detection on attach",
+      "实现自定义HID外设的数据上报和输入事件处理 / Implement data reporting and input event handling for a custom HID peripheral",
+      "接入USBSerialDDK与串口设备通信并收发数据 / Integrate USBSerialDDK to communicate with a serial device and send/receive data",
+      "为SCSI存储外设开发读写控制驱动 / Develop a read/write control driver for a SCSI storage peripheral",
+      "编写无界面系统驱动在后台管理外接设备生命周期 / Create a headless system driver to manage external device lifecycle in the background",
+      "实现带管理界面的外设驱动并显示设备状态 / Implement a peripheral driver with a management UI to show device status",
+      "监听USB设备插拔并完成驱动绑定与卸载 / Monitor USB attach/detach events and perform driver bind and unbind",
+      "为扫描仪或采集设备适配专用驱动协议 / Adapt a dedicated driver protocol for a scanner or capture device",
+      "定制非标准鼠标或手写板的扩展驱动能力 / Customize extended driver capabilities for a non-standard mouse or drawing tablet",
+      "申请驱动权限并配置外设访问能力 / Request driver permissions and configure peripheral access capabilities",
+      "开发复合USB设备驱动并识别多个接口功能 / Develop a composite USB device driver and recognize multiple interface functions",
+      "读取外设描述信息并按设备类型加载对应驱动 / Read peripheral descriptor information and load the matching driver by device type"
+    ],
+    "do_not_use_when": [
+      "需求是访问系统已抽象的传感器数据（如加速度计、陀螺仪、环境光）而不是为外设编写驱动时，应使用 sensor-service-kit / If the need is to access system-abstracted sensor data (such as accelerometer, gyroscope, or ambient light) rather than write a peripheral driver, use sensor-service-kit",
+      "需求是处理标准输入事件、按键、触摸或输入设备事件分发，而不是开发 USB/HID/串口/SCSI 外设驱动时，应使用 input-kit / If the need is to handle standard input events, keys, touch, or input-device event dispatch rather than develop USB/HID/serial/SCSI peripheral drivers, use input-kit",
+      "需求是实现输入法、键盘法框架或文本输入服务，而不是外设驱动生命周期与协议通信时，应使用 ime-kit / If the need is to implement an input method, keyboard framework, or text input service rather than peripheral driver lifecycle and protocol communication, use ime-kit",
+      "需求是对手写笔能力进行上层接入或笔迹/压感业务处理，而不是为非标手写板或 HID 设备开发底层驱动时，应使用 pen-kit / If the need is high-level stylus capability access or handwriting/pressure handling rather than low-level drivers for nonstandard tablets or HID devices, use pen-kit",
+      "需求是接入游戏手柄按键、摇杆、震动等游戏控制器能力，而不是为控制器编写底层驱动时，应使用 game-controller-kit / If the need is to integrate game controller buttons, sticks, vibration, and related capabilities rather than write the controller's low-level driver, use game-controller-kit",
+      "需求是访问设备运动/机械执行相关上层能力或控制逻辑，而不是开发专业外设协议驱动时，应使用 mechanic-kit / If the need is high-level device motion/mechanical actuation capability or control logic rather than professional peripheral protocol drivers, use mechanic-kit"
+    ],
+    "preconditions": [
+      "工程已配置 Driver Development Kit 相关 SDK/能力并使用支持的 HarmonyOS 版本 / The project has the Driver Development Kit SDK/capability configured and uses a supported HarmonyOS version",
+      "应用已按要求声明并获批驱动开发所需权限 / The app has declared and been granted the permissions required for driver development",
+      "驱动实现运行于 DriverExtensionAbility 中，且不依赖该环境不支持的其他 ArkTS API / The driver implementation runs inside DriverExtensionAbility and does not rely on other ArkTS APIs unsupported in that environment"
+    ],
+    "inputs": [
+      "目标外设协议与设备类型 / Target peripheral protocol and device type",
+      "设备描述信息与厂商私有能力需求 / Device descriptor information and vendor-specific capability requirements",
+      "DriverExtensionAbility 生命周期实现代码 / DriverExtensionAbility lifecycle implementation code",
+      "协议交互参数（USB/HID/串口/SCSI 读写或配置参数） / Protocol interaction parameters (USB/HID/serial/SCSI read-write or configuration parameters)"
+    ],
+    "outputs": [
+      "简介与环境",
+      "基础驱动开发",
+      "协议驱动开发"
+    ],
+    "postconditions": [
+      {
+        "statement": "工程中已新增或修改 DriverExtensionAbility 相关实现，用于承载驱动生命周期 / The project contains added or modified DriverExtensionAbility-related implementation to host the driver lifecycle",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show that the agent added or modified a DriverExtensionAbility implementation or closely related driver lifecycle code?"
+      },
+      {
+        "statement": "实现中使用了与目标协议匹配的 DDK 接口（如 UsbDdk、HidDdk、USBSerialDDK 或 ScsiPeripheralDDK） / The implementation uses DDK APIs matching the target protocol (such as UsbDdk, HidDdk, USBSerialDDK, or ScsiPeripheralDDK)",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, did the agent add code that invokes the DDK API family appropriate for the requested protocol?"
+      },
+      {
+        "statement": "工程配置或代码中体现了驱动开发所需权限/能力声明 / The project configuration or code reflects the permission/capability declarations required for driver development",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits include permission or capability declaration changes needed for the driver-development functionality?"
+      }
+    ],
+    "overlaps_with": [
+      "sensor-service-kit",
+      "input-kit",
+      "ime-kit",
+      "pen-kit",
+      "game-controller-kit",
+      "mechanic-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "ringtone-kit",
+  "source_path": "skills/ringtone-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:58:31.559Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "铃声",
+      "铃声设置",
+      "来电铃声",
+      "通知铃声",
+      "双卡铃声",
+      "如何将音频文件设置为来电铃声、通知铃声、信息铃声或闹钟铃声？",
+      "如何为双卡设备分别设置不同的来电铃声和信息铃声？",
+      "如何在应用中集成铃声设置组件？",
+      "如何通过\"我的铃声\"按钮跳转到系统\"声音与振动\"设置页面？",
+      "铃声设置的最大时长限制是多少？",
+      "当你的应用需要为用户提供铃声设置功能时，应使用Ringtone Kit",
+      "它封装了将音频文件设置为各种类型铃声的完整流程，包括来电铃声、通知铃声、信息铃声和闹钟铃声，开发者无需了解底层音频系统细节即可快速集成",
+      "当你的应用需要支持双卡设备分别设置不同铃声，或者需要提供快捷跳转到系统铃声管理页面的功能时，Ringtone Kit提供了相应的组件和接口支持",
+      "把应用内下载的音频设置成系统来电铃声 / Set an in-app downloaded audio file as the system incoming call ringtone",
+      "实现自定义通知提示音设置入口 / Implement a custom notification sound setting entry",
+      "将录音文件保存并设为短信提示音 / Save a recorded audio file and set it as the message tone",
+      "接入闹钟铃声选择和设置流程 / Integrate alarm ringtone selection and setting flow",
+      "为双卡分别配置不同的电话铃声 / Configure different phone ringtones for dual SIM cards",
+      "为双卡分别设置不同的短信提示音 / Set different message tones for each SIM on dual-SIM devices",
+      "添加一键跳转到系统声音与振动页面 / Add one-tap navigation to the system Sounds & Vibration page",
+      "在设置页显示我的铃声按钮并跳转系统管理界面 / Show a My Ringtones button in settings and jump to the system management page",
+      "把本地音频文件注册为可用铃声资源 / Register a local audio file as an available ringtone resource",
+      "实现用户选择音频后直接设为通知铃声 / Let users pick an audio file and directly set it as the notification ringtone",
+      "管理来电铃声、通知铃声、短信铃声和闹钟铃声 / Manage call, notification, message, and alarm ringtones",
+      "集成系统铃声设置组件而不自己处理底层音频逻辑 / Integrate the system ringtone-setting component without handling low-level audio logic"
+    ],
+    "do_not_use_when": [
+      "需求是播放、录制、管理音频流或音频设备，而不是设置系统铃声；应改用 audio-kit / The task is to play, record, or manage audio streams/devices rather than set system ringtones; use audio-kit instead",
+      "需求是进行音视频编解码、转封装或格式转换，而不是应用铃声；应改用 avcodec-kit / The task is audio/video encoding, decoding, remuxing, or format conversion rather than applying a ringtone; use avcodec-kit instead",
+      "需求是控制媒体会话、后台播放状态或与系统媒体控制中心集成，而不是设置铃声；应改用 avsession-kit / The task is to manage media sessions, background playback state, or system media controls rather than set ringtones; use avsession-kit instead",
+      "需求是拍摄音视频、选择图片，或浏览/查询媒体资源库，而不是设置铃声；应根据场景改用 camera-kit、image-kit、media-kit 或 media-library-kit / The task is to capture media, pick images, or browse/query the media library rather than set ringtones; use camera-kit, image-kit, media-kit, or media-library-kit as appropriate",
+      "应用目标地区不是中国大陆，或设备/形态不受该服务支持时，不应使用本Kit / Do not use this Kit when the target region is not mainland China or the device/form factor is not supported by the service"
+    ],
+    "preconditions": [
+      "应用运行在支持该能力的 Phone 或 Tablet 上，且服务地区为中国大陆 / The app runs on a supported Phone or Tablet, and the service region is mainland China",
+      "待设置的音频资源可被应用访问且格式受系统支持，音频时长不超过5分钟 / The target audio resource is accessible to the app and in a system-supported format, with duration no longer than 5 minutes",
+      "若设置来电或信息铃声，设备需具备SIM卡槽；若按卡槽设置，目标卡槽在设备上有效 / For call or message ringtones, the device must have a SIM slot; if setting per-SIM, the target slot must be valid on the device"
+    ],
+    "inputs": [
+      "音频文件URI或文件路径 / audio file URI or file path",
+      "铃声类型（来电、通知、信息、闹钟） / ringtone type (call, notification, message, alarm)",
+      "卡槽标识或SIM槽位编号（双卡场景） / slot identifier or SIM slot index (dual-SIM scenarios)",
+      "页面上下文或UI宿主对象（集成铃声设置组件时） / page context or UI host object (when integrating the ringtone setting component)"
+    ],
+    "outputs": [
+      "简介",
+      "铃声设置"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码明确调用了铃声服务相关API或集成了铃声设置组件，并将目标音频与指定铃声类型关联 / The code explicitly calls ringtone service APIs or integrates the ringtone-setting component, associating the target audio with the specified ringtone type",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show use of ringtone-kit APIs or components to set a ringtone, with both the audio source and the ringtone type clearly specified?"
+      },
+      {
+        "statement": "若为双卡场景，代码对目标SIM卡槽进行了显式指定，而不是模糊地设置全局来电/信息铃声 / For dual-SIM scenarios, the code explicitly targets the intended SIM slot rather than ambiguously setting a global call/message ringtone",
+        "verifier": "model_judge",
+        "judge_prompt": "If the requested scenario involves dual-SIM call or message ringtones, do the edits explicitly specify which SIM slot the ringtone is being applied to?"
+      },
+      {
+        "statement": "代码未把录音、编解码、媒体会话控制或媒体库查询当作铃声设置的实现手段，职责划分正确 / The code does not misuse recording, codec, media-session control, or media-library querying as the implementation for ringtone setting; responsibilities are correctly separated",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is ringtone setting implemented with ringtone-kit rather than incorrectly substituting audio, codec, media-session, or media-library APIs for the core ringtone-setting action?"
+      }
+    ],
+    "overlaps_with": [
+      "audio-kit",
+      "avcodec-kit",
+      "avsession-kit",
+      "camera-kit",
+      "image-kit",
+      "media-kit",
+      "media-library-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

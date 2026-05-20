@@ -1,0 +1,113 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "arkgraphics-2d",
+  "source_path": "skills/arkgraphics-2d/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:49:21.314Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "2D图形",
+      "自定义绘制",
+      "Canvas",
+      "文字渲染",
+      "图片效果",
+      "可变帧率",
+      "如何使用Drawing模块实现自定义几何形状、文本和图片的绘制",
+      "如何获取画布并将绘制结果显示到屏幕上（ArkTS通过RenderNode，C/C++通过XComponent）",
+      "如何设置画刷和画笔实现丰富的填充效果和描边效果",
+      "如何注册和使用自定义字体以及获取系统字体信息",
+      "如何实现简单文本、自定义文本和复杂文本的绘制与显示",
+      "如何请求和配置可变帧率以平衡绘制性能与功耗",
+      "如何使用NativeWindow和NativeBuffer等Native图形能力进行图形开发",
+      "如何处理文本开发中找不到字形的字符显示问题",
+      "如何使用过度绘制调试工具排查图形性能问题",
+      "当ArkUI标准组件无法满足自定义图形绘制需求时，请使用ArkGraphics 2D的Drawing模块实现灵活的自定义绘制效果",
+      "适用于游戏渲染、数据可视化图表、专业绘图工具、自定义动画效果等需要精细控制图形绘制的场景",
+      "对于性能要求高、绘制复杂、硬件依赖性强的场景，推荐使用C/C++ Native Drawing接口",
+      "当应用需要自定义文本绘制与显示、字体管理（系统字体获取、自定义字体注册）、可变帧率控制、图像效果处理，或需要使用Native图形能力（如NativeWindow、NativeBuffer）时，请使用ArkGraphics 2D提供的对应能力",
+      "可变帧率特别适用于游戏和视频等需要根据场景动态调整帧率以平衡流畅性与功耗的场景",
+      "实现画板功能，支持手写涂鸦和轨迹描边 / Implement a drawing pad with freehand doodling and stroke rendering",
+      "在自定义组件里绘制折线图、柱状图和坐标轴 / Draw line charts, bar charts, and axes in a custom component",
+      "把图片、文字和几何图形合成到同一画布上显示 / Composite images, text, and geometric shapes onto the same canvas",
+      "用 RenderNode 在 ArkTS 页面中执行自定义 2D 渲染 / Perform custom 2D rendering in an ArkTS page with RenderNode",
+      "通过 XComponent 接入 C++ 原生绘制并把内容显示到界面 / Integrate C++ native drawing through XComponent and display it in the UI",
+      "给图片添加缩放、旋转、裁剪和滤镜效果 / Apply scaling, rotation, cropping, and filter effects to images",
+      "绘制圆角矩形、贝塞尔曲线、路径和渐变填充效果 / Render rounded rectangles, Bézier curves, paths, and gradient fills",
+      "加载自定义字体并控制文本排版、对齐和换行显示 / Load custom fonts and control text layout, alignment, and wrapping",
+      "实现高帧率动画渲染并动态调整刷新率降低功耗 / Implement high-frame-rate animation rendering and dynamically adjust refresh rate to reduce power usage",
+      "把离屏绘制结果缓存成位图以提升重复渲染性能 / Cache offscreen drawing results as bitmaps to improve repeated rendering performance",
+      "用 NativeWindow 和 NativeBuffer 管理原生图形缓冲区绘制流程 / Manage native graphics buffer drawing with NativeWindow and NativeBuffer",
+      "处理多语言文本和缺字回退，确保特殊字符正常显示 / Handle multilingual text and glyph fallback so special characters render correctly"
+    ],
+    "do_not_use_when": [
+      "需求是3D场景、模型、材质、光照或三维渲染而非二维绘制，应改用 arkgraphics-3d / The task is about 3D scenes, models, materials, lighting, or 3D rendering rather than 2D drawing, so use arkgraphics-3d instead",
+      "需求是相机实景叠加、AR跟踪、识别或虚实融合体验，应改用 ar-engine / The task is about camera-based AR overlay, tracking, recognition, or mixed reality experiences, so use ar-engine instead",
+      "主要目标是通用计算加速、并行数值处理或非显示型图形/媒体加速，而不是把二维内容绘制到界面上，应改用 graphics-accelerate-kit / The main goal is general compute acceleration, parallel numeric processing, or non-display graphics/media acceleration rather than drawing 2D content to the UI, so use graphics-accelerate-kit instead",
+      "需求是完整游戏引擎能力，如场景管理、物理、资源管线或游戏运行框架，而不只是底层2D绘制，应改用 xengine-kit / The need is for full game-engine capabilities such as scene management, physics, asset pipeline, or a game runtime framework, not just low-level 2D drawing, so use xengine-kit instead",
+      "需求是空间扫描、环境重建、深度/网格理解或空间感知数据获取，应改用 spatial-recon-kit / The task is about spatial scanning, environment reconstruction, depth/mesh understanding, or spatial sensing data acquisition, so use spatial-recon-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成ArkGraphics 2D相关SDK/API，且目标API版本支持所用能力 / The project has integrated the ArkGraphics 2D SDK/APIs, and the target API version supports the required features",
+      "ArkTS场景已具备RenderNode挂载条件，或C/C++场景已具备XComponent/Native图形承载环境 / For ArkTS, a RenderNode hosting path is available, or for C/C++, an XComponent/native graphics host environment is available",
+      "若使用C/C++ Native能力，工程已正确配置Native编译链、头文件与链接库 / If C/C++ native capabilities are used, the project is correctly configured with the native toolchain, headers, and linked libraries"
+    ],
+    "inputs": [
+      "绘制目标与显示宿主 / Drawing target and display host",
+      "画布参数与变换信息 / Canvas parameters and transform information",
+      "待绘制的图元、文本或图片资源 / Primitives, text, or image resources to draw",
+      "画笔、画刷、颜色、字体或图像效果配置 / Pen, brush, color, font, or image-effect configuration",
+      "期望帧率或渲染时序配置 / Desired frame rate or rendering timing configuration"
+    ],
+    "outputs": [
+      "Kit简介与术语",
+      "图形绘制与显示概述",
+      "文本绘制与显示",
+      "字体管理",
+      "图元绘制",
+      "绘制效果",
+      "画布操作",
+      "可变帧率",
+      "Native图形能力",
+      "调试与问题排查"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码中建立ArkGraphics 2D绘制路径，并接入可显示的宿主节点或原生承载组件 / A valid ArkGraphics 2D drawing path is created in code and connected to a displayable host node or native container",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code to create/use ArkGraphics 2D drawing objects or canvas logic and attach the result to a RenderNode, XComponent, or equivalent display host?"
+      },
+      {
+        "statement": "已将至少一种目标内容绘制出来或配置完成（几何形状、文本、图片、效果、字体、帧率中的至少一项） / At least one target capability is implemented or configured (one of geometry, text, image, effects, fonts, or frame rate)",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there clear implementation or configuration of at least one ArkGraphics 2D capability such as shape drawing, text rendering, image drawing, visual effects, font registration/use, or frame-rate control?"
+      },
+      {
+        "statement": "实现与需求保持在二维图形绘制范围内，未错误引入3D、AR或空间重建方案替代 / The implementation stays within 2D graphics drawing scope and does not incorrectly substitute 3D, AR, or spatial reconstruction solutions",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits solve the request using 2D graphics APIs rather than primarily introducing 3D rendering, AR engine features, or spatial reconstruction APIs?"
+      }
+    ],
+    "overlaps_with": [
+      "arkgraphics-3d",
+      "ar-engine",
+      "graphics-accelerate-kit",
+      "xengine-kit",
+      "spatial-recon-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

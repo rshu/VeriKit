@@ -1,0 +1,285 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "graphics-accelerate-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.836Z"
+  },
+  "references": [
+    {
+      "path": "references/ABR功能开发.md",
+      "title": "ABR功能开发",
+      "snippet": "基于相机运动感知策略的ABR主要业务流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5e/v3/gcseREt3RzuFPavGXMMGcw/zh-cn_image_0000002573854659.png?HW-CC-KV=V1&HW-CC-Date=20260421T111418Z&HW-CC-Expire=86400&HW-CC-Sign=6A3E8AE45071722281FD70FFD3D7B7286112C4D80AD4AE2FF7934017AAD68359) 1. 用户进入ABR适用的游戏场景。 2. 游戏应用调用 HMS_ABR_CreateContext 接口并指定图形API类型，创建ABR上下文实例。 3. 游戏应用调用 HMS_ABR_SetTargetFps 接口初始化ABR实例，配置目标帧率属性，ABR结合目标帧率属性实时感知GPU负载状态。 4. 游戏应用调用 HMS_ABR_SetScaleRange 接口初始化ABR实例，配置Buffer分辨率因子范围属性。 5. 游戏应用调用 HMS_ABR_Activate 接口激活ABR上下文实例。 6. 游戏应用调用 HMS_ABR_UpdateCameraData 接口并传入"
+    },
+    {
+      "path": "references/ABR进行Buffer分辨率调整引起其他Pass渲染效果异常，该如何解决？.md",
+      "title": "ABR进行Buffer分辨率调整引起其他Pass渲染效果异常，该如何解决？",
+      "snippet": "**现象描述** 以团结引擎URP管线为例，ABR对DrawOpaqueObjects绑定的Buffer进行分辨率调整时会引起SSAO shadow效果异常。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/22/v3/WhBjg7zCTaiZqVTwOwa6Zg/zh-cn_image_0000002543374426.png?HW-CC-KV=V1&HW-CC-Date=20260421T111422Z&HW-CC-Expire=86400&HW-CC-Sign=89C751F5DFECB3DDEE6E2539C38FEF5E1AD54121539FC24CA3B88A4F50750B50) **原因分析** 通过上述URP管线可以看到，SSAO在渲染管线中是一个“前处理”，SSAO输出的图像会作为DrawOpaqueObjects的输入。当ABR对DrawOpaqueObjects绑定的Buffer进行自适应分辨率调整时，SSAO输出的图像为原始分辨率，而DrawOpaqueObjects绑定的Buffer使用低分辨率，分辨率不一致导致SSAO shadow效果异常。 **处理步骤** - 仅支持渲染线程的游戏引擎处理步骤 - **方案1** ：调整渲染管线"
+    },
+    {
+      "path": "references/Graphics Accelerate Kit简介.md",
+      "title": "Graphics Accelerate Kit简介",
+      "snippet": "Graphics Accelerate Kit（图形加速服务）是集成了先进的图形渲染加速和资源管理优化的综合解决方案，旨在通过软硬件协同优化，全面提升图形处理相关应用的性能和用户体验。该服务的应用场景包括游戏、AR、VR、UI交互渲染、3D动效等。其中，游戏作为端侧典型的重负载GPU渲染场景。本Kit已构建三大核心服务：游戏渲染加速服务、游戏资源加速服务、游戏启动加速服务。 #### 业务介绍 - 游戏渲染加速服务 游戏渲染加速服务作为软硬件协同的系统级图形加速解决方案，帮助游戏应用快速构建超帧、ABR（自适应稳态渲染）、OpenGTX（Open GPU Turbo X）等游戏渲染加速能力，解决游戏运行不流畅、卡顿掉帧、长时间运行造成发热发烫等痛点体验问题。 - 游戏资源加速服务 游戏资源加速服务旨在利用后台任务调度、预加载等技术手段，实现资源包的高效后台更新和管理，降低游戏启动的等待时间，避免由于游戏内的资源包更新导致玩家流失。 - 游戏启动加速服务 游戏启动加速服务基于游戏内存镜像精准恢复技术，实现游戏秒级启动，支持玩家享受高品质的游戏体验。 #### 约束和限制 #### 支持的国家/地区 本Kit仅支持中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）。 #### 支持的设备 #### 模拟器支持情况 本Kit暂不支持模拟器。"
+    },
+    {
+      "path": "references/Kit支持的设备类型有哪些？.md",
+      "title": "Kit支持的设备类型有哪些？",
+      "snippet": "Kit支持的设备类型请参见 支持的设备 。同时，您可以通过调用 canIUse() 接口并传入 SystemCapability.GraphicsGame.RenderAccelerate 进行设备类型适配查询。"
+    },
+    {
+      "path": "references/OpenGL ES平台-1.md",
+      "title": "OpenGL ES平台",
+      "snippet": "基于OpenGL ES图形API平台，超帧外插模式的主要业务流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4c/v3/uvk69ui8SNGw6rWXilU7Ow/zh-cn_image_0000002543214740.png?HW-CC-KV=V1&HW-CC-Date=20260421T111416Z&HW-CC-Expire=86400&HW-CC-Sign=208428C1847981CDD74C1C9C7A35397E9F1006E55644B1940803695AAA2E3B55) 1. 用户进入超帧适用的游戏场景。 2. 游戏应用调用 HMS_FG_CreateContext_GLES 接口创建超帧上下文实例。如超帧上下文实例创建失败，则无需进入步骤5到步骤8的真实帧、预测帧交替渲染送显的循环流程，只需逐帧对场景进行渲染送显即可。 3. 游戏应用调用接口配置超帧实例属性。包括调用 HMS_FG_SetAlgorithmMode_GLES （必选）设置超帧算法模式并选择外插模式；调用 HMS_FG_SetResolution_GLES （必选）设置超帧输入输出图像分辨率；调用 HMS_FG_SetCvvZSemantic_GLES （可"
+    },
+    {
+      "path": "references/OpenGL ES平台-2.md",
+      "title": "OpenGL ES平台",
+      "snippet": "基于OpenGL ES图形API平台，系统送显模式的主要业务流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/67/v3/qKIg_u9yQMyyrpNhEJioMg/zh-cn_image_0000002573854657.png?HW-CC-KV=V1&HW-CC-Date=20260421T111417Z&HW-CC-Expire=86400&HW-CC-Sign=C858F76BE078AB3F0FD02EC37E76A7487E3F50D76BE319E92DE2AA5527568F3E) 1. 用户进入超帧适用的游戏场景。 2. 游戏应用调用 HMS_FG_CreateContext_GLES 接口创建超帧上下文实例。如超帧上下文实例创建失败，则无需在步骤6提供当前帧信息，只需逐帧对场景进行渲染送显即可。 3. 游戏应用调用接口配置超帧实例属性。包括调用 HMS_FG_SetAlgorithmMode_GLES （必选）设置超帧算法模式并选择内插模式；按需调用其他插帧相关配置接口。 4. 设置集成模式，选择系统侧集成调用 HMS_FG_SetIntegrationMode_GLES （必选）设置超帧预测的集成信息 FG_Integration"
+    },
+    {
+      "path": "references/OpenGL ES平台-3.md",
+      "title": "OpenGL ES平台",
+      "snippet": "基于OpenGL ES图形API平台，超帧顶点标记的主要业务流程如下： - 增强模式运动估计原理 开发阶段，开发者需要使用系统的图形驱动库提供的OpenGL ES接口，在期望被标记的物体绘制前后添加上开始标记指令和结束标记指令。运行阶段，基于OpenGL ES的Transform Feedback（变换反馈）特性，被标记的所有Draw Call处理的顶点数据将被缓存，再通过顶点匹配、运动估计、屏幕空间投影等过程，得到高精度运动向量，最终绘制出预测帧。运行阶段流程如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fc/v3/FaXW5aXjSg2UBMnt5fLfPA/zh-cn_image_0000002573974631.png?HW-CC-KV=V1&HW-CC-Date=20260421T111416Z&HW-CC-Expire=86400&HW-CC-Sign=584226A646829DE6DFE2A4D1D4A9FCD28ACE84AEDEA006298F0B6A2D91666157) - 顶点标记原则 被标记的物体能在运动估计阶段得到更高精度的运动向量图（MV，Motion Vector），但需要付出额外的性能代价，开发者需要在这之间做出"
+    },
+    {
+      "path": "references/OpenGL ES平台.md",
+      "title": "OpenGL ES平台",
+      "snippet": "基于OpenGL ES图形API平台，超帧内插模式的主要业务流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/85/v3/axp_flHDRiaZJjIyyVT7Jg/zh-cn_image_0000002573854653.png?HW-CC-KV=V1&HW-CC-Date=20260421T111415Z&HW-CC-Expire=86400&HW-CC-Sign=88D5A0DFEC317E6A30A1B0E4E4C86D950DEC6C13388163D054CC6E1D18752F24) 1. 用户进入超帧适用的游戏场景。 2. 游戏应用调用 HMS_FG_CreateContext_GLES 接口创建超帧上下文实例。如超帧上下文实例创建失败，则无需进入步骤5到步骤9的预测帧、真实帧交替渲染送显的循环流程，只需逐帧对场景进行渲染送显即可。 3. 游戏应用调用接口配置超帧实例属性。包括调用 HMS_FG_SetAlgorithmMode_GLES （必选）设置超帧算法模式并选择内插模式；调用 HMS_FG_SetResolution_GLES （必选）设置超帧输入输出图像分辨率；调用 HMS_FG_SetCvvZSemantic_GLES （可"
+    },
+    {
+      "path": "references/OpenGTX功能开发.md",
+      "title": "OpenGTX功能开发",
+      "snippet": "OpenGTX是GPU Turbo X的开放式入口，根据游戏开发者主动提供的游戏过程中的关键信息，使能LTPO（动态帧率/刷新率）等游戏加速方案，助力游戏开发者打造高画质、高流畅、低功耗极致体验。LTPO通过动态感知游戏渲染状态、游戏场景、设备状态等关键信息，动态调整游戏的帧率/刷新率以及设备的SOC/DDR频率。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/86/v3/Y4lVlK8rRTy_u7xP0mMq2w/zh-cn_image_0000002573974635.png?HW-CC-KV=V1&HW-CC-Date=20260421T111418Z&HW-CC-Expire=86400&HW-CC-Sign=347657078E061854D0C32BDA6D83A8E8E487972E09B0A480A8ECEB3A174CAC7B) #### 业务流程 LTPO的主要业务流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b1/v3/RrS3ipzRR86SkFwaKVUGDQ/zh-cn_image_000000254"
+    },
+    {
+      "path": "references/Vulkan平台-1.md",
+      "title": "Vulkan平台",
+      "snippet": "基于Vulkan图形API平台，超帧内插模式的主要业务流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e8/v3/qn0522xFR8GFOTmh4sHJUg/zh-cn_image_0000002573974629.png?HW-CC-KV=V1&HW-CC-Date=20260421T111415Z&HW-CC-Expire=86400&HW-CC-Sign=416214EF4D9F32A7BF7BECDBF5804FA01C284C96D27F094760A72067DFE3AEC3) 1. 用户进入超帧适用的游戏场景。 2. 游戏应用调用 HMS_FG_CreateContext_VK 接口创建超帧上下文实例。如超帧上下文实例创建失败，则无需进入步骤6到步骤10的预测帧、真实帧交替渲染送显的循环流程，只需逐帧对场景进行渲染送显即可。 3. 游戏应用调用接口配置超帧实例属性。包括调用 HMS_FG_SetAlgorithmMode_VK （必选）设置超帧算法模式并选择内插模式；调用 HMS_FG_SetResolution_VK （必选）设置超帧输入输出图像分辨率；调用 HMS_FG_SetCvvZSemantic_VK （可选）设置齐次裁剪空间"
+    },
+    {
+      "path": "references/Vulkan平台-2.md",
+      "title": "Vulkan平台",
+      "snippet": "基于Vulkan图形API平台，超帧外插模式的主要业务流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1a/v3/rReWXUAkQ5yesntlHcfJxw/zh-cn_image_0000002573854655.png?HW-CC-KV=V1&HW-CC-Date=20260421T111416Z&HW-CC-Expire=86400&HW-CC-Sign=F3155F54814FE0365F2B3338FF9140D0989ADF7F523531F23B30597E7278531A) 1. 用户进入超帧适用的游戏场景。 2. 游戏应用调用 HMS_FG_CreateContext_VK 接口创建超帧上下文实例。如超帧上下文实例创建失败，则无需进入步骤6到步骤9的真实帧、预测帧交替渲染送显的循环流程，只需逐帧对场景进行渲染送显即可。 3. 游戏应用调用接口配置超帧实例属性。包括调用 HMS_FG_SetAlgorithmMode_VK （必选）设置超帧算法模式并选择外插模式；调用 HMS_FG_SetResolution_VK （必选）设置超帧输入输出图像分辨率；调用 HMS_FG_SetCvvZSemantic_VK （可选）设置齐次裁剪空间Z"
+    },
+    {
+      "path": "references/Vulkan平台-3.md",
+      "title": "Vulkan平台",
+      "snippet": "基于Vulkan图形API平台，系统送显模式的主要业务流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6f/v3/VQS2tJ-HR-698rMWqC-2vA/zh-cn_image_0000002573974633.png?HW-CC-KV=V1&HW-CC-Date=20260421T111417Z&HW-CC-Expire=86400&HW-CC-Sign=6B021FC61DE9D4A97A3B2F7E225EB278FFE68C7A96B34DDBF8CA674CA0889E3C) 1. 用户进入超帧适用的游戏场景。 2. 游戏应用调用 HMS_FG_CreateContext_VK 接口创建超帧上下文实例。如超帧上下文实例创建失败，则无需在步骤6提供当前帧信息，只需逐帧对场景进行渲染送显即可。 3. 游戏应用调用接口配置超帧实例属性。包括调用 HMS_FG_SetAlgorithmMode_VK （必选）设置超帧算法模式并选择内插模式；按需调用其他插帧相关配置接口。 4. 设置集成模式，选择系统侧集成调用 HMS_FG_SetIntegrationMode_VK （可选）设置超帧预测的集成信息 FG_IntegrationInfo 并选择系"
+    },
+    {
+      "path": "references/Vulkan平台-4.md",
+      "title": "Vulkan平台",
+      "snippet": "基于Vulkan图形API平台，超帧顶点标记的主要业务流程如下： - 增强模式运动估计原理 开发阶段，开发者需要使用系统的图形驱动库提供的Vulkan接口，在期望被标记的物体绘制前后添加上开始标记指令和结束标记指令。运行阶段，基于Vulkan的Transform Feedback（变换反馈）特性，被标记的所有Draw Call处理的顶点数据将被缓存，再通过顶点匹配、运动估计、屏幕空间投影等过程，得到高精度运动向量，最终绘制出预测帧。运行阶段流程如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/68/v3/12KgxGpHRRGYN8CSp91_vw/zh-cn_image_0000002543374404.png?HW-CC-KV=V1&HW-CC-Date=20260421T111416Z&HW-CC-Expire=86400&HW-CC-Sign=42825DDFE4D6405A1DC6264DDE50EA67C84D53AA55A57836117FB3279571DD08) - 顶点标记原则 被标记的物体能在运动估计阶段得到更高精度的运动向量图（MV，Motion Vector），但需要付出额外的性能代价，开发者需要在这之间做出平衡。 **建议只"
+    },
+    {
+      "path": "references/Vulkan平台.md",
+      "title": "Vulkan平台",
+      "snippet": "AI超帧调用流程上依赖系统送显模式功能，但与基本的系统送显模式相比，无需调用新方法，只需要在传输帧信息的时候不传输深度信息即可。 下面是基于Vulkan图形API平台，集成AI超帧的主要业务流程： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5/v3/US8NTnBdQLqe2JTDFsqujw/zh-cn_image_0000002543214744.png?HW-CC-KV=V1&HW-CC-Date=20260421T111418Z&HW-CC-Expire=86400&HW-CC-Sign=FC386D83C87131966C71E218046E954914B0FA608EE052A84A14AB3D92662FA2) 1. 用户进入超帧适用的游戏场景。 2. 游戏应用调用 HMS_FG_CreateContext_VK 接口创建超帧上下文实例。如超帧上下文实例创建失败，则无需在步骤6提供当前帧信息，只需逐帧对场景进行渲染送显即可。 3. 游戏应用调用接口配置超帧实例属性。包括调用 HMS_FG_SetAlgorithmMode_VK （必选）设置超帧算法模式并选择内插模式；按需调用其他插帧相关配置接口。 4. 设置集成模式，选择系统侧集成调用 HMS"
+    },
+    {
+      "path": "references/extension协同下载.md",
+      "title": "extension协同下载",
+      "snippet": "从5.1.1(19)版本开始，新增extension协同下载。 用户在应用市场安装游戏后、或更新游戏后、设备满足闲时条件时，在游戏未启动状态下，若检测到该游戏有资源包需要更新，可使用 **应用自身下载器** 自动下载资源包。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/dd/v3/vf2wokPBRmyN-9X1CYkyVw/zh-cn_image_0000002573974639.png?HW-CC-KV=V1&HW-CC-Date=20260421T111419Z&HW-CC-Expire=86400&HW-CC-Sign=F1321DBCBC231153436DF1843729F4EE364BE522D9234D983E395D3F819CAC4B) 1. 用户在应用市场安装游戏后、用户在应用市场更新游戏后、系统检测到用户设备符合闲时条件时，游戏资源加速服务开启资源包后台下载。 2. 游戏资源加速服务从AppGallery Connect获取相关资源下载配置信息，例如下载类型、CDN类型、manifestUrl、域名白名单等。具体资源下载配置信息请参见 发布资源包下载任务 。 3. 游戏资源加速服务唤醒ExtensionAbility"
+    },
+    {
+      "path": "references/extension系统托管下载.md",
+      "title": "extension系统托管下载",
+      "snippet": "用户在应用市场安装游戏后、或更新游戏后、设备满足闲时条件时，在游戏未启动状态下，若检测到该游戏有资源包需要更新，将使用 **系统下载器** （游戏资源加速服务）自动下载资源包。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/10/v3/Js2SK_ujR323QQcG5Ch6VQ/zh-cn_image_0000002573854663.png?HW-CC-KV=V1&HW-CC-Date=20260421T111419Z&HW-CC-Expire=86400&HW-CC-Sign=DF51DEC0D067052C7499636001A4E791B6CE48F55E356C81DB7AA3AD9F502C6E) 1. 用户在应用市场安装游戏后、用户在应用市场更新游戏后、系统检测到用户设备符合闲时条件时，游戏资源加速服务开启资源包后台下载。 2. 游戏资源加速服务从AppGallery Connect获取相关资源下载配置信息，例如下载类型、CDN类型、 manifestUrl、域名白名单等。具体资源下载配置信息请参见 发布资源包下载任务 。 3. 游戏资源加速服务唤醒ExtensionAbility进程，并通过调用 onDownloadCont"
+    },
+    {
+      "path": "references/上传至华为CDN的资源包文件支持哪些格式类型？.md",
+      "title": "上传至华为CDN的资源包文件支持哪些格式类型？",
+      "snippet": "华为CDN场景下，游戏资源包支持的格式类型如下："
+    },
+    {
+      "path": "references/业务概述-1.md",
+      "title": "业务概述",
+      "snippet": "游戏渲染加速服务支持Phone、Tablet设备，并且从6.1.0(23)版本开始，新增支持TV设备。 #### 亮点/特征 - **稳定帧率，减少卡顿、掉帧现象** 游戏应用集成超帧、ABR后，在无画质损耗的基础上，可有效稳定或提升游戏运行帧率，减少卡顿和掉帧现象，使游戏运行更加稳定、流畅。集成OpenGTX后，通过感知游戏场景、设备状态等关键信息，动态调整游戏的帧率/刷新率以及设备的SOC/DDR频率，从而做到稳定帧率，保障游戏在终端设备上流畅运行。 - **降低功耗和发热，延长续航时间** 游戏应用集成超帧、ABR后，在GPU重负载游戏场景，单帧功耗可降低10%及以上，可有效降低GPU负载和系统功耗，减轻手机发热现象，延长续航时间。集成OpenGTX后，通过对游戏的帧率控制以及设备的SOC/DDR频率控制，在满足用户游戏体验的前提下，最大限度的降低设备的性能开销，从而做到降低功耗减少发热，提升设备的续航时间。 #### 场景介绍 - 超帧 为满足不同游戏场景的使用需求，我们为开发者提供了两种超帧模式供选择，分别是内插模式和外插模式。具体适用场景参见下方表格。 - ABR - OpenGTX 针对高帧率重负载游戏场景，OpenGTX LTPO方案提供了三种动态帧率/刷新率控制模式，分别是SCENE_MODE、TOUCH_MODE、ADAPTIVE_MODE，具体使用场景参见下方"
+    },
+    {
+      "path": "references/业务概述-2.md",
+      "title": "业务概述",
+      "snippet": "从5.1.0(18)版本开始，新增资源包后台下载。 资源包后台下载是将资源文件（例如关卡包、3D角色模型、纹理等）静默下载到用户设备中，减少游戏启动后等待资源包下载的时间，解决游戏启动慢的问题，为用户提供即开即玩的游戏体验。 #### 主要功能 #### 系统后台下载资源包 - 场景一 用户在应用市场安装游戏后、或在应用市场更新游戏后，在游戏未启动状态下，若检测到该游戏有资源包需要更新，将自动触发资源包下载。用户下拉通知栏，实时查看资源包下载进度。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cf/v3/IiLLnUHlQv-qgf6f4USNaQ/zh-cn_image_0000002543214746.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111418Z&HW-CC-Expire=86400&HW-CC-Sign=ADAAAE16EC4D1A115FBEE8F6D1AACA02421936730BF1C65F129E6D1190C2980A) - 场景二 待用户设备满足闲时条件时，在游戏未启动状态下，若检测到上次更新资源包未完成，或该游戏有新的资源包需要更新，将自动触发资源包下载。用户下拉通知栏，实时查看资源包下载进度。 "
+    },
+    {
+      "path": "references/业务概述.md",
+      "title": "业务概述",
+      "snippet": "秒级启动是在游戏退出时，开发者先切换场景，系统再自动为该场景制作内存镜像。在该游戏下一次无资源更新冷启动时，可以直接进入内存镜像界面，实现游戏的秒开秒进，无需再经过漫长的加载过程。 #### 约束与限制 秒级启动自6.0.0(20)版本起支持Phone、Tablet设备，并在6.1.0(23) 版本中新增对PC/2in1设备的支持。 #### 基本概念 #### 用户体验 打开游戏时，自动跳过游戏开头动画，直达游戏界面。 - 加载内存镜像 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8b/v3/MI9A19METiu6DYS5V4Fk0g/zh-cn_image_0000002543214758.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111420Z&HW-CC-Expire=86400&HW-CC-Sign=0F8C9C570417803300F8BB0F0821E59A00B4E3E053C98B579951CE2B11FFB94B) - 未加载内存镜像 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/96"
+    },
+    {
+      "path": "references/发布资源包下载任务.md",
+      "title": "发布资源包下载任务",
+      "snippet": "在AppGallery Connect支持创建“使用华为CDN”或“使用三方CDN”的游戏资源包下载任务。 #### 前提条件 - 已准备好游戏资源包并加密，且自行保证游戏资源包的可用性。资源包支持的格式请参见 上传至华为CDN的资源包文件支持哪些格式类型 。 - 游戏资源包支持使用三方CDN或托管至华为CDN。若使用三方CDN，请提前将资源包上传至三方CDN服务器。若托管至华为CDN，将在AppGallery Connect上传资源包，一个下载任务中的每个资源包大小不超过2GB，所有任务的资源包总大小不超过150GB。 #### 进入申请页面 登录 AppGallery Connect ，点击“APP与元服务 ”，在游戏列表中选择游戏后，选择“分发 > 服务 > 资源包后台下载申请”，在页面右侧点击“申请”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/56/v3/S9tXON5ASWqM5jRdGBWGxg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111420Z&HW-CC-Expire=86400&HW-CC-Sign=7E8E4BEAD73688C79C097A4E572108D083AAD"
+    },
+    {
+      "path": "references/哪些特征的Buffer适合使能ABR？.md",
+      "title": "哪些特征的Buffer适合使能ABR？",
+      "snippet": "- 着色器处理耗时较高的Buffer。 - 对于具有较高原始分辨率的Buffer（例如1280x720像素及以上），推荐考虑启用ABR以优化资源分配。"
+    },
+    {
+      "path": "references/如何解析华为CDN场景下manifestUrl对应的xml文件？.md",
+      "title": "如何解析华为CDN场景下manifestUrl对应的xml文件？",
+      "snippet": "推荐使用 @ifbear/fast-xml-parser 。 执行如下命令行，安装依赖。 To use as package dependency $ ohpm install @ifbear/fast-xml-parser 示例代码： const { XMLParser, XMLBuilder, XMLValidator} = require(\"fast-xml-parser\"); const parser = new XMLParser(); let jObj = parser.parse(XMLdata);"
+    },
+    {
+      "path": "references/实现游戏启动加速.md",
+      "title": "实现游戏启动加速",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4e/v3/01D4gqAaQ0GULFYo-WEE5A/zh-cn_image_0000002573974651.png?HW-CC-KV=V1&HW-CC-Date=20260421T111421Z&HW-CC-Expire=86400&HW-CC-Sign=8E9AC8DCA16AFB986EDF8876FB4C7A56000807D6389EC10908E96FDD5485B318) 1. 用户启动游戏。 2. 游戏在onCreate生命周期中调用 setSupportedProcessCache 接口，设置游戏支持缓存后快速启动。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2e/v3/p-XIOh7PTa2IkJ7Qy4KW-w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111421Z&HW-CC-Expire=86400&HW-CC-Sign=13F73DB12296C0FD9B9503AF90F1B902842FEA2F"
+    },
+    {
+      "path": "references/应用前台下载资源包.md",
+      "title": "应用前台下载资源包",
+      "snippet": "启动游戏后，为游戏提供管理、创建资源包下载任务功能。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2b/v3/wdNfoLOlTVqQCgoBLdXnlQ/zh-cn_image_0000002543374412.png?HW-CC-KV=V1&HW-CC-Date=20260421T111419Z&HW-CC-Expire=86400&HW-CC-Sign=2C0B4C34D3F47EB70FA3CE4972ECEC426CBF09F1E239B1F3FF50C8009CF6CF4B) 1. 用户打开游戏App。 2. 游戏调用 fetchManifestUrl 方法，从游戏资源加速服务获取manifestUrl资源清单。 3. 游戏根据manifestUrl获取资源包下载任务列表。若manifestUrl不为空，游戏从华为CDN获取资源包下载任务列表，若manifestUrl为空，从三方CDN获取资源包下载任务列表。 4. 游戏向资源加速服务订阅资源包下载进度/状态事件。游戏调用 on('progress') 方法，监听资源包下载进度。游戏调用 on('pause') 方法，监听下载任务是否暂停。游戏调用 on('complete') "
+    },
+    {
+      "path": "references/开发准备-1.md",
+      "title": "开发准备",
+      "snippet": "请先参考 应用开发准备 完成基本准备工作，再继续以下开发准备项。 #### 配置网络权限 在“src/main/module.json5”的requestPermissions层级中添加网络权限。 { \"module\": { // ... \"requestPermissions\": [ { \"name\": \"ohos.permission.INTERNET\" } ] } }"
+    },
+    {
+      "path": "references/开发准备.md",
+      "title": "开发准备",
+      "snippet": "请先参考 应用开发准备 完成基本准备工作，再继续以下开发准备项。 #### 申请秒级启动开放能力 基于安全考虑，系统侧对秒级启动功能做了权限保护处理，使用相关接口开发者需先提交“秒级启动”能力开关的申请，在申请通过后，再使用该能力开关。 1. 登录 AppGallery Connect ，选择“开发与服务”。 2. 在项目列表选择项目，并在应用列表下选择需要申请秒级启动功能的应用。 3. 进入“项目设置 > 开放能力管理”页面，点击“秒级启动”对应的“申请”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ba/v3/vMp1GD45R3Wgch_1xNL4yw/zh-cn_image_0000002573974649.png?HW-CC-KV=V1&HW-CC-Date=20260421T111420Z&HW-CC-Expire=86400&HW-CC-Sign=A43C2ACE3E1C830BC5E7D4FA07B5706BD4000B0A03DDD1D735BDDA35D02B9047) 4. 参考“申请原因”中的模板，提供申请必需的相关信息，包括应用介绍、使用场景、申请用途，然后点击“提交”按钮。 ![](https://contentcenter-va"
+    },
+    {
+      "path": "references/开启超帧外插模式后运动物体边缘出现严重拖影现象，可能的原因是什么？.md",
+      "title": "开启超帧外插模式后运动物体边缘出现严重拖影现象，可能的原因是什么？",
+      "snippet": "由于外插模式需要标记模板缓冲（Stencil Buffer）的第8位用于区分静态物体和动态物体，即静态物体模板值第8位标记成0，动态物体模板值第8位标记成1，模板缓冲的低7位模板值开发者可自行设置。如果标记错误或漏标记，可能会在动态物体边缘产生严重的拖影现象。 **现象描述** Demo中运动角色出现头身分离等严重拖影现象，角色头部向右偏。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f9/v3/lfx2JeiCQuekLJriqF71_A/zh-cn_image_0000002543214762.png?HW-CC-KV=V1&HW-CC-Date=20260421T111421Z&HW-CC-Expire=86400&HW-CC-Sign=966C74D7CCD80165555C83D0BAA3DB3CF953863B15F09177924E74D9E4B59B8A) **原因分析** 通过抓帧查看模板缓冲中的模板值，发现头发区域模板值为0，身体区域模板值为0x80。由于角色头、身均属于运动目标区域，应该将所有运动物体区域的模板值第8位标记为1。错误的头部区域模板值导致超帧效果出现头身分离的严重拖影现象。 ![](https://contentcenter"
+    },
+    {
+      "path": "references/快速启动的游戏存在三方SDK功能异常，应该如何排查？.md",
+      "title": "快速启动的游戏存在三方SDK功能异常，应该如何排查？",
+      "snippet": "在秒级启动使能后，如果用户对游戏进行上滑移除操作，系统会对游戏进程进行深度冻结和内存换出。此时游戏进程、 ArkTS Runtime 、 AbilityStage 均不会被销毁，只有 UIAbility 会经历完整的创建到销毁生命周期。因此，由ArkTS定义的全局变量、静态变量、 AppStorage 变量、globalThis变量以及单例对象等都不会被销毁或重置。 三方SDK的生命周期通常与进程生命周期保持一致。当进程未被销毁时，已创建的SDK实例会一直保留在内存中。如果在下一次秒级启动时再次执行SDK初始化逻辑，可能会因重复创建SDK实例而导致功能异常。因此，建议开发者在应用侧维护SDK初始化状态标识（例如全局状态变量或单例状态），用于记录SDK是否已经完成初始化。在应用启动或Ability创建时，先判断SDK是否已初始化，若未初始化则执行初始化；若已初始化则复用已有实例，避免重复创建。 通过这种方式，可以确保在秒级启动场景下SDK初始化逻辑只执行一次，从而避免因重复初始化导致的异常问题。"
+    },
+    {
+      "path": "references/接入资源包后台下载功能后如何使用指定测试设备进行自测？.md",
+      "title": "接入资源包后台下载功能后如何使用指定测试设备进行自测？",
+      "snippet": "在AppGallery Connect正式发布资源包下载任务前，可以指定测试设备进行本地自测，具体操作请参见 测试下载功能 。在测试设备上测试下载功能符合预期效果后，再正式发布资源包下载任务。"
+    },
+    {
+      "path": "references/日志中频繁打印BusinessError_ The Worker instance is not running, maybe worker is terminated when PostMessage错误信息，应该如何排查？.md",
+      "title": "日志中频繁打印BusinessError: The Worker instance is not running, maybe worker is terminated when PostMessage错误信息，应该如何排查？",
+      "snippet": "该错误通常是由于Worker线程崩溃或被终止导致。 开发者可在日志中进一步查找worker.onerror相关日志，确认Worker线程崩溃时的具体异常信息。 TuanjieMainWorker Error TypeError: undefined is not callable entry|entry|1.0.0|src/main/ets/workers/TuanjieMainWorkerHandler.ts ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/57/v3/Df9zoG08S2KqXxL5PW1OPQ/zh-cn_image_0000002573854679.png?HW-CC-KV=V1&HW-CC-Date=20260421T111425Z&HW-CC-Expire=86400&HW-CC-Sign=FE0246F7DD8F6EE4490F2651D7168B56135D7DDD3831AC25996E5B5731BB486B) 根据worker.onerror日志排查，确认是否同时存在以下情况： - 在onDestroy生命周期中销毁三方SDK。 - 三方SDK被销毁后，仍继续向Worker线程发送消息。 - Worker线程在处理消息过程中仍"
+    },
+    {
+      "path": "references/是否可以仅接入下载ExtensionAbility，而不改写原先在游戏引擎内部的下载逻辑或下载中间件？.md",
+      "title": "是否可以仅接入下载ExtensionAbility，而不改写原先在游戏引擎内部的下载逻辑或下载中间件？",
+      "snippet": "可以，支持仅接入下载ExtensionAbility。 但建议在应用进入前台时，通过 removeAllAssetDownloadTasks 移除系统中的所有下载任务，对于已完成下载的任务可以复用，避免重复下载。对于未完成下载的任务建议使用应用自身下载器进行重新下载。"
+    },
+    {
+      "path": "references/是否可以申请长时任务，在游戏前台下载资源包过程中切后台时免冻结并继续下载资源包？.md",
+      "title": "是否可以申请长时任务，在游戏前台下载资源包过程中切后台时免冻结并继续下载资源包？",
+      "snippet": "可以。 游戏可以申请 dataTransfer类型的长时任务 ，在游戏前台切后台后，游戏可以保持免冻结并继续下载资源包。"
+    },
+    {
+      "path": "references/是否可以终止已发布的下载任务，例如游戏出现问题时是否能够及时关闭？.md",
+      "title": "是否可以终止已发布的下载任务，例如游戏出现问题时是否能够及时关闭？",
+      "snippet": "能够及时关闭。 若在发布下载任务后发现资源包存在问题，可以前往AppGallery Connect终止资源包下载任务，具体操作请参见 发布下载任务 。下载任务终止后，在安装游戏后/大版本更新后/设备满足闲时条件时，均不再拉起该应用的ExtensionAbility进行资源包后台下载。"
+    },
+    {
+      "path": "references/查看资源包分发数据.md",
+      "title": "查看资源包分发数据",
+      "snippet": "资源包下载任务正式发布后，开发者可以前往AppGallery Connect查看资源包分发情况。 1. 登录 AppGallery Connect ，点击“分析”，在应用列表中选择对应的游戏。 2. 选择“分发分析 > 资源包后台下载分析”，在页面右侧切换“资源包版本”和“日期”为展示依据查看资源包下载数据。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/47/v3/agimvtqlTmuMjmX7E4SfHw/zh-cn_image_0000002543374420.png?HW-CC-KV=V1&HW-CC-Date=20260421T111420Z&HW-CC-Expire=86400&HW-CC-Sign=DC65FFC1C057CFCBD87434A4AB7414FB916114E26913863501DA4908A9FB51A2)"
+    },
+    {
+      "path": "references/概述-1.md",
+      "title": "概述",
+      "snippet": "超帧内插模式是利用相邻两个真实渲染帧进行超帧计算生成中间的预测帧，即利用第N-1帧和第N帧真实渲染帧预测第N-0.5帧预测帧，如下图所示。由于中间预测帧的像素点通常能在前后两帧中找到对应位置，因此内插模式的预测帧效果较外插模式更优。由于第N帧真实渲染帧需要等待第N-0.5帧预测帧生成并送显后才能最终送显，因此会新增1~2帧的响应时延。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ea/v3/T0I9wypeSOCrxPOy0qaQ8A/zh-cn_image_0000002543214738.png?HW-CC-KV=V1&HW-CC-Date=20260421T111415Z&HW-CC-Expire=86400&HW-CC-Sign=79C34E8354DB38AEEFD33ACEBA0FFE5E78332B71B2C4EC13120FD713C9DCFCA1)"
+    },
+    {
+      "path": "references/概述-2.md",
+      "title": "概述",
+      "snippet": "超帧外插模式是利用相邻两个真实渲染帧进行超帧计算并生成未来一帧预测帧，即利用第N-1帧、第N帧真实帧预测第N+0.5帧预测帧，如下图所示。由于外插模式不改变渲染时间线和显示时间线的帧间顺序，因此不会导致响应时延的增加。但由于外插模式预测的是未来帧画面，当发生场景画面帧间差异大、相机或物体运动方向突变时，在预测帧的画面边缘和物体边缘容易出现拖影和模糊现象。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9c/v3/3cFaXHFFR563FzpgjwFO7w/zh-cn_image_0000002543374402.png?HW-CC-KV=V1&HW-CC-Date=20260421T111415Z&HW-CC-Expire=86400&HW-CC-Sign=87258E2B20F4A4030061CE699791D22E37787827436DAFB0F953458B7D8DFEF0)"
+    },
+    {
+      "path": "references/概述-3.md",
+      "title": "概述",
+      "snippet": "从5.1.0(18)版本开始，新增支持系统送显模式。 系统送显模式是相较于游戏送显模式，能减少开发者集成复杂度的方案。在游戏送显模式下，系统完成预测后需要游戏应用主动调用图形API来完成预测帧的送显。 系统送显模式下游戏虽仍需要触发插帧任务，但不再需要负责预测帧送显，系统会完成送显。当前系统送显模式仅支持内插模式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/14/v3/7Zh3KP-yQNq0b8NxdnHF6g/zh-cn_image_0000002543214742.png?HW-CC-KV=V1&HW-CC-Date=20260421T111417Z&HW-CC-Expire=86400&HW-CC-Sign=56F7565A2713265FDDF6C397A673AF794E494CE3740D4ED1040439280BB44C85)"
+    },
+    {
+      "path": "references/概述-4.md",
+      "title": "概述",
+      "snippet": "从6.0.0(20)版本开始，新增支持顶点标记的Vulkan平台能力。 超帧提供两种运动估计模式供开发者选择：分别为基础模式和增强模式。其中增强模式需要对绘制顶点的Draw Call命令进行额外的标记，在相机和物体快速运动的游戏场景超帧效果较基础模式更优，能够有效改善拖影问题。本章主要介绍增强模式的运动估计原理及顶点标记方法。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b7/v3/lCTJmiSyTQ6DyfObSGPqYA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111416Z&HW-CC-Expire=86400&HW-CC-Sign=0087880B9C57A64323376B803FCA73C7002C922286A1F325506383437AC4EC09) Draw Call：指图形驱动库（OpenGL ES、Vulkan）中进行绘制的命令，例如glDrawElements、glDrawArrays、glDrawElementsInstanced、vkCmdDraw等。"
+    },
+    {
+      "path": "references/概述.md",
+      "title": "概述",
+      "snippet": "从6.0.0(20)版本开始，新增支持AI超帧能力。 AI超帧主要利用了设备上的NPU执行模型推理，大幅降低GPU上的负载从而降低渲染的功耗。此外，AI超帧相比传统超帧算法在大幅运动和非线性运动场景的预测效果上也有明显优势。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8f/v3/XS86SJFUS-S5UG1INktVLw/zh-cn_image_0000002543374406.png?HW-CC-KV=V1&HW-CC-Date=20260421T111417Z&HW-CC-Expire=86400&HW-CC-Sign=E05D3DAB81C466DC272CA95ABDDDFBF70CB94BA9D22B260C9CE9AA124BD0EBAC)"
+    },
+    {
+      "path": "references/游戏上划退出后，场景切换阶段存在振动，应该如何避免？.md",
+      "title": "游戏上划退出后，场景切换阶段存在振动，应该如何避免？",
+      "snippet": "开发步骤如下： 1. 通过globalThis定义全局作用域的变量isCacheStatus，在onCreate生命周期函数中赋值false， isLaunchMirrorEnabled 接口返回true时赋值true。 2. 在函数 startVibration 前增加isCacheStatus校验，若当前处于缓存态，则不进行振动操作。 以团结工程为例，修改如下： // TuanjiePlayerAbilityBase.ets import { launchAcceleration } from '@kit.GraphicsAccelerateKit'; onCreate(): void { globalThis.isCacheStatus = false; // ...... } onWindowStageWillDestroy(): void { if (launchAcceleration.isLaunchMirrorEnabled()) { globalThis.isCacheStatus = true; // ...... } } // TuanjieVibrate.ets static vibrate(vibrateMs: number) { if (globalThis.isCacheStatus) { console.info('globalThis.isCach"
+    },
+    {
+      "path": "references/游戏出现卡死后，应该如何避免下一次秒启后还是卡死场景？.md",
+      "title": "游戏出现卡死后，应该如何避免下一次秒启后还是卡死场景？",
+      "snippet": "建议游戏上划退出后进行场景切换操作，若场景切换失败或场景切换超时（5s）则设置游戏不支持缓存后快速启动。 以团结工程为例，修改如下： import { launchAcceleration } from '@kit.GraphicsAccelerateKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { preferences } from '@kit.ArkData'; import Tuanjie from 'libtuanjie.so'; import sleepNapi from 'libentry.so'; // 通过napi封装的std::this_thread::sleep_for let dataPreferences: preferences.Preferences | null = null; onWindowStageWillDestroy(): void { let enable = launchAcceleration.isLaunchMirrorEnabled(); if (enable) { this.onResume(); // 团结工程中恢复引擎方法 Tuanjie.TuanjieSendMessage(\"GlobalObjectForArkTSCall\", \"O"
+    },
+    {
+      "path": "references/游戏因未实现防沉迷提醒提审被拒，应该如何解决？.md",
+      "title": "游戏因未实现防沉迷提醒提审被拒，应该如何解决？",
+      "snippet": "根据应用上架审核规则，建议游戏在秒级启动场景下增加游戏健康公告提示页（如健康游戏提示或防沉迷提醒），在展示完成后再进入秒级启动恢复的内存镜像界面，以确保用户能够正常看到相关提示信息，详细操作可参考 示例工程 。"
+    },
+    {
+      "path": "references/游戏接入秒级启动后无法热更应该如何处理？.md",
+      "title": "游戏接入秒级启动后无法热更应该如何处理？",
+      "snippet": "**问题原因** ：秒级启动是基于游戏上次退出的状态下进行的镜像恢复，因此往往会跳过游戏引擎启动过程中的一些场景，例如游戏资源加载和游戏资源更新环节。 **解决方案** ：可类比游戏长时间挂后台，再切回前台场景。 1. 若游戏存在游戏内热更检测逻辑，可在游戏中特定事件或定期检测远端热更资源更新，若存在更新则弹出模态窗口提示用户有热更资源，强制玩家退出。 2. 秒级启动会创建新的 UIAbility ，其生命周期也会全量执行，开发者可在 onCreate 或者其它生命周期阶段执行资源更新检测逻辑，当检测到存在热更新资源时，可主动取消秒级启动流程。玩家当次退出后，系统不再制作内存镜像，游戏下一次启动将以冷启动方式运行，从而执行完整的资源更新流程。"
+    },
+    {
+      "path": "references/游戏秒级启动场景中闪屏播放与游戏音频恢复不同步，应该如何解决？.md",
+      "title": "游戏秒级启动场景中闪屏播放与游戏音频恢复不同步，应该如何解决？",
+      "snippet": "在游戏秒级启动场景中，进入前台后，系统会立即恢复引擎（resume），游戏内部音频也会被同时恢复，若此时ArkTS层仍在播放闪屏动画，则导致“画面仍在闪屏，声音提前播放”的不同步问题。 为解决上述问题，我们提供两种可选方案： - **方案一** ：基于闪屏播放完成标识控制引擎恢复 在游戏启动初期设置splashScreenFinishFlag=false，表示闪屏未结束，引擎不应恢复。 // TuanjiePlayerAbility.ets onCreate(): void { globalThis.splashScreenFinishFlag = false; } private onResume(): void { if (globalThis.splashScreenFinishFlag) { unity.nativeOnResume(); } } 闪屏动画播放完毕后： 1. 将splashScreenFinishFlag设置为true。 2. 主动调用引擎的resume()方法。 // Splash.ets private splashScreenFinish() { globalThis.splashScreenFinishFlag = true; unity.nativeOnResume(); } - **方案二** ：引擎侧支持音频静音/取消静音能力 在进入秒级启动恢"
+    },
+    {
+      "path": "references/游戏调用UnityEngine.Application.Quit侧滑退出时出现黑屏现象，应该如何避免？.md",
+      "title": "游戏调用UnityEngine.Application.Quit侧滑退出时出现黑屏现象，应该如何避免？",
+      "snippet": "需根据“退出后是否希望继续使用 **秒级启动** 能力”选择不同的退出策略： 1. **希望下次启动仍支持秒级启动** 在侧滑退出场景下，应调用 terminateSelf 实现退出，确保进程状态可被系统正确保留，避免出现黑屏问题。 2. **不希望下次启动使用秒级启动** 在侧滑退出场景下，应调用 killAllProcesses 实现强制退出，彻底清理进程，避免残留状态引发异常。"
+    },
+    {
+      "path": "references/游戏资源加速ExtensionAbility方法中使用static静态变量为什么不生效？.md",
+      "title": "游戏资源加速ExtensionAbility方法中使用static静态变量为什么不生效？",
+      "snippet": "资源加速ExtensionAbility的进程可能会切换，避免在ExtensionAbility方法使用应用自身的上下文变量，例如类成员变量、全局static静态变量。 若想在资源加速ExtensionAbility方法中共享变量，应使用 数据持久化技术 ，在不同方法中共享变量。"
+    },
+    {
+      "path": "references/秒级启动后，游戏出现类似UIContent is nullptr报错导致登录等异常，应该如何排查？.md",
+      "title": "秒级启动后，游戏出现类似UIContent is nullptr报错导致登录等异常，应该如何排查？",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a7/v3/o9yCTXV8RDOnZZoqP3I7Nw/zh-cn_image_0000002573974655.png?HW-CC-KV=V1&HW-CC-Date=20260421T111425Z&HW-CC-Expire=86400&HW-CC-Sign=AD430CEA1EA9DA4272081CA62ED37AB501FCF0F54247C8A8C3E0ED175D47AD3B) 该报错通常是由于游戏在秒级启动后未重新获取并更新 UIAbilityContext ，导致后续逻辑仍使用旧的Context对象。当 UIAbility 被重新创建时，如果相关模块或三方SDK继续使用旧的UIAbilityContext，可能会导致接口调用异常、资源访问失败或SDK功能异常。 排查要点： 1. 游戏启动后进入onCreate生命周期时，是否重新更新UIAbilityContext。 以 示例工程 为例，AbilityContext的赋值应放在isFirstLaunchFlag判断之外，以确保每次启动（包括秒级启动）都能更新为当前UIAbility的UIAbilityContext。 ![](https://cont"
+    },
+    {
+      "path": "references/系统后台切应用前台接续下载资源包.md",
+      "title": "系统后台切应用前台接续下载资源包",
+      "snippet": "系统后台静默下载过程中启动游戏，应用前台将接管系统后台下载任务，资源包下载任务将在应用前台接续执行。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c7/v3/qK4CqMcZSOCVmeET-cKhUw/zh-cn_image_0000002543214750.png?HW-CC-KV=V1&HW-CC-Date=20260421T111419Z&HW-CC-Expire=86400&HW-CC-Sign=5D9DD157859C9B3405B146DA1E9151AC87373A7397AE579FD2D765657EEF2A85) 1. 用户在应用市场安装游戏后、用户在应用市场更新游戏后、系统检测到用户设备符合闲时条件时，游戏资源加速服务开启资源包后台下载。 2. 游戏资源加速服务携带manifestUrl资源清单，向资源加速ExtensionAbility获取资源包下载任务列表。 3. 游戏实现资源加速ExtensionAbility的 onDownloadContentRequest 方法，解析manifestUrl指向的资源清单文件，对比本地资源差异，生成资源包下载任务列表。若manifestUrl不为空，资源加速Extensio"
+    },
+    {
+      "path": "references/若开发者在游戏中使用Unity Addressables资源管理框架，如何集成游戏资源包后台下载功能？.md",
+      "title": "若开发者在游戏中使用Unity Addressables资源管理框架，如何集成游戏资源包后台下载功能？",
+      "snippet": "Addressables资源加载机制是根据Addressables的缓存文件判定资源包是否已下载，若未下载再通过游戏资源包后台下载功能把资源文件下载到Addressables的缓存目录下。集成步骤如下： - 在游戏资源包下载的 onDownloadContentRequest 生命周期函数中： 1. 下载远端服务器上的Addressables的资源索引hash文件，与本地Addressables的hash文件做对比。 2. 若hash值不一样，则表示有热更资源，准备进行资源更新，下载远端服务器上的Addressables的资源索引文件catalog.json文件。 3. 将远端的catalog.json文件以及本地的catalog.json文件，按照catalog解析规则（具体可参考Addressables源码中ContentCatalogData.cs的解析实现）解析其中关键字段，diff后获取下载资源包列表信息。 4. 把需要下载的资源列表信息转换成游戏资源包下载的 AssetDownloadConfig 对象返回给系统。 5. 把catalog.json，catalog.hash以及GroupData.json文件存放在Addressables目标目录下，目录地址参考如下： /data/app/el2/<USERID>/base/<PACKAGENAME>/haps/entr"
+    },
+    {
+      "path": "references/超帧和ABR支持的图形API有哪些？.md",
+      "title": "超帧和ABR支持的图形API有哪些？",
+      "snippet": "目前超帧接口支持OpenGL ES和Vulkan图形API平台。ABR接口仅支持OpenGL ES图形API平台，暂不支持Vulkan平台。"
+    },
+    {
+      "path": "references/通过加载内存镜像启动的游戏会全屏显示来电提醒，应该如何避免？.md",
+      "title": "通过加载内存镜像启动的游戏会全屏显示来电提醒，应该如何避免？",
+      "snippet": "没有通过加载内存镜像启动的游戏，用户在游戏期间来电，来电提醒悬浮在手机正上方。 通过加载内存镜像启动的游戏，用户在游戏期间来电，游戏画面会被切至后台，当前来电提醒会被全屏显示，这影响了用户的游戏体验。 开发者应在onWindowStageCreate生命周期中调用 setWindowSystemBarEnable ，隐藏状态栏和导航栏，确保快速启动的游戏在来电提醒时悬浮在手机正上方。"
+    },
+    {
+      "path": "references/集成ABR后，从游戏引擎获取到的Native纹理内容为空，该如何解决_.md",
+      "title": "集成ABR后，从游戏引擎获取到的Native纹理内容为空，该如何解决?",
+      "snippet": "**现象描述** 以团结引擎为例，游戏应用集成ABR，在游戏引擎中通过GetNativeTexturePtr获取Buffer关联的纹理，获取到的纹理内容为空。 **原因分析** 由于ABR对Buffer进行了自适应分辨率调整，并对ABR自适应缩放后的GLES纹理进行绘制，因而原始分辨率的GLES纹理中没有内容。 **处理步骤** 为解决此问题，需要通过 HMS_ABR_GetScaledTexture_GLES 接口获取到ABR自适应缩放后的GLES纹理索引。 // 在Buffer渲染后调用 GLuint originTexture; GLuint scaledTexture; errorCode = HMS_ABR_GetScaledTexture_GLES(context_, originTexture, &scaledTexture); if (errorCode != ABR_SUCCESS) { GOLOGE(\"HMS_ABR_GetScaledTexture_GLES execution failed, error code: %d.\", errorCode); }"
+    },
+    {
+      "path": "references/集成了游戏资源加速ExtensionAbility方法，未配置网络权限，导致功能未生效。.md",
+      "title": "集成了游戏资源加速ExtensionAbility方法，未配置网络权限，导致功能未生效。",
+      "snippet": "未配置网络权限将出现如下异常日志： ohos.permission.INTERNET check failed 请开发者在“src/main/module.json5”的requestPermissions层级中添加网络权限。 { \"module\": { // ... \"requestPermissions\": [ { \"name\": \"ohos.permission.INTERNET\" } ] } }"
+    },
+    {
+      "path": "references/集成游戏资源加速ExtensionAbility方法，未配置游戏资源加速ExtensionAbility组件类型信息，导致功能未生效。.md",
+      "title": "集成游戏资源加速ExtensionAbility方法，未配置游戏资源加速ExtensionAbility组件类型信息，导致功能未生效。",
+      "snippet": "未配置游戏资源加速ExtensionAbility组件类型信息将出现如下异常日志： bundle[xxx] do not have Asset Acceleration Extension Ability. 请开发者在“src/main/module.json5”的extensionAbilities层级中添加资源加速ExtensionAbility信息。 \"extensionAbilities\": [ { \"name\": \"AssetAccelExtAbility\", // 游戏资源加速ExtensionAbility组件的名称。 \"srcEntry\": \"./ets/extensionability/AssetAccelExtAbility.ets\", // 游戏资源加速ExtensionAbility组件所对应的代码路径。 \"type\": \"assetAcceleration\" } ]"
+    }
+  ]
+}

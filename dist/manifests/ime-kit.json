@@ -1,0 +1,60 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "ime-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.894Z"
+  },
+  "references": [
+    {
+      "path": "references/IME Kit简介.md",
+      "title": "IME Kit简介",
+      "snippet": "IME Kit 负责建立编辑框所在应用与输入法应用之间的通信通道，确保两者可以共同协作提供文本输入功能，也为系统应用提供管理输入法应用的能力。 #### Kit使用场景 IME Kit提供输入法框架和输入法服务两类API。用于实现输入法应用，也可以用于实现自绘编辑框以及实现对输入法应用的控制。 #### 框架原理 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/08/v3/8s1M_IcUQr-jb99FsWLNZg/zh-cn_image_0000002543374010.png?HW-CC-KV=V1&HW-CC-Date=20260421T111013Z&HW-CC-Expire=86400&HW-CC-Sign=CB57252B2B0AC1D5947F7CC4605E663DF6406F78B4001829F925B662A1A730F4) #### 功能特点 - 输入法应用： 支持创建固定态、悬浮态、状态栏三种类型的Panel，可支持开发一个输入法应用同时部署在手机、平板等多设备中。 - 自定义编辑框： 支持开发者自定义编辑框，实现绑定输入法应用，并实现输入法应用的文字输入、删除、选中、光标移动等操作。 #### 能力范围 - 提供输入法服务相关API，"
+    },
+    {
+      "path": "references/Ime工具.md",
+      "title": "Ime工具",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/78/v3/L-dHDn-VT4O8ahpQ-dKyGQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111014Z&HW-CC-Expire=86400&HW-CC-Sign=E0CD1E24C1BA8D0AEA785F14917DA48C01B61529BA6C30484B3C9D868F1C89FF) Ime工具从API version 20开始支持。 **工具用法** hdc shell ime [选项] [参数] **命令列表** #### 通过Ime工具管理输入法示例代码 1. 启用输入法，支持启用三方输入法到基础模式或者完整体验模式。 # 输入：hdc命令启用输入法。 # 处理：检查为shell调用后，将调用系统输入法管理接口。 # 输出：效果等同于启用API调用。 # 基础模式 hdc shell ime -e com.xxx.yyy # 完整体验模式 hdc shell ime -e com.xxx.yyy -f 2. 禁用输入法，支持停用三方输入法应用。 # 输入：hdc命令禁用输入法。 # 处理：检查为shell调用后，将接到禁用输入法的"
+    },
+    {
+      "path": "references/不可获焦窗口中输入框与输入法交互指南.md",
+      "title": "不可获焦窗口中输入框与输入法交互指南",
+      "snippet": "应用获得焦点是使用输入法的必要条件，开发者需要正确处理焦点以确保输入法的正常工作。 例如，在应用开发中，开发者可以通过 setWindowFocusable ，将创建的窗口的可获焦属性设置为false（如悬浮窗、辅助交互窗口等），并希望在该窗口中绘制输入框（如 TextInput 、 TextArea 或 自绘输入框 ）以支持用户输入，即拉起系统键盘进行输入操作。 #### 系统限制 当通过 setWindowFocusable 将窗口设置为不可获焦时，系统侧会对该窗口施加限制。由于窗口无焦点，输入事件（如按键信息）无法被窗口正确接收和处理，输入内容无法同步到该窗口中的输入框，导致输入框与键盘交互异常。 #### 推荐方案 若需要在不可获焦窗口中绘制输入框，并希望能够与键盘正常交互，建议按照以下方式开发（以 TextInput 为例）： 1. 在主窗中创建一个子窗，设置其初始为不可获焦窗口。 可达到效果：点击主窗输入组件，弹出子窗，焦点仍然在主窗的输入框上。 // Index.ets实现主窗的布局内容 import { window } from '@kit.ArkUI'; @Entry @Component struct Index { async createSubWindow() { try { // 1.创建子窗并设置子窗id let windowStage: window"
+    },
+    {
+      "path": "references/切换输入法应用.md",
+      "title": "切换输入法应用",
+      "snippet": "输入法框架服务提供了切换输入法应用的API，支持切换输入法、切换输入法和子类型、切换当前输入法的子类型。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1f/v3/rLDk2pmjRmmjZ49vpOw3Ng/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111013Z&HW-CC-Expire=86400&HW-CC-Sign=11EC046B48D6713E5F041A2A7C797D0F9144BFDF6B7BCD635EFC4C1F7836C542) 1. 以下接口的使用仅允许在当前输入法应用中调用。 2. 本示例假设已经在输入法应用中执行，如何实现一个输入法应用，请参考 实现一个输入法应用 开发指导。 #### 切换当前输入法子类型 1. 在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用 switchCurrentInputMethodSubtype 接口，传入当前输入法的子类型 InputMethodSubtype 作为参数即可切换当前输入法子类型。 async switchCurrentInputMethodSubtype(item: InputMethodSub"
+    },
+    {
+      "path": "references/在自绘编辑框中使用输入法.md",
+      "title": "在自绘编辑框中使用输入法",
+      "snippet": "在输入法框架中，可以通过 getController 方法获取到 InputMethodController 实例来绑定输入法并监听输入法应用的各种操作，比如插入、删除、选择、光标移动等。这样就可以在自绘编辑框中使用输入法，并实现更加灵活和自由的编辑操作。 #### 开发步骤 1. 开发者在自绘编辑框中使用输入法时，首先需要在DevEco Studio工程中新建一个ets文件，命名为自定义控件的名称，本示例中命名为CustomInput，在文件中定义一个自定义控件，并从@kit.IMEKit中导入inputMethod。 import { inputMethod } from '@kit.IMEKit'; @Component export struct CustomInput { build() { } } 2. 在控件中，使用Text组件作为自绘编辑框的文本显示组件，使用状态变量inputText作为Text组件要显示的内容。 import { BusinessError } from '@kit.BasicServicesKit'; import { inputMethod } from '@kit.IMEKit'; import Log from '../model/Log'; const TAG = '[Submenu]'; @Component export struc"
+    },
+    {
+      "path": "references/在自绘编辑框中使用输入法开发指导 (C_C++).md",
+      "title": "在自绘编辑框中使用输入法开发指导 (C/C++)",
+      "snippet": "IME Kit支持开发者在自绘编辑框中使用输入法，与输入法应用交互，包括显示、隐藏输入法，接收来自输入法应用的文本编辑操作通知等，本文档介绍开发者如何使用C/C++完成此功能开发。 #### 接口说明 详细接口说明请参考 InputMethod接口文档 。 #### 添加动态链接库 CMakeLists.txt中添加以下lib。 libohinputmethod.so #### 引用头文件 #include <inputmethod/inputmethod_controller_capi.h> #### 绑定输入法 开发者需要在输入框获焦时，通过调用接口 OH_InputMethodController_Attach 绑定输入法，绑定成功后用户可以通过输入法输入文字。 1. 创建InputMethod_TextEditorProxy实例，示例代码如下所示： // 创建InputMethod_TextEditorProxy实例 textEditorProxy = OH_TextEditorProxy_Create(); 2. 创建InputMethod_AttachOptions实例，设置绑定输入法时的选项。示例代码如下所示： // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，此处以目标显示键盘为例 bo"
+    },
+    {
+      "path": "references/实现一个输入法应用.md",
+      "title": "实现一个输入法应用",
+      "snippet": "InputMethodExtensionAbility 提供了onCreate()和onDestroy()生命周期回调，根据需要重写对应的回调方法。InputMethodExtensionAbility的生命周期如下： - **onCreate()** 服务被首次创建时触发该回调，开发者可以在此进行一些初始化的操作，例如注册公共事件监听等。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/30/v3/kiSCOW01QoOTxeUdZyltNA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111013Z&HW-CC-Expire=86400&HW-CC-Sign=3A5458471034791347F3FB88872908937E9A4BBC99E8C9BD172EBB722B14361D) 如果服务已创建，再次启动该InputMethodExtensionAbility不会触发onCreate()回调。 - **onDestroy()** 当不再使用服务且准备将该实例销毁时，触发该回调。开发者可以在该回调中清理资源，如注销监听等。 #### 开发步骤 开发者在实现一个输入法应用时，需要在DevEco St"
+    },
+    {
+      "path": "references/输入法子类型开发指南.md",
+      "title": "输入法子类型开发指南",
+      "snippet": "输入法子类型允许输入法展现不同的输入模式或语言，用户可以根据需要在不同模式和语言中切换。如输入法的中文键盘、英文键盘等，都属于输入法的子类型。 #### 输入法子类型的配置与实现 1. 输入法应用开发者只需要注册实现一个InputMethodExtensionAbility，所有的输入法子类型共用该InputMethodExtensionAbility，在 module.json5配置文件 中添加metadata，name为ohos.extension.input_method，用于配置所有子类型的资源信息。 \"extensionAbilities\": [ { \"srcEntry\": \"./ets/InputMethodExtensionAbility/InputMethodService.ets\", \"name\": \"InputMethodService\", \"label\": \"$string:MainAbility_label\", \"description\": \"$string:extension_ability_descriptor\", \"type\": \"inputMethod\", \"exported\": true, \"metadata\": [ { \"name\": \"ohos.extension.input_method\", \"resource\": \"$profile:inp"
+    },
+    {
+      "path": "references/输入法安全模式介绍.md",
+      "title": "输入法安全模式介绍",
+      "snippet": "为了保护用户数据安全，系统增加了输入法安全模式功能，包括基础模式和完整体验模式。在基础模式下，输入法扩展无法调用任何可能涉及访问或泄漏用户隐私数据的系统能力；而在完整体验模式下，则没有该限制。 用户可以在设置应用中切换基础模式和完整体验模式。 #### 基础模式介绍 1. 基础模式下，输入法扩展（InputMethodExtensionAbility）进程无法拉起其他UIAbility或ExtensionAbility。 2. 基础模式下，输入法扩展会受到系统管控，不能使用涉及访问或泄漏用户个人数据的各种接口，同时无法将数据传递出进程。管控功能包括但不限于：网络、短信、电话、麦克风、定位、相机、蓝牙、壁纸、支付、日历、游戏、扬声器、Wi-Fi、剪切板、多媒体、联系人、公共事件、系统账号、健康数据、地图服务、推送服务、融合搜索、共享内存、分布式特性、广告设备标识、振动等。 3. 基础模式下，输入法扩展可以使用基础输入功能必要的系统能力，例如，IME Kit、ArkUI、窗口、图形、屏幕管理等。 4. 基础模式下，输入法扩展对 共享沙箱 只读，对输入法扩展独立沙箱可读写；应用主入口可以对 共享沙箱 及其独立沙箱读写。 #### 完整体验模式介绍 1. 完整体验模式下，输入法扩展不受基础模式相关限制，例如可以拉起其他UIAbility或ExtensionAbility、以调用访问用户数据"
+    },
+    {
+      "path": "references/输入法应用沉浸模式.md",
+      "title": "输入法应用沉浸模式",
+      "snippet": "为了让应用能够提供一致的沉浸式体验，我们提供了前台应用和输入法应用之间的通信机制。通过该机制，输入法应用根据前台应用设置的沉浸模式来决定最终沉浸模式。 #### 框架原理 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/db/v3/BI2A4SywSAulQf2iUNIGqQ/zh-cn_image_0000002573854265.png?HW-CC-KV=V1&HW-CC-Date=20260421T111014Z&HW-CC-Expire=86400&HW-CC-Sign=66155E48672C6B116C075D9E7E39058FCBE72E0505B5A94143AA5C2CB98604FD) - 前台应用根据应用场景，设置应用期望的沉浸模式。 - 输入法框架在拉起输入法应用时会将前台应用期望的沉浸模式传递给输入法应用。 - 输入法应用根据前台应用的沉浸模式决定最终的沉浸模式，并设置最终沉浸模式给输入法框架。 #### 接入指导 1. 前台应用 设置编辑框沉浸模式 。示例代码如下。 TextArea({placeholder: '沉浸模式'}) .keyboardAppearance(KeyboardAppearance.IMMERSIVE) Tex"
+    }
+  ]
+}

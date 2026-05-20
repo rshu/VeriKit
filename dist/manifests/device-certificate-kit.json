@@ -1,0 +1,115 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "device-certificate-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.729Z"
+  },
+  "references": [
+    {
+      "path": "references/CA证书开发指导.md",
+      "title": "CA证书开发指导",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b1/v3/-1s6UPlmRhGH3KUYDGzJIQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111105Z&HW-CC-Expire=86400&HW-CC-Sign=C74E5699CD1996698A33D3218F61059CBFB062F83BCF4D0478D4AF1D57E2CB6F) 本开发指导需使用API version 12及以上版本SDK。 #### 场景说明 典型场景。 - - 安装在当前用户时，仅当前用户的业务可以访问该证书。 - 安装在设备公共位置下，所有用户下的业务都可以访问。 - 获取用户CA证书列表。可以选择获取当前用户或者设备公共位置下的用户CA证书列表。 - 获取用户CA证书详情。 - 删除指定的用户CA证书。 - 获取CA证书的存储路径。 #### 接口说明 详细接口说明可参考 @ohos.security.certManager (证书管理模块) 。 以上场景涉及的常用接口如下表所示。 #### 开发步骤 1. 权限申请和声明。 使用安装和删除接口需要申请权限：ohos.permission.ACCESS_EN"
+    },
+    {
+      "path": "references/Device Certificate Kit简介.md",
+      "title": "Device Certificate Kit简介",
+      "snippet": "Device Certificate Kit（设备证书服务）面向应用开发者，提供了 证书算法库 和 证书管理 的能力。 #### 证书算法库 证书算法库提供接口用于解析和验证数字证书。 证书算法库向应用提供证书、证书扩展域段、证书吊销列表的解析及校验能力，以及证书链的校验能力。 通过调用证书算法库框架接口，开发者可以忽略底层不同三方算法库的差异，实现迅捷开发。 **常见使用场景** 应用对接收的服务端证书或用户输入的证书进行解析，获取证书基本字段或扩展字段用于显示或校验，并使用CA证书链和CRL校验证书的合法性。 #### 框架原理 系统提供证书算法库框架，开发者只需要调用API接口层即可实现证书的操作，证书算法库框架能够屏蔽不同三方算法库的差异。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c9/v3/lmZoo2dtTyCW73KQ3pf3VQ/zh-cn_image_0000002573854323.png?HW-CC-KV=V1&HW-CC-Date=20260421T111101Z&HW-CC-Expire=86400&HW-CC-Sign=BEF7A760E55427CF165112718438B9D38A4646D8B9CE8319B1F798E"
+    },
+    {
+      "path": "references/使用系统预置CA证书校验证书链.md",
+      "title": "使用系统预置CA证书校验证书链",
+      "snippet": "从API 20开始，支持使用系统预置CA证书校验证书链。 以校验证书链为例，完成证书链对象的创建，使用系统预置CA证书对证书链进行校验。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 基于已有的证书数据，调用 cert.createX509CertChain 创建X509证书链对象，并返回结果。 3. 调用 x509CertChain.validate 设置校验参数trustSystemCa为true，使用系统预置CA证书校验证书链并返回结果。 import { cert } from '@kit.DeviceCertificateKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { util } from '@kit.ArkTS'; // ... async function sample() { let textEncoder = new util.TextEncoder(); // 证书链二进制数据，需业务自行赋值。 const encodingBlob: cert.EncodingBlob = { data: textEncoder.encodeInto(certChainD"
+    },
+    {
+      "path": "references/应用证书凭据开发指导.md",
+      "title": "应用证书凭据开发指导",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b9/v3/zFMvZ6TtTY2PakvDLRFgag/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111105Z&HW-CC-Expire=86400&HW-CC-Sign=74A0BDE5F0234357A3BC71FB0897B7C390C7E2EFD011121E7619F51C48D5F581) 本开发指导需使用API version 11及以上版本SDK。 #### 场景说明 1. 典型场景。 - 安装应用证书凭据。 - 获取应用证书凭据。 - 使用应用证书凭据对数据进行签名、验签。 - 卸载指定的应用证书凭据。 2. 安装应用证书凭据支持的算法类型和签名验签支持的参数组合。 - 证书管理安装凭据及使用凭据中的密钥进行签名、验签，依赖密钥管理服务（HUKS）能力。 - 证书管理支持的算法为HUKS支持的子集，当前仅支持RSA、ECC及SM2算法类型的私有凭据安装及使用。 - 签名、验签支持的参数组合，详见HUKS声明的签名/验签介绍及算法规格中RSA、ECC及SM2的描述。 #### 接口说明 详细接口说明可参考 @ohos.security.c"
+    },
+    {
+      "path": "references/证书CMS封装.md",
+      "title": "证书CMS封装",
+      "snippet": "从API 22开始，支持证书CMS封装。 PKCS#7是用于存储签名或加密数据的标准语法。CMS作为PKCS#7的扩展，支持的数据类型包括数据、签名数据、封装数据、签名和封装数据、摘要数据以及加密数据。该标准常用于保护数据的完整性和机密性。 目前仅支持CMS签名数据和封装数据。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 调用 cert.createCmsGenerator 创建cmsGenerator对象。 3. 调用 cmsGenerator.setRecipientEncryptionAlgorithm 设置加密算法。 4. 调用 cmsGenerator.addRecipientInfo 添加接收者信息。 5. 调用 cmsGenerator.doFinal 获取CMS最终封装数据。 6. 调用 cmsGenerator.getEncryptedContentData 获取CMS封装密文数据。 import { cert } from '@kit.DeviceCertificateKit'; let eccCertData = '-----BEGIN CERTIFICATE-----\\n' + 'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAo"
+    },
+    {
+      "path": "references/证书CMS签名.md",
+      "title": "证书CMS签名",
+      "snippet": "从API 18开始，支持证书CMS签名。 从API 22开始，支持证书CMS封装。 PKCS#7是用于存储签名或加密数据的标准语法。CMS作为PKCS#7的扩展，支持的数据类型包括数据、签名数据、封装数据、签名和封装数据、摘要数据以及加密数据。该标准常用于保护数据的完整性和机密性。 目前仅支持CMS签名数据和封装数据。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 调用 cert.createCmsGenerator 创建cmsGenerator对象。 3. 调用 cmsGenerator.addSigner 添加签名者信息。 4. 调用 cmsGenerator.addCert 添加证书。 5. 调用 cmsGenerator.doFinal 获取Cms最终签名数据。 - 异步方法示例： import { cert } from '@kit.DeviceCertificateKit'; import { BusinessError } from '@kit.BasicServicesKit'; let certData = '-----BEGIN CERTIFICATE-----\\n' + 'MIICXjCCAcegAwIBAgIGAXKnJjrAMA0GCSqGS"
+    },
+    {
+      "path": "references/证书CMS解封装.md",
+      "title": "证书CMS解封装",
+      "snippet": "从API 22开始，支持证书CMS解封装。 PKCS#7是用于存储签名或加密数据的标准语法。CMS作为PKCS#7的扩展，支持的数据类型包括数据、签名数据、封装数据、签名和封装数据、摘要数据以及加密数据。该标准常用于保护数据的完整性和机密性。 目前仅支持CMS签名数据和封装数据。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 调用 证书CMS封装 进行CMS数据封装。 3. 调用 cert.createCmsParser 创建CmsParser对象。 4. 调用 cmsParser.setRawData 设置CMS数据。 5. 调用 cmsParser.decryptEnvelopedData 解密封装数据。 解封装示例： import { cert } from '@kit.DeviceCertificateKit'; let ECC_256_PUBKEY: string = '-----BEGIN CERTIFICATE-----\\n' + 'MIICGDCCAb6gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMFcxCzAJBgNVBAYTAkNO\\n' + 'MQ8wDQYDVQQIDAbpmZXopb8xDzANBgNVBAcMBuilv"
+    },
+    {
+      "path": "references/证书CMS验签.md",
+      "title": "证书CMS验签",
+      "snippet": "从API 22开始，支持证书CMS验签。 PKCS#7是用于存储签名或加密数据的标准语法。CMS作为PKCS#7的扩展，支持的数据类型包括数据、签名数据、封装数据、签名和封装数据、摘要数据以及加密数据。该标准常用于保护数据的完整性和机密性。 目前仅支持CMS签名数据和封装数据。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 签名的开发步骤查看 CMS签名 。 3. 调用 cert.createCmsParser 创建CmsParser对象。 4. 调用 cmsParser.setRawData 设置CMS数据。 5. 调用 cmsParser.verifySignedData 进行验签。 验签示例： import { cert } from '@kit.DeviceCertificateKit'; let ECC_256_PUB_ENTRY_CERT: string = '-----BEGIN CERTIFICATE-----\\n' + 'MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\\n' + 'fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxE"
+    },
+    {
+      "path": "references/证书PKCS12的创建和解析.md",
+      "title": "证书PKCS12的创建和解析",
+      "snippet": "从API 18开始，支持解析PKCS12证书。 从API 21开始，支持创建PKCS12证书。 PKCS12是一种用于存储和传输用户私钥、证书及其相关证书链的标准格式。该格式通过密码保护，将多个密码学对象打包为一个加密的容器文件，支持存储私钥、公钥证书、证书颁发机构证书以及其他相关的密码学数据。PKCS12广泛应用于数字证书的安全存储、跨平台传输和证书备份场景，是实现证书管理和PKI应用的重要标准之一。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 调用 cert.createPkcs12 创建PKCS12文件。 3. 调用 cert.parsePkcs12 解析PKCS12文件。 - 异步方法示例： import { cert } from '@kit.DeviceCertificateKit'; // string转Uint8Array。 function stringToUint8Array(str: string): Uint8Array { let arr: number[] = []; for (let i = 0, j = str.length; i < j; i++) { arr.push(str.charCodeAt(i)); } return ne"
+    },
+    {
+      "path": "references/证书吊销列表对象的创建、解析和校验.md",
+      "title": "证书吊销列表对象的创建、解析和校验",
+      "snippet": "以校验证书是否已吊销为例，完成证书吊销列表对象的创建、解析和校验。若证书已被吊销，将打印被吊销日期。 #### 开发步骤 1. 导入 证书算法库框架模块 和 加解密算法库模块 。 import { cert } from '@kit.DeviceCertificateKit'; import { cryptoFramework } from '@kit.CryptoArchitectureKit'; 2. 基于已有的CRL数据，调用 cert.createX509CRL 创建X509证书吊销列表的对象。 3. 解析证书吊销列表信息。 此处以获取证书吊销列表版本、证书吊销列表类型、证书吊销列表颁发者名称、证书吊销列表对象的字符串类型数据为例，更多字段信息获取接口请查看 API参考文档 。 4. 基于已有公钥信息，创建PublicKey公钥对象。 具体可参考 加解密算法库框架-指定二进制数据生成非对称密钥对 。 5. 调用 X509CRL.verify 校验签名合法性。 6. 基于已有的X509证书数据，调用 cert.createX509Cert 创建证书对象。 7. 调用 X509CRL.isRevoked 判断X509证书是否已被吊销。 8. 调用 X509CRL.getRevokedCert 获取被吊销证书对象。 9. 调用 X509CRLEntry.getRevocation"
+    },
+    {
+      "path": "references/证书对象的创建、解析和校验.md",
+      "title": "证书对象的创建、解析和校验",
+      "snippet": "以校验证书有效性为例，完成证书对象的创建、解析和校验。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 基于已有的X509证书数据，调用 cert.createX509Cert 创建证书对象。 3. 解析证书的字段信息。 此处以获取证书版本、证书序列号、证书颁发者名称、证书主体名称、证书对象的字符串类型数据为例，更多字段信息获取接口请查看 API参考文档 。 4. 调用 X509Cert.getPublicKey 获取证书中的公钥，并调用 X509Cert.verify 校验签名。示例为自验签场景，因此获取的是本证书中的公钥。应用须结合自身场景获取用于验签的公钥。 5. 调用 X509Cert.checkValidityWithDate 校验证书有效期。入参date用于确认此日期是否在X509证书有效期内。 import { cert } from '@kit.DeviceCertificateKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { util } from '@kit.ArkTS'; // 此处仅为示例的证书二进制数据，需根据业务的不同对证书数据进行赋值。 let cer"
+    },
+    {
+      "path": "references/证书扩展信息对象的创建、解析和校验.md",
+      "title": "证书扩展信息对象的创建、解析和校验",
+      "snippet": "以获取证书指定OID域段，并判断是否为CA证书为例，完成证书扩展信息对象的创建、解析和校验。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 解析证书扩展域段数据，调用 cert.createCertExtension 创建证书扩展域段对象。 3. 调用 CertExtension.getEntry 获取指定OID证书扩展域段信息。比如，证书扩展域段对象标识符列表，根据对象标识符获取具体数据等。 4. 调用 CertExtension.checkCA 判断证书是否为CA证书。 import { cert } from '@kit.DeviceCertificateKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { util } from '@kit.ArkTS'; // 证书扩展数据，以下只是一个示例。需要根据具体业务来赋值。 let extData = new Uint8Array([ 0x30, 0x40, 0x30, 0x0F, 0x06, 0x03, 0x55, 0x1D, 0x13, 0x01, 0x01, 0xFF, 0x04, 0x05, 0x30, 0x03, 0x0"
+    },
+    {
+      "path": "references/证书算法库框架概述.md",
+      "title": "证书算法库框架概述",
+      "snippet": "证书算法库框架是一个屏蔽了第三方算法库实现差异的证书算法框架，向应用提供证书、证书扩展域段、证书吊销列表的创建、解析及校验能力，此外还提供了证书链的校验能力。 开发者通过调用证书算法库框架接口，忽略底层不同三方算法库的差异，实现迅捷开发。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/64/v3/AowtO6WmRRG9ENMi1eAcbQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111101Z&HW-CC-Expire=86400&HW-CC-Sign=404D62853531D398F65BCD368B3CA581A6D4ED1FEC46E85F5E4A4155AD03259C) 本框架具备处理已有证书及证书吊销列表数据后处理的能力，并不具备生成或签发证书及证书吊销列表的能力，签发证书及证书吊销列表的能力由证书颁发机构（CA）来完成，不由单个应用签发。 #### 基本概念 证书算法库框架提供X509证书的解析、序列化、X509证书签名验证、X509证书吊销列表、证书链校验器等相关的功能。 在开发具体的功能前，开发者需要先了解证书领域的一些基本概念。包括但不限于： 数字证书、数字证书标准X.509（"
+    },
+    {
+      "path": "references/证书管理对话框开发指导.md",
+      "title": "证书管理对话框开发指导",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/17/v3/9OcfhQMUQ3aPr4XWZfVRTg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111105Z&HW-CC-Expire=86400&HW-CC-Sign=87BED1DF915D5CD49642FB1812C60DA048C29A79092A92DAFAE86B0791038DA1) 本开发指导需使用API version 13及以上版本SDK。 证书管理对话框，可用于拉起证书管理页面并管理证书，如安装、存储、使用、销毁证书。 #### 接口说明 详细接口说明可参考 @ohos.security.certManagerDialog (证书管理对话框模块) 。 以上场景涉及的常用接口如下表所示。 #### 开发步骤 1. 权限申请和声明。 需要申请的权限：ohos.permission.ACCESS_CERT_MANAGER 申请流程请参考： 申请应用权限 声明权限请参考： 声明权限 2. 导入相关模块。 import { certificateManagerDialog } from '@kit.DeviceCertificateKit"
+    },
+    {
+      "path": "references/证书管理概述.md",
+      "title": "证书管理概述",
+      "snippet": "证书管理主要提供系统级的证书管理能力，实现证书全生命周期（安装、存储、使用和销毁）的管理和安全使用。同时提供拉起证书管理对话框的接口，使应用可以通过界面查看、管理证书及凭据。 #### 证书管理基本概念 - 证书：经证书授权中心（CA）数字签名的、包含公钥拥有者信息以及公钥的文件。常见的证书文件格式为X509证书。 - 凭据：指的是证书文件中公钥所对应的私钥信息。 - 密钥库：包含证书和凭据的文件。常见的密钥库文件格式为P12文件（PKCS#12）。 - 签名：使用私钥对需要传输的文件摘要进行加密得到的密文。 - 验签：用公钥对签名密文进行解密，得到文本的摘要，然后使用与发送方同样的方法对文本计算摘要值，再与解密得到的摘要做对比，二者一致则说明文本没有被篡改过。 #### 证书生命周期管理概述 实现业务证书凭据和CA证书的安装、存储、使用和销毁管理，保证证书安全使用。 - 证书安装：使用者可以通过安装接口，传入证书文件或密钥库文件，实现证书的安装。 - 证书存储：证书管理模块将安装后的证书存储在证书管理服务私有目录下，证书对应的私钥凭据存储在HUKS模块中。 - 证书使用：通过查询对应的证书，使用者可获取到证书文件进行业务相关操作，并可以使用证书管理服务提供接口使用证书和私钥进行签名和验签。 - 证书销毁：删除接口允许使用者批量或单张删除存储在证书管理中的证书或凭据。 #### 证"
+    },
+    {
+      "path": "references/证书链在线校验证书吊销状态.md",
+      "title": "证书链在线校验证书吊销状态",
+      "snippet": "API 22开始支持本地证书链吊销状态校验时仅校验终端实体证书。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 调用 cert.createX509CertChain 创建证书链对象。 3. 调用 cert.createX509Cert 创建X509证书对象。 4. 调用 cert.createX509CRL 创建X509证书吊销列表对象。 5. 构造 cert.CertChainValidationParameters 证书链校验参数对象。 6. 调用 cert.validate ，传入证书链校验参数，进行证书链校验。 本地仅校验终端实体证书的吊销状态示例： import { cert } from '@kit.DeviceCertificateKit'; // string转Uint8Array。 function stringToUint8Array(str: string): Uint8Array { let arr: number[] = []; for (let i = 0, j = str.length; i < j; i++) { arr.push(str.charCodeAt(i)); } return new Uint8Array(arr); } "
+    },
+    {
+      "path": "references/证书链对象的创建和校验.md",
+      "title": "证书链对象的创建和校验",
+      "snippet": "以校验证书链为例，完成证书链对象的创建，获取证书链中的证书列表以及使用信任锚对证书链进行校验。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 基于已有的证书数据，调用 cert.createX509CertChain 创建X509证书链对象，并返回结果。 3. 调用 x509CertChain.getCertList 获取证书链中的X509证书列表。 4. 调用 x509CertChain.validate 使用校验参数校验证书链并返回结果。 import { cert } from '@kit.DeviceCertificateKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { util } from '@kit.ArkTS'; let certChainData = '-----BEGIN CERTIFICATE-----\\n' + 'MIID6jCCAtKgAwIBAgIIIM2q/TmRoLcwDQYJKoZIhvcNAQELBQAwWjELMAkGA1UE\\n' + 'BhMCRU4xEDAOBgNVBAgTB0VuZ2xhbmQxDzANBgNVBAcTBkxvbmRv"
+    },
+    {
+      "path": "references/证书链校验器对象的创建和校验.md",
+      "title": "证书链校验器对象的创建和校验",
+      "snippet": "证书链是由一组证书组成的证书集合，以图中样例证书文件为例，即可放在一个证书链中。 样例中可以看到GlobalSign自签名了证书，GlobalSign也签发了GlobalSign RSA OV SSL CA 2018的证书，GlobalSign RSA OV SSL CA 2018又签发了第三级证书。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c7/v3/LdShfN5fSLy7s2Fk2_AtkQ/zh-cn_image_0000002573974301.png?HW-CC-KV=V1&HW-CC-Date=20260421T111102Z&HW-CC-Expire=86400&HW-CC-Sign=4C246113AE42330E72C6FD56C3F681A880E821AE40D375F59787FF75772421EF) 开发者可以参考示例将已有的多个证书构建出证书链数据。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. cert.createCertChainValidator 创建证书链校验器对象。 3. 基于已有的证书数据，创建证"
+    },
+    {
+      "path": "references/证书链校验时下载缺失的中间CA证书.md",
+      "title": "证书链校验时下载缺失的中间CA证书",
+      "snippet": "从API 23开始，支持证书链校验时下载缺失的中间CA证书。 以创建X509证书链为例，完成证书链对象的创建，创建过程校验时允许下载缺失的中间证书。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 基于已有的证书数据，调用 cert.createX509Cert 创建X509证书对象，并返回结果。 3. 调用 cert.buildX509CertChain 创建X509证书链对象，将validationParameters的allowDownloadIntermediateCa参数设置为true，开启允许校验过程中从网络下载缺失的中间CA。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8a/v3/EJBkjyYFRQunzb-dLtnk3w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111104Z&HW-CC-Expire=86400&HW-CC-Sign=BC2ABC6C8651D4F528C91675FF8F41C7390D6110D40C8C22FB43A88E6FCDFCD2) 本"
+    },
+    {
+      "path": "references/证书链校验时从p12文件构造TrustAnchor对象数组.md",
+      "title": "证书链校验时从p12文件构造TrustAnchor对象数组",
+      "snippet": "证书链校验时从p12文件构造TrustAnchor对象数组。 #### 开发步骤 1. 导入 证书算法库框架模块 。 2. 基于现有的p12文件数据，调用 cert.createTrustAnchorsWithKeyStore 创建 X509TrustAnchor 数组对象，并返回结果。 import { cert } from '@kit.DeviceCertificateKit'; import { BusinessError } from '@kit.BasicServicesKit'; function test() { // ... try { cert.createTrustAnchorsWithKeyStore(p12Data, '123456').then((data) => { console.info('createTrustAnchorsWithKeyStore result: success, the num of result is :' + data.length); }).catch((err: BusinessError) => { console.error(`createTrustAnchorsWithKeyStore failed, errCode: ${err.code}, message: ${err.message}`); }) } ca"
+    },
+    {
+      "path": "references/证书集合及证书吊销列表集合对象的创建和获取.md",
+      "title": "证书集合及证书吊销列表集合对象的创建和获取",
+      "snippet": "从输入的证书集合和证书吊销列表集合中选择满足条件的证书或者证书吊销列表。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 基于已有的证书数据，调用 cert.createX509Cert 创建X509证书的对象。 3. 基于已有的CRL数据，调用 cert.createX509CRL 创建X509证书吊销列表的对象。 4. 调用 cert.createCertCRLCollection 创建 CertCRLCollection 的对象，并返回相应的结果。 5. 调用 CertCRLCollection.selectCerts 查找所有与 X509CertMatchParameters 匹配的证书对象数组，并返回结果。 6. 调用 CertCRLCollection.selectCRLs 查找所有与 X509CRLMatchParameters 匹配的证书吊销列表数组，并返回结果。 import { cert } from '@kit.DeviceCertificateKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { util } from '@kit.ArkTS'; async f"
+    }
+  ]
+}

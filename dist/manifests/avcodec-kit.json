@@ -1,0 +1,140 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "avcodec-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.265Z"
+  },
+  "references": [
+    {
+      "path": "references/AVCodec Kit简介.md",
+      "title": "AVCodec Kit简介",
+      "snippet": "AVCodec Kit（Audio & Video Codec Kit，音视频编解码，封装解析）是媒体系统中的音视频的编解码、媒体文件的解析、封装、媒体数据输入等原子能力。 基于性能考虑，AVCodec Kit仅提供C接口。 #### 能力范围 - 媒体数据输入：媒体应用可以传入文件fd、或者流媒体url，进行后续的媒体信息解析等处理。 - 媒体基础能力（Media Foundation）：提供媒体数据处理的公共基础类型，包括AVBuffer、AVFormat等。 - 音频编码：音频类应用（比如音频通话、音频录制等）可以将未压缩的音频数据送到音频编码器进行编码，应用可以设置编码要用到的编码格式、码率、采样率等参数，控制编码的输出，达到压缩音频文件的目的。 - 视频编码：视频类应用（比如视频通话、视频录制等）可以将未压缩的视频数据送到视频编码器进行编码，应用可以设置编码要用到的编码格式、码率、帧率等参数，控制编码的输出，达到压缩视频文件的目的。 - 音频解码：音频类应用（比如音频通话、音频播放器等）将音频码流通过音频解码器解码，解码后的数据可以送到音频设备播放。 - 视频解码：视频类应用（比如视频通话、视频播放器等）将视频码流通过视频解码器解码，解码后的图像数据可以送到视频显示设备显示。 - 媒体文件解析：在媒体应用（音视频播放器等），将本地或者网络接收到的媒体文件解析，获得音视频的"
+    },
+    {
+      "path": "references/AVCodec支持的格式.md",
+      "title": "AVCodec支持的格式",
+      "snippet": "音视频的编解码能力以及文件格式封装和解封装能力的支持情况，在不同平台存在能力和规格的差异。开发者可以通过 获取支持的编解码能力 来获取实际的支持情况和规格情况。 #### 媒体编解码 #### 视频解码 当前支持的解码能力如下： 通过MIME类型创建解码器时，如果系统平台支持硬件解码，系统平台会优先创建硬件解码器实例；如果系统平台不支持或者硬件解码器资源不足时，系统平台会创建软件解码器实例；如果系统平台无对应解码能力，会创建解码器实例失败。 系统平台提供的解码能力和设备强相关，开发者可以通过 获取支持的编解码能力 获取系统平台支持的软硬件解码能力和能力规格。 例如可以通过OH_AVCODEC_MIMETYPE_VIDEO_AVC、OH_AVCODEC_MIMETYPE_VIDEO_HEVC、OH_AVCODEC_MIMETYPE_VIDEO_VVC来查询系统平台支持的H.264、H.265、H.266的硬件解码能力。 具体开发指导请参考 视频解码 。 #### 视频编码 当前支持的编码能力如下： 如果系统平台无对应编码能力，会创建编码器实例失败。 基于MimeType创建编码器时，可以配置为H.264(OH_AVCODEC_MIMETYPE_VIDEO_AVC)和H.265(OH_AVCODEC_MIMETYPE_VIDEO_HEVC)。 系统平台支持情况和每种编码的能力范围，可以"
+    },
+    {
+      "path": "references/Audio Vivid播放.md",
+      "title": "Audio Vivid播放",
+      "snippet": "在获取到解码后的Audio Vivid的PCM数据和元数据之后，可以调用OHAudio的相关播放接口，进行Audio Vivid格式音源的渲染播放。详细的API说明请参考 OHAudio API参考 。 #### 在CMake脚本中链接到动态库 target_link_libraries(sample PUBLIC libohaudio.so) #### 添加头文件 #include <ohaudio/native_audiorenderer.h> #include <ohaudio/native_audiostreambuilder.h> #### 开发步骤 开发者可以通过以下几个步骤来实现一个简单的播放功能。 1. 创建构造器。 OHAudio提供OH_AudioStreamBuilder接口，遵循构造器设计模式，用于构建音频流。在Audio Vivid播放场景下，需要选择OH_AudioStream_Type为AUDIOSTREAM_TYPE_RENDERER，创建一个渲染播放类型的音频构造器。 OH_AudioStreamBuilder* builder; OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_RENDERER); 2. 配置音频流参数。 创建音频播放构造器后，可以设置音频流所需要的参数，可以参考以下"
+    },
+    {
+      "path": "references/Audio Vivid能力介绍.md",
+      "title": "Audio Vivid能力介绍",
+      "snippet": "Audio Vivid（菁彩三维声）是全球首个基于AI技术的音频编解码标准，由世界超高清视频产业联盟（UWA联盟）与数字音视频编解码技术标准工作组（AVS）联合制定，共同发布。包含音频PCM数据以及元数据的音频格式，相比传统立体声音源，Audio Vivid包含音频内容源的元数据信息，能够还原物理和感知世界中的真实听感，打造极致的沉浸式听觉体验。 HarmonyOS打造全链路高清空间音频系统，包含Audio Vivid编解码、空间音频渲染算法等关键能力，并在各类终端产品逐步构建全场景空间音频特性，从传统立体声升级到三维声，获得更好的音质、更沉浸的空间感。 HarmonyOS支持播放Audio Vivid格式音源，并在耳机实现双耳空间音频渲染重放，在手机、平板、PC等支持外放空间音频渲染重放。系统的空间音频渲染能力无感接入，不需要做特定适配。 搭配HarmonyOS高清空间音频渲染能力，将音乐中的人声和各种乐器声作为独立的声音对象，重新定义各种声音对象的位置、移动轨迹和声音大小、远近等要素，实现声音在听众四周及上方全面萦绕，实现更佳的空间音频沉浸式体验，获得影院、音乐厅等的临场感与艺术体验。佩戴支持头动跟踪的耳机收听空间音频，还能实现动态头动跟踪，让声音围绕听众重新定位，还原逼真的临场感。 以下主要介绍使用HarmonyOS进行Audio Vivid格式音源的端到端播放的流程。 Au"
+    },
+    {
+      "path": "references/Audio Vivid解封装.md",
+      "title": "Audio Vivid解封装",
+      "snippet": "获取到Audio Vivid封装的mp4文件后，先调用解封装相关接口，选中音频轨，读取每一帧Audio Vivid，送入解码器中（可参考 Audio Vivid解码 ）。详细的API请参考 AVDemuxer模块 。 #### 在CMake脚本中链接到动态库 target_link_libraries(sample PUBLIC libnative_media_codecbase.so libnative_media_core.so libnative_media_acodec.so libnative_media_avdemuxer.so libnative_media_avsource.so ) #### 添加头文件 //解封装头文件 #include \"multimedia/player_framework/native_avdemuxer.h\" #include <string.h> // 解封装解码传递信息结构体 struct AudioSampleInfo { std::string audioCodecMime = \"\"; int32_t audioSampleFormat = 0; int32_t audioSampleRate = 0; int32_t audioChannelCount = 0; int64_t audioChannelLayout = 0; u"
+    },
+    {
+      "path": "references/Audio Vivid解码.md",
+      "title": "Audio Vivid解码",
+      "snippet": "获取解封装后的数据，送入解码器中，使用解码器获取PCM和Metadata元数据。详细的API请参考 AudioCodec模块 。 Audio Vivid解码当前支持的规格如下表所示。 #### 在CMake脚本中链接到动态库 target_link_libraries(sample PUBLIC libnative_media_codecbase.so libnative_media_core.so libnative_media_acodec.so libnative_media_avdemuxer.so libnative_media_avsource.so ) #### 添加头文件 //解封装头文件 #include \"multimedia/player_framework/native_avdemuxer.h\" #include <string> // 解封装解码传递信息结构体 struct AudioSampleInfo { std::string audioCodecMime = \"\"; int32_t audioSampleFormat = 0; int32_t audioSampleRate = 0; int32_t audioChannelCount = 0; int64_t audioChannelLayout = 0; uint8_t audioCodecCo"
+    },
+    {
+      "path": "references/B帧视频编码.md",
+      "title": "B帧视频编码",
+      "snippet": "从API version 20开始，支持B帧视频编码。 **双向预测帧** ，又叫B帧（B frame），是视频编码标准中定义的主要帧类型之一。B帧与P帧的主要差别在于P帧仅支持前向预测，而B帧支持双向预测。 B帧编码预测过程同时利用前后帧的信息，可以显著降低信号的时域冗余，具有更高的压缩效率。 使能B帧的影响： - 使能B帧，会导致P帧编码时域参考帧的距离增加，可能影响P帧的压缩率和画质；一般在时域较复杂的场景要联合考虑P帧和B帧的综合影响； - 使能B帧，也会增加编码和解码的端到端时延。 #### 适用场景 - 录像场景 - 编辑导出场景 - 视频转码场景 - 非低时延直播场景 #### 约束和限制 - **支持的平台**：该能力与平台能力有关，可以通过OH_AVCapability_IsFeatureSupported接口查询系统支持情况。 - **支持的API版本**：API20及以后。 - **支持的编码器**：该能力与编码器能力有关，可以通过OH_AVCodec_GetCapabilityByCategory接口查询支持情况。 - **支持的码控模式**：VBR、CBR、SQR、CQ。 - 不支持与时域可分层视频编码共同使能。 - 不支持与长期参考帧共同使能。 #### 接口介绍 支持B帧编码特性需要在初始阶段配置，全程生效，不支持动态修改。 开发配置参数如下： ###"
+    },
+    {
+      "path": "references/HDR Vivid视频录制.md",
+      "title": "HDR Vivid视频录制",
+      "snippet": "开发者可以调用本模块的Native API接口，实现在视频录制中支持HDR Vivid标准。 视频录制的主要流程是“相机采集 > 编码 > 封装成mp4文件”。 #### HDR Vivid视频编码 应用创建H.265编码器，配置profile(main 10)相机底层包含HDR Vivid的surfacebuffer内容，编码器消费surfacebuffer编码生成对应码流。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/64/v3/PmJ1vV0xQTeC39QnpmnHJg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111311Z&HW-CC-Expire=86400&HW-CC-Sign=A2CBAA7CB4940DFFC24C8036D2BE23C4E2948B618823059F2E9E142DD1E700A6) 仅在Surface模式下支持HDR Vivid视频编码。 #### 在 CMake 脚本中链接动态库 target_link_libraries(sample PUBLIC libnative_media_codecbase.so) target_link_libraries(sa"
+    },
+    {
+      "path": "references/HDR Vivid视频播放.md",
+      "title": "HDR Vivid视频播放",
+      "snippet": "开发者可以调用本模块的Native API接口，实现在视频播放中支持HDR Vivid标准。 视频播放的主要流程，是将视频文件“解封装 > 解码 > 送显/播放”。 #### HDR Vivid视频解析 从视频文件中，可以解析出其是否为HDR Vivid视频，如果视频源为HDR Vivid视频，可以解析相关的信息，如元数据、颜色信息（Color）等。 #### 在 CMake 脚本中链接动态库 target_link_libraries(sample PUBLIC libnative_media_codecbase.so) target_link_libraries(sample PUBLIC libnative_media_avdemuxer.so) target_link_libraries(sample PUBLIC libnative_media_avsource.so) target_link_libraries(sample PUBLIC libnative_media_core.so) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a/v3/Qplp6tBMQYu0WCSyr3JxMg/note_3.0-zh-cn.png?HW-CC-KV=V1&"
+    },
+    {
+      "path": "references/ROI视频编码.md",
+      "title": "ROI视频编码",
+      "snippet": "从API version 20开始支持ROI视频编码（Region Of Interest Video Coding），该功能是基于硬件H.264/H.265编码能力扩展的高级优化技术。其核心逻辑为对画面中指定的重点区域分配更多编码资源实现高画质编码。在有限带宽条件下保障ROI区域内容清晰呈现，显著提升整体视觉体验。 开发者可自主定义视频画面中的ROI区域（如直播中的人脸、监控中的车牌等），并通过设定质量偏移参数，调节ROI区域与非ROI区域的编码质量差异，实现编码资源的差异化分配。 #### 适用场景 ROI视频编码适用于因网络带宽限制导致码率不能满足视频画质要求，且能明确定义关键画面内容（ROI区域）的场景。比如视频通话、视频直播、安全监控等。 各场景中ROI区域的选择建议如下： - 秀场直播：将主播面部区域设为ROI，优化人脸细节（如肤色、五官轮廓），提升观众沉浸式观看体验。 - 户外直播：将主播主体/核心拍摄景物（如自然风光、赛事画面核心区域）设为ROI，在移动网络带宽波动时保障核心内容清晰。 - 电商直播：将商品展示区域（如美妆试色、电子产品细节）设为ROI，清晰呈现商品外观、材质与功能细节，助力商品转化。 - 网课视频：将课件文字、讲义图表、板书内容区域设为ROI，保证知识点清晰可读，降低视觉疲劳，提升教学效果。 - 安全监控：将摄像头画面中的人脸、车牌、出入口等关键区"
+    },
+    {
+      "path": "references/典型场景的视频编码配置.md",
+      "title": "典型场景的视频编码配置",
+      "snippet": "此文档描述了AVCodec视频编码能力在不同应用场景下的推荐配置参数，供开发者根据实际应用场景进行视频编码应用的开发。 视频编码在短距投屏（通常指10米以内的多个设备间进行屏幕编码投递）、视频通话、视频会议、直播、视频编辑、视频分享等场景均有广泛使用，按照体验要求，上述场景可归纳划分为低时延、实时流媒体、离线编码三大类别应用场景。 本文将给出上述三大类别应用场景下视频编码的推荐参数配置，方便开发者根据不同应用场景下的需求进行参数配置选择。 #### 通用开发步骤 **在CMake脚本中链接动态库** target_link_libraries(sample PUBLIC libnative_media_codecbase.so) target_link_libraries(sample PUBLIC libnative_media_core.so) target_link_libraries(sample PUBLIC libnative_media_venc.so) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/31/v3/WjVpuH5tTpCORKla-Q27nA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=2026"
+    },
+    {
+      "path": "references/创建视频解码器和NativeWindow初始化并行.md",
+      "title": "创建视频解码器和NativeWindow初始化并行",
+      "snippet": "为了解码Surface模式的正常创建，在XComponent尚未创建或OpenGL后处理（NativeImage）尚未初始化的情况下，可以创建一个空的surface，以确保视频解码器能够正常创建和运行。 #### 开发步骤 以下步骤描述了在surface的消费端没有创建之前，如何并行创建视频解码器和NativeWindow，让视频解码器正常创建执行。 **添加动态链接库** target_link_libraries(sample PUBLIC libnative_image.so) target_link_libraries(sample PUBLIC libnative_window.so) target_link_libraries(sample PUBLIC libnative_buffer.so) target_link_libraries(sample PUBLIC libnative_media_vdec.so) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ed/v3/t7XO3HZmTnO40mFmv6vlUg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111309Z&HW-CC-Ex"
+    },
+    {
+      "path": "references/媒体数据封装.md",
+      "title": "媒体数据封装",
+      "snippet": "开发者可以调用本模块的Native API接口，完成音视频封装，即将音频、视频等编码后的媒体数据，按一定的格式存储到文件里。 当前支持的封装能力请参考 AVCodec支持的格式 。 如果需要对HDRVivid视频码流进行封装，需要配置MimeType为H265 (OH_AVCODEC_MIMETYPE_VIDEO_HEVC)，本功能从API version 11开始支持。 **适用场景** - 录像、录音 保存录像、录音文件时，需要先对音视频流进行编码，再封装为文件。 - 音视频编辑 完成编辑后的音视频，需要封装为文件。 - 音视频转码 转码后，保存文件时需要封装。 #### 开发指导 详细的API说明请参考 native_avmuxer.h 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/df/v3/kqZVLPigTKWfT56pcphYKg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111311Z&HW-CC-Expire=86400&HW-CC-Sign=39FBD13F69D963E6006AD762B8CF3384E90ACCDFBBDB75B919A822614EA96799) 如果调用"
+    },
+    {
+      "path": "references/媒体数据解析.md",
+      "title": "媒体数据解析",
+      "snippet": "开发者可以调用本模块的Native API接口，完成媒体数据的解封装相关操作，即从比特流数据中取出音频、视频、字幕等媒体sample，获得DRM相关信息。 当前支持的数据输入类型有：远程连接(http协议)和文件描述符(fd)。 当前支持的解封装格式请参考 AVCodec支持的格式 。 **适用场景** ： - 播放 播放媒体文件时，需要先对媒体流进行解封装，然后使用解封装获取的sample进行解码和播放。 - 音视频编辑 编辑媒体文件时，需要先对媒体流进行解封装，获取到指定sample进行编辑。 - 媒体文件格式转换（转封装） 媒体文件格式转换时，需要先对媒体流进行解封装，然后按需将媒体流封装至新的格式文件内。 #### 开发指导 详细的API说明参考 AVDemuxer 和 AVSource ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b3/v3/1IglBKVwS1qpebuNYSbAGg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111312Z&HW-CC-Expire=86400&HW-CC-Sign=224289347CE7343706694AA6743F31F12EE0C2B92BEA7"
+    },
+    {
+      "path": "references/时域可分层视频编码.md",
+      "title": "时域可分层视频编码",
+      "snippet": "**可分层视频编码** ，又叫可分级视频编码、可伸缩视频编码，是视频编码的扩展标准，目前广泛使用的包含SVC（H.264编码标准采用的可伸缩扩展）和SHVC（H.265编码标准采用的可扩展标准）。 其特点是能一次编码出时域分层、空域分层、质量域分层的码流结构，满足因网络、终端能力和用户需求不同带来的差异化需求。 **时域可分层视频编码** ，是指能编码出时域分层码流的视频编码，下图展示了通过参考关系构建的4层时域分层码流结构。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0a/v3/SwCT_xDmQcapHr8mhpGJYA/zh-cn_image_0000002573974467.png?HW-CC-KV=V1&HW-CC-Date=20260421T111308Z&HW-CC-Expire=86400&HW-CC-Sign=9EFFE7B86DC0F9B799E8A9A1BEFE7032B3873B3443A93990B68093CEC7D8797E) 从高到低逐层丢弃部分层级的码流（丢弃顺序L3->L2->L1），能实现不同程度的帧率伸缩，以满足传输和解码能力的变化需求。 如下图所示，这是上述4层时域分层码流结构丢弃L3后组成的新的码流结构，能在解码正"
+    },
+    {
+      "path": "references/获取支持的编解码能力.md",
+      "title": "获取支持的编解码能力",
+      "snippet": "因来源、编解码协议及设备能力的不同，导致不同设备上可用的编解码器及其能力存在差异。 为确保编解码行为符合预期，请通过音视频编解码能力接口查询系统支持的编解码器及其能力，选择符合开发需求的编解码器，并正确配置参数。 #### 通用开发指导 1. 在CMake脚本中链接动态库。 target_link_libraries(sample PUBLIC libnative_media_codecbase.so) target_link_libraries(sample PUBLIC libnative_media_core.so) target_link_libraries(sample PUBLIC libnative_media_venc.so) target_link_libraries(sample PUBLIC libnative_media_vdec.so) target_link_libraries(sample PUBLIC libnative_media_acodec.so) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/91/v3/OG7sGXLOTKyEIIDr0h4J-w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-"
+    },
+    {
+      "path": "references/视频可变帧率.md",
+      "title": "视频可变帧率",
+      "snippet": "从API version 15开始，支持视频可变帧率。 本模块提供视频可变帧率功能的CAPI接口，通过调用本接口，可以在视频播放过程中根据视频内容动态调整屏幕刷新率，在保障视频播放流畅度的基础上节省屏幕显示功耗。 #### 适用场景 具有高帧率（>30fps）视频源的播放场景；视频帧率小于或等于30的场景建议以30Hz的刷新率运行。下图以播放一段60fps的视频为例，算法根据视频内容实时调整屏幕刷新率，调节过程中，当刷新率小于视频帧率时，显示前会丢弃部分视频帧以节省功耗。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ff/v3/10aGuEJqQ3OX-MqZx0sX_Q/zh-cn_image_0000002573974473.png?HW-CC-KV=V1&HW-CC-Date=20260421T111310Z&HW-CC-Expire=86400&HW-CC-Sign=C088338FB8B039DBFDF3FC720BEE8D0DD8642837C19C493B85E28EFDE5F100AC) #### 约束与限制 1. 只支持硬件解码后直接送显的视频播放场景。 2. 屏幕整体刷新率会被调整，建议在全屏播放、无弹幕、无动效的场景使用，否则会影响弹幕、"
+    },
+    {
+      "path": "references/视频编码.md",
+      "title": "视频编码",
+      "snippet": "开发者可以调用本模块的Native API接口，完成视频编码，即将未压缩的视频数据压缩成视频码流。 具体实现可参考 示例工程 。 当前支持的编码能力请参考 AVCodec支持的格式 。 如果需要对HDRVivid视频进行编码，需要配置MimeType为H265 (OH_AVCODEC_MIMETYPE_VIDEO_HEVC)，本功能从API version 11开始支持。 视频编码支持以下能力： #### 限制约束 1. Buffer模式不支持10bit的图像数据。 2. 由于硬件编码器资源有限，每个编码器在使用完毕后都必须调用OH_VideoEncoder_Destroy接口来销毁实例并释放资源。 3. Flush，Reset，Stop，Destroy在非回调线程中执行时，会等待所有回调执行完成后，将执行结果返回给开发者。 4. 一旦调用Flush，Reset，Stop接口，会触发系统回收OH_AVBuffer，开发者不应对之前回调函数获取到的OH_AVBuffer继续进行操作。 5. Buffer模式和Surface模式使用方式一致的接口，所以只提供了Surface模式的示例。 6. 在Buffer模式下，开发者通过输入回调函数OH_AVCodecOnNeedInputBuffer获取到OH_AVBuffer的指针实例后，必须通过调用OH_VideoEncoder_PushIn"
+    },
+    {
+      "path": "references/视频编码同步模式.md",
+      "title": "视频编码同步模式",
+      "snippet": "从API version 20开始，支持视频编码同步模式。 开发者可以调用本模块的Native API接口，完成同步模式的视频编码。 具体实现可参考 示例工程 。 当前支持的编码能力，请参考 AVCodec支持的格式 。 视频编码的限制约束、支持的能力、状态机调用关系请参考 视频编码 。 #### 适用场景 通常情况下，推荐使用异步模式。若需要主动请求buffer去送帧，则可以采用同步模式。 #### 开发指导 详细的API说明请参考 VideoEncoder 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f4/v3/cNl3A9uHSuqg7xm6_7EhwQ/zh-cn_image_0000002573854491.png?HW-CC-KV=V1&HW-CC-Date=20260421T111308Z&HW-CC-Expire=86400&HW-CC-Sign=6C42DD2328E2F964D4C3AD917D3D755F6A2E5F2B74A35779011B7FF023C9AF37) #### 在CMake脚本中链接动态库 target_link_libraries(sample PUBLIC libnative_media_codecbase.s"
+    },
+    {
+      "path": "references/视频解码.md",
+      "title": "视频解码",
+      "snippet": "开发者可以调用本模块的Native API接口，完成视频解码，即将媒体数据解码成YUV文件或送显。 具体实现可参考 示例工程 。 当前支持的解码能力请参考 AVCodec支持的格式 。 如果需要对HDRVivid视频进行解码，需要配置MimeType为H265 (OH_AVCODEC_MIMETYPE_VIDEO_HEVC)，本功能从API version 11开始支持。 通过视频解码，应用可以实现以下重点能力，包括： #### 限制约束 1. Flush，Reset，Stop之后，重新Start时，需要重新传PPS/SPS。具体示例请参考Surface模式“步骤-13：调用OH_VideoDecoder_Flush()”。 2. Flush，Reset，Stop，Destroy在非回调线程中执行时，会等待所有回调执行完成后，将执行结果返回给开发者。 3. 由于硬件解码器资源有限，每个解码器在使用完毕后都必须调用OH_VideoDecoder_Destroy接口来销毁实例并释放资源。 4. 视频解码输入码流仅支持AnnexB格式，且支持的AnnexB格式支持多slice，要求同一帧的多个slice一次送入解码器。 5. 在调用Flush，Reset，Stop的过程中，开发者不应对之前回调函数获取到的OH_AVBuffer继续进行操作。 6. DRM解密能力在Surface模式下既支"
+    },
+    {
+      "path": "references/视频解码同步模式.md",
+      "title": "视频解码同步模式",
+      "snippet": "从API version 20开始，支持视频解码同步模式。 开发者可以调用本模块的Native API接口，完成同步模式的视频解码。 具体实现可参考 示例工程 。 当前支持的解码能力，请参考 AVCodec支持的格式 。 视频解码的限制约束、支持的能力、状态机调用关系请参考 视频解码 。 #### 适用场景 通常情况下，推荐使用异步模式。若需要主动请求buffer去送帧，则可以采用同步模式。 #### 开发指导 详细的API说明请参考 VideoDecoder 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6a/v3/Hk7qIVC_SiGfA32dD29STw/zh-cn_image_0000002573854497.png?HW-CC-KV=V1&HW-CC-Date=20260421T111309Z&HW-CC-Expire=86400&HW-CC-Sign=914BA9277FA6BAA7BCDDAF1815C20635FD2666A5D9CB0EEA03DF1020AD70E5EF) #### 在CMake脚本中链接动态库 target_link_libraries(sample PUBLIC libnative_media_codecbase.s"
+    },
+    {
+      "path": "references/视频解码支持HDRVivid2SDR.md",
+      "title": "视频解码支持HDRVivid2SDR",
+      "snippet": "在视频分享或者编辑场景时，开发者有时需要将HDR Vivid视频转换为SDR视频，可以调用AVCodec能力实现该功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/19/v3/nwyIdV3wRfqdvngN7lIazQ/zh-cn_image_0000002543374246.png?HW-CC-KV=V1&HW-CC-Date=20260421T111311Z&HW-CC-Expire=86400&HW-CC-Sign=1EB9D76A52EE1D9A62B5FFC2ADFB795642F4E8D5BF20F499B3353B3BEDA8F7D8) #### 限制约束 1. 目前仅硬件解码器支持该能力。 2. 目前仅Surface模式支持该能力。Surface模式和Buffer模式输出差异可参考 视频解码 。 3. 目前使能该能力时，不支持码流分辨率变化，会通过回调函数OH_AVCodecOnError()报告错误码 AV_ERR_UNSUPPORT 。 4. 在成功调用OH_VideoDecoder_Configure接口后，以及在启动OH_VideoDecoder_Start接口前，必须要先调用OH_VideoDecoder_Prepare接口。 5"
+    },
+    {
+      "path": "references/音频编码.md",
+      "title": "音频编码",
+      "snippet": "开发者可以调用本模块的Native API接口，完成音频编码，即将音频PCM编码压缩成不同的格式。 接口不限制PCM数据的来源，开发者可以调用麦克风录制获取、也可以导入编辑后的PCM数据，通过音频编码，输出对应格式的码流，最后封装为目标格式文件。 当前支持的编码能力请参考 AVCodec支持的格式 。 **适用场景** - 音频录制 通过录制传入PCM，然后编码出对应格式的码流，最后 封装 为所需格式的音频文件。 - 音频编辑 编辑PCM后导出音频文件的场景，需要编码成对应音频格式后再 封装 成文件。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3a/v3/IJyxyow0T7uceJCopi89Xg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111307Z&HW-CC-Expire=86400&HW-CC-Sign=207F80EB8F967D782FED39C12491E48F899A6073C09F4FCFA33D117EDF1C5AAE) - AAC编码器默认采用的VBR可变码率模式，与配置的预期参数可能存在偏差。 - AAC编码器默认输出携带ADTS头部，帧数据的前7字节为ADTS头部。 #"
+    },
+    {
+      "path": "references/音频编码同步模式.md",
+      "title": "音频编码同步模式",
+      "snippet": "从API version 20开始，支持音频编码同步模式。 开发者可以调用本模块的Native API接口，完成音频编码，即将音频PCM编码压缩成不同的格式。 具体实现可参考 示例工程 。 接口不限制PCM数据的来源。开发者可以调用麦克风录制获取，也可以导入编辑后的PCM数据。通过音频编码，输出对应格式的码流，最后封装为目标格式文件。 支持的编码能力请参考 AVCodec支持的格式 。 **适用场景** 通常推荐使用异步模式，异步模式请参考 音频编码 。若需要主动请求buffer去编码PCM，则可以使用同步模式。 - 音频录制 通过录制传入PCM，然后编码成对应格式的码流，最后封装成所需格式的文件。具体封装方法请参考 媒体数据封装 。 - 音频编辑 编辑PCM后导出音频文件的场景，需要编码成对应音频格式，最后封装成所需格式的文件。具体封装方法请参考 媒体数据封装 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a1/v3/rLpD6_MxT6WEh5ebqLYDbA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111307Z&HW-CC-Expire=86400&HW-CC-Sign=EB51AC59D"
+    },
+    {
+      "path": "references/音频解码.md",
+      "title": "音频解码",
+      "snippet": "开发者可以调用本模块的Native API接口，完成音频解码，即将媒体数据解码为PCM码流。 当前支持的解码能力请参考 AVCodec支持的格式 。 **适用场景** - 音频播放 在播放音频之前，需要先解码音频，再将数据输送到硬件扬声器播放。 - 音频渲染 在对音频文件进行音效处理之前，需要先解码再由音频处理模块进行音频渲染。 - 音频编辑 音频编辑（如调整单个声道的播放倍速等）需要基于PCM码流进行，所以需要先将音频文件解码。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8f/v3/3IIh6WtjTNSgBYKER2P7Zw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111307Z&HW-CC-Expire=86400&HW-CC-Sign=5BB47F4690772B4FC59C1330BA8D0CA5F769F7489052CE1B0088B0B089868817) 通过MP3音频编码流程生成的码流无法直接通过MP3音频解码流程进行解码。建议通过（PCM码流->MP3音频编码->封装->解封装->MP3音频解码）流程进行。 #### 开发指导 详细的API说明请参考 native_avcod"
+    },
+    {
+      "path": "references/音频解码同步模式.md",
+      "title": "音频解码同步模式",
+      "snippet": "从API version 20开始，支持音频解码同步模式。 开发者可以调用本模块的Native API接口，完成同步模式的音频解码，即将媒体数据解码为PCM码流。 具体实现可参考 示例工程 。 支持的解码能力请参考 AVCodec支持的格式 。 **适用场景** 通常推荐使用异步模式，详细内容请参考 音频解码 。若需要主动请求buffer去送帧，则可以使用同步模式。 将音视频文件解码为PCM码流，通常需要以下步骤： 媒体数据解析 -> 音频解码。 本指南描述音频解码过程：输入音频帧和解码出PCM码流。 #### 开发指导 详细的API说明请参考 AudioCodec 。 参考以下示例代码，完成音频解码的全流程，包括：创建解码器、设置解码参数（采样率/码率/声道数等）、开始/刷新/重置/销毁资源。 在应用开发过程中，开发者应按顺序调用方法，执行操作，否则系统可能会抛出异常或生成其他未定义的行为。具体顺序可参考下列开发步骤及对应说明。 音频编解码同步模式调用关系图如下所示： - 虚线表示可选。 - 实线表示必选。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2a/v3/4mflHnupRSuuNxc8nyDA5w/zh-cn_image_0000002543374"
+    }
+  ]
+}

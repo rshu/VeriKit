@@ -1,0 +1,85 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "xengine-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:29.303Z"
+  },
+  "references": [
+    {
+      "path": "references/Subpass Shading.md",
+      "title": "Subpass Shading",
+      "snippet": "随着游戏场景的复杂化，越来越多的光照效果被应用到游戏场景中，随之也带来大量的光照计算以及带宽消耗。目前通过Tile-Based Deferred Rendering（TBDR）和Forward+等方法可以解决大量光照的渲染时间消耗，但是大量带宽的占用问题还是没有解决，Subpass Shading能力主要减少计算过程中的读写从而减少带宽的占用。 下图说明Subpass Shading节省渲染通道1和Compute Pass从Device memory上面的一次读写带宽。 **图1** Forward+读取过程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2a/v3/d3P1EKbPRiaNQZuHWZCn9Q/zh-cn_image_0000002543214770.png?HW-CC-KV=V1&HW-CC-Date=20260421T111429Z&HW-CC-Expire=86400&HW-CC-Sign=FF30CF57CC820FE4F9E8DD671DEC189E21AB507AB6274A2345A438E3F6FE135A) **图2** Subpass Shading读取过程 ![](https://contentcenter-vali-dr"
+    },
+    {
+      "path": "references/XEngine Kit简介.md",
+      "title": "XEngine Kit简介",
+      "snippet": "XEngine Kit（GPU加速引擎服务）提供基于马良GPU的性能提升方案，包括GPU/AI超分能力、自适应VRS（Variable Rate Shading，可变速率着色）、Subpass Shading、光线追踪技术（包括反射、阴影、环境光遮蔽和全局光照，Ray-Traced Reflection, Shadow, Ambient Occlusion and Global Illumination）和高性能着色器（High performance shaders，简称HPS）等，通过图形算法以及软硬件优化，让用户拥有更高画质、更高性能、更低功耗的3D游戏/应用、AR/VR体验。 #### 基本概念 在进行XEngine Kit开发前，建议开发者提前了解以下基本概念： - XComponent 组件：是一种绘制组件，通常用于满足开发者较为复杂的自定义绘制需求，例如相机预览流的显示和游戏画面的绘制。 - 可变速率着色（Variable Rate Shading，简称VRS）：是一种图形功能，允许应用程序独立于渲染目标的分辨率来控制像素着色器调用的频率。自适应可变速率着色（Adaptive VRS）在VRS的基础上，添加了可动态调整的着色率，能够大幅提升渲染性能。 - 基于瓦片的延迟渲染（Tile-Based Deferred Rendering，TBDR）：是一种渲染技术，它结合"
+    },
+    {
+      "path": "references/光线追踪全局光照.md",
+      "title": "光线追踪全局光照",
+      "snippet": "从6.0.0(20) 版本开始，新增光线追踪全局光照特性。 XEngine Kit提供端侧光线追踪全局光照（Ray-Traced Global Illumination，RTGI）能力，包含动态漫反射全局光照（DDGI）算法和神经网络全局光照（NNGI）算法。 #### 约束与限制 - 支持的设备类型：此特性依赖设备支持Vulkan光线追踪扩展 VK_KHR_acceleration_structure 、 VK_KHR_ray_query - 可通过以下方式查询相关扩展特性是否支持： 对于Vulkan，使用 HMS_XEG_EnumerateDeviceExtensionProperties 扩展特性查询接口进行查询，如查询结果包含XEG_RTGI_EXTENSION_NAME，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 应用场景 DDGI算法：根据视角中的探针信息，分帧更新探针光照，实现使用光线追踪实时渲染动态全局光照的效果。同时可与端云渲染相结合，利用端侧光追算力，计算动态全局光照，结合云侧下发的静态全局光照信息，实时生成高质量全场景光线追踪全局光照。 NNGI算法：结合了AI和光线追踪技术，通过非常小分辨率（例如64×32）对场景进行光线追踪渲染，然后将延迟渲染的几何数据和光追结果输入给NPU推理出整个场景的全局光照结果，从而实现少量光线即可实现全局"
+    },
+    {
+      "path": "references/光线追踪反射.md",
+      "title": "光线追踪反射",
+      "snippet": "从6.0.0(20) 版本开始，新增光线追踪反射特性。 XEngine Kit提供光线追踪反射（Ray-Traced Reflections）渲染能力。相比于该效果的传统光线追踪实现方式，依托于华为马良GPU的软硬结合优化，XEngine支持FERT(Flexible Entry Raytracing)求交加速技术，可以减少光线与场景几何的求交计算次数，从而降低实现高画质光追效果时的GPU负载。 #### 约束与限制 - 支持的设备类型：此特性依赖设备支持Vulkan光线追踪扩展 VK_KHR_acceleration_structure 、 VK_KHR_ray_query - 可通过以下方式查询相关扩展特性是否支持： 对于Vulkan，使用 HMS_XEG_EnumerateDeviceExtensionProperties 扩展特性查询接口进行查询，如查询结果包含XEG_RT_REFLECTION_EXTENSION_NAME，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为使用光线追踪反射特性需要使用的接口，关于这些接口的详细说明见 接口文档 。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8"
+    },
+    {
+      "path": "references/光线追踪阴影和环境光遮蔽.md",
+      "title": "光线追踪阴影和环境光遮蔽",
+      "snippet": "从6.0.0(20) 版本开始，新增光线追踪阴影和环境光遮蔽特性。 XEngine VisibleMask特性提供开箱即用的光线追踪阴影和环境光遮蔽（Ray-Traced Shadow and AO）渲染能力。相比于这些效果的传统光线追踪实现方式，依托于华为马良GPU的软硬结合优化，XEngine支持FERT(Flexible Entry Raytracing)求交加速技术，可以减少光线与场景几何的求交计算次数，从而降低实现高画质光追效果时的GPU负载。此外，XEngine通过高度优化的时空域降噪技术，解决光线追踪渲染时因为光线数量不足而引入的噪声问题，可以在发射较少光线数的情况下达成高画质表现，实现同等画质GPU负载更轻，同等负载下画质更好的效果。 #### 约束与限制 - 支持的设备类型：此特性依赖设备支持Vulkan光线追踪扩展 VK_KHR_acceleration_structure 、 VK_KHR_ray_query 。 - 可通过以下方式查询相关扩展特性是否支持： 对于Vulkan，使用 HMS_XEG_EnumerateDeviceExtensionProperties 扩展特性查询接口进行查询，如查询结果包含XEG_RT_SHADOW_AO_EXTENSION_NAME，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为使用"
+    },
+    {
+      "path": "references/创建特性实例失败如何处理.md",
+      "title": "创建特性实例失败如何处理",
+      "snippet": "1. 请使用查询接口 HMS_XEG_GetString 或 HMS_XEG_EnumerateDeviceExtensionProperties 确认XEngine是否支持该扩展。 2. 如果查询支持该扩展，请 联系我们 。"
+    },
+    {
+      "path": "references/开发准备.md",
+      "title": "开发准备",
+      "snippet": "安装DevEco Studio，详情请参考 下载与安装DevEco Studio 。 #### 软件要求 - 推荐使用Ubuntu 16.04及以上版本、MacOS 10.14及以上版本、Windows 10及以上版本，安装DevEco Studio应用开发环境。 - DevEco Studio版本：DevEco Studio NEXT Developer Beta1及以上。 - HarmonyOS SDK版本：HarmonyOS NEXT Developer Beta1 SDK及以上。 #### 硬件要求 支持的设备类型：Phone、Tablet、PC/2in1、TV。"
+    },
+    {
+      "path": "references/时域AI超分.md",
+      "title": "时域AI超分",
+      "snippet": "从6.0.0(20) 版本开始，新增支持OpenGL ES协议。 XEngine Kit提供时域AI超分能力，利用相机的抖动获取不同位置的采样信息，融合时域实现超采样率和超分辨率功能，并利用神经网络达到抗锯齿效果，建议超分倍率为[1.25, 2.0]。 #### 业务流程 - 下面是基于GLES图形API平台集成时域AI超分的主要业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/74/v3/nX7r1Ib1RLK6BM4xPn75YQ/zh-cn_image_0000002543374430.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111428Z&HW-CC-Expire=86400&HW-CC-Sign=8357E323972D4207643FE64DFE3A37F7B3D7718ADF36692C9877602CBE959B1F) 1. 用户在进入游戏初始化场景时调用HMS_XEG_GetString接口查询XEngine支持的特性，当查询接口返回支持的特性列表中包含时域AI超分时代表可以使用此特性。 2. 此时调用HMS_XEG_TemporalUpscaleParameter接口配置超分参数。 3. 当游戏运行时，游"
+    },
+    {
+      "path": "references/空域AI超分.md",
+      "title": "空域AI超分",
+      "snippet": "XEngine Kit提供空域AI超分能力，基于单帧图像使用AI推理生成滤波参数进行超采样，通过GPU、NPU协同工作，实现比空域GPU超分更好的画质，建议超分倍率在1.5倍以下时使用。 #### 约束与限制 - 支持的设备类型：Phone，从5.1.0(18)版本开始新增支持Tablet、PC/2in1、TV设备。 - 可通过以下方式查询相关扩展特性是否支持： 对于OpenGL ES，使用 HMS_XEG_GetString 扩展特性查询接口进行查询，如查询结果包含 XEG_NEURAL_UPSCALE_EXTENSION_NAME ，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为OpenGL ES空域AI超分设置接口，如需使用更丰富的设置和查询接口，具体API说明详见 接口文档 。 #### 业务流程 - 下面是基于GLES图形API平台集成空域GPU超分的主要业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/20/v3/oeOyd7yKQBWRBKW_aKp1nA/zh-cn_image_0000002573854683.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111429Z&"
+    },
+    {
+      "path": "references/空域AI超分的输出颜色附件是否需要通过OH_NativeBuffer创建.md",
+      "title": "空域AI超分的输出颜色附件是否需要通过OH_NativeBuffer创建",
+      "snippet": "输出不需要，仅输入需要通过OH_NativeBuffer创建。"
+    },
+    {
+      "path": "references/空域GPU超分.md",
+      "title": "空域GPU超分",
+      "snippet": "XEngine Kit提供空域GPU超分能力，其基于单帧输入图像，使用空间邻域信息实现超采样，开销较小同时收益可观，建议使用超分倍率为[1.2, 1.5]。 #### 约束与限制 - 支持的设备类型：Phone，从5.0.2(14)版本开始，新增支持Tablet、PC/2in1设备，从5.1.0(18)版本开始新增支持TV设备。 - 可通过以下方式查询相关扩展特性是否支持： - 对于OpenGL ES，使用 HMS_XEG_GetString 扩展特性查询接口进行查询。 - 对于Vulkan，使用 HMS_XEG_EnumerateDeviceExtensionProperties 扩展特性查询接口进行查询。 如查询结果包含 XEG_SPATIAL_UPSCALE_EXTENSION_NAME ，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为OpenGL ES和Vulkan空域GPU超分设置接口，如需使用更丰富的设置和查询接口，具体API说明详见 接口文档 。 #### 业务流程 - 下面是基于GLES图形API平台集成空域GPU超分的主要业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/40/v3/AXGsIYK"
+    },
+    {
+      "path": "references/自适应VRS.md",
+      "title": "自适应VRS",
+      "snippet": "XEngine Kit提供自适应VRS功能，其通过合理分配画面的计算资源，视觉无损降低渲染频次，使不同的渲染图像使用不同的渲染速率，能够有效提高渲染性能。 #### 约束与限制 - 支持的设备类型：Phone，从5.0.2(14)版本开始，新增支持Tablet、PC/2in1设备，从5.1.0(18)版本开始新增支持TV设备。 - 可通过以下方式查询相关扩展特性是否支持： 对于OpenGL ES，使用 HMS_XEG_GetString 扩展特性查询接口进行查询，如查询结果包含 XEG_ADAPTIVE_VRS_EXTENSION_NAME ，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为自适应VRS设置接口，如需使用更丰富的设置和查询接口，具体API说明详见 接口文档 。 #### 业务流程 - 下面是基于GLES图形API平台集成自适应VRS的主要业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4a/v3/c6XTUr1_R5Wt9ZFPM-YyBg/zh-cn_image_0000002573974659.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111429Z&HW-CC-E"
+    },
+    {
+      "path": "references/自适应VRS深度附件使用说明.md",
+      "title": "自适应VRS深度附件使用说明",
+      "snippet": "当不使用重投影矩阵时，可以不传深度附件。若使用重投影矩阵则必须传递深度附件，否则会导致着色率图计算错误。"
+    },
+    {
+      "path": "references/超分和自适应VRS特性是否可以同时使用.md",
+      "title": "超分和自适应VRS特性是否可以同时使用",
+      "snippet": "可以同时使用，用户可根据实际应用选择超分和自适应VRS的使用顺序。"
+    },
+    {
+      "path": "references/高性能GPU排序.md",
+      "title": "高性能GPU排序",
+      "snippet": "从6.0.0(20) 版本开始，新增高性能GPU排序特性。 XEngine Kit HPS特性提供高性能GPU排序能力。相比于其它排序能力，该能力依托于华为Maleoon GPU的软硬结合优化，效率更高。 #### 约束与限制 可通过以下方式查询相关扩展特性是否支持： 对于Vulkan，使用 HMS_XEG_EnumerateDeviceExtensionProperties 扩展特性查询接口进行查询，如查询结果包含XEG_HPS_RADIX_SORT_EXTENSION_NAME，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为使用高性能GPU排序所需要使用的接口，关于这些接口的详细说明见 接口文档 。 #### 开发步骤 本章以在Vulkan应用程序渲染为例，说明使用高性能GPU排序的开发步骤。 #### 配置项目 编译HAP时，Native层so需要依赖NDK中的XEngine相关库和头文件。 - 头文件引用 #include <algorithm> #include <vector> #include <string> #include <xengine/xeg_vulkan_hps.h> #include <xengine/xeg_vulkan_extension.h> #include <xengine/xeg_extension"
+    }
+  ]
+}

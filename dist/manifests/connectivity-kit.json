@@ -1,0 +1,105 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "connectivity-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.625Z"
+  },
+  "references": [
+    {
+      "path": "references/Connectivity Kit术语.md",
+      "title": "Connectivity Kit术语",
+      "snippet": "Advanced Audio Distribution Profile，即增强音频分发协议。支持传输高品质音频。例如：使用蓝牙耳机听音乐。该协议定义了2种角色： A2DP Source 和 A2DP Sink 。 #### A2DP Sink A2DP 协议中的音频接收设备，负责解码并播放音频。典型设备如：蓝牙耳机、音箱等。 #### A2DP Source A2DP 协议中的音频源设备端，负责编码并发送音频数据。典型设备如：手机、平板等。 #### ACL Asynchronous Connectionless Link，即异步无连接链路。在蓝牙子系统中，表示设备间物理链路的连接情况。 #### B #### BLE Bluetooth Low Energy，即低功耗蓝牙。从蓝牙4.0开始支持的协议，相比于传统蓝牙，是支持低功耗、长续航的蓝牙通信技术。 #### BR Basic Rate，即蓝牙基础率。是一种蓝牙无线通信技术，用来表示传统蓝牙，主要用于文件和音频流的传输场景。 #### Bluetooth SIG Bluetooth Special Interest Group，即蓝牙技术联盟，发布蓝牙技术规范的组织。开发者可以在其官网获取详细的蓝牙技术文档。 #### C #### Characteristic GATT 服务（ Service ）的核心数据单元，可进行数据读"
+    },
+    {
+      "path": "references/Connectivity Kit简介.md",
+      "title": "Connectivity Kit简介",
+      "snippet": "移动终端设备已经深入人民日常生活的方方面面，如连接蓝牙耳机听音乐、连接WIFI上网、使用NFC进行一碰开门等已成为终端用户日常生活中常见的行为。 当用户处于这些丰富的使用场景中时，蓝牙提供基于蓝牙连接的基础能力，如音乐/通话/分享等，WIFI提供基础的无线连接能力，NFC提供基础的靠近刷卡和读卡能力。 对于开发者，设计基础通信的体验服务，可以使应用的使用体验更贴近每个终端用户的日常生活。 #### 蓝牙简介 蓝牙技术是一种无线通信技术，可以在短距离内传输数据，该技术规范由蓝牙技术联盟（Bluetooth Special Interest Group, SIG）制定。可以用于连接手机、耳机、音箱、键盘、鼠标、打印机等各种设备。特点是低功耗、低成本、简单易用。 蓝牙模块提供了多种API，适用于不同场景，助力开发者完成蓝牙相关开发。 - **ACCESS模块** 提供开启、关闭蓝牙和获取蓝牙开关状态等能力。使用蓝牙其他功能需要通过该模块打开蓝牙，在蓝牙已打开的情况下使用其他功能。具体内容可参考API @ohos.bluetooth.access 。 - **CONNECTION模块** 提供蓝牙设备的发现、配对连接和获取本端及对端设备信息等能力。具体内容可参考API @ohos.bluetooth.connection 。 - **BLE模块** 提供基于低功耗蓝牙（Bluetooth "
+    },
+    {
+      "path": "references/HCE卡模拟开发指南.md",
+      "title": "HCE卡模拟开发指南",
+      "snippet": "近场通信(Near Field Communication，NFC)是一种短距高频的无线电技术，在13.56MHz频率运行，通信距离一般在10厘米距离内。HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安全单元芯片，电子设备上的应用程序模拟NFC卡片和NFC读卡器通信，实现NFC刷卡业务。从API version 22开始支持OFFHOST(Off Host Card Emulation)，称为基于安全单元的卡模拟，卡由设备中的一个单独芯片(称为安全单元)进行模拟。无线运营商部分SIM卡也包含安全单元。 #### 场景介绍 应用程序模拟NFC卡片，和NFC读卡器通信完成NFC刷卡业务。从使用场景上，可以分成HCE应用前台刷卡和HCE应用后台刷卡。 - HCE应用前台刷卡 前台刷卡是指在触碰NFC读卡器之前，用户明确想使用在电子设备上打开特定的应用程序和NFC读卡器进行刷卡操作。当用户打开应用程序在前台，并且进入应用的刷卡页面时，电子设备触碰NFC读卡器后，会把刷卡交易数据分发给前台应用。若应用切换至后台或退出运行时，前台优先分发规则也随即被暂停。 - HCE应用后台刷卡 后台刷卡是指不打开特定的HCE应用程序，当电子设备触碰NFC读卡器时，根据NFC读卡器选择的应用ID（Applet ID，AID，参考ISO/IEC 7816-4规范）匹配到HCE"
+    },
+    {
+      "path": "references/NFC服务开发概述.md",
+      "title": "NFC服务开发概述",
+      "snippet": "NFC英文全称Near Field Communication，是一种短距高频的无线电技术，在13.56MHz频率运行，通信距离一般在10厘米距离内。NFC服务提供NFC开关控制、NFC标签读写、NFC卡模拟等业务功能。 #### 模块介绍 #### NFC开关模块 NFC开关模块，提供了打开NFC和关闭NFC功能。打开或关闭NFC的应用程序，需要声明权限\"ohos.permission.MANAGE_SECURE_SETTINGS\"，该权限只有系统应用才能声明。因此，只有系统应用才能打开或关闭NFC。详情请参考 @ohos.nfc.controller API参考 。 #### NFC标签读写模块 NFC标签读写模块，提供了NFC标签的发现和分发给应用程序，以及应用程序通过NFC标签读写接口访问NFC标签的能力。应用程序需要按照规定的格式来声明NFC标签读写能力，只有声明后应用程序才能收到NFC标签的分发。详情请参考 @ohos.nfc.tag API参考 。 #### NFC卡模拟模块 NFC卡模拟模块，提供了NFC的刷卡业务，电子设备和读卡器触碰完成刷卡。应用程序需要按照规定的格式来声明NFC卡模拟能力，只有声明后应用程序才能够具备刷卡能力。详情请参考 @ohos.nfc.cardEmulation API参考 。 <!-RP1--> <!-RP1End-->"
+    },
+    {
+      "path": "references/NFC标签读写开发指南.md",
+      "title": "NFC标签读写开发指南",
+      "snippet": "近场通信(Near Field Communication，NFC)是一种短距高频的无线电技术，在13.56MHz频率运行，通信距离一般在10厘米距离内。电子设备可以通过NFC通信技术和NFC标签通信，从标签中读取数据，或写入数据到标签。 NFC标签支持一种或多种通信技术，具体技术如下： - NfcA (也称为 ISO 14443-3A) - NfcB (也称为 ISO 14443-3B) - NfcF (也称为 JIS 6319-4) - NfcV (也称为 ISO 15693) - IsoDep (也称为 ISO 14443-4) - NDEF - MifareClassic - MifareUltralight #### 场景介绍 电子设备通过NFC天线位置触碰NFC标签卡片，完成NFC标签卡片的读取或写入。从使用场景上，可以分成NFC标签前台读写和NFC标签后台读写。 - NFC标签前台读写 前台读写是指在触碰NFC标签之前，用户先在电子设备上打开特定的应用程序，用户明确想使用所打开的应用程序和NFC标签进行读写操作。用户打开应用程序在前台，并且进入应用的刷卡页面之后，电子设备触碰NFC标签，只会把读取到的卡片分发给前台应用。 - NFC标签后台读写 后台读写是指不打开特定的NFC标签应用程序，电子设备触碰发现NFC标签后，根据NFC标签的技术类型，分发给能够处理的应用程序"
+    },
+    {
+      "path": "references/P2P模式开发指南.md",
+      "title": "P2P模式开发指南",
+      "snippet": "P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以在两台STA之间直接建立TCP/IP连接，并不需要AP的参与。 #### 场景介绍 主要场景有： - 创建/删除P2P群组 - 建立P2P连接 #### 接口说明 完整的JS API说明以及示例代码请参考： P2P接口 。 具体接口说明如下表。 #### 主要场景开发步骤 #### 创建/删除P2P群组 1. import需要的Wi-Fi模块。 import { wifiManager } from '@kit.ConnectivityKit'; 2. 开启设备的Wi-Fi。 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。 4. 创建/删除P2P群组。 async createGroup() { try { let deviceInfo = await wifiManager.getP2pLocalDevice(); let config:wifiManager.WifiP2PConfig = { deviceAddress: deviceInfo.deviceAddress, netId: this.netId, passphrase: this.passphrase, groupName: this.groupName, goBand: this.goBand, }"
+    },
+    {
+      "path": "references/STA模式开发指南.md",
+      "title": "STA模式开发指南",
+      "snippet": "Wi-Fi STA模式（Station Mode，站点模式）是无线设备作为客户端接入无线局域网（WLAN）的工作模式。在该模式下，设备（如手机、电脑、平板等）通过连接到接入点（AP，Access Point）或无线路由器，实现对网络的访问。 #### 场景介绍 - 判断Wi-Fi状态 - 建立Wi-Fi连接 #### 接口说明 完整的JS API说明以及示例代码请参考： STA接口 。 接口具体说明如下表所示。 #### 主要场景开发步骤 #### 判断Wi-Fi状态 1. 导入需要的Wi-Fi模块。 2. 需要SystemCapability.Communication.WiFi.STA系统能力。 3. 需要申请权限ohos.permission.GET_WIFI_INFO。 4. 开启设备Wi-Fi。 5. 示例代码： import { wifiManager } from '@kit.ConnectivityKit'; let recvPowerNotifyFunc: (result: number) => void = (result: number) => { let wifiState = \"\"; switch (result) { case 0: wifiState += 'DISABLED'; break; case 1: wifiState += 'ENABLED"
+    },
+    {
+      "path": "references/WLAN服务开发概述.md",
+      "title": "WLAN服务开发概述",
+      "snippet": "无线局域网（Wireless Local Area Networks，WLAN），是通过无线电、红外光信号或者其他技术发送和接收数据的局域网，用户可以通过WLAN实现节点之间无物理连接的网络通讯。常用于用户携带可移动终端的办公、公众环境中。 Wi-Fi（Wireless Fidelity），是一种基于无线电波的通信技术，用于设备之间传输数据，使得用户可以无需使用有线连接即可访问互联网和共享数据。 WLAN系统为用户提供接入WLAN网络功能（STA模式）、点对点的数据传输功能（P2P模式）和热点分享功能（AP模式），让应用可以通过WLAN和其他设备互联互通。 #### 实现原理 WLAN的实现原理是通过无线电磁波在空间中传输信息，当前使用的频段是2.4GHz或者5GHz频段。WLAN网络架构分有线侧和无线侧两部分，有线侧是指AP上行到Internet的网络使用以太网协议，无线侧是指STA到AP之间的网络，使用802.11协议。 #### 模式介绍 - STA模式（工作站模式）：STA模式即工作站模式，可以理解为某网络中的一个工作站即客户端。当某设备具备该功能时，它可以连到另外的一个路由网络中，如家用路由器，通常用于提供网络的数据上行服务。详情请参考 @ohos.wifiManager (WLAN) 文档。 - P2P模式（Wi-Fi直连）：P2P模式也为Wi-Fi Direct；Wi"
+    },
+    {
+      "path": "references/Wi-Fi扫描开发指南.md",
+      "title": "Wi-Fi扫描开发指南",
+      "snippet": "Wi-Fi扫描是指设备（如手机、电脑、路由器等）搜索周围可用Wi-Fi网络的过程。通过扫描，设备可以获取附近网络的基本信息（如网络名称、信号强度、加密方式等），从而实现连接、管理或分析周围网络。 #### 场景介绍 - Wi-Fi扫描 - PNO扫描 - 周期扫描 - 扫描管控 #### 接口说明 完整的JS API说明以及示例代码请参考： SCAN接口 。 接口具体说明如下表所示。 #### 开发步骤 #### Wi-Fi扫描 1. 导入需要的Wi-Fi模块。 2. 需要SystemCapability.Communication.WiFi.STA系统能力。 3. 需要权限ohos.permission.GET_WIFI_INFO。 4. 开启设备的Wi-Fi。 5. 示例代码： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/22/v3/Jmy4yqPZTTajqTOBvKMhtg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111145Z&HW-CC-Expire=86400&HW-CC-Sign=D4B1DFF554746ADB7B11A8DD88525F79170C6B236F99D77C538C"
+    },
+    {
+      "path": "references/伙伴设备与HarmonyOS设备互通的开发指南.md",
+      "title": "伙伴设备与HarmonyOS设备互通的开发指南",
+      "snippet": "伙伴设备需要与HarmonyOS设备互通，比如以下主要场景： - 媒体控制：手表显示HarmonyOS设备当前播放的音乐、视频；手表或耳机等伙伴设备可以控制HarmonyOS设备媒体播放（上/下一首、播放暂停等）。 - 电话反控：HarmonyOS设备来电通知手表，手表显示来电号码，联系人名称；手表或耳机等伙伴设备可以接听、拒接HarmonyOS设备来电。 - 健康监测：穿戴设备实时采集人体数据上报给HarmonyOS设备；HarmonyOS设备可实时浏览健康检测数据。 这些场景需要保证伙伴设备长时间与HarmonyOS设备保持互通，当存在数据交互比如媒体控制、电话控制、人体健康等数据时，应用需要保证活动。本指南主要提供了应用进程保持可唤醒状态解决方案，保证伙伴设备需要的伙伴设备厂商应用在数据交互时可被唤醒并正常运行。 #### 关键流程 1. 伙伴设备应用需要先实现PartnerAgentExtensionAbility，里面实现应用被系统唤醒后需要实现的数据传输业务操作。 2. 伙伴设备触发和伙伴设备的蓝牙配对操作，再调用**bindDevice**接口注册伙伴设备。PartnerAgent服务感知到伙伴设备注册后，才会调用蓝牙服务接口进行BLE扫描和监听蓝牙连接状态去发现伙伴设备，进而拉起伙伴设备ExtensionAbility。若伙伴设备未注册，PartnerAgent服务"
+    },
+    {
+      "path": "references/安全单元访问开发指南.md",
+      "title": "安全单元访问开发指南",
+      "snippet": "电子设备上可能存在一个或多个安全单元（SecureElement，简称SE），比如有eSE(Embedded SE)和SIM卡。安全单元的访问控制，通过GPAC（GlobalPlatform Access Control）规范实现。 #### 场景介绍 应用程序可以通过接口访问安全单元，比如往安全单元里面写入数据，实现在电子设备上模拟一张NFC卡片的目的。该卡片数据可能存储在eSE安全单元，或在SIM卡安全单元上。安全单元上一般会预置有访问控制规则（GPAC规范），应用程序需要具备对应的权限，参考 安全单元接口 ，也就是通过安全单元的访问控制权限校验之后，才能正常访问安全单元。 #### 接口说明 安全单元完整的API说明以及示例代码请参考： 安全单元接口 。 实现安全单元的访问，需要使用到下面的接口。 #### 主要场景开发步骤 #### 应用程序访问安全单元 1. import需要的安全单元模块。 2. 判断设备是否支持安全单元能力。 3. 访问安全单元，实现数据的读取或写入。 4. 释放通道资源。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/37/v3/W9aRap71TfGaqKZyBqDrxQ/caution_3.0-zh-cn.png?HW-CC-"
+    },
+    {
+      "path": "references/查找设备-1.md",
+      "title": "查找设备",
+      "snippet": "本指南主要提供了BLE扫描和BLE广播相关操作的开发指导。可以实现发现周边BLE设备和其他设备发现本机设备的场景。 #### 开发步骤 #### 申请蓝牙权限 需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，请参考 声明权限 和 向用户申请授权 。 #### 导入所需API模块 导入ble和错误码模块。 import { ble } from '@kit.ConnectivityKit'; import { BusinessError } from '@kit.BasicServicesKit'; #### BLE扫描流程 **1. 订阅扫描结果上报事件** - 推荐使用API version 15开始支持的扫描方式，该方式支持应用发起和管理多路扫描。该方式支持的上报事件请参考on('BLEDeviceFind')。 // 定义扫描结果上报回调函数 function onReceiveEvent(scanReport: ble.ScanReport) { console.info('BLE scan device find result: '+ JSON.stringify(scanReport)); } // 创建ble扫描实例，可以管理该实例下创建的扫描流程 let bleScanner: ble.BleScanner = bl"
+    },
+    {
+      "path": "references/查找设备.md",
+      "title": "查找设备",
+      "snippet": "本指南主要提供了查找设备相关的开发指导，包括如何扫描周边设备、设置本机蓝牙扫描模式以及查找已配对设备信息。 #### 开发步骤 #### 申请蓝牙权限 需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考 声明权限 和 向用户申请授权 。 #### 导入所需API模块 导入connection和错误码模块。 import { connection } from '@kit.ConnectivityKit'; import { BusinessError } from '@kit.BasicServicesKit'; #### 扫描周边蓝牙设备 用于扫描周边支持蓝牙能力的设备，并获取到蓝牙设备的部分信息。此过程也可被称为“搜索”、“发现”或“查找”。只有周边蓝牙设备处于可被发现的状态时，才能被本机蓝牙设备扫描到。 **1. 订阅扫描设备结果上报事件** - 推荐使用API version 18开始支持的扫描结果上报方式。该方式可获取到更多设备信息，包括设备地址、设备信号强度、设备名称和设备类型。详情请见connection.on('discoveryResult')。 // 定义扫描结果上报回调函数 function onReceiveEvent(data: Array<connection.DiscoveryResult>"
+    },
+    {
+      "path": "references/蓝牙服务开发概述.md",
+      "title": "蓝牙服务开发概述",
+      "snippet": "蓝牙技术是一种无线通信技术，可以在短距离内传输数据，该技术规范由蓝牙技术联盟（Bluetooth Special Interest Group, SIG）制定。可以用于连接手机、耳机、音箱、键盘、鼠标、打印机等各种设备。目前蓝牙有两种常见的技术分类：传统蓝牙（BR/EDR）和低功耗蓝牙（BLE）。 蓝牙的实现原理是基于无线电技术的短距离通信协议，使用2.4GHz频段的无线电波进行通信，使用频率跳跃技术（Frequency Hopping Spread Spectrum，FHSS）来避免与其他无线设备的干扰。在通信过程中，蓝牙设备会发送和接收数据包，并且使用不同的蓝牙协议来控制通信流程和数据传输。 #### 传统蓝牙 蓝牙基础率/增强数据率（Basic Rate/Enhanced Data Rate，BR/EDR），也被称为传统蓝牙。蓝牙EDR技术是蓝牙BR技术的增强版本，有更高的数据传输速率，比BR快2~3倍，最高可达2~3Mbps。在理想条件下，通信范围约100米。 传统蓝牙提供了多样化且成熟的技术协议。例如：高级音频分发、免提通话、个人局域网、电话簿访问等协议。利用这些技术，使得传统蓝牙可以满足许多不同应用场景下的多样化需求。例如：使用蓝牙耳机、音响等设备听音乐，通过车载访问手机电话本、短信等数据，实现设备间的数据共享。 #### 低功耗蓝牙 低功耗蓝牙（Bluetooth L"
+    },
+    {
+      "path": "references/蓝牙设置.md",
+      "title": "蓝牙设置",
+      "snippet": "本指南主要提供了开启蓝牙、关闭蓝牙和获取蓝牙开关状态的开发指导。开发者在使用蓝牙其他功能时，应确保蓝牙子系统已正常开启。 #### 开发步骤 #### 申请蓝牙权限 需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考 声明权限 和 向用户申请授权 。 #### 导入所需API模块 导入access和错误码模块。 import { access } from '@kit.ConnectivityKit'; import { BusinessError } from '@kit.BasicServicesKit'; #### 订阅蓝牙开关状态变化事件 通过订阅开关状态变化事件，可以获取实时的蓝牙开关状态。蓝牙开启或者关闭过程中，涉及多种蓝牙状态的跃迁。其中 STATE_OFF 表示蓝牙已关闭，此状态下，应用不可以使用蓝牙其他功能； STATE_ON 表示蓝牙已打开，此状态下，应用可以使用蓝牙其他功能。 // 定义蓝牙开关状态变化函数回调 function onReceiveEvent(data: access.BluetoothState) { let btStateMessage = ''; switch (data) { case access.BluetoothState.STATE_OFF: // 表示蓝牙是关闭的 "
+    },
+    {
+      "path": "references/融合短距服务开发概述.md",
+      "title": "融合短距服务开发概述",
+      "snippet": "融合短距通信服务（以下简称融合短距）是HarmonyOS系统中统一管理短距离通信技术的服务，当前其内部实现了PartnerAgent服务模块。 本模块提供了伙伴设备与HarmonyOS设备互通服务，比如以下主要场景： - 媒体控制：手表显示HarmonyOS设备当前播放的音乐、视频；手表或耳机等伙伴设备可以控制HarmonyOS设备媒体播放（上/下一首、播放暂停等）。 - 电话反控：HarmonyOS设备来电通知手表，手表显示来电号码，联系人名称；手表或耳机等伙伴设备可以接听、拒接HarmonyOS设备来电。 - 健康监测：穿戴设备实时采集人体数据上报给HarmonyOS设备；HarmonyOS设备可实时浏览健康检测数据。 这些场景需要保证伙伴设备长时间与HarmonyOS设备保持互通，当存在数据交互比如媒体控制、电话控制、人体健康等数据时，应用需要保证可以唤醒并具备交互数据能力。本服务主要提供了应用进程保持可唤醒状态解决方案，保证伙伴设备需要的伙伴设备厂商应用在数据交互时可被唤醒并正常运行。 #### 系统框架 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ee/v3/eyCoY-UdS_e7tOoaTxOw3g/zh-cn_image_00000025738"
+    },
+    {
+      "path": "references/连接和传输数据-1.md",
+      "title": "连接和传输数据",
+      "snippet": "本指南主要提供了基于通用属性协议（Generic Attribute Profile，GATT）实现BLE设备间连接和传输数据的开发指导。当两个设备间进行GATT通信交互时，依据设备功能的不同，可区分为GATT客户端和GATT服务端，本指南将分别介绍客户端与服务端的实现方法。 GATT是低功耗蓝牙（BLE）的核心协议，定义了基于服务（Service）、特征值（Characteristic）和描述符（Descriptor）进行蓝牙通信和传输数据的机制。相关术语介绍请参考 Connectivity Kit术语 。 #### 实现原理 客户端获取到服务端的设备地址后，即可向服务端发起连接。服务端设备地址可以通过BLE扫描流程获取。待两端连接成功后，即可向服务端发起服务查询、读写特征值和接收通知等操作，从而实现向服务端发送数据或者接收服务端数据的功能。 服务端需要发送BLE广播才能被客户端发现。服务端需要支持客户端需要连接的服务，等待客户端的连接请求即可。待两端连接成功后，即可接收客户端的读写特征值和发送通知等操作，从而实现接收客户端数据或者向客户端发送数据的功能。 客户端的BLE扫描和服务端的BLE广播流程，请参考 查找设备 。 #### 开发步骤 #### 申请蓝牙权限 需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，请参考 声明权限 "
+    },
+    {
+      "path": "references/连接和传输数据.md",
+      "title": "连接和传输数据",
+      "snippet": "本指南主要提供了基于串口通信协议（Serial Port Profile，SPP）实现设备间连接和传输数据的开发指导。当两个设备间进行SPP通信交互时，依据设备功能的不同，可区分为客户端与服务端，本指南将分别介绍客户端与服务端的实现方法。 #### 实现原理 客户端获取到服务端的设备地址后，即可向服务端特定的UUID发起连接。服务端设备地址可以通过查找设备流程获取，详见 查找设备 。待两端连接成功后，可向服务端发送数据或者接收服务端的数据。 服务端需要支持客户端连接的UUID服务，保持连接状态监听即可。待两端连接成功后，即可接收客户端数据或者向客户端发送数据。 客户端和服务端都可以主动断开连接，应用需要根据实际场景决定由哪一端执行断开操作。 #### 开发步骤 #### 申请蓝牙权限 需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，请参考 声明权限 和 向用户申请授权 。 #### 导入所需API模块 导入socket和错误码模块。 import { socket } from '@kit.ConnectivityKit'; import { BusinessError } from '@kit.BasicServicesKit'; #### 客户端 **1. 发起连接** 客户端通过查找设备流程搜索到目标设备后，即可发起连接。需要"
+    },
+    {
+      "path": "references/配对与连接设备.md",
+      "title": "配对与连接设备",
+      "snippet": "本指南主要提供了主动配对设备和连接设备可用profile能力的开发指导。 #### 开发步骤 #### 申请蓝牙权限 需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考 声明权限 和 向用户申请授权 。 #### 导入所需API模块 导入connection、a2dp、 hfp、 hid、baseProfile、constant和错误码模块。 import { connection, a2dp, hfp, hid, baseProfile, constant, common } from '@kit.ConnectivityKit'; import { BusinessError } from '@kit.BasicServicesKit'; #### 订阅配对状态变化事件 通过订阅配对状态变化事件，可以获取实时的配对状态。在整个配对过程中，涉及多种状态的跃迁，其中 BOND_STATE_BONDED 表示已配对。 应用主动发起配对其他设备，或者其他设备主动配对本机设备，都可以通过此事件获取配对情况。 // 定义配对状态变化函数回调 function onReceiveEvent(data: connection.BondStateParam) { console.info('pair result: '+ JSON.s"
+    }
+  ]
+}

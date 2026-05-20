@@ -1,0 +1,50 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "mindspore-lite-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.992Z"
+  },
+  "references": [
+    {
+      "path": "references/MindSpore Lite Kit简介.md",
+      "title": "MindSpore Lite Kit简介",
+      "snippet": "MindSpore Lite是HarmonyOS内置的轻量化AI引擎，面向全场景构建支持多处理器架构的开放AI架构，使能全场景智能应用，为开发者提供端到端的解决方案，为算法工程师和数据科学家提供开发友好、运行高效、部署灵活的体验，帮助人工智能软硬件应用生态繁荣发展。 目前已经在图像分类、目标识别、人脸识别、文字识别等应用中广泛使用。常用场景如： - 图像分类：最基础的计算机视觉应用，属于有监督学习类别，如给定一张图像（猫、狗、飞机、汽车等等），判断图像所属的类别。 - 目标检测：您可以使用预置目标检测模型，检测标识摄像头输入帧中的对象并添加标签，并用边框标识出来。 - 图像分割：图像分割可用于检测目标在图片中的位置或者图片中某一像素是属于何种对象的。 #### 约束与限制 - 本Kit适用于Phone、Tablet、PC/2in1、TV设备，支持使用模拟器运行调试。 #### 亮点/优势 MindSpore Lite提供面向不同硬件设备的AI模型推理能力，使用MindSpore Lite的优势如下： - 更优性能：高效的内核算法和汇编级优化，支持CPU、NNRt专用芯片高性能推理，最大化发挥硬件算力，最小化推理时延和功耗。 - 轻量化：提供超轻量的解决方案，支持模型量化压缩，模型更小跑得更快，使能AI模型极限环境下的部署执行。 - 全场景支持：支持多种操作系统以及嵌入式系统，适配多"
+    },
+    {
+      "path": "references/MindSpore Lite Kit算子支持列表.md",
+      "title": "MindSpore Lite Kit算子支持列表",
+      "snippet": "本文档介绍了MindSpore Lite Kit与ONNX Opset18相比所支持的CPU后端算子列表以及对应关系。在使用模型转换工具将ONNX模型转换为ms模型进行部署时，通过查询此表可以知道MindSpore Lite Kit所支持的常用ONNX算子，以确保模型转换成功。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/33/v3/fhs6SXAZRH-ErSPRmMuJ7A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111944Z&HW-CC-Expire=86400&HW-CC-Sign=0C5C66A9F66C9BBCED50D5EA620CA690AA9AA4E91F45A52B926773085B073436) - 以下所有算子，均不支持int64类型输入。"
+    },
+    {
+      "path": "references/使用MindSpore Lite实现图像分类（ArkTS）.md",
+      "title": "使用MindSpore Lite实现图像分类（ArkTS）",
+      "snippet": "开发者可以使用 @ohos.ai.mindSporeLite ，在UI代码中集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现图像分类的应用。 图像分类可实现对图像中物体的识别，在医学影像分析、自动驾驶、电子商务、人脸识别等领域有广泛的应用。 若需基于本Demo适配自有模型，请优先选择静态Shape模型。由于ArkTS暂不支持动态Shape，如确有相关需求，请参考 使用MindSpore Lite实现图像分类（C/C++） ，通过Native侧的 OH_AI_ModelResize 接口对模型inputs进行动态调整。 #### 基本概念 在进行开发前，请先了解以下概念。 **张量** ：它与数组和矩阵非常相似，是MindSpore Lite网络运算中的基本数据结构。 **Float16推理模式** ： Float16又称半精度，它使用16比特表示一个数。Float16推理模式表示推理的时候用半精度进行推理。 #### 接口说明 这里给出MindSpore Lite推理的通用开发流程中涉及的一些接口，具体请见下列表格。更多接口及详细内容，请见 @ohos.ai.mindSporeLite (推理能力) 。 #### 开发流程 1. 选择图像分类模型。 2. 在端侧使用MindSpore Lite推理模型，实现对选择的图片进行分类。 #### 开发步骤 本"
+    },
+    {
+      "path": "references/使用MindSpore Lite实现图像分类（C_C++）.md",
+      "title": "使用MindSpore Lite实现图像分类（C/C++）",
+      "snippet": "开发者可以使用 MindSpore ，在UI代码中直接集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现图像分类的应用。 图像分类可实现对图像中物体的识别，在医学影像分析、自动驾驶、电子商务、人脸识别等领域有广泛的应用。 #### 基本概念 - N-API：用于构建ArkTS本地化组件的一套接口。可利用N-API，将C/C++开发的库封装成ArkTS模块。 #### 开发流程 1. 选择图像分类模型。 2. 在端侧使用MindSpore Lite推理模型，实现对选择的图片进行分类。 #### 开发步骤 本文以对相册的一张图片进行推理为例，提供使用MindSpore Lite实现图像分类的开发指导。 #### 选择模型 本示例程序中使用的图像分类模型文件为 mobilenetv2.ms ，放置在entry/src/main/resources/rawfile工程目录下。 如果开发者有其他图像分类的预训练模型，请参考 MindSpore Lite 模型转换 介绍，将原始模型转换成.ms格式。 #### 编写推理代码 在 entry/src/main/cpp/mslite_napi.cpp，调用 MindSpore 实现端侧推理，推理代码流程如下。 1. 引用对应的头文件 #include <iostream> #include <sstream> #incl"
+    },
+    {
+      "path": "references/使用MindSpore Lite实现语音识别（C_C++）.md",
+      "title": "使用MindSpore Lite实现语音识别（C/C++）",
+      "snippet": "开发者可以使用 MindSpore ，在UI代码中集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现语音识别的应用。 语音识别可以将一段音频信息转换为文本，在智能语音助手、语音输入、语音搜索等领域有广泛的应用。 #### 环境配置 若需要使用模拟器运行该示例，请参考： 使用模拟器运行应用 #### 基本概念 - N-API：用于构建ArkTS本地化组件的一套接口。可利用N-API，将C/C++开发的库封装成ArkTS模块。 #### 开发流程 1. 选择语音识别模型。 2. 在端侧使用MindSpore Lite推理模型，实现对语音文件的语音识别。 #### 开发步骤 本文以对语音识别模型进行推理为例，提供使用MindSpore Lite实现语音识别应用的开发指导。 #### 选择模型 本示例程序中使用的语音识别模型文件为tiny-encoder.ms、tiny-decoder-main.ms、tiny-decoder-loop.ms，放置在entry/src/main/resources/rawfile工程目录下。 #### 编写播放音频代码 调用 @ohos.multimedia.media 、 @ohos.multimedia.audio ，实现播放音频的功能。 // player.ets import { media } from '@kit.M"
+    },
+    {
+      "path": "references/使用MindSpore Lite进行模型推理 (C_C++).md",
+      "title": "使用MindSpore Lite进行模型推理 (C/C++)",
+      "snippet": "MindSpore Lite是一款AI引擎，它提供了面向不同硬件设备AI模型推理的功能，目前已经在图像分类、目标识别、人脸识别、文字识别等应用中广泛使用。 本文介绍使用MindSpore Lite推理引擎进行模型推理的通用开发流程。 #### 基本概念 在进行开发前，请先了解以下概念。 **张量** ：它与数组和矩阵非常相似，是MindSpore Lite网络运算中的基本数据结构。 **Float16推理模式** ： Float16又称半精度，它使用16比特表示一个数。Float16推理模式表示推理的时候用半精度进行推理。 #### 接口说明 这里给出MindSpore Lite推理的通用开发流程中涉及的一些接口，具体请见下列表格。更多接口及详细内容，请见 MindSpore 。 #### Context 相关接口 #### Model 相关接口 #### Tensor 相关接口 #### 开发步骤 使用MindSpore Lite进行模型推理的开发流程如下图所示。 **图 1** 使用MindSpore Lite进行模型推理的开发流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b2/v3/up2Ixz_YS7GHpahC_LQeoA/zh-cn_image"
+    },
+    {
+      "path": "references/使用MindSpore Lite进行模型转换.md",
+      "title": "使用MindSpore Lite进行模型转换",
+      "snippet": "MindSpore Lite AI模型部署流程是： 1. 开发者首先将原始模型（如：ONNX、CAFFE等）用MindSpore Lite模型转换工具，生成后缀为.ms的模型文件。MindSpore Lite Kit所支持的ONNX算子，可查询MindSpore Lite Kit算子支持列表，以确保模型转换成功。 2. 然后在代码中调用MindSpore Lite推理引擎接口，执行模型推理。 #### 获取模型转换工具 对于MindSpore Lite模型转换工具，有以下两种方式可以获取： #### 通过下载获取 #### 通过源码编译 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4/v3/YRVDsoo7TOusXy90MLv0Xg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111943Z&HW-CC-Expire=86400&HW-CC-Sign=19ED5CC2ED6FB127811D55BAD7ACD69A4A18A7970AC85A380570A24BDAB5E209) - 由于支持转换PyTorch模型的编译选项默认关闭，因此下载的安装包不支持转换PyTorch模型，只能通过源码编译方式获"
+    },
+    {
+      "path": "references/使用MindSpore Lite进行端侧训练 (C_C++).md",
+      "title": "使用MindSpore Lite进行端侧训练 (C/C++)",
+      "snippet": "MindSpore Lite是一款AI引擎，它提供了面向不同硬件设备AI模型推理的功能，目前已经在图像分类、目标识别、人脸识别、文字识别等应用中广泛使用，同时支持在端侧设备上进行部署训练，让模型在实际业务场景中自适应用户的行为。 本文介绍使用MindSpore Lite端侧AI引擎进行模型训练的通用开发流程。 #### 接口说明 此处给出使用MindSpore Lite进行模型训练相关的部分接口，具体请见下方表格。更多接口及详细内容，请见 MindSpore 。 #### 开发步骤 使用MindSpore Lite进行模型训练的开发流程如下图所示。 **图 1** 使用MindSpore Lite进行模型训练的开发流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1d/v3/5dM6htjNRcWny2dVk4ajgw/zh-cn_image_0000002573975275.png?HW-CC-KV=V1&HW-CC-Date=20260421T111943Z&HW-CC-Expire=86400&HW-CC-Sign=5312015B177480C97FF623C81FECCD5148A7FBA67F700CE1305DD291E084A66E) 进入主要"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "account-kit",
+  "source_path": "skills/account-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:47:33.638Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "华为账号",
+      "一键登录",
+      "静默登录",
+      "UnionID",
+      "OpenID",
+      "用户信息",
+      "未成年人模式",
+      "如何使用华为账号一键登录获取用户手机号和UnionID/OpenID",
+      "如何实现静默登录让已授权用户无感知完成登录",
+      "如何获取用户的头像昵称、收货地址、发票抬头等信息",
+      "如何获取用户风险等级辅助风控决策",
+      "如何订阅华为账号的登录/登出事件和用户信息变更事件",
+      "如何配置Client ID、签名指纹和申请账号权限",
+      "如何实现应用内未成年人模式的开启、调整和与系统联动切换",
+      "如何使用ID Token进行服务端身份验证",
+      "如何排查一键登录无法获取手机号、头像昵称获取失败等常见问题",
+      "如何实现不同开发者应用之间的用户数据互通",
+      "当开发者需要为应用添加用户登录功能时，应使用Account Kit",
+      "如果你需要实现华为账号一键登录、静默登录或获取用户手机号、头像、昵称等信息，Account Kit提供了完整的开发指导",
+      "适用于需要快速构建用户体系或打通已有用户体系的应用场景，特别是需要全场景一致登录体验的多设备应用",
+      "当开发者需要获取用户收货地址、发票抬头等信息，或需要评估用户风险等级以进行风控决策时，应使用Account Kit的用户信息获取能力",
+      "如果你需要订阅用户账号状态变更事件以实现应用内用户状态同步，Account Kit提供了相应的事件订阅机制",
+      "当开发者需要为应用添加未成年人保护功能时，应使用Account Kit的未成年人模式",
+      "接入华为账号登录并获取当前用户身份标识 / Integrate Sign in with HUAWEI and obtain the current user identity",
+      "实现免注册登录，用华为账号直接创建应用会话 / Implement passwordless sign-in and create an app session with a HUAWEI Account",
+      "获取 accessToken 并换取用户资料用于服务端鉴权 / Get an access token and exchange it for user profile for server-side auth",
+      "拉取用户头像、昵称和联系方式并同步到个人中心 / Fetch the user's avatar, nickname, and contact info and sync them to the profile page",
+      "在应用启动时恢复上次登录状态并自动续登 / Restore the previous sign-in state on app launch and sign the user in automatically",
+      "监听账号登录状态变化并在退出登录后清理本地会话 / Listen for account sign-in state changes and clear local session data after sign-out",
+      "请求用户授权收货地址和发票信息用于下单流程 / Request the user's shipping address and invoice info for checkout",
+      "根据账号风险等级做登录风控和敏感操作校验 / Use account risk level for login risk control and sensitive action verification",
+      "配置 AGC Client ID、应用签名和回调信息完成账号接入 / Configure AGC Client ID, app signature, and callback info to finish account integration",
+      "管理未成年人模式状态并让应用能力随系统设置联动 / Manage minor mode status and make app capabilities follow system settings",
+      "用 UnionID 关联同一用户在多应用或多端的账号体系 / Use UnionID to link the same user across multiple apps or devices",
+      "订阅用户资料更新事件并实时刷新昵称头像展示 / Subscribe to user profile update events and refresh displayed nickname and avatar in real time"
+    ],
+    "do_not_use_when": [
+      "需求是读取、选择或管理设备联系人，而不是华为账号登录或账号资料；应改用 contacts-kit / The requirement is to read, pick, or manage device contacts rather than Huawei account sign-in or account profile data; use contacts-kit instead",
+      "需求是实现应用内商品购买、订阅、消耗型商品发货或订单校验；应改用 iap-kit / The requirement is to implement in-app purchases, subscriptions, consumables fulfillment, or order verification; use iap-kit instead",
+      "需求是发起真实支付、收银台支付流程或商户交易扣款，而不是账号认证；应改用 payment-kit / The requirement is to initiate real payments, checkout flows, or merchant transaction charging rather than account authentication; use payment-kit instead",
+      "需求是访问或管理卡券、证件、交通卡、会员卡等数字钱包资产；应改用 wallet-kit / The requirement is to access or manage digital wallet assets such as passes, IDs, transit cards, or membership cards; use wallet-kit instead"
+    ],
+    "preconditions": [
+      "已在 AppGallery Connect 中开通账号服务并为应用配置有效的 Client ID / Account service is enabled in AppGallery Connect and a valid Client ID is configured for the app",
+      "应用签名证书指纹已正确配置，且包名、签名与服务端配置一致 / The app signing certificate fingerprint is correctly configured, and the bundle name and signature match the server-side configuration",
+      "module.json5 中已声明所需 scopes、permissions 或能力，并在需要时完成用户授权 / Required scopes, permissions, or capabilities are declared in module.json5, and user consent is obtained when needed",
+      "设备网络可用且当前国家/地区与华为账号相关服务能力受支持 / Network access is available and the current country/region supports the relevant Huawei Account capabilities"
+    ],
+    "inputs": [
+      "Client ID 与应用签名信息 / Client ID and app signing information",
+      "登录请求参数与所需 scopes 列表 / Sign-in request parameters and requested scopes list",
+      "用户授权结果或华为账号登录状态 / User consent result or Huawei account sign-in state",
+      "Authorization Code、ID Token、Access Token、OpenID 或 UnionID / Authorization Code, ID Token, Access Token, OpenID, or UnionID",
+      "用户信息类型或事件订阅类型 / Requested user info type or event subscription type"
+    ],
+    "outputs": [
+      "Kit简介与配置",
+      "登录功能",
+      "获取用户信息",
+      "订阅与事件",
+      "未成年人模式",
+      "常见问题与错误码",
+      "参考信息"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在工程中接入华为账号认证或用户信息/未成年人模式相关调用，而不是无关 Kit 的接口 / The project integrates Huawei account authentication or user-info/minor-mode related calls rather than unrelated Kit APIs",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code/config that clearly invokes Huawei Account Kit capabilities (such as sign-in, silent sign-in, profile/address/invoice info, risk level, event subscription, or minor mode) instead of contacts, IAP, payment, or wallet APIs?"
+      },
+      {
+        "statement": "已补充账号服务所需的关键配置，如 Client ID、签名/指纹或必要权限声明 / Required account-service configuration such as Client ID, signature/fingerprint, or necessary permission declarations has been added",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there evidence that the agent added or updated the essential Account Kit configuration (for example AGC/client settings, fingerprint-related config, or module.json5 permission/scope declarations)?"
+      },
+      {
+        "statement": "登录或取号后的结果在代码中被接收并用于后续身份标识或服务端校验 / The result of sign-in or phone-number retrieval is captured in code and used for subsequent identity handling or server-side verification",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show that returned authentication artifacts or identifiers (such as authorization code, token, OpenID, UnionID, or profile data) are handled and passed to app logic or backend verification?"
+      }
+    ],
+    "overlaps_with": [
+      "contacts-kit",
+      "iap-kit",
+      "payment-kit",
+      "wallet-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

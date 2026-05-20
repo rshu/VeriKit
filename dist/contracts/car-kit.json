@@ -1,0 +1,87 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "car-kit",
+  "source_path": "skills/car-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:51:29.718Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "如何实现碰一碰导航流转至车机",
+      "如何实现上车自动导航流转",
+      "如何实现下车后导航自动流转回手机步行导航",
+      "如何实现地址文本碰一碰流转至车机地图",
+      "如何监听HiCar的连接状态变化",
+      "如何主动获取HiCar的连接状态",
+      "如何让超级桌面应用接入车机的分布式相机",
+      "如何配置Car Kit的编译模式和权限",
+      "当你的应用是导航类应用，需要实现手机与车机之间的导航信息无缝流转时（如碰一碰导航流转到车机、上车自动流转导航、下车后自动流转回手机步行导航），可以接入Car Kit的导航类接口",
+      "当你的应用需要在鸿蒙智行车机或HiCar认证车机上使用（如通过超级桌面将手机应用投屏到车机中控屏），或者需要使用车机摄像头等硬件能力时，可以接入Car Kit的出行互联类接口",
+      "接入车机导航续接，让手机路线自动切到中控屏继续导航 / Integrate in-car navigation handoff so a phone route continues on the head unit",
+      "实现离车后导航回流到手机并切换为步行接续 / Implement navigation return to the phone after leaving the car with walking continuation",
+      "把应用通过超级桌面投到车机屏幕显示和交互 / Project the app to the car display via Super Device for in-car interaction",
+      "订阅车机连接与断连事件以更新应用状态 / Subscribe to car connection and disconnection events to update app state",
+      "获取当前是否已连接HiCar或鸿蒙智行车机 / Get whether the device is currently connected to HiCar or a HarmonyOS vehicle",
+      "发送目的地到车机地图并在车端直接发起导航 / Send a destination to the car map and start navigation on the vehicle side",
+      "实现手机和车机之间的路线信息无缝同步 / Implement seamless route synchronization between phone and car",
+      "接入车机分布式摄像头，在车端使用车辆摄像头能力 / Integrate the car's distributed camera to use vehicle camera capabilities in the app",
+      "在应用上车时自动拉起车机端导航会话 / Automatically start the in-car navigation session when entering the vehicle",
+      "管理车机场景下的权限、编译配置和能力声明 / Manage permissions, build configuration, and capability declarations for car scenarios",
+      "让地址卡片或地点详情一碰即流转到车机导航 / Transfer an address card or place details to car navigation with touch-based handoff",
+      "适配HiCar认证车机，使应用可在车载中控环境运行 / Adapt the app for HiCar-certified vehicles so it can run in the in-car console environment"
+    ],
+    "do_not_use_when": [
+      "应用只需要普通手机内导航、定位或路线规划，不涉及手机与车机之间的流转或HiCar连接 / The app only needs on-phone navigation, location, or route planning and does not involve phone-to-car transfer or HiCar connectivity",
+      "目标设备不是鸿蒙智行车机或HiCar认证车机，无法提供车机场景能力 / The target device is not a HarmonyOS Smart Cockpit vehicle unit or a HiCar-certified head unit, so in-car capabilities are unavailable",
+      "需求仅是通用跨设备文件、数据或页面流转，而不是车机导航流转、车机屏幕共享或车载硬件接入 / The requirement is only generic cross-device file, data, or page transfer rather than in-car navigation handoff, car-screen sharing, or vehicle hardware access"
+    ],
+    "preconditions": [
+      "工程已按开发准备完成Car Kit相关编译模式、能力和依赖配置 / The project has completed the required Car Kit build mode, capability, and dependency configuration",
+      "应用已在module.json5中声明使用Car Kit所需的相关权限 / The app has declared the permissions required by Car Kit in module.json5",
+      "用户侧存在可用的车机连接环境，且目标车机支持鸿蒙智行或HiCar能力 / A usable in-vehicle connection environment exists and the target vehicle unit supports HarmonyOS Smart Cockpit or HiCar capabilities"
+    ],
+    "inputs": [
+      "导航目的地或路线信息 / navigation destination or route information",
+      "地址文本或地址结构化数据 / address text or structured address data",
+      "HiCar连接状态查询或监听请求 / HiCar connection status query or listener request",
+      "车机屏幕信息或分布式相机能力请求 / car screen information or distributed camera capability request"
+    ],
+    "outputs": [
+      "服务概述与准备",
+      "HiCar互联",
+      "导航流转",
+      "超级桌面"
+    ],
+    "postconditions": [
+      {
+        "statement": "已接入Car Kit相关接口或事件监听，用于导航流转、HiCar状态获取/监听或超级桌面车机能力访问 / Car Kit APIs or event listeners are integrated for navigation handoff, HiCar status query/listening, or Super Desktop in-car capability access",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code/config to call Car Kit APIs or register Car Kit listeners for navigation transfer, HiCar connection status, or Super Desktop vehicle capabilities?"
+      },
+      {
+        "statement": "已补充Car Kit所需的权限、能力或编译配置 / The required Car Kit permissions, capabilities, or build configuration have been added",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set update module.json5, build profiles, or related configuration to declare permissions/capabilities/build settings needed for Car Kit?"
+      },
+      {
+        "statement": "业务流程已根据车机连接或流转事件进行响应处理 / The business flow now handles vehicle connection state or transfer events appropriately",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set include logic branches, callbacks, or handlers that respond to car connection state changes or navigation transfer events?"
+      }
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

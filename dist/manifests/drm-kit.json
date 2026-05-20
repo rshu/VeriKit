@@ -1,0 +1,35 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "drm-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.759Z"
+  },
+  "references": [
+    {
+      "path": "references/DRM Kit 简介.md",
+      "title": "DRM Kit 简介",
+      "snippet": "DRM Kit（Digital Rights Management Kit，数字版权保护服务）提供了DRM加密节目授权解密的功能，包括DRM插件管理、DRM证书管理、DRM许可证管理、DRM节目授权、DRM节目解密等功能，可实现DRM解决方案的集成、DRM解决方案的证书下载、节目的授权及解密。 #### 能力范围 通过DRM Kit，DRM解决方案集成方可以完成DRM解决方案的集成，应用开发者可以通过调用对应的DRM解决方案，实现DRM加密节目授权解密的功能，实现DRM节目的播放。 - DRM插件管理: 通过实现DRM Kit提供的DRM HDI接口，实现对不同的DRM解决方案的支持，一般由DRM解决方案集成方实现。 - DRM证书管理：支持DRM解决方案的设备证书的请求、处理，实现对应DRM解决方案的证书下载（Provision）功能。 - DRM许可证管理：支持离线许可证的请求、处理及删除等。 - DRM节目授权：支持在线许可证请求及处理、离线许可证的加载、媒体密钥状态查询，并支持按照DRM许可证的权限要求对DRM节目授权。 - DRM节目解密：支持的媒体协议：HLS、DASH；封装格式：MP4、TS；视频编码格式：H264；音频编码格式：AAC。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAl"
+    },
+    {
+      "path": "references/基于AVCodec播放DRM节目(C_C++).md",
+      "title": "基于AVCodec播放DRM节目(C/C++)",
+      "snippet": "开发者可以调用DRM Kit的Native API，完成DRM节目播放。 当前支持的解密能力如下： **适用场景** 在创建DRM之前，需获取到DRM信息(参考 媒体数据解析 开发步骤第4步)。 #### 开发指导 详细的API说明请参考 Drm 。 参考以下示例代码，完成DRM的全流程，包括：获取设备支持的DRM解决方案的名称和唯一标识的列表、创建MediaKeySystem、创建MediaKeySession、生成媒体密钥请求、处理媒体密钥响应、获取是否需要安全视频解码以及销毁资源。 在应用开发过程中，开发者应按一定顺序调用方法，执行对应操作，否则系统可能会抛出异常或生成其他未定义的行为。具体顺序可参考下列开发步骤及对应说明。 #### 在 CMake 脚本中链接动态库 target_link_libraries(sample PUBLIC libnative_drm.so) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8d/v3/zdDIjOMvT8-H69pIvejl-Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111329Z&HW-CC-Expire=86400&HW-CC-Sign=C2"
+    },
+    {
+      "path": "references/基于AVPlayer播放DRM节目(ArkTS).md",
+      "title": "基于AVPlayer播放DRM节目(ArkTS)",
+      "snippet": "开发者可以调用DRM Kit和Media Kit的ArkTS接口实现AVPlayer播放器，完成DRM节目播放。 #### 开发步骤 1. 导入DRM Kit和Media Kit接口。 import { drm } from '@kit.DrmKit' import { media } from '@kit.MediaKit' 2. 导入BusinessError模块抛出Drm Kit接口的错误码。 import { BusinessError } from '@kit.BasicServicesKit' 3. 调用 createAVPlayer ，创建AVPlayer实例并设置DRM信息监听事件。 let playerHandle: media.AVPlayer; async function initPlayer() { playerHandle = await media.createAVPlayer(); playerHandle.on('mediaKeySystemInfoUpdate', async (mediaKeySystemInfo: drm.MediaKeySystemInfo[]) => { console.info('player has received drmInfo signal: ' + JSON.stringify(mediaKeySystemIn"
+    },
+    {
+      "path": "references/数字版权保护(ArkTS).md",
+      "title": "数字版权保护(ArkTS)",
+      "snippet": "开发者可以调用DRM Kit的ArkTS接口实现DRM证书管理、DRM许可证管理、DRM节目授权、DRM节目解密等数字版权保护功能。 DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，并管理MediaKeySession实例；MediaKeySession实现DRM节目授权，并可支持Media Kit或Media Kit/AVCodec Kit实现DRM节目解密以实现DRM节目播放。 #### 开发步骤 详细的API说明请参考 @ohos.multimedia.drm(数字版权保护) 。 1. 导入DRM Kit接口。 import { drm } from '@kit.DrmKit'; 2. 导入BusinessError模块抛出Drm Kit接口的错误码。 import { BusinessError } from '@kit.BasicServicesKit'; 3. （可选）调用 getMediaKeySystems ，获取设备支持的DRM解决方案名称和唯一标识的列表。 let description: drm.MediaKeySystemDescription[] = drm.getMediaKeySystems(); 如果获取结果数组为空，说明该设备中不存在支持的DRM解决方案。 4. （可选）调用 isMediaKeySystem"
+    },
+    {
+      "path": "references/数字版权保护(C_C++).md",
+      "title": "数字版权保护(C/C++)",
+      "snippet": "开发者可以调用DRM Kit的C/C++接口实现DRM证书管理、DRM许可证管理、DRM节目授权、DRM节目解密等数字版权保护功能。 DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，并管理MediaKeySession实例；MediaKeySession实现DRM节目授权，并可支持Media Kit或AVCodec Kit实现DRM节目解密以实现DRM节目播放。 #### 开发步骤 详细的API说明请参考 Drm 。 1. 导入DRM Kit接口。 #include \"multimedia/drm_framework/native_drm_common.h\" #include \"multimedia/drm_framework/native_drm_err.h\" #include \"multimedia/drm_framework/native_mediakeysession.h\" #include \"multimedia/drm_framework/native_mediakeysystem.h\" 2. 在CMake脚本中链接动态库。 target_link_libraries(PUBLIC libnative_drm.so) 3. 获取设备支持的DRM解决方案名称和唯一标识的列表。 uint32_t count = 3; // count"
+    }
+  ]
+}

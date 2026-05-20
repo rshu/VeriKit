@@ -1,0 +1,170 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "basic-services-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.290Z"
+  },
+  "references": [
+    {
+      "path": "references/Basic Services Kit简介.md",
+      "title": "Basic Services Kit简介",
+      "snippet": "Basic Services Kit（基础服务）作为基础服务套件，为应用开发者提供常用的基础能力。比如常用的剪贴板读写、文件上传下载、文件压缩、文件打印、进程间/线程间通信、设备管理、应用账号管理等能力都由本Kit提供。 #### 使用场景 Basic Services Kit为开发者提供了多种基础能力，满足开发者不同场景的开发需求。 典型使用场景举例： - 剪贴板读写： - 本地复制粘贴：比如在A应用中复制一段文字，粘贴到其他应用中。 - 跨设备复制粘贴：比如在A设备浏览器复制一段文本，粘贴到B设备的备忘录中。 - 文件上传下载： - 小文件前台上传下载：发布社交动态（图片、短视频等）、发送文件给好友、保存图片到本地等，通常数据量较小，要给用户即时反馈。 - 大文件后台上传下载：云盘数据同步、下载电影，通常数据量较大，可后台执行，支持断点续传。 - 进程间/线程间通信： - 进程间通信：比如ExtensionAbility发送事件给主进程。 - 线程间通信：比如worker线程处理完网络请求后将事件传递回UI主线程。 #### 能力范围 根据不同使用场景分类，本Kit主要包含如下能力： - 数据文件处理： - 剪贴板：提供内容复制粘贴能力，支持多种数据类型包括文本、HTML数据、URI、PixelMap等。 - 压缩：提供文件压缩解压缩的能力。 - 打印：提供基础文件打印的能力，"
+    },
+    {
+      "path": "references/USB中断传输.md",
+      "title": "USB中断传输",
+      "snippet": "中断传输主要用于主机（Host）接收设备（Device）发送的数据包。设备的端点模式决定了接口支持中断读或中断写，这种传输方式适用于少量的、分散的、不可预测的数据类型的传输，鼠标、键盘和操纵杆等设备均属于这种类型，且此类设备的端点一般只支持中断读操作。 #### 环境准备 #### 环境要求 - 开发工具及配置： DevEco Studio作为驱动开发工具，是进行驱动开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请 下载安装 该工具，并参考 DevEco Studio使用指南 中的 创建工程及运行 进行基本的操作验证，保证DevEco Studio可正常运行。 - SDK版本配置： 扩展外设管理提供的ArkTs接口，所需SDK版本为API16及以上才可使用。 - HDC配置： HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命令行工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互，详细参考 HDC配置 。 #### 搭建环境 - 在PC上安装DevEco Studio，要求版本在4.1及以上。 - 将public-SDK更新到API 16或以上。 - PC安装HDC工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互。 - 用USB线缆将搭载H"
+    },
+    {
+      "path": "references/USB串口通信服务开发概述.md",
+      "title": "USB串口通信服务开发概述",
+      "snippet": "USB串口通信服务主要提供USB Host设备转串口协议通信的功能，它提供获取遵循USB Host转串口标准协议的已连接的端口列表，同时提供打开端口、关闭端口、设置参数、获取参数、读取数据、写入数据和设备权限管理这些基本功能。 USB串口通信服务，配置管理请参考 USB串口配置管理 ，通信管理请参考 USB串口通信管理 。 #### 基本概念 在进行USB串口通信服务开发时，开发者应了解以下基本概念： - 串口 即串行接口或串行通信接口，是采用串行通信方式的扩展接口。串行接口中数据是一位一位地顺序传送。串口特点是通信线路简单，只要一对传输线就可以实现双向通信，适用于远距离通信。 #### 实现原理 USB串口服务主要包括两个阶段： - 识别设备并加载驱动。 插入USB转串口设备后，USB Host设备通过USB总线发起枚举过程，获取设备描述符（如厂商ID、设备ID、USB通信设备类标识）。操作系统根据描述符匹配驱动，完成设备初始化和虚拟串口注册。 - 收发数据。 发送方向： 应用层发送数据 → 驱动通过USB通道传输至设备 → 设备解析数据并通过物理串口发送给串口设备。 接收方向： 设备接收物理串口数据 → 数据打包后上传至USB Host设备 → 驱动接收数据并存入串口缓冲区 → 应用层读取数据。 **图1** USB串口收发数据流程 ![](https://contentcen"
+    },
+    {
+      "path": "references/USB串口通信管理.md",
+      "title": "USB串口通信管理",
+      "snippet": "USB串口通信服务中通过Host设备的USB接口连接串口设备的串口进行串行数据传输，通信管理核心目标是实现设备间的高效、稳定数据传输与协同控制。主要使用在工业自动化与远程监控、物联网设备互联、医疗设备管理等场景。 #### 环境准备 请参考USB串口通信服务开发概述 环境准备 。 #### 开发指导 #### 接口说明 #### 开发步骤 开发者可以通过上述接口读取和写入数据： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a2/v3/K09g5robSOSE_97T8LiR4Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111210Z&HW-CC-Expire=86400&HW-CC-Sign=7B9A33D97681E8D948D6A935BCD89BF2D293ABCD38AD50EFA41D01D76BE8F159) 以下示例代码只是串口数据传输的必要流程，需要放入具体的方法中执行。 1. 导入模块。 // 导入usbManager模块 import { serialManager } from '@kit.BasicServicesKit'; import { BusinessError } "
+    },
+    {
+      "path": "references/USB串口配置管理.md",
+      "title": "USB串口配置管理",
+      "snippet": "USB串口配置管理中，波特率、数据位、校验位和停止位是串口通信协议的核心参数，它们共同定义了数据传输的格式和规则。通过合理配置这些参数，可以显著提升串口通信的可靠性和效率。 #### 基本概念 在进行USB串口开发时，开发者应了解以下基本概念： - 波特率（Baud Rate） 波特率表示串口设备每秒传输的符号数（符号即二进制位，包括数据位、起始位、停止位、校验位），单位为Baud（波特），例如9600 Baud表示每秒传输9600个符号。收发双方必须使用相同的波特率，否则数据无法正确解析。 - 数据位（Data Bit） 数据位表示每个数据包中实际传输的有效二进制位数，决定了单个字符的数据容量。常见的取值包括5位、6位、7位和8位。数据位决定单次传输的信息量，数据位越多，单次传输信息量越大，但需更多时间同步。 - 校验位（Parity Bit） 校验位是附加在数据帧中的1位二进制值，根据数据位的内容按特定规则生成。常见的有，奇校验（Odd）数据位+校验位中“1”的总数为奇数，偶校验（Even）数据位+校验位中“1”的总数为偶数，无校验（None）不添加校验位。校验位通过验证数据位中“1”的数量，判断数据在传输过程中是否发生位翻转、噪声干扰等错误，增加校验位会略微降低传输效率，但能提高容错性。 - 停止位（Stop Bit） 停止位位于数据帧末尾，是逻辑高电平信号，用于标识一个字符"
+    },
+    {
+      "path": "references/USB实时传输.md",
+      "title": "USB实时传输",
+      "snippet": "实时传输是通过USB协议在固定时间窗口内完成数据传输，确保数据流的时序稳定性和低延迟，但允许少量数据丢失（如视频丢帧、音频杂音）的传输模式。这种传输方式适用于USB耳机、USB音响、视频会议设备等对连续性要求高、容错性强的场景。 #### 环境准备 #### 环境要求 - 开发工具及配置： DevEco Studio作为驱动开发工具，是进行驱动开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请 下载安装 该工具，并参考 DevEco Studio使用指南 中的 创建工程及运行 进行基本的操作验证，保证DevEco Studio可正常运行。 - SDK版本配置： 扩展外设管理提供的ArkTs接口，所需SDK版本为API16及以上才可使用。 - HDC配置： HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命令行工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互，详细参考 HDC配置 。 #### 搭建环境 - 在PC上安装DevEco Studio，要求版本在4.1及以上。 - 将public-SDK更新到API 16或以上。 - PC安装HDC工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互。 - 用USB线缆将搭载HarmonyOS的设备连"
+    },
+    {
+      "path": "references/USB批量传输.md",
+      "title": "USB批量传输",
+      "snippet": "批量传输主要应用在传输和接收大量数据同时又没有带宽和间隔时间要求的情况下，例如传输文件、图像等场景，打印机和扫描仪等设备属于这种类型的设备。 #### 环境准备 #### 环境要求 - 开发工具及配置： DevEco Studio作为驱动开发工具，是进行驱动开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请 下载安装 该工具，并参考 DevEco Studio使用指南 中的 创建工程及运行 进行基本的操作验证，保证DevEco Studio可正常运行。 - SDK版本配置： 扩展外设管理提供的ArkTS接口，所需SDK版本为API 16及以上才可使用。 - HDC配置： HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命令行工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互，详细参考 HDC配置 。 #### 搭建环境 - 在PC上安装DevEco Studio，要求版本在4.1及以上。 - 将public-SDK更新到API 16或以上。 - PC安装HDC工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互。 - 用USB线缆将搭载HarmonyOS的设备连接到PC。 #### 开发指导 #### 接口说明 更多关于设备管理和传输模式的详细接"
+    },
+    {
+      "path": "references/USB控制传输.md",
+      "title": "USB控制传输",
+      "snippet": "控制传输主要用于主机（Host）和设备（Device）进行设备状态的获取和设置，进行设备属性状态的控制。根据设备支持的端点类型支持控制传输读和写。 #### 环境准备 #### 环境要求 - 开发工具及配置： DevEco Studio作为驱动开发工具，是进行驱动开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请 下载安装 该工具，并参考 DevEco Studio使用指南 中的 创建工程及运行 进行基本的操作验证，保证DevEco Studio可正常运行。 - SDK版本配置： 扩展外设管理提供的ArkTs接口，所需SDK版本为API16及以上才可使用。 - HDC配置： HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命令行工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互，详细参考 HDC配置 。 #### 搭建环境 - 在PC上安装DevEco Studio，要求版本在4.1及以上。 - 将public-SDK更新到API 16或以上。 - PC安装HDC工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互。 - 用USB线缆将搭载HarmonyOS的设备连接到PC。 #### 开发指导 #### 接口说明 更多关于设备管理和传输模式的详"
+    },
+    {
+      "path": "references/USB服务开发术语.md",
+      "title": "USB服务开发术语",
+      "snippet": "波特率表示串口设备每秒传输的符号数（符号即二进制位，包括数据位、起始位、停止位、校验位），单位为Baud（波特），例如9600 Baud表示每秒传输9600个符号。收发双方必须使用相同的波特率，否则数据无法正确解析。 #### Bulk Transfer（批量传输） 一种USB服务的单向数据传输模式，适用于大数据量的传输场景。在传输过程中使用批量事务（IN/OUT令牌包、数据包、握手包）处理方式提高总体传输量，并通过错误检测和重传机制保证数据传输的可靠性，但批量传输在几种USB传输模式中优先级最低。其主要应用于U盘、打印机、扫描仪等对实时性要求低但需要高可靠性的设备。 #### C #### Control Transfer（控制传输） 一种USB服务的双向传输模式，适用于设备配置、状态查询和命令传输场景。在传输过程中包含三个阶段：建立阶段（SETUP事务）、数据阶段（可选批量事务）和状态阶段（握手确认）。其主要应用于设备枚举（如读取描述符）、初始化配置、固件升级等基础控制操作的场景。 #### D #### Data Bit（数据位） 数据位表示每个数据包中实际传输的有效二进制位数，决定了单个字符的数据容量。常见的取值包括5位、6位、7位和8位。数据位决定单次传输的信息量，数据位越多，单次传输信息量越大，但需更多时间同步。 #### Device（设备） Device（设备）指连"
+    },
+    {
+      "path": "references/USB服务开发概述.md",
+      "title": "USB服务开发概述",
+      "snippet": "USB服务是应用访问底层的一种设备抽象概念，分为主机（Host）、设备（Device）。 在Host模式下，开发者根据提供的USB API，可以获取设备列表、控制设备访问权限以及与连接的设备进行数据传输、控制命令传输等。其中数据传输分为同步和异步两种传输模式，支持中断传输、实时传输、批量传输等传输类型。在进行数据传输之前，需要先进行获取设备列表、通过设备访问权限校验、打开或连接设备、声明占用设备接口等操作。 #### 运作机制 USB服务系统包含USB API、USB Service、USB HAL。 **图1** USB服务运作机制 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b9/v3/OXI8b9LASY6F1yDFKX1O7A/zh-cn_image_0000002543214478.png?HW-CC-KV=V1&HW-CC-Date=20260421T111208Z&HW-CC-Expire=86400&HW-CC-Sign=8D2D89610FD667990D4C7B736DEDDBC21505D38FE3911B1885EF75CC18F7A0A5) - USB API：提供USB的基础API，主要包含查询USB设备列表、批量数据传输、控制命令"
+    },
+    {
+      "path": "references/USB设备管理.md",
+      "title": "USB设备管理",
+      "snippet": "当有USB设备插入时，可以通过usbManager获取一些USB设备的基本信息，如设备类型、支持的功能等。 Host侧主要通过封装的pipe来完成和USB设备的通信。在HarmonyOS系统中，USB管理服务是核心组件，负责管理与USB设备的连接和通信。通过USB管理服务，应用程序可以检测USB设备的连接与断开，管理USB设备的权限请求和设备配置，以及进行数据传输和设备控制。 #### 环境准备 #### 环境要求 - 开发工具及配置： DevEco Studio作为驱动开发工具，是进行驱动开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请 下载安装 该工具，并参考 DevEco Studio使用指南 中的 创建工程及运行 进行基本的操作验证，保证DevEco Studio可正常运行。 - SDK版本配置： 扩展外设管理提供的ArkTS接口，所需SDK版本为API16及以上才可使用。 - HDC配置： HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命令行工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互，详细参考 HDC配置 。 #### 搭建环境 - 在PC上安装DevEco Studio，要求版本在4.1及以上。 - 将public-SDK更新到API 16或以上。 - PC安"
+    },
+    {
+      "path": "references/使用Emitter进行线程间通信.md",
+      "title": "使用Emitter进行线程间通信",
+      "snippet": "Emitter是一种作用在进程内的事件处理机制，为应用程序提供订阅事件、发布事件、取消事件订阅的能力。 #### 场景介绍 Emitter用于同一进程内相同线程或不同线程间的事件处理，事件异步执行。使用时需要先订阅一个事件，然后发布该事件，发布完成后Emitter会将已发布的事件分发给订阅者，订阅者就会执行该事件订阅时设置的回调方法。当不需要订阅该事件时应及时取消订阅释放Emitter资源。 #### 运作机制 Emitter通过维护一个内部事件队列，来进行任务分发。应用需要先订阅某个事件并设置好该事件的回调方法，当应用程序发布事件后，就会往队列里面插入一个事件。任务队列会串行执行队列里面的任务，执行任务时会调用该任务订阅者的回调方法进行事件处理。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d0/v3/VQJsiIvgR4mESVMW9LrUsQ/zh-cn_image_0000002543374140.png?HW-CC-KV=V1&HW-CC-Date=20260421T111207Z&HW-CC-Expire=86400&HW-CC-Sign=FA8388CE5C8C730A111DDE34D3D1D4558C595338BBBDF4D7EA42D46"
+    },
+    {
+      "path": "references/使用剪贴板进行复制粘贴 (C_C++).md",
+      "title": "使用剪贴板进行复制粘贴 (C/C++)",
+      "snippet": "剪贴板为开发者提供数据的复制粘贴能力。支持对纯文本、超文本、URI等内容的操作。 #### 基本概念 - **OH_PasteboardObserver**：剪贴板数据变更观察者对象，用以监听剪贴板数据变更事件。 - **OH_Pasteboard**：剪贴板对象，用来进行查询、写入等操作。 - **OH_UdmfData**：统一数据对象。 #### 约束限制 - 剪贴板内容包含剪贴板系统服务元数据和应用设置的数据，总大小上限默认为128MB，PC/2in1设备可通过系统配置修改上限，有效范围为128MB~2GB。 - 为保证剪贴板数据的准确性，同一时间只能支持一个复制操作。 - 当前支持的数据类型：纯文本类型(OH_UdsPlainText)、超文本标记语言类型(OH_UdsHtml)、文件Uri类型(OH_UdsFileUri)、像素图片类型(OH_UdsPixelMap)、超链接类型(OH_UdsHyperlink)、桌面图标类型(OH_UdsAppItem)、自定义类型。ArkTS接口与NDK接口支持数据类型不完全一致，使用时须匹配接口支持类型，详情见ArkTS接口与NDK接口数据类型对应关系。 - 自定义类型数据在复制粘贴时，指定的类型名称不能和已有的类型名称重复。 - API version 12及之后，系统为提升用户隐私安全保护能力，剪贴板读取接口增加权限管控。 -"
+    },
+    {
+      "path": "references/使用剪贴板进行复制粘贴.md",
+      "title": "使用剪贴板进行复制粘贴",
+      "snippet": "剪贴板 为开发者提供数据的复制粘贴能力。当需要使用复制粘贴等功能时，例如：复制文字内容到备忘录中粘贴，复制图库照片到文件管理粘贴，就可以通过剪贴板来完成。 #### 约束限制 - 剪贴板内容包含剪贴板系统服务元数据和应用设置的数据，总大小上限默认为128MB，PC/2in1设备可通过系统配置修改上限，有效范围为128MB~2GB。 - 为保证剪贴板数据的准确性，同一时间只能支持一个复制操作。 - API version 12及之后，系统为提升用户隐私安全保护能力，剪贴板读取接口增加权限管控。 #### 剪贴板接入原理介绍 - 剪贴板为应用提供应用数据的复制粘贴能力，支持在应用内或应用间共享复制或剪切的应用数据。剪贴板默认支持文本、HTML富文本、文件URI、PixelMap通用数据格式类型数据，同时也支持应用自定义扩展类型数据处理。 - 剪贴板数据定义对应PasteData，复制应用通过向剪贴板服务写入PasteData实现数据复制，粘贴应用通过读取剪贴板服务的PasteData实现数据粘贴，PasteData整体结构示意如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/48/v3/d7TvZomXRcyAiNJYU5f1fA/zh-cn_image_000"
+    },
+    {
+      "path": "references/使用剪贴板进行延迟复制粘贴.md",
+      "title": "使用剪贴板进行延迟复制粘贴",
+      "snippet": "@ohos.pasteboard 主要提供管理系统剪贴板的能力，为系统复制、粘贴功能提供支持。 反复执行复制操作时，剪贴板缓存中会存储多余数据从而导致内存增加，为了优化内存以及后续支持指定数据类型粘贴，剪贴板提供了延迟复制粘贴的功能。 用户复制使用延迟复制技术的应用内的数据时，该条真实数据不会立即写入剪贴板服务的缓存中，而是等需要粘贴时，再从应用获取数据。 #### 约束限制 - 剪贴板内容包含剪贴板系统服务元数据和应用设置的数据，总大小上限默认为128MB，PC/2in1设备可通过系统配置修改上限，有效范围为128MB~2GB。 - NDK接口仅支持Record级别的延迟复制粘贴。 - 当复制的数据量较小且准备数据所需时间不会影响用户体验时，不建议应用程序使用延迟复制功能，推荐将数据直接写入剪贴板。 #### 使用基于Record级别的延迟复制粘贴 本方案可以在粘贴前查询数据type信息，应用可以据此决定是否向剪贴板请求数据，因此建议使用本方案实现延迟复制功能。 从API version 21开始，应用退出不仅可以调用延迟复制接口 OH_Pasteboard_SetData 主动提交所有复制数据，还可以使用同步延迟数据接口 OH_Pasteboard_SyncDelayedDataAsync 通知剪贴板获取全量数据。 1. 当应用使用延迟复制功能复制时，仅将应用支持的数据类型写入"
+    },
+    {
+      "path": "references/公共事件简介.md",
+      "title": "公共事件简介",
+      "snippet": "CES（Common Event Service，公共事件服务）为应用程序提供订阅、发布、退订公共事件的能力。 #### 公共事件分类 公共事件从系统角度可分为：系统公共事件和自定义公共事件。 - 系统公共事件：CES内部定义的公共事件，当前仅支持系统应用和系统服务发布，例如HAP安装、更新、卸载等公共事件。目前支持的系统公共事件请参见系统定义的公共事件。 - 自定义公共事件：应用定义的公共事件，可用于实现跨进程的事件通信能力。 公共事件按发送方式可分为：无序公共事件、有序公共事件和粘性公共事件。 - 无序公共事件：CES在转发公共事件时，不考虑订阅者是否接收到该事件，也不保证订阅者接收到该事件的顺序与其订阅顺序一致。 - 有序公共事件：CES在转发公共事件时，根据订阅者设置的优先级等级，优先将公共事件发送给优先级较高的订阅者，等待其成功接收该公共事件之后再将事件发送给优先级较低的订阅者。如果有多个订阅者具有相同的优先级，则他们将随机接收到公共事件。 - 粘性公共事件：能够让订阅者收到在订阅前已经发送的公共事件就是粘性公共事件。普通的公共事件只能在订阅后发送才能收到，而粘性公共事件的特殊性就是可以先发送后订阅，同时也支持先订阅后发送。发送粘性事件必须是系统应用或系统服务，粘性事件发送后会一直存在系统中，且发送者需要申请ohos.permission.COMMONEVENT_STIC"
+    },
+    {
+      "path": "references/动态订阅公共事件.md",
+      "title": "动态订阅公共事件",
+      "snippet": "动态订阅是指当应用在运行状态时对某个公共事件进行订阅，在运行期间如果有订阅的事件发布，订阅了这个事件的应用将会收到该事件及其传递的参数。 例如，某应用希望在其运行期间收到电量过低的事件，并根据该事件降低其运行功耗，那么该应用便可动态订阅电量过低事件，收到该事件后关闭一些非必要的任务来降低功耗。 订阅部分系统公共事件需要先 申请权限 ，订阅这些事件所需要的权限请见 系统定义的公共事件 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a3/v3/j1h4o-91QD-Oyg_u70ubLg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111206Z&HW-CC-Expire=86400&HW-CC-Sign=93DAB0C58033C67A5F962A92D6335C80F10B4FB4CF092D05E2AD2455092CE92C) 订阅者对象的生命周期需要接入方管理，不再使用时需 取消动态订阅公共事件 后主动销毁释放，避免进程内订阅者数量超过200个导致其他业务订阅失败以及内存泄漏。 动态订阅的公共事件回调受应用状态影响。当应用处于后台时，无法接收到动态订阅公共事件。当应用从后台切换到前台时，最多可以"
+    },
+    {
+      "path": "references/压缩与解压.md",
+      "title": "压缩与解压",
+      "snippet": "本文针对常见的几种压缩、解压场景，介绍相关函数的使用方法。 #### 接口说明 以下是示例中使用的主要接口，更多接口及使用方式请见@ohos.zlib (Zip模块)(../../reference/apis-basic-services-kit/js-apis-zlib.md)。 #### 开发步骤 #### 环境准备 在应用沙箱目录下创建一个测试文件data.txt，并写入测试数据。示例代码如下。 import { fileIo as fs} from '@kit.CoreFileKit'; @Entry @Component struct Index { @State dataSize: number = 0; build() { Row() { Column() { // 在应用沙箱目录下创建文件data.txt，并写入测试数据 Button('创建测试文件data.txt').onClick(() => { let path = this.getUIContext()?.getHostContext()?.filesDir; // 创建文件data.txt let inFile = fs.openSync(path + '/data.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE); // 写入测试数据 for (let"
+    },
+    {
+      "path": "references/发布公共事件.md",
+      "title": "发布公共事件",
+      "snippet": "当需要发布某个公共事件时，可以通过 publish() 方法发布事件。发布的公共事件可以携带数据，供订阅者解析并进行下一步处理。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ee/v3/9T7XBapZToez_4PcWpFJsg/notice_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111207Z&HW-CC-Expire=86400&HW-CC-Sign=F6E61B63F3DFFB999DC4266D3861D9E89146FAD9B00C18273AA7DC50EEC16818) 已发出的粘性公共事件后来订阅者也可以接收到，其他公共事件都需要先订阅再接收，订阅参考 公共事件订阅章节 。 #### 接口说明 详细接口见 接口文档 。 #### 发布不携带信息的公共事件 不携带信息的公共事件，只能发布无序公共事件。 1. 导入模块。 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; const TAG:"
+    },
+    {
+      "path": "references/发布公共事件（C_C++）.md",
+      "title": "发布公共事件（C/C++）",
+      "snippet": "当需要发布某个公共事件时，可以通过 OH_CommonEvent_Publish 和 OH_CommonEvent_PublishWithInfo 方法发布事件。发布的公共事件可以携带数据，供订阅者解析并进行下一步处理。 #### 接口说明 详细的API说明请参考 oh_commonevent.h 。 #### 开发步骤 1. 引用头文件。 #include <cstdint> #include <cstring> #include \"hilog/log.h\" #include \"BasicServicesKit/oh_commonevent.h\" const long PARAM_LONG_VALUE1 = 2147483646; const long PARAM_LONG_VALUE2 = 2147483645; const long PARAM_LONG_VALUE3 = 555; const double PARAM_DOUBLE_VALUE1 = 11.22; const double PARAM_DOUBLE_VALUE2 = 33.44; const double PARAM_DOUBLE_VALUE3 = 55.66; const int PARAM_INT_VALUE1 = 10; const int PARAM_INT_VALUE2 = 123; const i"
+    },
+    {
+      "path": "references/取消动态订阅公共事件.md",
+      "title": "取消动态订阅公共事件",
+      "snippet": "动态订阅者完成业务需求后，应主动取消订阅。通过调用 unsubscribe() 方法，取消订阅事件。 #### 接口说明 #### 开发步骤 1. 导入模块。 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; const TAG: string = 'ProcessModel'; const DOMAIN_NUMBER: number = 0xFF00; 2. 根据 动态订阅公共事件 章节的步骤来订阅某个事件。 3. 调用CommonEvent中的 unsubscribe() 方法取消订阅某事件。 // subscriberCustom为订阅事件时创建的订阅者对象 if (subscriberCustom !== null) { commonEventManager.unsubscribe(subscriberCustom, (err: BusinessError) => { if (err) { hilog.error(DOMAIN_NUMBER, TAG, `Failed to unsubscribe. code is ${err.code}, message is ${er"
+    },
+    {
+      "path": "references/取消订阅公共事件（C_C++）.md",
+      "title": "取消订阅公共事件（C/C++）",
+      "snippet": "订阅者在完成业务需求之后，需要取消订阅公共事件。 #### 接口说明 详细的API说明请参考 oh_commonevent.h 。 #### 开发步骤 1. 引用头文件。 #include \"hilog/log.h\" #include \"BasicServicesKit/oh_commonevent.h\" 2. 在CMake脚本中添加动态链接库。 target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohcommonevent.so ) 3. 取消订阅公共事件。 订阅者订阅公共事件并完成业务需求后，可以通过 OH_CommonEvent_UnSubscribe 主动取消订阅事件。 void Unsubscribe(CommonEvent_Subscriber *subscriber) { // 通过传入订阅者来退订事件 int32_t ret = OH_CommonEvent_UnSubscribe(subscriber); OH_LOG_Print(LOG_APP, LOG_INFO, 1, \"CES_TEST\", \"OH_CommonEvent_UnSubscribe ret <%{public}d>.\", ret); }"
+    },
+    {
+      "path": "references/常见问题.md",
+      "title": "常见问题",
+      "snippet": "手机通过USB方式与个人电脑连接后，在手机侧使用usbManager.getDevices获取设备列表为空，未将个人电脑识别为USB设备。 #### 可能原因 USB设备包括主设备（Host）和从设备（Device）。主设备负责数据传输以及端口管理，从设备为被管理的对象。 usbManager.getDevices接口的作用，是在当前设备作为主设备时去获取所连接的从设备列表。 基于上述情况： - 设备（如手机）USB连接个人电脑时，个人电脑默认是主设备，手机是从设备。此时在手机侧调用usbManager.getDevices接口查询到设备列表为空，属于正常现象。 - 设备（如手机）USB连接鼠标键盘时，手机默认是主设备，鼠标键盘是从设备。此时在手机侧调用usbManager.getDevices接口可以查询到设备列表。 #### 解决措施 确保当前设备作为主设备，所连接的设备为从设备。（部分设备支持主、从两种USB设备模式。此时需要将设备设置为从设备模式，方可被主设备获取。） #### 使用USB串口传输数据时出现乱码 #### 问题现象 传输数据出现乱码。 #### 可能原因 波特率不匹配。 #### 解决措施 检查两端的波特率是否一致，如不一致请重新配置。 #### 使用USB串口传输数据时通信失败 #### 问题现象 双方无法建立连接无任何数据收发或者传输的数据帧不完整（如仅"
+    },
+    {
+      "path": "references/应用文件上传下载.md",
+      "title": "应用文件上传下载",
+      "snippet": "应用支持将文件上传到网络服务器，也支持从网络服务器下载资源文件到本地目录。 #### 上传应用文件 开发者可以使用上传下载模块（ ohos.request ）的上传接口将本地文件上传。文件上传过程通过系统服务代理完成。在API version 12中，request.agent.create接口增加了设置代理地址的参数，支持设置自定义代理地址。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/82/v3/2gOvJG6eRpexUdnPcaFmDw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111212Z&HW-CC-Expire=86400&HW-CC-Sign=49E612C906684C3594C7D5F4EFD72C056859394BA8748DE3BB88FD8EBB142809) · 当前上传应用文件功能，request.uploadFile方式仅支持上传应用缓存文件路径（cacheDir）下的文件，request.agent方式支持上传用户公共文件和应用缓存文件路径下的文件。 · 使用上传下载模块，需 声明权限 ：ohos.permission.INTERNET。 · 上传下载模块不支持C"
+    },
+    {
+      "path": "references/打印扩展能力.md",
+      "title": "打印扩展能力",
+      "snippet": "打印扩展能力从API version 14开始支持。打印扩展能力是对系统打印功能的扩展，允许开发者以软件的方式模拟打印机行为，实现与上层应用的打印交互。通过该扩展能力，开发者可以实现特殊场景下的定制化打印逻辑，在统一框架下灵活开发差异化功能，提升解决方案的适应性与可维护性。 #### 回调说明 #### 开发步骤 #### 实现打印扩展能力 1. 新建工程目录 在工程entry Module对应的ets目录 (./entry/src/main/ets)下，新建目录及ArkTs文件。例如新建一个目录并命名为PrintExtensionAbility，在PrintExtensionAbility目录下，新建一个ArkTs文件并命名为MyPrintExtension.ets，用以实现打印扩展能力接口。 2. 打开MyPrintExtension.ets文件，导入模块。 import { PrintExtensionAbility } from '@kit.BasicServicesKit'; 3. 实现PrintExtensionAbility提供的接口。 import { PrintExtensionAbility } from '@kit.BasicServicesKit'; import { Want } from '@kit.AbilityKit'; // 创建打印扩展能力类，继"
+    },
+    {
+      "path": "references/文件打印（C_C++）.md",
+      "title": "文件打印（C/C++）",
+      "snippet": "方式一 ：应用通过接口拉起系统打印预览界面。适合没有实现打印预览能力的应用。 方式二 ：应用通过接口指定打印文件和选项直接下发打印任务，适合已经实现打印预览能力的应用。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/39/v3/gpVokQmiTuGxbI2lWSkSig/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111213Z&HW-CC-Expire=86400&HW-CC-Sign=BD43A96EB7B4FEEDCE43ED7E01EC3BEE2CA608797A75E6C25CEC406093CA4F56) 使用打印服务，需 声明权限 ：ohos.permission.PRINT。 当不再使用打印服务时，调用OH_Print_Release()释放打印客户端资源并取消事件订阅。 c++接口需要在NDK工程中使用，请参考 NDK开发导读 。 #### 步骤1. 引用NDK头文件 初始路径为entry/src/main/cpp/types/napi_init.cpp # C++ 源码目录 NAPI 初始化入口（桥接 ArkTS 与 C++）。 #include \"hilog/log.h\" #inc"
+    },
+    {
+      "path": "references/申请访问剪贴板权限.md",
+      "title": "申请访问剪贴板权限",
+      "snippet": "API version 12及之后，系统为提升用户隐私安全保护能力，剪贴板读取接口增加权限管控。 涉及接口如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a5/v3/b18c6gWFQ_WTMv6wdDc7Uw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111211Z&HW-CC-Expire=86400&HW-CC-Sign=4A5E2630B0A9A8CAD0781DE7987437CF755BA83A2C4CA89DB782FE5B2EB66797) 申请访问剪贴板权限前，需提前判断剪贴板上的内容是否包含应用所需数据，包括不限于hasData检查是否有数据、hasDataType/getMimeTypes检查是否有应用所需类型、getChangeCount检查数据是否改变，详见 剪贴板弹窗适配优化 。 #### 访问剪贴板内容 剪贴板为应用提供如下两种访问内容的方式。 - 使用安全控件 使用粘贴控件 访问剪贴板内容的应用，可以无需申请权限。 已经使用了安全控件的应用无需做任何适配就可以访问剪贴板内容。 - 申请ohos.permission.READ_PASTEBOARD权限 ohos.pe"
+    },
+    {
+      "path": "references/示例服务器开发指导.md",
+      "title": "示例服务器开发指导",
+      "snippet": "1. 生成SSL证书 生成serverKey.pem和serverCert.cer两个文件，用于示例服务器的SSL协议通信。 openssl req -newkey rsa:2048 -nodes -keyout serverKey.pem -x509 -days 365 -out serverCert.cer -subj \"/C=CN/ST=GD/L=GZ/O=abc/OU=defg/CN=hijk/emailAddress=test.com\" 2. 修改bundle.json 在build字段新增一个sub_component。 \"sub_component\": [ \"//base/update/updateservice/server_sample:testserver\", ... ], 3. 建立代码目录 进入到update_updateservice目录下，执行以下命令，建立代码目录。 mkdir server_sample // 建立示例服务器server_sample目录 touch server_sample/BUILD.gn // 创建BUILD.gn编译文件 mkdir server_sample/include // 建立示例服务器头文件include目录 touch server_process.h // 创建server_process.h头文件 mkdi"
+    },
+    {
+      "path": "references/示例服务器开发概述.md",
+      "title": "示例服务器开发概述",
+      "snippet": "示例服务器提供一个简易的升级包部署的服务器实例参考，用于搭建升级服务子系统的辅助验证环境。 #### 场景介绍 开发者在实际应用中，需要服务器提供升级包的查询、下载等能力。示例服务器为开发者提供了如下能力： - 升级包的查询：服务器返回升级包的版本信息。 - 升级包的下载：服务器返回升级包的下载链接。 示例服务器支持测试升级服务和二次开发功能验证，为升级服务的应用场景提供尽可能完善的端到端环境搭建。 #### 基本概念 - 搜包服务：升级服务（UpdateService）提供的服务能力之一，依赖支持TCP和SSL协议的服务器。 - 搜包服务器：即支持搜包服务的通过TCP连接并支持SSL协议的服务器，本概述提及的升级服务示例服务器即是符合要求的搜包服务器之一。 - 下载服务器：普通的HTTP服务器即可满足下载服务器的要求。 - update.serverip.search：系统参数，指升级服务（UpdateService）侧配置的搜包服务器IP地址，默认值：127.0.0.1。 #### 约束与限制 - 服务器返回报文格式json示例，注意verifyInfo字段是升级包的sha256值，size字段是升级包的大小，单位为字节。 { \"searchStatus\": 0, \"errMsg\": \"success\", \"checkResults\": [{ \"versionName\": \"v"
+    },
+    {
+      "path": "references/管理应用账号.md",
+      "title": "管理应用账号",
+      "snippet": "应用开发者可以使用 @ohos.account.appAccount 管理本应用的账号数据。 能力限制：应用卸载场景下，被卸载应用的账号数据会被删除；本地账号删除场景下，被删除本地账号下的所有应用的账号数据会被删除。 #### 模拟器支持情况 本模块支持模拟器。 #### 开发准备 1. 导入应用账号模块。 import { appAccount, BusinessError } from '@kit.BasicServicesKit'; 1. 获取应用账号的实例对象。 const appAccountManager = appAccount.createAppAccountManager(); #### 创建应用账号 用户在应用中登录后，开发者可以在系统中创建一个关联的应用账号，后续可以基于此账号进行数据管理。 具体开发实例如下： 1. 参数准备，指定账号名和可选配置。 let name: string = 'ZhangSan'; let options: appAccount.CreateAccountOptions = { customData: { age: '10' } }; 1. 调用 createAccount 接口，根据名称和选项创建应用账号。 appAccountManager.createAccount(name, options).then(()=>{ con"
+    },
+    {
+      "path": "references/订阅公共事件（C_C++）.md",
+      "title": "订阅公共事件（C/C++）",
+      "snippet": "通过 OH_CommonEvent_CreateSubscriber 创建的订阅者可以对某个公共事件进行订阅，如果有订阅的事件发布那么订阅了这个事件的订阅者将会收到该事件及其传递的参数，也可以通过订阅者对象进一步处理有序公共事件。 #### 接口说明 详细的API说明请参考 oh_commonevent.h 。 #### 开发步骤 1. 引用头文件。 #include <cstdint> #include <cstring> #include \"hilog/log.h\" #include \"BasicServicesKit/oh_commonevent.h\" 2. 在CMake脚本中添加动态链接库。 target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohcommonevent.so ) 3. 创建订阅者信息。 通过 OH_CommonEvent_CreateSubscribeInfo 创建订阅者信息。 CommonEvent_SubscribeInfo *CreateSubscribeInfo(const char *events[], int32_t eventsNum, const char *permission, const char *bundleName) { int32_t"
+    },
+    {
+      "path": "references/阻止系统闲时进入睡眠开发指南.md",
+      "title": "阻止系统闲时进入睡眠开发指南",
+      "snippet": "当计算机在一段时间内没有检测到用户活动（如键盘或鼠标输入）时，系统会自动尝试进入睡眠，使用RunningLockType.BACKGROUND_USER_IDLE运行锁，保证在持锁过程中系统不会进入自动睡眠，保证业务正常运行。 #### 环境准备 #### 环境要求 - 开发工具及配置： DevEco Studio 是HarmonyOS应用开发的推荐IDE工具。开发者可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考 DevEco Studio使用指南 中的 创建工程及运行 进行基本的操作验证，保证在DevEco Studio可正常运行。 - SDK版本配置： RunningLockType.BACKGROUND_USER_IDLE类型的运行锁，所需SDK版本为API version 23及以上才可使用。 - HDC配置： HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命令行工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互，详细参考 HDC配置 。 #### 搭建环境 - 在PC上安装DevEco Studio，要求版本在4.1及以上。 - 将public-SDK更新到API version 23或以上，更新SDK的具体操作可参见更新指南。 - PC安装HDC工具，通过该工具可以在"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "push-kit",
+  "source_path": "skills/push-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:58:10.844Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "推送",
+      "消息推送",
+      "通知推送",
+      "VoIP",
+      "实时活动",
+      "卡片更新",
+      "如何接入Push Kit并获取Push Token推送消息？",
+      "如何发送不同样式的通知消息（文本、大图标、多行文本等）？",
+      "如何实现即时聊天的消息推送功能？",
+      "如何通过推送实现应用内音视频通话？",
+      "如何推送卡片刷新消息以更新应用桌面卡片内容？",
+      "如何发送后台消息告知应用更新配置参数？",
+      "如何推送实况窗消息以展示赛事比分、出行状态等实时信息？",
+      "如何撤回已发送的通知消息或语音播报消息？",
+      "应用处于后台时如何接收推送消息？",
+      "如何排查推送成功但设备收不到消息的问题？",
+      "当你的应用需要从服务端向客户端实时推送消息时，应使用Push Kit",
+      "典型场景包括行程提醒、账号动态通知、即时聊天消息推送、网络音视频通话、打车出行状态更新、赛事比分实时更新、应用配置参数更新等",
+      "当你需要构建服务端与客户端之间的消息通道时，Push Kit提供了完整的端云对接方案，包括Token获取与上报、服务端鉴权、消息下发与处理",
+      "如果仅需在本地推送通知，应使用Notification Kit",
+      "接入 Push Kit 并上报设备 Token 到业务服务器 / Integrate Push Kit and upload the device token to the app server",
+      "实现应用离线时也能收到系统推送提醒 / Deliver system push alerts even when the app is offline",
+      "发送营销活动通知并支持点击跳转到指定页面 / Send promotional push notifications with deep links to a target page",
+      "下发静默消息在后台同步配置或刷新数据 / Deliver silent push messages to sync config or refresh data in the background",
+      "订阅新闻或频道更新并按主题推送消息 / Subscribe to news or channel updates and push messages by topic",
+      "实现订单状态变更提醒如发货到达签收通知 / Notify users of order status changes like shipped, arrived, and delivered",
+      "给即时通讯应用添加新消息到达提醒和未读通知 / Add new message arrival alerts and unread notifications for a chat app",
+      "推送语音或视频来电邀请并唤起通话界面 / Push voice or video call invitations and bring up the call UI",
+      "更新实时活动内容例如比赛比分或骑行导航进度 / Update live activity content such as match scores or ride navigation progress",
+      "发送通知后支持撤回消息或清除指定通知 / Support message recall or clearing specific notifications after sending",
+      "按用户标签或分组定向发送个性化推送 / Send personalized push notifications by user tags or segments",
+      "统计推送送达点击打开效果并分析消息转化 / Track push delivery, clicks, opens, and analyze conversion"
+    ],
+    "do_not_use_when": [
+      "只需要在设备本地创建或管理通知，不涉及服务端到终端的云端推送时，应改用 notification-kit / If you only need to create or manage local device notifications without cloud-to-device delivery, use notification-kit instead",
+      "需求是本地通知栏样式、通知渠道、角标或前台服务通知配置，而不是获取Push Token或调用云侧推送接口时，应改用 notification-kit / If the task is about local notification styles, channels, badges, or foreground service notifications rather than obtaining a Push Token or calling cloud push APIs, use notification-kit instead",
+      "需要在应用前台直接管理实况窗生命周期与界面更新，而非通过服务端推送实况窗消息触发更新时，应改用 live-view-kit / If you need to manage Live View lifecycle and UI updates directly on the client foreground rather than trigger updates via server push messages, use live-view-kit instead",
+      "需求是创建、更新或关闭实况窗本身的端侧能力，而不是建设端云推送通道时，应改用 live-view-kit / If the task is about the client-side capability to create, update, or close a Live View itself rather than building a cloud push channel, use live-view-kit instead"
+    ],
+    "preconditions": [
+      "已在 AppGallery Connect 为应用开通 Push 服务并完成项目配置 / Push service has been enabled for the app in AppGallery Connect and project configuration is completed",
+      "工程已集成 Push Kit 相关 SDK/依赖，且设备与系统版本支持该能力 / The project has integrated Push Kit SDK dependencies, and the device/system version supports the capability",
+      "若接收通知类消息，应用已声明所需权限且用户已授予通知授权 / For notification-type messages, required permissions are declared and notification permission has been granted by the user",
+      "若要从服务端下发消息，服务端鉴权信息、网络连通性与 Push REST 接口访问条件已具备 / To send messages from the server, server authentication, network connectivity, and Push REST API access conditions are ready"
+    ],
+    "inputs": [
+      "Push Token或目标设备标识 / Push token or target device identifier",
+      "消息负载内容与消息类型 / Message payload content and message type",
+      "应用标识、项目配置或服务端鉴权参数 / App identifier, project configuration, or server authentication parameters",
+      "通知样式或场景化消息参数 / Notification style or scenario-message parameters"
+    ],
+    "outputs": [
+      "简介",
+      "开发准备",
+      "消息推送",
+      "端云调试",
+      "可选功能",
+      "规范与政策",
+      "其他",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "工程中已接入 Push Kit 初始化、Token 获取或消息接收处理相关代码 / The project includes Push Kit initialization, token retrieval, or message receiving handling code",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify HarmonyOS code/config to integrate Push Kit on the client, such as initialization, push token retrieval, or push message callback handling?"
+      },
+      {
+        "statement": "已新增或更新与推送服务相关的配置，使应用具备使用 Push Kit 的条件 / Configuration related to push service has been added or updated so the app is able to use Push Kit",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits include project/module configuration changes required for Push Kit, such as SDK dependencies, service configuration, or permission-related setup?"
+      },
+      {
+        "statement": "若任务涉及云侧下发，已补充调用 Push REST 接口所需的请求构造或鉴权示例 / If the task involves server-side delivery, the required request construction or authentication example for Push REST APIs is added",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task is about sending push messages from a server, do the edits include code or documentation showing how to authenticate and construct a Push REST API request?"
+      }
+    ],
+    "overlaps_with": [
+      "notification-kit",
+      "live-view-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

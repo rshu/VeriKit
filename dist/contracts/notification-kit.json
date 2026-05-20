@@ -1,0 +1,105 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "notification-kit",
+  "source_path": "skills/notification-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:57:25.393Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "通知",
+      "本地通知",
+      "角标",
+      "进度条通知",
+      "跨设备通知",
+      "如何发布普通文本和多行文本类型的本地通知？",
+      "如何发布带进度条的通知（如文件下载进度）？",
+      "如何为通知添加行为意图，实现点击通知后跳转到指定页面？",
+      "如何请求用户授权发送通知？",
+      "如何管理通知渠道和通知角标？",
+      "如何更新或取消已发布的通知？",
+      "如何实现跨设备通知协同和去重？",
+      "如何使用NotificationSubscriberExtensionAbility接收系统通知？",
+      "如何申请优先通知权益？",
+      "如何在通知中添加应用内通知设置的快捷入口？",
+      "当应用在运行过程中需要向用户发送本地通知时使用本Kit",
+      "典型场景包括即时消息通知、文件下载/上传进度显示、运动数据更新、支付结果通知等",
+      "开发者需要先请求通知授权，然后构造NotificationRequest对象发布通知",
+      "当需要实现跨设备通知协同或通知订阅扩展时也可使用本Kit",
+      "跨设备协同通知可以让通知在手机、手表、平板等设备间同步，并通过appMessageId实现去重",
+      "通知订阅扩展能力让三方应用可以接收和处理系统通知",
+      "实现消息到达时在状态栏弹出提醒 / Show a status bar alert when a message arrives",
+      "发送下载任务的前台服务通知并实时更新进度 / Send a foreground service notification and update progress in real time",
+      "为不同消息类型创建并管理通知渠道 / Create and manage notification channels for different message types",
+      "点击通知跳转到指定页面并携带参数 / Open a specific page with parameters when a notification is tapped",
+      "请求通知权限并处理用户拒绝后的降级提示 / Request notification permission and handle fallback when the user denies it",
+      "更新同一条通知内容避免重复堆叠 / Update the same notification to avoid duplicate stacking",
+      "清除指定通知或一键清空全部通知 / Remove a specific notification or clear all notifications",
+      "设置应用图标角标显示未读消息数量 / Set the app icon badge to show unread message counts",
+      "接收系统通知变化并监听通知发布或移除事件 / Listen for system notification posted and removed events",
+      "实现跨设备同步通知并避免多端重复提醒 / Sync notifications across devices and avoid duplicate alerts",
+      "发布带操作按钮的通知以支持快速处理 / Publish a notification with action buttons for quick handling",
+      "按会话或业务分组显示多条通知 / Group multiple notifications by conversation or business type"
+    ],
+    "do_not_use_when": [
+      "应用需要在进程终止、未运行或设备离线时由云侧下发通知，此时应使用 push-kit / The app needs cloud-delivered notifications when the process is terminated, not running, or the device is offline; use push-kit instead",
+      "需求是服务端远程推送到用户设备，而不是应用运行时发布本地通知，此时应使用 push-kit / The requirement is server-side remote push to user devices rather than app-runtime local notifications; use push-kit instead",
+      "需求是展示持续更新的实时卡片或锁屏/桌面实时视图，而非标准通知栏通知，此时应使用 live-view-kit / The goal is to show continuously updating live cards or lock-screen/home-screen live views rather than standard notification-center notifications; use live-view-kit instead",
+      "需要长时间、高频率地动态展示状态且强调沉浸式实时呈现，不适合普通通知样式，此时应使用 live-view-kit / The feature needs long-running, high-frequency dynamic status presentation with immersive real-time display, which is not suited to ordinary notifications; use live-view-kit instead"
+    ],
+    "preconditions": [
+      "工程已引入并可使用 Notification Kit 相关 SDK 接口 / The project has the Notification Kit SDK APIs available",
+      "应用已按场景完成通知授权请求，且用户未关闭应用通知开关 / Notification permission has been requested as needed, and the user has not disabled the app's notification switch",
+      "若通知需点击跳转或触发行为，相关 WantAgent 目标能力已正确声明并可被拉起 / If the notification should open a target or trigger an action, the corresponding WantAgent target ability is properly declared and launchable"
+    ],
+    "inputs": [
+      "NotificationRequest对象 / NotificationRequest object",
+      "通知内容数据（标题、正文、进度、多行文本等） / Notification content data (title, body, progress, multiline text, etc.)",
+      "通知标识信息（notificationId、slot/channel、appMessageId等） / Notification identifier data (notificationId, slot/channel, appMessageId, etc.)",
+      "通知点击行为对应的WantAgent对象 / WantAgent object for notification click action"
+    ],
+    "outputs": [
+      "概述",
+      "通知发布与管理",
+      "通知授权与渠道",
+      "跨设备协同通知",
+      "通知订阅扩展",
+      "其他"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已创建或填充用于发布/更新通知的 NotificationRequest 及其关键内容字段 / The code creates or populates a NotificationRequest with the key content fields for publishing/updating a notification",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show a NotificationRequest (or equivalent notification payload object) being created or updated with meaningful notification content such as title, text, multiline text, or progress?"
+      },
+      {
+        "statement": "代码中已调用 Notification Kit 的通知发布、更新或取消相关接口以完成目标操作 / The code calls Notification Kit APIs to publish, update, or cancel the notification as intended",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set include a concrete Notification Kit API call that publishes, updates, or cancels a notification, matching the requested behavior?"
+      },
+      {
+        "statement": "若需求包含点击通知行为，代码已将 WantAgent 绑定到通知配置中 / If click behavior is required, the code attaches a WantAgent to the notification configuration",
+        "verifier": "model_judge",
+        "judge_prompt": "If the requested feature includes tapping the notification to open something or trigger an action, does the edit set attach a WantAgent (or equivalent action intent) to the notification?"
+      }
+    ],
+    "overlaps_with": [
+      "push-kit",
+      "live-view-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

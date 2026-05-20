@@ -1,0 +1,1555 @@
+---
+name: cann-kit
+description: CANN Kit提供面向华为Kirin芯片的AI异构计算架构，支持模型推理与优化、基于AscendC的自定义算子开发，以及从训练到端侧推理的端到端部署。
+---
+
+## 功能说明
+
+CANN Kit（异构计算架构服务）是华为面向AI推出的端云一致异构计算架构，面向Kirin芯片平台为AI模型和算法提供统一的接入和运行环境。CANN Kit通过协同调度NPU（神经网络处理单元）和CPU硬件资源，实现高效的设备端智能计算，同时与云侧昇腾芯片统一支持AscendC编程语言和工具链，确保一次开发多端运行。
+
+CANN Kit提供完整的AI模型全生命周期支持：模型优化（Model Zoo模型库、模型轻量化、无训练量化、LLM大模型一站式量化、网络结构搜索等）、模型转换（OMG离线模型转换、AIPP预处理、ONNX框架适配）、端侧部署（模型推理、AIPP部署、异构调度、单算子调用、图编译执行）。开发者可以将训练好的模型转换为适合CANN Kit的格式集成到应用中，也可以基于其他开源框架开发模型后借助工具链适配。
+
+自定义算子开发是CANN Kit的核心能力之一。通过AscendC编程语言，开发者可以进行矢量编程、矩阵编程，使用丰富的基础API和高阶API开发自定义算子。AscendC提供完整的编程范式支持，包括核函数开发、数据搬运、同步控制、Tiling机制、内存管理等。此外还提供GE图操作API用于算子入图、Shape推导、算子原型定义等工程化开发。
+
+## 使用场景
+
+当你需要在HarmonyOS设备上进行AI模型推理、优化或部署时，可以使用CANN Kit提供的模型转换、模型推理、模型优化等能力。特别是需要将训练好的模型部署到端侧设备进行图像分割、语音识别、自然语言处理等智能推理场景。
+
+当你需要开发自定义NPU算子（AscendC编程）或进行算子工程化开发（算子原型定义、注册、编译、调试）时，可以使用CANN Kit提供的完整AscendC工具链和GE图操作API。
+
+## 典型场景
+
+- 如何将训练好的模型转换为CANN Kit支持的离线模型格式
+- 如何在端侧设备上进行模型推理和AIPP预处理部署
+- 如何使用AscendC开发自定义算子（矢量编程和矩阵编程）
+- 如何进行模型优化（量化、轻量化、网络结构搜索）
+- 如何实现NPU/CPU异构调度
+- 如何使用OMG工具进行模型转换和AIPP配置
+- 如何进行算子原型定义、注册和工程化开发
+- 如何使用Tiling机制优化算子性能
+- 如何调试和调测AscendC自定义算子
+- 如何将ONNX框架模型适配到CANN Kit
+
+## 使用指南
+
+**重要提示：** 本Kit的references目录下包含大量详细参考文档（724个文件）。在查询时，请根据用户的具体问题，仅加载references中与问题相关的MD文件进行阅读，不要一次性加载所有文件，以免上下文过长影响回答质量。先通过标题和描述判断哪些文件与当前问题相关，再针对性地读取。
+
+## 参考文档
+
+### 服务概述
+
+- [CANN Kit简介](references/CANN Kit简介.md) - 异构计算架构服务总览、场景介绍与核心能力说明
+- [基本架构](references/基本架构.md) - CANN Kit基本架构说明
+- [概述](references/概述.md) - 服务总体概述
+- [概述-1](references/概述-1.md) - 服务补充概述
+- [概述-2](references/概述-2.md) - 服务补充概述
+- [开发流程](references/开发流程.md) - 开发总体流程说明
+- [开发准备](references/开发准备.md) - 开发环境准备指导
+- [环境准备](references/环境准备.md) - 运行环境配置说明
+- [快速入门](references/快速入门.md) - 快速入门指南
+- [基础知识](references/基础知识.md) - AI与异构计算基础知识
+- [接口概述](references/接口概述.md) - 接口总览说明
+- [总体说明](references/总体说明.md) - 总体说明
+- [兼容性说明](references/兼容性说明.md) - 版本兼容性说明
+- [版本获取方法](references/版本获取方法.md) - 版本获取方法说明
+- [系统变量](references/系统变量.md) - 系统环境变量说明
+- [基础数据结构和接口列表](references/基础数据结构和接口列表.md) - 数据结构与接口列表
+- [创建项目](references/创建项目.md) - 项目创建指导
+- [常见问题](references/常见问题.md) - 常见问题汇总
+
+### AscendC编程
+
+- [AscendC简介](references/AscendC简介.md) - AscendC编程语言介绍
+- [AscendC API列表](references/AscendC API列表.md) - AscendC API列表总览
+- [编程范式](references/编程范式.md) - AscendC编程范式说明
+- [基础API](references/基础API.md) - 基础API使用说明
+- [高阶API](references/高阶API.md) - 高阶API使用说明
+- [高阶API迁移指导](references/高阶API迁移指导.md) - 高阶API迁移指南
+- [核函数](references/核函数.md) - 核函数开发说明
+- [矢量编程](references/矢量编程.md) - 矢量编程模式说明
+- [矩阵编程算子实现](references/矩阵编程算子实现.md) - 矩阵编程模式说明
+- [矩阵计算](references/矩阵计算.md) - 矩阵计算操作说明
+- [数据搬运](references/数据搬运.md) - 数据搬运操作说明
+- [普通数据搬运](references/普通数据搬运.md) - 基础数据搬运说明
+- [数据填充](references/数据填充.md) - 数据填充操作说明
+- [数据分散_数据收集](references/数据分散_数据收集.md) - 数据分散与收集操作说明
+- [内存零拷贝](references/内存零拷贝.md) - 内存零拷贝机制说明
+- [随路格式转换](references/随路格式转换.md) - 随路格式转换说明
+- [同步控制](references/同步控制.md) - 同步控制机制说明
+- [原子操作](references/原子操作.md) - 原子操作说明
+- [深度融合](references/深度融合.md) - 深度融合优化说明
+- [通用约束](references/通用约束.md) - AscendC通用约束说明
+- [计算单元](references/计算单元.md) - 计算单元说明
+- [存储单元](references/存储单元.md) - 存储单元说明
+- [控制单元](references/控制单元.md) - 控制单元说明
+- [硬件架构抽象](references/硬件架构抽象.md) - 硬件架构抽象层说明
+- [数据类型](references/数据类型.md) - 数据类型定义说明
+- [数据排布格式](references/数据排布格式.md) - 数据排布格式说明
+- [精度转换指令](references/精度转换指令.md) - 精度转换指令说明
+- [Tensor基本概念](references/Tensor基本概念.md) - Tensor基础概念说明
+- [资源管理](references/资源管理.md) - 资源管理说明
+- [简介](references/简介.md) - AscendC模块简介
+- [简介-1](references/简介-1.md) - 模块补充简介
+- [简介-2](references/简介-2.md) - 模块补充简介
+- [简介-3](references/简介-3.md) - 模块补充简介
+- [简介-4](references/简介-4.md) - 模块补充简介
+- [简介-5](references/简介-5.md) - 模块补充简介
+- [简介-6](references/简介-6.md) - 模块补充简介
+- [简介-7](references/简介-7.md) - 模块补充简介
+- [简介-8](references/简介-8.md) - 模块补充简介
+- [简介-9](references/简介-9.md) - 模块补充简介
+- [简介-10](references/简介-10.md) - 模块补充简介
+- [简介-11](references/简介-11.md) - 模块补充简介
+- [简介-12](references/简介-12.md) - 模块补充简介
+- [简介-13](references/简介-13.md) - 模块补充简介
+- [使用说明](references/使用说明.md) - 使用说明
+- [使用说明-1](references/使用说明-1.md) - 补充使用说明
+- [更多样例](references/更多样例.md) - 更多代码样例
+- [更多样例-1](references/更多样例-1.md) - 更多代码样例
+- [更多样例-2](references/更多样例-2.md) - 更多代码样例
+- [更多样例-3](references/更多样例-3.md) - 更多代码样例
+- [内部关联接口](references/内部关联接口.md) - 内部关联接口说明
+- [内部关联接口-1](references/内部关联接口-1.md) - 补充内部关联接口说明
+
+### AscendC算子API（数学运算）
+
+- [Abs](references/Abs.md) - 绝对值运算
+- [Add](references/Add.md) - 加法运算
+- [Add-1](references/Add-1.md) - 加法运算（重载）
+- [Adds](references/Adds.md) - 标量加法运算
+- [And](references/And.md) - 按位与运算
+- [Axpy](references/Axpy.md) - AXPY运算
+- [Div](references/Div.md) - 除法运算
+- [Duplicate](references/Duplicate.md) - 数据复制运算
+- [Exp](references/Exp.md) - 指数运算
+- [LeakyRelu](references/LeakyRelu.md) - LeakyReLU激活函数
+- [Ln](references/Ln.md) - 自然对数运算
+- [Max](references/Max.md) - 最大值运算
+- [Maxs](references/Maxs.md) - 标量最大值运算
+- [Min](references/Min.md) - 最小值运算
+- [Mins](references/Mins.md) - 标量最小值运算
+- [Mul](references/Mul.md) - 乘法运算
+- [Muls](references/Muls.md) - 标量乘法运算
+- [Not](references/Not.md) - 按位取反运算
+- [Or](references/Or.md) - 按位或运算
+- [Promote](references/Promote.md) - 数据类型提升
+- [Reciprocal](references/Reciprocal.md) - 倒数运算
+- [Relu](references/Relu.md) - ReLU激活函数
+- [Rsqrt](references/Rsqrt.md) - 平方根倒数运算
+- [Sigmoid](references/Sigmoid.md) - Sigmoid激活函数
+- [SoftmaxFlashV2](references/SoftmaxFlashV2.md) - Softmax Flash V2运算
+- [Sqrt](references/Sqrt.md) - 平方根运算
+- [Sub](references/Sub.md) - 减法运算
+- [SubCount](references/SubCount.md) - 减法计数运算
+- [Tanh](references/Tanh.md) - Tanh激活函数
+
+### AscendC算子API（标量与数据搬运）
+
+- [ScalarCast](references/ScalarCast.md) - 标量类型转换
+- [ScalarCountLeadingZero](references/ScalarCountLeadingZero.md) - 标量前导零计数
+- [ScalarGetCountOfValue](references/ScalarGetCountOfValue.md) - 获取指定值出现次数
+- [ScalarGetSFFValue](references/ScalarGetSFFValue.md) - 获取SFF值
+- [DataCopyPad](references/DataCopyPad.md) - 数据搬运带Padding
+- [Append](references/Append.md) - 追加数据操作
+- [AppendDim](references/AppendDim.md) - 追加维度操作
+- [Expand(更改原shape)](references/Expand(更改原shape).md) - 更改原shape的扩展操作
+- [Expand（输出新shape）](references/Expand（输出新shape）.md) - 输出新shape的扩展操作
+- [Transpose](references/Transpose.md) - 矩阵转置操作
+- [TransDataTo5HD](references/TransDataTo5HD.md) - 数据转换为5HD格式
+- [BinaryRepeatParams](references/BinaryRepeatParams.md) - 二元重复参数
+- [UnaryRepeatParams](references/UnaryRepeatParams.md) - 一元重复参数
+- [CountBitsCntSameAsSignBit](references/CountBitsCntSameAsSignBit.md) - 符号位相同计数
+
+### AscendC算子API（矩阵与高级功能）
+
+- [MatmulConfig](references/MatmulConfig.md) - 矩阵乘法配置
+- [Matmul模板参数](references/Matmul模板参数.md) - 矩阵乘法模板参数
+- [SuperKernel](references/SuperKernel.md) - 超级内核
+- [SPMD模型](references/SPMD模型.md) - SPMD编程模型
+- [LocalTensor](references/LocalTensor.md) - 本地Tensor说明
+- [GlobalTensor](references/GlobalTensor.md) - 全局Tensor说明
+- [TPosition](references/TPosition.md) - Tensor位置类型
+
+### AscendC算子API（队列与事件管理）
+
+- [AllocTensor](references/AllocTensor.md) - 分配Tensor
+- [AllocTensor-1](references/AllocTensor-1.md) - 分配Tensor（重载）
+- [FreeTensor](references/FreeTensor.md) - 释放Tensor
+- [FreeTensor-1](references/FreeTensor-1.md) - 释放Tensor（重载）
+- [EnQue](references/EnQue.md) - 入队操作
+- [EnQue-1](references/EnQue-1.md) - 入队操作（重载）
+- [DeQue](references/DeQue.md) - 出队操作
+- [DeQue-1](references/DeQue-1.md) - 出队操作（重载）
+- [HasIdleBuffer](references/HasIdleBuffer.md) - 判断空闲Buffer
+- [HasIdleBuffer-1](references/HasIdleBuffer-1.md) - 判断空闲Buffer（重载）
+- [HasTensorInQue](references/HasTensorInQue.md) - 判断队列中有Tensor
+- [HasTensorInQue-1](references/HasTensorInQue-1.md) - 判断队列中有Tensor（重载）
+- [GetTensorCountInQue](references/GetTensorCountInQue.md) - 获取队列Tensor数量
+- [GetTensorCountInQue-1](references/GetTensorCountInQue-1.md) - 获取队列Tensor数量（重载）
+- [VacantInQue](references/VacantInQue.md) - 队列空闲位置
+- [VacantInQue-1](references/VacantInQue-1.md) - 队列空闲位置（重载）
+- [InitBuffer](references/InitBuffer.md) - 初始化Buffer
+- [InitBuffer-1](references/InitBuffer-1.md) - 初始化Buffer（重载）
+- [InitBufPool](references/InitBufPool.md) - 初始化Buffer池
+- [InitBufPool-1](references/InitBufPool-1.md) - 初始化Buffer池（重载）
+- [AllocEventID](references/AllocEventID.md) - 分配事件ID
+- [ReleaseEventID](references/ReleaseEventID.md) - 释放事件ID
+- [FetchEventID](references/FetchEventID.md) - 获取事件ID
+- [FreeAllEvent](references/FreeAllEvent.md) - 释放所有事件
+- [FreeAllEvent-1](references/FreeAllEvent-1.md) - 释放所有事件（重载）
+- [Destroy](references/Destroy.md) - 销毁资源
+- [GetTPipePtr](references/GetTPipePtr.md) - 获取Pipe指针
+- [PipeBarrier(ISASI)](references/PipeBarrier(ISASI).md) - Pipe屏障操作
+- [printf](references/printf.md) - printf调试输出
+- [printf_PRINTF功能](references/printf_PRINTF功能.md) - printf功能说明
+- [Trap](references/Trap.md) - Trap中断
+- [DumpTensor](references/DumpTensor.md) - Dump Tensor数据
+- [DumpAccChkPoint](references/DumpAccChkPoint.md) - Dump累加检查点
+- [assert](references/assert.md) - 断言操作
+
+### AscendC算子API（内存管理）
+
+- [Create](references/Create.md) - 创建资源
+- [Create-1](references/Create-1.md) - 创建资源（重载）
+- [CreateCap](references/CreateCap.md) - 创建容量
+- [CreateFollowing](references/CreateFollowing.md) - 创建跟随资源
+- [CreateFrom](references/CreateFrom.md) - 从已有资源创建
+- [CalcSize](references/CalcSize.md) - 计算大小
+- [CalcTotalSize](references/CalcTotalSize.md) - 计算总大小
+- [GmAlloc](references/GmAlloc.md) - 全局内存分配
+- [GmFree](references/GmFree.md) - 全局内存释放
+- [Malloc](references/Malloc.md) - 内存分配
+- [MallocAdvise](references/MallocAdvise.md) - 内存分配建议
+- [Free](references/Free.md) - 释放内存
+- [Free-1](references/Free-1.md) - 释放内存（重载）
+- [Free-2](references/Free-2.md) - 释放内存（重载）
+- [Clone](references/Clone.md) - 克隆资源
+- [Find](references/Find.md) - 查找资源
+- [Follow](references/Follow.md) - 跟随资源
+- [ShareFrom](references/ShareFrom.md) - 共享来源
+- [GetAddr](references/GetAddr.md) - 获取地址
+- [GetAddr-1](references/GetAddr-1.md) - 获取地址（重载）
+- [GetAddr-2](references/GetAddr-2.md) - 获取地址（重载）
+- [GetBaseAddr](references/GetBaseAddr.md) - 获取基地址
+- [GetCapacity](references/GetCapacity.md) - 获取容量
+- [GetCapacity-1](references/GetCapacity-1.md) - 获取容量（重载）
+- [GetCount](references/GetCount.md) - 获取计数
+- [GetFullSize](references/GetFullSize.md) - 获取完整大小
+- [GetSize](references/GetSize.md) - 获取大小
+- [GetSize-1](references/GetSize-1.md) - 获取大小（重载）
+- [GetSize-2](references/GetSize-2.md) - 获取大小（重载）
+- [GetSize-3](references/GetSize-3.md) - 获取大小（重载）
+- [GetSize-4](references/GetSize-4.md) - 获取大小（重载）
+- [GetSize-5](references/GetSize-5.md) - 获取大小（重载）
+- [GetSize-6](references/GetSize-6.md) - 获取大小（重载）
+- [GetSizeByDataType](references/GetSizeByDataType.md) - 按数据类型获取大小
+- [GetSizeInBytes](references/GetSizeInBytes.md) - 获取字节大小
+- [GetData](references/GetData.md) - 获取数据
+- [GetData-1](references/GetData-1.md) - 获取数据（重载）
+- [GetData-2](references/GetData-2.md) - 获取数据（重载）
+- [GetData-3](references/GetData-3.md) - 获取数据（重载）
+- [GetData-4](references/GetData-4.md) - 获取数据（重载）
+- [GetDataSize](references/GetDataSize.md) - 获取数据大小
+- [AddCount](references/AddCount.md) - 增加计数
+- [Hash](references/Hash.md) - 哈希运算
+- [GenSimplifiedKey](references/GenSimplifiedKey.md) - 生成简化Key
+- [Init](references/Init.md) - 初始化
+- [Init-1](references/Init-1.md) - 初始化（重载）
+- [Init-2](references/Init-2.md) - 初始化（重载）
+- [Init-3](references/Init-3.md) - 初始化（重载）
+- [Init-4](references/Init-4.md) - 初始化（重载）
+- [Init-5](references/Init-5.md) - 初始化（重载）
+- [Reset](references/Reset.md) - 重置
+- [Reset-1](references/Reset-1.md) - 重置（重载）
+- [ResetData](references/ResetData.md) - 重置数据
+- [Update](references/Update.md) - 更新操作
+- [IsEmpty](references/IsEmpty.md) - 判断是否为空
+- [IsValid](references/IsValid.md) - 判断是否有效
+- [IsSharedWith](references/IsSharedWith.md) - 判断是否共享
+- [IsScalar](references/IsScalar.md) - 判断是否为标量
+- [ClearChangedResourceKeys](references/ClearChangedResourceKeys.md) - 清除变更资源Key
+- [AddChangedResourceKey](references/AddChangedResourceKey.md) - 添加变更资源Key
+- [GetChangedResourceKeys](references/GetChangedResourceKeys.md) - 获取变更资源Key
+- [RegisterReliedOnResourceKey](references/RegisterReliedOnResourceKey.md) - 注册依赖资源Key
+- [GetReliedOnResourceKeys](references/GetReliedOnResourceKeys.md) - 获取依赖资源Key
+- [SetData](references/SetData.md) - 设置数据
+- [SetData-1](references/SetData-1.md) - 设置数据（重载）
+- [SetDataSize](references/SetDataSize.md) - 设置数据大小
+- [GetOverHeadLength](references/GetOverHeadLength.md) - 获取开销长度
+- [GetLength](references/GetLength.md) - 获取长度
+
+### AscendC算子API（Tiling相关）
+
+- [Tiling](references/Tiling.md) - Tiling操作
+- [TilingParse](references/TilingParse.md) - Tiling解析
+- [TilingData结构定义](references/TilingData结构定义.md) - TilingData结构体定义
+- [TilingData结构注册](references/TilingData结构注册.md) - TilingData结构注册
+- [TCubeTiling结构体](references/TCubeTiling结构体.md) - TCubeTiling结构体说明
+- [TilingInputsDataDependency](references/TilingInputsDataDependency.md) - Tiling输入数据依赖
+- [GET_TILING_DATA](references/GET_TILING_DATA.md) - 获取Tiling数据宏
+- [GET_TILING_DATA_WITH_STRUCT](references/GET_TILING_DATA_WITH_STRUCT.md) - 通过结构体获取Tiling数据
+- [TILING_KEY_IS](references/TILING_KEY_IS.md) - Tiling Key判断宏
+- [GetTilingData](references/GetTilingData.md) - 获取Tiling数据
+- [GetRawTilingData](references/GetRawTilingData.md) - 获取原始Tiling数据
+- [GetTilingKey](references/GetTilingKey.md) - 获取Tiling Key
+- [GetTilingCond](references/GetTilingCond.md) - 获取Tiling条件
+- [SetTiling](references/SetTiling.md) - 设置Tiling
+- [SetTilingKey](references/SetTilingKey.md) - 设置Tiling Key
+- [SetTilingCond](references/SetTilingCond.md) - 设置Tiling条件
+- [Kernel Tiling](references/Kernel Tiling.md) - Kernel侧Tiling
+- [Host侧Tiling实现](references/Host侧Tiling实现.md) - Host侧Tiling实现
+- [Tiling调测功能](references/Tiling调测功能.md) - Tiling调测功能说明
+- [CalcTschBlockDim](references/CalcTschBlockDim.md) - 计算Block维度
+- [AddConfig](references/AddConfig.md) - 添加配置
+- [GetBlockDim](references/GetBlockDim.md) - 获取Block维度
+- [GetBlockIdx](references/GetBlockIdx.md) - 获取Block索引
+- [GetBlockNum](references/GetBlockNum.md) - 获取Block数量
+- [InputReorderVector](references/InputReorderVector.md) - 输入重排序向量
+- [InputsDataDependency](references/InputsDataDependency.md) - 输入数据依赖
+- [ValueDepend](references/ValueDepend.md) - 值依赖
+- [HostInputs](references/HostInputs.md) - Host输入
+- [ICPU_RUN_KF](references/ICPU_RUN_KF.md) - CPU运行核函数宏
+- [ICPU_SET_TILING_KEY](references/ICPU_SET_TILING_KEY.md) - CPU设置Tiling Key宏
+- [SetInstantiationNum](references/SetInstantiationNum.md) - 设置实例化数量
+- [GetInstanceNum](references/GetInstanceNum.md) - 获取实例化数量
+- [GetInstanceStart](references/GetInstanceStart.md) - 获取实例起始
+- [SetInstanceStart](references/SetInstanceStart.md) - 设置实例起始
+
+### AscendC算子API（格式与数据类型）
+
+- [Format](references/Format.md) - 格式操作
+- [Format-1](references/Format-1.md) - 格式操作（重载）
+- [DataType](references/DataType.md) - 数据类型操作
+- [DataType-1](references/DataType-1.md) - 数据类型操作（重载）
+- [FormatToAscendString](references/FormatToAscendString.md) - 格式转AscendString
+- [FormatToSerialString](references/FormatToSerialString.md) - 格式转序列字符串
+- [DataTypeToAscendString](references/DataTypeToAscendString.md) - 数据类型转AscendString
+- [DataTypeToSerialString](references/DataTypeToSerialString.md) - 数据类型转序列字符串
+- [DataFormatToFormat](references/DataFormatToFormat.md) - 数据格式转Format
+- [AscendStringToFormat](references/AscendStringToFormat.md) - AscendString转格式
+- [AscendStringToDataType](references/AscendStringToDataType.md) - AscendString转数据类型
+- [SerialStringToDataType](references/SerialStringToDataType.md) - 序列字符串转数据类型
+- [SerialStringToFormat](references/SerialStringToFormat.md) - 序列字符串转格式
+- [ConvertToAscendString](references/ConvertToAscendString.md) - 转换为AscendString
+- [ConvertToListAscendString](references/ConvertToListAscendString.md) - 转换为AscendString列表
+- [GetC0Format](references/GetC0Format.md) - 获取C0格式
+- [GetC0Value](references/GetC0Value.md) - 获取C0值
+- [GetFormatName](references/GetFormatName.md) - 获取格式名
+- [GetPrimaryFormat](references/GetPrimaryFormat.md) - 获取主格式
+- [HasC0Format](references/HasC0Format.md) - 判断是否有C0格式
+- [HasSubFormat](references/HasSubFormat.md) - 判断是否有子格式
+- [GetSubFormat](references/GetSubFormat.md) - 获取子格式
+- [GetFormatFromC0](references/GetFormatFromC0.md) - 从C0获取格式
+- [GetFormatFromSub](references/GetFormatFromSub.md) - 从子格式获取格式
+- [GetFormatFromSubAndC0](references/GetFormatFromSubAndC0.md) - 从子格式和C0获取格式
+- [GetDataTypeLength](references/GetDataTypeLength.md) - 获取数据类型长度
+- [CreateVecIndex](references/CreateVecIndex.md) - 创建向量索引
+
+### AscendC算子API（平台与硬件信息）
+
+- [AICore](references/AICore.md) - AI Core信息
+- [GetSocVersion](references/GetSocVersion.md) - 获取SoC版本
+- [GetPlatformInfo](references/GetPlatformInfo.md) - 获取平台信息
+- [GetCoreNum](references/GetCoreNum.md) - 获取核心数量
+- [GetCoreNumAic](references/GetCoreNumAic.md) - 获取AI Core数量
+- [GetCoreNumAiv](references/GetCoreNumAiv.md) - 获取AI Vector数量
+- [GetCoreMemBw](references/GetCoreMemBw.md) - 获取核心内存带宽
+- [GetCoreMemSize](references/GetCoreMemSize.md) - 获取核心内存大小
+- [L2 Cache](references/L2 Cache.md) - L2缓存使用
+- [GetSysWorkSpacePtr](references/GetSysWorkSpacePtr.md) - 获取系统工作空间指针
+- [SetSysWorkSpace](references/SetSysWorkSpace.md) - 设置系统工作空间
+- [GetUserWorkspace](references/GetUserWorkspace.md) - 获取用户工作空间
+- [GetLibApiWorkSpaceSize](references/GetLibApiWorkSpaceSize.md) - 获取库API工作空间大小
+- [ShiftLeft](references/ShiftLeft.md) - 左移运算
+- [ShiftRight](references/ShiftRight.md) - 右移运算
+
+### AscendC算子API（调试功能）
+
+- [DumpTensor功能](references/DumpTensor功能.md) - Dump Tensor功能说明
+- [DumpAccChkPoint功能](references/DumpAccChkPoint功能.md) - Dump累加检查点功能说明
+- [assert功能](references/assert功能.md) - 断言功能说明
+- [CPU孪生调试功能](references/CPU孪生调试功能.md) - CPU孪生调试功能说明
+- [gdb调试](references/gdb调试.md) - gdb调试指导
+- [Simulator性能仿真功能](references/Simulator性能仿真功能.md) - 性能仿真器说明
+- [ascendebug调测工具参数说明](references/ascendebug调测工具参数说明.md) - 调测工具参数说明
+
+### AscendC算子API（Host侧操作）
+
+- [AddControlInput](references/AddControlInput.md) - 添加控制输入
+- [BreakConnect](references/BreakConnect.md) - 断开连接
+- [CreateOperator](references/CreateOperator.md) - 创建算子
+- [DynamicInputRegister](references/DynamicInputRegister.md) - 动态输入注册
+- [DynamicInputRegisterByIndex](references/DynamicInputRegisterByIndex.md) - 按索引动态输入注册
+- [DynamicOutputRegister](references/DynamicOutputRegister.md) - 动态输出注册
+- [AddAutoMappingSubgraphIOIndexFunc](references/AddAutoMappingSubgraphIOIndexFunc.md) - 添加自动映射子图IO索引
+- [AutoMappingSubgraphIOIndexFuncRegister](references/AutoMappingSubgraphIOIndexFuncRegister.md) - 自动映射子图IO索引注册
+- [AutoMappingByOpFn](references/AutoMappingByOpFn.md) - 按算子自动映射
+- [AutoMappingByOpFnDynamic](references/AutoMappingByOpFnDynamic.md) - 动态按算子自动映射
+- [AutoMappingFn](references/AutoMappingFn.md) - 自动映射函数
+- [AutoMappingFnDynamic](references/AutoMappingFnDynamic.md) - 动态自动映射函数
+- [AutoMappingSubgraphIndex](references/AutoMappingSubgraphIndex.md) - 自动映射子图索引
+- [IsExpandIndex](references/IsExpandIndex.md) - 判断是否为扩展索引
+- [GetAutoMappingSubgraphIOIndexFunc](references/GetAutoMappingSubgraphIOIndexFunc.md) - 获取自动映射子图IO索引函数
+- [DelInputWithCond](references/DelInputWithCond.md) - 条件删除输入
+- [DelInputWithOriginalType](references/DelInputWithOriginalType.md) - 按原始类型删除输入
+- [SetTensorA](references/SetTensorA.md) - 设置Tensor A
+- [SetTensorB](references/SetTensorB.md) - 设置Tensor B
+- [SetTensorDesc](references/SetTensorDesc.md) - 设置Tensor描述
+- [IsExistOp](references/IsExistOp.md) - 判断算子是否存在
+- [End](references/End.md) - End操作
+- [Iterate](references/Iterate.md) - 迭代操作
+- [IterateAll](references/IterateAll.md) - 全量迭代操作
+
+### GE图操作API（Get系列）
+
+- [Get](references/Get.md) - 获取属性值
+- [Get-1](references/Get-1.md) - 获取属性值（重载）
+- [GetAllAttrNamesAndTypes](references/GetAllAttrNamesAndTypes.md) - 获取所有属性名称和类型
+- [GetAllIrAttrNamesAndTypes](references/GetAllIrAttrNamesAndTypes.md) - 获取所有IR属性名称和类型
+- [GetAttr](references/GetAttr.md) - 获取属性
+- [GetAttrNum](references/GetAttrNum.md) - 获取属性数量
+- [GetAttrPointer](references/GetAttrPointer.md) - 获取属性指针
+- [GetAttrs](references/GetAttrs.md) - 获取多个属性
+- [GetAttrs-1](references/GetAttrs-1.md) - 获取多个属性（重载）
+- [GetBool](references/GetBool.md) - 获取布尔属性
+- [GetFloat](references/GetFloat.md) - 获取浮点属性
+- [GetInt](references/GetInt.md) - 获取整数属性
+- [GetStr](references/GetStr.md) - 获取字符串属性
+- [GetString](references/GetString.md) - 获取字符串
+- [GetListFloat](references/GetListFloat.md) - 获取浮点列表
+- [GetListInt](references/GetListInt.md) - 获取整数列表
+- [GetListListFloat](references/GetListListFloat.md) - 获取二维浮点列表
+- [GetListListInt](references/GetListListInt.md) - 获取二维整数列表
+- [GetMarks](references/GetMarks.md) - 获取标记
+- [GetMax](references/GetMax.md) - 获取最大值
+- [GetMin](references/GetMin.md) - 获取最小值
+- [GetName](references/GetName.md) - 获取名称
+- [GetName-1](references/GetName-1.md) - 获取名称（重载）
+- [GetNodeName](references/GetNodeName.md) - 获取节点名称
+- [GetNodeName-1](references/GetNodeName-1.md) - 获取节点名称（重载）
+- [GetNodeType](references/GetNodeType.md) - 获取节点类型
+- [GetNodeType-1](references/GetNodeType-1.md) - 获取节点类型（重载）
+- [GetOpType](references/GetOpType.md) - 获取算子类型
+- [GetOmOptype](references/GetOmOptype.md) - 获取OM算子类型
+- [GetOpsTypeList](references/GetOpsTypeList.md) - 获取算子类型列表
+- [GetDim](references/GetDim.md) - 获取维度
+- [GetDim-1](references/GetDim-1.md) - 获取维度（重载）
+- [GetDimNum](references/GetDimNum.md) - 获取维度数量
+- [GetDimNum-1](references/GetDimNum-1.md) - 获取维度数量（重载）
+- [GetDims](references/GetDims.md) - 获取所有维度
+- [GetShape](references/GetShape.md) - 获取Shape
+- [GetShape-1](references/GetShape-1.md) - 获取Shape（重载）
+- [GetShape-2](references/GetShape-2.md) - 获取Shape（重载）
+- [GetShapeDim](references/GetShapeDim.md) - 获取Shape维度
+- [GetShapeDimNum](references/GetShapeDimNum.md) - 获取Shape维度数量
+- [GetShapeRange](references/GetShapeRange.md) - 获取Shape范围
+- [GetShapeSize](references/GetShapeSize.md) - 获取Shape大小
+- [GetShapeSize-1](references/GetShapeSize-1.md) - 获取Shape大小（重载）
+- [GetFormat](references/GetFormat.md) - 获取格式
+- [GetFormat-1](references/GetFormat-1.md) - 获取格式（重载）
+- [GetFormat-2](references/GetFormat-2.md) - 获取格式（重载）
+- [GetFormat-3](references/GetFormat-3.md) - 获取格式（重载）
+- [GetDataType](references/GetDataType.md) - 获取数据类型
+- [GetDataType-1](references/GetDataType-1.md) - 获取数据类型（重载）
+- [GetDataType-2](references/GetDataType-2.md) - 获取数据类型（重载）
+- [GetDataType-3](references/GetDataType-3.md) - 获取数据类型（重载）
+- [GetDataType-4](references/GetDataType-4.md) - 获取数据类型（重载）
+- [GetOriginFormat](references/GetOriginFormat.md) - 获取原始格式
+- [GetOriginFormat-1](references/GetOriginFormat-1.md) - 获取原始格式（重载）
+- [GetOriginFormat-2](references/GetOriginFormat-2.md) - 获取原始格式（重载）
+- [GetOriginFormat-3](references/GetOriginFormat-3.md) - 获取原始格式（重载）
+- [GetOriginFormat-4](references/GetOriginFormat-4.md) - 获取原始格式（重载）
+- [GetOriginShape](references/GetOriginShape.md) - 获取原始Shape
+- [GetOriginShape-1](references/GetOriginShape-1.md) - 获取原始Shape（重载）
+- [GetOriginShape-2](references/GetOriginShape-2.md) - 获取原始Shape（重载）
+- [GetOriginShapeDim](references/GetOriginShapeDim.md) - 获取原始Shape维度
+- [GetOriginShapeDimNum](references/GetOriginShapeDimNum.md) - 获取原始Shape维度数量
+- [GetOriginOpTypeSet](references/GetOriginOpTypeSet.md) - 获取原始算子类型集合
+- [GetStorageFormat](references/GetStorageFormat.md) - 获取存储格式
+- [GetStorageFormat-1](references/GetStorageFormat-1.md) - 获取存储格式（重载）
+- [GetStorageFormat-2](references/GetStorageFormat-2.md) - 获取存储格式（重载）
+- [GetStorageShape](references/GetStorageShape.md) - 获取存储Shape
+- [GetStorageShape-1](references/GetStorageShape-1.md) - 获取存储Shape（重载）
+- [GetRealDimCnt](references/GetRealDimCnt.md) - 获取实际维度数
+- [GetPlacement](references/GetPlacement.md) - 获取Placement
+- [GetPlacement-1](references/GetPlacement-1.md) - 获取Placement（重载）
+- [GetPlacement-2](references/GetPlacement-2.md) - 获取Placement（重载）
+- [GetPlacement-3](references/GetPlacement-3.md) - 获取Placement（重载）
+- [GetImplyType](references/GetImplyType.md) - 获取实现类型
+- [GetFrameworkType](references/GetFrameworkType.md) - 获取框架类型
+- [GetInferenceContext](references/GetInferenceContext.md) - 获取推理上下文
+- [GetKernelName](references/GetKernelName.md) - 获取Kernel名称
+- [GetKernelType](references/GetKernelType.md) - 获取Kernel类型
+- [GetResourceContext](references/GetResourceContext.md) - 获取资源上下文
+- [GetExpandDimsRule](references/GetExpandDimsRule.md) - 获取扩展维度规则
+- [GetExpandDimsRule-1](references/GetExpandDimsRule-1.md) - 获取扩展维度规则（重载）
+- [GetExpandDimsType](references/GetExpandDimsType.md) - 获取扩展维度类型
+- [GetExpandDimsType-1](references/GetExpandDimsType-1.md) - 获取扩展维度类型（重载）
+- [GetExpandDimsType-2](references/GetExpandDimsType-2.md) - 获取扩展维度类型（重载）
+- [GetExtendInfo](references/GetExtendInfo.md) - 获取扩展信息
+- [GetInputDesc](references/GetInputDesc.md) - 获取输入描述
+- [GetInputDesc-1](references/GetInputDesc-1.md) - 获取输入描述（重载）
+- [GetInputAttr](references/GetInputAttr.md) - 获取输入属性
+- [GetInputConstData](references/GetInputConstData.md) - 获取输入常量数据
+- [GetInputDataType](references/GetInputDataType.md) - 获取输入数据类型
+- [GetInputShape](references/GetInputShape.md) - 获取输入Shape
+- [GetInputShape-1](references/GetInputShape-1.md) - 获取输入Shape（重载）
+- [GetInputShapeRange](references/GetInputShapeRange.md) - 获取输入Shape范围
+- [GetInputHandleShapesAndTypes](references/GetInputHandleShapesAndTypes.md) - 获取输入Handle的Shape和类型
+- [GetInputInstanceInfo](references/GetInputInstanceInfo.md) - 获取输入实例信息
+- [GetInputTdInfo](references/GetInputTdInfo.md) - 获取输入TdInfo
+- [GetInputTensor](references/GetInputTensor.md) - 获取输入Tensor
+- [GetInputTensor-1](references/GetInputTensor-1.md) - 获取输入Tensor（重载）
+- [GetInputTensorRange](references/GetInputTensorRange.md) - 获取输入Tensor范围
+- [GetInputsNum](references/GetInputsNum.md) - 获取输入数量
+- [GetInputsSize](references/GetInputsSize.md) - 获取输入大小
+- [GetIrInputInstanceInfo](references/GetIrInputInstanceInfo.md) - 获取IR输入实例信息
+- [GetIrInputsNum](references/GetIrInputsNum.md) - 获取IR输入数量
+- [GetIrOutputInstanceInfo](references/GetIrOutputInstanceInfo.md) - 获取IR输出实例信息
+- [GetIrOutputsNum](references/GetIrOutputsNum.md) - 获取IR输出数量
+- [GetOptionalInputDataType](references/GetOptionalInputDataType.md) - 获取可选输入数据类型
+- [GetOptionalInputDesc](references/GetOptionalInputDesc.md) - 获取可选输入描述
+- [GetOptionalInputShape](references/GetOptionalInputShape.md) - 获取可选输入Shape
+- [GetOptionalInputShape-1](references/GetOptionalInputShape-1.md) - 获取可选输入Shape（重载）
+- [GetOptionalInputShapeRange](references/GetOptionalInputShapeRange.md) - 获取可选输入Shape范围
+- [GetOptionalInputTensor](references/GetOptionalInputTensor.md) - 获取可选输入Tensor
+- [GetOptionalInputTensorRange](references/GetOptionalInputTensorRange.md) - 获取可选输入Tensor范围
+- [GetRequiredInputDataType](references/GetRequiredInputDataType.md) - 获取必选输入数据类型
+- [GetRequiredInputDesc](references/GetRequiredInputDesc.md) - 获取必选输入描述
+- [GetRequiredInputShape](references/GetRequiredInputShape.md) - 获取必选输入Shape
+- [GetRequiredInputShape-1](references/GetRequiredInputShape-1.md) - 获取必选输入Shape（重载）
+- [GetRequiredInputShapeRange](references/GetRequiredInputShapeRange.md) - 获取必选输入Shape范围
+- [GetRequiredInputTensor](references/GetRequiredInputTensor.md) - 获取必选输入Tensor
+- [GetRequiredInputTensor-1](references/GetRequiredInputTensor-1.md) - 获取必选输入Tensor（重载）
+- [GetRequiredInputTensorRange](references/GetRequiredInputTensorRange.md) - 获取必选输入Tensor范围
+- [GetDynamicInputDesc](references/GetDynamicInputDesc.md) - 获取动态输入描述
+- [GetDynamicInputDesc-1](references/GetDynamicInputDesc-1.md) - 获取动态输入描述（重载）
+- [GetDynamicInputNum](references/GetDynamicInputNum.md) - 获取动态输入数量
+- [GetDynamicInputShapeRange](references/GetDynamicInputShapeRange.md) - 获取动态输入Shape范围
+- [GetDynamicInputTensorRange](references/GetDynamicInputTensorRange.md) - 获取动态输入Tensor范围
+- [GetDynamicOutputDesc](references/GetDynamicOutputDesc.md) - 获取动态输出描述
+- [GetDynamicOutputNum](references/GetDynamicOutputNum.md) - 获取动态输出数量
+- [GetDynamicSubgraph](references/GetDynamicSubgraph.md) - 获取动态子图
+- [GetDynamicSubgraphBuilder](references/GetDynamicSubgraphBuilder.md) - 获取动态子图构建器
+- [GetOutputDesc](references/GetOutputDesc.md) - 获取输出描述
+- [GetOutputDesc-1](references/GetOutputDesc-1.md) - 获取输出描述（重载）
+- [GetOutputAttr](references/GetOutputAttr.md) - 获取输出属性
+- [GetOutputDataType](references/GetOutputDataType.md) - 获取输出数据类型
+- [GetOutputHandleShapesAndTypes](references/GetOutputHandleShapesAndTypes.md) - 获取输出Handle的Shape和类型
+- [GetOutputInstanceInfo](references/GetOutputInstanceInfo.md) - 获取输出实例信息
+- [GetOutputShape](references/GetOutputShape.md) - 获取输出Shape
+- [GetOutputShape-1](references/GetOutputShape-1.md) - 获取输出Shape（重载）
+- [GetOutputShapeRange](references/GetOutputShapeRange.md) - 获取输出Shape范围
+- [GetOutputTdInfo](references/GetOutputTdInfo.md) - 获取输出TdInfo
+- [GetOutputsNum](references/GetOutputsNum.md) - 获取输出数量
+- [GetOutputsSize](references/GetOutputsSize.md) - 获取输出大小
+- [GetComputeNodeInfo](references/GetComputeNodeInfo.md) - 获取计算节点信息
+- [GetComputeNodeInputNum](references/GetComputeNodeInputNum.md) - 获取计算节点输入数量
+- [GetComputeNodeOutputNum](references/GetComputeNodeOutputNum.md) - 获取计算节点输出数量
+- [GetConstData](references/GetConstData.md) - 获取常量数据
+- [GetSubgraph](references/GetSubgraph.md) - 获取子图
+- [GetSubgraphBuilder](references/GetSubgraphBuilder.md) - 获取子图构建器
+- [GetSubgraphNames](references/GetSubgraphNames.md) - 获取子图名称
+- [GetSubgraphNamesCount](references/GetSubgraphNamesCount.md) - 获取子图名称数量
+- [GetTensor](references/GetTensor.md) - 获取Tensor
+- [GetTensorC](references/GetTensorC.md) - 获取Tensor C
+- [GetTensorData](references/GetTensorData.md) - 获取Tensor数据
+- [GetTensorDesc](references/GetTensorDesc.md) - 获取Tensor描述
+- [GetValue](references/GetValue.md) - 获取值
+- [GetWithOffset](references/GetWithOffset.md) - 带偏移获取
+- [GetWorkspaceNum](references/GetWorkspaceNum.md) - 获取工作空间数量
+- [GetWorkspaceSizes](references/GetWorkspaceSizes.md) - 获取工作空间大小
+- [GetFusionParseParamFn](references/GetFusionParseParamFn.md) - 获取融合解析参数函数
+- [GetFusionParseParamByOpFn](references/GetFusionParseParamByOpFn.md) - 获取按算子融合解析参数函数
+- [GetParseOpToGraphFn](references/GetParseOpToGraphFn.md) - 获取解析算子到图函数
+- [GetParseParamFn](references/GetParseParamFn.md) - 获取解析参数函数
+- [GetParseParamByOperatorFn](references/GetParseParamByOperatorFn.md) - 获取按算子解析参数函数
+- [GetParseSubgraphPostFn](references/GetParseSubgraphPostFn.md) - 获取解析子图后处理函数
+
+### GE图操作API（Set系列）
+
+- [SetAddr](references/SetAddr.md) - 设置地址
+- [SetAttr](references/SetAttr.md) - 设置属性
+- [SetBlockDim](references/SetBlockDim.md) - 设置Block维度
+- [SetConstData](references/SetConstData.md) - 设置常量数据
+- [SetDataType](references/SetDataType.md) - 设置数据类型
+- [SetDataType-1](references/SetDataType-1.md) - 设置数据类型（重载）
+- [SetDataType-2](references/SetDataType-2.md) - 设置数据类型（重载）
+- [SetDataType-3](references/SetDataType-3.md) - 设置数据类型（重载）
+- [SetDim](references/SetDim.md) - 设置维度
+- [SetDim-1](references/SetDim-1.md) - 设置维度（重载）
+- [SetDimNum](references/SetDimNum.md) - 设置维度数量
+- [SetExpandDimsRule](references/SetExpandDimsRule.md) - 设置扩展维度规则
+- [SetExpandDimsRule-1](references/SetExpandDimsRule-1.md) - 设置扩展维度规则（重载）
+- [SetExpandDimsType](references/SetExpandDimsType.md) - 设置扩展维度类型
+- [SetExpandDimsType-1](references/SetExpandDimsType-1.md) - 设置扩展维度类型（重载）
+- [SetExpandDimsType-2](references/SetExpandDimsType-2.md) - 设置扩展维度类型（重载）
+- [SetExpandIndex](references/SetExpandIndex.md) - 设置扩展索引
+- [SetFormat](references/SetFormat.md) - 设置格式
+- [SetFormat-1](references/SetFormat-1.md) - 设置格式（重载）
+- [SetInferDataType](references/SetInferDataType.md) - 设置推理数据类型
+- [SetInferenceContext](references/SetInferenceContext.md) - 设置推理上下文
+- [SetInferShape](references/SetInferShape.md) - 设置推理Shape
+- [SetInput](references/SetInput.md) - 设置输入
+- [SetInputAttr](references/SetInputAttr.md) - 设置输入属性
+- [SetInputHandleShapesAndTypes](references/SetInputHandleShapesAndTypes.md) - 设置输入Handle的Shape和类型
+- [SetMarks](references/SetMarks.md) - 设置标记
+- [SetMax](references/SetMax.md) - 设置最大值
+- [SetMin](references/SetMin.md) - 设置最小值
+- [SetName](references/SetName.md) - 设置名称
+- [SetNodeName](references/SetNodeName.md) - 设置节点名称
+- [SetNodeType](references/SetNodeType.md) - 设置节点类型
+- [SetOriginFormat](references/SetOriginFormat.md) - 设置原始格式
+- [SetOriginFormat-1](references/SetOriginFormat-1.md) - 设置原始格式（重载）
+- [SetOriginFormat-2](references/SetOriginFormat-2.md) - 设置原始格式（重载）
+- [SetOriginFormat-3](references/SetOriginFormat-3.md) - 设置原始格式（重载）
+- [SetOriginFormat-4](references/SetOriginFormat-4.md) - 设置原始格式（重载）
+- [SetOriginShape](references/SetOriginShape.md) - 设置原始Shape
+- [SetOriginShapeDim](references/SetOriginShapeDim.md) - 设置原始Shape维度
+- [SetOriginShapeDimNum](references/SetOriginShapeDimNum.md) - 设置原始Shape维度数量
+- [SetOutputAttr](references/SetOutputAttr.md) - 设置输出属性
+- [SetOutputDataType](references/SetOutputDataType.md) - 设置输出数据类型
+- [SetOutputHandleShapesAndTypes](references/SetOutputHandleShapesAndTypes.md) - 设置输出Handle的Shape和类型
+- [SetPlacement](references/SetPlacement.md) - 设置Placement
+- [SetPlacement-1](references/SetPlacement-1.md) - 设置Placement（重载）
+- [SetPlacement-2](references/SetPlacement-2.md) - 设置Placement（重载）
+- [SetPlacement-3](references/SetPlacement-3.md) - 设置Placement（重载）
+- [SetRealDimCnt](references/SetRealDimCnt.md) - 设置实际维度数
+- [SetResourceContext](references/SetResourceContext.md) - 设置资源上下文
+- [SetScalar](references/SetScalar.md) - 设置标量
+- [SetShape](references/SetShape.md) - 设置Shape
+- [SetShape-1](references/SetShape-1.md) - 设置Shape（重载）
+- [SetShapeDim](references/SetShapeDim.md) - 设置Shape维度
+- [SetShapeDimNum](references/SetShapeDimNum.md) - 设置Shape维度数量
+- [SetShapeRange](references/SetShapeRange.md) - 设置Shape范围
+- [SetSize](references/SetSize.md) - 设置大小
+- [SetSize-1](references/SetSize-1.md) - 设置大小（重载）
+- [SetSize-2](references/SetSize-2.md) - 设置大小（重载）
+- [SetSize-3](references/SetSize-3.md) - 设置大小（重载）
+- [SetSize-4](references/SetSize-4.md) - 设置大小（重载）
+- [SetStorageFormat](references/SetStorageFormat.md) - 设置存储格式
+- [SetStorageFormat-1](references/SetStorageFormat-1.md) - 设置存储格式（重载）
+- [SetStorageFormat-2](references/SetStorageFormat-2.md) - 设置存储格式（重载）
+- [SetSubgraphBuilder](references/SetSubgraphBuilder.md) - 设置子图构建器
+- [SetType](references/SetType.md) - 设置类型
+- [SetUnknownDimNumShape](references/SetUnknownDimNumShape.md) - 设置未知维度数Shape
+- [UpdateInputDesc](references/UpdateInputDesc.md) - 更新输入描述
+- [UpdateOutputDesc](references/UpdateOutputDesc.md) - 更新输出描述
+- [UpdateDynamicInputDesc](references/UpdateDynamicInputDesc.md) - 更新动态输入描述
+- [UpdateDynamicOutputDesc](references/UpdateDynamicOutputDesc.md) - 更新动态输出描述
+- [MutableAttrs](references/MutableAttrs.md) - 可变属性
+- [MutableData](references/MutableData.md) - 可变数据
+- [MutableData-1](references/MutableData-1.md) - 可变数据（重载）
+- [MutableExpandDimsType](references/MutableExpandDimsType.md) - 可变扩展维度类型
+- [MutableFormat](references/MutableFormat.md) - 可变格式
+- [MutableInputInstanceInfo](references/MutableInputInstanceInfo.md) - 可变输入实例信息
+- [MutableInputTdInfo](references/MutableInputTdInfo.md) - 可变输入TdInfo
+- [MutableOriginShape](references/MutableOriginShape.md) - 可变原始Shape
+- [MutableOriginShape-1](references/MutableOriginShape-1.md) - 可变原始Shape（重载）
+- [MutableOutputInstanceInfo](references/MutableOutputInstanceInfo.md) - 可变输出实例信息
+- [MutableOutputTdInfo](references/MutableOutputTdInfo.md) - 可变输出TdInfo
+- [MutableStorageShape](references/MutableStorageShape.md) - 可变存储Shape
+- [MutableStorageShape-1](references/MutableStorageShape-1.md) - 可变存储Shape（重载）
+- [MutableTensorData](references/MutableTensorData.md) - 可变Tensor数据
+
+### 算子开发
+
+- [算子实现概述](references/算子实现概述.md) - 算子实现方式总览
+- [算子原型定义实现](references/算子原型定义实现.md) - 算子原型定义说明
+- [工程化算子开发概述](references/工程化算子开发概述.md) - 工程化算子开发流程
+- [原型定义接口（REG_OP）](references/原型定义接口（REG_OP）.md) - REG_OP算子注册接口
+- [原型定义衍生接口说明](references/原型定义衍生接口说明.md) - 原型定义衍生接口
+- [原型注册接口(OP_ADD)](references/原型注册接口(OP_ADD).md) - OP_ADD注册接口
+- [算子入图概述](references/算子入图概述.md) - 算子入图说明
+- [算子编译迁移指导](references/算子编译迁移指导.md) - 算子编译迁移指导
+- [算子调试概述](references/算子调试概述.md) - 算子调试方法说明
+- [算子开发常见问题](references/算子开发常见问题.md) - 算子开发FAQ
+- [算子工程编译](references/算子工程编译.md) - 算子工程编译指导
+- [算子工程创建工具参数说明](references/算子工程创建工具参数说明.md) - 算子工程创建工具
+- [算子json配置模板获取](references/算子json配置模板获取.md) - 算子JSON配置模板
+- [算子json配置文件样例](references/算子json配置文件样例.md) - 算子JSON配置样例
+- [params归一格式的算子json配置](references/params归一格式的算子json配置.md) - 归一格式JSON配置
+- [固定输入_输出顺序的算子json配置](references/固定输入_输出顺序的算子json配置.md) - 固定IO顺序JSON配置
+- [创建算子工程](references/创建算子工程.md) - 创建算子工程步骤
+- [Kernel侧算子实现](references/Kernel侧算子实现.md) - Kernel侧算子开发
+- [算子包安装](references/算子包安装.md) - 算子包安装指导
+- [支持的算子](references/支持的算子.md) - 支持的算子列表
+- [FusionParseParamsFn](references/FusionParseParamsFn.md) - 融合解析参数函数
+- [FusionParseParamsFn（Overload）](references/FusionParseParamsFn（Overload）.md) - 融合解析参数函数（重载）
+- [AI框架算子适配概述](references/AI框架算子适配概述.md) - AI框架算子适配说明
+- [配置项目NAPI](references/配置项目NAPI.md) - 项目NAPI配置
+
+### 推理与Shape推导
+
+- [InferShape](references/InferShape.md) - Shape推导
+- [InferShapeAndType](references/InferShapeAndType.md) - Shape和类型推导
+- [InferShapeRange](references/InferShapeRange.md) - Shape范围推导
+- [InferDataType](references/InferDataType.md) - 数据类型推导
+- [InferOutDataTypeSameWithFirstInput](references/InferOutDataTypeSameWithFirstInput.md) - 输出类型与首个输入一致推导
+- [InferFormatFuncRegister](references/InferFormatFuncRegister.md) - 格式推导函数注册
+- [InferShapeFuncRegister](references/InferShapeFuncRegister.md) - Shape推导函数注册
+- [InferValueRangeFuncRegister](references/InferValueRangeFuncRegister.md) - 值范围推导函数注册
+- [BROADCAST_INFER](references/BROADCAST_INFER.md) - 广播推导宏
+- [ELMTWISE_INFER_SHAPEANDTYPE](references/ELMTWISE_INFER_SHAPEANDTYPE.md) - 逐元素推导宏
+- [COMMON_INFER_FUNC_REG](references/COMMON_INFER_FUNC_REG.md) - 通用推导函数注册宏
+- [DECLARE_ERRORNO](references/DECLARE_ERRORNO.md) - 错误号声明宏
+- [IMPLEMT_COMMON_INFERFUNC](references/IMPLEMT_COMMON_INFERFUNC.md) - 实现通用推导函数宏
+- [IMPLEMT_INFERFORMAT_FUNC](references/IMPLEMT_INFERFORMAT_FUNC.md) - 实现格式推导函数宏
+- [IMPLEMT_INFERFUNC](references/IMPLEMT_INFERFUNC.md) - 实现推导函数宏
+- [IMPLEMT_VERIFIER](references/IMPLEMT_VERIFIER.md) - 实现校验函数宏
+- [INFER_FORMAT_FUNC_REG](references/INFER_FORMAT_FUNC_REG.md) - 格式推导注册宏
+- [INFER_FUNC_REG](references/INFER_FUNC_REG.md) - 推导函数注册宏
+- [VERIFY_FUNC_REG](references/VERIFY_FUNC_REG.md) - 校验函数注册宏
+- [VerifyAllAttr](references/VerifyAllAttr.md) - 校验所有属性
+- [VerifyFuncRegister](references/VerifyFuncRegister.md) - 校验函数注册
+- [OutputShapeDependOnCompute](references/OutputShapeDependOnCompute.md) - 输出Shape依赖计算
+- [ShapeInfo](references/ShapeInfo.md) - Shape信息
+- [TensorDescInfo](references/TensorDescInfo.md) - Tensor描述信息
+- [TensorPlacement](references/TensorPlacement.md) - Tensor位置
+- [TensorPlacementUtils](references/TensorPlacementUtils.md) - Tensor位置工具
+- [TensorType](references/TensorType.md) - Tensor类型
+- [ListTensorType](references/ListTensorType.md) - Tensor类型列表
+- [ParamType](references/ParamType.md) - 参数类型
+- [OpAttrDef](references/OpAttrDef.md) - 算子属性定义
+- [Input](references/Input.md) - 输入定义
+- [Output](references/Output.md) - 输出定义
+- [OpExecuteFunc](references/OpExecuteFunc.md) - 算子执行函数
+- [OpReceiver](references/OpReceiver.md) - 算子接收器
+- [OperatorCreatorRegister](references/OperatorCreatorRegister.md) - 算子创建注册
+- [PrivateAttr](references/PrivateAttr.md) - 私有属性
+- [OriginOpType](references/OriginOpType.md) - 原始算子类型
+- [FrameworkType](references/FrameworkType.md) - 框架类型
+- [ImplyType](references/ImplyType.md) - 实现类型
+- [SubgraphCountRegister](references/SubgraphCountRegister.md) - 子图数量注册
+- [ParseParamsFn](references/ParseParamsFn.md) - 解析参数函数
+- [ParseParamsByOperatorFn](references/ParseParamsByOperatorFn.md) - 按算子解析参数函数
+- [ParseOpToGraphFn](references/ParseOpToGraphFn.md) - 解析算子到图函数
+- [ParseSubgraphPostFn](references/ParseSubgraphPostFn.md) - 解析子图后处理函数
+- [ge__graphStatus](references/ge__graphStatus.md) - 图状态
+- [REGISTER_CUSTOM_OP宏](references/REGISTER_CUSTOM_OP宏.md) - 注册自定义算子宏
+- [TryGetInputDesc](references/TryGetInputDesc.md) - 尝试获取输入描述
+- [Attr](references/Attr.md) - 属性操作
+
+### 模型转换与部署
+
+- [AIPP参数](references/AIPP参数.md) - AIPP预处理参数说明
+- [AIPP部署](references/AIPP部署.md) - AIPP端侧部署指导
+- [OMG参数](references/OMG参数.md) - OMG离线模型转换参数
+- [ONNX框架](references/ONNX框架.md) - ONNX框架适配说明
+- [模型转换AIPP配置文件说明](references/模型转换AIPP配置文件说明.md) - AIPP配置文件说明
+- [模型转换前准备](references/模型转换前准备.md) - 模型转换准备工作
+- [模型转换示例](references/模型转换示例.md) - 模型转换示例
+- [模型推理](references/模型推理.md) - 模型推理流程
+- [集成模型](references/集成模型.md) - 模型集成指导
+- [单算子应用](references/单算子应用.md) - 单算子调用
+- [图编译和图执行](references/图编译和图执行.md) - 图编译执行流程
+- [部署全流程](references/部署全流程.md) - 端侧部署全流程
+- [异构](references/异构.md) - NPU/CPU异构调度
+- [可变data_type](references/可变data_type.md) - 可变输入输出数据类型
+
+### 模型优化
+
+- [Model Zoo](references/Model Zoo.md) - 模型库和工具包
+- [模型轻量化示例](references/模型轻量化示例.md) - 模型轻量化示例
+- [模型收益](references/模型收益.md) - 模型优化收益分析
+- [LLM模型一站式量化](references/LLM模型一站式量化.md) - 大模型一站式量化
+- [无训练量化](references/无训练量化.md) - 无训练量化
+- [插件式量化](references/插件式量化.md) - 插件式量化
+- [插件式量化-1](references/插件式量化-1.md) - 插件式量化（补充）
+- [量化基模外挂LoRA微调](references/量化基模外挂LoRA微调.md) - 量化基模LoRA微调
+- [网络结构搜索训练](references/网络结构搜索训练.md) - 网络结构搜索
+
+### 调试与工具
+
+- [可视化工具](references/可视化工具.md) - 可视化调试工具
+- [维测调优](references/维测调优.md) - 维测调优方法
+- [精度比对结果输出样例](references/精度比对结果输出样例.md) - 精度比对样例
+- [输入数据和标杆数据准备](references/输入数据和标杆数据准备.md) - 调测数据准备
+- [数据生成脚本适配样例](references/数据生成脚本适配样例.md) - 数据生成脚本
+- [同源算子调测样例](references/同源算子调测样例.md) - 同源算子调测
+
+### 构造函数与运算符重载
+
+- [构造函数](references/构造函数.md) - 构造函数
+- [构造函数-1](references/构造函数-1.md) - 构造函数（重载）
+- [构造函数-2](references/构造函数-2.md) - 构造函数（重载）
+- [构造函数-3](references/构造函数-3.md) - 构造函数（重载）
+- [构造函数-4](references/构造函数-4.md) - 构造函数（重载）
+- [构造函数-5](references/构造函数-5.md) - 构造函数（重载）
+- [构造函数-6](references/构造函数-6.md) - 构造函数（重载）
+- [构造函数-7](references/构造函数-7.md) - 构造函数（重载）
+- [构造函数-8](references/构造函数-8.md) - 构造函数（重载）
+- [构造函数-9](references/构造函数-9.md) - 构造函数（重载）
+- [构造函数-10](references/构造函数-10.md) - 构造函数（重载）
+- [构造函数-11](references/构造函数-11.md) - 构造函数（重载）
+- [构造函数-12](references/构造函数-12.md) - 构造函数（重载）
+- [构造函数-13](references/构造函数-13.md) - 构造函数（重载）
+- [构造函数-14](references/构造函数-14.md) - 构造函数（重载）
+- [构造函数-15](references/构造函数-15.md) - 构造函数（重载）
+- [构造函数和析构函数](references/构造函数和析构函数.md) - 构造与析构函数
+- [构造函数和析构函数-1](references/构造函数和析构函数-1.md) - 构造与析构函数（重载）
+- [构造函数和析构函数-2](references/构造函数和析构函数-2.md) - 构造与析构函数（重载）
+- [构造函数和析构函数-3](references/构造函数和析构函数-3.md) - 构造与析构函数（重载）
+- [构造函数和析构函数-4](references/构造函数和析构函数-4.md) - 构造与析构函数（重载）
+- [构造函数和析构函数-5](references/构造函数和析构函数-5.md) - 构造与析构函数（重载）
+- [构造函数和析构函数-6](references/构造函数和析构函数-6.md) - 构造与析构函数（重载）
+- [构造函数和析构函数-7](references/构造函数和析构函数-7.md) - 构造与析构函数（重载）
+- [构造函数和析构函数-8](references/构造函数和析构函数-8.md) - 构造与析构函数（重载）
+- [构造函数和析构函数-9](references/构造函数和析构函数-9.md) - 构造与析构函数（重载）
+- [构造函数和析构函数-10](references/构造函数和析构函数-10.md) - 构造与析构函数（重载）
+- [构造函数和析构函数-11](references/构造函数和析构函数-11.md) - 构造与析构函数（重载）
+- [构造函数与析构函数](references/构造函数与析构函数.md) - 构造与析构函数
+- [构造和析构函数](references/构造和析构函数.md) - 构造和析构函数
+- [关系符重载](references/关系符重载.md) - 关系运算符重载
+- [operator!=](references/operator!=.md) - 不等于运算符
+- [operator!=-1](references/operator!=-1.md) - 不等于运算符（重载）
+- [operator!=-2](references/operator!=-2.md) - 不等于运算符（重载）
+- [operator==](references/operator==.md) - 等于运算符
+- [operator==-1](references/operator==-1.md) - 等于运算符（重载）
+- [operator==-2](references/operator==-2.md) - 等于运算符（重载）
+- [operator==-3](references/operator==-3.md) - 等于运算符（重载）
+- [operator==-4](references/operator==-4.md) - 等于运算符（重载）
+- [operator](references/operator.md) - 运算符
+- [operator-1](references/operator-1.md) - 运算符（重载）
+
+### 常见问题
+
+- [判断模型能否在手机上运行？](references/判断模型能否在手机上运行？.md) - 模型运行兼容性判断
+- [推理函数支持的数据格式有哪些？](references/推理函数支持的数据格式有哪些？.md) - 推理数据格式支持
+- [算法在设计模型时，如何确认哪些算子在CANN上性能较优？](references/算法在设计模型时，如何确认哪些算子在CANN上性能较优？.md) - 算子性能优化指导
+- [如何处理OMG离线模型输出算子类型错误？](references/如何处理OMG离线模型输出算子类型错误？.md) - OMG模型错误处理
+- [如何申请workspace作为临时内存](references/如何申请workspace作为临时内存.md) - Workspace临时内存申请
+- [如何升级工程到最新版本](references/如何升级工程到最新版本.md) - 工程版本升级指导
+- [如何使用double buffer优化性能](references/如何使用double buffer优化性能.md) - Double Buffer性能优化
+- [昇腾和麒麟同代AI处理器的映射关系](references/昇腾和麒麟同代AI处理器的映射关系.md) - 昇腾与麒麟处理器映射关系
+
+<!-- verikit:references-index -->
+
+## References / 参考文档索引
+
+_Auto-generated by VeriKit from this Kit's reference manifest — `724` document(s) shipped under `references/`. Each link points at a real file in the plugin tree; load any with the agent's file-read tool._
+
+- **AICore** — 设置AICore的配置信息：包括Tiling处理回调函数、能力检查回调函数、基础的配置信息等。 #### 函数原型 OpAICoreDef &AICore(void); #### 参数说明 无 #### 返回值 请参考 OpAICoreDef 。 #### 约束说明 无 [`references/AICore.md`](<references/AICore.md>)
+- **AIPP参数** — AIPP分为静态AIPP和动态AIPP，两者使用严格区分，静态AIPP模型不能接收模型推理时传入的AIPP参数，不兼容动态AIPP场景，静态与动态AIPP区别详见下表。 #### AIPP支持的输入格式 AIPP可配置的图片格式如下： - YUV420SP_U8 - XRGB8888_U8 - ARGB8888_U8 - YUYV_U8 - YUV422SP… [`references/AIPP参数.md`](<references/AIPP参数.md>)
+- **AIPP部署** — AIPP部署是指动态AIPP推理时开发者按需配置动态AIPP参数，从而达到使能AIPP功能。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/40/v3/VX7MbvCuQDWR4eLeovQ5hg/zh-cn_imag… [`references/AIPP部署.md`](<references/AIPP部署.md>)
+- **AI框架算子适配概述** — 本章节内容介绍AI框架调用自定义算子的方法。如下图所示，PyTorch和TensorFlow仅支持图模式。 AI框架调用时，除了需要提供DDK框架调用时需要的代码实现文件，还需要对插件进行适配开发。下文仅展示通过ONNX框架进行算子适配，TensorFlow框架开发流程与ONNX框架开发流程一致。 ![](https://contentcenter-vali… [`references/AI框架算子适配概述.md`](<references/AI框架算子适配概述.md>)
+- **Abs** — 按元素取绝对值，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ab/v3/PtWWhGx8R2eWU82-qydF9g/zh-cn_image_000000257385… [`references/Abs.md`](<references/Abs.md>)
+- **Add** — 新增一个ContinuousVector元素，其中新增ContinuousVector元素的容量为inner_vector_capacity。 #### 函数原型 template<typename T> ContinuousVector *Add(size_t inner_vector_capacity) #### 参数说明 #### 返回值 新增Cont… [`references/Add-1.md`](<references/Add-1.md>)
+- **Add** — 按元素求和，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d4/v3/6G4vEvWxQ-S2SVhqF6lerQ/zh-cn_image_00000025433749… [`references/Add.md`](<references/Add.md>)
+- **AddAutoMappingSubgraphIOIndexFunc** — 注册的具体网络类型的自动映射函数。 #### 函数原型 void AddAutoMappingSubgraphIOIndexFunc(domi::FrameworkType framework, AutoMappingSubgraphIOIndexFunc fun); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/AddAutoMappingSubgraphIOIndexFunc.md`](<references/AddAutoMappingSubgraphIOIndexFunc.md>)
+- **AddChangedResourceKey** — 在写类型的资源算子（如stack push）推导过程中，若资源shape变化了，调用该接口通知框架。 框架依据变化的资源key，触发对应读算子（如stack pop）的重新推导。 #### 函数原型 graphStatus AddChangedResourceKey(const ge::AscendString &key) #### 参数说明 #### 返回… [`references/AddChangedResourceKey.md`](<references/AddChangedResourceKey.md>)
+- **AddConfig** — 注册算子支持的AI处理器型号信息。 #### 函数原型 void AddConfig(const char *soc); #### 参数说明 #### 返回值 无 #### 约束说明 支持Kirin9020系列处理器 KirinX90系列处理器 [`references/AddConfig.md`](<references/AddConfig.md>)
+- **AddControlInput** — 添加算子的控制边，控制边目前只是控制算子的执行顺序。 #### 函数原型 Operator &AddControlInput(const Operator &src_oprt); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/AddControlInput.md`](<references/AddControlInput.md>)
+- **AddCount** — MemBlock引用计数加1。 #### 函数原型 size_t AddCount() #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/AddCount.md`](<references/AddCount.md>)
+- **Adds** — 矢量内每个元素与标量求和，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/62/v3/4buAJ-ovSsqhZWGyqpltvg/zh-cn_image_0000002… [`references/Adds.md`](<references/Adds.md>)
+- **AllocEventID** — 用于申请HardEvent（硬件类型同步事件）的TEventID，必须与 ReleaseEventID 搭配使用，调用该接口后，会占用申请的TEventID，直至调用ReleaseEventID释放。 #### 函数原型 template <HardEvent evt> __aicore__ inline TEventID TPipe::AllocEvent… [`references/AllocEventID.md`](<references/AllocEventID.md>)
+- **AllocTensor** — 从队列中分配Tensor，Tensor所占大小为InitBuffer时设置的每块内存长度。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ca/v3/JW7dmWC5Q_qLQLJK5AW29A/note_3.0-zh-cn.png?HW… [`references/AllocTensor-1.md`](<references/AllocTensor-1.md>)
+- **AllocTensor** — 从队列中分配Tensor，Tensor所占大小为InitBuffer时设置的每块内存长度。注意，分配的Tensor内容并非全0，可能会是随机值。 #### 函数原型 template <typename T> __aicore__ inline LocalTensor<T> AllocTensor() #### 参数说明 无 #### 支持的型号 Kirin… [`references/AllocTensor.md`](<references/AllocTensor.md>)
+- **And** — 每对元素按位与运算，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f4/v3/KaCmSAa_QnaFe8DQHQR4Lg/zh-cn_image_0000002573… [`references/And.md`](<references/And.md>)
+- **Append** — 向后添加tiling data，若添加超过可容纳的最大长度，则添加失败。 #### 函数原型 template<typename T, typename std::enable_if<std::is_standard_layout<T>::value, int>::type = 0> ge::graphStatus Append(const T &data)… [`references/Append.md`](<references/Append.md>)
+- **AppendDim** — 向后扩展一个dim值，如果扩展的dim数量超出Shape的最大限制，那么本函数不做任何事情。 #### 函数原型 Shape& AppendDim(const int64_t value) #### 参数说明 #### 返回值 this引用。 #### 约束说明 无 #### 调用示例 Shape shape0({3, 256, 256}); shape0.… [`references/AppendDim.md`](<references/AppendDim.md>)
+- **AscendC API列表** — AscendC提供一组类库API，开发者使用标准C++语法和类库API进行编程。AscendC编程类库API示意图如下所示，分为： - Kernel API：用于实现算子核函数的API接口。包括： - **基本数据结构：**Kernel API中使用到的基本数据结构，比如GlobalTensor和LocalTensor。 - **基础API：**实现对硬件能… [`references/AscendC API列表.md`](<references/AscendC API列表.md>)
+- **AscendC简介** — AscendC是CANN Kit针对算子开发场景推出的编程语言，遵循C和C++标准规范，匹配开发者开发习惯；通过多层接口抽象、自动并行计算、孪生调试等关键技术，提高算子开发效率，助力AI开发者低成本完成算子开发和模型调优部署。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAll… [`references/AscendC简介.md`](<references/AscendC简介.md>)
+- **AscendStringToDataType** — 将DataType的字符串表达转换为DataType枚举值。 使用该接口需要包含type_utils.h头文件。 #include "graph/utils/type_utils.h" #### 函数原型 static DataType AscendStringToDataType(const AscendString &str); #### 参数说明 ##… [`references/AscendStringToDataType.md`](<references/AscendStringToDataType.md>)
+- **AscendStringToFormat** — 将字符串转化为Format类型值。 使用该接口需要包含type_utils.h头文件。 #include "graph/utils/type_utils.h" #### 函数原型 static Format AscendStringToFormat(const AscendString &str); #### 参数说明 #### 返回值 输入合法时，返回转换… [`references/AscendStringToFormat.md`](<references/AscendStringToFormat.md>)
+- **Attr** — 定义算子属性名称。 #### 函数原型 OpAttrDef &Attr(const char *name); #### 参数说明 #### 返回值 OpAttrDef 算子属性定义。 #### 约束说明 Attr属性名不能与python关键字及内置变量名相同，否则会导致未定义错误。 - python关键字： and, as, assert, break, c… [`references/Attr.md`](<references/Attr.md>)
+- **AutoMappingByOpFn** — 自动映射回调函数。 #### 函数原型 Status AutoMappingByOpFn(const ge::Operator &op_src, ge::Operator &op); #### 参数说明 关于Operator类，请参见 Operator 。 #### 调用示例 原始TensorFlow算子与适配AI处理器的算子属性一一映射的场景： REGIS… [`references/AutoMappingByOpFn.md`](<references/AutoMappingByOpFn.md>)
+- **AutoMappingByOpFnDynamic** — 动态输入/输出算子的自动映射回调函数。 #### 函数原型 Status AutoMappingByOpFnDynamic(const ge::Operator &op_src, ge::Operator &op, const std::vector<DynamicInputOutputInfo> &dynamic_name_attr_value) ####… [`references/AutoMappingByOpFnDynamic.md`](<references/AutoMappingByOpFnDynamic.md>)
+- **AutoMappingFn** — 自动映射回调函数。 #### 函数原型 Status AutoMappingFn(const google::protobuf::Message *op_src, ge::Operator &op) #### 参数说明 #### 约束说明 若原始TensorFlow算子与适配AI处理器的算子属性无法一一映射，AutoMappingFn函数无法应用于回调函数 … [`references/AutoMappingFn.md`](<references/AutoMappingFn.md>)
+- **AutoMappingFnDynamic** — 动态输入/输出算子的自动映射回调函数。 #### 函数原型 Status AutoMappingFnDynamic(const google::protobuf::Message *op_src, ge::Operator &op, std::map<std::string, std::pair<std::string, std::string>> dyna… [`references/AutoMappingFnDynamic.md`](<references/AutoMappingFnDynamic.md>)
+- **AutoMappingSubgraphIOIndexFuncRegister** — FrameworkRegistry类的封装，通过类的构造函数调用FrameworkRegistry类的AddAutoMappingSubgraphIOIndexFunc函数完成映射函数的注册。 #### 函数原型 AutoMappingSubgraphIOIndexFuncRegister(domi::FrameworkType framework, Aut… [`references/AutoMappingSubgraphIOIndexFuncRegister.md`](<references/AutoMappingSubgraphIOIndexFuncRegister.md>)
+- **AutoMappingSubgraphIndex** — 设置子图的输入输出和主图对应父节点输入输出的对应关系。 #### 函数原型 Status AutoMappingSubgraphIndex(const ge::Graph &graph, const std::function<int32_t(int32_t data_index)> &input, const std::function<int32_t(i… [`references/AutoMappingSubgraphIndex.md`](<references/AutoMappingSubgraphIndex.md>)
+- **Axpy** — 源操作数(srcLocal)中每个元素与标量求积后和目的操作数(dstLocal)中的对应元素相加，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2b/v3/ooQHa… [`references/Axpy.md`](<references/Axpy.md>)
+- **BROADCAST_INFER** — 提供公共函数宏封装，供算子开发者开发InferShape函数。该函数基于2个输入的shape，设置输出的shape。该宏只是设置shape，未设置dtype。 - 如果2个输入的shape一致，会按输入的shape设置输出shape。 - 如果2个输入的shape不一致，会按照broadcast的策略，取2个输入shape的并集。 比如输入shape分别为（… [`references/BROADCAST_INFER.md`](<references/BROADCAST_INFER.md>)
+- **BinaryRepeatParams** — BinaryRepeatParams为用于控制操作数地址步长的数据结构。结构体内包含操作数相邻迭代间相同datablock的地址步长，操作数同一迭代内不同datablock的地址步长等参数。 结构体具体定义为： const int32_t DEFAULT_BLK_NUM = 8; const int32_t DEFAULT_BLK_STRIDE = 1; c… [`references/BinaryRepeatParams.md`](<references/BinaryRepeatParams.md>)
+- **BreakConnect** — 删除当前算子与前一个算子之间的所有连接关系，删除当前算子与下一个算子之间的所有连接关系。 #### 函数原型 void BreakConnect() const; #### 参数说明 无 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/BreakConnect.md`](<references/BreakConnect.md>)
+- **CANN Kit简介** — CANN（Compute Architecture for Neural Networks）是华为面向AI推出的端云一致的异构计算架构。在HarmonyOS设备上，CANN Kit面向Kirin芯片平台为各种人工智能模型和算法提供统一的接入和运行环境。开发者的应用程序使用CANN Kit的API和开发者数据，在设备端实现智能推理、模型训练以及模型优化等操作，… [`references/CANN Kit简介.md`](<references/CANN Kit简介.md>)
+- **COMMON_INFER_FUNC_REG** — 注册算子的InferShape函数。 与 INFER_FUNC_REG 的区别是，此函数注册的InferShape函数入参为operator基类而非子类，此接口支持多算子共用同一个InferShape函数。 #### 函数原型 COMMON_INFER_FUNC_REG(op_name, x) 该函数内部会自动调用COMMON_INFER_VERIFY_FU… [`references/COMMON_INFER_FUNC_REG.md`](<references/COMMON_INFER_FUNC_REG.md>)
+- **CPU孪生调试功能** — ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b1/v3/szm4KO6uRgaUnsAvFLwwzQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111716Z&HW-CC-Ex… [`references/CPU孪生调试功能.md`](<references/CPU孪生调试功能.md>)
+- **CalcSize** — 用于计算算子对应的ComputeNodeInfo需要预分配的内存空间大小。 ComputeNodeInfo的内存空间是平铺式的，内存依次存放ComputeNodeInfo自身的数据成员、算子IR定义输入个数的Anchor信息、实际输入个数和输出个数的编译阶段的Tensor描述信息以及属性信息。该函数的计算结果不包含属性信息所占的内存空间大小。 #### 函数… [`references/CalcSize.md`](<references/CalcSize.md>)
+- **CalcTotalSize** — 通过最大容量计算TilingData实例所占用的内存空间。 #### 函数原型 static ge::graphStatus CalcTotalSize(const size_t cap_size, size_t &total_size); #### 参数说明 #### 返回值 - 成功返回：ge::GRAPH_SUCCESS。 - 失败返回：ge::GRA… [`references/CalcTotalSize.md`](<references/CalcTotalSize.md>)
+- **CalcTschBlockDim** — 针对Cube、Vector分离架构，用于计算Cube、Vector融合算子的blockDim。针对Vector/Cube融合计算的算子，启动时，按照AIV和AIC组合启动，blockDim用于设置启动多少个组合执行，比如某款AI处理器上有40个Vector和20个Cube核。一个组合是2个Vector和1个Cube核，建议设置为20，此时会启动20个组合，即… [`references/CalcTschBlockDim.md`](<references/CalcTschBlockDim.md>)
+- **ClearChangedResourceKeys** — 一般由框架调用。 当变化了的资源触发重新推导之后，需要调用该接口清除inference_context中保存的变化了的资源标识。 #### 函数原型 void ClearChangedResourceKeys() #### 参数说明 无 #### 返回值 无 #### 约束说明 无 [`references/ClearChangedResourceKeys.md`](<references/ClearChangedResourceKeys.md>)
+- **Clone** — 拷贝Tensor。 #### 函数原型 Tensor Clone() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/Clone.md`](<references/Clone.md>)
+- **ConvertToAscendString** — 模板函数，接受一个模板参数T，并将其转换为AscendString类型。这个函数的主要功能是将不同类型的字符串转换为AscendString类型。 #### 函数原型 template<typename T> ge::AscendString ConvertToAscendString(T str) 支持以下几种拓展： template<> inline g… [`references/ConvertToAscendString.md`](<references/ConvertToAscendString.md>)
+- **ConvertToListAscendString** — 定义了一个模板函数ConvertToListAscendString，用于将不同类型的字符串列表转换为AscendString类型的列表。 #### 函数原型 template<typename T> std::vector<ge::AscendString> ConvertToListAscendString(T strs) 支持以下两种拓展： templ… [`references/ConvertToListAscendString.md`](<references/ConvertToListAscendString.md>)
+- **CountBitsCntSameAsSignBit** — 计算一个uint64_t类型数字的二进制中，从最高数值位开始与符号位相同的连续比特位的个数。 当输入是-1（比特位全1）或者0（比特位全0）时，返回-1。 #### 函数原型 __aicore__ inline int64_t CountBitsCntSameAsSignBit(int64_t valueIn) #### 参数说明 **表1** 参数说明 #… [`references/CountBitsCntSameAsSignBit.md`](<references/CountBitsCntSameAsSignBit.md>)
+- **Create** — 在资源类算子推理的上下文中，创建资源算子的上下文对象。 #### 函数原型 static std::unique_ptr<InferenceContext> Create( void *resource_context_mgr = nullptr ) #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/Create-1.md`](<references/Create-1.md>)
+- **Create** — 创建一个ContinuousVector实例，ContinuousVector不支持动态扩容。 #### 函数原型 template<typename T> static std::unique_ptr<uint8_t[]> Create(size_t capacity, size_t &total_size) template<typename T> st… [`references/Create.md`](<references/Create.md>)
+- **CreateCap** — 根据指定的最大容量创建一个TilingData类实例。 #### 函数原型 static std::unique_ptr<uint8_t[]> CreateCap(const size_t cap_size); #### 参数说明 #### 返回值 TilingData的实例指针。 #### 约束说明 无 #### 调用示例 auto td_buf = Ti… [`references/CreateCap.md`](<references/CreateCap.md>)
+- **CreateFollowing** — 创建一个指定数据类型以及大小的Tensor，其数据在Tensor对象后连续排布。 #### 函数原型 - 传入元素个数和数据类型，创建Tensor static std::unique_ptr<uint8_t[]> CreateFollowing(const int64_t shape_size, const ge::DataType dt, size_t … [`references/CreateFollowing.md`](<references/CreateFollowing.md>)
+- **CreateFrom** — 将传入的DT类型（支持int64_t、float、std::string类型）的参数转换为对应T类型（支持INT、FLOAT、STR类型）的参数。 - 支持将int64_t类型转换为INT类型。 - 支持将float类型转换为FLOAT类型。 - 支持将std::string类型转换为STR类型。 #### 函数原型 template<typename T,… [`references/CreateFrom.md`](<references/CreateFrom.md>)
+- **CreateOperator** — 基于算子名称和算子类型获取算子对象实例。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/10/v3/b3VZ22QWTQe5cO0UoZASMg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC… [`references/CreateOperator.md`](<references/CreateOperator.md>)
+- **CreateVecIndex** — 以firstValue为起始值创建向量索引。 #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void CreateVecIndex(LocalTensor<T> dstLocal, const T &firstValue, uint32_t calCount) #### 参数… [`references/CreateVecIndex.md`](<references/CreateVecIndex.md>)
+- **DECLARE_ERRORNO** — 错误码及描述注册宏，该宏对外提供如下四个错误码供开发者使用： - SUCCESS：成功。 - FAILED：失败。 - PARAM_INVALID：参数不合法。 - SCOPE_NOT_CHANGED：Scope融合规则未匹配到，忽略当前pass。 声明如下所示： DECLARE_ERRORNO(0, 0, SUCCESS, 0); DECLARE_ERRO… [`references/DECLARE_ERRORNO.md`](<references/DECLARE_ERRORNO.md>)
+- **DataCopyPad** — 该接口提供数据非对齐搬运的功能，支持的数据传输通路如下。 - GM->VECIN/VECOUT - VECIN/VECOUT->GM - VECIN/VECOUT->TSCM 其中从GM->VECIN/VECOUT进行数据搬运时，可以根据开发者的需要自行填充数据。 #### 函数原型 - dataCopyParams为DataCopyExtParams类型，… [`references/DataCopyPad.md`](<references/DataCopyPad.md>)
+- **DataFormatToFormat** — 将数据格式字符串转化为Format类型值。 使用该接口需要包含type_utils.h头文件。 #include "graph/utils/type_utils.h" #### 函数原型 static Format DataFormatToFormat(const AscendString &str); Format DataFormatToFormat(c… [`references/DataFormatToFormat.md`](<references/DataFormatToFormat.md>)
+- **DataType** — DataType枚举值定义如下。 enum DataType { DT_FLOAT = 0, // float type DT_FLOAT16 = 1, // fp16 type DT_INT8 = 2, // int8 type DT_INT32 = 3, // int32 type DT_UINT8 = 4, // uint8 type // reser… [`references/DataType-1.md`](<references/DataType-1.md>)
+- **DataType** — 定义算子参数数据类型。 #### 函数原型 OpParamDef &DataType(std::vector<ge::DataType> types); #### 参数说明 #### 返回值 OpParamDef 算子定义。 #### 约束说明 无 [`references/DataType.md`](<references/DataType.md>)
+- **DataTypeToAscendString** — 将DataType类型值转化为字符串表达。 使用该接口需要包含type_utils.h头文件。 #include "graph/utils/type_utils.h" #### 函数原型 static AscendString DataTypeToAscendString(const DataType &data_type); #### 参数说明 #### … [`references/DataTypeToAscendString.md`](<references/DataTypeToAscendString.md>)
+- **DataTypeToSerialString** — 将DataType类型值转化为字符串表达。 从GCC 5.1版本开始，libstdc++为了更好的实现C++11规范，更改了std::string和std::list的一些接口，导致新老版本ABI不兼容。所以推荐使用 DataTypeToAscendString 替代本接口。 使用该接口需要包含type_utils.h头文件。 #include "graph… [`references/DataTypeToSerialString.md`](<references/DataTypeToSerialString.md>)
+- **DeQue** — 将Tensor从队列中取出，用于后续处理。 #### 函数原型 template <typename T> __aicore__ inline LocalTensor<T> DeQue() **图1** 将LocalTensor通过EnQue放入A1/B1的Queue中后再通过DeQue搬出 ![](https://contentcenter-vali-dr… [`references/DeQue-1.md`](<references/DeQue-1.md>)
+- **DeQue** — 将Tensor从队列中取出，用于后续处理。 #### 函数原型 - 无需指定源和目的位置 template <typename T> __aicore__ inline LocalTensor<T> DeQue() - 需要指定源和目的位置 通过 TQueBind 绑定VECIN和VECOUT可实现VECIN和VECOUT内存复用，如下接口用于存在Vecto… [`references/DeQue.md`](<references/DeQue.md>)
+- **DelInputWithCond** — 根据算子属性，删除算子指定输入边。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cd/v3/SQ1IqjIRSD6AjS-6ml04MQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Da… [`references/DelInputWithCond.md`](<references/DelInputWithCond.md>)
+- **DelInputWithOriginalType** — 根据算子类型，删除算子指定输入边。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d8/v3/PigbjcVESiizSyYNE_moSQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Da… [`references/DelInputWithOriginalType.md`](<references/DelInputWithOriginalType.md>)
+- **Destroy** — 释放资源。 #### 函数原型 __aicore__ inline void Destroy() #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 用于重复申请释放TPipe，创建Tpipe对象后，可调用Destroy手动释放资源。 #### 返回值 无 #### 调用示例 AscendC::TPipe pi… [`references/Destroy.md`](<references/Destroy.md>)
+- **Div** — 按元素求商，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/38/v3/HXSTNvwpRhS5jdnpWaPUNQ/zh-cn_image_00000025739751… [`references/Div.md`](<references/Div.md>)
+- **DumpAccChkPoint** — 基于算子工程开发的算子，可以使用该接口Dump指定Tensor的内容。同时支持打印自定义的附加信息（仅支持uint32_t数据类型的信息），比如打印当前行号等。区别于 DumpTensor ，使用该接口可以支持指定偏移位置的Tensor打印。 在算子kernel侧实现代码中需要打印偏移后Tensor数据的地方调用DumpAccChkPoint接口打印相关内容… [`references/DumpAccChkPoint.md`](<references/DumpAccChkPoint.md>)
+- **DumpAccChkPoint功能** — 使用工具进行算子调测时，支持指定偏移位置的Tensor打印。 **该功能与** DumpTensor功能 **类似** ，其使用更加灵活。 当Tensor数据较大时，可通过DumpAccChkPoint指定偏移位置，截取指定长度的元素值打印。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/Deve… [`references/DumpAccChkPoint功能.md`](<references/DumpAccChkPoint功能.md>)
+- **DumpTensor** — 基于算子工程开发的算子，可以使用该接口Dump指定Tensor的内容。同时支持打印自定义的附加信息（仅支持uint32_t数据类型的信息），比如打印当前行号等。 在算子kernel侧实现代码中需要打印Tensor数据的地方调用DumpTensor接口打印相关内容。样例如下。 AscendC::DumpTensor(srcLocal,5, dataLen); … [`references/DumpTensor.md`](<references/DumpTensor.md>)
+- **DumpTensor功能** — 使用工具进行算子调测时，支持DumpTensor功能，默认从Tensor的第0位元素开始打印指定长度的元素值。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9d/v3/OjTm444nR4G-NYBaMzvqLA/note_3.0-zh… [`references/DumpTensor功能.md`](<references/DumpTensor功能.md>)
+- **Duplicate** — 将一个变量或一个立即数，复制多次并填充到向量，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/80/v3/CX8MT67RQyGlNE1ux2NFxw/zh-cn_image_0000… [`references/Duplicate.md`](<references/Duplicate.md>)
+- **DynamicInputRegister** — 算子动态输入注册。 #### 函数原型 void DynamicInputRegister(const char_t *name, const uint32_t num, bool is_push_back = true); void DynamicInputRegister(const char_t *name, const uint32_t num, c… [`references/DynamicInputRegister.md`](<references/DynamicInputRegister.md>)
+- **DynamicInputRegisterByIndex** — 指定位置进行算子动态输入注册。 #### 函数原型 void DynamicInputRegisterByIndex(const char_t *name, const uint32_t num, size_t index); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/DynamicInputRegisterByIndex.md`](<references/DynamicInputRegisterByIndex.md>)
+- **DynamicOutputRegister** — 算子动态输出注册。 #### 函数原型 void DynamicOutputRegister(const char_t *name, const uint32_t num, bool is_push_back = true); void DynamicOutputRegister(const char_t *name, const uint32_t num,… [`references/DynamicOutputRegister.md`](<references/DynamicOutputRegister.md>)
+- **ELMTWISE_INFER_SHAPEANDTYPE** — 提供公共函数宏封装，供算子开发者开发InferShape函数。该函数基于输入的shape和dtype，设置输出的shape和dtype。 例如，输入shape为（1,2,3,4），dtype为float，则该宏会设置算子的输出shape为（1,2,3,4），输出dtype为float。 #### 函数原型 ELMTWISE_INFER_SHAPEANDTYP… [`references/ELMTWISE_INFER_SHAPEANDTYPE.md`](<references/ELMTWISE_INFER_SHAPEANDTYPE.md>)
+- **EnQue** — 将Tensor push到队列。 #### 函数原型 template <typename T> __aicore__ inline bool EnQue(const LocalTensor<T>& tensor) #### 参数说明 **表1** bool EnQue(LocalTensor<T>& tensor)原型定义参数说明 **图1** 将Loca… [`references/EnQue-1.md`](<references/EnQue-1.md>)
+- **EnQue** — 将Tensor push到队列。 #### 函数原型 - 无需指定源和目的位置 template <typename T> __aicore__ inline bool EnQue(const LocalTensor<T>& tensor) - 需要指定源和目的位置 通过 TQueBind 绑定VECIN和VECOUT可实现VECIN和VECOUT内存复用，… [`references/EnQue.md`](<references/EnQue.md>)
+- **End** — 单核内Matmul矩阵相乘计算结束后必须调用一次End函数。 #### 函数原型 __aicore__ inline void End() #### 参数说明 无 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 #### 注意事项 无 #### 调用示例 mm.IterateAll(gm_c); mm.End(); [`references/End.md`](<references/End.md>)
+- **Exp** — 按元素取自然指数，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9e/v3/UXq6voZpQbuHfmRROHlyQg/zh-cn_image_00000025433… [`references/Exp.md`](<references/Exp.md>)
+- **Expand(更改原shape)** — 对shape做补维，并将补维后的结果直接更新到原shape对象。 #### 函数原型 ge::graphStatus Expand(Shape &shape) const #### 参数说明 #### 返回值 补维成功返回ge::GRAPH_SUCCESS。 关于ge::graphStatus类型的定义，请参见 ge::graphStatus 。 #### … [`references/Expand(更改原shape).md`](<references/Expand(更改原shape).md>)
+- **Expand（输出新shape）** — 对shape做补维，并将补维后的结果写入指定的输出shape对象。 #### 函数原型 ge::graphStatus Expand(const Shape &shape, Shape &out_shape) const #### 参数说明 #### 返回值 补维成功返回ge::GRAPH_SUCCESS。 失败则返回ge::GRAPH_FAILED。 关于… [`references/Expand（输出新shape）.md`](<references/Expand（输出新shape）.md>)
+- **FetchEventID** — 根据HardEvent（硬件类型的同步事件）获取相应可用的TEventID，此接口不会申请TEventID，仅提供可用的TEventID。 #### 函数原型 template <HardEvent evt> __aicore__ inline TEventID TPipe::FetchEventID() __aicore__ inline TEventID… [`references/FetchEventID.md`](<references/FetchEventID.md>)
+- **Find** — 查找子串在当前字符串中的位置。 #### 函数原型 size_t Find(const AscendString &ascend_string) const; #### 约束说明 无 #### 参数说明 #### 返回值 [`references/Find.md`](<references/Find.md>)
+- **Follow** — 用于指定当前输入/输出的datatype/format/shape信息与之前定义过的某个输入一致。 #### 函数原型 OpParamDef &Follow(const char *paramName); OpParamDef &Follow(const char *paramName, FollowType ftype); #### 参数说明 #### 返… [`references/Follow.md`](<references/Follow.md>)
+- **Format** — enum Format { FORMAT_NCHW = 0, // NCHW FORMAT_NHWC, // NHWC FORMAT_ND, // Nd Tensor FORMAT_NC1HWC0, // NC1HWC0 FORMAT_FRACTAL_Z, // FRACTAL_Z FORMAT_NC1C0HWPAD = 5, FORMAT_NHWC1C0,… [`references/Format-1.md`](<references/Format-1.md>)
+- **Format** — 定义算子参数数据格式。 #### 函数原型 OpParamDef &Format(std::vector<ge::Format> formats); #### 参数说明 #### 返回值 OpParamDef 算子定义。 #### 约束说明 无 [`references/Format.md`](<references/Format.md>)
+- **FormatToAscendString** — 将Format类型值转化为字符串表达。 使用该接口需要包含type_utils.h头文件。 #include "graph/utils/type_utils.h" #### 函数原型 static AscendString FormatToAscendString(const Format &format); #### 参数说明 #### 返回值 转换后的F… [`references/FormatToAscendString.md`](<references/FormatToAscendString.md>)
+- **FormatToSerialString** — 将Format类型值转化为字符串表达。 从GCC 5.1版本开始，libstdc++为了更好的实现C++11规范，更改了std::string和std::list的一些接口，导致新老版本ABI不兼容。所以推荐使用 FormatToAscendString 替代本接口。 使用该接口需要包含type_utils.h头文件。 #include "graph/uti… [`references/FormatToSerialString.md`](<references/FormatToSerialString.md>)
+- **FrameworkType** — 设置原始模型的框架类型。 #### 函数原型 OpRegistrationData &FrameworkType(const domi::FrameworkType &fmk_type) #### 参数说明 [`references/FrameworkType.md`](<references/FrameworkType.md>)
+- **Free** — 根据指定的MemBlock释放内存到内存池。 #### 函数原型 virtual void Free(MemBlock *block) = 0; #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 虚函数开发者必须实现。 [`references/Free-1.md`](<references/Free-1.md>)
+- **Free** — MemBlock的引用计数减为0时，释放MemBlock到内存池。 #### 函数原型 void Free() #### 参数说明 无 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/Free-2.md`](<references/Free-2.md>)
+- **Free** — 释放tensor。 #### 函数原型 ge::graphStatus Free() #### 参数说明 无 #### 返回值 成功时返回：ge::GRAPH_SUCCESS。 失败时返回manager函数返回的状态码。 关于ge::graphStatus类型的定义，请参见 ge::graphStatus 。 #### 约束说明 无 #### 调用示例 st… [`references/Free.md`](<references/Free.md>)
+- **FreeAllEvent** — 释放对应队列中的所有事件，防止出现同步事件未匹配的情况，是一种额外的保护机制。建议优先保证AllocTensor/FreeTensor和EnQue/DeQue配对使用，配对使用情况下不需要调用该接口。 #### 函数原型 __aicore__ inline void FreeAllEvent() #### 参数说明 无 #### 支持的型号 Kirin902… [`references/FreeAllEvent-1.md`](<references/FreeAllEvent-1.md>)
+- **FreeAllEvent** — 释放对应队列中的所有事件，防止出现同步事件未匹配的情况，是一种额外的保护机制。建议优先保证AllocTensor/FreeTensor和EnQue/DeQue配对使用，配对使用情况下不需要调用该接口。 #### 函数原型 __aicore__ inline void FreeAllEvent() #### 参数说明 无 #### 支持的型号 Kirin902… [`references/FreeAllEvent.md`](<references/FreeAllEvent.md>)
+- **FreeTensor** — 释放队列中的指定Tensor，供Que后续使用。 #### 函数原型 template <typename T> __aicore__ inline void FreeTensor(LocalTensor<T>& tensor) #### 参数说明 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 ###… [`references/FreeTensor-1.md`](<references/FreeTensor-1.md>)
+- **FreeTensor** — 释放队列中的指定Tensor，供Que后续使用。 #### 函数原型 template <typename T> __aicore__ inline void FreeTensor(LocalTensor<T>& tensor) #### 参数说明 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 ###… [`references/FreeTensor.md`](<references/FreeTensor.md>)
+- **FusionParseParamsFn** — 注册解析融合算子属性的函数。 #### 函数原型 OpRegistrationData &FusionParseParamsFn(const FusionParseParamFunc &fusionParseParamFn) #### 参数说明 #### 约束说明 对于融合算子插件，FusionParseParamsFn接口后续版本将会废弃，请使用 Fusi… [`references/FusionParseParamsFn.md`](<references/FusionParseParamsFn.md>)
+- **FusionParseParamsFn（Overload）** — 注册解析融合算子属性的函数，为 FusionParseParamsFn 的重载函数。 #### 函数原型 OpRegistrationData &FusionParseParamsFn(const FusionParseParamByOpFunc &fusion_parse_param_fn) #### 参数说明 #### 回调函数FusionParsePa… [`references/FusionParseParamsFn（Overload）.md`](<references/FusionParseParamsFn（Overload）.md>)
+- **GET_TILING_DATA** — 用于获取算子kernel入口函数传入的tiling信息，并填入注册的Tiling结构体中，此函数会以宏展开的方式进行编译。对应的算子host实现中需要定义TilingData结构体，实现并注册计算TilingData的Tiling函数，具体请参考 Host侧tiling实现 。如果开发者通过 TilingData结构注册 注册了多个TilingData结构体… [`references/GET_TILING_DATA.md`](<references/GET_TILING_DATA.md>)
+- **GET_TILING_DATA_WITH_STRUCT** — 使用该接口指定结构体名称，可获取指定的tiling信息，并填入对应的Tiling结构体中，此函数会以宏展开的方式进行编译。与 GET_TILING_DATA 的区别是：只能获取默认注册的结构体，该接口可以根据指定的结构体名称获取对应的结构体，常用于针对不同的TilingKey注册了不同结构体的情况下。 #### 函数原型 GET_TILING_DATA_WI… [`references/GET_TILING_DATA_WITH_STRUCT.md`](<references/GET_TILING_DATA_WITH_STRUCT.md>)
+- **GenSimplifiedKey** — 注册生成二进制简化匹配key的函数。 #### 函数原型 OpImplRegisterV2 &GenSimplifiedKey(GenSimplifiedKeyKernelFunc gen_simplifiedkey_func); #### 参数说明 #### 返回值 返回算子的OpImplRegisterV2对象，该对象新增注册了生成二进制简化匹配key函… [`references/GenSimplifiedKey.md`](<references/GenSimplifiedKey.md>)
+- **Get** — 获取第index个元素的首地址。 #### 函数原型 const ContinuousVector *Get(const size_t index) const #### 参数说明 #### 返回值 第index个元素的首地址。 #### 约束说明 无 #### 调用示例 // 创建ContinuousVectorVector对象cvv // ... // … [`references/Get-1.md`](<references/Get-1.md>)
+- **Get** — 从TBuf上获取指定长度的Tensor，或者获取全部长度的Tensor。 #### 函数原型 - 获取全部长度的Tensor LocalTensor<T> Get<T>() - 获取指定长度的Tensor LocalTensor<T> Get<T>(uint32_t len) #### 参数说明 **表1** 参数说明 #### 支持的型号 Kirin902… [`references/Get.md`](<references/Get.md>)
+- **GetAddr** — 获取tensor数据地址。若存在manager函数，则由manager函数给出地址。 #### 函数原型 TensorAddress GetAddr() const #### 参数说明 无 #### 返回值 tensor地址。 #### 约束说明 无 #### 调用示例 auto addr0 = reinterpret_cast<void *>(0x10);… [`references/GetAddr-1.md`](<references/GetAddr-1.md>)
+- **GetAddr** — - 获取只读的device内存地址。 - 获取可读写的device内存地址。 #### 函数原型 - 获取只读的device内存地址场景： const void *GetAddr() const - 获取可读写的device内存地址场景： void *GetAddr() #### 参数说明 无 #### 返回值 - 获取只读的device内存地址场景： - … [`references/GetAddr-2.md`](<references/GetAddr-2.md>)
+- **GetAddr** — 获取Tensor的数据地址。 #### 函数原型 const void *GetAddr() const void *GetAddr() #### 参数说明 无 #### 返回值 返回数据地址。 #### 约束说明 无 #### 调用示例 Tensor tensor{{{8, 3, 224, 224}, {16, 3, 224, 224}}, // shap… [`references/GetAddr.md`](<references/GetAddr.md>)
+- **GetAllAttrNamesAndTypes** — 获取算子所有已配置的属性名称及类型，包含IR定义的普通属性和开发者自定义属性。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/31/v3/IjCingHMTCu7UyeVXj5z2A/note_3.0-zh-cn.pn… [`references/GetAllAttrNamesAndTypes.md`](<references/GetAllAttrNamesAndTypes.md>)
+- **GetAllIrAttrNamesAndTypes** — 获取该算子所有的IR定义的属性名称和属性类型，包含普通和必选属性两种。 #### 函数原型 graphStatus GetAllIrAttrNamesAndTypes(std::map<AscendString, AscendString> &attr_name_types) const; #### 参数说明 #### 返回值 #### 异常处理 无 ###… [`references/GetAllIrAttrNamesAndTypes.md`](<references/GetAllIrAttrNamesAndTypes.md>)
+- **GetAttr** — 根据属性名称获取对应的属性值。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7a/v3/xe2Q9Gg4R1GTzMEl9wtYGQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date… [`references/GetAttr.md`](<references/GetAttr.md>)
+- **GetAttrNum** — 获取属性的数量。 #### 函数原型 size_t GetAttrNum() const #### 参数说明 无 #### 返回值 属性的数量。 #### 约束说明 无 #### 调用示例 const RuntimeAttrs * runtime_attrs = kernel_context->GetAttrs(); size_t attr_num = ru… [`references/GetAttrNum.md`](<references/GetAttrNum.md>)
+- **GetAttrPointer** — 获取指定索引的算子属性，返回指向此属性的指针。 #### 函数原型 template<typename T> const T *GetAttrPointer(size_t index) const #### 参数说明 #### 返回值 指向属性的指针。 #### 约束说明 无 #### 调用示例 #include "register/op_def_regis… [`references/GetAttrPointer.md`](<references/GetAttrPointer.md>)
+- **GetAttrs** — 获取算子的属性值，仅在算子IR原型定义中的属性值会被返回，其他属性值被丢弃。 #### 函数原型 const RuntimeAttrs *GetAttrs() const #### 参数说明 无 #### 返回值 所有IR原型定义的属性值，为const类型的对象，属性值按照IR原型定义的顺序依次保存。 #### 约束说明 无 #### 调用示例 // 假设已… [`references/GetAttrs-1.md`](<references/GetAttrs-1.md>)
+- **GetAttrs** — 获取算子的属性值，仅在算子IR原型定义和调用IMPL_OP宏注册的属性值会被返回，其他属性值被丢弃。 #### 函数原型 const RuntimeAttrs *GetAttrs() const #### 参数说明 无 #### 返回值 所有IR原型定义的属性值以及通过IMPL_OP宏注册的属性值，为const类型的对象，属性值按照IR原型定义的顺序依次保存… [`references/GetAttrs.md`](<references/GetAttrs.md>)
+- **GetAutoMappingSubgraphIOIndexFunc** — 根据网络类型，获取已经注册的自动映射函数。 #### 函数原型 AutoMappingSubgraphIOIndexFunc GetAutoMappingSubgraphIOIndexFunc(domi::FrameworkType framework) #### 参数说明 #### 返回值 AutoMappingSubgraphIOIndexFunc：自动… [`references/GetAutoMappingSubgraphIOIndexFunc.md`](<references/GetAutoMappingSubgraphIOIndexFunc.md>)
+- **GetBaseAddr** — 根据传入的logicPos（逻辑抽象位置），获取该位置的基础地址，只在CPU调试场景下此接口生效，在CPU调试中通常用于将Tensor地址由CPU地址转换为NPU地址。 #### 函数原型 inline uint8_t* GetBaseAddr(int8_t logicPos) #### 参数说明 #### 支持的型号 Kirin9020系列处理器 Kiri… [`references/GetBaseAddr.md`](<references/GetBaseAddr.md>)
+- **GetBlockDim** — 获取blockDim，即参与计算的Vector或者Cube核数。blockDim的详细概念和设置方式请参考 SetBlockDim 。 #### 函数原型 uint32_t GetBlockDim() const; #### 参数说明 无 #### 返回值 返回blockDim。 #### 约束说明 无 #### 调用示例 ge::graphStatus T… [`references/GetBlockDim.md`](<references/GetBlockDim.md>)
+- **GetBlockIdx** — 获取当前核的index，用于代码内部的多核逻辑控制及多核偏移量计算等。 #### 函数原型 __aicore__ inline int64_t GetBlockIdx() #### 参数说明 无 #### 返回值 当前核的index，index的范围为[0, 开发者配置的block_dim数量 - 1]。 #### 支持的型号 Kirin9020系列处理器 … [`references/GetBlockIdx.md`](<references/GetBlockIdx.md>)
+- **GetBlockNum** — 获取当前任务配置的核数，用于代码内部的多核逻辑控制等。 #### 函数原型 __aicore__ inline int64_t GetBlockNum() #### 参数说明 无 #### 返回值 当前任务配置的核数。 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 无 #### 调用示例 #include… [`references/GetBlockNum.md`](<references/GetBlockNum.md>)
+- **GetBool** — 获取bool类型的属性值。 #### 函数原型 const bool *GetBool(const size_t index) const #### 参数说明 #### 返回值 指向属性值的指针。 #### 约束说明 无 #### 调用示例 const RuntimeAttrs * runtime_attrs = kernel_context->GetAtt… [`references/GetBool.md`](<references/GetBool.md>)
+- **GetC0Format** — 根据实际format获取C0 format的值。C0值是AI处理器特有数据格式所需要的参数。例如NC1HWC0，最后一维即表示C0值，C0值在不同的AI处理器中数值不同，通过C0 format来承载。 实际format为4字节大小，第1个字节的高四位为预留字段，低四位为c0 format，第2-3字节为子format信息，第4字节为主format信息，如下所… [`references/GetC0Format.md`](<references/GetC0Format.md>)
+- **GetC0Value** — 从实际format中解析出c0 format信息。 #### 函数原型 inline int64_t GetC0Value(int32_t format) #### 参数说明 #### 返回值 - 如果包含c0 format，返回实际format中包含的c0 format。 - 如果不包含c0 format，返回-1。 #### 异常处理 无 #### 约束… [`references/GetC0Value.md`](<references/GetC0Value.md>)
+- **GetCapacity** — 获取本实例可容纳的最大tiling data长度。 #### 函数原型 size_t GetCapacity() const; #### 参数说明 无 #### 返回值 最大tiling data长度。 #### 约束说明 无 #### 调用示例 auto td_buf = TilingData::CreateCap(100U); auto td = rei… [`references/GetCapacity-1.md`](<references/GetCapacity-1.md>)
+- **GetCapacity** — 获取最大可保存的元素个数。 #### 函数原型 size_t GetCapacity() const #### 参数说明 无 #### 返回值 最大可保存的元素个数。 #### 约束说明 无 #### 调用示例 size_t capacity = 100U; auto cv_holder = ContinuousVector::Create<int64_t>… [`references/GetCapacity.md`](<references/GetCapacity.md>)
+- **GetChangedResourceKeys** — 一般由框架调用。 在结束写类型算子的推导后，可以调用该接口获取变化的资源标识。 #### 函数原型 const std::set<ge::AscendString>& GetChangedResourceKeys() const #### 参数说明 无 #### 返回值 #### 约束说明 无 [`references/GetChangedResourceKeys.md`](<references/GetChangedResourceKeys.md>)
+- **GetComputeNodeInfo** — 获取本kernel对应的计算节点的信息。 图执行时本质上是执行图上的一个个结点的kernel在执行。本方法能够从KernelContext中获取保存的ComputeNodeInfo，而ComputeNodeInfo中包含InputDesc等信息。 #### 函数原型 const ComputeNodeInfo *GetComputeNodeInfo() co… [`references/GetComputeNodeInfo.md`](<references/GetComputeNodeInfo.md>)
+- **GetComputeNodeInputNum** — 获取算子的输入个数。 #### 函数原型 size_t GetComputeNodeInputNum() const #### 参数说明 无 #### 返回值 算子的输入个数。 #### 约束说明 无 #### 调用示例 // 假设已存在KernelContext *context auto extend_context = reinterpret_cast… [`references/GetComputeNodeInputNum.md`](<references/GetComputeNodeInputNum.md>)
+- **GetComputeNodeOutputNum** — 获取算子的输出个数。 #### 函数原型 size_t GetComputeNodeOutputNum() const; #### 参数说明 无 #### 返回值 算子的输出个数。 #### 约束说明 无 #### 调用示例 // 假设已存在KernelContext *context auto extend_context = reinterpret_ca… [`references/GetComputeNodeOutputNum.md`](<references/GetComputeNodeOutputNum.md>)
+- **GetConstData** — 如果TensorDesc是常量节点的描述，获取TensorDesc中的权重值。 #### 函数原型 bool GetConstData(uint8_t **const_data_buffer, size_t &const_data_len) const; #### 参数说明 #### 返回值 获取成功，返回true。 获取失败，返回false。 #### 异… [`references/GetConstData.md`](<references/GetConstData.md>)
+- **GetCoreMemBw** — 获取硬件平台存储空间的带宽大小，仅支持L2、HBM。硬件存储空间类型定义如下。 enum class CoreMemType { L0_A = 0, L0_B = 1, L0_C = 2, L1 = 3, L2 = 4, UB = 5, HBM = 6, RESERVED }; #### 函数原型 void GetCoreMemBw(const CoreMe… [`references/GetCoreMemBw.md`](<references/GetCoreMemBw.md>)
+- **GetCoreMemSize** — 获取硬件平台存储空间的内存大小，例如L1、L0_A、L0_B、L2等，支持的存储空间类型定义如下。 enum class CoreMemType { L0_A = 0, L0_B = 1, L0_C = 2, L1 = 3, L2 = 4, UB = 5, HBM = 6, RESERVED }; #### 函数原型 void GetCoreMemSize(… [`references/GetCoreMemSize.md`](<references/GetCoreMemSize.md>)
+- **GetCoreNum** — 获取当前硬件平台的核数。若AI Core的架构为Cube、Vector分离架构，返回AI Core上的Vector核数；非分离架构返回AI Core的核数。 #### 函数原型 uint32_t GetCoreNum(void) const; #### 参数说明 无 #### 返回值 针对Kirin9020系列处理器，Cube、Vector分离架构，返回AI… [`references/GetCoreNum.md`](<references/GetCoreNum.md>)
+- **GetCoreNumAic** — 获取当前硬件平台AI Core中Cube核数。若AI Core的架构为Cube、Vector分离架构，返回AI Core上的Cube核数；非分离架构返回AI Core的核数。 #### 函数原型 uint32_t GetCoreNumAic(void) const; #### 参数说明 无 #### 返回值 针对Kirin9020系列处理器，Cube、Vec… [`references/GetCoreNumAic.md`](<references/GetCoreNumAic.md>)
+- **GetCoreNumAiv** — 获取当前硬件平台AI Core中Vector核数。若AI Core的架构为Cube、Vector分离架构，返回AI Core上的Vector核数；非分离架构返回AI Core的核数。 #### 函数原型 uint32_t GetCoreNumAiv(void) const; #### 参数说明 无 #### 返回值 针对Kirin9020系列处理器，Cube… [`references/GetCoreNumAiv.md`](<references/GetCoreNumAiv.md>)
+- **GetCount** — 获取MemBlock的引用计数。 #### 函数原型 size_t GetCount() const #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetCount.md`](<references/GetCount.md>)
+- **GetData** — 获取Tensor的数据地址。 #### 函数原型 template<class T> const T *GetData() const template<class T> T *GetData() #### 参数说明 #### 返回值 数据地址。 #### 约束说明 无 #### 调用示例 Tensor tensor{{{8, 3, 224, 224}, {… [`references/GetData-1.md`](<references/GetData-1.md>)
+- **GetData** — 获取TilingData的数据指针。 #### 函数原型 void *GetData(); const void *GetData() const; #### 参数说明 无 #### 返回值 data指针。 #### 约束说明 无 #### 调用示例 auto td_buf = TilingData::CreateCap(100U); auto td = r… [`references/GetData-2.md`](<references/GetData-2.md>)
+- **GetData** — 获取首个元素的指针地址，[GetData(), reinterpret_cast<T *>(GetData()) + GetSize())]中的数据即为当前容器中保存的数据。 #### 函数原型 const T *GetData() const #### 参数说明 无 #### 返回值 首个元素的指针地址。 #### 约束说明 无 #### 调用示例 siz… [`references/GetData-3.md`](<references/GetData-3.md>)
+- **GetData** — 获取Tensor中的数据。 const uint8_t* GetData() const返回的数据不可修改，uint8_t* GetData()返回的数据可修改。 #### 函数原型 const uint8_t *GetData() const; uint8_t *GetData(); #### 参数说明 无 #### 返回值 #### 异常处理 无 ###… [`references/GetData-4.md`](<references/GetData-4.md>)
+- **GetData** — 获取首个元素的指针地址，[GetData(), reinterpret_cast<T *>(GetData()) + GetSize()) 中的数据即为当前容器中保存的数据。 #### 函数原型 const void *GetData() const #### 参数说明 无 #### 返回值 首个元素的指针地址。 #### 约束说明 无 #### 调用示例 … [`references/GetData.md`](<references/GetData.md>)
+- **GetDataSize** — 获取tiling data长度。 #### 函数原型 size_t GetDataSize() const; #### 参数说明 无 #### 返回值 tiling data长度。 #### 约束说明 无 #### 调用示例 auto td_buf = TilingData::CreateCap(100U); auto td = reinterpret_ca… [`references/GetDataSize.md`](<references/GetDataSize.md>)
+- **GetDataType** — 获取Tensor的数据类型。 #### 函数原型 ge::DataType GetDataType() const #### 参数说明 无 #### 返回值 返回Tensor中的数据类型。 关于ge::DataType的定义，请参见 DataType 。 #### 约束说明 无 #### 调用示例 StorageShape sh({1, 2, 3}, {1,… [`references/GetDataType-1.md`](<references/GetDataType-1.md>)
+- **GetDataType** — 获取ShapeAndType类的数据类型。 #### 函数原型 DataType GetDataType() const #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetDataType-2.md`](<references/GetDataType-2.md>)
+- **GetDataType** — 获取Tensor的DataType。 #### 函数原型 ge::DataType GetDataType() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetDataType-3.md`](<references/GetDataType-3.md>)
+- **GetDataType** — 获取TensorDesc所描述Tensor的数据类型。 #### 函数原型 DataType GetDataType() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 由于返回的DataType信息为值拷贝，因此修改返回的DataType信息，不影响TensorDesc中已有的DataType信息。 [`references/GetDataType-4.md`](<references/GetDataType-4.md>)
+- **GetDataType** — 获取CompileTimeTensorDesc所描述的Tensor的数据类型。 #### 函数原型 ge::DataType GetDataType() const #### 参数说明 无 #### 返回值 DataType的声明 DataType 。 #### 约束说明 无 #### 调用示例 auto dtype_ = ge::DataType::DT_… [`references/GetDataType.md`](<references/GetDataType.md>)
+- **GetDataTypeLength** — 获取数据类型所占内存大小。 使用该接口需要包含type_utils.h头文件。 #include "graph/utils/type_utils.h" #### 函数原型 bool GetDataTypeLength(const ge::DataType data_type, uint32_t &length); #### 参数说明 #### 返回值 获取成… [`references/GetDataTypeLength.md`](<references/GetDataTypeLength.md>)
+- **GetDim** — 获取Shape第idx维的长度。 #### 函数原型 int64_t GetDim(size_t idx) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetDim-1.md`](<references/GetDim-1.md>)
+- **GetDim** — 获取对应idx轴的dim值。 #### 函数原型 int64_t GetDim(const size_t idx) const #### 参数说明 #### 返回值 dim值，在idx>=kMaxDimNum时，返回kInvalidDimValue。 #### 约束说明 调用者需要保证index合法，即idx<kMaxDimNum。 #### 调用示例 Sh… [`references/GetDim.md`](<references/GetDim.md>)
+- **GetDimNum** — 获取Shape的维度个数。 #### 函数原型 size_t GetDimNum() const #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetDimNum-1.md`](<references/GetDimNum-1.md>)
+- **GetDimNum** — 获取dim_num。 #### 函数原型 size_t GetDimNum() const #### 参数说明 无 #### 返回值 获取dim_num，即Shape的长度。 #### 约束说明 无 #### 调用示例 Shape shape0({3, 256, 256}); auto dim_num = shape0.GetDimNum(); // 3 [`references/GetDimNum.md`](<references/GetDimNum.md>)
+- **GetDims** — 获取Shape所有维度组成的向量。 #### 函数原型 std::vector<int64_t> GetDims() const #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetDims.md`](<references/GetDims.md>)
+- **GetDynamicInputDesc** — 根据name和index的组合获取算子动态Input的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9a/v3/_YIeU88ITkWvB0tmldbquA/note_3.0-zh-cn.png… [`references/GetDynamicInputDesc-1.md`](<references/GetDynamicInputDesc-1.md>)
+- **GetDynamicInputDesc** — 根据算子原型定义中的输入索引获取对应动态输入的tensor描述信息。 #### 函数原型 const CompileTimeTensorDesc *GetDynamicInputDesc(const size_t ir_index, const size_t relative_index) const #### 参数说明 #### 返回值 CompileTi… [`references/GetDynamicInputDesc.md`](<references/GetDynamicInputDesc.md>)
+- **GetDynamicInputNum** — 获取算子的动态Input的实际个数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/98/v3/GnShU8oDQMiZS6-rZmaKUg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-D… [`references/GetDynamicInputNum.md`](<references/GetDynamicInputNum.md>)
+- **GetDynamicInputShapeRange** — 根据算子原型定义中的输入索引获取对应的动态输入shape range指针。 #### 函数原型 const Range<Shape> *GetDynamicInputShapeRange(const size_t ir_index, const size_t relative_index) const; #### 参数说明 #### 返回值 shape ra… [`references/GetDynamicInputShapeRange.md`](<references/GetDynamicInputShapeRange.md>)
+- **GetDynamicInputTensorRange** — 根据算子原型定义中的输入索引获取对应的动态输入tensor range指针。 #### 函数原型 using TensorRange = Range<Tensor> const TensorRange *GetDynamicInputTensorRange(const size_t ir_index, const size_t relative_index)… [`references/GetDynamicInputTensorRange.md`](<references/GetDynamicInputTensorRange.md>)
+- **GetDynamicOutputDesc** — 根据name和index的组合获取算子动态Output的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9d/v3/w6yae7BbThCLDHKLbnd_FA/note_3.0-zh-cn.pn… [`references/GetDynamicOutputDesc.md`](<references/GetDynamicOutputDesc.md>)
+- **GetDynamicOutputNum** — 获取算子的动态Output的实际个数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2c/v3/JZHXAKHaSEillyNPQNypfw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-… [`references/GetDynamicOutputNum.md`](<references/GetDynamicOutputNum.md>)
+- **GetDynamicSubgraph** — 根据子图名称和子图索引获取算子对应的动态输入子图。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5a/v3/ChcDA9_aTVu_YBK9Hpfu1Q/note_3.0-zh-cn.png?HW-CC-KV=V1&… [`references/GetDynamicSubgraph.md`](<references/GetDynamicSubgraph.md>)
+- **GetDynamicSubgraphBuilder** — 根据子图名称和子图索引获取算子对应的动态输入子图的构建函数对象。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/18/v3/KeJYWYhpRsuZre7v18Gnxw/note_3.0-zh-cn.png?HW-CC… [`references/GetDynamicSubgraphBuilder.md`](<references/GetDynamicSubgraphBuilder.md>)
+- **GetExpandDimsRule** — 获取Tensor的补维规则。 #### 函数原型 graphStatus GetExpandDimsRule(AscendString &expand_dims_rule) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetExpandDimsRule-1.md`](<references/GetExpandDimsRule-1.md>)
+- **GetExpandDimsRule** — 获取Tensor的补维规则。 #### 函数原型 graphStatus GetExpandDimsRule(AscendString &expand_dims_rule) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetExpandDimsRule.md`](<references/GetExpandDimsRule.md>)
+- **GetExpandDimsType** — 获取补维规则。 #### 函数原型 ExpandDimsType GetExpandDimsType() const #### 参数说明 无 #### 返回值 补维规则。 #### 约束说明 无 #### 调用示例 ExpandDimsType dim_type("1100"); StorageFormat format(ge::Format::FORMAT… [`references/GetExpandDimsType-1.md`](<references/GetExpandDimsType-1.md>)
+- **GetExpandDimsType** — 获取shape的补维规则。 #### 函数原型 ExpandDimsType GetExpandDimsType() const #### 参数说明 无 #### 返回值 返回shape的补维规则。 关于ExpandDimsType类型的定义，请参见 ExpandDimsType 。 #### 约束说明 无 #### 调用示例 Tensor tensor{{… [`references/GetExpandDimsType-2.md`](<references/GetExpandDimsType-2.md>)
+- **GetExpandDimsType** — 获取原始Format向运行时Format转换时的补维规则。 #### 函数原型 ExpandDimsType GetExpandDimsType() const #### 参数说明 无 #### 返回值 补维规则，请参考 ExpandDimsType 。 #### 约束说明 无 #### 调用示例 auto dtype_ = ge::DataType::DT… [`references/GetExpandDimsType.md`](<references/GetExpandDimsType.md>)
+- **GetExtendInfo** — 获取本kernel的扩展信息。 #### 函数原型 const KernelExtendInfo *GetExtendInfo() const #### 参数说明 无 #### 返回值 本kernel的扩展信息。 关于KernelExtendInfo类型的定义，请参见 内部关联接口 KernelExtendInfo类。 #### 约束说明 无 #### 调用… [`references/GetExtendInfo.md`](<references/GetExtendInfo.md>)
+- **GetFloat** — 获取float类型的属性值。 #### 函数原型 const float *GetFloat(const size_t index) const #### 参数说明 #### 返回值 指向属性值的指针。 #### 约束说明 无 #### 调用示例 const RuntimeAttrs * runtime_attrs = kernel_context->Get… [`references/GetFloat.md`](<references/GetFloat.md>)
+- **GetFormat** — 获取Tensor的format，包含运行时format和原始format，返回的format对象都是只读的。 #### 函数原型 const StorageFormat &GetFormat() const #### 参数说明 无 #### 返回值 只读的format引用。 关于StorageFormat类型的定义，请参见 StorageFormat 。 #… [`references/GetFormat-1.md`](<references/GetFormat-1.md>)
+- **GetFormat** — 获取Tensor的Format。 #### 函数原型 ge::Format GetFormat() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetFormat-2.md`](<references/GetFormat-2.md>)
+- **GetFormat** — 获取TensorDesc所描述的Tensor的Format。 #### 函数原型 Format GetFormat() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 由于返回的Format信息为值拷贝，因此修改返回的Format信息，不影响TensorDesc中已有的Format信息。 [`references/GetFormat-3.md`](<references/GetFormat-3.md>)
+- **GetFormat** — 获取CompileTimeTensorDesc所描述的Tensor的数据排布格式。 #### 函数原型 const StorageFormat &GetFormat() const #### 参数说明 无 #### 返回值 返回数据排布格式。 #### 约束说明 无 #### 调用示例 auto dtype_ = ge::DataType::DT_INT32… [`references/GetFormat.md`](<references/GetFormat.md>)
+- **GetFormatFromC0** — 根据传入的format和c0format信息得到实际的format。 实际format为4字节大小，第1个字节的高四位为预留字段，低四位为c0 format，第2-3字节为子format信息，第4字节为主format信息，如下。 /* * --------------------------------------------------- * | 4 bi… [`references/GetFormatFromC0.md`](<references/GetFormatFromC0.md>)
+- **GetFormatFromSub** — 根据传入的主format和子format信息得到实际的format。 实际format为4字节大小，第1个字节的高四位为预留字段，低四位为c0 format，第2-3字节为子format信息，第4字节为主format信息，如下。 /* * --------------------------------------------------- * | 4 bi… [`references/GetFormatFromSub.md`](<references/GetFormatFromSub.md>)
+- **GetFormatFromSubAndC0** — 根据传入的主format，子format和c0format信息得到实际的format。 实际format为4字节大小，第1个字节的高四位为预留字段，低四位为c0 format，第2-3字节为子format信息，第4字节为主format信息，如下。 /* * ---------------------------------------------------… [`references/GetFormatFromSubAndC0.md`](<references/GetFormatFromSubAndC0.md>)
+- **GetFormatName** — 根据传入的format类型，获取format的字符串描述。 #### 函数原型 const char_t *GetFormatName(Format format) #### 参数说明 #### 返回值 该format所对应的字符串描述，若format不合法或不被识别，则返回nullptr。 #### 异常处理 无 #### 约束说明 返回的字符串不可被修改… [`references/GetFormatName.md`](<references/GetFormatName.md>)
+- **GetFrameworkType** — 获取原始模型的框架类型。 #### 函数原型 domi::FrameworkType GetFrameworkType() const #### 参数说明 无 #### 约束说明 无 [`references/GetFrameworkType.md`](<references/GetFrameworkType.md>)
+- **GetFullSize** — 获取补维后的dim数。 #### 函数原型 AxisIndex GetFullSize() const #### 参数说明 无 #### 返回值 返回补维规则的长度，或者说是补维规则描述的维度。 #### 约束说明 无 #### 调用示例 ExpandDimsType type1("1001"); auto dim_num = type1.GetFullSi… [`references/GetFullSize.md`](<references/GetFullSize.md>)
+- **GetFusionParseParamByOpFn** — 获取解析融合算子属性的函数。 #### 函数原型 FusionParseParamByOpFunc GetFusionParseParamByOpFn() const; #### 参数说明 无 #### 返回值 返回FusionParseParamByOpFunc，解析融合算子属性的函数。 #### 约束说明 无 #### 调用示例 无 [`references/GetFusionParseParamByOpFn.md`](<references/GetFusionParseParamByOpFn.md>)
+- **GetFusionParseParamFn** — 获取解析融合算子属性的函数。 #### 函数原型 FusionParseParamFunc GetFusionParseParamFn() const #### 参数说明 无 #### 约束说明 GetFusionParseParamFn接口后续版本将会废弃，请使用 GetFusionParseParamByOpFn 接口获取融合算子的属性。 [`references/GetFusionParseParamFn.md`](<references/GetFusionParseParamFn.md>)
+- **GetImplyType** — 获取算子执行方式。 #### 函数原型 domi::ImplyType GetImplyType () const #### 参数说明 无 #### 约束说明 无 [`references/GetImplyType.md`](<references/GetImplyType.md>)
+- **GetInferenceContext** — 获取当前算子传递InferShape推导所需要的关联信息，比如前面算子的shape和DataType信息。 #### 函数原型 InferenceContextPtr GetInferenceContext() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetInferenceContext.md`](<references/GetInferenceContext.md>)
+- **GetInputAttr** — 根据属性名称获取算子输入Tensor对应的属性值。 #### 函数原型 graphStatus GetInputAttr(const int32_t index, const char_t *name, AscendString &attr_value) const; graphStatus GetInputAttr(const char_t *dst_na… [`references/GetInputAttr.md`](<references/GetInputAttr.md>)
+- **GetInputConstData** — 如果指定算子Input对应的节点为Const节点，可调用该接口获取Const节点的数据。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6a/v3/EjR8LQjJSHedal3bsf_X1Q/note_3.0-zh-… [`references/GetInputConstData.md`](<references/GetInputConstData.md>)
+- **GetInputDataType** — 根据算子输入索引获取对应输入的数据类型。这里的输入索引是指算子实例化后实际的索引，不是原型定义中的索引。 #### 函数原型 ge::DataType GetInputDataType(const size_t index) const; #### 参数说明 #### 返回值 返回指定输入的数据类型。 若输入index非法，返回DT_UNDEFINED。 #… [`references/GetInputDataType.md`](<references/GetInputDataType.md>)
+- **GetInputDesc** — 根据算子Input名称或Input索引获取算子Input的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/69/v3/0N5HGfHVS_uapra3FTlkEw/note_3.0-zh-cn.p… [`references/GetInputDesc-1.md`](<references/GetInputDesc-1.md>)
+- **GetInputDesc** — 根据算子输入索引获取对应输入的tensor描述信息。这里的输入索引是指算子实例化后实际的索引，不是原型定义中的索引。 #### 函数原型 const CompileTimeTensorDesc *GetInputDesc(const size_t index) const #### 参数说明 #### 返回值 输入TensorDesc的指针，当输入index… [`references/GetInputDesc.md`](<references/GetInputDesc.md>)
+- **GetInputHandleShapesAndTypes** — 在推理上下文中，获取算子输入句柄的 ShapeAndType 。 #### 函数原型 const std::vector<std::vector<ShapeAndType>> &GetInputHandleShapesAndTypes() const #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetInputHandleShapesAndTypes.md`](<references/GetInputHandleShapesAndTypes.md>)
+- **GetInputInstanceInfo** — 根据算子IR原型中的输入索引，获取对应的实例化对象。 #### 函数原型 const AnchorInstanceInfo *GetInputInstanceInfo(const size_t ir_index) const #### 参数说明 #### 返回值 返回const类型的实例化对象的地址。 #### 约束说明 无 #### 调用示例 for (s… [`references/GetInputInstanceInfo.md`](<references/GetInputInstanceInfo.md>)
+- **GetInputShape** — 根据算子输入索引获取对应的输入shape指针。这里的输入索引是指算子实例化后实际的索引，不是原型定义中的索引。 #### 函数原型 const StorageShape *GetInputShape(const size_t index) const; #### 参数说明 #### 返回值 指定的输入shape指针，输入shape中包含了原始shape与运行… [`references/GetInputShape-1.md`](<references/GetInputShape-1.md>)
+- **GetInputShape** — 根据算子输入索引获取对应的输入shape指针。这里的输入索引是指算子实例化后实际的索引，不是原型定义中的索引。 #### 函数原型 const Shape *GetInputShape(const size_t index) const; #### 参数说明 #### 返回值 输入shape指针，index非法时，返回空指针。 关于Shape类型的定义，请参… [`references/GetInputShape.md`](<references/GetInputShape.md>)
+- **GetInputShapeRange** — 根据算子输入索引获取对应的输入shape range指针。这里的输入索引是指算子实例化后实际的索引，不是原型定义中的索引。 #### 函数原型 const Range<Shape> *GetInputShapeRange(const size_t index) const; #### 参数说明 #### 返回值 输入shape range指针，index非法… [`references/GetInputShapeRange.md`](<references/GetInputShapeRange.md>)
+- **GetInputTdInfo** — 根据输入索引信息，获取算子的对应输入Tensor描述，注意，编译时无法确定的shape信息不在Tensor描述中（由于编译时无法确定shape，因此该Tensor描述里不包含shape信息）。 #### 函数原型 const CompileTimeTensorDesc *GetInputTdInfo(const size_t index) const ###… [`references/GetInputTdInfo.md`](<references/GetInputTdInfo.md>)
+- **GetInputTensor** — 根据算子输入索引获取对应的输入tensor指针。这里的输入索引是指算子实例化后实际的索引，不是原型定义中的索引。 #### 函数原型 const Tensor *GetInputTensor(const size_t index) const; #### 参数说明 #### 返回值 指定的输入tensor指针，当输入index非法时返回空指针。 关于Tens… [`references/GetInputTensor-1.md`](<references/GetInputTensor-1.md>)
+- **GetInputTensor** — 根据算子输入索引获取对应的输入tensor指针。这里的输入索引是指算子实例化后实际的索引，不是原型定义中的索引。 #### 函数原型 const Tensor *GetInputTensor(const size_t index) const; #### 参数说明 #### 返回值 返回指向输入Tensor指针，当输入index非法时，返回空指针。 关于Te… [`references/GetInputTensor.md`](<references/GetInputTensor.md>)
+- **GetInputTensorRange** — 根据算子输入索引获取对应的输入tensor range指针。这里的输入索引是指算子实例化后实际的索引，不是原型定义中的索引。 #### 函数原型 using TensorRange = Range<Tensor> const TensorRange *GetInputTensorRange(const size_t index) const; #### 参数… [`references/GetInputTensorRange.md`](<references/GetInputTensorRange.md>)
+- **GetInputsNum** — 获取算子在网络中的实际输入个数。 #### 函数原型 size_t GetInputsNum() const #### 参数说明 无 #### 返回值 算子的实际输入个数。 #### 约束说明 无 #### 调用示例 size_t index = compute_node_info->GetInputsNum(); [`references/GetInputsNum.md`](<references/GetInputsNum.md>)
+- **GetInputsSize** — 获取当前算子Input个数。 #### 函数原型 size_t GetInputsSize() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetInputsSize.md`](<references/GetInputsSize.md>)
+- **GetInstanceNum** — 获取IR定义某个输入对应的实际输入个数。 #### 函数原型 uint32_t GetInstanceNum() const #### 参数说明 无 #### 返回值 IR定义某个输入对应的实际输入个数。 #### 约束说明 无 #### 调用示例 // IR定义的第一个输入是动态输入，且有10个实际输入 AnchorInstanceInfo anchor_… [`references/GetInstanceNum.md`](<references/GetInstanceNum.md>)
+- **GetInstanceStart** — 获取算子某个IR输入在实际输入中的起始序号（index）。 #### 函数原型 uint32_t GetInstanceStart() const #### 参数说明 无 #### 返回值 算子某个IR输入在实际输入中的起始序号（index）。 #### 约束说明 无 #### 调用示例 AnchorInstanceInfo anchor_0(0, 10);… [`references/GetInstanceStart.md`](<references/GetInstanceStart.md>)
+- **GetInt** — 获取int类型的属性值。 #### 函数原型 const int64_t *GetInt(const size_t index) const #### 参数说明 #### 返回值 指向属性值的指针。 #### 约束说明 无 #### 调用示例 const RuntimeAttrs * runtime_attrs = kernel_context->GetAt… [`references/GetInt.md`](<references/GetInt.md>)
+- **GetIrInputInstanceInfo** — 根据算子原型定义中的输入索引获取对应输入的实例化信息。 #### 函数原型 const AnchorInstanceInfo * GetIrInputInstanceInfo (const size_t ir_index) const #### 参数说明 #### 返回值 指定输入的实例化信息。 关于AnchorInstanceInfo的定义，请参见 Anc… [`references/GetIrInputInstanceInfo.md`](<references/GetIrInputInstanceInfo.md>)
+- **GetIrInputsNum** — 获取算子IR原型定义中的输入个数。 #### 函数原型 size_t GetIrInputsNum() const #### 参数说明 无 #### 返回值 IR原型中定义的输入个数，size_t类型。 #### 约束说明 无 #### 调用示例 size_t index = compute_node_info->GetIrInputsNum(); [`references/GetIrInputsNum.md`](<references/GetIrInputsNum.md>)
+- **GetIrOutputInstanceInfo** — 根据算子原型定义中的输出索引获取对应输出的实例化信息。 #### 函数原型 const AnchorInstanceInfo *GetIrOutputInstanceInfo(const size_t ir_index) const; #### 参数说明 #### 返回值 指定输出的实例化信息。 关于AnchorInstanceInfo的定义，请参见 Anc… [`references/GetIrOutputInstanceInfo.md`](<references/GetIrOutputInstanceInfo.md>)
+- **GetIrOutputsNum** — 获取算子IR原型定义中的输出个数。 #### 函数原型 size_t GetIrOutputsNum() const #### 参数说明 无 #### 返回值 IR原型中定义的输出个数，size_t类型。 #### 约束说明 无 #### 调用示例 size_t index = compute_node_info->GetIrOutputsNum(); [`references/GetIrOutputsNum.md`](<references/GetIrOutputsNum.md>)
+- **GetKernelName** — 获取当前内核的名称。 #### 函数原型 const char *GetKernelName() const #### 参数说明 无 #### 返回值 当前内核的名称。 #### 约束说明 无 #### 调用示例 // 假设已存在KernelContext *context auto extend_context = reinterpret_cast<Ext… [`references/GetKernelName.md`](<references/GetKernelName.md>)
+- **GetKernelType** — 获取当前内核的类型。 #### 函数原型 const char *GetKernelType() const #### 参数说明 无 #### 返回值 当前内核的类型。 #### 约束说明 无 #### 调用示例 // 假设已存在KernelContext *context auto extend_context = reinterpret_cast<Ext… [`references/GetKernelType.md`](<references/GetKernelType.md>)
+- **GetLength** — 获取字符串的长度。 #### 函数原型 size_t GetLength() const; #### 约束说明 无 #### 参数说明 无 #### 返回值 [`references/GetLength.md`](<references/GetLength.md>)
+- **GetLibApiWorkSpaceSize** — 获取AscendC API需要的workspace空间大小。 #### 函数原型 uint32_t GetLibApiWorkSpaceSize(void) const; #### 参数说明 无 #### 返回值 返回uint32_t数据类型的结果，该结果代表当前系统workspace的大小。 #### 约束说明 无 #### 调用示例 // 开发者自定义的… [`references/GetLibApiWorkSpaceSize.md`](<references/GetLibApiWorkSpaceSize.md>)
+- **GetListFloat** — 获取list_float32类型的属性值。 #### 函数原型 const TypedContinuousVector<float> *GetListFloat(const size_t index) const #### 参数说明 #### 返回值 指向属性值的指针。 #### 约束说明 无 #### 调用示例 const RuntimeAttrs * r… [`references/GetListFloat.md`](<references/GetListFloat.md>)
+- **GetListInt** — 获取list int类型的属性值。 #### 函数原型 const TypedContinuousVector<int64_t> *GetListInt(const size_t index) const #### 参数说明 #### 返回值 指向属性值的指针。 关于TypedContinuousVector类型的定义，请参见 TypedContinuous… [`references/GetListInt.md`](<references/GetListInt.md>)
+- **GetListListFloat** — 获取ContinuousVectorVector *类型的属性值，即二维数组且每个元素类型为float。 #### 函数原型 const ContinuousVectorVector *GetListListFloat(const size_t index) const; #### 参数说明 #### 返回值 指向属性值的指针。 #### 约束说明 无 ##… [`references/GetListListFloat.md`](<references/GetListListFloat.md>)
+- **GetListListInt** — 获取ContinuousVectorVector *类型的属性值，即二维数组且每个元素类型为int。 #### 函数原型 const ContinuousVectorVector *GetListListInt(const size_t index) const #### 参数说明 #### 返回值 指向属性值的指针。 关于ContinuousVectorV… [`references/GetListListInt.md`](<references/GetListListInt.md>)
+- **GetMarks** — 在资源类算子推理的上下文中，获取成对资源算子的标记。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/68/v3/e-HXIo8CT4abyXdw2fooyQ/note_3.0-zh-cn.png?HW-CC-KV=V1… [`references/GetMarks.md`](<references/GetMarks.md>)
+- **GetMax** — 获取最大的T对象指针。 #### 函数原型 const T *GetMax() const; T *GetMax(); #### 参数说明 无 #### 返回值 返回最大的T对象指针。 #### 约束说明 无 #### 调用示例 int min = -1; int max = 1024; Range<int> range(&min,&max); auto r… [`references/GetMax.md`](<references/GetMax.md>)
+- **GetMin** — 获取最小的T对象指针。 #### 函数原型 const T *GetMin() const; T *GetMin(); #### 参数说明 无 #### 返回值 返回最小的T对象指针。 #### 约束说明 无 #### 调用示例 int min = -1; int max = 1024; Range<int> range(&min,&max); auto r… [`references/GetMin.md`](<references/GetMin.md>)
+- **GetName** — 获取TensorDesc所描述Tensor的名称。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/33/v3/bbjoKDAmT9Wpz3qOpgDekg/note_3.0-zh-cn.png?HW-CC-KV=V1&… [`references/GetName-1.md`](<references/GetName-1.md>)
+- **GetName** — 获取算子名称。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ea/v3/Of0ZwTcWRNaBU8NQDuSp0w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=2026042… [`references/GetName.md`](<references/GetName.md>)
+- **GetNodeName** — 获取算子的名称。 #### 函数原型 const char *GetNodeName() const #### 参数说明 无 #### 返回值 算子的名称。 #### 约束说明 无 #### 调用示例 // 假设已存在KernelContext *context auto extend_context = reinterpret_cast<ExtendedK… [`references/GetNodeName-1.md`](<references/GetNodeName-1.md>)
+- **GetNodeName** — 获取算子的名称。 #### 函数原型 const char *GetNodeName() const #### 参数说明 无 #### 返回值 返回算子的名称。 #### 约束说明 无 #### 调用示例 auto node_name = compute_node_info.GetNodeName(); [`references/GetNodeName.md`](<references/GetNodeName.md>)
+- **GetNodeType** — 获取算子的类型。 #### 函数原型 const char *GetNodeType() const #### 参数说明 无 #### 返回值 算子的类型。 #### 约束说明 无 #### 调用示例 // 假设已存在KernelContext *context auto extend_context = reinterpret_cast<ExtendedK… [`references/GetNodeType-1.md`](<references/GetNodeType-1.md>)
+- **GetNodeType** — 获取算子的类型。 #### 函数原型 const char *GetNodeType() const #### 参数说明 无 #### 返回值 算子的类型。 #### 约束说明 无 #### 调用示例 auto node_type = compute_node_info.GetNodeType(); [`references/GetNodeType.md`](<references/GetNodeType.md>)
+- **GetOmOptype** — 获取模型的算子类型。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d3/v3/fOy9OWWbT4CuLWKS6dQi5A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=2026… [`references/GetOmOptype.md`](<references/GetOmOptype.md>)
+- **GetOpType** — 获取算子类型。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bc/v3/Fu1FwciEQdu8RXqleWQ_hA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=2026042… [`references/GetOpType.md`](<references/GetOpType.md>)
+- **GetOpsTypeList** — 获取系统支持的所有算子类型列表。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/11/v3/cmXxqUmnTV6Uy89uaG-Lfg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Dat… [`references/GetOpsTypeList.md`](<references/GetOpsTypeList.md>)
+- **GetOptionalInputDataType** — 根据算子原型定义中的输入索引获取对应可选输入的数据类型。 #### 函数原型 ge::DataType GetOptionalInputDataType(const size_t ir_index) const; #### 参数说明 #### 返回值 返回指定输入的数据类型，若输入的ir_index非法或该输入没有实例化，返回DT_UNDEFINED。 ##… [`references/GetOptionalInputDataType.md`](<references/GetOptionalInputDataType.md>)
+- **GetOptionalInputDesc** — 根据算子原型定义中的输入索引获取对应可选输入的tensor描述信息。 #### 函数原型 const CompileTimeTensorDesc *GetOptionalInputDesc(const size_t ir_index) const; #### 参数说明 #### 返回值 输入TensorDesc的指针，当输入index非法时，或该INPUT没… [`references/GetOptionalInputDesc.md`](<references/GetOptionalInputDesc.md>)
+- **GetOptionalInputShape** — 根据算子原型定义中的输入索引获取对应的可选输入shape指针。 #### 函数原型 const StorageShape *GetOptionalInputShape(const size_t ir_index) const; #### 参数说明 #### 返回值 指定的输入shape指针，shape中包含了原始shape与运行时shape。关于Storag… [`references/GetOptionalInputShape-1.md`](<references/GetOptionalInputShape-1.md>)
+- **GetOptionalInputShape** — 根据算子原型定义中的输入索引获取对应的可选输入shape指针。 #### 函数原型 const Shape *GetOptionalInputShape(const size_t ir_index) const; #### 参数说明 #### 返回值 返回输入shape的指针，输入ir_index非法，或该输入没有实例化时，返回空指针。 关于Shape类型的… [`references/GetOptionalInputShape.md`](<references/GetOptionalInputShape.md>)
+- **GetOptionalInputShapeRange** — 根据算子原型定义中的输入索引获取对应的可选输入shape range指针。 #### 函数原型 const Range<Shape> *GetOptionalInputShapeRange(const size_t ir_index) const; #### 参数说明 #### 返回值 返回shape range指针，ir_index非法，或该INPUT没有… [`references/GetOptionalInputShapeRange.md`](<references/GetOptionalInputShapeRange.md>)
+- **GetOptionalInputTensor** — 根据算子原型定义中的输入索引获取对应的可选输入tensor指针。 #### 函数原型 const Tensor *GetOptionalInputTensor(const size_t ir_index) const; #### 参数说明 #### 返回值 指定ir_index的输入tensor指针，当输入ir_index非法或该INPUT没有实例化时，返回… [`references/GetOptionalInputTensor.md`](<references/GetOptionalInputTensor.md>)
+- **GetOptionalInputTensorRange** — 根据算子原型定义中的输入索引获取对应的可选输入tensor range指针。 #### 函数原型 using TensorRange = Range<Tensor> const TensorRange *GetOptionalInputTensorRange(const size_t ir_index) const; #### 参数说明 #### 返回值 t… [`references/GetOptionalInputTensorRange.md`](<references/GetOptionalInputTensorRange.md>)
+- **GetOriginFormat** — 获取原始format。 #### 函数原型 ge::Format GetOriginFormat() const #### 参数说明 无 #### 返回值 原始format。 #### 约束说明 无 #### 调用示例 ExpandDimsType dim_type("1100"); StorageFormat format(ge::Format::FORM… [`references/GetOriginFormat-1.md`](<references/GetOriginFormat-1.md>)
+- **GetOriginFormat** — 获取Tensor的原始format。 #### 函数原型 ge::Format GetOriginFormat() const #### 参数说明 无 #### 返回值 原始format。 关于ge::Format类型的定义，请参见 Format 。 #### 约束说明 无 #### 调用示例 Tensor t = {{}, {}, {}, {}, null… [`references/GetOriginFormat-2.md`](<references/GetOriginFormat-2.md>)
+- **GetOriginFormat** — 获取Tensor的原始Format。 该Format是指原始网络模型的Format。 #### 函数原型 ge::Format GetOriginFormat() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetOriginFormat-3.md`](<references/GetOriginFormat-3.md>)
+- **GetOriginFormat** — 获取TensorDesc所描述Tensor的原始Format。 该Format是指原始网络模型的Format。 #### 函数原型 Format GetOriginFormat() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetOriginFormat-4.md`](<references/GetOriginFormat-4.md>)
+- **GetOriginFormat** — 获取CompileTimeTensorDesc所描述Tensor的原始数据排布格式。 #### 函数原型 ge::Format GetOriginFormat() const #### 参数说明 无 #### 返回值 CompileTimeTensorDesc所描述Tensor的原始数据排布格式。 #### 约束说明 无 #### 调用示例 auto dty… [`references/GetOriginFormat.md`](<references/GetOriginFormat.md>)
+- **GetOriginOpTypeSet** — 获取原始模型的算子类型集合。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/69/v3/gRUmA_W-S0mg3CM8X_uruQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=… [`references/GetOriginOpTypeSet.md`](<references/GetOriginOpTypeSet.md>)
+- **GetOriginShape** — 获取Tensor的原始shape。 #### 函数原型 const Shape &GetOriginShape() const #### 参数说明 无 #### 返回值 只读的原始shape引用。 关于Shape类型的定义，请参见 Shape 。 #### 约束说明 无 #### 调用示例 StorageShape sh({1, 2, 3}, {2, 1, … [`references/GetOriginShape-1.md`](<references/GetOriginShape-1.md>)
+- **GetOriginShape** — 获取TensorDesc所描述Tensor的原始Shape。 #### 函数原型 Shape GetOriginShape() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetOriginShape-2.md`](<references/GetOriginShape-2.md>)
+- **GetOriginShape** — 获取原始shape。 #### 函数原型 const Shape &GetOriginShape() const #### 参数说明 无 #### 返回值 原始shape #### 约束说明 无 #### 调用示例 StorageShape shape({3, 256, 256}, {256, 256, 3}); auto origin_shape = sh… [`references/GetOriginShape.md`](<references/GetOriginShape.md>)
+- **GetOriginShapeDim** — 获取原始shape第idx维度。 #### 函数原型 int64_t GetOriginShapeDim(const size_t idx) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetOriginShapeDim.md`](<references/GetOriginShapeDim.md>)
+- **GetOriginShapeDimNum** — 获取原始shape的维度大小，即rank大小。 #### 函数原型 size_t GetOriginShapeDimNum() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetOriginShapeDimNum.md`](<references/GetOriginShapeDimNum.md>)
+- **GetOutputAttr** — 根据属性名称获取算子输出Tensor对应的属性值。 #### 函数原型 graphStatus GetOutputAttr(const int32_t index, const char_t *name, AscendString &attr_value) const; graphStatus GetOutputAttr(const char_t *dst_… [`references/GetOutputAttr.md`](<references/GetOutputAttr.md>)
+- **GetOutputDataType** — 根据算子输出索引获取对应输出的数据类型。这里的输出索引是指算子实例化后实际的索引，不是原型定义中的索引。 #### 函数原型 ge::DataType GetOutputDataType(const size_t index) const; #### 参数说明 #### 返回值 返回指定输出的数据类型，index非法时，返回DT_UNDEFINED。 ###… [`references/GetOutputDataType.md`](<references/GetOutputDataType.md>)
+- **GetOutputDesc** — 根据算子Output名称或Output索引获取算子Output的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/46/v3/5Par3YJ5TiirjQX6GI82WA/note_3.0-zh-c… [`references/GetOutputDesc-1.md`](<references/GetOutputDesc-1.md>)
+- **GetOutputDesc** — 根据算子输出索引获取对应输出的tensor描述信息。这里的输出索引是指算子实例化后实际的索引，不是原型定义中的索引。 #### 函数原型 const CompileTimeTensorDesc *GetOutputDesc(const size_t index) const #### 参数说明 #### 返回值 输出TensorDesc的指针，当输入inde… [`references/GetOutputDesc.md`](<references/GetOutputDesc.md>)
+- **GetOutputHandleShapesAndTypes** — 在推理上下文中，获取算子输出句柄的 ShapeAndType 。 #### 函数原型 const std::vector<std::vector<ShapeAndType>> &GetOutputHandleShapesAndTypes() const #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetOutputHandleShapesAndTypes.md`](<references/GetOutputHandleShapesAndTypes.md>)
+- **GetOutputInstanceInfo** — 根据算子IR原型中的输出索引，获取对应的实例化对象。 #### 函数原型 const AnchorInstanceInfo *GetOutputInstanceInfo(const size_t ir_index) const #### 参数说明 #### 返回值 返回const类型的实例化对象的地址。 #### 约束说明 无 #### 调用示例 for (… [`references/GetOutputInstanceInfo.md`](<references/GetOutputInstanceInfo.md>)
+- **GetOutputShape** — 根据算子输出索引获取对应的输出shape指针。这里的输出索引是指算子实例化后实际的索引，不是原型定义中的索引。 #### 函数原型 const StorageShape *GetOutputShape(size_t index) const; #### 参数说明 #### 返回值 指定的输出shape指针，index非法时，返回空指针。 关于StorageS… [`references/GetOutputShape-1.md`](<references/GetOutputShape-1.md>)
+- **GetOutputShape** — 根据算子输出索引获取对应的输出shape指针。这里的输出索引是指算子实例化后实际的索引，不是原型定义中的索引。 #### 函数原型 Shape *GetOutputShape(const size_t index); #### 参数说明 #### 返回值 返回指定的输出shape指针，输入index非法时，返回空指针。 关于Shape类型的定义，请参见 Sh… [`references/GetOutputShape.md`](<references/GetOutputShape.md>)
+- **GetOutputShapeRange** — 根据算子输出索引获取对应的输出shape range指针。这里的输出索引是指算子实例化后实际的索引，不是原型定义中的索引。 #### 函数原型 Range<Shape> *GetOutputShapeRange(const size_t index); #### 参数说明 #### 返回值 输出shape range指针，index非法时，返回空指针。 ##… [`references/GetOutputShapeRange.md`](<references/GetOutputShapeRange.md>)
+- **GetOutputTdInfo** — 获取算子指定输出的Tensor描述，注意，编译时无法确定的shape信息不在Tensor描述中（由于编译时无法确定shape，因此该Tensor描述里不包含shape信息） #### 函数原型 const CompileTimeTensorDesc *GetOutputTdInfo(const size_t index) const #### 参数说明 ##… [`references/GetOutputTdInfo.md`](<references/GetOutputTdInfo.md>)
+- **GetOutputsNum** — 获取算子在网络中的实际输出个数。 #### 函数原型 size_t GetOutputsNum() const #### 参数说明 无 #### 返回值 算子的实际输出个数。 #### 约束说明 无 #### 调用示例 size_t index = compute_node_info->GetOutputsNum(); [`references/GetOutputsNum.md`](<references/GetOutputsNum.md>)
+- **GetOutputsSize** — 获取算子所有Output的个数。 #### 函数原型 size_t GetOutputsSize() const; #### 参数说明 无 #### 返回值 #### 约束说明 无 [`references/GetOutputsSize.md`](<references/GetOutputsSize.md>)
+- **GetOverHeadLength** — 获取数据描述信息的长度。 #### 函数原型 static size_t GetOverHeadLength(const size_t capacity) #### 参数说明 #### 返回值 数据描述信息的长度。 #### 约束说明 无 #### 调用示例 size_t capacity = 100U; auto length = ContinuousVe… [`references/GetOverHeadLength.md`](<references/GetOverHeadLength.md>)
+- **GetParseOpToGraphFn** — 获取将算子映射为一对多子图的实现函数。 #### 函数原型 ParseOpToGraphFunc GetParseOpToGraphFn() const #### 参数说明 无 #### 约束说明 无 [`references/GetParseOpToGraphFn.md`](<references/GetParseOpToGraphFn.md>)
+- **GetParseParamByOperatorFn** — 获取解析算子属性的函数。 #### 函数原型 ParseParamByOpFunc GetParseParamByOperatorFn() const #### 参数说明 无 #### 约束说明 无 [`references/GetParseParamByOperatorFn.md`](<references/GetParseParamByOperatorFn.md>)
+- **GetParseParamFn** — 获取解析算子属性的函数。 #### 函数原型 ParseParamFunc GetParseParamFn() const #### 参数说明 无 #### 约束说明 GetParseParamFn接口后续版本将会废弃，请使用 ParseParamsByOperatorFn 接口获取算子属性。 [`references/GetParseParamFn.md`](<references/GetParseParamFn.md>)
+- **GetParseSubgraphPostFn** — 根据算子类型，获取算子注册的子图中输入输出节点跟算子的输入输出的对应关系实现的函数对象。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/98/v3/fBhJTuisRti731KF7A_J0A/note_3.0-zh-… [`references/GetParseSubgraphPostFn.md`](<references/GetParseSubgraphPostFn.md>)
+- **GetPlacement** — 获取tensor的placement，tensor数据所在的设备位置。 // tensor数据所在的设备位置 enum TensorPlacement { kOnDeviceHbm, // < Tensor位于Device上的HBM内存 kOnHost, // < Tensor位于Host kFollowing, // < Tensor位于Host，且数据紧… [`references/GetPlacement-1.md`](<references/GetPlacement-1.md>)
+- **GetPlacement** — 获取Tensor的placement。 #### 函数原型 ge::Placement GetPlacement() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetPlacement-2.md`](<references/GetPlacement-2.md>)
+- **GetPlacement** — 获取Tensor中数据地址的类型。 #### 函数原型 Placement GetPlacement() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetPlacement-3.md`](<references/GetPlacement-3.md>)
+- **GetPlacement** — 获取tensor的placement。 #### 函数原型 TensorPlacement GetPlacement() const #### 参数说明 无 #### 返回值 返回tensor的placement。 关于TensorPlacement类型的定义，请参见 TensorPlacement 。 #### 约束说明 无 #### 调用示例 Tenso… [`references/GetPlacement.md`](<references/GetPlacement.md>)
+- **GetPlatformInfo** — 获取fe::PlatFormInfos指针。 #### 函数原型 fe::PlatFormInfos *GetPlatformInfo() const #### 参数说明 无 #### 返回值 fe::PlatFormInfos指针。 #### 约束说明 无 #### 调用示例 ge::graphStatus Tiling4XXX(TilingContext… [`references/GetPlatformInfo.md`](<references/GetPlatformInfo.md>)
+- **GetPrimaryFormat** — 从实际format中解析出主format信息。 #### 函数原型 inline int32_t GetPrimaryFormat(int32_t format) #### 参数说明 #### 返回值 实际format中包含的主format。 #### 异常处理 无 #### 约束说明 无 [`references/GetPrimaryFormat.md`](<references/GetPrimaryFormat.md>)
+- **GetRawTilingData** — 获取无类型的tiling data指针。 #### 函数原型 TilingData *GetRawTilingData(); #### 参数说明 无 #### 返回值 tiling data指针，失败时返回空指针。 #### 约束说明 无 #### 调用示例 ge::graphStatus Tiling4XXX(TilingContext* context)… [`references/GetRawTilingData.md`](<references/GetRawTilingData.md>)
+- **GetRealDimCnt** — 获取TensorDesc所描述Tensor的实际维度个数。 #### 函数原型 int64_t GetRealDimCnt() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetRealDimCnt.md`](<references/GetRealDimCnt.md>)
+- **GetReliedOnResourceKeys** — 一般由框架调用。 在结束读类型算子的推导后，可以调用该接口获取依赖的资源标识。 #### 函数原型 const std::set<ge::AscendString>& GetReliedOnResourceKeys() const #### 参数说明 无 #### 返回值 #### 约束说明 无 [`references/GetReliedOnResourceKeys.md`](<references/GetReliedOnResourceKeys.md>)
+- **GetRequiredInputDataType** — 根据算子原型定义中的输入索引获取对应必选输入的数据类型。 #### 函数原型 ge::DataType GetRequiredInputDataType(const size_t ir_index) const; #### 参数说明 #### 返回值 返回指定输入的数据类型，若输入的ir_index非法，返回DT_UNDEFINED。 #### 约束说明 无… [`references/GetRequiredInputDataType.md`](<references/GetRequiredInputDataType.md>)
+- **GetRequiredInputDesc** — 根据算子原型定义中的输入索引获取对应必选输入的tensor描述信息。 #### 函数原型 const CompileTimeTensorDesc *GetRequiredInputDesc(const size_t ir_index) const #### 参数说明 #### 返回值 CompileTimeTensorDesc指针，index非法时，返回空指… [`references/GetRequiredInputDesc.md`](<references/GetRequiredInputDesc.md>)
+- **GetRequiredInputShape** — 根据算子原型定义中的输入索引获取对应的必选输入shape指针。 #### 函数原型 const StorageShape *GetRequiredInputShape(const size_t ir_index) const; #### 参数说明 #### 返回值 指定的输入shape指针，shape中包含了原始shape与运行时shape。关于Storag… [`references/GetRequiredInputShape-1.md`](<references/GetRequiredInputShape-1.md>)
+- **GetRequiredInputShape** — 根据算子原型定义中的输入索引获取对应的必选输入shape指针。 #### 函数原型 const Shape *GetRequiredInputShape(const size_t ir_index) const; #### 参数说明 #### 返回值 返回指定输入的shape指针，若输入的ir_index非法，返回空指针。 关于Shape类型的定义，请参见 … [`references/GetRequiredInputShape.md`](<references/GetRequiredInputShape.md>)
+- **GetRequiredInputShapeRange** — 根据算子原型定义中的输入索引获取对应的必选输入shape range指针。 #### 函数原型 const Range<Shape> *GetRequiredInputShapeRange(const size_t ir_index) const; #### 参数说明 #### 返回值 shape range指针，ir_index非法时，返回空指针。 ###… [`references/GetRequiredInputShapeRange.md`](<references/GetRequiredInputShapeRange.md>)
+- **GetRequiredInputTensor** — 根据算子原型定义中的输入索引获取对应的必选输入tensor指针。 #### 函数原型 const Tensor *GetRequiredInputTensor(const size_t ir_index) const; #### 参数说明 #### 返回值 指定的输入tensor指针，当输入ir_index非法时，返回空指针。 关于Tensor类型的定义，请… [`references/GetRequiredInputTensor-1.md`](<references/GetRequiredInputTensor-1.md>)
+- **GetRequiredInputTensor** — 根据算子原型定义中的输入索引获取对应的必选输入tensor指针。 #### 函数原型 const Tensor *GetRequiredInputTensor(const size_t ir_index) const; #### 参数说明 #### 返回值 返回指定输入的tensor指针，若输入的ir_index非法，返回空指针。 关于Tensor类型的定义… [`references/GetRequiredInputTensor.md`](<references/GetRequiredInputTensor.md>)
+- **GetRequiredInputTensorRange** — 根据算子原型定义中的输入索引获取对应的必选输入tensor range指针。 #### 函数原型 const TensorRange *GetRequiredInputTensorRange(const size_t ir_index) const; #### 参数说明 #### 返回值 TensorRange类型指针，定义如下。 using TensorR… [`references/GetRequiredInputTensorRange.md`](<references/GetRequiredInputTensorRange.md>)
+- **GetResourceContext** — 通过资源标识key来获取对应的资源上下文对象。 #### 函数原型 ResourceContext *GetResourceContext(const ge::AscendString &key) #### 参数说明 #### 返回值 #### 约束说明 若使用 Create 接口创建InferenceContext时未传入resource context管… [`references/GetResourceContext.md`](<references/GetResourceContext.md>)
+- **GetShape** — 获取ShapeAndType类的 Shape 。 #### 函数原型 const Shape &GetShape() const #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetShape-1.md`](<references/GetShape-1.md>)
+- **GetShape** — 获取TensorDesc所描述Tensor的Shape。 #### 函数原型 Shape GetShape() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 由于返回的Shape信息为值拷贝，因此修改返回的Shape信息，不影响TensorDesc中已有的Shape信息。 [`references/GetShape-2.md`](<references/GetShape-2.md>)
+- **GetShape** — 获取Tensor的shape，包含运行时和原始shape。 #### 函数原型 const StorageShape &GetShape() const StorageShape &GetShape() #### 参数说明 无 #### 返回值 - const StorageShape &GetShape() const：返回只读的shape引用。 - St… [`references/GetShape.md`](<references/GetShape.md>)
+- **GetShapeDim** — 获取shape第idx维度。 #### 函数原型 int64_t GetShapeDim(const size_t idx) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetShapeDim.md`](<references/GetShapeDim.md>)
+- **GetShapeDimNum** — 获取shape的维度大小，即rank大小。 #### 函数原型 size_t GetShapeDimNum() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetShapeDimNum.md`](<references/GetShapeDimNum.md>)
+- **GetShapeRange** — 获取设置的shape变化范围。 #### 函数原型 graphStatus GetShapeRange(std::vector<std::pair<int64_t,int64_t>> &range) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetShapeRange.md`](<references/GetShapeRange.md>)
+- **GetShapeSize** — 获取Shape中所有dim的累乘结果。 #### 函数原型 int64_t GetShapeSize() const #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetShapeSize-1.md`](<references/GetShapeSize-1.md>)
+- **GetShapeSize** — 获取当前Tensor运行时的shape大小，即此Tensor中包含的元素的数量。 #### 函数原型 int64_t GetShapeSize() const #### 参数说明 不涉及。 #### 返回值 返回执行时shape的大小。 #### 约束说明 无 #### 调用示例 Tensor tensor{{{8, 3, 224, 224}, {16, 3… [`references/GetShapeSize.md`](<references/GetShapeSize.md>)
+- **GetSize** — 获取当前存放的实际元素数量。 #### 函数原型 size_t GetSize() const #### 参数说明 无 #### 返回值 当前存放的实际元素数量。 #### 约束说明 无 #### 调用示例 // 创建ContinuousVectorVector对象cvv // ... // 增加元素 // ... auto cv = cvv->add(in… [`references/GetSize-1.md`](<references/GetSize-1.md>)
+- **GetSize** — 获取Tensor数据的内存大小。 #### 函数原型 size_t GetSize() const #### 参数说明 无 #### 返回值 内存大小，单位是字节。 #### 约束说明 无 #### 调用示例 StorageShape sh({1, 2, 3}, {1, 2, 3}); Tensor t = {sh, {}, {}, ge::DT_FLOAT… [`references/GetSize-2.md`](<references/GetSize-2.md>)
+- **GetSize** — 获取tensor数据的内存大小。 #### 函数原型 size_t GetSize() const #### 参数说明 无 #### 返回值 tensor所占内存大小，单位为字节。 #### 约束说明 无 #### 调用示例 auto addr = reinterpret_cast<void *>(0x10); TensorData td(addr, Hos… [`references/GetSize-3.md`](<references/GetSize-3.md>)
+- **GetSize** — 获取device内存对应的大小。 #### 函数原型 size_t GetSize() const #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetSize-4.md`](<references/GetSize-4.md>)
+- **GetSize** — 获取Tensor中的数据的大小。 #### 函数原型 size_t GetSize() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetSize-5.md`](<references/GetSize-5.md>)
+- **GetSize** — 获取TensorDesc所描述Tensor的数据大小。 #### 函数原型 int64_t GetSize() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetSize-6.md`](<references/GetSize-6.md>)
+- **GetSize** — 获取当前保存的元素个数。 #### 函数原型 size_t GetSize() const #### 参数说明 无 #### 返回值 当前保存的元素个数。 #### 约束说明 无 #### 调用示例 size_t capacity = 100U; auto cv_holder = ContinuousVector::Create<int64_t>(capac… [`references/GetSize.md`](<references/GetSize.md>)
+- **GetSizeByDataType** — 根据传入的data_type，获取该data_type所占用的内存大小。 #### 函数原型 inline int GetSizeByDataType(DataType data_type) #### 参数说明 #### 返回值 该data_type所占用的内存大小（单位为bytes），如果传入非法值或不支持的数据类型，返回-1。 #### 异常处理 无 #… [`references/GetSizeByDataType.md`](<references/GetSizeByDataType.md>)
+- **GetSizeInBytes** — 根据传入的element_count和data_type，获取element_count个该data_type所占用的内存总大小。 #### 函数原型 int64_t GetSizeInBytes(int64_t element_count, DataType data_type) #### 参数说明 #### 返回值 如果传入个数为非法值或传入不支持的数据… [`references/GetSizeInBytes.md`](<references/GetSizeInBytes.md>)
+- **GetSocVersion** — 获取当前硬件平台版本型号。 #### 函数原型 SocVersion GetSocVersion(void) const; #### 参数说明 无 #### 返回值 当前硬件平台版本型号的枚举类。该枚举类和AI处理器型号的对应关系请通过CANN DDK包里的ddk/ai_ddk_lib/include/tiling/platform/platform_asc… [`references/GetSocVersion.md`](<references/GetSocVersion.md>)
+- **GetStorageFormat** — 获取运行时format。 #### 函数原型 ge::Format GetStorageFormat() const #### 参数说明 无 #### 返回值 运行时format。 #### 约束说明 无 #### 调用示例 ExpandDimsType dim_type("1100"); StorageFormat format(ge::Format::F… [`references/GetStorageFormat-1.md`](<references/GetStorageFormat-1.md>)
+- **GetStorageFormat** — 获取运行时Tensor的format。 #### 函数原型 ge::Format GetStorageFormat() const #### 参数说明 无 #### 返回值 返回运行时format。 关于ge::Format类型的定义，请参见 Format 。 #### 约束说明 无 #### 调用示例 Tensor t = {{}, {}, {}, {},… [`references/GetStorageFormat-2.md`](<references/GetStorageFormat-2.md>)
+- **GetStorageFormat** — 获取运行时Tensor中存储数据的实际排布格式。 #### 函数原型 ge::Format GetStorageFormat() const #### 参数说明 无 #### 返回值 运行时数据的实际排布格式。 #### 约束说明 无 #### 调用示例 auto dtype_ = ge::DataType::DT_INT32; StorageFormat … [`references/GetStorageFormat.md`](<references/GetStorageFormat.md>)
+- **GetStorageShape** — 获取运行时Tensor的StorageShape，此shape对象为只读。StorageShape和 GetOriginShape 的区别如下。OriginShape是Tensor最初创建时的形状，StorageShape是保存Tensor数据的底层存储的形状。运行时为了适配底层硬件，Tensor的StorageShape和其OriginShape可能会有所… [`references/GetStorageShape-1.md`](<references/GetStorageShape-1.md>)
+- **GetStorageShape** — 获取运行时shape。 #### 函数原型 const Shape &GetStorageShape() const #### 参数说明 无 #### 返回值 运行时shape。 #### 约束说明 无 #### 调用示例 StorageShape shape({3, 256, 256}, {256, 256, 3}); auto storage_shape… [`references/GetStorageShape.md`](<references/GetStorageShape.md>)
+- **GetStr** — 获取string类型的属性值。 #### 函数原型 const char *GetStr(const size_t index) const #### 参数说明 #### 返回值 指向属性值的指针。 #### 约束说明 无 #### 调用示例 const RuntimeAttrs * runtime_attrs = kernel_context->GetAt… [`references/GetStr.md`](<references/GetStr.md>)
+- **GetString** — 获取字符串地址。 #### 函数原型 const char_t *GetString() const; #### 约束说明 无 #### 参数说明 无 #### 返回值 [`references/GetString.md`](<references/GetString.md>)
+- **GetSubFormat** — 从实际format中解析出子format信息。 #### 函数原型 inline int32_t GetSubFormat(int32_t format) #### 参数说明 #### 返回值 实际format中包含的子format。 #### 异常处理 无 #### 约束说明 无 [`references/GetSubFormat.md`](<references/GetSubFormat.md>)
+- **GetSubgraph** — 根据子图名称获取算子对应的子图。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b2/v3/tRlqIU4FSFePSVCKu0XNzQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Dat… [`references/GetSubgraph.md`](<references/GetSubgraph.md>)
+- **GetSubgraphBuilder** — 根据子图名称获取算子对应的子图构建的函数对象。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c3/v3/zSBTy60UTU2Q_9TYd3cTPg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW… [`references/GetSubgraphBuilder.md`](<references/GetSubgraphBuilder.md>)
+- **GetSubgraphNames** — 获取一个算子的子图名称列表。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bf/v3/Ul8uCFbZTcyDd-It0Ex2nA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=… [`references/GetSubgraphNames.md`](<references/GetSubgraphNames.md>)
+- **GetSubgraphNamesCount** — 获取一个算子的子图个数。 #### 函数原型 size_t GetSubgraphNamesCount() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/GetSubgraphNamesCount.md`](<references/GetSubgraphNamesCount.md>)
+- **GetSysWorkSpacePtr** — 获取系统workspace指针。部分高阶API如Matmul需要使用系统workspace，相关接口需要传入系统workspace指针，此时可以通过该接口获取。使用系统workspace时，host侧开发者需要自行申请系统workspace的空间，其预留空间大小可以通过 GetLibApiWorkSpaceSize 接口获取。 #### 函数原型 __aic… [`references/GetSysWorkSpacePtr.md`](<references/GetSysWorkSpacePtr.md>)
+- **GetTPipePtr** — 创建 TPipe 对象时，对象初始化会设置全局唯一的TPipe指针。本接口用于获取该指针，获取该指针后，可进行TPipe相关的操作。 #### 函数原型 __aicore__ inline AscendC::TPipe* GetTPipePtr() #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 ###… [`references/GetTPipePtr.md`](<references/GetTPipePtr.md>)
+- **GetTensor** — 获取tensor类型的属性值。 #### 函数原型 const Tensor *GetTensor(const size_t index) const #### 参数说明 #### 返回值 指向属性值的指针。 #### 约束说明 无 #### 调用示例 const RuntimeAttrs * runtime_attrs = kernel_context->… [`references/GetTensor.md`](<references/GetTensor.md>)
+- **GetTensorC** — Iterate后，获取一块C矩阵片，可以直接输出到GM tensor中。 该接口和Iterate接口配合使用，用于在调用Iterate完成迭代计算后，获取一片baseM * baseN大小的矩阵分片。 迭代获取C矩阵分片的过程分为同步和异步两种模式： - **同步：** 执行完一次Iterate后执行一次GetTensorC，需要同步等待C矩阵分片获取完成。… [`references/GetTensorC.md`](<references/GetTensorC.md>)
+- **GetTensorCountInQue** — 查询队列中已入队的Tensor数量。 #### 函数原型 __aicore__ inline int32_t GetTensorCountInQue() #### 参数说明 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 Que中已入队的Tensor数量。 #### 调用示例 //… [`references/GetTensorCountInQue-1.md`](<references/GetTensorCountInQue-1.md>)
+- **GetTensorCountInQue** — 查询队列中已入队的Tensor数量。 #### 函数原型 __aicore__ inline int32_t GetTensorCountInQue() #### 参数说明 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 队列中已入队的Tensor数量。 #### 调用示例 // … [`references/GetTensorCountInQue.md`](<references/GetTensorCountInQue.md>)
+- **GetTensorData** — 获取tensor中的数据，返回只读的TensorData类型对象。 #### 函数原型 const TensorData &GetTensorData() const #### 参数说明 无 #### 返回值 只读的tensor data引用。 关于TensorData类型的定义，请参见 TensorData 。 #### 约束说明 无 #### 调用示例 … [`references/GetTensorData.md`](<references/GetTensorData.md>)
+- **GetTensorDesc** — 获取Tensor的描述符。 #### 函数原型 TensorDesc GetTensorDesc() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 修改返回的TensorDesc信息，不影响Tensor对象中已有的TensorDesc信息。 [`references/GetTensorDesc.md`](<references/GetTensorDesc.md>)
+- **GetTilingCond** — 获取tiling cond。 #### 函数原型 int32_t GetTilingCond() const; #### 参数说明 无 #### 返回值 tiling cond: 若返回值大于等于0，代表此tiling cond为有效的tiling cond。 若返回值为-1，代表此tiling cond为无效的tiling cond。 #### 约束说明 … [`references/GetTilingCond.md`](<references/GetTilingCond.md>)
+- **GetTilingData** — 获取有类型的tiling data指针。 #### 函数原型 template<typename T> T *GetTilingData(); #### 参数说明 #### 返回值 tiling data指针，失败时返回空指针。 #### 约束说明 sizeof(T)不可以大于编译结果中指定的最大tiling data长度。 #### 调用示例 ge::gr… [`references/GetTilingData.md`](<references/GetTilingData.md>)
+- **GetTilingKey** — 获取tiling key。 #### 函数原型 uint64_t GetTilingKey() const; #### 参数说明 无 #### 返回值 返回tiling key。 #### 约束说明 无 #### 调用示例 ge::graphStatus Tiling4XXX(TilingContext* context) { auto tiling_key… [`references/GetTilingKey.md`](<references/GetTilingKey.md>)
+- **GetUserWorkspace** — 获取开发者使用的 workspace 指针。如果使用了 Matmul 等需要系统workspace的高阶API，kernel侧需要通过 SetSysWorkSpace 设置系统workspace，此时开发者workspace需要通过该接口获取。 #### 函数原型 __aicore__ inline GM_ADDR GetUserWorkspace(GM_A… [`references/GetUserWorkspace.md`](<references/GetUserWorkspace.md>)
+- **GetValue** — 获取属性key-value键值对中的value值，并将value值从T类型转换为DT类型。 - 支持将INT类型转换为int64_t类型。 - 支持将FLOAT类型转换为float类型。 - 支持将STR类型转换为std::string类型。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/… [`references/GetValue.md`](<references/GetValue.md>)
+- **GetWithOffset** — 从TBuf上偏移指定长度且获取指定长度的Tensor。 #### 函数原型 LocalTensor<T> GetWithOffset<T>(uint32_t size, uint32_t bufOffset) #### 参数说明 **表1** 参数说明 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 - s… [`references/GetWithOffset.md`](<references/GetWithOffset.md>)
+- **GetWorkspaceNum** — 获取workspace个数。 #### 函数原型 size_t GetWorkspaceNum() const; #### 参数说明 无 #### 返回值 workspace的个数。 #### 约束说明 无 #### 调用示例 ge::graphStatus Tiling4XXX(TilingContext* context) { auto ws_num =… [`references/GetWorkspaceNum.md`](<references/GetWorkspaceNum.md>)
+- **GetWorkspaceSizes** — 获取workspace sizes指针。 #### 函数原型 size_t *GetWorkspaceSizes(const size_t workspace_count); #### 参数说明 #### 返回值 workspace sizes指针。 #### 约束说明 传入的workspace个数不可以超过编译时指定的最大workspace个数。 当前Ki… [`references/GetWorkspaceSizes.md`](<references/GetWorkspaceSizes.md>)
+- **GlobalTensor** — GlobalTensor用来存放Global Memory（外部存储）的全局数据。 #### 定义原型 template <typename T> class GlobalTensor : public BaseGlobalTensor<T> { public: using PrimType = PrimT<T>; __aicore__ inline Glo… [`references/GlobalTensor.md`](<references/GlobalTensor.md>)
+- **GmAlloc** — 进行核函数的CPU侧运行验证时，用于创建共享内存：在/tmp目录下创建一个共享文件，并返回该文件的映射指针。 #### 函数原型 void *GmAlloc(size_t size) #### 参数说明 #### 返回值 返回一个void*指针，该指针表示该共享内存空间的首地址。 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器… [`references/GmAlloc.md`](<references/GmAlloc.md>)
+- **GmFree** — 进行核函数的CPU侧运行验证时，用于释放通过 GmAlloc 申请的共享内存。 #### 函数原型 void GmFree(void *ptr) #### 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 传入的指针必须是之前通过GmAlloc申请过的共享内存的指针。 ####… [`references/GmFree.md`](<references/GmFree.md>)
+- **HasC0Format** — 判断实际format中是否包含C0 format。 #### 函数原型 inline bool HasC0Format(int32_t format) #### 参数说明 #### 返回值 - true：实际format中包含c0 format。 - false：实际format中不包含c0 format。 #### 异常处理 无 #### 约束说明 无 [`references/HasC0Format.md`](<references/HasC0Format.md>)
+- **HasIdleBuffer** — 查询队列中是否有空闲的内存块。 #### 函数原型 __aicore__ inline bool HasIdleBuffer() #### 参数说明 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 - true：表示Queue中存在空闲内存。 - false：表示Queue中不存在… [`references/HasIdleBuffer-1.md`](<references/HasIdleBuffer-1.md>)
+- **HasIdleBuffer** — 查询队列中是否有空闲的内存块。 #### 函数原型 __aicore__ inline bool HasIdleBuffer() #### 参数说明 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 - true：表示Queue中存在空闲内存。 - false：表示Queue中不存在… [`references/HasIdleBuffer.md`](<references/HasIdleBuffer.md>)
+- **HasSubFormat** — 判断实际format中是否包含子format。 #### 函数原型 inline bool HasSubFormat(int32_t format) #### 参数说明 #### 返回值 - true：实际format中包含子format。 - false：实际format中不包含子format。 #### 异常处理 无 #### 约束说明 无 [`references/HasSubFormat.md`](<references/HasSubFormat.md>)
+- **HasTensorInQue** — 查询队列中目前是否已有入队的Tensor。 #### 函数原型 __aicore__ inline bool HasTensorInQue() #### 参数说明 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 - true：表示Queue中存在已入队的Tensor。 - fals… [`references/HasTensorInQue-1.md`](<references/HasTensorInQue-1.md>)
+- **HasTensorInQue** — 查询队列中目前是否已有入队的Tensor。 #### 函数原型 __aicore__ inline bool HasTensorInQue() #### 参数说明 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 - true：表示Queue中存在已入队的Tensor。 - fals… [`references/HasTensorInQue.md`](<references/HasTensorInQue.md>)
+- **Hash** — 返回字符串的哈希值。 #### 函数原型 size_t Hash() const; #### 约束说明 无 #### 参数说明 无 #### 返回值 [`references/Hash.md`](<references/Hash.md>)
+- **HostInputs** — 当算子输入中存在标量输入时，需要传入host侧地址。该接口用于标记算子的第几个输入的地址是host侧地址。 #### 函数原型 OpImplRegisterV2 &HostInputs(std::initializer_list<int32_t> inputs); #### 参数说明 #### 返回值 返回算子的OpImplRegisterV2对象，该对象新… [`references/HostInputs.md`](<references/HostInputs.md>)
+- **Host侧Tiling实现** — 在 算子实现 章节已经介绍了host侧tiling核心的实现方法，本章节侧重于介绍接入DDK框架时编程模式和API的使用。 大多数情况下，Local Memory的存储，无法完整的容纳算子的输入与输出，需要每次搬运一部分输入进行计算然后搬出，再搬运下一部分输入进行计算，直到得到完整的最终结果，这个数据切分、分块计算的过程称之为 **Tiling** 。根据算… [`references/Host侧Tiling实现.md`](<references/Host侧Tiling实现.md>)
+- **ICPU_RUN_KF** — 进行核函数的CPU侧运行验证时，CPU调测总入口，完成CPU侧的算子程序调用。 #### 函数原型 #define ICPU_RUN_KF(func, blkdim, ...) #### 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 除了func、blkdim以外，其他的变… [`references/ICPU_RUN_KF.md`](<references/ICPU_RUN_KF.md>)
+- **ICPU_SET_TILING_KEY** — 用于指定本次CPU调测使用的tilingKey。调测执行时，将只执行算子核函数中该tilingKey对应的分支。 #### 函数原型 ICPU_SET_TILING_KEY(tilingKey) #### 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 - 未使用该接口设置t… [`references/ICPU_SET_TILING_KEY.md`](<references/ICPU_SET_TILING_KEY.md>)
+- **IMPLEMT_COMMON_INFERFUNC** — 封装算子的Common_InferShape函数。 与 IMPLEMT_INFERFUNC 的区别是，此函数自动生成的一个类型为Operator类的对象op，可直接调用 Operator 接口进行InferShape的实现。若InferShape方法具有通用性，可被多个算子的原型实现调用，可选择此接口实现。 #### 函数原型 IMPLEMT_COMMON_… [`references/IMPLEMT_COMMON_INFERFUNC.md`](<references/IMPLEMT_COMMON_INFERFUNC.md>)
+- **IMPLEMT_INFERFORMAT_FUNC** — 封装算子的inferFormat函数。 #### 函数原型 IMPLEMT_INFERFORMAT_FUNC(op_name, func_name) #### 约束说明 无 #### 参数说明 #### 返回值 无 [`references/IMPLEMT_INFERFORMAT_FUNC.md`](<references/IMPLEMT_INFERFORMAT_FUNC.md>)
+- **IMPLEMT_INFERFUNC** — 封装算子的InferShape函数。 该函数传入的OpType为基于Operator类派生出来的子类，会自动生成一个类型为此子类的对象op，可以使用子类的成员函数获取输入输出描述的方法，从而进行InferShape的实现。 基于OpType派生出来的子类op的成员函数如下。 - op.set_input__x_(Operator &v, const stri… [`references/IMPLEMT_INFERFUNC.md`](<references/IMPLEMT_INFERFUNC.md>)
+- **IMPLEMT_VERIFIER** — 封装算子的Verify函数。 #### 函数原型 IMPLEMT_VERIFIER(op_name, func_name) #### 约束说明 无 #### 参数说明 #### 返回值 无 [`references/IMPLEMT_VERIFIER.md`](<references/IMPLEMT_VERIFIER.md>)
+- **INFER_FORMAT_FUNC_REG** — 注册算子的InferFormat实现。 GE会在整图的Shape与Dtype推导前后分别调用一次整图的InferFormat，过程中会分别调用各个算子的InferFormat函数。如果算子没有注册InferFormat函数，GE将使用默认的推导函数，即输出的Format等于输入的Format。 #### 函数原型 #define INFER_FORMAT_F… [`references/INFER_FORMAT_FUNC_REG.md`](<references/INFER_FORMAT_FUNC_REG.md>)
+- **INFER_FUNC_REG** — 注册算子的InferShape函数。 #### 函数原型 INFER_FUNC_REG(op_name, x) 该函数内部会自动调用INFER_VERIFY_FUNC(op_name, x)，INFER_VERIFY_FUNC函数中的op_name为算子的类型，x为指向INFER_FUNC_REG（op_name,x）中“x”的指针。 #### 约束说明 无… [`references/INFER_FUNC_REG.md`](<references/INFER_FUNC_REG.md>)
+- **ImplyType** — 设置算子执行方式。 #### 函数原型 OpRegistrationData &ImplyType(const domi::ImplyType &imply_type) #### 参数说明 [`references/ImplyType.md`](<references/ImplyType.md>)
+- **InferDataType** — 注册算子的InferDataType函数。 开发者需要为算子编写一个InferDataTypeKernelFunc类型的函数，并使用该接口进行注册。 InferDataTypeKernelFunc类型定义如下。 using InferDataTypeKernelFunc = UINT32 (*)(InferDataTypeContext *); #### 函… [`references/InferDataType.md`](<references/InferDataType.md>)
+- **InferFormatFuncRegister** — InferFormatFuncRegister构造函数和析构函数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/60/v3/2wbuKERMR2e5rSAUcJoxyw/note_3.0-zh-cn.png?HW-C… [`references/InferFormatFuncRegister.md`](<references/InferFormatFuncRegister.md>)
+- **InferOutDataTypeSameWithFirstInput** — 注册一种datatype推导规则，该规则将算子第一个输入的datatype作为所有输出的datatype。 #### 函数原型 OpImplRegisterV2 &InferOutDataTypeSameWithFirstInput(); #### 参数说明 无 #### 返回值 返回算子的OpImplRegisterV2对象，该对象新增注册了算子datat… [`references/InferOutDataTypeSameWithFirstInput.md`](<references/InferOutDataTypeSameWithFirstInput.md>)
+- **InferShape** — 注册算子的InferShape函数。 开发者需要为算子编写一个InferShapeKernelFunc类型的函数，并使用该接口进行注册。 InferShapeKernelFunc 类型定义如下。 using InferShapeKernelFunc = UINT32 (*)(InferShapeContext *); InferShape函数的原型是确定的，… [`references/InferShape.md`](<references/InferShape.md>)
+- **InferShapeAndType** — 推导Operator输出的shape和DataType。 关于DataType数据类型的定义，请参见 DataType 。 #### 函数原型 graphStatus InferShapeAndType(); #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/InferShapeAndType.md`](<references/InferShapeAndType.md>)
+- **InferShapeFuncRegister** — InferShapeFuncRegister构造函数和析构函数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a5/v3/VxB4-TSSRu2siggKtVHBiQ/note_3.0-zh-cn.png?HW-CC… [`references/InferShapeFuncRegister.md`](<references/InferShapeFuncRegister.md>)
+- **InferShapeRange** — 注册算子的InferShapeRange函数。 开发者需要为算子编写一个InferShapeRangeKernelFunc类型的函数，并使用该接口进行注册。 InferShapeRangeKernelFunc类型定义如下。 using InferShapeRangeKernelFunc = UINT32 (*)(InferShapeRangeContext … [`references/InferShapeRange.md`](<references/InferShapeRange.md>)
+- **InferValueRangeFuncRegister** — InferValueRangeFuncRegister构造函数和析构函数。 #### 函数原型 InferValueRangeFuncRegister(const char_t *const operator_type, const WHEN_CALL when_call, const InferValueRangeFunc &infer_value_ran… [`references/InferValueRangeFuncRegister.md`](<references/InferValueRangeFuncRegister.md>)
+- **Init** — Init主要用于对Matmul对象中的Tiling数据进行初始化，根据Tiling参数进行资源划分，tiling参数的具体介绍请参考 Matmul Tiling 。 开发者可以先通过REGIST_MATMUL_OBJ初始化单个Matmul对象，不传入tiling参数，后续通过Init接口单独传入Tiling参数，对Tiling数据进行调整。比如，Tiling… [`references/Init-1.md`](<references/Init-1.md>)
+- **Init** — 初始化ComputeNodeInfo类。 #### 函数原型 void Init(const size_t ir_inputs_num, const size_t inputs_num, const size_t outputs_num, const ge::char_t *node_name, const ge::char_t *node_type); v… [`references/Init-2.md`](<references/Init-2.md>)
+- **Init** — 使用最大容量初始化本实例。 #### 函数原型 void Init(size_t capacity) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 size_t capacity = 100U; size_t total_size = capacity * sizeof(int64_t) + sizeof(Contin… [`references/Init-3.md`](<references/Init-3.md>)
+- **Init** — 初始化ContinuousVectorVector类。 #### 函数原型 void Init(const size_t capacity) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 size_t total_length = 1000U; // 需根据实际存放的数据量进行设置 size_t capacity = … [`references/Init-4.md`](<references/Init-4.md>)
+- **Init** — 初始化TilingData。 #### 函数原型 void Init(const size_t cap_size, void *const data); #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 size_t cap_size = 100U; size_t total_size = cap_size + sizeo… [`references/Init-5.md`](<references/Init-5.md>)
+- **Init** — 初始化内存和用于同步流水事件的EventID的初始化。 #### 函数原型 __aicore__ inline void TPipe::Init() #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 重复申请释放TPipe，要与 Destroy 接口成对使用，TPipe如果要重复申请需要先Destroy释放后… [`references/Init.md`](<references/Init.md>)
+- **InitBufPool** — 初始化TBufPool内存资源池。本接口适用于内存资源有限时，希望手动指定UB/L1内存资源复用的场景。本接口初始化后在整体内存资源中划分出一块子资源池。划分出的子资源池TBufPool，提供了如下方式进行资源管理： - TPipe::InitBufPool的重载接口指定与其他TBufPool子资源池复用。 - TBufPool::InitBufPool接口… [`references/InitBufPool-1.md`](<references/InitBufPool-1.md>)
+- **InitBufPool** — 通过Tpipe::InitBufPool接口可划分出整块资源，整块TBufPool资源可以继续通过TBufPool::InitBufPool接口划分成小块资源。 #### 函数原型 template <class T> __aicore__ inline bool InitBufPool(T& bufPool, uint32_t len) template … [`references/InitBufPool.md`](<references/InitBufPool.md>)
+- **InitBuffer** — TPipe是用来管理全局内存的框架，开发者可以调用TPipe中的InitBuffer接口为TQue/TBuf进行内存分配。 #### 函数原型 - 为TQue分配内存 template <class T> __aicore__ inline bool InitBuffer(T& que, uint8_t num, uint32_t len) - 为TBuf分… [`references/InitBuffer-1.md`](<references/InitBuffer-1.md>)
+- **InitBuffer** — 调用TBufPool::InitBuffer接口为TQue/TBuf进行内存分配。 #### 函数原型 template <class T> __aicore__ inline bool InitBuffer(T& que, uint8_t num, uint32_t len); template <TPosition pos> __aicore__ inl… [`references/InitBuffer.md`](<references/InitBuffer.md>)
+- **Input** — 注册算子输入，调用该接口后会返回一个OpParamDef结构，后续可通过该结构配置算子输入信息。 #### 函数原型 OpParamDef &Input(const char *name); #### 参数说明 #### 返回值 OpParamDef 算子参数定义。 #### 约束说明 无 [`references/Input.md`](<references/Input.md>)
+- **InputReorderVector** — 支持在算子插件中调整算子的输入参数顺序，此接口为内部使用接口，外部开发者无需关注。 #### 函数原型 OpRegistrationData &InputReorderVector(const std::vector<int32_t> &input_order) #### 参数说明 #### 返回值 OpRegistrationData类的引用。 #### … [`references/InputReorderVector.md`](<references/InputReorderVector.md>)
+- **InputsDataDependency** — 设置算子计算依赖第几个输入tensor的值。 所谓的数据依赖，是指算子的计算不仅依赖于输入tensor的shape，还依赖输入tensor的具体值。 #### 函数原型 OpImplRegisterV2 &InputsDataDependency(std::initializer_list<int32_t> inputs); #### 参数说明 #### 返… [`references/InputsDataDependency.md`](<references/InputsDataDependency.md>)
+- **IsEmpty** — 判断operator对象是否为空，空表示不可用。 #### 函数原型 bool IsEmpty() const; #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/IsEmpty.md`](<references/IsEmpty.md>)
+- **IsExistOp** — 查询指定的算子类型是否支持。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/14/v3/U6oU7cQ5TgOob4r7CbDzig/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=… [`references/IsExistOp.md`](<references/IsExistOp.md>)
+- **IsExpandIndex** — 基于补维后的shape，判断指定的index轴是否为补维轴。 #### 函数原型 bool IsExpandIndex(const AxisIndex index) const #### 参数说明 #### 返回值 - true代表指定的轴为补维轴。 - false代表指定的轴为原始轴。 #### 约束说明 无 #### 调用示例 ExpandDimsTyp… [`references/IsExpandIndex.md`](<references/IsExpandIndex.md>)
+- **IsScalar** — 判断本shape是否为标量，所谓标量，是指GetDimNum()为0的张量。 #### 函数原型 bool IsScalar() const #### 参数说明 无 #### 返回值 true为标量，false为非标量。 #### 约束说明 无 #### 调用示例 Shape shape0({3, 256, 256}); Shape shape2; shap… [`references/IsScalar.md`](<references/IsScalar.md>)
+- **IsSharedWith** — 判断当前TensorData对象与另一个对象是否共享一块内存以及使用同一个内存管理函数。 #### 函数原型 bool IsSharedWith(const TensorData &other) const #### 参数说明 #### 返回值 true代表两个对象共享一块内存以及使用同一个内存管理函数。 false反之。 #### 约束说明 无 #### … [`references/IsSharedWith.md`](<references/IsSharedWith.md>)
+- **IsValid** — 判断Tensor对象是否有效。 若实际Tensor数据的大小与TensorDesc所描述的Tensor数据大小一致，则有效。 #### 函数原型 graphStatus IsValid() #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/IsValid.md`](<references/IsValid.md>)
+- **Iterate** — 每调用一次Iterate，会计算出一片baseM * baseN的C矩阵。接口内部会维护迭代进度，调用一次后会对A、B矩阵首地址进行偏移。默认以先M轴再N轴的迭代顺序，也可以通过调整tiling参数iterateOrder，转换为先N轴再M轴的迭代顺序。 当传入数据未对齐，存在尾块时，会在最后一次迭代输出尾块的计算结果。 #### 函数原型 template… [`references/Iterate.md`](<references/Iterate.md>)
+- **IterateAll** — 调用一次IterateAll，会计算出singleCoreM * singleCoreN大小的C矩阵。迭代顺序可通过tiling参数iterateOrder调整。 #### 函数原型 template <bool sync = true> __aicore__ inline void IterateAll(const GlobalTensor<DstT>& … [`references/IterateAll.md`](<references/IterateAll.md>)
+- **Kernel Tiling** — KirinX90/Kirin9030处理器不支持如下Kernel Tiling接口。 **表1** Kernel Tiling兼容说明 [`references/Kernel Tiling.md`](<references/Kernel Tiling.md>)
+- **Kernel侧算子实现** — 在 算子实现 章节已经介绍了kernel侧算子核心的实现方法，本章节侧重于介绍接入DDK框架时编程模式和API的使用。 #### 自动生成kernel侧算子实现模板 在算子工程目录下的“op_kernel/xxx.cpp”文件中实现算子的核函数。核函数的定义模板已通过msOpGen工具自动生成，样例如下所示。 **这里参数的顺序按照“输入、输出、worksp… [`references/Kernel侧算子实现.md`](<references/Kernel侧算子实现.md>)
+- **L2 Cache** — KirinX90/Kirin9030处理器不支持L2 Cache，GlobalTensor::SetL2CacheHint接口不生效。算子代码无需进行修改。只影响性能，不影响功能。 [`references/L2 Cache.md`](<references/L2 Cache.md>)
+- **LLM模型一站式量化** — 本工具提供大语言模型（Large Language Model，以下简称LLM）的4bit低位量化能力，采用标准的三段式量化流程：权重量化、激活量化和量化参数提取。三段式量化流程说明如下表所示。 **表1** 大语言模型4bit低位量化三阶段流程 #### 量化前准备工作 - HuggingFace浮点模型 - JSON格式数据集，使用“text”字段作为p… [`references/LLM模型一站式量化.md`](<references/LLM模型一站式量化.md>)
+- **LeakyRelu** — 按元素做带泄露线性整流Leaky ReLU： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/22/v3/PnlTp71LQNy1wyT-ozhmwQ/zh-cn_image_0000002543374964.png?HW-CC-KV=V1… [`references/LeakyRelu.md`](<references/LeakyRelu.md>)
+- **ListTensorType** — ListTensorType类用以定义输入或者输出支持的数据类型，是TensorType的封装，用于标识支持多个数据类型的情况。 #### 函数原型 explicit ListTensorType(const TensorType &type) #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/ListTensorType.md`](<references/ListTensorType.md>)
+- **Ln** — 按元素取自然对数，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cf/v3/eqGhpGB7Rmy7Lawg20ivZg/zh-cn_image_00000025432… [`references/Ln.md`](<references/Ln.md>)
+- **LocalTensor** — 用于存放AI Core中Local Memory（内部存储）的数据，支持QuePosition为VECIN、VECOUT、VECCALC、A1、A2、B1、B2、CO1、CO2。 #### 定义原型 template <typename T> class LocalTensor : public BaseLocalTensor<T> { public: us… [`references/LocalTensor.md`](<references/LocalTensor.md>)
+- **Malloc** — 在开发者内存池中根据指定size大小申请device内存。 #### 函数原型 virtual MemBlock *Malloc(size_t size) = 0 #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 纯虚函数开发者必须实现。 [`references/Malloc.md`](<references/Malloc.md>)
+- **MallocAdvise** — 在开发者内存池中根据指定size大小申请device内存，建议申请的内存地址为addr。 #### 函数原型 virtual MemBlock *MallocAdvise(size_t size, void *addr) #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 虚函数需要开发者实现，如若未实现，默认同 Malloc … [`references/MallocAdvise.md`](<references/MallocAdvise.md>)
+- **MatmulConfig** — 模板参数MatmulConfig，用于配置Matmul模板信息以及相关的配置参数。不配置默认使能Norm模板。 MatmulConfig的参数说明见 参数说明 表2。在默认模板范围【CFG_NORM、CFG_MDL、CFG_IBSHARE_NORM】中选取模板，不支持自定义模板，获取自定义模板。其中，各个接口参数的含义见 参数说明 表2。 [`references/MatmulConfig.md`](<references/MatmulConfig.md>)
+- **Matmul模板参数** — 创建Matmul对象时需要传入： - A、B、C、Bias的参数类型信息，类型信息通过MatmulType来定义，包括：内存逻辑位置、数据格式、数据类型、是否转置、数据排布和是否使能L1复用。 - MatmulConfig信息（可选），用于配置Matmul模板信息以及相关的配置参数。不配置默认使能Norm模板。 针对Kirin9020系列处理器，当前只支持使… [`references/Matmul模板参数.md`](<references/Matmul模板参数.md>)
+- **Max** — 按元素求最大值，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/56/v3/IW3tvZD4REqQsEV978fsDA/zh-cn_image_000000254337… [`references/Max.md`](<references/Max.md>)
+- **Maxs** — 源操作数矢量内每个元素与标量相比，如果比标量大，则取源操作数值，比标量的值小，则取标量值。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/12/v3/b4Ot6aPfQl20W-PS4GD64w/zh-cn_image_000000257… [`references/Maxs.md`](<references/Maxs.md>)
+- **Min** — 按元素求最小值，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/21/v3/41eSVfEASlaPjGobeXzhFw/zh-cn_image_000000254321… [`references/Min.md`](<references/Min.md>)
+- **Mins** — 源操作数矢量内每个元素与标量相比，如果比标量大，则取标量值，比标量的值小，则取源操作数。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/09/v3/J-eEyTdmTOOFaPCsH5uE3g/zh-cn_image_0000002573… [`references/Mins.md`](<references/Mins.md>)
+- **Model Zoo** — Model Zoo提供了可直接调用的硬件最优模型库，集成图片分类、目标检测、语义分割、超分等典型场景的网络模型，包含CANN性能调优使用指导、性能友好模型结构和推荐指数。帮助开发者快速了解算子的参数取值如何在硬件上获得更好的性能和能效收益，以及如何优化模型结构可以实现高性能与低功耗。 #### Model Zoo模型下载 在模型下载中，.caffemodel… [`references/Model Zoo.md`](<references/Model Zoo.md>)
+- **Mul** — 按元素求积，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/db/v3/g3Qqst1uSXKLbtY11uCLtA/zh-cn_image_00000025738552… [`references/Mul.md`](<references/Mul.md>)
+- **Muls** — 矢量内每个元素与标量求积，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/35/v3/dZ76ndNqQdaz-DcZ0pWebA/zh-cn_image_0000002… [`references/Muls.md`](<references/Muls.md>)
+- **MutableAttrs** — 获取算子的属性值，仅在算子IR原型定义和调用IMPL_OP宏注册的属性值会被返回，其他属性值被丢弃。 本方法与 GetAttrs 的区别在于可以返回非const的属性对象。 #### 函数原型 RuntimeAttrs *MutableAttrs() #### 参数说明 无 #### 返回值 所有IR原型定义过的属性值以及通过IMPL_OP宏注册的属性值，属… [`references/MutableAttrs.md`](<references/MutableAttrs.md>)
+- **MutableData** — 获取首个元素的指针地址，[GetData(), reinterpret_cast<T *>(GetData()) + GetSize())]中的数据即为当前容器中保存的数据。 #### 函数原型 T *MutableData() #### 参数说明 无 #### 返回值 首个元素的指针地址。 #### 约束说明 无 #### 调用示例 size_t capa… [`references/MutableData-1.md`](<references/MutableData-1.md>)
+- **MutableData** — 获取首个元素的指针地址，[GetData(), reinterpret_cast<T *>(GetData()) + GetSize()]中的数据即为当前容器中保存的数据。 #### 函数原型 void *MutableData() #### 参数说明 无 #### 返回值 首个元素的指针地址。 #### 约束说明 无 #### 调用示例 size_t ca… [`references/MutableData.md`](<references/MutableData.md>)
+- **MutableExpandDimsType** — 获取可写的补维规则。 #### 函数原型 ExpandDimsType &MutableExpandDimsType() #### 参数说明 无 #### 返回值 补维规则引用。 #### 约束说明 无 #### 调用示例 ExpandDimsType dim_type("1100"); StorageFormat format(ge::Format::FO… [`references/MutableExpandDimsType.md`](<references/MutableExpandDimsType.md>)
+- **MutableFormat** — 获取Tensor的format，包含运行时format和原始format。 #### 函数原型 StorageFormat &MutableFormat() #### 参数说明 无 #### 返回值 format引用。 关于StorageFormat类型的定义，请参见 StorageFormat 。 #### 约束说明 无 #### 调用示例 Tensor … [`references/MutableFormat.md`](<references/MutableFormat.md>)
+- **MutableInputInstanceInfo** — 根据算子IR原型中的输入索引，获取对应的实例化对象。 #### 函数原型 AnchorInstanceInfo *MutableInputInstanceInfo(const size_t ir_index) #### 参数说明 #### 返回值 返回的实例化对象的地址。返回对象为非const。 #### 约束说明 无 #### 调用示例 for (size… [`references/MutableInputInstanceInfo.md`](<references/MutableInputInstanceInfo.md>)
+- **MutableInputTdInfo** — 根据输入索引信息，获取算子的对应输入Tensor描述，注意，编译时无法确定的shape信息不在Tensor描述中（由于编译时无法确定shape，因此该Tensor描述里不包含shape信息）。 #### 函数原型 CompileTimeTensorDesc *MutableInputTdInfo(const size_t index) #### 参数说明 #… [`references/MutableInputTdInfo.md`](<references/MutableInputTdInfo.md>)
+- **MutableOriginShape** — 获取Tensor的原始shape。 #### 函数原型 Shape &MutableOriginShape() #### 参数说明 无 #### 返回值 原始shape引用。 关于Shape类型的定义，请参见 Shape 。 #### 约束说明 无 #### 调用示例 StorageShape sh({1, 2, 3}, {2, 1, 3}); Tensor… [`references/MutableOriginShape-1.md`](<references/MutableOriginShape-1.md>)
+- **MutableOriginShape** — 获取可写的原始shape。 #### 函数原型 Shape &MutableOriginShape() #### 参数说明 无 #### 返回值 可写的原始shape。 #### 约束说明 无 #### 调用示例 StorageShape shape({3, 256, 256}, {256, 256, 3}); auto origin_shape = sha… [`references/MutableOriginShape.md`](<references/MutableOriginShape.md>)
+- **MutableOutputInstanceInfo** — 根据算子IR原型中的输出索引，获取对应的实例化对象。 #### 函数原型 AnchorInstanceInfo *MutableOutputInstanceInfo(const size_t ir_index) #### 参数说明 #### 返回值 返回的实例化对象的地址。返回对象为非const。 #### 约束说明 无 #### 调用示例 for (siz… [`references/MutableOutputInstanceInfo.md`](<references/MutableOutputInstanceInfo.md>)
+- **MutableOutputTdInfo** — 获取算子的输出Tensor描述，注意，编译时无法确定的shape信息不在Tensor描述中（由于编译时无法确定shape，因此该Tensor描述里不包含shape信息）。 #### 函数原型 CompileTimeTensorDesc *MutableOutputTdInfo(const size_t index) #### 参数说明 #### 返回值 Te… [`references/MutableOutputTdInfo.md`](<references/MutableOutputTdInfo.md>)
+- **MutableStorageShape** — 获取运行时Tensor的shape，此shape对象是可变的。 #### 函数原型 Shape &MutableStorageShape() #### 参数说明 无 #### 返回值 运行时shape的引用。 #### 约束说明 无 #### 调用示例 StorageShape sh({1, 2, 3}, {2, 1, 3}); Tensor t = {sh… [`references/MutableStorageShape-1.md`](<references/MutableStorageShape-1.md>)
+- **MutableStorageShape** — 获取可写的运行时shape。 #### 函数原型 Shape &MutableStorageShape() #### 参数说明 无 #### 返回值 可写的运行时shape。 #### 约束说明 无 #### 调用示例 StorageShape shape({3, 256, 256}, {256, 256, 3}); auto storage_shape =… [`references/MutableStorageShape.md`](<references/MutableStorageShape.md>)
+- **MutableTensorData** — 获取tensor中的数据。 #### 函数原型 TensorData &MutableTensorData() #### 参数说明 无 #### 返回值 可写的tensor data引用。 关于TensorData类型的定义，请参见 TensorData 。 #### 约束说明 无 #### 调用示例 Tensor t = {{}, {}, {}, {}, … [`references/MutableTensorData.md`](<references/MutableTensorData.md>)
+- **Not** — 按元素做按位取反，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数 : ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c0/v3/gczMkZPYRUiBgBqEUgeEUQ/zh-cn_image_0000002573… [`references/Not.md`](<references/Not.md>)
+- **OMG参数** — ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d3/v3/5iNhUkS_SsKZc0YVsZZYCg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111705Z&HW-CC-Ex… [`references/OMG参数.md`](<references/OMG参数.md>)
+- **ONNX框架** — 开发者可以参考本章节进行算子适配插件的开发，将ONNX框架的算子映射成适配Kirin AI处理器的算子（下文简称AscendC算子），从而完成从ONNX框架调用AscendC自定义算子的过程。如下样例展示了一个基础的开发流程： #include "register/register.h" #include "nlohmann/json.hpp" namesp… [`references/ONNX框架.md`](<references/ONNX框架.md>)
+- **OpAttrDef** — 定义算子属性。 #### 定义原型 class OpAttrDef { public: explicit OpAttrDef(const char *name); OpAttrDef(const OpAttrDef &attr_def); ~OpAttrDef(); OpAttrDef &operator=(const OpAttrDef &attr_def… [`references/OpAttrDef.md`](<references/OpAttrDef.md>)
+- **OpExecuteFunc** — 单个算子包含多kernel组合执行逻辑的场景下，算子可以通过该接口设置算子级的回调函数，回调函数内实现多kernel的下发。该功能为预留特性，暂不支持。 #### 函数原型 OpImplRegisterV2 &OpExecuteFunc(OpExecFunc op_execute_func); #### 参数说明 #### 返回值 返回算子的OpImplRe… [`references/OpExecuteFunc.md`](<references/OpExecuteFunc.md>)
+- **OpReceiver** — OpReceiver构造函数，接收自定义算子的注册信息。 #### 函数原型 OpReceiver(OpRegistrationData &reg_data); ~OpReceiver(); #### 参数说明 #### 返回值 OpReceiver构造函数返回OpReceiver类型的对象。 #### 异常处理 无 #### 约束说明 无 [`references/OpReceiver.md`](<references/OpReceiver.md>)
+- **OperatorCreatorRegister** — OperatorCreatorRegister构造函数和析构函数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4d/v3/B0K5yZ8MQu6Scx1sOYigRQ/note_3.0-zh-cn.png?HW-C… [`references/OperatorCreatorRegister.md`](<references/OperatorCreatorRegister.md>)
+- **Or** — 每对元素按位或运算： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/79/v3/pOo9d_tnRmmwYjqLArFG9Q/zh-cn_image_0000002573975195.png?HW-CC-KV=V1&HW-CC-Date=… [`references/Or.md`](<references/Or.md>)
+- **OriginOpType** — 设置原始模型的算子类型或算子类型列表。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4d/v3/jl3ITOxZSf6SBLuxkvkdpg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-… [`references/OriginOpType.md`](<references/OriginOpType.md>)
+- **Output** — 注册算子输出，调用该接口后会返回一个OpParamDef结构，后续可通过该结构配置算子输出信息。 #### 函数原型 OpParamDef &Output(const char *name); #### 参数说明 #### 返回值 OpParamDef 算子参数定义。 #### 约束说明 无 [`references/Output.md`](<references/Output.md>)
+- **OutputShapeDependOnCompute** — 注册shape依赖于计算得到的输出列表。某些算子，比如NonZero（统计tensor中非零值的个数），计算完成前无法得知算子输出的shape信息，算子计算完成后才能获取。该类算子在原型定义时，需要使用OutputShapeDependOnCompute接口进行标识，同时在算子核函数中将实际输出shape写入到出参中，便于框架侧基于该信息进行输出内存的管理。… [`references/OutputShapeDependOnCompute.md`](<references/OutputShapeDependOnCompute.md>)
+- **ParamType** — 定义算子参数类型。 #### 函数原型 OpParamDef &ParamType(Option param_type); #### 参数说明 #### 返回值 OpParamDef 算子定义。 #### 约束说明 无 [`references/ParamType.md`](<references/ParamType.md>)
+- **ParseOpToGraphFn** — 注册实现算子一对多子图映射的函数，即将算子映射为多个算子。 #### 函数原型 OpRegistrationData &ParseOpToGraphFn(const ParseOpToGraphFunc &parse_op_to_graph_fn) #### 参数说明 #### 约束说明 实现一对多子图映射时，插件注册时首先需要将原始框架中的算子映射成AI处… [`references/ParseOpToGraphFn.md`](<references/ParseOpToGraphFn.md>)
+- **ParseParamsByOperatorFn** — 注册解析开发者自定义算子属性的函数。 #### 函数原型 OpRegistrationData &ParseParamsByOperatorFn(const ParseParamByOpFunc &parse_param_by_op_fn) #### 参数说明 #### 回调函数ParseParamByOpFunc 开发者自定义并实现ParseParamBy… [`references/ParseParamsByOperatorFn.md`](<references/ParseParamsByOperatorFn.md>)
+- **ParseParamsFn** — 注册解析算子属性的函数。 #### 函数原型 OpRegistrationData &ParseParamsFn(const ParseParamFunc &parseParamFn) #### 参数说明 #### 约束说明 对于自定义算子插件，ParseParamsFn后续版本将会废弃，请使用 ParseParamsByOperatorFn 接口进行算子属… [`references/ParseParamsFn.md`](<references/ParseParamsFn.md>)
+- **ParseSubgraphPostFn** — 根据算子类型，注册算子的子图中输入输出节点跟算子的输入输出的对应关系函数实现。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/98/v3/XPYag3UFTLerdZlhuNioLQ/note_3.0-zh-cn.pn… [`references/ParseSubgraphPostFn.md`](<references/ParseSubgraphPostFn.md>)
+- **PipeBarrier(ISASI)** — 阻塞相同流水，具有数据依赖的相同流水之间需要插入此同步。 #### 函数原型 template <pipe_t pipe> __aicore__ inline void PipeBarrier() #### 参数说明 **表1** 模板参数说明 **表2** 指令流水类型和相关说明 #### 返回值 无 #### 支持的型号 KirinX90系列处理器 ##… [`references/PipeBarrier(ISASI).md`](<references/PipeBarrier(ISASI).md>)
+- **PrivateAttr** — 用于注册算子的私有属性。 算子的属性包含属性名以及属性值。 通常情况下，注册算子的私有属性时开发者需要同时指定私有属性的名字 **private_attr** 以及该属性的值 **private_attr_val** ，此处称为场景一。但是考虑到算子可能已经存在某个属性的场景，因此也支持开发者在设置该属性时只设置属性名的做法，称为场景二。所以提供了两种类型的… [`references/PrivateAttr.md`](<references/PrivateAttr.md>)
+- **Promote** — Promote类用于表示输出数据类型为输入或属性指定的数据类型间的提升类型。 #### 函数原型 class Promote { public: Promote(const std::initializer_list<const char *> &syms); std::vector<const char *> Syms() const; // 返回参与类型… [`references/Promote.md`](<references/Promote.md>)
+- **REGISTER_CUSTOM_OP宏** — 按指定名称注册算子。 #### 宏原型 REGISTER_CUSTOM_OP(name) #### 参数说明 [`references/REGISTER_CUSTOM_OP宏.md`](<references/REGISTER_CUSTOM_OP宏.md>)
+- **Reciprocal** — 按元素取倒数，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a0/v3/7h9aKgeYTgmFCeucQ7Jqiw/zh-cn_image_0000002573975… [`references/Reciprocal.md`](<references/Reciprocal.md>)
+- **RegisterReliedOnResourceKey** — 注册依赖的资源。 一般由读类型的算子调用，如stack pop。因读类型算子的shape依赖资源算子，调用该接口注册依赖的资源标识。 若资源算子shape变化可触发读类型算子的重新推导。 #### 函数原型 graphStatus RegisterReliedOnResourceKey(const ge::AscendString &key) #### 参数… [`references/RegisterReliedOnResourceKey.md`](<references/RegisterReliedOnResourceKey.md>)
+- **ReleaseEventID** — 用于释放HardEvent（硬件类型同步事件）的TEventID，通常与 AllocEventID 搭配使用。 #### 函数原型 template <HardEvent evt> __aicore__ inline void ReleaseEventID(TEventID id) #### 参数说明 #### 支持的型号 Kirin9020系列处理器 Ki… [`references/ReleaseEventID.md`](<references/ReleaseEventID.md>)
+- **Relu** — 按元素做线性整流Relu，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数 ： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/12/v3/sF2Bzq8uSAqGufN0BJYaSg/zh-cn_image_000000… [`references/Relu.md`](<references/Relu.md>)
+- **Reset** — 完成资源的释放与eventId等变量的初始化操作，恢复到Tpipe的初始化状态。 #### 函数原型 __aicore__ inline void Reset() #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 无 #### 调用示例 AscendC::TPipe pipe; // P… [`references/Reset-1.md`](<references/Reset-1.md>)
+- **Reset** — 完成TbufPool资源的释放与eventId等变量的初始化操作。 #### 函数原型 __aicore__ inline void Reset() #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 切换TBufPool资源池时调用该接口，调用后对应资源池及资源池分配的Buffer不能继续使用。 #### 返… [`references/Reset.md`](<references/Reset.md>)
+- **ResetData** — 释放Tensor中数据内存。 #### 函数原型 std::unique_ptr<uint8_t[], Tensor::DeleteFunc> ResetData(); #### 参数说明 无 #### 返回值 返回释放后的内存地址和删除器。 #### 异常处理 无 #### 约束说明 无 [`references/ResetData.md`](<references/ResetData.md>)
+- **Rsqrt** — 按元素做开方后取倒数，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d0/v3/SlBig7i9Qpe6r74M_ZkCbQ/zh-cn_image_000000254… [`references/Rsqrt.md`](<references/Rsqrt.md>)
+- **SPMD模型** — AscendC算子编程是SPMD(Single-Program Multiple-Data)编程，SPMD是一种常用的并行计算的方法，是提高计算速度的有效手段。 假设，从输入数据到输出数据需要经过3个阶段任务的处理（T1、T2、T3）。如下图所示，SPMD模式下，系统会启动一组进程，并行处理待处理的数据：首先待处理数据会被切分成多个数据分片，切分后的数据分片… [`references/SPMD模型.md`](<references/SPMD模型.md>)
+- **ScalarCast** — 将一个scalar的类型转换为指定的类型。 #### 函数原型 template <typename srcT, typename dstT, RoundMode roundMode> __aicore__ inline dstT ScalarCast(srcT valueIn) #### 参数说明 **表1** 参数说明 #### 返回值 dstT类型的v… [`references/ScalarCast.md`](<references/ScalarCast.md>)
+- **ScalarCountLeadingZero** — 计算一个uint64_t类型数字前导0的个数（二进制从最高位到第一个1一共有多少个0）。 #### 函数原型 __aicore__ inline int64_t ScalarCountLeadingZero(uint64_t valueIn) #### 参数说明 **表1** 参数说明 #### 返回值 返回valueIn的前导0的个数。 #### 支持的型… [`references/ScalarCountLeadingZero.md`](<references/ScalarCountLeadingZero.md>)
+- **ScalarGetCountOfValue** — 获取一个uint64_t类型数字的二进制中0或者1的个数。 #### 函数原型 template <int countValue> __aicore__ inline int64_t ScalarGetCountOfValue(uint64_t valueIn) #### 参数说明 **表1** 参数说明 #### 返回值 valueIn中0或者1的个数。 … [`references/ScalarGetCountOfValue.md`](<references/ScalarGetCountOfValue.md>)
+- **ScalarGetSFFValue** — 获取一个uint64_t类型数字的二进制中第一个0或1出现的位置，如果没找到则返回-1。 #### 函数原型 template <int countValue> __aicore__ inline int64_t ScalarGetSFFValue(uint64_t valueIn) #### 参数说明 **表1** 参数说明 #### 返回值 int64_… [`references/ScalarGetSFFValue.md`](<references/ScalarGetSFFValue.md>)
+- **SerialStringToDataType** — 将DataType的字符串表达转换为DataType枚举值。 从GCC 5.1版本开始，libstdc++为了更好的实现C++11规范，更改了std::string和std::list的一些接口，导致新老版本ABI不兼容。所以推荐使用 AscendStringToDataType 替代本接口。 使用该接口需要包含type_utils.h头文件。 #inclu… [`references/SerialStringToDataType.md`](<references/SerialStringToDataType.md>)
+- **SerialStringToFormat** — 将字符串转化为Format类型值。 从GCC 5.1版本开始，libstdc++为了更好的实现C++11规范，更改了std::string和std::list的一些接口，导致新老版本ABI不兼容。所以推荐使用 AscendStringToFormat 替代本接口。 使用该接口需要包含type_utils.h头文件。 #include "graph/utils… [`references/SerialStringToFormat.md`](<references/SerialStringToFormat.md>)
+- **SetAddr** — 设置tensor地址。 #### 函数原型 ge::graphStatus SetAddr(const ConstTensorAddressPtr addr, TensorAddrManager manager) #### 参数说明 #### 返回值 成功时返回ge::GRAPH_SUCCESS；失败时返回manager管理函数中定义的错误码。 #### 约… [`references/SetAddr.md`](<references/SetAddr.md>)
+- **SetAttr** — 设置算子属性的属性值。 算子可以包括多个属性，初次设置值后，算子属性值的类型固定，算子属性值的类型包括： - 整型：接受int64_t、uint32_t、int32_t类型的整型值 使用SetAttr(const string& name, int64_t attrValue)设置属性值，以GetAttr(const string& name, int32_… [`references/SetAttr.md`](<references/SetAttr.md>)
+- **SetBlockDim** — 设置blockDim，即参与计算的Vector或者Cube核数。 #### 函数原型 ge::graphStatus SetBlockDim(const uint32_t block_dim); #### 参数说明 #### 返回值 设置成功时返回“ge::GRAPH_SUCCESS”。 关于graphStatus的定义，请参见 ge::graphStatu… [`references/SetBlockDim.md`](<references/SetBlockDim.md>)
+- **SetConstData** — 如果TensorDesc是常量节点的描述，向TensorDesc中设置权重值。 #### 函数原型 void SetConstData(std::unique_ptr<uint8_t[]> const_data_buffer, const size_t &const_data_len); #### 参数说明 #### 返回值 无 #### 异常处理 无 ##… [`references/SetConstData.md`](<references/SetConstData.md>)
+- **SetData** — 向Tensor中设置数据。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ac/v3/Cvg4ZuWxQUemcCysoHc7TQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=2… [`references/SetData-1.md`](<references/SetData-1.md>)
+- **SetData** — 设置Tensor的数据。 #### 函数原型 void SetData(TensorData &&data) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 Tensor t = {{}, {}, {}, {}, nullptr}; void *a = &t; TensorData td(a, nullptr); t.S… [`references/SetData.md`](<references/SetData.md>)
+- **SetDataSize** — 设置tiling data长度。 #### 函数原型 void SetDataSize(const size_t size); #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 auto td_buf = TilingData::CreateCap(100U); auto td = reinterpret_cast<Til… [`references/SetDataSize.md`](<references/SetDataSize.md>)
+- **SetDataType** — 设置Tensor的数据类型。 #### 函数原型 void SetDataType(const ge::DataType data_type) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 StorageShape sh({1, 2, 3}, {1, 2, 3}); Tensor t = {sh, {}, {}, ge… [`references/SetDataType-1.md`](<references/SetDataType-1.md>)
+- **SetDataType** — 设置Tensor的Datatype。 #### 函数原型 graphStatus SetDataType(const ge::DataType &dtype); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/SetDataType-2.md`](<references/SetDataType-2.md>)
+- **SetDataType** — 向TensorDesc中设置Tensor的数据类型。 #### 函数原型 void SetDataType(DataType dt); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SetDataType-3.md`](<references/SetDataType-3.md>)
+- **SetDataType** — 向CompileTimeTensorDesc中设置Tensor的数据类型。 #### 函数原型 void SetDataType(const ge::DataType data_type) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 auto dtype_ = ge::DataType::DT_INT32; Stor… [`references/SetDataType.md`](<references/SetDataType.md>)
+- **SetDim** — 将Shape中第idx维度的值设置为value。 #### 函数原型 graphStatus SetDim(size_t idx, int64_t value); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 使用SetDim接口前，只能使用Shape(const std::vector<int64_t>& dims)构造… [`references/SetDim-1.md`](<references/SetDim-1.md>)
+- **SetDim** — 设置dim值。 #### 函数原型 void SetDim(size_t idx, const int64_t dim_value) #### 参数说明 #### 返回值 无 #### 约束说明 调用者需要保证index合法。 #### 调用示例 Shape shape0({3, 256, 256}); shape0.SetDim(0U, 1); // 1,… [`references/SetDim.md`](<references/SetDim.md>)
+- **SetDimNum** — 设置dim num。 #### 函数原型 void SetDimNum(const size_t dim_num) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 Shape shape0({3, 256, 256}); shape0.SetDimNum(1); auto dim_num = shape0.GetDimN… [`references/SetDimNum.md`](<references/SetDimNum.md>)
+- **SetExpandDimsRule** — 设置补维规则。补维是指在原有shape的基础上，添加一到多个维度。例如原shape[2,2]有两根轴，那么在两根轴中间补两维后的shape为[2,1,1,2]，补维后shape的第0、3根轴被称为原始轴，第1、2根轴被称为补维轴。 通过1和0描述补维规则，1代表当前轴为补维轴，0代表当前轴为原始轴，从左到右依次代表当前shape每根轴的来源，例如： **表1… [`references/SetExpandDimsRule-1.md`](<references/SetExpandDimsRule-1.md>)
+- **SetExpandDimsRule** — 设置Tensor的补维规则。 补维是指在原有shape的基础上，添加一到多个维度。例如原shape[2,2]有两根轴，那么在两根轴中间补两维后的shape为[2,1,1,2]，补维后shape的第0、3根轴被称为原始轴，第1、2根轴被称为补维轴。 通过1和0描述补维规则，1代表当前轴为补维轴，0代表当前轴为原始轴，从左到右依次代表当前shape每根轴的来源，… [`references/SetExpandDimsRule.md`](<references/SetExpandDimsRule.md>)
+- **SetExpandDimsType** — 设置补维规则。 #### 函数原型 void SetExpandDimsType(const ExpandDimsType &expand_dims_type) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 ExpandDimsType dim_type("1100"); StorageFormat format(ge… [`references/SetExpandDimsType-1.md`](<references/SetExpandDimsType-1.md>)
+- **SetExpandDimsType** — 设置shape的补维规则。 #### 函数原型 void SetExpandDimsType(const ExpandDimsType &expand_dims_type) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 Tensor tensor{{{8, 3, 224, 224}, {16, 3, 224, 224}… [`references/SetExpandDimsType-2.md`](<references/SetExpandDimsType-2.md>)
+- **SetExpandDimsType** — 设置原始Format向运行时Format转换时的补维规则。 #### 函数原型 void SetExpandDimsType(const ExpandDimsType &expand_dims_type) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 auto dtype_ = ge::DataType::DT_INT… [`references/SetExpandDimsType.md`](<references/SetExpandDimsType.md>)
+- **SetExpandIndex** — 将第index轴设置为补维轴。 #### 函数原型 void SetExpandIndex(const AxisIndex index) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 ExpandDimsType type1("1001"); type1.SetExpandIndex(1); // 补维规则mask_=… [`references/SetExpandIndex.md`](<references/SetExpandIndex.md>)
+- **SetFormat** — 向TensorDesc中设置Tensor的Format。 #### 函数原型 void SetFormat(Format format); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SetFormat-1.md`](<references/SetFormat-1.md>)
+- **SetFormat** — 设置Tensor的Format。 #### 函数原型 graphStatus SetFormat(const ge::Format &format); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/SetFormat.md`](<references/SetFormat.md>)
+- **SetInferDataType** — 注册DataType推导函数。 #### 函数原型 OpDef &SetInferDataType(gert::OpImplRegisterV2::InferDataTypeKernelFunc func); #### 参数说明 #### 返回值 OpDef 算子定义。 #### 约束说明 无 [`references/SetInferDataType.md`](<references/SetInferDataType.md>)
+- **SetInferShape** — 注册Shape推导函数。 #### 函数原型 OpDef &SetInferShape(gert::OpImplRegisterV2::InferShapeKernelFunc func); #### 参数说明 #### 返回值 OpDef 算子定义。 #### 约束说明 无 [`references/SetInferShape.md`](<references/SetInferShape.md>)
+- **SetInferenceContext** — 向当前算子传递InferShape推导所需要的关联信息，比如前面算子的shape和DataType信息。 #### 函数原型 void SetInferenceContext(const InferenceContextPtr &inference_context); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SetInferenceContext.md`](<references/SetInferenceContext.md>)
+- **SetInput** — 设置算子Input，即由哪个算子的输出连到本算子。 有如下几种SetInput方法： - 如果指定srcOprt第0个Output为当前算子Input，使用第一个函数原型设置当前算子Input，不需要指定srcOprt的Output名称。 - 如果指定srcOprt的其它Output为当前算子Input，使用第二个函数原型设置当前算子Input，需要指定sr… [`references/SetInput.md`](<references/SetInput.md>)
+- **SetInputAttr** — 设置算子输入Tensor属性的属性值。 算子可以包括多个属性，初次设置值后，算子属性值的类型固定，算子属性值的类型包括： - 整型：接受int64_t、uint32_t、int32_t类型的整型值。 以int64_t为例： SetInputAttr(const char_t *dst_name, const char_t *name, int64_t att… [`references/SetInputAttr.md`](<references/SetInputAttr.md>)
+- **SetInputHandleShapesAndTypes** — 在推理上下文中，设置算子输入句柄的 ShapeAndType 。 #### 函数原型 void SetInputHandleShapesAndTypes(std::vector<std::vector<ShapeAndType>> &&shapes_and_types) #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SetInputHandleShapesAndTypes.md`](<references/SetInputHandleShapesAndTypes.md>)
+- **SetInstanceStart** — 设置算子某个IR输入在实际输入中的起始序号（index）。 #### 函数原型 void SetInstanceStart(const uint32_t instance_start) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 const auto &ir_inputs = node->GetOpDesc()->G… [`references/SetInstanceStart.md`](<references/SetInstanceStart.md>)
+- **SetInstantiationNum** — 设置IR定义某个输入对应的实际输入个数。 #### 函数原型 void SetInstantiationNum(const uint32_t instantiation_num) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 const auto &ir_inputs = node->GetOpDesc()->GetI… [`references/SetInstantiationNum.md`](<references/SetInstantiationNum.md>)
+- **SetMarks** — 在资源类算子推理的上下文中，设置成对资源算子的标记。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/51/v3/ZxAuajzvQUC4Qfrdxv9AyQ/note_3.0-zh-cn.png?HW-CC-KV=V1… [`references/SetMarks.md`](<references/SetMarks.md>)
+- **SetMax** — 设置最大的T对象指针。 #### 函数原型 void SetMax(T *max) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 Range<int> range; int max = 1024; range.SetMax(&max); [`references/SetMax.md`](<references/SetMax.md>)
+- **SetMin** — 设置最小的T对象指针。 #### 函数原型 void SetMin(T *min) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 Range<int> range; int min = -1; range.SetMin(&min); [`references/SetMin.md`](<references/SetMin.md>)
+- **SetName** — 向TensorDesc中设置Tensor的名称。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bb/v3/tvyOVNv4TeqJEBeaop-DUg/note_3.0-zh-cn.png?HW-CC-KV=V1&H… [`references/SetName.md`](<references/SetName.md>)
+- **SetNodeName** — 设置该ComputeNodeInfo对应的算子的名称。 #### 函数原型 void SetNodeName(const ge::char_t *node_name) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 compute_node_info->SetNodeName("Conv2d"); [`references/SetNodeName.md`](<references/SetNodeName.md>)
+- **SetNodeType** — 设置算子的类型。 #### 函数原型 void SetNodeType(const ge::char_t *node_type) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 compute_node_info.SetNodeType("Const"); [`references/SetNodeType.md`](<references/SetNodeType.md>)
+- **SetOriginFormat** — 设置原始format。 #### 函数原型 void SetOriginFormat(const ge::Format origin_format) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 ExpandDimsType dim_type("1100"); StorageFormat format(ge::Form… [`references/SetOriginFormat-1.md`](<references/SetOriginFormat-1.md>)
+- **SetOriginFormat** — 设置Tensor的原始format。 #### 函数原型 void SetOriginFormat(const ge::Format origin_format) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 Tensor t = {{}, {}, {}, {}, nullptr}; t.SetOriginFormat… [`references/SetOriginFormat-2.md`](<references/SetOriginFormat-2.md>)
+- **SetOriginFormat** — 设置Tensor的原始Format。 该Format是指原始网络模型的Format。 #### 函数原型 graphStatus SetOriginFormat(const ge::Format &format); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/SetOriginFormat-3.md`](<references/SetOriginFormat-3.md>)
+- **SetOriginFormat** — 向TensorDesc中设置Tensor的原始Format。 该Format是指原始网络模型的Format。 #### 函数原型 void SetOriginFormat(Format origin_format); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SetOriginFormat-4.md`](<references/SetOriginFormat-4.md>)
+- **SetOriginFormat** — 向CompileTimeTensorDesc中设置Tensor的原始数据排布格式。 #### 函数原型 void SetOriginFormat(const ge::Format format) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 auto dtype_ = ge::DataType::DT_INT32; S… [`references/SetOriginFormat.md`](<references/SetOriginFormat.md>)
+- **SetOriginShape** — 向TensorDesc中设置Tensor的原始Shape。 该Shape是指原始网络模型的Shape。 #### 函数原型 void SetOriginShape(const Shape &originShape); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SetOriginShape.md`](<references/SetOriginShape.md>)
+- **SetOriginShapeDim** — 设置原始shape第idx维度。 #### 函数原型 graphStatus SetOriginShapeDim(const size_t idx, const int64_t dim_value); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/SetOriginShapeDim.md`](<references/SetOriginShapeDim.md>)
+- **SetOriginShapeDimNum** — 设置原始shape的维度大小，即rank大小。 #### 函数原型 graphStatus SetOriginShapeDimNum(const size_t dim_num); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/SetOriginShapeDimNum.md`](<references/SetOriginShapeDimNum.md>)
+- **SetOutputAttr** — 设置算子输出Tensor属性的属性值。 算子可以包括多个属性，初次设置值后，算子属性值的类型固定，算子属性值的类型包括： - 整型：接受int64_t、uint32_t、int32_t类型的整型值。 以int64_t为例： SetOutputAttr(const char_t *dst_name, const char_t *name, int64_t at… [`references/SetOutputAttr.md`](<references/SetOutputAttr.md>)
+- **SetOutputDataType** — 根据输出索引，设置指定输出的数据类型。 #### 函数原型 ge::graphStatus SetOutputDataType(const size_t index, const ge::DataType datatype); #### 参数说明 #### 返回值 返回设置的结果状态，状态说明请参见 ge::graphStatus 。 index非法时，返回… [`references/SetOutputDataType.md`](<references/SetOutputDataType.md>)
+- **SetOutputHandleShapesAndTypes** — 在推理上下文中，设置算子输出句柄的 ShapeAndType 。 #### 函数原型 void SetOutputHandleShapesAndTypes(const std::vector<std::vector<ShapeAndType>> &shapes_and_types) void SetOutputHandleShapesAndTypes(std… [`references/SetOutputHandleShapesAndTypes.md`](<references/SetOutputHandleShapesAndTypes.md>)
+- **SetPlacement** — 设置tensor的placement。 #### 函数原型 void SetPlacement(const TensorPlacement placement) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 auto addr = reinterpret_cast<void *>(0x10); TensorData t… [`references/SetPlacement-1.md`](<references/SetPlacement-1.md>)
+- **SetPlacement** — 设置Tensor的数据存放的位置。 #### 函数原型 graphStatus SetPlacement(const ge::Placement &placement); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/SetPlacement-2.md`](<references/SetPlacement-2.md>)
+- **SetPlacement** — 设置Tensor的数据存放的位置。 #### 函数原型 void SetPlacement(Placement placement); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SetPlacement-3.md`](<references/SetPlacement-3.md>)
+- **SetPlacement** — 设置tensor的placement。 #### 函数原型 void SetPlacement(const TensorPlacement placement) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 Tensor tensor{{{8, 3, 224, 224}, {16, 3, 224, 224}}, // … [`references/SetPlacement.md`](<references/SetPlacement.md>)
+- **SetRealDimCnt** — 向TensorDesc中设置Tensor的实际维度数目。 通过 GetShape 接口返回的Shape的维度可能存在补1的场景，因此可以通过该接口设置Shape的实际维度个数。 #### 函数原型 void SetRealDimCnt(const int64_t real_dim_cnt); #### 参数说明 #### 返回值 无 #### 异常处理 无 … [`references/SetRealDimCnt.md`](<references/SetRealDimCnt.md>)
+- **SetResourceContext** — 为标识为key的资源，设置资源上下文对象，并交由资源上下文管理器管理。 此接口一般由写类型的资源类算子调用，如stack push等。 #### 函数原型 graphStatus SetResourceContext(const ge::AscendString &key, ResourceContext *resource_context) #### 参数… [`references/SetResourceContext.md`](<references/SetResourceContext.md>)
+- **SetScalar** — 设置shape为标量。 #### 函数原型 void SetScalar() #### 参数说明 无 #### 返回值 无 #### 约束说明 无 #### 调用示例 Shape shape0({3, 256, 256}); shape0.IsScalar(); // false shape0.SetScalar(); shape0.IsScalar(); … [`references/SetScalar.md`](<references/SetScalar.md>)
+- **SetShape** — 向TensorDesc中设置Tensor的Shape。 #### 函数原型 void SetShape(const Shape &shape) #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SetShape-1.md`](<references/SetShape-1.md>)
+- **SetShape** — 设置ShapeAndType类的 Shape 。 #### 函数原型 void SetShape(const Shape &shape) #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SetShape.md`](<references/SetShape.md>)
+- **SetShapeDim** — 设置shape第idx维度。 #### 函数原型 graphStatus SetShapeDim(const size_t idx, const int64_t dim_value); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/SetShapeDim.md`](<references/SetShapeDim.md>)
+- **SetShapeDimNum** — 设置shape的维度大小，即rank大小。 #### 函数原型 graphStatus SetShapeDimNum(const size_t dim_num); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/SetShapeDimNum.md`](<references/SetShapeDimNum.md>)
+- **SetShapeRange** — 设置shape的变化范围。 #### 函数原型 graphStatus SetShapeRange(const std::vector<std::pair<int64_t,int64_t>> &range); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/SetShapeRange.md`](<references/SetShapeRange.md>)
+- **SetSize** — 设置Tensor的内存大小。 #### 函数原型 void SetSize(const size_t size) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 StorageShape sh({1, 2, 3}, {1, 2, 3}); Tensor t = {sh, {}, {}, ge::DT_FLOAT, nul… [`references/SetSize-1.md`](<references/SetSize-1.md>)
+- **SetSize** — 设置tensor数据的内存大小。 #### 函数原型 void SetSize(const size_t size) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 std::vector<int> a = {10}; auto addr = reinterpret_cast<void *>(a.data()); Ten… [`references/SetSize-2.md`](<references/SetSize-2.md>)
+- **SetSize** — 设置device内存地址大小。 #### 函数原型 void SetSize(const size_t mem_size) #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SetSize-3.md`](<references/SetSize-3.md>)
+- **SetSize** — 向TensorDesc中设置Tensor的数据大小。 #### 函数原型 void SetSize(int64_t size); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SetSize-4.md`](<references/SetSize-4.md>)
+- **SetSize** — 设置当前保存的元素个数。 #### 函数原型 ge::graphStatus SetSize(const size_t size) #### 参数说明 #### 返回值 成功时返回ge::GRAPH_SUCCESS。 设置的size>capacity时，返回失败ge::GRAPH_FAILED。 #### 约束说明 无 #### 调用示例 size_t ca… [`references/SetSize.md`](<references/SetSize.md>)
+- **SetStorageFormat** — 设置运行时format。 #### 函数原型 void SetStorageFormat(const ge::Format storage_format) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 ExpandDimsType dim_type("1100"); StorageFormat format(ge::F… [`references/SetStorageFormat-1.md`](<references/SetStorageFormat-1.md>)
+- **SetStorageFormat** — 设置运行时Tensor的format。 #### 函数原型 void SetStorageFormat(const ge::Format storage_format) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 Tensor t = {{}, {}, {}, {}, nullptr}; t.SetOriginFor… [`references/SetStorageFormat-2.md`](<references/SetStorageFormat-2.md>)
+- **SetStorageFormat** — 向CompileTimeTensorDesc中设置运行时Tensor的数据排布格式。 #### 函数原型 void SetStorageFormat(const ge::Format format) #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 auto dtype_ = ge::DataType::DT_INT32;… [`references/SetStorageFormat.md`](<references/SetStorageFormat.md>)
+- **SetSubgraphBuilder** — 设置指定子图构建的函数对象。 #### 函数原型 void SetSubgraphBuilder(const char_t *ir_name, uint32_t index, const SubgraphBuilder &builder); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SetSubgraphBuilder.md`](<references/SetSubgraphBuilder.md>)
+- **SetSysWorkSpace** — 框架需要使用的workspace称之为系统workspace。 Matmul 等高阶API需要系统workspace，所以在使用该类API时，需要调用该接口，设置系统workspace的指针。 在kernel侧调用该接口前，需要在host侧调用GetLibApiWorkSpaceSize获取系统workspace的大小，并在host侧设置workspaces… [`references/SetSysWorkSpace.md`](<references/SetSysWorkSpace.md>)
+- **SetTensorA** — 设置矩阵乘的左矩阵A。 #### 函数原型 __aicore__ inline void SetTensorA(const GlobalTensor<SrcAT>& gm, bool isTransposeA = false) __aicore__ inline void SetTensorA(const LocalTensor<SrcAT>& leftMa… [`references/SetTensorA.md`](<references/SetTensorA.md>)
+- **SetTensorB** — 设置矩阵乘的右矩阵B。 #### 函数原型 __aicore__ inline void SetTensorB(const GlobalTensor<SrcBT>& gm, bool isTransposeB = false) __aicore__ inline void SetTensorB(const LocalTensor<SrcBT>& rightM… [`references/SetTensorB.md`](<references/SetTensorB.md>)
+- **SetTensorDesc** — 设置Tensor的描述符（TensorDesc）。 #### 函数原型 graphStatus SetTensorDesc(const TensorDesc &tensor_desc); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/SetTensorDesc.md`](<references/SetTensorDesc.md>)
+- **SetTiling** — 注册Tiling函数。 #### 函数原型 OpAICoreDef &SetTiling(gert::OpImplRegisterV2::TilingKernelFunc func); #### 参数说明 #### 返回值 OpAICoreDef 算子定义。 #### 约束说明 无 [`references/SetTiling.md`](<references/SetTiling.md>)
+- **SetTilingCond** — 设置tiling cond。 #### 函数原型 ge::graphStatus SetTilingCond(int32_t tiling_cond); #### 参数说明 #### 返回值 设置成功时返回“ge::GRAPH_SUCCESS”。 关于graphStatus的定义，请参见 ge::graphStatus 。 #### 约束说明 当前支持的Ki… [`references/SetTilingCond.md`](<references/SetTilingCond.md>)
+- **SetTilingKey** — 设置TilingKey。 不同的kernel实现分支可以通过TilingKey来标识，host侧设置TilingKey后，可以选择对应的分支。例如，一个算子在不同的shape下，有不同的算法逻辑，kernel侧可以通过TilingKey来选择不同的算法逻辑，在host侧Tiling算法也有差异，host/kernel侧通过相同的TilingKey进行关联。 … [`references/SetTilingKey.md`](<references/SetTilingKey.md>)
+- **SetType** — 设置ShapeAndType类的 DataType 。 #### 函数原型 void SetType(DataType data_type) #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SetType.md`](<references/SetType.md>)
+- **SetUnknownDimNumShape** — 设置tensor的shape为{-2}，用来表示tensor是完全未知的。 #### 函数原型 graphStatus SetUnknownDimNumShape(); #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/SetUnknownDimNumShape.md`](<references/SetUnknownDimNumShape.md>)
+- **ShapeInfo** — ShapeInfo用来存放LocalTensor或GlobalTensor的shape信息。 #### 定义原型 - ShapeInfo结构定义 struct ShapeInfo { public: __aicore__ inline ShapeInfo(); __aicore__ inline ShapeInfo(const uint8_t inputSh… [`references/ShapeInfo.md`](<references/ShapeInfo.md>)
+- **ShareFrom** — 使当前的TensorData对象共享另一个对象的内存以及内存管理函数。 #### 函数原型 ge::graphStatus ShareFrom(const TensorData &other) #### 参数说明 #### 返回值 成功时返回 ge::GRAPH_SUCCESS。 #### 约束说明 无 #### 调用示例 std::vector<int> … [`references/ShareFrom.md`](<references/ShareFrom.md>)
+- **ShiftLeft** — 源操作数内每个元素做逻辑左移，逻辑左移的位数由输入参数scalar决定。 所谓逻辑左移，是指去掉最高位，最低位补0，例：二进制数 1010101010101010，逻辑左移一位结果为 0101010101010100。 #### 函数原型 tensor前n个数据计算： template <typename T, bool isSetMask = true> … [`references/ShiftLeft.md`](<references/ShiftLeft.md>)
+- **ShiftRight** — 源操作数内每个元素做右移，右移的位数由输入参数scalar决定。 对数据类型uint16_t/uint32_t的源操作数做逻辑右移，对数据类型int16_t/int32_t的源操作数做算术右移。 逻辑右移为去掉最低位，最高位填充为0。 算术右移为去掉最低位，最高位复制符号位。 例： - 数据类型uint16_t，二进制数 1010101010101010，逻… [`references/ShiftRight.md`](<references/ShiftRight.md>)
+- **Sigmoid** — 按元素做逻辑回归Sigmoid，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数 ： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f/v3/dYlbSLx2QDOFv-TYqVQkkw/zh-cn_image_0000… [`references/Sigmoid.md`](<references/Sigmoid.md>)
+- **Simulator性能仿真功能** — 算子可以在仿真器上进行性能仿真，目前主要支持CAModel仿真器。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/84/v3/gMAnvl62TO6XzXvRq4A6gw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW… [`references/Simulator性能仿真功能.md`](<references/Simulator性能仿真功能.md>)
+- **SoftmaxFlashV2** — 将输入tensor[m 0 , m 1 , ...m t , n]（t大于等于0）的非尾轴长度相乘的结果看作m，则输入tensor的shape看作[m, n]。对输入tensor[m,n]按行做如下计算，不同的update值对应不同的计算公式，其中x、inmax和insum为输入，M、S、E均为输出。 - update为false： ![](https://… [`references/SoftmaxFlashV2.md`](<references/SoftmaxFlashV2.md>)
+- **Sqrt** — 按元素做开方，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3f/v3/7vhXDsXdSmudMU-iyFnC1w/zh-cn_image_0000002543374… [`references/Sqrt.md`](<references/Sqrt.md>)
+- **Sub** — 按元素求差，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ac/v3/A5vMmNCeQJKGpC6-2TzzdA/zh-cn_image_00000025432152… [`references/Sub.md`](<references/Sub.md>)
+- **SubCount** — MemBlock引用计数减1。 #### 函数原型 size_t SubCount() #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无 [`references/SubCount.md`](<references/SubCount.md>)
+- **SubgraphCountRegister** — 子图注册。 #### 函数原型 void SubgraphCountRegister(const char_t *ir_name, uint32_t count); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/SubgraphCountRegister.md`](<references/SubgraphCountRegister.md>)
+- **SuperKernel** — KirinX90/Kirin9030处理器不支持SuperKernel，所以如下接口在Kirin平台不生效。 **表1** KirinX90/Kirin9030任务间同步API [`references/SuperKernel.md`](<references/SuperKernel.md>)
+- **TCubeTiling结构体** — TCubeTiling结构体包含Matmul Tiling切分算法的相关参数，被传递给Matmul kernel侧，用于Matmul的切块、搬运和计算过程等。TCubeTiling结构体的参数说明见表1。 **表1** TCubeTiling结构说明 开发者通过调用GetTiling接口获取TCubeTiling结构体，具体流程请参考 使用说明 。若开发者需… [`references/TCubeTiling结构体.md`](<references/TCubeTiling结构体.md>)
+- **TILING_KEY_IS** — 在核函数中判断本次执行时的tiling_key是否等于某个key，从而标识tiling_key==key的一条kernel分支。 #### 函数原型 TILING_KEY_IS(key) #### 参数说明 #### 约束说明 - key必须是非负整数。 - TILING_KEY_IS运用于if和else if分支，不支持else分支，即用TILING_KE… [`references/TILING_KEY_IS.md`](<references/TILING_KEY_IS.md>)
+- **TPosition** — AscendC管理不同层级的物理内存时，用一种抽象的逻辑位置（TPosition）来表达各级别的存储，代替了片上物理存储的概念，达到隐藏硬件架构的目的。主要的TPosition类型包括：VECIN、VECOUT、VECCALC、A1、A2、B1、B2、CO1、CO2，其中VECIN、VECCALC、VECOUT主要用于矢量编程，A1、A2、B1、B2、C1、… [`references/TPosition.md`](<references/TPosition.md>)
+- **Tanh** — 按元素做逻辑回归Tanh，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数 ： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/22/v3/dsiJBllgTHmHPvY1ySu06A/zh-cn_image_000000… [`references/Tanh.md`](<references/Tanh.md>)
+- **TensorDescInfo** — struct TensorDescInfo { Format format_ = FORMAT_RESERVED; /* tbe op register support format */ DataType dataType_ = DT_UNDEFINED; /* tbe op register support datatype */ }; Format为枚… [`references/TensorDescInfo.md`](<references/TensorDescInfo.md>)
+- **TensorPlacement** — enum TensorPlacement { kOnDeviceHbm, // < Tensor位于Device上的HBM内存 kOnHost, // < Tensor位于Host kFollowing, // < Tensor位于Host，且数据紧跟在结构体后面 kOnDeviceP2p, // < Tensor位于Device上的P2p内存, 指的是HB… [`references/TensorPlacement.md`](<references/TensorPlacement.md>)
+- **TensorPlacementUtils** — 提供一组函数，判断TensorPlacement的位置。 #### 函数原型 class TensorPlacementUtils { public: // 判断Tensor是否位于Device上的内存（包括HBM和P2p内存） static bool IsOnDevice(TensorPlacement placement) { return (place… [`references/TensorPlacementUtils.md`](<references/TensorPlacementUtils.md>)
+- **TensorType** — TensorType类用以定义输入或者输出支持的数据类型，TensorType提供以下接口指定支持的数据类型： struct TensorType { explicit TensorType(DataType dt); TensorType(const std::initializer_list<DataType> &initial_types); stat… [`references/TensorType.md`](<references/TensorType.md>)
+- **Tensor基本概念** — Tensor是算子计算数据的容器，TensorDesc（Tensor描述符）是对Tensor中数据的描述。TensorDesc数据结构包含如下属性如表1所示。 **表1** TensorDesc属性解释 [`references/Tensor基本概念.md`](<references/Tensor基本概念.md>)
+- **Tiling** — 注册算子的Tiling函数。 开发者需要为算子编写一个TilingKernelFunc类型的函数，并使用该接口进行注册。同时可以指定tiling数据的最大长度，缺省值为2048Bytes。 TilingKernelFunc类型定义如下。 using TilingKernelFunc = UINT32 (*)(TilingContext *); #### 函数… [`references/Tiling.md`](<references/Tiling.md>)
+- **TilingData结构定义** — 定义一个TilingData的类，添加所需的成员变量（TilingData字段），用于保存所需TilingData参数。完成该TilingData类的定义后，该类通过继承TilingDef类（用来存放、处理开发者自定义Tiling结构体成员变量的基类）提供以下接口： - set_+field_name接口：用于设置TilingData类的字段值，field_… [`references/TilingData结构定义.md`](<references/TilingData结构定义.md>)
+- **TilingData结构注册** — 注册定义的TilingData结构体并和自定义算子绑定。具体使用说明请参考 调用示例 。 #### 函数原型 REGISTER_TILING_DATA_CLASS(op_type, class_name) #define REGISTER_TILING_DATA_CLASS(op_type, class_name) class op_type##class_… [`references/TilingData结构注册.md`](<references/TilingData结构注册.md>)
+- **TilingInputsDataDependency** — 标记Tiling计算时需要依赖算子第几个输入tensor的值，同时标记tiling计算支持执行的位置。 #### 函数原型 OpImplRegisterV2 &TilingInputsDataDependency(std::initializer_list<int32_t> inputs); OpImplRegisterV2 &TilingInputsDat… [`references/TilingInputsDataDependency.md`](<references/TilingInputsDataDependency.md>)
+- **TilingParse** — 注册算子的TilingParse函数，用于解析算子编译阶段生成的算子信息json文件，在注册时需要注册算子自行指定数据类型T，该数据类型用于保存解析后的算子信息。 开发者需要为算子编写一个KernelFunc类型或者TilingParseFunc类型的函数，并使用下列对应的接口进行注册。 KernelFunc类型定义如下。 using KernelFunc … [`references/TilingParse.md`](<references/TilingParse.md>)
+- **Tiling调测功能** — Tiling是算子开发中独立且关键的部分，描述了Kirin AI处理器SoC NPU IP加速器上算子的输入/输出数据切分、分块计算、多核并行等策略，以满足片上存储限制和计算pipeline的需求，最大化计算并行性和数据局部性(data locality OR data reuse)，从而发挥硬件的极致性能。 对单算子执行Tiling调测时，根据Tiling… [`references/Tiling调测功能.md`](<references/Tiling调测功能.md>)
+- **TransDataTo5HD** — 数据格式转换，一般用于将NCHW格式转换成NC1HWC0格式。特别的，也可以用于二维矩阵数据块的转置。完成转置功能时，相比于 Transpose 接口，Transpose仅支持16*16大小的矩阵转置。本接口单次repeat内可处理512Byte的数据（16个datablock），根据数据类型不同，支持不同shape的矩阵转置（比如数据类型为half时，单次… [`references/TransDataTo5HD.md`](<references/TransDataTo5HD.md>)
+- **Transpose** — - 可实现16*16的二维矩阵数据块的转置。 - 可实现[N, C, H, W]与[N, H, W, C]互相转换。 #### 函数原型 - 普通转置，支持16*16的二维矩阵数据块进行转置 template <typename T> void Transpose(const LocalTensor<T>& dstLocal, const LocalTens… [`references/Transpose.md`](<references/Transpose.md>)
+- **Trap** — 当软件产生异常后，使用该指令使kernel中止运行。 #### 函数原型 __aicore__ inline void Trap() #### 参数说明 无 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 该接口在kernel需要调试时使用。 #### 调用示例 AscendC::Tr… [`references/Trap.md`](<references/Trap.md>)
+- **TryGetInputDesc** — 根据算子Input名称获取算子Input的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5b/v3/W917jjNpSbylq7uU0y0stQ/note_3.0-zh-cn.png?HW-CC… [`references/TryGetInputDesc.md`](<references/TryGetInputDesc.md>)
+- **UnaryRepeatParams** — UnaryRepeatParams为用于控制操作数地址步长的数据结构。结构体内包含操作数相邻迭代间相同datablock的地址步长，操作数同一迭代内不同datablock的地址步长等参数。 结构体具体定义为： const int32_t DEFAULT_BLK_NUM = 8; const int32_t DEFAULT_BLK_STRIDE = 1; co… [`references/UnaryRepeatParams.md`](<references/UnaryRepeatParams.md>)
+- **Update** — 更新TensorDesc的shape、format、datatype属性。 #### 函数原型 void Update(const Shape &shape, Format format = FORMAT_ND, DataType dt = DT_FLOAT); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无 [`references/Update.md`](<references/Update.md>)
+- **UpdateDynamicInputDesc** — 根据name和index的组合更新算子动态Input的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1d/v3/h7781rh7TLywY26QBMjwFA/note_3.0-zh-cn.png… [`references/UpdateDynamicInputDesc.md`](<references/UpdateDynamicInputDesc.md>)
+- **UpdateDynamicOutputDesc** — 根据name和index的组合更新算子动态Output的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/63/v3/dGviOLMyTtC6Xigvr01zWA/note_3.0-zh-cn.pn… [`references/UpdateDynamicOutputDesc.md`](<references/UpdateDynamicOutputDesc.md>)
+- **UpdateInputDesc** — 根据算子Input名称更新Input的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/44/v3/UVCDFmcmQy-AEEWTk0DEug/note_3.0-zh-cn.png?HW-CC-K… [`references/UpdateInputDesc.md`](<references/UpdateInputDesc.md>)
+- **UpdateOutputDesc** — 根据算子Output名称更新Output的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b1/v3/qLZiEpILQvSjbhDlHS2R3w/note_3.0-zh-cn.png?HW-CC… [`references/UpdateOutputDesc.md`](<references/UpdateOutputDesc.md>)
+- **VERIFY_FUNC_REG** — 注册算子的Verify函数。 #### 函数原型 VERIFY_FUNC_REG(op_name, x) #### 约束说明 无 #### 参数说明 #### 返回值 无 [`references/VERIFY_FUNC_REG.md`](<references/VERIFY_FUNC_REG.md>)
+- **VacantInQue** — 查询队列是否已满。 #### 函数原型 __aicore__ inline bool VacantInQue() #### 参数说明 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 - true：表示Queue未满，可以继续EnQue操作。 - false：表示Queue已满，不可… [`references/VacantInQue-1.md`](<references/VacantInQue-1.md>)
+- **VacantInQue** — 查询队列是否已满。 #### 函数原型 __aicore__ inline bool VacantInQue() #### 参数说明 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 - true：表示Queue未满，可以继续EnQue操作。 - false：表示Queue已满，不可… [`references/VacantInQue.md`](<references/VacantInQue.md>)
+- **ValueDepend** — 标识该输入是否为“数据依赖输入”，数据依赖输入是指在Tiling/InferShape等函数实现时依赖该输入的具体数据。该输入数据为host侧数据，开发者在Tiling函数/InferShape函数中可以通过TilingContext类的 GetInputTensor /InferShapeContext类的 GetInputTensor 获取这个输入数据。… [`references/ValueDepend.md`](<references/ValueDepend.md>)
+- **VerifyAllAttr** — 根据disableCommonVerifier值，校验Operator中的属性是否有效，校验Operator的输入输出是否有效。 #### 函数原型 graphStatus VerifyAllAttr(bool disable_common_verifier = false); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明… [`references/VerifyAllAttr.md`](<references/VerifyAllAttr.md>)
+- **VerifyFuncRegister** — VerifyFuncRegister构造函数和析构函数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/96/v3/K7fw2bupRWmRcZE5DXrgcw/note_3.0-zh-cn.png?HW-CC-KV=… [`references/VerifyFuncRegister.md`](<references/VerifyFuncRegister.md>)
+- **ascendebug调测工具参数说明** — 可通过 **ascendebug -h** 或 **ascendebug --help** 查看工具支持的所有调测模式，具体参见表1。 **表1** 支持的命令行调测模式 #### Tiling调测参数 #### CPU调测参数 #### NPU调测参数 #### Simulator仿真参数 [`references/ascendebug调测工具参数说明.md`](<references/ascendebug调测工具参数说明.md>)
+- **assert** — 基于算子工程开发的算子，可以使用该接口实现CPU/NPU域assert断言功能。算子执行中，如果assert内部条件判断不为真，则输出assert条件并将输入的信息格式化打印在屏幕上。 在算子kernel侧实现代码中需要增加断言的地方使用assert检查代码，并格式化输出一些调测信息。示例如下。 int assertFlag = 10; assert(ass… [`references/assert.md`](<references/assert.md>)
+- **assert功能** — 使用工具进行算子调测时，支持断言功能。当核函数代码中条件判断为false时，则立即中断运行流程并打印相关信息，方便快速定位错误。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/88/v3/awnUq2viRbqJ-ehoIgT5Gw/no… [`references/assert功能.md`](<references/assert功能.md>)
+- **gdb调试** — 可使用gdb单步调试算子计算精度。由于cpu调测已转为多进程调试，每个核都会拉起独立的子进程，故gdb需要转换成子进程调试的方式。 #### 使用方法（命令行） - 调试单独一个子进程 在gdb启动后，首先设置跟踪子进程，之后再打断点，就会停留在子进程中，设置的命令为： set follow-fork-mode child 但是这种方式只会停留在遇到断点的第… [`references/gdb调试.md`](<references/gdb调试.md>)
+- **ge::graphStatus** — graphStatus类型即uint32_t类型，其不同的状态说明如下。 [`references/ge__graphStatus.md`](<references/ge__graphStatus.md>)
+- **operator!=** — 判断格式是否不相等。 #### 函数原型 bool operator!=(const StorageFormat &other) const #### 参数说明 #### 返回值 true表示格式不同。 false表示格式相同。 #### 约束说明 无 #### 调用示例 ExpandDimsType dim_type("1100"); StorageFor… [`references/operator!=-1.md`](<references/operator!=-1.md>)
+- **operator!=** — 判断shape是否不相等。 #### 函数原型 bool operator!=(const StorageShape &other) const #### 参数说明 #### 返回值 true：不相等。 false：相等。 #### 约束说明 无 #### 调用示例 StorageShape shape0({3, 256, 256}, {256, 256, … [`references/operator!=-2.md`](<references/operator!=-2.md>)
+- **operator!=** — 判断与另一个Shape对象是否不等。 #### 函数原型 bool operator!=(const Shape &rht) const #### 参数说明 #### 返回值 true：不相等。 false：相等。 #### 约束说明 无 #### 调用示例 Shape shape0({3, 256, 256}); Shape shape1({1, 3, 2… [`references/operator!=.md`](<references/operator!=.md>)
+- **operator** — 向后添加tiling data，若添加超过可容纳的最大长度，则忽略本次操作。 #### 函数原型 template<typename T> TilingData &operator<<(TilingData &out, const T &data); #### 参数说明 #### 返回值 追加完data的TilingData对象。 #### 约束说明 无 #… [`references/operator-1.md`](<references/operator-1.md>)
+- **operator** — 禁用拷贝赋值函数。 使用移动赋值函数。 #### 函数原型 TensorData& operator= (const TensorData &other)=delete TensorData& operator= (TensorData &&other) noexcept #### 参数说明 #### 返回值 返回一个持有other对象资源的新TensorD… [`references/operator.md`](<references/operator.md>)
+- **operator==** — 判断与另外一个range对象是否相等，如果两个range的上下界的地址相同，或者上下界的值相同，这两个对象相等。 #### 函数原型 bool operator==(const Range<T>&rht) const #### 参数说明 #### 返回值 true：相等。 false：不相等。 #### 约束说明 无 #### 调用示例 int min = … [`references/operator==-1.md`](<references/operator==-1.md>)
+- **operator==** — 判断与另外一个shape对象是否相等，如果两个shape的dim num相等，并且dim num内每个dim的值都相等，则认为两个shape相等。 #### 函数原型 bool operator==(const Shape &rht) const #### 参数说明 #### 返回值 true：相等。 false：不相等。 #### 约束说明 无 #### … [`references/operator==-2.md`](<references/operator==-2.md>)
+- **operator==** — 判断格式是否相等。 #### 函数原型 bool operator==(const StorageFormat &other) const #### 参数说明 #### 返回值 true代表相等。 false代表不等。 #### 约束说明 无 #### 调用示例 ExpandDimsType dim_type("1100"); StorageFormat f… [`references/operator==-3.md`](<references/operator==-3.md>)
+- **operator==** — 判断shape是否相等。 #### 函数原型 bool operator==(const StorageShape &other) const #### 参数说明 #### 返回值 true：相等。 false：不相等。 #### 约束说明 无 #### 调用示例 StorageShape shape0({3, 256, 256}, {256, 256, 3… [`references/operator==-4.md`](<references/operator==-4.md>)
+- **operator==** — 判断本补维规则对象与另一个对象是否一致。 #### 函数原型 bool operator==(const ExpandDimsType &other) const #### 参数说明 #### 返回值 true表示一致，false表示不一致。 #### 约束说明 无 #### 调用示例 ExpandDimsType type1("1001"); Expand… [`references/operator==.md`](<references/operator==.md>)
+- **params归一格式的算子json配置** — 为了支持输入/输出参数交叉配置的场景，params归一配置格式应运而生，所有输入/输出参数均放在“params”配置项中。该算子json配置文件中参数可以按 **输入/输出规则排布** ，也可以按 **输入/输出交叉排布** ，只要保证参数顺序与Kernel入口函数的参数顺序保持一致即可。 ![](https://contentcenter-vali-drc… [`references/params归一格式的算子json配置.md`](<references/params归一格式的算子json配置.md>)
+- **printf** — 基于算子工程开发的算子，可以使用该接口实现CPU侧/NPU侧调试场景下的格式化输出功能。 在算子kernel侧实现代码中需要输出日志信息的地方调用printf接口打印相关内容。样例如下。 #include "kernel_operator.h" AscendC::printf("fmt string %d\n", 0x123); AscendC::PRINT… [`references/printf.md`](<references/printf.md>)
+- **printf/PRINTF功能** — 使用工具进行算子调测时，支持printf/PRINTF功能，可以打印Scalar数据。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8e/v3/4vgt5Ee6RsOv6x7s7EilZA/note_3.0-zh-cn.png?HW-C… [`references/printf_PRINTF功能.md`](<references/printf_PRINTF功能.md>)
+- **使用说明** — AscendC提供一组Matmul Tiling API，方便开发者获取Matmul kernel计算时所需的Tiling参数。开发者只需要传入A/B/C矩阵等信息，调用API接口，即可获取到Init中TCubeTiling结构体中的相关参数。 Matmul Tiling API分为Matmul单核Tiling接口、多核Tiling接口和BatchMatmu… [`references/使用说明-1.md`](<references/使用说明-1.md>)
+- **使用说明** — AscendC提供一组Matmul高阶API，方便开发者快速实现Matmul矩阵乘法的运算操作。 Matmul的计算公式为：C = A * B，其示意图如下。 - A、B为源操作数，A为左矩阵，形状为[M, K]；B为右矩阵，形状为[K, N]。 - C为目的操作数，存放矩阵乘结果的矩阵，形状为[M, N]。 **图1** Matmul矩阵乘示意图（当前不支… [`references/使用说明.md`](<references/使用说明.md>)
+- **关系符重载** — 对于AscendString对象大小比较的使用场景（例如map数据结构的key进行排序），通过重载以下关系符实现。 bool operator<(const AscendString& d) const; bool operator>(const AscendString& d) const; bool operator<=(const AscendStri… [`references/关系符重载.md`](<references/关系符重载.md>)
+- **兼容性说明** — 总体兼容性策略见表1 Ascend C API兼容策略，兼容性范围不包含编译器BuiltIn API、Ascend C内部实现接口等。若开发者希望在新平台运行其它平台开发的Ascend C程序，需要在新平台重新编译并运行，并可能需要根据迁移指导进行代码调整。 **图1** Ascend C API层次结构 ![](https://contentcenter-… [`references/兼容性说明.md`](<references/兼容性说明.md>)
+- **内存零拷贝** — 对于GPU的纹理数据或模型的输入数据等已经存在于ION内存中的场景，就可以使用“内存零拷贝方式”，即将存放数据的ION内存封装为输入输出张量，直接进行推理，不需要进行输入张量和输出张量的数据拷贝，以便节省内存以及推理时间。 #### 使用说明 对于零拷贝使用场景，在模型加载完成后，使用 OH_NNTensor_CreateWithFd ，将ION内存封装为输… [`references/内存零拷贝.md`](<references/内存零拷贝.md>)
+- **内部关联接口** — 在进行算子原型注册、Tiling实现、shape推导过程中，使用到的外部开放接口中会调用到一些辅助数据结构和接口，称之为 **内部关联接口** 。开发者不会直接调用内部关联接口，此处仅作简单介绍。 #### KernelContext类 本类是对底层数据结构KernelRunContext的包装，包含kernel执行时所需的算子输入、输出个数信息以及输入输出… [`references/内部关联接口-1.md`](<references/内部关联接口-1.md>)
+- **内部关联接口** — 在进行算子原型注册、Tiling实现、shape推导过程中，使用到的外部开放接口中会调用到一些辅助数据结构和接口，称之为 **内部关联接口** 。开发者不会直接调用内部关联接口，此处仅作简单介绍。 #### CTilingDataClassFactory CTilingDataClassFactory类用于注册AscendC高阶API和开发者自定义tilin… [`references/内部关联接口.md`](<references/内部关联接口.md>)
+- **创建算子工程** — DDK开发套件包中提供了自定义算子工程生成工具msOpGen，可基于算子原型定义输出算子工程：包括 **算子host侧代码实现文件** 、 **算子kernel侧实现文件** 以及 **工程编译配置文件等** 。 **简要说明：** 使用msOpGen工具创建算子工程之前，需要参考 环境准备 章节安装驱动固件和DDK软件包，完成开发环境和运行环境的准备。 同… [`references/创建算子工程.md`](<references/创建算子工程.md>)
+- **创建项目** — 本章以 Caffe SqueezeNet 模型集成为例，说明App集成操作过程。 1. 创建DevEco Studio项目，选择“Native C++”模板，点击“Next”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6c/v3/J… [`references/创建项目.md`](<references/创建项目.md>)
+- **判断模型能否在手机上运行？** — 通过调用接口 HMS_HiAICompatibility_CheckFromFile 或者 HMS_HiAICompatibility_CheckFromBuffer ，传入编译后的模型文件或者模型buffer，如果返回“HIAI_COMPATIBILITY_COMPATIBLE”表示兼容性检查通过，模型可以在手机上运行。 [`references/判断模型能否在手机上运行？.md`](<references/判断模型能否在手机上运行？.md>)
+- **单算子应用** — CANN Kit提供独立的算子创建和计算通路，三方框架可以在模型加载、推理过程中，将卷积、深度卷积等算子通过单算子对接的方式迁移至NPU，经过硬件平台的加速计算，与整网模式对比灵活度更高，相比于整网CPU计算性能更优。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAllianc… [`references/单算子应用.md`](<references/单算子应用.md>)
+- **原型定义接口（REG_OP）** — 函数原型定义示例如下。 REG_OP(xxx) .INPUT(x1, type) .OPTIONAL_INPUT(x2, type) .DYNAMIC_INPUT(x3, type) .OUTPUT(y1, type) .DYNAMIC_OUTPUT(y3, type) .REQUIRED_ATTR(a, type) .ATTR(b, type, defau… [`references/原型定义接口（REG_OP）.md`](<references/原型定义接口（REG_OP）.md>)
+- **原型定义衍生接口说明** — 算子原型定义的相关接口会自动生成对应的衍生接口，可用于IR模型构建。 #### REG_OP 注册算子类型后，会自动生成算子类型的两个构造函数。 例如，注册算子的类型名称Conv2D，可调用REG_OP(Conv2D)接口，调用该接口后，定义了算子的类型名称Conv2D，同时产生Conv2D的两个构造函数，其中， **Conv2D(const AscendS… [`references/原型定义衍生接口说明.md`](<references/原型定义衍生接口说明.md>)
+- **原型注册接口(OP_ADD)** — 注册算子的原型定义。 #### 函数原型 OP_ADD(opType) #### 参数说明 #### 返回值 无 #### 约束说明 无 [`references/原型注册接口(OP_ADD).md`](<references/原型注册接口(OP_ADD).md>)
+- **原子操作** — KirinX90/Kirin9030处理器不支持Atomic特性，具体包含如下接口。 **表1** 原子操作兼容说明 [`references/原子操作.md`](<references/原子操作.md>)
+- **可变data_type** — 可变data_type是OMG工具支持的一个功能，用于模型输入输出数据类型多样性的场景，无需修改训练好的模型，在使用OMG工具进行 模型转换 时，通过指定输入、输出数据类型使得同一个模型适用于不同输入输出的场景。 #### 使用说明 在进行模型转换时，输入输出数据类型指定分别需要通过 OMG参数 的input_type、output_type来实现。 使用示… [`references/可变data_type.md`](<references/可变data_type.md>)
+- **可视化工具** — Netron 是一个神经网络模型可视化工具，支持许多主流AI框架模型的可视化。 Netron 5.1.6版本开始支持.om模型可视化。如下图所示，使用Netron工具加载.om模型后，可以展示模型的拓扑结构、图、节点的信息等。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAll… [`references/可视化工具.md`](<references/可视化工具.md>)
+- **同步控制** — KirinX90/Kirin9030处理器不支持多个NPU核之间硬同步能力（硬件同步是利用硬件自带的全核同步指令由硬件保证多核同步）。但由于KirinX90/Kirin9030处理器的NPU是单核耦合架构(AICOER: 1*AIC +1*AIV)，所以针对如下涉及多核的同步API进行软件兼容，开发者无需感知细节。 **表1** 多核同步兼容说明 [`references/同步控制.md`](<references/同步控制.md>)
+- **同源算子调测样例** — 同源算子指算子的输入和输出为同一地址，算子在计算完成后，把原有的输出结果直接覆盖在输入的地址上，同源算子调测时，需要在outputs中配置对应的算子输出，输出名称类型要和input保持一致。 #### 同源算子配置示例 tensor类：定义的json数据的object中name shape dtype format在inputs和outputs里必须一致，但… [`references/同源算子调测样例.md`](<references/同源算子调测样例.md>)
+- **固定输入/输出顺序的算子json配置** — 固定输入/输出顺序的算子json配置文件中“inputs”和“outputs”参数按照“ **输入/输出规则排布** ”，所以要求Kernel入口函数的参数也是按照该规则排布。 **简要说明：** - **输入/输出规则排布** （所有输出参数排布在输入参数之后）：例如Kernel入口函数的参数排布为 extern "C" __global__ __aico… [`references/固定输入_输出顺序的算子json配置.md`](<references/固定输入_输出顺序的算子json配置.md>)
+- **图编译和图执行** — 单算子模型执行是指基于图IR执行算子，先编译算子（例如，使用OMG工具将Ascend IR定义的单算子描述文件编译成算子omc模型文件），再调用模型加载推理接口执行单算子网络。下文仅提供单算子模型执行的样例和基础内容讲解，详细内容请参考 端侧部署 章节。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_… [`references/图编译和图执行.md`](<references/图编译和图执行.md>)
+- **基本架构** — 如下展示了总体的硬件基本架构。其中，AI Core通过数据总线与硬件结构中其它基本单元相连接，基于AscendC开发的算子，通过总线传输并最终运行在AI Core上。下文的编程模型基于硬件架构的抽象进行介绍，了解该内容能够更好的理解编程模型；对于需要完成高性能编程的深度开发者，更需要了解硬件架构相关知识，最佳实践中很多内容都以本章为基础进行介绍。 ![](h… [`references/基本架构.md`](<references/基本架构.md>)
+- **基础API** — 数据搬运接口，包括 普通数据搬运 、 随路格式转换 。 - 普通数据搬运接口，适用于连续和不连续数据搬运。 - 随路格式转换接口，适用于在搬运时进行格式转换。 #### 内存管理与同步控制 AscendC编程范式，把算子核内的处理程序，分成多个流水任务，通过队列(Queue)完成 **任务间通信和同步** ，并通过统一的 **资源管理** 模块(Pipe)来… [`references/基础API.md`](<references/基础API.md>)
+- **基础数据结构和接口列表** — 本文档提供了进行算子开发和图开发时依赖的基础数据结构和接口说明，按照命名空间进行分类： - ge（Graph Engine） ge是Graph Engine的缩写，代表一个通用的命名空间，专注于构图和图编译处理。此命名空间提供了一套丰富的API，用于构建和管理复杂的图结构。它的核心优势在于其通用性和灵活性，能够满足各种图处理需求，无论是在设计阶段还是在编译过… [`references/基础数据结构和接口列表.md`](<references/基础数据结构和接口列表.md>)
+- **基础知识** — ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/77/v3/BaIZQXUqR2uE3x0MU6Rc7w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111712Z&HW-CC-Ex… [`references/基础知识.md`](<references/基础知识.md>)
+- **如何使用double buffer优化性能** — 执行于AI Core上的指令队列主要包括如下几类，即：Vector指令队列（V）、Matrix指令队列（M）和存储移动指令队列（MTE2、MTE3）。不同指令队列间的相互独立性和可并行执行性，是double buffer优化机制的基石。 矢量计算CopyIn、CopyOut过程使用存储移动指令队列（MTE2、MTE3），Compute过程使用Vector指令… [`references/如何使用double buffer优化性能.md`](<references/如何使用double buffer优化性能.md>)
+- **如何升级工程到最新版本** — 使用5.0.2.0版本DDK tools包生成的算子工程，若想用新版本的DDK tools包进行调试，需要升级算子工程，否则编译时会有如下报错。 /usr/bin/ld: cannot find -lPLATFORM-NOTFOUND: No such file or directory // ... CMake Error at cmake_install… [`references/如何升级工程到最新版本.md`](<references/如何升级工程到最新版本.md>)
+- **如何处理OMG离线模型输出算子类型错误？** — Caffe网络中具有相同类型名但计算功能不同的层。比如DetectionOutput层，需要使用算子映射指明为FSRDetectionOutput、SSDDetectionOutput等检测算子类型，否则OMG生成离线模型会执行失败。为了避免出现错误，以下两种方案二选一即可。 - 方案1：可以在OMG命令中加入--op_name_map参数，参考 OMG参数… [`references/如何处理OMG离线模型输出算子类型错误？.md`](<references/如何处理OMG离线模型输出算子类型错误？.md>)
+- **如何申请workspace作为临时内存** — workspace是设备侧Global Memory上的一块内存。workspace内存分为两部分：系统workspace和开发者workspace。 - 系统workspace：AscendC API需要预留的workspace内存 API在计算过程需要一些workspace内存作为缓存，因此算子需要为API预留workspace内存，预留内存大小通过 G… [`references/如何申请workspace作为临时内存.md`](<references/如何申请workspace作为临时内存.md>)
+- **存储单元** — AI处理器中的计算资源要想发挥强劲算力，必要条件是保证输入数据能够及时准确地出现在计算单元中，需要精心设计存储系统，保证计算单元所需的数据供应。 AI Core中包含多级 **内部存储** ，AI Core需要把 **外部存储** 中的数据加载到内部存储中，才能完成相应的计算。AI Core的主要内部存储包括：L1 Buffer（L1缓冲区）、L0 Buff… [`references/存储单元.md`](<references/存储单元.md>)
+- **工程化算子开发概述** — 工程化算子开发是指基于自动生成的 **自定义算子工程** 完成算子实现、编译部署、单算子调用代码自动生成等一系列流程。 该开发流程是标准的开发流程，建议开发者按照该流程进行算子开发。该方式下，算子开发的代码会更规范、统一、易于维护；同时该方式考虑了单算子API调用、算子入图、AI框架调用等功能的集成，使得开发者易于借助DDK框架实现上述功能。 工程化算子开发… [`references/工程化算子开发概述.md`](<references/工程化算子开发概述.md>)
+- **常见问题** — 如果模型定义了多个输入，开发者需要为每个输入节点各准备一份IMAGE或BINARY模式的校准集。如果不同节点所需的输入数据存在对应关系，推荐使用BINARY模式，以免由于读取图片的顺序不同导致非预期行为。在填写量化配置文件时，需要定义与输入节点个数相同的预处理参数，预处理参数的顺序则需要与开发者运行工具时指定的input_shape顺序一致。 #### Un… [`references/常见问题.md`](<references/常见问题.md>)
+- **开发准备** — - 使用Ubuntu 64位运行 Tools下载 中的tools_omg模型转换工具。 - 推荐使用 Ubuntu 22.04 及以上版本、MacOS 10.14及以上版本、Windows 10及以上版本安装应用开发环境 DevEco Studio 。 - 准备训练好的tools_omg模型转换工具生成的 离线模型 或者从 Model Zoo 中选择合适的模… [`references/开发准备.md`](<references/开发准备.md>)
+- **开发流程** — 该开发流程以 工程化算子开发 为基础，除了需要提供 算子实现 中的算子实现文件外，还需要额外交付算子入图的代码文件。本节仅提供算子入图代码文件的开发指导。 假设下图是我们需要使用的网络模型，开发者可能会想直接逐个算子调用，根据输入tensor得到输出tensor就可以完成网络的运行，但在图模式场景下，实际的网络模型生成过程中，会先进行tensor shape… [`references/开发流程.md`](<references/开发流程.md>)
+- **异构** — 异构是CANN Kit提供的异构计算能力，能够使开发者App在华为平台上充分享受到硬件平台的计算加速性能，同时提供非华为硬件平台的模型计算兼容性和计算加速，使开发者App开发过程归一化，不再需要为不同硬件平台适配不同模型或者计算框架，减少App开发及维护的难度。 异构的原理如下图所示，指定OP1、OP2、OP5~OPn在CPU上进行推理，OP3、OP4在NP… [`references/异构.md`](<references/异构.md>)
+- **快速入门** — 本节以一个简单算子为例，带开发者体验从算子工程创建、代码编写、编译部署到运行验证的开发全流程，让开发者对算子开发工程有个宏观的认识，此处我们以输入是动态shape的Add算子实现为例，为了与内置Add算子区分，定义算子类型为AddCustom。 #### 工程创建 DDK软件包中提供了工程创建工具msOpGen，开发者可以输入算子原型定义文件生成Ascend… [`references/快速入门.md`](<references/快速入门.md>)
+- **总体说明** — 开发人员完成自定义算子的实现代码后，需要进行适配插件的开发将基于第三方框架的算子映射成适配AI处理器的算子，可调用REGISTER_CUSTOM_OP宏实现算子转换。在调用REGISTER_CUSTOM_OP宏时，以REGISTER_CUSTOM_OP开始，以“.”链接FrameworkType、OriginOpType、ParseParamsFn等接口。 … [`references/总体说明.md`](<references/总体说明.md>)
+- **接口概述** — AscendC算子采用标准C++语法和一组类库API进行编程，开发者可以根据自己的需求选择合适的API。AscendC编程类库API示意图如下所示，AscendC API的操作数都是Tensor类型：GlobalTensor和LocalTensor；类库API分为基础API和高阶API。 - **基础API：** 实现对硬件能力的抽象，开放芯片的能力，保证完… [`references/接口概述.md`](<references/接口概述.md>)
+- **控制单元** — 控制单元为整个计算过程提供了指令控制，负责整个AI Core的运行。AI Core包含的控制单元如图1所示，每个模块的具体介绍请参考表1。 **图1** 控制单元 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c8/v3/bR1pjlYO… [`references/控制单元.md`](<references/控制单元.md>)
+- **推理函数支持的数据格式有哪些？** — 推理时传入的inputTensor的数据格式当前只支持NCHW。 [`references/推理函数支持的数据格式有哪些？.md`](<references/推理函数支持的数据格式有哪些？.md>)
+- **插件式量化** — 插件式量化不区分模型类型，包含语言类视觉类，可以针对各种Transform结构的模型进行快速量化。 #### 插件式整体流程 PTQ和QAT是两种量化参数优化策略，PTQ使用推理工程即可完成量化校准，QAT需要结合训练工程来进行量化感知训练。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/Deve… [`references/插件式量化-1.md`](<references/插件式量化-1.md>)
+- **插件式量化** — 插件式量化运行环境依赖开发者本身的训练工程环境，目前轻量化工具支持TensorFlow和PyTorch两种框架的插件式量化。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f7/v3/NKPUdjKPTlitA3Mgh14-HA/note… [`references/插件式量化.md`](<references/插件式量化.md>)
+- **支持的算子** — #### 激活算子说明 [`references/支持的算子.md`](<references/支持的算子.md>)
+- **数据分散/数据收集** — 给定输入的张量和一个地址偏移张量，Gather指令根据偏移地址将输入张量按元素收集到结果张量中。 #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Gather(const LocalTensor<T>& dstLocal, const LocalTensor<T>& … [`references/数据分散_数据收集.md`](<references/数据分散_数据收集.md>)
+- **数据填充** — 将输入按照输出shape进行广播。 比如A的shape为(2,1)，广播的目标shape为(2,16)，则会将原来的一列扩展为相同的16列。 输入数据： [[ 1] [ 2]] 输出数据： [[ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1] [ 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2]] #### 实现原理 以fl… [`references/数据填充.md`](<references/数据填充.md>)
+- **数据排布格式** — Format为数据的物理排布格式，定义了解读数据的维度，比如1D，2D，3D，4D，5D等。 #### NCHW和NHWC 在深度学习领域，多维数据通过多维数组存储，比如卷积神经网络的特征图(Feature Map)通常用四维数组保存，即4D，4D格式解释如下。 - N：Batch数量，例如图像的数目。 - H：Height，特征图高度，即垂直高度方向的像素… [`references/数据排布格式.md`](<references/数据排布格式.md>)
+- **数据搬运** — KirinX90/Kirin9030处理器部分数据通路特性存在差异，具体如下。 **表1** 数据搬运兼容说明 [`references/数据搬运.md`](<references/数据搬运.md>)
+- **数据生成脚本适配样例** — import sys import os import json import logging from functools import reduce from dataclasses import dataclass import numpy as np from numpy import array DTYPE = { "float16": np.fl… [`references/数据生成脚本适配样例.md`](<references/数据生成脚本适配样例.md>)
+- **数据类型** — KirinX90/Kirin9030除了API不支持bfloat16_t，MrgSort、Mmad基础api（如不支持float等）、Cast基础API（如不支持s64）等部分API还存在其它数据类型差异，详见 《Ascend C算子接口》 。若开发者在Ascend910B/Ascend910C使用bfloat16_t数据类型，在Kirin平台上需要替换成其… [`references/数据类型.md`](<references/数据类型.md>)
+- **无训练量化** — - TensorFlow开发者 开发者需提供需要量化的pb模型。 - PyTorch开发者 开发者需提供需要量化的模型定义py文件以及模型参数pth文件。 - ONNX开发者 开发者需提供需要量化的ONNX模型。 #### 准备校准集 开发者需提供bin格式或图片格式的校准集。bin格式的输入数据需按照以下方式存储，如表1。图片格式的数据为存放测试图片的文件… [`references/无训练量化.md`](<references/无训练量化.md>)
+- **昇腾和麒麟同代AI处理器的映射关系** — 本指南描述昇腾到“同代”麒麟AI处理器的兼容性迁移指导。“同代”映射关系参见表1 昇腾与“同代”麒麟AI处理器的映射关系。 **表1** 昇腾与“同代”麒麟AI处理器的映射关系 [`references/昇腾和麒麟同代AI处理器的映射关系.md`](<references/昇腾和麒麟同代AI处理器的映射关系.md>)
+- **普通数据搬运** — 普通数据搬运接口，适用于连续和不连续数据搬运。 #### 函数原型 - 源操作数为GlobalTensor，目的操作数为LocalTensor // 支持连续和不连续 template <typename T> __aicore__ inline void DataCopy(const LocalTensor<T>& dstLocal, const Glob… [`references/普通数据搬运.md`](<references/普通数据搬运.md>)
+- **更多样例** — 为了方便开发者快速运行具体指令中的参考样例，本章节提供双目指令的样例模板。 开发者可以将以下样例模板作为代码框架，只需将具体指令中的样例片段拷贝替换下文代码段中的加粗内容即可。 #include "kernel_operator.h" class KernelAdd { public: __aicore__ inline KernelAdd() {} __a… [`references/更多样例-1.md`](<references/更多样例-1.md>)
+- **更多样例** — 为了方便开发者快速运行具体指令中的参考样例，本章节提供标量三目指令的样例模板。 开发者可以将以下样例模板作为代码框架，只需将具体指令中的样例片段拷贝替换下文代码段中的加粗内容即可。 // 完整样例一、half精度组合 #include "kernel_operator.h" class KernelAxpy { public: __aicore__ inli… [`references/更多样例-2.md`](<references/更多样例-2.md>)
+- **更多样例** — 为了方便开发者快速运行具体指令中的参考样例，本章节提供标量双目指令的样例模板。 开发者可以将以下样例模板作为代码框架，只需将具体指令中的样例片段拷贝替换下文代码段中的加粗内容即可。 #include "kernel_operator.h" class KernelBinaryScalar { public: __aicore__ inline KernelB… [`references/更多样例-3.md`](<references/更多样例-3.md>)
+- **更多样例** — 为了方便开发者快速运行具体指令中的参考样例，本章节提供单目指令的样例模板。 开发者可以将以下样例模板作为代码框架，只需将具体指令中的样例片段拷贝替换下文代码段中的加粗内容即可。 #include "kernel_operator.h" class KernelUnary { public: __aicore__ inline KernelUnary() {}… [`references/更多样例.md`](<references/更多样例.md>)
+- **构造函数** — 创建TBufPool对象时，初始化数据成员。 #### 函数原型 template <TPosition pos, uint32_t bufIDSize = 4> __aicore__ inline TBufPool(); #### 参数说明 #### 约束说明 无 [`references/构造函数-1.md`](<references/构造函数-1.md>)
+- **构造函数** — RuntimeAttrs类的构造函数。 #### 函数原型 RuntimeAttrs() = delete; RuntimeAttrs(const RuntimeAttrs &) = delete; RuntimeAttrs(RuntimeAttrs &&) = delete; RuntimeAttrs &operator=(const RuntimeAtt… [`references/构造函数-10.md`](<references/构造函数-10.md>)
+- **构造函数** — Shape构造函数。 #### 函数原型 下文中的dim_num_为维度个数，即有几维；dims_为具体的维度值信息。 - 默认构造一个shape，默认构造的shape实例中，dim_num_长度为0 Shape() : dim_num_(0), dims_{0} - 通过dims_值构造shape，例如：Shape({8,3,224,224})表示创建一个… [`references/构造函数-11.md`](<references/构造函数-11.md>)
+- **构造函数** — 构造一个格式，格式包括原始格式、运行时格式、补维规则。 #### 函数原型 StorageFormat() StorageFormat(const ge::Format origin_format, const ge::Format storage_format, const ExpandDimsType &expand_dims_type) #### 参数… [`references/构造函数-12.md`](<references/构造函数-12.md>)
+- **构造函数** — 构造一个运行时shape实例。 #### 函数原型 StorageShape() StorageShape(const std::initializer_list<int64_t> &origin_shape, const std::initializer_list<int64_t> &storage_shape) #### 参数说明 #### 返回值 返回… [`references/构造函数-13.md`](<references/构造函数-13.md>)
+- **构造函数** — 用于构造指定的Tensor对象。Tensor类用来描述一个tensor对象的信息以及行为，包含：shape信息、format信息、datatype信息以及tensor数据内容tensordata。 #### 函数原型 Tensor (const StorageShape &storage_shape, const StorageFormat &storage… [`references/构造函数-14.md`](<references/构造函数-14.md>)
+- **构造函数** — TilingData类的构造函数。 #### 函数原型 TilingData(const TilingData &) = delete; TilingData(TilingData &&) = delete; TilingData operator=(const TilingData &) = delete; TilingData operator=(Til… [`references/构造函数-15.md`](<references/构造函数-15.md>)
+- **构造函数** — 构造用来管理全局内存和同步的TPipe对象。 #### 函数原型 __aicore__ inline TPipe() #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 - 避免TPipe在对象内创建和初始化，TPipe在对象内创建时，可能会影响编译器对对象内常量的优化，引起scalar性能劣化。 - TPip… [`references/构造函数-2.md`](<references/构造函数-2.md>)
+- **构造函数** — 创建TQueBind对象。 #### 函数原型 template <TPosition src, TPosition dst, int32_t depth, auto mask = 0> __aicore__ inline TQueBind(); #### 参数说明 #### 约束说明 无 [`references/构造函数-3.md`](<references/构造函数-3.md>)
+- **构造函数** — 用于创建一个Matmul单核Tiling对象，或者多核Tiling对象，或者BatchMatmul Tiling对象。 #### 函数原型 - 带参构造函数，需要传入硬件平台信息，推荐使用这类构造函数来获得更好的兼容性。 - 使用PlatformAscendC类传入信息 explicit MatmulApiTiling(const platform_asce… [`references/构造函数-4.md`](<references/构造函数-4.md>)
+- **构造函数** — 提供了默认的构造函数以及指定了两个数据成员信息的构造函数。 #### 函数原型 AnchorInstanceInfo() AnchorInstanceInfo(const uint32_t instance_start, const uint32_t instantiation_num) #### 参数说明 #### 返回值 返回一个AnchorInstan… [`references/构造函数-5.md`](<references/构造函数-5.md>)
+- **构造函数** — CompileTimeTensorDesc类用于描述编译时的Tensor描述信息，包含dtype信息以及format信息。由于编译时无法确定shape，因此不包含shape信息。该函数为CompileTimeTensorDesc类的构造函数。 #### 函数原型 CompileTimeTensorDesc() #### 参数说明 无 #### 返回值 返回一… [`references/构造函数-6.md`](<references/构造函数-6.md>)
+- **构造函数** — ComputeNodeInfo类的构造函数。 #### 函数原型 ComputeNodeInfo() = delete; ComputeNodeInfo(const ComputeNodeInfo &) = delete; ComputeNodeInfo(ComputeNodeInfo &&) = delete; ComputeNodeInfo &opera… [`references/构造函数-7.md`](<references/构造函数-7.md>)
+- **构造函数** — 创建一个补维规则。 #### 函数原型 - 构造的实例中，补维规则（mask_）以及补维后的维度（size_）均为0 ExpandDimsType() : size_(0U), mask_(0U) - 通过字符串创建一个补维规则 ExpandDimsType(const ge::char_t *const expand_dims_type) - 通过int6… [`references/构造函数-8.md`](<references/构造函数-8.md>)
+- **构造函数** — Range构造函数，对应如下3个汇总构造方法： - 默认构造一个上下界为nullptr的range实例。 - 构造一个通过指定上下界的range实例。 - 只传入一个任意类型的指针构造一个上下界相同的range实例。 分别对应下述3种构造函数原型。 #### 函数原型 Range() // 默认构造函数，上下界均为空指针 Range(T *min, T* m… [`references/构造函数-9.md`](<references/构造函数-9.md>)
+- **构造函数** — 创建TBuf对象时，初始化数据成员。 #### 函数原型 template <TPosition pos> __aicore__ inline TBuf(); #### 参数说明 #### 约束说明 无 [`references/构造函数.md`](<references/构造函数.md>)
+- **构造函数与析构函数** — 构造一个TensorData。 - 构造方式1：指定了tensor数据的地址以及用于管理tensor数据的函数manager。 - 构造方式2：指定了tensor数据的地址、用于管理tensor数据的函数manager、tensor数据所占内存大小、tensor数据所在的位置（host、device）。 - 构造方式3：移动构造形式。 ![](https:/… [`references/构造函数与析构函数.md`](<references/构造函数与析构函数.md>)
+- **构造函数和析构函数** — AscendString构造函数和析构函数。 #### 函数原型 AscendString() = default; ~AscendString() = default; AscendString(const char_t *const name); AscendString(const char_t *const name, size_t length);… [`references/构造函数和析构函数-1.md`](<references/构造函数和析构函数-1.md>)
+- **构造函数和析构函数** — Tensor构造函数和析构函数。 #### 函数原型 Tensor(); ~Tensor() = default; explicit Tensor(const TensorDesc &tensor_desc); Tensor(const TensorDesc &tensor_desc, const std::vector<uint8_t> &data); T… [`references/构造函数和析构函数-10.md`](<references/构造函数和析构函数-10.md>)
+- **构造函数和析构函数** — TensorDesc构造函数和析构函数。 #### 函数原型 TensorDesc(); ~TensorDesc() = default; explicit TensorDesc(Shape shape, Format format = FORMAT_ND, DataType dt = DT_FLOAT); TensorDesc(const TensorDe… [`references/构造函数和析构函数-11.md`](<references/构造函数和析构函数-11.md>)
+- **构造函数和析构函数** — AttrValue构造函数和析构函数。 #### 函数原型 AttrValue(); ~AttrValue() = default; #### 参数说明 无 #### 返回值 AttrValue构造函数返回AttrValue类型的对象。 #### 异常处理 无 #### 约束说明 无 [`references/构造函数和析构函数-2.md`](<references/构造函数和析构函数-2.md>)
+- **构造函数和析构函数** — FrameworkRegistry构造函数和析构函数。 #### 函数原型 FrameworkRegistry(const FrameworkRegistry &) = delete; FrameworkRegistry& operator = (const FrameworkRegistry &) = delete; ~FrameworkRegistry(… [`references/构造函数和析构函数-3.md`](<references/构造函数和析构函数-3.md>)
+- **构造函数和析构函数** — InferenceContext对象的构造函数和析构函数。 #### 函数原型 ~InferenceContext() = default; InferenceContext(const InferenceContext &context) = delete; InferenceContext(const InferenceContext &&context… [`references/构造函数和析构函数-4.md`](<references/构造函数和析构函数-4.md>)
+- **构造函数和析构函数** — MemBlock构造函数和析构函数。 #### 函数原型 MemBlock(Allocator &allocator, void *addr, size_t block_size) : allocator_(allocator), addr_(addr), count_(1U), block_size_(block_size) {} virtual ~Mem… [`references/构造函数和析构函数-5.md`](<references/构造函数和析构函数-5.md>)
+- **构造函数和析构函数** — Operator构造函数和析构函数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ab/v3/AzYfiUkjStat9Bret1rlNA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-D… [`references/构造函数和析构函数-6.md`](<references/构造函数和析构函数-6.md>)
+- **构造函数和析构函数** — OpRegistrationData构造函数和析构函数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/97/v3/hXmK3VmcQw26-cdgMW-1rQ/note_3.0-zh-cn.png?HW-CC-KV=… [`references/构造函数和析构函数-7.md`](<references/构造函数和析构函数-7.md>)
+- **构造函数和析构函数** — Shape构造函数和析构函数。 #### 函数原型 Shape(); ~Shape() = default; explicit Shape(const std::vector<int64_t> &dims); #### 参数说明 #### 返回值 Shape构造函数返回Shape类型的对象。 #### 异常处理 无 #### 约束说明 无 [`references/构造函数和析构函数-8.md`](<references/构造函数和析构函数-8.md>)
+- **构造函数和析构函数** — ShapeAndType构造函数和析构函数。 #### 函数原型 ShapeAndType(); ~ShapeAndType(); ShapeAndType(const Shape &shape, DataType data_type); #### 参数说明 #### 返回值 ShapeAndType构造函数返回ShapeAndType类型的对象。 ####… [`references/构造函数和析构函数-9.md`](<references/构造函数和析构函数-9.md>)
+- **构造函数和析构函数** — Allocator构造函数和析构函数。 #### 函数原型 Allocator() = default; virtual ~Allocator() = default; Allocator(const Allocator &) = delete; Allocator &operator=(const Allocator &) = delete; #### 参… [`references/构造函数和析构函数.md`](<references/构造函数和析构函数.md>)
+- **构造和析构函数** — OpImplRegisterV2类作为注册接口类，提供了一系列算子原型注册接口，供开发者注册指定算子类型的Tiling函数、Infershape函数、私有属性等信息。开发者调用算子原型注册接口进行注册时会间接使用到该类。 #### 函数原型 // 指定算子类型为op_type，构造一个用于算子注册的OpImplRegisterV2对象，并对其注册数据进行默认… [`references/构造和析构函数.md`](<references/构造和析构函数.md>)
+- **核函数** — 从 SPMD模型 可以得知，使用AscendC进行编程时，我们编写一份算子实现代码，算子被调用时，将启动N个运行实例，在N个核上运行。本节将介绍算子实现的入口函数。 核函数(Kernel Function)是AscendC算子设备侧实现的入口。在核函数中，需要为在一个核上执行的代码规定要进行的数据访问和计算操作，当核函数被调用时，多个核都执行相同的核函数代码… [`references/核函数.md`](<references/核函数.md>)
+- **概述** — 轻量化工具是一款集模型压缩算法和网络结构搜索算法于一体的自动模型轻量化工具，针对NPU架构对深度神经网络模型进行深度的模型优化，可以帮助开发者自动地完成模型轻量化以及网络结构的生成任务。目前支持无训练模式、插件式量化模式、大语言模型低位量化和网络结构搜索训练。 - 无训练量化：开发者可以直接输入模型，无需重训练，快速的完成模型轻量化。适用于快捷方便量化的开发… [`references/概述-1.md`](<references/概述-1.md>)
+- **概述** — AIPP(AI Pre-Process)是针对AI推理的输入数据进行预处理的模块。CANN模型推理一般需要标准化输入数据格式，而一般模型推理场景数据是一张图片，在格式上存在多样性，AIPP可实现不同格式图片数据到NPU标准输入数据格式的转换。对已训练好的模型，不用重新训练匹配推理计算平台需要的数据格式，而只通过AIPP参数配置或者在软件上调用AIPP接口即可… [`references/概述-2.md`](<references/概述-2.md>)
+- **概述** — Ascend910B/Ascend910C和KirinX90/Kirin9030之间的ASC API详细能力差异，见 《Ascend C算子接口》 。本节当前重点描述主要的差异和兼容适配方案，其它情况可类比参考。 架构版本代表了AI处理器的能力，Ascend910B/Ascend910C和KirinX90/Kirin9030的AI处理器架构版本请参见表1。 … [`references/概述.md`](<references/概述.md>)
+- **模型推理** — 该场景是基本模型的使用场景，主要包含模型的编译和推理，其他场景是基础场景的一个扩展和功能增强。 #### 业务流程 模型推理的主要开发流程如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/26/v3/3LLBBTSQQqGF_d… [`references/模型推理.md`](<references/模型推理.md>)
+- **模型收益** — 以resnet-18为例，使用轻量化工具后（Quant_INT8-8量化）的收益如下。 #### 网络结构搜索工具分类场景收益对比 以resnet-18为例，使用轻量化工具后（网络结构搜索）的收益如下。 #### 检测场景收益对比 #### 分割场景收益对比 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pv… [`references/模型收益.md`](<references/模型收益.md>)
+- **模型转换AIPP配置文件说明** — 一份功能完整的AIPP配置文件示例如下： # AIPP的配置以aipp_op开始，标识这是一个AIPP算子的配置，aipp_op支持配置多个 aipp_op { # input_name参数为可选，标识对模型的哪个输入做AIPP处理 # 类型：string input_name: "data" # related_input_rank参数为可选，与input… [`references/模型转换AIPP配置文件说明.md`](<references/模型转换AIPP配置文件说明.md>)
+- **模型转换前准备** — CANN Kit当前仅支持Caffe、TensorFlow、ONNX和MindSpore模型转换为离线模型，其他格式的模型需要开发者自行转换为CANN Kit支持的模型格式。 1. 准备训练好的Caffe、TensorFlow、ONNX等模型。例如： Caffe SqueezeNet V1.0 模型。 2. 下载 Tools ，解压使用Tools下的OMG工… [`references/模型转换前准备.md`](<references/模型转换前准备.md>)
+- **模型转换示例** — 使用CANN Kit SDK时，可以预先使用OMG工具将Caffe、TensorFlow、ONNX、MindSpore模型转换为OM离线模型，移动端AI程序直接读取离线模型进行推理。OMG工具位于 Tools下载 的tools/tools_omg下，可运行在64位Linux平台上。 #### Caffe模型转换 当前支持 Caffe 1.0版本。 命令行中的… [`references/模型转换示例.md`](<references/模型转换示例.md>)
+- **模型轻量化示例** — 请参见 环境准备 ，安装TensorFlow及依赖。 #### 模型配置 - 准备量化模型 将基线模型的pb文件放入"dopt_tf_py3/demo/quant8-8/notrain/tensorflow_mnist/basemodel/"中。该路径下已经放入了mnist基线模型mnist.pb。 - 准备量化输入数据 参见 模型量化 ，将图片或二进制形式… [`references/模型轻量化示例.md`](<references/模型轻量化示例.md>)
+- **深度融合** — 模型推理时结合硬件深度融合，减少对DDR的访问，提升能效比。目前仅支持编译前可变shape场景，调用 HMS_HiAIOptions_SetTuningStrategy 设置模型优化策略为"HIAI_TUNING_STRATEGY_ON_DEVICE_TUNING"。 [`references/深度融合.md`](<references/深度融合.md>)
+- **版本获取方法** — 开发者可以使用以下两种方法获取CANN Kit Version版本号。 - 方法1：通过hdc命令。 如果开发者的手机终端直接连接在2in1上，可以使用以下命令，获取const.hiai.vendor.hiaiversion属性。 hdc shell param get const.hiai.vendor.hiaiversion - 方法2：通过CANN K… [`references/版本获取方法.md`](<references/版本获取方法.md>)
+- **环境准备** — 进行环境准备前，你需要了解如下基本概念，以便更好的理解后续操作。 - 开发环境：指编译开发代码的环境。 - 运行环境：指运行算子、推理程序等的Linux环境。运行环境必须连接上带有Kirin AI处理器的设备，如手机、平板等。 - 开发环境与运行环境合设场景：开发环境和运行环境在同一台机器上，开发者使用连接上Kirin AI处理器的机器作为运行环境，同时在该… [`references/环境准备.md`](<references/环境准备.md>)
+- **矢量编程** — 基于AscendC方式实现矢量算子的流程如图1所示。 **图1** 矢量算子实现流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cf/v3/A6yMrLiUSa22JQtRhsqkIQ/zh-cn_image_000000257385… [`references/矢量编程.md`](<references/矢量编程.md>)
+- **矩阵编程算子实现** — 上文介绍了Matmul矩阵乘的数据切分方案和数据流。AscendC提供一组Matmul高阶API，封装了这些常用的切分和数据搬运、计算的算法逻辑，方便开发者快速实现Matmul矩阵乘法的运算操作。开发者在host侧通过调用API自动获取Tiling参数，该参数传递到kernel侧后，在初始化操作时传入，通过几个简单的API即可完成矩阵乘操作。以下代码仅包含M… [`references/矩阵编程算子实现.md`](<references/矩阵编程算子实现.md>)
+- **矩阵计算** — KirinX90/Kirin9030处理器不支持结构化稀疏功能，并且Mmad左矩阵分形结构在Kirin9030有差异。 **表1** 矩阵计算兼容说明 Mmad左矩阵分形格式变换修改适配方案： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1… [`references/矩阵计算.md`](<references/矩阵计算.md>)
+- **硬件架构抽象** — AscendC基于硬件抽象架构进行编程， 屏蔽不同硬件之间的差异。 **图1** 硬件架构抽象 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/89/v3/kqEcU27STqiAcHrhsDRM1A/zh-cn_image_0000002… [`references/硬件架构抽象.md`](<references/硬件架构抽象.md>)
+- **简介** — 使用AscendC编程的过程中，可能会用到一些临时变量。这些临时变量占用的内存可以使用TBuf数据结构来管理，存储位置通过模板参数来设置，可以设置为不同的TPosition逻辑位置。 TBuf占用的存储空间通过TPipe进行管理，开发者可以通过 InitBuffer 接口为TBuf进行内存初始化操作，之后即可通过 Get 获取指定长度的Tensor参与计算。… [`references/简介-1.md`](<references/简介-1.md>)
+- **简介** — Range类用于描述一个对象的上下界，包含两个信息： T *min_; T *max_; 其中，min_表示对象下界的指针，max_表示对象上界的指针。开发者可以自行定义上下界的类型。 [`references/简介-10.md`](<references/简介-10.md>)
+- **简介** — Shape结构体用于描述一个tensor的shape，包含两个信息： size_t dim_num_; int64_t dims_[kMaxDimNum]; 其中，dim_num_表示shape的维数，dims_数组表示tensor具体的shape。 [`references/简介-11.md`](<references/简介-11.md>)
+- **简介** — 该类描述了tensor的shape，包含两个信息：origin_shape以及storage_shape。其中，origin_shape表示tensor的shape数学描述，storage_shape表示origin_shape实际运行时的shape格式。 [`references/简介-12.md`](<references/简介-12.md>)
+- **简介** — 本类继承自ContinuousVector类，与ContinuousVector类不同的是MutableData和GetData返回的是指定类型的地址，而不是void *。因此称为Typed。 [`references/简介-13.md`](<references/简介-13.md>)
+- **简介** — TPipe可以管理全局内存资源，而TBufPool可以手动管理或复用Unified Buffer/L1 Buffer物理内存，主要用于多个stage计算中Unified Buffer/L1 Buffer物理内存不足的场景。 #### 功能图示 下图展示了资源池划分的过程： - 通过TPipe::InitBuffer接口可以申请Buffer内存并使用队列进行管… [`references/简介-2.md`](<references/简介-2.md>)
+- **简介** — template <TPosition pos, int32_t depth, auto mask = 0> class TQue{...}; **表1** TQue模板参数介绍 #### TQue Buffer限制 由于TQue分配的Buffer存储着同步事件eventID，故同一个TPosition上QUE Buffer的数量与硬件的同步事件eventI… [`references/简介-3.md`](<references/简介-3.md>)
+- **简介** — TQueBind绑定源逻辑位置和目的逻辑位置，根据源位置和目的位置，来确定内存分配的位置、插入对应的同步事件，帮助开发者解决内存分配和管理、同步等问题。TQue是TQueBind的简化模式。通常情况下开发者使用TQue进行编程，TQueBind对外提供一些特殊数据通路的内存管理和同步控制，涉及这些通路时可以直接使用TQueBind。 如下图的数据通路示意图所… [`references/简介-4.md`](<references/简介-4.md>)
+- **简介** — 本类用于描述算子IR定义原型的输入信息与实际输入之间的关系，每个AnchorInstanceInfo对象对应一个IR输入，并记录两个描述信息：instantiation_num_和instance_start_。其中，instantiation_num_描述某个IR输入对应的实际输入个数；instance_start_描述某个IR输入在实际输入中的起始序号。… [`references/简介-5.md`](<references/简介-5.md>)
+- **简介** — ComputeNodeInfo类主要的目的在于将算子的相关编译信息进行序列化保存，以便可以在图执行阶段能够高效地获取这些信息。 ComputeNodeInfo的内存空间是平铺式的，内存依次存放ComputeNodeInfo自身的数据成员、算子IR定义输入个数的Anchor信息、实际输入个数和输出个数的编译阶段的Tensor描述信息以及IR定义的属性信息。 [`references/简介-6.md`](<references/简介-6.md>)
+- **简介** — 本类是一个POD类，在内存中开辟一块连续的空间用于存储描述信息以及实际内存数据。 本类的描述信息包括：用于存放数据的内存空间的总容量capacity_、当前内存空间的数据量size_。 [`references/简介-7.md`](<references/简介-7.md>)
+- **简介** — 在内存中开辟一块连续的空间，用于存储数据的描述信息以及实际的数据元素，元素类型为ContinuousVector结构。不支持动态扩容。 本类的描述信息包括：用于存放数据的内存空间的总容量capacity_、当前存放的实际元素数量size_及各个数据元素相对于ContinuousVectorVector结构首地址的偏移量offset_。 [`references/简介-8.md`](<references/简介-8.md>)
+- **简介** — ExpandDimsType类基于补维后的shape，描述了补维规则。 补维的含义为：在原有shape的基础上，添加一到多个维度，例如原shape[2,2]有两根轴，那么在两根轴中间补两维后的shape为[2,1,1,2]。 补维后shape的第0、3根轴被称为原始轴，第1、2根轴被称为补维轴。 ExpandDimsType类通过“1”和“0”描述补维规则，… [`references/简介-9.md`](<references/简介-9.md>)
+- **简介** — 在实现Host侧的Tiling函数时，可能需要获取一些硬件平台的信息，来支撑Tiling的计算，比如获取硬件平台的核数等信息。PlatformAscendC类提供获取这些平台信息的功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bd… [`references/简介.md`](<references/简介.md>)
+- **算子json配置文件样例** — ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f9/v3/iD7eT2bvTUeMNV_V5nl1Og/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111720Z&HW-CC-Ex… [`references/算子json配置文件样例.md`](<references/算子json配置文件样例.md>)
+- **算子json配置模板获取** — 本场景一般通过工具一键生成对应的算子json配置模板，命令行示例如下。 ascendebug json convert --binary-op-json ${custom_code_path}/build_out/op_kernel/binary/${chip_version}/gen/${op_type}_${hash}_param.json --conv… [`references/算子json配置模板获取.md`](<references/算子json配置模板获取.md>)
+- **算子入图概述** — 图模式是神经网络模型的一种运行模式，在图模式下开发者首先将模型的计算过程构造成一张图，然后通过GE将图下发到Kirin硬件执行。相对于单个算子依次下发的方式，图模式下，GE可以通过计算图优化、多流并行、内存复用、模型下沉等技术手段，加速模型执行效率，减少模型内存占用。 算子入图的开发流程如下图所示，算子工程创建完成后，基于工程代码框架完成算子原型定义、Ker… [`references/算子入图概述.md`](<references/算子入图概述.md>)
+- **算子包安装** — 执行算子工程的编译时，编译结果会自动部署到算子包安装目录下。 1. 自定义算子包安装。 算子编译完成后，会自动将算子交付件安装到DDK指定目录，开发者无需关注。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fc/v3/REmPDJf1T… [`references/算子包安装.md`](<references/算子包安装.md>)
+- **算子原型定义实现** — 算子原型主要描述了算子的输入输出、属性等信息以及算子在AI处理器上相关实现信息，并关联 Host侧Tiling实现 等函数。算子原型通过自定义的算子类来承载，该算子类继承自 OpDef 。完成算子的原型定义等操作后，需要调用 原型注册接口(OP_ADD) 接口，传入算子类型（自定义算子类的类名），进行算子原型注册。下面是一个简单的Add算子原型定义和注册的例… [`references/算子原型定义实现.md`](<references/算子原型定义实现.md>)
+- **算子实现概述** — AscendC的算子实现主要包含两个部分： - Host侧Tiling实现 由于NPU中AI Core内部存储无法完全容纳算子输入输出的所有数据，需要每次搬运一部分输入数据进行计算然后搬出，再搬运下一部分输入数据进行计算，这个过程就称之为Tiling。切分数据的算法称为Tiling算法或者Tiling策略。根据算子的shape等信息来确定数据切分算法相关参数… [`references/算子实现概述.md`](<references/算子实现概述.md>)
+- **算子工程创建工具参数说明** — 完成算子分析和原型定义后，可使用msOpGen工具生成自定义算子工程，并进行编译部署。 #### 命令汇总 执行如下命令，参数说明请参见表1。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a3/v3/bw1Ui5SgQLqaBTo_52… [`references/算子工程创建工具参数说明.md`](<references/算子工程创建工具参数说明.md>)
+- **算子工程编译** — 算子kernel侧和host侧实现开发完成后，需要对算子工程进行编译，将自定义算子部署到omg工具中，详细的编译操作包括： - 编译AscendC算子kernel侧代码实现文件*.cpp，分为源码发布和二进制发布两种方式。 - **源码发布：**不对算子kernel侧实现进行编译，保留算子kernel源码文件*.cpp。该方式可以支持模型的离线编译场景。 -… [`references/算子工程编译.md`](<references/算子工程编译.md>)
+- **算子开发常见问题** — 在进行算子NPU域的运行验证时，通过md5sum等方式进行算子精度比对，实际数据和真值数据不一致，算子存在精度问题。本示例中通过md5sum来进行精度比对，打印出的真值数据和实际输出数据的md5值不一致，具体打印信息如下。 md5sum: 45e17ee4c068a655be2af4d8c3a1f191 output/golden.bin 6a99e41a8… [`references/算子开发常见问题.md`](<references/算子开发常见问题.md>)
+- **算子编译迁移指导** — 进行算子编译时，开发者需要感知不同架构、不同的AI处理器型号。 - 异构编译场景：当前KirinX90/Kirin9030不支持异构编译。 - 标准自定义算子工程的场景：开发者需要在进行算子原型定义时，通过AddConfig接口注册算子支持的AI处理器型号以及相关的配置信息。AddConfig接口原型如下：soc参数表示AI处理器型号，aicore_conf… [`references/算子编译迁移指导.md`](<references/算子编译迁移指导.md>)
+- **算子调试概述** — 介绍AscendC算子调测工具的调测流程和调测功能等，并提供命令行方式，以指导开发者在不同场景下对AscendC算子发起Tiling、精度、性能调测。 **表1** 工具指引 #### 使用约束 仅支持对静态Shape算子调测，暂不支持动态Shape算子调测。 #### 基本概念 **表2** 基本概念 输入数据和标杆数据可通过numpy生成，样例如下。 i… [`references/算子调试概述.md`](<references/算子调试概述.md>)
+- **算法在设计模型时，如何确认哪些算子在CANN上性能较优？** — 开发者可参考Model Zoo中的 CANN算子性能指导 ，根据需要选择性能较优的算子。 [`references/算法在设计模型时，如何确认哪些算子在CANN上性能较优？.md`](<references/算法在设计模型时，如何确认哪些算子在CANN上性能较优？.md>)
+- **精度比对结果输出样例** — data_cmp mean is -1.41e-05 data_gd mean is -1.41e-05 split_count:2359296.0; max_diff_hd:0.1; ---------------------------------------------------------------------------------------… [`references/精度比对结果输出样例.md`](<references/精度比对结果输出样例.md>)
+- **精度转换指令** — 根据源操作数和目的操作数Tensor的数据类型进行精度转换。 在了解精度转换规则之前，需要先了解浮点数的表示方式和二进制的舍入规则： **浮点数的表示方式** ： - half共16bit，包括1bit符号位（S），5bit指数位（E）和10bit尾数位（M）。 当E不全为0或不全为1时，表示的结果为： (-1) S * 2 E - 15 * (1 + M)… [`references/精度转换指令.md`](<references/精度转换指令.md>)
+- **系统变量** — KirinX90/Kirin9030处理器不支持如下系统变量访问接口。 **表1** 系统变量兼容说明 [`references/系统变量.md`](<references/系统变量.md>)
+- **维测调优** — 维测调优是CANN Kit提供的对AI模型进行性能统计，并获取性能数据的能力。当前 HiAI_OmType 接口支持通过AI模型和随机构造的输入文件快速获取Profiling/Dump数据，开发人员可分析模型和单算子的性能数据，并通过模型的层级输出对比精度来完成问题定位。 #### 能力简介 **Profiling模式** ： - 支持单算子及整网模型的Pr… [`references/维测调优.md`](<references/维测调优.md>)
+- **编程范式** — 编程范式描述了算子实现的固定流程，基于编程范式进行编程，可以快速搭建算子实现的代码框架。 根据 硬件架构抽象 可以了解到，AI Core内部的执行单元异步并行地执行接收到的指令。如下图所示，从输入数据到输出数据需要经过3个阶段任务的处理（T1、T2、T3），多个执行单元并行处理，每个执行单元只会专注于一个任务的处理，会处理所有的数据分片。可以看出，流水线并行… [`references/编程范式.md`](<references/编程范式.md>)
+- **网络结构搜索训练** — 网络结构搜索训练请按照如下步骤进行： 1. 准备环境（ 环境准备 ）。 2. 准备数据集（ 数据集准备 ）。 3. 配置搜索参数（ 搜索参数配置 ）。 4. 配置开发者接口（ TensorFlow开发者自定义接口 、 PyTorch开发者自定义接口 ）。 5. 搜索和训练网络结构（ 搜索训练 ）。 #### 环境准备 #### Linux环境 1. NASE… [`references/网络结构搜索训练.md`](<references/网络结构搜索训练.md>)
+- **计算单元** — 计算单元是AI Core中提供强大算力的核心单元，包括三种基础 **计算单元** ：Cube（矩阵）计算单元、Vector（向量）计算单元和Scalar（标量）计算单元，完成AI Core中不同类型的数据计算。 #### Scalar Scalar负责各类型的标量数据运算和程序的流程控制。功能上可以看做一个小CPU，完成整个程序的循环控制、分支判断、Cube… [`references/计算单元.md`](<references/计算单元.md>)
+- **资源管理** — KirinX90/Kirin9030 AI处理器为单核耦合架构，不支持资源管理类接口，具体如下。 **表1** 资源管理兼容说明 [`references/资源管理.md`](<references/资源管理.md>)
+- **输入数据和标杆数据准备** — 使用AscendC调测工具进行算子调测前，必须提供算子的 输入数据和标杆数据 。 - 输入数据（input数据）：固定shape算子运行时的输入数据，bin格式。 - 标杆数据（golden数据）：根据输入数据计算出来的真值数据，用于与输出数据进行精度比对，bin格式。 本章节提供多种方式来准备数据，开发者可以根据实际情况选择合适的方式。 - **方式1：采… [`references/输入数据和标杆数据准备.md`](<references/输入数据和标杆数据准备.md>)
+- **通用约束** — AscendC管理不同层级的物理内存时，用一种抽象的逻辑位置（TPosition）来表达各级别的存储，代替了片上物理存储的概念，达到隐藏硬件架构的目的。TPosition类型包括：VECIN、VECOUT、VECCALC、A1、A2、B1、B2、CO1、CO2，具体介绍请参考 TPosition 。TPosition与物理内存的映射关系如表1所示。 **表1… [`references/通用约束.md`](<references/通用约束.md>)
+- **部署全流程** — ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/64/v3/3XQH7gAHRuqicAnm6k5j2A/zh-cn_image_0000002573855169.png?HW-CC-KV=V1&HW-CC-Date=20260421T11… [`references/部署全流程.md`](<references/部署全流程.md>)
+- **配置项目NAPI** — 编译HAP时，NAPI层的so需要编译依赖NDK中的libneural_network_core.so和libhiai_foundation.so。 #### 头文件引用 按需引用 NNCore 和 CANN Kit 的头文件。 #include "neural_network_runtime/neural_network_core.h" #include … [`references/配置项目NAPI.md`](<references/配置项目NAPI.md>)
+- **量化基模外挂LoRA微调** — Transform结构作为基模完成量化后，可支持基模结构挂载LoRA分支进行特定场景训练。即量化基模+浮点LoRA的结构微调，作用于量化损失修复和下游场景任务续训。 微调准备： 1. 浮点模型:Huggingface开源形式加载即可 2. 量化策略文件: 基于基模量化，需要新增LoRA config配置 3. 量化基模权重: 基于基模量化保存的trained… [`references/量化基模外挂LoRA微调.md`](<references/量化基模外挂LoRA微调.md>)
+- **随路格式转换** — 随路格式转换数据搬运，适用于在搬运时进行格式转换。 #### 函数原型 - 源操作数为GlobalTensor，目的操作数为LocalTensor（只支持ND2NZ格式转换） template <typename T> __aicore__ inline void DataCopy(const LocalTensor<T>& dstLocal, const … [`references/随路格式转换.md`](<references/随路格式转换.md>)
+- **集成模型** — 模型的加载、编译和推理主要是在native层实现，应用层主要作为数据传递和展示作用。 模型推理之前需要对输入数据进行预处理以匹配模型的输入，同样对于模型的输出也需要做处理获取自己期望的结果。另外SDK中提供了设置模型编译和运行时的配置接口，开发者可根据实际需求选择使用接口。 本节阐述同步模式下单模型的使用，从流程上分别阐述每个步骤在应用层和native层的实… [`references/集成模型.md`](<references/集成模型.md>)
+- **高阶API** — 高阶API一般是基于单核对常见算法的抽象和封装，用于提高编程开发效率，通常会调用多种基础API实现。高阶API当前仅支持Matmul。 如下图所示，实现一个矩阵乘操作，使用基础API需要的步骤较多，需要关注格式转换、数据切分等逻辑；使用高阶API则无需关注这些逻辑，直接传入输入矩阵，调用接口获取输出即可。 ![](https://contentcenter-… [`references/高阶API.md`](<references/高阶API.md>)
+- **高阶API迁移指导** — 高阶API，数据类型支持范围存在差异，详见 《Ascend C算子接口》 。数据类型差异兼容策略，参考 数据类型 。下面重点描述接口功能差异的兼容说明。 #### HCCL通信类 不支持HCCL通信类高阶API。 #### 矩阵计算 KirinX90/Kirin9030支持Matmul高阶API，但在涉及领域特性的部分存在不兼容情况。 **表1** Matm… [`references/高阶API迁移指导.md`](<references/高阶API迁移指导.md>)

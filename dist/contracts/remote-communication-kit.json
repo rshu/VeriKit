@@ -1,0 +1,106 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "remote-communication-kit",
+  "source_path": "skills/remote-communication-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:58:22.434Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "HTTP请求定制",
+      "URPC",
+      "远程过程调用",
+      "如何使用ArkTS发送GET、POST等HTTP网络请求？",
+      "如何使用C++发送HTTP网络请求？",
+      "如何取消已发送的网络请求并正确关闭会话？",
+      "如何使用URPC进行高性能远程过程调用？",
+      "如何通过Configuration定制DNS解析、代理设置和安全传输行为？",
+      "如何使用拦截器机制实现请求和响应的高级定制？",
+      "如何实现HTTP缓存和Session间缓存共享？",
+      "如何快速实现文件上传与下载功能？",
+      "如何实现网络请求的暂停、恢复和断点续传？",
+      "如何基于TracingConfiguration实现网络性能维测？",
+      "当你需要在HarmonyOS应用中发送HTTP网络请求（如获取REST API数据、上传下载文件）时，应使用Remote Communication Kit",
+      "它提供了比Network Kit更易用的场景化API，并内置缓存、拦截器、断点续传等高级特性，减少开发工作量",
+      "当你需要实现高性能的远程过程调用，特别是在弱网环境下需要抗弱网传输或多径传输能力时，应使用URPC通信库",
+      "URPC可以实现简单方便的远程函数调用，适用于对网络质量要求较高的实时通信场景",
+      "接入REST API拉取服务器数据并提交表单 / Integrate REST APIs to fetch server data and submit forms",
+      "实现登录鉴权请求并携带请求头、Cookie或Token / Implement authentication requests with headers, cookies, or tokens",
+      "上传图片、视频或日志文件到后端服务 / Upload images, videos, or log files to backend services",
+      "下载大文件并显示下载进度 / Download large files and show download progress",
+      "实现文件断点续传和失败后重试 / Implement resumable file transfer and retry after failures",
+      "配置网络代理、DNS解析和TLS安全策略 / Configure network proxy, DNS resolution, and TLS security policies",
+      "给网络请求添加超时、重定向和证书校验配置 / Add timeout, redirect, and certificate validation settings to network requests",
+      "使用拦截器统一处理请求签名、日志和错误码 / Use interceptors to handle request signing, logging, and error codes uniformly",
+      "复用会话和缓存以减少重复请求流量 / Reuse sessions and caches to reduce duplicate network traffic",
+      "订阅和上报网络链路性能指标与耗时 / Collect and report network tracing metrics and request latency",
+      "通过URPC调用远端服务接口获取结果 / Call remote service methods via URPC and get results",
+      "在ArkTS或C++中封装通用的HTTP客户端能力 / Build reusable HTTP client capabilities in ArkTS or C++"
+    ],
+    "do_not_use_when": [
+      "只需要底层或标准HTTP网络能力、套接字或更通用的网络接口，而不需要场景化HTTP/URPC封装时，应改用 network-kit / If you only need low-level or standard HTTP networking, sockets, or more general network APIs rather than scenario-oriented HTTP/URPC abstractions, use network-kit instead",
+      "目标是进行网络链路质量优化、弱网加速、传输加速或网络体验增强，而不是发起HTTP请求或URPC调用时，应改用 network-boost-kit / If the goal is network quality optimization, weak-network acceleration, transfer acceleration, or experience enhancement rather than issuing HTTP requests or URPC calls, use network-boost-kit instead",
+      "需求是管理网络连接状态、监听网络变化、发起/控制Wi‑Fi或蜂窝连接，而不是执行远程请求时，应改用 connectivity-kit / If you need to manage network connectivity state, monitor network changes, or control Wi‑Fi/cellular connections rather than perform remote requests, use connectivity-kit instead",
+      "需求是进行星闪近距离设备通信或配件直连，而不是基于IP网络的HTTP/URPC远程通信时，应改用 nearlink-kit / If you need NearLink short-range device communication or accessory direct connection rather than IP-based HTTP/URPC remote communication, use nearlink-kit instead",
+      "需求是拨打/管理电话业务或系统通话服务，而不是普通应用远程数据通信时，应改用 telephony-kit 或 call-service-kit / If the requirement is telephony features or system call services rather than general app remote data communication, use telephony-kit or call-service-kit instead"
+    ],
+    "preconditions": [
+      "应用已声明网络访问等所需权限，且module.json5配置正确 / The app has declared required permissions such as network access, and module.json5 is configured correctly",
+      "目标设备与API版本支持所用能力；若使用URPC，运行环境不能是模拟器 / The target device and API version support the chosen capability; if using URPC, the runtime must not be an emulator",
+      "设备具备可用网络连接，且目标服务器/服务端点可达 / The device has usable network connectivity and the target server/service endpoint is reachable"
+    ],
+    "inputs": [
+      "请求URL或URPC服务端点 / request URL or URPC service endpoint",
+      "请求方法、请求头与请求体数据 / request method, headers, and body data",
+      "Configuration或拦截器配置 / Configuration or interceptor settings",
+      "上传下载文件路径、流或断点续传元数据 / upload-download file path, stream, or resume metadata"
+    ],
+    "outputs": [
+      "入门与概述",
+      "网络请求（ArkTS）",
+      "网络请求（C++）",
+      "URPC远程调用",
+      "Configuration配置定制",
+      "高级特性"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已通过Remote Communication Kit发起HTTP请求或URPC调用，而非改用其他Kit的API / The code initiates an HTTP request or URPC call through Remote Communication Kit rather than switching to another Kit's APIs",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code/configuration that clearly uses Remote Communication Kit APIs for HTTP or URPC, instead of unrelated sibling Kit APIs?"
+      },
+      {
+        "statement": "请求所需的关键参数已被接入，包括端点以及方法/载荷/配置中的相关项 / The essential request parameters are wired in, including the endpoint and relevant method/payload/configuration fields",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there enough information connected to the API call to identify the endpoint and the needed request method, payload, or configuration?"
+      },
+      {
+        "statement": "若任务涉及高级能力，相关配置已落地到请求流程中，如拦截器、缓存、流式传输或断点续传 / If the task involves advanced features, the corresponding configuration is integrated into the request flow, such as interceptors, caching, streaming, or resume support",
+        "verifier": "model_judge",
+        "judge_prompt": "If the user's task mentions advanced networking features, do the edits actually add and apply the matching Remote Communication Kit configuration or hooks?"
+      }
+    ],
+    "overlaps_with": [
+      "network-kit",
+      "network-boost-kit",
+      "connectivity-kit",
+      "nearlink-kit",
+      "telephony-kit",
+      "call-service-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

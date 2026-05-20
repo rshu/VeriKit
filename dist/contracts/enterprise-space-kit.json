@@ -1,0 +1,103 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "enterprise-space-kit",
+  "source_path": "skills/enterprise-space-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:53:43.746Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "企业空间",
+      "工作空间",
+      "策略配置",
+      "文件传输审计",
+      "数据访问控制",
+      "如何创建、移除、使能企业工作空间实现\"一机两用\"数据隔离",
+      "如何配置工作空间策略包括深度冻结和引导页设置",
+      "如何设置深度冻结豁免名单保护特定应用不被冻结恢复",
+      "如何配置空间互传单双通策略管控空间间文件传输方向",
+      "如何设置和获取文件外发审批信息实现审批流程",
+      "如何进行企业账号认证和获取企业应用访问令牌",
+      "如何管控系统服务进程对后台用户数据的访问权限",
+      "如何订阅空间事件实时感知空间切换等状态变化",
+      "当您正在开发企业 MDM 应用，需要在华为擎云 PC/2in1 设备上实现\"一机两用\"或\"一企多网\"的工作空间隔离管理时，应使用 Enterprise Space Kit",
+      "典型场景包括：为政企客户创建独立的工作空间和 personal 空间实现数据隔离、配置深度冻结策略保障工作空间的安全恢复、管理工作空间的个性化显示（图标、名称、照片等）",
+      "当您需要管控不同工作空间之间的文件传输行为，实现文件外发审批流程或限制空间间数据流动方向时，也应使用该 Kit 的空间互传管控能力",
+      "此外，若您需要对企业账号进行统一认证管理、控制系统服务进程对后台用户数据的访问权限，该 Kit 同样能提供相应支持",
+      "创建企业工作区并隔离个人与办公数据 / Create enterprise workspaces to separate personal and work data",
+      "实现一机两用的企业空间管理 / Implement dual-persona device management with enterprise spaces",
+      "管理多个企业网络空间实现一企多网隔离 / Manage multiple enterprise network spaces for one-company-multi-network isolation",
+      "配置工作区切换时的引导页和启动体验 / Configure onboarding pages and startup experience for workspace switching",
+      "设置深度冻结策略防止工作区应用被随意恢复 / Apply deep-freeze policies to prevent enterprise apps from being restored arbitrarily",
+      "维护深度冻结白名单让指定应用保留运行状态 / Maintain a deep-freeze allowlist so selected apps keep their state",
+      "限制企业空间和个人空间之间的文件互传方向 / Restrict file transfer direction between enterprise and personal spaces",
+      "接入文件外发审批流程并保存审批信息 / Integrate outbound file approval workflow and store approval data",
+      "审计跨空间文件传输记录用于合规追踪 / Audit cross-space file transfers for compliance tracking",
+      "实现企业账号认证并获取企业应用访问令牌 / Implement enterprise account authentication and obtain app access tokens",
+      "控制系统服务访问后台用户数据的权限 / Control system service access to background user data",
+      "订阅企业空间切换和状态变化事件 / Subscribe to enterprise space switch and state change events"
+    ],
+    "do_not_use_when": [
+      "需求是设备通用的MDM管控（如应用安装卸载、设备限制、策略下发），而不是企业数字空间/工作空间生命周期与互传管控；应改用 mdm-kit / The need is general device MDM management (such as app install/uninstall, device restrictions, policy deployment) rather than enterprise digital space/workspace lifecycle and inter-space transfer control; use mdm-kit instead",
+      "需求聚焦于企业数据文件级安全、防泄漏、加解密或文档权限保护，而非空间隔离与空间间传输策略；应改用 enterprise-data-guard-kit / The task focuses on file-level enterprise data security, DLP, encryption/decryption, or document rights protection rather than space isolation and inter-space transfer policy; use enterprise-data-guard-kit instead",
+      "目标设备不是华为擎云 PC/2in1，或需要在手机、平板、模拟器上运行；此时不应使用 enterprise-space-kit / The target device is not a Huawei Qingyun PC/2in1, or the app must run on phone, tablet, or emulator; in that case enterprise-space-kit should not be used",
+      "场景不涉及企业工作空间、双空间、一机两用或一企多网隔离，仅需普通用户账号或应用内权限管理；应改用 mdm-kit 或其他账号方案 / The scenario does not involve enterprise workspace, dual-space, one-device-for-dual-use, or multi-network isolation, and only needs normal user account or in-app permission management; use mdm-kit or another account solution instead"
+    ],
+    "preconditions": [
+      "应用已具备企业MDM/企业数字空间服务所需资质，并在设备与服务端完成使能配置 / The app has the required enterprise MDM/Enterprise Space entitlements, and the device and backend service are enabled accordingly",
+      "目标环境为中国大陆可支持的华为擎云 PC/2in1 真机，且不在模拟器中运行 / The target environment is a supported Huawei Qingyun PC/2in1 physical device in mainland China, and not running in an emulator",
+      "module.json5 中已声明并授予本 Kit 所需的企业级权限与能力 / The enterprise permissions and capabilities required by this Kit are declared and granted in module.json5",
+      "若执行企业账号认证、访问令牌获取或审批相关流程，相关企业服务与网络连接可用 / If performing enterprise account authentication, access-token retrieval, or approval flows, the related enterprise services and network connectivity are available"
+    ],
+    "inputs": [
+      "工作空间标识或空间信息对象 / workspace identifier or space info object",
+      "空间策略配置（如深度冻结、引导页、互传单双通） / space policy configuration (such as deep freeze, guide page, inter-space one-way/two-way transfer)",
+      "审批信息或文件外发元数据 / approval information or file outbound metadata",
+      "企业账号认证参数或应用访问令牌请求参数 / enterprise account authentication parameters or app access token request parameters",
+      "系统服务进程名称及受限路径列表 / system service process names and restricted path list"
+    ],
+    "outputs": [
+      "Kit 简介与开发准备",
+      "工作空间管理",
+      "深度冻结管控",
+      "空间事件与认证",
+      "空间互传管控",
+      "后台用户数据管控"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码中调用企业数字空间相关 API，执行了创建、查询、移除、使能、策略设置、互传管控、认证或后台数据访问管控中的至少一类操作 / The code invokes Enterprise Space APIs and performs at least one category of operation among create/query/remove/enable, policy setting, inter-space transfer control, authentication, or background data access control",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the agent's edit set add or modify code that clearly uses enterprise-space-kit APIs for enterprise space management, transfer control, authentication, or background user-data access control?"
+      },
+      {
+        "statement": "实现包含与目标一致的关键配置对象或参数映射，而非仅停留在占位描述 / The implementation includes key configuration objects or parameter mappings consistent with the goal, rather than only placeholder descriptions",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, did the agent add concrete request/configuration data structures or parameter assignments for the requested enterprise space operation instead of only comments or pseudocode?"
+      },
+      {
+        "statement": "对调用结果具备成功或失败处理逻辑（如 Promise/回调、异常处理、状态判断） / The implementation contains success/failure handling for the API call (such as Promise/callback handling, exception handling, or status checks)",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show result handling for the enterprise-space-kit API usage, such as then/catch, try/catch, callback branches, or status/error checks?"
+      }
+    ],
+    "overlaps_with": [
+      "enterprise-data-guard-kit",
+      "mdm-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

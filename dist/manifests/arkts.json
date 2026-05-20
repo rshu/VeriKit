@@ -1,0 +1,470 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "arkts",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:27.998Z"
+  },
+  "references": [
+    {
+      "path": "references/ASON解析与生成.md",
+      "title": "ASON解析与生成",
+      "snippet": "ASON工具 与JS提供的JSON工具类似，JSON用于进行JS对象的序列化（stringify）、反序列化（parse）。ASON则提供了 Sendable对象 的序列化、反序列化能力。使用ASON.stringify方法可将对象转换为字符串，使用ASON.parse方法可将字符串转换为Sendable对象，从而实现对象在并发任务间的高性能引用传递。 ASON.stringify方法还支持将Map和Set对象转换为字符串，可转换的Map和Set类型包括：Map、Set、 collections.Map 、 collections.Set 、 HashMap 、 HashSet 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c0/v3/WHtONL6GTAa5uoR5wGg-pA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110812Z&HW-CC-Expire=86400&HW-CC-Sign=6DDCDA3AC0613772D8CD325438621C37A1E08C283D5B0F9F5D004328C7946923) ASON.parse默认生成的对象为Sendable对象，布局不可变，不支"
+    },
+    {
+      "path": "references/ArkGuard字节码混淆原理及功能.md",
+      "title": "ArkGuard字节码混淆原理及功能",
+      "snippet": "#### 混淆生效范围 #### 适用语言 ArkGuard支持ArkTS/TS/JS语言，JSON仅支持文件名混淆，不支持C/C++、资源文件等。 #### 混淆能力 ArkGuard提供的是 **面向方舟字节码的基础名称混淆** ：在可选规则下，对 **类、接口、枚举、函数、类成员方法、变量、对象属性名、源文件名** 等标识符进行重命名，并可通过保留选项配置 **白名单** ；各选项的覆盖范围与例外说明见下文 混淆选项 。函数参数名不参与字节码名称混淆。 **不支持** 以下高级混淆能力： **控制流混淆** （如控制流平坦化、虚假分支插入等）、 **数据混淆** （如对常量、字面量或内存数据布局做加密与变换）、 **指令替换或插入无关指令** 、 **虚拟机保护/加壳** 等不以标识符重命名为主要手段的保护方式。 #### 混淆能力局限性 **1.语言的限制** 代码混淆工具在处理不同编程语言时，其类型分析机制、混淆策略和执行效率都会因目标语言的特性而呈现差异。以业界常用的ProGuard为例，其主要面向Java这类强类型语言进行混淆。由于强类型语言具有严格的类型系统，每个类型都有明确的定义来源。使得混淆过程中的类型关系追踪和处理更为精确，从而大幅减少了需要配置保留规则的场景。 相比之下，ArkGuard混淆工具主要针对JS、TS和ArkTS语言。JS支持运行时动态修改对象、"
+    },
+    {
+      "path": "references/ArkGuard字节码混淆工具概述.md",
+      "title": "ArkGuard字节码混淆工具概述",
+      "snippet": "从API version 20开始，ArkGuard提供了基础字节码混淆能力，将代码中的函数名、类名、文件名等名字变成简短无意义的名字，提高通过阅读代码猜测其用途的难度。由于标识符名称缩短，通过混淆可以有效降低包大小。 **适用场景** ：适用于对 **安全性与防逆向** 有较高要求的项目，尤其是涉及 **敏感业务逻辑** 、关键算法或专有接口实现的应用程序。建议在 release 构建中按需开启。 本章节详细介绍了ArkGuard字节码混淆工具的使用方法和特点，旨在帮助开发者高效地利用ArkGuard进行字节码混淆，从而提升代码的复杂度，增加逆向工程的难度。 相比源码混淆，字节码混淆的混淆对象是字节码文件。 - ArkGuard字节码混淆原理及功能 ：说明混淆能力范围（包括默认混淆能力）、混淆流程机制以及各种混淆选项和保留选项的使用方法、混淆规则的合并策略。另外，介绍了ArkGuard在语言环境下的局限性。 - ArkGuard字节码混淆开启指南 ：提供实操指南，包括如何开启字节码混淆功能、设置自定义混淆规则，以及如何查看混淆效果和进行报错栈还原。 - 不同包类型的字节码混淆建议 ：针对不同类型的包（HAP、HAR、HSP）提供混淆策略建议。 - ArkGuard字节码混淆常见问题 ：说明 字节码混淆与源码混淆差异 ，总结常见的功能异常情况及其排查方法，并提供典型报错案例的解决方"
+    },
+    {
+      "path": "references/ArkGuard字节码混淆常见问题.md",
+      "title": "ArkGuard字节码混淆常见问题",
+      "snippet": "**json文件** 字节码混淆在开启-enable-filename-obfuscation混淆项后，json文件名会参与混淆。 #### 混淆选项差异 1. 字节码混淆开关，默认关闭，在开启混淆功能后，需要额外在模块目录下obfuscation-rules.txt文件中配置-enable-bytecode-obfuscation 、-enable-bytecode-obfuscation-debugging。 2. 字节码混淆，不支持以下混淆项-remove-comments。 #### 混淆后文件结构差异 **目录差异** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b6/v3/vTKvWRWKSGasqJGd_SYFvw/zh-cn_image_0000002573973471.png?HW-CC-KV=V1&HW-CC-Date=20260421T110825Z&HW-CC-Expire=86400&HW-CC-Sign=16EE8819E449F62A5E2B43D19E021A03CCB3D8EB0FE25DB6CD687762931D5B6F) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pv"
+    },
+    {
+      "path": "references/ArkGuard字节码混淆开启指南.md",
+      "title": "ArkGuard字节码混淆开启指南",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5b/v3/FJOTru5jSOqQE9_BNQ29tQ/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110825Z&HW-CC-Expire=86400&HW-CC-Sign=F74B7C9ABAB4A3ABBCA56C65045B6D217EB0F26140CC6F48AD967C9D490703B0) 为了避免后续修改代码影响现网问题分析定位，建议开发者在版本发布时，本地备份build/default/cache/default/default@XXXCompileArkTS/esmodule/release/obfuscation 路径下的全部内容； 有条件的可以直接备份release目录。 #### 字节码混淆开启步骤 #### 约束与限制 字节码混淆与源码混淆功能无法同时启用，开启字节码混淆后，源码混淆功能将自动关闭。 #### 开启混淆步骤 从API version 20开始，字节码混淆能力已在系统中集成，可通过以下方式在DevEco Studio开启使用。 - 开启混淆开关 在本模块build-profile.json5配置文件中的ark"
+    },
+    {
+      "path": "references/ArkGuard混淆原理及功能.md",
+      "title": "ArkGuard混淆原理及功能",
+      "snippet": "#### 混淆能力范围 #### 适用语言 ArkGuard支持ArkTS、TS和JS语言，不支持C/C++、JSON、资源文件等。 #### 混淆能力 ArkGuard支持名称混淆、代码压缩和注释删除的基础混淆功能，不支持控制流混淆、数据混淆等高级混淆功能。 名称混淆主要提供 **名称重命名** 和 **配置保留白名单** 的能力。 #### 混淆能力局限性 **1.语言的限制** 源码混淆工具在处理不同编程语言时，其类型分析机制、混淆策略和执行效率都会因目标语言的特性而呈现差异。以业界常用的ProGuard为例，其主要面向Java这类强类型语言进行混淆。由于强类型语言具有严格的类型系统，每个类型都有明确的定义来源。这种特性使得混淆过程中的类型关系追踪和处理更为精确，从而大幅减少了需要配置保留规则的场景。 相比之下，ArkGuard混淆工具主要针对JS、TS和ArkTS语言。JS支持运行时动态修改对象和函数，而混淆是在编译阶段进行的静态处理，这种差异可能导致混淆后的名称在运行时无法被正确解析，进而引发运行时异常。TS和ArkTS虽然引入了静态类型系统，但采用了结构性类型机制，即具有相同结构的不同命名类型会被视为等价类型。因此，在TS和ArkTS中仍然无法追溯类型的确切来源。 基于这些特性，使用ArkGuard时需要对更多语法场景进行白名单配置，同时，ArkGuard采用全局生效的"
+    },
+    {
+      "path": "references/ArkGuard混淆常见问题.md",
+      "title": "ArkGuard混淆常见问题",
+      "snippet": "1. 在obfuscation-rules.txt中配置-disable-obfuscation选项关闭混淆，确认问题是否由混淆引起。 2. 1. -enable-toplevel-obfuscation 为顶层作用域名称混淆开关。 2. -enable-property-obfuscation 为属性混淆开关。配置白名单的主要场景包括网络数据访问、json字段访问、动态属性访问、调用so库接口等。需要使用 -keep-property-name 来保留指定的属性名称。 3. -enable-export-obfuscation 为导入/导出名称混淆。一般与-enable-toplevel-obfuscation和-enable-property-obfuscation选项配合使用。配置白名单的主要场景为模块对外接口不能混淆。需要使用 -keep-global-name 来保留指定的导出/导入名称。 4. -enable-filename-obfuscation 为文件名混淆。配置白名单的主要场景为动态import或运行时直接加载的文件路径。需要使用 -keep-file-name 来保留这些文件路径及名称。 3. 排查需要配置的白名单场景时，推荐使用混淆助手配置保留选项，可以快速识别需要配置的保留选项和白名单字段。也可以参考以下典型报错案例，若遇到相似场景，可参照对应解决方法快速"
+    },
+    {
+      "path": "references/ArkGuard混淆开启指南.md",
+      "title": "ArkGuard混淆开启指南",
+      "snippet": "系统已集成源码混淆功能，开发者可通过以下方式在DevEco Studio中启用。 - 开启混淆开关 在本模块build-profile.json5配置文件中的arkOptions.obfuscation.ruleOptions字段中，通过enable字段配置是否开启混淆。 \"arkOptions\": { \"obfuscation\": { \"ruleOptions\": { \"enable\": true, // 开启混淆开关。 \"files\": [\"./obfuscation-rules.txt\"] // 指定配置混淆规则文件, 在编译本模块时生效。 }, // ... } }, - 配置混淆规则 打开混淆开关，仅开启默认混淆功能，默认混淆范围为局部变量和参数。如需开启更多混淆功能，请在files字段指定的混淆配置文件obfuscation-rules.txt中进行选项配置。需要注意的是，不同版本的DevEco Studio，obfuscation-rules.txt文件中的默认值可能会有所不同。 以DevEco Studio5.0.3.600及更高版本为例，混淆配置文件如下所示，该配置内容表示开启属性名称混淆、顶层作用域名称混淆、文件名混淆及导入导出名称混淆功能： -enable-property-obfuscation -enable-toplevel-obfuscation -e"
+    },
+    {
+      "path": "references/ArkGuard源码混淆工具概述.md",
+      "title": "ArkGuard源码混淆工具概述",
+      "snippet": "ArkGuard是一款源码混淆工具，提供基础混淆功能。它将代码中的变量名、函数名、类名、文件名等替换为简短无意义的标识符，增加通过阅读代码推测其功能的难度。混淆后，工程源码中的元素名称简化，有助于减小程序包的体积。 本章节介绍ArkGuard源码混淆工具的使用方法和特点，帮助开发者高效利用ArkGuard进行源码混淆，提升代码复杂度，增加逆向工程难度。 - ArkGuard混淆原理及功能 ：说明混淆能力范围、混淆流程机制、混淆选项和保留选项的使用方法、以及混淆规则的合并策略，以及混淆各功能起始API版本。 - ArkGuard混淆开启指南 ：提供实操指南，包括如何开启源码混淆功能、设置自定义混淆规则，以及如何查看混淆效果和进行报错栈还原。 - 不同包类型的源码混淆建议 ：针对不同类型的包（HAP、HAR、HSP）提供混淆策略建议。 - ArkGuard混淆常见问题 ：总结常见的功能异常场景及其排查方法，提供典型报错案例的解决方案，帮助开发者快速定位和解决问题。"
+    },
+    {
+      "path": "references/ArkTS基础类库概述.md",
+      "title": "ArkTS基础类库概述",
+      "snippet": "ArkTS基础类库是一个功能齐全的API集合，设计了一系列关键且实用的功能模块。 ArkTS基础类库主要提供了 XML生成解析转换 、 二进制Buffer 、 多种容器类库 、 URL字符串解析 和 高精度浮点计算 等能力，简化开发工作，提升开发效率。"
+    },
+    {
+      "path": "references/ArkTS简介.md",
+      "title": "ArkTS简介",
+      "snippet": "ArkTS是HarmonyOS应用开发的官方高级语言。 ArkTS在 TypeScript （简称TS）生态基础上做了进一步扩展，保持了TS的基本风格，同时通过规范定义强化开发期静态检查和分析，提升代码健壮性，并实现更好的程序执行稳定性和性能。对比标准TS的差异可以参考 从TypeScript到ArkTS的适配规则 。ArkTS同时也支持与TS/JavaScript（简称JS）高效互操作。 ArkTS基础类库和容器类库增强了语言的基础功能，提供包括 高精度浮点运算 、 二进制Buffer 、 XML生成解析转换 和多种容器库等能力，协助开发者简化开发工作，提升开发效率。 针对TS/JS并发能力支持有限的问题，ArkTS对并发编程API和能力进行了增强，提供了 TaskPool 和 Worker 两种并发API供开发者选择。另外，ArkTS进一步提出了Sendable的概念来支持对象在并发实例间的引用传递，提升ArkTS对象在并发实例间的通信性能。 方舟编译运行时（ArkCompiler）支持ArkTS、TS和JS的编译运行，目前主要分为ArkTS编译工具链和ArkTS运行时两部分。ArkTS编译工具链负责将高级语言编译为方舟字节码文件（*.abc），ArkTS运行时则负责在设备侧运行字节码文件，执行程序逻辑。 未来，ArkTS会结合应用开发/运行的需求持续演进，逐步提供并发能力增强"
+    },
+    {
+      "path": "references/ArkTS线程间通信概述.md",
+      "title": "ArkTS线程间通信概述",
+      "snippet": "线程间通信指并发多线程间的数据交换行为。由于ArkTS语言兼容TS/JS，其运行时实现与其它JS引擎一样，采用基于Actor内存隔离的并发模型。 在ArkTS线程间通信中，不同数据对象的行为存在差异。例如，普通JS对象、ArrayBuffer对象和SharedArrayBuffer对象在跨线程时的处理方式不同，涉及序列化、反序列化、数据转移和数据共享等操作。 以JS对象为例，其在并发任务间的通信采用了标准的Structured Clone算法（序列化和反序列化）。该算法通过序列化将JS对象转换为与引擎无关的数据（如字符串或内存块），在另一个并发任务中通过反序列化还原成与原JS对象内容一致的新对象。因此，需要进行深拷贝，效率较低。除了支持JS标准的序列化和反序列化能力，还支持绑定Native的JS对象的传输，以及 Sendable对象 的共享能力。 ArkTS目前主要提供两种并发能力支持线程间通信：TaskPool和Worker。 - Worker是Actor并发模型标准的跨线程通信API，与Web Worker或者Node.js Worker的使用方式基本一致。 - TaskPool提供了功能更强、并发编程更简易的任务池API。其中TaskPool涉及跨并发任务的对象传递行为与Worker一致，同样采用了标准的Structured Clone算法，并发通信的对象越大，耗时就越长。 "
+    },
+    {
+      "path": "references/ArkTS编译工具链概述.md",
+      "title": "ArkTS编译工具链概述",
+      "snippet": "ArkTS SDK提供了一套完整的编译工具链，以支持ArkTS的应用编译，通过集成至 Hvigor 编译任务的编排工具上，实现将应用的ArkTS/TS/JS源码编译生成方舟字节码文件（*.abc）。 编译工具链在编译过程中首先执行语法转换，包括语法检查和UI转换。为确保源码安全，编译工具链使用 ArkGuard源码混淆工具 对源码进行混淆操作。在字节码落盘之前，编译工具链会判断是否需要进行 字节码自定义修改 ，如果需要，则加载并执行自定义修改代码。在生成字节码文件后，开发者可以使用 Disassembler反汇编工具 查看字节码文件的内容。关于字节码的具体内容，可参考 方舟字节码文件格式 章节。 ArkTS编译工具链目前主要包含以下功能： 1. 语法检查：检查ArkTS/TS语法正确性。 2. UI转换：将UI声明式范式语法转换为标准TS语法。 3. 源码混淆：使用ArkGuard源码混淆工具对源码进行混淆，开发者可以根据具体业务需求选择开启。 4. 字节码编译：使用方舟编译器生成方舟字节码文件（*.abc）。 5. 自定义修改方舟字节码：提供开发者修改字节码能力的入口，在字节码编译落盘前调用。 6. 反汇编：使用Disassembler反汇编工具将字节数据反汇编成可阅读的汇编指令。 ArkTS编译工具链在构建HAP流程如下图所示： ![](https://contentcente"
+    },
+    {
+      "path": "references/ArkTS跨语言交互.md",
+      "title": "ArkTS跨语言交互",
+      "snippet": "除了支持使用ArkTS开发外，开发者还可以通过Node-API实现ArkTS与C/C++(Native)的跨语言交互能力。 HarmonyOS的Node-API是基于Node.js社区版本的扩展实现，但与原生Node-API并不完全兼容。 开发者可参考 使用Node-API进行跨语言开发流程 ，基于 Node-API支持的数据类型 和 Node-API接口 进行Native能力的开发和封装，并通过在ArkTS侧导入Native模块的方式实现跨语言调用。 Node-API扩展能力接口 提供了增强功能，支持更灵活的ArkTS交互和自定义对象创建。开发者可结合Node-API的扩展能力进行功能扩展，并参考 Node-API开发规范 和 Node-API常见问题 进行跨语言功能开发。"
+    },
+    {
+      "path": "references/ArkTS运行时常见问题.md",
+      "title": "ArkTS运行时常见问题",
+      "snippet": "如果使用正则运算时结果与期望不符，请检查以下场景。 #### 正则运算对于\\b处理与预期不一致 let str = '\\u2642'; let res = str.replace(/\\b/g, '/'); console.info('res = ' + res); // 期望输出: res = ♂ // 实际输出: res = /♂/ 规避方案：暂无。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/51/v3/WHg8HeCGQiywg5p6u_bChA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110821Z&HW-CC-Expire=86400&HW-CC-Sign=250C270270CCF596F10FE0EE493EB492A2F4717DBC895845BA3BC094BB98918B) 正则匹配\\b（单词边界）遇到某些ASCII编码之外的字符时，会将其当成ASCII字符来处理，从而将不是单词边界匹配识别成单词边界。 #### 正则运算对于先行断言((?=pattern)或(?!pattern)) 嵌套在后行断言((?<=pattern)或(?<!pattern))内部的场景与预期不一致 c"
+    },
+    {
+      "path": "references/ArkTS运行时概述.md",
+      "title": "ArkTS运行时概述",
+      "snippet": "ArkTS运行时是HarmonyOS上应用的默认语言运行时，支持ArkTS、TS和JS语言的字节码及相关标准库。它提供解释器、AOT和JIT高效执行方式，并通过 Node-API 实现完善的跨语言调用接口，支持多语言混合开发。 ArkTS Runtime主要由四个子系统组成： - **Core Subsystem** ：主要由与语言无关的基础运行库组成，其中包括承载字节码的File组件、支持Debugger的Tooling组件以及负责适配系统调用的Base库组件等。 - **Execution Subsystem** ：包含执行方舟字节码的解释器、快速路径内联缓存以及 文件模块化管理运行 。 - **Compiler Subsystem** ：包含Stub编译器、基于IR的编译优化框架、AOT静态编译器以及JIT动态编译器（实验中）。 - **Runtime Subsystem** ：包含以下ArkTS/TS/JS运行相关的模块。 - 内存管理：对象分配器与 垃圾回收器 （并发标记和部分内存压缩的CMS-GC和Partial-Compressing-GC）。 - 分析工具：DFX工具、CPU和heap的profiling工具。 - 并发管理：Actor并发模型中的方舟字节码文件管理器。 - 标准库：ECMAScript规范定义的标准库、高效的container容器库与对象模型。 -"
+    },
+    {
+      "path": "references/ArkUI数据更新场景.md",
+      "title": "ArkUI数据更新场景",
+      "snippet": "当需要网络下载或者本地生成的数据需要发送到UI线程进行展示时，由于ArkUI的标注和 @Sendable装饰器 不能同时修饰变量和对象，因此需要使用 makeObserved 在ArkUI中导入可观测的Sendable共享数据。 本示例说明以下场景： - makeObserved在传入@Sendable类型的数据后有观测能力，且其变化可以触发UI更新。 - 从子线程获取数据，整体替换UI线程的可观测数据。 - 从子线程获取的数据重新执行makeObserved，变为可观测数据。 - 将数据从UI主线程传递回子线程时，只传递不可观测的数据。makeObserved的返回值不能直接传给子线程。 @Sendable export class SendableData { public name: string = 'Tom'; public age: number = 20; public gender: number = 1; public likes: number = 1; public follow: boolean = false; } import { taskpool } from '@kit.ArkTS'; import { SendableData } from './SendableData'; import { UIUtils } from '@kit.ArkUI'"
+    },
+    {
+      "path": "references/ArkUI瀑布流渲染场景.md",
+      "title": "ArkUI瀑布流渲染场景",
+      "snippet": "此处提供使用任务池 TaskPool 提升 WaterFlow瀑布流 渲染性能的开发指导。UI线程查询数据库数据，并将数据渲染到瀑布流组件，数据过大时会导致UI线程长时间等待，影响用户体验。因此，我们可以将数据查询操作放到子线程中，并通过TaskPool的接口返回数据给UI线程。 本示例说明以下场景： - 模拟子线程读取数据库数据并返回给UI线程。 - UI线程感知到数据更新，将子线程返回的数据渲染到瀑布流组件。 1. 定义一个接口，用于子线程查询数据库并将数据返回给UI线程。 import { taskpool } from '@kit.ArkTS'; import { fillImg } from './WaterfallRendering'; @Concurrent function query() { console.info('TaskPoolTest-this is query'); let result = new Array<string>(33); for (let i = 0; i < 33; i++) { result[i] = 'Image' + i; } taskpool.Task.sendData(result); } export function getImgFromDB() { // 此处模拟查询数据库，并返回数据 let task = new t"
+    },
+    {
+      "path": "references/ArrayBuffer对象.md",
+      "title": "ArrayBuffer对象",
+      "snippet": "ArrayBuffer包含两部分：底层存储数据的Native内存区域，以及封装操作的JS对象壳。JS对象壳分配在虚拟机的本地堆（LocalHeap）中。跨线程传递时，JS对象壳需要序列化和反序列化拷贝传递，而Native内存区域可以通过拷贝或转移的方式传递。 Native内存使用拷贝方式（递归遍历）传输时，传输后两个线程可以独立访问ArrayBuffer。此方式需要重建JS壳和拷贝Native内存，传输效率较低。通信过程如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6e/v3/uCeyT5EdTq6T8yJcAbJ2sA/zh-cn_image_0000002543213564.png?HW-CC-KV=V1&HW-CC-Date=20260421T110810Z&HW-CC-Expire=86400&HW-CC-Sign=DD0A33C8B3443A6306F5EEE67061216E5EF656A7EA5473196DD4C6A886F36AFA) Native内存使用转移方式传输时，传输后原线程将无法使用此ArrayBuffer对象。跨线程时只需重建JS壳，Native内存无需拷贝，从而提高效率。通信过程如下图所示： ![](https://"
+    },
+    {
+      "path": "references/Buffer与FastBuffer.md",
+      "title": "Buffer与FastBuffer",
+      "snippet": "Buffer和FastBuffer模块将内存区域抽象为可读写、修改的逻辑对象，提供高效的二进制数据处理接口。每个Buffer实例是连续的字节序列，支持创建自定义大小的内存块，用于存储和操作序列化后的数据。 Buffer和FastBuffer模块的主要应用场景包括： 1. **大数据传输** ：传输大量数据，如二进制文件、数据库记录或网络报文时，使用Buffer作为数据的存储和处理容器，可减少拷贝和内存消耗，提升效率。 2. **图像和音频处理** ：在图像编码、解码和音频数据流处理中，Buffer帮助开发者操作像素或采样数据，确保数据的完整性。 3. **二进制数据操作** ：Buffer提供接口解析和操作二进制数据。 #### Buffer Buffer模块的核心功能包括： 1. **创建和分配内存** ：允许指定大小初始化Buffer，创建后内存容量固定。 2. **读写和复制数据** ：支持按索引访问Buffer内的字节，按字节块读取和写入，复制Buffer的某部分到其他Buffer或数组。 3. **转换操作** ：提供Buffer与基本类型（如Uint8Array、string）之间的转换方法，满足不同的数据处理需求。 4. **内存操作** ：支持截取部分Buffer、切片和合并多个Buffer，便于数据流的处理和管理。 Buffer模块各接口使用详见： @ohos.b"
+    },
+    {
+      "path": "references/C++线程间数据共享场景.md",
+      "title": "C++线程间数据共享场景",
+      "snippet": "在C++层进行多线程并发计算时，需要在每个C++线程上创建ArkTS执行环境，直接调用API。这样可以避免在非UI主线程回调时等待UI主线程的API调用结果。同时，还需要在C++线程之间共享和操作Sendable对象。 为了支持此类场景，C++线程需要能够创建并调用ArkTS，同时支持对Sendable对象进行多线程共享和操作。 #### 在C++线程上调用ArkTS能力 使用Node-API接口在C++线程中创建ArkTS运行环境并调用的方法，可以参考 使用Node-API接口创建ArkTS运行时环境 。 核心代码片段如下所示： ArkTS文件定义。 @Sendable export class SendableObjTest { static newSendable() { return 1024; } } 实现Native加载ArkTS模块的能力。 #include <thread> #include \"napi/native_api.h\" static void* g_serializationData = nullptr; static void* CreateEnvAndSendSendable(void*) { // 1. 创建基础运行环境 napi_env env = nullptr; napi_status ret = napi_create_ark_runtim"
+    },
+    {
+      "path": "references/CPU密集型任务开发指导 (TaskPool和Worker).md",
+      "title": "CPU密集型任务开发指导 (TaskPool和Worker)",
+      "snippet": "CPU密集型任务是指需要占用系统资源进行大量计算的任务，这类任务需要长时间运行，会阻塞线程中其他事件的处理，因此不适合在UI主线程中执行。例如图像处理、视频编码、数据分析等。 基于多线程并发机制处理CPU密集型任务可以提高CPU利用率，提升应用程序响应速度。 当任务不需要长时间（3分钟）占用后台线程，而是一个个独立的任务时，推荐使用TaskPool，反之推荐使用Worker。 接下来将分别以图像直方图处理和后台长时间模型预测任务为例进行说明。 #### 使用TaskPool进行图像直方图处理 1. 实现图像处理的业务逻辑。 2. 对数据进行分段，并通过任务组发起关联任务调度。 创建 TaskGroup ，通过 addTask() 添加对应的任务，然后通过 execute() 执行任务组，并指定为 高优先级 。在当前任务组所有任务结束后，会将直方图处理结果同时返回。 3. 汇总处理结果数组。 import { taskpool } from '@kit.ArkTS'; // ... @Concurrent function imageProcessing(dataSlice: ArrayBuffer): ArrayBuffer { // 步骤1: 具体的图像处理操作及其他耗时操作 return dataSlice; } function histogramStatistic(pixe"
+    },
+    {
+      "path": "references/Disassembler反汇编工具.md",
+      "title": "Disassembler反汇编工具",
+      "snippet": "Disassembler是ArkTS反汇编工具。如果需要分析方舟字节码文件（*.abc）相关问题，开发者可以使用Disassembler将方舟字节码文件反编译为可读的汇编指令。 工具随DevEco Studio SDK发布。以Windows平台为例，Disassembler工具位于DevEco Studio/sdk/default/openharmony/toolchains/ark_disasm.exe。 #### 命令行说明 反汇编命令如下： ark_disasm.exe [options] input_file output_file 参数说明： options选项说明： #### 使用示例 假设已存在方舟字节码文件：test.abc，其源代码如下： let i = 99; function show(){return i;} show(); 执行如下命令生成反汇编文件：test.txt，文件内包含操作码及格式等信息。 ark_disasm.exe test.abc test.txt 查看反汇编文件的内容。 cat test.txt 内容如下： # source binary: test.abc // 反汇编的方舟字节码文件 .language ECMAScript # ==================== # LITERALS // 字面量数据 0 0x203 { 0 "
+    },
+    {
+      "path": "references/GC垃圾回收.md",
+      "title": "GC垃圾回收",
+      "snippet": "GC（全称 Garbage Collection），即垃圾回收。在计算机领域，GC是指识别并释放内存中的不再使用的对象，以回收内存空间。目前广泛使用的编程语言实现的GC算法主要分为两大类：引用计数和对象追踪（即Tracing GC）。 #### GC算法简述 #### GC的类型 **引用计数** 当对象B指向对象A时，A的引用计数加1；当该指向断开时，A的引用计数减1。如果A的引用计数为0，则回收对象A。 - 优点：引用计数算法设计简单，而且会在对象成为垃圾时及时回收该部分内存，因此无需引入单独的暂停业务代码（Stop The World，STW）阶段。 - 缺点：在对象操作时插入了计数环节，增加了内存分配和赋值的开销，影响性能。存在因循环引用而导致的内存泄漏问题。 class Parent { constructor() { this.child = null; } child: Child | null = null; } class Child { constructor() { this.parent = null; } parent: Parent | null = null; } function main() { let parent: Parent = new Parent(); let child: Child = new Child(); parent.chi"
+    },
+    {
+      "path": "references/I_O密集型任务开发指导 (TaskPool).md",
+      "title": "I/O密集型任务开发指导 (TaskPool)",
+      "snippet": "使用异步并发可以解决单次I/O任务阻塞的问题。对于I/O密集型任务，若线程中的其他任务仍可能被阻塞，建议采用多线程并发来处理。 I/O密集型任务的性能关键在于I/O操作的速度和效率，而非CPU的处理能力。这类任务需要频繁进行磁盘读写和网络通信。此处通过频繁读写系统文件来模拟I/O密集型并发任务的处理。 1. 定义并发函数，内部密集调用I/O能力。 import { fileIo } from '@kit.CoreFileKit'; // 定义并发函数，内部密集调用I/O能力 // 写入文件的实现 export async function write(data: string, filePath: string): Promise<void> { let file: fileIo.File = await fileIo.open(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE); await fileIo.write(file.fd, data); fileIo.close(file); } import { write } from './write' import { BusinessError } from '@kit.BasicServicesKit'; import { taskpool } fr"
+    },
+    {
+      "path": "references/JSON扩展库.md",
+      "title": "JSON扩展库",
+      "snippet": "该库扩展了原生JSON功能，提供了额外的错误处理、循环引用检测、BigInt处理以及对不同输入类型的严格检查。代码中底层依赖于原生JSON.parse和JSON.stringify，但在此基础上加入了多种自定义逻辑并提供额外的has和remove接口，具体可见 @arkts.json 。 JSON扩展库主要适用于以下场景： - 需要处理BigInt的JSON解析或序列化。 - 需要更严格的参数校验和错误处理。 - 需要在序列化对象时检测循环引用。 - 需要安全的对象操作（has/remove）。 该库适用于需要增强JSON功能的场景，特别是在处理BigInt和严格的参数校验时。 #### JSON扩展说明 #### parse parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | null 解析JSON字符串，支持BigInt模式。 **与原生的区别：** #### stringify stringify(value: Object, replacer?: (number | string)[] | null, space?: string | number): string 将对象转换为JSON字符串，支持BigInt模式。 **与原生的区别：** #### has has(obj"
+    },
+    {
+      "path": "references/Sendable使用场景.md",
+      "title": "Sendable使用场景",
+      "snippet": "Sendable对象在不同并发实例间默认采用引用传递，这种方式比序列化更高效，且不会丢失类成员方法。因此，Sendable能够解决两个关键场景的问题： - 跨并发实例传输大数据（例如达到100KB以上的数据）。 - 跨并发实例传递带方法的class实例对象。 #### 跨并发实例传输大数据场景 由于跨并发实例序列化的开销随数据量线性增长，因此当传输数据量较大时（100KB的数据传输耗时约为1ms），跨并发实例的拷贝开销会影响应用性能。使用引用传递方式传输对象可提升性能。 **示例：** // Index.ets import { taskpool } from '@kit.ArkTS'; import { testTypeA, testTypeB, Test } from './sendable'; import { BusinessError, emitter } from '@kit.BasicServicesKit'; // 在并发函数中模拟数据处理 @Concurrent async function taskFunc(obj: Test) { console.info(\"test task res1 is: \" + obj.data1.name + \" res2 is: \" + obj.data2.name); } async function test() { // 使"
+    },
+    {
+      "path": "references/Sendable使用规则与约束.md",
+      "title": "Sendable使用规则与约束",
+      "snippet": "Sendable对象的布局和原型链不可变，而非Sendable对象可以通过特殊方式修改布局。因此，不允许互相继承。这里的类不包含变量，Sendable类不能继承自变量。 **正例：** @Sendable class A { constructor() { } } @Sendable class B extends A { constructor() { super() } } **反例：** class A { constructor() { } } @Sendable class B extends A { // A不是sendable class，B不能继承它，编译报错 constructor() { super() } } #### 非Sendable类必须继承自非Sendable类 Sendable对象的布局和原型链不可变，而非Sendable对象可以通过特殊方式修改布局，因此不允许互相继承。 **正例：** class A { constructor() { } } class B extends A { constructor() { super() } } **反例：** @Sendable class A { constructor() { } } class B extends A { // A是sendable class，B不能继承它，编译报错 constr"
+    },
+    {
+      "path": "references/Sendable对象冻结.md",
+      "title": "Sendable对象冻结",
+      "snippet": "Sendable对象支持冻结操作。冻结后，对象变为只读，不能修改属性。因此，多个并发实例间访问时无需加锁。可以通过调用 Object.freeze 接口冻结对象。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d0/v3/Ad93G6OTRGOClGNdCdQDFw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110813Z&HW-CC-Expire=86400&HW-CC-Sign=67FAA0D2FB7642511CC62D647D2799A945404704CDD42F2416AB47237F46E253) 不支持在.ets文件中使用Object.freeze接口。 #### 使用示例 1. 提供ts文件封装Object.freeze方法。 // helper.ts export function freezeObj(obj: any) { Object.freeze(obj); } 2. 调用freeze方法冻结对象，然后将其发送到子线程。 // SendableFreeze.ets import { freezeObj } from './helper'; import { worker } f"
+    },
+    {
+      "path": "references/Sendable对象简介.md",
+      "title": "Sendable对象简介",
+      "snippet": "在传统JS引擎中，要优化对象的并发通信开销，唯一的方法是将实现下沉到Native侧，通过 Transferable对象 的转移或共享来降低开销。然而，开发者仍有大量对象并发通信的需求，这个问题在业界JS引擎中尚未解决。 ArkTS提供了Sendable对象类型，它是一种可在ArkTS并发实例间安全共享和传递的数据类型，它支持引用传递来减少通信成本。 Sendable对象可共享，跨线程前后指向同一个JS对象。如果Sendable对象通过调用Napi接口与一个Native对象绑定，当共享传递Sendable对象时，其绑定的Native对象也会一并共享传递。通信过程如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c7/v3/WotYwwh-TiOVt2UVcI42ag/zh-cn_image_0000002573853479.png?HW-CC-KV=V1&HW-CC-Date=20260421T110810Z&HW-CC-Expire=86400&HW-CC-Sign=76AE575C1996C995B253F3A4619901995AFC29B8158748A875A3FE1F983B8199) 与其它ArkTS数据对象不同，符合Sendable协议的"
+    },
+    {
+      "path": "references/SharedArrayBuffer对象.md",
+      "title": "SharedArrayBuffer对象",
+      "snippet": "SharedArrayBuffer内部包含一块Native内存，其JS对象壳被分配在虚拟机本地堆（LocalHeap）。支持跨并发实例间共享Native内存，但是对共享Native内存的访问及修改需要采用Atomics类，防止数据竞争。SharedArrayBuffer可用于多个并发实例间的状态或数据共享。通信过程如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d3/v3/t1PVGCp6SBqvSE69yAroaA/zh-cn_image_0000002573973455.png?HW-CC-KV=V1&HW-CC-Date=20260421T110810Z&HW-CC-Expire=86400&HW-CC-Sign=3E3451200C9AFB5E331E02EA6FD71059250E2ECC62EA9198C26966D9273FDC4E) #### 使用示例 使用TaskPool传递Int32Array对象，实现如下： import { taskpool } from '@kit.ArkTS'; @Concurrent function transferAtomics(arg1: Int32Array) { console.info('wa"
+    },
+    {
+      "path": "references/TaskPool任务与宿主线程通信.md",
+      "title": "TaskPool任务与宿主线程通信",
+      "snippet": "如果Task不仅需要返回最终执行结果，还需定时通知宿主线程状态和数据变化，或分段返回大量数据（如从数据库读取大量数据），可按以下方式实现。 下面以多个图片加载任务结果实时返回为例说明。 1. 实现接收Task消息的方法。 import { taskpool } from '@kit.ArkTS'; import { IconItemSource } from './IconItemSource'; function notice(data: number): void { console.info('子线程任务已执行完，共加载图片: ', data); } 2. 在需要执行的Task中，添加sendData()接口将消息发送给宿主线程。在宿主线程通过onReceiveData()接口接收消息。这样宿主线程就可以通过notice()接口接收到Task发送的数据。 export class IconItemSource { image: string | Resource = ''; text: string | Resource = ''; constructor(image: string | Resource = '', text: string | Resource = '') { this.image = image; this.text = text; } } import"
+    },
+    {
+      "path": "references/TaskPool和Worker的对比 (TaskPool和Worker).md",
+      "title": "TaskPool和Worker的对比 (TaskPool和Worker)",
+      "snippet": "TaskPool和Worker的作用是为应用程序提供多线程运行环境，用于处理耗时计算任务或其他密集型任务，避免任务阻塞宿主线程，提高系统性能和资源利用率。 本文将从 实现特点 和 适用场景 两个方面比较TaskPool与Worker。 #### 实现特点对比 **表1** TaskPool和Worker的实现特点对比 #### 适用场景对比 TaskPool和Worker均支持多线程并发能力。TaskPool的工作线程会绑定系统的调度优先级，并支持负载均衡（自动扩缩容），相比之下，Worker需要开发者自行创建和销毁，存在一定的创建和管理成本。因此，在大多数场景下，推荐优先使用TaskPool。 Worker适用于需要长时间占据线程，并由开发者主动管理线程生命周期的场景；TaskPool适用于执行相对独立任务的场景，任务在线程中执行时无需关注线程生命周期。 #### 建议使用Worker的场景 以下场景中，任务通常需要长时间运行或依赖线程上下文，适合使用Worker： - **运行时间超过3分钟的任务** （此处所说的3分钟不包括Promise和async/await异步调用的耗时，如网络下载、文件读写等I/O任务的耗时）： 例如后台进行1小时的预测算法训练等CPU密集型任务，适合使用Worker。 场景示例可参考 常驻任务开发指导 。 - **有强关联的一系列同步任务** 例如在"
+    },
+    {
+      "path": "references/TaskPool指定任务并发度场景.md",
+      "title": "TaskPool指定任务并发度场景",
+      "snippet": "TaskPool支持使用异步队列来控制任务的并发度，能有效避免资源过载，减少任务阻塞，适用于网络请求、视频流处理和数据库操作等场景。 此处提供使用TaskPool创建 异步队列 的开发指导，以相机预览流采集数据处理的功能为例。 由于处理过程是一个频繁且耗时的任务，当相机采集速度过快时，将丢弃之前的采集数据，仅保留最新的一帧数据进行处理。 1. 导入需要用到的模块。 // TaskpoolAsyncLevel.ets import { taskpool } from '@kit.ArkTS'; import { BusinessError } from '@kit.BasicServicesKit'; import { PromptAction } from '@kit.ArkUI'; 2. 定义耗时任务。 // TaskpoolAsyncLevel.ets @Concurrent function collectFrame() { // 采集数据，并且进行处理 // 模拟处理过程，这里是个耗时任务，持续时间为30秒 let t = new Date().getTime() while (new Date().getTime() - t < 30000) { continue; } console.info('collectFrame finished'); } 3. 创建异步队列并"
+    },
+    {
+      "path": "references/TaskPool简介.md",
+      "title": "TaskPool简介",
+      "snippet": "TaskPool为应用程序提供多线程环境，降低资源消耗并提高系统性能。无需管理线程生命周期。具体接口信息及使用方法，请参见 TaskPool 。 #### TaskPool运作机制 TaskPool运作机制示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d0/v3/cf7eW80pQt2MSsD3Ptx7iw/zh-cn_image_0000002543213562.png?HW-CC-KV=V1&HW-CC-Date=20260421T110808Z&HW-CC-Expire=86400&HW-CC-Sign=ED9F6A49BD3934F0670E18A2FCD4984FF8B98113AFC9BA64BA7671061214304E) TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的工作线程执行任务，并将结果返回给宿主线程。接口易用，支持任务执行、取消和指定优先级。通过系统统一线程管理，结合动态调度和负载均衡算法，可以节约系统资源。系统默认启动一个任务工作线程，任务多时会自动扩容。工作线程数量上限由设备的物理核数决定，内部管理具体数量，确保调度和执行效率最优。长时间无任务分发时会缩容，减少工作线程数量。具体扩缩容机制请参见 TaskP"
+    },
+    {
+      "path": "references/Transferable对象（NativeBinding对象）.md",
+      "title": "Transferable对象（NativeBinding对象）",
+      "snippet": "Transferable对象，也称为NativeBinding对象，是指绑定C++对象的JS对象，其主要功能由C++提供，JS对象壳则分配在虚拟机的本地堆（LocalHeap）中。跨线程传输时复用同一个C++对象，相比JS对象的拷贝模式，传输效率更高。因此，可共享或转移的NativeBinding对象被称为Transferable对象。开发者可以自定义Transferable对象，详细示例请参考 自定义Native Transferable对象的多线程操作场景 。 #### 共享模式 如果C++实现能够确保线程安全性，则NativeBinding对象的C++部分支持跨线程共享。NativeBinding对象跨线程传输后，只需重新创建JS壳即可桥接到同一个C++对象上，实现C++对象的共享。通信过程如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e5/v3/-b9jPn2iQ7q2Nj3GesjkCg/zh-cn_image_0000002543373226.png?HW-CC-KV=V1&HW-CC-Date=20260421T110810Z&HW-CC-Expire=86400&HW-CC-Sign=A34C06FB12FEA61A961783ED"
+    },
+    {
+      "path": "references/Worker同步调用宿主线程的接口.md",
+      "title": "Worker同步调用宿主线程的接口",
+      "snippet": "如果一个接口已在宿主线程中实现，Worker可以通过以下方式调用该接口。 以下示例展示了Worker同步调用宿主线程接口的方法，创建worker的方法可参考 创建worker的注意事项 。 1. 首先，在宿主线程实现需要调用的接口，并创建Worker对象，在Worker对象上注册需要调用的对象。 import worker from '@ohos.worker'; import { IconItemSource } from './IconItemSource'; // 创建Worker对象 const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('../workers/Worker'); class PicData { public iconItemSourceList: IconItemSource[] = []; public setUp(): string { for (let index = 0; index < 20; index++) { const numStart: number = index * 6; // 此处循环使用6张图片资源 this.iconItemSourceList.push(new IconItemSource('$media:startIcon', `item${"
+    },
+    {
+      "path": "references/Worker和宿主线程的即时消息通信.md",
+      "title": "Worker和宿主线程的即时消息通信",
+      "snippet": "在ArkTS中，Worker相对于Taskpool存在一定的差异性，有数量限制但是可以长时间存在。一个 Worker 中可能会执行多个不同的任务，每个任务的执行时长或返回结果可能都不同，宿主线程需要根据情况调用Worker中的不同方法，Worker则需要及时地将结果返回给宿主线程。 下面以Worker响应\"hello world\"请求为例说明。 1. 首先，创建一个执行任务的Worker。创建方法可参考 创建worker的注意事项 。 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS'; import { CopyEntry } from '../Sendable/CopyEntry'; const workerPort: ThreadWorkerGlobalScope = worker.workerPort; // ... // Worker接收宿主线程的消息，做相应的处理 workerPort.onmessage = (e: MessageEvents) => { let obj: CopyEntry[] = e.data; console.info(`The type of the first set of data is ${obj[0].type}."
+    },
+    {
+      "path": "references/Worker常驻线程通过TaskPool进行多任务并发处理.md",
+      "title": "Worker常驻线程通过TaskPool进行多任务并发处理",
+      "snippet": "ArkTS应用开发过程中，可以选择TaskPool或Worker线程进行多任务并发处理，也可以两种并发能力都选择。 本示例将说明在Worker线程中通过TaskPool执行并发任务。 1. 在主线程中创建Worker线程并发送消息。 // workerAndTaskpool.ets import { MessageEvents, worker } from '@kit.ArkTS'; import { PromptAction } from '@kit.ArkUI'; @Entry @Component struct Index { @State message: string = '在主线程中创建Worker线程并发送消息'; @State returnMessage: string = 'return...'; @State promptAction: PromptAction = this.getUIContext().getPromptAction(); build() { RelativeContainer() { Button(this.message) .fontSize(25) .id('HelloWorld') .fontWeight(FontWeight.Bold) .alignRules({ center: { anchor: '__container__',"
+    },
+    {
+      "path": "references/Worker简介.md",
+      "title": "Worker简介",
+      "snippet": "Worker的主要作用是为应用程序提供一个多线程的运行环境，实现应用程序执行过程与宿主线程分离。通过在后台线程运行脚本处理耗时操作，避免计算密集型或高延迟任务阻塞宿主线程。具体接口信息及使用方法详情请见 Worker 。 #### Worker运作机制 **图1** Worker运作机制示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2a/v3/TM2ny--dSVKIT70TQw-Png/zh-cn_image_0000002573853475.png?HW-CC-KV=V1&HW-CC-Date=20260421T110808Z&HW-CC-Expire=86400&HW-CC-Sign=A1DD3785E2DFF50E67DBABE5E20B4DFAF30A3514449F624ED95169CE46D437BC) 创建Worker的线程称为宿主线程（不局限于主线程，Worker线程也支持创建Worker子线程）。Worker子线程（或Actor线程、工作线程）是Worker自身运行的线程。每个Worker子线程和宿主线程拥有独立的实例，包含独立执行环境、对象、代码段等。因此，启动每个Worker存在一定的内存开销，需要限制Worker子线程的数量。"
+    },
+    {
+      "path": "references/XML概述.md",
+      "title": "XML概述",
+      "snippet": "XML（可扩展标记语言）是一种用于描述数据的标记语言，提供通用的数据传输和存储方式。XML不预定义标记，因此更加灵活，适用于广泛的应用领域。 XML文档由元素（element）、属性（attribute）和内容（content）组成。 - 元素指的是标记对，包含文本、属性或其他元素。 - 属性提供了有关元素的其他信息。 - 内容则是元素包含的数据或子元素。 XML使用XML Schema或DTD（文档类型定义）定义文档结构，开发人员可以利用这些机制创建自定义规则，以验证XML文档的格式是否符合预期规范。 XML支持命名空间、实体引用、注释和处理指令，灵活适应各种数据需求。 语言基础类库提供了XML相关的基础能力，包括： XML的生成 、 XML的解析 和 XML的转换 。 以下是一个简单的XML样例及对应说明，更多XML的接口和具体使用，请见 @ohos.xml 。 <!-- 声明 --> <?xml version=\"1.0\" encoding=\"utf-8\"?> <!-- 处理指令 --> <?xml-stylesheet type=\"text/css\" href=\"style.css\"?> <!-- 元素、属性及属性值 --> <note importance=\"high\"> <title>Happy</title> <!-- 实体引用 --> <todo>&amp;</to"
+    },
+    {
+      "path": "references/XML生成.md",
+      "title": "XML生成",
+      "snippet": "XML可以作为数据交换格式，被各种系统和应用程序支持。例如Web服务，可以将结构化数据以XML格式进行传递。 XML还可以作为消息传递格式，用于分布式系统中不同节点的通信。 #### 注意事项 - XML标签必须成对出现，生成开始标签就要生成结束标签。 - XML标签对大小写敏感，开始标签与结束标签大小写要一致。 #### 开发步骤 XML模块提供XmlSerializer及XmlDynamicSerializer类来生成XML数据，使用XmlSerializer需传入固定长度的ArrayBuffer或DataView对象作为输出缓冲区，用于存储序列化后的XML数据。 XmlDynamicSerializer类动态扩容，程序根据实际生成的数据大小自动创建ArrayBuffer。 调用不同的方法写入不同的内容，如startElement(name: string)写入元素开始标记，setText(text: string)写入标签值。 XML模块的API接口可以参考 @ohos.xml 的详细描述，按需求调用相应的函数可以生成一份完整的XML数据。 使用XmlSerializer生成XML示例如下： 1. 引入模块。 import { xml, util } from '@kit.ArkTS'; 2. 创建缓冲区，构造XmlSerializer对象。可以基于ArrayBuffer构造"
+    },
+    {
+      "path": "references/XML解析.md",
+      "title": "XML解析",
+      "snippet": "对于以XML作为载体传递的数据，实际使用中需要对相关的元素进行解析，一般包括 解析XML标签和标签值 、 解析XML属性和属性值 、 解析XML事件类型和元素信息 三类操作。如在Web服务中，XML是SOAP（Simple Object Access Protocol）协议的基础，SOAP消息通常以XML格式封装，包含请求和响应参数，通过解析这些XML消息，Web服务可以处理来自客户端的请求并生成相应的响应。 XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据的ArrayBuffer或DataView，输出为结构化的解析结果。 **表1** XML解析选项，其详细介绍请参见 ParseOptions 。 #### 注意事项 - 确保传入的XML数据符合标准格式。 - 目前不支持解析指定节点的值。 #### 解析XML标签和标签值 1. 引入模块。 import { xml, util } from '@kit.ArkTS'; // 需要使用util模块函数对文本编码 2. 对XML文本编码后调用XmlPullParser。 可以基于ArrayBuffer创建XmlPullParser对象，也可以基于DataView创建XmlPullParser对象（两种创建方式返回结果无区别）。 let strXml: string = '<?xml version"
+    },
+    {
+      "path": "references/XML转换.md",
+      "title": "XML转换",
+      "snippet": "将XML文本转换为JavaScript对象，便于处理和操作数据，适用于JavaScript应用程序。 语言基础类库提供ConvertXML类，将XML文本转换为JavaScript对象，输入为待转换的XML字符串及转换选项，输出为转换后的JavaScript对象。具体转换选项可见 API参考@ohos.convertxml 。 #### 注意事项 XML解析及转换需要确保传入的XML数据符合XML标准格式。 #### 开发步骤 以XML转换为JavaScript对象为例，说明如何获取标签值。 1. 引入所需的模块。 import { convertxml } from '@kit.ArkTS'; 2. 输入待转换的XML，设置转换选项。支持的转换选项及含义，请参见 ConvertOptions 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b3/v3/GekRPa-JRLSeJcaPk4_qvg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110806Z&HW-CC-Expire=86400&HW-CC-Sign=77712B7BC61A4559013A3B0096B3F80DBC936D9E46E5"
+    },
+    {
+      "path": "references/不同包类型的字节码混淆建议.md",
+      "title": "不同包类型的字节码混淆建议",
+      "snippet": "由于不同包类型的用途及构建流程的差异，开发者对不同包类型使用混淆有不同的注意事项。本文对 HAP 、 HAR 和 HSP 三种包类型分别提供建议，帮助开发者高效使用混淆。 为了对混淆在不同包类型下的行为有更清晰的理解，建议开发者在对不同包类型进行配置前，充分了解混淆原理及混淆开启流程，并优先阅读 Stage模型应用程序包结构 （了解不同包类型之间的差异点）。 #### 推荐混淆选项 推荐开发者在默认混淆的基础上，在混淆配置文件中开启以下四项基础混淆选项： 1. 顶层作用域名称混淆（-enable-toplevel-obfuscation）。 2. 属性名称混淆（-enable-property-obfuscation）。 3. 导入导出名称混淆（-enable-export-obfuscation）。 4. 文件名混淆（-enable-filename-obfuscation）。 开启混淆功能后，需要配置白名单进行适配，来保证应用运行功能正常。 - 对于新开发的应用，建议直接打开以上选项，在开发迭代过程中增加白名单配置。 - 对于已开发一定功能的应用，建议按照以上顺序逐步打开各个选项，对比不同选项的混淆产物，熟悉新增选项的具体效果，参考混淆选项配置指导排查适配。 当应用功能调试正常后，还可继续开启日志删除（-remove-log）等功能以发布release应用包。 #### HAP"
+    },
+    {
+      "path": "references/不同包类型的源码混淆建议.md",
+      "title": "不同包类型的源码混淆建议",
+      "snippet": "不同包类型的用途和构建流程存在差异，对不同包类型使用混淆时，开发者需要注意不同事项。本文针对 HAP 、 HAR 和 HSP 三种包类型，分别提供混淆建议，帮助开发者高效使用混淆。简要对应关系如下： **HAP** 为应用安装与运行的功能模块，适用于 **应用端功能开发与发布** ； **HAR** 为静态共享包，适用于 **组件化、能力沉淀与多模块/多工程复用** ； **HSP** 为应用内动态共享包，适用于 **同一应用内多模块在运行时共享代码与资源** 。 为了对混淆在不同包类型下的行为有更清晰的理解，建议开发者在对不同包类型进行配置前，充分了解 混淆原理 及 混淆开启流程 ，并优先阅读 Stage模型应用程序包结构 （了解不同包类型之间的差异点）。 #### 推荐混淆功能 推荐开发者在默认混淆（包含局部变量和参数混淆）的基础上，开启混淆配置文件中的以下四项基础混淆选项： 1. 顶层作用域名称混淆（-enable-toplevel-obfuscation） 2. 属性名称混淆（-enable-property-obfuscation） 3. 导入导出名称混淆（-enable-export-obfuscation） 4. 文件名混淆（-enable-filename-obfuscation） 开启混淆功能后，需配置白名单以保证应用运行功能正常。 - 对于新开发的应用，建议直接"
+    },
+    {
+      "path": "references/业务模块并发加载场景.md",
+      "title": "业务模块并发加载场景",
+      "snippet": "在应用启动时，多个业务模块需要加载，例如地图应用中的定位、打车、导航等模块。如果全部在UI主线程初始化，会严重影响应用冷启动时间。此时，应在不同子线程中并行加载这些模块，以降低启动耗时。 通过使用ArkTS提供的TaskPool能力，可以将不同的业务初始化任务移到子线程中。业务模块可通过下沉C++实现为 NativeBinding对象 或在ArkTS层定义为 Sendable对象 ，从而将初始化的模块返回给UI主线程调用，实现如下。 1. 各业务功能（SDK）模块定义（这里以使用Sendable对象为例）。 计算器业务模块定义如下： import { collections } from '@kit.ArkTS'; @Sendable export class Calculator { public history?: collections.Array<collections.Array<string>>; public totalCount: number = 0; static init(): Calculator { let calc = new Calculator(); calc.totalCount = 0; calc.history = collections.Array.create(calc.totalCount, collections.Array.creat"
+    },
+    {
+      "path": "references/使用TaskPool执行多个耗时任务.md",
+      "title": "使用TaskPool执行多个耗时任务",
+      "snippet": "多个任务同时执行时，由于任务复杂度不同，执行时间和返回数据的时间也会不同。如果宿主线程需要所有任务执行完毕的数据，可以通过 TaskGroup 的方式实现。 除了以上情况，如果需要处理的数据量较大，例如一个列表中有10000条数据，将这些数据放在一个Task中处理会非常耗时。那么就可以将原始数据拆分成多个子列表，为每个子列表分配一个独立的Task执行，等待全部Task执行完成后合并结果形成完整的数据，这样可以节省处理时间，提升用户体验。 下面以多个任务进行图片加载为例进行说明。 1. 实现子线程中需要执行的任务。 export class IconItemSource { image: string | Resource = ''; text: string | Resource = ''; constructor(image: string | Resource = '', text: string | Resource = '') { this.image = image; this.text = text; } } import { IconItemSource } from './IconItemSource'; // 在Task中执行的方法，需要添加@Concurrent注解，否则无法正常调用。 @Concurrent export function loadPictur"
+    },
+    {
+      "path": "references/使用TaskPool执行独立的耗时任务.md",
+      "title": "使用TaskPool执行独立的耗时任务",
+      "snippet": "对于独立运行的耗时任务，任务完成后将结果返回给宿主线程。可采用以下方式实现。 下面通过图片加载来说明。 1. 实现子线程需要执行的任务。 export class IconItemSource { image: string | Resource = ''; text: string | Resource = ''; constructor(image: string | Resource = '', text: string | Resource = '') { this.image = image; this.text = text; } } import { IconItemSource } from './IconItemSource'; // 在Task中执行的方法，需要添加@Concurrent注解，否则无法正常调用。 @Concurrent export function loadPicture(count: number): IconItemSource[] { let iconItemSourceList: IconItemSource[] = []; // 遍历添加6*count个IconItem的数据 for (let index = 0; index < count; index++) { const numStart: number = index * 6"
+    },
+    {
+      "path": "references/全局配置项功能场景.md",
+      "title": "全局配置项功能场景",
+      "snippet": "对于需要使用进程单例的场景，例如不同并发实例间需要数据保持一致的全局配置项功能，可以采用 共享模块 来实现。 以下示例展示了只有在Wi-Fi打开且用户登录的情况下才能进行下载的功能，具体步骤如下。 1. 编写全局配置文件。 import { ArkTSUtils } from '@kit.ArkTS'; 'use shared' @Sendable class Config { public lock: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock; public isLogin: boolean = false; public loginUser?: string; public wifiOn: boolean = false; async login(user: string) { return this.lock.lockAsync(() => { this.isLogin = true; this.loginUser = user; }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE) } async logout(user?: string) { return this.lock.lockAsync(() => { this.isLogin = false; th"
+    },
+    {
+      "path": "references/共享容器.md",
+      "title": "共享容器",
+      "snippet": "ArkTS共享容器（ @arkts.collections (ArkTS容器集) ）是一种在并发实例间共享传输的容器类，用于并发场景下的高性能数据传递。它的功能与ECMAScript 262规范定义的容器类似，但存在部分差异，具体可见 共享容器与原生API方法的行为差异对比 。 ArkTS共享容器在多个并发实例间传递时，默认采用引用传递，允许多个并发实例操作同一容器实例。此外，还支持拷贝传递，即每个并发实例拥有独立的ArkTS容器实例。 ArkTS共享容器不是线程安全的，内部使用了fail-fast（快速失败）机制，即当检测到多个并发实例同时对容器进行结构性修改时，会触发异常。因此，在多线程场景下修改容器内属性时，开发者需要使用ArkTS提供的 异步锁 机制保证ArkTS容器的安全访问。 ArkTS共享容器包含如下几种： Array 、 Map 、 Set 、TypedArray（ Int8Array 、 Uint8Array 、 Int16Array 、 Uint16Array 、 Int32Array 、 Uint32Array 、 Uint8ClampedArray 、 Float32Array ）、 ArrayBuffer 、 BitVector 、 ConcatArray ，具体可见 @arkts.collections (ArkTS容器集) 。 容器集使用示例如下： i"
+    },
+    {
+      "path": "references/共享模块.md",
+      "title": "共享模块",
+      "snippet": "共享模块是进程内只会加载一次的模块，使用\"use shared\"这一指令来标记一个模块是否为共享模块。 非共享模块在同一线程内只加载一次，而在不同线程中会多次加载，每个线程都会生成新的模块对象。因此，目前只能使用共享模块实现进程单例。 #### 约束限制 - \"use shared\"需要与\"use strict\"一样写在ArkTS文件顶层，写在import语句之后其他语句之前。 共享属性不具备传递性。非共享模块A即使引入了共享模块B，也不会因此变成共享模块。 - 共享模块只支持ets文件。 - 共享模块内不允许使用side-effects-import。 共享模块在同一进程内仅加载一次，可在不同线程间共享。 共享模块加载时，导入的非共享模块不会立即加载。在共享模块内访问依赖的非共享模块导出变量时，当前线程会懒加载对应的非共享模块。非共享模块在线程间隔离，不同线程访问时会进行一次懒加载。 由于side-effects-import不涉及导出变量，因此不会被加载，也不受支持。 // test.ets console.info(\"This runs immediately when imported\"); // sharedModule.ets // 不允许使用side-effects-import，编译报错 import \"./test\"; \"use shared\" - 共享模块导出的"
+    },
+    {
+      "path": "references/动态加载.md",
+      "title": "动态加载",
+      "snippet": "动态import支持条件延迟加载，支持部分反射功能，可以提升页面的加载速度；动态import支持加载HSP模块/HAR模块/OHPM包/Native库等，并且HAR模块之间可通过变量动态import来访问彼此导出的内容，可避免编译期强依赖，实现模块解耦。 #### 技术适用场景介绍 应用开发的有些场景中，如果希望根据条件导入模块或者按需导入模块，可以使用动态import代替 静态import 。下面是可能会需要动态import的场景： - 当静态import的模块明显降低了代码的加载速度且很少被使用，或者并不需要马上使用它。 - 当静态import的模块明显占用了大量的系统内存且很少被使用。 - 当被导入的模块，在加载时并不存在，需要异步获取。 - 当需要动态构建模块说明符时，应使用动态import。静态import仅支持静态说明符。 - 当导入的模块存在副作用（即模块中包含直接运行的代码），这些副作用仅在满足特定条件时才需要。 #### 业务扩展场景介绍 动态import在业务上除了能实现条件延迟加载，还可以实现部分反射功能。实例如下，HAP动态import HAR包harlibrary，并调用类Calc的静态成员函数staticAdd()、成员函数instanceAdd()，以及全局方法addHarLibrary()。 // harlibrary's src/main/ets/"
+    },
+    {
+      "path": "references/同步任务开发指导 (TaskPool和Worker).md",
+      "title": "同步任务开发指导 (TaskPool和Worker)",
+      "snippet": "同步任务用于在多个线程间协调执行，确保任务按特定顺序和规则进行（如使用锁防止数据竞争）。 同步任务的实现需要考虑多个线程之间的协作和同步，以确保数据的正确性和程序的正确执行。 当同步任务之间相对独立时，推荐使用TaskPool，例如一系列导入的静态方法或单例实现的方法。如果同步任务之间有关联性，则需要使用Worker。 #### 使用TaskPool处理同步任务 以下场景推荐使用TaskPool。 - 调度相互独立的任务。 - 静态方法实现的任务。 - 单例构造的句柄或者类对象跨线程使用。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ef/v3/qBtyF-kZT0-YTfC-5MC4kA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110815Z&HW-CC-Expire=86400&HW-CC-Sign=83828D7E14DB422832483F817F758B9BEB91F1EFCD6260A1E5BE7492DDE48932) 由于 Actor模型 不同线程间内存隔离的特性，非线程安全的单例无法在不同线程间使用。可通过共享模块导出单例解决此问题。 1. 定义并发函数，实现业务逻辑。 2. 创建"
+    },
+    {
+      "path": "references/同步方式动态加载Native模块.md",
+      "title": "同步方式动态加载Native模块",
+      "snippet": "loadNativeModule接口 用于同步动态加载Native模块，目的是按需加载所需要的模块。使用该接口会增加加载so文件的时间，开发者需评估其对功能的影响。 #### 函数说明 loadNativeModule(moduleName: string): Object; ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d6/v3/tmh584HvTsGbB1f3gUin4Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110820Z&HW-CC-Expire=86400&HW-CC-Sign=2F0220D3807EC607FE28FFECAB8C9BD1EAE3BCB2165D7EAD6573E62E7CB9C65A) loadNativeModule加载的模块名是指依赖方oh-package.json5文件的dependencies中的名字。 loadNativeModule必须在UI主线程中调用。 该接口在加载常量字符串或变量表达式作为参数时，需要配置依赖。 #### loadNativeModule支持的场景 #### 使用示例 - **HAP加载系统库模块** let hilog: ESOb"
+    },
+    {
+      "path": "references/在build-profile.json5中配置arkOptions.md",
+      "title": "在build-profile.json5中配置arkOptions",
+      "snippet": "arkOptions主要提供ArkTS编译相关配置，当前文档介绍arkOptions中types配置类型、maxFlowDepth配置控制流分析最大深度等，arkOptions中的其他配置项请参考 build-profile.json5 。 #### types #### types配置文件标签说明 arkOptions的types字段配置文件标签说明： #### arkOptions中的types字段配置说明 arkOptions中types字段示例： 在模块build-profile.json5配置文件buildOption标签的arkOptions属性中添加types字段。 // 在/entry/build-profile.json5 \"arkOptions\": { \"types\": [\"pako\", \"./oh_modules/@types/mime\", \"./src/main/ets/pages/global\"] }, types字段支持填写包名、包所在位置的相对路径，以及声明文件所在位置的相对路径。类型的查找范围仅限于当前声明文件所在的模块内，若目录下存在同名文件（后缀不同），默认加载顺序为 .d.ets > .d.ts，即优先加载 .d.ets 后缀的文件。 1. 填写包名方式：通过包名到oh_modules/@types/目录查找包名中定义的声明文件，如\"pako\""
+    },
+    {
+      "path": "references/基于Node-API加载模块.md",
+      "title": "基于Node-API加载模块",
+      "snippet": "Node-API中有多种方式支持开发者在C++侧加载工程内模块及文件。推荐使用napi_load_module_with_info接口。 #### napi_load_module_with_info 在主线程或子线程内加载hap/hsp/har/native模块，使用时必须标记所加载的包的信息，支持多种场景。 具体参考： napi_load_module_with_info 。 #### napi_load_module 在主线程内加载hap/hsp/har/native模块，参数传递简便。加载场景有限制，例如无法在子线程中使用该接口。 具体参考： napi_load_module 。"
+    },
+    {
+      "path": "references/基础库常见问题.md",
+      "title": "基础库常见问题",
+      "snippet": "由于ArkTS侧提供的XML解析接口暂不支持流式解析模式，建议通过Native工程调用第三方C/C++库来实现。推荐使用 **libxml2** 库，该库具有成熟稳定、性能优越的特点，能够支持SAX等流式解析方式，有效降低内存占用。 具体实施步骤如下： 1. **创建Native工程**：在HarmonyOS项目中创建C++模块。 2. **集成libxml2**：下载并配置libxml2库源码或预编译库，在CMakeLists.txt中进行引用。 3. **编写解析代码**：使用libxml2提供的API实现流式解析逻辑。 4. **XML对象处理**：当XML文件大小超过100MB时，建议在Native侧处理。 关于如何在ArkTS侧引用编译生成的三方so库，请参考文档： 如何在ArkTS侧引用其他三方so库 。 libxml2库支持的回调函数主要如下所示： 代码示例： // 用户自定义数据 ParseContext context; // 初始化SAX Handler结构体 xmlSAXHandler SAXHandler = { 0 }; // 绑定回调函数，用于在解析过程中处理XML数据 SAXHandler.startDocument = startDocument; SAXHandler.endDocument = endDocument; SAXHandler.st"
+    },
+    {
+      "path": "references/多级Worker间高性能消息通信.md",
+      "title": "多级Worker间高性能消息通信",
+      "snippet": "多级 Worker （即通过父Worker创建子Worker的机制形成层级线程关系）间通信是一种常见的需求，由于Worker线程生命周期由用户自行管理，因此需要注意多级Worker生命周期的正确管理，建议开发者确保销毁父Worker前先销毁所有子Worker。 本文介绍如何在多级Worker间实现高性能消息通信。高性能消息通信的关键在于 Sendable对象 ，结合 postMessageWithSharedSendable接口 ，可以实现线程间高性能的对象传递。例如，在数据克隆场景中，假设有一个父Worker和两个子Worker。父Worker负责创建子Worker，并向子Worker发送数据克隆任务。子Worker接收任务并执行数据克隆操作，完成后将克隆结果返回给父Worker。 1. 在ets文件夹下新建文件夹Sendable，并准备一个Sendable类CopyEntry，封装克隆任务数据。 // CopyEntry.ets @Sendable export class CopyEntry { // 克隆类型 type: string; // 文件路径 filePath: string; constructor(type: string, filePath: string) { this.type = type; this.filePath = filePath; } } "
+    },
+    {
+      "path": "references/多线程取消TaskPool任务场景.md",
+      "title": "多线程取消TaskPool任务场景",
+      "snippet": "由于任务池 TaskPool 的任务对象 Task 不支持跨线程传递，无法在子线程中直接取消任务。从 API version 18 开始，Task新增了 任务ID 属性，支持通过任务ID在子线程中取消任务。开发者可将已创建任务的任务ID存储在 Sendable对象 中，需要取消任务时，通过Sendable对象在子线程中取消任务。详情可参考以下示例。 1. 定义一个Sendable类，在类属性中存储任务ID。 // sendable.ets @Sendable export class SendableTest { // 存储任务ID private taskId: number = 0; constructor(id: number) { this.taskId = id; } public getTaskId(): number { return this.taskId; } } 2. 在UI主线程向TaskPool提交一个延时任务，并在子线程取消该任务。 // TaskpoolCancel.ets import { taskpool } from '@kit.ArkTS'; import { SendableTest } from '../utils/Sendable'; import { BusinessError } from '@kit.BasicServicesKit'"
+    },
+    {
+      "path": "references/多线程并发概述.md",
+      "title": "多线程并发概述",
+      "snippet": "多线程并发是指在单个程序中同时运行多个线程，通过并行或交替执行任务来提升性能和资源利用率的编程模型。在ArkTS应用开发中，多线程并发适用于多种业务场景，常见的业务场景主要分为以下三类，更详细的使用请参考 **应用多线程开发实践案例** 。 - 业务逻辑包含大量计算或频繁的I/O读写等需要长时间执行的任务，例如图片和视频的编解码、文件的压缩与解压缩、数据库操作等场景。 - 业务逻辑包括监听和定期采集数据等需要长时间保持运行的任务，例如定期采集传感器数据的场景。 - 业务逻辑跟随主线程的生命周期，或与主线程绑定的任务，例如在游戏中的业务场景。 并发模型用于实现不同应用场景中的并发任务。常见的并发模型有基于内存共享的模型和基于消息通信的模型。 Actor并发模型是基于消息通信的典型并发模型。开发者无需处理锁带来的复杂问题，且具备高并发度，因此应用广泛。 当前ArkTS提供了TaskPool和Worker两种并发能力，两者均基于Actor并发模型实现。 Actor并发模型和内存共享并发模型的具体对比请见 多线程并发模型 。 #### 多线程并发模型 内存共享并发模型指多线程同时执行任务，这些线程依赖同一内存资源并且都有权限访问，线程访问内存前需要抢占并锁定内存的使用权，没有抢占到内存的线程需要等待其他线程释放使用权再执行。 Actor并发模型每一个线程都是一个独立Actor，每个Acto"
+    },
+    {
+      "path": "references/容器类对象.md",
+      "title": "容器类对象",
+      "snippet": "容器类对象在跨线程传递时，可通过序列化的机制，确保跨线程间的数据一致，从而实现跨线程数据传递。 目前支持序列化的容器类对象包括 TreeSet ，容器类对象中的成员必须是序列化支持的类型，目前序列化支持类型可以参考 线程间通信对象概述 中的相关对象。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/87/v3/7-8qOGMMQrytfYrRRTwEVw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110809Z&HW-CC-Expire=86400&HW-CC-Sign=69F5F093E7CA2342F58F48F95B17ED8F2040077716BA1660CBA79C0C79BD3633) - 从HarmonyOS 6.1.0开始，支持使用TreeSet容器类对象实现跨线程数据传递。 - 容器类对象跨线程传递时，只能传递数据，自定义方法会丢失。如果需要自定义方法，则需要使用 @Sendable装饰器 标识为Sendable function后，自定义方法可以跨线程传递。 #### 使用示例 import { taskpool, TreeSet } from '@kit.ArkTS'; impor"
+    },
+    {
+      "path": "references/容器类库概述.md",
+      "title": "容器类库概述",
+      "snippet": "容器类库用于存储各种数据类型的元素，提供一系列处理数据的方法，作为纯数据结构容器具备高效处理特性。 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法，确保每种类型的数据在实现其功能的过程中避免冗余逻辑，从而实现高效的数据访问，提升应用性能。 当前提供了线性和非线性两类容器。 线性容器 和 非线性容器 均非多线程安全的。"
+    },
+    {
+      "path": "references/常驻任务并发场景简介.md",
+      "title": "常驻任务并发场景简介",
+      "snippet": "在应用业务实现中，对于耗时较长（超过3分钟）且并发量较小的常驻任务，建议使用Worker在后台线程中执行这些操作，以避免阻塞UI主线程，防止出现丢帧、卡顿等影响用户体验的问题。 常驻任务是指相比于短时任务，时间更长的任务，可能跟UI主线程生命周期一致。相比于长时任务，常驻任务更倾向于跟线程绑定的任务，单次运行时间更长（比如超过3分钟）。 对于常驻任务，较为常见的业务场景如下："
+    },
+    {
+      "path": "references/常驻任务开发指导（Worker）.md",
+      "title": "常驻任务开发指导（Worker）",
+      "snippet": "提供使用Worker进行常驻任务的开发指导。Worker将持续执行任务，直到宿主线程发送终止指令。 开发过程和示例如下： 1. DevEco Studio支持一键生成Worker，在对应的{moduleName}目录下任意位置，单击鼠标右键 > New > Worker，即可自动生成Worker的模板文件及配置信息。本文以创建“Worker”为例。 此外，还支持手动创建Worker文件。具体方式和注意事项请参见 创建Worker的注意事项 。 2. 首先导入Worker模块，然后在宿主线程中通过调用ThreadWorker的 constructor() 方法创建Worker对象，创建Worker对象的线程为宿主线程。 此处的宿主线程为UI主线程，宿主线程发送'start'以开始执行某个长期运行的任务，并接收子线程返回的相关消息。当不需要执行该任务时，发送'stop'以停止该任务的执行。在此示例中，任务将在10秒后结束。 import { worker } from '@kit.ArkTS'; import resource from '../util/resource'; const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets'); @Entr"
+    },
+    {
+      "path": "references/并发常见问题.md",
+      "title": "并发常见问题",
+      "snippet": "开发者发现TaskPool任务不执行时，可按照以下步骤快速定位。 1. **taskpool.execute接口是否调用** 。 taskpool.execute被调用时，Hilog会打印TaskPool调用态日志（Task Allocation: taskId:）。 如果发现没有该维测日志表明taskpool.execute实际未调用，应用需排查taskpool.execute之前的其他业务逻辑是否执行完成。 import { taskpool } from '@kit.ArkTS'; @Concurrent function createTask(a: number, b: number): number { let sum = a + b; return sum; } @Entry @Component struct Index { @State message: string = 'Hello World'; build() { Row() { Column() { Text(this.message) .fontSize(50) .fontWeight(FontWeight.Bold) .onClick(() => { console.info('test start'); // 其他业务逻辑 // ... let task: taskpool.Task = new ta"
+    },
+    {
+      "path": "references/并发概述.md",
+      "title": "并发概述",
+      "snippet": "并发指在同一时间内，多个任务同时执行。在多核设备上，任务可以在不同CPU上并行执行。对于单核设备，尽管多个任务不会同时执行，但CPU会在某个任务休眠或进行I/O操作时切换任务，调度其他任务，提高CPU的资源利用率。 为了提升应用的响应速度和帧率，避免耗时任务影响UI主线程，ArkTS提供了异步并发和多线程并发两种处理策略。 - 异步并发是指异步代码在执行到一定程度后暂停，并在未来某个时间点继续执行，同一时间只有一段代码执行。ArkTS通过Promise和async/await提供异步并发能力，适用于单次I/O任务。详细请参见 使用异步并发能力 。 - 多线程并发允许同时执行多段代码。UI主线程继续响应用户操作和更新UI，后台线程执行耗时操作，避免应用卡顿。ArkTS通过TaskPool和Worker提供多线程并发能力，适用于 耗时任务 等并发场景。详细请参见 多线程并发概述 。 在并发多线程场景下，不同线程间需要进行数据通信。不同类别的对象采用不同的传输方式，如拷贝或内存共享。 并发能力广泛应用于多种场景，包括 异步并发任务 、 耗时任务 （如 CPU密集型任务 、 I/O密集型任务 和 同步任务 等）、 长时任务 、 常驻任务 等。开发者可以根据不同的任务诉求和场景，选择相应的并发策略进行优化和开发，具体案例可以参见 应用多线程开发实践案例 。"
+    },
+    {
+      "path": "references/应用多线程开发概述.md",
+      "title": "应用多线程开发概述",
+      "snippet": "在ArkTS应用开发中，不同业务场景需要不同的并发能力和任务类型。 常见的业务场景分为三种并发任务： 耗时任务 ：业务逻辑包含较大计算量或多次I/O读写等需要长时间执行的任务。 长时任务 ：业务逻辑包含监听或定期采集数据等需要长时间保持运行的任务。 常驻任务 ：业务逻辑跟随主线程生命周期或与主线程绑定的任务。 不同任务类型可以进一步细分，例如，典型的耗时任务包括CPU密集型任务、I/O密集型任务和同步任务，每种任务类型对应不同的业务场景。TaskPool和Worker均支持多线程并发，请开发者根据业务场景选择合适的并发能力，具体请参考 TaskPool和Worker适用场景对比 。 接下来的章节将列举多线程开发中常见的场景及其实践案例。"
+    },
+    {
+      "path": "references/延迟加载（lazy import）.md",
+      "title": "延迟加载（lazy import）",
+      "snippet": "随着应用程序功能的扩展，冷启动时间显著增加，主要是因为启动初期加载了大量未实际执行的模块。这不仅延长了应用的初始化时间，还浪费了资源。需要精简加载流程，剔除非必需的文件执行，优化冷启动性能，确保用户体验流畅。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/33/v3/MnPiFFwdTOSb_wWl9FYkqg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110820Z&HW-CC-Expire=86400&HW-CC-Sign=B0B3D578EF136872EAD98124B2562A1B2155E2567B7E96E9B261FA13ABFA61D7) - 延迟加载特性在API 12版本开始支持。 - 开发者如需在API 12上使用lazy import语法，需在工程中配置\"compatibleSdkVersionStage\": \"beta3\"，否则将无法通过编译。参考 DevEco Studio build-profile.json5配置文件说明 。 - 针对API version大于12的工程，开发者可直接使用lazy import语法，无需再进行其他配置。 #### 功能特性 延迟加载特性使文"
+    },
+    {
+      "path": "references/异步并发 (Promise和async_await).md",
+      "title": "异步并发 (Promise和async/await)",
+      "snippet": "Promise和async/await是标准的JS异步语法，提供异步并发能力。异步代码执行时会被挂起，在异步操作完成后恢复执行，确保同一时间只有一段代码在运行。以下是典型的异步并发使用场景： - I/O 非阻塞操作：网络请求、文件读写、定时器等。 - 任务轻量且无 CPU 阻塞：单次任务执行时间短。 - 逻辑依赖清晰：任务有明确的顺序或并行关系。 异步并发是一种编程语言的特性，允许程序在执行某些操作时不必等待其完成，可以继续执行其他异步代码。 #### Promise Promise是一种用于处理异步操作的对象，可将异步操作转换为类似同步操作的风格，便于代码编写和维护。Promise通过状态机制管理异步操作的不同阶段，有三种状态：pending（进行中）、fulfilled（已完成，也叫resolved）和rejected（已拒绝）。创建后处于pending状态，异步操作完成后转换为fulfilled或rejected状态。 Promise提供了then、catch、finally方法来注册回调函数，以处理异步操作的成功或失败结果。当Promise状态改变时，回调函数会被加入微任务队列等待执行，依赖事件循环机制在宏任务执行完成后优先执行微任务，从而保证回调函数的异步调度。 最基本的用法是通过构造函数实例化一个Promise对象，传入一个带有两个参数的函数，称为executor函数。"
+    },
+    {
+      "path": "references/异步等待.md",
+      "title": "异步等待",
+      "snippet": "ArkTS引入了异步任务的等待和唤醒能力，以解决多线程任务时序控制问题。异步任务通过 ConditionVariable 对象实现等待和唤醒机制，该对象支持跨线程引用传递。 ArkTS语言支持异步操作，现已增加异步任务的等待和唤醒功能。当异步任务收到唤醒通知或等待超时后，将继续执行。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cc/v3/mIgCGRpJRPSHNI5yfkhOFw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110811Z&HW-CC-Expire=86400&HW-CC-Sign=A420ECF243CD4EBF917C4B3BFD6B053651BCBA154DE3F658B615651ECE5C3435) 使用异步方法需标记为async，调用时需用await修饰，确保时序正确。 #### 使用示例 Sendable 共享对象在不同线程控制异步任务等待和唤醒的示例如下： import { ArkTSUtils, taskpool } from '@kit.ArkTS'; @Concurrent function notifyAll(conditionVariable: ArkTS"
+    },
+    {
+      "path": "references/异步锁.md",
+      "title": "异步锁",
+      "snippet": "为了解决多线程并发实例间的数据竞争问题，ArkTS引入了异步锁能力。异步锁可能会被类对象持有，因此为了更方便地在并发实例间获取同一个异步锁对象， AsyncLock对象 支持跨线程引用传递。 由于ArkTS语言支持异步操作，阻塞锁容易产生死锁问题，因此在ArkTS中仅支持异步锁（非阻塞式锁）。同时，异步锁还可以用于保证单线程内的异步任务时序一致性，防止因异步任务执行顺序不确定而导致的数据竞争问题。 更多异步锁相关接口，请参见 异步锁ArkTSUtils.locks 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c0/v3/_mXwY8EcSw6j2XXUoKoD-w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110811Z&HW-CC-Expire=86400&HW-CC-Sign=20AA821D119DAB3BB892D7363A25F30BA714AC1BC2EF142570B1ABFE2A385536) 使用异步锁的方法需标记为async，调用时需用await修饰，以确保时序正确。 #### 使用示例 为了防止 @Sendable共享对象 在不同线程中修改共享变量导致的竞争问题，可以使用异步"
+    },
+    {
+      "path": "references/批量数据写数据库场景.md",
+      "title": "批量数据写数据库场景",
+      "snippet": "对于需要频繁数据库操作的场景，由于读写数据库存在耗时，因此推荐在子线程中操作，避免阻塞UI线程。 通过ArkTS提供的TaskPool能力，可以将数据库操作任务移到子线程中，实现如下。 1. 创建多个子任务，支持数据库的创建、插入、查询和清除等操作。 2. UI主线程发起数据库操作请求，在子线程中完成数据库的增删改查等操作。 import { relationalStore, ValuesBucket } from '@kit.ArkData'; import { collections, taskpool } from '@kit.ArkTS'; import { IValueBucket, SharedValuesBucket } from './SharedValuesBucket'; @Concurrent async function create(context: Context) { const CONFIG: relationalStore.StoreConfig = { name: 'Store.db', securityLevel: relationalStore.SecurityLevel.S1, }; // 默认数据库文件路径为 context.databaseDir + rdb + StoreConfig.name let store: relationa"
+    },
+    {
+      "path": "references/方舟字节码函数命名规则.md",
+      "title": "方舟字节码函数命名规则",
+      "snippet": "本文介绍字节码文件中 Method 的name_off字段指向的字符串的命名规则，该命名规则从方舟字节码文件版本12.0.4.0开始生效。 #### 入口函数 模块加载时被执行的函数，名称固定为func_main_0。 #### 非入口函数 其他函数在字节码文件中的名称结构如下： #前缀#原函数名 下面的章节将会详细介绍前缀和原函数名。 #### 前缀 前缀包含函数定义时所在的作用域信息，具体包括以下几个部分： - 作用域标签 - 作用域名称 - 重名序号 前缀的结构为： <作用域标签1><作用域名称1>[<重名序号>]<作用域标签2><作用域名称2><[重名序号]>...<作用域标签n><作用域名称n>[<重名序号>]<作用域标签n+1> 其中<>仅为便于阅读的分割标识，并不包含在实际的前缀中，[]表示可以为空。仅当出现重名作用域时才需要[<重名序号>]，即[<重名序号>]可以为空。最后一个作用域标签是本函数所对应的标签。 **作用域标签** 作用域标签表示作用域的类型。作用域和对应的作用域标签如下表所示，其他的作用域不会被记录进函数名中： **作用域名称** 源代码中定义作用域时所使用的名称。匿名则为空字符串。为了降低字节码体积，方舟编译器会对较长的作用域名称进行优化，此时作用域名称以@十六进制数字的形式体现。这个数字代表作用域名称的字符串在一个字符串数组中的索引：在字节码文件"
+    },
+    {
+      "path": "references/方舟字节码基本原理.md",
+      "title": "方舟字节码基本原理",
+      "snippet": "方舟字节码（Ark Bytecode）是由方舟编译器编译ArkTS/TS/JS生成的，提供给方舟运行时解释执行的二进制文件。方舟字节码中的主要内容是方舟字节码指令。 本文旨在介绍方舟字节码指令相关的设计，将在后续章节中对构成指令的重要概念和具体的指令格式及含义进行说明，帮助开发者了解方舟字节码指令，指导开发者进行指令相关的特性开发工作。 一条方舟字节码指令，由操作码（指令的名称）和指令入参列表组成。操作码包含无前缀的操作码和有前缀的操作码两种。寄存器、立即数以及string id/method id/literal id均可以作为指令的入参。除此之外，部分指令中使用累加器作为默认参数。 方舟字节码中，除寄存器和累加器之外，还存在 **全局变量** 、 **模块（module）命名空间和模块变量** 、 **词法环境和词法变量** 、 **补丁变量** 4种值存储方式。指令可以使用这4种储值位置中的值作为入参。 #### 术语和约束 **术语** 本文涉及的术语清单： **约束** - 本文中所有采用代码形式描述的内容均遵循ArkTS语言规范。 - 本文仅适用于版本号为12.0.6.0的方舟字节码（版本号为方舟编译器内部保留字段，开发者无需关注）。 #### 字节码构成 **操作码与前缀** 方舟字节码中的操作码通常被编码为一个8位的值，因此至多只能有256个操作码。随着方舟编译器运"
+    },
+    {
+      "path": "references/方舟字节码文件格式.md",
+      "title": "方舟字节码文件格式",
+      "snippet": "本文详细介绍了方舟字节码文件的格式，旨在帮助开发者深入理解字节码文件的组成结构，以指导字节码的分析和修改。 #### 约束 本文内容基于方舟字节码版本号12.0.6.0（版本号为方舟编译器内部保留字段，开发者无需关注，仅供准确对照之用）。 #### 字节码文件数据类型 方舟字节码使用了多种基础和复合数据类型，以下为常见类型的定义和说明。 #### 整型 #### 字符串 - 对齐方式：单字节对齐。 - 格式： #### TaggedValue - 对齐方式：单字节对齐。 - 格式： #### TypeDescriptor TypeDescriptor是类（ Class ）名称的格式，由'L'、'_'、ClassName和';'组成：L_ClassName;。其中，ClassName是类的全名，名称中的'.'会被替换为'/'。 #### 字节码文件布局 字节码文件起始于 Header 结构。文件中的所有结构均可以从Header出发，直接或间接地访问到。字节码文件中结构的引用方式包括偏移量和索引。偏移量是一个32位长度的值，表示当前结构的起始位置在字节码文件中相对于文件头的字节偏移量，从0开始计算。索引是一个16位长度的值，表示当前结构在索引区域中的位置，此机制将在 IndexSection 章节描述。 字节码文件中所有多字节数值类型（如u16、u32和i32等）均采用小端字节序（Li"
+    },
+    {
+      "path": "references/方舟字节码概述.md",
+      "title": "方舟字节码概述",
+      "snippet": "方舟字节码文件是ArkTS/TS/JS源码编译后的二进制产物。本章节介绍方舟字节码文件的各个部分，以帮助开发者深入了解字节码文件内容，进行字节码的分析和修改。 - 方舟字节码文件格式：介绍字节码文件中包含的各个部分的结构信息，以及各种结构的存储方式和映射关系。 - 方舟字节码基本原理：介绍字节码中构成指令的重要概念和具体的指令格式及含义，帮助开发者了解方舟字节码指令，进行指令相关的特性开发工作。 - 方舟字节码函数命名规则：介绍字节码文件中函数名字的字符串的命名规则。 - 编译期自定义修改方舟字节码：介绍如何修改字节码文件的内容。"
+    },
+    {
+      "path": "references/方舟字节码生成常见问题.md",
+      "title": "方舟字节码生成常见问题",
+      "snippet": "在ArkTS工程的构建流程中，方舟字节码（*.abc）的生成由工具链中的es2abc编译器组件完成。 在Hvigor构建任务中，es2abc编译器会被自动调用，用于将TypeScript/JavaScript源代码转换为方舟虚拟机能够执行的字节码文件（*.abc）。这些生成的文件随后被打包进HAP/HAR/HSP中，并由系统加载。 本FAQ汇总了字节码生成在实际编译中常见的异常场景，并提供原因分析与排查方式，帮助开发者更高效定位字节码编译阶段的问题。 #### 编译时报owns a higher api version错误 **问题现象** 编译时报owns a higher api version错误 > hvigor ERROR: ArkTS:ERROR Failed to execute es2abc. Error Message: Error: The input abc file '/Users/xxx/Desktop/Git/KnowChat_Harmony/oh_modules/.ohpm/wrapper@xnnuf1xhgb6dfmf+4nqatekk3somopridtvlx+rvty0=/oh_modules/wrapper/ets/modules.abc' owns a higher api version or a higher sdkReleaseType"
+    },
+    {
+      "path": "references/普通对象.md",
+      "title": "普通对象",
+      "snippet": "普通对象跨线程时通过拷贝（序列化）形式传递，两个线程的对象内容一致，但指向各自线程的隔离内存区间，被分配在各自线程的虚拟机本地堆（LocalHeap）。序列化支持类型包括：除Symbol之外的基础类型、Date、String、RegExp、Array、Map、Set、Object（仅限简单对象，比如通过\"{}\"或者\"new Object\"创建，普通对象仅支持传递属性，不支持传递其原型及方法）、ArrayBuffer、TypedArray。通信过程如图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7b/v3/wyrNVYQTTdi5IjPod70Udg/zh-cn_image_0000002543373224.png?HW-CC-KV=V1&HW-CC-Date=20260421T110809Z&HW-CC-Expire=86400&HW-CC-Sign=2275562BEB5979297D09E94EA77C2E27E239CE37F0E9308C2BD5DE714DC71D0B) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a8/"
+    },
+    {
+      "path": "references/模块加载副作用及优化.md",
+      "title": "模块加载副作用及优化",
+      "snippet": "当使用 ArkTS模块化 时，模块的加载和执行可能会引发 **副作用** 。副作用是指在模块导入时除了导出功能或对象之外，额外的行为或状态变化， **这些行为可能影响程序的其他部分，并导致产生非预期的顶层代码执行、全局状态变化、原型链修改、导入内容未定义等问题** 。 #### ArkTS模块化导致副作用的场景及优化方式 #### 模块执行顶层代码 **副作用产生场景** 模块在被导入时，整个模块文件中的顶层代码会立即执行，而不仅仅是导出的部分。这意味着，即使只想使用模块中的某些导出内容，任何在顶层作用域中执行的代码也会运行，从而产生副作用。 // ModulePartOne.ets console.info('Module loaded!'); // 这段代码在导入时会立即执行，可能会导致副作用。 export const data = 1; // PageOne.ets import { data } from './ModulePartOne'; // 导入时，ModulePartOne.ets中的console.info会执行，产生输出。 console.info('data is ', data); 输出内容： Module loaded! data is 1 **产生的副作用** 即使只需要data，console.info(\"Module loaded!\") 仍会运行"
+    },
+    {
+      "path": "references/模块化运行简介.md",
+      "title": "模块化运行简介",
+      "snippet": "为了解决大型或复杂应用开发过程中，部分代码编译时被多次拷贝导致包体积增大、文件依赖、代码与资源共享困难以及单例和全局变量污染等问题，ArkTS支持应用模块化编译、打包和运行，简化代码的编写与维护。 模块化是将ArkTS/TS/JS模块（一个文件对应一个模块）以及so模块通过编译工具或运行时机制将这些 模块加载 、解析、组合并执行的过程。 ArkTS支持的模块类型包括ets/ts/js文件、json文件、Native模块。ArkTS中支持 ECMAScript模块规范 及 CommonJS模块规范 ，此外，ArkTS也对加载方式进行了拓展，包含 动态加载 、静态加载、 延迟加载 、 同步动态加载Native模块 和 Node-API接口加载文件 。 #### 模块化运行加载流程 ArkTS模块化运行根据ECMAScript模块规范实现，以后序遍历的方式执行模块：从模块图的最左侧子树开始，执行模块，然后执行它们的同级，然后执行它们的父级。此算法递归运行，直至执行到模块图的根。 以下图为例，每个父节点加载对应子节点，并按import顺序执行同级。模块图文件执行顺序为：D->F->G->E->B->I->H->C->A。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5"
+    },
+    {
+      "path": "references/线性容器.md",
+      "title": "线性容器",
+      "snippet": "线性容器实现能按顺序访问的数据结构，其底层主要通过数组实现，包括ArrayList、Vector、List、LinkedList、Deque、Queue和Stack。 线性容器优化了数据访问速度，运行时（Runtime）通过一条字节码指令即可完成增、删、改、查等操作。 #### 各线性容器类型特征对比 #### ArrayList ArrayList 即动态数组，可用来构造全局的数组对象。需要频繁读取集合元素时，推荐使用ArrayList。 ArrayList依据泛型定义，存储位置为连续的内存空间，初始容量为10，支持动态扩容，每次扩容为原始容量的1.5倍。 ArrayList支持增、删、改、查操作，常用API如下： #### List List 可用来构造一个单向链表对象，若需要查找List中某一个元素，只能从头结点开始遍历。List依据泛型定义，存储的元素在内存中的存储位置可以不连续。 List和 LinkedList 相比，LinkedList是双向链表，支持在头部和尾部快速增删操作。List则是单向链表，不支持双向操作。 当需要频繁插入和删除元素，并且使用单向链表时，推荐使用List进行高效操作。 可以通过get/set等接口修改存储的元素，List支持增、删、改、查操作，常用API如下： #### LinkedList LinkedList 可用于构造双向链表对象，支持在"
+    },
+    {
+      "path": "references/线程间通信对象概述.md",
+      "title": "线程间通信对象概述",
+      "snippet": "在多线程并发场景中，例如通过TaskPool或Worker创建后台线程，不同线程间需要进行数据交互。由于线程间内存隔离，线程间通信对象必须通过序列化实现值拷贝或内存共享。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/70/v3/wsyA4JK2QXC46fRBTW0tqA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110809Z&HW-CC-Expire=86400&HW-CC-Sign=1D81151E087F57E57BEEC7B5D2EF1FA26F0010909047B2DC09E4196AEF80FE96) - 单次序列化传输的数据量大小限制为16MB。 - 序列化不支持使用@State装饰器、@Prop装饰器、@Link装饰器等装饰器修饰的复杂类型。 目前ArkTS支持线程间通信的对象有以下几种： - 普通对象：可直接传递基本数据类型及自定义对象（需满足序列化规范）。 - 容器类对象：可直接传递已经支持的容器类对象（需满足序列化规范）。 - ArrayBuffer对象：用于二进制数据的高效传递，适用于大段连续内存数据（如图片、音频原始数据）。 - SharedArrayBuffer对象：支"
+    },
+    {
+      "path": "references/编译期自定义修改方舟字节码.md",
+      "title": "编译期自定义修改方舟字节码",
+      "snippet": "如果开发者希望自定义修改方舟字节码文件的内容，可以使用ArkTS编译工具链提供的方法自定义修改方舟字节码文件。 #### 能力配置说明 准备一个操作方舟字节码文件的动态库文件，在工程的配置文件build-profile.json5中 配置编译选项transformLib ，选项值为这个动态库的路径，编译器会在指定时机加载该动态库，并执行其中指定的Transform方法。 #### 能力执行机制 如果配置了transformLib且对应的动态库文件能正确加载，编译器将先生成方舟字节码文件到默认目标位置，然后调用动态库中的Transform方法，并将方舟字节码文件的路径作为参数传入。Transform方法包含开发者自定义的修改逻辑，用于重新生成方舟字节码文件，同时更新字节码文件的落盘操作是由用户执行。 以下提供动态库模板，开发者可根据需求实现Transform逻辑。 #### 开发示例 1. 创建自定义修改动态库的源码。 example.cpp： /** * @brief 方舟字节码文件修改的入口方法 * @param abc_path 待处理的方舟字节码文件的存储路径 */ extern \"C\" int Transform(const char *abc_path) { // 开发者可以在这里读取abc_path对应的方舟字节码文件，然后根据方舟字节码格式修改相关数据，然后再重新生成"
+    },
+    {
+      "path": "references/耗时任务并发场景简介.md",
+      "title": "耗时任务并发场景简介",
+      "snippet": "耗时任务是指需要较长时间执行的任务，如果在UI主线程执行，可能导致应用卡顿、掉帧或响应延迟。典型的耗时任务包括CPU密集型任务、I/O密集型任务和同步任务。 常见的业务场景分类如下："
+    },
+    {
+      "path": "references/自定义Native Sendable对象的多线程操作场景.md",
+      "title": "自定义Native Sendable对象的多线程操作场景",
+      "snippet": "ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并发实例间高效的通信能力，即引用传递，适用于开发者自定义大对象需要线程间通信的场景，例如子线程读取数据库数据并返回给宿主线程。 本示例将详细说明如何使用自定义Native Sendable对象实现并发实例间数据共享。 1. 接口声明中自定义Sendable类。 // Index.d.ets @Sendable export class MyObject { constructor(arg: number); plusOne(): number; public get value(): number; public set value(newVal: number); } 2. 编译配置。 # CMakeLists.txt # the minimum version of CMake. cmake_minimum_required(VERSION 3.5.0) project(napi_wrap_sendable_demo) set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR}) if(DEFINED PACKAGE_FIND_FILE) include(${PACKAGE_FIND_FILE}) endif() include_direct"
+    },
+    {
+      "path": "references/自定义Native Transferable对象的多线程操作场景.md",
+      "title": "自定义Native Transferable对象的多线程操作场景",
+      "snippet": "在ArkTS应用开发中，有很多场景需要将ArkTS对象与Native对象进行绑定。ArkTS对象将数据写入Native对象，Native对象再将数据写入目的地。例如，将ArkTS对象中的数据写入C++数据库场景。 Native Transferable对象有两种模式：共享模式和转移模式。本示例将详细说明如何实现这两种模式。 1. Native实现各项功能。 // napi_init.cpp #include <mutex> #include <unordered_set> #include \"napi/native_api.h\" #include <hilog/log.h> class CustomNativeObject { public: CustomNativeObject() {} ~CustomNativeObject() = default; static CustomNativeObject& GetInstance() { static CustomNativeObject instance; return instance; } static napi_value GetAddress(napi_env env, napi_callback_info info) { napi_value thisVar = nullptr; napi_get_cb_info(en"
+    },
+    {
+      "path": "references/获取最近访问列表场景.md",
+      "title": "获取最近访问列表场景",
+      "snippet": "为了快速访问最近使用的 Sendable 对象，从API version 18开始，ArkTS引入了 SendableLruCache 。开发者可以通过向SendableLruCache实例中添加、删除和获取Sendable对象，实现快速访问最近使用的Sendable对象。本文提供使用SendableLruCache实现获取最近使用列表的开发指导，以书架为例，每次打开一本图书后，需将图书信息更新到最近访问列表中，并在下次访问书架页面时显示最近访问的图书列表。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b1/v3/KBjgIXagSVavZmBTbFy1Xg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110818Z&HW-CC-Expire=86400&HW-CC-Sign=F03EB4C11123690DE6BBF95970373C30C9070EBF6E99CC83D16FA189E21B2173) 使用SendableLruCache实例对象时需加锁，避免多线程同时操作导致数据不一致。 存放到SendableLruCache实例中的对象必须是Sendable对象。 1. 创建SendableLr"
+    },
+    {
+      "path": "references/长时任务并发场景简介.md",
+      "title": "长时任务并发场景简介",
+      "snippet": "在应用业务实现过程中，需要较长时间不定时运行的任务称为长时任务。如果在UI主线程中执行这些长时任务，会阻塞UI业务，导致卡顿和丢帧等问题，影响用户体验。因此，通常需要将这些独立的长时任务放到单独的子线程中执行。 典型的长时任务场景如下所示： 上述业务场景均为独立的长时任务，任务执行周期长，与外部交互简单。将这些任务分发至后台线程执行后，可根据需求适时获取其执行结果。使用 TaskPool 可以简化开发工作量，避免管理复杂的生命周期，避免线程数量过多。开发者只需要将上述独立的长时任务放入 TaskPool 队列，再等待结果即可。"
+    },
+    {
+      "path": "references/长时任务开发指导（TaskPool）.md",
+      "title": "长时任务开发指导（TaskPool）",
+      "snippet": "此处提供使用TaskPool进行长时任务的开发指导，以定期采集传感器数据为例。 #### 使用TaskPool进行传感器数据监听 1. 导入所需的模块。 // Index.ets import { sensor } from '@kit.SensorServiceKit'; import { taskpool } from '@kit.ArkTS'; import { BusinessError, emitter } from '@kit.BasicServicesKit'; 2. 定义长时任务，内部监听sensor数据，并通过emitter注册销毁通知。 // Index.ets @Concurrent async function SensorListener() : Promise<void> { sensor.on(sensor.SensorId.ACCELEROMETER, (data) => { emitter.emit({ eventId: 0 }, { data: data }); }, { interval: 1000000000 }); emitter.on({ eventId: 1 }, () => { sensor.off(sensor.SensorId.ACCELEROMETER) emitter.off(1) }) } 3. 给sensor添加ohos."
+    },
+    {
+      "path": "references/静态方式加载Native模块.md",
+      "title": "静态方式加载Native模块",
+      "snippet": "在ES6(ECMAScript 6.0)模块设计中，使用import语法加载其他文件导出的内容是ECMA规范所定义的语法规则。为支持开发者使用该功能导入Native模块（so）导出的内容，ArkTS进行了相关适配，并提供了以下几种支持写法。 #### 直接导入 在Native模块的index.d.ts文件中导出，并在文件内直接导入。 #### 具名导入 // libentry.so对应的index.d.ts。 export const add: (a: number, b: number) => number; // NameImport.ets import { add } from 'libentry.so' add(2, 3); #### 默认导入 // libentry.so对应的index.d.ts。 export const add: (a: number, b: number) => number; // DefaultImport.ets import entry from 'libentry.so' entry.add(2, 3); #### 命名空间导入 // libentry.so对应的index.d.ts。 export const add: (a: number, b: number) => number; // NamespaceImport.ets i"
+    },
+    {
+      "path": "references/非线性容器.md",
+      "title": "非线性容器",
+      "snippet": "非线性容器实现能快速查找的数据结构，其底层通过hash或者红黑树实现，包括HashMap、HashSet、TreeMap、TreeSet、LightWeightMap、LightWeightSet、PlainArray七种。非线性容器中的key及value的类型均满足ECMA标准。 #### 各非线性容器类型特征对比 #### HashMap HashMap 可用来存储具有关联关系的key-value键值对集合，存储元素中key是唯一的，每个key会对应一个value值。 HashMap通过泛型定义，利用键的哈希值确定存储位置，实现快速查找。初始容量为16，支持动态扩容，每次扩容为原容量的两倍。底层基于哈希表实现，冲突处理采用链地址法。 HashMap和 TreeMap 相比，HashMap依据键的hashCode存取数据，访问速度较快。TreeMap则按顺序存取，效率较低。 HashSet 基于HashMap实现。HashMap的输入参数由key、value两个值组成。在HashSet中，只处理value对象。 需要快速存取、删除以及插入键值对数据时，推荐使用HashMap。 HashMap支持增、删、改、查操作，常用API如下： #### HashSet HashSet 可用来存储一系列值的集合，存储元素中value是唯一的。 HashSet基于泛型定义，集合中通过value的"
+    }
+  ]
+}

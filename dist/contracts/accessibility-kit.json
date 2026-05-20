@@ -1,0 +1,111 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "accessibility-kit",
+  "source_path": "skills/accessibility-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:47:27.679Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "无障碍",
+      "屏幕朗读",
+      "焦点管理",
+      "辅助功能",
+      "包容性设计",
+      "如何为按钮、图片、视频、动画等UI元素添加无障碍内容标注使TalkBack正确播报",
+      "如何处理弹窗类控件的屏幕朗读焦点走焦问题",
+      "如何为多维嵌套布局、列表项组合等复杂界面实现无障碍适配",
+      "如何在页面内容动态变化时主动通知屏幕朗读进行播报",
+      "如何禁用或重新设置屏幕朗读焦点位置",
+      "如何为自定义控件设置播报状态和无障碍滚动步数",
+      "如何处理多语种环境下的无障碍功能适配",
+      "如何测试应用的屏幕朗读功能是否正确",
+      "当开发者需要为应用添加无障碍适配时，应使用Accessibility Kit",
+      "如果你的应用需要支持视障用户使用屏幕朗读功能，或者需要确保所有UI元素都能被TalkBack正确识别和播报，Accessibility Kit提供了完整的内容标注和焦点管理指导",
+      "适用于需要在按钮、图片、视频、动画等元素上添加无障碍描述的场景",
+      "当开发者需要处理复杂的无障碍交互场景时，应参考Accessibility Kit的场景实践",
+      "例如弹窗类控件的焦点走焦、多维嵌套布局的无障碍适配、列表项组合的播报优化、控件状态变化的播报通知等场景",
+      "如果你正在开发包含动态内容、自定义控件或复杂交互的应用，Accessibility Kit提供了对应的无障碍处理方案",
+      "给按钮和图片补充可读的无障碍标签与描述 / Add accessible labels and descriptions for buttons and images",
+      "实现页面切换和弹窗打开时的屏幕阅读器焦点落点控制 / Control screen reader focus when switching pages or opening dialogs",
+      "在列表更新、加载完成或状态变化时主动触发无障碍播报 / Announce list updates, loading completion, or state changes for accessibility",
+      "为自定义组件接入无障碍语义信息和操作动作 / Add accessibility semantics and actions to custom components",
+      "让开关、复选框和滑块正确播报选中状态与当前值 / Make switches, checkboxes, and sliders announce state and current value correctly",
+      "优化表单输入流程以便读屏用户逐项填写和校验 / Optimize form input flow for screen reader users to fill and validate fields",
+      "为轮播图、分页视图和可滚动区域提供可访问的导航提示 / Provide accessible navigation hints for carousels, paged views, and scrollable areas",
+      "处理自定义手势或拖拽交互的无障碍替代操作 / Provide accessible alternatives for custom gestures or drag interactions",
+      "适配深色模式之外的高对比度和大字体可访问体验 / Adapt the UI for high contrast and large text accessibility",
+      "给视频播放器和音频控件补充可访问名称与状态提示 / Add accessible names and status hints to video and audio controls",
+      "管理页面中重要元素的无障碍遍历顺序 / Manage the accessibility traversal order of important UI elements",
+      "接入屏幕阅读器友好的错误提示和成功反馈播报 / Integrate screen-reader-friendly announcements for errors and success feedback"
+    ],
+    "do_not_use_when": [
+      "需求只是做界面视觉样式、布局规范、颜色字体或交互视觉设计，而不是实现无障碍语义与播报时，改用 ui-design-kit / If the task is only about visual UI styling, layout rules, colors, typography, or interaction design rather than accessibility semantics and announcements, use ui-design-kit instead",
+      "需求是应用多语言翻译、字符串资源国际化或本地化适配，而不是屏幕朗读语义与多语种无障碍播报时，改用 localization-kit / If the task is about app translation, string resource internationalization, or localization rather than screen-reader semantics and multilingual accessibility announcements, use localization-kit instead",
+      "需求主要是编写测试用例、自动化验证或测试流程，而不是实现无障碍能力本身时，改用 test-kit / If the main task is writing test cases, automated verification, or test workflows rather than implementing accessibility features themselves, use test-kit instead",
+      "需求主要是分析卡顿、耗时、内存或性能瓶颈，而不是处理TalkBack焦点、标注或无障碍事件时，改用 performance-analysis-kit / If the main task is analyzing jank, latency, memory, or performance bottlenecks rather than handling TalkBack focus, labels, or accessibility events, use performance-analysis-kit instead",
+      "需求属于日历日程能力、天气服务能力或屏幕使用时长管控等垂直业务，而非无障碍适配时，分别改用 calendar-kit、weather-service-kit 或 screen-time-guard-kit / If the request belongs to vertical business capabilities such as calendar scheduling, weather services, or screen-time control rather than accessibility adaptation, use calendar-kit, weather-service-kit, or screen-time-guard-kit respectively"
+    ],
+    "preconditions": [
+      "工程已集成HarmonyOS Accessibility Kit相关能力，目标API版本支持所用无障碍接口 / The project has integrated the HarmonyOS Accessibility Kit capability and the target API level supports the accessibility APIs being used",
+      "待适配的页面或组件已存在可编辑的ArkUI/UI代码与控件结构 / The target pages or components already exist as editable ArkUI/UI code and component structure",
+      "若要验证屏幕朗读行为，测试设备或模拟环境可启用TalkBack/屏幕朗读等无障碍服务 / To verify screen-reader behavior, the test device or simulator can enable TalkBack or other accessibility services",
+      "应用具备修改组件语义属性、焦点行为和事件发送逻辑的权限与代码上下文 / The app has the necessary code context and ability to modify component semantic properties, focus behavior, and event-dispatch logic"
+    ],
+    "inputs": [
+      "页面或组件代码文件 / page or component code files",
+      "需要适配的控件清单与交互场景 / list of controls and interaction scenarios to adapt",
+      "无障碍文案与语义描述 / accessibility copy and semantic descriptions",
+      "动态变化、弹窗或焦点切换触发条件 / triggers for dynamic updates, dialogs, or focus changes"
+    ],
+    "outputs": [
+      "Kit简介",
+      "屏幕朗读与焦点场景",
+      "内容播报与标注场景",
+      "控件与布局场景",
+      "交互与错误场景",
+      "测试"
+    ],
+    "postconditions": [
+      {
+        "statement": "已为目标UI元素补充或修正无障碍语义、描述或可朗读文本，使其可被屏幕朗读识别 / Accessibility semantics, descriptions, or spoken text have been added or corrected for target UI elements so they can be recognized by a screen reader",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify UI accessibility metadata such as labels, descriptions, semantic text, or accessibility-related properties on the relevant components?"
+      },
+      {
+        "statement": "已在弹窗、页面切换、状态变化或内容更新场景中处理无障碍焦点或播报通知 / Accessibility focus handling or announcement notifications have been implemented for dialogs, page transitions, state changes, or content updates",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits include logic for accessibility focus movement, focus reset/disable behavior, or sending announcements/events when dialogs appear or content/state changes?"
+      },
+      {
+        "statement": "改动限定在无障碍适配相关代码、属性或说明上，未转而实现无关的业务能力 / The changes are scoped to accessibility adaptation code, properties, or guidance rather than unrelated business features",
+        "verifier": "model_judge",
+        "judge_prompt": "Are the edits primarily about accessibility adaptation rather than implementing unrelated vertical features, performance tooling, or generic localization only?"
+      }
+    ],
+    "overlaps_with": [
+      "basic-services-kit",
+      "localization-kit",
+      "test-kit",
+      "performance-analysis-kit",
+      "calendar-kit",
+      "weather-service-kit",
+      "ui-design-kit",
+      "screen-time-guard-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

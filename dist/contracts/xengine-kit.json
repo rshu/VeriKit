@@ -1,0 +1,107 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "xengine-kit",
+  "source_path": "skills/xengine-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T08:00:55.904Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "GPU加速",
+      "AI超分",
+      "自适应VRS",
+      "光线追踪",
+      "GPU排序",
+      "如何检查设备是否支持XEngine Kit特性？",
+      "如何使用空域GPU超分将低分辨率图像重建为高分辨率？",
+      "如何使用空域AI超分实现GPU/NPU协同的超采样？",
+      "如何使用时域AI超分获得更好的抗锯齿效果？",
+      "如何使用自适应VRS功能视觉无损降低渲染开销？",
+      "如何使用Subpass Shading降低TBDR和Forward+管线的带宽开销？",
+      "如何实现光线追踪反射、阴影和环境光遮蔽效果？",
+      "如何使用DDGI和NNGI两种全局光照算法？",
+      "如何使用高性能GPU排序降低排序时延？",
+      "超分和自适应VRS特性是否可以同时使用？",
+      "当你的3D游戏或AR/VR应用在马良GPU设备上遇到性能瓶颈，需要提升渲染画质或降低功耗时使用本Kit的超分能力",
+      "当GPU性能不足以持续为每个像素提供相同质量的渲染时，使用自适应VRS功能降低渲染开销",
+      "当需要实现高质量的光线追踪效果（如反射、阴影、环境光遮蔽、全局光照）以提升画面真实感时，应使用本Kit的光线追踪能力",
+      "当使用TBDR或Forward+渲染管线需要降低带宽开销时，应使用Subpass Shading能力",
+      "接入XEngine提升游戏渲染性能和画质 / Integrate XEngine to improve game rendering performance and visual quality",
+      "实现超分辨率渲染让低分辨率输出更清晰 / Implement super resolution rendering to make low-resolution output sharper",
+      "添加AI超采样减少性能压力同时保持清晰度 / Add AI upscaling to reduce performance cost while keeping image clarity",
+      "启用可变着色率降低复杂场景的GPU负载 / Enable variable rate shading to lower GPU load in complex scenes",
+      "实现光线追踪反射和阴影增强真实感 / Implement ray-traced reflections and shadows for more realistic visuals",
+      "为3D场景接入全局光照提升室内外光照效果 / Add global illumination to a 3D scene for better indoor and outdoor lighting",
+      "使用GPU排序加速大量粒子或透明物体排序 / Use GPU sorting to speed up sorting of many particles or transparent objects",
+      "在Forward+或TBDR渲染管线中启用Subpass Shading / Enable Subpass Shading in a Forward+ or TBDR rendering pipeline",
+      "检查当前设备是否支持超分、VRS或光追能力 / Check whether the current device supports super resolution, VRS, or ray tracing",
+      "为高帧率游戏优化渲染开销和功耗 / Optimize rendering cost and power consumption for high-frame-rate games",
+      "实现时域超分提升抗锯齿效果并稳定画面 / Implement temporal super resolution to improve anti-aliasing and stabilize the image",
+      "在GPU和NPU协同下实现更高质量的图像重建 / Implement higher-quality image reconstruction with GPU and NPU collaboration"
+    ],
+    "do_not_use_when": [
+      "需求是通用2D绘制、画布、文本或基础图像渲染，而不是马良GPU上的3D渲染加速；请改用 arkgraphics-2d / The need is general 2D drawing, canvas, text, or basic image rendering rather than 3D rendering acceleration on Maleoon GPU; use arkgraphics-2d instead",
+      "需求是构建3D场景、模型、材质、相机或基础3D渲染框架，而不是启用超分、VRS、光追或GPU排序特性；请改用 arkgraphics-3d / The need is to build 3D scenes, models, materials, cameras, or a basic 3D rendering framework rather than enabling super resolution, VRS, ray tracing, or GPU sorting features; use arkgraphics-3d instead",
+      "需求是AR会话、平面识别、锚点、跟踪或AR交互能力，而不是底层GPU渲染优化；请改用 ar-engine / The need is AR sessions, plane detection, anchors, tracking, or AR interaction rather than low-level GPU rendering optimization; use ar-engine instead",
+      "需求是通用图形/媒体加速或非马良GPU专属优化，且不依赖XEngine特性集合；请改用 graphics-accelerate-kit / The need is general graphics/media acceleration or optimization not specific to Maleoon GPU, without relying on XEngine feature set; use graphics-accelerate-kit instead",
+      "需求是空间扫描、环境重建、网格/点云重建或场景理解，而不是渲染特效与图形管线优化；请改用 spatial-recon-kit / The need is spatial scanning, environment reconstruction, mesh/point-cloud reconstruction, or scene understanding rather than rendering effects and graphics pipeline optimization; use spatial-recon-kit instead"
+    ],
+    "preconditions": [
+      "目标设备支持 SystemCapability.Graphic.XEngine 系统能力 / The target device supports the SystemCapability.Graphic.XEngine system capability",
+      "应用运行在使用马良GPU的受支持设备上 / The app is running on a supported device using a Maleoon GPU",
+      "已通过扩展特性查询接口确认所需具体特性受支持（如超分、VRS、Subpass Shading、光追或GPU排序） / The required specific feature support has been confirmed through the extension feature query API (such as super resolution, VRS, Subpass Shading, ray tracing, or GPU sorting)",
+      "渲染管线已采用受支持的图形API与上下文（OpenGL ES或Vulkan） / The rendering pipeline is using a supported graphics API and context (OpenGL ES or Vulkan)"
+    ],
+    "inputs": [
+      "目标XEngine特性类型 / target XEngine feature type",
+      "设备能力与特性查询结果 / device capability and feature query results",
+      "渲染管线配置与图形API上下文 / rendering pipeline configuration and graphics API context",
+      "场景或帧的输入纹理、颜色附件或缓冲资源 / scene or frame input textures, color attachments, or buffer resources"
+    ],
+    "outputs": [
+      "简介",
+      "超分能力",
+      "渲染优化",
+      "光线追踪",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码或说明中包含对 SystemCapability.Graphic.XEngine 或等效设备能力的支持性检查 / The code or instructions include a support check for SystemCapability.Graphic.XEngine or equivalent device capability",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the agent's edit set add or describe a concrete check that the device supports XEngine before using its APIs?"
+      },
+      {
+        "statement": "代码或说明中包含对所需具体XEngine特性的查询或判定，而不是盲目直接启用 / The code or instructions include querying or determining the required specific XEngine feature instead of blindly enabling it",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the agent's edit set add or describe a feature-specific availability check for the requested XEngine capability such as super resolution, VRS, ray tracing, Subpass Shading, or GPU sorting?"
+      },
+      {
+        "statement": "渲染流程已接入所请求的XEngine优化点，并限定在OpenGL ES或Vulkan路径中使用 / The rendering flow is integrated with the requested XEngine optimization point and restricted to OpenGL ES or Vulkan paths",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is the requested XEngine feature wired into a rendering path that explicitly uses or targets OpenGL ES or Vulkan?"
+      }
+    ],
+    "overlaps_with": [
+      "arkgraphics-2d",
+      "arkgraphics-3d",
+      "ar-engine",
+      "graphics-accelerate-kit",
+      "spatial-recon-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

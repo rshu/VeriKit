@@ -1,0 +1,92 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "health-service-kit",
+  "source_path": "skills/health-service-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:54:38.060Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "如何申请运动健康服务并配置Client ID？",
+      "如何读取用户的心率、血氧、步数等日常健康采样数据？",
+      "如何读取用户的跑步、骑行、游泳等锻炼记录数据？",
+      "如何管理数据源和用户授权，确保数据获取合规？",
+      "如何获取实时三环数据（活动、锻炼、站立）？",
+      "如何读取用户的睡眠、压力、体温等健康记录数据？",
+      "如何拉起运动健康App的隐私授权页面？",
+      "如何手动触发数据同步？",
+      "各类健康数据对应的权限有哪些？如何申请正式权限？",
+      "应用开发者申请运动健康服务需要满足哪些资质要求？",
+      "当您需要开发运动健康类应用，读取用户的步数、心率、血氧、睡眠等健康数据时，可使用 Health Service Kit 的采样数据读取能力",
+      "当您需要获取用户的运动锻炼记录（如跑步、骑行、游泳等）时，可使用锻炼记录数据读取能力",
+      "当您需要开发与华为运动健康设备联动的应用，获取实时三环（活动、锻炼、站立）数据，或需要管理用户授权和数据源时，也可使用本Kit提供的相关能力",
+      "接入华为运动健康账号授权并读取用户健康数据 / Integrate Huawei Health authorization and read user health data",
+      "同步手表或手环采集的步数心率到应用 / Sync step count and heart rate collected from a watch or band into the app",
+      "显示用户当天活动圆环进度和站立达标情况 / Show the user’s daily activity rings progress and stand goals",
+      "获取最近一周的睡眠记录并做睡眠趋势展示 / Load the past week’s sleep records and display sleep trends",
+      "读取跑步骑行训练详情用于运动分析页面 / Read running and cycling workout details for an exercise analysis page",
+      "订阅健康数据更新并在数据变化后刷新界面 / Subscribe to health data updates and refresh the UI when values change",
+      "拉起系统健康授权流程让用户开启步数和心率权限 / Launch the system health consent flow so users can enable step and heart rate permissions",
+      "管理健康数据读取范围并按需申请传感器权限 / Manage health data access scopes and request sensor permissions as needed",
+      "获取血氧体温压力等指标生成每日健康概览 / Fetch SpO2, temperature, and stress metrics to build a daily health summary",
+      "手动触发运动健康数据同步后刷新本地统计 / Manually trigger Huawei Health data sync and refresh local stats",
+      "读取指定时间段的锻炼记录用于训练日历展示 / Read workouts within a time range for a training calendar view",
+      "按数据源筛选来自手机手表的健康记录 / Filter health records by data source such as phone or watch"
+    ],
+    "do_not_use_when": [
+      "需求是发送推送通知、消息下发或订阅通知，而不是读取/管理运动健康数据；本Kit没有对应兄弟Kit可替代 / The need is to send push notifications, deliver messages, or subscribe to notifications rather than read/manage health data; there is no sibling Kit to use instead",
+      "需求是访问相机、定位、文件、媒体播放等通用设备能力，而不是华为运动健康数据平台能力；本Kit没有对应兄弟Kit可替代 / The need is to access generic device capabilities such as camera, location, files, or media playback rather than Huawei health data platform capabilities; there is no sibling Kit to use instead",
+      "需求是不依赖华为账号和用户授权的本地传感器原始数据采集，而不是读取Health Service开放数据；本Kit没有对应兄弟Kit可替代 / The need is to collect raw local sensor data without Huawei account sign-in and user authorization rather than read Health Service open data; there is no sibling Kit to use instead"
+    ],
+    "preconditions": [
+      "项目已开通运动健康服务并正确配置Client ID等接入信息 / The project has enabled Health Service and correctly configured access info such as Client ID",
+      "应用已集成对应SDK，并在module.json5/应用配置中声明所需权限与能力 / The app has integrated the required SDK and declared needed permissions and capabilities in module.json5/app configuration",
+      "用户已登录华为账号，并已授予目标健康数据范围的授权 / The user is signed in with a Huawei account and has granted authorization for the target health data scopes"
+    ],
+    "inputs": [
+      "华为账号登录态与授权范围 / Huawei account sign-in state and authorization scopes",
+      "目标数据类型或运动类型 / Target data type or exercise type",
+      "查询时间范围或实时订阅参数 / Query time range or real-time subscription parameters",
+      "数据源信息或同步/授权操作参数 / Data source info or sync/authorization operation parameters"
+    ],
+    "outputs": [
+      "Kit 简介与接入",
+      "数据开放总览",
+      "采样数据",
+      "锻炼记录",
+      "健康记录",
+      "数据管理与授权"
+    ],
+    "postconditions": [
+      {
+        "statement": "工程中已添加运动健康服务接入配置或调用了对应初始化/授权相关代码 / The project includes Health Service integration configuration or corresponding initialization/authorization code",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add Health Service integration artifacts such as client/access configuration, SDK dependency usage, or initialization/authorization-related code?"
+      },
+      {
+        "statement": "代码中已实现至少一种健康数据能力：采样数据、锻炼记录、健康记录、实时三环、数据源管理或手动同步 / The code implements at least one health-data capability: sample data, exercise records, health records, real-time rings, data source management, or manual sync",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there at least one concrete API flow for reading or managing Health Service data (samples, exercise records, health records, rings, data sources, or sync)?"
+      },
+      {
+        "statement": "对用户授权与隐私合规有显式处理，例如请求授权、检查授权状态或拉起隐私授权页面 / User authorization and privacy compliance are handled explicitly, such as requesting authorization, checking authorization state, or opening the privacy authorization page",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits explicitly handle user consent/privacy for health data, for example by checking authorization, requesting scopes, or launching a privacy authorization flow?"
+      }
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

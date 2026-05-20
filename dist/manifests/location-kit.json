@@ -1,0 +1,70 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "location-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.937Z"
+  },
+  "references": [
+    {
+      "path": "references/Location Kit简介.md",
+      "title": "Location Kit简介",
+      "snippet": "移动终端设备已经深入人们日常生活的方方面面，如查看所在城市的天气、新闻轶事、出行打车、旅行导航、运动记录。这些习以为常的活动，都离不开定位用户终端设备的位置。 当用户处于这些丰富的使用场景中时，系统的位置能力可以提供实时准确的位置数据。对于开发者，设计基于位置体验的服务，也可以使应用的使用体验更贴近每个用户。 当应用在实现基于设备位置的功能时，如：驾车导航，记录运动轨迹等，可以调用该模块的API接口，完成位置信息的获取。 #### Location Kit简介 位置子系统使用多种定位技术提供服务，如GNSS定位、基站定位、WLAN/蓝牙定位（基站定位、WLAN/蓝牙定位后续统称“网络定位技术”）；通过这些定位技术，无论用户设备在室内或是户外，都可以准确地确定设备位置。 - **坐标** 系统以1984年世界大地坐标系统为参考，使用经度、纬度数据描述地球上的一个位置。 - **GNSS定位** 基于全球导航卫星系统，包含：GPS、GLONASS、北斗、Galileo等，通过导航卫星、设备芯片提供的定位算法，来确定设备准确位置。定位过程具体使用哪些定位系统，取决于用户设备的硬件能力。 - **基站定位** 根据设备当前驻网基站和相邻基站的位置，估算设备当前位置。此定位方式的定位结果精度相对较低，并且需要设备可以访问蜂窝网络。 - **WLAN、蓝牙定位** 根据设备可搜索到的周围WLA"
+    },
+    {
+      "path": "references/个人数据处理说明.md",
+      "title": "个人数据处理说明",
+      "snippet": "此文档针对华为作为最终用户数据处理者，您作为最终用户数据控制者的数据处理进行说明，包括： - 华为处理的个人数据清单。 - 指导您如何帮助最终用户实现对数据的控制。 **华为处理的个人数据清单** **指导开发者如何帮助最终用户实现对数据的控制** 使用地理围栏功能前开发者应当获得用户同意（具体可参考 向用户申请授权 ），允许开发者的应用始终访问用户的位置信息。 定位服务在处理个人数据后立即删除，不会保存用户的个人数据。因此，华为无需实现对数据的控制。"
+    },
+    {
+      "path": "references/云侧围栏开发指导.md",
+      "title": "云侧围栏开发指导",
+      "snippet": "云侧围栏是指开发者直接使用云侧公共围栏，当用户进入这个区域，在移动设备上进行有针对性的提醒。 #### 开通云侧围栏服务 在开通定位服务前，请先参考“ 应用开发准备 ”创建项目和应用工程。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b0/v3/hz6n5A-2Sz-e04nLw2BCiA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111553Z&HW-CC-Expire=86400&HW-CC-Sign=07CDD66C5654360EB5BE2A67FE83F9A37E4DAEF5FCF34F48113F7005F972FA22) 从HarmonyOS NEXT Developer Beta2起，开发者无需配置公钥指纹和Client ID。 **操作步骤** 1. 登录 AppGallery Connect 网站，选择“开发与服务”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/51/v3/o-b7_s_ESRu7TFONrC2jxA/zh-cn_image_00000025"
+    },
+    {
+      "path": "references/地理围栏简介.md",
+      "title": "地理围栏简介",
+      "snippet": "地理围栏（GeoFence）是一种基于地理位置的技术，它允许开发者设定特定的地理区域，在用户进入、离开或驻留在这个特定区域的时候，可以把该地理围栏事件（进入/离开/驻留）通知应用，应用在接收到这些事件时完成后面的业务逻辑，以达到提醒用户的目的。 HarmonyOS支持2种类型的地理围栏：端侧围栏和云侧围栏。端侧围栏是指由开发者来管理围栏的生命周期，比如创建围栏，删除围栏；云侧围栏是指开发者直接使用华为云侧的公共围栏。端侧围栏比较适合于开发者要使用自己的个性化围栏场景，云侧围栏比较适合于开发者要使用公共围栏的场景。"
+    },
+    {
+      "path": "references/正地理编码与逆地理编码开发指导.md",
+      "title": "正地理编码与逆地理编码开发指导",
+      "snippet": "使用经纬度坐标描述一个位置，非常准确，但是并不直观，面向用户表达并不友好。系统向开发者提供了以下两种转化能力。 - 正地理编码：将地理编码转化为具体经纬度坐标。 - 逆地理编码：将具体的经纬度坐标转化为地理编码。 其中地理编码包含多个属性来描述位置信息，包括国家、行政区划、街道、门牌号、地址描述等等，这样的信息更便于用户理解。 #### 接口说明 进行经纬度坐标和地理编码的相互转化，所使用的接口说明如下，详细信息参见Location Kit API参考： @ohos.geoLocationManager (位置服务) 。 #### 开发步骤 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5d/v3/BRhmqUo-TTqOpaZfYcIlsQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111553Z&HW-CC-Expire=86400&HW-CC-Sign=7FAD5416FCEBCACBC14BA385D2162FE8023DE3FD6D7C78535F40926A50E20C28) 正地理编码与逆地理编码功能需要访问后端服务，请确保设备联网，以进行信息获取。 1. 导入geoLocationMan"
+    },
+    {
+      "path": "references/申请位置权限开发指导.md",
+      "title": "申请位置权限开发指导",
+      "snippet": "应用在使用Location Kit系统能力前，需要检查是否已经获取用户授权访问设备位置信息。如未获得授权，可以向用户申请需要的位置权限。 系统提供的定位权限有： - ohos.permission.LOCATION：用于获取精准位置，精准度在米级别。 - ohos.permission.APPROXIMATELY_LOCATION：用于获取模糊位置，精确度为5公里。 - ohos.permission.LOCATION_IN_BACKGROUND：用于应用切换到后台仍然需要获取定位信息的场景。 Location Kit接口对权限的要求参见API参考： @ohos.geoLocationManager (位置服务) 。 #### 开发步骤 1. 开发者可以在应用配置文件中声明所需要的权限并向用户申请授权，具体可参考 向用户申请授权 。 2. 当APP运行在前台，且访问设备位置信息时，申请位置权限的方式如下： 1. 当APP运行在后台时，申请位置权限的方式如下： 如果应用在后台运行时也需要访问设备位置，除了按照步骤2申请权限外，还需要申请LOCATION类型的长时任务。 长时任务申请可参考： 长时任务介绍 。 #### 示例代码 - 位置信息"
+    },
+    {
+      "path": "references/申请开放能力权限指导.md",
+      "title": "申请开放能力权限指导",
+      "snippet": "请先参考 应用开发准备 完成基本准备工作，再继续以下开放能力准备项。 #### 室内高精度定位 为了更好的用户体验，系统侧对室内高精度定位服务功能做了权限保护处理，使用相关接口开发者需先提交“室内高精度定位”能力开关的申请，在申请通过后，再使用该能力。 1. 登录 AppGallery Connect ，选择“开发与服务”。 2. 在项目列表选择项目，并在应用列表下选择需要申请室内高精度定位功能的应用。 3. 进入“项目设置 > 开放能力管理”页面，选择能力名称为定位服务（HarmonyOS NEXT），然后点击“室内高精度定位”对应的“申请”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9c/v3/4iF1YG96SaOpaLjt-Ee1hQ/zh-cn_image_0000002543215018.png?HW-CC-KV=V1&HW-CC-Date=20260421T111552Z&HW-CC-Expire=86400&HW-CC-Sign=4E62525E89A5E094FF7703DB5D385507A9047D72DC68E97A3FE251F5FC6C7710) 4. 参考“申请原因”中的模板，提供申请必需的相关信息，包括应用介绍、使用场景、申"
+    },
+    {
+      "path": "references/相关实例.md",
+      "title": "相关实例",
+      "snippet": "针对位置开发，有以下相关实例可供参考： - 位置服务（ArkTS）"
+    },
+    {
+      "path": "references/端侧GNSS围栏开发指导.md",
+      "title": "端侧GNSS围栏开发指导",
+      "snippet": "目前端侧仅支持构建圆形围栏，并且依赖GNSS芯片的地理围栏功能，仅在室外开阔区域才能准确识别用户进出围栏事件。 应用场景举例：开发者可以使用地理围栏技术，在企业周围创建一个区域围栏，当用户进入这个区域，在移动设备上进行有针对性的提醒。 #### 接口说明 地理围栏所使用的接口如下，详细说明参见： Location Kit 。 #### 开发步骤 1. 使用地理围栏功能，需要有权限ohos.permission.APPROXIMATELY_LOCATION，位置权限申请的方法和步骤见 申请位置权限开发指导 。 2. 导入geoLocationManager模块、wantAgent模块和BusinessError模块。 import { geoLocationManager } from '@kit.LocationKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { notificationManager } from '@kit.NotificationKit'; 3. 创建围栏。 // 通过WantAgentInfo的operationType设置动作类型 let geofence: geoLocationManager.Geofence = { \"latitude\": 34.12, \"long"
+    },
+    {
+      "path": "references/获取设备的位置信息开发指导(ArkTS).md",
+      "title": "获取设备的位置信息开发指导(ArkTS)",
+      "snippet": "开发者可以调用HarmonyOS位置相关接口，获取设备实时位置，或者最近的历史位置，以及监听设备的位置变化。 对于位置敏感的应用业务，建议获取设备实时位置信息。如果不需要设备实时位置信息，并且希望尽可能的节省耗电，开发者可以考虑获取最近的历史位置。 #### 接口说明 获取设备的位置信息所使用的接口如下，详细说明参见Location Kit API参考： @ohos.geoLocationManager (位置服务) 。 本模块能力仅支持WGS-84坐标系。如需转换成其他坐标系，请参考 坐标转换工具 。 #### 开发步骤 1. 获取设备的位置信息，需要有位置权限，位置权限申请的方法和步骤见 申请位置权限开发指导 。 2. 导入geoLocationManager模块，所有与基础定位能力相关的功能API，都是通过该模块提供的。 import { geoLocationManager } from '@kit.LocationKit'; 3. 调用获取位置接口之前需要先判断位置开关是否打开。 查询当前位置开关状态，返回结果为布尔值，true代表位置开关开启，false代表位置开关关闭，示例代码如下： import { geoLocationManager } from '@kit.LocationKit'; try { let locationEnabled = geoLocatio"
+    },
+    {
+      "path": "references/获取设备的位置信息开发指导(C_C++).md",
+      "title": "获取设备的位置信息开发指导(C/C++)",
+      "snippet": "开发者可以调用HarmonyOS位置相关接口，监听设备的位置变化。 #### 函数说明 #### 开发步骤 1. 新建一个Native C++工程。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0c/v3/A8qlPkhbQ8e1jhp6i_Cfrg/zh-cn_image_0000002543215028.png?HW-CC-KV=V1&HW-CC-Date=20260421T111552Z&HW-CC-Expire=86400&HW-CC-Sign=10549A0664552B4E34458E9728488C039242D72CD7F0F56CE0885A0C52A95684) 2. 获取设备的位置信息，需要有位置权限，位置权限申请的方法和步骤见 申请位置权限开发指导 。 3. CMakeLists.txt文件中引入动态依赖库。 target_link_libraries(entry PUBLIC libace_napi.z.so) target_link_libraries(entry PUBLIC libhilog_ndk.z.so) target_link_libraries(entry PUBLIC liblocation_ndk.so) 4. 在"
+    },
+    {
+      "path": "references/附录.md",
+      "title": "附录",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/37/v3/oYN5ZBwHSveKRtETzCKLNw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111554Z&HW-CC-Expire=86400&HW-CC-Sign=2AB2A31C8C17AF9740069737E77EC25EC3FFA6C7FECCEEA4E93C707FDB773CFA) 支持的设备中Wearable设备支持以下国家/地区，其他设备仅支持中国境内（不包含中国香港、中国澳门、中国台湾）。"
+    }
+  ]
+}

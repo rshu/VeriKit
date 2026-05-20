@@ -1,0 +1,74 @@
+# printf/PRINTF功能
+---
+# printf/PRINTF功能
+#### 功能介绍
+使用工具进行算子调测时，支持printf/PRINTF功能，可以打印Scalar数据。
+![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8e/v3/4vgt5Ee6RsOv6x7s7EilZA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111716Z&HW-CC-Expire=86400&HW-CC-Sign=DBF65191DF70B4F19C13DB73A77D3AD2ADE6050797BCFFAE848063ACD4731E07)
+-
+CPU调测场景支持printf和PRINTF打印，其中printf采用C++自身打印功能，不受dump-mode参数控制。
+-
+simulator调测场景支持printf和PRINTF打印，受dump mode参数控制。
+-
+固定为每个核分配的打印数据的最大可使用空间为1M，目前该大小不支持修改，若打印超过1M，打印内容不再显示，请开发者控制待打印的数据量。
+#### 使用方法（命令行）
+1.
+在核函数代码中按需在目标位置加上printf或PRINTF语句，接口说明参见表1，以PRINTF打印为例：
+```cpp
+PRINTF("1 fmt string d %d\n", 6666);
+PRINTF("1 fmt string lf %lf\n", float(61.556));
+```
+2.
+simulator调测场景执行如下命令，使能Dump开关。
+```shell
+ascendebug kernel --backend simulator --dump-mode normal ... {其他simulator调测参数}
+```
+--dump-mode取normal，开启通用打印Scalar模式，其他参数参考 [NPU调测参数](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-cli-parameters#npu调测参数) 按需配置。
+3.
+查看屏显打印结果，示例如下。
+![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/97/v3/SsxR5YDZQa6s9ByMuD6v7A/zh-cn_image_0000002543374946.png?HW-CC-KV=V1&HW-CC-Date=20260421T111716Z&HW-CC-Expire=86400&HW-CC-Sign=139AE12C1E1318A93CD2D69D5A99991319D3DFF536DADD3971AE60DEDCDE79F2)
+#### 接口说明
+printf/PRINTF接口说明如下。
+-
+**函数原型：** template <class... Args>
+- void printf(**gm**const char* fmt, Args&&... args);
+- void PRINTF(**gm**const char* fmt, Args&&... args);
+-
+**函数功能：** 打印Scalar数据。
+-
+**参数(IN)：**
+-
+**fmt：**
+- 普通字符将原样不动地打印输出。
+-
+- %d / %i：输出十进制数，支持打印的数据类型：bool/int8_t/int16_t/int32_t/int64_t
+- %f：输出实数，支持打印的数据类型：float/half/bfloat16_t
+- %x：输出十六进制整数，支持打印的数据类型：int8_t/int16_t/int32_t/int64_t/uint8_t/uint16_t/uint32_t/uint64_t
+- %s：输出字符串
+- %u：输出unsigned类型数据，支持打印的数据类型：bool/uint8_t/uint16_t/uint32_t/uint64_t
+- %p：输出指针地址
+- **args：**附加参数，个数和类型可变的输出列表：根据不同的fmt字符串，函数可能需要一系列的附加参数，每个参数包含了一个要被插入的值，替换了fmt参数中指定的每个%标签。参数的个数应与%标签的个数相同。
+-
+**参数(OUT)：** NA
+-
+**返回值：** NA
+-
+**使用约束：**
+- 不支持转义字符打印。
+-
+- %d / %i：输出十进制数。
+- %f：输出实数。
+- %x：输出十六进制整数。
+- %s：输出字符串。
+- %u：输出unsigned类型数据。
+- %p：输出指针地址。
+-
+**调用示例：**
+```cpp
+// 整型打印：
+ printf("fmt string %d", 0x123);
+ PRINTF("fmt string %d", 0x123);
+ // 指针打印：
+ int *a;
+ printf("TEST %p", a);
+ PRINTF("TEST %p", a);
+```

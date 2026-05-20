@@ -1,0 +1,105 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "function-flow-runtime-kit",
+  "source_path": "skills/function-flow-runtime-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:54:11.194Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "FFRT",
+      "任务并发",
+      "串行队列",
+      "并行队列",
+      "任务图",
+      "Job Partner",
+      "如何使用串行队列确保任务按提交顺序依次执行",
+      "如何使用并发队列实现多任务并行计算并控制并发度",
+      "如何通过任务依赖和数据依赖构建任务依赖图实现复杂任务调度",
+      "如何使用任务伙伴（Job Partner）功能实现多线程协作调度",
+      "如何使用C和C++ API分别开发FFRT并发程序",
+      "如何利用FFRT的超时监测和长耗时任务监测等维测机制定位性能问题",
+      "FFRT相比传统线程编程模型有哪些优势",
+      "当您需要开发高性能并发应用，希望以任务为单位组织程序逻辑而避免直接管理线程的复杂性时，应使用 Function Flow Runtime Kit",
+      "相比传统线程编程模型，FFRT 在用户态以协程方式调度执行，调度开销更小，且由运行时负责工作线程池的创建和管理，可有效避免线程资源滥用和负载不均问题",
+      "当您的应用包含复杂任务依赖关系、需要精细控制任务执行顺序和并发度、或需要通过任务依赖图管理多任务协作时，应使用该 Kit 提供的串行队列、并发队列和图依赖并发能力",
+      "此外，当您需要对多线程任务进行协作调度时，可使用任务伙伴功能",
+      "用 FFRT 重构耗时计算任务，避免手动创建和管理线程 / Refactor heavy compute work with FFRT to avoid manually creating and managing threads",
+      "实现 CPU 密集型任务并行执行并限制同时运行的任务数 / Run CPU-intensive tasks in parallel and cap the number of concurrent jobs",
+      "把图片处理、编解码等后台工作拆成任务图调度 / Split image processing or codec work into a task graph for scheduling",
+      "按依赖关系编排多个异步计算步骤，前置任务完成后再继续 / Orchestrate async compute steps by dependency so later work starts after prerequisites finish",
+      "用串行队列保证数据库写入或文件处理按顺序执行 / Use a serial queue to ensure database writes or file processing run in order",
+      "用并行队列加速批量计算、批量解析或批量转换任务 / Use a parallel queue to speed up batch computation, parsing, or conversion",
+      "在 C/C++ 中接入 FFRT 任务调度框架处理后台并发逻辑 / Integrate FFRT task scheduling in C/C++ for background concurrency logic",
+      "实现多线程协作处理同一批任务，使用 Job Partner 分工执行 / Implement multithreaded cooperation on the same workload with Job Partner",
+      "给并发任务增加超时监测和长耗时检测，定位卡顿来源 / Add timeout and long-task monitoring to concurrent jobs to locate performance bottlenecks",
+      "把传统 pthread 或 std::thread 代码迁移到 FFRT 任务模型 / Migrate legacy pthread or std::thread code to the FFRT task model",
+      "调度有数据依赖的计算流水线，确保任务在输入就绪后执行 / Schedule a compute pipeline with data dependencies so tasks run when inputs are ready",
+      "为后台算法、推理或渲染任务实现高性能并发执行 / Enable high-performance concurrent execution for background algorithms, inference, or rendering"
+    ],
+    "do_not_use_when": [
+      "需求是实现后台延迟任务、周期任务或系统条件触发的长期调度，应改用 background-tasks-kit / If the need is long-running background scheduling such as deferred, periodic, or condition-triggered tasks, use background-tasks-kit instead",
+      "需求是进程间或设备间通信、远程调用或消息传递，应改用 ipc-kit / If the need is inter-process or cross-device communication, remote invocation, or message passing, use ipc-kit instead",
+      "需求主要是界面构建、组件布局与页面交互，应改用 arkui 或 ability-kit / If the need is mainly UI construction, component layout, and page interaction, use arkui or ability-kit instead",
+      "需求是ArkTS语言语法、类型系统或通用应用逻辑开发，而非FFRT并发运行时能力，应改用 arkts / If the need is ArkTS language syntax, type system, or general app logic rather than FFRT runtime concurrency, use arkts instead",
+      "需求是Web页面承载、浏览器内核能力或网页与应用集成，应改用 arkweb / If the need is web page hosting, browser engine capability, or web-app integration, use arkweb instead",
+      "需求是卡片（Form）生命周期、卡片刷新或卡片展示能力，应改用 form-kit / If the need is form lifecycle, form refresh, or widget presentation, use form-kit instead"
+    ],
+    "preconditions": [
+      "工程可使用原生 C 或 C++ 接口并已正确链接 FFRT 相关头文件与库 / The project can use native C or C++ APIs and has correctly linked FFRT headers and libraries",
+      "目标设备或模拟器的 HarmonyOS SDK/API 版本包含 Function Flow Runtime Kit 能力 / The target device or emulator SDK/API version includes Function Flow Runtime Kit capability",
+      "待并发执行的代码已被设计为线程安全，并明确共享数据的同步或依赖关系 / The code to run concurrently has been designed to be thread-safe, with synchronization or dependencies for shared data clearly defined"
+    ],
+    "inputs": [
+      "任务函数或可调用对象 / task function or callable",
+      "串行队列或并发队列配置 / serial queue or concurrent queue configuration",
+      "任务依赖关系或数据依赖描述 / task dependency or data dependency description",
+      "并发度、超时或诊断相关参数 / concurrency, timeout, or diagnostic parameters"
+    ],
+    "outputs": [
+      "Kit 概述",
+      "开发指导",
+      "API 参考"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已引入并使用 FFRT 的 C 或 C++ API，而不是直接以线程 API 作为主要实现 / The code imports and uses FFRT C or C++ APIs rather than relying primarily on raw thread APIs",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show FFRT headers, namespaces, or API calls being added and used as the main concurrency mechanism?"
+      },
+      {
+        "statement": "任务执行约束已被显式表达为串行队列、并发队列或依赖关系 / Execution constraints are explicitly expressed as serial queues, concurrent queues, or dependency relationships",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits explicitly define a serial/concurrent queue or task/data dependencies to control execution order or parallelism?"
+      },
+      {
+        "statement": "并发逻辑已封装为任务提交、等待、同步或协作调度代码路径 / The concurrent logic is structured as task submission, waiting, synchronization, or cooperative scheduling code paths",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show concrete FFRT task submission and, where needed, wait/sync/cooperation handling rather than only descriptive comments?"
+      }
+    ],
+    "overlaps_with": [
+      "ability-kit",
+      "arkts",
+      "arkui",
+      "arkweb",
+      "form-kit",
+      "ipc-kit",
+      "background-tasks-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

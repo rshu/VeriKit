@@ -1,0 +1,103 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "call-service-kit",
+  "source_path": "skills/call-service-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:51:04.957Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "通话服务",
+      "来电显示",
+      "去电",
+      "通话UI",
+      "企业来电",
+      "如何实现应用内来电横幅通知和一键接听",
+      "如何在锁屏状态下展示来电通知",
+      "如何实现多路来电通知管理",
+      "如何实现去电场景的通话胶囊显示",
+      "如何在来去电页面显示企业联系人信息",
+      "如何配合Push Kit实现后台来电拉起",
+      "如何排查来电横幅通知头像无法显示的问题",
+      "如何排查来电横幅无法拉起的问题",
+      "当你的应用需要实现VoIP音视频通话功能时（如即时通讯应用、企业办公应用），可以使用Call Service Kit的来电场景接口，将来电信息上报系统并展示来电横幅通知，用户无需进入应用即可接听或拒接",
+      "当你需要在应用内发起通话时，可以使用去电场景接口，系统会在屏幕左上角展示通话胶囊，提供通话状态显示和控制能力",
+      "如果你的企业应用需要在来去电页面展示企业联系人信息，可以接入企业联系人信息显示能力",
+      "接入 VoIP 来电并上报系统显示原生来电界面 / Integrate VoIP incoming calls and report them to the system to show the native incoming call UI",
+      "实现应用退到后台后仍能弹出来电横幅 / Show an incoming call banner even when the app is in the background",
+      "在系统通话页面展示主叫姓名、头像和企业信息 / Display caller name, avatar, and enterprise info on the system call screen",
+      "添加锁屏来电提醒并支持滑动接听或拒接 / Add lock-screen incoming call alerts with swipe to answer or decline",
+      "实现去电场景的系统通话界面和通话胶囊 / Implement the system calling UI and call capsule for outgoing calls",
+      "管理音视频通话的接听、拒接、挂断和通话状态同步 / Manage answer, reject, hang up, and call state sync for audio/video calls",
+      "上报多路通话状态并处理等待中来电切换 / Report multiple call states and handle call waiting switches",
+      "为即时通讯应用接入系统级来电通知体验 / Add a system-level incoming call notification experience for an IM app",
+      "在应用外展示可一键接听的 VoIP 呼叫通知 / Show VoIP call notifications outside the app with one-tap answer",
+      "配合推送消息拉起来电服务并展示来电页 / Wake up the call service with push messages and present the incoming call page",
+      "实现企业通信场景的专属来电展示和联系人标识 / Implement branded incoming call presentation and contact identity for enterprise communications",
+      "将自定义通话状态同步到系统通话管理 / Sync custom call states into the system call management"
+    ],
+    "do_not_use_when": [
+      "需求是运营商蜂窝语音通话、SIM拨号、呼叫状态或电话号码能力时，应改用 telephony-kit / If the requirement is carrier cellular calling, SIM-based dialing, call state, or phone number capabilities, use telephony-kit instead",
+      "需求只是建立设备/网络连接、发现网络状态或配置传输链路，而不是展示应用内通话界面时，应改用 connectivity-kit 或 network-kit / If the task is only to establish device/network connectivity, inspect network state, or configure transport links rather than present in-app call UI, use connectivity-kit or network-kit instead",
+      "需求是提升网络加速、弱网优化、选路或时延稳定性，而非通话来去电展示与控制时，应改用 network-boost-kit / If the goal is network acceleration, poor-network optimization, routing, or latency stabilization rather than incoming/outgoing call presentation and controls, use network-boost-kit instead",
+      "需求是跨设备近距离互联、发现、配对或近场数据传输，而不是音视频通话服务管理时，应改用 nearlink-kit / If the requirement is nearby cross-device discovery, pairing, or short-range data transfer instead of audio/video call service management, use nearlink-kit instead",
+      "需求是远程通信底层会话、消息或传输能力，而非系统来电横幅、锁屏通知或通话胶囊时，应改用 remote-communication-kit / If the need is low-level remote communication sessions, messaging, or transport rather than system incoming-call banners, lock-screen notifications, or call capsules, use remote-communication-kit instead"
+    ],
+    "preconditions": [
+      "应用运行在标准系统真机上，且设备类型受支持（Phone、Tablet、Wearable），不支持模拟器 / The app runs on a real device with standard system and a supported form factor (Phone, Tablet, Wearable); emulators are not supported",
+      "已完成Call Service Kit开发准备并在module.json5中声明所需权限与能力 / Call Service Kit setup is completed and required permissions/capabilities are declared in module.json5",
+      "若需要后台来电拉起，已开通并正确集成Push Kit / If background incoming-call wake-up is needed, Push Kit is enabled and correctly integrated",
+      "应用具备可用的网络连接以接收或发起VoIP音视频通话信令 / The app has working network connectivity to receive or initiate VoIP audio/video call signaling"
+    ],
+    "inputs": [
+      "来电或去电的通话信息 / incoming or outgoing call information",
+      "通话类型与状态参数（音频/视频、静音、接听、拒接、挂断等） / call type and state parameters (audio/video, mute, answer, reject, hang up, etc.)",
+      "联系人或企业联系人展示信息 / contact or enterprise contact display information",
+      "用于拉起或关联通话流程的应用上下文 / application context used to start or associate the call flow"
+    ],
+    "outputs": [
+      "服务概述与准备",
+      "来电与去电场景",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "工程中已接入Call Service Kit相关调用，用于上报来电或去电并管理通话交互 / The project includes Call Service Kit integration to report incoming or outgoing calls and manage call interactions",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify HarmonyOS code/configuration that integrates Call Service Kit APIs for incoming or outgoing call reporting and interaction management?"
+      },
+      {
+        "statement": "已实现至少一种系统通话呈现能力：来电横幅/锁屏通知/多路来电管理/去电通话胶囊之一 / At least one system call presentation capability is implemented: incoming-call banner, lock-screen notification, multi-call management, or outgoing call capsule",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is at least one Call Service Kit UI presentation flow implemented or wired up, such as incoming-call banner, lock-screen call notification, multi-call handling, or outgoing call capsule?"
+      },
+      {
+        "statement": "通话控制动作已与应用逻辑关联，可处理接听、拒接、静音或挂断中的至少一项 / Call control actions are connected to app logic and handle at least one of answer, reject, mute, or hang up",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits connect one or more call control actions (answer, reject, mute, hang up) from Call Service Kit to application handling logic?"
+      }
+    ],
+    "overlaps_with": [
+      "network-kit",
+      "network-boost-kit",
+      "remote-communication-kit",
+      "connectivity-kit",
+      "nearlink-kit",
+      "telephony-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

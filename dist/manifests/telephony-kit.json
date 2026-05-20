@@ -1,0 +1,25 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "telephony-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:29.208Z"
+  },
+  "references": [
+    {
+      "path": "references/Telephony Kit简介.md",
+      "title": "Telephony Kit简介",
+      "snippet": "Telephony Kit（蜂窝通信服务）提供一系列API帮助开发者开发通信类应用，包括： - call模块（拨打电话）：系统应用可以直接拨打电话，在应用界面显示通话；三方应用可以拉起系统电话应用，跳转至拨号界面，从而实现拨打电话的功能，具体可参考 拨打电话开发指导 。除此之外，应用还可以通过call模块，实现格式化电话号码、判断是否紧急号码等功能，详情请参考 @ohos.telephony.call (拨打电话) 文档。 - sms模块（短信服务）：应用可以实现创建、发送短信消息的功能，具体可参考 发送短信开发指导 。除此之外，应用还可以实现获取、设置短信服务中心地址，和检查当前设备是否具备短信发送和接收能力等功能，详情请参考 @ohos.telephony.sms (短信服务) 文档。 - radio模块（网络搜索）：应用可以调用API获取当前注册网络名称、网络服务状态以及信号强度相关信息，详情请参考 @ohos.telephony.radio (网络搜索) 文档。 - data模块（蜂窝数据）：蜂窝数据是无线通信技术标准的一种，从数据的传输到交换都采用分组技术（Packet Switch），能够为移动设备提供话音、数据、视频图像等业务，经常用于支持用户在智能设备上使用应用程序，以及在移动网络上浏览网页，详情请参考 @ohos.telephony.data (蜂窝数据) 文档。"
+    },
+    {
+      "path": "references/拨打电话.md",
+      "title": "拨打电话",
+      "snippet": "开发者可以通过以下方式实现拨打电话的功能： - 对于三方应用，开发者可以使用makeCall接口，拉起系统电话应用，用户可以自行呼出通话。 #### 基本概念 - 通话状态码 将当前的通话状态上报给app，可以根据当前的通话状态去做一些逻辑处理。例如在当前没有正在进行呼叫的时候，可以正常拨打新的一通电话。 #### 约束与限制 1. 仅支持在标准系统上运行。 2. 设备需插入可用的SIM卡。 #### 接口说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/47/v3/U6hQs9oSQteqOO9QdyY1Hg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111205Z&HW-CC-Expire=86400&HW-CC-Sign=E56E37BE0096F089B41AA3E1B3EF7968B3B92F68D20C02B4CC1CE6C3407FDE8E) 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用callback函数，更多方式可以查阅 API参考 。 observer模块为开发者提供订阅和取消订阅通话业务状"
+    },
+    {
+      "path": "references/短信服务.md",
+      "title": "短信服务",
+      "snippet": "短信服务模块提供了管理短信的一些基础能力，包括创建/发送短信、获取/设置发送短信的默认SIM卡槽ID、获取/设置短信服务中心地址，以及检查当前设备是否具备短信发送和接收能力等。 常见的应用场景举例如下： - - 用户在网页上浏览，看到“发送短信”按钮，点击后会拉起短信应用，预先填写收件人号码、发送内容。 - - 移动应用中，用户点击“发送短信”按钮时，应用调用系统功能，拉起短信应用，预先填写收件人号码、发送内容。 #### 基本概念 - 短信服务 即SMS（Short Messaging Service），是一种存储和转发服务。用户的移动电话可以通过它进行相互收发短信，内容以文本、数字或二进制非文本数据为主。发送方的信息通过短信服务中心进行储存并转发给接收方。 - 短信服务中心 即SMSC（Short Message Service Center），负责在基站和移动设备间中继、储存或转发短消息。移动设备到短信服务中心的协议能传输来自移动设备或朝向移动设备的短消息，协议内容遵从GSM 03.40协议。 - 协议数据单元 即PDU（Protocol Data Unit），PDU模式收发短信可以使用3种编码：7-bit、8-bit和UCS-2编码。7-bit编码用于发送普通的ASCII字符，8-bit编码通常用于发送数据短信，UCS-2编码用于发送Unicode字符。 #### 约束与限"
+    }
+  ]
+}

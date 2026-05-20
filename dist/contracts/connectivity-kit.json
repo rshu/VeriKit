@@ -1,0 +1,108 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "connectivity-kit",
+  "source_path": "skills/connectivity-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:51:42.979Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "蓝牙",
+      "BLE",
+      "WLAN",
+      "NFC",
+      "短距通信",
+      "设备发现",
+      "如何开启和关闭蓝牙并获取蓝牙开关状态",
+      "如何扫描周边蓝牙设备并进行配对连接",
+      "如何基于SPP协议实现蓝牙数据传输",
+      "如何实现BLE设备扫描、广播和GATT数据通信",
+      "如何实现Wi-Fi扫描、连接和状态监听",
+      "如何使用Wi-Fi直连（P2P）创建群组和连接设备",
+      "如何实现NFC标签的前台和后台读写",
+      "如何实现HCE卡模拟功能",
+      "如何访问eSE/SIM卡安全单元",
+      "如何开发伙伴设备与HarmonyOS设备的互通应用",
+      "当你的应用需要通过蓝牙与外部设备通信时（如连接蓝牙耳机、音箱、键盘、鼠标，或与智能穿戴设备进行低功耗数据交换），可以使用蓝牙模块的相关API",
+      "当你的应用需要管理Wi-Fi连接（如连接网络、Wi-Fi直连传输文件、开启热点分享）或需要使用NFC功能（如读取NFC标签、实现门禁卡模拟、访问安全单元）时，可以使用WLAN或NFC模块",
+      "如果需要开发与伙伴设备互通的应用，可以使用融合短距服务接口",
+      "实现蓝牙设备自动重连并监听连接状态变化 / Implement Bluetooth device auto-reconnect and monitor connection state changes",
+      "扫描附近 BLE 外设并通过 GATT 读写特征值 / Scan nearby BLE peripherals and read/write characteristics over GATT",
+      "发布 BLE 广播让其他设备发现我的应用设备 / Advertise over BLE so other devices can discover my app device",
+      "用 RFCOMM/SPP 建立经典蓝牙串口通信并收发数据 / Build classic Bluetooth serial communication with RFCOMM/SPP and send/receive data",
+      "搜索可用 Wi‑Fi 热点并连接指定 SSID / Discover available Wi‑Fi networks and connect to a target SSID",
+      "监听 WLAN 网络状态变化并获取当前连接信息 / Listen for WLAN state changes and get current connection info",
+      "用 Wi‑Fi P2P 发现附近设备并建立点对点传输 / Discover nearby devices with Wi‑Fi P2P and establish peer-to-peer transfer",
+      "读取 NFC 标签内容并向标签写入文本或 URI / Read NFC tag content and write text or URI records to a tag",
+      "接入 HCE 实现门禁卡或会员卡模拟 / Integrate HCE to emulate an access card or membership card",
+      "在前台感应 NDEF 标签并处理碰一碰交互 / Handle foreground NDEF tag discovery for tap interactions",
+      "管理蓝牙配对设备列表并发起配对解绑 / Manage the bonded Bluetooth device list and trigger pair/unpair actions",
+      "获取本机蓝牙和 Wi‑Fi 开关状态并引导用户开启 / Get local Bluetooth and Wi‑Fi power states and guide users to enable them"
+    ],
+    "do_not_use_when": [
+      "需求是蜂窝移动数据、SIM/基站、短信或电话网络能力时，应改用 telephony-kit / If the task is about cellular data, SIM/baseband, SMS, or telephony network capabilities, use telephony-kit instead",
+      "需求是拨打、接听、控制通话界面或通话状态管理时，应改用 call-service-kit / If the task is about placing, answering, controlling calls, or managing call UI/state, use call-service-kit instead",
+      "需求是互联网套接字、HTTP/HTTPS、WebSocket 或常规 IP 网络编程，而非蓝牙/Wi-Fi/NFC 短距能力时，应改用 network-kit / If the task is about Internet sockets, HTTP/HTTPS, WebSocket, or general IP networking rather than Bluetooth/Wi-Fi/NFC proximity features, use network-kit instead",
+      "需求是网络链路质量优化、双网并发、弱网加速或连接保活增强时，应改用 network-boost-kit / If the task is about link quality optimization, multipath acceleration, weak-network boosting, or enhanced connection keepalive, use network-boost-kit instead",
+      "需求是跨设备远程服务调用、分布式通信或设备间高层消息协同时，应改用 remote-communication-kit / If the task is about cross-device remote service invocation, distributed communication, or high-level inter-device messaging, use remote-communication-kit instead",
+      "需求明确指定使用星闪/NearLink 协议与设备通信时，应改用 nearlink-kit / If the task explicitly requires communicating over the NearLink protocol, use nearlink-kit instead"
+    ],
+    "preconditions": [
+      "应用已在 module.json5 中声明所需权限，并完成对应能力申请 / Required permissions are declared in module.json5 and the corresponding capabilities are requested",
+      "目标设备硬件与系统版本支持所用的蓝牙、WLAN 或 NFC 能力 / The target device hardware and system version support the Bluetooth, WLAN, or NFC capability being used",
+      "涉及受保护操作时，用户已授予运行时权限且相应系统开关已开启（如蓝牙、Wi-Fi、NFC） / For protected operations, runtime permissions are granted and the relevant system switches are enabled (such as Bluetooth, Wi-Fi, or NFC)"
+    ],
+    "inputs": [
+      "通信类型与模式 / communication type and mode",
+      "目标设备标识或扫描条件 / target device identifier or scan criteria",
+      "连接参数或会话配置 / connection parameters or session configuration",
+      "待发送数据、标签负载或读写内容 / data to send, tag payload, or read/write content"
+    ],
+    "outputs": [
+      "服务概述",
+      "蓝牙开发",
+      "WLAN开发",
+      "NFC开发",
+      "融合短距服务"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已接入所选短距通信能力的相关 API，并围绕蓝牙、WLAN 或 NFC 建立正确调用流程 / The code integrates the relevant APIs for the chosen proximity communication capability and builds the correct call flow around Bluetooth, WLAN, or NFC",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code to call HarmonyOS Bluetooth, WLAN, or NFC APIs in a way that matches the user's requested capability?"
+      },
+      {
+        "statement": "工程已补充该能力所需的权限声明、能力配置或前后台读写/连接相关注册项（如适用） / The project includes the required permission declarations, capability configuration, or foreground/background read-write or connection-related registrations where applicable",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, are the necessary module.json5 entries, permissions, or related capability configuration added or updated for the selected connectivity feature?"
+      },
+      {
+        "statement": "已处理关键结果路径，包括扫描/连接/读写的成功与失败分支或状态监听 / The key result paths are handled, including success and failure branches or state listeners for scanning, connecting, or reading/writing",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits include callbacks, promise handling, event listeners, or equivalent logic for both normal and error/state-change handling of the connectivity operation?"
+      }
+    ],
+    "overlaps_with": [
+      "network-kit",
+      "network-boost-kit",
+      "remote-communication-kit",
+      "nearlink-kit",
+      "telephony-kit",
+      "call-service-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

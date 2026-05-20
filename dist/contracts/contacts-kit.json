@@ -1,0 +1,93 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "contacts-kit",
+  "source_path": "skills/contacts-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:52:02.308Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "联系人",
+      "通讯录",
+      "联系人选择器",
+      "联系人增删改查",
+      "如何使用Picker方式让用户选择联系人",
+      "如何通过Picker拉起新建联系人界面并保存联系人",
+      "如何在应用中实现联系人的增删改查操作",
+      "如何申请READ_CONTACTS和WRITE_CONTACTS权限",
+      "如何使用contact.selectContacts接口拉起联系人选择列表",
+      "当你的应用需要让用户从通讯录中选择联系人时（如发送消息、分享内容、邀请好友等场景），可以使用Picker方式拉起联系人列表，无需申请敏感权限即可完成操作",
+      "当你的应用属于需要直接管理联系人数据的场景（如通讯录管理应用、企业通讯录应用等），且已获得受限开放权限，可以使用联系人管理API直接进行联系人的增加、删除、修改和查询操作",
+      "在应用里弹出系统联系人列表让用户选择收件人 / Open the system contact picker for the user to choose recipients",
+      "实现选择多个联系人并返回姓名和手机号 / Let users pick multiple contacts and return names and phone numbers",
+      "接入联系人选择器用于分享、邀请或转发场景 / Integrate a contact picker for share, invite, or forward flows",
+      "拉起新建联系人页面并预填号码后保存到通讯录 / Launch the add-contact page with a prefilled number and save it",
+      "把表单里的姓名和电话保存为新的系统联系人 / Save a name and phone from a form as a new system contact",
+      "读取通讯录中的联系人详情用于展示姓名、电话和邮箱 / Read contact details from the address book to display name, phone, and email",
+      "按姓名或号码搜索本机联系人 / Search local contacts by name or phone number",
+      "实现联系人数据的新增、编辑、删除和查询管理 / Implement create, update, delete, and query for contact data",
+      "用 contact.selectContacts 选择联系人并回填到发送页面 / Use contact.selectContacts to pick contacts and fill them back into a send page",
+      "申请 READ_CONTACTS 和 WRITE_CONTACTS 权限后管理联系人 / Request READ_CONTACTS and WRITE_CONTACTS before managing contacts",
+      "从通讯录读取号码用于一键发短信或拨号 / Load phone numbers from contacts for one-tap SMS or calling",
+      "同步企业通讯录到系统联系人并维护更新 / Sync an enterprise directory to system contacts and keep it updated"
+    ],
+    "do_not_use_when": [
+      "需求是管理用户账号、登录态或账号身份信息，而不是系统通讯录联系人；应使用 account-kit / The requirement is to manage user accounts, sign-in state, or account identity rather than device contacts; use account-kit",
+      "需求是实现应用内商品购买、订阅或消耗型购买流程，而不是选择或编辑联系人；应使用 iap-kit / The requirement is to implement in-app product purchases, subscriptions, or consumables rather than selecting or editing contacts; use iap-kit",
+      "需求是发起支付、收银台或订单付款流程，而不是读取或写入联系人；应使用 payment-kit / The requirement is to initiate payments, checkout, or order payment flows rather than reading or writing contacts; use payment-kit",
+      "需求是管理卡券、证件、数字资产或钱包容器内容，而不是通讯录数据；应使用 wallet-kit / The requirement is to manage passes, credentials, digital assets, or wallet container content rather than contact data; use wallet-kit"
+    ],
+    "preconditions": [
+      "设备具备联系人服务能力，目标API在当前HarmonyOS版本可用 / The device has contact service capability and the target API is available in the current HarmonyOS version",
+      "若使用直接增删改查联系人API，module.json5中已声明所需联系人权限 / If using direct contact CRUD APIs, the required contacts permissions are declared in module.json5",
+      "若使用直接读取或写入联系人数据，应用已获得用户授予且受系统策略允许的联系人权限 / If directly reading or writing contact data, the app has been granted user consent and the contacts permissions are allowed by system policy",
+      "若使用Picker交互，应用能够拉起系统界面并处理选择结果回传 / If using Picker-based interaction, the app can launch the system UI and handle the returned selection result"
+    ],
+    "inputs": [
+      "联系人选择或新建请求参数 / contact selection or creation request parameters",
+      "联系人字段数据（姓名、电话、邮箱等） / contact field data (name, phone, email, etc.)",
+      "联系人标识或查询条件 / contact identifier or query criteria"
+    ],
+    "outputs": [
+      "服务概述",
+      "联系人管理"
+    ],
+    "postconditions": [
+      {
+        "statement": "若采用Picker方案，代码中已接入联系人选择或新建联系人拉起逻辑，并处理返回结果 / If using the Picker approach, the code integrates logic to launch contact selection or contact creation and handles the returned result",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show code that invokes a contact picker or contact-creation flow and processes the returned selection/result callback or promise?"
+      },
+      {
+        "statement": "若采用直接联系人管理方案，代码中已调用联系人增删改查相关API，并与目标业务操作一致 / If using direct contact management, the code calls contact CRUD APIs consistent with the intended business operation",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set include direct contacts CRUD API usage that matches the requested action such as query, add, update, or delete?"
+      },
+      {
+        "statement": "若涉及受限联系人权限，工程配置中已声明相应权限且代码包含权限申请或校验流程 / If restricted contacts permissions are involved, the project declares the corresponding permissions and the code includes permission request or validation flow",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, can you confirm that required contacts permissions are declared in configuration and that the app checks or requests them before protected APIs are used?"
+      }
+    ],
+    "overlaps_with": [
+      "account-kit",
+      "iap-kit",
+      "payment-kit",
+      "wallet-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

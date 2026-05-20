@@ -1,0 +1,102 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "live-view-kit",
+  "source_path": "skills/live-view-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:55:25.041Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "实况窗",
+      "锁屏状态",
+      "通知中心",
+      "实时状态展示",
+      "如何构建本地实况窗并更新其实时状态？",
+      "如何通过Push Kit远程更新实况窗内容？",
+      "如何开通实况窗服务权益和推送服务权益？",
+      "如何申请实况窗正式权限？",
+      "出行打车场景如何接入实况窗展示司机接驾和行程信息？",
+      "即时配送场景如何接入实况窗展示配送进度？",
+      "航班/高铁场景如何接入实况窗展示关键状态变动？",
+      "实况窗更新频率被限制（频控）如何处理？",
+      "实况窗的生命周期管理有哪些注意事项？",
+      "三方开发框架如何接入实况窗？",
+      "当您的应用需要向用户实时展示持续进行中的服务状态（如打车行程、外卖配送、航班动态等），且希望用户无需打开应用即可在锁屏、通知中心、状态栏等位置随时查看进展时，可使用 Live View Kit",
+      "当您需要构建具有明确开始和结束时间、内容需要动态更新的实时通知时，实况窗是最佳选择",
+      "活动总时长不得超过 8 小时，且展示内容不可用于营销、广告场景",
+      "添加锁屏实时卡片展示订单进度 / Add a lock-screen live card to show order progress",
+      "实现通知中心常驻显示当前行程状态 / Show current trip status persistently in Notification Center",
+      "接入实况窗显示外卖配送员位置和预计送达时间 / Integrate Live View to show courier location and ETA",
+      "用本地更新实时刷新比赛比分或活动倒计时 / Refresh match scores or event countdowns with local live updates",
+      "通过 Push Kit 推送更新实况窗中的最新状态 / Update Live View content via Push Kit pushes",
+      "在应用退到后台后继续展示任务进展 / Keep showing task progress after the app goes to background",
+      "管理实况窗的创建更新结束全生命周期 / Manage the full lifecycle of Live View creation updates and dismissal",
+      "控制实况窗高频刷新避免更新被限流 / Throttle frequent Live View refreshes to avoid rate limiting",
+      "为打车配送航班场景展示持续变化的关键信息 / Display continuously changing key info for ride-hailing delivery or flight scenarios",
+      "同步后端状态变化到锁屏实况展示 / Sync backend status changes to lock-screen live display",
+      "在实况窗中展示倒计时进度条和状态文案 / Show countdowns progress bars and status text in Live View",
+      "集成跨端框架应用的实况窗能力 / Integrate Live View capability into a cross-platform app"
+    ],
+    "do_not_use_when": [
+      "只是需要发送普通通知、提醒或一次性消息，而不是展示持续进行中的服务状态；应改用 notification-kit / The goal is only to send a regular notification, reminder, or one-off message rather than show an ongoing service state; use notification-kit instead",
+      "需求是实现通用消息推送、离线通知到达或服务端下发消息能力，而不是管理实况窗本身；应改用 push-kit / The need is generic message push, offline delivery, or server-to-device messaging rather than managing Live View itself; use push-kit instead",
+      "展示内容属于营销、广告或促销信息，不是用户正在进行中的服务追踪 / The content is marketing, advertising, or promotional information rather than tracking a service currently in progress",
+      "任务没有明确开始与结束，或预计持续时间超过8小时，不符合实况窗时效性要求 / The task has no clear start and end, or is expected to last more than 8 hours, which does not fit Live View time-bounded requirements"
+    ],
+    "preconditions": [
+      "应用已开通实况窗服务权益，且目标设备为 HarmonyOS 5 及以上的 Phone 或 Tablet / The app has Live View service entitlement enabled, and the target device is a HarmonyOS 5+ Phone or Tablet",
+      "若采用远程更新方式，应用已开通 Push Kit 服务权益并完成相关配置 / If remote update is used, the app has Push Kit entitlement enabled and the related configuration completed",
+      "项目已按接入要求完成实况窗基础配置，并具备对应模板与生命周期管理能力 / The project has completed the required Live View integration setup and includes the needed templates and lifecycle handling",
+      "若依赖服务端实时更新，设备网络可用且推送链路正常 / If server-driven real-time updates are required, network connectivity and the push delivery path are available"
+    ],
+    "inputs": [
+      "实况窗业务类型与场景信息 / Live View business type and scenario information",
+      "进行中服务的实时状态数据 / Real-time status data of the ongoing service",
+      "实况窗展示模板与界面内容 / Live View presentation template and UI content",
+      "实况窗实例标识与生命周期事件 / Live View instance identifier and lifecycle events",
+      "远程更新所需的推送消息数据（如适用） / Push message payload for remote updates if applicable"
+    ],
+    "outputs": [
+      "简介",
+      "准备工作",
+      "开发指导",
+      "设计规范",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "已实现实况窗的创建、更新或结束流程之一，并围绕进行中服务状态进行展示 / A create, update, or end flow for Live View has been implemented, centered on the ongoing service state",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code/configuration that explicitly creates, updates, or terminates a Live View for an ongoing service scenario?"
+      },
+      {
+        "statement": "展示内容面向锁屏、通知中心或状态栏等实况窗触点，而非普通通知文案 / The displayed content targets Live View surfaces such as lock screen, notification center, or status bar, rather than ordinary notification text",
+        "verifier": "model_judge",
+        "judge_prompt": "From the edit set, is the implementation clearly aimed at Live View surfaces (lock screen/notification center/status bar) instead of only regular notifications?"
+      },
+      {
+        "statement": "若采用远程更新，代码或配置已接入 Push Kit 与实况窗更新链路 / If remote updates are used, the code or configuration has wired Push Kit into the Live View update path",
+        "verifier": "model_judge",
+        "judge_prompt": "If the solution uses remote updates, do the edits show Push Kit being connected to Live View update handling?"
+      }
+    ],
+    "overlaps_with": [
+      "push-kit",
+      "notification-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

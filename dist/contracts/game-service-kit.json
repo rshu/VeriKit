@@ -1,0 +1,112 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "game-service-kit",
+  "source_path": "skills/game-service-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:54:25.886Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "游戏服务",
+      "游戏登录",
+      "防沉迷",
+      "游戏支付",
+      "场景感知",
+      "如何在HarmonyOS游戏中接入华为账号联合登录？",
+      "如何实现网络游戏登录，支持华为账号和游戏官方账号两种方式？",
+      "如何实现单机游戏的登录功能？",
+      "如何接入未成年人防沉迷和实名认证功能？",
+      "如何使用C#或C/C++开发的游戏接入游戏场景感知功能？",
+      "如何实现游戏近场快传，传输安装包和资源包？",
+      "如何开发小游戏并接入登录和支付能力？",
+      "如何获取游戏密钥用于服务端通信验证？",
+      "如何配置游戏服务端回调地址？",
+      "玩家选错登录账号后如何处理？游戏开发完成后如何进行自检？",
+      "当您正在开发 HarmonyOS 平台上的游戏应用，需要接入华为账号登录、实名认证和未成年人防沉迷等基础能力时，应使用 Game Service Kit 的基础游戏服务",
+      "这是游戏上架华为应用市场的必选接入模块",
+      "当您的游戏需要与系统进行深度协作以优化性能表现（如动态调整系统资源分配）时，应使用游戏场景感知功能",
+      "当您需要实现设备间的游戏安装包或资源包近场快速传输时，应使用游戏近场快传功能",
+      "当您正在开发小游戏并需要登录和支付能力时，也应使用该 Kit 提供的小游戏服务",
+      "接入华为游戏服务实现玩家账号登录和身份校验 / Integrate Huawei game services for player sign-in and identity verification",
+      "在游戏里同时支持华为账号登录和游客登录 / Support both Huawei account sign-in and guest login in a game",
+      "实现未成年人实名认证与防沉迷时长限制 / Implement real-name verification and anti-addiction playtime limits for minors",
+      "在游戏内接入道具购买和充值支付流程 / Add in-game item purchase and top-up payment flows",
+      "处理游戏支付结果回调并给玩家发放商品 / Handle payment callbacks and deliver purchased items to players",
+      "获取游戏服务的 appId、游戏密钥并校验服务端请求 / Obtain game service appId and game secret and verify server-side requests",
+      "配置游戏服务器回调地址接收登录或支付通知 / Configure game server callback URLs to receive sign-in or payment notifications",
+      "在 C++ 或 C# 游戏中集成游戏登录和支付 SDK / Integrate the game sign-in and payment SDK into a C++ or C# game",
+      "根据游戏场景感知状态调整性能模式和资源加载 / Adjust performance mode and resource loading based on game scene awareness",
+      "实现游戏安装包和资源包的近场快传分享 / Enable near-field fast transfer for game installation packages and asset packs",
+      "为单机或弱联网游戏添加启动登录能力 / Add startup sign-in capability for standalone or lightly connected games",
+      "接入小游戏的登录、支付和防沉迷能力 / Integrate sign-in, payment, and anti-addiction capabilities for mini games"
+    ],
+    "do_not_use_when": [
+      "需求是应用商店分发、应用上架运营或应用内通用市场服务，而不是游戏登录/防沉迷/小游戏支付；请改用 appgallery-kit / The need is app distribution, app publishing operations, or general marketplace services rather than game login/anti-addiction/mini-game payment; use appgallery-kit instead",
+      "需求是通用深度链接、URI 跳转或跨应用拉起，而不是游戏服务登录回调或小游戏能力；请改用 app-linking-kit / The need is general deep linking, URI routing, or cross-app invocation rather than game-service login callbacks or mini-game features; use app-linking-kit instead",
+      "需求是广告变现、广告加载展示或归因分析，而不是游戏基础服务或小游戏支付；请改用 ads-kit / The need is ad monetization, ad loading/display, or attribution analysis rather than core game services or mini-game payment; use ads-kit instead",
+      "需求是通用内容分享、系统分享面板或社交分享，而不是设备间游戏安装包/资源包近场快传；请改用 share-kit / The need is general content sharing, system share sheets, or social sharing rather than nearby transfer of game installation/resource packages; use share-kit instead",
+      "需求是扫描二维码/条形码并解析内容，而不是游戏账号、实名认证或近场传输；请改用 scan-kit / The need is scanning QR codes/barcodes and parsing content rather than game accounts, real-name verification, or nearby transfer; use scan-kit instead",
+      "需求是非游戏类场景感知或通用场景协同，而不是面向游戏的系统级性能协作；请改用 scenario-fusion-kit / The need is non-game scene awareness or general scenario collaboration rather than game-oriented system-level performance cooperation; use scenario-fusion-kit instead"
+    ],
+    "preconditions": [
+      "应用为 HarmonyOS 游戏或小游戏，并已在项目中集成对应 Game Service 能力配置 / The app is a HarmonyOS game or mini-game and the corresponding Game Service capability has been integrated into the project",
+      "已完成开发准备与应用/游戏服务侧配置，例如 App ID、服务端回调地址或小游戏相关配置 / Development preparation and app/game-service-side configuration are completed, such as App ID, server callback URL, or mini-game-related setup",
+      "运行环境为受支持设备且非模拟器；涉及基础游戏服务时目标用户的华为账号服务地和注册地需满足中国大陆限制 / The runtime is a supported real device and not an emulator; for core game services, the target user's HUAWEI account service region and registration region must satisfy Mainland China restrictions"
+    ],
+    "inputs": [
+      "游戏应用标识与配置参数 / game app identifiers and configuration parameters",
+      "玩家登录方式与账号信息 / player login method and account information",
+      "服务端回调地址或密钥材料 / server callback URL or key material",
+      "游戏场景、配置或网络状态信息 / game scene, configuration, or network state information",
+      "待近场传输的安装包或资源包路径 / installation package or resource package path for nearby transfer"
+    ],
+    "outputs": [
+      "Kit 简介",
+      "模块概述",
+      "开发准备",
+      "基础游戏服务 - 登录",
+      "基础游戏服务 - 支付与密钥",
+      "近场快传",
+      "开发自检与常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在工程中接入至少一种游戏服务能力，并包含对应初始化、登录、支付、场景感知或近场快传相关调用代码 / At least one game service capability is integrated into the project, with corresponding initialization, login, payment, scene-awareness, or nearby-transfer code added",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify project code/configuration to integrate a concrete Game Service Kit capability (such as login, mini-game payment, scene awareness, or nearby transfer), rather than only adding unrelated generic code?"
+      },
+      {
+        "statement": "若涉及服务端交互，工程中已补充回调地址、密钥获取或请求校验所需的配置/调用痕迹 / If server interaction is involved, the project includes configuration or calls for callback URL, key retrieval, or request verification",
+        "verifier": "model_judge",
+        "judge_prompt": "If the requested task involves backend communication, do the edits include callback, key, token, signature, or related server-verification configuration/calls needed by Game Service Kit?"
+      },
+      {
+        "statement": "若涉及游戏场景感知或近场快传，代码已体现对应场景数据上报、状态协作或文件传输流程接入 / If game scene awareness or nearby transfer is involved, the code reflects integration of scene data reporting, state collaboration, or file transfer flow",
+        "verifier": "model_judge",
+        "judge_prompt": "When the task is about scene awareness or nearby transfer, do the edits clearly add the relevant reporting/cooperation or transfer flow instead of unrelated APIs?"
+      }
+    ],
+    "overlaps_with": [
+      "appgallery-kit",
+      "app-linking-kit",
+      "ads-kit",
+      "share-kit",
+      "scan-kit",
+      "scenario-fusion-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

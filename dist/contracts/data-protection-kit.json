@@ -1,0 +1,101 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "data-protection-kit",
+  "source_path": "skills/data-protection-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:52:43.044Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "数据防泄漏",
+      "DLP",
+      "文件加密",
+      "权限管理",
+      "加密分享",
+      "如何为企业机密文件配置DLP权限并生成加密的.dlp文件？",
+      "如何在应用中适配DLP加密分享功能，支持发送和查看DLP文件？",
+      "如何为机密文件设置只读、编辑、拥有者等不同权限级别？",
+      "如何通过DLP沙箱机制限制文件的网络访问、截屏和剪切板操作？",
+      "如何实现基于账号认证的文件授权访问机制？",
+      "如何搭建云端对接模块完成端云协调的鉴权和解密？",
+      "当你的应用需要保护敏感文件、防止数据泄漏时使用本服务",
+      "典型场景包括企业机密文档的加密分享、政府文件的权限管控、金融数据的安全传输等",
+      "数据所有者可以为不同接收者设置不同的访问权限，确保文件在传输和存储过程中的安全性",
+      "当你的应用需要适配DLP加密分享功能时，参考适配加密分享文档，实现DLP文件的发送和查看流程",
+      "应用开发者可以基于DLP沙箱机制，在无需大幅改造应用的情况下实现数据防泄漏保护",
+      "给文档导出加上 DLP 加密并生成受控分享文件 / Add DLP encryption to exported documents and generate protected shareable files",
+      "接入 DLP 文件查看能力并按权限打开加密文件 / Integrate DLP file viewing and open encrypted files based on permissions",
+      "为敏感附件设置禁止转发、禁止复制和禁止截屏限制 / Apply no-forward, no-copy, and no-screenshot restrictions to sensitive attachments",
+      "实现企业内部文件按接收人分级授权访问 / Implement recipient-based permission control for internal files",
+      "发送机密文件时附带只读或可编辑权限策略 / Send confidential files with read-only or editable permission policies",
+      "在应用里识别并处理 .dlp 加密文件 / Detect and handle .dlp encrypted files in the app",
+      "为受保护文件接入账号登录后的鉴权解密流程 / Add post-login authorization and decryption for protected files",
+      "限制 DLP 沙箱中文件的网络外发和剪贴板访问 / Restrict network exfiltration and clipboard access for files inside the DLP sandbox",
+      "管理文件拥有者、编辑者、查看者等安全权限角色 / Manage secure roles such as owner, editor, and viewer for files",
+      "实现加密文件的安全分享与权限回收 / Enable secure sharing of encrypted files and revoke permissions later",
+      "对接云端服务校验用户权限后再下载解密文件 / Connect to cloud services to verify user rights before downloading and decrypting files",
+      "保护合同、报表、客户资料等敏感文件避免二次泄露 / Protect contracts, reports, and customer data from secondary leakage"
+    ],
+    "do_not_use_when": [
+      "需求只是普通应用数据持久化、关系型/键值型存储或跨设备数据同步，应使用 arkdata / The need is only regular app data persistence, relational/key-value storage, or cross-device data sync; use arkdata instead",
+      "需求是安全保存应用自己的密钥、令牌、证书等小型敏感凭据，而不是对文件进行DLP权限管控，应使用 asset-store-kit / The need is to securely store small app credentials such as keys, tokens, or certificates rather than apply DLP control to files; use asset-store-kit instead",
+      "需求仅涉及常规文件读写、目录遍历、URI/路径处理或文件复制移动，不涉及.dlp加密与授权，应使用 core-file-kit / The task only involves normal file I/O, directory traversal, URI/path handling, or file copy/move without .dlp encryption and authorization; use core-file-kit instead",
+      "需求是调用系统文件管理器进行文件选择、打开、保存或系统级文件操作入口，而不是配置DLP权限策略，应使用 file-manager-service-kit / The need is to invoke the system file manager for picking, opening, saving, or system-level file operations rather than configuring DLP policies; use file-manager-service-kit instead",
+      "需求只是预览文档、图片、音视频等内容，不需要DLP授权分享或防泄漏限制，应使用 preview-kit / The task is only to preview documents, images, audio, or video without DLP-authorized sharing or leakage controls; use preview-kit instead"
+    ],
+    "preconditions": [
+      "目标设备与系统版本支持 Data Protection Kit/DLP 服务能力 / The target device and OS version support Data Protection Kit/DLP service capabilities",
+      "应用已具备处理相关文件分享/查看流程所需的工程配置与依赖，且运行环境可调用系统DLP服务 / The app has the required project configuration and dependencies for file sharing/viewing flows, and the runtime can invoke the system DLP service",
+      "涉及账号鉴权与授权校验时，用户已登录可用账号且端云鉴权链路可达 / When account authentication and authorization checks are involved, the user is signed in with a valid account and the device-cloud auth path is reachable"
+    ],
+    "inputs": [
+      "待保护的原始文件或文件URI / source file or file URI to protect",
+      "目标DLP权限级别与策略参数（只读、编辑、拥有者等） / target DLP permission level and policy parameters (read-only, edit, owner, etc.)",
+      "接收方账号标识或授权对象信息 / recipient account identifier or authorization target information",
+      "分享、打开或查看DLP文件的业务上下文参数 / business context parameters for sharing, opening, or viewing a DLP file"
+    ],
+    "outputs": [
+      "简介与概述",
+      "开发指导",
+      "适配指南"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码或配置中已明确接入DLP文件发送、打开或查看流程，而非仅做普通文件处理 / The code or configuration explicitly integrates a DLP file send, open, or view flow rather than only ordinary file handling",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add or modify logic specifically for handling DLP-protected files or DLP sharing/viewing flows, instead of only generic file operations?"
+      },
+      {
+        "statement": "已体现对.dlp文件或DLP授权/权限语义的处理，能够区分只读、编辑、拥有者等受控访问场景 / The changes reflect handling of .dlp files or DLP authorization/permission semantics, distinguishing controlled access such as read-only, edit, or owner",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there clear evidence that the implementation handles .dlp files or DLP permission/authorization semantics such as read-only, edit, or owner access?"
+      },
+      {
+        "statement": "实现未把需求降级为普通文件存储、预览或凭据保存方案，仍保持DLP防泄漏目标 / The implementation does not downgrade the requirement to ordinary file storage, preview, or credential storage, and preserves the DLP leakage-prevention goal",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits avoid substituting the solution with generic storage, preview, or secret-storage APIs, and instead keep the primary goal as DLP-based leakage prevention?"
+      }
+    ],
+    "overlaps_with": [
+      "arkdata",
+      "asset-store-kit",
+      "core-file-kit",
+      "file-manager-service-kit",
+      "preview-kit"
+    ],
+    "safety_tier": "high-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "drm-kit",
+  "source_path": "skills/drm-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:53:28.193Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "数字版权管理",
+      "DRM",
+      "内容加密",
+      "许可证管理",
+      "如何使用ArkTS接口实现DRM加密节目的授权解密和播放？",
+      "如何使用C/C++接口实现DRM证书管理、许可证管理和节目解密？",
+      "如何结合AVPlayer实现DRM加密节目的播放？",
+      "如何结合AVCodec实现DRM加密节目的解码播放？",
+      "如何处理DRM证书下载（Provision）流程？",
+      "如何管理MediaKeySession会话和许可证的生命周期？",
+      "如何处理许可证更新和过期事件？",
+      "如何集成自定义DRM解决方案到系统中？",
+      "当你的应用需要播放DRM加密保护的音视频内容时使用DRM Kit",
+      "典型场景包括在线视频平台的付费内容播放、数字版权保护的直播流播放、企业内部加密媒体内容的分发与播放等",
+      "DRM Kit负责处理证书下载、许可证获取和内容解密等版权保护相关流程",
+      "当你是DRM解决方案集成方，需要将特定DRM方案集成到系统中时使用DRM插件管理能力",
+      "当你的应用需要安全视频通路实现端到端的内容保护时，DRM Kit提供安全解密接口以实现内容在安全通路中的解密和渲染",
+      "实现加密视频的授权后播放 / Implement licensed playback for encrypted video",
+      "接入 Widevine 或其他 DRM 方案保护流媒体内容 / Integrate Widevine or another DRM solution to protect streaming media",
+      "管理 MediaKeySession 与离线许可证的申请、恢复和释放 / Manage MediaKeySession and offline license acquire, restore, and release",
+      "处理 DRM 证书 provision 请求并完成设备注册 / Handle DRM provisioning requests and complete device registration",
+      "在 AVPlayer 中播放受版权保护的 HLS 或 DASH 内容 / Play copyright-protected HLS or DASH content in AVPlayer",
+      "用 AVCodec 解码带 DRM 保护的音视频流 / Decode DRM-protected audio and video streams with AVCodec",
+      "监听许可证过期并自动续期播放授权 / Listen for license expiration and auto-renew playback rights",
+      "获取媒体内容的 keyId 并创建解密会话 / Get the media keyId and create a decryption session",
+      "为付费课程或会员影片添加防盗播播放控制 / Add anti-piracy playback control for paid courses or premium videos",
+      "实现离线下载内容的 DRM 授权校验 / Implement DRM authorization checks for offline downloaded content",
+      "集成自定义 DRM 插件完成密钥交换和解密 / Integrate a custom DRM plugin for key exchange and decryption",
+      "在播放前向许可证服务器发送 challenge 并导入响应 / Send a challenge to the license server before playback and import the response"
+    ],
+    "do_not_use_when": [
+      "需求是通用加密算法、摘要、签名或随机数等密码能力，而不是DRM节目授权解密；应改用 crypto-architecture-kit / The need is for general cryptographic algorithms, hashing, signing, or random generation rather than DRM content licensing and decryption; use crypto-architecture-kit instead",
+      "需求是设备证书申请、安装、查询或设备身份认证，而不是媒体内容的DRM证书与许可证流程；应改用 device-certificate-kit / The need is device certificate enrollment, installation, query, or device identity authentication rather than DRM media certificate and license flow; use device-certificate-kit instead",
+      "需求是密钥生成、导入、存储或应用通用密钥管理，而不是DRM MediaKeySystem或MediaKeySession；应改用 universal-keystore-kit / The need is key generation, import, storage, or app-level key management rather than DRM MediaKeySystem or MediaKeySession; use universal-keystore-kit instead",
+      "需求是用户本地身份验证（如指纹、口令、人脸）以控制访问，而不是DRM内容授权；应改用 user-authentication-kit / The need is local user authentication such as fingerprint, PIN, or face for access control rather than DRM content authorization; use user-authentication-kit instead",
+      "需求是账号在线登录、令牌校验或服务器侧身份认证，而不是DRM许可证获取与内容解密；应改用 online-authentication-kit / The need is online account sign-in, token validation, or server-side identity authentication rather than DRM license acquisition and content decryption; use online-authentication-kit instead"
+    ],
+    "preconditions": [
+      "目标设备或系统已集成并启用对应的DRM解决方案/插件能力 / The target device or system has integrated and enabled the required DRM solution/plugin capability",
+      "应用可访问DRM证书和许可证服务器，相关网络链路与服务端配置可用 / The app can reach the DRM provisioning and license servers, and the network path and server configuration are available",
+      "待播放媒体确认为受支持的DRM内容，协议/封装/编解码与所选方案兼容 / The media to be played is confirmed to be supported DRM content, and its protocol/container/codecs are compatible with the chosen solution"
+    ],
+    "inputs": [
+      "DRM系统标识或UUID / DRM system identifier or UUID",
+      "媒体内容信息（如HLS或DASH地址） / Media content information such as HLS or DASH URL",
+      "证书申请数据或Provision请求参数 / Certificate provisioning data or provision request parameters",
+      "许可证请求参数或服务器返回的许可证数据 / License request parameters or license data returned by the server",
+      "媒体初始化数据或会话相关的DRM初始化信息 / Media initialization data or session-related DRM init information"
+    ],
+    "outputs": [
+      "简介与概述",
+      "ArkTS开发",
+      "C/C++开发"
+    ],
+    "postconditions": [
+      {
+        "statement": "已创建并初始化DRM会话，应用代码包含MediaKeySystem或MediaKeySession相关调用 / A DRM session is created and initialized, and the app code includes MediaKeySystem or MediaKeySession related calls",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show code that creates or initializes a DRM MediaKeySystem and/or MediaKeySession for protected playback?"
+      },
+      {
+        "statement": "已接入证书申请或许可证申请/设置流程，代码体现与DRM服务端的数据交互或许可证绑定步骤 / A provisioning or license request/set flow is wired in, and the code reflects interaction with the DRM server or license binding steps",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add a DRM provisioning or license acquisition/set flow, including handling request/response data for the DRM session?"
+      },
+      {
+        "statement": "DRM能力已与播放器或解码流程关联，用于受保护内容播放或解密 / DRM capability is connected to the player or decode pipeline for protected content playback or decryption",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set connect the DRM session/keys to a playback or decoding path such as AVPlayer or AVCodec for protected media?"
+      }
+    ],
+    "overlaps_with": [
+      "crypto-architecture-kit",
+      "device-certificate-kit",
+      "device-security-kit",
+      "universal-keystore-kit",
+      "user-authentication-kit",
+      "online-authentication-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

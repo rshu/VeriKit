@@ -1,0 +1,104 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "asset-store-kit",
+  "source_path": "skills/asset-store-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:49:59.086Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "关键资产存储",
+      "密码存储",
+      "Token存储",
+      "安全存储",
+      "敏感数据",
+      "如何安全存储用户的账号密码和登录凭据",
+      "如何实现需要用户指纹或人脸认证后才能访问的敏感数据",
+      "如何在同一开发者的多个应用间共享关键资产",
+      "如何实现\"记住密码\"和\"自动填充登录\"功能",
+      "如何对关键资产进行新增、查询、更新和删除操作",
+      "如何备份和恢复关键资产数据",
+      "如何设置关键资产的访问控制等级（锁屏状态、用户认证等）",
+      "如何处理批量查询关键资产时的分页问题",
+      "当应用需要安全存储用户的短敏感数据（如登录密码、认证Token、银行卡号等）时，请使用Asset Store Kit",
+      "当需要根据用户认证结果（指纹、人脸、PIN码）来授权访问敏感数据时，请使用基于用户认证的访问控制能力",
+      "当同一开发者的多个应用需要共享安全数据时，请使用群组访问控制功能",
+      "当应用需要实现\"记住密码\"、\"自动填充登录\"等场景时，请使用密码类数据保护能力",
+      "当应用需要支持数据备份恢复以在设备迁移时保留关键资产时，请使用同步（备份恢复）功能",
+      "用 Asset Store Kit 安全保存登录态凭证和刷新令牌 / Securely store session credentials and refresh tokens with Asset Store Kit",
+      "把 API Key、私钥或证书片段存进系统安全资产库 / Store API keys, private keys, or certificate fragments in the secure asset store",
+      "实现只有指纹、面容或锁屏认证通过后才能读取密钥 / Require biometrics or device authentication before reading secrets",
+      "在多端或重装后恢复用户保存的机密凭据 / Restore previously saved confidential credentials after reinstall or device migration",
+      "为账号密码启用记住我并加密落盘保存 / Implement remember-me for account passwords with encrypted persistent storage",
+      "按别名新增、更新、删除和查找敏感条目 / Add, update, delete, and look up sensitive entries by alias",
+      "分页读取大量安全条目并管理查询结果 / Read many secure items with pagination and manage query results",
+      "在同一开发者的多个应用之间共享受保护凭据 / Share protected credentials across apps from the same developer",
+      "根据锁屏状态或认证策略控制秘密数据访问权限 / Control secret access based on lock state or authentication policy",
+      "安全保存银行卡号、支付口令或一次性验证码种子 / Securely persist card numbers, payment PINs, or OTP seeds",
+      "替换明文 Preferences 存储方案为受保护的资产存储 / Replace plaintext Preferences storage with protected asset storage",
+      "为自动登录和自动填充功能读取本地安全凭据 / Load local secure credentials for auto-login and autofill"
+    ],
+    "do_not_use_when": [
+      "需要管理结构化业务数据、关系型表或大规模持久化记录时，应使用 arkdata / If you need structured business data, relational tables, or large-scale persistent records, use arkdata instead",
+      "需要读写普通文件、媒体文件或大体积二进制内容时，应使用 core-file-kit / If you need to read or write ordinary files, media files, or large binary content, use core-file-kit instead",
+      "需要通过系统文件管理能力让用户选择、移动、分享或管理文档文件时，应使用 file-manager-service-kit / If you need system file-management capabilities for users to pick, move, share, or manage documents, use file-manager-service-kit instead",
+      "需求是对应用文件或数据目录做整体加密、防拷贝或设备级数据保护，而不是保存短敏感条目时，应使用 data-protection-kit / If the goal is whole-file or app-data protection, anti-exfiltration, or device-level data protection rather than storing short sensitive entries, use data-protection-kit instead",
+      "需要预览文档、图片、音视频等内容而不是安全保存凭据时，应使用 preview-kit / If you need to preview documents, images, audio, or video rather than securely store credentials, use preview-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成可用的 Asset Store Kit SDK/API，并在目标 HarmonyOS 版本上受支持 / The project has integrated the Asset Store Kit SDK/API and it is supported on the target HarmonyOS version",
+      "写入的关键资产别名在对应业务身份下必须唯一，调用前已确定索引键不冲突 / The asset alias must be unique within the business identity, and the key has been confirmed non-conflicting before the call",
+      "若使用群组共享、用户认证或备份恢复能力，相关访问控制配置与运行环境已准备就绪 / If using group sharing, user authentication, or backup/restore, the related access-control configuration and runtime environment are ready"
+    ],
+    "inputs": [
+      "关键资产别名 / asset alias",
+      "业务身份或属主信息 / business identity or owner information",
+      "短敏感数据内容（如密码、Token、银行卡号） / short sensitive data payload (such as password, token, or bank card number)",
+      "访问控制参数（群组、锁屏等级、用户认证要求等） / access control parameters (group, lock-screen level, user-auth requirement, etc.)",
+      "查询条件或自定义属性 / query conditions or custom attributes"
+    ],
+    "outputs": [
+      "Kit简介与场景",
+      "ArkTS接口",
+      "C/C++接口"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已接入 Asset Store Kit 的新增、查询、更新、删除、群组管理或备份恢复接口之一，而非改用普通明文存储 / The code integrates at least one Asset Store Kit API for add, query, update, delete, group management, or backup/restore instead of ordinary plaintext storage",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show Asset Store Kit API usage for secure asset operations rather than storing the sensitive value only in plain preferences, files, or constants?"
+      },
+      {
+        "statement": "关键资产以别名等索引信息进行操作，并体现了访问控制或查询参数配置 / The asset is operated on using alias-like indexing information and includes access-control or query parameter configuration",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there an asset descriptor/request that includes an alias or equivalent identifier together with query fields or access-control settings?"
+      },
+      {
+        "statement": "若场景要求指纹、人脸、PIN、群组共享或备份恢复，代码中已显式配置对应能力 / If the scenario requires fingerprint, face, PIN, group sharing, or backup/restore, the corresponding capability is explicitly configured in code",
+        "verifier": "model_judge",
+        "judge_prompt": "If the requested scenario mentions user authentication, cross-app sharing, or backup/restore, do the edits explicitly add the matching Asset Store configuration or API calls?"
+      }
+    ],
+    "overlaps_with": [
+      "arkdata",
+      "core-file-kit",
+      "file-manager-service-kit",
+      "data-protection-kit",
+      "preview-kit"
+    ],
+    "safety_tier": "high-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

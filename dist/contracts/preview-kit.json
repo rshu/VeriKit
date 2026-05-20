@@ -1,0 +1,102 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "preview-kit",
+  "source_path": "skills/preview-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:58:04.601Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "文件预览",
+      "文件加速打开",
+      "缓存加速",
+      "如何在HarmonyOS应用中实现文件预览功能？",
+      "如何预览图片、视频、音频、文本和HTML文件？",
+      "如何预览PDF和Office文档（doc/xls/ppt）？",
+      "如何使用文件打开加速功能缩短文件打开时间？",
+      "如何使用通用文件缓存加速功能优化文件浏览性能？",
+      "如何监听文件预加载状态变化？",
+      "文件预览支持哪些文件格式？",
+      "预览失败时如何排查问题？",
+      "当应用需要快速预览各类文件内容时使用本Kit的文件预览功能",
+      "支持多种文件格式的一键预览，无需打开第三方应用即可查看文件内容，适合文件管理器、邮件客户端等需要浏览多种类型文件的场景",
+      "当需要优化文件打开速度时使用本Kit的文件打开加速和缓存加速功能",
+      "文件打开加速通过预加载机制缩短大文件打开时间，通用文件缓存加速通过磁盘缓存减少重复解码开销，适合文档编辑器、图片浏览器等频繁打开文件的场景",
+      "在应用内直接打开并查看附件内容，不跳转第三方应用 / Open and view attachments inside the app without switching to a third-party app",
+      "集成文档预览页来显示 PDF、Word、Excel 和 PPT 文件 / Integrate a document preview page to display PDF, Word, Excel, and PowerPoint files",
+      "实现图片、音频、视频和文本文件的统一预览入口 / Implement a unified preview entry for images, audio, video, and text files",
+      "点击文件列表后秒开预览，减少用户等待时间 / Open file previews instantly from a file list to reduce user wait time",
+      "为网盘或文件管理器接入多格式文件浏览能力 / Add multi-format file browsing to a cloud drive or file manager app",
+      "对常看文件做预加载和缓存，加快再次打开速度 / Preload and cache frequently viewed files to speed up reopening",
+      "监听文件预热或预加载进度并更新界面状态 / Listen for file warm-up or preload progress and update the UI state",
+      "在聊天或邮件场景中预览收到的文档和媒体文件 / Preview received documents and media files in chat or email scenarios",
+      "用文件预览能力展示本地文件和下载后的内容 / Use file preview capability to display local files and downloaded content",
+      "实现 HTML 和纯文本内容的快速查看页面 / Implement a fast viewer page for HTML and plain text content",
+      "管理预览缓存文件，平衡打开速度和存储占用 / Manage preview cache files to balance open speed and storage usage",
+      "接入文件打开加速能力，优化大文件首屏展示时间 / Integrate file open acceleration to improve first-screen display time for large files"
+    ],
+    "do_not_use_when": [
+      "需求是应用内自行读写、复制、移动、删除或遍历文件，而不是调用系统预览/加速能力；应改用 Core File Kit / The task is to read, write, copy, move, delete, or enumerate files inside the app rather than invoke system preview/acceleration; use Core File Kit instead",
+      "需求是系统级文件管理、文档挑选或跨应用文件访问流程，而不是直接预览文件；应改用 File Manager Service Kit / The need is system-level file management, document picking, or cross-app file access flow rather than direct preview; use File Manager Service Kit instead",
+      "重点是对文件或数据进行加密、权限隔离、密钥保护等安全治理，而不是预览或缓存加速；应改用 Data Protection Kit / The focus is encrypting files or data, permission isolation, or key protection rather than preview or cache acceleration; use Data Protection Kit instead",
+      "需求是结构化数据存储、查询、同步或关系型/键值数据管理，而不是打开文件内容；应改用 ArkData / The task is structured data storage, querying, synchronization, or relational/key-value data management rather than opening file content; use ArkData instead",
+      "需求是访问应用内置资源包、资产下载或分发静态资源，而不是预览用户文件；应改用 Asset Store Kit / The need is to access bundled assets, download assets, or distribute static resources rather than preview user files; use Asset Store Kit instead"
+    ],
+    "preconditions": [
+      "目标设备与能力受支持：文件预览仅支持中国境内的 Phone、Tablet、2in1，文件打开加速仅支持 2in1 / The target device and capability are supported: file preview is only supported in mainland China on Phone, Tablet, and 2in1, while file open acceleration is only supported on 2in1",
+      "待打开文件为 Kit 支持的格式，且若为 Office 文档预览需设备具备 WPS 相关能力 / The file type is supported by the Kit, and Office document preview requires WPS-related capability on the device",
+      "应用已拿到可读取目标文件的有效 URI 或文件路径访问权限，跨应用文档 URI 需已授权 / The app has a valid URI or file-path read permission for the target file, and cross-app document URIs must already be authorized"
+    ],
+    "inputs": [
+      "目标文件 URI 或文件路径 / target file URI or file path",
+      "文件 MIME 类型或扩展名 / file MIME type or extension",
+      "预览或加速模式配置 / preview or acceleration mode configuration",
+      "预加载状态监听器或回调 / preload status listener or callback"
+    ],
+    "outputs": [
+      "概述",
+      "文件预览",
+      "文件打开加速",
+      "文件缓存加速",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已接入 Preview Kit 的文件预览或文件打开加速相关调用，而不是仅停留在占位说明 / The code integrates Preview Kit file preview or file-open acceleration calls rather than only placeholder comments",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add concrete Preview Kit API usage for opening preview or enabling file preload/cache acceleration, instead of just describing it in comments or prose?"
+      },
+      {
+        "statement": "目标文件标识被传入相关调用，并包含对 URI/路径有效性的处理或失败分支 / The target file identifier is passed into the relevant call, with handling for URI/path validity or a failure branch",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there a real file URI/path argument wired into the Preview Kit call and some validation, exception handling, or error callback for invalid or failed preview/open?"
+      },
+      {
+        "statement": "若实现文件打开加速，则代码中包含预加载状态监听或结果处理逻辑 / If file-open acceleration is implemented, the code includes preload status monitoring or result handling logic",
+        "verifier": "model_judge",
+        "judge_prompt": "If the edits add file open acceleration, do they also add a listener, callback, or explicit handling for preload status or completion/failure results?"
+      }
+    ],
+    "overlaps_with": [
+      "arkdata",
+      "asset-store-kit",
+      "core-file-kit",
+      "file-manager-service-kit",
+      "data-protection-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "arkgraphics-3d",
+  "source_path": "skills/arkgraphics-3d/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:49:27.492Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "3D引擎",
+      "3D场景",
+      "glTF",
+      "材质",
+      "Shader",
+      "光照",
+      "3D模型",
+      "ArkGraphics Editor",
+      "如何在HarmonyOS应用中加载和展示glTF 3D模型",
+      "如何创建自定义3D场景并配置相机、灯光和材质",
+      "如何使用PBR材质和自定义Shader控制物体渲染效果",
+      "如何播放和控制3D场景中的动画资源",
+      "如何使用ArkGraphics Editor可视化编辑器搭建3D场景",
+      "如何创建环境资源和天空盒背景",
+      "自动场景模式与自定义场景模式的区别与选择",
+      "当开发者需要在HarmonyOS应用中嵌入3D模型展示、构建3D交互场景或实现3D动画效果时，应使用ArkGraphics 3D",
+      "典型场景包括电商应用中的商品3D预览、游戏中的3D角色与场景渲染、教育培训中的3D模型演示、以及需要自定义灯光、相机和材质的沉浸式3D体验",
+      "如果开发者需要快速展示一个已有的glTF模型，可以使用自动场景模式直接加载；如果需要精细控制3D场景中的相机位置、灯光效果、材质属性和着色器逻辑，则应使用自定义场景模式，通过ArkTS API逐个创建和管理场景节点",
+      "在页面中嵌入可交互的3D模型预览器 / Embed an interactive 3D model viewer in a page",
+      "加载角色或商品的3D资源并支持旋转缩放查看 / Load 3D assets for characters or products with rotate and zoom controls",
+      "实现3D场景的相机漫游和视角切换 / Implement camera roaming and viewpoint switching in a 3D scene",
+      "给3D物体添加点击选中和拖拽交互 / Add tap selection and drag interaction to 3D objects",
+      "导入glTF模型并绑定骨骼动画播放 / Import a glTF model and play skeletal animations",
+      "用PBR参数调整金属、粗糙度和反射效果 / Tune metalness, roughness, and reflections with PBR parameters",
+      "为3D场景配置环境光、点光源和阴影效果 / Configure ambient light, point lights, and shadows for a 3D scene",
+      "显示带天空盒和环境贴图的沉浸式3D空间 / Render an immersive 3D space with a skybox and environment maps",
+      "实现模型动画播放、暂停、循环和进度控制 / Implement play, pause, loop, and scrub controls for model animations",
+      "接入自定义Shader实现特殊材质和后处理效果 / Integrate custom shaders for special materials and post-processing effects",
+      "在应用中搭建产品展厅或虚拟展馆的3D场景 / Build a 3D product showroom or virtual exhibition scene in an app",
+      "优化3D渲染性能并管理模型、纹理和材质资源 / Optimize 3D rendering performance and manage model, texture, and material assets"
+    ],
+    "do_not_use_when": [
+      "需求仅涉及2D画布、位图、文本或矢量绘制，应改用 arkgraphics-2d / If the requirement is only 2D canvas, bitmap, text, or vector drawing, use arkgraphics-2d instead",
+      "需求是相机驱动的AR内容叠加、平面识别或现实世界锚定，应改用 ar-engine / If the task is camera-driven AR overlay, plane detection, or real-world anchoring, use ar-engine instead",
+      "需求重点是图形计算加速、并行/GPU通用计算而非构建3D场景，应改用 graphics-accelerate-kit / If the focus is graphics acceleration or parallel/GPU compute rather than building a 3D scene, use graphics-accelerate-kit instead",
+      "需求是高性能游戏运行时、游戏循环或整套游戏框架能力，而不只是3D渲染场景，应改用 xengine-kit / If the need is a full game runtime, game loop, or broader game framework rather than just 3D scene rendering, use xengine-kit instead",
+      "需求是空间扫描、环境重建、网格/点云感知或空间理解，应改用 spatial-recon-kit / If the need is spatial scanning, environment reconstruction, mesh/point-cloud sensing, or spatial understanding, use spatial-recon-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成并启用 ArkGraphics 3D 对应SDK/能力，目标设备支持3D渲染 / The project has integrated and enabled the ArkGraphics 3D SDK/capability, and the target device supports 3D rendering",
+      "应用资源中已准备可访问的3D资产与相关资源，如 .gltf/.glb、纹理图片或 .shader 文件 / Required 3D assets and related resources are available in app resources, such as .gltf/.glb, texture images, or .shader files",
+      "页面已具备可承载3D内容的UI组件或渲染容器，并完成基础生命周期接入 / The page has a UI component or rendering container capable of hosting 3D content, with basic lifecycle integration completed"
+    ],
+    "inputs": [
+      "glTF模型文件或资源路径 / glTF model file or resource path",
+      "场景配置数据（相机、灯光、节点） / scene configuration data (camera, lights, nodes)",
+      "材质、纹理或.shader着色器资源 / material, texture, or .shader resources",
+      "动画名称、状态或控制参数 / animation names, states, or control parameters"
+    ],
+    "outputs": [
+      "简介",
+      "场景管理",
+      "资源创建与管理",
+      "工具"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已创建或接入3D场景承载与渲染入口 / The code creates or wires up a 3D scene host and rendering entry point",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add code that initializes or mounts an ArkGraphics 3D scene/view/container rather than unrelated UI only?"
+      },
+      {
+        "statement": "代码中已加载3D资源或显式创建场景节点（如模型、相机、灯光） / The code loads 3D assets or explicitly creates scene nodes such as a model, camera, or light",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show ArkGraphics 3D usage that either loads a glTF asset or constructs scene nodes like camera, light, or model entities?"
+      },
+      {
+        "statement": "如需求涉及材质、环境或动画，代码中已加入对应配置或控制逻辑 / If the task involves materials, environment, or animation, the code includes the corresponding configuration or control logic",
+        "verifier": "model_judge",
+        "judge_prompt": "When the requested feature mentions materials, environment, shaders, or animation, do the edits include matching setup or control code for those features?"
+      }
+    ],
+    "overlaps_with": [
+      "arkgraphics-2d",
+      "ar-engine",
+      "graphics-accelerate-kit",
+      "xengine-kit",
+      "spatial-recon-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

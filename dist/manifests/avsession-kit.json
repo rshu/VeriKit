@@ -1,0 +1,95 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "avsession-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.274Z"
+  },
+  "references": [
+    {
+      "path": "references/AVSession Kit简介.md",
+      "title": "AVSession Kit简介",
+      "snippet": "AVSession Kit（Audio & Video Session Kit，音视频播控服务）是系统提供的音视频管控服务，用于统一管理系统中所有音视频行为，帮助开发者快速构建音视频统一展示和控制能力。 #### 能力范围 - 提供音视频统一管控能力，音视频类应用接入AVSession后，可以发送应用的数据（比如正在播放的歌曲、歌曲的播放状态等），用户可以通过系统播控中心、语音助手等应用切换多个应用、多个设备播放。 - 提供音频后台约束能力，音频接入AVSession后，可以进行后台音频播放。此功能需要同时申请 长时任务 。 #### 亮点/特征 - **投播体验一致** 提供音视频统一管控能力，音视频类应用接入AVSession后，可以发送应用的数据（比如正在播放的歌曲、歌曲的播放状态等）。 用户可以通过系统播控中心、语音助手等应用切换多个应用、多个设备播放。 - **规范后台播放管理** 通过播控中心，应用后台播放可见可控，音视频应用可统一控制。 系统针对后台播放进行强制管控，当未接入AVSession的应用退到后台时，或接入AVSession的应用退到后台但无有效的AVSession实例时，将会被强制暂停音频播放。解决应用在后台恶意播放，用户无法找到对应应用进行关闭的问题。 #### 基础概念 在开发前，需要先了解以下基础概念： - 媒体会话（AVSession） 媒体会话的"
+    },
+    {
+      "path": "references/使用通话设备切换组件.md",
+      "title": "使用通话设备切换组件",
+      "snippet": "本文主要介绍AVCastPicker组件接入，实现通话设备切换功能。相关参数可参考 @ohos.multimedia.avCastPicker(投播组件) 和 @ohos.multimedia.avCastPickerParam（投播组件参数） 。如果希望实现音频输出设备路由切换的效果，请参考 实现音频输出设备路由切换 。 当前系统支持两种组件样式的显示方式：默认样式显示和自定义样式显示。 - 如果应用选择显示默认样式，当设备切换时，系统将根据当前选择的设备显示系统默认的组件样式。 - 如果应用选择显示自定义样式，那么需要应用根据设备的变化刷新自己定义的样式。 #### 默认样式实现 1. 创建voice_call类型的AVSession，AVSession在构造方法中支持不同的类型参数，由AVSessionType定义，voice_call表示通话类型，如果不创建，将显示空列表。 import { AVCastPicker, AVCastPickerState, AVInputCastPicker, avSession } from '@kit.AVSessionKit'; @Entry @Component struct Index { @State message: string = '模拟通话'; @State session: avSession.AVSession | "
+    },
+    {
+      "path": "references/使用音频模板.md",
+      "title": "使用音频模板",
+      "snippet": "从API version 23开始，支持媒体应用通过音频模板接入播控中心（系统应用），实现音视频在播控中心进行统一的界面显示和播控管理，减少应用侧开发工作量。该文档介绍音频模板接口能力及开发基本流程，包括通过音模板接入播控中心、上报媒体相关信息（标题、作者、播放状态等）至播控中心、响应播控中心下发的操作（播放、暂停、搜索、收藏）指令等。 音频模板同时支持音频和视频内容，且两者的接入方式相同。本文档以音频场景为例进行说明。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9e/v3/-IgMfMj6SrCx7oP8GdZRww/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111316Z&HW-CC-Expire=86400&HW-CC-Sign=476F2A05C56BDCE27AE714D7D7803536598574BE2AB969DD39486034037266FD) 本功能仅支持在API version 23及以上版本的Car设备工程中使用。创建工程时，请在Device type中选择“Car”。 #### 基本概念 音频模板（AVMusicTemplate）：用于描述音频模板相关能力的类，包含标识当"
+    },
+    {
+      "path": "references/后台播放.md",
+      "title": "后台播放",
+      "snippet": "实际应用中，大多数音视频都有后台播放的需求，本指南将详细讲解如何实现后台长时间播放的方法。 #### 基本概念 开始之前，开发者应了解以下基本概念，以便根据自身播放器的类型，更有效地实现后台播放。 - 长时任务：请参考 长时任务(ArkTS) 说明。 设备返回主界面、锁屏、应用切换等操作会使应用退至后台。当应用退至后台时，再继续活动，可能会出现设备耗电快、用户界面卡顿等问题。为了降低设备耗电速度、保障用户使用流畅度，系统会对退至后台的应用进行管控，包括进程挂起和进程终止。 当应用退至后台并需要长时间运行用户可感知的任务（如播放音乐、播放视频等）时，为防止应用进程被挂起，导致对应功能异常，可以申请长时任务，使应用在后台长时间运行。 - AVSession：请参考 AVSession Kit简介 。 AVSession Kit（音视频播控服务）是系统提供的音视频管控服务，用于统一管理系统中音视频行为，帮助开发者快速构建音视频统一展示和控制能力。音视频类应用接入AVSession后，可以设置应用的数据（如正在播放的歌曲、歌曲的播放状态等）。用户可以通过系统播控中心来展示和控制不同应用的播放。AVSession会对后台的媒体播放有约束行为，所以通常来说，音频应用、听书类应用、视频应用等都需要接入AVSession。如果应用在没有创建AVSession的情况进行上述业务，系统会在检测到应用退"
+    },
+    {
+      "path": "references/基础播控.md",
+      "title": "基础播控",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a7/v3/W9k0lMO9Txix8TLp5gkQGQ/notice_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111315Z&HW-CC-Expire=86400&HW-CC-Sign=E75102D3026B7BEDF6BF994470A56402B2C71B8506F2524F7DE1CDED25BF7BE4) **自验证关注点：** 播放过程中查看播控中心是否显示媒体封面，封面图是否清晰。 应用提供媒体内容的封面图片（ AVMetadata.mediaImage ），如音乐专辑封面、视频海报等。如果应用提供的媒体封面比例或分辨率不满足要求，将会被自动缩放、裁切到合适大小。这可能导致封面图片内的信息损失或模糊，体验下降。mediaImage设置PixelMap性能更优。 音乐类媒体内容应提供比例为 1:1 的方形封面图片，建议分辨率为 800px * 800px（如果应用提供的图片分辨率更大，将被压缩到 800px * 800px 显示），最小分辨率是 300px * 300px。 ![](https://contentcenter-vali-drcn.dba"
+    },
+    {
+      "path": "references/媒体会话提供方(C_C++).md",
+      "title": "媒体会话提供方(C/C++)",
+      "snippet": "OHAVSession系统提供的通过使用C API实现媒体会话提供方，从而在媒体会话控制方（例如播控中心）中展示媒体相关信息，及响应媒体会话控制方下发的播控命令。 #### 使用入门 开发者使用 native_avsession.h 实现媒体会话，需要添加对应的头文件。 #### 在 CMake 脚本中链接动态库 target_link_libraries(entry PUBLIC libohavsession.so) #### 添加头文件 #include <multimedia/av_session/native_avmetadata.h> #include <multimedia/av_session/native_avsession.h> #include <multimedia/av_session/native_avsession_errors.h> #### 开发步骤及注意事项 开发者可以通过以下几个步骤在NDK接入本地会话。 1. 创建会话并激活媒体，需要传入会话类型AVSession_Type，自定义的TAG，以及应用的包名、ability名字。 OH_AVSession* avsession; OH_AVSession_Create(SESSION_TYPE_AUDIO, \"testsession\", \"com.example.application\", \"Ma"
+    },
+    {
+      "path": "references/媒体会话提供方.md",
+      "title": "媒体会话提供方",
+      "snippet": "音视频应用在实现音视频功能的同时，需要作为媒体会话提供方接入媒体会话，在媒体会话控制方（例如播控中心）中展示媒体相关信息，并响应媒体会话控制方下发的播控命令。 #### 基本概念 - 媒体会话元数据（AVMetadata）： 用于描述媒体数据相关属性，包含标识当前媒体的ID（assetId），上一首媒体的ID（previousAssetId），下一首媒体的ID（nextAssetId），标题（title），专辑作者（author），专辑名称（album），词作者（writer），媒体时长（duration）等属性。 - 媒体播放状态（AVPlaybackState）：用于描述媒体播放状态的相关属性，包含当前媒体的播放状态（state）、播放位置（position）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体Id（activeItemId）、自定义媒体数据（extras）等属性。 #### 接口说明 媒体会话提供方使用的关键接口如下表所示。接口返回值有两种返回形式：callback和promise，下表中为callback形式接口，promise和callback只是返回值方式不一样，功能相同。 更多API说明请参考文档： 模块描述 。 #### 开发步骤 音视频应用作为媒体会话提供方接"
+    },
+    {
+      "path": "references/应用接入AVSession场景介绍.md",
+      "title": "应用接入AVSession场景介绍",
+      "snippet": "音视频应用在实现音视频功能的同时，需要接入媒体会话即AVSession Kit，下文将提供一些典型的接入AVSession的展示和控制场景，方便开发者根据场景进行适配。 对于不同的场景，将会在系统的播控中心看到不同的UI呈现。同时，在不同的场景下，应用的接入处理也需要遵循不同的规范约束。 #### 哪些场景下需要接入AVSession AVSession会对后台的音频播放、VOIP通话做约束，所以通常来说，长音频应用、听书类应用、长视频应用、VOIP类应用等都需要接入AVSession。当应用在没有创建接入AVSession的情况下进行了上述业务，那么系统会在检测到应用后台时，停止对应的音频播放，静音通话声音，以达到约束应用行为的目的。这种约束，应用上架前在本地就可以验证。 对于其他使用到音频播放的应用，比如游戏、直播等场景，接入AVSession只是可选，取决于应用是否有后台播放的使用诉求。若应用需要后台播放，那么接入AVSession仍然是必须的，否则业务的正常功能会受到限制。 当应用需要实现后台播放等功能时，需要使用 BackgroundTasks Kit （后台任务管理）的能力，申请对应的长时任务，避免进入挂起（Suspend）状态。 #### 接入流程 应用接入AVSession流程分为如下几个步骤： 1. 确定应用需要创建的会话类型，创建对应的会话，不同类型决定了播控中"
+    },
+    {
+      "path": "references/应用接入播控自检表.md",
+      "title": "应用接入播控自检表",
+      "snippet": "如接入AVSession，请按照下表根据应用的业务场景接入，应用上架前请根据此表格自检，以确保应用的体验。 如果应用包含在后台/锁屏状态下播放音频等业务场景，开发者需要规范 接入AVSession ；如应用仅需在前台播放音视频，开发者可选择不接入AVSession。 #### 基础播控-播放信息 应用按类型区分，需要正确接入所有必接项（√ ），部分功能不强制接入（-），应用可以根据实际需要选择性接入。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f7/v3/oLz5hgYjQrWHLNl6EB_86Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111315Z&HW-CC-Expire=86400&HW-CC-Sign=9124A326F5EEF055512DDCC5246492620CE269A647C36F77E739E271FD791989) 对于必接项，应用按照实际功能的有无进行判断，若本身具备接入条件则需要接入；如本身没有该功能，可不接入。 #### 基础播控-播放控制 应用按类型区分，需要正确接入所有必接项（√ ），部分功能不强制接入（-），应用可以根据实际需要选择性接入。 ![](http"
+    },
+    {
+      "path": "references/应用接入桌面歌词.md",
+      "title": "应用接入桌面歌词",
+      "snippet": "从API version 23开始，支持应用接入桌面歌词功能，将歌词以悬浮窗形式展示在系统桌面，让用户无需进入应用即可查看歌词，适用于音乐播放器或有歌词展示需求的音频类应用。 桌面歌词采用悬浮窗形式显示，支持歌词内容的同步展示、窗口显示/隐藏控制及锁定操作。该功能可帮助应用快速实现桌面歌词显示能力，提升用户听歌体验。 实现桌面歌词功能，需遵循以下流程： 1. 创建会话。 2. 判断当前系统版本是否支持桌面歌词功能，若支持则设置歌词元数据。 3. 通过接口控制歌词的使能与显示状态。 4. 监听系统侧的状态变化以同步UI。 5. 在退出时正确销毁会话。 #### 具体步骤 1. 首先创建 AVSession实例 ，通过 设置元数据 填入符合LRC格式的歌词内容。系统播控中心将解析该内容，实现歌词内容的同步展示。歌词内容必须包含时间标签及对应歌词文本。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/56/v3/4i-QCURhS_K8K9gQG9RJ7Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111313Z&HW-CC-Expire=86400&HW-CC-Sign=3A9A29249168FF2ACEE"
+    },
+    {
+      "path": "references/快捷播放.md",
+      "title": "快捷播放",
+      "snippet": "针对音乐/听书类应用，播控中心提供一系列快捷播放能力，包括一键启动冷启动续播以及历史歌单与推荐歌单功能，其中歌单功能中支持显示的音频媒体内容有：音乐歌单、有声书专辑、播客专辑等。视频媒体内容、直播类媒体内容暂不支持歌单。应用选择PlayMusicList意图（音乐类应用）或者PlayAudio意图（听书类应用）其一，注册并适配 意图调用 ，即可实现接入上述三个功能，具体实现参考 历史歌单 。 #### 播放按钮一键冷启动播放 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/93/v3/oGM7974gTnyZp7gQYcPqxA/notice_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111315Z&HW-CC-Expire=86400&HW-CC-Sign=FFD163A12A8F3A685D5E4DD2A64C92668EBA4879217EDF829C4B07CC808A5664) **自验证关注点：** 用户在应用内播放后，上滑结束应用进程，再进入播控中心，点击播放键查看是否正常拉起应用播放，播控中心是否正确显示当前播放信息及播放状态。 ![](https://contentcenter-vali-drcn"
+    },
+    {
+      "path": "references/扩展屏投播开发指导.md",
+      "title": "扩展屏投播开发指导",
+      "snippet": "通过本节开发指导，可在系统镜像投屏后，获取投屏设备信息，实现扩展屏模式的投播，实现双屏协作的能力。 #### 运作机制 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/de/v3/bDc4tNVBSJqwNALlrk-Drw/zh-cn_image_0000002543374248.png?HW-CC-KV=V1&HW-CC-Date=20260421T111314Z&HW-CC-Expire=86400&HW-CC-Sign=51B2B4DD9274132AAD1813C93B5413AB89FBFB0640F8597F50113EEDB32876B8) - **虚拟扩展屏** 是在系统投屏启动过程中建立的，依据双端协商的投屏视频流的分辨率创建，支持1080P 及以上分辨率。默认镜像主屏内容，当虚拟扩展屏上有UIAbility绘制时，会投屏该屏内容。 - **UIAbility A（本机内容）** 在本端主屏上显示的内容。假定UIAbility A 与 UIAbility B 属于同一应用，UIAbility A可以控制UIAbility B，实现双屏联动。 - **UIAbility B（投屏内容）** 在虚拟扩展屏上绘制的内容，考虑到远端投屏用户体验，UIA"
+    },
+    {
+      "path": "references/投播组件开发指导.md",
+      "title": "投播组件开发指导",
+      "snippet": "系统提供了音视频发声设备统一投播组件AVCastPicker，作为播控中心系统级设备切换、投播能力选择入口。应用通过接入统一投播组件，可以实现在应用内及系统播控中心，将音视频资源通过Cast+协议/DLNA协议投播到远端设备。 通过本开发指导，完成一次音视频跨设备投播。 #### 约束与限制 需同时满足以下条件，才能使用该功能： - **设备限制** 本端设备：HarmonyOS 5.0.0及以上版本的手机、平板设备 远端设备：HarmonyOS 5.0.0及以上版本的2in1设备、HarmonyOS 3.1及以上版本的华为智慧屏、支持标准DLNA协议的设备 - **使用限制** 双端设备打开蓝牙和WIFI，并可访问网络。 #### 接口说明 在开发具体功能前，请先查阅参考文档，获取详细的接口说明。 - AVCastPicker ：投播组件，提供设备发现认证连接的统一入口。 - AVCastController ：投播控制器，用于投播场景下，完成播放控制、远端播放状态监听等操作。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f1/v3/_eYRQs2XSqiwzfDnyl3RQg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Dat"
+    },
+    {
+      "path": "references/播控推荐服务.md",
+      "title": "播控推荐服务",
+      "snippet": "播控推荐服务致力于为用户提供更便捷的操作路径、更精准的内容推荐服务，帮助用户发现更感兴趣的内容，助力应用从系统级入口直达服务。 播控推荐服务基于用户使用音频类应用的习惯来分配播控推荐服务的资源位，保障用户常用的应用有更多的曝光。 同时，将基于用户的听歌偏好进行内容精准推荐，推荐的内容源需要三方应用通过云侧接口捐赠给播控中心。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f9/v3/Eyd3ZCqMTgmM3pY_mqhzBg/zh-cn_image_0000002573974485.png?HW-CC-KV=V1&HW-CC-Date=20260421T111316Z&HW-CC-Expire=86400&HW-CC-Sign=57FBA579F1F846CB15A1A087D80E4E067C265B9493B1DBCB6F9AC6FF3E372A50) #### 推荐资源位分配原则 播控中心推荐服务作为公共系统级入口，将依据统一的分配原则，来保证该栏目资源位分配公平，且符合用户的预期。 - 面向对象：在应用市场的分类显示为“影音娱乐-音乐”、“影音娱乐-电台”的两大类应用。 - 分配原则：基于用户最近30天使用应用的总时长分配，用户使用频次高、使用时间长的"
+    },
+    {
+      "path": "references/播控特性简介.md",
+      "title": "播控特性简介",
+      "snippet": "使用媒体播控，可以简单高效地将音视频投放到其他HarmonyOS设备上播放，如在手机上播放的音视频，可以投到2in1设备上继续播放。 HarmonyOS提供了统一的应用内音视频投播功能设计，通过使用系统提供的投播组件和接口，应用只需要设置对应的资源信息、监听投播中的相关状态，以及应用主动控制的行为（如：播放、暂停）。其他动作包括图标切换、设备的发现、连接、认证等，均由系统完成。 #### 基本概念 - **媒体会话（AVSession）** 音视频管控服务，用于对系统中所有音视频行为进行统一的管理。 本地播放时，应用需要向媒体会话提供播放的媒体信息（如正在播放的歌曲、歌曲的播放状态等），并接收和响应播控中心发出的控制命令（如暂停、下一首等）。具体请参考 本地媒体会话 。 投播时，通过AVSession，应用可以进行投播能力的设置和查询，并创建投播控制器。 应用可以在启动内容显示（比如：视频播放）时，获取支持投播的扩展屏设备并注册监听，当存在扩展屏时，可在扩展屏上全屏绘制要投播的内容。 - **投播组件（AVCastPicker）** 系统级的投播组件，可嵌入应用界面的UI组件。当用户点击该组件后，系统将进行设备发现、连接、认证等流程，应用仅需要通过接口获取投播中相关的回调信息。 - **投播控制器（AVCastController）** 在投播后，由应用发起的用于控制远端播放的接口"
+    },
+    {
+      "path": "references/本地媒体会话概述.md",
+      "title": "本地媒体会话概述",
+      "snippet": "本地媒体会话的数据源均在设备本地，交互过程如图所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6a/v3/PUbJYbSRQZ2rFe34GlzZPw/zh-cn_image_0000002573854499.png?HW-CC-KV=V1&HW-CC-Date=20260421T111312Z&HW-CC-Expire=86400&HW-CC-Sign=07C98EA1577E519609A2DE7A8580C018FB3CC605795A9BC2BD26A7234CD05225) 此过程中涉及两大角色，媒体会话提供方和媒体会话控制方。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cc/v3/e-d8ZjuYTs2dUlFV9wQzjg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111312Z&HW-CC-Expire=86400&HW-CC-Sign=ABCB026248EE8BDA6DE18671CC6648C538AA011B109AC3DB875915734F4A1"
+    },
+    {
+      "path": "references/音视频投播.md",
+      "title": "音视频投播",
+      "snippet": "针对音视频类应用，播控中心提供系统级设备切换、投播能力选择入口，提供音视频发声设备统一投播组件。应用通过接入统一投播组件，可以实现在应用内及系统播控中心，将应用音视频资源通过Cast+协议/DLNA协议投播到远端设备。应用需先按自检要求接入 基础播控 ，才可正常接入音视频投播组件。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3f/v3/-9ZBz6PCSBWssogyjrvRBA/zh-cn_image_0000002543214594.png?HW-CC-KV=V1&HW-CC-Date=20260421T111315Z&HW-CC-Expire=86400&HW-CC-Sign=1A7BEB10E286575ED03384954BF5DD7B184F874DD24F94F50D4AB453B10A84F3) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e2/v3/Y7IPA8-8Qnepj8zZX_NK0Q/zh-cn_image_0000002573854509.png?HW-CC-KV=V1&HW-CC-Date=2026042"
+    }
+  ]
+}

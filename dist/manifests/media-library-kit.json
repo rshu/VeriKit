@@ -1,0 +1,100 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "media-library-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.986Z"
+  },
+  "references": [
+    {
+      "path": "references/Media Library Kit 简介.md",
+      "title": "Media Library Kit 简介",
+      "snippet": "Media Library Kit（媒体文件管理服务）提供了管理相册和媒体文件的能力，包括图片和视频，帮助应用快速构建图片和视频的展示与播放功能。 #### 能力范围 通过Media Library Kit，开发者可以管理相册和媒体文件，包括创建相册、访问和修改相册中的媒体信息。 面向 **所有应用** 开放如下能力： - - 使用Picker选择媒体库资源 - 保存媒体库资源 - - 访问和管理动态照片资源 - 使用MovingPhotoView播放动态照片 - - 使用PhotoPicker组件访问图片/视频 - 使用AlbumPicker组件访问相册列表 - 使用RecentPhoto组件获取最近一张图片 - 使用PhotoPicker推荐图片 - 使用PickerController将编辑后的图片替换原图 面向 **三方应用受限** 开放如下能力： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d7/v3/ToRu-dtaSd-BarougWMCoA/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111345Z&HW-CC-Expire=86400&HW-CC-Sign=8E2A9C563FD"
+    },
+    {
+      "path": "references/使用AlbumPicker组件访问相册列表.md",
+      "title": "使用AlbumPicker组件访问相册列表",
+      "snippet": "开发者可以在布局中嵌入AlbumPickerComponent组件，通过此组件，应用无需申请权限，即可访问公共目录中的相册列表。 需配合 使用PhotoPicker组件访问图片/视频 一起使用，用户通过AlbumPickerComponent组件选择对应相册并通知PhotoPickerComponent组件刷新成对应相册的图片和视频。 界面效果如图所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/44/v3/8sgmtD_xT12hWPQzyzqOQw/zh-cn_image_0000002573854551.png?HW-CC-KV=V1&HW-CC-Date=20260421T111346Z&HW-CC-Expire=86400&HW-CC-Sign=A5667C37AE784114BA2BB50A6C1B85CFE7D41B58FE4230F6AFD21483FB83DC2F) #### 开发步骤 1. 导入相册组件模块文件。 import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo, PickerColorMode, PickerController, DataType } from '"
+    },
+    {
+      "path": "references/使用MediaAssetManager请求媒体资源(C_C++).md",
+      "title": "使用MediaAssetManager请求媒体资源(C/C++)",
+      "snippet": "使用MediaAssetManager可以实现请求媒体资源到目标沙箱路径，本开发指导将以请求一张图片作为示例，向开发者讲解MediaAssetManager相关功能。 请求图片资源的全流程包含：创建MediaAssetManager，设置请求资源，请求图片资源，取消本次请求(可选)。 #### 开发步骤及注意事项 在CMake脚本中链接动态库 target_link_libraries(sample PUBLIC libmedia_asset_manager.so) 开发者通过引入 media_asset_manager_capi.h 和 media_asset_base_capi.h 头文件，使用MediaAssetManager相关API。 详细的API说明请参考 MediaAssetManager API 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/25/v3/VFg3Vm31SQ6Lgv51O46HIg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111348Z&HW-CC-Expire=86400&HW-CC-Sign=B69F19F18F3AA35EF05C9A77D98660F6E49"
+    },
+    {
+      "path": "references/使用MovingPhotoView播放动态照片.md",
+      "title": "使用MovingPhotoView播放动态照片",
+      "snippet": "系统提供了MovingPhotoView组件，在一些社交类、图库类应用中，可用于播放动态照片文件。 #### 约束与限制 针对MovingPhotoView组件的使用，有以下约束与限制： - 当前不支持动态属性设置。 - 当前不支持设置ArkUI通用属性expandSafeArea。 - 该组件长按触发播放时组件区域放大为1.1倍。 - 该组件使用AVPlayer进行播放，同时开启的AVPlayer个数不建议超过3个，超过3个可能会出现视频播放卡顿现象。 #### 开发步骤 1. 导入动态照片模块。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7e/v3/0DpalIGUTmqz9WL9P1sHLw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111347Z&HW-CC-Expire=86400&HW-CC-Sign=7C02DEF7221E69DEF49DC27E36C3510D98FC97891F4E7367DABE802C7886429F) - MovingPhotoViewAttribute是用于配置MovingPhotoView组件属性的关键接口。API version 21及之前版本，导入M"
+    },
+    {
+      "path": "references/使用PhotoPicker推荐图片.md",
+      "title": "使用PhotoPicker推荐图片",
+      "snippet": "应用在调用PhotoPicker接口时，如果配置了PhotoPicker图片推荐参数，当设备中有满足图片推荐参数的图片，且设备中的图片已经分析完成时，PhotoPicker界面除了展示全量的图片外，还会展示符合条件的推荐图片供用户参考选择，从而缩短用户筛选图片的时间。 - 选择特定类型（ RecommendationType ）的图片，如身份证、银行卡、驾驶证、行驶证、二维码等。当有符合应用指定类型的图片传入时，将显示对应的图片推荐页。 以指定图片类型为二维码为例，PhotoPicker界面上将出现“二维码”的Tab页，展示图库中的二维码图片。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/22/v3/CKG1ZYU5QMKWYD8sbKXtCA/zh-cn_image_0000002573854553.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111346Z&HW-CC-Expire=86400&HW-CC-Sign=04941E32DBC2B9914E60D4BFD696B44D688025EF9766DE5231169CB75C707B83) - 在图文编辑时选择图片，系统可以根据应用传入的文本信息，提取出时间、地点、事物或活"
+    },
+    {
+      "path": "references/使用PhotoPicker组件访问图片_视频.md",
+      "title": "使用PhotoPicker组件访问图片/视频",
+      "snippet": "当应用需要读取用户图片时，开发者可以在应用界面中嵌入PhotoPicker组件，在用户选择所需要的图片资源后，直接返回该图片资源，而不需要授予应用读取图片文件的权限，即可完成图片或视频文件的访问和读取。 界面效果如图所示。 #### 开发步骤 1. 导入PhotoPicker模块文件。 import { PhotoPickerComponent, PickerController, PickerOptions, DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType, MaxCountType, PhotoBrowserRange, ReminderMode, photoAccessHelper } from '@kit.MediaLibraryKit'; 2. 创建Picker组件配置选项实例（PickerOptions）和控制实例（PickerController）。 通过PickerOptions，开发者可配置Picker宫格的样式（如勾选框背景色、文本颜色等）、滑动预览方向、最大选择数量等参数，详见 PickerOptions API参考 。 通过PickerController，应用可向Picker组件发送数据。 // 组件初始化时设置参数信息。 pickerOptions: Pick"
+    },
+    {
+      "path": "references/使用PickerController将编辑后的图片替换原图.md",
+      "title": "使用PickerController将编辑后的图片替换原图",
+      "snippet": "应用可获得用户从Picker选择的图片、视频的访问权限，读取图片、视频后进行编辑、修改。完成编辑修改后的图片/视频缓存到应用沙箱后，可调用本API，将编辑结果文件发送给PhotoPicker，并指定替换显示的原图。Picker根据指定将接收的编辑结果文件替换原图片进行显示。 效果如图所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/65/v3/Uk_JSG-iRJ6B6ztlE_xbwg/zh-cn_image_0000002543374300.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111346Z&HW-CC-Expire=86400&HW-CC-Sign=7B3A3373CDB0EAEBFF133C916EF227F6BAD63BF56A2F5ED4B815E95F5773B0FC) #### 开发步骤 1. 导入选择器模块和文件管理模块。 import { PickerController } from '@kit.MediaLibraryKit'; import { fileUri } from '@kit.CoreFileKit'; 2. 创建参数列表。 @State pickerController: Picker"
+    },
+    {
+      "path": "references/使用Picker选择媒体库资源.md",
+      "title": "使用Picker选择媒体库资源",
+      "snippet": "当用户需要分享图片、视频等文件时，开发者可以通过特定接口拉起系统图库，让用户自行选择待分享的资源，完成分享。此接口本身无需申请权限，目前适用于界面UIAbility，使用窗口组件触发。具体使用方式如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0a/v3/eSOP8FHdQH-xX3Z15nHvQg/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111345Z&HW-CC-Expire=86400&HW-CC-Sign=7560AA7781B83F7B2D3BAC5D4EA85CCF18C6BA4CE8F3186762EC4860DA0E2D94) Media Library Kit提供图片和视频的管理能力，当需要读取和保存音频文件时，请使用 AudioViewPicker（音频选择器对象） 。 1. 导入选择器模块和文件管理模块。 import { fileIo } from '@kit.CoreFileKit'; import { photoAccessHelper } from '@kit.MediaLibraryKit'; 2. 创建图片-音频类型文件选择选项实例。 const phot"
+    },
+    {
+      "path": "references/使用RecentPhoto组件获取最近一张图片.md",
+      "title": "使用RecentPhoto组件获取最近一张图片",
+      "snippet": "应用可以在布局中嵌入最近图片组件，通过此组件，应用无需申请权限，即可指定配置访问公共目录中最近的一个图片或视频文件。授予的权限仅包含只读权限。 界面效果如图所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ae/v3/m8gKVHglRe6DOuT9zUSxuQ/zh-cn_image_0000002573974527.png?HW-CC-KV=V1&HW-CC-Date=20260421T111346Z&HW-CC-Expire=86400&HW-CC-Sign=8F7D93991EEB3C4B606EA7B1D6F8B12A1BDA377296369DA9DC7766C704D69DE7) #### 开发步骤 1. 导入最近图片组件模块文件。 import { BaseItemInfo } from '@ohos.file.PhotoPickerComponent'; import { PhotoSource, RecentPhotoComponent, RecentPhotoOptions, photoAccessHelper } from '@kit.MediaLibraryKit'; 2. 创建最近图片组件选择选项实例（RecentPhotoOpt"
+    },
+    {
+      "path": "references/保存媒体库资源.md",
+      "title": "保存媒体库资源",
+      "snippet": "保存图片、视频等用户文件到图库时，无需申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'，应用可以通过 安全控件 或 授权弹窗 的方式，将用户指定的媒体资源保存到图库中。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8a/v3/4eaIvRi7TiCqQybTNeoLKA/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111345Z&HW-CC-Expire=86400&HW-CC-Sign=E0873CBA9889C9BDBB71F8BEA0AB5845C5F68E7427500C5897AA0C904088E8E3) Media Library Kit提供图片和视频的管理能力，当需要读取和保存音频文件时，请使用 AudioViewPicker（音频选择器对象） 。 #### 获取支持保存的资源格式 下面以获取支持保存的图片类型资源格式为例。 **开发步骤** 调用 phAccessHelper.getSupportedPhotoFormats 接口获取支持保存的图片类型资源格式。 import { photoAccessHelper } from '@kit"
+    },
+    {
+      "path": "references/如何正确管理媒体资源.md",
+      "title": "如何正确管理媒体资源",
+      "snippet": "Media Library Kit （媒体文件管理服务）提供了媒体资源的管理能力，开发者可以访问和修改相册中的媒体信息。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b2/v3/VQFvvSy6QI2mLD2h5r2V6A/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111348Z&HW-CC-Expire=86400&HW-CC-Sign=579F7A700D6B0224F37E0C7EF9BD1908AA3F238296B7A8EF009DB8CE57B63EFA) Media Library Kit仅提供图片和视频的管理能力，不涉及音频文件的管理。 #### 媒体资源的常用路径表示 有多种路径形式来表示媒体资源，对应了不同的含义和使用场景，作为媒体资源的唯一标识，可在媒体资源管理过程中的部分 媒体文件操作 中被使用。 #### 标准媒体文件操作流程 #### 常见问题 #### 能否通过修改生成或自行构造的媒体库路径来新增、删除、获取、重命名、移动文件或文件夹 不可以。因为媒体库URI和Path为虚拟路径，是通过组合媒体资源的部分属性来对媒体文件进行唯一标识，并非实际存在对应目录层级，也不存"
+    },
+    {
+      "path": "references/媒体资源使用指导.md",
+      "title": "媒体资源使用指导",
+      "snippet": "应用可以通过photoAccessHelper的接口，对媒体资源（图片、视频）进行相关操作。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/72/v3/jL_NEK97SlioS2fjpMyCCw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111347Z&HW-CC-Expire=86400&HW-CC-Sign=CF594F39F9E4D1CA6F089FF884314C8C71DD227DADDAAFCBD39CC9E1647B5DCA) - 在进行功能开发前，请查阅开发准备，了解如何获取相册管理模块实例和如何申请相册管理模块功能开发相关权限。 - 文档中使用到photoAccessHelper的地方，默认为使用开发准备中获取的对象，如果未添加此段代码，报photoAccessHelper未定义的错误，请自行添加。 为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。示例采用Promise函数，更多方式可以查阅 模块描述 。 #### 获取指定媒体资源 根据特定条件查询媒体资源，如类型、日期、相册等。 应用通过调用 PhotoAccessHelper.getAsse"
+    },
+    {
+      "path": "references/媒体资源变更通知相关指导.md",
+      "title": "媒体资源变更通知相关指导",
+      "snippet": "photoAccessHelper提供监听指定媒体资源变更的接口。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ea/v3/9ALbC7yRTeOPdqp0Nu0RzQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111348Z&HW-CC-Expire=86400&HW-CC-Sign=B9DA4EF0F675134B62F16E17A59DF6A3AB13B10426AE50FFBBE51DA4DD846FAD) 在进行功能开发前，请查阅 开发准备 ，了解如何获取相册管理模块实例和如何申请相册管理模块功能开发相关权限。 文档中使用到photoAccessHelper的地方默认为使用 开发准备 中获取的对象，如未添加此段代码报photoAccessHelper未定义的错误请自行添加。 媒体资源变更通知相关接口的异步调用仅支持使用callback方式。以下只列出部分接口使用方式，其他使用方式可以查阅 模块描述 。 如无特别说明，文档中涉及的待获取资源均视为已预置且数据库中存在相应数据。若按示例代码执行后资源为空，请确认文件是否已预置，以及数据库中是否存在该文件的数据。 #### 监听指定URI 通过调用"
+    },
+    {
+      "path": "references/开发准备.md",
+      "title": "开发准备",
+      "snippet": "应用需获取相册管理模块实例，才能访问和修改相册中的媒体数据。相册管理模块涉及用户个人数据信息，应用需向用户申请读写权限，以保证功能的正常运行。使用相册管理模块接口时，如无其他注明，默认在工程代码的pages/index.ets或其他自定义的ets文件中使用。 #### 获取相册管理模块实例 应用需要通过上下文 Context 和接口 getPhotoAccessHelper ，获取相册管理模块实例，用于访问和修改相册中的媒体数据信息，如图片和视频。 **开发步骤** 1. 导入photoAccessHelper模块以使用相册管理模块相关接口。 2. 通过getUIContext().getHostContext()获取应用上下文。 3. 获取相册管理模块实例。 import { photoAccessHelper } from '@kit.MediaLibraryKit'; import { common } from '@kit.AbilityKit'; // 此处获取的photoAccessHelper实例为全局对象，后续文档中使用到的地方默认为使用此处获取的对象，如未添加此段代码报未定义的错误请自行添加。 // 请在组件内获取context，确保this.getUiContext().getHostContext()返回结果为UIAbilityContext @Entry @"
+    },
+    {
+      "path": "references/用户相册资源使用指导.md",
+      "title": "用户相册资源使用指导",
+      "snippet": "photoAccessHelper提供用户相册相关的接口，支持查询和重命名相册，以及添加和删除相册中的图片和视频资源。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5e/v3/w8u09vbVQIqrQv5giMppDA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111348Z&HW-CC-Expire=86400&HW-CC-Sign=A8FD16A29D5D66C2A7DE0CB925BDE8B8D981F511AB0F179367BE9F1FEAA5D2B8) 在进行功能开发前，请查阅 开发准备 ，了解如何获取相册管理模块实例和申请相关权限。 文档中使用到photoAccessHelper的地方默认为使用 开发准备 中获取的对象，如未添加此段代码报photoAccessHelper未定义的错误请自行添加。 为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。以下异步调用的API示例均采用Promise函数，更多方式可以查阅 模块描述 。 如无特别说明，文档中涉及的待获取资源均视为已预置，并且数据库中存在相应数据。如果按照示例代码执行后获取资源为空，请确认文件是否"
+    },
+    {
+      "path": "references/系统相册资源使用指导.md",
+      "title": "系统相册资源使用指导",
+      "snippet": "photoAccessHelper提供对收藏夹、视频相册、截屏和录屏相册的相关操作。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/19/v3/s3RAhNaTTpO4oxCFvnyTvg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111348Z&HW-CC-Expire=86400&HW-CC-Sign=ABE108610BCE7F33E10C0E7FBBD142F7B4BFF68E955206A6C95C1356BECFEA66) 在进行功能开发前，请查阅 开发准备 ，了解如何获取相册管理模块实例及申请相关权限。 文档中使用到PhotoAccessHelper的地方，默认使用 开发准备 中获取的对象，如未添加此段代码提示PhotoAccessHelper未定义的错误请自行添加。 为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。以下异步调用的API示例均采用Promise函数，更多方式可以查阅 模块描述 。 如无特别说明，文档中涉及的待获取的资源均视为已经预置且在数据库中存在相应数据。如出现按照示例代码执行出现获取资源为空的情况，请确认文件是否已预置，数据库中是否"
+    },
+    {
+      "path": "references/设备升级继承媒体文件访问权限.md",
+      "title": "设备升级继承媒体文件访问权限",
+      "snippet": "应用在HarmonyOS 3.1 Release API 9及更低版本运行时，有图片/视频访问权限，并在应用内记录对应的图片/视频文件路径或uri，在进入应用特定界面时，可实时访问图片/视频显示内容。 但在设备从HarmonyOS 3.1 Release API 9及更低版本升级至HarmonyOS 5.0.2及以上版本时，图片、视频等媒体文件的访问方式发生变化，应用无法使用原来的文件路径或uri访问媒体文件，且新版本上应用默认没有权限直接访问图片/视频。在新版本上，应用需要向用户发起请求，用户同意后，可继承原有的媒体文件访问权限。 本指南将帮助开发者了解如何在升级后，继承媒体文件的访问权限。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3a/v3/Fde7K_91Rb2jH-pjkGQRmg/zh-cn_image_0000002543214640.png?HW-CC-KV=V1&HW-CC-Date=20260421T111347Z&HW-CC-Expire=86400&HW-CC-Sign=CD3277869F6F55B0E564210AFD308C6008FD26FBB4F38AAE5A9D2E7B9DF3151E) 应用在启动或是进入对应的业务界面之"
+    },
+    {
+      "path": "references/访问和管理动态照片资源.md",
+      "title": "访问和管理动态照片资源",
+      "snippet": "动态照片是一种结合了图片和视频的照片形式，可以显示一小段时间的动态画面和声音。可以帮助用户捕捉精彩的动态瞬间，提升创作空间，同时令拍照的容错率更高。 媒体库提供访问和管理动态照片资源的能力，包括： - 使用安全控件保存动态照片资源 - 获取动态照片对象（MovingPhoto） - 使用MovingPhotoView播放动态照片 - 读取动态照片资源 拍摄动态照片的能力由Camera Kit提供，可参考 动态照片拍摄(ArkTS) 。 #### 保存动态照片资源 使用安全控件保存动态照片资源后，可用于获取MovingPhoto对象，从而完成播放动态照片等操作。 使用安全控件保存动态照片资源，无需申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'，允许用户通过点击按钮临时获取存储权限，并将资源直接保存到指定的媒体库路径，使得操作更为便捷。 详情请参考 SaveButton 。 **开发步骤** 1. 设置安全控件按钮属性。 2. 创建安全控件按钮。 3. 调用 MediaAssetChangeRequest.createAssetRequest 接口新建一个创建资产的变更请求，指定待创建资产的子类型为动态照片。 4. 调用 MediaAssetChangeRequest.addResource 接口指定动态照片的图片和视频内容，动态照片的视频时长"
+    }
+  ]
+}

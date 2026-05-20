@@ -1,0 +1,103 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "nearlink-kit",
+  "source_path": "skills/nearlink-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:56:55.321Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "星闪",
+      "SparkLink",
+      "短距通信",
+      "设备发现",
+      "如何查询当前设备是否支持星闪服务？",
+      "如何查询和监听星闪开关状态的变化？",
+      "如何作为外围设备发送星闪广播供中心设备扫描发现？",
+      "如何作为中心设备发起星闪扫描发现外围设备？",
+      "如何开发SSAP服务端应用，创建服务实例并处理客户端连接？",
+      "如何开发SSAP客户端应用，连接服务端并读写属性？",
+      "如何使用星闪协议建立端口通道、进行配对加密和数据传输？",
+      "星闪数据传输失败或UUID格式不对等常见问题如何解决？",
+      "当您的应用需要与星闪（NearLink/SparkLink）外设进行通信时，应使用NearLink Kit",
+      "典型场景包括：开发星闪鼠标、手写笔等外设的配对连接应用、在应用中实现星闪设备扫描与发现、通过星闪协议进行低功耗高速率数据传输等",
+      "当您需要开发基于SSAP协议的服务端或客户端应用、实现星闪设备间的加密配对与安全数据传输时，也应使用NearLink Kit",
+      "扫描附近的星闪外设并在列表中显示设备名称和信号强度 / Scan nearby NearLink peripherals and show device names and signal strength in a list",
+      "实现星闪设备配对绑定并建立加密连接 / Implement NearLink pairing and create an encrypted connection",
+      "连接星闪手写笔并实时接收笔迹数据 / Connect a NearLink stylus and receive stroke data in real time",
+      "接入星闪鼠标或键盘等外设输入 / Integrate input from NearLink mouse or keyboard peripherals",
+      "作为中心设备发现并连接低功耗星闪外设 / Discover and connect low-power NearLink peripherals as a central device",
+      "作为外围设备广播自身让其他设备搜索到 / Advertise as a NearLink peripheral so other devices can discover it",
+      "创建 SSAP 服务并暴露可读写特征值 / Create an SSAP service and expose readable and writable characteristics",
+      "通过 SSAP 订阅属性变化并接收设备状态通知 / Subscribe to SSAP characteristic changes and receive device status notifications",
+      "用星闪端口通道传输文件或连续数据流 / Transfer files or continuous data streams over a NearLink port channel",
+      "管理星闪连接状态变化并处理断开重连 / Manage NearLink connection state changes and handle disconnects and reconnection",
+      "监听系统星闪开关状态并在界面上提示用户开启 / Listen for the system NearLink toggle state and prompt the user to enable it in the UI",
+      "查询设备是否支持 NearLink 能力后再启用相关功能 / Check whether the device supports NearLink before enabling related features"
+    ],
+    "do_not_use_when": [
+      "需求是通用互联网网络访问、HTTP/TCP/UDP套接字或Wi‑Fi/蜂窝网络管理，应改用 network-kit / If the task is general internet access, HTTP/TCP/UDP sockets, or Wi‑Fi/cellular network management, use network-kit instead",
+      "需求是网络链路加速、弱网优化、传输加速或QoS增强，应改用 network-boost-kit / If the task is network acceleration, poor-network optimization, transfer acceleration, or QoS enhancement, use network-boost-kit instead",
+      "需求是跨设备远程分布式通信、设备间能力调用或远端服务协同，而不是星闪近距离链路，应改用 remote-communication-kit / If the task is cross-device distributed communication, remote capability invocation, or remote service collaboration rather than a NearLink short-range link, use remote-communication-kit instead",
+      "需求是蓝牙、Wi‑Fi直连、NFC或其他通用连接能力，而非星闪协议栈与SSAP通信，应改用 connectivity-kit / If the task involves Bluetooth, Wi‑Fi Direct, NFC, or other general connectivity instead of the NearLink protocol stack and SSAP communication, use connectivity-kit instead",
+      "需求是蜂窝通话、拨号、来电或通话控制，应改用 telephony-kit 或 call-service-kit / If the task is cellular calling, dialing, incoming-call handling, or call control, use telephony-kit or call-service-kit instead"
+    ],
+    "preconditions": [
+      "目标真机支持星闪功能，且不能在模拟器中运行 / The target physical device supports NearLink, and the app is not running in an emulator",
+      "设备已开启星闪开关，应用在运行时可访问该能力 / NearLink is enabled on the device, and the app can access the capability at runtime",
+      "已在 module.json5 中声明并申请所需星闪相关权限 / Required NearLink-related permissions have been declared and requested in module.json5"
+    ],
+    "inputs": [
+      "中心端或外围端角色配置 / central or peripheral role configuration",
+      "扫描或广播参数 / scan or advertising parameters",
+      "SSAP服务UUID、特征UUID或实例配置 / SSAP service UUIDs, characteristic UUIDs, or instance configuration",
+      "目标设备标识或连接参数 / target device identifier or connection parameters",
+      "待发送的数据载荷或端口通道参数 / data payload to send or port channel parameters"
+    ],
+    "outputs": [
+      "简介",
+      "开发准备",
+      "设备发现",
+      "连接与数据传输"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已先检查星闪能力或开关状态，再执行扫描、广播、连接或传输流程 / The code checks NearLink capability or switch state before scanning, advertising, connecting, or transferring",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add logic that queries NearLink support and/or switch state before invoking discovery, advertising, connection, SSAP, or data-transfer APIs?"
+      },
+      {
+        "statement": "已实现与目标场景匹配的星闪流程：广播/扫描、SSAP服务端/客户端或数据传输之一 / A NearLink flow matching the target scenario is implemented: advertising/scanning, SSAP server/client, or data transfer",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits clearly implement at least one appropriate NearLink scenario flow such as advertising or scanning, SSAP server or client setup, or data transfer over a NearLink channel?"
+      },
+      {
+        "statement": "对连接、配对或传输失败增加了错误处理或状态监听 / Error handling or state monitoring is added for connection, pairing, or transfer failures",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits include callbacks, listeners, return-value checks, or exception handling for NearLink connection, pairing, scan, or transfer failure states?"
+      }
+    ],
+    "overlaps_with": [
+      "network-kit",
+      "network-boost-kit",
+      "remote-communication-kit",
+      "connectivity-kit",
+      "telephony-kit",
+      "call-service-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

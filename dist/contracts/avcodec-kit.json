@@ -1,0 +1,112 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "avcodec-kit",
+  "source_path": "skills/avcodec-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:50:24.422Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "音视频编解码",
+      "视频编码",
+      "视频解码",
+      "封装",
+      "解封装",
+      "HDR",
+      "如何实现音频编码和音频解码（异步模式与同步模式）",
+      "如何实现视频编码和视频解码（Surface模式）",
+      "如何查询设备支持的编解码能力和编码格式",
+      "如何实现媒体文件的解封装（解析）和封装",
+      "如何配置视频编码参数以满足不同场景的需求",
+      "如何实现HDR Vivid视频的播放和录制",
+      "如何实现Audio Vivid音频的解码和播放",
+      "如何使用视频可变帧率、ROI编码和B帧编码等高级编码能力",
+      "如何优化视频解码器的创建与NativeWindow初始化并行性能",
+      "当应用需要进行音视频编解码处理时，请使用AVCodec Kit",
+      "适用于音视频播放器、视频通话、音频录制、视频录制等场景",
+      "当需要将PCM音频编码为AAC等压缩格式，或将AAC等格式解码为PCM数据时，请使用音频编解码能力",
+      "当需要将视频原始数据编码为H.264/H.265格式，或将视频码流解码为可显示的图像数据时，请使用视频编解码能力",
+      "当应用需要对媒体文件进行解封装（解析出音视频码流）或封装（将编码数据写入媒体文件）时，请使用媒体数据解析与封装能力",
+      "当需要实现HDR Vivid视频播放或录制、Audio Vivid音频处理时，请使用对应的高级编解码能力",
+      "实现本地视频文件转码为 H.264 或 H.265 / Transcode a local video file to H.264 or H.265",
+      "把 PCM 音频编码成 AAC 并写入媒体文件 / Encode PCM audio to AAC and write it into a media file",
+      "解码摄像头采集的视频帧并渲染到 Surface / Decode captured video frames and render them to a Surface",
+      "从 MP4 中解析出音视频轨道并分别处理 / Demux audio and video tracks from an MP4 for separate processing",
+      "将编码后的音频流和视频流复用生成 MP4 文件 / Mux encoded audio and video streams into an MP4 file",
+      "获取设备支持的音视频编码器能力和分辨率范围 / Query device-supported audio video codec capabilities and resolution ranges",
+      "配置码率帧率关键帧间隔以优化视频编码效果 / Configure bitrate frame rate and keyframe interval to optimize video encoding",
+      "实现低时延音视频编解码处理链路 / Build a low-latency audio and video encode decode pipeline",
+      "用 AVCodec 解码网络收到的 H.264 码流 / Decode H.264 bitstreams received from the network with AVCodec",
+      "接入 HDR Vivid 视频编码或解码能力 / Integrate HDR Vivid video encoding or decoding",
+      "实现 Audio Vivid 音频解码播放 / Implement Audio Vivid audio decoding and playback",
+      "使用 Surface 模式进行视频编码并输出压缩码流 / Encode video in Surface mode and output compressed bitstreams"
+    ],
+    "do_not_use_when": [
+      "需求只是播放、暂停、切歌、焦点管理或跨设备音视频会话控制时，应使用 avsession-kit / If the need is only playback control, media buttons, audio focus, or cross-device AV session management, use avsession-kit instead",
+      "需求是拍照、录像、预览取流或控制相机硬件（闪光灯、变焦、曝光）时，应使用 camera-kit / If the task is capturing photos or video, preview streaming, or controlling camera hardware such as flash, zoom, or exposure, use camera-kit instead",
+      "需求是图片读取、编辑、变换、缩放、格式转换或静态图像编解码时，应使用 image-kit / If the task is image reading, editing, transformation, scaling, format conversion, or still-image encode/decode, use image-kit instead",
+      "需求是管理媒体文件库、查询系统相册/音视频资源或读写媒体资产元数据时，应使用 media-library-kit / If the task is managing the media library, querying system albums/audio-video assets, or reading/writing media asset metadata, use media-library-kit instead",
+      "需求是实现高层媒体播放、录音、录播一体能力而不是自行处理底层码流时，应使用 media-kit / If the need is high-level media playback or recording rather than handling low-level elementary streams yourself, use media-kit instead",
+      "需求是设置、枚举或播放系统铃声/通知音而非通用音频编解码时，应使用 ringtone-kit / If the task is setting, listing, or playing system ringtones/notification sounds rather than general audio codec processing, use ringtone-kit instead"
+    ],
+    "preconditions": [
+      "工程可接入 AVCodec Kit 对应的 Native/C 接口并具备相关头文件与链接配置 / The project can access AVCodec Kit native C APIs and has the required headers and link configuration",
+      "输入媒体源可访问，文件描述符或流媒体 URL 有效且具有相应读写权限 / The input media source is reachable, and the file descriptor or streaming URL is valid with proper read/write access",
+      "所选音视频编解码格式、封装格式及高级特性已被当前设备能力支持 / The selected audio/video codec, container format, and advanced features are supported by the current device capabilities"
+    ],
+    "inputs": [
+      "媒体文件描述符或流媒体URL / media file descriptor or streaming URL",
+      "音频PCM数据或压缩音频码流 / PCM audio data or compressed audio bitstream",
+      "视频原始帧、视频码流或Surface/NativeWindow对象 / raw video frames, video bitstream, or Surface/NativeWindow object",
+      "编解码与封装参数 / codec and muxer configuration parameters"
+    ],
+    "outputs": [
+      "Kit简介与概述",
+      "音频编解码",
+      "视频编解码",
+      "高级编解码能力",
+      "HDR Vivid与Audio Vivid",
+      "媒体数据封装与解析"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已创建并配置与任务匹配的音频/视频编解码器、解封装器或封装器流程 / The code creates and configures an audio/video codec, demuxer, or muxer flow appropriate to the task",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code to initialize and configure AVCodec-related native components (codec, demuxer, or muxer) that match the requested media task?"
+      },
+      {
+        "statement": "媒体输入与输出通路已接通，包括文件描述符、URL、缓冲区或Surface回调处理 / Media input and output paths are wired up, including file descriptors, URLs, buffers, or Surface callback handling",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there a complete data path for media input/output such as setting source fd/URL, handling buffers, or connecting a Surface/callback?"
+      },
+      {
+        "statement": "实现了启动、处理与释放资源的基本生命周期，避免只停留在声明层面 / A basic lifecycle for start/process/release is implemented rather than only adding declarations",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show operational AVCodec usage with setup plus processing/start and cleanup/release steps, instead of only adding imports, stubs, or comments?"
+      }
+    ],
+    "overlaps_with": [
+      "audio-kit",
+      "avsession-kit",
+      "camera-kit",
+      "image-kit",
+      "media-kit",
+      "media-library-kit",
+      "ringtone-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "account-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:27.849Z"
+  },
+  "references": [
+    {
+      "path": "references/1001500001 应用指纹证书校验失败的可能原因和解决办法.md",
+      "title": "1001500001 应用指纹证书校验失败的可能原因和解决办法",
+      "snippet": "**问题现象** 调用接口报错1001500001 应用指纹证书校验失败。 **可能原因** 1. client_id配置错误（例如：错配成项目的Client ID）。 2. 应用的指纹证书未配置或配置错误。 3. 更换证书后未重新配置证书指纹。 4. 指纹证书添加完成后，公钥指纹仍未生效。 5. 安装调试证书签名包后再安装相同版本的发布证书签名包，或安装发布证书签名包后再安装相同版本的调试证书签名包。 6. 使用自动签名方式签名，未使用手动签名。 **解决措施** 1. 检查module type为entry的模块下的module.json5配置文件中的Client ID是否正确，请参考 配置Client ID 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/14/v3/f9yIPLrhRmmb9zoQn0P5Rw/zh-cn_image_0000002573854709.png?HW-CC-KV=V1&HW-CC-Date=20260421T111437Z&HW-CC-Expire=86400&HW-CC-Sign=D5AAA96DEA57E201370F3658E3279115C60A282074AAB9D728072FED9E2ECAF4) 2. 检查"
+    },
+    {
+      "path": "references/1001502003 输入参数值无效的可能原因和解决办法.md",
+      "title": "1001502003 输入参数值无效的可能原因和解决办法",
+      "snippet": "**问题现象** 调用接口报错1001502003 输入参数值无效。 **可能原因** 1. client_id未配置或配置错误。 2. Profile文件无效。 3. 一键登录场景，传入的匿名手机号不正确，或是未调用授权API（ AuthorizationWithHuaweiIDRequest ）获取匿名手机号。 4. 接口传参异常，如调用授权API（ AuthorizationWithHuaweiIDRequest ）时scopes和permissions属性均为空。 **解决措施** 1. 在 AppGallery Connect（简称AGC）的 开发与服务 中，选择对应的项目和对应的应用，在“常规 > 应用 ”下，找到 **应用** 的Client ID和APP ID。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5a/v3/-8mH3cA3RVGqNczHtGOEyQ/zh-cn_image_0000002573854691.png?HW-CC-KV=V1&HW-CC-Date=20260421T111441Z&HW-CC-Expire=86400&HW-CC-Sign=82C226E9B5B76FB9C5EDC314341D555FF3A79A1C"
+    },
+    {
+      "path": "references/1001502014 应用未申请scopes或permissions权限的可能原因和解决方法.md",
+      "title": "1001502014 应用未申请scopes或permissions权限的可能原因和解决方法",
+      "snippet": "**问题现象** 调用接口报错1001502014 应用未申请scopes或permissions权限。 **可能原因** 1. 没有申请对应的账号权限。 2. 权限申请成功后，最迟会在25小时后生效。 3. 使用 获取风险等级 能力，但未申请获取风险等级权限。 **解决措施** 1. 申请对应权限，请见 申请账号权限 章节。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c8/v3/ShzgVRhEQhqJse3pKdJvHQ/zh-cn_image_0000002543374436.png?HW-CC-KV=V1&HW-CC-Date=20260421T111437Z&HW-CC-Expire=86400&HW-CC-Sign=6B7F1B22E4FC458E9EA88BC8EBCD81313D4A22EA3D1A88861D0826E3C85BB91F) 2. 权限申请通过后，您可通过修改应用工程 > app.json5中的versionCode触发权限生效。 **图1** 修改前 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a2/v"
+    },
+    {
+      "path": "references/401 参数检查失败的可能原因和解决办法.md",
+      "title": "401 参数检查失败的可能原因和解决办法",
+      "snippet": "**问题现象** 调用接口报错401 参数检查失败。 **可能原因** 1. 必选参数没有传入。 2. 参数类型错误 (Type Error)。 3. 参数数量错误 (Argument Count Error)。 4. 空参数错误 (Null Argument Error)。 5. 参数格式错误 (Format Error)。 6. 参数值范围错误 (Value Range Error)。 7. client_id配置错误。 8. 未使用手动签名。 **解决措施** 1. 请检查必选参数是否传入，传入的参数类型是否错误，以及传入的参数是否符合规格约束。 2. 检查module type为entry的模块下module.json5中的client_id配置的值是否正确，请参考 配置Client ID 。 3. 请使用手动签名方式配置签名，请参考 配置签名和指纹 。"
+    },
+    {
+      "path": "references/60180007 服务端通过Authorization Code无法获取到华为账号一键登录手机号如何解决.md",
+      "title": "60180007 服务端通过Authorization Code无法获取到华为账号一键登录手机号如何解决",
+      "snippet": "**问题现象** 调用服务器接口/oauth2/v6/quickLogin/getPhoneNumber时出现错误60180007，无法获取华为账号的一键登录手机号。 **可能原因** 调用服务器接口/oauth2/v6/quickLogin/getPhoneNumber的入参code，不是通过调用华为账号的一键登录组件获取到的。 **解决措施** 请参考 客户端开发 的展示一键登录页面并获取Authorization Code，获取调用服务器接口/oauth2/v6/quickLogin/getPhoneNumber需要的入参code。"
+    },
+    {
+      "path": "references/Access Token和Refresh Token的有效时长是多久.md",
+      "title": "Access Token和Refresh Token的有效时长是多久",
+      "snippet": "Access Token的有效时长是1个小时，Refresh Token的有效时长是180天。"
+    },
+    {
+      "path": "references/Access Token和Refresh Token长度限制要求.md",
+      "title": "Access Token和Refresh Token长度限制要求",
+      "snippet": "Access Token和Refresh Token的长度与其中编码的信息有关，目前来讲Access Token和Refresh Token的长度不会超过1024字符。"
+    },
+    {
+      "path": "references/Account Kit简介.md",
+      "title": "Account Kit简介",
+      "snippet": "Account Kit（华为账号服务）提供简单、快速、安全的登录功能，让用户快捷地使用华为账号登录应用。用户授权后，Account Kit可提供头像、昵称、手机号码等信息，帮助应用更了解用户。 #### 能力范围 - 登录 ：提供登录服务，让用户使用华为账号快速登录应用。 - 获取华为账号用户信息 ：获取用户的基本开放信息，如头像、昵称、手机号、收货地址、发票抬头、风险等级。 - 未成年人模式 ：获取未成年人模式的开启状态及年龄段信息以进行内容分级，调整未成年人相关设置时可增加家长验证，还可调用接口引导用户开启或关闭未成年人模式。 #### 亮点/特征 **一键登录** 应用可以通过华为账号一键登录功能获取手机号授权并完成登录，帮助应用建立用户体系或者打通原有的用户体系。优点如下： - 便捷性：一键完成登录和手机号授权，为用户提供更加便捷易用的登录体验。 - 全场景：Phone、Tablet、PC/2in1设备登录体验一致，保障用户数据资产跨端延续。 - 效率高：无需单独集成SDK，减少开发者开发和运营成本。 **未成年人模式** 应用可以通过未成年人模式的相关能力帮助家长快速开启未成年人模式，守护未成年人健康使用电子设备和应用。有以下优点： - 便捷性：统一管控未成年人模式入口，仅需一次设置，应用联动生效，避免各个应用内单独开启的繁琐操作，提升用户体验。 - 全面守护：应用与系统"
+    },
+    {
+      "path": "references/HarmonyOS APK应用和HarmonyOS应用在一键登录场景下的用户数据如何互通.md",
+      "title": "HarmonyOS APK应用和HarmonyOS应用在一键登录场景下的用户数据如何互通",
+      "snippet": "终端设备从HarmonyOS 3.x/4.x（简称HarmonyOS）升级到HarmonyOS NEXT/5.0.x及之后版本（简称HarmonyOS NEXT）。 1. HarmonyOS APK应用使用OpenID关联用户数据时，将用户数据关系切换成UnionID，具体切换指导可以参考： 通过OpenID获取UnionID 。 2. HarmonyOS APK应用使用UnionID关联用户数据时，在HarmonyOS NEXT/5.0.x上接入华为账号一键登录获取手机号后，应用需要同时将UnionID和手机号与用户信息进行关联，最终实现应用使用华为账号一键登录和手机号登录数据互通。详细流程可以参考： 用户场景设计 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c2/v3/9aPDMO8GTymkPE-iUa4sKA/zh-cn_image_0000002543374458.png?HW-CC-KV=V1&HW-CC-Date=20260421T111438Z&HW-CC-Expire=86400&HW-CC-Sign=70A97BAD4D23299022281A247018EE2931A3ED1F355701CF88B388F6C4F408C6)"
+    },
+    {
+      "path": "references/ID Token的使用场景与使用方法.md",
+      "title": "ID Token的使用场景与使用方法",
+      "snippet": "ID Token是OIDC（ OpenID Connect ）协议相对于OAuth 2.0协议扩展的一个用户身份凭证。 ID Token 是 JWT Token格式，意味着： 1. 用户的身份信息直接被编码进了ID Token，不需要额外请求其他的资源来获取用户信息。 2. ID Token 可以验证其是华为账号服务颁发的，携带华为账号签名信息，验证签名可证明其没有被篡改过。 #### 使用场景 1. 应用无服务器，只有客户端，该场景下无法使用Authorization Code完成服务器侧的接口调用获取用户信息，需从ID Token中解析出用户信息； 2. 应用有服务器，希望在服务器侧解析ID Token对应字段，获取用户信息。 #### 字段说明 ID Token是JWT Token格式数据，其中payload包含字段如下： #### 解析与验证 #### **服务端解析与验证** 使用场景：有服务器应用。 对于有应用服务端的应用，推荐在服务端进行ID Token解析与验证，具体参考以下Maven工程依赖配置及Java示例代码。 Maven工程依赖： <dependencies> <dependency> <groupId>com.alibaba.fastjson2</groupId> <artifactId>fastjson2</artifactId> <version>2."
+    },
+    {
+      "path": "references/OpenID和UnionID的格式说明.md",
+      "title": "OpenID和UnionID的格式说明",
+      "snippet": "为减少开发者接入和迁移成本，Account Kit在2023年09月21日对OpenID、UnionID的长度做出了如下调整： - OpenID - 应用创建时间晚于（含）2023年09月21日 23:00:00，OpenID固定28位。 - 应用创建时间早于2023年09月21日 23:00:00，OpenID长度不固定，限制在1-256位。 - UnionID - 开发者账号注册时间晚于（含）2023年09月21日 23:00:00，UnionID固定29位。 - 开发者账号注册时间早于2023年09月21日 23:00:00，UnionID长度不固定，限制在1-92位。 #### 唯一性标识 1. 开发者账号下管理了多个应用时，针对同一个华为账号，不同的应用返回的OpenID值不同，但返回的UnionID相同。 2. 如果开发者账号下管理了多个应用，并且这些应用需要共享同一个华为账号的用户信息，可以使用UnionID作为用户标识。 #### 数据类型 OpenID和UnionID均是字符串类型的数据。 #### 大小写敏感 OpenID和UnionID严格区分大小写。 #### 实际应用中的注意事项 在存储、查询、比较OpenID或UnionID时，请务必保持其原始的大小写格式。"
+    },
+    {
+      "path": "references/一键登录场景下无法获取到匿名手机号如何解决.md",
+      "title": "一键登录场景下无法获取到匿名手机号如何解决",
+      "snippet": "在华为账号一键登录场景下无法获取到匿名手机号时，建议通过以下步骤排查解决： 1. 开发者开启了 代码混淆 ，quickLoginAnonymousPhone（匿名手机号）属性需要配置混淆白名单防止release包被混淆。在调用获取匿名手机号方法工程模块的混淆文件obfuscation-rules.txt中添加： # 开发者开启属性混淆需要配置quickLoginAnonymousPhone属性白名单防止其被混淆 -enable-property-obfuscation -keep-property-name quickLoginAnonymousPhone 2. Wearable、TV（非5.1.1版本）设备无法获取到手机号，会报 1001500003 不支持该scopes或permissions 。 3. 华为账号未绑定手机号，该异常场景应用需要展示其他登录方式。 4. 使用华为账号一键登录服务的账号必须是中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）华为账号。 5. 确认是否在AGC的 开发与服务 中申请华为账号一键登录权限。图示为未申请状态，未申请将报错 1001502014 应用未申请scopes或permissions权限 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAllia"
+    },
+    {
+      "path": "references/一键登录场景下无法获取到明文手机号如何解决.md",
+      "title": "一键登录场景下无法获取到明文手机号如何解决",
+      "snippet": "阅读此章节前请先保证已在华为账号一键登录场景成功获取到匿名手机号。在华为账号一键登录场景下无法获取到明文手机号时，建议通过以下步骤排查解决： 1. 华为账号未绑定手机号，该异常场景应用需要展示其他登录方式。 2. 使用华为账号一键登录服务的账号必须是中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）华为账号。 3. 应用服务端获取华为账号绑定号码时，该服务器必须部署在中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）。 4. 应用用于向服务端获取手机号的authCode不是通过调用华为账号一键登录组件获取到的，详情可参考一键登录 客户端开发 。"
+    },
+    {
+      "path": "references/一键登录场景下，应用已展示一键登录页，此时用户退出、切换或注销华为账号应该如何处理.md",
+      "title": "一键登录场景下，应用已展示一键登录页，此时用户退出、切换或注销华为账号应该如何处理",
+      "snippet": "应用通过 订阅华为账号的登录/登出事件 监听当前设备华为账号的登录状态，若监听到华为账号登出事件，则需跳转至其他登录页面；若监听到华为账号登录事件，则需重新获取匿名手机号并刷新一键登录页。示例代码详见 华为账号一键登录SampleCode 。"
+    },
+    {
+      "path": "references/三方开发框架接入华为账号一键登录.md",
+      "title": "三方开发框架接入华为账号一键登录",
+      "snippet": "Account Kit随HarmonyOS整体框架支持三方平台，为常见的三方开发框架提供了SampleCode示例工程，体现了Account Kit的 华为账号一键登录 特性，可参考示例工程进行应用的相关内容开发： - Flutter - H5 - React-Native - uni-app"
+    },
+    {
+      "path": "references/不同开发者的应用之间如何实现用户数据互通.md",
+      "title": "不同开发者的应用之间如何实现用户数据互通",
+      "snippet": "不同开发者的应用，可以使用GroupUnionID关联用户数据来实现数据互通。GroupUnionID是华为账号用户在关联主体账号组内的唯一标识。不同开发者账号加入同一关联主体账号组后，其组内所有开发者的应用获取到用户的GroupUnionID相同。应用获取GroupUnionID流程如下： 1. 开发者账号加入同一关联主体账号组。 通过 创建账号组 创建关联主体账号组，在关联主体账号组中 添加账号组成员 。 2. 获取GroupUnionID。 - 针对新用户，在登录时可以直接获取GroupUnionID，具体指导请参考： 通过Authorization Code获取GroupUnionID 。 - 针对已获取OpenID或UnionID的用户，可以批量获取GroupUnionID，具体指导请参考： 通过OpenID或UnionID获取GroupUnionID 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6c/v3/M_BuSoOOSwCm841Tj0Hovg/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111440Z&HW-CC-Expire=86400&HW-CC-Sign=5DBEF2"
+    },
+    {
+      "path": "references/个人数据处理说明.md",
+      "title": "个人数据处理说明",
+      "snippet": "此文档针对华为作为最终用户数据处理者，开发者作为最终用户数据控制者的数据处理进行说明，包括： - 华为处理的个人数据清单 - 指导开发者如何帮助最终用户实现对数据的控制 #### 华为处理的个人数据清单 最后修改时间：2025/12/18 #### 指导开发者如何帮助最终用户实现对数据的控制 开发者通过Account Kit API获取的用户数据，需要开发者自行提供对应的数据主体权利。Account Kit存储的用户个人数据请参考《 关于华为账号与隐私的声明 》"
+    },
+    {
+      "path": "references/使用“华为账号登录”按钮登录.md",
+      "title": "使用“华为账号登录”按钮登录",
+      "snippet": "应用可以使用Account Kit提供的华为账号登录按钮及服务端交互获取华为账号用户身份标识UnionID、OpenID，通过UnionID、OpenID完成用户登录；或者与应用账号完成绑定，绑定后用于登录或者验证。 华为账号登录按钮包含文本、标志和文本、标志三种样式，以满足应用对界面风格一致性和灵活性的要求。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/05/v3/RFNOq3_BSMCPP6KIrwFJPg/zh-cn_image_0000002543214782.png?HW-CC-KV=V1&HW-CC-Date=20260421T111433Z&HW-CC-Expire=86400&HW-CC-Sign=C20597A526A3CE3BF38C97A8ACCD2067374184507936F87873949222A708B06F) #### 约束与限制 华为账号按钮登录能力支持Phone、Tablet、PC/2in1设备。并且从5.1.1(19)版本开始，新增支持TV设备。 #### 用户体验设计 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scen"
+    },
+    {
+      "path": "references/使用华为账号一键登录功能时，是以华为账号的UnionID_OpenID还是以手机号作为用户的主要标识.md",
+      "title": "使用华为账号一键登录功能时，是以华为账号的UnionID/OpenID还是以手机号作为用户的主要标识",
+      "snippet": "推荐使用华为账号的UnionID/OpenID作为用户的主要标识，并将应用与华为账号绑定的手机号关联。华为账号的UnionID/OpenID不会发生变化，即使换绑手机号，仍然可以使用华为账号登录原来绑定的应用账号。该方式可以保障应用账号在多设备、多场景和多应用服务类型间（如应用、元服务等）的互联互通，保证应用的统一体验。若应用使用手机号作为用户的主要标识，如果华为账号换绑了手机号，再登录应用，就是新手机号对应的账号。华为账号一键登录详细流程请参考 用户场景设计 。"
+    },
+    {
+      "path": "references/使用自定义按钮登录.md",
+      "title": "使用自定义按钮登录",
+      "snippet": "应用应遵照 【华为账号登录】按钮 使用规则在登录页面嵌入自定义华为账号登录按钮，使用自定义按钮触发调用华为账号登录API获取Authorization Code，通过服务端交互获取用户的UnionID、OpenID完成用户登录；或者与应用账号完成绑定，绑定后用于登录或者验证。 #### 约束与限制 自定义按钮登录能力支持Phone、Tablet、PC/2in1设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/28/v3/5bFrn2kiS7u-SvW-ISq2dQ/zh-cn_image_0000002573974673.png?HW-CC-KV=V1&HW-CC-Date=20260421T111433Z&HW-CC-Expire=86400&HW-CC-Sign=A57D935A3E745D0521B31DB4342C642805D46B29DDF3B19993ADCE5EB5280A12) 流程说明： 1. 展示自定义按钮调用登录API阶段（序号1-4）： 1. 用户打开应用进行登录，点击自定义登录按钮，应用传forceL"
+    },
+    {
+      "path": "references/关闭应用的未成年人模式（推荐）.md",
+      "title": "关闭应用的未成年人模式（推荐）",
+      "snippet": "系统的未成年人模式已开启，用户打开应用，希望单独关闭应用的未成年人模式，系统的未成年人模式仍保持开启。 当用户需要关闭应用的未成年人模式时，应用可调用系统家长身份验证接口 verifyMinorsProtectionCredential ，验证通过后可关闭应用的未成年人模式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f2/v3/t11ZfYiWTu2T0pJlY5_-UQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111436Z&HW-CC-Expire=86400&HW-CC-Sign=515A46E8BB0B41FCB861E9666E882866551CCBF13B6EBD6866C9B7610AE1C83F) 当前场景为关闭未成年人模式的推荐方案，相较于关闭系统的未成年人模式，单独关闭应用的未成年人模式更为灵活，且较符合用户体验预期。当前场景需要开发者在应用侧记录单独关闭状态（示例：userTurnOffFlag，记录用户是否主动关闭了应用的未成年人模式），便于后续与系统重新联动。如应用重新启动时： 1. 当应用查询到userTurnOffFlag为True，应用需保持应用的未成年人模式为"
+    },
+    {
+      "path": "references/关闭系统的未成年人模式.md",
+      "title": "关闭系统的未成年人模式",
+      "snippet": "系统的未成年人模式已开启。用户打开应用，在应用内关闭系统未成年人模式。 应用可调用系统的未成年人模式关闭接口 leadToTurnOffMinorsMode ，验证家长密码后关闭系统的未成年人模式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4d/v3/cVqkxP0xTO2MVLsV87NstA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111436Z&HW-CC-Expire=86400&HW-CC-Sign=C81B68CB155DD21327AFD098E6790CD2F4343A8C5E693420D288FD39AC4FF2FA) 用户在应用内操作时，预期可能是关闭应用的未成年人模式，而非关闭整个系统的未成年人模式（其他应用/元服务的未成年人模式也会随之关闭）。如果开发者选择这种接入方式，建议在界面上告知用户即将关闭系统的未成年人模式。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8a/v3/E00rRS37R0mS7nQkIIFHfg/zh-c"
+    },
+    {
+      "path": "references/华为账号一键登录（获取手机号和UnionID_OpenID）.md",
+      "title": "华为账号一键登录（获取手机号和UnionID/OpenID）",
+      "snippet": "华为账号一键登录是基于 OAuth 2.0协议标准 和 OpenID Connect协议标准 构建的OAuth 2.0授权登录系统，应用可以通过华为账号一键登录能力快捷地获取华为账号用户的身份标识和手机号，快速建立应用内的用户体系。 **优势：** - 利用系统账号的安全性和便利性，用户无需输入账号名和密码，无需复杂的安全验证，简化登录步骤，提高用户转化率。 - 提供系统验证过的手机号，关联应用已有用户。 - 实现Phone、Tablet、PC/2in1、TV设备一致的登录体验。 #### 场景介绍 若应用需同时获取手机号和UnionID完成用户登录，Account Kit提供了同时获取手机号和UnionID的华为账号一键登录按钮。应用可以将华为账号一键登录按钮嵌入自有的登录页，使用登录按钮获取手机号和UnionID，实现用户登录。设备登录华为账号（该账号已绑定手机号）后，一键登录获取手机号可不依赖设备插SIM卡。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b5/v3/ac8Fx_DkQ8C6pfee7zaIkg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111432Z&HW-CC-Expire=8"
+    },
+    {
+      "path": "references/华为账号其他方式登录获取用户风险等级.md",
+      "title": "华为账号其他方式登录获取用户风险等级",
+      "snippet": "应用已使用华为账号关联登录场景下，开展商户补贴、优惠券发放等商业营销活动时获取华为账号风险等级，有效识别“薅羊毛”风险，保护营销资源合理使用，降低业务安全问题给营销方带来的损失，为相关活动保驾护航。以下对Account Kit提供的获取用户风险等级能力进行介绍，如果需要同时获取风险等级和手机号还可参考场景化控件 获取手机号和风险等级Button 进行实现。 #### 约束与限制 1. 获取用户风险等级scope仅支持与openid、phone、profile组合使用，接口支持的全量scopes见 scope列表 。 2. 获取风险等级能力支持Phone、Tablet、PC/2in1设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/63/v3/fiac3BUwS3iLB9z_FqNOUw/zh-cn_image_0000002543374452.png?HW-CC-KV=V1&HW-CC-Date=20260421T111435Z&HW-CC-Expire=86400&HW-CC-Sign=19E9A67F9C01B1141961"
+    },
+    {
+      "path": "references/应用与系统联动切换未成年人模式.md",
+      "title": "应用与系统联动切换未成年人模式",
+      "snippet": "在未成年人模式下，应用可通过以下两种方式获取系统未成年人模式状态，与系统未成年人模式进行联动： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e/v3/5JjUNg70S1KeiJdHKJIAow/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111436Z&HW-CC-Expire=86400&HW-CC-Sign=FB2939415840D74678667C04E0C61DC1E5129FD57DF1D6AF22B4199E4D7B7167) 以下两种方式都需要应用实现，如开发者不实现订阅系统未成年人模式公共事件，则应用无法实时感知系统未成年人模式的变化。 示例：当应用处于前台时，若开发者未实现订阅系统未成年人模式公共事件，用户从控制中心开启未成年人模式后，当前应用将无法实时感知系统未成年人模式的变化。 1. 查询系统的未成年人模式是否开启：应用启动时，可调用 getMinorsProtectionInfoSync 接口，主动查询系统的未成年人模式状态；如系统未成年人模式为开启状态，则应自动开启应用的未成年人模式；如系统未成年人模式为关闭状态，则应自动关闭应用的未成年人模式。 2. 订阅 系统未成年人模"
+    },
+    {
+      "path": "references/应用内开启未成年人模式.md",
+      "title": "应用内开启未成年人模式",
+      "snippet": "在应用内增加引导开启系统未成年人模式的入口，当系统的未成年人模式未开启，可在应用内开启系统未成年人模式。 应用可调用系统的未成年人模式开启接口 leadToTurnOnMinorsMode 引导用户开启未成年人模式，设置家长身份验证密码，开启系统的未成年人模式。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/82/v3/3qMSnxKXQHWtkNXsU2yRXw/zh-cn_image_0000002573974681.png?HW-CC-KV=V1&HW-CC-Date=20260421T111436Z&HW-CC-Expire=86400&HW-CC-Sign=32F9B89CC8D9518DF1ACB778104C9DA24764C55466D54040174BFA7BB32F0C0C) 流程说明： 1. 用户打开应用时，应用通过订阅 系统未成年人模式公共事件 感知系统未成年人模式的状态变化。 2. 调用 getMinorsProtectionInfoSync 或 getMinorsProtectionInfo 获取系统未成年人模式的开启状态，如果系统未成年人模式未开启，则调用 leadToTurnOnMinorsMode 引导用户开"
+    },
+    {
+      "path": "references/应用内调整未成年人模式设置.md",
+      "title": "应用内调整未成年人模式设置",
+      "snippet": "系统的未成年人模式已开启，应用已随系统切换至未成年人模式。用户打开应用，希望在应用内调整内容偏好、使用时长等设置，需要验证家长身份。 应用可调用家长身份验证接口 verifyMinorsProtectionCredential ，拉起验证未成年人模式密码页面。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5d/v3/1u-ki_sCRtam_QYk3kGgVA/zh-cn_image_0000002573854707.png?HW-CC-KV=V1&HW-CC-Date=20260421T111437Z&HW-CC-Expire=86400&HW-CC-Sign=542E882759D5E03A398211A9B1A6967A145F5AFBF57BB62D68133BE98B4E04CE) 流程说明： 1. 用户打开应用时，应用通过 系统未成年人模式公共事件 感知未成年人模式的状态变化。可以调用 getMinorsProtectionInfoSync 或 getMinorsProtectionInfo 获取系统未成年人模式信息。 2. 当系统未成年人模式已开启，且用户修改应用内设置时，应用可调用 verifyMinorsProtectio"
+    },
+    {
+      "path": "references/开发者使用Account Kit的登录能力的管理细则.md",
+      "title": "开发者使用Account Kit的登录能力的管理细则",
+      "snippet": "为了保护用户隐私信息，确保用户获得良好的登录体验，根据 《华为开发者服务协议》 、 《华为APIs使用协议》 、 《应用审核指南》 、 《元服务审核指南》 等相关协议条款及现行法律法规，平台制定了华为账号登录管理细则，使用华为账号登录的应用请遵照执行，具体要求如下： #### 上架审核要求 为了帮助用户省去多次输入不同应用账号登录的繁琐过程，我们为HarmonyOS应用和元服务开发者提供了使用华为账号快捷登录的能力。提交至华为应用市场的HarmonyOS应用和元服务，需要遵循如下规范： （1）如果应用支持用户使用第三方账号登录，则该应用需提供华为账号登录选项。用户可通过华为账号快捷地登录您的应用，并获得华为账号的安全配置。 （2）如果元服务内需要构建账号体系时，必须使用华为账号登录能力。 #### 登录规范 华为账号提供登录设计规范，保障HarmonyOS应用拥有简单易用、高效一致、快速安全的登录体验。帮助用户使用已有的华为账号登录所有的应用。有关设计规范，请参阅 华为账号开放登录 。 #### 附则 本细则是一份动态更新的文档，我们会根据相关法律法规的变化以及行业发展，不定期对细则内容进行修改或更新，请您持续关注本细则，以便获得最新信息。"
+    },
+    {
+      "path": "references/快速验证.md",
+      "title": "快速验证",
+      "snippet": "当应用对获取的手机号时效性要求不高时，可使用Account Kit提供的手机号授权与快速验证能力，向用户发起手机号授权申请，经用户同意授权后，获取到手机号并为用户提供相应服务。以下对Account Kit提供的手机号授权与快速验证能力进行介绍，快速验证手机号功能还可使用场景化控件 快速验证手机号Button 进行实现。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b6/v3/EA0rsn3WQiyDOpfVkhnXSQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111434Z&HW-CC-Expire=86400&HW-CC-Sign=8B09BF42499A80C8292F1A1DA65A3EB42FCAF58A79F279F66F376EB40078E8F5) 对用户选择的华为账号绑定的手机号或者新增的手机号进行验证， **不保证是实时的验证** ， **仅首次需要用户授权** 。 **图1** 手机端快速验证手机号（请以实际效果为准） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100"
+    },
+    {
+      "path": "references/支持的国家_地区.md",
+      "title": "支持的国家/地区",
+      "snippet": ""
+    },
+    {
+      "path": "references/无法获取到头像昵称如何解决.md",
+      "title": "无法获取到头像昵称如何解决",
+      "snippet": "1. 确认获取authorizationCode时，调用 AuthorizationWithHuaweiIDRequest 接口是否传入正确的scope：'profile'。 import { authentication } from '@kit.AccountKit'; // 创建授权请求，并设置参数 const authRequest = new authentication.HuaweiIDProvider().createAuthorizationWithHuaweiIDRequest(); // 获取头像昵称需要传如下scope authRequest.scopes = ['profile']; // 若开发者需要进行服务端开发，则需传如下permission获取authorizationCode authRequest.permissions = ['serviceauthcode']; 2. 确保 AuthorizationWithHuaweiIDRequest 接口传入正确scope后获取到的authorizationCode/IdToken是否在有效期内。 3. 确认调用的是华为账号服务器 获取头像昵称 接口。"
+    },
+    {
+      "path": "references/未成年人模式开启后USB断连如何解决.md",
+      "title": "未成年人模式开启后USB断连如何解决",
+      "snippet": "开发者可以进入设置-系统-开发者选项，点击USB调试开关，会校验健康使用设备密码，校验成功后可解除开发者调试模式限制。 如开发者重新开启USB调试开关后，发现DevEco Studio工具上hilog日志未恢复到断连之前，请执行“hdc shell hilog -G 16M”来扩大hilog日志缓存区，若hilog日志仍无法完全展示，可取出hilog日志本地查看。更多命令请参见 hilog 。"
+    },
+    {
+      "path": "references/概述-1.md",
+      "title": "概述",
+      "snippet": "Account Kit提供了 华为账号一键登录 、 华为账号登录 、 静默登录 等多种登录方式，其中华为账号一键登录 **仅支持企业开发者** 使用，华为账号登录和静默登录 **既支持企业开发者也支持个人开发者** 使用，应用可根据实际场景选择使用其中一种或多种方式进行账号登录。 #### 基础概念 华为账号用户身份标识包含UnionID和OpenID，具体格式要求请参考 OpenID和UnionID的格式说明 ，注意OpenID和UnionID严格区分大小写。两者的定义与使用场景： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/99/v3/gLbuHQK6SPu-7eczTv0cyw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111432Z&HW-CC-Expire=86400&HW-CC-Sign=922AE332DE79C9C590D3A2D528CE421C32106447666D077021333B46CE5B277A) 在开发HarmonyOS应用时，您需要考虑同一用户在非HarmonyOS应用和HarmonyOS应用的用户数据是否互通。如果您之前使用OpenID来关联用户数据，我们建议将用"
+    },
+    {
+      "path": "references/概述-2.md",
+      "title": "概述",
+      "snippet": "当应用需要获取用户身份标识或者完善用户个人资料（头像昵称、收货地址、发票抬头）时，或需要获取用户风险等级判断用户风险时，可通过Account Kit提供的相关能力，引导用户填写、管理相关信息并完成授权。获取头像昵称、收货地址、发票抬头等详细接入体验可参考Account Kit提供的 SampleCode示例工程 。 **典型场景：** 1. 应用需要完善用户头像昵称信息，参见 获取头像昵称 。 2. 应用提供的服务依赖用户收货地址，需要获取用户收货地址，参见 获取收货地址 。 3. 应用提供的服务依赖用户发票抬头信息，需要获取用户发票抬头，参见 获取发票抬头 。 4. 应用提供的服务依赖用户风险等级信息，需要获取用户风险等级，参见 获取风险等级 。 5. 应用提供的服务依赖用户手机号，需要获取用户手机号，参见 获取手机号 。"
+    },
+    {
+      "path": "references/概述-3.md",
+      "title": "概述",
+      "snippet": "当应用需要获取用户手机号时，可使用Account Kit提供的手机号授权能力，引导用户完成手机号授权。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b5/v3/MBsTX1mNTAKuH2ImF65t0A/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111434Z&HW-CC-Expire=86400&HW-CC-Sign=FC64B5CA1814171F524005B4D7728091DD6E87D0309B3D0CC3372783EFBC128F) 在应用账号已登录并绑定用户华为账号UnionID的情况下，应用可以在获取手机号等用户信息时根据实际业务场景判断是否需要提前校验当前应用账号绑定的UnionID与系统账号当前的UnionID是否一致。 Account Kit提供了快速验证方式： #### 约束与限制 1. 应用满足《 常见类型移动互联网应用程序必要个人信息范围规定 》（对第三方网站的内容，华为不承担任何责任）中使用手机号的必要业务场景。 2. 儿童账号无法通过快速验证获取到手机号。 3. 获取手机号能力支持Phone、Tablet、PC/2in1设备。并且从5.1.0(18)版本开始"
+    },
+    {
+      "path": "references/概述-4.md",
+      "title": "概述",
+      "snippet": "当应用需要获取用户风险等级时，可使用Account Kit提供的获取用户风险等级能力，用于以下恶意场景识别： 1. 应用登录风控场景：应用使用华为账号关联登录时，获取华为账号风险等级，对高风险等级账号进行风控，提升应用的安全等级。 2. 营销活动反作弊场景：应用营销活动期间，如进行商户补贴、优惠券发放等商业营销活动时获取华为账号风险等级，协助开发者有效识别“薅羊毛”风险；保护营销资源合理使用，降低业务安全问题给营销方带来的损失，为相关活动保驾护航。 Account Kit提供的风险等级如下："
+    },
+    {
+      "path": "references/概述.md",
+      "title": "概述",
+      "snippet": "未成年人模式用于帮助应用与系统联动，提供未成年人网络保护。应用通过接入Account Kit提供的 未成年人模式能力 与系统联动，可快速实现自动切换未成年人模式状态，简化了家长用户的设置步骤，为未成年人提供安全、健康的网络环境。 #### 基本概念 - 未成年人 本章节中所指未成年人，即中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）未满十八周岁的公民。 - 开启系统未成年人模式后的限制项目 1. 使用时长限制：针对16周岁及以上不满18周岁的未成年人使用者，默认每日可使用时长2小时，其他年龄的未成年人使用者，默认每日可使用时长为1小时。 2. 应用安装限制：默认仅允许安装适龄应用。 3. 应用打开限制：默认仅允许打开已接入未成年人模式且配置minors_mode值为\"1\"的应用（游戏类应用要求满足“适龄应用”条件），家长可对应用进行豁免，允许本次使用。 4. 内容访问限制：接入未成年人模式的应用默认随系统切换至未成年人模式，在应用内展示适龄内容。 5. 其他系统功能限制：部分系统功能将受限使用，包括部分应用的卸载更新，退出系统华为账号登录，USB调试功能等，更多限制请进入“设置 > 健康使用设备”查看。 - 适龄应用 适龄应用指在华为应用市场中的应用分级小于或等于未成年使用者的年龄的应用。例如： 1. 某应用在华为应用市场的年龄分级为年满12周岁（12+），未成年使用者为"
+    },
+    {
+      "path": "references/申请账号权限.md",
+      "title": "申请账号权限",
+      "snippet": "请参考“ 应用开发准备 ”章节，创建应用、使用DevEco Studio创建应用工程。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fa/v3/EJInoXBETIWtOXnkRfPHAA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111432Z&HW-CC-Expire=86400&HW-CC-Sign=37AC687D3AF36C0213318FEB77147F5E0C846B21B8E6F335C70D0923351290A7) 如需申请华为账号一键登录、获取您的手机号、获取收货地址权限，则需按照以下步骤完成权限申请，否则可跳过本章节。 #### 申请前自检 申请权限前请参考 **表1** ，了解账号权限支持的能力和使用条件，并根据 **表2** 、 **表3** 、 **表4** 完成自检，确认您的 **应用类型、设备类型、开发者类型等** 是否符合申请条件，不符合条件的申请将被驳回。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c9/v3/UNIMiJr6TQ-lzdo"
+    },
+    {
+      "path": "references/获取发票抬头.md",
+      "title": "获取发票抬头",
+      "snippet": "当应用需要获取用户发票抬头时，可使用Account Kit提供的发票助手能力，打开发票抬头选择页面，帮助用户快速选择或管理发票抬头。以下对Account Kit提供的发票助手能力进行介绍，获取发票抬头功能还可使用场景化控件 选择发票抬头Button 进行实现。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e0/v3/Q3y9MREkS5W3jBG9LmLl7A/zh-cn_image_0000002543214788.png?HW-CC-KV=V1&HW-CC-Date=20260421T111435Z&HW-CC-Expire=86400&HW-CC-Sign=BE39E5C7F9EC132F717FC587810B6C2D86C15D41D8F062D2994D66BA06DAA72E) #### 约束与限制 Wearable、TV设备暂不支持使用获取发票抬头功能。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9c/v3/5vUH-T7nTeGrNudl2UnofA/zh-cn_image_000000257385"
+    },
+    {
+      "path": "references/获取头像昵称.md",
+      "title": "获取头像昵称",
+      "snippet": "当应用需要获取用户头像昵称信息，可使用Account Kit提供的头像昵称授权能力，用户允许应用获取头像昵称后，可快速完成个人信息填写。以下对Account Kit提供的头像昵称授权能力进行介绍。此外，开发者也可通过场景化控件中的 选择头像Button 获取用户头像。 **图1** 手机端获取头像昵称（请以实际效果为准） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8a/v3/qv8geUMaRs-1ZfgZg9udjw/zh-cn_image_0000002543214784.png?HW-CC-KV=V1&HW-CC-Date=20260421T111434Z&HW-CC-Expire=86400&HW-CC-Sign=F51D66A4984171D04750FA397142F98EC10F6DF02058C673F704816792E6D8F1) **图2** Wearable设备获取头像昵称（请以实际效果为准） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b0/v3/HPcOKpOAT-WltOrwMR0POA/zh-cn_ima"
+    },
+    {
+      "path": "references/获取收货地址.md",
+      "title": "获取收货地址",
+      "snippet": "当应用需要获取用户收货地址时，可使用Account Kit提供的获取收货地址的能力，引导用户添加或选择已有的收货地址，并最终获取用户的收货地址。以下对Account Kit提供的获取收货地址能力进行介绍，获取收货地址功能还可使用场景化控件 选择收货地址Button 进行实现。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4d/v3/6tYLSwOtQxysOOE8YDlsZg/zh-cn_image_0000002573974677.png?HW-CC-KV=V1&HW-CC-Date=20260421T111434Z&HW-CC-Expire=86400&HW-CC-Sign=F0ED8CE06E708672335239A65AB96DD5E66249807EB781AC9FC6995E67399ED7) #### 约束与限制 1. 收货地址中的手机号信息仅支持输入中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）手机号、地址信息只支持填写中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）。 2. Wearable、TV设备暂不支持使用获取收货地址功能。 #### 业务流程 ![](https://contentcenter-vali-drcn."
+    },
+    {
+      "path": "references/订阅到系统未成年人模式开启了，这个时候应用要怎么处理.md",
+      "title": "订阅到系统未成年人模式开启了，这个时候应用要怎么处理",
+      "snippet": "如果应用处于后台，可以在应用切换至前台时进行页面内容的刷新。开发者可自行关注应用后台行为是否需要中断，例如是否需要中断后台播放的音视频内容等，避免未成年人绕过限制，继续访问非适龄内容。 如果应用处于前台（用户正在浏览内容或播放音视频等场景），可以在监听到状态变化后回到应用的主页，并将主页内容刷新为当前模式下的适龄内容。如果未及时刷新，可能存在未成年用户浏览到非适龄内容绕过管控，或成年用户仍浏览未成年人模式下的内容，无法关闭未成年人模式的情况。刷新后的未成年人模式主页可参考如下设计： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/82/v3/1n5oYU6DRC6idbMaze-C-w/zh-cn_image_0000002543214790.png?HW-CC-KV=V1&HW-CC-Date=20260421T111440Z&HW-CC-Expire=86400&HW-CC-Sign=77AB3D86D8ED2E11F88820F303AB1B37905EEBFCC97D2169C7439BFCC5ECC2CA)"
+    },
+    {
+      "path": "references/订阅华为账号的登录_登出事件.md",
+      "title": "订阅华为账号的登录/登出事件",
+      "snippet": "应用在前台时可以订阅Account Kit提供的华为账号登录/登出广播事件，来感知华为账号的登录状态，实现用户登录/登出应用的逻辑。应用也可通过 getHuaweiIDState 实时查询华为账号登录状态。 #### 事件说明 以下是华为账号登录/登出发送的广播事件。 #### 开发前提 在进行代码开发前，请确保已按照“开发准备”章节中的指导完成 配置签名和指纹 、 配置Client ID 。此场景无需申请账号权限。 #### 开发步骤 1. 导入 commonEventManager 模块及相关公共模块。 import { hilog } from '@kit.PerformanceAnalysisKit'; import { BusinessError, commonEventManager } from '@kit.BasicServicesKit'; 2. 创建订阅者，并处理订阅结果。 // 订阅者信息 const subscribeInfo: commonEventManager.CommonEventSubscribeInfo = { events: [commonEventManager.Support.COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN, commonEventManager.Support.COMMON_EVENT_DIS"
+    },
+    {
+      "path": "references/订阅和处理用户信息变更.md",
+      "title": "订阅和处理用户信息变更",
+      "snippet": "通过订阅用户信息变更，您可以接收有关用户及其账户的重要更新。当用户及其账户信息发生变更时，华为账号服务器会发送通知到应用服务端，应用服务端可以根据通知消息进行自身业务处理。 #### 用户信息变更事件介绍 #### 订阅用户信息变更 订阅步骤如下： 1. 登录 华为开发者联盟 ，选择“管理中心 > API服务 > API库”。 2. 在App Services找到RISC。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/79/v3/DWF5oJ0JQAmYD7dS42Aaag/zh-cn_image_0000002573974683.png?HW-CC-KV=V1&HW-CC-Date=20260421T111437Z&HW-CC-Expire=86400&HW-CC-Sign=DBF7535DE17A30CB2B2FAEE135F73FFC7642D3BFE8C0BABDB6078B9C3ED399CB) 3. 点击启用按钮（未选择项目时，需先选择项目，再点击启用按钮）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3f/v3/lTB59"
+    },
+    {
+      "path": "references/通过华为账号一键登录获取用户风险等级.md",
+      "title": "通过华为账号一键登录获取用户风险等级",
+      "snippet": "应用登录风控场景，可以通过 华为账号一键登录 获取用户风险等级，对恶意账号进行风控，提升应用的安全等级。 #### 约束与限制 通过华为账号一键登录获取用户风险等级能力支持Phone、Tablet、PC/2in1设备。并且从5.1.1(19)版本开始，新增支持TV设备。 #### 业务流程 **图1** 华为账号一键登录（用户首次登录应用）获取华为账号风险等级流程图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e0/v3/VTwsDBXlR2SgXEzQLv3PLA/zh-cn_image_0000002573974679.png?HW-CC-KV=V1&HW-CC-Date=20260421T111435Z&HW-CC-Expire=86400&HW-CC-Sign=21155A4DD8EA7E95E25793E5902FC28F5E0DBD35FF420D2EB2858E9E4A0F0CC9) 1. 参考 华为账号一键登录业务流程 ，确保系统账号已登录，匿名手机号获取成功，且用户首次使用华为账号登录应用。（如用户非首次使用华为账号登录，可通过 华为账号其他方式登录获取用户风险等级 来查询华为账号的风险等级） 2. 调用 LoginWithHuaweiIDB"
+    },
+    {
+      "path": "references/配置Client ID.md",
+      "title": "配置Client ID",
+      "snippet": "在 AppGallery Connect（简称AGC）的 开发与服务 中，选择对应的项目和对应的应用，在“常规 > 应用 ”下，找到 **应用** 的Client ID和APP ID。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/de/v3/C6HAfOE7SZiPq8FGs_LrrA/zh-cn_image_0000002573854691.png?HW-CC-KV=V1&HW-CC-Date=20260421T111432Z&HW-CC-Expire=86400&HW-CC-Sign=3520951CA4FA65D071D26FEF294B652E05E326A51AA509E1AC86329E2848A8FF) #### 确认是否需要配置Client ID 如果上一步获取到的Client ID和APP ID相同，则无需配置Client ID，否则需要按下一步配置Client ID。 #### 配置Client ID 在工程中 **entry** 模块的module.json5文件中，新增metadata，配置name为client_id，value为上一步获取的Client ID的值，如下所示： ![](https://contentcenter-val"
+    },
+    {
+      "path": "references/配置签名和指纹.md",
+      "title": "配置签名和指纹",
+      "snippet": "请参考“ 应用开发准备 ”章节，完成以下操作步骤： 1. 创建项目和工程（如已完成，请跳过此步骤）。 2. 配置签名信息 **（未成年人模式接口支持自动签名，其他接口仅支持手动签名方式）** 。 3. 添加公钥指纹。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4f/v3/tgSSSnCATuWf-9FTGo_T5Q/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111432Z&HW-CC-Expire=86400&HW-CC-Sign=030F746C659F7CBB4E380F6E7C7EA482B40C4912FCA56148CFF052BF73D7809C) **发布阶段** ，请参考 发布流程 章节，重新配置用于应用发布的签名信息、添加公钥指纹（必选）。 - 检查是否需要配置公钥指纹：应用仅接入未成年人模式或compatibleSdkVersion>=20不需要配置公钥指纹，其他场景均需配置。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7a/v3/6z5u30DoR"
+    },
+    {
+      "path": "references/静默登录.md",
+      "title": "静默登录",
+      "snippet": "在应用卸载重装、用户换机等场景，如登录的华为账号与应用重装、换机前一致，应用可通过Account Kit提供的静默登录方式即不需要用户点击登录/注册按钮，即可获取用户的身份标识UnionID/OpenID，完成用户的静默登录。 #### 约束与限制 静默登录能力支持Phone、Tablet、PC/2in1设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e4/v3/ZDnsM7S_ThWxTPhZ7QtvqQ/zh-cn_image_0000002543374446.png?HW-CC-KV=V1&HW-CC-Date=20260421T111433Z&HW-CC-Expire=86400&HW-CC-Sign=3AB3D278437E32F6B113A06B224495C846ED9DBF30AE6BD583DC5EC81B8176BA) 流程说明： 1. 调用登录API阶段（序号1-3）： 1. 用户使用华为账号登录过应用，应用卸载重装、用户换机后再进入应用时，应用传forceLogin = false等参数调用登录API。"
+    }
+  ]
+}

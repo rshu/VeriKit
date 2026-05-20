@@ -1,0 +1,45 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "sensor-service-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:29.184Z"
+  },
+  "references": [
+    {
+      "path": "references/Sensor Service Kit开发简介.md",
+      "title": "Sensor Service Kit开发简介",
+      "snippet": "Sensor Service Kit（传感器服务）使应用程序能够从传感器获取原始数据，并提供振感控制能力。 - Sensor（传感器）模块是应用访问底层硬件传感器的一种设备抽象概念。开发者可根据传感器提供的相关接口订阅传感器数据，并根据传感器数据定制相应的算法开发各类应用，比如指南针、运动健康、游戏等。 - 本地传感器: 设备内置的传感器，常用的包括加速度传感器、陀螺仪、温度传感器等。 - 动态传感器: 指外置的动态传感器，模块能力可以更细化的控制每个动态传感器。为了管理这些动态接入的设备，应使用 sensor.on('sensorStatusChange', callback) 来监听设备上下线事件。在收到下线通知时，务必调用 sensor.off(...) 来释放之前监听的动态传感器资源，避免内存泄漏或异常调用。 - Vibrator（振动）模块最大化开放马达器件能力，通过拓展马达服务实现振动与交互融合设计，打造细腻精致的一体化振动体验和差异化体验，提升用户交互效率和易用性、提升用户体验、增强品牌竞争力。 - 本地马达: 设备内置的马达，常用的包括转子马达、线性马达等。 - 动态马达: 设备外置的多个马达支持独立控制，且可以根据设备的连接、马达的状态等信息进行灵活的管理。动态马达广泛应用于外接设备，包括手柄、遥控器、外接振动器等, 为了管理这些动态接入的设备，应使用 vibra"
+    },
+    {
+      "path": "references/传感器开发指导(ArkTS).md",
+      "title": "传感器开发指导(ArkTS)",
+      "snippet": "当设备需要获取传感器数据时，可以使用sensor模块，例如：通过订阅方向传感器数据感知用户设备当前的朝向，通过订阅计步传感器数据统计用户的步数等。 详细的接口介绍请参考 @ohos.sensor (传感器) 。 #### 接口说明 #### 开发步骤 开发步骤以加速度传感器ACCELEROMETER为例。 1. 新建一个工程。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ae/v3/zAgQ7ocCR0617fKisQTMyA/zh-cn_image_0000002543214510.png?HW-CC-KV=V1&HW-CC-Date=20260421T111229Z&HW-CC-Expire=86400&HW-CC-Sign=AB53C777D0CD510D166DB1122162AD84A8EDD5049EE8104A284F7B2DEBC52F8F) 2. 配置加速度传感器权限，具体配置方式请参考 声明权限 。 \"requestPermissions\": [ { \"name\":\"ohos.permission.ACCELEROMETER\" } ], 3. 导入模块。 import { sensor } from '@kit.SensorServiceK"
+    },
+    {
+      "path": "references/传感器开发指导(C_C++).md",
+      "title": "传感器开发指导(C/C++)",
+      "snippet": "当设备需要获取传感器数据时，可以使用sensor模块，例如：通过订阅方向传感器数据感知用户设备当前的朝向，通过订阅计步传感器数据统计用户的步数等。 详细的接口介绍请参考 Sensor 。 #### 函数说明 #### 开发步骤 开发步骤以加速度传感器为例。 1. 新建一个Native C++工程。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e1/v3/068-TAdgSUm2EtR-ovBhOg/zh-cn_image_0000002543214512.png?HW-CC-KV=V1&HW-CC-Date=20260421T111230Z&HW-CC-Expire=86400&HW-CC-Sign=1B2DDEE815F6D8D71D78A4242C999946FE6DA5787206DB54A5C60AA7613402EF) 2. 配置加速度传感器权限，具体配置方式请参考 声明权限 。 \"requestPermissions\": [ { \"name\": \"ohos.permission.ACCELEROMETER\" } ] 3. CMakeLists.txt文件中引入动态依赖库。 target_link_libraries(entry PUBLIC lib"
+    },
+    {
+      "path": "references/传感器开发概述.md",
+      "title": "传感器开发概述",
+      "snippet": "系统传感器是应用访问底层硬件传感器的一种设备抽象概念。开发者根据传感器提供的 @ohos.sensor (传感器) ，可以查询设备上的传感器，订阅传感器数据，并根据传感器数据定制相应的算法开发各类应用，比如指南针、运动健康、游戏等。 方向类传感器坐标系和设备的器件贴片方向相关，基本是基于产品定义屏幕自然方向（不同型号的设备屏幕自然方向可能会有所差异）。 以常见的直板手机为例，将手机竖直地拿在面前，屏幕正对着使用者： X轴：沿着屏幕的短边方向，从左到右； Y轴：沿着屏幕的长边方向，从下到上； Z轴：垂直于屏幕，从屏幕向外指向用户的方向。 使用者可以结合设备自然方向及当前的屏幕方向，根据自身的业务场景来决定如何解释和使用这些原始数据。例如，一个体感交互的赛车游戏需要通过倾斜设备来控制方向。无论玩家是竖着还是横着玩，传感器提供的X、Y轴数据始终是相对于屏幕自然方向的数据。开发者需要根据当前的屏幕方向/应用界面显示需求，决定是使用X轴的数据还是Y轴的数据来控制赛车的左右转向，从而确保用户体验的一致性。 对于方向传感器，建议先调用DMS相关接口 Display 获取屏幕方向，再进行开发操作。 #### 运作机制 传感器包含如下四个模块：Sensor API、Sensor Framework、Sensor Service和HDF层。 **图1** 传感器 ![](https://content"
+    },
+    {
+      "path": "references/振动开发指导(ArkTS).md",
+      "title": "振动开发指导(ArkTS)",
+      "snippet": "当设备需要设置不同的振动效果时，可以调用Vibrator模块，例如：设备的按键可以设置不同强度和不同时长的振动，闹钟和来电可以设置不同强度和时长的单次或周期振动。 详细的接口介绍请参考 @ohos.vibrator (振动) 。 #### 接口说明 #### 振动效果说明 目前支持三类振动效果，如下所示： 自定义振动配置文件为Json格式，在形式上如下所示： { \"MetaData\": { \"Create\": \"2023-01-09\", \"Description\": \"a haptic case\", \"Version\": 1.0, \"ChannelNumber\": 1 }, \"Channels\": [ { \"Parameters\": { \"Index\": 0 }, \"Pattern\": [ { \"Event\": { \"Type\": \"transient\", \"StartTime\": 0, \"Parameters\": { \"Frequency\": 31, \"Intensity\": 100 } } }, { \"Event\": { \"Type\": \"continuous\", \"StartTime\": 40, \"Duration\": 54, \"Parameters\": { \"Frequency\": 30, \"Intensity\": 38, \"Curve\": [ { \"Time\": 0, \""
+    },
+    {
+      "path": "references/振动开发指导(C_C++).md",
+      "title": "振动开发指导(C/C++)",
+      "snippet": "当设备需要设置不同的振动效果时，可以调用Vibrator模块，例如：设备的按键可以设置不同强度和不同时长的振动，闹钟和来电可以设置不同强度和时长的单次或周期振动。 详细的接口介绍请参考 Vibrator 。 #### 函数说明 #### 振动效果说明 目前支持两类振动效果，如下所示。 #### 固定时长振动 传入一个固定时长，马达按照默认强度和频率触发振动。 #### 自定义振动 自定义振动提供给用户设计自己所需振动效果的能力，用户可通过自定义振动配置文件，并遵循相应规则编排所需振动形式，使能更加开放的振感交互体验。 #### 开发步骤 1. 新建一个Native C++工程。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/55/v3/ksicyaoHSiiIvTkyXGFuew/zh-cn_image_0000002543374176.png?HW-CC-KV=V1&HW-CC-Date=20260421T111230Z&HW-CC-Expire=86400&HW-CC-Sign=E15F19C9D54558888ED2F7D3CD346CEB917CEEC8EA16B1582A5C25DA012417BC) 2. 控制设备上的振动器，需要申请权限ohos.p"
+    },
+    {
+      "path": "references/振动开发概述.md",
+      "title": "振动开发概述",
+      "snippet": "通过最大化开放马达器件能力，振动器模块服务拓展了马达服务，实现了振动与交互融合设计，从而打造出细腻精致的一体化振动体验和差异化体验，提升用户交互效率、易用性以及用户体验，并增强品牌竞争力。 #### 运作机制 Vibrator属于控制类小器件，主要包含以下四个模块：Vibrator API，Vibrator Framework，Vibrator Service和HDF层。 **图1** 控制类小器件中的Vibrator ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/56/v3/QHjBilB3QJ6wPrBZdWBwPg/zh-cn_image_0000002573854427.png?HW-CC-KV=V1&HW-CC-Date=20260421T111230Z&HW-CC-Expire=86400&HW-CC-Sign=355517F8F88EE20275CB9B737C35F5D94204EBA4AD3874A4103AA1A31A330A72) - Vibrator API：提供振动器基础的API，主要包含振动器的列表查询、振动效果查询、触发/关闭等接口。 - Vibrator Framework：实现振动器的框架层管理，实现与控制类小器件Service"
+    }
+  ]
+}

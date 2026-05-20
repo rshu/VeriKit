@@ -1,0 +1,45 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "preview-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:29.107Z"
+  },
+  "references": [
+    {
+      "path": "references/Preview Kit简介.md",
+      "title": "Preview Kit简介",
+      "snippet": "Preview Kit（文件预览服务）为应用提供便捷的文件快速预览和文件打开加速能力。 - 应用可以通过Preview Kit提供的预览API，快速启动预览界面，实现对各类文件的预览。 通过Preview Kit，用户可以对用户文件（包括图片、视频、音频、文本、html等）进行内容查看。同时用户还可以通过点击右上角的“使用其他应用打开”的按钮跳转到具体的应用进行展示，从而进行其他操作，如图片的旋转、放大等。 目前，Preview Kit实现Office的预览能力，主要是借助WPS的能力实现的，预览界面会有WPS提供的技术支持，并展示WPS的入口，统一按照文件预览的风格进行页面布局。 - Preview Kit还提供了文件打开加速功能，通常用户打开一个较大文件通常要花费几秒甚至十几秒，文件打开加速服务提供了预加载机制提前加载文件，缩短用户打开文件时间，给用户提供流畅顺滑的爽感体验。详见 文件打开加速功能 。 - Preview Kit还提供了通用文件缓存加速功能，通常用户打开或浏览一个文件时，应用需要对文件中的图片、视频等内容进行解码，花费较长时间，通用文件缓存加速功能提供了缓存机制将解码数据缓存到磁盘中，后续用户再次打开或浏览该文件，应用无需执行解码流程，可直接从磁盘中获取缓存的解码数据，省去耗时的解码时间，缩短用户打开或浏览文件的时间，给用户提供极致流畅的体验。详见 通用文件缓存"
+    },
+    {
+      "path": "references/openPreview打开显示预览失败.md",
+      "title": "openPreview打开显示预览失败",
+      "snippet": "Preview Kit的 openPreview 接口在传入文件预览信息时，当前仅支持传入文件的 uri ，不支持传入文件的沙箱路径。 如果调用openPreview接口后，显示预览失败，请检查传入的是否为uri并且检查传入的uri是否存在。"
+    },
+    {
+      "path": "references/使用DocumentViewPicker拿到的uri通过openPreview打开显示预览失败.md",
+      "title": "使用DocumentViewPicker拿到的uri通过openPreview打开显示预览失败",
+      "snippet": "DocumentViewPicker拿到的文件uri应用仅有临时权限，该权限无法分享给预览，导致预览失败。可先对uri 持久化权限 ，然后再采用openPreview打开文件；或者可以先将文件拷贝至应用沙箱内，再预览沙箱内文件。"
+    },
+    {
+      "path": "references/文件打开加速状态感知.md",
+      "title": "文件打开加速状态感知",
+      "snippet": "从5.0.5(17)版本开始，如浏览器等支持下载文件的应用，可以接入文件预加载状态感知接口，动态感知文件预加载状态，通过UI（user interface）标识对加速文件进行显性化提示，进一步提升用户体验。 #### 接口说明 具体API说明详见 预加载状态感知接口文档 。 **表1** 文件预加载状态感知接口介绍（ArkTS API） #### 开发准备 需要先通过 Syscap 查询您的目标设备是否支持SystemCapability.PCService.OpenFileBoost系统能力，当前仅在2in1设备上支持该能力。 #### 开发步骤 1. 导入相关模块。 import { openFileBoost } from '@kit.PreviewKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 注册文件预加载状态感知回调函数。 // 文件预加载状态变更的回调函数定义，若有文件预加载状态变更，则通过该回调函数通知 function callback(filePreloadStatusInfo: openFileBoost.FilePreloadStatusInfo): void { if (f"
+    },
+    {
+      "path": "references/文件打开加速（C_C++）.md",
+      "title": "文件打开加速（C/C++）",
+      "snippet": "从5.0.3(15)版本开始，新增文件打开加速功能。提供注册和取消注册接口，应用可以注册一系列回调，文件打开加速服务通过调用回调接口向应用推荐文件进行预加载动作。 #### 接口说明 具体API说明详见 文件打开加速接口文档 。 **表1** 文件预加载接口介绍（C API） #### 开发准备 需要先通过 Syscap 查询您的目标设备是否支持SystemCapability.PCService.OpenFileBoost系统能力，当前仅在2in1设备上支持该能力。 #### 开发步骤 1. 申请文件打开加速服务的对应权限，在module.json5文件中添加文件预加载权限。注意ohos.permission.PRELOAD_FILE为受限权限，具体可参考 申请使用受限权限 。 \"requestPermissions\":[ { \"name\": \"ohos.permission.PRELOAD_FILE\" } ] 2. 添加对应的头文件。 #include \"PreviewKit/open_file_boost.h\" 3. 编写CMakeLists.txt，新增对文件打开加速功能的依赖。 target_link_libraries(entry PUBLIC libopen_file_boost.so ) 4. 注册文件预加载回调，注册后系统在条件符合时调用回调向应用推荐文件。 Op"
+    },
+    {
+      "path": "references/文件预览.md",
+      "title": "文件预览",
+      "snippet": "当前Preview Kit的文件预览能力采用拉起新窗口的方式来实现，在新的窗口中展示需要预览的文件，并按照统一设计的界面进行展示，如果开发者需要使用Preview Kit的文件预览能力，需要注意以下事项： - 当前Preview Kit仅支持跳出应用进行文件的预览，暂不支持应用内预览。 - Office类型文档预览借助WPS提供的能力来实现，在预览文档类型文件时会存在“WPS提供技术支持”、“使用WPS Office打开”等相关字样。 - 当前Preview Kit暂不支持安全定制能力，包括禁止截录屏、屏蔽其他应用打开入口、屏蔽分享入口等安全预览能力。 - 当前Preview Kit需要调用方存在对应uri的转授权能力，从而让预览获得该文件的访问权限来正常读取文件，具体问题可以参考 Preview Kit常见问题2 。 #### 接口说明 接口返回值有两种返回形式：callback和promise，promise和callback只是返回值方式不一样，功能相同。具体API说明详见 接口文档 。 **表1** Preview Kit的接口介绍 #### 开发步骤 1. 导入相关模块。 import { filePreview } from '@kit.PreviewKit'; import { BusinessError } from '@kit.BasicServicesKit';"
+    },
+    {
+      "path": "references/通用文件缓存加速（C_C++）.md",
+      "title": "通用文件缓存加速（C/C++）",
+      "snippet": "从6.1.0(23)版本开始，新增通用文件缓存加速功能。提供了缓存机制将文件的解码数据缓存到磁盘中，后续用户再次打开或浏览该文件，应用无需执行解码流程，可直接从磁盘中获取缓存的解码数据，省去耗时的解码时间。 #### 接口说明 具体API说明详见 API参考 。 **表1** 文件缓存接口介绍 #### 开发准备 需要先通过 Syscap 查询您的目标设备是否支持SystemCapability.PCService.OpenFileBoost系统能力，当前仅在2in1设备上支持该能力。 #### 开发步骤 1. 添加对应的头文件。 #include \"PreviewKit/file_cache_boost.h\" #include <string> 2. 编写CMakeLists.txt，新增对通用文件缓存功能的依赖。 target_link_libraries(entry PUBLIC libfile_cache_boost.so ) 3. 初始化操作，开发者可初始化缓存路径、缓存容量上限、数据库名称，系统会创建缓存路径和对应的数据库。 // 开发者可传入一个相对路径 const char* path = \"ohcache\"; size_t pathLen = strlen(path); // 以MB为单位，2GB = 2048MB uint32_t cacheUpperLimit"
+    }
+  ]
+}

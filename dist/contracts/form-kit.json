@@ -1,0 +1,111 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "form-kit",
+  "source_path": "skills/form-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:54:03.980Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "服务卡片",
+      "桌面卡片",
+      "锁屏卡片",
+      "ArkTS卡片",
+      "互动卡片",
+      "Widget",
+      "如何创建ArkTS卡片（动态卡片和静态卡片）并配置form_config.json",
+      "如何实现卡片的生命周期管理和数据刷新（主动刷新与被动刷新）",
+      "如何通过message、router、call事件实现卡片与应用的交互",
+      "如何开发互动卡片（趣味交互类型如卡片小游戏、场景动效类型）",
+      "如何开发锁屏卡片和背板透明卡片",
+      "如何在卡片中使用Canvas自定义绘制、自定义字体和动效",
+      "如何在应用内拉起卡片管理页面并引导用户添加卡片到桌面",
+      "如何使用JS卡片（HML+CSS+JSON）开发Stage模型和FA模型卡片",
+      "ArkTS卡片开发中常见的适配问题和解决方案",
+      "当您希望将应用的关键信息或常用操作以卡片形式展示在用户桌面或锁屏上，实现信息一目了然、服务一步直达的用户体验时，应使用 Form Kit",
+      "典型场景包括：天气应用在桌面展示实时天气卡片、待办应用在桌面展示任务列表卡片、音乐应用在锁屏展示播放控制卡片、运动应用在桌面展示今日运动数据卡片等",
+      "当您需要开发带有交互动效的趣味卡片（如卡片小游戏、动态场景展示），或需要卡片支持自定义绘制、自定义字体、动效等高级 UI 能力时，应选择 ArkTS 卡片开发方式",
+      "当您的卡片需求较为简单且团队熟悉 Web 开发范式时，可选择 JS 卡片开发方式",
+      "开发桌面天气小组件并定时刷新显示数据 / Build a home-screen weather widget and refresh its data on schedule",
+      "实现应用卡片在桌面和锁屏上的展示 / Show app forms on the home screen and lock screen",
+      "接入服务卡片让用户不打开应用也能查看关键信息 / Integrate service widgets so users can view key info without opening the app",
+      "用 FormExtensionAbility 提供卡片内容和更新逻辑 / Use FormExtensionAbility to provide form content and update logic",
+      "配置 form_config.json 为应用声明卡片能力 / Configure form_config.json to declare widget capabilities",
+      "实现卡片点击后跳转到应用指定页面 / Open a specific app page when the widget is tapped",
+      "在卡片里处理按钮点击和消息回传 / Handle button actions and message callbacks inside the form",
+      "管理卡片的创建、更新、删除和生命周期事件 / Manage form creation, updates, deletion, and lifecycle events",
+      "为待办事项应用添加可交互桌面卡片 / Add an interactive home-screen widget for a todo app",
+      "在卡片中展示实时状态并按需刷新界面 / Display live status in the form and refresh the UI on demand",
+      "拉起卡片添加页面引导用户把小组件放到桌面 / Launch the add-form page to guide users to place the widget on the desktop",
+      "开发带动画和自定义绘制效果的 ArkTS 卡片 / Build an ArkTS form with animations and custom drawing effects"
+    ],
+    "do_not_use_when": [
+      "需求是开发普通应用页面、UIAbility生命周期或页面路由，而不是桌面/锁屏服务卡片；请改用 ability-kit / The task is to build normal app pages, UIAbility lifecycle, or in-app routing rather than desktop/lock-screen forms; use ability-kit instead",
+      "需求只是编写ArkTS语言逻辑或通用语法特性，没有卡片形态、form_config.json或卡片生命周期相关内容；请改用 arkts / The task is only about ArkTS language logic or general syntax features, with no form surface, form_config.json, or form lifecycle concerns; use arkts instead",
+      "需求是构建常规ArkUI界面组件与布局，而非服务卡片UI；请改用 arkui / The task is to build standard ArkUI components and layouts rather than a service form UI; use arkui instead",
+      "需求是开发完整Web页面、WebView承载内容或网页能力，而不是JS类Web卡片；请改用 arkweb / The task is to develop full web pages, WebView-hosted content, or web capabilities rather than JS-style forms; use arkweb instead",
+      "需求重点是进程/设备间通信机制本身，如RPC、消息通道或跨进程数据交换，而不是卡片的message/router/call交互；请改用 ipc-kit / The focus is on IPC mechanisms themselves, such as RPC, message channels, or cross-process data exchange, not form message/router/call interactions; use ipc-kit instead",
+      "需求主要是后台定时任务、长时运行或任务调度，本身不涉及卡片展示与刷新；请改用 background-tasks-kit / The requirement is mainly background scheduling, long-running work, or task orchestration, without form presentation or refresh; use background-tasks-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成HarmonyOS Form Kit能力，且目标设备形态支持服务卡片（不含轻量级智能穿戴） / The project includes HarmonyOS Form Kit capability, and the target device type supports forms (excluding lightweight wearables)",
+      "卡片提供方模块已正确声明并配置卡片相关文件与元数据（如 form_config.json 及对应资源） / The form provider module has correctly declared and configured form-related files and metadata (such as form_config.json and related resources)",
+      "若卡片需要展示网络图片或联网数据，应用已声明所需网络权限且运行环境可访问目标网络资源 / If the form displays network images or online data, required network permissions are declared and the runtime can reach the target network resources"
+    ],
+    "inputs": [
+      "卡片配置文件与卡片类型信息 / form configuration file and form type information",
+      "卡片页面资源与UI描述代码 / form page resources and UI description code",
+      "卡片展示数据与刷新参数 / form display data and refresh parameters",
+      "卡片交互事件参数（message、router、call） / form interaction event parameters (message, router, call)"
+    ],
+    "outputs": [
+      "Kit 简介",
+      "ArkTS 卡片开发",
+      "卡片事件与交互",
+      "互动卡片开发",
+      "特殊卡片类型",
+      "JS 卡片开发",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "工程中已新增或修改卡片配置，使系统能够识别该服务卡片 / The project adds or updates form configuration so the system can recognize the service form",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify form-related configuration files or metadata (for example form_config.json or equivalent module declarations) defining a HarmonyOS form?"
+      },
+      {
+        "statement": "已实现卡片界面或卡片逻辑代码，而非仅停留在普通页面实现 / Form UI or form logic code is implemented, rather than only ordinary app page code",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits include form-specific UI or lifecycle/event handling code indicating a HarmonyOS form provider implementation, not just a normal page or ability?"
+      },
+      {
+        "statement": "若需求涉及刷新或交互，代码中已接入对应的卡片刷新机制或message/router/call事件处理 / If refresh or interaction is required, the code wires in the corresponding form refresh mechanism or message/router/call event handling",
+        "verifier": "model_judge",
+        "judge_prompt": "When the requested feature mentions refresh or interaction, do the edits include corresponding form refresh handling or message/router/call event logic?"
+      }
+    ],
+    "overlaps_with": [
+      "ability-kit",
+      "arkts",
+      "arkui",
+      "arkweb",
+      "ipc-kit",
+      "function-flow-runtime-kit",
+      "background-tasks-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

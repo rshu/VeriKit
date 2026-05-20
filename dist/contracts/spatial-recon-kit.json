@@ -1,0 +1,102 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "spatial-recon-kit",
+  "source_path": "skills/spatial-recon-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:59:28.035Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "空间建模",
+      "3D高斯溅射",
+      "滤镜效果",
+      "三维重建",
+      "如何检查当前设备是否支持空间重建能力？",
+      "如何创建和销毁Spatial Recon Kit会话？",
+      "如何加载MP4、PLY、GLB格式的3DGS模型到场景中？",
+      "如何给3DGS渲染画面添加复古、漫画等滤镜效果？",
+      "如何使用AR Engine数据帧进行三维场景重建？",
+      "如何自定义数据帧进行三维场景重建？",
+      "如何在重建过程中暂停和继续重建？",
+      "如何将重建结果保存为PLY点云或MP4视频文件？",
+      "如何获取三维场景重建的进度？",
+      "3DGS、Kuwahara filter等术语的含义是什么？",
+      "当你的应用需要进行三维空间建模和场景重建时使用本Kit",
+      "典型场景包括：通过手机拍摄多张照片重建三维场景、加载和展示3DGS格式的三维模型、对三维渲染画面添加艺术风格化滤镜效果等",
+      "当你的项目已经使用了ArkGraphics 3D模块并需要扩展三维重建能力时，或者在AR/VR应用中需要将真实场景数字化为三维模型时，应当使用本Kit提供的C/C++接口完成开发",
+      "接入 Spatial Recon Kit 扫描室内空间并生成可浏览的三维模型 / Integrate Spatial Recon Kit to scan indoor spaces and generate a navigable 3D model",
+      "实现实时空间扫描并在界面上显示重建进度 / Implement real-time spatial scanning and show reconstruction progress in the UI",
+      "用相机采集的数据重建房间点云并导出为 PLY 文件 / Reconstruct a room point cloud from camera capture data and export it as a PLY file",
+      "保存空间重建结果为 MP4 回放视频用于后续查看 / Save spatial reconstruction results as an MP4 playback video for later review",
+      "加载 GLB 或 PLY 重建资产并在 AR 场景中显示 / Load GLB or PLY reconstruction assets and display them in an AR scene",
+      "在扫描过程中暂停、恢复并管理空间重建任务 / Pause, resume, and manage a spatial reconstruction task during scanning",
+      "检测设备是否支持 3DGS 渲染和空间重建能力 / Check whether the device supports 3DGS rendering and spatial reconstruction",
+      "读取 AR Engine 数据帧并同步到三维重建流程 / Read AR Engine data frames and feed them into the 3D reconstruction pipeline",
+      "使用自定义采集帧实现离线三维场景重建 / Use custom captured frames to perform offline 3D scene reconstruction",
+      "给 3D 高斯溅射渲染结果添加漫画或复古滤镜效果 / Apply cartoon or retro filter effects to 3D Gaussian Splatting render output",
+      "创建会话后开始空间建模并在结束时释放重建资源 / Start spatial modeling after creating a session and release reconstruction resources when finished",
+      "获取空间重建百分比进度并在扫描页面实时刷新 / Get spatial reconstruction percentage progress and refresh it live on the scanning page"
+    ],
+    "do_not_use_when": [
+      "需求仅是基础3D场景、材质、相机或通用模型渲染，不涉及3DGS加载或空间重建时，应改用 arkgraphics-3d / If the need is only basic 3D scenes, materials, cameras, or general model rendering without 3DGS loading or spatial reconstruction, use arkgraphics-3d instead",
+      "需求仅是2D绘制、画布、矢量图形或普通图像处理，不涉及三维空间建模时，应改用 arkgraphics-2d / If the task is only 2D drawing, canvas, vector graphics, or ordinary image processing without 3D spatial modeling, use arkgraphics-2d instead",
+      "需求是实时AR跟踪、平面识别、锚点、姿态感知或相机AR交互，而不是离线重建与3DGS处理时，应改用 ar-engine / If the need is real-time AR tracking, plane detection, anchors, pose sensing, or camera AR interaction rather than offline reconstruction and 3DGS processing, use ar-engine instead",
+      "需求主要是通用图形/图像计算加速或性能优化，而非空间重建、3DGS渲染和专用滤镜时，应改用 graphics-accelerate-kit / If the main need is general graphics/image compute acceleration or performance optimization rather than spatial reconstruction, 3DGS rendering, and dedicated filters, use graphics-accelerate-kit instead",
+      "需求是游戏引擎级别的场景、实体组件、动画或交互逻辑开发，而不是调用空间重建C/C++能力时，应改用 xengine-kit / If the task is game-engine-level scene, entity-component, animation, or interaction development rather than using spatial reconstruction C/C++ capabilities, use xengine-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成ArkGraphics 3D模块并可与本Kit联合编译链接 / The project has integrated the ArkGraphics 3D module and can build/link together with this Kit",
+      "目标设备与系统版本支持Spatial Recon能力，且已完成能力支持检查 / The target device and system version support Spatial Recon, and capability support has been checked",
+      "已配置可读写的工作目录与输入输出文件访问路径 / A readable and writable working directory and input/output file access paths are configured",
+      "若使用相机或AR数据帧作为输入，相关权限与数据来源已就绪 / If camera or AR data frames are used as input, the required permissions and data sources are ready"
+    ],
+    "inputs": [
+      "3DGS模型文件路径或URI（MP4、PLY、GLB） / 3DGS model file path or URI (MP4, PLY, GLB)",
+      "图像序列及对应相机内参、位姿信息 / Image sequence with corresponding camera intrinsics and pose data",
+      "Spatial Recon会话配置与工作目录 / Spatial Recon session configuration and working directory",
+      "滤镜类型与相关渲染参数 / Filter type and related rendering parameters"
+    ],
+    "outputs": [
+      "入门与概述",
+      "开发指导"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已创建或配置Spatial Recon会话，并包含能力检查或初始化流程 / The code creates or configures a Spatial Recon session and includes capability checking or initialization flow",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add code or configuration that initializes/configures a Spatial Recon session and performs a support/capability check before use?"
+      },
+      {
+        "statement": "代码中已接入至少一种本Kit能力：3DGS模型加载、滤镜应用或三维场景重建 / The code integrates at least one capability of this Kit: 3DGS model loading, filter application, or 3D scene reconstruction",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add logic for at least one Spatial Recon capability such as loading a 3DGS model, applying a supported filter, or running spatial reconstruction?"
+      },
+      {
+        "statement": "若执行重建，代码中已处理重建输出或进度/暂停继续控制 / If reconstruction is performed, the code handles reconstruction output or progress/pause-resume control",
+        "verifier": "model_judge",
+        "judge_prompt": "If the edits implement reconstruction, do they also include handling for output saving, progress querying, or pause/resume control?"
+      }
+    ],
+    "overlaps_with": [
+      "arkgraphics-2d",
+      "arkgraphics-3d",
+      "ar-engine",
+      "graphics-accelerate-kit",
+      "xengine-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

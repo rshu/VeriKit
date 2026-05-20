@@ -1,0 +1,120 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "crypto-architecture-kit",
+  "source_path": "skills/crypto-architecture-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:52:26.657Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "加解密",
+      "AES",
+      "RSA",
+      "签名",
+      "验签",
+      "哈希",
+      "HMAC",
+      "安全随机数",
+      "密钥派生",
+      "如何使用AES-GCM模式对数据进行对称加解密？",
+      "如何使用RSA非对称密钥进行数据加解密？",
+      "如何使用SM2国密算法进行签名验签？",
+      "如何使用SM4国密算法进行对称加解密？",
+      "如何计算SHA-256或MD5消息摘要？",
+      "如何使用HMAC或CMAC计算消息认证码？",
+      "如何通过ECDH或X25519进行密钥协商？",
+      "如何使用PBKDF2或HKDF进行密钥派生？",
+      "如何生成安全的随机数？",
+      "如何将PEM格式字符串转换为非对称密钥对？",
+      "当你的应用需要对敏感数据进行加密存储或传输时使用加解密能力",
+      "典型场景包括用户密码加密存储、通信数据加密传输、文件加密保护等",
+      "根据数据量大小选择单次加解密或分段加解密，根据安全需求选择对称加解密（高效，适合大量数据）或非对称加解密（安全性高，适合密钥交换）",
+      "当你的应用需要验证数据完整性或进行身份认证时使用签名验签和消息摘要能力",
+      "典型场景包括数字签名验证、数据防篡改检测、消息完整性校验等",
+      "当你的应用需要在通信双方之间安全地协商共享密钥时使用密钥协商能力，当需要从密码或共享秘密中派生出加密密钥时使用密钥派生能力",
+      "给本地保存的敏感配置做加密保护 / Encrypt sensitive local configuration before storing it",
+      "实现文件内容加密后再写入沙箱 / Encrypt file contents before writing them to app storage",
+      "对接口请求做数字签名并在服务端验签 / Sign API requests and verify signatures on the server",
+      "生成安全随机密钥和初始化向量IV / Generate cryptographically secure keys and IVs",
+      "用 PBKDF2 从用户密码派生出加密密钥 / Derive an encryption key from a user password with PBKDF2",
+      "计算下载文件的摘要用于完整性校验 / Compute a digest for downloaded files to verify integrity",
+      "给消息摘要加 HMAC 防止请求被篡改 / Protect message digests with HMAC to prevent tampering",
+      "导入导出 RSA 或 ECC 密钥对并安全管理 / Import, export, and manage RSA or ECC key pairs securely",
+      "对传输中的业务数据做端到端加密 / Apply end-to-end encryption to business data in transit",
+      "使用 AES-GCM 对字符串或二进制数据进行加密 / Encrypt strings or binary data with AES-GCM",
+      "实现国密 SM2 SM3 SM4 的加密签名与摘要 / Implement encryption, signing, and hashing with SM2 SM3 SM4",
+      "校验签名证明确认数据来源未被伪造 / Verify signatures to confirm data origin and authenticity"
+    ],
+    "do_not_use_when": [
+      "需要系统级密钥安全存储、密钥生命周期管理或硬件保护密钥别名时，应改用 Universal Keystore Kit / If you need system-level secure key storage, key lifecycle management, or hardware-protected key aliases, use Universal Keystore Kit instead",
+      "需要设备证书申请、导入、证书链管理或基于设备身份证书进行认证时，应改用 Device Certificate Kit / If you need device certificate enrollment, import, certificate chain management, or authentication based on device identity certificates, use Device Certificate Kit instead",
+      "需要生物认证、锁屏凭据校验或以用户存在性解锁密钥时，应改用 User Authentication Kit / If you need biometric authentication, lock-screen credential verification, or user-presence-based key unlocking, use User Authentication Kit instead",
+      "需要在线身份认证、令牌交换、服务端登录态接入或云侧账号认证时，应改用 Online Authentication Kit / If you need online identity authentication, token exchange, server-side sign-in integration, or cloud account authentication, use Online Authentication Kit instead",
+      "需要数字版权管理、受保护媒体内容分发或许可证控制播放时，应改用 DRM Kit / If you need digital rights management, protected media distribution, or license-controlled playback, use DRM Kit instead"
+    ],
+    "preconditions": [
+      "工程已集成可用的 Crypto Architecture Kit 接口并与当前 API 版本兼容 / The project has integrated available Crypto Architecture Kit APIs and they are compatible with the current API version",
+      "调用方已准备好所选算法要求的合法参数，例如密钥长度、IV、AAD、填充模式或曲线参数 / The caller has prepared valid parameters required by the chosen algorithm, such as key length, IV, AAD, padding mode, or curve parameters",
+      "输入密钥材料、PEM 字符串或二进制数据格式与目标算法规格一致 / Input key material, PEM strings, or binary data formats conform to the target algorithm specification",
+      "相关密码学操作未被设计为同一对象上的多线程并发调用 / The cryptographic operation is not designed as multithreaded concurrent use on the same object"
+    ],
+    "inputs": [
+      "待加解密、签名、验签或摘要计算的数据 / Data to encrypt, decrypt, sign, verify, or digest",
+      "算法名称与模式参数 / Algorithm name and mode parameters",
+      "密钥、密钥对、PEM 字符串或原始密钥字节 / Key, key pair, PEM string, or raw key bytes",
+      "初始化向量、随机数种子、AAD、盐值或派生参数 / IV, random seed input, AAD, salt, or derivation parameters"
+    ],
+    "outputs": [
+      "简介与概述",
+      "密钥生成与转换",
+      "签名验签",
+      "消息摘要",
+      "消息认证码",
+      "对称加解密",
+      "非对称加解密",
+      "密钥协商",
+      "密钥派生",
+      "安全随机数",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码显式调用了 Crypto Architecture Kit 的密码学 API，而不是仅停留在伪代码或注释层面 / The code explicitly invokes Crypto Architecture Kit cryptographic APIs rather than staying at pseudocode or comment level",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify concrete ArkTS or C/C++ code that calls Crypto Architecture Kit APIs for cryptographic work, instead of only adding comments, placeholders, or unrelated logic?"
+      },
+      {
+        "statement": "所实现的操作与请求目标一致，并包含对应的算法/模式配置 / The implemented operation matches the requested goal and includes the corresponding algorithm/mode configuration",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is the requested cryptographic task actually implemented (such as encrypt/decrypt, sign/verify, digest, MAC, key agreement, derivation, or random generation) with a specified algorithm or mode?"
+      },
+      {
+        "statement": "新增实现消费了必要输入并产生了可继续使用的结果对象或输出数据 / The added implementation consumes the necessary inputs and produces a reusable result object or output data",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show the cryptographic call wiring required inputs (data, key material, and parameters where applicable) and storing, returning, or forwarding the resulting ciphertext, plaintext, signature, digest, derived key, or random bytes?"
+      }
+    ],
+    "overlaps_with": [
+      "device-certificate-kit",
+      "device-security-kit",
+      "universal-keystore-kit",
+      "user-authentication-kit",
+      "online-authentication-kit",
+      "drm-kit"
+    ],
+    "safety_tier": "high-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

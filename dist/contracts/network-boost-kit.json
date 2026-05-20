@@ -1,0 +1,108 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "network-boost-kit",
+  "source_path": "skills/network-boost-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:57:03.766Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "网络加速",
+      "多路传输",
+      "连接切换",
+      "网络质量评估",
+      "弱网感知",
+      "如何监听多网状态变化，感知可用网络的变更？",
+      "如何监听系统的多网加速建议并决策发起多网请求？",
+      "如何查询多网并发的配额信息（已使用和剩余的次数和时长）？",
+      "如何发起和释放多网并发请求？",
+      "如何设置业务场景帮助系统进行多网并发管控？",
+      "如何订阅连接迁移开始和完成的通知？",
+      "如何设置委托模式或自主模式的连接迁移？",
+      "如何订阅网络质量评估（QoS）信息？",
+      "如何识别当前网络场景（如高铁、电梯等特殊环境）？",
+      "如何实现弱网感知判决，检测弱网状态？",
+      "当您的应用需要在弱网环境下保障网络通信质量时，应使用Network Boost Kit",
+      "典型场景包括：实时视频通话应用需要通过多网并发避免网络卡顿、直播应用需要在WiFi和蜂窝之间无缝切换、游戏应用需要实时感知网络质量以调整策略、下载类应用需要利用多网加速提升下载速度等",
+      "当您需要获取网络质量评估信息、检测弱网状态、识别当前网络场景（如高铁、电梯等特殊环境），或者需要向系统反馈应用的传输体验以优化网络调度策略时，也应使用Network Boost Kit的网络质量感知能力",
+      "实现 Wi‑Fi 和蜂窝同时传输来提升下载速度 / Enable concurrent Wi‑Fi and cellular transfer to speed up downloads",
+      "在弱网场景下自动切换到更优链路保持请求不中断 / Automatically switch to a better link in poor network conditions without interrupting requests",
+      "接入多网并发能力给视频播放和直播做抗卡顿优化 / Integrate multi-network concurrency to reduce stalling for video playback and live streaming",
+      "根据网络质量评分动态调整上传下载策略 / Dynamically adjust upload and download strategy based on network quality scores",
+      "监听网络迁移事件并在切网时平滑续传任务 / Listen for connection migration events and smoothly resume transfers during network switching",
+      "获取当前多网加速额度并控制高优先级任务的使用 / Get current multi-network acceleration quota and control usage for high-priority tasks",
+      "为文件上传实现断网无感切换和链路迁移 / Implement seamless failover and link migration for file uploads",
+      "识别高铁电梯等特殊网络场景并优化请求策略 / Detect special network environments like high-speed rail or elevators and optimize request strategy",
+      "订阅可用网络变化并在主备链路间自动切换 / Subscribe to available network changes and automatically switch between primary and backup links",
+      "给下载器增加多路径传输能力提升成功率和时延表现 / Add multipath transfer to a downloader to improve success rate and latency",
+      "为实时通话或互动业务选择自主连接迁移模式 / Use autonomous connection migration mode for real-time calling or interactive services",
+      "设置业务场景标签让系统智能决策是否启用网络加速 / Set business scenario hints so the system can decide when to enable network acceleration"
+    ],
+    "do_not_use_when": [
+      "只需要普通网络请求、Socket通信、HTTP管理或基础网络状态查询时，应改用 network-kit / If you only need ordinary network requests, socket communication, HTTP management, or basic network status queries, use network-kit instead",
+      "需求是设备发现、配网、局域网互联或跨设备连接管理，而不是Wi‑Fi/蜂窝多网加速与QoS感知时，应改用 connectivity-kit / If the task is device discovery, network provisioning, LAN interconnection, or cross-device connection management rather than Wi-Fi/cellular acceleration and QoS sensing, use connectivity-kit instead",
+      "需求是近距离低功耗高速连接或NearLink设备通信，而不是互联网链路迁移与网络质量优化时，应改用 nearlink-kit / If you need short-range low-power high-speed links or NearLink device communication rather than Internet link migration and network quality optimization, use nearlink-kit instead",
+      "需求是蜂窝通话、拨号、号码/通话状态管理时，应改用 telephony-kit 或 call-service-kit / If the requirement is cellular calling, dialing, or number/call state management, use telephony-kit or call-service-kit instead",
+      "需求是构建分布式远程服务调用、RPC或跨设备业务协同，而不是网络加速策略时，应改用 remote-communication-kit / If you need distributed remote service invocation, RPC, or cross-device business collaboration rather than network acceleration policies, use remote-communication-kit instead"
+    ],
+    "preconditions": [
+      "应用运行在Phone、Tablet或PC/2in1设备，且目标网络类型为Wi‑Fi或Cellular / The app runs on a Phone, Tablet, or PC/2in1 device, and the target network types are Wi-Fi or Cellular",
+      "工程已集成Network Boost Kit对应SDK/API，所选ArkTS或C/C++接口在当前工程中可用 / The project has integrated the Network Boost Kit SDK/API, and the chosen ArkTS or C/C++ interfaces are available in the current project",
+      "如使用多网并发/连接迁移能力，已完成所需受限权限、ACL申请及module.json5中的权限声明 / If using multi-network concurrency or connection migration, the required restricted permission, ACL approval, and permission declarations in module.json5 have been completed",
+      "设备当前至少存在可用网络环境，且相关网络功能已开启并可被系统管理 / At least one usable network is currently available on the device, and the relevant network functions are enabled and manageable by the system"
+    ],
+    "inputs": [
+      "业务场景类型或加速场景标识 / business scenario type or acceleration scenario identifier",
+      "多网请求参数或迁移模式配置 / multi-network request parameters or migration mode configuration",
+      "QoS订阅项、弱网门限或网络场景监听配置 / QoS subscription items, weak-network thresholds, or network-scene listening configuration",
+      "传输体验反馈数据 / transport experience feedback data"
+    ],
+    "outputs": [
+      "简介",
+      "开发准备",
+      "连接迁移 - ArkTS接口",
+      "连接迁移 - C/C++接口",
+      "网络质量感知 - ArkTS接口",
+      "网络质量感知 - C/C++接口"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已引入并调用Network Boost Kit相关API，而非仅使用普通网络接口 / The code imports and calls Network Boost Kit APIs rather than only ordinary network APIs",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add imports or API calls belonging to Network Boost Kit for acceleration, migration, QoS, weak-network sensing, or feedback?"
+      },
+      {
+        "statement": "针对目标能力已建立对应配置或订阅逻辑，如多网监听/请求、迁移通知、QoS监听、场景识别或弱网判决 / The implementation establishes the corresponding configuration or subscription logic for the target capability, such as multi-network monitoring/requesting, migration notifications, QoS listening, scene recognition, or weak-network judgment",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there concrete setup, listener registration, subscription, or request/release logic for a Network Boost capability?"
+      },
+      {
+        "statement": "若实现多网并发能力，代码包含资源释放、取消订阅或停止监听等清理处理 / If multi-network concurrency is implemented, the code includes cleanup such as releasing resources, unregistering subscriptions, or stopping listeners",
+        "verifier": "model_judge",
+        "judge_prompt": "If the edits add multi-network requests or listeners, do they also include matching release, unsubscribe, or cleanup handling?"
+      }
+    ],
+    "overlaps_with": [
+      "network-kit",
+      "remote-communication-kit",
+      "connectivity-kit",
+      "nearlink-kit",
+      "telephony-kit",
+      "call-service-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

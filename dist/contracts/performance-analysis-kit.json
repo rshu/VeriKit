@@ -1,0 +1,119 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "performance-analysis-kit",
+  "source_path": "skills/performance-analysis-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:57:58.399Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "性能分析",
+      "HiAppEvent",
+      "故障检测",
+      "性能监控",
+      "调试工具",
+      "hilog",
+      "如何使用HiLog打印和管理应用日志？",
+      "如何检测和订阅应用崩溃事件（JS Crash、Cpp Crash）？",
+      "如何检测应用冻屏（AppFreeze）和资源泄漏问题？",
+      "如何使用HiTraceMeter进行性能跟踪分析？",
+      "如何使用HiTraceChain实现跨线程/跨进程调用链跟踪？",
+      "如何订阅系统事件（启动耗时、滑动丢帧、CPU高负载等）？",
+      "如何使用HiChecker检测线程耗时和资源泄漏？",
+      "如何使用HiCollie监控业务线程卡死卡顿？",
+      "如何实现应用的错误管理和自动恢复？",
+      "如何使用hdc、hilog、hitrace等调试命令工具？",
+      "当应用出现崩溃、冻屏、资源泄漏等稳定性问题时使用本Kit的故障检测能力",
+      "通过订阅各类系统事件（崩溃事件、冻屏事件、资源泄漏事件等），开发者可以获取故障现场信息，精准定位问题根因",
+      "当需要进行性能优化、功耗分析或运行时监控时使用本Kit",
+      "HiTraceMeter可用于性能追踪分析，HiLog用于流水日志记录，HiAppEvent用于事件打点和上报，方便构建端侧APM系统进行线上质量监控",
+      "集成应用崩溃上报并订阅 JS/Native 崩溃事件 / Integrate app crash reporting and subscribe to JS/native crash events",
+      "记录启动耗时和页面打开耗时用于性能优化 / Record app launch time and page open latency for performance tuning",
+      "追踪页面滑动掉帧和界面卡顿问题 / Track scroll frame drops and UI jank issues",
+      "监控 CPU 过高、内存异常和资源泄漏 / Monitor high CPU usage, memory anomalies, and resource leaks",
+      "用 HiLog 输出分级日志并排查线上问题 / Use HiLog to emit leveled logs and troubleshoot production issues",
+      "用 HiTraceMeter 标记关键代码段分析耗时 / Mark critical code sections with HiTraceMeter to analyze execution time",
+      "给跨线程或跨进程调用加链路追踪 / Add call-chain tracing across threads or processes",
+      "订阅应用冻屏、卡死和主线程阻塞事件 / Subscribe to app freeze, hang, and main-thread blocking events",
+      "使用 HiChecker 检查耗时操作和线程违规 / Use HiChecker to detect slow operations and thread violations",
+      "用 HiCollie 监控业务线程超时和长时间阻塞 / Use HiCollie to monitor business-thread timeouts and long blocking",
+      "上报性能事件到 HiAppEvent 便于分析告警 / Report performance events to HiAppEvent for analysis and alerts",
+      "定位点击无响应、渲染慢和交互延迟 / Diagnose unresponsive taps, slow rendering, and interaction latency"
+    ],
+    "do_not_use_when": [
+      "需求是编写自动化测试、单元测试、UI测试或测试框架集成，应改用 test-kit / The task is to write automated tests, unit tests, UI tests, or integrate a testing framework; use test-kit instead",
+      "需求是实现无障碍能力如读屏、语义辅助、焦点导航或辅助功能适配，应改用 accessibility-kit / The task is to implement accessibility features such as screen reader support, semantic assistance, focus navigation, or accessibility adaptation; use accessibility-kit instead",
+      "需求是做界面布局、组件样式、交互动效或视觉规范设计，而不是埋点、日志或性能跟踪，应改用 ui-design-kit / The task is about UI layout, component styling, interaction effects, or visual design rather than instrumentation, logging, or performance tracing; use ui-design-kit instead",
+      "需求是处理日期日程、提醒或日历数据读写，应改用 calendar-kit / The task is to handle schedules, reminders, or calendar data read/write; use calendar-kit instead",
+      "需求是获取天气数据、天气服务接入或天气展示，应改用 weather-service-kit / The task is to obtain weather data, integrate weather services, or display weather information; use weather-service-kit instead",
+      "需求是做多语言、本地化资源、翻译或区域格式适配，应改用 localization-kit / The task is localization, translated resources, or locale-specific formatting adaptation; use localization-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成可用的 HarmonyOS Performance Analysis Kit/DFX 相关 API 或命令行工具环境 / The project has the required HarmonyOS Performance Analysis Kit/DFX APIs or command-line tooling available",
+      "若采用系统事件订阅或故障订阅，应用入口、订阅代码及相关能力声明已正确配置 / If using system event or fault subscriptions, the app entry, subscription code, and related capability declarations are correctly configured",
+      "若使用 hdc、hilog、hitrace、hiperf 等工具，设备已连接且开发调试环境可访问 / If using hdc, hilog, hitrace, hiperf, or similar tools, a device is connected and the development debugging environment is accessible",
+      "待分析的应用构建版本已包含对应日志、事件打点或跟踪埋点代码 / The target app build already includes the relevant logging, event instrumentation, or tracing calls"
+    ],
+    "inputs": [
+      "应用源码文件或 C_C++ 源码文件 / application source files or C/C++ source files",
+      "事件名、日志标签或跟踪任务名 / event names, log tags, or trace task names",
+      "故障类型或性能问题类型 / fault type or performance issue category",
+      "订阅回调、过滤条件或事件参数 / subscription callbacks, filter conditions, or event parameters",
+      "设备日志、命令输出或现场信息 / device logs, command output, or captured diagnostic context"
+    ],
+    "outputs": [
+      "概述",
+      "故障检测",
+      "事件订阅（HiAppEvent）",
+      "系统事件订阅",
+      "性能与功耗检测",
+      "日志（HiLog）",
+      "性能跟踪（HiTraceMeter）",
+      "分布式调用链跟踪（HiTraceChain）",
+      "调试信息与检测",
+      "错误管理与恢复",
+      "调试命令工具"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码或脚本中加入至少一种性能分析能力调用，如 HiLog、HiAppEvent、HiTraceMeter、HiTraceChain、HiChecker、HiDebug 或相关 DFX 工具使用 / At least one performance-analysis capability invocation has been added in code or scripts, such as HiLog, HiAppEvent, HiTraceMeter, HiTraceChain, HiChecker, HiDebug, or related DFX tool usage",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code/scripts to invoke at least one Performance Analysis Kit capability such as HiLog, HiAppEvent, HiTraceMeter, HiTraceChain, HiChecker, HiDebug, or a related DFX command?"
+      },
+      {
+        "statement": "若目标是事件订阅或故障检测，已新增对应订阅注册与回调处理逻辑 / If the goal is event subscription or fault detection, the edits include the corresponding subscription registration and callback handling logic",
+        "verifier": "model_judge",
+        "judge_prompt": "If the requested task involves subscribing to events or detecting faults, do the edits include subscription registration plus callback or handler logic for those events?"
+      },
+      {
+        "statement": "若目标是日志或链路跟踪，新增代码包含清晰的标签、事件名或跟踪区间边界，便于后续分析 / If the goal is logging or tracing, the new code includes clear tags, event names, or trace span boundaries to support later analysis",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task is about logging or tracing, do the edits show meaningful log tags, event names, or explicit trace begin/end boundaries rather than vague placeholders?"
+      }
+    ],
+    "overlaps_with": [
+      "basic-services-kit",
+      "accessibility-kit",
+      "localization-kit",
+      "test-kit",
+      "calendar-kit",
+      "weather-service-kit",
+      "ui-design-kit",
+      "screen-time-guard-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

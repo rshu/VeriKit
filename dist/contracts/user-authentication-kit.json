@@ -1,0 +1,106 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "user-authentication-kit",
+  "source_path": "skills/user-authentication-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T08:00:15.329Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "用户认证",
+      "锁屏PIN",
+      "人脸识别",
+      "指纹认证",
+      "凭据管理",
+      "如何申请权限并准备开发用户身份认证功能？",
+      "如何查询当前设备支持的用户认证能力（人脸、指纹、口令）？",
+      "如何发起人脸+指纹+锁屏口令的组合认证请求？",
+      "如何使用统一用户认证控件发起认证并获取认证结果？",
+      "如何在认证过程中取消认证请求？",
+      "如何复用设备解锁或任意应用的认证结果以避免重复认证？",
+      "如何查询用户注册的人脸、指纹、口令凭据状态变化？",
+      "如何查询指定认证类型的认证冻结状态及剩余可认证次数？",
+      "如何从系统生物认证切换到业务自定义认证界面？",
+      "如何使用嵌入式用户身份认证控件集成人脸和指纹认证图标？",
+      "当你的应用需要验证用户身份才能执行敏感操作时使用本Kit，例如应用内账号登录、支付认证、敏感数据访问等场景",
+      "三方应用调用系统本地身份认证能力时，必须使用系统自带的身份认证控件",
+      "当你的应用需要根据不同安全等级要求选择合适的认证方式时，可以通过指定认证可信等级（ATL）来确保安全性与便捷性的平衡",
+      "当需要避免用户频繁重复认证时，可以使用认证结果复用功能",
+      "实现登录前的人脸或指纹验证 / Add face or fingerprint verification before sign-in",
+      "调用统一认证弹窗校验用户身份后再执行敏感操作 / Use the unified auth prompt to verify identity before a sensitive action",
+      "集成生物识别解锁应用内保险箱或私密页面 / Integrate biometric unlock for an in-app vault or private screen",
+      "在支付、转账或提现前触发设备凭据认证 / Require device credential authentication before payment, transfer, or withdrawal",
+      "用指纹加锁设置页并在进入时重新认证 / Protect the settings page with fingerprint and re-authenticate on entry",
+      "获取设备支持的认证方式并按能力动态显示人脸/指纹入口 / Get supported auth types and show face or fingerprint entry dynamically",
+      "复用系统最近一次解锁结果避免重复验证 / Reuse the recent system unlock result to avoid repeated verification",
+      "监听指纹或人脸凭据变更并刷新安全设置状态 / Listen for fingerprint or face credential changes and refresh security settings",
+      "检测生物认证被锁定或冻结并提示改用锁屏密码 / Detect biometric lockout or freeze and fall back to lock screen password",
+      "发起人脸加密码的多因素身份认证 / Start multi-factor authentication with face plus passcode",
+      "在认证流程中允许用户取消并安全回退页面 / Allow users to cancel authentication and safely return",
+      "从系统生物认证切换到自定义验证界面继续流程 / Switch from system biometric authentication to a custom verification UI",
+      "管理应用内高风险操作的二次身份校验 / Manage step-up identity verification for high-risk in-app actions"
+    ],
+    "do_not_use_when": [
+      "需求是服务端账号登录、令牌校验、单点登录或联网身份验证，而不是设备本地生物/口令认证；请改用 online-authentication-kit / The need is server-side account login, token validation, SSO, or online identity verification rather than on-device biometric/passcode authentication; use online-authentication-kit instead",
+      "需求是生成、存储、导入、导出或使用密钥进行加解密/签名验签，而不是触发用户认证流程；请改用 universal-keystore-kit / The need is to generate, store, import, export, or use keys for encryption/decryption or signing/verification rather than trigger user authentication; use universal-keystore-kit instead",
+      "需求是设备证书申请、安装、查询或基于证书建立设备身份信任，而不是验证当前用户身份；请改用 device-certificate-kit / The need is device certificate enrollment, installation, query, or certificate-based device identity trust rather than verifying the current user; use device-certificate-kit instead",
+      "需求是检查设备安全状态、风险检测、系统完整性或安全配置，而不是执行一次用户认证；请改用 device-security-kit / The need is to inspect device security status, risk signals, system integrity, or security configuration rather than perform a user authentication; use device-security-kit instead",
+      "需求是DRM内容授权、许可证处理或受保护媒体播放控制，而不是通用敏感操作的人机身份校验；请改用 drm-kit / The need is DRM content authorization, license handling, or protected media playback control rather than human identity verification for a general sensitive action; use drm-kit instead"
+    ],
+    "preconditions": [
+      "应用已集成并可访问 User Authentication Kit 对应SDK接口 / The app has integrated and can access the User Authentication Kit SDK APIs",
+      "设备已设置至少一种本地认证凭据（锁屏口令、人脸或指纹）且相关能力可用 / The device has at least one local authenticator enrolled (lock screen credential, face, or fingerprint) and the capability is available",
+      "应用界面处于前台并能够展示系统认证控件；三方应用不得绕过系统控件自行采集生物特征 / The app UI is in the foreground and can present the system authentication UI; third-party apps must not bypass the system control to collect biometrics themselves"
+    ],
+    "inputs": [
+      "认证类型与组合策略 / authentication types and combination policy",
+      "认证可信等级要求（ATL） / required authentication trust level (ATL)",
+      "认证界面配置参数（标题、说明、按钮文案等） / authentication UI configuration parameters (title, description, button text, etc.)",
+      "是否允许复用近期认证结果及复用时间窗口 / whether recent authentication reuse is allowed and the reuse window",
+      "认证回调或结果处理对象 / authentication callback or result handler"
+    ],
+    "outputs": [
+      "入门与概述",
+      "开发指导"
+    ],
+    "postconditions": [
+      {
+        "statement": "已调用用户认证相关API发起认证，或已接入系统提供的认证控件 / A user authentication API has been invoked to start authentication, or the system-provided authentication control has been integrated",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show code that imports or references the user authentication kit and starts an authentication request or renders/configures the system authentication control?"
+      },
+      {
+        "statement": "认证流程包含结果处理逻辑，能够区分成功、失败、取消或错误状态 / The authentication flow includes result handling logic that distinguishes success, failure, cancellation, or error states",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there explicit handling for authentication outcomes such as success and at least one non-success path like failure, cancellation, or error?"
+      },
+      {
+        "statement": "若配置了认证方式或ATL，代码中已显式传入相应约束而非完全依赖默认值 / If authentication factors or ATL were intended, the code explicitly passes those constraints instead of relying entirely on defaults",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the changes show explicit configuration of authentication type(s), combination policy, or ATL requirements when such security constraints are part of the requested behavior?"
+      }
+    ],
+    "overlaps_with": [
+      "crypto-architecture-kit",
+      "device-certificate-kit",
+      "device-security-kit",
+      "universal-keystore-kit",
+      "online-authentication-kit",
+      "drm-kit"
+    ],
+    "safety_tier": "high-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

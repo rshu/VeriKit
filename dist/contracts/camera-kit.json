@@ -1,0 +1,109 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "camera-kit",
+  "source_path": "skills/camera-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:51:10.657Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "相机",
+      "拍照",
+      "录像",
+      "预览",
+      "闪光灯",
+      "焦距",
+      "hdr",
+      "如何使用CameraPicker直接拉起系统相机拍照和录像",
+      "如何实现相机预览、拍照和录像的基础功能（ArkTS/C/C++）",
+      "如何控制相机的闪光灯、曝光、对焦和白平衡",
+      "如何实现HDR Vivid高动态范围拍照和录像",
+      "如何实现多摄像头同时开启（多摄同开）",
+      "如何实现动态照片（Motion Photo）拍摄",
+      "如何实现分段式拍照和分段式拍照实践",
+      "如何在Worker线程中使用相机",
+      "如何适配折叠屏设备的摄像头变更",
+      "如何实现安全相机模式开发",
+      "当你需要开发一个完整的相机应用或应用内的相机模块，需要精确控制相机硬件进行预览、拍照和录像时，可以使用Camera Kit提供的设备管理、会话管理和输出管理接口，支持ArkTS和C/C++两种开发语言",
+      "当你仅需要简单拍照或录像而不需要自定义相机界面时，可以直接使用CameraPicker拉起系统相机完成拍摄",
+      "当需要高级特性如HDR Vivid、动态照片、安全相机、多摄同开、折叠屏适配时，可以使用Camera Kit提供的相应高级接口",
+      "集成拍照页面并把照片保存到相册 / Integrate a capture screen and save photos to the gallery",
+      "实现视频录制功能并导出本地文件 / Implement video recording and export a local file",
+      "接入系统相机选择器快速完成拍照或录像 / Integrate the system camera picker for quick photo or video capture",
+      "显示相机取景画面并切换前后摄像头 / Show the camera preview and switch between front and rear cameras",
+      "获取相机帧数据做实时图像处理 / Get camera frame data for real-time image processing",
+      "实现点击屏幕对焦并联动曝光测光 / Implement tap-to-focus with exposure metering",
+      "管理相机缩放倍数并支持捏合变焦 / Manage camera zoom and support pinch-to-zoom",
+      "设置照片分辨率和视频录制清晰度 / Set photo resolution and video recording quality",
+      "在拍摄时控制闪光灯和手电筒模式 / Control flash and torch modes during capture",
+      "实现连拍或定时拍照功能 / Implement burst capture or timed photo shooting",
+      "接入多路摄像头同步采集画面 / Integrate synchronized capture from multiple cameras",
+      "用 CameraOutput 拍照录像并管理输出流 / Use CameraOutput to capture photos and videos and manage output streams"
+    ],
+    "do_not_use_when": [
+      "只需要播放、录制或处理纯音频而不涉及相机画面时，应使用 audio-kit / If the task is only about playing, recording, or processing audio without camera visuals, use audio-kit",
+      "需要对已有音视频流做编解码、封装或解封装，而不是直接控制相机硬件采集时，应使用 avcodec-kit / If the task is about encoding, decoding, muxing, or demuxing existing audio/video streams rather than controlling camera hardware capture, use avcodec-kit",
+      "需要管理媒体播放会话、后台播放控制或与系统媒体控制中心联动，而不是拍照录像时，应使用 avsession-kit / If the task is about media session management, background playback controls, or system media controls rather than taking photos or videos, use avsession-kit",
+      "只需要对已有图片做编辑、解码、缩放、格式转换或像素处理，而不是从相机采集图像时，应使用 image-kit / If the task only needs editing, decoding, scaling, format conversion, or pixel processing of existing images rather than capturing from camera, use image-kit",
+      "需要查询、保存、删除或管理系统媒体资源库中的照片视频，而不是控制相机采集时，应使用 media-library-kit / If the task is to query, save, delete, or manage photos/videos in the system media library rather than control camera capture, use media-library-kit"
+    ],
+    "preconditions": [
+      "应用已在 module.json5 中声明相机权限；如涉及录像收音，还需声明麦克风权限 / The app has declared camera permission in module.json5; if recording with audio, microphone permission is also declared",
+      "用户已授予相机运行时权限；如录像含音频，麦克风权限也已授予 / The user has granted runtime camera permission; if recording with audio, microphone permission is also granted",
+      "目标设备存在可用摄像头并支持所请求的能力（如闪光灯、HDR、多摄同开） / The target device has an available camera and supports the requested capabilities such as flash, HDR, or multi-camera",
+      "应用具备可用于预览或输出的界面/Surface/流接收端配置 / The app has UI, Surface, or stream receiver configuration available for preview or output"
+    ],
+    "inputs": [
+      "相机设备或镜头标识 / camera device or lens identifier",
+      "预览输出目标（如 Surface、XComponent 或预览控件） / preview output target such as a Surface, XComponent, or preview view",
+      "拍照或录像参数配置 / photo or video parameter configuration",
+      "相机会话控制参数（如对焦、曝光、变焦、闪光灯） / camera session control parameters such as focus, exposure, zoom, and flash"
+    ],
+    "outputs": [
+      "服务概述",
+      "C/C++ 开发",
+      "ArkTS 开发",
+      "系统相机"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已创建并配置相机输入、会话以及至少一种输出流（预览、拍照或录像） / The code creates and configures camera input, a session, and at least one output stream (preview, photo, or video)",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code to initialize a camera device/input, create or configure a camera session, and attach at least one preview/photo/video output?"
+      },
+      {
+        "statement": "代码包含相机权限申请或权限校验逻辑；如涉及录像收音，也处理了麦克风权限 / The code includes camera permission request or permission-check logic; if recording with audio, it also handles microphone permission",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there explicit camera permission handling, and if audio recording is involved, microphone permission handling as well?"
+      },
+      {
+        "statement": "相机能力相关参数仅在代码中按需配置，例如对焦、曝光、闪光灯、HDR或变焦 / Camera capability-related parameters are configured in code only as needed, such as focus, exposure, flash, HDR, or zoom",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show camera-specific controls or session parameters being configured to match the requested feature, instead of unrelated media or image-only APIs?"
+      }
+    ],
+    "overlaps_with": [
+      "audio-kit",
+      "avcodec-kit",
+      "avsession-kit",
+      "image-kit",
+      "media-kit",
+      "media-library-kit",
+      "ringtone-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

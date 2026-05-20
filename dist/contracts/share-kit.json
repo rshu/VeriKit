@@ -1,0 +1,115 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "share-kit",
+  "source_path": "skills/share-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:59:21.173Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "分享",
+      "跨应用分享",
+      "跨设备分享",
+      "文字分享",
+      "图片分享",
+      "如何通过分享面板发起文本、图片、视频或链接的分享？",
+      "如何让应用作为目标应用接收其他应用分享的内容？",
+      "如何实现分享内容直达应用的特定界面？",
+      "如何通过App Linking实现分享直达应用？",
+      "如何获取分享操作的结果回调？",
+      "如何自定义配置分享面板的操作区？",
+      "如何共享联系人信息到分享推荐区实现一步分享到指定用户？",
+      "如何实现碰一碰跨端分享和可信任设备间传输？",
+      "如何实现手机与PC/2in1设备间的相互分享？",
+      "如何排查拉起系统分享框失败或分享数据类型不支持的问题？",
+      "当你需要在应用中添加\"分享\"功能，让用户将文本、图片、视频、链接等内容分享到其他应用时，应使用Share Kit",
+      "它提供了完整的分享面板，自动匹配能处理分享内容的目标应用，并支持自定义配置操作区",
+      "当你需要实现跨设备分享时，Share Kit支持碰一碰分享和隔空传送两种模式，可在可信任设备间安全传输分享内容",
+      "目标设备可接收分享数据并实现一步直达体验",
+      "当你需要让应用作为分享接收方出现在系统分享面板中时，需要在应用中构建数据处理能力并在配置文件中声明支持的UTD类型",
+      "调用系统分享面板发送文本、图片、视频或网页链接 / Invoke the system share panel to send text, images, videos, or web links",
+      "接入系统分享能力把应用里的文件分享到微信、邮件或其他应用 / Integrate system sharing to send in-app files to WeChat, email, or other apps",
+      "实现应用接收其他应用分享进来的图片、文档或链接 / Implement receiving images, documents, or links shared from other apps",
+      "处理分享到应用后的拉起参数并跳转到指定页面 / Handle share launch parameters and route to a specific page",
+      "分享海报、截图或导出的文件给其他应用 / Share posters, screenshots, or exported files to other apps",
+      "从应用内直接把商品详情页或文章链接分享出去 / Share a product detail page or article link directly from the app",
+      "获取分享成功、取消或失败的结果回调 / Get callbacks for share success, cancel, or failure",
+      "配置分享面板的推荐目标和操作入口 / Configure recommended targets and action entries in the share panel",
+      "实现一键把联系人名片或内容分享到指定联系人 / Implement one-tap sharing of a contact card or content to a specified contact",
+      "接入 App Linking 让分享链接打开应用内对应内容页 / Integrate App Linking so shared links open the corresponding in-app content page",
+      "实现手机与平板、PC之间的跨设备内容分享 / Implement cross-device content sharing between phone, tablet, and PC",
+      "通过碰一碰或可信设备发现发起近场分享 / Start nearby sharing through touch-to-share or trusted device discovery"
+    ],
+    "do_not_use_when": [
+      "需求是生成或解析应用深链、通用链接以实现页面唤起，而不是调起系统分享面板 / The need is to create or resolve app deep links or universal links for page routing rather than invoke the system share panel; use app-linking-kit",
+      "需求是分发应用、应用详情曝光、应用下载或商店内推荐，而不是分享用户内容 / The goal is app distribution, app detail exposure, app download, or in-store recommendation rather than sharing user content; use appgallery-kit",
+      "需求是投放、展示、点击或归因广告，而不是把文本图片视频链接分享给其他应用或设备 / The task is to serve, display, click, or attribute ads rather than share text, images, videos, or links to other apps or devices; use ads-kit",
+      "需求是扫码识别二维码或条码并解析结果，而不是把已有内容分享出去 / The task is to scan and decode QR codes or barcodes rather than send existing content out; use scan-kit",
+      "需求是游戏登录、成就、排行榜、圈子或组队等游戏服务能力，而不是通用内容分享 / The requirement is for game services such as game login, achievements, leaderboards, communities, or teaming rather than general content sharing; use game-service-kit",
+      "需求是基于系统场景感知做自动化推荐或场景联动，而不是显式由用户发起分享 / The requirement is context awareness, proactive recommendation, or scenario automation rather than an explicit user-initiated share action; use scenario-fusion-kit"
+    ],
+    "preconditions": [
+      "设备与应用运行环境支持Share Kit相关能力，API版本满足所用接口要求 / The device and app runtime support Share Kit capabilities, and the API version meets the requirements of the used interfaces",
+      "分享数据已按UDMF的UTD规范组织，且单次分享总量不超过200KB、条目数不超过500 / Share data is organized according to UTD in UDMF, and each share stays within 200KB total and no more than 500 items",
+      "若应用作为接收方，需要在module.json5等配置中声明可处理的分享能力与UTD类型 / If the app acts as a receiver, it must declare share handling capability and supported UTD types in module.json5 or equivalent configuration",
+      "若使用跨设备分享，相关设备处于可用可信状态且系统侧跨端传输开关已开启 / If cross-device sharing is used, the relevant devices are available and trusted, and the system-side cross-device transfer switch is enabled"
+    ],
+    "inputs": [
+      "分享内容数据项列表（文本、图片、视频、链接等） / Share content item list (text, images, videos, links, etc.)",
+      "内容类型描述与UTD标识 / Content type descriptors and UTD identifiers",
+      "分享面板或预览界面的配置参数 / Configuration parameters for the share panel or preview UI",
+      "分享结果回调或接收处理入口参数 / Share result callback or receiver handling entry parameters"
+    ],
+    "outputs": [
+      "入门与概述",
+      "发起分享",
+      "接收分享",
+      "跨端分享",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已构造符合Share Kit要求的分享数据，并包含对应内容类型或UTD信息 / The code constructs share data compatible with Share Kit and includes the corresponding content type or UTD information",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show creation or population of Share Kit share payload/data objects with explicit text/image/video/link typing or UTD-related metadata?"
+      },
+      {
+        "statement": "代码已接入发起分享或接收分享的Share Kit调用链路 / The code integrates a Share Kit call path for either initiating a share or receiving shared content",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code to invoke Share Kit APIs for launching a share flow, or to register/handle incoming shared content as a receiving app?"
+      },
+      {
+        "statement": "若实现结果处理，代码已增加分享结果回调或接收后的处理逻辑 / If result handling is implemented, the code adds share-result callbacks or post-receipt processing logic",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set include callback handling, event handling, or page-routing logic that processes the outcome of sharing or the content received from a share?"
+      },
+      {
+        "statement": "若应用作为目标应用，工程配置已声明可处理的分享类型或相关能力 / If the app acts as a target app, project configuration declares supported share types or related capabilities",
+        "verifier": "model_judge",
+        "judge_prompt": "If the implementation is for a receiving/target app, do the edits include configuration changes such as module.json5 or equivalent declarations for supported share data types, intents, or capabilities?"
+      }
+    ],
+    "overlaps_with": [
+      "appgallery-kit",
+      "app-linking-kit",
+      "ads-kit",
+      "game-service-kit",
+      "scan-kit",
+      "scenario-fusion-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

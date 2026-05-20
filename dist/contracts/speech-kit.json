@@ -1,0 +1,105 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "speech-kit",
+  "source_path": "skills/speech-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:59:35.229Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "场景化语音",
+      "语音朗读",
+      "AI字幕",
+      "字幕控制",
+      "如何初始化和使用朗读控件（TextReader）为文章添加朗读功能？",
+      "如何配置朗读控件的后台长时任务保持后台播报正常？",
+      "如何切换朗读控件的音色？",
+      "如何在PC/2in1设备上适配朗读控件？",
+      "如何使用AI字幕控件（AICaptionComponent）为音频添加实时字幕？",
+      "如何向AI字幕控件写入PCM音频数据？",
+      "如何控制AI字幕控件的显示和隐藏状态？",
+      "朗读控件和AI字幕控件分别支持哪些语种类型？",
+      "AI字幕控件对音频流的编码格式有什么要求？",
+      "当你的应用需要将文字内容转为语音朗读时使用朗读控件，例如新闻类应用为用户提供听新闻功能、阅读类应用支持文章朗读等场景",
+      "当你的应用需要为音频内容提供实时字幕时使用AI字幕控件，例如视频会议、外语学习、静音环境下的音频理解等场景",
+      "当需要配置朗读控件的后台播放、音色切换等高级功能时，需要在module.json5中添加相应权限（如后台长时任务权限、网络权限等）",
+      "为文章内容添加后台持续播报的文字转语音功能 / Add text-to-speech playback for articles that continues in the background",
+      "集成 TextReader 朗读长文本并支持暂停继续和进度控制 / Integrate TextReader for long-form reading with pause, resume, and progress control",
+      "实现多音色多语种的内容朗读切换 / Implement content readout switching across voices and languages",
+      "给新闻或电子书页面接入一键听读功能 / Add one-tap listen-to-article playback to news or ebook pages",
+      "把应用内文本消息转换成语音播放 / Convert in-app text messages into spoken audio",
+      "为直播或音频播放页显示实时 AI 字幕 / Show real-time AI captions on a live stream or audio playback page",
+      "向 AICaptionComponent 持续写入 PCM 音频流生成字幕 / Feed PCM audio continuously into AICaptionComponent to generate captions",
+      "实现字幕层的显示、隐藏和位置控制 / Implement caption overlay show, hide, and position control",
+      "给会议记录或课程音频添加边播边出字幕能力 / Add live captions while playing meeting recordings or course audio",
+      "接入语音播报让无障碍阅读更自然 / Integrate spoken reading to make accessibility reading more natural",
+      "在 PC 和 2in1 设备上适配朗读与字幕组件体验 / Adapt speech reading and caption components for PC and 2-in-1 devices",
+      "管理语音朗读的后台任务避免切到后台后中断 / Manage background speech tasks so playback does not stop when the app goes to background"
+    ],
+    "do_not_use_when": [
+      "需要底层语音识别、唤醒、录音转写或语音合成API而不是场景化朗读/字幕控件时，应使用core-speech-kit / If you need low-level speech recognition, wakeup, transcription, or TTS APIs rather than scenario-based reading/caption components, use core-speech-kit",
+      "需要对图像、视频帧或摄像头内容做视觉识别而非音频字幕时，应使用vision-kit或core-vision-kit / If you need visual recognition on images, video frames, or camera content rather than audio captions, use vision-kit or core-vision-kit",
+      "需要文本分类、分词、翻译、意图识别等自然语言处理，而不是把文本朗读或把音频转成字幕时，应使用natural-language-kit / If you need NLP such as text classification, tokenization, translation, or intent analysis rather than reading text aloud or converting audio to captions, use natural-language-kit",
+      "需要部署或调用自定义AI模型进行推理，而不是直接集成现成朗读控件/AI字幕控件时，应使用mindspore-lite-kit、neural-network-runtime-kit或cann-kit / If you need to deploy or run custom AI models instead of integrating ready-made reading/caption components, use mindspore-lite-kit, neural-network-runtime-kit, or cann-kit",
+      "需要融合多模态传感器上下文进行场景感知，而不是单纯语音朗读或音频字幕展示时，应使用multimodal-awareness-kit / If you need multimodal context sensing rather than simple speech reading or audio caption display, use multimodal-awareness-kit"
+    ],
+    "preconditions": [
+      "工程已集成Speech Kit对应SDK能力，且目标设备为Phone、Tablet或PC/2in1 / The project has integrated the Speech Kit SDK capability, and the target device is Phone, Tablet, or PC/2in1",
+      "使用朗读控件高级能力时，module.json5中已声明所需权限（如网络权限、后台长时任务权限） / When using advanced TextReader capabilities, required permissions are declared in module.json5 (such as network and long-running background task permissions)",
+      "使用AI字幕控件时，可提供符合要求的音频流：PCM、16000采样率、单声道、16位位深 / When using the AI caption component, a compliant audio stream is available: PCM, 16 kHz, mono, 16-bit",
+      "在PC/2in1上使用朗读控件时，已完成子Ability创建和固定窗口大小等适配 / When using the reading component on PC/2in1, sub-Ability creation and fixed window size adaptation are already completed"
+    ],
+    "inputs": [
+      "待朗读的文本内容 / text content to be read aloud",
+      "PCM音频流数据 / PCM audio stream data",
+      "字幕或朗读组件的界面配置参数 / UI configuration parameters for caption or reading components",
+      "音色、播放控制或显示隐藏等控件参数 / control parameters such as voice timbre, playback, or show/hide state"
+    ],
+    "outputs": [
+      "入门与概述",
+      "朗读控件",
+      "AI 字幕控件"
+    ],
+    "postconditions": [
+      {
+        "statement": "工程中已接入并初始化TextReader或AICaptionComponent中的至少一种语音场景化控件 / The project integrates and initializes at least one scenario-based speech component: TextReader or AICaptionComponent",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify HarmonyOS code to create, initialize, or use either TextReader or AICaptionComponent?"
+      },
+      {
+        "statement": "若实现AI字幕，代码中已按要求处理PCM 16kHz 单声道 16位音频输入或明确校验该格式 / If AI captions are implemented, the code handles or explicitly validates PCM 16kHz mono 16-bit audio input as required",
+        "verifier": "model_judge",
+        "judge_prompt": "If the changes implement AI captions, do they show audio input handling or validation consistent with PCM, 16000 Hz, mono, 16-bit requirements?"
+      },
+      {
+        "statement": "若实现朗读增强能力，相关权限或后台播放配置已在工程文件中补充 / If enhanced reading features are implemented, the necessary permissions or background playback configuration are added to project files",
+        "verifier": "model_judge",
+        "judge_prompt": "If the changes add TextReader background playback or similar advanced features, do the edits also include corresponding permission or configuration updates such as in module.json5?"
+      }
+    ],
+    "overlaps_with": [
+      "cann-kit",
+      "mindspore-lite-kit",
+      "neural-network-runtime-kit",
+      "core-speech-kit",
+      "core-vision-kit",
+      "natural-language-kit",
+      "vision-kit",
+      "multimodal-awareness-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

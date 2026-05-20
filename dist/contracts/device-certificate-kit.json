@@ -1,0 +1,108 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "device-certificate-kit",
+  "source_path": "skills/device-certificate-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:52:56.847Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "设备证书",
+      "证书解析",
+      "X.509",
+      "证书链验证",
+      "凭证管理",
+      "如何创建、解析和校验X509证书对象？",
+      "如何获取证书扩展信息并判断是否为CA证书？",
+      "如何创建证书吊销列表（CRL）并校验证书吊销状态？",
+      "如何创建证书链校验器并校验证书链合法性？",
+      "如何从P12文件构造TrustAnchor对象数组进行证书链校验？",
+      "如何在线校验证书吊销状态？",
+      "如何使用系统预置CA证书校验证书链？",
+      "如何安装、使用和删除应用证书凭据？",
+      "如何使用CMS签名和封装实现数据的安全签名与加密封装？",
+      "如何创建和解析PKCS12格式密钥库文件？",
+      "当你的应用需要解析和验证数字证书时使用证书算法库能力",
+      "典型场景包括对接收的服务端证书进行解析获取基本字段或扩展字段用于显示或校验，使用CA证书链和CRL校验证书的合法性，以及网络双向认证、服务器证书校验等安全场景",
+      "当你的应用需要管理系统级证书时使用证书管理能力",
+      "典型场景包括安装应用证书凭据用于网络双向认证场景下的数据签名，安装用户CA证书用于校验对端身份，以及通过对话框界面进行证书的查看、安装和删除操作",
+      "解析服务器返回的PEM或DER证书并读取主题、颁发者和有效期 / Parse PEM or DER certificates from a server and read subject, issuer, and validity period",
+      "加载客户端证书和私钥用于双向TLS身份认证 / Load client certificates and private keys for mutual TLS authentication",
+      "导入P12或PKCS#12证书包并提取身份凭据 / Import a P12 or PKCS#12 bundle and extract identity credentials",
+      "校验远端服务证书是否被系统或自定义根证书信任 / Verify whether a remote service certificate is trusted by system or custom root CAs",
+      "读取证书扩展字段如SubjectAltName、KeyUsage和BasicConstraints / Read certificate extensions such as SubjectAltName, KeyUsage, and BasicConstraints",
+      "检查证书是否过期并在到期前提示更新 / Check whether a certificate is expired and prompt renewal before expiry",
+      "用自定义TrustAnchor校验私有CA签发的证书链 / Validate a certificate chain issued by a private CA with custom TrustAnchors",
+      "生成并验证CRL数据以拦截已吊销设备证书 / Generate and verify CRL data to block revoked device certificates",
+      "在线查询OCSP或吊销状态确认设备证书是否失效 / Query OCSP or revocation status online to confirm a device certificate is no longer valid",
+      "管理应用安装的证书凭据并在不用时安全删除 / Manage app-installed certificate credentials and securely delete them when no longer needed",
+      "对消息或文件做CMS签名并验证签名来源 / Create CMS signatures for messages or files and verify the signer",
+      "用CMS封装证书实现数据加密传输与解密 / Encrypt and decrypt data with CMS enveloping and certificates"
+    ],
+    "do_not_use_when": [
+      "需求是进行通用加密原语运算（如对称/非对称加解密、摘要、随机数）而不是X509证书、CRL、CMS或PKCS12处理时，应改用 crypto-architecture-kit / If the task is general cryptographic primitive operations (such as symmetric/asymmetric encryption, hashing, or random generation) rather than X509 certificates, CRLs, CMS, or PKCS12 handling, use crypto-architecture-kit instead",
+      "需求是把密钥安全生成、存储并在系统密钥库中使用，而不是管理证书/凭据生命周期或校验证书链时，应改用 universal-keystore-kit / If the task is to securely generate, store, and use keys in the system keystore rather than manage certificate/credential lifecycles or validate certificate chains, use universal-keystore-kit instead",
+      "需求是用户身份认证、生物识别或PIN/锁屏认证，而不是证书解析、验签或安装CA/应用凭据时，应改用 user-authentication-kit / If the task is user identity verification, biometrics, or PIN/lock-screen authentication rather than certificate parsing, signature verification, or installing CA/app credentials, use user-authentication-kit instead",
+      "需求是设备完整性证明、远程度量、设备安全状态检测等平台安全能力，而不是证书对象或证书链处理时，应改用 device-security-kit / If the task is platform security capabilities such as device integrity attestation, remote measurement, or device security state checks rather than certificate objects or certificate-chain processing, use device-security-kit instead",
+      "需求是账号登录、联网身份认证流程或在线令牌获取，而不是本地证书链校验、CMS封装/解封装时，应改用 online-authentication-kit / If the task is account sign-in, online identity authentication flows, or obtaining network tokens rather than local certificate-chain validation or CMS packaging/unpackaging, use online-authentication-kit instead"
+    ],
+    "preconditions": [
+      "工程已启用 Device Certificate Kit 对应SDK能力并正确引入相关接口模块 / The project has enabled the Device Certificate Kit SDK capability and correctly imported the relevant API modules",
+      "若涉及系统级证书管理或证书管理对话框，应用已在 module.json5 中声明所需权限并满足系统限制 / If system-level certificate management or certificate-management dialogs are involved, the app has declared required permissions in module.json5 and meets system restrictions",
+      "若涉及安装、删除或使用系统证书/凭据，用户或系统已授予相应操作许可 / If installing, deleting, or using system certificates/credentials is involved, the user or system has granted the required authorization",
+      "若涉及在线下载中间CA证书或在线校验吊销状态，设备网络可用且目标服务可访问 / If online intermediate-CA download or online revocation checking is involved, network connectivity is available and the target services are reachable"
+    ],
+    "inputs": [
+      "X509证书字节流、PEM/DER文本或证书对象 / X509 certificate bytes, PEM/DER text, or certificate object",
+      "证书链、信任锚或CA证书集合 / Certificate chain, trust anchors, or CA certificate set",
+      "CRL数据、CMS签名/封装数据或PKCS12文件内容 / CRL data, CMS signed/enveloped data, or PKCS12 file content",
+      "应用证书凭据别名、证书标识或管理操作参数 / App credential alias, certificate identifier, or management operation parameters"
+    ],
+    "outputs": [
+      "简介",
+      "证书管理",
+      "证书算法库框架",
+      "CMS签名与封装",
+      "PKCS12"
+    ],
+    "postconditions": [
+      {
+        "statement": "已新增或修改代码以调用 Device Certificate Kit 相关API，而非仅停留在通用安全或网络接口 / Code was added or modified to call Device Certificate Kit APIs rather than only generic security or networking interfaces",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly introduce or update HarmonyOS Device Certificate Kit API usage for certificate/CRL/chain/CMS/PKCS12/credential management?"
+      },
+      {
+        "statement": "若任务是证书处理，代码已体现对证书、证书链、CRL、CMS或PKCS12至少一种对象的解析、校验、创建或管理流程 / If the task is certificate-related, the code reflects parsing, validation, creation, or management of at least one of certificate, certificate chain, CRL, CMS, or PKCS12 objects",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there a concrete flow that handles at least one certificate-related object such as an X509 certificate, chain, CRL, CMS payload, or PKCS12 keystore?"
+      },
+      {
+        "statement": "若涉及系统级证书管理，工程配置已同步补充必要权限或调用证书管理对话框/管理接口 / If system-level certificate management is involved, the project configuration was updated with necessary permissions or the certificate-management dialog/management APIs were invoked",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task includes installing, deleting, or using system/app credentials or CA certificates, do the edits also include the required permission/configuration changes or management API/dialog usage?"
+      }
+    ],
+    "overlaps_with": [
+      "crypto-architecture-kit",
+      "device-security-kit",
+      "universal-keystore-kit",
+      "user-authentication-kit",
+      "online-authentication-kit",
+      "drm-kit"
+    ],
+    "safety_tier": "high-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "audio-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.249Z"
+  },
+  "references": [
+    {
+      "path": "references/Audio Kit简介.md",
+      "title": "Audio Kit简介",
+      "snippet": "Audio Kit（音频服务）旨在提供场景化的音频播放和录制接口，助力开发者迅速构建音频高清采集及沉浸式播放能力。 #### 亮点/特征 - 低时延播放 提供统一音频低时延/非低时延播放能力接口，通过垂直打通硬件，达成最低的音频输出时延。在游戏、提示/告警音、K歌等场景下，可以通过低时延接口，实现音频快速流畅播放。 - 音效模式 提供系统音效模式设置，应用可以按需开/关系统音效，确保最佳音效输出体验。 系统默认为音乐、听书、影院等不同场景进行相应音效处理，但应用内部自身也存在一些定制化音效，为确保最终音效不产生冲突，系统提供音效模式配置开关，允许应用按需开/关系统音效。 - 音振协同 提供音振协同能力接口，实现音频及振动流的低时延同步控制。达成在输入法中开启音频和振动效果，打字输入时音振协同、节奏一致，来电铃声和振动同时响起，铃音和振动节奏同步一致的体验。 #### 音频架构 开发者可以利用Audio Kit的接口，使用音频系统提供的播放、录音及音频策略管理能力，进而访问相应的音频硬件。音频架构定义了系统如何封装和管理音频硬件能力。音频架构图如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a5/v3/q9RK2xgBTP64Isqyws4rTQ/zh-cn"
+    },
+    {
+      "path": "references/从OpenSL ES切换到OHAudio(C_C++).md",
+      "title": "从OpenSL ES切换到OHAudio(C/C++)",
+      "snippet": "由于OpenSL ES无法满足音频系统的能力拓展，建议开发者使用OHAudio替代OpenSL ES开发音频业务。本文将介绍如何从使用OpenSL ES接口开发音频业务，切换为使用OHAudio接口。 #### 支持的功能差异 两者支持的功能范围略有差异，OHAudio增加支持低时延播放/录制、监听业务变化等功能。 具体差异如下表所示。 #### 开发模式差异 此小节将结合开发步骤，对比介绍OHAudio和OpenSL ES在开发模式上的差异。 音频播放和录制的实现类似，此处以音频播放为例说明。 #### 构造实例 OpenSL ES: 通过全局接口获取到Engine对象，基于Engine结合不同输入输出配置参数，构造出不同音频播放对象。 // 生成Engine Interface对象。 SLEngineItf engine; // ... // 按需配置音频输入slSource。 SLDataSource slSource; // ... // 按需配置音频输出slSink。 SLDataSink slSink; // ... // 生成音频播放对象。 SLObjectItf playerObject; (*engine)->CreateAudioPlayer(engine, &playerObject, &slSource, &slSink, 0, nullptr, nullp"
+    },
+    {
+      "path": "references/低功耗音频播放.md",
+      "title": "低功耗音频播放",
+      "snippet": "从API version 11开始支持低功耗音频播放。 低功耗音频播放是一种通过软硬芯协同设计实现的音频渲染方案。其核心机制是增大音频渲染器的内部缓存，使系统能够一次性填充大量音频数据，从而允许主处理器长时间休眠，减少频繁处理音频数据的功耗，显著降低系统级功耗负载。 #### 使用前提 当前支持外放、有线耳机和部分蓝牙耳机实现低功耗功能。 #### 开发指导 低功耗音频渲染器与普通音频渲染器接口无差异，但需关注应用数据周期与播放进度。音频渲染器使用请参考 使用AudioRenderer开发音频播放功能(ArkTs) 和 推荐使用OHAudio开发音频播放功能(C/C++) 。 **数据周期示意图** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/20/v3/nxgNhp1zTdq-P50COGIc_g/zh-cn_image_0000002573974449.png?HW-CC-KV=V1&HW-CC-Date=20260421T111300Z&HW-CC-Expire=86400&HW-CC-Sign=A1B04F75D69073B54484074E49A8D6A3B378339D95500E17EC84313D8B051569) 在数据周期内，快速请求数据写"
+    },
+    {
+      "path": "references/低时延音频录制(C_C++).md",
+      "title": "低时延音频录制(C/C++)",
+      "snippet": "从API version 10开始支持低时延音频录制。 低时延音频录制是一种通过软硬芯协同设计实现的音频渲染方案。其核心机制是通过减少buffer大小、优化读写数据架构，使该模式下音频录制具有更低的时延。 #### 使用前提 - 支持低时延模式的音频输入设备。 - 可通过OH_AudioCapturer_GetFastStatus()验证当前设备是否支持低时延模式。 #### 开发指导 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 #### 简介 为使用低时延模式，开发者需要参考 推荐使用OHAudio开发音频录制功能(C/C++) 进行音频开发。 当前OHAudio支持两种模式：普通模式（AUDIOSTREAM_LATENCY_MODE_NORMAL）和低时延模式（AUDIOSTREAM_LATENCY_MODE_FAST）。 #### 设置低时延模式 开发者通过调用 OH_AudioStreamBuilder_SetLatencyMode() ，设置 OH_AudioStream_LatencyMode 来决定音频流使用的模式。 设置低时延模式开发示例： OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST; OH_AudioStreamBuilder_SetLate"
+    },
+    {
+      "path": "references/低时延音频播放(C_C++).md",
+      "title": "低时延音频播放(C/C++)",
+      "snippet": "从API version 10开始支持低时延音频播放。 低时延音频播放是一种通过软硬芯协同设计实现的音频渲染方案。其核心机制是通过减少buffer大小、优化读写数据架构，使该模式下音频播放具有更低的时延。 #### 使用前提 - 支持低时延模式的音频输出设备。 - 可通过OH_AudioRenderer_GetFastStatus()验证当前设备是否支持低时延模式。 #### 开发指导 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 #### 简介 为使用低时延模式，开发者需要参考 推荐使用OHAudio开发音频播放功能(C/C++) 进行音频开发。 当前OHAudio支持两种模式：普通模式（AUDIOSTREAM_LATENCY_MODE_NORMAL）和低时延模式（AUDIOSTREAM_LATENCY_MODE_FAST）。 #### 设置低时延模式 开发者通过调用 OH_AudioStreamBuilder_SetLatencyMode() ，设置 OH_AudioStream_LatencyMode 来决定音频流使用的模式。 设置低时延模式开发示例： OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST; OH_AudioStreamBuilder_SetLate"
+    },
+    {
+      "path": "references/使用AudioCapturer开发音频录制功能(ArkTs).md",
+      "title": "使用AudioCapturer开发音频录制功能(ArkTs)",
+      "snippet": "AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音频数据，适合有音频开发经验的开发者实现更灵活的录制功能。 #### 开发指导 使用AudioCapturer录制音频涉及到AudioCapturer实例的创建、音频采集参数的配置、采集的开始与停止、资源的释放等。本开发指导将以一次录制音频数据的过程为例，向开发者讲解如何使用AudioCapturer进行音频录制，建议搭配 AudioCapturer 的API说明阅读。 下图展示了AudioCapturer的状态变化，在创建实例后，调用对应的方法可以进入指定的状态实现对应的行为。需要注意的是在确定的状态执行不合适的方法可能导致AudioCapturer发生错误，建议开发者在调用状态转换的方法前进行状态检查，避免程序运行产生预期以外的结果。 **图1** AudioCapturer状态变化示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/16/v3/NH8Cn_LDQQC7Iv8fFgSfRw/zh-cn_image_0000002543374224.png?HW-CC-KV=V1&HW-CC-Date=20260421T111301Z&HW-CC-Expire"
+    },
+    {
+      "path": "references/使用AudioHaptic开发音振协同播放功能(ArkTs).md",
+      "title": "使用AudioHaptic开发音振协同播放功能(ArkTs)",
+      "snippet": "AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要在播放音频时同步发起振动的场景，如来电铃声随振、键盘按键反馈、消息通知反馈等。 #### 开发指导 使用AudioHaptic播放音频并同步开启振动，涉及到音频及振动资源的管理、音频时延模式及音频流使用类型的配置、音振播放器的创建及管理等。本开发指导将以一次音振协同播放的过程为例，向开发者讲解如何使用AudioHaptic进行音振协同播放，建议配合 audioHaptic 的API说明阅读。 #### 权限申请 如果应用创建的AudioHapticPlayer需要触发振动，则需要校验应用是否拥有该权限：ohos.permission.VIBRATE。 1. 声明权限。 2. 向用户申请授权。 #### 开发步骤及注意事项 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 1. 获取音振管理器实例，并注册音频及振动资源，资源支持情况可以查看 AudioHapticManager 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/79/v3/nCB3Nn3ZRti_gCTV7lbuCQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260"
+    },
+    {
+      "path": "references/使用AudioRenderer开发音频播放功能(ArkTs).md",
+      "title": "使用AudioRenderer开发音频播放功能(ArkTs)",
+      "snippet": "AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音频数据，相比 AVPlayer 而言，可以在输入前添加数据预处理，更适合有音频开发经验的开发者，以实现更灵活的播放功能。 #### 开发指导 使用AudioRenderer播放音频涉及到AudioRenderer实例的创建、音频渲染参数的配置、渲染的开始与停止、资源的释放等。本开发指导将以一次渲染音频数据的过程为例，向开发者讲解如何使用AudioRenderer进行音频渲染，建议搭配 AudioRenderer 的API说明阅读。 下图展示了AudioRenderer的状态变化，在创建实例后，调用对应的方法可以进入指定的状态实现对应的行为。需要注意的是在确定的状态执行不合适的方法可能导致AudioRenderer发生错误，建议开发者在调用状态转换的方法前进行状态检查，避免程序运行产生预期以外的结果。 为保证UI线程不被阻塞，大部分AudioRenderer调用都是异步的。对于每个API均提供了callback函数和Promise函数，以下示例均采用callback函数。 **图1** AudioRenderer状态变化示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_1"
+    },
+    {
+      "path": "references/使用OHAudio开发音频会话功能(C_C++).md",
+      "title": "使用OHAudio开发音频会话功能(C/C++)",
+      "snippet": "对于涉及多个音频流并发播放的场景，系统已预设了默认的 音频焦点策略 ，该策略将对所有音频流（包括播放和录制）实施统一的焦点管理。 应用可利用音频会话管理（AudioSessionManager）提供的接口，通过AudioSession主动管理应用内音频流的焦点，自定义本应用音频流的焦点策略，调整本应用音频流释放音频焦点的时机，从而贴合应用特定的使用需求。 本文主要介绍AudioSession相关C API的使用方法和注意事项，更多音频焦点及音频会话的信息，可参考： 音频焦点介绍 和 音频会话管理 。 #### 使用入门 应用要使用OHAudio提供的音频会话管理（AudioSessionManager）能力，需要添加对应的头文件。 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 #### 在 CMake 脚本中链接动态库 target_link_libraries(sample PUBLIC libohaudio.so) #### 添加头文件 应用通过引入 native_audio_session_manager.h 头文件，使用音频播放相关API。 #include \"ohaudio/native_audio_session_manager.h\" #### 获取音频会话管理器 创建 OH_AudioSessionManager 实例。在使用音频会话管理功能前"
+    },
+    {
+      "path": "references/使用OpenSL ES开发音频录制功能(C_C++).md",
+      "title": "使用OpenSL ES开发音频录制功能(C/C++)",
+      "snippet": "OpenSL ES全称为Open Sound Library for Embedded Systems，是一个嵌入式、跨平台、免费的音频处理库。为嵌入式移动多媒体设备上的应用开发者提供标准化、高性能、低延迟的API。HarmonyOS的Native API基于 Khronos Group 开发的 OpenSL ES 1.0.1 API 规范实现，开发者可以通过<OpenSLES.h>和<OpenSLES_OpenHarmony.h>在HarmonyOS上使用相关API。 #### 使用OHAudio替代OpenSL ES HarmonyOS上的OpenSL ES接口，是早期SDK8版本开始提供，用于支持应用Native层音频开发的接口。但随着版本演进，接口定义的可扩展性不足，不再能满足音频系统的能力拓展，因此当前已不再推荐应用开发者继续使用此接口进行音频功能开发，会存在一些接口能力不足的缺陷。 在SDK10版本，HarmonyOS推出了OHAudio接口，并将系统具备的所有音频功能都通过此接口开放。OHAudio接口已能够覆盖OpenSL ES在HarmonyOS中已提供的所有能力，并拓展支持音频焦点事件，低时延等新版本特性。 OHAudio的开发指南请参考： 推荐使用OHAudio开发音频录制功能(C/C++) 。 考虑到一些接入HarmonyOS较早的应用开发者，这里提供了一份"
+    },
+    {
+      "path": "references/使用OpenSL ES开发音频播放功能(C_C++).md",
+      "title": "使用OpenSL ES开发音频播放功能(C/C++)",
+      "snippet": "OpenSL ES全称为Open Sound Library for Embedded Systems，是一个嵌入式、跨平台、免费的音频处理库。为嵌入式移动多媒体设备上的应用开发者提供标准化、高性能、低延迟的API。HarmonyOS的Native API基于 Khronos Group 开发的 OpenSL ES 1.0.1 API 规范实现，开发者可以通过<OpenSLES.h>和<OpenSLES_OpenHarmony.h>在HarmonyOS上使用相关API。 #### 使用OHAudio替代OpenSL ES HarmonyOS上的OpenSL ES接口，是早期SDK8版本开始提供，用于支持应用Native层音频开发的接口。但随着版本演进，接口定义的可扩展性不足，不再能满足音频系统的能力拓展，因此当前已不再推荐应用开发者继续使用此接口进行音频功能开发，可能存在一些接口能力不足的缺陷。 在SDK10版本，HarmonyOS推出了OHAudio接口，并将系统具备的所有音频功能都通过此接口开放。OHAudio接口已能够覆盖OpenSL ES在HarmonyOS中已提供的所有能力，并拓展支持音频焦点事件，低时延等新版本特性。 OHAudio的开发指南请参考： 推荐使用OHAudio开发音频播放功能(C/C++) 。 考虑到一些接入HarmonyOS较早的应用开发者，这里提供了一"
+    },
+    {
+      "path": "references/使用SoundPlayer开发系统音效播放功能.md",
+      "title": "使用SoundPlayer开发系统音效播放功能",
+      "snippet": "从API version 23开始，支持系统音效播放。 SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，比如在开始拍照、开始录像或结束录像时播放提示音。 #### 支持的音效类型 支持的音效类型 SystemSoundType 信息如下表所示。可通过systemSoundManager.SystemSoundType.PHOTO_SHUTTER等具体类型，作为 load 、 play 或 unload 方法的入参。 #### 开发步骤 以下各步骤示例为片段代码，可通过点击示例代码右下方的链接获取 完整示例 。 1. 在调用SystemSoundPlayer的接口前，需要先通过 createSystemSoundPlayer 创建实例。 import { systemSoundManager } from '@kit.AudioKit'; // ... // SystemSoundPlayer对象。 let systemSoundPlayer: systemSoundManager.SystemSoundPlayer | null = null; // ... systemSoundManager.createSystemSoundPlayer().then((systemSoundPlayerInstance) => { console.info('Succee"
+    },
+    {
+      "path": "references/使用合适的音频流类型.md",
+      "title": "使用合适的音频流类型",
+      "snippet": "音频流 类型是定义音频数据播放和录制方式的关键属性。对于播放流，其类型由 StreamUsage 确定；对于录制流，则由 SourceType 决定。音频流类型对音量控制、音频焦点管理以及输入/输出设备的选择具有决定性影响。 为了确保音频行为符合预期并提供优质的用户体验，应用开发者应根据具体业务场景和实际需求，为音频选择恰当的流类型。 接下来，文档将介绍 常用的音频流类型及其适用场景 ，同时说明 不同流类型对音频业务的影响 。最后，指导开发者在采用不同方法实现音频播放和音频录制时，应当如何 设置音频流类型 。 #### 常用的音频流类型及其适用场景 #### 播放音频流类型 下表中列举常用的播放音频流类型，由 StreamUsage 定义。 #### 录制音频流类型 下表中列举常用的录制音频流类型，由 SourceType 定义。 #### 流类型对音频业务的影响 不同的流类型会影响用户在控制音量时的体验，以及系统在调整音频焦点和选择输入/输出设备时的表现。此外，系统还会根据录制流类型对采集到的音频数据配置对应的优化处理策略，因此录制流类型的选择会影响到录制的音频效果。例如：如果在VoIP通话场景下使用了SOURCE_TYPE_MIC而不是SOURCE_TYPE_VOICE_COMMUNICATION类型，可能会使降噪、环境音消除等优化策略不生效，造成VoIP通话体验不佳。建议开发"
+    },
+    {
+      "path": "references/响应输出设备变更时合理暂停.md",
+      "title": "响应输出设备变更时合理暂停",
+      "snippet": "开发者可以了解音频流输出设备变更信息，并完成相应适配，比如：应用在播放音乐时发现输出设备下线，为避免打扰用户，应该立即暂停音乐。 开发者可使用AudioRenderer的 on('outputDeviceChangeWithInfo') 或AudioSessionManager的 on('currentOutputDeviceChanged') ，用于监听音频流输出设备变化及原因。当系统出现音频输出设备的上下线、用户强选、设备抢占或设备选择策略变更等情况，导致音频流输出设备变更时，系统将通过该接口通知应用当前音频流设备变更信息，包含当前音频流输出设备信息和设备变更原因。 #### 音频流输出设备信息 在AudioRenderer的 on('outputDeviceChangeWithInfo') 或AudioSessionManager的 on('currentOutputDeviceChanged') 返回的音频流设备变更信息中，包含当前音频流输出设备信息，以数组形式发送，一般该列表仅包含一个设备信息，具体可参考 AudioDeviceDescriptors （设备信息列表）。 #### 音频流输出设备变更原因 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3"
+    },
+    {
+      "path": "references/实时渲染(C_C++).md",
+      "title": "实时渲染(C/C++)",
+      "snippet": "从API version 22开始， OHAudioSuite 给开发者提供音频实时渲染能力，即音频实时播放时可进行自定义音效（仅支持均衡器节点）。例如，可以使用均衡器中预置的音效，改变音乐的风格。 #### 开发基础配置 开发者使用 OHAudioSuite 提供的实时渲染能力，添加对应的头文件。 #### 在CMake脚本中链接动态库 target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so) #### 添加头文件 开发者通过引入头文件< native_audio_suite_base.h >、< native_audio_suite_engine.h >、< native_audiostreambuilder.h >和< native_audiorenderer.h >使用音频编创和音频播放相关API。 #include <ohaudiosuite/native_audio_suite_base.h> #include <ohaudiosuite/native_audio_suite_engine.h> #include <ohaudio/native_audiorenderer.h> #include <ohaudio/native_audiostreambuilder.h> #### 开发步骤"
+    },
+    {
+      "path": "references/实现音频低时延耳返.md",
+      "title": "实现音频低时延耳返",
+      "snippet": "从API version 20开始，支持音频低时延耳返。 AudioLoopback是音频返听器，可将音频以更低时延的方式实时传输到耳机中，让用户可以实时听到自己或者其他的相关声音。 常用于K歌类应用，将录制的人声和背景音乐实时传送到耳机中，使用户通过反馈即时进行调整，获得更好的使用体验。 当启用音频返听时，系统会创建低时延渲染器与低时延采集器，实现低时延耳返功能。采集的音频直接通过内部路由返回到渲染器。对于渲染器，其音频焦点策略与 STREAM_USAGE_MUSIC 相匹配。对于采集器，其音频焦点策略与 SOURCE_TYPE_MIC 相匹配。 输入/输出设备由系统自动选择。如果当前输入/输出不支持低时延，则音频返听无法启用。在运行过程中，如果音频焦点被另一个音频流抢占，输入/输出设备切换到不支持低时延的设备，系统会自动禁用音频返听。 #### 使用前提 - 当前仅支持通过有线耳机实现低时延返听功能，音频由有线耳机进行采集并播放。 - 低功耗渲染器和低时延渲染器在API version 20不能实现并发。若要启用渲染器，建议采用 STREAM_USAGE_UNKNOWN ；系统内决策采用 STREAM_USAGE_MUSIC 创建普通渲染器。 #### 开发指导 使用AudioLoopback音频返听涉及到 isAudioLoopbackSupported 返听能力查询、Aud"
+    },
+    {
+      "path": "references/实现音频耳返.md",
+      "title": "实现音频耳返",
+      "snippet": "实现音频耳返的功能，可将音频实时传输到耳机中，让用户可以实时听到自己或者其他相关声音。 常用于K歌类应用，将录制的人声和背景音乐实时送到耳机中，使用户通过反馈即时调整，获得更好的使用体验。 #### 使用前提 - 开发者可使用OHAudio提供的播放和录制能力相结合，将录制获取的音频数据作为播放的音频输入，实现耳返功能。 实现参考 推荐使用OHAudio开发音频播放功能(C/C++) 、 推荐使用OHAudio开发音频录制功能(C/C++) 。 - 当前仅支持通过有线耳机实现耳返功能。音频由有线耳机采集并播放。 #### 开发指导 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 #### 创建音频录制 通过OHAudio提供OH_AudioStreamBuilder接口，遵循构造器设计模式，构建录制音频流。指定对应的 OH_AudioStream_Type , 设置为AUDIOSTREAM_TYPE_CAPTURER。 OH_AudioStreamBuilder* builder; OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_CAPTURER); #### 创建音频播放 通过OHAudio提供OH_AudioStreamBuilder接口，遵循构造器设计模式，构建播放音频流。指定对应的 OH_"
+    },
+    {
+      "path": "references/实现音频输入设备路由切换.md",
+      "title": "实现音频输入设备路由切换",
+      "snippet": "从API version 21开始，支持音频输入设备路由切换。 当应用进行音频输入时，系统会根据音频流类型选择对应的输入设备（SOURCE_TYPE_MIC：内置MIC录音；SOURCE_TYPE_VOICE_COMMUNICATION：跟随当前输出设备）。若默认输入设备不满足应用需求，应用可通过 setBluetoothAndNearlinkPreferredRecordCategory 或 selectMediaInputDevice 实现音频输入设备路由切换。 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 #### 选择使用蓝牙或者星闪设备进行录音 应用可使用AudioSessionManager的 setBluetoothAndNearlinkPreferredRecordCategory 设置应用程序的输入设备选择偏好，当蓝牙或星闪设备上线时生效。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a4/v3/3JYUCzdiTfOUZnJ05cX_iw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111303Z&HW-CC-Expire=86400&HW-CC-Sign=A"
+    },
+    {
+      "path": "references/实现音频输出设备路由切换.md",
+      "title": "实现音频输出设备路由切换",
+      "snippet": "当应用进行音频输出时，系统会根据音频流类型选择对应的输出设备（ STREAM_USAGE_MUSIC ：扬声器发声； STREAM_USAGE_VOICE_COMMUNICATION ：听筒发声）。如果系统提供的默认输出设备不满足应用需求，应用可通过AVCastPicker或setDefaultOutputDevice实现音频输出设备路由切换。 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 #### 媒体类应用实现输出设备路由切换 应用可使用 AVCastPicker 投播组件进行媒体类应用输出设备路由切换。 #### 通话类应用实现输出设备路由切换 #### 外接设备路由切换 应用可 使用通话设备切换组件 进行通话类应用外接输出设备路由切换。 #### 内置听筒和扬声器路由切换 如果未连接外设，语音通话场景系统默认听筒发声，其他场景系统默认扬声器发声；如果连接了外设，系统默认通过外接设备发声。 调用setDefaultOutputDevice设置音频输出设备后，如需取消，可将参数设为audio.DeviceType.DEFAULT，将音频输出设备选择权交还给系统。 1. 从API version 12开始，应用可使用AudioRenderer的 setDefaultOutputDevice 设置听筒和扬声器路由切换，调用前需要先获取 AudioRender"
+    },
+    {
+      "path": "references/开发音频通话功能.md",
+      "title": "开发音频通话功能",
+      "snippet": "在音频通话场景下，音频输出（播放对端声音）和音频输入（录制本端声音）会同时进行，应用可以通过使用AudioRenderer来实现音频输出，通过使用AudioCapturer来实现音频输入，同时使用AudioRenderer和AudioCapturer即可实现音频通话功能。 在音频通话开始和结束时，应用可以自行检查当前的 音频场景模式 和 铃声模式 ，以便采取合适的音频管理及提示策略。 以下代码示范了同时使用AudioRenderer和AudioCapturer实现音频通话功能的基本过程，其中未包含音频通话数据的传输过程，实际开发中，需要将网络传输来的对端通话数据解码播放，此处仅以读取音频文件的数据代替；同时需要将本端录制的通话数据编码打包，通过网络发送给对端，此处仅以将数据写入音频文件代替。 示例为片段代码，可通过点击示例代码右下方的链接获取 完整示例 。 #### 使用AudioRenderer播放对端的通话声音 该过程与 使用AudioRenderer开发音频播放功能(ArkTs) 过程相似，关键区别在于audioRendererInfo参数和音频数据来源。audioRendererInfo参数中，音频流使用类型usage需设置为VoIP通话：STREAM_USAGE_VOICE_COMMUNICATION。 import { audio } from '@kit.AudioK"
+    },
+    {
+      "path": "references/录音并发策略说明.md",
+      "title": "录音并发策略说明",
+      "snippet": "音频输入的音频源通常是由内置麦克风、外接设备或远端分布式设备的采集的音频数据，但也可能是其他应用发送到系统以供播放的音频数据。根据音频源的不同，音频输入可分为两类：内录型音频输入和外录型音频输入。 - 内录型音频输入：是指以系统内部音频数据作为音频源的输入类型，简称为内录，对应的流称为内录流。 常见的内录音频包括录屏时录制的其他应用播放的音频数据、投播到其他设备上播放的音频数据。 - 外录型音频输入：是指通过音频接口将系统外部的声音采集进来作为音频源的输入类型，简称为外录，对应的流称为外录流。 常见的外录示例有录音机的音频录制、语音助手的语音唤醒和识别、以及在VoIP通话中传输给对端的音频录制。 通常，当应用请求录音时，它是独占音频输入的。然而，在某些情况下，可能会有两个或多个应用同时或先后请求录音，在同一时间段内都希望从音频输入中获得数据，这种情况称为录音并发，录音并发又细分为：录音并存和录音并行。 - 录音并存是指一个或多个应用创建的不同录音客户端（AudioCapturer）在同一时间段内同时存在的状态。 - 录音并行是指在录音并存的基础上，不同录音客户端（AudioCapturer）启动的录音流在同一时间段内同时处于运行（Running）状态，即同时进行音频录制。 当录音并发发生时，每个请求录音的应用都希望能够获得音频输入数据，但此时会面临将同一音频源同时传输给多个应用的问"
+    },
+    {
+      "path": "references/推荐使用OHAudio开发音频录制功能(C_C++).md",
+      "title": "推荐使用OHAudio开发音频录制功能(C/C++)",
+      "snippet": "OHAudio是系统在API version 10中引入的一套C API，此API在设计上实现归一，同时支持普通音频通路和低时延通路。仅支持PCM格式，适用于依赖Native层实现音频输入功能的场景。 OHAudio音频录制状态变化示意图： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c9/v3/h4wP8VNUQoSeRH1AWp0cdA/zh-cn_image_0000002573974451.png?HW-CC-KV=V1&HW-CC-Date=20260421T111301Z&HW-CC-Expire=86400&HW-CC-Sign=57F214FC11AC50DDD9F88432311DF8DB2D8E3A1E94F68129E0135B129D69E275) #### 使用入门 开发者要使用OHAudio提供的录制能力，需要添加对应的头文件。 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 #### 在 CMake 脚本中链接动态库 target_link_libraries(sample PUBLIC libohaudio.so) #### 添加头文件 开发者通过引入< native_audiostreambuilder."
+    },
+    {
+      "path": "references/推荐使用OHAudio开发音频播放功能(C_C++).md",
+      "title": "推荐使用OHAudio开发音频播放功能(C/C++)",
+      "snippet": "OHAudio是系统在API version 10中引入的一套C API，此API在设计上实现归一，同时支持普通音频通路和低时延通路。仅支持PCM格式，适用于依赖Native层实现音频输出功能的场景。 OHAudio音频播放状态变化示意图： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cd/v3/fQZetudfTdiBCfuJnLn1oA/zh-cn_image_0000002543214558.png?HW-CC-KV=V1&HW-CC-Date=20260421T111259Z&HW-CC-Expire=86400&HW-CC-Sign=17CDEFECDE87DE793E67B99BF45F4BC24EEA40573CE1045E6EAA6B7E334EC587) #### 使用入门 开发者要使用OHAudio提供的播放能力，需要添加对应的头文件。 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 #### 在 CMake 脚本中链接动态库 target_link_libraries(sample PUBLIC libohaudio.so) #### 添加头文件 开发者通过引入< native_audiostreambuilder."
+    },
+    {
+      "path": "references/提升音频性能体验.md",
+      "title": "提升音频性能体验",
+      "snippet": "在各种终端设备的使用过程中，对于音频相关功能的体验，用户在不同场景下，有多方面的核心性能诉求，包含流畅度、响应速度、省电等，典型的场景如下： - 在听音乐和听书的场景，希望能更加省电，延长续航时间。 - 在玩游戏的场景，希望按键音效极快响应，体验更加沉浸。 - 在K歌的场景，希望耳返延迟更低，提升演唱效果。 - 在会议和语音聊天的场景，希望语音可以实时传输，交流畅通无阻。 为了满足用户在这些场景下的音频体验要求，系统通过接口方式提供了一系列的音频能力，让开发者能够利用系统内部的硬件和软件能力，进一步提升应用的音频播放与录音功能的性能体验。 #### 通过系统能力提升性能 #### 了解系统音频通路 不同的性能指标，由于硬件性能和电源大小的限制，往往无法兼顾。比如更短的音频响应时间，意味着要更快的进行数据处理，会导致牺牲一些功耗和效果。 因此，系统中的音频通路也并不是一成不变的。为应对不同的用户使用场景，系统针对性的提供多种不同方向的通路选择，有的更节省功耗，有的更偏向响应速度，还有的则相对平衡。 系统无法直接感知应用所开发音频功能对应的使用场景，因此需要开发者通过指定 StreamUsage 和 SourceType 来提供对应的场景信息。系统会针对场景选择，提供一套默认的音频通路配置作用于输出/输入通路，如果开发者认为默认配置还不满足需要，也可以通过独立的设置接口进行调整。 ##"
+    },
+    {
+      "path": "references/播放音量管理.md",
+      "title": "播放音量管理",
+      "snippet": "本模块提供播放音量管理能力，包括对 **系统音量** 、 **应用音量** 和 **音频流音量** 的管理。 **系统音量** 是由HarmonyOS系统全局管理的音量设置，适用于所有应用程序和设备。HarmonyOS系统将音频分为不同的流类型，每种流类型有独立的系统音量控制。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d1/v3/IpJjubuwTnytFxYF2QcoeA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111300Z&HW-CC-Expire=86400&HW-CC-Sign=BB12FF47CB712EF6717E3AADB0349112868A06F47ABB53E43CFC68B2FC7E4AAC) 系统音量可以通过物理音量按键或系统设置界面调节。在设置界面中，用户可以单独调整上述每种系统音量的大小。 常见的流类型以及对应的系统音量如下所示。 - 媒体音量：用于音乐、视频、游戏等媒体播放。 - 通话音量：用于语音通话。 - 铃声音量：用于来电铃声。 - 闹钟音量：用于闹钟提醒。 **应用音量** 是HarmonyOS提供给三方应用用来控制该应用下所有音频流音量的一种音量类型。三"
+    },
+    {
+      "path": "references/查询和监听其他应用录制状态.md",
+      "title": "查询和监听其他应用录制状态",
+      "snippet": "对于录制音频类的应用，开发者需要关注该应用的音频流的状态以做出相应的操作，比如监听到状态为结束时，及时提示用户录制已结束。 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 #### 读取或监听应用内音频流状态变化 参考 使用AudioCapturer开发音频录制功能(ArkTs) 或 audio.createAudioCapturer ，先完成AudioCapturer的创建，再通过以下两种方法查看音频流状态的变化。 - 方法1：直接查看AudioCapturer的 属性 state： let audioCapturerState: audio.AudioState = audioCapturer.state; console.info(`Current state is: ${audioCapturerState }`) - 方法2：注册stateChange监听AudioCapturer的状态变化： audioCapturer.on('stateChange', (capturerState: audio.AudioState) => { console.info(`State change to: ${capturerState}`) // ... }); 获取state后可对照 AudioState 来进行相应的操作，比如显示录制结束的提示等。 ###"
+    },
+    {
+      "path": "references/查询和监听音频输入设备.md",
+      "title": "查询和监听音频输入设备",
+      "snippet": "本模块提供音频输入设备管理能力，包括查询输入设备信息、监听设备连接状态变化等。具体API说明可参考文档 AudioRoutingManager 。 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 #### 创建AudioRoutingManager实例 在使用AudioRoutingManager管理音频设备前，需要先导入模块并创建实例。 import { audio } from '@kit.AudioKit'; // 导入audio模块。 let audioManager = audio.getAudioManager(); // 需要先创建AudioManager实例。 let audioRoutingManager = audioManager.getRoutingManager(); // 再调用AudioManager的方法创建AudioRoutingManager实例。 #### 支持的音频输入设备类型 目前支持的音频输入设备见下表： #### 获取输入设备信息 使用 getDevices 方法可以获取当前所有输入设备的信息。 import { audio } from '@kit.AudioKit'; // 导入audio模块。 // ... audioRoutingManager.getDevices(audio.DeviceFlag.INP"
+    },
+    {
+      "path": "references/查询和监听音频输出设备.md",
+      "title": "查询和监听音频输出设备",
+      "snippet": "应用可通过以下两种方式管理全局音频输出设备： - 通常情况下，可以通过AudioRoutingManager查询和监听音频输出设备。 - 从API version 20开始，AudioSessionManager提供了部分输出设备管理的接口，支持通过AudioSession查询和监听音频输出设备，方便在使用AudioSession管理音频焦点的同时管理音频输出。 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 #### 通过AudioRoutingManager查询和监听音频输出设备 本模块提供音频输出设备管理能力，包括查询设备信息和监听连接状态变化。具体API说明请参考文档 AudioRoutingManager 。 #### 创建AudioRoutingManager实例 在使用AudioRoutingManager管理音频设备前，需要先导入模块并创建实例。 import { audio } from '@kit.AudioKit'; // 导入audio模块。 // ... let audioManager = audio.getAudioManager(); // 需要先创建AudioManager实例。 let audioRoutingManager = audioManager.getRoutingManager(); // 再调用AudioMan"
+    },
+    {
+      "path": "references/离线编辑(C_C++).md",
+      "title": "离线编辑(C/C++)",
+      "snippet": "从API version 22开始， OHAudioSuite 给开发者提供音频离线编辑能力，允许在非实时播放场景下对音频数据进行处理，开发者可以组合多个音频节点实现复杂的音频处理流程。 #### 开发基础配置 开发者使用 OHAudioSuite 提供的离线编辑能力，添加对应的头文件。 #### 在CMake脚本中链接动态库 target_link_libraries(sample PUBLIC libohaudiosuite.so) #### 添加头文件 开发者通过引入头文件< native_audio_suite_base.h >和< native_audio_suite_engine.h >，使用音频编创相关API。 #include <ohaudiosuite/native_audio_suite_base.h> #include <ohaudiosuite/native_audio_suite_engine.h> #### 开发步骤 详细的API说明请参考： OHAudioSuite 。 开发者参考本节内容实现音频离线编辑功能。 #### 指定音频节点类型 开发者需要根据业务场景，调用 OH_AudioSuiteNodeBuilder_SetNodeType() 接口，指定对应的 OH_AudioNode_Type 。 #### 指定音频节点格式 开发者需要根据业务场景"
+    },
+    {
+      "path": "references/空间音频能力查询和状态订阅.md",
+      "title": "空间音频能力查询和状态订阅",
+      "snippet": "从API version 18开始，支持空间音频能力查询和状态订阅。 空间音频是一种能够将传统立体声体验扩展到三维空间的音频技术，在单声道、立体声、环绕声的基础上，增加高度感知，营造全方位的听音体验。空间音频为用户提供沉浸的、有互动的、有空间感的“声”临其境的音频体验。 Audio Vivid是基于AI技术的音频编解码标准，由世界超高清视频产业联盟（UWA）与数字音视频编解码技术标准工作组（AVS）联合制定，共同发布。包含音频PCM数据以及元数据的音频格式，相比传统立体声音源，Audio Vivid包含音频内容源的元数据信息，能够还原物理和感知世界中的真实听感，打造极致的沉浸式听觉体验。 空间音频支持播放多声道、立体声、Audio Vivid等格式音源，并在耳机实现双耳空间音频渲染重放。搭配Audio Vivid格式音源的空间音频渲染，能够将音乐中的人声和各种乐器作为独立的声音对象，重新定义各种声音对象的位置、移动轨迹和声音大小、远近等要素，实现声音在听众四周及上方全面萦绕，实现更佳的空间音频沉浸式体验，获得影院、音乐厅等的临场感与艺术体验。当设备支持空间音频且空间音频开关被打开时，下发Audio Vivid格式音源可以得到更加沉浸的音频体验。关于如何播放Audio Vivid音源，可参考 播放Audio Vivid格式音源 。 以下各步骤示例为片段代码，可通过示例代码右下方链接获"
+    },
+    {
+      "path": "references/管理麦克风静音状态.md",
+      "title": "管理麦克风静音状态",
+      "snippet": "因为在录制过程中需要使用麦克风录制相关音频数据，所以建议开发者在调用录制接口前查询麦克风状态，并在录制过程中监听麦克风的状态变化，避免影响录制效果。 在音频录制过程中，用户可以将麦克风静音，此时录音过程正常进行，录制生成的数据文件的大小随录制时长递增，但写入文件的数据均为0，即无声数据（空白数据）。 录音不支持音量调节。 #### 开发步骤及注意事项 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 在AudioVolumeGroupManager中提供了管理麦克风状态的方法，接口的详细说明请参考音量API文档 AudioVolumeGroupManager 。 1. 创建audioVolumeGroupManager对象。 import { audio } from '@kit.AudioKit'; let audioVolumeGroupManager: audio.AudioVolumeGroupManager; // 创建audioVolumeGroupManager对象。 async function loadVolumeGroupManager(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> { const groupid = audio.DEFAULT"
+    },
+    {
+      "path": "references/音频会话管理.md",
+      "title": "音频会话管理",
+      "snippet": "对于涉及多个音频流并发的场景，系统已预设了默认的 音频焦点策略 ，该策略将对所有音频流（包括播放和录制）实施统一的焦点管理。 当系统提供的默认焦点策略不能满足应用需求时，应用可利用音频会话管理提供的接口，管理应用内音频流的焦点，自定义音频流的焦点策略，调整音频流释放焦点的时机，以满足特定需求。该篇文章的示例代码均为ArkTS，如果需要使用OHAudio开发请参考 使用OHAudio开发音频会话功能(C/C++) 。 使用音频会话相关接口，可以实现以下功能： - 系统默认焦点策略不能满足应用当前需求，应用可 使用音频会话修改焦点策略 来适配适合自己的焦点策略。 典型场景：应用播放短视频时，会打断后台音乐，应用希望自身的音频流停止后，后台的音乐可以自动恢复（该场景需要应用在音频流启动前激活音频会话，音频流停止后停用音频会话）。 - 当应用在某个业务流程中需要启动多个音频流，且要保证整个流程的完整性时，应用可 使用音频会话申请焦点策略 来适配适合自己业务场景的焦点策略。 典型场景：应用连续播放多个音频时，在多个音频衔接的间隙，不希望后台被影响的其他音频自动恢复，希望整个播放过程保持音频焦点的连贯性（该场景需要应用在整个播放过程开始前激活音频会话，整个播放过程结束后停用音频会话）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/"
+    },
+    {
+      "path": "references/音频工作组管理.md",
+      "title": "音频工作组管理",
+      "snippet": "音频工作组是一套通过标记来帮助系统识别应用内音频关键线程的接口，系统通过应用提供的关键音频线程以及工作组运行信息可以让音频线程的运行状态更加健康。 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 #### 使用说明 对于播放音频类应用，开发者需要先创建音频工作组，再将工作组运行信息的周期性告知系统。当工作结束后，需要对音频工作组进行清理。 #### 创建音频工作组示例 开发者在使用OH_AudioWorkgroup的API前，需要先用 OH_AudioManager_GetAudioResourceManager 获取OH_AudioResourceManager实例。 #include <ohaudio/native_audio_resource_manager.h> // ... OH_AudioResourceManager *resMgr; // ... OH_AudioManager_GetAudioResourceManager(&resMgr); #### 创建音频工作组并将关键线程加入音频工作组 开发者先使用 OH_AudioResourceManager_CreateWorkgroup 创建一个新的音频工作组，再使用 OH_AudioWorkgroup_AddCurrentThread 将关键线程加入音频工作组。 #include <chro"
+    },
+    {
+      "path": "references/音频录制开发概述.md",
+      "title": "音频录制开发概述",
+      "snippet": "系统提供了多样化的API，来帮助开发者完成音频录制的开发，不同的API适用于不同录音输出格式、音频使用场景或不同开发语言。因此，选择合适的音频录制API，有助于降低开发工作量，实现更佳的音频录制效果。 - AudioCapturer ：用于音频输入的ArkTS/JS API，仅支持PCM格式，需要应用持续读取音频数据进行工作。应用可以在音频输出后添加数据处理，要求开发者具备音频处理的基础知识，适用于更专业、更多样化的媒体录制应用开发。 - OHAudio ：用于音频输入的Native API，此API在设计上实现归一，同时支持普通音频通路和低时延通路。仅支持PCM格式，适用于依赖Native层实现音频输入功能的场景。 除上述方式外，也可以通过Media Kit中的AVRecorder实现音频录制。 - AVRecorder：用于音频录制的ArkTS/JS API，集成了音频输入录制、音频编码和媒体封装的功能。开发者可以直接调用设备硬件如麦克风录音，并生成m4a音频文件。 #### 开发音频录制应用须知 - 应用可以调用麦克风录制音频，但该行为属于隐私敏感行为，在调用麦克风前，需要先 向用户申请授权 ：ohos.permission.MICROPHONE。 如何使用和管理麦克风请参考 管理麦克风静音状态 。 - 如果需要持续录制或后台录制，请申请长时任务避免进入挂起（Suspend）"
+    },
+    {
+      "path": "references/音频播放开发概述.md",
+      "title": "音频播放开发概述",
+      "snippet": "系统提供了多样化的API，来帮助开发者完成音频播放的开发，不同的API适用于不同音频数据格式、音频资源来源、音频使用场景，甚至是不同开发语言。因此，选择合适的音频播放API，有助于降低开发工作量，实现更佳的音频播放效果。 - AudioRenderer ：用于音频输出的ArkTS/JS API，仅支持PCM格式，需要应用持续写入音频数据进行工作。应用可以在输入前添加数据预处理，如设定音频文件的采样率、位宽等，要求开发者具备音频处理的基础知识，适用于更专业、更多样化的媒体播放应用开发。 - AudioHaptic ：用于音振协同播放的ArkTS/JS API，适用于需要在播放音频时同步发起振动的场景，如来电铃声随振、键盘按键反馈、消息通知反馈等。 - OHAudio ：用于音频输出的Native API，此API在设计上实现归一，同时支持普通音频通路和低时延通路。仅支持PCM格式，适用于依赖Native层实现音频输出功能的场景。 除上述方式外，也可以通过Media Kit中的AVPlayer和SoundPool实现音频播放。 - AVPlayer ：用于音频播放的ArkTS/JS API，集成了流媒体和本地资源解析、媒体资源解封装、音频解码和音频输出功能。可用于直接播放mp3、m4a等格式的音频文件，不支持直接播放PCM格式文件。 - SoundPool ：低时延的短音播放ArkTS"
+    },
+    {
+      "path": "references/音频播放流管理.md",
+      "title": "音频播放流管理",
+      "snippet": "对于播放音频类的应用，开发者需要关注该应用的音频流的状态以做出相应的操作，比如监听到状态为播放中/暂停时，及时改变播放按钮的UI显示。 以下各步骤示例为片段代码，可通过示例代码右下方链接获取 完整示例 。 #### 读取或监听应用内音频流状态变化 参考 使用AudioRenderer开发音频播放功能(ArkTs) 或 audio.createAudioRenderer ，先完成AudioRenderer的创建，再通过以下两种方法查看音频流状态的变化。 - 方法1：直接查看AudioRenderer的 属性 state： import { audio } from '@kit.AudioKit'; // ... let audioRendererState: audio.AudioState = audioRenderer.state; console.info(`Current state is: ${audioRendererState }`); - 方法2：注册stateChange监听AudioRenderer的状态变化： import { audio } from '@kit.AudioKit'; // ... audioRenderer.on('stateChange', (rendererState: audio.AudioState) => { console.inf"
+    },
+    {
+      "path": "references/音频焦点介绍.md",
+      "title": "音频焦点介绍",
+      "snippet": "在应用播放或录制声音时，常出现与其他音频流的并发或中断情况，这对用户体验构成显著影响。例如，当应用启动视频播放时，若后台正在播放音乐，用户会期望音乐能自动暂停，以确保视频音频优先播放，这正是音频焦点功能的体现。对于涉及音频服务的应用而言，妥善地管理音频焦点非常重要，它可以显著提升用户的音频体验。 本文档将介绍系统的音频焦点策略，以及应对焦点变化的方法。同时，系统提供了 音频会话管理 机制，允许应用自定义其音频流的焦点策略。 #### 音频焦点 系统预设了默认的 音频焦点策略 ，根据音频流的类型及启动的先后顺序，对所有播放和录制音频流进行统一管理。 在启动播放或录制功能前，应用需要先 申请音频焦点 ；而在播放或录制结束后，应适时 释放音频焦点 。在播放或录制的过程中，可能会因其他音频流的介入而失去焦点，此时，应用需依据焦点变化采取相应措施 处理音频焦点变化 。 对于应用而言，为了确保为用户提供优质的音频焦点体验，应当注意以下几点： - 在启动播放或录制操作前，应根据音频的具体用途，选择并 使用合适的音频流类型 ，即准确设置 StreamUsage 或 SourceType 。 - 在播放或录制的过程中，需通过监听音频焦点来 处理音频焦点变化 事件，并在接收到音频焦点中断事件（ InterruptEvent ）时，采取相应的处理措施。 - 如果应用程序有意主动管理音频焦点，可使用 音频"
+    },
+    {
+      "path": "references/音频编创开发概述(C_C++).md",
+      "title": "音频编创开发概述(C/C++)",
+      "snippet": "从API version 22开始，支持音频编创（ OHAudioSuite ）功能。音频编创是一款提供专业级音频效果处理的开发接口，旨在帮助开发者高效构建各种音频创作应用。该套件提供高品质、低延迟、智能化的音频处理能力，集成了降噪、均衡器、人声分离等丰富音效功能。开发者可以根据具体的应用场景，轻松地将所需音频功能集成到应用中。 音频编创主要包含引擎、管线和节点，具体介绍如下。 **图1** ：音频编创实现原理图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f2/v3/7X4mEaZ6RKCH0jw6skvVvg/zh-cn_image_0000002573854481.png?HW-CC-KV=V1&HW-CC-Date=20260421T111305Z&HW-CC-Expire=86400&HW-CC-Sign=52AFA4BFF0DBC0A393E378EC15C70AA9DAAA1ABCDCE85BA76B023EBD4790B425) #### 引擎 OHAudioSuite 中的引擎是一个统一管理音频管线、控制 离线编辑(C/C++) 和 实时渲染(C/C++) 的对象，开发者可以根据自身的需求搭建音频处理链。调用方式如上图所示，由应用发起，先调用"
+    },
+    {
+      "path": "references/音频通话开发概述.md",
+      "title": "音频通话开发概述",
+      "snippet": "常用的音频通话模式包括VoIP通话和蜂窝通话。 - VoIP通话： VoIP（Voice over Internet Protocol）通话是指基于互联网协议（IP）进行通讯的一种语音通话技术。VoIP通话会将通话信息打包成数据包，通过网络进行传输，因此VoIP通话对网络要求较高，通话质量与网络连接速度紧密相关。 - 蜂窝通话（仅对系统应用开放）： 蜂窝通话是指传统的电话功能，由运营商提供服务，目前仅对系统应用开放，未向第三方应用提供开发接口。 在开发音频通话相关功能时，开发者可以根据实际情况，检查当前的 音频场景模式 和 铃声模式 ，以使用相应的音频处理策略。 #### 音频场景模式 应用使用音频通话相关功能时，系统会切换至与通话相关的音频场景模式（ AudioScene ），当前预置了多种音频场景，包括响铃、通话、语音聊天等，在不同的场景下，系统会采用不同的策略来处理音频。 如在通话场景中会更注重人声的清晰度。系统会使用3A算法对音频数据进行预处理，抑制通话回声，消除背景噪音，调整音量范围，从而达到清晰人声的效果。3A算法，指声学回声消除（Acoustic Echo Cancellation, AEC）、背景噪声抑制（Active Noise Control, ANC）、自动增益控制（Automatic Gain Control, AGC）三种音频处理算法。 当前预置的音频场景"
+    }
+  ]
+}

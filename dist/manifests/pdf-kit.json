@@ -1,0 +1,115 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "pdf-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:29.057Z"
+  },
+  "references": [
+    {
+      "path": "references/PDF Kit可以移除具体页面的页眉页脚、水印、背景吗？.md",
+      "title": "PDF Kit可以移除具体页面的页眉页脚、水印、背景吗？",
+      "snippet": "不可以，PDF Kit移除页眉页脚、水印或背景不会针对具体页面，请参考 页眉页脚 ， 水印 或 背景图片 。"
+    },
+    {
+      "path": "references/PDF Kit简介.md",
+      "title": "PDF Kit简介",
+      "snippet": "PDF Kit（PDF服务）包含pdfService和PdfView组件。 pdfService提供了加载和保存PDF文档、在PDF页面中添加文本内容、图片、批注、页眉页脚、水印、背景图片、书签、判断PDF文档是否加密及删除文档加密等相关的功能，对PDF文档的操作有更多的应用场景。 PdfView组件提供了文档预览功能，如：PDF文档预览、高亮显示、搜索关键字，批注等场景。 PDF Kit更多的示例代码请参考 CodeLab 和 SampleCode 。 #### pdfService与PdfView能力比较 #### 约束与限制 #### 支持的国家和地区 当前PDF Kit仅支持中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）。 #### 支持的设备 PDF Kit相关能力支持在Phone、Tablet和PC/2in1设备上运行。 #### 模拟器支持的情况 本Kit支持模拟器开发，但与真机存在部分能力差异，具体差异如下： - 通用差异：请参见“ 模拟器与真机的差异 ”。 - 支持ARM模拟器，不支持x86模拟器。"
+    },
+    {
+      "path": "references/PDF文档支持在线预览吗？.md",
+      "title": "PDF文档支持在线预览吗？",
+      "snippet": "PDF Kit不支持在线预览，需要把文档下载到本地，才能预览，具体可参见 预览PDF文档 。"
+    },
+    {
+      "path": "references/PDF缩略图转换为图片.md",
+      "title": "PDF缩略图转换为图片",
+      "snippet": "调用 getPagePixelMap 方法，将指定PDF缩略图转化为图片。 #### 接口说明 #### 示例代码 1. 调用loadDocument方法，加载PDF文档。 2. 调用getPagePixelMap方法，获取image.PixelMap对象。 3. 将image.PixelMap转化为二进制图片文件并保存。 import { pdfService, pdfViewManager } from '@kit.PDFKit'; import { image } from '@kit.ImageKit'; import { fileIo as fs } from '@kit.CoreFileKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; @Entry @Component struct PdfPage { private controller: pdfViewManager.PdfController = new pdfViewManager.PdfController(); private context = this.getUIContext().getHostContext() as Con"
+    },
+    {
+      "path": "references/PDF页面文本、图片和批注.md",
+      "title": "PDF页面文本、图片和批注",
+      "snippet": "支持编辑PDF页面内容，包括： - 添加、删除文本。 - 添加、删除图片。 - 添加、修改、删除批注。 通过索引指定PDF页面添加批注，并对批注在页面中的位置，字体、批注边框等设置，批注提供了多种风格样式，包括：文本批注 TextAnnotationInfo 、下划线批注 LineAnnotationInfo 、高亮批注 HighlightAnnotationInfo 、删除线批注 StrikethroughAnnotationInfo 等共13种。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ba/v3/3imPXfwYQ2m34zfRlPoJNg/zh-cn_image_0000002573975031.png?HW-CC-KV=V1&HW-CC-Date=20260421T111621Z&HW-CC-Expire=86400&HW-CC-Sign=241788ECC79A116DD93287165C76EF5E4292E8114728D2AD5EF7325AB934D101) #### 接口说明 #### 添加文本和图片 1. 调用loadDocument方法，加载PDF文档。 2. 在【addText】按钮中调用addTextObject的方法插入文本"
+    },
+    {
+      "path": "references/优化PDF文档切换体验.md",
+      "title": "优化PDF文档切换体验",
+      "snippet": "在应用中进行多文档切换时，为了提供更加流畅和清晰的视觉体验，推荐结合状态管理来控制PdfView的渲染时机。 通过引入加载状态，可以在文档加载过程中暂时隐藏预览组件并展示加载动画，待loadDocument异步加载完成且页面布局准备就绪后，再展示清晰的文档内容。这种方式能有效优化切换过程中的视觉跳变，提升交互质感。 #### 接口说明 #### 示例代码 1. 定义@State变量isLoading，用于标记文档的加载状态，并以此控制PdfView组件的挂载与显示。 2. 将isLoading置为true，显示Loading界面；待异步加载成功后，再将isLoading置为false，展示PDF视图。 3. 通过调用loadDocument加载不同的文件路径，实现PDF文件的切换。 import { pdfService, pdfViewManager, PdfView } from '@kit.PDFKit' import { fileIo } from '@kit.CoreFileKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { BusinessError } from '@ohos.base'; const DOMAIN: number = 0x0000; const TAG: string"
+    },
+    {
+      "path": "references/判断PDF文档是否加密及删除加密.md",
+      "title": "判断PDF文档是否加密及删除加密",
+      "snippet": "PDF Kit支持判断PDF文档是否加密及删除PDF加密锁。 #### 接口说明 #### 示例代码 1. 调用isEncrypted方法，判断PDF文档是否加密。 2. 如果是加密PDF文档，调用removeSecurity方法移除PDF文档的加密锁。 import { pdfService } from '@kit.PDFKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; @Entry @Component struct PdfPage { private pdfDocument: pdfService.PdfDocument = new pdfService.PdfDocument(); private context = this.getUIContext().getHostContext() as Context; build() { Column() { // 判断文档是否加密，并删除加密 Button('isEncryptedAndRemoveSecurity').onClick(async () => { // 确保沙箱目录有input.pdf文档 let filePath = this.context.filesDir + '/input.pdf'; let isEncrypt = this.pdf"
+    },
+    {
+      "path": "references/打开和保存PDF文档-1.md",
+      "title": "打开和保存PDF文档",
+      "snippet": "通过加载本地路径的PDF文档，实现打开PDF文档的预览功能。当PDF文档做了批注等相关的信息时，可以使用保存功能。 和pdfService的打开和保存能力相同，具体区别查看pdfService的 打开和保存PDF文档 的场景介绍。 #### 接口说明 #### 示例代码 1. 在aboutToAppear函数里面加载PDF文档。 2. 调用PdfView预览组件，渲染显示。 3. 在【savePdfDocument】按钮中调用saveDocument方法另存PDF文档。 import { pdfService, PdfView, pdfViewManager } from '@kit.PDFKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; @Entry @Component struct PdfPage { private controller: pdfViewManager.PdfController = new pdfViewManager.PdfController(); private context = this.getUIContext().getHostContext() as Context; private loadResult: pdfService.ParseResult = pdfServi"
+    },
+    {
+      "path": "references/打开和保存PDF文档.md",
+      "title": "打开和保存PDF文档",
+      "snippet": "对PDF文档 添加内容 、 页眉页脚 、 水印 、 背景图片 或 书签 等操作前，需要打开文档，并且在文档操作完成后，保存PDF文档。 pdfService和PdfView都可实现打开和保存文档，使用场景上有如下区别： - 需要对PDF文档做相关的编辑和操作，建议使用pdfService的能力打开和保存文档。 - 需要预览、搜索关键字、监听PDF文档回调和批注等操作，推荐使用PdfView打开。 #### 接口说明 #### 示例代码 1. 调用loadDocument方法，加载PDF文档。 2. 在【Save As】和【Save】两个按钮中调用saveDocument方法，分别实现了另存为PDF文档和保存覆盖源PDF文档的两种方式。 import { pdfService } from '@kit.PDFKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { fileIo } from '@kit.CoreFileKit'; import { BusinessError } from '@kit.BasicServicesKit'; @Entry @Component struct PdfPage { private pdfDocument: pdfService.PdfDocument = new "
+    },
+    {
+      "path": "references/批注.md",
+      "title": "批注",
+      "snippet": "进入批注模式，目前支持高亮、下划线和删除线类型批注。 #### 接口说明 #### 示例代码 1. 先加载PDF文档。 2. 调用PdfView预览组件，渲染显示。 3. 调用enableAnnotation方法，进入批注模式。 import { pdfService, pdfViewManager, PdfView } from '@kit.PDFKit'; @Entry @Component struct PdfPage { private pdfController = new pdfViewManager.PdfController(); private context = this.getUIContext().getHostContext() as Context; aboutToAppear(): void { // 确保沙箱目录有input.pdf文档 let filePath = this.context.filesDir + '/input.pdf'; (async () => { let loadResult: pdfService.ParseResult = await this.pdfController.loadDocument(filePath); if (pdfService.ParseResult.PARSE_SUCCESS === loadRes"
+    },
+    {
+      "path": "references/搜索关键字.md",
+      "title": "搜索关键字",
+      "snippet": "预览PDF文档时，可以对页面的关键词（英文字符不区分大小写）进行搜索并高亮显示，同时使用 setSearchIndex 方法高亮显示指定的搜索结果。 使用 getSearchIndex 方法获取当前高亮的索引，可以使用 clearSearch 方法清除所有搜索结果。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/48/v3/t4TU-rqcQIqY6Tqa-x41mg/zh-cn_image_0000002543215138.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111623Z&HW-CC-Expire=86400&HW-CC-Sign=F909B972B9422DF193F5A10CE3CFF7014ABB15E5E7E2920DC5214C1D1BC8EE1B) #### 接口说明 #### 示例代码 1. 先加载PDF文档。 2. 调用PdfView预览组件，渲染显示。 3. 在按钮【searchKey】里，调用searchKey方法，搜索指定关键字。 4. 上一个、下一个搜索按钮跳转到对应的结果。 5. 在按钮【getSearchIndex】里，调用getSearchIndex方法，获取当前的搜索结果索引。 6. 在按钮"
+    },
+    {
+      "path": "references/添加、删除PDF页.md",
+      "title": "添加、删除PDF页",
+      "snippet": "在PDF文档中添加或删除页面，包括： - 添加单个、多个空白页到PDF文档。 - 删除PDF文档中单个、多个指定页。 - 将其他PDF文档页添加到本PDF文档。 #### 接口说明 #### 示例代码 1. 调用loadDocument方法，加载PDF文档。 2. 调用getPage方法获取当前页，用于获取页面宽高。 3. 调用insertBlankPage和insertPageFromDocument方法实现如下功能。 1. 插入单个空白页。 2. 插入多个空白页。 3. 将input2.pdf文档的索引1、2、3页插入到input.pdf索引0的位置，并另存文档。 4. 调用deletePage方法删除单个或多个索引页。 import { pdfService } from '@kit.PDFKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; @Entry @Component struct PdfPage { private pdfDocument: pdfService.PdfDocument = new pdfService.PdfDocument(); private context = this.getUIContext().getHostContext() as Context; aboutToApp"
+    },
+    {
+      "path": "references/添加、删除书签.md",
+      "title": "添加、删除书签",
+      "snippet": "PDF Kit支持添加和删除PDF文档书签。 添加书签时，可设置标题、颜色，是否粗体、斜体、跳转信息等。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fa/v3/0yHXRqZfQAWV-zaSLzYpTw/zh-cn_image_0000002543374798.png?HW-CC-KV=V1&HW-CC-Date=20260421T111622Z&HW-CC-Expire=86400&HW-CC-Sign=F0AA5C7519E7172FF33A73995A81EA33CE32A7ACAE303DAD2BC380E917460417) #### 接口说明 #### 示例代码 **添加书签** ： 1. 调用loadDocument方法，加载PDF文档。 2. 调用createBookmark方法，创建书签。 3. 调用setDestInfo方法，设置书签的跳转信息。 4. 调用getBookmarkInfo方法，获取书签信息。 5. 调用setBookmarkInfo方法，设置书签内容及样式。 6. 设置保存文档沙箱路径并保存 **删除书签** ： 1. 调用loadDocument方法，加载PDF文档。 2. 调用getRootBookmark方法，获取"
+    },
+    {
+      "path": "references/添加、删除水印.md",
+      "title": "添加、删除水印",
+      "snippet": "对指定页面添加水印，包括文本水印或图片水印。 - 文本水印可以设置字体、大小、旋转，位置等属性。 - 图片水印可以设置缩放、旋转、透明度和位置等属性。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4/v3/3Ff5gIOaQuSrvFEOXwYC9A/zh-cn_image_0000002573855051.png?HW-CC-KV=V1&HW-CC-Date=20260421T111622Z&HW-CC-Expire=86400&HW-CC-Sign=17C3DC94E7166BB026EB046FE3064A4217C343F59EC5329C782AFE49A8108F48) #### 接口说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1c/v3/bwEs9Cd3Q-SyZtBPhf0LKg/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111622Z&HW-CC-Expire=86400&HW-CC-Sign=1C07FD1BCFBECF819DF8B9911718"
+    },
+    {
+      "path": "references/添加、删除背景.md",
+      "title": "添加、删除背景",
+      "snippet": "对指定页面添加背景图片或背景颜色，并设置大小、旋转、透明度和位置等属性，支持图片格式：PNG、BMP、JPEG。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cc/v3/_EXfJ7hRSxGJlYsBk7hoGQ/zh-cn_image_0000002573975033.png?HW-CC-KV=V1&HW-CC-Date=20260421T111622Z&HW-CC-Expire=86400&HW-CC-Sign=5CAF748C836B1BB0E6F523E0F6ACE261AF720C3BFBAE2376E75D0D5C19CC07CD) #### 接口说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/97/v3/C9-DNOivSQ620srbyaUP5A/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111622Z&HW-CC-Expire=86400&HW-CC-Sign=45B808ECAA92EA9779275DC2734152E99C632AC68B0165"
+    },
+    {
+      "path": "references/添加、删除页眉页脚.md",
+      "title": "添加、删除页眉页脚",
+      "snippet": "PDF Kit支持对指定页面添加、删除页眉页脚。页眉页脚信息包含文字、日期和页码等相关内容，并可设置字体大小、颜色和间距等相关样式，具体属性参考 HeaderFooterInfo 。如下图： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0c/v3/GOe_J-G-TZ-ew1NXgCItIA/zh-cn_image_0000002543215136.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111622Z&HW-CC-Expire=86400&HW-CC-Sign=302EFA4AF6367333C54071B9F9F4779F72AF20524E86123A75599B99412B3027) #### 接口说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d9/v3/7X2-NoUkTO-rX1zTYeLnBg/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111622Z&HW-CC-Expire=86400&HW-CC-Sign=72014F7"
+    },
+    {
+      "path": "references/设置PDF文档预览效果.md",
+      "title": "设置PDF文档预览效果",
+      "snippet": "pdfViewManager为PDF文档提供了丰富的预览特性。 - 单双页布局，是否连续滚动和页面适配方式。 - 页面跳转，如上一页，下一页，跳转到指定页。 - 页面放大、缩小。 **图1** ：提供了双页预览布局，页面宽度适配和连续滚动的预览方式 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/58/v3/hvf5DzTnQySjiwqHG8YiAg/zh-cn_image_0000002543374800.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111623Z&HW-CC-Expire=86400&HW-CC-Sign=39DF7D88F85106AD4D6A471D49FA056348DBD9E873753ED2673340C242B5D05E) #### 接口说明 #### 示例代码 1. 先加载PDF文档。 2. 调用PdfView预览组件，渲染显示。 3. 在按钮【setPreviewMode】里，调用setPageLayout、setPageContinuous等方法，设置文档预览效果。 4. 在按钮【goTopage】里，调用goToPage方法，设置页面跳转。 5. 在按钮【zoomPage2】里，调用setPag"
+    },
+    {
+      "path": "references/转换指定页面或指定区域为图片.md",
+      "title": "转换指定页面或指定区域为图片",
+      "snippet": "PDF文档页面转换为图片，或将页面的指定区域转换为图片时使用。 #### 接口说明 #### 示例代码 1. 调用loadDocument方法加载PDF文档。 2. 调用getPage方法获取某个页面。 3. 调用getPagePixelMap，getAreaPixelMapWithOptions或getCustomPagePixelMap方法获取当前页面或者页面区域，这时获取的是image.PixelMap图像类型。 4. 将image.PixelMap图像类型转化为二进制图片文件并保存，参考以下方法pixelMap2Buffer。 import { pdfService } from '@kit.PDFKit'; import { image } from '@kit.ImageKit'; import { fileIo as fs } from '@kit.CoreFileKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; @Entry @Component struct PdfPage { private pdfDocument: pdfService.PdfDocument = new pdfSer"
+    },
+    {
+      "path": "references/转换整个PDF文档为图片.md",
+      "title": "转换整个PDF文档为图片",
+      "snippet": "将整个PDF文档的页面转换为图片，每页为一张图片，并且所有图片存放在指定的同一个文件夹下。 当前支持的图片格式请参考 ImageFormat 。 #### 接口说明 #### 示例代码 1. 调用loadDocument方法，加载PDF文档。 2. 设置要输出图片的文件夹，调用convertToImage方法转化PDF文档所有页面为图片。 import { fileIo as fs } from '@kit.CoreFileKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { pdfService } from '@kit.PDFKit'; @Entry @Component struct PdfPage { private pdfDocument: pdfService.PdfDocument = new pdfService.PdfDocument(); private context = this.getUIContext().getHostContext() as Context; private loadResult: pdfService.ParseResult = pdfService.ParseResult.PARSE_ERROR_FORMAT; aboutToAppear(): vo"
+    },
+    {
+      "path": "references/预览PDF文档.md",
+      "title": "预览PDF文档",
+      "snippet": "PDF Kit提供了丰富的PDF文档预览能力，比如： - 页面跳转 - 页面缩放 - 单双页显示 - 页面适配 - 滚动视图方式预览 详细说明及使用请参考： PdfView 组件。 #### 示例代码 1. 导入相关模块。 2. 以下示例代码中以预览“input.pdf”文件名为例，此时需要确保在工程目录“src/main/resources/rawfile”里存在input.pdf文档，并且拷贝input.pdf文档到沙箱目录。 3. 调用loadDocument方法，加载PDF文档。 4. 调用PdfView预览组件，渲染显示。 import { pdfService, pdfViewManager, PdfView } from '@kit.PDFKit' import { fileIo } from '@kit.CoreFileKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { BusinessError } from '@kit.BasicServicesKit'; @Entry @Component struct Index { private controller: pdfViewManager.PdfController = new pdfViewManager.PdfControl"
+    },
+    {
+      "path": "references/高亮显示PDF文档.md",
+      "title": "高亮显示PDF文档",
+      "snippet": "PDF文档在预览时，可以对页面的矩形区域或文本设置高亮显示，高亮颜色可以自定义。 setHighlightText 可以同时高亮多个不同的文本。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0e/v3/o_b1y0vZQaeJgJirzEBJqQ/zh-cn_image_0000002573855053.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111624Z&HW-CC-Expire=86400&HW-CC-Sign=F3331FE76872977CD3A0DB10DC878EBA365565A06EAFA83E7F1C0CF14A2C3783) #### 接口说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/77/v3/o9Nwmi9rThO9nDoGLGRy0Q/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111624Z&HW-CC-Expire=86400&HW-CC-Sign=859195910003FDCBF6E8A0E637570A"
+    }
+  ]
+}

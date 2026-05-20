@@ -1,0 +1,111 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "payment-kit",
+  "source_path": "skills/payment-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:57:35.477Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "鸿蒙支付",
+      "数字货币",
+      "身份核验",
+      "营销服务",
+      "如何接入华为支付完成商户基础支付流程？",
+      "如何实现平台类商户的合单支付？",
+      "如何接入混合支付和纯外部支付场景？",
+      "如何实现签约代扣和支付并签约？",
+      "如何接入数字人民币支付？",
+      "如何实现实名信息验证和人脸核身？",
+      "如何集成领券、选券和商家券等营销组件？",
+      "如何完成商户入网和获取商户号？",
+      "如何配置端侧应用和云侧服务？",
+      "如何使用沙盒环境进行支付验证？",
+      "当应用需要接入华为支付能力完成商品或服务购买时使用本Kit",
+      "典型场景包括商城购物支付、水电费自动代扣、数字人民币充值缴费等",
+      "开发者需根据商户模型选择合适的支付场景，并完成商户入网和开发准备工作",
+      "当需要实现用户身份验证或营销服务时也可使用本Kit",
+      "实名信息验证和人脸核身适用于政务、金融、医疗等需要核对用户身份的场景",
+      "营销服务通过领券和选券组件实现平台券的发放和使用",
+      "接入应用内商品下单并发起支付 / Integrate in-app order placement and initiate payment",
+      "实现订单支付结果回调与状态查询 / Implement payment result callbacks and order status query",
+      "拉起收银台完成用户付款 / Launch the cashier page to complete user payment",
+      "处理支付成功失败取消等支付流程 / Handle payment success, failure, and cancellation flows",
+      "为电商订单接入多种支付方式选择 / Add multiple payment method selection for e-commerce orders",
+      "实现预下单并生成支付参数给客户端 / Create a prepay order and generate payment parameters for the client",
+      "接入商户退款申请和退款结果通知 / Integrate merchant refund requests and refund result notifications",
+      "实现周期性扣费和自动续费订阅 / Implement recurring charges and auto-renewing subscriptions",
+      "完成支付后的实名校验与用户身份认证 / Perform post-payment real-name verification and user identity authentication",
+      "接入优惠券抵扣和支付立减营销能力 / Integrate coupon deduction and payment discount promotions",
+      "支持数字人民币与银行卡组合支付 / Support combined payment with e-CNY and bank cards",
+      "管理商户订单号交易号与支付记录 / Manage merchant order IDs, transaction IDs, and payment records"
+    ],
+    "do_not_use_when": [
+      "应用销售的是虚拟商品、订阅或应用内数字内容，应使用 iap-kit / The app sells virtual goods, subscriptions, or in-app digital content, so use iap-kit",
+      "需求是管理银行卡、证件、卡包或票券等钱包资产，而不是发起支付交易，应使用 wallet-kit / The need is to manage wallet assets such as bank cards, IDs, passes, or coupons rather than initiate a payment transaction, so use wallet-kit",
+      "需求是用户登录、账号授权、账号信息获取或账户管理，而不是支付实名校验/实人核身，应使用 account-kit / The need is user sign-in, account authorization, profile access, or account management rather than payment identity verification, so use account-kit",
+      "需求是读取、选择或管理通讯录联系人，而不是支付、营销券或身份验证，应使用 contacts-kit / The need is to read, pick, or manage address book contacts rather than payments, marketing coupons, or identity verification, so use contacts-kit",
+      "目标设备是模拟器、非中国境内环境，或要在不支持身份验证的设备上做人脸/实名核验时，不应使用本Kit / Do not use this kit in an emulator, outside mainland China, or for face/real-name verification on unsupported devices"
+    ],
+    "preconditions": [
+      "已完成商户入网、获取商户号并将商户号与AppID正确绑定 / Merchant onboarding is completed, a merchant ID is obtained, and it is correctly bound to the AppID",
+      "已准备并配置所需证书、签名密钥以及端侧应用配置，且云侧接口服务已就绪 / Required certificates, signing keys, and client app configuration are prepared, and the server-side payment APIs are ready",
+      "应用运行在支持的真机环境中，位于中国境内，且网络可正常访问Payment Kit与商户回调服务 / The app runs on a supported real device in mainland China, and the network can reach Payment Kit and merchant callback services",
+      "若使用身份验证或特定支付场景，已开通对应服务并完成相关权限、产品和场景配置 / If identity verification or special payment scenarios are used, the corresponding services, permissions, product switches, and scenario configurations are enabled"
+    ],
+    "inputs": [
+      "商户订单信息 / merchant order information",
+      "商户号、AppID及场景配置 / merchant ID, AppID, and scenario configuration",
+      "支付或签约请求参数（如金额、商品描述、回调地址） / payment or contract-signing request parameters (such as amount, item description, and callback URL)",
+      "身份验证要素或营销组件参数 / identity verification factors or marketing component parameters"
+    ],
+    "outputs": [
+      "概述与规范",
+      "开发准备",
+      "支付场景",
+      "签约代扣",
+      "数字人民币",
+      "营销服务",
+      "用户身份验证",
+      "其他场景",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码或配置中接入Payment Kit相关支付、签约、营销或身份验证调用路径，而非改用其他Kit接口 / A Payment Kit integration path for payment, signing, marketing, or identity verification is added in code or configuration rather than using another kit's APIs",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add or modify HarmonyOS Payment Kit integration code, configuration, or request flow for payment-related, marketing, or identity-verification features?"
+      },
+      {
+        "statement": "已补充商户侧必需的接入参数或配置引用，如商户号、AppID绑定、证书/密钥、回调地址或场景参数 / Required merchant-side integration parameters or configuration references are added, such as merchant ID, AppID binding, certificates/keys, callback URL, or scenario parameters",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the changes include concrete merchant integration parameters, config placeholders, or documented references for merchant ID, certificates/keys, callback URL, AppID binding, or scenario setup?"
+      },
+      {
+        "statement": "已体现支付结果或验证结果的处理逻辑，包括成功/失败分支、回调处理或结果查询衔接 / Result handling logic is present, including success/failure branches, callback handling, or follow-up result querying",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there explicit handling for payment or verification outcomes such as success/failure callbacks, status processing, or result query flow?"
+      }
+    ],
+    "overlaps_with": [
+      "account-kit",
+      "contacts-kit",
+      "iap-kit",
+      "wallet-kit"
+    ],
+    "safety_tier": "high-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

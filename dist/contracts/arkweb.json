@@ -1,0 +1,118 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "arkweb",
+  "source_path": "skills/arkweb/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:49:49.283Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "Web组件",
+      "网页加载",
+      "JavaScript交互",
+      "Web安全",
+      "Web渲染",
+      "Cookie",
+      "HTTP拦截",
+      "如何使用Web组件加载和显示Web页面",
+      "如何实现应用侧与Web前端页面的JavaScript双向调用",
+      "如何管理Web组件的Cookie和数据存储",
+      "如何拦截Web组件发起的网络请求并自定义响应",
+      "如何使用隐私模式、广告过滤和智能防跟踪保护用户隐私",
+      "如何实现Web页面的深色模式适配",
+      "如何使用DevTools调试Web页面和定位Web白屏问题",
+      "如何实现Web组件的同层渲染和画中画功能",
+      "如何处理Web组件中的文件上传下载和PDF预览",
+      "如何优化Web页面跳转过程中的页面闪烁现象",
+      "当应用需要嵌入和显示Web页面内容时，请使用ArkWeb的Web组件",
+      "适用于应用内嵌Web页面、浏览器应用、小程序宿主应用等场景",
+      "当应用需要与Web前端页面进行JavaScript双向交互时，请使用ArkWeb的应用侧与前端页面数据通道和函数调用能力",
+      "当应用需要实现Web内容的安全与隐私保护时，请使用ArkWeb提供的权限管理、Cookie管理、隐私模式、广告拦截、防跟踪等能力",
+      "当需要调试Web页面或排查Web组件问题时，请使用DevTools调试工具和Crashpad崩溃信息收集功能",
+      "当应用需要处理Web页面的媒体播放、文件操作、打印等特定场景时，请使用ArkWeb对应的能力",
+      "在应用里嵌入浏览器页面并打开指定URL / Embed a browser view in the app and open a specific URL",
+      "实现 H5 页面与 ArkTS 原生代码互相调用 / Bridge an H5 page with ArkTS native code for two-way calls",
+      "加载本地 HTML 文件并显示前端页面 / Load local HTML files and render the frontend page",
+      "处理网页导航回退前进和页面刷新 / Handle web navigation back, forward, and page reload",
+      "监听页面加载进度和标题变化并更新界面 / Track page load progress and title changes to update the UI",
+      "接管 WebView 的下载链接并保存文件 / Handle download links from WebView and save files",
+      "设置自定义 User-Agent 或请求头访问网页 / Set a custom User-Agent or headers for web requests",
+      "注入 JavaScript 或执行脚本操作网页内容 / Inject JavaScript or run scripts to manipulate page content",
+      "清理网页缓存、历史记录和站点数据 / Clear web cache, browsing history, and site data",
+      "控制网页权限申请如定位、摄像头和麦克风 / Manage web permission requests such as location, camera, and microphone",
+      "拦截页面跳转并处理自定义 scheme 或 deeplink / Intercept page navigations and handle custom schemes or deep links",
+      "适配网页文件上传和选择图片附件 / Support web file upload and picking image attachments",
+      "定位 Web 页面白屏、崩溃或脚本报错问题 / Troubleshoot blank pages, crashes, or script errors in web content"
+    ],
+    "do_not_use_when": [
+      "需求是构建原生界面组件、布局、状态驱动界面而不是嵌入网页内容时，应使用 arkui / Use arkui when the task is to build native UI components, layouts, or state-driven interfaces rather than embed web content",
+      "需求仅涉及ArkTS语言语法、类型系统、并发模型或通用代码实现而不需要Web组件能力时，应使用 arkts / Use arkts when the work is only about ArkTS language syntax, typing, concurrency, or general coding without Web component capabilities",
+      "需求是实现跨Ability或跨进程对象通信、消息传递、远程调用，而不是应用与网页JavaScript交互时，应使用 ipc-kit / Use ipc-kit when the task is cross-Ability or cross-process object communication, messaging, or RPC rather than app-to-web JavaScript interaction",
+      "需求是开发卡片服务或在桌面卡片中展示轻量内容，而不是在页面中加载完整网页时，应使用 form-kit / Use form-kit when building widget/card experiences or showing lightweight card content instead of loading full web pages in-app",
+      "需求是调度长时间后台任务、延迟任务或资源条件触发任务，而不是前台Web页面加载与渲染时，应使用 background-tasks-kit / Use background-tasks-kit when scheduling long-running background, deferred, or condition-triggered tasks instead of foreground web page loading and rendering"
+    ],
+    "preconditions": [
+      "工程已集成ArkWeb能力，目标设备与API版本支持Web组件相关接口 / The project has ArkWeb capability integrated and the target device/API version supports Web component APIs",
+      "若访问网络页面，应用已声明网络访问能力且目标URL可达 / If loading remote pages, the app has network access declared and the target URL is reachable",
+      "若网页要访问位置、摄像头、麦克风或文件选择等敏感能力，module.json5中已声明相应权限并完成用户授权流程 / If the web page needs sensitive capabilities such as location, camera, microphone, or file picking, the corresponding permissions are declared in module.json5 and user consent flow is handled",
+      "若要启用JS双向交互、请求拦截或下载上传等扩展能力，相关控制器、回调或设置项已在Web组件初始化阶段配置 / If enabling JS bridge, request interception, downloads, uploads, or similar advanced features, the relevant controllers, callbacks, or settings are configured during Web component initialization"
+    ],
+    "inputs": [
+      "网页地址或本地页面资源路径 / web URL or local page resource path",
+      "Web组件配置项与控制器对象 / Web component configuration and controller objects",
+      "应用与网页交互的JavaScript函数名、消息通道名或回调处理逻辑 / JavaScript function names, message channel names, or callback handlers for app-web interaction",
+      "权限与安全策略参数，如Cookie、隐私模式、UA或请求拦截规则 / Permission and security policy parameters such as cookies, private mode, UA, or request interception rules"
+    ],
+    "outputs": [
+      "Kit简介与架构",
+      "页面加载与管理",
+      "与前端页面交互",
+      "网络与请求",
+      "安全与隐私",
+      "页面显示与交互",
+      "文件与媒体",
+      "渲染与布局",
+      "调试与维测"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已新增或配置Web组件以加载目标网页或本地Web内容 / The code adds or configures a Web component to load the target web page or local web content",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly introduce or modify a HarmonyOS Web/ArkWeb component and provide a URL or local web source to load?"
+      },
+      {
+        "statement": "若需求包含应用与网页交互，代码已接入对应的JavaScript调用、消息通道或前后端桥接处理 / If the task requires app-web interaction, the code wires up the corresponding JavaScript invocation, message channel, or bridge handlers",
+        "verifier": "model_judge",
+        "judge_prompt": "If the requested feature involves app-to-web or web-to-app interaction, do the edits add the necessary JS bridge, callback, or message channel handling?"
+      },
+      {
+        "statement": "若需求包含网络控制或安全隐私能力，代码已添加相应设置、权限处理或拦截逻辑 / If the task involves network control or security/privacy features, the code adds the relevant settings, permission handling, or interception logic",
+        "verifier": "model_judge",
+        "judge_prompt": "When the request mentions request interception, cookies, privacy mode, permissions, camera/microphone, or similar concerns, do the edits include matching configuration or handler code?"
+      }
+    ],
+    "overlaps_with": [
+      "ability-kit",
+      "arkts",
+      "arkui",
+      "form-kit",
+      "ipc-kit",
+      "function-flow-runtime-kit",
+      "background-tasks-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

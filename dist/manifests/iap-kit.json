@@ -1,0 +1,220 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "iap-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.874Z"
+  },
+  "references": [
+    {
+      "path": "references/AppGallery Connect中可以配置多个关键事件通知接收地址吗？.md",
+      "title": "AppGallery Connect中可以配置多个关键事件通知接收地址吗？",
+      "snippet": "不可以。"
+    },
+    {
+      "path": "references/AppGallery Connect商品管理页面中，价格展示是否做了数字调整？比如小数点第二位6_9等调整？.md",
+      "title": "AppGallery Connect商品管理页面中，价格展示是否做了数字调整？比如小数点第二位6/9等调整？",
+      "snippet": "做了调整，具体调整规则请参见 换算规则 。"
+    },
+    {
+      "path": "references/AppGallery Connect商品管理页面，商品价格编辑界面的默认价格表示什么意思？.md",
+      "title": "AppGallery Connect商品管理页面，商品价格编辑界面的默认价格表示什么意思？",
+      "snippet": "该默认价格在 AppGallery Connect 页面其他地方涉及商品价格展示时使用。"
+    },
+    {
+      "path": "references/AppGallery Connect获取的IAP公钥最大长度是多少？便于用户存储设置的最大长度是多少？.md",
+      "title": "AppGallery Connect获取的IAP公钥最大长度是多少？便于用户存储设置的最大长度是多少？",
+      "snippet": "长度是随密钥规格而定的，非固定长度。建议在数据库中使用text类型存储。"
+    },
+    {
+      "path": "references/HarmonyOS元服务和HarmonyOS应用是否可以共用同一个API密钥？.md",
+      "title": "HarmonyOS元服务和HarmonyOS应用是否可以共用同一个API密钥？",
+      "snippet": "可以，API密钥是开发者级别的配置，可以用于HarmonyOS元服务、HarmonyOS应用等。"
+    },
+    {
+      "path": "references/IAP Kit接入规范.md",
+      "title": "IAP Kit接入规范",
+      "snippet": "为了确保用户获得良好的支付体验，IAP Kit制定了应用接入IAP Kit的设计规范，请开发者遵照执行，否则可能影响应用上架。具体要求如下： #### 界面设计规范 1. 请不要在应用商品购买页展示支付方式栏目信息，包括支付方式logo、支付方式名称（如“华为支付”、“鸿蒙支付”、“应用内支付”等）等信息。建议采用购买、订阅等按钮确认用户购买或订阅意愿。用户点击按钮确认购买或订阅意愿后，应用直接拉起IAP Kit收银台完成购买流程。 2. 建议应用在商品购买页拉起IAP Kit收银台时，展示加载动效，保证应用购买的流畅性，提升用户体验。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d3/v3/ywZd1vNDRSins9MGL7_KDw/zh-cn_image_0000002573854867.png?HW-CC-KV=V1&HW-CC-Date=20260421T111539Z&HW-CC-Expire=86400&HW-CC-Sign=0687B07F0CCE88435E9537F54B352E164C7F4A43B2BE4095925C6DF0174301F1) #### 接入限制 数字商品（虚拟商品）要求通过IAP Kit接入购买能力，不能独立对接支付"
+    },
+    {
+      "path": "references/IAP Kit简介.md",
+      "title": "IAP Kit简介",
+      "snippet": "IAP Kit（应用内支付服务）为开发者提供便捷的应用内支付体验和简便的接入流程，让开发者聚焦应用本身的业务能力，助力开发者商业变现。开发者应用可通过使用IAP Kit提供的系统级支付API快速启动IAP收银台，即可实现应用内支付。 通过IAP Kit，用户可以在应用内购买各种类型的 **数字商品（虚拟商品）** ，包括消耗型商品、非消耗型商品、自动续期订阅商品和非续期订阅商品。 #### 约束与限制 #### 支持的设备 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/92/v3/8GiS6UF9Qdqy-pdWn7qd-g/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111539Z&HW-CC-Expire=86400&HW-CC-Sign=6BFE07E327C2F3BAD60BB9D320AD15FA8A8CF717C66FC909127BCBC66AB8533F) 华为IAP范围覆盖 中的国家/地区（不包括中国境内（香港特别行政区、澳门特别行政区、中国台湾除外））仅支持Wearable设备。 中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）： 从6.1.0（23）开始，提供了IAP嵌入式收"
+    },
+    {
+      "path": "references/IAP服务器支持的加密套件范围.md",
+      "title": "IAP服务器支持的加密套件范围",
+      "snippet": "具体见 加密套件 。"
+    },
+    {
+      "path": "references/IAP服务器支持的证书范围.md",
+      "title": "IAP服务器支持的证书范围",
+      "snippet": "请检查开发者证书链，确保证书链的完整性，同时确保证书链中的证书在IAP服务器内置的如下92个证书中。如果证书链存在问题，请参见 如何解决证书链不完整 。"
+    },
+    {
+      "path": "references/developerPayload处理机制及使用建议.md",
+      "title": "developerPayload处理机制及使用建议",
+      "snippet": "支持开发者在创建订单/订阅订单时通过传入的 PurchaseParameter 设置developerPayload字段。developerPayload一般用于识别已支付的购买订单是由哪个应用账号发起的购买，并将此购买订单的相关权益正确发放给对应的应用账号。 **在订阅型商品购买场景下developerPayload处理机制** ： - 初次购买场景 如果用户在初次购买订阅时传入了developerPayload，那么该developerPayload将与此订阅绑定，后续此订阅整个生命周期内该developerPayload均将保持不变。 - 恢复订阅场景 如果开发者在恢复订阅时传入了新的developerPayload，那么此订阅的developerPayload将刷新为新传入的值，将会影响其后所有事件通知中的developerPayload，如果此时未传入新的developerPayload值，developerPayload保持不变。 - 切换订阅场景 切换订阅可以理解为老订阅撤销、新订阅创建这两个过程。切换后的新订阅将使用切换时传入的developerPayload为初始值，如果在切换时没有传入新的developerPayload，那么新订阅将继承老订阅的developerPayload，后续新订阅developerPayload的处理机制参考初次购买场景。 - 用户在订"
+    },
+    {
+      "path": "references/purchaseToken和purchaseOrderId这两个参数的最大长度是多少？.md",
+      "title": "purchaseToken和purchaseOrderId这两个参数的最大长度是多少？",
+      "snippet": "purchaseToken和purchaseOrderId最大长度不超过256。"
+    },
+    {
+      "path": "references/subGroupId（订阅组ID）、subGroupGenerationId（订阅组的代ID）和subscriptionId（订阅ID）说明.md",
+      "title": "subGroupId（订阅组ID）、subGroupGenerationId（订阅组的代ID）和subscriptionId（订阅ID）说明",
+      "snippet": "- subGroupId(订阅组ID)标识一个订阅组，一个订阅组下存在多个自动续期订阅商品。 - subGroupGenerationId(订阅组的代ID)是标识用户在同一订阅组下连续订阅的唯一ID。用户首次订阅时生成，在同一订阅组内切换其它订阅商品该ID不会改变，在订阅失效且超出 保留期 后，用户重新购买商品时改变。 - subscriptionId(订阅ID)标识用户对订阅组中的一个商品存在订阅关系。"
+    },
+    {
+      "path": "references/使用入门.md",
+      "title": "使用入门",
+      "snippet": "在正式开发应用之前，开发者可以通过 Codelab 快速体验一个应用的开发过程。 #### 开发流程 开发者需要按照流程来完成应用的开发工作，完整的开发流程如下。 #### 示例代码 开发者可参见 示例代码 了解如何在应用中提供消耗型商品、非消耗型商品、自动续期订阅商品购买能力。"
+    },
+    {
+      "path": "references/创建项目和应用.md",
+      "title": "创建项目和应用",
+      "snippet": "在 AppGallery Connect （简称AGC）上，参考 创建项目 和 创建应用 完成HarmonyOS应用的创建。"
+    },
+    {
+      "path": "references/华为IAP范围覆盖.md",
+      "title": "华为IAP范围覆盖",
+      "snippet": "IAP已支持全球多个国家或地区，为当地的消费者和商户提供安全、便捷、高效的支付服务。 目前IAP在全球共支持 **183** 个国家或地区，其中： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d2/v3/ypaVnr5kSbuHQQ-bQTow-w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111548Z&HW-CC-Expire=86400&HW-CC-Sign=9DCADAE6F8592AAED9707E06733D7B4C8A5F017EBA7BEB261D0D2DBBE0156A0A) 由于某些币种在支付平台不支持携带小数，开发者在设置订单参数amount字段时，应设置为整数金额值，如5.00，不支持5.02。 涉及币种： BEF、XOF、XAF、XPF、KMF、GRD、GNF、HUF、IDR、JPY、LUF、MGA、MGF、PYG、PTE、RWF、KRW、ESP、TRL、VND、IQD、COP、CLP、ISK、KES（M-Pesa不支持小数，银行卡、花币、优惠券支持小数，建议amount优先设为整数）"
+    },
+    {
+      "path": "references/在AppGallery Connect中单独修改商品在某个地区的价格，以后汇率变动，是否会影响应用内的商品价格？.md",
+      "title": "在AppGallery Connect中单独修改商品在某个地区的价格，以后汇率变动，是否会影响应用内的商品价格？",
+      "snippet": "不会，除非开发者自己修改。"
+    },
+    {
+      "path": "references/在沙盒环境进行测试，但是实际需要真实支付是为什么？.md",
+      "title": "在沙盒环境进行测试，但是实际需要真实支付是为什么？",
+      "snippet": "有可能是debug包切换为release包之后，手机进程缓存没有失效导致。切换debug包和release包后，要保证进程缓存失效，比如锁屏5分钟或者重启。"
+    },
+    {
+      "path": "references/如何解决证书链不完整？.md",
+      "title": "如何解决证书链不完整？",
+      "snippet": "如果开发者提供的证书在IAP服务内置信任库中查询不到，则该证书不被IAP信任，需要构造完整的信任链以被IAP信任。 此处以Chrome浏览器最新版本（一般是支持自动验证证书链）为工具，以华为的证书为例，手工构造完整的证书链步骤如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/35/v3/eL8FlsevTiyXslGIQY5rsg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111546Z&HW-CC-Expire=86400&HW-CC-Sign=DA56D1173DE1E79E25175C69B2CB638F55887E8ECB06F690153F692FFAA62C91) 开发者也可以选择其他证书链工具构造完整的证书链。 1. 查看服务器证书。 访问 华为开发者网站 ，依次点击“查看网站信息 > 显示连接详情 > 显示证书 > 详细信息”，可查看证书状况，如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/93/v3/geNnB9G2SeO9bL390E3hJg/zh"
+    },
+    {
+      "path": "references/应用在子窗口中调用createPurchase拉起IAP Kit收银台时，子窗口会被隐藏，此现象正常吗？.md",
+      "title": "应用在子窗口中调用createPurchase拉起IAP Kit收银台时，子窗口会被隐藏，此现象正常吗？",
+      "snippet": "是正常的。出于安全考虑，系统控件在拉起IAP Kit收银台时，会将子窗口等悬浮形态的组件隐藏。"
+    },
+    {
+      "path": "references/应用迁移后，JWT密钥验签错误自查方法.md",
+      "title": "应用迁移后，JWT密钥验签错误自查方法",
+      "snippet": "若应用需进行商户主体迁移，则原有应用相关的 JWT参数 需同步更新。"
+    },
+    {
+      "path": "references/开启和激活应用内购买服务.md",
+      "title": "开启和激活应用内购买服务",
+      "snippet": "1. 使用IAP Kit功能前，请确保已开启应用内购买服务（HarmonyOS NEXT）开关。此开关是应用级别的，即所有使用IAP Kit功能的应用均需执行此步骤，具体操作请参见 打开应用内购买服务（HarmonyOS NEXT）API开关 。 2. 开启应用内购买服务（HarmonyOS NEXT） 开关后，开发者需进一步激活应用内购买服务（HarmonyOS NEXT），具体请参见 激活服务和配置事件通知 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2e/v3/muJTSgO3QUi4AkXbvxXDNA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111540Z&HW-CC-Expire=86400&HW-CC-Sign=77352228AD959237AAA508FB243D35BEC40F71CCABFC415D04A9E94B59F3E8D8) 发布阶段 **必须** 申请发布证书 、开启和激活“应用内购买服务”后 **需要重新** 申请 发布Profile文件 ，并完成 手动签名 。"
+    },
+    {
+      "path": "references/开票.md",
+      "title": "开票",
+      "snippet": "从6.1.0（23）开始，支持开发票功能。若用户购买应用内数字商品后需要申请开发票，可选择需要申请开票的订单后根据页面指引，提交开发票信息。 用户可按照以下步骤： 1. 选择“手机设置 > 华为账号 > 付款与账单 > 发票中心”，点击“开发票”，在需要开发票的订单后，点击“下一步”，进入“开发票”页面。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/19/v3/yWrKSrw-Sc6-h3UfilV-aQ/zh-cn_image_0000002543214976.png?HW-CC-KV=V1&HW-CC-Date=20260421T111544Z&HW-CC-Expire=86400&HW-CC-Sign=9105841A8D4B3AC9F9F1A9DFD8830CB8B9ACBEFDF4FAEF1416523AA2725D44D0) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e8/v3/63FaIE-hRpSkOsjSMbx31w/zh-cn_image_0000002573854891.png?HW-CC-KV=V1&HW-CC-"
+    },
+    {
+      "path": "references/开通商户服务.md",
+      "title": "开通商户服务",
+      "snippet": "开通商户服务是开发者分发付费内容（付费应用/主题、应用内付费、广告变现等）的前提。商户服务里需要配置银行卡账户、币种等信息，用于开发者接收华为分成收益。详细信息和操作请参见 商户服务 。"
+    },
+    {
+      "path": "references/接入自动续期订阅.md",
+      "title": "接入自动续期订阅",
+      "snippet": "自动续期订阅能力支持Phone、Tablet、PC/2in1设备，并且从5.1.1(19）版本开始，新增支持TV设备。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d3/v3/qMalMR7UTe65eBgWRaWxkg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111542Z&HW-CC-Expire=86400&HW-CC-Sign=1172CCD8491C0063A577921A1B6ECA89736FAF24F96D791624316C13E5968FFF) 如下业务流程对于单机应用同样适用。在单机应用中，应用服务器和应用客户端的交互放在应用客户端完成，应用服务器和IAP服务器交互的部分可不处理。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/18/v3/FzMOl9KBQ-CgykDGep1Q9w/zh-cn_image_0000002543214960.png?HW-CC-KV=V1&HW-CC-Date=20260421T111542Z&HW-CC"
+    },
+    {
+      "path": "references/接入购买-1.md",
+      "title": "接入购买",
+      "snippet": "用户在购买非续期订阅商品后，可以在一段时间访问App的增值功能或内容，周期结束后禁止访问，除非再次购买自动续期订阅或非续期订阅商品。 在接入非续期订阅商品购买能力前，需要提前 配置商品信息 。用户在应用内购买时，应用拉起IAP Kit的收银台，收银台处会展示商品名称、商品价格等信息，用户根据需求完成商品购买。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/dd/v3/VEaYs-e_RjSe2QexSkbr3Q/zh-cn_image_0000002543374624.png?HW-CC-KV=V1&HW-CC-Date=20260421T111543Z&HW-CC-Expire=86400&HW-CC-Sign=EB6DCF6DBDC6DE618CB301513954B2C24E4CBEE12E31A3AA473AB4976AE77B49) #### 提供优惠 为了提供更有吸引力的非续期订阅商品购买，华为应用内支付支持开发者配置优惠促销（自定义人群促销）。 可以针对用户群体、优惠地域进行自定义选择，支持开发者进行个性化的优惠活动配置。开发者可以在发起购买前，查询该商品的优惠活动信息，在最终发起购买时，将优惠活动信息传递到华为应用内支付，最终将优惠活动信息展示给"
+    },
+    {
+      "path": "references/接入购买.md",
+      "title": "接入购买",
+      "snippet": "在应用内购买场景中，用户会采用一次性付款的方式购买消耗型商品或非消耗型商品。请结合实际业务场景选择提供的商品类型。 在接入消耗型/非消耗型商品购买能力前，需要提前 配置商品信息 。用户在应用内购买时，应用拉起IAP Kit的收银台，收银台处会展示商品名称、商品价格等信息，用户根据需求完成商品购买。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/60/v3/JYO7sCgFRK6kL7nmr2LOhg/zh-cn_image_0000002543374618.png?HW-CC-KV=V1&HW-CC-Date=20260421T111541Z&HW-CC-Expire=86400&HW-CC-Sign=BE5A6DF50DF5A4D92CB8DFC4E1DA130D0EDC08FDF38961C73258BB63FA296E0E) #### 提供优惠 为了提供更有吸引力的消耗型/非消耗型商品购买，华为应用内支付支持开发者配置优惠促销（自定义人群促销）。 可以针对用户群体、优惠地域进行自定义选择，支持开发者进行个性化的优惠活动配置。开发者可以在发起购买前，查询该商品的优惠活动信息，在最终发起购买时，将优惠活动信息传递到华为应用内支付，最终将优惠活动信息展示给用户。"
+    },
+    {
+      "path": "references/收益分析和报告.md",
+      "title": "收益分析和报告",
+      "snippet": "当销售商品后，可登录 开发者联盟 ，进入“管理中心”，点击“我的账户”，选择“收益”，进入自助结算页面，查看商品产生的收益结算单并申请结算，详情见 自助结算指南 。 #### 查看和下载支付报表 当销售商品后，可登录 开发者联盟 ，进入“管理中心”，在“我的报表 > 支付报表”中，查看或导出指定时间段内支付明细和优惠券明细。"
+    },
+    {
+      "path": "references/是否必须使用SHA256的证书才能通过验签？.md",
+      "title": "是否必须使用SHA256的证书才能通过验签？",
+      "snippet": "是的，现在华为开发者联盟上要求配置的就是SHA256指纹。"
+    },
+    {
+      "path": "references/是否能在删除商品后添加具有相同productId的商品？.md",
+      "title": "是否能在删除商品后添加具有相同productId的商品？",
+      "snippet": "不支持。同一个productId只能使用一次。"
+    },
+    {
+      "path": "references/权益发放-1.md",
+      "title": "权益发放",
+      "snippet": "用户购买自动续期订阅商品后，若订阅处于生效状态，开发者需要及时给用户发放对应权益。 在应用启动时，获取用户当前处于生效状态的订阅列表，处理此部分订阅的权益发放。建议先检查当前订阅对应权益的发放状态，未发放再补充发放权益。在权益发放成功后，向IAP确认发货，完成购买。 建议单机应用将用户权益和订阅状态关联。如果订阅处于生效状态，始终为用户发放权益。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bb/v3/IyHM4Sw-SvG4bj4seT7A0Q/zh-cn_image_0000002573854875.png?HW-CC-KV=V1&HW-CC-Date=20260421T111542Z&HW-CC-Expire=86400&HW-CC-Sign=7FA181849BFACE64B7C311D5C6EC3EC4F21DF240415CC03516EED3490C3DE749) 1. 应用客户端向IAP Kit发起 queryPurchases 请求，查询用户生效中的订阅列表。 2. IAP Kit返回 PurchaseData 列表。 PurchaseData 为JWS格式的字符串，承载了相关的订阅信息。 3. 应用客户端向应用服务器上报"
+    },
+    {
+      "path": "references/权益发放-2.md",
+      "title": "权益发放",
+      "snippet": "用户购买商品后，开发者需要及时发放相关权益。但实际应用场景中，若出现异常（网络错误、进程被中止等）将导致应用无法知道用户实际是否支付成功，从而无法及时发放权益，即出现掉单情况。为了确保权益发放，需要在以下场景检查用户是否存在已购未发货的商品： 1. 应用启动时。 2. 购买请求（ createPurchase ）返回 iap.IAPErrorCode.PRODUCT_OWNED 或 iap.IAPErrorCode.SYSTEM_ERROR 时。 如果存在已购未发货商品，则发放相关权益，然后向IAP Kit确认发货，完成购买。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9c/v3/AgRbQ90USEyc0X_vLgQrUw/zh-cn_image_0000002573854877.png?HW-CC-KV=V1&HW-CC-Date=20260421T111543Z&HW-CC-Expire=86400&HW-CC-Sign=F81346C7624857498373377FBF702F5B25779A6161AA44C736F67236EBFA5593) 1. 应用客户端向IAP Kit发起 queryPurchases 请求，查询用户"
+    },
+    {
+      "path": "references/权益发放.md",
+      "title": "权益发放",
+      "snippet": "应用在收到用户购买消耗型/非消耗型商品成功的结果后，需要发放相关权益，并在权益发放后，向IAP Kit确认发货，完成购买流程，具体实现请参见 接入购买 。此外，还需要补充如下处理，确保权益发放： - 若应用提供消耗型商品，需要按照 确保权益发放 处理消耗型商品的权益发放。 - 若应用提供非消耗型商品，且为单机应用，则需要按照 单机应用权益发放（非消耗型商品） 处理非消耗型商品的权益发放。其他场景需要按照 确保权益发放 处理非消耗型商品的权益发放。 #### 确保权益发放 用户购买商品后，开发者需要及时发放相关权益。但实际应用场景中，若出现异常（网络错误、进程被中止等）将导致应用无法知道用户实际是否支付成功，从而无法及时发放权益，即出现掉单情况。为了确保权益发放，需要在以下场景检查用户是否存在已购未发货的商品： 1. 应用启动时。 2. 购买请求（ createPurchase ）返回 iap.IAPErrorCode.PRODUCT_OWNED 或 iap.IAPErrorCode.SYSTEM_ERROR 时。 如果存在已购未发货商品，则发放相关权益，然后向IAP Kit确认发货，完成购买。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3"
+    },
+    {
+      "path": "references/沙盒测试.md",
+      "title": "沙盒测试",
+      "snippet": "沙盒测试允许开发者在接入华为应用内支付调测过程中对订单进行虚拟支付。 推荐您在提交数字商品审核前、即商品处于草稿/待提交状态下，使用沙盒测试进行调测。您可以通过设置沙盒测试账户，来模拟真实环境下数字商品的交易过程，在测试期间发现问题可以及时进行修复，这样确保了在商品上架生效以后可以提供给用户稳定流畅的商品购买体验。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/72/v3/8gal60e7TXCwwmk6pReA2g/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111543Z&HW-CC-Expire=86400&HW-CC-Sign=CD93D2871E1BA36F1F571C58227EB3E0EDD6B1E080B397FA4B5606575417C928) 沙盒订单并非真实订单，无法在[开发者中心]->[我的报表]->[支付报表]中查询。 #### 配置沙盒测试 - 添加测试账号 在进行测试前，需要在 AppGallery Connect 中的“用户与访问”中添加测试账号，这些测试账号必须是真实的华为账号。开发者在接入IAP Kit沙盒测试时，需要在测试设备上登录已添加的测试账号。添加沙盒测试账号"
+    },
+    {
+      "path": "references/签名校验是否可以都在服务端执行？.md",
+      "title": "签名校验是否可以都在服务端执行？",
+      "snippet": "若开发者有架设服务器，建议在服务器执行签名校验。"
+    },
+    {
+      "path": "references/自动续期订阅商品，A切换B且立即生效时，新订阅有效期的组成.md",
+      "title": "自动续期订阅商品，A切换B且立即生效时，新订阅有效期的组成",
+      "snippet": "订阅在发生切换且立即生效时，原订阅的剩余权益价值会自动按照比例，折算并叠加至新订阅。所以，切换后订阅有效期的组成 = 原订阅剩余权益的折算时间 + 新订阅原本的周期时间。 比如，某个用户首先购买了订阅A（普通会员，20元/30天），使用了15天后，切换成同订阅组下的订阅B（高级会员，60元/30天）。切换时，A订阅剩余权益自动按比例折算，折算至B订阅的时间为5天。则切换后，B订阅有效期的天数 = 5天 + 30天 = 35天。 时间轴（MM/dd）如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/71/v3/kV13i2sxTuavkT1DZyc6OA/zh-cn_image_0000002543374642.png?HW-CC-KV=V1&HW-CC-Date=20260421T111547Z&HW-CC-Expire=86400&HW-CC-Sign=33FDC9C9BF3C743E086350B1FD109AD32D56CC3C2DF001F3CD2ED59720EE8F43) 对于沙盒环境，按照生产1天 = 沙盒10s换算，等效时间轴（hh:mm:ss）如下： ![](https://contentcenter-vali-drcn.dbankcdn."
+    },
+    {
+      "path": "references/自动续期订阅说明.md",
+      "title": "自动续期订阅说明",
+      "snippet": "订阅是指用户在购买自动续期订阅商品后，可以在一段时间访问App的增值功能或内容，并且会在订阅周期结束后自动续期（自动购买下一期服务）的能力。如果期间用户取消订阅，则订阅在当期结束后将不再自动续期。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/57/v3/MOdPphJkRpyCQCRnrOfr0A/zh-cn_image_0000002573974849.png?HW-CC-KV=V1&HW-CC-Date=20260421T111542Z&HW-CC-Expire=86400&HW-CC-Sign=6078F3F9A1E47C2EC1FED1ED5158D3E772547468FC881FEB485B79681F3EE632) #### 配置自动续期订阅商品 #### 订阅组 自动续期订阅商品由 **订阅组** 来管理维护，所以在创建自动续期订阅商品前，需要先创建订阅组，并在创建自动续期订阅商品时指定商品所在的订阅组。 - 订阅组用于承载同类型商品的管理，一个订阅组可以包含多个自动续期订阅商品。 - 同一个订阅组只有一个商品是处于生效状态。当商品处于生效状态时，开发者需要为用户发放权益。 订阅组机制为开发者提供了便捷方式，让商品服务大致相同但有细微差别的需求"
+    },
+    {
+      "path": "references/退款.md",
+      "title": "退款",
+      "snippet": "当 用户申请退款 时，对于非游戏类应用，开发者可以在 AppGallery Connect 上审核退款订单，实现用户的退款。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/83/v3/CXiofUekTT29Gy3osdNT0w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111544Z&HW-CC-Expire=86400&HW-CC-Sign=DCE11DDB6898DF6B58611E620967B003075E61786BCA9FD47318AE000AF182FE) - 退款只能由用户发起，具体参见 用户申请退款 。 - 对于游戏类应用， 用户申请退款 后，由华为游戏运营人员审核退款，开发者可跳过此章节。 #### 开发者审核退款订单 开发者使用退款管理功能，需要拥有至少一个具备退款权限的角色：账号持有者、管理员、App管理员、财务。具体可查看 添加成员账号 。 添加完账号后，开发者可按照以下步骤审核用户的退款订单： 1. 开发者登录 AppGallery Connect ，选择“APP”。 在应用列表中点击待处理退款订单的应用。 ![](https://contentcenter-vali-d"
+    },
+    {
+      "path": "references/配置商品信息.md",
+      "title": "配置商品信息",
+      "snippet": "在接入商品购买前，开发者需要在 AppGallery Connect 中录入商品信息（包括商品ID、商品类型、不同国家/地区的商品价格、商品名称等）。在客户端调用购买接口时，只需传入此处配置的商品ID和商品类型，IAP Kit会根据用户当前的账号服务地自动展示对应国家/地区的商品信息（包括商品价格、商品名称等），无需开发者处理因账号所在服务地变动带来的商品价格适配问题。 #### 配置消耗型/非消耗型/非续期订阅商品 - 如新增商品，请参见 消耗型/非消耗型/非续期订阅商品 。 - 如为消耗型/非消耗型/非续期订阅商品设置优惠促销（自定义人群促销），具体操作请参见 设置促销价格 。 - 如需修改商品配置（商品名称、商品价格等），具体操作请参见 修改单个商品-非自动续期订阅商品 。 #### 配置自动续期订阅商品 - 如新增商品，请先 新增订阅组 ，然后在创建 自动续期订阅商品 时指定商品所在的订阅组。 - 如为自动续期订阅商品设置促销，包含 推介促销 （新用户促销）、 优惠促销 （自定义人群促销）和 挽留促销 （退订挽留促销， **即将开放** ），具体操作请参见 设置促销价格 。 - 如需修改商品配置（商品名称、商品价格等），具体操作请参见 修改单个商品-自动续期订阅商品 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_"
+    },
+    {
+      "path": "references/配置应用身份信息.md",
+      "title": "配置应用身份信息",
+      "snippet": "在工程“AppScope/app.json5”下的 **bundleName** 需要与开发者在应用开发准备中 创建应用 时的包名保持一致。 配置内容示例如下： { \"app\": { \"bundleName\": \"com.huawei.***.***.demo\", } } #### 配置应用身份信息 1. 登录 AppGallery Connect 平台，在“开发与服务”中选择目标项目，通过“项目设置 > 常规 > 应用”获取目标应用的 **Client ID** 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/18/v3/InVFtHSlSteiGEO1miKY0w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111541Z&HW-CC-Expire=86400&HW-CC-Sign=555BF25F2CFB9B16CC5021F81906F67D5D9B2B1D7A02E134C2558FCFA9049131) - 下图中的APP ID可用于服务器API接口请求。 - 如果开发者应用的compatibleSdkVersion>=14，则接入IAP Kit不要求开发者 添加公钥指纹 以及配置应用身份信"
+    },
+    {
+      "path": "references/配置签名.md",
+      "title": "配置签名",
+      "snippet": "在DevEco Studio上，参考 创建一个新的工程 和 配置调试签名（自动签名） 完成工程应用的创建及签名配置，从而确保能顺利完成项目的编译与开发。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ca/v3/wRf2ofFlTh2eDuPm6GEZfQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111541Z&HW-CC-Expire=86400&HW-CC-Sign=B4195905BB4CEFC334396CD04B81FD9FF535245A2D50B53D7328EFE747161860) 如果开发者DevEco Studio版本低于6.0.0.848，请使用 手动签名 完成工程应用的签名配置。"
+    },
+    {
+      "path": "references/（可选）申请嵌入式收银台开放能力权限.md",
+      "title": "（可选）申请嵌入式收银台开放能力权限",
+      "snippet": "如果使用接入嵌入式收银台能力，则需要申请对应权限。 #### 开放能力申请准备 请先参考 应用开发准备 完成基本准备工作，再继续以下开放能力准备项。 #### 嵌入式收银台 为了更好的用户体验，系统侧对嵌入式收银台服务功能做了权限保护处理，使用相关接口开发者需先提交“嵌入式收银台”能力开关的申请，在申请通过后，再使用该能力。 1. 登录 AppGallery Connect ，选择“开发与服务”。 2. 在项目列表选择项目，并在应用列表下选择需要申请嵌入式收银台功能的应用。 3. 进入“项目设置 > 开放能力管理”页面，选择能力名称为应用内购买服务（HarmonyOS NEXT），然后点击“嵌入式收银台”对应的“申请”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4/v3/TLhtBFwSSNGb8tbax211bw/zh-cn_image_0000002573974845.png?HW-CC-KV=V1&HW-CC-Date=20260421T111540Z&HW-CC-Expire=86400&HW-CC-Sign=8992FA6EED1120905BBB38236DB7318CB3125486AC19A12669418EB97B4BE0C6) 4. 参"
+    },
+    {
+      "path": "references/（可选）配置应用内购买服务参数.md",
+      "title": "（可选）配置应用内购买服务参数",
+      "snippet": "IAP服务器支持 服务端关键事件通知 的能力。用户购买商品后，IAP服务器会在订单（消耗型/非消耗型商品）和订阅场景的某些关键事件发生时发送通知至开发者配置的订单/订阅通知接收地址，具体的通知接收地址配置请参见 激活服务和配置事件通知 。 #### 配置密钥 IAP服务器要求对每个服务端API请求进行JSON Web Token（JWT）授权。开发者可以使用从 AppGallery Connect 下载的API密钥对Token签名生成JWT，授权发起的服务端API请求。 开发者可参见 创建密钥 、 下载密钥 、 撤销密钥 管理服务端密钥。"
+    }
+  ]
+}

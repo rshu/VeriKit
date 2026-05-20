@@ -1,0 +1,104 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "sensor-service-kit",
+  "source_path": "skills/sensor-service-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:59:05.116Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "传感器",
+      "加速度",
+      "陀螺仪",
+      "振动控制",
+      "动态传感器",
+      "如何使用ArkTS订阅加速度传感器、陀螺仪等传感器数据？",
+      "如何使用C/C++订阅传感器数据？",
+      "如何正确订阅和取消订阅传感器数据以避免内存泄漏？",
+      "如何监听动态传感器设备的上下线事件？",
+      "如何使用ArkTS或C/C++控制设备振动？",
+      "如何查询和控制多个振动器设备？",
+      "如何监听动态马达设备的连接和断开事件？",
+      "如何实现自定义振动效果？",
+      "当你需要从设备传感器获取原始数据来开发应用时，应使用Sensor Service Kit的传感器模块",
+      "典型场景包括利用加速度传感器开发计步器、利用陀螺仪开发指南针、利用温度传感器监测环境温度、利用接近光传感器实现自动亮灭屏等",
+      "当你需要为应用添加振动反馈效果时，应使用Sensor Service Kit的振动模块",
+      "它支持预设振动效果和自定义振动模式，适用于游戏震动反馈、通知振动提醒、触摸振动反馈等场景",
+      "对于外接设备的振动控制，动态马达能力提供了灵活的管理方案",
+      "订阅加速度计和陀螺仪数据来实现摇一摇或体感控制 / Subscribe to accelerometer and gyroscope data for shake detection or motion control",
+      "实时读取设备传感器原始数据并在界面上显示 / Read raw device sensor data in real time and display it in the UI",
+      "接入方向传感器和重力传感器实现姿态识别 / Integrate orientation and gravity sensors to implement posture detection",
+      "监听传感器数据变化并按需停止监听以节省功耗 / Listen for sensor updates and stop listening when needed to save power",
+      "用 ArkTS 订阅环境光或接近传感器数据 / Subscribe to ambient light or proximity sensor data with ArkTS",
+      "用 C++ 注册传感器监听回调获取连续采样数据 / Register sensor listener callbacks in C++ to receive continuous sampled data",
+      "检测外接动态传感器的接入和移除并更新功能状态 / Detect dynamic sensor attachment and removal and update feature availability",
+      "查询设备支持哪些传感器并按能力启用对应功能 / Query which sensors the device supports and enable features by capability",
+      "控制手机或穿戴设备振动反馈来提示操作结果 / Control vibration feedback on phone or wearable devices to indicate operation results",
+      "管理多个振动器并为不同场景触发不同震动模式 / Manage multiple vibrators and trigger different vibration patterns for different scenarios",
+      "实现自定义振动节奏用于通知提醒或游戏反馈 / Implement custom vibration patterns for notifications or game feedback",
+      "监听动态马达设备上下线并切换振动输出目标 / Listen for dynamic motor device connection changes and switch vibration output targets"
+    ],
+    "do_not_use_when": [
+      "需求是处理按键、触摸、鼠标或通用输入事件而非读取底层传感器或控制振动，应使用 input-kit / If the task is to handle key, touch, mouse, or generic input events rather than read low-level sensors or control vibration, use input-kit",
+      "需求是输入法、软键盘、文本编辑联想或候选词处理，应使用 ime-kit / If the task is about input methods, soft keyboard behavior, text composition, or candidate handling, use ime-kit",
+      "需求是手写笔事件、笔压、悬停或绘制交互，应使用 pen-kit / If the task is about stylus events, pressure, hover, or drawing interactions, use pen-kit",
+      "需求是开发或适配硬件驱动、提供新的传感器驱动能力，而不是在应用层订阅现有传感器，应使用 driver-development-kit / If the task is to develop or adapt hardware drivers and expose new sensor driver capability rather than subscribe to existing sensors at app level, use driver-development-kit",
+      "需求是读取游戏手柄按键/摇杆输入或手柄专用交互，而非通用动态传感器或振动器控制，应使用 game-controller-kit / If the task is to read gamepad buttons/sticks or game-controller-specific interactions rather than generic dynamic sensors or vibrator control, use game-controller-kit"
+    ],
+    "preconditions": [
+      "目标设备具备所需的传感器或振动器硬件能力，且系统版本支持对应 Sensor Service Kit 接口 / The target device has the required sensor or vibrator hardware capability, and the OS version supports the relevant Sensor Service Kit APIs",
+      "如访问的传感器涉及受保护能力，应用已在 module.json5 中声明相应权限并获得用户授权 / If the accessed sensor requires protected capability, the app has declared the relevant permission in module.json5 and obtained user consent",
+      "项目已正确引入 Sensor Service Kit 对应的 ArkTS 或 C/C++ 接口依赖，并具备可编译运行的环境 / The project has correctly added the Sensor Service Kit ArkTS or C/C++ dependencies and has a working build/runtime environment"
+    ],
+    "inputs": [
+      "传感器类型、采样周期或订阅参数 / Sensor type, sampling interval, or subscription parameters",
+      "传感器事件回调或监听器对象 / Sensor event callback or listener object",
+      "振动效果参数、持续时间或自定义振动模式 / Vibration effect parameters, duration, or custom vibration pattern",
+      "目标振动器或动态设备标识 / Target vibrator or dynamic device identifier"
+    ],
+    "outputs": [
+      "入门与概述",
+      "传感器开发",
+      "振动开发"
+    ],
+    "postconditions": [
+      {
+        "statement": "已添加传感器订阅或取消订阅逻辑，并与指定的传感器类型或监听器对应 / Sensor subscription or unsubscription logic is added and tied to the specified sensor type or listener",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit add code that registers or unregisters a sensor listener/subscription for a concrete sensor type or callback?"
+      },
+      {
+        "statement": "已添加振动控制代码，使用了预设效果或自定义振动参数，并指向目标振动设备或默认振动器 / Vibration control code is added using a preset effect or custom vibration parameters, targeting a specific vibrator device or the default vibrator",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit add code that starts, configures, or stops vibration with explicit effect/pattern parameters and an intended vibrator target?"
+      },
+      {
+        "statement": "对长期监听场景已补充资源释放或停止监听处理，避免持续订阅未清理 / For long-lived listening scenarios, cleanup or stop-listening handling is added to avoid uncleared subscriptions",
+        "verifier": "model_judge",
+        "judge_prompt": "If the edit introduces ongoing sensor listening, does it also include corresponding cleanup, stop, or unsubscribe handling?"
+      }
+    ],
+    "overlaps_with": [
+      "input-kit",
+      "ime-kit",
+      "pen-kit",
+      "driver-development-kit",
+      "game-controller-kit",
+      "mechanic-kit"
+    ],
+    "safety_tier": "medium-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

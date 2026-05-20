@@ -1,0 +1,17 @@
+{
+  "name": "verikit",
+  "description": "VeriKit — HarmonyOS Kit selection for LLM agents. On every prompt, ranks the 100 HarmonyOS SDK Kits against the task, surfaces the matched composition recipe bundle, and lists the top task-relevant reference docs per Kit.",
+  "version": "0.0.1",
+  "author": {
+    "name": "VeriKit"
+  },
+  "license": "MIT",
+  "keywords": [
+    "harmonyos",
+    "arkts",
+    "skills",
+    "skill-routing",
+    "kit-selection",
+    "agent-tools"
+  ]
+}

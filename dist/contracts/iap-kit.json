@@ -1,0 +1,107 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "iap-kit",
+  "source_path": "skills/iap-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:54:45.431Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "应用内支付",
+      "IAP",
+      "消耗品",
+      "非消耗品",
+      "订阅",
+      "数字商品",
+      "如何在AppGallery Connect中创建项目和开通应用内购买服务？",
+      "如何配置商品信息（消耗型、非消耗型、订阅型商品）？",
+      "如何接入应用内购买功能并启动IAP收银台？",
+      "如何实现自动续期订阅商品的接入和切换管理？",
+      "如何处理购买后的权益发放逻辑？",
+      "如何进行沙盒环境测试？",
+      "如何处理退款和开票流程？",
+      "签名校验应该在客户端还是服务端执行？",
+      "如何解决证书链不完整或JWT密钥验签错误？",
+      "purchaseToken和purchaseOrderId参数的最大长度是多少？",
+      "当您的应用需要实现虚拟商品购买功能（如游戏货币、道具、会员订阅等）时，可使用 IAP Kit 的购买接入能力",
+      "当您需要管理自动续期订阅商品的切换、续费逻辑时，可使用订阅相关能力",
+      "当您需要处理购买后的权益发放、退款处理、发票开具等售后流程，或需要查看收益分析报告时，也可以使用本 Kit 提供的完整支付生命周期管理能力",
+      "接入应用内购买收银台完成道具和会员购买 / Integrate the in-app purchase checkout for items and memberships",
+      "实现购买金币钻石等消耗型商品并发放库存 / Implement purchases of consumable goods like coins and gems and grant inventory",
+      "解锁去广告或高级功能等一次性买断内容 / Unlock one-time purchases such as ad removal or premium features",
+      "添加月度年度会员自动续费并管理订阅状态 / Add monthly or yearly auto-renewing memberships and manage subscription status",
+      "查询商品详情并在页面显示本地化价格 / Query product details and show localized prices in the UI",
+      "拉起华为支付流程并监听支付成功失败取消结果 / Launch the Huawei payment flow and handle success, failure, and cancel results",
+      "校验购买凭证并在服务端安全发放用户权益 / Verify purchase receipts and securely grant entitlements on the server",
+      "恢复用户已购的非消耗商品和有效订阅 / Restore previously purchased non-consumables and active subscriptions",
+      "处理续订升级降级补差价等订阅变更场景 / Handle subscription changes such as renewals, upgrades, downgrades, and proration",
+      "消费已购买但未核销的订单避免重复发货 / Consume completed but unconsumed orders to avoid duplicate delivery",
+      "同步订单记录并根据支付结果更新账号权益 / Sync order records and update account entitlements based on payment results",
+      "接入沙盒测试验证商品购买和订阅续期流程 / Integrate sandbox testing to verify purchases and subscription renewals"
+    ],
+    "do_not_use_when": [
+      "需求是收集或管理用户账号、登录、身份认证，而非购买数字商品；应改用 account-kit / If the need is user account, sign-in, or identity management rather than buying digital goods, use account-kit instead",
+      "需求是读取、选择、搜索或管理通讯录联系人信息；应改用 contacts-kit / If the task is to read, pick, search, or manage contact information, use contacts-kit instead",
+      "需求是线下/线上实物商品、服务费用或通用交易支付，而不是应用内数字商品购买；应改用 payment-kit / If the task is paying for physical goods, services, or general transactions rather than in-app digital goods, use payment-kit instead",
+      "需求是管理卡券、票证、证件或钱包资产展示，不是发起应用内商品购买；应改用 wallet-kit / If the need is managing passes, tickets, credentials, or wallet assets rather than initiating in-app purchases, use wallet-kit instead"
+    ],
+    "preconditions": [
+      "已在 AppGallery Connect 创建项目和应用，并开通/激活应用内购买服务 / The project and app have been created in AppGallery Connect, and the in-app purchase service has been enabled and activated",
+      "已在 AppGallery Connect 配置商品信息、应用身份信息及签名配置 / Product metadata, app identity information, and signing configuration have been set up in AppGallery Connect",
+      "设备已登录支持 IAP 的华为账号，且网络可访问华为 IAP 服务 / The device is signed in with a Huawei account that supports IAP, and network access to Huawei IAP services is available",
+      "如需 TV 嵌入式收银台，已申请对应开放能力权限 / If using the TV embedded checkout, the required open capability permission has been granted"
+    ],
+    "inputs": [
+      "商品ID / product ID",
+      "商品类型（消耗型、非消耗型、自动续期订阅、非续期订阅） / product type (consumable, non-consumable, auto-renewable subscription, non-renewing subscription)",
+      "开发者透传参数 developerPayload / developerPayload",
+      "购买令牌或订单号 / purchase token or order ID"
+    ],
+    "outputs": [
+      "简介",
+      "准备工作",
+      "购买接入",
+      "权益发放",
+      "售后与分析",
+      "范围与附录",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已接入 IAP 购买或订阅流程，并使用商品ID/商品类型发起购买请求 / The code integrates an IAP purchase or subscription flow and initiates a purchase request using product ID and product type",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify HarmonyOS code to invoke IAP purchase/subscription APIs with explicit product identifiers or product type information?"
+      },
+      {
+        "statement": "已添加购买结果处理逻辑，能够根据成功、失败或取消结果更新应用流程 / Purchase result handling has been added so the app flow responds to success, failure, or cancellation outcomes",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there logic that handles multiple IAP outcomes such as success, failure, or user cancellation after the purchase call?"
+      },
+      {
+        "statement": "已补充或说明权益发放与凭证校验相关处理，而非仅停留在拉起收银台 / Entitlement delivery and purchase proof verification are added or documented, rather than only launching the checkout",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits include follow-up handling for entitlement delivery, token/order processing, or signature/JWT verification after a purchase completes?"
+      }
+    ],
+    "overlaps_with": [
+      "account-kit",
+      "contacts-kit",
+      "payment-kit",
+      "wallet-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

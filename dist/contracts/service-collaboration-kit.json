@@ -1,0 +1,97 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "service-collaboration-kit",
+  "source_path": "skills/service-collaboration-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:59:13.408Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "协同服务",
+      "跨设备相机",
+      "跨设备扫码",
+      "跨设备图库",
+      "如何在平板上调用手机的相机进行拍照？",
+      "如何在2in1设备上调用手机的扫码功能？",
+      "如何跨设备调用其他设备的图库选择图片或视频？",
+      "如何使用RichEditor控件实现跨设备互通？",
+      "如何使用NDK进行跨设备互通开发？",
+      "如何排查接入跨设备互通控件后设备选择列表没有周围设备的问题？",
+      "当你需要在不同设备之间共享相机、扫描或图库能力时，应使用Service Collaboration Kit",
+      "典型场景包括平板编辑文档时调用手机相机拍照插入图片、2in1设备调用手机扫描二维码、平板调用手机图库选择照片等",
+      "当你需要在RichEditor富文本编辑器中集成跨设备图片采集能力时，该Kit提供了对应的控件集成方案",
+      "当你需要使用NDK进行跨设备互通开发时，该Kit也提供了C/C++层面的接口支持",
+      "在平板应用里接入手机拍照能力插入文档图片 / Integrate phone camera capture into a tablet app to insert images into documents",
+      "实现跨设备调用另一台设备的扫码能力录入二维码内容 / Implement cross-device QR scanning on another device to input code content",
+      "从附近手机相册选择照片或视频并回传到当前应用 / Pick photos or videos from a nearby phone gallery and return them to the current app",
+      "在大屏设备上复用手机的相机、扫码和图库入口 / Reuse a phone's camera, scan, and gallery entry points on a large-screen device",
+      "给富文本编辑器添加跨端图片采集和选图能力 / Add cross-device image capture and gallery picking to a rich text editor",
+      "在2in1或平板上显示可协同设备列表并选择手机能力 / Show available collaborative devices on a 2-in-1 or tablet and choose phone capabilities",
+      "接入跨设备服务协同让应用调用周边设备的媒体采集能力 / Integrate service collaboration so the app can invoke media capture capabilities on nearby devices",
+      "用 Service Collaboration 在当前设备拉起远端设备的拍照或选图流程 / Use Service Collaboration to launch remote-device camera capture or gallery picking from the current device",
+      "通过 NDK 集成跨设备相机扫码图库调用 / Integrate cross-device camera, scanning, and gallery invocation via NDK",
+      "在编辑内容时直接调用手机完成拍照、扫码或选图并回填结果 / Invoke a phone to capture, scan, or pick media during editing and fill the result back",
+      "让应用支持跨设备获取图片、视频和扫描结果 / Enable the app to get images, videos, and scan results across devices",
+      "排查跨设备能力接入后搜不到周边可协同手机的问题 / Troubleshoot nearby collaborative phones not appearing after integrating cross-device capabilities"
+    ],
+    "do_not_use_when": [
+      "需求是云端账号、云存储、云数据库或云函数等云服务集成，应改用 cloud-foundation-kit / The need is cloud account, cloud storage, cloud database, or cloud function integration, so use cloud-foundation-kit instead",
+      "需求是分布式数据管理、分布式任务调度、跨设备拉起Ability或通用分布式应用协同，而不是共享远端相机/扫码/图库能力，应改用 distributed-service-kit / The need is distributed data management, distributed task scheduling, cross-device ability launch, or general distributed app collaboration rather than sharing remote camera/scan/gallery capabilities, so use distributed-service-kit instead",
+      "设备不在同一华为账号下，无法满足同账号跨设备互通前提，不应选择本Kit / The devices are not logged in with the same Huawei account, so the same-account cross-device collaboration prerequisite is not met and this Kit should not be chosen",
+      "仅需本地设备上的相机、扫码或图库功能，不涉及远端设备能力共享，不应选择本Kit / Only local device camera, scanning, or gallery features are needed, with no remote device capability sharing, so this Kit should not be chosen"
+    ],
+    "preconditions": [
+      "参与协同的设备已登录同一华为账号 / The participating devices are logged in to the same Huawei account",
+      "双端设备已开启WLAN和蓝牙，且设备间可被发现 / WLAN and Bluetooth are enabled on both devices and the devices are discoverable to each other",
+      "应用运行设备与目标远端设备属于Kit支持的设备类型与API范围 / The app device and target remote device fall within the device types and API range supported by the Kit",
+      "若采用RichEditor或NDK方案，工程中已正确集成对应控件或原生接口依赖 / If using the RichEditor or NDK path, the project has correctly integrated the required widget or native interface dependencies"
+    ],
+    "inputs": [
+      "本地设备类型与运行环境信息 / Local device type and runtime environment information",
+      "目标协同能力类型（相机、扫码、图库、RichEditor互通） / Target collaboration capability type (camera, scan, gallery, RichEditor collaboration)",
+      "远端设备选择结果或设备发现列表 / Remote device selection result or device discovery list",
+      "图片、视频或扫描结果的接收位置 / Destination for received images, videos, or scan results"
+    ],
+    "outputs": [
+      "入门与概述",
+      "ArkTS开发",
+      "NDK开发",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已接入跨设备互通相关API或控件，并体现相机、扫码或图库中的至少一种远端能力调用 / The code integrates cross-device collaboration APIs or widgets and shows invocation of at least one remote capability among camera, scan, or gallery",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify HarmonyOS code/config to integrate Service Collaboration Kit for invoking a remote camera, scan, or gallery capability?"
+      },
+      {
+        "statement": "实现中包含远端设备发现、选择或连接后的协同调用流程 / The implementation includes a collaboration flow for remote device discovery, selection, or post-connection invocation",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there evidence of a remote device discovery/selection/connection flow before using the cross-device capability?"
+      },
+      {
+        "statement": "应用能够接收并处理跨设备返回的媒体或扫码结果，供后续展示、插入或业务使用 / The app can receive and handle media or scan results returned from another device for display, insertion, or business use",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show handling of returned remote results such as images, videos, or scan output for subsequent app use?"
+      }
+    ],
+    "overlaps_with": [
+      "cloud-foundation-kit",
+      "distributed-service-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

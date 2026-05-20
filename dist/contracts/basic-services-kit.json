@@ -1,0 +1,117 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "basic-services-kit",
+  "source_path": "skills/basic-services-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:50:52.084Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "基础服务",
+      "剪贴板",
+      "文件上传下载",
+      "压缩",
+      "打印",
+      "USB管理",
+      "如何使用剪贴板实现文本、HTML、URI等数据类型的复制粘贴",
+      "如何实现跨设备剪贴板功能",
+      "如何实现文件的前台上传下载和后台上传下载（支持断点续传）",
+      "如何实现文件压缩与解压缩",
+      "如何使用公共事件实现进程间通信（ArkTS和C/C++）",
+      "如何使用Emitter实现线程间通信",
+      "如何管理USB设备并实现批量传输、控制传输等",
+      "如何开发USB串口通信功能",
+      "如何实现文件打印功能",
+      "如何管理应用账号（创建、管理与数据管理）",
+      "当你的应用需要实现复制粘贴功能（本地或跨设备）、文件上传下载（小文件前台上传或大文件后台上传断点续传）、文件压缩解压、文件打印等数据处理能力时，可以使用Basic Services Kit提供的相关接口",
+      "当你的应用需要实现进程间通信（如ExtensionAbility与主进程间的事件传递）、线程间通信（如Worker线程处理完成后通知UI主线程）、USB设备管理和数据传输、应用账号管理等基础服务时，同样可以使用Basic Services Kit",
+      "实现文本、图片和链接的一键复制粘贴 / Add one-tap copy and paste for text, images, and links",
+      "接入系统剪贴板并监听剪贴板内容变化 / Integrate the system clipboard and listen for clipboard content changes",
+      "实现跨应用共享复制内容 / Enable sharing copied content across apps",
+      "添加大文件上传下载并支持暂停后继续传输 / Add large file upload and download with pause and resume support",
+      "实现后台下载任务并在前台显示传输进度 / Implement background download tasks and show transfer progress in the foreground",
+      "集成断点续传的文件传输能力 / Integrate resumable file transfer capability",
+      "批量压缩照片或日志文件为 zip 包 / Compress photos or log files into a zip archive in batches",
+      "读取并解压 zip 压缩包到指定目录 / Extract a zip package to a target directory",
+      "实现应用内文档打印和图片打印 / Add in-app document printing and image printing",
+      "发送公共事件通知其他进程刷新状态 / Publish common events to notify other processes to refresh state",
+      "用 Emitter 在线程之间传递消息和事件 / Pass messages and events between threads with Emitter",
+      "识别并管理外接 USB 设备的连接与断开 / Detect and manage external USB device attach and detach events",
+      "实现 USB 串口收发数据 / Implement USB serial communication for sending and receiving data",
+      "通过 USB 批量传输和控制传输与外设通信 / Communicate with peripherals through USB bulk transfer and control transfer"
+    ],
+    "do_not_use_when": [
+      "需求是实现无障碍能力（如读屏、辅助事件、无障碍节点操作），应使用 accessibility-kit / If the goal is accessibility features such as screen reading, accessibility events, or accessibility node operations, use accessibility-kit instead",
+      "需求是国际化与本地化（多语言资源、地区格式化、翻译适配），应使用 localization-kit / If the goal is internationalization or localization such as multilingual resources, locale formatting, or translation adaptation, use localization-kit instead",
+      "需求是编写测试、自动化用例或测试框架集成，应使用 test-kit / If the goal is writing tests, test automation, or integrating test frameworks, use test-kit instead",
+      "需求是分析应用性能瓶颈、采集性能指标或性能调优，应使用 performance-analysis-kit / If the goal is performance profiling, metric collection, or optimization, use performance-analysis-kit instead",
+      "需求是处理日历日程、提醒或日历数据，应使用 calendar-kit / If the goal is calendar events, reminders, or calendar data handling, use calendar-kit instead",
+      "需求是获取天气数据、天气服务或气象信息展示，应使用 weather-service-kit / If the goal is weather data, weather services, or meteorological information display, use weather-service-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成对应HarmonyOS SDK能力，且目标API版本支持所用基础服务接口 / The project has the required HarmonyOS SDK capability integrated, and the target API version supports the selected basic service APIs",
+      "module.json5中已声明所需权限与能力项（如剪贴板、网络访问、USB或后台传输相关配置） / The required permissions and capabilities have been declared in module.json5, such as clipboard, network access, USB, or background transfer configuration",
+      "涉及用户授权的能力已获得运行时授权或系统确认（如剪贴板访问、USB设备访问） / Any capability requiring user consent has obtained runtime authorization or system confirmation, such as clipboard access or USB device access",
+      "涉及网络上传下载时，设备网络可用且服务端地址可达 / For upload or download scenarios, network connectivity is available and the server endpoint is reachable"
+    ],
+    "inputs": [
+      "剪贴板数据内容或数据记录对象 / Clipboard content or data record object",
+      "文件路径、URI或上传下载任务参数 / File path, URI, or upload/download task parameters",
+      "公共事件名称、订阅信息或Emitter事件参数 / Common event name, subscription info, or Emitter event parameters",
+      "USB设备信息、接口参数或传输缓冲区 / USB device info, interface parameters, or transfer buffer",
+      "应用账号标识或账号数据 / App account identifier or account data"
+    ],
+    "outputs": [
+      "服务概述",
+      "公共事件（进程间通信）",
+      "线程间通信",
+      "剪贴板",
+      "文件处理",
+      "打印服务",
+      "USB管理",
+      "应用账号管理",
+      "其他"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码中接入与目标场景匹配的基础服务API，而非无关Kit的接口 / The code integrates Basic Services APIs that match the target scenario rather than unrelated Kit interfaces",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set add or modify code to use Basic Services Kit APIs relevant to the requested task (such as clipboard, upload/download, compression, print, common events, emitter, USB, or app account) instead of unrelated sibling kit APIs?"
+      },
+      {
+        "statement": "已补充该能力所需的权限、配置或导入声明 / Required permissions, configuration, or imports for the chosen capability have been added",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, were the necessary imports and any required module.json5 permissions or related configuration added for the specific Basic Services capability being implemented?"
+      },
+      {
+        "statement": "已形成从输入到目标操作的完整调用链（如复制粘贴、传输、订阅发布、USB收发等） / A complete invocation flow from input to target operation has been implemented, such as copy-paste, transfer, publish-subscribe, or USB I/O",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show an end-to-end flow that consumes the provided inputs and performs the requested Basic Services operation rather than only adding placeholders or comments?"
+      }
+    ],
+    "overlaps_with": [
+      "accessibility-kit",
+      "localization-kit",
+      "test-kit",
+      "performance-analysis-kit",
+      "calendar-kit",
+      "weather-service-kit",
+      "ui-design-kit",
+      "screen-time-guard-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

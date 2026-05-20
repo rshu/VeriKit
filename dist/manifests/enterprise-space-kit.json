@@ -1,0 +1,145 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "enterprise-space-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.776Z"
+  },
+  "references": [
+    {
+      "path": "references/Enterprise Space Kit简介.md",
+      "title": "Enterprise Space Kit简介",
+      "snippet": "Enterprise Space Kit（企业数字空间服务）为企业 MDM 应用提供空间管控、空间互传管控API，用于企业空间灵活配置管理、空间互传文件发送策略管控。企业MDM应用可以通过集中管理、远程配置来保障空间满足企业业务需求及数据传输安全诉求。它广泛应用于政府机构、大型科技企业、央国企、商业银行等“一机两用”、“一企多网”场景，以确保企业员工高效易用，企业管理简单易管，企业数据安全隔离。 #### 场景介绍 - 提供企业安全管控类 MDM 应用设置空间数据外发审批信息、获取审批内容的能力，便于企业根据自身安全管控要求管理并审批空间文件外发事件。其中审批信息可包含文件信息、文件状态、文件发送对象、文件发送时间等信息。 - 提供统一的空间管理能力、下发空间管理策略，包括创建工作空间、移除工作空间、订阅空间事件等能力，便于企业根据自身业务需求配置管理。 #### 约束与限制 #### 支持的国家和地区 当前仅支持在中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）提供服务。 #### 支持的设备 当前设备类型仅支持PC/2in1，支持的设备详见下表。 #### 访问限制 在企业数字空间服务使能后，经过空间切换，处于后台的空间，其 公共目录 数据可能无法访问。 #### 模拟器支持情况 本Kit暂不支持模拟器。"
+    },
+    {
+      "path": "references/企业账号认证.md",
+      "title": "企业账号认证",
+      "snippet": "从6.1.0(23)开始，支持企业认证的能力。 Enterprise Space Kit为企业应用提供企业账号认证的能力。在企业空间初始化阶段，实现企业用户的账号认证。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用 authenticate 接口，进行企业账号认证。 try { const enterpriseAuthInfo: spaceManager.WorkspaceDomainInfo = { domain: 'testDomain', // 域名。 workspaceName: 'testAccountName', // 工作空间域账号名称。 serverConfigId: 'testServerConfigId' // 工作空间所属域的服务器配置标识符。 }; const credential = new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0]) const authResult: spaceManager.AuthResult = await spaceManager.authenticate(enterpriseAuthInfo"
+    },
+    {
+      "path": "references/使能工作空间.md",
+      "title": "使能工作空间",
+      "snippet": "Enterprise Space Kit为应用提供使能双空间的能力。需要先使能工作空间才可以创建个人空间。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用 enableWorkspace 接口，使能工作空间，并且查看打印信息。 const enable: boolean = true; try { await spaceManager.enableWorkspace(enable); console.info('Succeeded in enabling workspace'); } catch (err) { console.error(`Failed to enable workspace. Code: ${err.code}, message: ${err.message}`); }"
+    },
+    {
+      "path": "references/创建工作空间.md",
+      "title": "创建工作空间",
+      "snippet": "Enterprise Space Kit为应用提供创建工作空间的能力。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用 createWorkspace 接口，创建工作空间，并且查看打印信息。 const localName: string = '111111'; const workspaceType: spaceManager.WorkspaceType = spaceManager.WorkspaceType.ADMIN; const params: spaceManager.CreateWorkspaceParams = { shortName: 'test' }; try { const workspaceInfo: spaceManager.WorkspaceInfo = await spaceManager.createWorkspace(localName, workspaceType, params); console.info(`Succeeded in creating workspace, workspaceInfo:` + JSON.stringify("
+    },
+    {
+      "path": "references/删除系统服务进程不可访问后台用户数据路径列表.md",
+      "title": "删除系统服务进程不可访问后台用户数据路径列表",
+      "snippet": "从6.0.1(21)开始，支持删除系统服务进程不可访问后台用户数据路径列表的能力。 Enterprise Space Kit为应用提供删除系统服务进程不可访问后台用户数据路径列表的功能。用于应用删除管控系统服务进程时的场景。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用接口 deleteRestrictedAccessBackgroundUserdataProcessList ，删除系统服务进程不可访问后台用户数据路径列表，并且查看打印信息。 const userData: spaceManager.UserDataEnum = spaceManager.UserDataEnum.ENTERPRISE; const processName: string = 'testSa'; try { await spaceManager.deleteRestrictedAccessBackgroundUserdataProcessList(userData, processName); console.info(`Succeeded in deleting restricted acc"
+    },
+    {
+      "path": "references/取消订阅空间事件.md",
+      "title": "取消订阅空间事件",
+      "snippet": "Enterprise Space Kit为应用提供取消订阅空间事件的能力，支持应用在特定场景下灵活管理空间事件的订阅状态。例如，当应用需要关闭、某个功能模块不再使用时，可通过调用该方法主动取消对特定空间事件的订阅。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用 unsubscribeEvent 接口，取消订阅空间事件，并查看打印信息。 const subscribeId: number = 100; try { spaceManager.unsubscribeEvent(subscribeId); console.info('Succeeded in unsubscribing event'); } catch (err) { console.error(`Failed to unsubscribe event. Code: ${err.code}, message: ${err.message}`); }"
+    },
+    {
+      "path": "references/开发准备.md",
+      "title": "开发准备",
+      "snippet": "- HarmonyOS系统：HarmonyOS 6.0.0 Release及以上。 - DevEco Studio版本：DevEco Studio 6.0.0 Release及以上。 - HarmonyOS SDK版本：HarmonyOS 6.0.0 Release SDK及以上。 #### 申请资质 在开发应用前，需要在AppGallery Connect中配置项目和应用信息。包括： - 注册账号 和 企业开发者实名认证 。 - 创建项目 和 创建HarmonyOS应用 。 - 申请企业MDM应用发布证书 和 申请企业MDM应用发布Profile 。 #### 申请接口所需权限 在申请权限前，请保证符合 权限使用的基本原则 。并且在工程模块对应的 module.json5配置文件 中\"requestPermissions\"标签下声明所需的权限。 **表1** 权限说明 示例： \"requestPermissions\": [ { \"name\": \"ohos.permission.ENTERPRISE_FILE_TRANSFER_AUDIT_POLICY_MANAGEMENT\" }, { \"name\": \"ohos.permission.ENTERPRISE_MANAGE_LOCAL_PUBLICSPACES\" }, { \"name\": \"ohos.permission.QUERY_"
+    },
+    {
+      "path": "references/新增系统服务进程不可访问后台用户数据路径列表.md",
+      "title": "新增系统服务进程不可访问后台用户数据路径列表",
+      "snippet": "从6.0.1(21)开始，支持新增系统服务进程不可访问后台用户数据路径列表的能力。 Enterprise Space Kit为应用提供新增系统服务进程不可访问后台用户数据路径列表的功能。用于应用新增管控系统服务进程时的场景。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用接口 addRestrictedAccessBackgroundUserdataProcessList ，新增系统服务进程不可访问后台用户数据路径列表，并且查看打印信息。 const userData: spaceManager.UserDataEnum = spaceManager.UserDataEnum.ENTERPRISE; const processName: string = 'testSa'; const disallowPaths: string[] = ['/data/service', '/data/app']; try { await spaceManager.addRestrictedAccessBackgroundUserdataProcessList(userData, proces"
+    },
+    {
+      "path": "references/查询工作空间.md",
+      "title": "查询工作空间",
+      "snippet": "Enterprise Space Kit为应用提供查询工作空间信息的能力。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用 queryWorkspace 接口，查询工作空间，并且查看打印信息。 const queryFlag: spaceManager.QueryType = spaceManager.QueryType.ALL; try { const spaces: spaceManager.WorkspaceInfo[] = await spaceManager.queryWorkspace(queryFlag); console.info(`Succeeded in querying workspace` + JSON.stringify(spaces)); } catch (err) { console.error(`Failed to query workspace. Code: ${err.code}, message: ${err.message}`); }"
+    },
+    {
+      "path": "references/查询工作空间策略.md",
+      "title": "查询工作空间策略",
+      "snippet": "从6.0.2(22)开始，支持查询工作空间策略的能力。 Enterprise Space Kit为应用提供查询工作空间策略的能力。从6.0.2(22)版本开始支持深度冻结策略“lockdown”，从6.1.0(23)版本开始支持个人空间创建引导页展示策略“spaceguide”。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块和相关依赖模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用接口 getWorkspacePolicy ，查询空间策略，并且查看打印信息。 const key: string = 'lockdown'; const workspaceId: number = 100; try { const value: number = await spaceManager.getWorkspacePolicy(key, workspaceId); console.info(`Succeeded in getting workspace policy. value: ${value}`); } catch (err) { console.error(`Failed to get workspace policy. "
+    },
+    {
+      "path": "references/查询深度冻结豁免名单.md",
+      "title": "查询深度冻结豁免名单",
+      "snippet": "从6.0.2(22)开始，支持查询深度冻结豁免名单的能力。 Enterprise Space Kit为应用提供查询深度冻结豁免名单的能力。当设置深度冻结豁免名单后，可使用该接口查询深度冻结豁免名单。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块和相关依赖模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用接口 getLockdownExemptionApps ，查询深度冻结豁免名单，并且查看打印信息。 const workspaceId: number = 100; try { const apps: string[] = await spaceManager.getLockdownExemptionApps(workspaceId); console.info(`Succeeded in getting lockdown exemption apps. apps:` + JSON.stringify(apps)); } catch (err) { console.error(`Failed to get lockdown exemption apps. Code: ${err.code}, message: ${err."
+    },
+    {
+      "path": "references/移除工作空间.md",
+      "title": "移除工作空间",
+      "snippet": "Enterprise Space Kit为企业用户提供移除工作空间的能力。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用 removeWorkspace 接口，移除工作空间，并且查看打印信息。 const workspaceId: number = 100; try { await spaceManager.removeWorkspace(workspaceId); console.info('Succeeded in removing workspace'); } catch (err) { console.error(`Failed to remove workspace. Code: ${err.code}, message: ${err.message}`); }"
+    },
+    {
+      "path": "references/编译失败，该如何解决？.md",
+      "title": "编译失败，该如何解决？",
+      "snippet": "**问题现象** 编译不通过，签名证书缺少所需权限，报错：install failed due to grant request permissions failed. **解决措施** 1. 参考 访问控制概述 ，检查应用签名是否正常配置权限。 2. 如还未解决，请通过 在线提单 提交问题，华为支持人员会及时处理。"
+    },
+    {
+      "path": "references/获取不可访问后台用户数据的系统服务进程列表.md",
+      "title": "获取不可访问后台用户数据的系统服务进程列表",
+      "snippet": "从6.0.1(21)开始，支持获取不可访问后台用户数据的系统服务进程列表的能力。 Enterprise Space Kit为应用提供获取通过接口 addRestrictedAccessBackgroundUserdataProcessList 添加管控的系统服务进程列表的功能。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用接口 getRestrictedAccessBackgroundUserdataProcessList ，获取不可访问后台用户数据的系统服务进程列表，并且查看打印信息。 const userData: spaceManager.UserDataEnum = spaceManager.UserDataEnum.ENTERPRISE; try { const processConfigInfos: spaceManager.ProcessConfigInfo[] = await spaceManager.getRestrictedAccessBackgroundUserdataProcessList(userData); console.info(`Succee"
+    },
+    {
+      "path": "references/获取企业应用访问令牌.md",
+      "title": "获取企业应用访问令牌",
+      "snippet": "从6.1.0(23)开始，支持企业应用获取访问令牌的能力。 Enterprise Space Kit为企业应用提供获取企业应用访问令牌的能力，可实现企业应用免密登录。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用 getAccessToken 接口，进行企业账号认证。 try { const params: Record<string, string> = { 'clientId': 'test1' // 业务参数，由业务方根据请求协议自定义。 }; const result: Uint8Array = await spaceManager.getAccessToken(params); console.info(`Succeeded in getting access token. Result is: ` + JSON.stringify(result)); } catch (err) { console.error(`Failed to get access token. Code: ${err.code}, message: ${err.message}`); }"
+    },
+    {
+      "path": "references/获取审批信息.md",
+      "title": "获取审批信息",
+      "snippet": "Enterprise Space Kit为应用提供获取审批信息的能力。文件外发需经过审批流程控制，通过调用审批状态同步接口实时获取审批结果，审批完成后允许文件外发至个人空间，若审批被拒绝或撤销则禁止外发。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { fileTransfer } from '@kit.EnterpriseSpaceKit'; 2. 调用 getAuditInfo 接口，获取审批信息，并且查看打印信息。 const transactionNum: string = '1111111'; try { const auditInfo: fileTransfer.AuditInfo = fileTransfer.getAuditInfo(transactionNum); console.info(`Succeeded in getting audit info:` + JSON.stringify(auditInfo)); } catch (err) { console.error(`Failed to get audit info. Code: ${err.code}, message: ${err.message}`); }"
+    },
+    {
+      "path": "references/获取系统服务进程不可访问的后台用户数据状态.md",
+      "title": "获取系统服务进程不可访问的后台用户数据状态",
+      "snippet": "从6.0.1(21)开始，支持获取系统服务进程不可访问的后台用户数据状态的能力。 Enterprise Space Kit为应用提供获取系统服务进程管控不可访问后台用户数据的状态，用于确认系统服务进程是否被管控访问后台用户数据。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用接口 getRestrictedAccessBackgroundUserdataStatus ，提供获取系统服务进程管控不可访问后台用户数据的状态，并且查看打印信息。 const userData: spaceManager.UserDataEnum = spaceManager.UserDataEnum.ENTERPRISE; try { const status: boolean = await spaceManager.getRestrictedAccessBackgroundUserdataStatus(userData); console.info(`Succeeded in getting restricted access background user data status. status"
+    },
+    {
+      "path": "references/订阅空间事件.md",
+      "title": "订阅空间事件",
+      "snippet": "Enterprise Space Kit为应用提供订阅空间事件的能力，当前支持订阅空间切换事件。应用订阅空间切换事件后，当空间切换时，会告知应用，并执行应用自定义的动作。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块和相关依赖模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 调用 subscribeEvent 接口，设置订阅空间事件，并查看打印信息。 try { const subscribeId = spaceManager.subscribeEvent([spaceManager.EventType.EVENT_WORKSPACE_SWITCHED], (error: BusinessError, data: spaceManager.EventData) => { if (error) { console.error(`error info:${error?.code}, err message:${error?.message}`); } else { console.info(`event: ${data."
+    },
+    {
+      "path": "references/设置审批信息.md",
+      "title": "设置审批信息",
+      "snippet": "当文件外发需经过审批流程控制时，Enterprise Space Kit为应用提供设置审批信息的能力，审批信息包括审批ID、用户ID、用户名称、审批时间、审批评论和文件审批状态。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { fileTransfer } from '@kit.EnterpriseSpaceKit'; 2. 调用 setAuditInfo 接口，设置审批信息。 const transactionNum: string = '1111111'; const info: fileTransfer.AuditInfo = { auditId: '123456', userId: '100', userName: 'test', time: Date.now(), comments: 'Waiting approval', status: '1' }; try { const ret: number = fileTransfer.setAuditInfo(transactionNum, info); console.info(`Succeeded in setting audit info, number:`, ret); } catch (err) { console."
+    },
+    {
+      "path": "references/设置工作空间信息.md",
+      "title": "设置工作空间信息",
+      "snippet": "Enterprise Space Kit为应用提供设置工作空间信息的能力。在企业初始化阶段，设置工作空间信息，方便企业绑定域账号。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用 setWorkspaceInfo 接口，设置工作空间信息，并且查看打印信息。 const workspaceId: number = 100; const domainInfo: spaceManager.WorkspaceDomainInfo = { domain: 'test1', workspaceName: 'test2', accountId: 'test3', isAuthenticated: false, serverConfigId: 'test4', enterpriseWorkspaceName: 'default' }; try { await spaceManager.setWorkspaceInfo(workspaceId, domainInfo); console.info('Succeeded in setting workspace info'); } catch (e"
+    },
+    {
+      "path": "references/设置工作空间状态栏图标.md",
+      "title": "设置工作空间状态栏图标",
+      "snippet": "从6.1.0(23)开始，支持设置工作空间图标的能力。 Enterprise Space Kit为应用提供设置工作空间图标。所有工作空间都可以设置图标，可以展示在状态栏中。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用 setWorkspaceStatusBarIcon 接口，设置工作空间状态栏图标，并且查看打印信息。 const context: Context = getContext(); if (!context) { console.error('getHostContext failed'); return; } const resourceMgr: resourceManager.ResourceManager = context.resourceManager; // 创建white pixelMap，需在资源rawfile文件夹中预置HuaweiWhite.jpg图片 let whiteFileData = await resourceMgr.getRawFd('HuaweiWhite.jpg'); const whiteImageSource: image"
+    },
+    {
+      "path": "references/设置工作空间策略.md",
+      "title": "设置工作空间策略",
+      "snippet": "从6.0.2(22)开始，支持设置工作空间策略的能力。 Enterprise Space Kit为应用提供设置工作空间策略的能力。从6.0.2(22)版本开始支持深度冻结策略“lockdown”，从6.1.0(23)版本开始支持个人空间创建引导页展示策略“spaceguide”。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块和相关依赖模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用接口 setWorkspacePolicy ，设置空间策略，并且查看打印信息。 const key: string = 'lockdown'; const value: spaceManager.LockdownModePolicy = spaceManager.LockdownModePolicy.OFF; const workspaceId: number = 100; try { await spaceManager.setWorkspacePolicy(key, value, workspaceId); console.info(`Succeeded in setting workspace policy.`); } catch (e"
+    },
+    {
+      "path": "references/设置工作空间资料照片.md",
+      "title": "设置工作空间资料照片",
+      "snippet": "Enterprise Space Kit为应用提供设置工作空间资料照片的能力。所有工作空间都可以设置资料照片。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用 setWorkspaceProfilePhoto 接口，设置工作空间资料照片，并且查看打印信息。 const workspaceId: number = 100; const photo: string = '{\"type\":0,\"defaultImg\":\"data:image/png;base64,iVBO******Jggg==}'; try { await spaceManager.setWorkspaceProfilePhoto(workspaceId, photo); console.info('Succeeded in setting workspace profile photo'); } catch (err) { console.error(`Failed to set workspace profile photo. Code: ${err.code}, message: ${err.message}"
+    },
+    {
+      "path": "references/设置深度冻结豁免名单.md",
+      "title": "设置深度冻结豁免名单",
+      "snippet": "从6.0.2(22)开始，支持设置深度冻结豁免名单的能力。 Enterprise Space Kit为企业应用提供设置深度冻结豁免名单的能力。设置豁免的应用在后台空间可正常运行，不会被冻结。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块和相关依赖模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用接口 setLockdownExemptionApps ，设置深度冻结豁免名单，并且查看打印信息。 const workspaceId: number = 100; const appIds = [ 'com.example.enterprisespacekit_samplecode_clientdemo_arkts1', 'com.example.enterprisespacekit_samplecode_clientdemo_arkts2' ]; try { await spaceManager.setLockdownExemptionApps(appIds, workspaceId); console.info(`Succeeded in setting lockdown exemption apps.`); } catch"
+    },
+    {
+      "path": "references/设置空间本地名称.md",
+      "title": "设置空间本地名称",
+      "snippet": "从6.1.0(23)开始，支持设置工作空间本地名称的能力。 Enterprise Space Kit为应用提供设置工作空间本地名称（即工作空间的账号名称），企业工作空间和个人工作空间都可设置本地名称。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用 setWorkspaceLocalName 接口，设置工作空间本地名称，并且查看打印信息。 const localName: string = 'localName'; // 设置的工作空间的本地名称。 const workspaceId: number = 100; // 工作空间ID。 try { await spaceManager.setWorkspaceLocalName(localName, workspaceId); console.info('Succeeded in setting workspace local name'); } catch (err) { console.error(`Failed to set workspace local name. Code: ${err.code}, message:"
+    },
+    {
+      "path": "references/设置系统服务进程不可访问后台用户数据的功能.md",
+      "title": "设置系统服务进程不可访问后台用户数据的功能",
+      "snippet": "从6.0.1(21)开始，支持设置系统服务进程不可访问后台用户数据的能力。 Enterprise Space Kit为应用提供设置系统服务进程不可访问后台用户数据的功能。例如，当前台是企业用户，后台是个人用户时，应用设置了对应个人用户的管控，此时不允许系统服务进程访问后台个人用户的数据。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { spaceManager } from '@kit.EnterpriseSpaceKit'; 2. 调用接口 setRestrictedAccessBackgroundUserdata ，设置系统服务进程不可访问后台用户数据的功能，并且查看打印信息。 const userData: spaceManager.UserDataEnum = spaceManager.UserDataEnum.ENTERPRISE; const enable: boolean = false; try { await spaceManager.setRestrictedAccessBackgroundUserdata(userData, enable) console.info(`Succeeded in setting restricted access backgro"
+    },
+    {
+      "path": "references/配置空间互传单双通策略.md",
+      "title": "配置空间互传单双通策略",
+      "snippet": "Enterprise Space Kit支持HEM配置空间互传单双通策略。空间初始化时，通过调用接口配置空间互传应用文件外发策略。具体而言，单通表示只允许个人空间向企业空间发送文件，不允许企业空间向个人空间发送文件；双通表示允许个人空间和企业空间互相发送文件。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入Enterprise Space Kit模块。 import { fileTransfer } from '@kit.EnterpriseSpaceKit'; 2. 调用 policyPush 接口，配置空间互传单双通策略，并且查看打印信息。 const policyContext: string = '{\\\"config\\\":{\\\"inEnable\\\":\\\"1\\\",\\\"incoming_check\\\":{\\\"data_list\\\":[{\\\"allow\\\":\\\"VirusCheck.result == 0\\\",\\\"approval\\\":\\\"\\\",\\\"check_point\\\":\\\"VirusCheck\\\",\\\"check_point_name\\\":\\\"VirusCheck_in\\\",\\\"is_enable\\\":\\\"true\\\",\\\"forbidden\\\":\\\"VirusCheck.result == 1\\\",\\\"order\\\":\\\"0\\\"}]"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "screen-time-guard-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:29.179Z"
+  },
+  "references": [
+    {
+      "path": "references/Screen Time Guard Kit简介.md",
+      "title": "Screen Time Guard Kit简介",
+      "snippet": "在应用安全隐私保护前提下，为开发者提供屏幕使用时间管控、应用使用限制等开放能力，满足不同用户对时间管理多样化诉求，更好的服务终端用户。 #### 能力介绍 用户授权管理 ：用来管理用户的授权信息，分别为请求用户授权访问，取消授权访问，授权情况查询。 应用选择页 ：提供接口拉起具有不同功能的半模态页面，用户可在页面中勾选想进行管理的应用、快速跳转到其它应用。 守护策略管理 ：提供接口实现时间策略的添加、修改、查询、删除、启动和停止操作。 应用访问限制 ：对选定范围内的应用进行立即生效的允许/禁止管理。 #### 基本概念 token：被管控应用的唯一标识。该token不包含应用自身信息如包名、应用名等，保障用户数据隐私安全。 guard strategy：守护策略，分为起止时间策略、总时长策略和共享时长策略三种类型。 起止时间策略：通过设定策略生效的开始时间和结束时间，可设定部分应用在这段时间内禁用或者可用。 总时长策略：通过设定从当前开始的一个时间长度，可限定全部或部分应用在该时间长度内禁用或者可用。 共享时长策略：通过设定一个时间长度，可限定全部或部分应用总共能使用该时间长度。 管控范围：所有应用都可被管控，除了系统内置允许清单应用（如时钟、电话等）、管控发起应用本身、已授权的管控应用和健康使用设备。 #### 约束与限制 1. 支持的设备：Screen Time Guard K"
+    },
+    {
+      "path": "references/修改策略.md",
+      "title": "修改策略",
+      "snippet": "当用户希望调整现有的屏幕时间守护规则时，可以调用更新管控策略的接口。我们kit支持根据参数中传入的策略名以及修改策略的方案，用户可以修改各种策略，如调整各个应用的停用起止时间。一旦修改完成并保存，系统将根据新的规则对用户的屏幕使用行为进行管控。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/38/v3/0wJqBFjoSLWtziBPrCIp1g/zh-cn_image_0000002573975099.png?HW-CC-KV=V1&HW-CC-Date=20260421T111647Z&HW-CC-Expire=86400&HW-CC-Sign=88E9E2BFF2C6108BD1E9C8BA94E476B07A312769D70886DFC853C7FCB7253D01) 流程说明： 1. 应用调用更新管控策略的接口时，会拉起健康使用设备查询本应用是否已申请权限，以及用户是否对本应用授权。 2. 若没有权限，则抛出相应错误码；若有权限，则解析参数中传入的策略，并判断策略是否有效、是否存在。 3. 若策略有效，则记录到本地数据库，策略完成修改；否则，抛出相应错误码。 ![](https://contentcenter-vali-drcn."
+    },
+    {
+      "path": "references/停止策略.md",
+      "title": "停止策略",
+      "snippet": "当用户希望停止某个管控规则时，可以调用停止管控策略的接口。根据参数中传入的策略名，应用可以停止对应管控策略。一旦策略被停止，系统将不再根据该规则对用户的屏幕使用行为进行监管。 #### 用户体验设计 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fe/v3/CxejytuJQN2myuL5BjfD0A/zh-cn_image_0000002543215208.png?HW-CC-KV=V1&HW-CC-Date=20260421T111647Z&HW-CC-Expire=86400&HW-CC-Sign=350CCE1E615728C5EB2964366CD1E719F8A2AA6A01ED2DF1958CDDA5F7E8503C) #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/50/v3/kNRUKWGORSOzh66y3HqSuw/zh-cn_image_0000002573855121.png?HW-CC-KV=V1&HW-CC-Date=20260421T111647Z&HW-CC-Expire=86400&HW-"
+    },
+    {
+      "path": "references/健康使用设备授权列表页中应用授权开关打开_关闭时触发回调.md",
+      "title": "健康使用设备授权列表页中应用授权开关打开/关闭时触发回调",
+      "snippet": "当通过健康使用设备授权列表页中的授权开关开启或者关闭应用授权时（设置-健康使用设备-右上角四点设置 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e7/v3/T1TXi0DrQYqBXwB5rD7a7A/zh-cn_image_0000002573855113.png?HW-CC-KV=V1&HW-CC-Date=20260421T111645Z&HW-CC-Expire=86400&HW-CC-Sign=DAA967E402E566746D18CFE4F581AA964D96FE344D084D5F7B4CBF1C5C4BDCA6) -可访问健康使用设备的应用），会执行TimeGuardExtensionAbility中的onUserAuthSwitchOn/onUserAuthSwitchOff回调方法，支持开发者在用户授予授权和撤销授权时执行特定逻辑。若之前已设置过健康使用设备的密码，则在此页面取消应用授权时需要输入健康使用设备的密码。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/35/v3/hKYCbGbLRmqPjUNDxQZQs"
+    },
+    {
+      "path": "references/删除策略.md",
+      "title": "删除策略",
+      "snippet": "当应用希望删除现有的屏幕时间守护规则时，可以调用删除管控策略的接口。根据参数中传入的策略名删除对应的策略。一旦策略被删除，系统将不再根据该规则对用户的屏幕使用行为进行监管。 #### 用户体验设计 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6e/v3/8gP2yC7_RfCrHZF-8vA4cA/zh-cn_image_0000002543215206.png?HW-CC-KV=V1&HW-CC-Date=20260421T111647Z&HW-CC-Expire=86400&HW-CC-Sign=746924C29EB1E70D5D73C1D7D9F1D15074FEB15C2FB81A0341859FCFD903CE27) #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1/v3/qPJzEKCMT42SEpbrlHMtdg/zh-cn_image_0000002573855119.png?HW-CC-KV=V1&HW-CC-Date=20260421T111647Z&HW-CC-Expire=86400&HW-CC"
+    },
+    {
+      "path": "references/取消用户授权.md",
+      "title": "取消用户授权",
+      "snippet": "当开发者希望取消应用的Screen Time Guard Kit授权时，可以通过调用取消用户授权的接口进行取消。一旦权限被取消，应用将无法再访问或使用对用户设备的时间管理等功能。如果应用尝试继续调用与屏幕守护时间模块相关的接口，系统会返回用户未授权使用的错误码，以确保功能的安全性和隐私保护。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/85/v3/EkSgT4ClSOmTcIF8sD8L_A/zh-cn_image_0000002543215200.png?HW-CC-KV=V1&HW-CC-Date=20260421T111645Z&HW-CC-Expire=86400&HW-CC-Sign=4355D33E8121FFB060DC84B28EC92F597303B51A3E0766EB7C4BB821C9313EBB) 流程说明： 1. 应用想要取消访问Screen Time Guard Kit的权限，需要调用拉起取消用户授权的接口，拉起健康使用设备查询本地数据库中该应用的授权状态。 2. 若状态为未授权，则直接正常返回；若状态为已授权，修改为未授权状态后正常返回。 #### 接口说明 取消用户授权关键接口如下表所示： #### 开发步"
+    },
+    {
+      "path": "references/受限ACL权限申请.md",
+      "title": "受限ACL权限申请",
+      "snippet": "1. 在 申请调试Profile 和 发布Profile文件 之前，需要 申请相应的ACL权限 。 2. 登录 AppGallery Connect ，点击“开发与服务”，在项目列表中找到对应的项目，并点击选择您需要申请ACL权限的应用。在“项目设置”页面，选择“ACL权限”页签，开始为应用申请ACL权限。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a4/v3/abr5wiLXS3-vpxGvZTbHoQ/zh-cn_image_0000002573975091.png?HW-CC-KV=V1&HW-CC-Date=20260421T111644Z&HW-CC-Expire=86400&HW-CC-Sign=E6008F1A214F9568DDC7FE5BCE26F4147337A75685D2022C4E765D2348628222) 3. 在核对注意事项后，在“未获取权限”区域中勾选“我已知晓”。在权限搜索框中输入\"ohos.permission.MANAGE_SCREEN_TIME_GUARD\"，查找并勾选权限，提交申请。 4. 根据实际业务需求填写申请原因并提交，提交后将在1个工作日回复。 ![](https://contentcenter-vali"
+    },
+    {
+      "path": "references/启动策略.md",
+      "title": "启动策略",
+      "snippet": "当应用希望启动某个管控规则时，可以调用启动管控策略的接口。根据参数中传入的策略名，应用可以启动对应管控策略。一旦策略被创建并启用，系统将根据规则对用户的屏幕使用行为进行监管。 #### 用户体验设计 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ae/v3/M_Jej2B0S26dPjKccTk1Bw/zh-cn_image_0000002573975101.png?HW-CC-KV=V1&HW-CC-Date=20260421T111647Z&HW-CC-Expire=86400&HW-CC-Sign=09B4D388635EAB00C9E10298633FE603ACBE4DB1CEE69A52D1A2D9DD6BECF668) #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/94/v3/K8pkXUwRQF6MDiMSaSky4Q/zh-cn_image_0000002543374868.png?HW-CC-KV=V1&HW-CC-Date=20260421T111647Z&HW-CC-Expire=86400&HW-"
+    },
+    {
+      "path": "references/拉起应用选择页.md",
+      "title": "拉起应用选择页",
+      "snippet": "在用户需要为特定应用设置使用时长或使用限制策略的场景下，开发者通过调用拉起应用选择页的接口拉起选择页后，使得用户能够选择目标应用。在用户选择完毕并点击完成按钮后，接口会返回应用的token。开发者获取到目标应用的token后，可以根据token为选定应用配置管控策略。 #### 用户体验设计 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/74/v3/NqESmVxCST-xlEXFvpCcEg/zh-cn_image_0000002543215202.png?HW-CC-KV=V1&HW-CC-Date=20260421T111646Z&HW-CC-Expire=86400&HW-CC-Sign=5FADBC5456FED8282EDE17AD44F169CE878358BFAE7231251C66EC0CA1BA800F) #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/40/v3/h_j-U_Z0TfCCMM_emqYdRQ/zh-cn_image_0000002573855115.png?HW-CC-KV=V1&HW-"
+    },
+    {
+      "path": "references/拉起许可应用跳转页.md",
+      "title": "拉起许可应用跳转页",
+      "snippet": "从6.0.2(22)版本开始，新增支持拉起许可应用跳转页功能。为实现用户在被管控期间快速跳转到许可应用的诉求，开发者可调用startAppForm接口拉起应用跳转页，页面中将展示通过接口参数传入的许可应用token对应的应用列表。用户点击其中的应用图标后能跳转到该应用。 #### 用户体验设计 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ce/v3/L9EiztnIRJefAY30uQYWaA/zh-cn_image_0000002573975097.png?HW-CC-KV=V1&HW-CC-Date=20260421T111646Z&HW-CC-Expire=86400&HW-CC-Sign=E01EE87C9F117C828BBB83733CC0DA2C02102ED2174F4AD7541DF9156A9BE91A) #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d5/v3/pTWeYw34Tl6yuVHAMODHXA/zh-cn_image_0000002543374864.png?HW-CC-KV=V1&HW"
+    },
+    {
+      "path": "references/查询策略.md",
+      "title": "查询策略",
+      "snippet": "当用户希望查看现有的屏幕时间守护规则时，可以调用查询管控策略的接口。通过成功调用查询策略接口，用户可以浏览已创建的所有管控策略，如查看各个应用的停用起止时间或可使用时长。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4a/v3/WFcKY4k1T3ODG2wuW8KYQw/zh-cn_image_0000002543374866.png?HW-CC-KV=V1&HW-CC-Date=20260421T111647Z&HW-CC-Expire=86400&HW-CC-Sign=74C697F0A8632E8CB7A65DC45BABF0038460FB1C879C806B907FB4FF9FEECA6A) 流程说明： 1. 应用调用查询管控策略的接口，拉起健康使用设备查询本应用是否已申请权限，以及用户是否对本应用授权。 2. 若没有权限，则抛出相应错误码；若有权限，则返回对应应用下的所有管控策略。 #### 接口说明 查询策略的关键接口如下表所示： #### 开发前提 查询管控策略需要申请用户授权，请先参考 请求用户授权 章节完成用户授权。 #### 开发步骤 1. 导入相关模块。 import { guardService } from '"
+    },
+    {
+      "path": "references/概述-1.md",
+      "title": "概述",
+      "snippet": "Screen Time Guard Kit中的应用访问限制功能，支持针对Picker选定的应用token和接口传入的应用token，设置访问限制或解除访问限制。 #### 用户体验设计 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6/v3/l-Tq9RCiS5GbOnv-o77NzQ/zh-cn_image_0000002573975103.png?HW-CC-KV=V1&HW-CC-Date=20260421T111648Z&HW-CC-Expire=86400&HW-CC-Sign=74ADD3774D11EB213D78219B16D1DC325D4B07111734876207B15C02DD26F00F)"
+    },
+    {
+      "path": "references/概述-2.md",
+      "title": "概述",
+      "snippet": "Screen Time Guard Kit中的应用选择页功能支持拉起具有不同功能的应用页面。"
+    },
+    {
+      "path": "references/概述-3.md",
+      "title": "概述",
+      "snippet": "Screen Time Guard Kit需要经过用户授权才能对用户设备做时间管控和应用限制。Screen Time Guard Kit提供了请求用户授权和取消授权的接口，并且在健康使用设备的授权列表页面中，提供了用户主动打开/关闭授权的入口。开发者也可通过实现指定ExtensionAbility的回调方法，感知用户在健康使用设备的授权列表页中打开/关闭授权的行为。"
+    },
+    {
+      "path": "references/概述.md",
+      "title": "概述",
+      "snippet": "守护策略管理是Screen Time Guard Kit的核心功能。该模块支持应用添加、修改、查询、删除屏幕时间守护策略，并通过调用启动和停止接口来管控策略生效与否，从而实现对屏幕使用行为的有效监管与优化，帮助用户科学规划屏幕使用时间。"
+    },
+    {
+      "path": "references/添加策略.md",
+      "title": "添加策略",
+      "snippet": "当用户希望创建新的屏幕时间守护规则时，可以调用添加管控策略的接口。根据参数中传入的策略，用户可以添加各种策略，如设置各个应用的停用起止时间。一旦策略被创建并启用，系统将根据规则对用户的屏幕使用行为进行监管。 #### 用户体验设计 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c/v3/gKBxqGoGQiCh4EXBwXSktg/zh-cn_image_0000002543215204.png?HW-CC-KV=V1&HW-CC-Date=20260421T111647Z&HW-CC-Expire=86400&HW-CC-Sign=4FD71E4F08313922A8C6C88DCD79EA6D68FF7076A77669DCDB415F366581F8D7) #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/11/v3/bn1kLUkXRyKXu2W5X2oVrw/zh-cn_image_0000002573855117.png?HW-CC-KV=V1&HW-CC-Date=20260421T111647Z&HW-CC-E"
+    },
+    {
+      "path": "references/解除应用访问限制.md",
+      "title": "解除应用访问限制",
+      "snippet": "当用户希望解除用户访问某些特定应用的限制时，可以调用解除应用访问限制的接口。根据参数中传入的token以及限制类型（允许/禁用），将允许/禁用清单解析后，解除对应的应用的限制。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3b/v3/CFR0xMMySumVA_1tJAuYUg/zh-cn_image_0000002543215210.png?HW-CC-KV=V1&HW-CC-Date=20260421T111648Z&HW-CC-Expire=86400&HW-CC-Sign=97F66AB2D3E6D43400F5328BA27BEF4D17553A23D23ACF2121DB43AD7EDD6D32) 流程说明： 1. 应用调用解除应用访问限制的接口，拉起健康使用设备查询开发者是否已申请权限，以及用户是否授权。 2. 若开发者没有权限或用户没有授权，则抛出相应错误码。若开发者有权限且用户已授权，则解析参数中传入的限制类型以及token。 3. 该接口判断传入的应用列表，是否其中有应用被其他三方应用或健康使用设备设置的策略给管控，若有，则对应的应用不解除限制。 4. 对剩余的应用解除限制，返回处理结果。 #### 接口说明 解除应用访"
+    },
+    {
+      "path": "references/设置应用访问限制.md",
+      "title": "设置应用访问限制",
+      "snippet": "当用户希望限制用户访问某些特定应用时，可以调用限制应用访问的接口。根据参数中传入的token以及限制类型（允许/禁用），可以限制用户对禁用名单中应用的访问，或只允许用户访问允许清单中的应用。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bc/v3/Cxlqls1KR_CPgccTH7UCjg/zh-cn_image_0000002543374870.png?HW-CC-KV=V1&HW-CC-Date=20260421T111648Z&HW-CC-Expire=86400&HW-CC-Sign=F5FBC894B9C5050349C2B12E28D419E895AF18A1E63E7C7958C3A59F3AEAD9A7) 流程说明： 1. 应用调用设置应用访问限制的接口，拉起健康使用设备查询开发者是否已申请权限，以及用户是否授权。 2. 若开发者没有权限或用户没有授权，则抛出相应错误码。若开发者有权限且用户已授权，则解析参数中传入的限制类型以及token，对应用做限制处理，返回处理结果。 #### 接口说明 限制应用访问的关键接口如下表所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/"
+    },
+    {
+      "path": "references/请求用户授权.md",
+      "title": "请求用户授权",
+      "snippet": "Screen Time Guard Kit支持对用户设备的时间管理和应用限制，因此在功能启用前，必须获得用户的明确授权。应用可以调用请求用户授权接口，系统会弹出授权请求界面，明确告知用户功能的作用和必要性，并在用户允许之后，才可正常访问。如果用户未同意授权，则无法再提供相关管控能力，此时如果继续调用管控相关接口，会抛出用户未授权使用的错误码。 #### 用户体验设计 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fe/v3/TNsJQWDWSpiFGFWF_-wQSw/zh-cn_image_0000002573975093.png?HW-CC-KV=V1&HW-CC-Date=20260421T111645Z&HW-CC-Expire=86400&HW-CC-Sign=567BC48866ED28EB78D031BA652D081501924C48198FCBF2A057D5667883DE5C) #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8f/v3/G959p6i4Tn-RoEgSK_vtRg/zh-cn_imag"
+    },
+    {
+      "path": "references/配置签名.md",
+      "title": "配置签名",
+      "snippet": "- 调试阶段需要在AGC中 申请调试证书 、 注册调试设备 、 申请调试Profile 后，再 手动配置签名信息 。 - 发布阶段 **必须在AGC中重新** 申请发布证书 、 发布Profile文件 ，并完成 手动配置签名信息 。"
+    }
+  ]
+}

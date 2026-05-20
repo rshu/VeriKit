@@ -1,0 +1,103 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "mechanic-kit",
+  "source_path": "skills/mechanic-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:56:07.688Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "机械设备",
+      "云台控制",
+      "目标跟踪",
+      "精密控制",
+      "如何获取当前连接的机械体设备（云台）列表并查询设备信息？",
+      "如何监听机械体设备的连接和断开状态变化？",
+      "如何启用或禁用摄像头目标跟踪功能实现人脸跟踪拍摄？",
+      "如何设置摄像头跟踪布局模式（默认、左侧、中间、右侧）？",
+      "如何监听跟踪状态变化事件（用户操作、布局变化等）？",
+      "如何实时获取机械体设备在三个轴向的当前角度？",
+      "如何查询设备在各轴向的最大旋转范围和旋转限制？",
+      "如何获取设备的最大旋转速度和连续旋转时间等运动参数？",
+      "如何开发基于云台的自动构图拍摄应用？",
+      "当您需要开发与云台等机械体设备交互的应用时，应使用Mechanic Kit",
+      "典型场景包括：物体跟踪拍摄（通过云台实现人脸跟踪和物体追踪，提升拍摄质量）、精准拍摄控制（操控云台进行精确的角度调整和运动轨迹控制）、以及设备状态监控（实时获取云台角度、旋转限制、运动参数等状态信息）",
+      "当您的应用需要集成第三方云台或其他机械体配件，实现自动化跟踪拍摄或远程操控功能时，也应使用Mechanic Kit来简化开发流程",
+      "获取已连接云台列表并显示设备型号与能力信息 / Get connected gimbal devices and show model and capability info",
+      "监听云台连接断开事件并自动刷新设备状态 / Listen for gimbal connect and disconnect events and refresh device state",
+      "实现云台三轴转动控制进行俯仰横滚偏航调节 / Implement 3-axis gimbal movement control for pitch roll and yaw adjustment",
+      "读取云台当前角度并在界面实时显示姿态数据 / Read current gimbal angles and display live orientation data in the UI",
+      "查询云台各轴旋转范围限位和最大速度参数 / Query per-axis rotation limits and maximum speed parameters of the gimbal",
+      "控制云台按指定方向和速度持续旋转 / Drive the gimbal to rotate continuously in a specified direction and speed",
+      "启用目标跟踪让云台自动跟随人脸或主体 / Enable target tracking so the gimbal automatically follows a face or subject",
+      "切换云台自动跟踪构图位置到左中右布局 / Switch gimbal auto-tracking composition to left center or right framing",
+      "订阅跟踪状态变化并处理用户接管或目标丢失 / Subscribe to tracking state changes and handle user takeover or target loss",
+      "开发自动构图拍摄功能让云台自动调整镜头朝向 / Build auto-framing capture so the gimbal automatically adjusts camera direction",
+      "根据机械体运动能力限制设置安全的控制指令 / Apply safe control commands based on the device motion capability limits",
+      "管理机械体设备会话并在重连后恢复控制 / Manage mechanical device sessions and restore control after reconnection"
+    ],
+    "do_not_use_when": [
+      "需求是读取通用传感器数据（如加速度计、陀螺仪、环境传感器）而不是控制云台等机械体设备时，应使用 sensor-service-kit / If the task is to read general sensor data (such as accelerometer, gyroscope, or environmental sensors) rather than control gimbals or other mechanical devices, use sensor-service-kit",
+      "需求是处理触摸、按键、鼠标等通用输入事件而非机械体蓝牙控制与跟踪时，应使用 input-kit / If the task is to handle general input events like touch, key, or mouse instead of mechanical Bluetooth control and tracking, use input-kit",
+      "需求是输入法开发、软键盘能力或文本输入框架集成时，应使用 ime-kit / If the task is IME development, soft keyboard capability, or text input framework integration, use ime-kit",
+      "需求是手写笔事件、压感、悬停或笔迹能力而非云台/机械体控制时，应使用 pen-kit / If the task is stylus events, pressure, hover, or ink capabilities rather than gimbal/mechanic control, use pen-kit",
+      "需求是开发硬件驱动、适配底层设备协议或内核级接入而不是调用上层机械体控制API时，应使用 driver-development-kit / If the task is to develop hardware drivers, adapt low-level device protocols, or perform kernel-level integration instead of calling high-level mechanic control APIs, use driver-development-kit",
+      "需求是处理游戏手柄按键、摇杆、震动等控制器能力而非机械体设备操控时，应使用 game-controller-kit / If the task is to handle game controller buttons, sticks, vibration, or related controller features rather than mechanic device operation, use game-controller-kit"
+    ],
+    "preconditions": [
+      "目标设备与应用运行环境支持 API version 20 及以上并提供 Mechanic Kit 能力 / The target device and app runtime support API version 20 or later and provide Mechanic Kit capability",
+      "待控制的机械体设备已按 Mechanic Kit 协议标准接入并与终端建立正常蓝牙连接 / The mechanic device to be controlled conforms to the Mechanic Kit protocol and has a healthy Bluetooth connection with the terminal",
+      "如需目标跟踪，开发设备相机驱动具备人脸检测能力且相机服务可用 / For target tracking, the device camera driver supports face detection and the camera service is available",
+      "应用已在工程配置中声明并获得蓝牙及相关设备访问所需权限（如系统版本要求） / The app has declared and obtained required Bluetooth and related device-access permissions in project configuration as required by the system version"
+    ],
+    "inputs": [
+      "机械体设备标识或设备对象 / mechanic device identifier or device object",
+      "跟踪控制参数（启停、目标类型、布局模式） / tracking control parameters (enable/disable, target type, layout mode)",
+      "角度或运动控制参数 / angle or motion control parameters",
+      "状态监听回调或事件订阅对象 / state listener callback or event subscription object"
+    ],
+    "outputs": [
+      "简介",
+      "开发指南"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码已通过 Mechanic Kit API 实现至少一种机械体能力：设备连接查询/监听、目标跟踪控制、布局设置或状态读取 / The code uses Mechanic Kit APIs to implement at least one mechanic capability: device connection query/listening, tracking control, layout setting, or state reading",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the agent's edit set clearly add or modify code that calls Mechanic Kit APIs for mechanic device management, tracking, layout, or status access?"
+      },
+      {
+        "statement": "若涉及目标跟踪，代码中已显式设置跟踪开关、跟踪布局或跟踪状态监听中的至少一项 / If target tracking is involved, the code explicitly configures at least one of tracking enablement, tracking layout, or tracking state listening",
+        "verifier": "model_judge",
+        "judge_prompt": "If the requested feature includes target tracking, do the edits explicitly add code for enabling/disabling tracking, setting a tracking layout, or subscribing to tracking state changes?"
+      },
+      {
+        "statement": "若涉及设备状态能力，代码中已添加对设备连接状态、三轴角度、旋转限制或运动参数的查询/监听逻辑 / If device status capability is involved, the code adds query or listener logic for connection state, three-axis angles, rotation limits, or motion parameters",
+        "verifier": "model_judge",
+        "judge_prompt": "When the task concerns device status, do the edits include logic to query or listen for connection state, axis angles, rotation limits, or motion parameters?"
+      }
+    ],
+    "overlaps_with": [
+      "sensor-service-kit",
+      "input-kit",
+      "ime-kit",
+      "pen-kit",
+      "driver-development-kit",
+      "game-controller-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

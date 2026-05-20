@@ -1,0 +1,111 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "image-kit",
+  "source_path": "skills/image-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:54:53.951Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "图片处理",
+      "图片编解码",
+      "图片编辑",
+      "EXIF",
+      "HDR",
+      "ImageProcessing",
+      "如何使用ImageSource完成图片解码并获取PixelMap用于显示？",
+      "如何使用ImagePacker将PixelMap编码为指定格式的图片文件？",
+      "如何使用PixelMap完成图片裁剪、缩放、旋转等图像变换操作？",
+      "如何使用C/C++的Image_NativeModule进行图片编解码？",
+      "如何使用ImageEffect为图片添加滤镜效果？",
+      "如何读写图片的EXIF元数据（如拍摄参数、GPS信息等）？",
+      "如何实现HDR图片的单层与双层格式转换？",
+      "如何使用VideoProcessingEngine进行AI超分辨率图片处理？",
+      "如何使用ImageReceiver接收相机预览流的图片数据？",
+      "如何处理HEIF格式的图片？图片解码时如何进行内存优化？",
+      "当您的应用需要对图片进行解码显示、编码保存、格式转换等基础操作时，可使用 Image Kit 的编解码能力",
+      "当需要对图片进行裁剪、缩放、旋转等变换操作，或需要读写像素数据进行自定义处理时，可使用 PixelMap 或 Image_NativeModule 的位图操作能力",
+      "当您需要处理 HDR 图片（单双层转换）、添加滤镜效果、读写图片 EXIF 元数据，或需要使用 AI 超分辨率提升图片清晰度时，也可以使用本 Kit 提供的相关高级能力",
+      "加载本地图片并解码成 PixelMap 显示到界面 / Load a local image and decode it into a PixelMap for UI display",
+      "把编辑后的 PixelMap 导出为 PNG 或 JPEG 文件 / Export an edited PixelMap as a PNG or JPEG file",
+      "实现图片裁剪缩放旋转并生成新的位图 / Implement image crop, scale, and rotation to produce a new bitmap",
+      "读取照片的拍摄时间方向和 GPS 等 EXIF 信息 / Read photo EXIF data such as timestamp, orientation, and GPS",
+      "修改图片元数据后重新保存到相册或沙箱 / Update image metadata and save it back to the gallery or app sandbox",
+      "给照片添加滤镜美化效果 / Apply filter and enhancement effects to a photo",
+      "将相机或图库图片压缩后再上传 / Compress camera or gallery images before upload",
+      "把网络下载的图片字节流解码成可显示的图片对象 / Decode downloaded image bytes into a displayable image object",
+      "用 ImageSource 从文件流或内存创建图片资源 / Create image resources from a file stream or memory with ImageSource",
+      "用 ImagePacker 打包图片并控制输出格式和质量 / Encode images with ImagePacker and control output format and quality",
+      "在 C++ 层完成图片解码编码或像素处理 / Perform image decoding, encoding, or pixel processing in native C++",
+      "实现 HDR 图片格式转换和处理 / Implement HDR image format conversion and processing"
+    ],
+    "do_not_use_when": [
+      "需求是采集相机照片、管理相机预览流或控制拍摄硬件，而不是对已有图像做编解码/编辑；应改用 camera-kit / The task is to capture photos, manage camera preview streams, or control camera hardware rather than process existing images; use camera-kit instead",
+      "需求是音视频文件的编解码、封装解封装或播放处理，而不是静态图片处理；应改用 avcodec-kit 或 media-kit / The task is audio/video encoding, decoding, muxing, demuxing, or playback rather than still-image processing; use avcodec-kit or media-kit instead",
+      "需求是浏览、查询、增删系统媒体库资源，而不是处理图片像素或元数据；应改用 media-library-kit / The task is to browse, query, insert, or delete assets in the system media library rather than manipulate image pixels or metadata; use media-library-kit instead",
+      "需求是管理系统音频会话、音频焦点或播放控制，而不是图片内容处理；应改用 avsession-kit / The task is to manage audio sessions, audio focus, or playback controls rather than image content processing; use avsession-kit instead",
+      "需求是铃声选择、设置或管理，而不是图片解码/编码；应改用 ringtone-kit / The task is ringtone selection, setting, or management rather than image decoding/encoding; use ringtone-kit instead"
+    ],
+    "preconditions": [
+      "工程已引入并启用 Image Kit 对应的 HarmonyOS SDK 能力，API 版本满足所用接口要求 / The project has Image Kit SDK capability available and the API version satisfies the chosen interfaces",
+      "输入图片来源可访问且可读取，例如文件路径、沙箱文件、资源文件或内存缓冲区有效 / The input image source is accessible and readable, such as a valid file path, sandbox file, resource, or memory buffer",
+      "若涉及文件读写或保存结果，应用已具备对应的文件访问条件与目录可写性 / If reading from or saving to files, the app has the required file access conditions and a writable target location",
+      "若使用 AI 超分、HDR 转换或特定高级能力，运行环境与设备能力支持相应特性 / If using AI super-resolution, HDR conversion, or other advanced features, the runtime environment and device support those features"
+    ],
+    "inputs": [
+      "图片源数据 / image source data",
+      "PixelMap或原始像素缓冲区 / PixelMap or raw pixel buffer",
+      "编解码与输出参数 / codec and output options",
+      "图像处理参数（裁剪、缩放、旋转、滤镜、EXIF、HDR等） / image processing parameters (crop, resize, rotate, filter, EXIF, HDR, etc.)"
+    ],
+    "outputs": [
+      "简介",
+      "图片解码",
+      "图片编码",
+      "图片编辑与处理",
+      "图片接收",
+      "HDR与色彩处理",
+      "常见问题与异常处理"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已使用 Image Kit 相关类型或接口完成图片解码、编码或处理流程 / The code uses Image Kit types or APIs to implement image decoding, encoding, or processing flow",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly introduce or modify HarmonyOS Image Kit API usage (such as ImageSource, ImagePacker, PixelMap, ImageReceiver, ImageEffect, VideoProcessingEngine, or Image_NativeModule) for an image-processing task?"
+      },
+      {
+        "statement": "产物与目标图片操作一致，包含对应的处理参数或输出配置 / The implementation matches the requested image operation and includes the corresponding processing parameters or output configuration",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is the requested image operation (for example decode, encode, crop, resize, rotate, EXIF edit, HDR conversion, or super-resolution) explicitly implemented with relevant options or parameters?"
+      },
+      {
+        "statement": "若涉及结果输出，代码已生成或准备返回处理后的图片对象、缓冲区或保存结果 / If output is involved, the code generates or prepares to return the processed image object, buffer, or saved result",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show that the processed image result is produced, returned, displayed, or written out (for example as a PixelMap, packed image buffer, or saved file)?"
+      }
+    ],
+    "overlaps_with": [
+      "audio-kit",
+      "avcodec-kit",
+      "avsession-kit",
+      "camera-kit",
+      "media-kit",
+      "media-library-kit",
+      "ringtone-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

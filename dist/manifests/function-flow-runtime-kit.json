@@ -1,0 +1,65 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "function-flow-runtime-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.799Z"
+  },
+  "references": [
+    {
+      "path": "references/Function Flow Runtime C API.md",
+      "title": "Function Flow Runtime C API",
+      "snippet": "**声明** typedef enum { ffrt_dependence_data, ffrt_dependence_task, } ffrt_dependence_type_t; typedef struct { ffrt_dependence_type_t type; const void* ptr; } ffrt_dependence_t; typedef struct { uint32_t len; const ffrt_dependence_t* items; } ffrt_deps_t; **参数** - len：数据依赖个数。 - items：数据依赖数组，数据长度等于len。 - ptr：数据地址。 - type：区分数据和task_handle。 **描述** ffrt_dependence_t作用等同C++的dependence，ffrt_deps_t作用等同C++的std::vector<dependence>。 **样例** // 创建数据依赖 int x = 0; ffrt_dependence_t data_dependence[1]; data_dependence[0].type = ffrt_dependence_data; data_dependence[0].ptr = &x; ffrt_deps_t data_deps; data_deps"
+    },
+    {
+      "path": "references/Function Flow Runtime Kit概述.md",
+      "title": "Function Flow Runtime Kit概述",
+      "snippet": "FFRT: Function Flow Runtime，一种并发编程框架，旨在简化并发编程和任务调度的复杂性。FFRT采用基于任务的调度方式，开发者只需关注任务及其依赖关系，而无需处理底层的线程和计算资源；同时，FFRT采用基于协程的任务执行方式，可以提高任务并行度、提升线程利用率并充分利用多核平台的计算资源，保证系统对所有资源的集约化管理，最终解决系统线程资源滥用问题，打造极致用户体验。 #### 基本概念 简要说明一下FFRT开发指南中出现或将会出现的一些基本概念： - **任务 (Task)**: 一种面向开发者的编程线索和面向运行时的执行对象，通常包含一组指令序列及其操作的数据上下文环境。 - **任务依赖 (Task Dependency)**: 任务之间的依赖关系，决定了某个任务是否需要等待其他任务完成才能开始执行。通过任务依赖，开发者可以定义复杂的任务执行顺序。 - **QoS (Quality of Service)**: QoS定义了任务的服务质量等级，用于指示任务的优先级和资源分配。 - **原语 (Primitive)**: 并发编程中的基本操作或构造，用于实现同步和互斥，例如，互斥锁、条件变量等。 - **Worker**: 执行任务的工作线程。每个Worker可以执行多个任务，通常由调度器负责管理和分配任务。 - **调度 (Scheduling)**: "
+    },
+    {
+      "path": "references/Function Flow Runtime串行队列(C).md",
+      "title": "Function Flow Runtime串行队列(C)",
+      "snippet": "FFRT串行队列基于协程调度模型实现，提供高效的消息队列功能，支持异步通信、流量削峰、无锁化状态和资源管理以及架构解耦等多种业务场景。FFRT串行队列支持以下功能： - **​队列创建销毁**​，支持创建和销毁队列，创建时可指定队列名称和优先级。每个队列功能上相当于一个单独的线程，队列中的任务相对于用户线程异步执行。 - **任务延迟**​，支持在任务提交时设置延迟时间（delay），单位为微秒（us）。延迟任务将在uptime（提交时刻+延迟时间）后调度执行。 - **​串行调度**​，同一队列中的任务按照uptime升序排列，严格串行执行。确保队列中上一个任务完成后，下一个任务才会开始执行。 - **​任务取消**​，支持根据任务句柄取消未出队的任务。若任务已开始执行或执行完成，则无法取消。 - **​任务等待**​，支持根据任务句柄等待任务完成。指定任务完成时，队列中所有uptime早于该任务的任务均已执行完成。 - **任务优先级**​，支持在任务提交时设置单个任务的优先级。优先级仅在任务出队后相对于系统其他负载生效，不影响同一队列内任务的串行顺序。若未设置任务优先级，则默认继承队列的优先级。 #### 示例：异步日志系统 举例实现一个异步日志系统，主线程将日志任务提交到队列，后台线程从队列中取出任务并写入文件。这种方式既能保证日志的顺序性，又能避免文件写入操作阻塞主线程。"
+    },
+    {
+      "path": "references/Function Flow Runtime串行队列(C++).md",
+      "title": "Function Flow Runtime串行队列(C++)",
+      "snippet": "FFRT串行队列基于协程调度模型实现，提供高效的消息队列功能，支持异步通信、流量削峰、无锁化状态和资源管理以及架构解耦等多种业务场景。FFRT串行队列支持以下功能： - **​队列创建销毁**​，支持创建和销毁队列，创建时可指定队列名称和优先级。每个队列功能上相当于一个单独的线程，队列中的任务相对于用户线程异步执行。 - **任务延迟**​，支持在任务提交时设置延迟时间（delay），单位为微秒（us）。延迟任务将在uptime（提交时刻+延迟时间）后调度执行。 - **​串行调度**​，同一队列中的任务按照uptime升序排列，严格串行执行。确保队列中上一个任务完成后，下一个任务才会开始执行。 - **​任务取消**​，支持根据任务句柄取消未出队的任务。若任务已开始执行或执行完成，则无法取消。 - **​任务等待**​，支持根据任务句柄等待任务完成。指定任务完成时，队列中所有uptime早于该任务的任务均已执行完成。 - **任务优先级**​，支持在任务提交时设置单个任务的优先级。优先级仅在任务出队后相对于系统其他负载生效，不影响同一队列内任务的串行顺序。若未设置任务优先级，则默认继承队列的优先级。 #### 示例：异步日志系统 举例实现一个异步日志系统，主线程将日志任务提交到队列，后台线程从队列中取出任务并写入文件。这种方式既能保证日志的顺序性，又能避免文件写入操作阻塞主线程。"
+    },
+    {
+      "path": "references/Function Flow Runtime任务伙伴(C++).md",
+      "title": "Function Flow Runtime任务伙伴(C++)",
+      "snippet": "从API version 20开始，FFRT支持Job Partner功能。在实际业务中，可能会遇到某一个线程（比如UI绘制线程）耗时很长，难以充分利用CPU多核能力的情况。此时，将原有线程的大任务拆分为多个小任务交给其他线程去执行是解决该问题的有效方法。但是，在实践中，会遇到两个问题： - 问题1：小任务中的部分片段受限于某些原因，必须执行在指定的线程上（比如访问JS虚拟机中的变量）。 - 问题2：小任务会被拆分为多个小片段（可能由于问题1或者其他原因），单次执行时间可能在微秒级，而单次线程唤醒的开销在几十个微秒级，难以获得并发收益。 为解决以上问题，Job Partner并发范式应运而生。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9c/v3/p9uBifRuS5y5-9yRAwjcMA/zh-cn_image_0000002543374150.png?HW-CC-KV=V1&HW-CC-Date=20260421T111217Z&HW-CC-Expire=86400&HW-CC-Sign=D1276A14737D488A8A9903EE509B1CADBA96B5B133E33C962F6009A45080E147) Job Partner并发范式中定"
+    },
+    {
+      "path": "references/Function Flow Runtime图依赖并发(C).md",
+      "title": "Function Flow Runtime图依赖并发(C)",
+      "snippet": "FFRT图依赖并发范式支持任务依赖和数据依赖两种方式构建任务依赖图。任务依赖图中每个节点代表一个任务，边代表任务之间的依赖关系。任务依赖分为输入依赖in_deps和输出依赖out_deps。 构建任务依赖图的两种不同方式： - 当使用任务依赖方式构建任务依赖图时，使用任务句柄handle来对应一个任务对象。 - 当使用数据依赖方式构建任务依赖图时，数据对象表达抽象为数据签名，每个数据签名唯一对应一个数据对象。 #### 任务依赖 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/66/v3/37Ce9Rk2S4KFUFSPXk_lqg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111216Z&HW-CC-Expire=86400&HW-CC-Sign=798EF38718ABF5287092D68CA4EB964844ABCE2D936DA3EAB0BB5BC8B07CB1FD) 当任务句柄出现在一个任务的in_deps中时，任务句柄对应的任务是该任务的前置任务；当任务句柄出现在一个任务的out_deps中时，任务句柄对应的任务是该任务的后继任务。 任务依赖适用于任务之间有明确顺序或逻辑流程要求的场景，例如"
+    },
+    {
+      "path": "references/Function Flow Runtime图依赖并发(C++).md",
+      "title": "Function Flow Runtime图依赖并发(C++)",
+      "snippet": "FFRT图依赖并发范式支持任务依赖和数据依赖两种方式构建任务依赖图。任务依赖图中每个节点表示一个任务，边表示任务之间的依赖关系。任务依赖分为输入依赖in_deps和输出依赖out_deps。 构建任务依赖图的两种不同方式： - 当使用任务依赖方式构建任务依赖图时，使用任务句柄handle来对应一个任务对象。 - 当使用数据依赖方式构建任务依赖图时，数据对象表达抽象为数据签名，每个数据签名唯一对应一个数据对象。 #### 任务依赖 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/42/v3/0vqysdERR7uXckmjiozakg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111216Z&HW-CC-Expire=86400&HW-CC-Sign=E95B0FD6A4083D73123F440024259AC085D9009C1AC92CEEE174B7618F6E3B77) 当任务句柄出现在一个任务的in_deps中时，任务句柄对应的任务是该任务的前置任务；当任务句柄出现在一个任务的out_deps中时，任务句柄对应的任务是该任务的后继任务。 任务依赖适用于任务之间有明确顺序或逻辑流程要求的场景，例如"
+    },
+    {
+      "path": "references/Function Flow Runtime并发范式.md",
+      "title": "Function Flow Runtime并发范式",
+      "snippet": "为了应对实际业务中，任务执行顺序固定、灵活优先级调度以及复杂的任务依赖关系等场景，FFRT支持串行队列、并发队列和图依赖三种不同的并发范式。 #### 串行队列（Serial Queue） 串行队列并发范式常用于解决以下场景中的问题： 1. **顺序执行**: 某些任务需要按特定顺序执行，串行队列可以确保任务按添加的顺序逐一执行，避免了乱序执行带来的数据不一致性和错误。 2. **数据安全**: 在并发环境中访问和修改共享资源时，容易出现竞争条件。使用串行队列可以避免多个线程同时访问共享资源，确保数据的一致性和安全性。 3. **任务协调**: 串行队列可以用来协调复杂任务的执行顺序，例如在进行多个依赖关系的任务时，确保前一个任务完成后再开始下一个任务。 4. **简化开发**: 相较于手动管理锁和同步机制，串行队列的使用更加简洁明了。开发者只需将任务添加到队列中，系统会自动处理任务的调度和执行顺序，减少了开发和调试的复杂性。 5. **资源管理**: 在某些情况下，限制并发任务的数量可以避免资源争用和过载。串行队列可以控制并发任务的数量，优化系统资源的使用。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/01/v3/pHHErpCRQqyIk-uONfdnVg"
+    },
+    {
+      "path": "references/Function Flow Runtime并发队列(C).md",
+      "title": "Function Flow Runtime并发队列(C)",
+      "snippet": "FFRT并发队列提供了设置任务优先级（Priority）和队列并发度的能力，使得队列中的任务能同时在多个线程上执行，获得更高的并行效果。 - **队列并发度**：通过队列最大并发度设置，可以控制同一时刻同时执行的任务数量。这有助于避免任务并发过多对系统资源造成冲击，从而保证系统的稳定性和性能。 - **任务优先级**：用户可以为每个任务设置优先级，不同的任务将严格按照优先级进行调度和执行。相同优先级的任务按照排队顺序执行，高优先级的任务将优先于低优先级的任务执行，确保关键任务能够及时处理。 #### 示例：银行服务系统 举例实现一个银行服务系统，每个客户向系统提交一个服务请求，可以区分普通用户和VIP用户，VIP用户的服务请求可以优先得到执行。银行系统中有2个窗口，可以并行取出用户提交的服务请求办理。 可以利用FFRT的并行队列范式做如下建模： - **排队逻辑**：并行队列。 - **服务窗口**：并行队列的并发度，同时也对应FFRT Worker数量。 - **用户等级**：并行队列任务优先级。 实现代码如下所示： #include <cstdio> #include <unistd.h> #include \"hilog/log.h\" #include \"ffrt/ffrt.h\" // 来自 OpenHarmony 第三方库 \"@ppd/ffrt\" #undef LOG_TAG"
+    },
+    {
+      "path": "references/Function Flow Runtime并发队列(C++).md",
+      "title": "Function Flow Runtime并发队列(C++)",
+      "snippet": "FFRT并发队列提供了设置任务优先级（Priority）和队列并发度的能力，使得队列中的任务能同时在多个线程上执行，获得更高的并行效果。 - **队列并发度**：通过队列最大并发度设置，可以控制同一时刻同时执行的任务数量。这有助于避免任务并发过多对系统资源造成冲击，从而保证系统的稳定性和性能。 - **任务优先级**：用户可以为每个任务设置优先级，不同的任务将严格按照优先级进行调度和执行。相同优先级的任务按照排队顺序执行，高优先级的任务将优先于低优先级的任务执行，确保关键任务能够及时处理。 #### 示例：银行服务系统 举例实现一个银行服务系统，每个客户向系统提交一个服务请求，可以区分普通用户和VIP用户，VIP用户的服务请求可以优先得到执行。银行系统中有2个窗口，可以并行取出用户提交的服务请求办理。 可以利用FFRT的并行队列范式做如下建模： - **排队逻辑**：并行队列。 - **服务窗口**：并行队列的并发度，同时也对应FFRT Worker数量。 - **用户等级**：并行队列任务优先级。 实现代码如下所示： #include <unistd.h> #include \"hilog/log.h\" #include \"ffrt/ffrt.h\" // 来自 OpenHarmony 第三方库 \"@ppd/ffrt\" #undef LOG_TAG #define LOG_TAG \""
+    },
+    {
+      "path": "references/Function Flow Runtime开发指导.md",
+      "title": "Function Flow Runtime开发指导",
+      "snippet": "FFRT编程模型是一种基于任务和数据驱动的并发编程模型，允许开发者通过任务及其依赖关系描述的方式进行应用开发。 通过FFRT编程模型，开发者可专注于应用功能开发，由FFRT在运行时根据任务依赖状态和可用执行资源自动并发调度和执行任务。 本文用于指导开发者基于FFRT编程模型实现并行编程。 #### 维测 #### 超时监测 FFRT提供开发者队列级和任务级超时维测机制，用来监控用户业务中承载重要职责的队列和任务在FFRT调度的端到端时间。 - 当队列中任务发生超时，FFRT打印告警日志并通过回调接口通知到业务。 - 当任务发生超时，FFRT打印告警日志并调用进程级回调函数。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3d/v3/Uj5iUFkhQ-CWFGwWW32I_A/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111217Z&HW-CC-Expire=86400&HW-CC-Sign=3B5019F26A2413D59218EAAEB4CE30DEBC7FF47D33B3784D522D753D484EA965) 任务超时时执行的回调函数进程范围内唯一，需要在任务提交之前由业务方配置到FF"
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "cloud-foundation-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.613Z"
+  },
+  "references": [
+    {
+      "path": "references/Cloud Foundation Kit简介.md",
+      "title": "Cloud Foundation Kit简介",
+      "snippet": "Cloud Foundation Kit（云开发服务）可以按需为应用提供云函数、云数据库、云存储、预加载等云端服务。应用运行所需的服务器和环境均可由云端平台提供，开发者只需关注应用的业务逻辑，而无需关心基础设施（例如：服务器、操作系统、容器等）。 DevEco Studio中还提供了 端云一体化开发 的开发体验，开发者可以基于统一的技术栈，高效、协同地完成端、云代码的编写、调试、编译和部署，极大提高构建HarmonyOS应用和元服务的效率。 #### 优势 - 低运维成本 开发者无需构建和管理云端资源，Cloud Foundation Kit提供了包括函数计算、数据库、存储、预加载等一系列能力。 - 弹性伸缩、按量计费 面对波峰波谷的业务场景，Cloud Foundation Kit可根据实际请求量弹性伸缩、按量计费，开发者无需为空闲资源买单，有效提升资源利用率，降低资源成本。 - 安全可靠 支持数据全密态加密，支持APP、用户和服务三重认证，提供基于角色的权限管理机制，全方位保障开发者和用户的数据安全。 - 端云一体化开发 在DevEco Studio中提供了端云一体化开发体验，支持开发者基于统一的技术栈进行端、云代码协同开发，前端开发人员轻松转换为全栈工程师，极大提高构建HarmonyOS应用和元服务的效率、降低开发成本。 #### 典型场景 #### 应用/元服务后端构建 便"
+    },
+    {
+      "path": "references/Node.js.md",
+      "title": "Node.js",
+      "snippet": "支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 入口方法 入口方法定义如下： module.exports.myHandler = function(event, context, callback, logger) - myHandler：入口方法名称。 - event：调用方传递的事件对象，JSON格式。具体内容请参见 event对象 。 - context：函数运行时上下文对象，封装了日志接口、回调接口、环境变量env对象等。 - callback：事件处理结果。 - logger：记录日志。 函数必须通过显式调用callback(object)将事件处理结果返回给AppGallery Connect（简称AGC），结果可以是任意对象，但必须与JSON.stringify兼容，AGC会将结果转换成JSON字符串后，返回给调用方。callback执行完成，函数即执行结束。 完整的Node.js 20.x云函数示例代码请参考 函数示例 。 #### 日志记录 开发者可在代码中使用logger接口记录日志，后端已通过global.logger全局定义，目前支持四种级别： - logger.debug() - logg"
+    },
+    {
+      "path": "references/上传指定文件至云侧.md",
+      "title": "上传指定文件至云侧",
+      "snippet": "开发者可以快速将本地设备上的文件上传至云侧，上传完后，可以前往AppGallery Connect的“云存储”页面，查看上传的文档内容。 #### 约束与限制 支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 前提条件 已 初始化存储实例 。 #### 操作步骤 1. 选择待上传的文件，下方示例代码中使用 photoAccessHelper.PhotoViewPicker 指定需要上传的文件。 2. 将待上传的文件复制到 context.cacheDir 目录下。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/72/v3/n4cP78xESxyEjNRvenrAaA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111507Z&HW-CC-Expire=86400&HW-CC-Sign=A48CCB7DDE3E649AA01421E27DD1169523A22B5E55719F9EE0D49245F57977AA) 由于StorageBucke"
+    },
+    {
+      "path": "references/下载云侧文件至本地.md",
+      "title": "下载云侧文件至本地",
+      "snippet": "文件上传至云侧后，开发者可以将云侧文件下载到本地设备中。 #### 约束与限制 支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 前提条件 - 已 初始化存储实例 。 - 已 上传指定文件至云侧 。 #### 操作步骤 1. 调用 StorageBucket.downloadFile 接口创建下载任务，监听下载任务的progress、completed、failed等事件。 2. 启动下载任务。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/42/v3/O4rls2ttTEmiY9cvm2KHOQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111507Z&HW-CC-Expire=86400&HW-CC-Sign=0DE7F9541F8A7FA8C565D7656D7550F181AA00A680BE4B84C93608778769144D) 下载成功后，文件将保存在 context.cacheDir 目录下。 完整示例代码如下： impo"
+    },
+    {
+      "path": "references/个人数据处理说明.md",
+      "title": "个人数据处理说明",
+      "snippet": "此文档针对华为作为最终用户数据处理者，开发者作为最终用户数据控制者的数据处理进行说明，包括： - 华为处理的个人数据清单 - 指导开发者如何帮助最终用户实现对数据的控制 #### 华为处理的个人数据清单 最后修改时间：2025/02/27 #### 指导开发者如何帮助最终用户实现对数据的控制 - 如何清除最终用户的数据 - - 清除云存储中的用户数据：可通过StorageBucket.deleteFile接口删除通过云存储上传的用户数据。 - 清除云数据库中的用户数据：可通过DatabaseZone.delete接口删除写入云数据库的用户数据。 - 开发者主动删除整个项目 - 如何导出最终用户的数据 不涉及"
+    },
+    {
+      "path": "references/使用云存储上传文件失败，app日志提示“_state__65”，upload进程日志提示“403 Forbidden”.md",
+      "title": "使用云存储上传文件失败，app日志提示“\"state\":65”，upload进程日志提示“403 Forbidden”",
+      "snippet": "**问题现象** 使用云存储上传文件失败，出现如下错误提示： - app日志提示“\"state\":65” ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f7/v3/hqbrqqQVT_qATiI0433BMA/zh-cn_image_0000002543374572.png?HW-CC-KV=V1&HW-CC-Date=20260421T111511Z&HW-CC-Expire=86400&HW-CC-Sign=57AA17FFD1883BB0B1C3931258B7DAF2652177B6869F0B9A89D9E9F6088118A6) - upload进程的日志提示“403 Forbidden”（通过设置“No filters”模式、过滤“C01C50”关键字查找） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/12/v3/t4emKWbuSTapHWPfq-Qyug/zh-cn_image_0000002543214910.png?HW-CC-KV=V1&HW-CC-Date=20260421T111511Z&HW-CC-Expire"
+    },
+    {
+      "path": "references/使用云存储上传文件失败，提示“404_Product does not exist”.md",
+      "title": "使用云存储上传文件失败，提示“404:Product does not exist”",
+      "snippet": "**问题现象** 使用云存储上传文件失败，HiLog提示“404:Product does not exist”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ad/v3/hsgm6FDwSiSBfqAOje-Hrw/zh-cn_image_0000002573974801.png?HW-CC-KV=V1&HW-CC-Date=20260421T111511Z&HW-CC-Expire=86400&HW-CC-Sign=735F88D8B5DC1C4F336B9ED958C432EE6108B873E40D1278349ACE4EA31E9136) **解决措施** 此错误由云存储服务端返回，原因是云存储服务未开通。请 开通云存储服务 。"
+    },
+    {
+      "path": "references/使用模拟器调试.md",
+      "title": "使用模拟器调试",
+      "snippet": "使用模拟器调试时，需在AGC云侧注册调试凭据，以保护应用/元服务对Cloud Foundation Kit的访问。在模拟器中启动应用/元服务时，开发者触发一次云函数、云数据库或云存储业务接口，该模拟器下会生成调试凭据并输出到日志；将生成的调试凭据注册到AGC云侧，即可在模拟器中调试应用/元服务。 具体可按如下步骤操作： 1. 获取调试凭据。 1. 创建并启动模拟器，具体请参见 管理模拟器 。 2. 在模拟器中启动应用，并触发任意一次云函数、云数据库或云存储业务接口（建议使用云函数接口）。此时，由于未注册调试凭据，接口调用会失败，请忽略，继续执行下一步。 3. 通过设置“No filters”模式、过滤“clouddevelopproxy.debugToken”关键字，查找日志中打印的调试凭据，并复制该调试凭据。 格式示例：[clouddevelopproxy.debugToken=xxx]，其中“xxx”为调试凭据。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a6/v3/ii16hPSjS9ys4VXwrfbWOg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111511Z&HW-CC-Expire="
+    },
+    {
+      "path": "references/写入数据.md",
+      "title": "写入数据",
+      "snippet": "开发者可以通过 upsert() 将一个或者一组对象写入到当前存储区中。在写入对象时，如果在存储区已经存在主键相同的对象，则更新已有的对象；如果不存在，则写入一个新的对象。写入的数据可以来自于新建对象，或者从存储区查询出来的对象。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8/v3/fysRtaE7R9WtgxusJVqIaA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111506Z&HW-CC-Expire=86400&HW-CC-Sign=1B93DEC7660FEE883C695B8BDDF8AD2D85D81DB762DC17F7CE02CC8ECB1E69F5) - 写入一组对象时，数据的写入操作是原子性的，即对象列表中的对象要么全部成功写入，要么全部失败。 - 写入一组对象时，该组中的对象必须属于同一个对象类型，否则会导致写入失败。 - 写入一组对象时，数据总大小不能超过2MB，否则会导致写入失败。 - 写入一组对象时，数据总条数不能超过1000条，否则会导致写入失败。 - 调用写入数据方法，有两种返回方式，返回一个Promise对象或者在参数中传入一个callback对象返回，下面以P"
+    },
+    {
+      "path": "references/创建函数.md",
+      "title": "创建函数",
+      "snippet": "开通云函数服务后，首先需要在AGC中创建函数，并添加函数执行的代码。 1. 登录 AppGallery Connect ，点击“开发与服务”。 2. 在项目列表中点击需要创建云函数的项目。 3. 在左侧导航栏选择“云开发（Serverless） > 云函数”，进入云函数主界面。 4. 选择“函数”页签，点击“创建函数”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/86/v3/LihSk8WsTu-LnJ5ixHlSyg/zh-cn_image_0000002543374538.png?HW-CC-KV=V1&HW-CC-Date=20260421T111503Z&HW-CC-Expire=86400&HW-CC-Sign=9D09F7414D8D792B5E771FB777C43FCF64579CF3F3CA205F7C45C7B98A63D830) 5. 页面右侧抽屉式滑出“创建函数”窗口，按照“函数配置 -> 触发器 -> 函数代码 -> 层配置”引导顺序配置函数。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2a/v3/SpILP"
+    },
+    {
+      "path": "references/初始化全局应用上下文.md",
+      "title": "初始化全局应用上下文",
+      "snippet": "支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 操作步骤 在使用云存储服务进行上传下载时，需要使用应用上下文context。可参考如下代码初始化全局应用上下文。 1. 在“entry/src/main/ets/common”目录下添加GlobalContext.ets文件，开发初始化和获取应用上下文的接口。 import { common } from '@kit.AbilityKit'; export class GlobalContext { private static context: common.UIAbilityContext; public static initContext(context: common.UIAbilityContext): void { GlobalContext.context = context; } public static getContext(): common.UIAbilityContext { return GlobalContext.context; } } 2. 在“entry/src/main/ets/entryability/EntryAbility."
+    },
+    {
+      "path": "references/初始化存储实例.md",
+      "title": "初始化存储实例",
+      "snippet": "支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 前提条件 已 开通云存储服务 。 #### 操作步骤 调用 cloudStorage.bucket 初始化一个存储实例。支持使用两种方式初始化实例： - 使用默认实例 import { cloudStorage } from '@kit.CloudFoundationKit'; let bucket: cloudStorage.StorageBucket = cloudStorage.bucket(); // 将启动异步任务查询云侧默认实例 - 使用指定的实例 import { cloudStorage } from '@kit.CloudFoundationKit'; let bucket: cloudStorage.StorageBucket = cloudStorage.bucket('bucket001-2wezr'); // 指定bucket001-2wezr实例 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7/v3/jQWhO1gqTR"
+    },
+    {
+      "path": "references/初始化数据库访问.md",
+      "title": "初始化数据库访问",
+      "snippet": "支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 前提条件 已 引入对象类型文件 。 #### 操作步骤 1. 设置云数据库配置项。 在“entry/src/main/module.json5”文件中添加网络权限。 \"requestPermissions\": [ { \"name\": \"ohos.permission.INTERNET\" } ] 2. （可选）如果存在需要登录应用才能操作数据库的场景（如新增或删除数据），您需要执行如下操作： 1. 通过AuthProvider获取用户凭据。 2. 调用cloudCommon.init()方法进行初始化时，传入获取的凭据。 3. 在业务代码中，使用AGC开发平台上创建的存储区“QuickStartDemo”类初始化DatabaseZone。 import { cloudDatabase } from '@kit.CloudFoundationKit'; let databaseZone = cloudDatabase.zone('QuickStartDemo'); ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/D"
+    },
+    {
+      "path": "references/删除云侧文件.md",
+      "title": "删除云侧文件",
+      "snippet": "当云侧文件不需要时，开发者可以在应用客户端删除云侧的文件。 #### 约束与限制 支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 前提条件 - 已 初始化存储实例 。 - 已 上传指定文件至云侧 。 #### 操作步骤 调用 StorageBucket.deleteFile 删除云侧的文件。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c0/v3/gBvNXbLfTqui8kmyWzWIcg/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111507Z&HW-CC-Expire=86400&HW-CC-Sign=D0AECAA26A5390AAB1B8024B226E79389C21CC0CE916D28D2500300F6EBBE99C) 删除操作不可逆，一旦执行，文件会被物理删除，不可找回。 完整示例代码如下： import { cloudStorage } from '@kit.CloudFoundationKit'; impo"
+    },
+    {
+      "path": "references/删除数据.md",
+      "title": "删除数据",
+      "snippet": "开发者可以通过 delete() 删除单个对象或者一组对象。删除数据时，云数据库会根据传入对象主键删除相应的数据，不会比对该对象其它属性与存储的数据是否一致。删除一组对象时，删除操作是原子性的，即对象列表中的对象要么全部删除成功，要么全部删除失败。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a7/v3/MmPALIoERuKcHbdHhvI0lA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111506Z&HW-CC-Expire=86400&HW-CC-Sign=7CDCA566501A570E5CE3E518D1327C9B35A16BE084C2FF37641241FA5091B785) - 删除一组对象时，该组中的对象必须属于同一个对象类型，否则会导致删除失败。 - 调用删除数据方法，有两种返回方式，返回一个Promise对象或者在参数中传入一个callback对象返回，本文以Promise为例详细说明。 #### 约束与限制 支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版"
+    },
+    {
+      "path": "references/启动本地云函数.md",
+      "title": "启动本地云函数",
+      "snippet": "请按照如下步骤启动本地云函数： 1. 创建端云一体化开发工程 ：选择合适的云开发模板，根据工程向导创建端云一体化开发工程。 2. 开发云函数 ：使用DevEco Studio在端云一体化云侧工程下创建函数、开发函数、调试函数（通过本地调用方式调试函数）。 调试函数过程中，如果下方通知栏的“cloudfunctions”窗口显示“Cloud Functions loaded successfully”，则表示本地云函数启动成功，将生成本地函数的Function URI。 **请记录下该Function URI的域名和端口信息，例如下图中的http://localhost:18090，后续调用本地云函数时需要使用这些信息。** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2d/v3/-9_xkGC9RrCPuyohaekkow/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111504Z&HW-CC-Expire=86400&HW-CC-Sign=67284600C3EDD8959C8DBD077B43280383E8BD00B3CCE3700E42C9B149DBC678) 由于本地云函数和部署至云端"
+    },
+    {
+      "path": "references/基本准备工作.md",
+      "title": "基本准备工作",
+      "snippet": "在开发应用前，请先参考“ 应用开发准备 ”完成基本准备工作。其中 **配置签名信息** 时，请使用 **关联注册应用进行自动签名** 或者 **手动签名** 方式。"
+    },
+    {
+      "path": "references/如何通过应用侧日志定位预加载问题.md",
+      "title": "如何通过应用侧日志定位预加载问题",
+      "snippet": "预加载的日志进程为“clouddevelopproxy”，日志过滤选择“No filters”。 下文列举几种场景下的日志提示信息： - 场景一：系统服务在应用安装期间预加载数据成功 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6a/v3/ya3a8GdeQOWWF6CDLnELEQ/zh-cn_image_0000002543374574.png?HW-CC-KV=V1&HW-CC-Date=20260421T111512Z&HW-CC-Expire=86400&HW-CC-Sign=221FE443957B44D1A6E77BD6E5259284345478922587FAB49DF278C7225BDF6A) 预加载数据成功时日志会提示：http onSuccess code: 200，并且提示预加载的数据大小：get rsp data, len 47（单位为字节）。 - 场景二：应用调用getPrefetchResult接口获取预加载数据成功 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e9/v3/XiG_6gx1QfSCiHbl"
+    },
+    {
+      "path": "references/开发流程.md",
+      "title": "开发流程",
+      "snippet": "开发预加载，总体流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/95/v3/-zgdnHJmTsO6cqCv9Mmb9w/zh-cn_image_0000002543374560.png?HW-CC-KV=V1&HW-CC-Date=20260421T111509Z&HW-CC-Expire=86400&HW-CC-Sign=563347C055A712FBC115D1AB4BA457302F6BC4BB417F1E896516CF84D5D1672B) 1. 配置预加载 ：在AGC云端预加载界面选择数据来源类型，并进行相关配置。 2. 开发预加载资源接口 ：根据选择的数据来源类型，开发对应的云侧接口，以提供预加载所需的资源数据。 3. 调用预加载 ：在工程代码文件中调用预加载。"
+    },
+    {
+      "path": "references/开发预加载资源接口.md",
+      "title": "开发预加载资源接口",
+      "snippet": "使用预加载服务之前，开发者需要完成云侧接口的开发，以提供预加载所需的资源数据。华为提供两种方式供开发者选择：云函数和开发者服务器，开发者可根据实际业务需要进行选择。 #### 云函数 开发者需要先按照云函数接口规范开发函数，然后在AGC云端创建函数，并可测试函数运行是否正常。流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/88/v3/zGtFzH45SmqQ6nc4l585PA/zh-cn_image_0000002573974795.png?HW-CC-KV=V1&HW-CC-Date=20260421T111509Z&HW-CC-Expire=86400&HW-CC-Sign=B33073512D85BAA1CC5DA0A748D24391EC71448FA8CE7C822A09097CEF9FF34D) 1. 开发函数 ：按照云函数接口规范开发函数。 2. 创建函数 ：函数业务代码开发完成后，即可在AGC云端创建函数。 3. 测试函数 ：对函数进行测试，以确保函数代码运行正常。 #### 云函数接口规范 #### 示例 端云一体化工程 预加载云函数示例如下。其中，axios依赖库为网络请求库，需要在“cloudfunctions/云函数名称/pa"
+    },
+    {
+      "path": "references/开通云函数服务.md",
+      "title": "开通云函数服务",
+      "snippet": "首次使用云函数服务前，需要先开通此服务。如果已经启用，可跳过本步骤。 1. 登录 AppGallery Connect ，点击“开发与服务”。 2. 在项目列表中点击需要开通云函数的项目。 3. 在左侧导航栏选择“云开发（Serverless）> 云函数”，进入云函数页面，点击“立即开通”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fa/v3/VO625zd-QQuLECUY8xftgw/zh-cn_image_0000002573854785.png?HW-CC-KV=V1&HW-CC-Date=20260421T111502Z&HW-CC-Expire=86400&HW-CC-Sign=23B9CDB546C43B323AEE579E8617ABF33637A703D9210A0B943E66A6DEAADDF4) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bf/v3/foKCuiMLSKGS9E_Cj4kiXg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111502Z"
+    },
+    {
+      "path": "references/开通云存储服务.md",
+      "title": "开通云存储服务",
+      "snippet": "首次使用云存储服务前，需要先开通此服务。如果已经开通，可跳过本步骤。 1. 登录 AppGallery Connect ，点击“开发与服务”。 2. 在项目列表中点击需要开通云存储的项目。 3. 选择“云开发（Serverless） > 云存储”，进入云存储页面，点击“立即开通”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/39/v3/TNv6FJivQZa4nnQEWDUitQ/zh-cn_image_0000002543214872.png?HW-CC-KV=V1&HW-CC-Date=20260421T111503Z&HW-CC-Expire=86400&HW-CC-Sign=E98A349E989AF89BA33835B51B168D4279559ABEB0D051BCFCD9DA8EDDD0F6A5) 4. 在引导界面输入存储实例名称并设置默认数据处理位置。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f7/v3/n5LprQ9fTZyuzn6f1fFXDw/zh-cn_image_0000002573854787.png?H"
+    },
+    {
+      "path": "references/开通云数据库服务.md",
+      "title": "开通云数据库服务",
+      "snippet": "首次使用云数据库服务前，需要先开通此服务。如果已经开通，可跳过本步骤。 1. 登录 AppGallery Connect ，点击“开发与服务”。 2. 在项目列表中点击需要开通云数据库的项目。 3. 在左侧导航栏选择“云开发（Serverless）> 云数据库”，进入云数据库页面，点击“立即开通”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/76/v3/_dcUSfeITdGh37R5W9bGHQ/zh-cn_image_0000002543374534.png?HW-CC-KV=V1&HW-CC-Date=20260421T111503Z&HW-CC-Expire=86400&HW-CC-Sign=AE7822C48EE8CEC15664F56A6B0AF052F393A6DF6EBCA0FCC50697A832CD5F6F) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/83/v3/hNm9EbzfTWuK3mne9xk2yQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111"
+    },
+    {
+      "path": "references/开通预加载服务.md",
+      "title": "开通预加载服务",
+      "snippet": "首次使用预加载服务前，需要先开通此服务。如果已经开通，可跳过本步骤。 1. 登录 AppGallery Connect ，点击“开发与服务”。 2. 在项目列表中点击您的项目，在项目下的应用列表中选择需要开通预加载的HarmonyOS应用/元服务。 3. 在左侧导航栏选择“云开发（Serverless）> 预加载”，进入预加载页面，点击“立即开通”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7d/v3/CdTvN_ChRPO97G87G_H-qA/zh-cn_image_0000002543214874.png?HW-CC-KV=V1&HW-CC-Date=20260421T111503Z&HW-CC-Expire=86400&HW-CC-Sign=63C34E49F0A08E5914CC706FEC4FE7D21C61F444A1A705DC896785E471B5BE73)"
+    },
+    {
+      "path": "references/引入对象类型文件.md",
+      "title": "引入对象类型文件",
+      "snippet": "支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 前提条件 - 已 新增对象类型 。 - 已 新增存储区 。 #### 操作步骤 1. 将对象类型中导出的json格式文件命名为schema.json，拷贝到DevEco Studio项目的“AppScope/resources/rawfile”或者“entry/src/main/resources/rawfile”目录下。在编译构建过程中，AppScope目录下的资源文件会合入到模块的资源文件中，详细信息请参见 资源分类 。 2. 按照AGC控制台上创建的对象类型“BookInfo”在代码工程中创建BookInfo.ets文件，文件内容参考以下代码。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0/v3/sK8c9u3STeCtD22krvPgZw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111505Z&HW-CC-Expire=86400&HW-CC-Sign=06C2E9EFA738"
+    },
+    {
+      "path": "references/支持的国家_地区.md",
+      "title": "支持的国家/地区",
+      "snippet": "- Phone、Tablet、PC/2in1、TV设备仅支持中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）。 - Wearable设备支持以下国家/地区。"
+    },
+    {
+      "path": "references/新增存储区.md",
+      "title": "新增存储区",
+      "snippet": "此章节以建立一个“存储区名称”为“QuickStartDemo”的存储区举例说明。 #### 前提条件 已 开通云数据库服务 。 #### 操作步骤 1. 登录 AppGallery Connect ，点击“开发与服务”。 2. 在项目列表中点击需要创建存储区的项目。 3. 在左侧导航栏选择“云开发（Serverless）> 云数据库”，进入云数据库页面。 4. 点击“存储区”页签，点击“新增”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0/v3/6MVWMsG0QLirQ4QkRYUFGg/zh-cn_image_0000002573974787.png?HW-CC-KV=V1&HW-CC-Date=20260421T111505Z&HW-CC-Expire=86400&HW-CC-Sign=5E15FB036B4228A996CBEEDD395DC3085BBA4EC35852E7005FEA2F21170A65E9) 5. 在“新增存储区”弹框中填写“存储区名称”为“QuickStartDemo”，点击“确定”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAllian"
+    },
+    {
+      "path": "references/新增对象类型.md",
+      "title": "新增对象类型",
+      "snippet": "开发者需要基于AGC控制台创建对象类型。 #### 前提条件 已 开通云数据库服务 。 #### 操作步骤 1. 登录 AppGallery Connect ，点击“开发与服务”。 2. 在项目列表中点击需要创建对象类型的项目。 3. 在左侧导航栏选择“云开发（Serverless）> 云数据库”，进入云数据库页面。 4. 点击“新增”，创建新的对象类型。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fe/v3/5-1tzqBiT3eMFu9pDx7sIQ/zh-cn_image_0000002573854807.png?HW-CC-KV=V1&HW-CC-Date=20260421T111505Z&HW-CC-Expire=86400&HW-CC-Sign=F0A0739617D1FA1BBB0863888790E2AFDB68D086F4349BA11B33A767C8A0EAEF) 5. 输入“对象类型名”为“BookInfo”后，点击“下一步”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/54/v3/sEWwveHtSJmhbo"
+    },
+    {
+      "path": "references/查询数据.md",
+      "title": "查询数据",
+      "snippet": "云数据库通过 query() 方法查询对象，并提供了丰富的谓词查询，比如 equalTo() 、 notEqualTo() 、 in() 等。通过单个或者多个链式过滤条件，开发者可以从存储区查询到满足特定条件的对象，也可以通过排序谓词对查询结果排序，或者通过限定查询返回数量谓词限定查询结果返回的数量。详细的查询条件请参见 DatabaseQuery 。 应用会直接从云侧存储区服务器查询数据，本地不会缓存数据。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/99/v3/cnZb79VmQjqTGymKIoTACQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111506Z&HW-CC-Expire=86400&HW-CC-Sign=92210F9CAFA82DFF13C4FE1DEECBE2EC16C6A2C5C6396D2AC08ECE5098418FF6) - 每次的查询操作仅支持查询一个对象类型下的数据。 - 调用查询数据方法，有两种返回方式，返回一个Promise对象或者在参数中传入一个callback对象返回，下面以Promise为例详细说明。 #### 约束与限制 支持Phone、Tablet设"
+    },
+    {
+      "path": "references/概述.md",
+      "title": "概述",
+      "snippet": "从5.0.3(15)版本开始，新增支持安装预加载和周期性预加载功能；从6.1.0(23)版本开始，新增支持跳链安装预加载功能。 预加载是Cloud Foundation Kit提供的一种可提前加载所需资源的服务。通过预加载，可以将页面所需的文本、图片、音频、视频等资源数据提前加载到本地进行缓存，以提升应用页面加载速度。预加载仅以字符串数据形式进行缓存，应用使用预加载时不需要修改原有数据格式，获取缓存后可直接进行解析，并且可以对隐私、敏感数据进行加密。 当前支持如下三种预加载类型： - **安装预加载** ：适用于安装应用后首次打开，应用首页加载提速场景。在应用安装时下载云侧应用数据进行缓存，应用打开时直接获取本地首开页面缓存数据呈现内容。 - **周期性预加载** ：适用于任意页面加载提速的场景，可与安装预加载结合使用。系统每隔12小时拉取一次指定页面（不局限首开页面）的云侧数据并将其缓存到本地，并可将静态资源放置到云端，减少包体大小。比较适合节日主题资源、H5离线包等场景。 - **跳链安装预加载** ：适用于被分享用户安装应用后首次打开，应用详情页加载提速场景，可与安装预加载、周期性预加载结合使用。在应用安装过程中，预加载结合App Linking Kit的延迟链接功能，可提前将用户之前点击的详情页数据缓存到本地。当用户首次打开应用时，即可直接跳转到相应的详情页，并即时加载本地"
+    },
+    {
+      "path": "references/测试函数.md",
+      "title": "测试函数",
+      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/85/v3/WoQggSvyQs6dJ6Af1fLuhQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111504Z&HW-CC-Expire=86400&HW-CC-Sign=0E384115A078D15644B8B8B02EC1E5E61FD3ED38F219D84C7DDF9D3D935FBE97) 下文以函数latest版本为例介绍测试方法。如果需要测试函数的已发布版本，可在已发布版本详情页面选择“函数代码”页签，参考方式二进行测试。 函数创建后可以在AGC控制台测试函数的代码运行是否正常。进入测试界面有两种方式： - 方式一：函数列表中点击函数名称右侧“操作”列的“测试”，在右侧弹出的“测试函数”界面进行测试。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0a/v3/G-s538EdQYKO8y2-9KYHLA/zh-cn_image_0000002573854799.png?HW-CC-KV=V1&HW-CC-Date=20"
+    },
+    {
+      "path": "references/获取云侧文件下载地址.md",
+      "title": "获取云侧文件下载地址",
+      "snippet": "文件上传至云侧后，开发者可以获取云侧文件的下载地址，将下载地址放到网站中提供文件下载的体验。 #### 约束与限制 支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 前提条件 - 已 初始化存储实例 。 - 已 上传指定文件至云侧 。 #### 操作步骤 调用 StorageBucket.getDownloadURL 接口获取云侧文件的下载地址。 完整示例代码如下： import { cloudStorage } from '@kit.CloudFoundationKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; let storageBucket: cloudStorage.StorageBucket = cloudStorage.bucket(); @Component export struct testPage { build() { } // 获取云侧文件下载地址 getUrl() { // 获取云存储默认实例中screenshot/"
+    },
+    {
+      "path": "references/获取云侧文件列表.md",
+      "title": "获取云侧文件列表",
+      "snippet": "开发者可以获取指定云侧目录下所有的文件信息，包括文件存储目录、文件名称等。 #### 约束与限制 支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 前提条件 - 已 初始化存储实例 。 - 已 上传指定文件至云侧 。 #### 操作步骤 调用 StorageBucket.list 可以获取云侧指定目录的文件列表。 完整示例代码如下： import { cloudStorage } from '@kit.CloudFoundationKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; let storageBucket: cloudStorage.StorageBucket = cloudStorage.bucket(); @Component export struct testPage { build() { } // 获取文件列表 getList() { // 获取云存储默认实例中根路径下的文件列表 storageBucket.list(''"
+    },
+    {
+      "path": "references/获取云侧文件的元数据.md",
+      "title": "获取云侧文件的元数据",
+      "snippet": "文件元数据包含云侧文件名、文件大小、文件类型等常用属性，也包括用户自定义的文件属性。 文件上传至云侧后，开发者可以在下载文件前获取指定云侧文件的元数据，来决定是否下载此文件。 #### 约束与限制 支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 前提条件 - 已 初始化存储实例 。 - 已 上传指定文件至云侧 。 #### 操作步骤 调用 StorageBucket.getMetadata 获取指定云侧文件的元数据信息。 完整示例代码如下： import { cloudStorage } from '@kit.CloudFoundationKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; let storageBucket: cloudStorage.StorageBucket = cloudStorage.bucket(); @Component export struct testPage { build() { } // 获取元数据 g"
+    },
+    {
+      "path": "references/设置云侧文件的元数据.md",
+      "title": "设置云侧文件的元数据",
+      "snippet": "文件元数据包含云侧文件名、文件大小、文件类型等常用属性，也包括用户自定义的文件属性。 文件保存至云侧后，开发者可以设置文件的自定义属性。 #### 约束与限制 支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 前提条件 - 已 初始化存储实例 。 - 已 上传指定文件至云侧 。 #### 操作步骤 调用 StorageBucket.setMetadata 可以设置云侧文档的元数据信息。 import { cloudStorage } from '@kit.CloudFoundationKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; let storageBucket: cloudStorage.StorageBucket = cloudStorage.bucket(); @Component export struct testPage { build() { } // 设置元数据 setMetaData() { // 设置云存储默认实例中s"
+    },
+    {
+      "path": "references/设置云存储配置项.md",
+      "title": "设置云存储配置项",
+      "snippet": "支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 操作步骤 1. 在“entry/src/main/module.json5”文件中添加网络权限。 \"requestPermissions\": [ { \"name\": \"ohos.permission.INTERNET\" } ] 2. （可选）如果存在需要登录应用才能使用云存储的场景（如上传下载文件），您需要执行如下操作： 1. 通过AuthProvider获取用户凭据。 2. 调用cloudCommon.init()方法进行初始化时，传入获取的凭据。 3. （可选）自定义初始化参数。 如开发者需要自定义云存储接口使用的网络类型或任务模式等初始化参数，可参考如下配置。 - StorageOptions.network import { cloudCommon } from '@kit.CloudFoundationKit'; import { request } from '@kit.BasicServicesKit'; // 设置云存储只使用wifi网络 cloudCommon.init({ storageOptions: { network: request.agen"
+    },
+    {
+      "path": "references/调用云存储业务接口失败，app日志提示“_state__65”，upload进程日志提示“404 Not Found”.md",
+      "title": "调用云存储业务接口失败，app日志提示“\"state\":65”，upload进程日志提示“404 Not Found”",
+      "snippet": "**问题现象** 通过“使用指定的实例”方式初始化云存储实例时，调用业务接口（如调用uploadFile接口上传文件）失败，出现如下错误提示： - app日志提示“\"state\":65” ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/27/v3/LmPeK3fwSFCo70GHodwYow/zh-cn_image_0000002573854825.png?HW-CC-KV=V1&HW-CC-Date=20260421T111512Z&HW-CC-Expire=86400&HW-CC-Sign=C56058C7BB3C650908F23CA3B2ABC031A34006319FB01758A1291378DBD9B270) - upload进程的日志提示“404 Not Found”（通过设置“No filters”模式、过滤“C01C50”关键字查找） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/97/v3/hH41oZ_pRd2jsJKctPSyDg/zh-cn_image_0000002573974803.png?HW-CC-KV=V1"
+    },
+    {
+      "path": "references/调用全部预加载.md",
+      "title": "调用全部预加载",
+      "snippet": "在项目的EntryAbility.ets文件中导入预加载实现类 PrefetchWrapper ，并在onCreate中调用PrefetchWrapper的doPrefetch方法。应用安装后首次打开时，跳转应用详情页调用跳链安装预加载，跳转首页调用安装预加载；应用安装后非首次打开时，调用周期性预加载。 import { GlobalContext } from '../common/GlobalContext'; import { PrefetchWrapper } from '../prefetchUtil/PrefetchWrapper'; onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void { GlobalContext.initContext(this.context); // 初始化全局上下文 PrefetchWrapper.getInstance().doPrefetch(); }"
+    },
+    {
+      "path": "references/调用函数.md",
+      "title": "调用函数",
+      "snippet": "支持Phone、Tablet设备。并且从5.1.0(18)版本开始，新增支持Wearable设备；从5.1.1(19)版本开始，新增支持TV设备；从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 设置云函数配置项 在“entry/src/main/module.json5”文件中添加网络权限。 \"requestPermissions\": [ { \"name\": \"ohos.permission.INTERNET\" } ] #### 查询函数名和版本 在函数的触发器页面点击“HTTP触发器”，查看“触发URL”的后缀，获取触发器的标识，格式为“函数名-版本号”。如下图所示，“myhandlerxxxx-$latest”即为HTTP触发器标识，其中“myhandlerxxxx”为函数名，“$latest”为版本号。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5d/v3/-qM-wWzMT0yLNgsPEU8Ygw/zh-cn_image_0000002543374554.png?HW-CC-KV=V1&HW-CC-Date=20260421T111504Z&HW-CC-Expire=86400&HW-CC-Sign=B1A6D3A590260"
+    },
+    {
+      "path": "references/调用周期性预加载.md",
+      "title": "调用周期性预加载",
+      "snippet": "在项目的EntryAbility.ets文件中导入预加载实现类 PrefetchWrapper ，并在onCreate中调用PrefetchWrapper的doPeriodicPrefetch方法。方法内部会先调用 registerPrefetchTask 方法注册周期性预加载任务，12小时后将调用 getPrefetchResult 获取周期性预加载数据。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/87/v3/p_NOFKomRWy55knu04W19Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111510Z&HW-CC-Expire=86400&HW-CC-Sign=99D2CBA8D50CE987A53DD5D1ACC4EDBDE63D09E4D1EF92C9E1964F2B48733D9C) - 系统会结合应用活跃情况进行任务清理。应用不活跃后，如果当前时间 – 任务注册时间 > 72小时，则任务将直接从队列移除。移除任务时不立即清理已加载的数据，数据会被定期清理，应用启动时仍然可尝试获取此前已加载的缓存数据，并结合数据时间戳决定是否呈现内容。 - 获取周期性预加载数据的间隔周期是12小时"
+    },
+    {
+      "path": "references/调用安装预加载.md",
+      "title": "调用安装预加载",
+      "snippet": "在项目的EntryAbility.ets文件中导入预加载实现类 PrefetchWrapper ，并在onCreate中调用PrefetchWrapper的doInstallPrefetch方法。方法内部会调用 getPrefetchResult 获取安装预加载缓存数据。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fc/v3/96u2VMhBT6K7sHxfaC16XQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111510Z&HW-CC-Expire=86400&HW-CC-Sign=61E8BCEED4885925C3FD5F78A039AE49E458CF266C43449A9E62606D559A7DE0) - 安装预加载缓存数据，仅允许调用一次，被调用后将被销毁。 - 应用安装开始时，系统会拉取安装预加载云侧数据并缓存到本地。 import { GlobalContext } from '../common/GlobalContext'; import { PrefetchWrapper } from '../prefetchUtil/PrefetchWrapper'; onCreate("
+    },
+    {
+      "path": "references/调用本地云函数.md",
+      "title": "调用本地云函数",
+      "snippet": "支持Phone、Tablet、Wearable、TV设备。并且从6.1.0(23)版本开始，新增支持PC/2in1设备。 #### 设置“设备端口”到“主机端口”的映射 调用本地云函数之前，请按照以下示例设置“设备端口”到“主机端口”的映射。详情请参见 创建反向端口转发任务 。 hdc rport tcp:18090 tcp:18090 其中，设备端口和主机端口即为Function URI中的端口。 #### 在应用中调用本地云函数 从6.0.1(21)版本开始，新增支持调用本地云函数功能。 1. 在项目中导入cloudFunction组件。 import { cloudFunction } from '@kit.CloudFoundationKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 调用 call() 方法设置函数，在方法中传入函数名称和本地启动的云函数地址，返回调用结果。 - （可选）通过设置timeout属性对云函数设置超时时长，单位为毫秒。 - （可选）通过设置version属性对云函数设置函数版本号，默认为最新版本'$latest'。 - （可选）如果函数有入参，可以将data参数转"
+    },
+    {
+      "path": "references/调用跳链安装预加载.md",
+      "title": "调用跳链安装预加载",
+      "snippet": "在项目的EntryAbility.ets文件中导入预加载实现类 PrefetchWrapper ，并在onCreate中调用PrefetchWrapper的doLinkPrefetch方法。方法内部会先调用 popDeferredLink 接口获取延迟链接，再调用 getPrefetchResult 获取跳链安装预加载缓存数据。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4d/v3/KfFQtriuQPGiwPRo5DGYLQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111510Z&HW-CC-Expire=86400&HW-CC-Sign=54C9B875730D91485B2B87D118BEFEF85D59FC04254F9DA135981F19644A0193) 跳链安装预加载缓存的是应用详情页数据，仅允许调用一次，被调用后将被销毁。 import { GlobalContext } from '../common/GlobalContext'; import { PrefetchWrapper } from '../prefetchUtil/PrefetchWrapper'; onCre"
+    },
+    {
+      "path": "references/调试周期性预加载.md",
+      "title": "调试周期性预加载",
+      "snippet": "prefetch_test_tool是为周期性预加载功能提供的一种命令行工具，开发者集成预加载服务后，使用该工具可以更方便、更高效地进行周期性预加载功能测试和调试，提高开发效率，同时确保预加载服务的平稳运行。 当前命令行工具支持的命令集如下： #### 调试准备 使用命令行工具调试周期性预加载之前，需要完成以下准备工作： - 您已在开发者联盟官网注册账号并通过实名认证，详情请参见 账号注册认证 。 - 您已在本地安装DevEco Studio 5.0.3 Release及以上版本。 - 手机/平板终端设备的ROM版本已升级至HarmonyOS 6.0.0 Beta5及以上版本。 - 设置HAP包的“Build Mode”为“debug”，且已 申请调试证书 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/37/v3/Ci7509XuQcWlyt2Fyl_AEg/zh-cn_image_0000002543374566.png?HW-CC-KV=V1&HW-CC-Date=20260421T111510Z&HW-CC-Expire=86400&HW-CC-Sign=A18A14D4A2DFD200B3042EA4EBBCD49A12B09205273925460"
+    },
+    {
+      "path": "references/运行应用时报“XXX Read timed out”异常.md",
+      "title": "运行应用时报“XXX Read timed out”异常",
+      "snippet": "**问题现象** 运行应用时报“XXX Read timed out”异常。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8c/v3/u6gvjw-ZS7yN3HfoGXdn1A/zh-cn_image_0000002543374576.png?HW-CC-KV=V1&HW-CC-Date=20260421T111512Z&HW-CC-Expire=86400&HW-CC-Sign=DBED1358479F9D53688D8D3C6A95AEB4964F4868D8BC9A79CFEA07E54D207004) **解决措施** 出现此错误，是因为云侧没有启动云函数实例，卸载应用重新安装即可。"
+    },
+    {
+      "path": "references/运行应用时提示“appid ____ is not in white list, to skip”.md",
+      "title": "运行应用时提示“appid **** is not in white list, to skip”",
+      "snippet": "**问题现象** 运行应用时提示“appid **** is not in white list, to skip”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/55/v3/qHQNTnqeRoqIvw_POvJFXA/zh-cn_image_0000002573974805.png?HW-CC-KV=V1&HW-CC-Date=20260421T111512Z&HW-CC-Expire=86400&HW-CC-Sign=2716FF70BB302216C957D96F6D7FB6AD907F68B7008C42B03F1CE73DDD185E8F) **解决措施** 出现此错误，是因为手机白名单中未包含当前应用。可按照如下步骤排查和解决： 1. 确认云侧是否已开通云函数和预加载服务。须确保已成功开通。 2. 确认日志中提示的APP ID前缀与云侧创建应用的实际APP ID是否一致。若两者不一致，可能使用了错误的签名方式。请更改为 关联注册应用进行自动签名 或者 手动签名 方式。 3. 手机端进入“设置->系统->日期和时间”，关闭“自动设置”开关，将“日期”往后加1天，然后卸载应用重新安装，应用会自动更新白名单。"
+    },
+    {
+      "path": "references/配置预加载.md",
+      "title": "配置预加载",
+      "snippet": "安装预加载、周期性预加载和跳链安装预加载需分别进行配置，且三者均可通过云函数和开发者服务器（即HTTPS请求）两种数据来源方式来实现。 对于不同类型的开发者，支持的数据来源方式有所不同： - 个人开发者：数据来源默认选择云函数，且仅支持通过云函数来实现预加载。需要开通云函数服务并创建函数才可以配置。 - 非个人开发者：数据来源支持云函数和开发者服务器两种。可根据实际需要进行选择。 下文介绍如何配置两种数据来源方式的预加载实现。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fe/v3/K6GD1OjTRHuATVw6oL-FBw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111509Z&HW-CC-Expire=86400&HW-CC-Sign=5144CF962E84831E54BECA3BBE4BFB62BB9618CF2C766353FF91175FC5710E06) 当前“开发者服务器”数据来源方式仅对外受限开放，如有需求，请发送邮件申请开通，华为方收到邮件后，将在1~2个工作日内安排对接人员并邮件回复。 邮件格式要求如下： - 邮箱地址：agconnect@huawei.com - 邮件标题："
+    },
+    {
+      "path": "references/错误码.md",
+      "title": "错误码",
+      "snippet": ""
+    },
+    {
+      "path": "references/预加载实现类.md",
+      "title": "预加载实现类",
+      "snippet": "在“entry/src/main/ets/prefetchUtil”目录下新增PrefetchUtil.ets和PrefetchWrapper.ets。 PrefetchUtil和PrefetchWrapper实现类功能如下： - PrefetchUtil：预加载API的封装类，为PrefetchWrapper提供预加载API封装接口。 - 提供安装预加载的数据获取接口 - 提供周期性预加载的任务注册接口和数据获取接口 - 提供周期性预加载是否已拉取数据的判断接口 - PrefetchWrapper：预加载包装类，为页面提供预加载封装接口。 - 提供安装预加载数据获取和渲染接口 - 提供周期性预加载数据获取和渲染接口 - 提供安装预加载和周期性预加载数据获取和渲染接口 #### PrefetchUtil 周期性预加载任务注册间隔需要大于12小时，建议按照如下示例取值为24小时。 import { cloudResPrefetch } from '@kit.CloudFoundationKit' import { hilog } from '@kit.PerformanceAnalysisKit'; import { PreferenceUtil } from '../common/PreferenceUtil'; import { GlobalContext } from '../"
+    },
+    {
+      "path": "references/预加载工具类.md",
+      "title": "预加载工具类",
+      "snippet": "在“entry/src/main/ets/common”目录下新增GlobalContext.ets和PreferenceUtil.ets。 #### GlobalContext 全局上下文类，提供全局上下文句柄的初始化和获取功能。参考示例如下： import { common } from '@kit.AbilityKit'; export class GlobalContext { private static context: common.UIAbilityContext; public static initContext(context: common.UIAbilityContext): void { GlobalContext.context = context; } public static getContext(): common.UIAbilityContext { return GlobalContext.context; } } #### PreferenceUtil 首选项工具类，提供数据读取和存储功能。参考示例如下： import dataPreferences from '@ohos.data.preferences'; import { Context } from '@kit.AbilityKit'; import { hilog } from"
+    }
+  ]
+}

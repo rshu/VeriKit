@@ -1,0 +1,110 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "ar-engine",
+  "source_path": "skills/ar-engine/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:49:04.640Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "AR",
+      "增强现实",
+      "运动跟踪",
+      "平面检测",
+      "人脸跟踪",
+      "人体跟踪",
+      "图像跟踪",
+      "如何创建和管理AR会话（AR Session）以启用不同的跟踪能力",
+      "如何获取设备6DoF位姿实现运动追踪",
+      "如何检测环境中的水平面和垂直面并识别平面语义（桌面、地面、墙面等）",
+      "如何获取环境深度图和三维网格扫描信息实现空间重建",
+      "如何实现图像跟踪、人脸跟踪和人体骨骼关键点识别",
+      "如何在检测到的平面上放置AR物体并进行命中检测",
+      "如何使用ArkTS和C/C++两种语言分别开发AR功能",
+      "如何排查平面漂移、位姿跳变、弱纹理场景下无法识别平面等常见问题",
+      "当开发者需要构建增强现实（AR）应用时，应使用AR Engine",
+      "如果你的应用需要将虚拟物体叠加到真实场景中，或者需要利用设备的摄像头进行空间感知和环境理解，AR Engine提供了完整的AR能力支持",
+      "适用于AR游戏、AR导航、室内设计预览、虚拟试穿、AR测量等场景",
+      "当开发者需要使用平面检测、深度感知或三维重建等空间计算能力时，应使用AR Engine的环境跟踪功能",
+      "如果你需要在检测到的平面上放置虚拟物体，或者需要获取环境的深度信息和三维网格模型用于遮挡和碰撞检测，AR Engine提供了对应的能力接口",
+      "当开发者需要实现人脸AR特效、人体姿态识别或图像识别跟踪时，应使用AR Engine的人脸跟踪、人体跟踪或图像跟踪能力",
+      "实现相机画面上的AR导航箭头叠加 / Overlay AR navigation arrows on the camera view",
+      "在真实桌面上放置并缩放一个3D模型 / Place and scale a 3D model on a real tabletop",
+      "用命中测试让用户点按地面摆放虚拟物体 / Use hit testing so users can tap the floor to place virtual objects",
+      "获取设备实时位姿来驱动AR内容跟随移动 / Get real-time device pose to drive moving AR content",
+      "识别墙面和地面并把虚拟内容吸附到对应平面 / Detect walls and floors and anchor virtual content to those planes",
+      "扫描房间生成深度地图和空间网格 / Scan a room to generate a depth map and spatial mesh",
+      "给海报或包装盒做图像识别并叠加AR特效 / Track posters or product boxes and overlay AR effects",
+      "做人脸AR贴纸和面部特效跟随 / Build face AR stickers and effects that follow facial movement",
+      "根据人体骨骼关键点驱动虚拟角色动作 / Drive an avatar with body skeleton keypoints",
+      "在AR场景里创建锚点并保存虚拟物体位置 / Create anchors in an AR scene and preserve virtual object placement",
+      "实现虚实遮挡效果让物体被真实环境挡住 / Implement occlusion so virtual objects are hidden by real-world geometry",
+      "用 ArkTS 或 C++ 接入移动端增强现实能力 / Integrate mobile AR capabilities with ArkTS or C++"
+    ],
+    "do_not_use_when": [
+      "仅需实现普通2D界面、画布绘制或矢量/位图渲染，不涉及相机空间感知或AR跟踪时，应改用 arkgraphics-2d / If you only need standard 2D UI, canvas drawing, or vector/bitmap rendering without camera-based spatial awareness or AR tracking, use arkgraphics-2d instead",
+      "仅需加载、渲染或交互3D模型/场景，而不需要平面检测、6DoF跟踪、命中检测或真实环境融合时，应改用 arkgraphics-3d / If you only need to load, render, or interact with 3D models/scenes without plane detection, 6DoF tracking, hit testing, or real-world fusion, use arkgraphics-3d instead",
+      "需求是图形计算加速、通用GPU/图像处理或性能优化，而不是AR会话与环境跟踪时，应改用 graphics-accelerate-kit / If the task is graphics compute acceleration, general GPU/image processing, or performance optimization rather than AR sessions and environment tracking, use graphics-accelerate-kit instead",
+      "需求是游戏引擎层面的场景管理、动画、物理或跨平台游戏开发，而非调用系统AR跟踪能力时，应改用 xengine-kit / If the need is engine-level scene management, animation, physics, or cross-platform game development rather than system AR tracking capabilities, use xengine-kit instead",
+      "重点是空间重建/扫描结果的重建数据处理与空间建模，而不需要完整AR会话中的实时跟踪、图像/人脸/人体AR能力时，应改用 spatial-recon-kit / If the focus is reconstruction-data processing and spatial modeling from scanning results rather than full AR-session real-time tracking and image/face/body AR capabilities, use spatial-recon-kit instead"
+    ],
+    "preconditions": [
+      "目标设备与HarmonyOS版本支持AR Engine相关能力，且工程已正确集成对应SDK / The target device and HarmonyOS version support AR Engine capabilities, and the project has integrated the relevant SDK correctly",
+      "应用已在module.json5中声明相机等所需权限，并在运行时获得用户授权 / Required permissions such as camera access are declared in module.json5 and granted by the user at runtime",
+      "设备摄像头可正常使用，且运行环境具备基本可感知条件（如足够光照与非严重遮挡） / The device camera is available and the operating environment provides basic trackable conditions such as sufficient lighting and no severe occlusion"
+    ],
+    "inputs": [
+      "AR会话配置 / AR session configuration",
+      "相机图像流或传感器跟踪数据 / camera image stream or sensor tracking data",
+      "待跟踪参考图像或目标资源 / reference images or target assets to track",
+      "屏幕点击坐标或命中检测请求参数 / screen tap coordinates or hit-test request parameters"
+    ],
+    "outputs": [
+      "基础介绍",
+      "AR会话管理",
+      "运动跟踪",
+      "环境跟踪",
+      "图像与人脸/人体跟踪",
+      "高精几何重建与物体摆放",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "已创建并初始化AR会话，并按需求启用了相应跟踪能力 / An AR session is created and initialized with the required tracking capabilities enabled",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show code or configuration that creates an AR session and enables the requested AR tracking features rather than only adding unrelated rendering code?"
+      },
+      {
+        "statement": "应用接入了至少一种AR结果输出，如位姿、平面、深度、网格、图像/人脸/人体跟踪结果或命中检测结果 / The app is wired to consume at least one AR output such as pose, planes, depth, mesh, image/face/body tracking results, or hit-test results",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is there logic that reads or handles AR engine outputs (for example pose, plane, depth, mesh, tracked targets, or hit-test results)?"
+      },
+      {
+        "statement": "AR会话生命周期被显式管理，包含启动、暂停或释放等资源处理 / The AR session lifecycle is explicitly managed, including start, pause, or release resource handling",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the changes include lifecycle management for the AR session, such as initialization plus pause/stop/release handling tied to app or component lifecycle?"
+      }
+    ],
+    "overlaps_with": [
+      "arkgraphics-2d",
+      "arkgraphics-3d",
+      "graphics-accelerate-kit",
+      "xengine-kit",
+      "spatial-recon-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

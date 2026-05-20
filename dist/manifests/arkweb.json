@@ -1,0 +1,305 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "arkweb",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.223Z"
+  },
+  "references": [
+    {
+      "path": "references/ArkWeb简介.md",
+      "title": "ArkWeb简介",
+      "snippet": "ArkWeb（方舟Web）提供了Web组件，用于在应用中显示Web页面内容。常见使用场景包括： - 应用集成Web页面：应用可以在界面中使用Web组件，嵌入Web页面内容，以降低开发成本，提升开发、运维效率。 - 浏览器网页浏览场景：浏览器类应用可以使用Web组件，打开三方Web网页，使用无痕浏览模式浏览Web页面，设置广告拦截等。 - 小程序：小程序类宿主应用可以使用Web组件，渲染小程序的页面，实现同层渲染，视频托管等小程序的功能。 #### 能力范围 Web组件为开发者提供了丰富的控制Web页面能力。包括： - Web页面加载：声明式加载Web页面和离屏加载Web页面等。 - 生命周期管理：组件生命周期状态变化，通知Web页面的加载状态变化等。 - 常用属性与事件： User-Agent开发指导 、 管理Cookie及数据存储 、字体与 Web深色模式适配 、权限管理等。 - 与应用界面交互：自定义文本选择菜单、上下文菜单、文件上传界面等与应用界面交互能力。 - 应用通过JavaScriptProxy，与Web页面进行JavaScript交互。 - 安全与隐私：无痕浏览模式、广告拦截、坚盾守护模式等。 - 维测能力： DevTools工具 调试能力，使用crashpad收集Web组件崩溃信息、定位与解决Web白屏问题、使用Hypium实现ArkWeb自动化测试。 - 其他高阶"
+    },
+    {
+      "path": "references/ArkWeb进程.md",
+      "title": "ArkWeb进程",
+      "snippet": "ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程、Web孵化进程和Foundation进程。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9a/v3/B2KS6KaiRSGvgl0_R1opFg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110941Z&HW-CC-Expire=86400&HW-CC-Sign=B59CCD04F4E90E40A67967E780F0E71D056FA1B4587E0E0D990411ED30ECD49E) Web内核对内存大小的申请无限制约束。 **图1** ArkWeb进程模型图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2/v3/IscE5f6JTk-M_p0364go7w/zh-cn_image_0000002573854153.png?HW-CC-KV=V1&HW-CC-Date=20260421T110941Z&HW-CC-Expire=86400&HW-CC-Sign=4007BFDCEF58C85E3E"
+    },
+    {
+      "path": "references/User-Agent开发指导.md",
+      "title": "User-Agent开发指导",
+      "snippet": "User-Agent（简称UA）是一个特殊的字符串，包含设备类型、操作系统及版本等关键信息。在Web开发中，这个字符串使服务器能够识别请求的来源设备及其特性，从而根据这些信息提供定制化的内容和服务。如果页面无法正确识别UA，可能会导致多种异常情况。例如，为移动设备优化的页面布局可能会在桌面设备上显示错乱，反之亦然。此外，某些特定的浏览器功能或CSS样式可能仅在特定的浏览器版本中受支持，如果页面无法根据UA字符串做出正确的判断，就可能导致渲染问题或逻辑错误。 #### 默认User-Agent结构 - 默认User-Agent定义 Mozilla/5.0 ({DeviceType}; {OSName} {OSVersion}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{ChromeCompatibleVersion}.0.0.0 Safari/537.36 ArkWeb/{ArkWeb VersionCode} {DeviceCompat} {扩展区} - 举例说明 Mozilla/5.0 (Phone; OpenHarmony 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 ArkWeb/4.1.6.1 Mobile - 字段说明"
+    },
+    {
+      "path": "references/Web应用模拟点击检测.md",
+      "title": "Web应用模拟点击检测",
+      "snippet": "从API version 23开始，新增支持Web应用模拟点击检测。 Web应用通过Javascript调用window.detectSimulatedClickRiskEnhanced接口，获取模拟点击检测结果。用于自动化点击、设备墙等作弊行为检测。 应用可以根据检测结果评估如何进行业务操作。 #### 约束与限制 - 每30秒最多可以调用10次，每个应用在每个设备上每天最多可以调用20次。 - 当前检测仅支持设备：Phone。 #### 接口说明 window.detectSimulatedClickRiskEnhanced(algorithm, nonce, version) 获取模拟点击检测结果。使用Promise异步回调。 **入参：** **返回值：** Promise对象，返回模拟点击检测结果，格式为一个JSON Web Signature格式（JWS）的字符串，使用Base64URL编码，如果发生异常或错误，则返回错误码。JWS中包含Header、Payload、Signature三部分，每个部分之间以\".\"分割。解码后的各字段定义如下： - **Header** 样例： { \"alg\": \"ES256\", \"x5c\": [\"\", \"\"], \"nonce\": \"R2Rra24fVm5xa2Mg\", \"appId\": \"xxxxxxxx\", \"authToken\": "
+    },
+    {
+      "path": "references/Web深色模式适配.md",
+      "title": "Web深色模式适配",
+      "snippet": "系统提供浅色和深色的主题模式供用户选择。深色模式在低光环境下能够降低屏幕亮度，减少光线刺激，改善阅读体验。Web组件根据网页样式进行渲染。若网页未适配深色模式，会造成与系统主题的割裂感。网页开发者应考虑用户的主题偏好，适配深色模式，以保证用户体验的一致性。 ArkWeb提供灵活控制Web组件深色模式的能力，支持独立于系统进行设置。此外，ArkWeb还可以强制不同网页适配深色模式，以兼容不同的系统主题。 #### 网页深色模式适配 在网页开发过程中，可以使用color-scheme和prefers-color-scheme属性进行深色模式适配。 - color-scheme是一个CSS属性，用于表示网页支持的配色方案，可以影响表单、滚动条和CSS系统颜色。CSS系统颜色指Web组件内置的颜色，是部分元素未定义样式时应用的默认颜色。 当声明支持深色配色方案时，Web组件可以将网页内的表单、滚动条以及使用CSS系统颜色的元素切换为深色样式。如果元素自定义了颜色样式，则不受color-scheme的影响，保持自定义的颜色样式。 color-scheme未设置时，默认为normal，表示未指定配色方案，使用Web组件的默认配色方案，表现与light一致。使用样例如下： /* 使用方式1：使用meta标签全局设置 */ <meta name=\"color-scheme\" content=\"li"
+    },
+    {
+      "path": "references/Web组件在不同的窗口间迁移.md",
+      "title": "Web组件在不同的窗口间迁移",
+      "snippet": "Web组件能够实现在不同窗口的组件树上进行挂载或移除操作，这一能力使得开发者可以将同一个Web组件在不同窗口间迁移。例如，将浏览器的Tab页拖出成独立窗口，或拖入浏览器的另一个窗口。 Web组件在不同窗口间迁移，是基于 自定义节点 能力实现的。实现的基本原理是：通过 BuilderNode ，开发者可创建Web组件的离线节点，并结合 自定义占位节点 控制Web节点的挂载与移除。当从一个窗口上移除Web节点，并挂载到另一个窗口中，即完成Web组件在窗口间的迁移。 在以下示例中，主窗Ability启动时，通过命令式的方式创建了一个Web组件。开发者可以利用common.ets中提供的方法和类，实现Web组件的挂载和移除。Index.ets则提供了一种挂载和移除Web组件的实现方法。通过这种方式，开发者能够实现Web组件在不同窗口中页面的挂载与移除，即实现了Web组件在不同窗口间的迁移。下图是展示了这一迁移过程的示意图。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/80/v3/BTUKFb-aQLG3faaJIs3XCQ/zh-cn_image_0000002543214260.png?HW-CC-KV=V1&HW-CC-Date=20260421T110949Z&"
+    },
+    {
+      "path": "references/Web组件大小自适应页面内容布局.md",
+      "title": "Web组件大小自适应页面内容布局",
+      "snippet": "使用Web组件大小自适应页面内容布局模式 layoutMode ( WebLayoutMode .FIT_CONTENT)时，能使Web组件的大小根据页面内容自适应变化。 多设备适配Web页面请参考 Web响应式布局 。 #### 使用场景 适用于Web组件需要根据网页高度撑开，与其他系统组件一起滚动的场景，如： - 浏览长文章。Web组件同一布局层级有其他系统组件，如评论区、工具栏等。 - 长页面首页。Web组件同一布局层级有其他系统组件，如宫格菜单。 **Web布局跟随系统：** 如图一所示，Web组件的高度为一屏，H5页面的高度为8000px，大于Web组件的高度，此时Web组件内部将会出现滚动条。滚动Web组件时，页面的一部分将被隐藏，且不能充分利用整个屏幕展示Web页面，这会导致用户体验不佳。实际效果如图二所示。 **Web组件大小自适应页面内容布局：** 如图三所示，Web组件高度将自动与H5页面保持一致。右图显示，Web组件与H5页面的高度均为8000px。此时，Web组件内部不会生成滚动条，在滑动页面时，可同时带动其他ArkUI组件滚动，以整个屏幕展示Web组件。实际效果见图四。 #### 规格与约束 1. 建议配置渲染模式为同步渲染模式，避免因为组件大小超出限制导致异常场景（白屏，布局错误）。 2. 建议配置过滚动模式(overScrollMode)为关闭状态。当"
+    },
+    {
+      "path": "references/Web组件对接软键盘.md",
+      "title": "Web组件对接软键盘",
+      "snippet": "开发者能够通过Web组件对接软键盘，来处理系统软键盘的显示与交互问题，同时实现软键盘的自定义功能。主要有以下场景： - 拉起系统软键盘输入文字：点击网页输入框时，屏幕下方将弹出系统默认的软键盘。开发者可以通过软键盘输入文字，输入的内容会显示在输入框中。 - 自定义系统软键盘的回车键类型：设置不同的回车键类型，例如：确认、下一个和提交。 - 软键盘避让：在移动设备上，由于输入法通常显示在屏幕下方区域，应用可设置不同的Web页面软键盘避让模式，来避让软键盘。例如：平移、调整大小和不避让。 - 自定义软键盘输入：在移动设备上，可以使用自绘制输入法在Web页面输入，以此替代系统软键盘。 #### Web页面输入框输入与软键盘交互的W3C标准支持 为支持Web页面与系统软键盘、自定义软键盘等的良好交互，ArkWeb遵循并实现了W3C规范中的以下输入控制属性： - type属性 type属性定义了input元素的类型，影响输入的验证、显示方式和键盘类型。常见的type值包括： - inputmode属性 inputmode属性用于配置输入法类型，默认值：text。 - enterkeyhint属性 enterkeyhint属性用于指定移动设备虚拟键盘上回车键的显示方式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/Develope"
+    },
+    {
+      "path": "references/Web组件嵌套滚动.md",
+      "title": "Web组件嵌套滚动",
+      "snippet": "Web组件嵌套滚动的典型应用场景为，在页面中，多个独立区域需进行滚动，当用户滚动Web区域内容时，可联动其他滚动区域，实现上下左右全方位滑动页面的嵌套滚动体验。内嵌于可滚动容器（ Grid 、 List 、 Scroll 、 Swiper 、 Tabs 、 WaterFlow 、 Refresh 、 bindSheet ）中的Web组件，接收到滑动手势事件后，需要设置ArkUI的 NestedScrollMode 枚举属性，实现Web组件与ArkUI可滚动容器的嵌套滚动。 Web组件嵌套滚动可通过 方案1：使用nestedScroll属性实现嵌套滚动 或 方案2：滚动偏移量由滚动父组件统一派发 两个方案实现，方案的选择应取决于应用嵌套滚动的具体业务场景。如果只是简单的Web组件与其他父组件联动滚动建议通过方案1实现；如果应用需要自定义控制Web组件和其他滚动组件滚动，以及一些复杂场景建议使用方案2。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/90/v3/pOVKsOTxQouUYgz18cxDUw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110945Z&HW-CC-Expire=86400&HW-"
+    },
+    {
+      "path": "references/Web组件支持画中画.md",
+      "title": "Web组件支持画中画",
+      "snippet": "Web组件提供画中画功能支持，应用可利用W3C标准的Picture-in-Picture API在网页中创建浮动窗口以播放视频，使用户在浏览其他网页或与其他应用交互时，可通过该画中画窗口继续观看视频。 若使用线上视频资源，则需在配置文件中设置网络权限。权限的添加方法请参考 在配置文件中声明权限 。 \"requestPermissions\": [ { \"name\": \"ohos.permission.INTERNET\" } ] #### 约束与限制 1. 当前H264/H265/HLS格式的视频可在创建的画中画窗口中播放。 2. 画中画窗口的大小调整依据系统能力，具体参照设计指南中的系统特性与能力部分。 #### 进入画中画 以仅包含媒体源的video元素和一个用户交互的button元素为例，介绍如何创建一个浮动窗口播放视频，使用户在浏览其他网页或与其他应用交互时，能够通过该画中画窗口持续观看视频。 <!-- 使用时需要自行替换视频链接 --> <video id=\"video\" src=\"https://example.com/file.mp4\" controls></video> <button id=\"togglePipButton\">开启画中画</button> HTMLVideoElement接口提供的requestPictureInPicture()方法请求启动画中画，如"
+    },
+    {
+      "path": "references/Web组件支持视频沉浸式全屏播放.md",
+      "title": "Web组件支持视频沉浸式全屏播放",
+      "snippet": "Web组件提供了视频进入全屏和退出全屏的事件功能，应用可通过监听这些事件实现进入和退出沉浸式全屏模式。 Web组件引用第三方H5页面加载的视频，当点击视频全屏时，视频仅扩展至整个Web组件区域，无法实现系统全屏显示（如图2所示）。若要达到系统全屏的沉浸式视频播放效果（如图3所示），则需应用监听进入全屏的事件并调整页面其他组件的属性。 Web组件可通过 onFullScreenEnter 和 onFullScreenExit 回调监听全屏按键的点击事件。其中，onFullScreenEnter表示Web组件进入全屏模式，onFullScreenExit表示Web组件退出全屏模式。在这两个监听事件中，可根据具体业务场景调整某些全局变量，例如组件的显隐状态、组件的margin属性等，以实现退出和进入沉浸式全屏模式的页面效果，如图1和图3所示。 显隐控制 visibility 是ArkUI开发框架提供的组件通用属性。开发者可通过设置组件属性visibility的不同值，控制组件的显隐状态。 import { webview } from '@kit.ArkWeb'; @Entry @Component struct ShortWebPage { controller: webview.WebviewController = new webview.WebviewController(); "
+    },
+    {
+      "path": "references/Web组件渲染模式.md",
+      "title": "Web组件渲染模式",
+      "snippet": "Web组件提供了两种可配置的渲染模式，能够根据不同的容器大小进行适配，从而满足使用场景中对容器尺寸的需求。 #### 异步渲染模式（默认） 异步渲染模式下（renderMode: RenderMode .ASYNC_RENDER），Web组件作为图形surface节点，独立送显。建议在仅由Web组件构成的应用页面中使用此模式，以提高性能并降低功耗。 - Web组件的宽高不能超过7,680px（物理像素），超过会导致白屏。 - 不支持动态切换模式。 开发者预期Web组件作为主体显示应用页面，如图一所示，在此场景下，Web组件高度正好为一屏或接近一屏（内嵌在navigation中）。加载的H5页面高度大于Web组件高度，Web内部将产生滚动条，用户可以通过在Web内部滑动来浏览H5页面的信息。只需使用Web组件即可实现应用业务主体内容，建议采用异步渲染模式以提升性能。 **图一 异步渲染模式场景** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a7/v3/A6sWm_gITyaGBoaqeQpiJw/zh-cn_image_0000002543373904.png?HW-CC-KV=V1&HW-CC-Date=20260421T110943Z&HW-CC-Expi"
+    },
+    {
+      "path": "references/Web组件焦点管理.md",
+      "title": "Web组件焦点管理",
+      "snippet": "开发者可利用Web组件的焦点管理功能，有效管理Web组件的获焦与失焦，同时利用H5端的W3C标准接口，管理网页界面上唯一可交互的元素获焦与失焦。 - Web组件与ArkUI组件焦点控制的常用接口及其使用场景： 1. 通过requestFocus主动请求Web组件获焦：当应用内有多个组件时，开发者可通过Web组件的requestFocus接口，主动将焦点转移到Web组件。 2. 根据焦点情况更改Web组件样式：组件监听焦点事件上报，为组件修改样式，例如边框、背景色等，以提供视觉和交互反馈。 - Web组件内H5元素焦点控制的常用接口及其使用场景： 1. 通过tabindex属性管理元素焦点：定义Web组件内元素的焦点顺序。可以通过将元素的tabindex设置为\"-1\"，使其能够通过脚本进行聚焦，同时在CSS中对元素的可见性进行控制。 2. 键盘事件更新焦点位置：监听键盘事件，例如Tab键，依据用户的操作更新Web内元素焦点位置。 3. 根据焦点情况更改Web组件内元素样式：为焦点元素添加样式，例如边框、背景色等，以提供视觉和交互反馈。 #### 基础概念 Web组件焦点、焦点链和走焦的详情说明请参考 ArkUI焦点基础概念 。 - - 组件焦点：指当前应用界面上唯一的一个可交互元素。 - 网页内元素焦点：指当前网页界面上唯一的一个可交互元素。 - - 组件走焦：指焦点在应用内的组件之"
+    },
+    {
+      "path": "references/Web组件的生命周期.md",
+      "title": "Web组件的生命周期",
+      "snippet": "开发者可以使用Web组件加载本地或者在线网页。 Web组件提供生命周期回调接口，用于感知状态变化和处理业务。 Web组件的状态主要包括：Controller绑定到Web组件、网页加载开始、网页加载进度、网页加载结束、页面即将可见。 Web页面保活可以参考 使用离线Web组件 。 自定义组件析构销毁时执行 aboutToDisappear 函数，Web组件会被销毁，Web组件与 WebviewController 解绑，js运行环境也会一并销毁。 **图1** Web组件网页正常加载过程中的回调事件 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f1/v3/CEGZbyd3S0mGQ_u_45KrBA/zh-cn_image_0000002573974129.png?HW-CC-KV=V1&HW-CC-Date=20260421T110941Z&HW-CC-Expire=86400&HW-CC-Sign=758DCDC959A75EDB820D397A0F7CF5BDDD38DA6B61E3766070E51C70222575D9) #### Web组件网页正常加载过程所涉及的状态说明 - aboutToAppear 函数：在创建自定义组件的新实例后，在执行其bu"
+    },
+    {
+      "path": "references/Web页面显示内容滚动.md",
+      "title": "Web页面显示内容滚动",
+      "snippet": "当Web页面的内容高度或宽度超过可视区域时，页面才能滚动。Web页面滚动有多种方式，包括使用外接设备、ArkTS侧接口调用和JS侧接口调用。 #### 使用外接设备控制Web页面滚动 可以使用以下方式，通过触屏、触摸板和鼠标滚轮控制Web页面滚动。 - 通过触屏控制Web页面滚动：支持在触摸屏上单指上下左右滑动可以控制页面滚动。 - 通过触摸板控制Web页面滚动：支持在笔记本触摸板或者外接触摸板双指上下左右滑动，可以控制页面滚动。 - 通过鼠标滚轮控制Web页面滚动：支持用鼠标滚轮上下滑动来控制页面滚动。 #### 调用ArkTS侧接口控制Web页面滚动 - scrollTo ：在指定时间内，将页面滚动到指定的绝对位置。 返回页面顶部。 this.webController.scrollTo(0, 0); - scrollBy ：在指定时间内将页面滚动指定的偏移量。 可以作为Web组件嵌套滚动中，控制Web组件滚动的接口，详见 滚动偏移量由滚动父组件统一派发 。 - pageUp ：将Web组件的内容向上滚动半个视口大小或者滚动到页面最顶部，通过top入参控制。 - pageDown ：将Web组件的内容向下滚动半个视口大小或者滚动到页面最底部，通过bottom入参控制。 #### 调用JS侧接口控制Web页面滚动 - scrollBy：相对当前滚动位置滚动一定距离（正数向下/右，"
+    },
+    {
+      "path": "references/优化跳转至新Web组件过程中的页面闪烁现象.md",
+      "title": "优化跳转至新Web组件过程中的页面闪烁现象",
+      "snippet": "应用使用 Navigation 等路由策略导航至Web组件页面时，在网页加载过程中，页面底部可能出现闪烁现象，这会影响用户体验。 #### 闪烁原因 使用Navigation等路由策略导航至Web组件页面时，通常根据网页的回调通知判断是否隐藏系统导航栏。若决定隐藏，Web组件布局会进行调整。这一布局调整过程可简化为如下四个阶段： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5f/v3/U_8s64ByTvmegZgUrIgiFw/zh-cn_image_0000002573854159.png?HW-CC-KV=V1&HW-CC-Date=20260421T110943Z&HW-CC-Expire=86400&HW-CC-Sign=758075289FDE8241099B89553C40165C5663029DE117CE554B09C9A0AA73E068) 图中四个状态的说明（从左至右）： 1. 将应用路由至Web页面，页面顶部为系统导航栏，底部是Web组件。在此情况下，网页能够正常加载。 2. 在网页加载过程中，系统会回调通知应用侧隐藏系统导航栏，以便切换至网页端的导航栏。此时系统导航栏被隐藏，Web组件的布局随即进行调整，页面底部最初会显露出Web组件"
+    },
+    {
+      "path": "references/使用Crashpad收集Web组件崩溃信息.md",
+      "title": "使用Crashpad收集Web组件崩溃信息",
+      "snippet": "Web组件支持使用Crashpad记录进程崩溃信息。Crashpad是Chromium内核提供的进程崩溃信息处理工具，在应用使用Web组件导致的进程（Web渲染进程）崩溃出现后，Crashpad会在应用主进程沙箱目录写入dmp文件。该文件为二进制格式，后缀为dmp，其记录了进程崩溃的原因、线程信息、寄存器信息等，应用可以使用该文件分析Web组件相关进程崩溃问题。Web组件分别从API version 9和API version 12开始支持接口onRenderExited和onRenderProcessNotResponding，开发者可以分别通过Web接口 onRenderExited 和 onRenderProcessNotResponding 来检测渲染进程退出和渲染进程不响应，也可以在这些接口中增加应用处理的逻辑。 使用步骤如下： 1. 在应用使用Web组件导致的进程崩溃出现后，Crashpad收到信号，对应Hilog日志（节选部分）如下 pid-30069 I [crashpad_ohos.cc:254] crashpad SandboxedHandler::HandleCrash, received signo = 6 pid-30069 I [crashpad_ohos.cc:182] crashpad SandboxedHandler::HandleCrashNon"
+    },
+    {
+      "path": "references/使用DevTools工具调试前端页面.md",
+      "title": "使用DevTools工具调试前端页面",
+      "snippet": "Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开发调试工具，支持在电脑上调试移动设备前端页面。开发者通过 setWebDebuggingAccess() 接口开启Web组件前端页面调试能力，使用DevTools在电脑上调试移动前端网页，设备需为4.1.0及以上版本。 #### 无线调试 从API version 20开始，可使用无线调试接口 setWebDebuggingAccess20+ ，来简化调试流程。 #### 应用代码开启Web调试开关 调试网页前，需要应用侧代码调用setWebDebuggingAccess()接口开启Web调试开关。 如果没有开启Web调试开关，则DevTools无法发现被调试的网页。 1. 在应用代码中开启Web调试开关，应用需要调用 setWebDebuggingAccess20+ 接口，设置TCP Socket端口号并启用Web调试功能。 import { webview } from '@kit.ArkWeb'; import { BusinessError } from '@kit.BasicServicesKit'; const DEBUGGING_PORT: number = 8888; @Entry @Component struct WebComponent { controller: webview"
+    },
+    {
+      "path": "references/使用Hypium实现ArkWeb自动化测试.md",
+      "title": "使用Hypium实现ArkWeb自动化测试",
+      "snippet": "ArkWeb页面支持使用Hypium集成Selenium框架、ChromeDriver驱动进行UI自动化测试。 #### 环境配置 1.Hypium环境搭建 参考： 应用UI测试（基于Python） 。 2.安装Selenium Selenium主要用于Web应用程序的自动化测试，核心功能是模拟用户在浏览器中的操作，例如点击按钮、输入文本、导航页面等。 pip install selenium 3.集成ChromeDriver驱动 ChromeDriver充当了Selenium WebDriver和Web页面之间的中介。通过Selenium发送命令时，ChromeDriver会将这些命令转换为Web内核能够理解的协议，并将响应返回给Selenium。ArkWeb基于谷歌Chromium内核开发，系统版本与Chromium版本的对应关系参考：ArkWeb简介 约束与限制 。访问ChromeDriver官方网站 ChromeDriver下载|Chrome for Developers ，获取与Chromium版本对应的ChromeDriver。 首先将ChromeDriver集成到测试工程的resource文件夹下，然后调用WebDriverSetupTool类中的set_chromedriver_exe_path方法指定chromedriver文件的存放路径或者调用set_chrom"
+    },
+    {
+      "path": "references/使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景.md",
+      "title": "使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景",
+      "snippet": "浏览器的扩展程序（extension）支持与系统上安装的应用交换消息，应用向扩展提供服务，帮助扩展实现一些应用才具备的能力，常见的例子是密码管理器：应用负责存储和加密你的密码信息，以便浏览器扩展程序自动填充网页中的表单字段。 从API version 21开始，支持开发者在应用中使用 WebNativeMessagingExtensionAbility 组件，为浏览器扩展提供后台服务能力。 浏览器扩展通过 WebExtensions runtime API 连接WebNativeMessagingExtensionAbility，双方通信是通过共享pipe文件描述符后调用IO接口实现。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e2/v3/ZBOnWj83R2mYE7a66J9B4Q/zh-cn_image_0000002543214280.png?HW-CC-KV=V1&HW-CC-Date=20260421T110952Z&HW-CC-Expire=86400&HW-CC-Sign=188731F899441C28ADFF7239AA1BF0AC428FA4E92534493711473476F0593D7A) ![](https://contentce"
+    },
+    {
+      "path": "references/使用Web组件上传文件.md",
+      "title": "使用Web组件上传文件",
+      "snippet": "Web组件支持前端页面选择文件上传功能，应用开发者可以使用 onShowFileSelector() 接口来处理前端页面文件上传的请求，如果应用开发者不做任何处理，ArkWeb会提供默认行为来处理前端页面文件上传的请求。应用开发者也可以通过获取到的前端数据，自定义拉起Picker。 #### 使用onShowFileSelector拉起文件管理器 下面的示例中，当用户在前端页面点击文件上传按钮，应用侧在 onShowFileSelector() 接口中收到文件上传请求，在此接口中开发者将上传的本地文件路径设置给前端页面。 - 应用侧代码。 import { webview } from '@kit.ArkWeb'; import { BusinessError } from '@kit.BasicServicesKit'; import { picker } from '@kit.CoreFileKit'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webview.WebviewController(); build() { Column() { Web({ src: $rawfile('local.html'), controller: this.cont"
+    },
+    {
+      "path": "references/使用Web组件与系统剪贴板交互处理网页内容.md",
+      "title": "使用Web组件与系统剪贴板交互处理网页内容",
+      "snippet": "开发者能够通过Web组件和系统剪贴板进行交互，实现各种类型数据的复制和粘贴。支持通过 菜单 、键盘快捷键以及 W3C剪贴板接口 对网页内容执行剪切、复制和粘贴操作。 #### 通过菜单或键盘快捷键与系统剪贴板交互 开发者能够自定义菜单中的功能选项，当用户选择特定选项时，开发者可以通过调用 cut 、 copy 、 copyImage 、 paste 、 pasteAndMatchStyle 等接口，将网页中的文本、HTML或图片数据复制到系统剪贴板，或从系统剪贴板粘贴到网页的可输入区域。 菜单功能接口的使用可参考 使用Web组件菜单处理网页内容 。 当设备有物理键盘时，用户也能够通过键盘快捷键：CTRL + X（剪切）、CTRL + C（复制）、CTRL + V（粘贴），与剪贴板进行交互。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/25/v3/EBmQZCM9Q3CaPNA8Vh2daw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110951Z&HW-CC-Expire=86400&HW-CC-Sign=86588BCAAB93B5D40D931882B0235E2741E7C9BED7CF4B2E"
+    },
+    {
+      "path": "references/使用Web组件保存前端页面为PDF.md",
+      "title": "使用Web组件保存前端页面为PDF",
+      "snippet": "从API version 14开始，支持使用Web组件的 createPdf 方法，为应用提供了保存前端页面为PDF的功能。 使用 createPdf 生成实例后，调用pdfArrayBuffer方法获取二进制数据流，再使用 fileIo 方法将二进制数据流保存为PDF文件。用户可以将前端页面内容保存为PDF以便分享或保存。例如，生成报告、发票等，方便用户保存和传输。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/33/v3/13ivoNr4TmiqxgWBfpxxSQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110951Z&HW-CC-Expire=86400&HW-CC-Sign=7F8FC9A9F0E84EA6E9C18381454FBAC6EEF853A55874189107F0F0FDC6CA6226) 通过 pdfConfiguration 的配置，可调整PDF每页大小、前端页面缩放比例等；推荐使用前端页面适配策略，通过CSS媒体查询（@media print）优化PDF排版。 #### 需要权限 若涉及网络文档获取，需在module.json5中配置网络访问权限。具体添加方法请参考 在配"
+    },
+    {
+      "path": "references/使用Web组件加载页面.md",
+      "title": "使用Web组件加载页面",
+      "snippet": "页面加载是Web组件的基本功能。根据页面加载数据来源可以分为三种常用场景，包括加载网络页面、加载本地页面、加载HTML格式的富文本数据。 页面加载过程中，若涉及网络资源获取，请在module.json5中配置网络访问权限，添加方法请参考 在配置文件中声明权限 。 \"requestPermissions\":[ { \"name\" : \"ohos.permission.INTERNET\" } ] #### 加载网络页面 开发者可以在Web组件创建时，指定默认加载的网络页面。在默认页面加载完成后，如果需要变更此Web组件显示的网络页面，可以通过调用 loadUrl() 接口加载指定的网页。 Web组件 的第一个参数变量src不能通过状态变量（例如： @State ）动态更改地址，如需更改，请通过 loadUrl() 重新加载。 在下面的示例中，在Web组件加载完“www.example.com”页面后，开发者可通过loadUrl接口将此Web组件显示页面变更为“www.example1.com”。 import { webview } from '@kit.ArkWeb'; import { BusinessError } from '@kit.BasicServicesKit'; @Entry @Component struct WebComponent { controller: we"
+    },
+    {
+      "path": "references/使用Web组件打印前端页面.md",
+      "title": "使用Web组件打印前端页面",
+      "snippet": "Web组件打印html页面时可通过W3C标准协议接口和应用接口两种方式实现。 使用打印功能前，请在module.json5中配置相关权限，添加方法请参考 在配置文件中声明权限 。 \"requestPermissions\":[ { \"name\" : \"ohos.permission.PRINT\" } ] #### 使用W3C标准协议接口拉起打印 通过创建打印适配器，拉起打印应用，并对当前Web页面内容进行渲染，渲染后生成的PDF文件信息通过文件描述符（fd）传递给打印框架。W3C标准协议接口window.print()方法用于打印当前页面或弹出打印对话框。该方法没有任何参数，只需要在JavaScript中调用即可。 可通过前端css样式控制是否打印，例如@media print。再通过web加载该html页面的方式运行。 - print.html页面代码。 示例一： <!DOCTYPE html> <html> <head> <meta charset=\"utf-8\"> <title>printTest</title> <style> @media print { h1 { display: none; } } </style> </head> <body> <div> <h1><b> <p style=\"text-align: center;\">This is a test pag"
+    },
+    {
+      "path": "references/使用Web组件显示网页弹框.md",
+      "title": "使用Web组件显示网页弹框",
+      "snippet": "在HTML中，可以使用JavaScript创建三种类型的弹框：警告框window.alert(message)、确认框window.confirm(message)和提示框window.prompt(message, defaultValue)。这些弹框可以用于向用户传递信息、确认操作或请求输入。 当前，ArkWeb暂未提供默认的应用弹框。如果需要网页的弹框能够正常使用，应用需要通过 onAlert 、 onConfirm 和 onPrompt 接口自定义弹框功能。 #### 实现Alert弹框 window.alert()用于显示一个包含可选信息的对话框。警告框用于确保用户可以得到某些信息。当警告框出现后，用户需要点击确定按钮才能继续进行操作。 - 可选参数message是要显示在警告对话框中的字符串，如果传入其他类型的值，会转换成字符串。 - 该方法不存在返回值。 应用可以通过 onAlert 事件监听网页alert方法，并创建合适的弹框。 - 用 AlertDialog 创建弹框。 import { webview } from '@kit.ArkWeb'; @Entry @Component struct Index { @State message: string = 'Hello World'; webviewController: webview.WebviewCon"
+    },
+    {
+      "path": "references/使用Web组件的PDF文档预览能力.md",
+      "title": "使用Web组件的PDF文档预览能力",
+      "snippet": "Web组件 支持在网页中预览PDF。应用通过 WebOptions 的src参数和 loadUrl() 接口加载PDF文档。具体场景包括：网络PDF文档、应用沙箱内PDF文档和本地PDF文档。 若涉及网络文档获取，需在module.json5中配置网络访问权限。添加方法请参考 在配置文件中声明权限 。 \"requestPermissions\":[ { \"name\" : \"ohos.permission.INTERNET\" } ], #### 通过不同的方式加载PDF文档 在下面的示例中，Web组件创建时指定默认加载的网络PDF文档https://www.example.com/test.pdf。使用时需替换为真实的可访问URL。 import { webview } from '@kit.ArkWeb'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webview.WebviewController(); build() { Column() { Web({ src: 'https://www.example.com/test.pdf', // 方式一 加载网络PDF文档 // this.getUIContext().getHostContext()!.fil"
+    },
+    {
+      "path": "references/使用Web组件的下载能力.md",
+      "title": "使用Web组件的下载能力",
+      "snippet": "当需要通过Web页面进行文件下载时，可以通过此方式调用Web接口。 #### 监听页面触发的下载 通过 setDownloadDelegate() 向Web组件注册一个DownloadDelegate来监听页面触发的下载任务。资源由Web组件来下载，Web组件会通过DownloadDelegate将下载的进度通知给应用。 下面的示例中，在应用的rawfile中创建index.html。应用启动后会创建一个Web组件并加载index.html，点击setDownloadDelegate按钮向Web组件注册一个DownloadDelegate，点击页面里的下载按钮的时候会触发一个下载任务，在DownloadDelegate中可以监听到下载的进度。 默认路径在应用沙箱的web目录内，用户无法查看。如果希望用户能够查看，需要将下载路径修改到有访问权限的目录，比如Download目录，请参考 使用Web组件发起一个下载任务 。 import { webview } from '@kit.ArkWeb'; import { BusinessError } from '@kit.BasicServicesKit'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webview"
+    },
+    {
+      "path": "references/使用Web组件的广告过滤功能.md",
+      "title": "使用Web组件的广告过滤功能",
+      "snippet": "ArkWeb为应用提供广告过滤功能，支持通过云端推送默认的easylist规则，或允许应用通过接口设定自定义规则文件。它在网络层拦截广告资源的下载，或在网页中注入CSS规则以隐藏特定的广告元素。 当前配置文件格式为 easylist规则 。 #### 常用easylist语法规则 例外规则，通常是与普通规则配合使用的，在某些特定场景下使普通规则不适用，单独应用例外规则是没有意义的。 例如先配置了一条过滤所有网站的拦截规则：||abc.com/js/123.js，如果某些网站出现误拦截或不能拦截的情况，可以针对这些网站配置新的例外规则。 #### 约束与限制 - 在 WebviewController 类中，增加开启/关闭广告过滤特性的接口 enableAdsBlock() ，支持Web实例级的特性开关。 - 新增 AdsBlockManager 全局单例类，提供自定义广告过滤配置、控制网站级特性开关的能力。 - Web实例上提供了 onAdsBlocked() 回调通知方法，支持将拦截信息通知到上层应用。 - AdsBlockManager 接口 setAdsBlockRules() 接口仅能设置一份自定义配置，此配置会持久化，应用冷启动无需重新配置，可避免每次冷启动配置规则都触发广告过滤配置的编译解析。 - AdsBlockManager 接口 addAdsBlockDisall"
+    },
+    {
+      "path": "references/使用Web组件的手势与应用交互.md",
+      "title": "使用Web组件的手势与应用交互",
+      "snippet": "在移动端或支持触控的Web应用中，用户通过触摸屏与页面交互，Web组件支持了常见的手势识别，例如长按、滑动、点击等，以支持丰富的用户交互体验。 #### ArkWeb手势识别 ArkWeb接收ArkUI的 触摸事件 ，并识别出手势（触摸事件的分发策略详见 交互基础机制说明 ）。ArkWeb手势符合W3C标准：Touch Events、UI Events、Pointer Events。 常见事件识别说明： #### ArkWeb手势与ArkUI手势 ArkUI提供了 手势绑定 ，Web组件有独立的手势识别，因此需要区分两种手势： - ArkWeb手势：Web组件接收触摸事件自动生成的手势，这些手势作用于网页上。 - ArkUI手势：Web组件作为通用组件会接收ArkUI手势，ArkUI手势并不直接作用于网页，而作用于Web组件上。 以缩放为例说明两种手势的区别： - 在Web上使用双指捏合时，Web组件中的内容将会缩放。这是由于ArkWeb识别了Pinch事件并将其作用于网页上。 - 使用三指捏合，Web组件本身会进行缩放。这是因为ArkWeb接收到ArkUI识别出的PinchGesture，执行绑定的回调函数。同时，ArkWeb支持scale方法，能够调整Web组件的缩放比例。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_"
+    },
+    {
+      "path": "references/使用Web组件的拖拽功能与网页交互.md",
+      "title": "使用Web组件的拖拽功能与网页交互",
+      "snippet": "ArkWeb的拖拽功能使应用能够在网页中实现元素的拖放，用户可以长按可拖拽的元素，将其拖至可放置的元素上，然后松手完成放置。ArkWeb在网页内容中的拖拽功能满足H5标准。 #### 将网页内容拖拽至其他应用 ArkWeb目前支持以下四种数据格式。应用按照 H5 标准设置这些格式的拖拽数据，即可将内容拖拽到其他应用中。 #### 拖拽事件通知 ArkWeb拖拽不同于ArkUI的组件级拖拽，主要针对网页内容的拖拽，因此仅支持部分拖拽事件的监听方法。 #### 在ArkTS侧实现拖拽相关逻辑 在多数情况下，应用在H5端实现的拖拽功能能够满足需求。如有需要，请参考以下案例，实现在ArkTS端进行拖拽数据读取等操作。 1. 建立应用侧与前端页面数据通道。 2. 在onDrop方法中，做简单逻辑，例如暂存一些关键数据。 3. 在ArkTS侧接收消息的方法中，添加应用处理逻辑，可以进行耗时任务。 由于ArkTS侧的onDrop方法会早于H5中放置事件的处理方法（H5示例中的droppable.addEventListener('drop')）执行，若在onDrop方法中进行页面跳转等操作，将导致H5中的drop方法无法正确执行，产生不符合预期的结果。因此，应建立双向通信机制，在H5中的drop方法执行完毕后，通知ArkTS侧执行相应的业务逻辑，以确保业务逻辑的预期执行。 import { we"
+    },
+    {
+      "path": "references/使用Web组件的智能分词能力.md",
+      "title": "使用Web组件的智能分词能力",
+      "snippet": "从API version 20开始，ArkWeb提供了H5页面内的文本分词识别功能，支持文本分词高亮、分词长按预览及文本选择菜单扩展等。这些功能需将 enableDataDetector 设置为true，默认为false。 此功能主要用于单页H5页面内容的实体识别，能够自动识别页面中的电话号码、网址等信息，并提供便捷的交互操作。启用此功能后，用户可以直接在页面中与识别的实体交互，如点击电话号码进行呼叫，点击地址在地图中查看，从而提升用户体验。 可识别的实体类型包括电话、链接、邮箱、地址和时间，详见 TextDataDetectorType 。 #### 文本分词高亮 Web组件内的H5页面加载完成后，自动识别并高亮标注页面内的特殊实体。页面变化后新出现的实体不会被高亮标注。 特殊实体的高亮过滤规则如下： - 不处理输入框内、可编辑区域内的文本实体。 - 不处理<a></a>标签内的文本实体。 - 不处理跨域iframe内、两层及以上嵌套iframe内的文本实体。 - 跨节点的实体不会被高亮，如<p>星<span>期六</span></p>。 页面中文本实体高亮后，将转变为超链接形式。触摸点击或鼠标左键点击实体，会根据实体类型弹出操作菜单。 import { webview } from '@kit.ArkWeb'; @Entry @Component struct Index { "
+    },
+    {
+      "path": "references/使用Web组件管理网页缩放.md",
+      "title": "使用Web组件管理网页缩放",
+      "snippet": "Web组件支持手势缩放、鼠标滚轮、键盘缩放，以方便用户调整到舒适的显示大小。并对应用提供监听、控制页面缩放比例的功能，以便应用实现个性化的视觉效果。 #### 启用/禁用网页缩放 #### 启用/禁用网页手势缩放 通过属性 zoomAccess 控制网页缩放功能，当设置为false时，网页不允许手势缩放行为。 当html网页设置<meta name=\"viewport\" id=\"viewport\" content=\"user-scalable=no\">时，网页不允许手势缩放。 仅当zoomAccess和viewport标签都设置为允许缩放时，才允许手势缩放。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8f/v3/cQR4FLXhSuGbx3tyUbYGpA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110946Z&HW-CC-Expire=86400&HW-CC-Sign=5A3EBFE863667A44DE9A3277D86987753E776DED5808B39555731107B3B3C059) 在PC/2in1设备上，viewport标签不生效，仅能通过设置zoomAccess为false来"
+    },
+    {
+      "path": "references/使用Web组件菜单处理网页内容.md",
+      "title": "使用Web组件菜单处理网页内容",
+      "snippet": "菜单作为用户交互的关键组件，其作用是构建清晰的导航体系，通过结构化布局展示功能入口，使用户能够迅速找到目标内容或执行操作。作为人机交互的重要枢纽，它显著提升了Web组件的可访问性和用户体验，是应用设计中必不可少的部分。Web组件菜单类型包括 文本选中菜单 、 上下文菜单 和 自定义菜单 ，应用可根据具体需求灵活选择。 #### 文本选中菜单 Web组件的文本选中菜单是一种通过自定义元素实现的上下文交互组件，当用户选中文本时会动态显示，提供复制、分享、标注等语义化操作，具备标准化功能与良好可扩展性，是移动端文本操作的核心功能之一。文本选中菜单在用户长按选中文本或编辑状态下长按出现单手柄时弹出，菜单项横向排列。系统提供默认的菜单实现。应用可通过 editMenuOptions 接口对文本选中菜单进行自定义操作。 1. 通过onCreateMenu方法自定义菜单项，通过操作Array<TextMenuItem>数组可对显示菜单项进行增减操作，在TextMenuItem中定义菜单项名称、图标、ID等内容。 2. 通过onMenuItemClick方法处理菜单项点击事件，当返回false时会执行系统默认逻辑。 3. 创建一个EditMenuOptions对象，包含onCreateMenu和onMenuItemClick两个方法，通过Web组件的editMenuOptions接口与Web组件绑"
+    },
+    {
+      "path": "references/使用智能防跟踪功能.md",
+      "title": "使用智能防跟踪功能",
+      "snippet": "Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插入到其他网页时，其发送的网络请求将禁止携带cookie。 - 通过调用 enableIntelligentTrackingPrevention 接口启用或关闭Web组件的智能防跟踪功能。默认情况下，该功能未启用。 import { webview } from '@kit.ArkWeb'; import { BusinessError } from '@kit.BasicServicesKit'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webview.WebviewController(); build() { Column() { Button('enableIntelligentTrackingPrevention') .onClick(() => { try { this.controller.enableIntelligentTrackingPrevention(true); console.info('enableIntelligentTrackingPrevention: true'); } catch (error) { console.error( `ErrorCode: ${(er"
+    },
+    {
+      "path": "references/使用离线Web组件.md",
+      "title": "使用离线Web组件",
+      "snippet": "Web组件能够实现在不同窗口的组件树上进行挂载或移除操作，这一能力使得开发者可以预先创建Web组件，从而实现性能优化。例如，Tab页为Web组件时，页面预先渲染，便于即时显示。 离线Web组件基于自定义占位组件 NodeContainer 实现。基本原理是构建支持命令式创建的Web组件，此类组件创建后不会立即挂载到组件树中，状态为Hidden和Inactive，因此不会立即对用户呈现。开发者可以在后续使用中按需动态挂载这些组件，以实现更灵活的使用方式。 使用离线Web组件可以预启动渲染进程和预渲染Web页面。 - 预启动渲染进程：在未进入Web页面时，提前创建空Web组件，启动Web的渲染进程，为后续使用做好准备。 - 预渲染Web页面：在Web页面启动或跳转的场景下，预先在后台创建Web组件，加载数据并完成渲染，从而在Web页面启动或跳转时实现快速显示。 #### 整体架构 如下图所示，在需要离屏创建Web组件时，定义一个自定义组件以封装Web组件，此Web组件在离线状态下被创建，封装于无状态的 NodeContainer 节点中，并与相应的 NodeController 组件绑定。Web组件在后台预渲染完毕后，当需要展示时，通过 NodeController 将其挂载到ViewTree的 NodeContainer 中，即与对应的 NodeContainer 组件绑定，即可挂载"
+    },
+    {
+      "path": "references/使用运动和方向传感器监测设备状态.md",
+      "title": "使用运动和方向传感器监测设备状态",
+      "snippet": "运动和方向传感器，如加速度计、陀螺仪等，能够监测设备的运动状态和方向变化，例如设备的旋转、倾斜等。 通过W3C标准协议接口，Web组件能够访问这些传感器的数据，进而实现更加丰富的用户交互功能。例如，开发者在网页应用中可以利用加速度计识别运动模式，指导用户进行健身运动，利用陀螺仪捕获玩家手中设备的倾斜和旋转动作，实现无按钮操控的游戏体验。 通过在JavaScript中调用以下支持的W3C标准协议接口，可以访问运动和方向传感器。 #### 需要权限 使用加速度、陀螺仪及设备运动事件接口时，需在配置文件module.json5中声明相应的传感器权限。具体配置方法请参考 在配置文件中声明权限 。 \"requestPermissions\":[ { \"name\" : \"ohos.permission.ACCELEROMETER\" // 加速度权限 }, { \"name\" : \"ohos.permission.GYROSCOPE\" // 陀螺仪权限 } ] Web组件在对接运动和方向传感器时，需配置 onPermissionRequest 接口，通过该接口接收权限请求通知。 #### 开发步骤 1. 应用侧代码中，Web组件配置 onPermissionRequest 接口，可通过 PermissionRequest 的 getAccessibleResource 接口获取请求权限的资源类型，当"
+    },
+    {
+      "path": "references/使用隐私模式.md",
+      "title": "使用隐私模式",
+      "snippet": "开发者在创建Web组件时，可以将可选参数 incognitoMode 设置为true，来开启Web组件的隐私模式。使用隐私模式浏览网页时，Cookie、缓存等数据不会写入本地持久化存储；隐私模式的Web组件销毁后，这些数据将被清除，不会保留。 - 创建隐私模式的 Web组件 。 import { webview } from '@kit.ArkWeb'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webview.WebviewController(); build() { Column() { Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true }); } } } - 通过 isIncognitoMode 判断当前Web组件是否是隐私模式。 import { webview } from '@kit.ArkWeb'; import { BusinessError } from '@kit.BasicServicesKit'; @Entry @Component struct WebComponent { controller: webview.Webvi"
+    },
+    {
+      "path": "references/前端页面调用应用侧函数.md",
+      "title": "前端页面调用应用侧函数",
+      "snippet": "开发者使用Web组件将应用侧代码注册到前端页面中，注册完成之后，前端页面中使用注册的对象名称就可以调用应用侧的方法。 #### 如何建立应用侧与H5侧的交互通道 注册应用侧代码有两种方式，一种在Web组件初始化调用，使用 javaScriptProxy() 接口。另外一种在Web组件初始化完成后调用，使用 registerJavaScriptProxy() 接口。两种方式都需要和 deleteJavaScriptRegister 接口配合使用，防止内存泄漏。 在下面的示例中，将test()方法注册在前端页面中， 该函数可以在前端页面触发运行。 应用侧使用 javaScriptProxy() 接口注册示例： import { webview } from '@kit.ArkWeb'; import { BusinessError } from '@kit.BasicServicesKit'; class TestClass { constructor() { } test(): string { return 'ArkTS Hello World!'; } } @Entry @Component struct WebComponent { webviewController: webview.WebviewController = new webview.WebviewControl"
+    },
+    {
+      "path": "references/加速Web页面的访问.md",
+      "title": "加速Web页面的访问",
+      "snippet": "当Web页面加载缓慢时，可以使用预连接、预加载和预获取POST请求的能力加速Web页面的访问。 针对Web页面加载性能优化的详细内容请参考 Web页面加载优化性能指导 。 #### 预解析和预连接 此方法可以针对域名级进行优化，通过 prepareForPageLoad() 来预解析或者预连接将要加载的页面。该方式仅对url进行DNS解析以及建立tcp连接，但不会获取主资源子资源。 在下面的示例中，在Web组件的onAppear中对要加载的页面进行预连接。 import { webview } from '@kit.ArkWeb'; // ... @Entry @Component struct WebComponent { webviewController: webview.WebviewController = new webview.WebviewController(); build() { Column() { Button('loadData') .onClick(() => { if (this.webviewController.accessBackward()) { this.webviewController.backward(); } }) Web({ src: 'https://www.example.com/', controller: this.web"
+    },
+    {
+      "path": "references/同层渲染.md",
+      "title": "同层渲染",
+      "snippet": "在系统中，应用可以使用Web组件加载Web网页。当非系统框架的UI组件功能或性能不如系统组件时，可使用同层渲染技术，通过ArkUI组件渲染这些组件（简称为同层组件）。 #### 使用场景 #### Web网页 小程序的地图组件，可以使用ArkUI的XComponent组件渲染来提升性能。小程序的输入框组件，可以使用ArkUI的TextInput组件渲染，达到与系统应用一致的输入体验。 - 在网页侧，应用开发者可将<embed>、<object>的网页UI组件（简称为同层标签），按一定规则进行同层渲染，详细规格见同层渲染规格小节。 - 在应用侧，应用开发者可以通过Web组件的同层渲染事件上报接口，感知到H5同层标签的生命周期以及输入事件，进行同层渲染组件的相应业务逻辑处理。 - 在应用侧，应用开发者可以使用ArkUI的NodeContainer等接口，构建H5同层标签对应的同层渲染组件。可支持同层渲染的ArkUI常用组件包括： TextInput , XComponent , Canvas , Video , Web 。具体规格可参见 同层渲染规格小节 。 #### 三方UI框架 Flutter提供了PlatformView与Texture抽象组件，这些组件可使用系统组件渲染，用于支持Flutter组件功能不足的部分。Weex2.0框架的Camera、Video和Canvas组件可以"
+    },
+    {
+      "path": "references/在Web中打开摄像头和麦克风.md",
+      "title": "在Web中打开摄像头和麦克风",
+      "snippet": "WebRTC（Web Real-Time Communications）是一项实时通讯技术，它允许网络应用或站点在无需中间媒介的情况下建立浏览器之间的点对点（Peer-to-Peer）连接，实现视频流、音频流或其他任意数据的传输。WebRTC所包含的标准使得用户无需安装任何插件或第三方软件即可创建点对点（Peer-to-Peer）的数据共享与音视频会议。WebRTC技术适用于所有现代浏览器和主要平台的本机客户端，其背后的技术作为开放的Web标准实现，并在所有主要浏览器中作为常规JavaScript API提供。 Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过 onPermissionRequest 接口接收权限请求通知，需在配置文件中声明相应的音视频权限。 - 使用摄像头和麦克风功能前请在module.json5中添加音视频相关权限，权限的添加方法请参考 在配置文件中声明权限 。 // src/main/resources/base/element/string.json { \"name\": \"reason_for_camera\", \"value\": \"reason_for_camera\" }, { \"name\": \"reason_for_microphone\", \"value\": \"reason_for_microphone\" } // src/main/modul"
+    },
+    {
+      "path": "references/在新窗口中打开页面.md",
+      "title": "在新窗口中打开页面",
+      "snippet": "Web组件提供了在新窗口打开页面的能力，开发者可以通过 multiWindowAccess() 接口来设置是否允许网页在新窗口打开。当有新窗口打开时，应用侧会在 onWindowNew() 接口或 onWindowNewExt() 接口中收到Web组件新窗口事件。开发者需要在此接口事件中新建窗口来处理Web组件的窗口请求。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/88/v3/SWICSuunTGOLTYeyuILwpw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110942Z&HW-CC-Expire=86400&HW-CC-Sign=4A6CFF628DF02EC68D71385D068BC92D51F6350272AFFBD791FD9BB159CFB44D) - onWindowNewExt() 接口为 onWindowNew() 接口的功能增强接口，OnWindowNewExtEvent比OnWindowNewEvent新增了 NavigationPolicy 和 WindowFeatures ，用于通知应用新窗口的打开方式和位置大小信息。当在同一个Web组件上同时使用这两个接口时，只有 "
+    },
+    {
+      "path": "references/坚盾守护模式.md",
+      "title": "坚盾守护模式",
+      "snippet": "坚盾守护模式提供给高安全需求用户的系统级别安全模式。该模式通过限制设备基础功能，增强安全性，有效抵御远程攻击面的针对性攻击。 #### ArkWeb限制的HTML5特性 坚盾守护模式开启时，ArkWeb通过限制以下HTML5特性减少攻击面。 - 禁止使用WebAssembly能力。 - 禁止使用WebGL、WebGL2能力。 - 禁止使用PDF Viewer预览功能。 - 禁止使用MathML能力。 - 禁止使用Web Speech API语音识别能力。 - 禁止使用RTCDataChannel接口。 - 禁止使用MediaDevices.getUserMedia接口提示用户允许访问媒体输入设备。 - 禁止使用Service Worker能力。 - 禁止使用非代理UDP流量，防止WebRTC泄露真实源IP。 - 禁止即时编译（JIT）能力。 #### 评估对应用的影响 要评估应用在坚盾守护模式下的受影响程度及兼容性，可前往“设置 > 隐私和安全 > 坚盾守护模式”开启。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/71/v3/2QnIaSWAR4SIq08io1Gbaw/zh-cn_image_0000002543373920.png?HW-CC-KV=V1&"
+    },
+    {
+      "path": "references/定位与解决Web白屏问题.md",
+      "title": "定位与解决Web白屏问题",
+      "snippet": "Web页面出现白屏的原因众多，本文列举了若干常见白屏问题的排查步骤，供开发者快速定位。 1. 首先排查权限和网络状态。 2. 通过使用DevTools工具调试前端页面定位具体报错类型（跨域、资源404、JS异常）。 3. 在复杂布局场景中，排查渲染模式及组件约束条件的问题。 4. 处理H5代码兼容性问题。 5. 从日志中排查生命周期和网络加载相关关键字。 6. 检查是否开启坚盾守护模式，坚盾守护模式开启后相关限制见：ArkWeb限制的HTML5特性。 #### 检查权限和网络状态 如果应用未开启联网或文件访问权限或者设备网络状态不佳，将导致Web组件加载失败或页面元素缺失，进而引起白屏。 - 验证设备的网络状态，包括是否已连接网络，设备自带的浏览器能否正常访问网页等（在线页面场景）。 - 确保应用已添加网络权限：ohos.permission.INTERNET（在线页面必需）。 \"requestPermissions\":[ { \"name\" : \"ohos.permission.INTERNET\" } ], - 开启相关权限： import { webview } from '@kit.ArkWeb'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webvie"
+    },
+    {
+      "path": "references/应用侧与前端页面的相互调用(C_C++).md",
+      "title": "应用侧与前端页面的相互调用(C/C++)",
+      "snippet": "本指导适用于ArkWeb应用侧与前端网页通信场景，开发者可根据应用架构选择使用ArkWeb Native接口完成业务通信机制（以下简称Native JSBridge）。 针对JSBridge进行性能优化可参考 JSBridge优化解决方案 #### 适用的应用架构 应用使用ArkTS、C++语言混合开发，或本身应用架构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在Native侧提供的 ArkWeb_ControllerAPI 、 ArkWeb_ComponentAPI 实现JSBridge功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f4/v3/iMJ1Ncu7RdGXNlBfnwqC5g/zh-cn_image_0000002543373908.png?HW-CC-KV=V1&HW-CC-Date=20260421T110944Z&HW-CC-Expire=86400&HW-CC-Sign=0C987C0568905D9B0536D34D96B3E2C9648C506CC3FDB1F21F82C6A5DA3C60A2) 上图展示了具有普遍适用性的小程序的通用架构。在这一架构中，逻辑层依赖于应用程序自带的JavaScript运行时，该运行时"
+    },
+    {
+      "path": "references/应用侧调用前端页面函数.md",
+      "title": "应用侧调用前端页面函数",
+      "snippet": "应用侧可以通过 runJavaScript() 和 runJavaScriptExt() 方法调用前端页面的JavaScript相关函数。 runJavaScript() 和 runJavaScriptExt() 在参数类型上有以下差异： runJavaScriptExt() 支持string和ArrayBuffer类型参数，而 runJavaScript() 仅支持string类型参数。 在下面的示例中，点击应用侧的“runJavaScript”按钮时，触发前端页面的htmlTest()方法。 - 前端页面代码。 <!-- index.html --> <!DOCTYPE html> <html> <head> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> </head> <body> <button type=\"button\" onclick=\"callArkTS()\">Click Me!</button> <h1 id=\"text\">这是一个测试信息，默认字体为黑色，调用runJavaScript方法后字体为黄色、调用runJavaScriptParam方法后字体为绿色、调用runJavaScriptCodePassed方法后字体为红色</h1> <script> // 有参函数。"
+    },
+    {
+      "path": "references/建立应用侧与前端页面数据通道(C_C++).md",
+      "title": "建立应用侧与前端页面数据通道(C/C++)",
+      "snippet": "前端页面和应用侧之间可以使用Native方法实现两端通信（以下简称Native PostWebMessage），可解决ArkTS环境的冗余切换，同时允许发送消息、回调在非UI线程上运行，避免造成UI阻塞。当前只支持string和buffer数据类型。 #### 适用的应用架构 应用使用ArkTS、C++语言混合开发，或本身应用架构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在Native侧提供的 ArkWeb_ControllerAPI 、 ArkWeb_WebMessageAPI 、 ArkWeb_WebMessagePortAPI 实现PostWebMessage功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b/v3/j4HV3iveQA-_PH1z9gSQRQ/zh-cn_image_0000002543373908.png?HW-CC-KV=V1&HW-CC-Date=20260421T110945Z&HW-CC-Expire=86400&HW-CC-Sign=1FC8B9BEC1B5AE7EFCFA8CBB5942B64858D8954573537433E73186BD0CCB5351) 上图展示了具有普遍适用性的小程序的通用架构"
+    },
+    {
+      "path": "references/建立应用侧与前端页面数据通道.md",
+      "title": "建立应用侧与前端页面数据通道",
+      "snippet": "前端页面和应用侧之间可以用 createWebMessagePorts() 接口创建消息端口来实现两端的通信。 在下面的示例中，应用侧页面中通过createWebMessagePorts方法创建两个消息端口，再把其中一个端口通过 postMessage() 接口发送到前端页面，便可以在前端页面和应用侧之间互相发送消息。端口使用完毕后或Webview对象销毁前通过 close 接口关闭端口。 - 应用侧代码。 // xxx.ets import { webview } from '@kit.ArkWeb'; import { BusinessError } from '@kit.BasicServicesKit'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webview.WebviewController(); ports: webview.WebMessagePort[] = []; @State sendFromEts: string = 'Send this message from ets to HTML'; @State receivedFromHtml: string = 'Display received message send from H"
+    },
+    {
+      "path": "references/托管网页中的媒体播放.md",
+      "title": "托管网页中的媒体播放",
+      "snippet": "Web组件提供了应用接管网页中媒体播放的能力，用来支持应用增强网页的媒体播放，如画质增强等。 #### 使用场景 网页播放媒体时，存在以下问题：网页清晰度低、网页播放器播放控件功能有限、某些视频无法播放。 应用开发者可以使用该功能，通过自己或者第三方播放器接管网页媒体播放，从而改善播放体验。 #### 实现原理 #### ArkWeb内核播放媒体的框架 不开启该功能时，ArkWeb内核的播放架构如下所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c9/v3/lEaemE6BQ86HvKi6hA2w2A/zh-cn_image_0000002573974153.png?HW-CC-KV=V1&HW-CC-Date=20260421T110950Z&HW-CC-Expire=86400&HW-CC-Sign=6910BA7518AC9BE5CF979D5176F4EE06D282B67E75B209763CC3CC7E2B1ABC70) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/88/v3/ahNb0RULQF-AQnYXbByIrQ/"
+    },
+    {
+      "path": "references/拦截Web组件发起的网络请求.md",
+      "title": "拦截Web组件发起的网络请求",
+      "snippet": "应用可以通过 onInterceptRequest 拦截Web组件发起的网络请求，也可以通过SchemeHandler来拦截Web组件发起的网络请求。SchemeHandler提供了ArkTS与NDK两套接口。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/64/v3/PWqkvnHERqe25LeQMfLdiw/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110948Z&HW-CC-Expire=86400&HW-CC-Sign=4F076E5EBA5A825FA7CB8C0884EFD2457C4CF0E8D60D34179937765D06D00F28) - onInterceptRequest接口中无法获取Post Data，如果想要获取Post Data需使用SchemeHandler机制来进行拦截。 #### 网络请求拦截处理 (onInterceptRequest接口) 通过onInterceptRequest接口拦截Web组件发起的网络请求可参考 自定义页面请求响应 。 #### 网络请求拦截处理 (SchemeHandler机制) 通过SchemeHandler机制来拦截Web组件"
+    },
+    {
+      "path": "references/管理Cookie及数据存储.md",
+      "title": "管理Cookie及数据存储",
+      "snippet": "Cookie是服务端生成并发送到客户端的数据。客户端持有Cookie，便于服务端快速识别身份和状态。 当Cookie的SameSite属性未指定时，默认值为SameSite=Lax。这种设置下，Cookie仅在用户导航到其源站点时发送，不会在跨站请求中发送。 #### Cookie管理 Web组件提供 WebCookieManager 类来管理Cookie信息。Cookie信息存储在应用沙箱路径下/proc/{pid}/root/data/storage/el2/base/cache/web/Cookies的文件中。 下面以 configCookieSync() 接口为例，为“www.example.com”设置单个Cookie的值“value=test”。 import { webview } from '@kit.ArkWeb'; import { BusinessError } from '@kit.BasicServicesKit'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webview.WebviewController(); build() { Column() { Button('configCookieSync') .onClick(()"
+    },
+    {
+      "path": "references/管理位置权限.md",
+      "title": "管理位置权限",
+      "snippet": "从API version 9开始，支持Web组件的 GeolocationPermissions 类和 onGeolocationShow 方法对网页进行位置权限管理。更多信息请参见 应用数据安全 。 Web组件根据 GeolocationPermissions 类和 onGeolocationShow 方法的响应结果，决定是否赋予前端页面权限。用户可以获取位置信息，以便使用出行导航、天气预报等服务。 #### 需要权限 使用获取位置功能，需在module.json5中配置位置权限。具体添加方法请参考 在配置文件中声明权限 。 \"requestPermissions\":[ { \"name\" : \"ohos.permission.LOCATION\" // 精准定位 }, { \"name\" : \"ohos.permission.APPROXIMATELY_LOCATION\" // 模糊定位 }, { \"name\" : \"ohos.permission.LOCATION_IN_BACKGROUND\" // 后台定位 } ] #### 申请位置权限 在下面的示例中，用户点击前端页面\"获取位置\"按钮，Web组件通过弹窗通知应用侧位置权限请求消息。 - 前端页面代码。 <!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> "
+    },
+    {
+      "path": "references/管理页面跳转及浏览记录导航.md",
+      "title": "管理页面跳转及浏览记录导航",
+      "snippet": "为了提高页面访问速度，浏览记录导航允许用户通过“前进”和“后退”按钮在历史记录的页面之间切换。Web组件支持用户跳转到应用内其他页面或者进行跨应用跳转。 #### 历史记录导航 在前端页面点击网页中的链接时，Web组件默认会自动打开并加载目标网址。当前端页面替换为新的加载链接时，会自动记录已经访问的网页地址。可以通过 forward() 和 backward() 接口向前/向后浏览上一个/下一个历史记录。 页面加载涉及网络资源时，需在module.json5中配置网络访问权限，添加方法请参考 在配置文件中声明权限 。 \"requestPermissions\":[ { \"name\" : \"ohos.permission.INTERNET\" } ] 在以下示例中，通过点击应用按钮来触发前端页面的后退操作。 @Entry @Component struct WebComponent { webviewController: webview.WebviewController = new webview.WebviewController(); build() { Column() { Button('loadData') .onClick(() => { if (this.webviewController.accessBackward()) { this.webviewControll"
+    },
+    {
+      "path": "references/网页中安全区域计算和避让适配.md",
+      "title": "网页中安全区域计算和避让适配",
+      "snippet": "早期设备屏幕多为矩形，应用界面能够完整展示。随着全面屏、刘海屏等异形屏幕的普及，屏幕边缘可能出现圆角、摄像头或系统导航条，导致界面部分被遮挡。 安全区域是指屏幕中未被设备硬件或系统UI遮挡的区域，不与系统非安全区域（如状态栏、挖孔区和导航栏）重叠。应用的布局默认限定在安全区域内，但系统提供沉浸式布局能力，允许应用通过配置使界面扩展至非安全区域。 在沉浸式效果下，Web组件中的网页元素可能会被状态栏、挖孔区及导航条遮挡。此情况下，需要网页开发者进行避让适配，确保网页中的文字、表单和交互组件等关键内容避让非安全区域，从而保证用户可以完整地阅读和操作。 Web组件提供利用W3C CSS进行安全区域计算和避让适配的能力，支持异形屏幕设备在沉浸式效果下网页的正常显示，网页开发者可以利用该能力对被遮挡的元素进行避让。 #### 开启Web组件沉浸式效果 Web组件默认布局在安全区域内。开启 沉浸式效果 后，Web网页将扩展至状态栏和导航栏，从而最大化利用屏幕可视区域，增强视觉连贯性，改善用户的UI体验。开发者可通过以下方式启用Web组件的沉浸式效果。 - 通过 setWindowLayoutFullScreen 设置应用窗口全屏。窗口全屏时，Web组件可布局至非安全区域。 // EntryAbility.ets import { UIAbility } from '@kit.AbilityKi"
+    },
+    {
+      "path": "references/自定义页面请求响应.md",
+      "title": "自定义页面请求响应",
+      "snippet": "Web组件支持在应用拦截到页面请求后自定义响应请求能力。开发者通过 onInterceptRequest() 接口来实现自定义资源请求响应。自定义请求能力可以用于开发者自定义Web页面响应、自定义文件资源响应等场景。 Web网页上发起资源加载请求，应用层收到资源请求信息。应用层构造本地资源响应信息发送给Web内核。Web内核解析应用层响应信息，根据此响应信息进行页面资源加载。 在下面的示例中，Web组件通过拦截页面请求“https://www.example.com/test.html”，在应用侧代码构建响应资源，实现自定义页面响应场景。 - 前端页面index1.html代码。 <!DOCTYPE html> <html> <head> <meta charset=\"utf-8\"> </head> <body> <!-- 页面资源请求 --> <a href=\"https://www.example.com/test.html\">intercept test!</a> </body> </html> - 应用侧代码。 import { webview } from '@kit.ArkWeb'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webview.We"
+    },
+    {
+      "path": "references/获取网页内容高度.md",
+      "title": "获取网页内容高度",
+      "snippet": "通过调用 getPageHeight 可获取当前网页内容的实际高度，开发者可以根据具体需求选择合适的方法。 #### 使用场景 在网页加载过程中，获取的高度可能不够精确，特别是在网页还未渲染完成时。因为动态内容加载后会更新这个值。网页内容可能需要长时间加载。目前网站为优化首次加载速度，会使用动态网页加载技术，用户在看到网页首帧时，页面资源还在动态加载页面，特别是包含图片、动态内容的页面。 非静态网页不建议在 onPageEnd 、 onPageVisible 、 onFirstContentfulPaint 、 onFirstMeaningfulPaint 事件等Web组件生命周期回调和Web性能指标回调中获取。需要根据当前网页的特点，通过JSBridge或延迟等方案，在前端特定的回调通知里获取当前网页内容的实际高度。 #### 普通静态展示页面 普通静态网页，可以在onPageEnd等Web组件生命周期回调和Web性能指标回调中通过getPageHeight获取网页内容的高度。 应用侧代码 // xxx.ets import { webview } from '@kit.ArkWeb'; @Entry @Component struct Index { controller: webview.WebviewController = new webview.WebviewContr"
+    },
+    {
+      "path": "references/解决Web组件本地资源跨域问题.md",
+      "title": "解决Web组件本地资源跨域问题",
+      "snippet": "为了提高安全性，ArkWeb内核禁止file协议和resource协议访问跨域请求。因此，在使用Web组件加载本地离线资源的时候，Web组件会拦截file协议和resource协议的跨域访问。通过方法二设置一个路径列表，再使用file协议访问该路径列表中的资源，允许跨域访问本地文件。Web组件无法访问本地跨域资源时，DevTools控制台会显示报错信息： Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, arkweb, data, chrome-extension, chrome, https, chrome-untrusted. #### 本地资源跨域问题解决方法 - 方法一 开发者应使用http或https协议替代file或resource协议，使Web组件成功访问跨域资源。替代的URL域名为自定义构造，仅供个人或组织使用，避免与互联网上的实际域名冲突。同时，开发者需使用Web组件的 onInterceptRequest 方法，对本地资源进行拦截和相应的替换。 以下结合示例说明如何使用http或者https等协议解决本地资源跨域访问失败的问"
+    },
+    {
+      "path": "references/设置Web组件前进后退缓存.md",
+      "title": "设置Web组件前进后退缓存",
+      "snippet": "Web组件为开发者提供了启用和配置前进后退缓存（以下简称BFCache）的功能。启用此功能后，能够显著提升用户返回至先前浏览网页的速度，尤其对于网络条件不佳的用户，可提供更为流畅的浏览体验。 BFCache功能启用后，Web组件会在用户离开当前页面时在内存中保存该页面的快照。当用户在短期内通过Web组件的前进或后退功能重新访问同一页面时，能够迅速恢复页面状态，避免重复发起HTTP请求。 #### Web组件开启BFCache 开发者需要在调用 initializeWebEngine() 初始化ArkWeb内核之前调用 enableBackForwardCache() 来开启BFCache。enableBackForwardCache可以接收一个 BackForwardCacheSupportedFeatures 参数，用于控制是否允许具备同层渲染特性和视频托管特性的页面进入BFCache。 // EntryAbility.ets import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { window } from '@kit.ArkUI'; import { webview } fr"
+    }
+  ]
+}

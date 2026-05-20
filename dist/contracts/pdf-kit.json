@@ -1,0 +1,102 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "pdf-kit",
+  "source_path": "skills/pdf-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:57:42.488Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "PDF",
+      "PDF加载",
+      "PDF编辑",
+      "PDF预览",
+      "PDF注释",
+      "PDF转换",
+      "如何在HarmonyOS应用中打开和保存PDF文档？",
+      "如何实现PDF文档的预览、缩放和页面跳转？",
+      "如何在PDF页面中添加文本、图片和批注？",
+      "如何添加和删除PDF文档的页眉页脚、水印和背景？",
+      "如何管理PDF文档的书签？",
+      "如何添加和删除PDF页面？",
+      "如何将PDF文档转换为图片？",
+      "如何实现PDF文档中的关键字搜索和高亮显示？",
+      "如何判断PDF文档是否加密并解除加密？",
+      "如何优化多个PDF文档切换时的加载体验？",
+      "当应用需要对PDF文档进行编辑操作时使用本Kit的pdfService模块",
+      "典型场景包括：在PDF中添加文本和图片、添加水印和页眉页脚、管理书签、添加或删除PDF页面、判断文档加密状态等",
+      "当应用需要预览和浏览PDF文档时使用本Kit的PdfView组件",
+      "支持页面跳转、缩放、单双页显示、关键字搜索高亮、批注标注等预览交互功能，适合文档阅读器类应用",
+      "在应用里加载本地或沙箱中的 PDF 文件并显示第一页 / Load a local or sandbox PDF file in the app and show the first page",
+      "实现 PDF 阅读器的连续翻页、缩放和页码跳转 / Implement continuous PDF reading with zoom and page navigation",
+      "用 PDF 组件展示合同、说明书或报表文档 / Display contracts, manuals, or reports with a PDF component",
+      "读取 PDF 文档目录并跳转到指定书签位置 / Read the PDF outline and jump to a bookmarked section",
+      "在 PDF 页面上添加高亮、下划线和手写批注 / Add highlights, underlines, and handwritten annotations on PDF pages",
+      "给 PDF 文档插入图片签名、印章或备注文本 / Insert image signatures, stamps, or note text into a PDF document",
+      "搜索 PDF 中的关键字并定位到匹配页面 / Search keywords in a PDF and navigate to matching pages",
+      "导出 PDF 指定页面为图片缩略图或分享图 / Export selected PDF pages as thumbnails or shareable images",
+      "给 PDF 页面添加水印、页眉页脚和背景图层 / Add watermarks, headers, footers, and background layers to PDF pages",
+      "删除、插入、重排 PDF 页面并保存修改后的文件 / Delete, insert, reorder PDF pages and save the edited file",
+      "保存用户在 PDF 上的批注结果并再次打开继续编辑 / Save user annotations in a PDF and reopen it for further editing",
+      "集成 PDF 预览能力用于附件查看和文件审批 / Integrate PDF preview for attachment viewing and document approval"
+    ],
+    "do_not_use_when": [
+      "需求只是通用电子书阅读（如TXT/EPUB/UMD）而非PDF文档处理，应使用 reader-kit / The need is only general e-book reading (such as TXT/EPUB/UMD) rather than PDF document handling, so use reader-kit",
+      "要实现的是书架、阅读进度、翻页与章节阅读等小说阅读器能力，而不是PDF预览或编辑，应使用 reader-kit / The goal is bookshelf, reading progress, page turning, and chapter-based novel reading rather than PDF preview or editing, so use reader-kit",
+      "输入文档并非PDF格式，且任务是打开或解析其他电子书格式，应使用 reader-kit / The input document is not in PDF format and the task is to open or parse other e-book formats, so use reader-kit"
+    ],
+    "preconditions": [
+      "应用运行环境位于中国境内，且目标设备为Phone、Tablet或PC/2in1并使用ARM环境 / The app runs in mainland China, and the target device is a Phone, Tablet, or PC/2in1 using an ARM environment",
+      "工程已集成PDF Kit相关SDK能力，所用API/组件在当前HarmonyOS版本可用 / The project has integrated the PDF Kit SDK capability, and the required APIs/components are available in the current HarmonyOS version",
+      "待处理的PDF文件可被应用访问，相关文件读写权限或URI访问能力已就绪 / The target PDF file is accessible to the app, and the required file read/write permission or URI access capability is ready"
+    ],
+    "inputs": [
+      "PDF文件路径或URI / PDF file path or URI",
+      "PDF页面索引、页码或区域信息 / PDF page index, page number, or region information",
+      "编辑或批注内容参数（文本、图片、水印、书签等） / Edit or annotation parameters (text, image, watermark, bookmark, etc.)"
+    ],
+    "outputs": [
+      "概述",
+      "文档打开与保存",
+      "文档预览",
+      "文档编辑",
+      "文档转换",
+      "预览交互",
+      "常见问题"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在代码中引入并调用PDF Kit相关接口或PdfView组件以处理PDF文档 / The code imports and invokes PDF Kit APIs or the PdfView component to handle the PDF document",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add or modify code that uses PDF Kit APIs or the PdfView component for a PDF-related task?"
+      },
+      {
+        "statement": "实现结果与目标PDF操作一致，如打开/保存、预览、编辑、批注、搜索高亮或转图片中的至少一种 / The implementation matches the intended PDF operation, such as open/save, preview, edit, annotate, search-highlight, or convert to image",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is at least one intended PDF operation implemented end-to-end using PDF Kit?"
+      },
+      {
+        "statement": "如涉及文件输出或文档修改，代码包含保存结果、导出结果或更新后的文档处理流程 / If file output or document modification is involved, the code includes saving, exporting, or handling the updated document result",
+        "verifier": "model_judge",
+        "judge_prompt": "If the task modifies a PDF or generates images, do the edits include a concrete save/export/result-handling step?"
+      }
+    ],
+    "overlaps_with": [
+      "reader-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

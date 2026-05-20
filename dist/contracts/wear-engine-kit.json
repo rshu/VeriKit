@@ -1,0 +1,95 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "wear-engine-kit",
+  "source_path": "skills/wear-engine-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T08:00:39.113Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "如何申请接入Wear Engine服务并配置Client ID？",
+      "如何请求用户授权穿戴设备相关权限？",
+      "如何查询已连接的穿戴设备列表和设备信息？",
+      "如何实现手机与穿戴设备之间的消息通信和文件传输？",
+      "如何向穿戴设备发送模板化通知？",
+      "如何查询和订阅穿戴设备的电量、充电、佩戴、连接等状态？",
+      "如何获取穿戴设备的传感器列表并订阅传感器数据上报？",
+      "如何根据设备类型或能力集选择目标通信设备？",
+      "穿戴侧应用如何与对端设备进行消息和文件收发？",
+      "用户授权界面无法弹出或接口返回未申请服务错误如何排查？",
+      "当你的手机应用需要与华为穿戴设备进行数据交互时使用本Kit，例如向手表发送消息或文件、在手表上显示手机的通知提醒、读取手表的传感器数据等场景",
+      "当需要实现手机与穿戴设备的分布式协同功能时，如腕上日程提醒、音乐播放控制、导航提示等，应使用本Kit",
+      "当你的企业级应用需要读取穿戴设备的健康传感器数据（如ECG、PPG、HR、ACC等）进行运动健康研究时，应使用穿戴传感器能力（注意：该能力仅限企业开发者中的专业研究机构使用）",
+      "接入华为手表通信能力，让手机应用和穿戴设备实时同步数据 / Integrate Huawei wearable communication so the phone app can sync data with a wearable in real time",
+      "实现手机给手表下发指令并接收回执消息 / Send commands from the phone to a watch and receive acknowledgment messages",
+      "在手机和手表之间传输图片、音频或其他业务文件 / Transfer images, audio, or other business files between phone and watch",
+      "向指定穿戴设备推送卡片式提醒、日程或导航通知 / Push templated reminders, schedules, or navigation notifications to a target wearable",
+      "获取已配对手表的连接状态、电量和佩戴状态并监听变化 / Get paired watch connection, battery, and wearing status and listen for changes",
+      "按设备型号、设备类型或能力筛选可通信的穿戴设备 / Filter reachable wearables by model, device type, or supported capabilities",
+      "订阅手表心率、加速度或其他传感器数据流 / Subscribe to heart rate, accelerometer, or other sensor data streams from a watch",
+      "读取穿戴设备支持的传感器清单后按需开启采集 / Query the sensors supported by a wearable and start collection as needed",
+      "让穿戴侧应用和手机侧应用互相收发消息与文件 / Enable the wearable app and phone app to exchange messages and files both ways",
+      "实现运动健康场景下从华为穿戴设备采集生理数据 / Collect physiological data from Huawei wearables for fitness or health scenarios",
+      "把手机端的音乐控制、待办提醒或导航提示同步到手表 / Sync phone-side music controls, task reminders, or navigation prompts to a watch",
+      "管理 Wear Engine 用户授权流程并在授权后访问设备能力 / Manage the Wear Engine user authorization flow and access device capabilities after consent"
+    ],
+    "do_not_use_when": [
+      "应用不需要与华为穿戴设备交互，只处理本机功能 / The app does not need to interact with Huawei wearable devices and only uses local device features",
+      "目标是实现通用手机到手机或应用内网络通信，而非手机与穿戴设备之间通信 / The goal is general phone-to-phone or in-app network communication rather than phone-to-wearable communication",
+      "需要操作系统级通知栏通知而不是向穿戴设备发送模板化通知 / You need system notification bar notifications rather than templated notifications sent to a wearable device",
+      "需要读取手机自身传感器数据而不是穿戴设备传感器数据 / You need to read sensors on the phone itself rather than sensor data from a wearable device"
+    ],
+    "preconditions": [
+      "已在华为开发者平台申请接入Wear Engine服务，并为工程正确配置Client ID / Wear Engine service access has been applied for on Huawei Developer platform and the project has a correctly configured Client ID",
+      "应用已声明并具备所需的Wear Engine相关权限，且用户已完成授权 / The app has declared the required Wear Engine related permissions and the user has granted authorization",
+      "测试设备与目标穿戴设备已完成配对并处于受支持的连接状态 / The test device and target wearable are paired and in a supported connected state",
+      "若读取健康类传感器数据，应用主体具备对应开放范围资质 / If reading health-related sensor data, the app entity has the required eligibility for that access scope"
+    ],
+    "inputs": [
+      "目标穿戴设备标识 / target wearable device identifier",
+      "消息内容或文件路径 / message payload or file path",
+      "模板化通知内容 / templated notification content",
+      "传感器类型或订阅参数 / sensor type or subscription parameters",
+      "设备状态查询或监听参数 / device status query or listener parameters"
+    ],
+    "outputs": [
+      "简介",
+      "开发准备",
+      "设备管理",
+      "通信能力",
+      "常见问题",
+      "其他"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已接入Wear Engine相关API，并针对目标能力实现了设备查询、消息/文件传输、通知、状态或传感器调用之一 / The code integrates Wear Engine APIs and implements at least one target capability such as device query, message/file transfer, notification, status, or sensor access",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add or modify HarmonyOS code to call Wear Engine APIs for at least one wearable capability such as querying devices, sending messages/files, sending templated notifications, subscribing to status, or accessing sensors?"
+      },
+      {
+        "statement": "已补充或校验接入所需配置，如Client ID、权限声明或授权流程入口 / Required integration configuration such as Client ID, permission declarations, or authorization flow entry has been added or validated",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show that the project adds or checks required Wear Engine setup, such as configuration values, permission declarations, or user authorization request handling?"
+      },
+      {
+        "statement": "对连接状态、授权失败或接口调用失败增加了基本错误处理 / Basic error handling has been added for connection state issues, authorization failure, or API invocation failure",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the changes include explicit handling for wearable connection problems, authorization denial, or Wear Engine API failure paths?"
+      }
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

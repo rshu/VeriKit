@@ -1,0 +1,260 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "map-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.958Z"
+  },
+  "references": [
+    {
+      "path": "references/3D建筑.md",
+      "title": "3D建筑",
+      "snippet": "本章节将向您介绍如何在地图上绘制3D建筑。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e5/v3/wt0PPggRTFqFNoD-hw6dIA/zh-cn_image_0000002543215076.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111558Z&HW-CC-Expire=86400&HW-CC-Sign=B8ABD178950525BF32554DE6781AC815B7ADBD1C3521938CDE1B09EF5228AEE7) #### 接口说明 添加3D建筑功能主要由 BuildingOverlayParams 、 addBuildingOverlay 和 BuildingOverlay 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 #### 添加3D建筑 1. 导入相关模块。 import { mapCommon, map, MapComponent } from '@kit.MapKit'; import { AsyncCallback } from '@kit.BasicServicesKit'; 2. 添加3D建筑。 @Entry @Component struct Buildi"
+    },
+    {
+      "path": "references/Map Kit简介.md",
+      "title": "Map Kit简介",
+      "snippet": "Map Kit（地图服务）为开发者提供强大而便捷的地图能力，助力全球开发者实现个性化显示地图、位置搜索和路径规划等功能，轻松完成地图构建工作。您可以轻松地在HarmonyOS应用/元服务中集成地图相关的功能，全方位提升用户体验。 Map Kit提供了全球3.2亿的 POI（Point of Interest，兴趣点）。在地图表达中，一个 POI可代表一家商铺、一栋办公楼、一处景点等等。 Map Kit不断优化丰富地图的细节呈现能力，例如在POI和路网信息展示方面，根据POI属性信息及区域路网差异，在不同层级比例尺条件下，为用户展示更合适的POI和路网信息。手势交互方面，提供了包括缩放、旋转、移动、倾斜等流畅的交互体验。 #### 场景介绍 中国大陆使用GCJ02坐标系，中国台湾和海外使用WGS84坐标系。详见 坐标纠偏 。 Map Kit提供以下功能，满足绝大多数地图开发的需求： - 创建地图 ：创建地图组件、设置地图属性、自定义地图等。 - 地图交互 ：控制地图的交互手势和交互按钮。 - 在地图上绘制 ：添加位置标记、覆盖物以及各种形状等。 - 位置搜索 ：多种查询POI信息的能力，提供正地理编码、逆地理编码的能力。 - 路径规划 ：提供驾车、步行、骑行路径规划能力。 - 静态图 ：获取一张地图图片。 - 地图Picker ：提供地点详情展示控件、地点选取控件、区划选择控件。 -"
+    },
+    {
+      "path": "references/POI搜索.md",
+      "title": "POI搜索",
+      "snippet": "提供多种查询POI信息的能力： - 关键字搜索：通过用户输入的关键字，返回地点列表。 - 周边搜索：基于用户设备位置进行地点查找。 - 自动补全：根据输入的关键字返回预测的输入关键字和地点查询建议。 - 地点详情：查询某个地点更详细的信息。 #### 接口说明 以下是POI搜索相关接口，主要由 site 命名空间下的方法提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 导入相关模块。 import { site } from '@kit.MapKit'; import { BusinessError } from '@kit.BasicServicesKit'; #### 关键字搜索 通过指定的关键字和可选的地理范围，查询诸如旅游景点、企业和学校之类的地点。 let params: site.SearchByTextParams = { // 根据自定义关键字进行搜索，例如：“故宫”、“夫子庙” query: \"Piazzale Dante, 41, 55049 Viareggio, Tuscany, Italy\", // 经纬度坐标 location: { latitude: 31.984, longitude: 118.76625 }, // 指定地理位置的范围半径 radius: 10000, // 搜索结果的语言类型 language: \"en\" }; //"
+    },
+    {
+      "path": "references/siteId参数如何获取.md",
+      "title": "siteId参数如何获取",
+      "snippet": "siteId有多种获取方式，这里提供其中的3种作为参考： 1. 可通过 on('poiClick') 方法获取。 2. 可通过 位置搜索 相关接口（关键字搜索、周边搜索、地点详情、自动补全、正地理编码）的返回结果中获取。 3. 可通过 chooseLocation 接口的返回结果中获取。"
+    },
+    {
+      "path": "references/上架前准备-获取地图服务协议及资质证明.md",
+      "title": "上架前准备-获取地图服务协议及资质证明",
+      "snippet": "1. 登录 AppGallery Connect 网站，选择“协议签署记录”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4f/v3/oGnCD4QBS8WO44k4wWKIZw/zh-cn_image_0000002573855005.png?HW-CC-KV=V1&HW-CC-Date=20260421T111604Z&HW-CC-Expire=86400&HW-CC-Sign=BEB7BCC56FA626CF2D4822C59FE7DC44C78556CB6E162E05AB8040185A0658D2) 2. 在查看下载协议中选择可查看“华为地图服务使用协议”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/09/v3/5KP09seIRa6VZJvyf7Jqlg/zh-cn_image_0000002573974987.png?HW-CC-KV=V1&HW-CC-Date=20260421T111604Z&HW-CC-Expire=86400&HW-CC-Sign=6BF1DA2E69C062A2843B12929756F0C2"
+    },
+    {
+      "path": "references/个人数据处理说明.md",
+      "title": "个人数据处理说明",
+      "snippet": "此文档针对华为作为最终用户数据处理者，开发者作为数据控制者的处理进行说明，包括： - 华为地图服务处理的个人数据清单 - 指导开发者如何帮助最终用户实现对数据的控制 #### 华为地图服务处理的个人数据清单 最后修改时间：2024/06/09 #### 指导开发者如何帮助最终用户实现对数据的控制 - 如何清除最终用户的数据 不存储用户个人数据。"
+    },
+    {
+      "path": "references/事件交互.md",
+      "title": "事件交互",
+      "snippet": "本章节包含地图的点击和长按、相机移动（华为地图的移动是通过模拟相机移动的方式实现的）、以及“我的位置”按钮点击等事件监听。 #### 接口说明 以下是地图监听事件相关接口，以下功能主要由 MapEventManager 提供，可通过 getEventManager 方法获得 MapEventManager ，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 #### 初始化地图组件的事件管理接口 this.mapEventManager = this.mapController.getEventManager(); #### 地图点击事件监听 let callback = (position: mapCommon.LatLng) => { console.info(\"mapClick\", `on-mapClick position = ${position.longitude}`); }; this.mapEventManager.on(\"mapClick\", callback); #### 地图长按事件监听 let callback = (position: mapCommon.LatLng) => { console.info(\"mapLongClick\", `on-mapLongClick position = ${position.longitude}`); };"
+    },
+    {
+      "path": "references/出行路线规划.md",
+      "title": "出行路线规划",
+      "snippet": "从5.1.1(19)开始，支持公共交通规划功能。 提供两点之间驾车、步行、骑行和公共交通的路径规划能力。其中驾车路径规划支持添加途经点。 #### 接口说明 以下是路径规划功能相关接口，主要由 navi 命名空间下的方法提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 导入相关模块。 import { navi } from '@kit.MapKit'; import { BusinessError } from '@kit.BasicServicesKit'; #### 驾车路径规划 根据起终点坐标检索符合条件的驾车路径规划方案。支持以下功能： - 支持一次请求返回多条路线，最多支持3条路线。 - 最多支持5个途经点。 - 支持未来出行规划。 - 支持根据实时路况进行合理路线规划。 - 支持多种路线偏好选择，如时间最短、避免经过收费的公路、避开高速公路、距离优先等。 async testDrivingRoutes() { let params: navi.DrivingRouteParams = { // 起点的经纬度 origins: [{ latitude: 31.982129213545843, longitude: 120.27745557768591 }], // 终点的经纬度 destination: { latitude: 31.9861292135"
+    },
+    {
+      "path": "references/切换地图类型.md",
+      "title": "切换地图类型",
+      "snippet": "从6.0.0(20)开始，支持卫星图和混合地图功能。 Map Kit支持以下地图类型： - STANDARD：标准地图，展示道路、建筑物以及河流等重要的自然特征。 - NONE：空地图，没有加载任何数据的地图。 - TERRAIN：地形图，在保留了行政区划边界、POI、楼块等地图要素的基础上，呈现完整清晰描绘地形走势的标准地图。 - SATELLITE：卫星图，显示卫星照片的地图，只支持中国。 - HYBRID：混合地图，在显示卫星照片的同时也显示路网信息。 **图1** 标准地图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/36/v3/B-_pskhMQeOFex3jYW59kQ/zh-cn_image_0000002573854955.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111555Z&HW-CC-Expire=86400&HW-CC-Sign=18B8362A015B206BB93BA65930C9140960A866E111F33B65354C862E8ED5F36F) **图2** 空地图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/Developer"
+    },
+    {
+      "path": "references/动态轨迹.md",
+      "title": "动态轨迹",
+      "snippet": "本章节将向您介绍如何在地图上绘制动态轨迹。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/32/v3/cAIUFE2IQm2eD3GnXl_oxA/zh-cn_image_0000002573854991.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111558Z&HW-CC-Expire=86400&HW-CC-Sign=459D0E99C097C2FE7ED0656554DC004BBB96E3A7A683F03C4CFAC5253281A85D) #### 接口说明 绘制动态轨迹功能主要由 TraceOverlayParams 、 addTraceOverlay 、 Marker 和 TraceOverlay 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 1. 导入相关模块。 import { mapCommon, map, MapComponent } from '@kit.MapKit'; import { AsyncCallback } from '@kit.BasicServicesKit'; 2. 绘制动态轨迹。 @Entry @Component struct TraceOverlayDemo {"
+    },
+    {
+      "path": "references/区划选择.md",
+      "title": "区划选择",
+      "snippet": "本章节将介绍如何集成区划选择控件。该控件不支持在智能表设备中调用。 区划选择控件可加载全球或指定国家的区划信息，支持以树状结构化选择，支持功能： - 支持查看选中区划的下级区划。 - 支持推荐热门区划。 - 支持子窗拉起区划控件，适合宽屏设备使用。 **图1** 选择国家 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b3/v3/i7QhD5njQ4WciHApKvQU2g/zh-cn_image_0000002573854997.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111602Z&HW-CC-Expire=86400&HW-CC-Sign=207EA954E29571D4165D96B7A232A1B7016ABF4019147EC52B5B94F0017955AE) **图2** 选择省市 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/12/v3/_bb4qQ6ET2qloLM_hwN9kw/zh-cn_image_0000002573974979.jpg?HW-CC-KV=V1&HW-CC-Date="
+    },
+    {
+      "path": "references/圆形.md",
+      "title": "圆形",
+      "snippet": "本章节将向您介绍如何在地图上绘制圆形。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c8/v3/0LcrVgr1RCqNBNspZrWrtw/zh-cn_image_0000002573974967.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111557Z&HW-CC-Expire=86400&HW-CC-Sign=AC7AC1FE358F810F7A02169DE2AC19694B14275CB923CCBEBA040574F24C448E) #### 接口说明 添加圆形功能主要由 MapCircleOptions 、 addCircle 和 MapCircle 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 1. 导入相关模块。 import { MapComponent, mapCommon, map } from '@kit.MapKit'; import { AsyncCallback } from '@kit.BasicServicesKit'; 2. 添加圆，在callback方法中创建初始化参数并新建Circle。 @Entry @Component struct MapCircleDemo { "
+    },
+    {
+      "path": "references/地图不显示.md",
+      "title": "地图不显示",
+      "snippet": "**现象描述** 无法加载地图。 **可能原因** 1. 无网络。 2. 应用身份校验失败或地图权限未开通。 3. 未完成基本准备工作。 **处理步骤** 1. 检查是否存在日志：get network status error, code: 201, message:Permission denied。日志存在，说明应用缺少获取网络状态的权限。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c8/v3/_mvMHi2HRX-0P8srtSc07g/zh-cn_image_0000002543374750.png?HW-CC-KV=V1&HW-CC-Date=20260421T111603Z&HW-CC-Expire=86400&HW-CC-Sign=7250EC95AEA3404ABEDA3A962DC937F800A6A373268534DA12EFA4B2E9BBDD65) 请在应用的module.json5文件中配置获取网络状态的权限。 { \"module\" : { // ... \"requestPermissions\": [ { \"name\": \"ohos.permission.INTERNET\", \"usedScene\": { \"when\": \"al"
+    },
+    {
+      "path": "references/地图截图.md",
+      "title": "地图截图",
+      "snippet": "本章节将向您介绍如何实现地图截图功能。 地图截图指对当前屏幕显示区域进行截屏，支持对地图、覆盖物、Logo进行屏幕截图。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b4/v3/v9_CW8nXRMq3_DXUcqTGUw/zh-cn_image_0000002543215060.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111556Z&HW-CC-Expire=86400&HW-CC-Sign=34515DC6154997FD204CA0ADF592E1F5FFFBD3ABED2BB4D47109AA8C4F94CBD6) #### 接口说明 以下是地图截图相关接口，以下功能主要由 snapshot 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 1. 导入相关模块。 import { MapComponent, mapCommon, map } from '@kit.MapKit'; import { AsyncCallback } from '@kit.BasicServicesKit'; import { image } from '@kit.ImageKit'; 2. 调用 snapshot 方法对当前"
+    },
+    {
+      "path": "references/地图数据版权声明.md",
+      "title": "地图数据版权声明",
+      "snippet": "TomTom Data © 2006-2025 TomTom. All rights reserved. This material is proprietary and the subject of copyright protection, database right protection and other Intellectual Property Rights owned by TomTom or its suppliers. The use of this material is subject to the terms of a license agreement. Any unauthorized copying or disclosure of this material will lead to criminal and civil liabilities. OSM Data Contains map data © OpenStreetMap contributors. More information can be found here: https://www.openstreetmap.org/copyright . NAVINFO Data ©NAVINFO, all rights reserved Austria © BEV, GZ 1368/200"
+    },
+    {
+      "path": "references/地点详情展示.md",
+      "title": "地点详情展示",
+      "snippet": "本章节将向您介绍如何集成地点详情展示控件，该控件为您提供了便捷的地点详情展示功能实现方案，无需自行开发地图页面。此外，该控件还具备导航功能，您可通过点击\"路线\"按钮直接启动导航功能，或通过点击相邻的打车按钮快速发起打车服务。需要注意的是，该控件暂不支持在智能表设备上调用。 **图1** 地点详情 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6e/v3/PZXdhl9zR8iEqmgpTUogtg/zh-cn_image_0000002573974977.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111601Z&HW-CC-Expire=86400&HW-CC-Sign=F822CDC5DE88D98B2D98A60D5EA29D54706F707430E5CD9DD3E27940629708B0) #### 约束与限制 使用该功能需满足以下条件： - 仅支持手机、平板和2in1设备。 #### 接口说明 地点详情控件功能主要由 sceneMap 命名空间下的 queryLocation 方法提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 1. 导入相关模块。 import { sceneMap } from '@"
+    },
+    {
+      "path": "references/地点选取.md",
+      "title": "地点选取",
+      "snippet": "本章节将向您介绍如何集成地点选取控件，您无需自己开发地图页面，可快速实现地点选取的能力。该控件不支持在智能表设备中调用。 **图1** 地点选取页 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6a/v3/CkvvdpJnT76lrmYxhkDcjg/zh-cn_image_0000002543374744.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111601Z&HW-CC-Expire=86400&HW-CC-Sign=77B75D35A12891EAAA8F54968528DE912C2788AB256564A923637FDB6E1F3067) **图2** 地点选取 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0b/v3/8GwTRKbDQmKOeNLhzzqjAg/zh-cn_image_0000002543215082.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111601Z&HW-CC-Expire=86400&HW-CC-Sign=DF9C0DA37ADA42A8"
+    },
+    {
+      "path": "references/地理编码.md",
+      "title": "地理编码",
+      "snippet": "提供正地理编码、逆地理编码的能力： - 正地理编码：根据地址获取地点的经纬度。 - 逆地理编码：获取经纬度对应的地点信息。 #### 接口说明 以下是地理编码相关接口，主要由 site 命名空间下的方法提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 导入相关模块。 import { site } from '@kit.MapKit'; import { BusinessError } from '@kit.BasicServicesKit'; #### 正地理编码 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c3/v3/hPMJqDegQ-COH4sDh5Wtmg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111600Z&HW-CC-Expire=86400&HW-CC-Sign=2FC052BA9D6D5C0E7BFC4866CAAFA13C36DF6ABAF12FE2323BAC33CD8494EC9A) 根据地址获取地点的空间坐标，如经纬度，最多返回10条记录。 let params: site.GeocodeParams = { // 地址信息 query: 'Piazzal"
+    },
+    {
+      "path": "references/场景化控件的language参数生效范围.md",
+      "title": "场景化控件的language参数生效范围",
+      "snippet": "1. 不传language：UI界面、地图、向云侧请求后返回的数据跟随系统语言。 2. 传language：UI界面和地图跟随系统语言；请求云侧的结果根据language获取，部分数据缺失传参语言默认使用英文兜底。"
+    },
+    {
+      "path": "references/坐标纠偏.md",
+      "title": "坐标纠偏",
+      "snippet": "华为地图涉及2种坐标系： - WGS84：一种大地坐标系，也是目前广泛使用的GPS全球卫星定位系统使用的坐标系。 - GCJ02：由中国国家测绘局制定的地理信息系统的坐标系统，是由WGS84坐标系经过加密后的坐标系。 #### 华为地图使用的坐标类型 中国大陆使用GCJ02坐标系，中国台湾和海外使用WGS84坐标系。 #### 场景介绍 华为地图在中国大陆使用GCJ02坐标系，若使用WGS84坐标系直接叠加在华为地图上，因坐标值不同，展示位置会有偏移。所以，在中国大陆如果使用WGS84坐标调用Map Kit服务，需要先将其转换为GCJ02坐标系再访问。 #### 接口说明 以下是坐标纠偏功能相关接口，主要由 map 命名空间下的 convertCoordinateSync 、 rectifyCoordinate 方法提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 导入相关模块。 import { map, mapCommon } from '@kit.MapKit'; #### 坐标纠偏 rectifyCoordinate 接口根据用户输入的坐标系和坐标以及获取当前的路由地，判断是否需要修正坐标。如果需要修正，则返回修正后的坐标系和坐标。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/Developer"
+    },
+    {
+      "path": "references/多边形.md",
+      "title": "多边形",
+      "snippet": "本章节将向您介绍如何在地图上绘制多边形。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2b/v3/C5y68lNPSjyrqTHLLQBBwA/zh-cn_image_0000002543215070.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111557Z&HW-CC-Expire=86400&HW-CC-Sign=F6B7834D1A3D6BB1ECD2AB404EF269E79E59B03E927B21CF033E536E852C9B33) #### 接口说明 添加多边形功能主要由 MapPolygonOptions 、 addPolygon 和 MapPolygon 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 1. 导入相关模块。 import { MapComponent, mapCommon, map } from '@kit.MapKit'; import { AsyncCallback } from '@kit.BasicServicesKit'; 2. 添加多边形，在callback方法中创建初始化参数并新建polygon。 @Entry @Component struct MapPolyg"
+    },
+    {
+      "path": "references/开发准备.md",
+      "title": "开发准备",
+      "snippet": "请优先 开通地图服务 后，再参考“ 应用开发准备 ”完成基本准备工作，然后再继续进行以下开发活动。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cb/v3/5BOmDku4R9mYIFHimUzjFw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111554Z&HW-CC-Expire=86400&HW-CC-Sign=5D3E6F93ED2C6B3A993B67F2E3D1FD091199A0D3B51B3C5ECB72E3055ACC5009) - 从HarmonyOS 5.0.2(14)版本开始，开发者无需配置公钥指纹和Client ID。 - 从DevEco Studio 6.0.0 Beta5版本开始，支持在DevEco Studio中开通地图服务。 #### 开通地图服务 Map Kit提供2种方式开通地图服务： - 通过DevEco Studio开通地图服务。 - 通过AppGallery Connect网站开通地图服务。 方式一：通过DevEco Studio开通地图服务 1. 登录DevEco Studio应用。 ![](https://contentcenter-vali-drcn."
+    },
+    {
+      "path": "references/弧线.md",
+      "title": "弧线",
+      "snippet": "本章节将向您介绍如何在地图上绘制弧线，通过 MapArcParams 类设置弧线的位置、宽度、颜色等参数。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/82/v3/BEkCqUf6Q5yEnas2AiNSMQ/zh-cn_image_0000002573974965.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111557Z&HW-CC-Expire=86400&HW-CC-Sign=C717C1E14C54E4C9446CA42DDFB7A98877F23FB05EFDA6D20229960FDF174EEE) #### 接口说明 添加弧线功能主要由 MapArcParams 、 addArc 和 MapArc 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 #### 添加弧线 1. 导入相关模块。 import { map, mapCommon, MapComponent } from '@kit.MapKit'; import { AsyncCallback } from '@kit.BasicServicesKit'; 2. 添加弧线，在callback方法中创建初始化参数并新建MapArc。 @Entry"
+    },
+    {
+      "path": "references/手势交互.md",
+      "title": "手势交互",
+      "snippet": "本章节将向您介绍如何使用地图的手势。 Map Kit提供了多种手势供用户与地图之间进行交互，如缩放、滚动、旋转和倾斜。这些手势默认开启，如果想要关闭某些手势，可以通过 MapComponentController 类提供的接口来控制手势的开关。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8f/v3/6i1Jm1vuQyuOYxICtmROHw/zh-cn_image_0000002543374720.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111556Z&HW-CC-Expire=86400&HW-CC-Sign=B97CB7889F5C1F94590A5FE329D7C05086FB42F905A5048FA8EFF7F21590F530) #### 接口说明 以下是地图手势相关接口，该功能有2种实现方式： - 地图初始化时，可在初始化参数 MapOptions 中设置是否启用手势功能，详细讲解见 显示地图 章节。 - 通过调用 MapComponentController 提供的set方法实现相关手势的开启或关闭。 #### 开发步骤 mapController对象在初始化地图时获取，初始化地图功能在 显示地图 章节中有详"
+    },
+    {
+      "path": "references/手势卡顿或者不生效.md",
+      "title": "手势卡顿或者不生效",
+      "snippet": "**现象描述** 地图页面操作手势卡顿或者不生效。 **可能原因** 1. 手势遮盖或者手势冲突。 - 手势遮盖：地图组件的上层存在没有做手势穿透的组件。 - 手势冲突：以Swiper容器组件中使用地图组件为例，Swiper容器组件和地图组件手势会存在冲突。 2. 主线程阻塞。 应用主线程处理大批量逻辑时，存在主线程阻塞，此时进行地图手势操作，手势应答会变慢甚至手势响应失败。 **处理步骤** 1. 手势遮盖或者手势冲突。 - 手势遮盖：参考触摸测试控制做手势穿透。 - import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit'; import { map, mapCommon, MapComponent } from '@kit.MapKit'; class MyDataSource implements IDataSource { private list: number[] = []; constructor(list: number[]) { this.list = list; } // 获取数组长度 totalCount(): number { return this.list.length; } // 根据索引获取数据 getData(index: number): number { retu"
+    },
+    {
+      "path": "references/批量算路.md",
+      "title": "批量算路",
+      "snippet": "多个起点到多个终点的批量算路功能，在驾车、步行、骑行模式下，快速批量计算多个起点分别到多个终点的路线距离和耗时。 #### 接口说明 以下是路径规划功能相关接口，主要由 navi 命名空间下的方法提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 导入相关模块。 import { navi } from '@kit.MapKit'; import { BusinessError } from '@kit.BasicServicesKit'; #### 驾车批量算路 根据多组起终点坐标批量检索符合条件的驾车路径规划方案。支持以下功能： - 支持未来出行规划。 - 支持根据实时路况进行合理路线规划。 - 支持多种路线偏好选择，如时间最短、避免经过收费的公路、避开高速公路、距离优先等。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/91/v3/C6MlRiYrRcq8UipR1ztWbw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111601Z&HW-CC-Expire=86400&HW-CC-Sign=9E9A1F4266508B63A5CB6DACEBD37BD4C313650AFFE081"
+    },
+    {
+      "path": "references/折线.md",
+      "title": "折线",
+      "snippet": "本章节将向您介绍如何在地图上绘制折线、设置折线分段颜色、设置折线可渐变、绘制纹理。 5.0.3(15)开始，支持折线绘制纹理功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/20/v3/jO1YpEsESlmVAY9GffcdDg/zh-cn_image_0000002543215066.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111557Z&HW-CC-Expire=86400&HW-CC-Sign=9ACE4406F408D7D52464D417C54D31E2738BFB34260F52323B33E75D6DD43570) #### 接口说明 添加折线功能主要由 MapPolylineOptions 、 addPolyline 和 MapPolyline 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 #### 添加折线 1. 导入相关模块。 import { MapComponent, mapCommon, map } from '@kit.MapKit'; import { AsyncCallback } from '@kit.BasicServicesKit'; 2. 添加折线，在callbac"
+    },
+    {
+      "path": "references/控件交互.md",
+      "title": "控件交互",
+      "snippet": "从6.1.0(23)开始，支持在地图左下角设置审图号。 本章节将向您介绍如何使用地图的控件。 控件是指浮在地图组件上的一系列用于操作地图的组件，例如缩放按钮 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bf/v3/Q56W2Ku2QbSiksOLsiKXBw/zh-cn_image_0000002543215052.png?HW-CC-KV=V1&HW-CC-Date=20260421T111555Z&HW-CC-Expire=86400&HW-CC-Sign=5AB1B748E55A747825820F3DBF1BDEA8B929C44174EC442FD3E60E0A97E4A882) 、定位按钮 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a0/v3/LhW4TCOxQiysb8S5NIdx1g/zh-cn_image_0000002573854967.png?HW-CC-KV=V1&HW-CC-Date=20260421T111555Z&HW-CC-Expire=86400&HW-CC-Sign=C1387FA44F22A2479"
+    },
+    {
+      "path": "references/支持的国家_地区.md",
+      "title": "支持的国家/地区",
+      "snippet": ""
+    },
+    {
+      "path": "references/支持的语言.md",
+      "title": "支持的语言",
+      "snippet": "#### 地图Picker支持语言 #### 位置搜索支持语言"
+    },
+    {
+      "path": "references/显示地图.md",
+      "title": "显示地图",
+      "snippet": "从5.0.3(15)开始，支持Logo缩放功能和3D地球功能；从5.1.1(19)开始，支持室内图功能和设置比例尺单位功能；从6.0.0(20)开始，支持设置地图语言功能；从6.1.0(23)开始，支持设置3D地图城市灯光效果。 本章节将向您介绍如何使用地图组件 MapComponent 和 MapComponentController 呈现地图，效果如下图所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1b/v3/A4yGF4YjSCSlZJgfmD5AWw/zh-cn_image_0000002543374698.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111555Z&HW-CC-Expire=86400&HW-CC-Sign=30F4547E2DA1BB7AE00D42328A21A5EB12A9FF64DF46CFF365C350FACFFD0B7E) #### 接口说明 显示地图功能主要由 MapComponent 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 #### 地图显示 1. 导入Map Kit相关模块。 import { MapComponent, mapCommon, map } "
+    },
+    {
+      "path": "references/显示我的位置.md",
+      "title": "显示我的位置",
+      "snippet": "从6.0.1(21)开始，支持更改我的位置相对覆盖物的顺序。 本章节将向您介绍如何开启和展示“我的位置”功能，“我的位置”指的是进入地图后点击“我的位置”显示当前位置点的功能。效果如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/40/v3/uVjTmY9gQZmkOztjQFyLfQ/zh-cn_image_0000002543215044.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111555Z&HW-CC-Expire=86400&HW-CC-Sign=908283E895B40041E8A3A64B73D02BC174CB93986018E7B8CA3D13370BF12DA6) #### 接口说明 “我的位置”功能主要由 MapComponentController 的方法实现，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 #### 开启“我的位置”按钮 1. 启用“我的位置”之前，您需要确保您的应用可以获取用户定位。 申请ohos.permission.LOCATION和ohos.permission.APPROXIMATELY_LOCATION权限，您需要在module.json5配置文件中声明所需要"
+    },
+    {
+      "path": "references/显示自定义地图.md",
+      "title": "显示自定义地图",
+      "snippet": "本章节将向您介绍如何在应用中添加自定义样式的地图。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5a/v3/9a94ZKRuTou_ko_5gRuEXA/zh-cn_image_0000002573974941.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111555Z&HW-CC-Expire=86400&HW-CC-Sign=0CD00BDE8BB1CDD538885AC72DEB0CB3B987F51C8CA51A961CDC0E653534F8C1) #### 接口说明 自定义样式功能主要由 CustomMapStyleOptions 、 setCustomMapStyle 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 Map Kit提供两种方法设置自定义地图样式： - 设置样式ID：使用 Petal Maps Studio 管理地图样式，并使用样式ID将它们链接到您的地图上。您可以在 Petal Maps Studio 上创建新样式，或导入现有样式定义。样式一旦发布，使用此样式的应用都会自动应用新样式。 - 设置样式内容：通过传入自定义JSON更改地图样式，JSON的定义参见 样式参考 。 #### 设"
+    },
+    {
+      "path": "references/更改地图位置.md",
+      "title": "更改地图位置",
+      "snippet": "华为地图的移动是通过模拟相机移动的方式实现的，该相机可称为地图相机，您可以通过改变地图相机位置，来控制地图的可见区域，效果如图所示。 本章节将向您介绍地图相机的各个属性与含义，并移动相机。 **图1** 相机移动前 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fe/v3/WJEZo0NnQj2dHfoqV5UKbw/zh-cn_image_0000002543215058.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111556Z&HW-CC-Expire=86400&HW-CC-Sign=92C274A49CDF6EDAF65A173AADE2FE10E135364422111C1321C3F3E8B9F1C0FA) **图2** 相机移动后 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ce/v3/DEHeyUAyRYeYmGbzO_jXVg/zh-cn_image_0000002573854973.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111556Z&HW-CC-Expir"
+    },
+    {
+      "path": "references/标记.md",
+      "title": "标记",
+      "snippet": "本章节将向您介绍如何在地图的指定位置添加标记以标识位置、商家、建筑等。 点标记用来在地图上标记任何位置，例如用户位置、车辆位置、店铺位置等一切带有位置属性的事物。Map Kit提供的点标记功能（又称 Marker）封装了大量的触发事件，例如点击事件、长按事件、拖拽事件。 Marker有默认风格，同时也支持自定义。由于内容丰富，以下只能展示一些基础功能的使用。 5.1.1(19)开始，支持控制Marker文字显隐功能。 6.0.0(20)开始，支持自定义组件实现marker图标功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/88/v3/GcmdH2BXT2av1UeXaRcpZg/zh-cn_image_0000002573854975.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111557Z&HW-CC-Expire=86400&HW-CC-Sign=802D0C86F001A954AB94B6D12F9B04582B92CAB08D72663802C1D0211D6CC94B) #### 接口说明 添加标记功能主要由 MarkerOptions 、 addMarker 和 Marker 提供，更多接口及使用方法请参见 接口文"
+    },
+    {
+      "path": "references/气泡.md",
+      "title": "气泡",
+      "snippet": "本章节将向您介绍如何在地图的指定位置添加气泡。 您可以通过气泡在道路上指定位置显示测速、拥堵情况。气泡支持功能： - 支持设置四个方向的图标（传入的图标宽高需要相同）。 - 支持设置图标碰撞规则。 - 支持设置当前气泡的候选坐标段，通过计算使气泡在最佳的线段位置上。 - 支持设置图标动画。 - 支持添加点击事件。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/33/v3/9IhKEBnrTmSpNntg9Fmuvw/zh-cn_image_0000002543215074.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111558Z&HW-CC-Expire=86400&HW-CC-Sign=AFA21CBD5A0F2410113AA846DABD74B390D0FF799B82F74E3376FFB83BEF6399) #### 接口说明 添加气泡功能主要由 BubbleParams 、 addBubble 和 Bubble 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 #### 添加气泡 1. 导入相关模块。 import { MapComponent, mapCommon, map } from '@kit.M"
+    },
+    {
+      "path": "references/流场图层.md",
+      "title": "流场图层",
+      "snippet": "新增流场图层，用于在基础地图之上叠加数据。通常用于实时展示天气风场、洋流等场景。 6.0.0(20)开始，支持流场图层功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/36/v3/niDUPeNHQHOF7TbQXq_w1A/zh-cn_image_0000002573974975.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111559Z&HW-CC-Expire=86400&HW-CC-Sign=BEE7CADFD7F789005F6888AE578FF3134DCF8350748AEF736B13F81A53694F93) #### 接口说明 流场图层功能主要由 FlowFieldOverlayParams 、 addFlowFieldOverlay 和 FlowFieldOverlay 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 #### 添加流场图层 1. 导入相关模块。 import { mapCommon, map, MapComponent } from '@kit.MapKit'; import { AsyncCallback } from '@kit.BasicServicesKit'; "
+    },
+    {
+      "path": "references/海量点图层.md",
+      "title": "海量点图层",
+      "snippet": "新增海量点图层，用于批量展示坐标点数据。海量点图层支持处理的点数量级跨度较大，从几十个点至十万个点都可以应用海量点图层进行处理，本章节将向您介绍如何在地图上绘制海量点图层。 6.0.0(20)开始，支持海量点图层功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7d/v3/hhm82STfT-yqbUpjWtf-DA/zh-cn_image_0000002543374742.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111600Z&HW-CC-Expire=86400&HW-CC-Sign=832044FADAE6B1DEEFBB51CB7296CE13D1F643F8E52624FA98A18F067BA8361F) #### 接口说明 海量点图层功能主要由 MassPointOverlayParams 、 addMassPointOverlay 、 MassPointOverlay 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 #### 添加海量点图层 1. 导入相关模块。 import { mapCommon, map, MapComponent } from '@kit.MapKit'; import"
+    },
+    {
+      "path": "references/点注释.md",
+      "title": "点注释",
+      "snippet": "本章节将向您介绍如何在地图的指定位置添加点注释以标识位置、商家、建筑等，并可以通过信息窗口展示详细信息。 点注释支持功能： - 支持设置图标、文字、碰撞规则等。 - 支持添加点击事件。 PointAnnotation 有默认风格，同时也支持自定义。由于内容丰富，以下只展示一些基础功能的使用，详细内容可参见 接口文档 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c5/v3/ql1Nw2NWSEmdJzrMUCumxg/zh-cn_image_0000002543215072.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111557Z&HW-CC-Expire=86400&HW-CC-Sign=33BAB27415AF5FAA5B57FC1BDB73B5ACC93463AA2BD9014A66AAE5AAA2550C74) #### 接口说明 添加点注释功能主要由 PointAnnotationParams 、 addPointAnnotation 、 PointAnnotation 、 on 、 off 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 #### 添加点注释 1. 导入相关模块。 import { "
+    },
+    {
+      "path": "references/点聚合.md",
+      "title": "点聚合",
+      "snippet": "本章节将向您介绍如何根据地图数据实现聚合效果。 您可以通过比例尺缩放自适应聚合效果，聚合图标可点击。聚合支持功能： - 支持按距离聚合 ClusterItem 。 - 支持绘制聚合覆盖物的默认图标。 - 支持绘制聚合覆盖物的 自定义图标 。 - 支持监听聚合覆盖物的点击事件。 - 支持添加单个 ClusterItem 到聚合覆盖物中。 - 支持删除聚合覆盖物。 - 支持移动地图时重绘聚合覆盖物。 5.0.3(15)开始，支持聚合标记点击事件监听功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7c/v3/qu8iEfU1SriBziCPcXTXjg/zh-cn_image_0000002573974971.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111558Z&HW-CC-Expire=86400&HW-CC-Sign=182B5B068F45267CB0C8C1FC46F5BFF69E18138093E617ADDAFDD62799BA58D1) #### 接口说明 聚合功能主要由 ClusterOverlayParams 、 addClusterOverlay 、 ClusterOverlay 提供，更多接口及使用方法请参"
+    },
+    {
+      "path": "references/热力图.md",
+      "title": "热力图",
+      "snippet": "新增热力图层，用于展示数据的分布情况。通过热力图功能，将数据用不同颜色的区块在地图上展示，可以直观地描述在地图上某个区域内人群或车辆的密度和分布情况。热力图适用于大数据密度可视化场景，如人流分布，热点区域等。 6.0.0(20)开始，支持热力图功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e1/v3/l2l3ZAj2TxWm4ZkOk-wI4A/zh-cn_image_0000002543215078.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111559Z&HW-CC-Expire=86400&HW-CC-Sign=4A4BFC7E293204A0CF9207A89633088817E769499262AA6DF7468D05A5BB3C0E) #### 接口说明 热力图功能主要由 HeatmapParams 、 addHeatmap 和 Heatmap 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 1. 导入相关模块。 import { map, mapCommon, MapComponent } from '@kit.MapKit'; import { AsyncCallback } from '@"
+    },
+    {
+      "path": "references/瓦片图层.md",
+      "title": "瓦片图层",
+      "snippet": "新增瓦片图层（TileOverlay）, 该图层支持添加自有瓦片数据，包括在线下载和本地加载两种方式。该图层可随地图的平移、缩放、旋转等操作做相应的变换，它仅位于底图之上（即瓦片图层将会遮挡底图，不遮挡其他图层），瓦片图层的添加顺序不会影响其他图层的叠加关系。 通过瓦片图层可对基础底层地图添加额外的特性，如：某个商场的室内信息、某个景区的详情等等。适用于开发者拥有某一区域的地图，并希望使用此区域地图覆盖相应位置的华为地图。 5.0.3(15)开始，支持瓦片图层功能。 6.0.0(20)开始，支持瓦片数据缓存功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/58/v3/sjrKAvvrR3CJmEv3MNwLSw/zh-cn_image_0000002543374740.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111559Z&HW-CC-Expire=86400&HW-CC-Sign=6FEFA9F542CE0DB4A78AB50466CA2FE4418B43FCBF0BB7FBE6D7EBC9FCE8936B) #### 接口说明 瓦片图层功能主要由 TileOverlayParams 、 TileOverlayOptions"
+    },
+    {
+      "path": "references/矢量图层.md",
+      "title": "矢量图层",
+      "snippet": "新增矢量图层，用于在基础地图之上叠加矢量数据。通过矢量图层可对基础底层地图添加额外的特性，如：实时展示全球或区域的天气状况等。 6.0.0(20)开始，支持矢量图层功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/23/v3/RB6dpe_wRu-VlncLI_d5GA/zh-cn_image_0000002573854993.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111559Z&HW-CC-Expire=86400&HW-CC-Sign=FD5A8E54839901079E307BB1A669B58535567CEA4DD3660A558DF001A16EA9B9) #### 接口说明 矢量图层功能主要由 MvtOverlayParams 、 addMvtOverlay 和 MvtOverlay 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 矢量图层的绘制方式提供两种方式：在线下载和本地加载。 #### 在线下载 1. 使用在线下载绘制矢量图层之前，请在应用的module.json5文件中配置访问网络的权限。 { \"module\" : { // ... \"requestPermissions\":[ { "
+    },
+    {
+      "path": "references/覆盖物.md",
+      "title": "覆盖物",
+      "snippet": "地图覆盖物是固定在地图上的图片，本章节将向您介绍如何为地图增加覆盖物。 覆盖物，是一种位于底图和底图标注层之间的特殊Overlay，该图层不会遮挡地图标注信息。通过 ImageOverlayParams 类来设置，开发者可以通过 ImageOverlayParams 类设置一张图片，该图片可随地图的平移、缩放、旋转等操作做相应的变换。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/20/v3/6sllR_-KQWOOkAh7dJYa8w/zh-cn_image_0000002543374738.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111558Z&HW-CC-Expire=86400&HW-CC-Sign=5819B8452595355DF28635F6559155973226ED31ED34F7630199427473715C8D) #### 接口说明 增加覆盖物功能主要由 ImageOverlayParams 、 addImageOverlay 、 ImageOverlay 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 1. 导入相关模块。 import { map, mapCommon, MapComp"
+    },
+    {
+      "path": "references/设置地图Logo始终显示.md",
+      "title": "设置地图Logo始终显示",
+      "snippet": "**现象描述** Map Kit地图Logo不可见。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d3/v3/4AFKSuKlTkO33lgOKa_Frw/zh-cn_image_0000002543374752.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111603Z&HW-CC-Expire=86400&HW-CC-Sign=B13AB4BAA67AAEB45CAAA5D974BBC3683ADD8C1D457E63AB85E30539C5876251) **可能原因** 用户在开发过程中，地图Logo被其他控件或者页面遮挡。 **处理步骤** Map Kit无法隐藏地图Logo，也不允许地图Logo被遮挡。用户可以实现地图Logo自动避让，保证地图Logo持续展示，解决方案参考如下代码： import { MapComponent, mapCommon, map } from '@kit.MapKit'; import { AsyncCallback } from '@kit.BasicServicesKit'; @Entry @Component struct MapKitAppDemo { private mapOpti"
+    },
+    {
+      "path": "references/设置地图元素压盖顺序.md",
+      "title": "设置地图元素压盖顺序",
+      "snippet": "本章节将向您介绍如何设置地图元素的层级压盖关系。 设置地图元素的显示顺序，按照从低到高排列，即后面的地图元素会压盖前面的地图元素。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2a/v3/LHEisCCGScutQgLMYVntzg/zh-cn_image_0000002573974973.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111559Z&HW-CC-Expire=86400&HW-CC-Sign=D7A56CEE577E760ED008D03C6434875B18802B87EEB456F236ED47DFE2BE2CCF) **表1** 地图元素类型压盖顺序 #### 接口说明 设置层级压盖关系功能主要由 MapElementType 、 setDisplayOrder 提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 1. 导入相关模块。 import { mapCommon, map, MapComponent } from '@kit.MapKit'; import { AsyncCallback } from '@kit.BasicServicesKit'; 2. 设置地图元素层级压盖关系。 @"
+    },
+    {
+      "path": "references/距离计算.md",
+      "title": "距离计算",
+      "snippet": "根据用户指定的两个经纬度坐标点，计算这两个点间的直线距离，单位为米。 #### 接口说明 以下是距离计算功能相关接口，主要由 map 命名空间下的 calculateDistance 方法提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 1. 导入相关模块。 import { map, mapCommon } from '@kit.MapKit'; 2. 初始化需要计算的坐标，调用 calculateDistance 方法计算距离。 let fromLatLng: mapCommon.LatLng = { latitude: 38, longitude: 118 }; let toLatLng: mapCommon.LatLng = { latitude: 39, longitude: 119 }; let distance = map.calculateDistance(fromLatLng, toLatLng);"
+    },
+    {
+      "path": "references/轨迹绑路.md",
+      "title": "轨迹绑路",
+      "snippet": "根据给定的坐标点捕捉道路，将用户的轨迹纠正到道路上，从而返回用户实际驾车经过的道路坐标。 #### 接口说明 以下是路径规划功能相关接口，主要由 navi 命名空间下的方法提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 导入相关模块。 import { navi } from '@kit.MapKit'; import { BusinessError } from '@kit.BasicServicesKit'; #### 轨迹绑路 根据给定的坐标点捕捉道路，将用户的轨迹纠正到道路上，从而返回用户实际驾车经过的道路坐标。 async testSnapToRoads() { let params: navi.SnapToRoadsParams = { // 道路贴合点集合，不能超过100个，且相邻两个点距离需小于等于500米 points: [{ latitude: 31.984410259206815, longitude: 118.76625379397866 }] }; try { const result = await navi.snapToRoads(params); console.info(`Succeeded in snapping to roads. result is ${JSON.stringify(result)}`); } catch ("
+    },
+    {
+      "path": "references/通过地图应用实现导航等能力.md",
+      "title": "通过地图应用实现导航等能力",
+      "snippet": "从5.0.3(15)开始，支持地图应用首页、搜索地点、查看地点详情、规划路线和进行导航功能；从6.0.1(21)开始，支持地图应用发起打车功能。 本章节将向您介绍如何打开地图应用实现如下能力： - 打开地图应用首页 - 打开地图应用搜索地点 - 打开地图应用查看地点详情 - 打开地图应用规划路线 - 打开地图应用进行导航 - 打开地图应用发起打车 #### 接口说明 调用地图应用的功能主要通过 petalMaps 命名空间下的 openMapHomePage 、 openMapTextSearch 、 openMapPoiDetail 、 openMapRoutePlan 、 openMapNavi 、 openMapTaxi 等接口实现，更多接口及使用方法请参见 接口文档 。 #### 地图应用使用的坐标类型 在国内站点，中国大陆使用GCJ02坐标系，中国台湾使用WGS84坐标系。 在海外站点，统一使用WGS84坐标系。坐标系转换参考： 坐标纠偏 。 #### 开发步骤 导入相关模块 import { petalMaps } from '@kit.MapKit' #### 打开地图应用首页 通过 openMapHomePage ，打开地图应用首页。 try { await petalMaps.openMapHomePage(this.getUIContext().getHostC"
+    },
+    {
+      "path": "references/静态图.md",
+      "title": "静态图",
+      "snippet": "本章节将向您介绍如何使用静态图功能。静态图功能会返回一张地图图片，您可以将地图以图片形式嵌入自己的应用/元服务中。在使用时，您可以指定请求的地图位置、图片大小。 **图1** 静态图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ed/v3/Sb7Vj2b_TmmaNowF3_V5OA/zh-cn_image_0000002543215080.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111601Z&HW-CC-Expire=86400&HW-CC-Sign=20A762F391303F2E34F1E15CBB8BC2088E4140A76B7C60FFE8A47F079D9C9B6B) #### 接口说明 以下是地图静态图相关接口，获取静态图功能主要由 staticMap 命名空间下的方法提供，更多接口及使用方法请参见 接口文档 。 #### 开发步骤 1. 导入相关模块。 import { staticMap } from '@kit.MapKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 创建静态图初始化参数，调用 getMapImage 方法获取静"
+    }
+  ]
+}

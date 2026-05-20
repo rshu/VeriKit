@@ -1,0 +1,30 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "file-manager-service-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.780Z"
+  },
+  "references": [
+    {
+      "path": "references/File Manager Service Kit简介.md",
+      "title": "File Manager Service Kit简介",
+      "snippet": "File Manager Service Kit（文件管理服务）为开发者提供文件管理相关能力，开发者通过File Manager Service Kit完成文件删除到回收站、获取文件图标、解析文件快捷方式等功能，满足用户对文件管理的多样性诉求。 #### 场景介绍 File Manager Service Kit提供以下功能： - 删除文件到回收站：删除公共目录的文件到回收站。 - 获取文件图标：根据文件类型获取对应的文件图标。 - 解析文件快捷方式：根据快捷方式文件解析出对应原文件的URI。 #### 约束与限制 #### 支持的国家和地区 当前仅支持在中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）提供服务。 #### 支持的设备 本Kit仅适用于手机、平板和PC/2in1。 #### 模拟器支持情况 从5.1.0(18)版本开始，支持模拟器运行调试。"
+    },
+    {
+      "path": "references/删除文件到回收站.md",
+      "title": "删除文件到回收站",
+      "snippet": "删除公共目录的文件到回收站。 #### 接口说明 #### 示例代码 1.导入文件管理服务模块及相关模块 import { fileManagerService } from '@kit.FileManagerServiceKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2.删除指定文件到回收站 async function deleteFile() { // 以内置存储目录为例 // 示例代码targetUri表示Download目录下文件 // 开发者应根据自己实际获取的uri进行开发，并确保对该文件有读写权限 let targetUri: string = \"file://docs/storage/Users/currentUser/Download/1.txt\"; try { let trashUri: string = await fileManagerService.deleteToTrash(targetUri); console.info(\"trashUri: \" + trashUri); } catch (err) { let error: BusinessError = err as BusinessError; console.error(\"delete failed, errCode:"
+    },
+    {
+      "path": "references/获取文件图标.md",
+      "title": "获取文件图标",
+      "snippet": "根据文件类型获取对应的文件图标。 #### 接口说明 #### 示例代码 1.导入文件管理服务模块及相关模块 import { fileManagerService } from '@kit.FileManagerServiceKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { uniformTypeDescriptor } from '@kit.ArkData'; 2.申请权限。使用获取文件图标接口时，需要在module.json5中声明申请接口所需的权限：ohos.permission.GET_FILE_ICON。具体指导可见 声明权限 。 3.获取文件图标 @Entry @Component struct Index { @State fileIcon: string | Resource = ''; private getFileIconByFileExtension(filenameExtension: string): void { try { let typeId: string = uniformTypeDescriptor.getUniformDataTypeByFilenameExtension(filenameExtension); this.fileIcon = file"
+    },
+    {
+      "path": "references/解析文件快捷方式.md",
+      "title": "解析文件快捷方式",
+      "snippet": "从6.1.0(23)版本开始，新增支持解析文件快捷方式。 #### 场景介绍 解析出指定快捷方式文件对应原文件的URI。常用在应用需要通过快捷方式文件打开原文件的场景。 #### 接口说明 #### 示例代码 1.导入文件管理服务模块及相关模块。 import { fileManagerService } from '@kit.FileManagerServiceKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2.根据指定快捷方式文件的URI解析出对应原文件的URI。 public static async getTargetUriByLinkUri() { // 示例代码linkUri表示快捷方式文件的URI，快捷方式文件的后缀为“.hlink” // 开发者应根据自己实际的URI进行开发，并确保对该文件有读写权限 let linkUri: string = \"file://docs/storage/Users/currentUser/Documents/1.jpg.hlink\"; try { let targetUri: string = await fileManagerService.parseShortcut(linkUri); console.info(\"targetUri is: \" + tar"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "device-security-kit",
+  "source_path": "skills/device-security-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:53:07.986Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "设备安全",
+      "设备认证",
+      "安全检测",
+      "可信认证",
+      "反欺诈",
+      "隐私保护",
+      "如何获取DeviceToken进行设备使用状态管理和检测？",
+      "如何检测设备是否越狱或是否为真实设备？",
+      "如何检测用户访问的URL是否为恶意网址？",
+      "如何使用安全证明确保摄像头图像数据的真实性？",
+      "如何使用安全证明确保地理位置信息的完整性？",
+      "如何设置和使用数字盾密码进行交易认证？",
+      "如何开通和使用生物特征认证进行快速交易？",
+      "如何检测自动化点击和设备墙等作弊行为？",
+      "如何获取诈骗通话记录、诈骗消息和诈骗应用信息？",
+      "如何实现防窥保护，在非机主状态下隐藏敏感信息？",
+      "当你的应用需要验证设备环境安全性时使用安全检测能力，典型场景包括检测设备是否越狱、是否为真实设备、用户访问的URL是否为恶意网址等",
+      "当你的金融应用需要交易安全保护时使用数字盾服务，支持密码认证和生物特征认证进行转账等交易的强认证",
+      "当你的应用需要获取安全证明数据时使用可信应用服务，确保摄像头拍摄的图像或获取的地理位置信息未被篡改",
+      "当你的应用需要反欺诈、反作弊能力时使用业务风险检测和反诈选择器，检测模拟点击、涉诈剧本等安全威胁",
+      "集成设备风险识别以拦截异常登录和刷量设备 / Integrate device risk detection to block suspicious logins and farmed devices",
+      "获取设备可信状态并在高风险环境下限制敏感操作 / Get device trust status and restrict sensitive actions in high-risk environments",
+      "实现设备指纹识别用于账号风控和反作弊 / Implement device fingerprinting for account risk control and anti-cheat",
+      "检测模拟器、Root、越狱和调试环境并拒绝运行 / Detect emulators, root, jailbreak, and debugging environments and refuse to run",
+      "校验设备证明结果后再放行支付、提现或转账 / Verify device attestation results before allowing payment, withdrawal, or transfer",
+      "接入恶意网址检测在打开链接前拦截钓鱼页面 / Integrate malicious URL detection to block phishing pages before opening links",
+      "为相机拍摄内容添加安全证明以验证图片或视频来源真实 / Add security proof to camera captures to verify authentic image or video origin",
+      "对定位结果做完整性校验防止位置被篡改或伪造 / Validate location integrity to prevent tampered or spoofed coordinates",
+      "启用数字盾和生物认证保护高价值交易确认 / Enable digital shield and biometric authentication for high-value transaction confirmation",
+      "识别自动点击、脚本操作和设备农场行为 / Detect auto-clicking, scripted actions, and device farm behavior",
+      "在注册、登录和领券流程中增加反欺诈设备校验 / Add anti-fraud device verification to sign-up, sign-in, and coupon claim flows",
+      "管理 DeviceToken 并上报设备使用状态用于安全风控 / Manage DeviceToken and report device usage status for security risk control"
+    ],
+    "do_not_use_when": [
+      "需求是通用加密算法、摘要、签名或随机数计算，而不是设备状态/风险/可信证明；应改用 crypto-architecture-kit / The need is general cryptographic algorithms, hashing, signing, or random generation rather than device status, risk, or attestation; use crypto-architecture-kit instead",
+      "需求是管理设备证书、证书链、证书签发或证书生命周期，而不是安全检测或可信应用服务；应改用 device-certificate-kit / The need is device certificate management, certificate chains, issuance, or certificate lifecycle rather than security detection or trusted app services; use device-certificate-kit instead",
+      "需求是仅进行本地密钥生成、存储、导入导出或密钥使用，而不是设备安全评估或交易风控；应改用 universal-keystore-kit / The need is only local key generation, storage, import/export, or key usage rather than device security evaluation or transaction risk control; use universal-keystore-kit instead",
+      "需求是通用用户身份认证（指纹、人脸、锁屏凭据）以解锁应用能力，而不是数字盾交易确认或设备安全服务；应改用 user-authentication-kit / The need is general user authentication (fingerprint, face, lock-screen credential) to unlock app features rather than trusted transaction confirmation or device security services; use user-authentication-kit instead",
+      "需求是账号登录、服务器侧身份校验、令牌签发或联网身份认证，而不是本机设备完整性/URL威胁/反欺诈检测；应改用 online-authentication-kit / The need is account sign-in, server-side identity verification, token issuance, or online identity authentication rather than on-device integrity, URL threat, or anti-fraud detection; use online-authentication-kit instead",
+      "需求是数字内容版权保护、许可证控制或媒体解密播放，而不是设备安全审计或防窥保护；应改用 drm-kit / The need is digital content rights protection, license control, or protected media playback rather than security audit or anti-peep protection; use drm-kit instead"
+    ],
+    "preconditions": [
+      "已在 AppGallery Connect 开通所需的 Device Security 对应服务能力，且应用/项目配置正确 / The required Device Security service capability has been enabled in AppGallery Connect and the app/project is configured correctly",
+      "应用已在 module.json5 中声明所需权限，并在运行时获得用户授权（如相机、位置或受限开放权限） / The app has declared required permissions in module.json5 and obtained runtime user consent where needed (such as camera, location, or restricted permissions)",
+      "目标设备、系统版本、国家/地区和账号环境支持所调用的具体安全能力 / The target device, system version, country/region, and account environment support the specific security capability being invoked",
+      "对于依赖云侧判定或鉴权的能力，网络连通且服务端鉴权令牌/调用凭据已准备完成 / For capabilities that rely on cloud-side judgment or authorization, network connectivity is available and the server auth token/call credentials are ready"
+    ],
+    "inputs": [
+      "待检测的 URL、设备状态请求参数或风险检测上下文 / URL to inspect, device-state request parameters, or risk-detection context",
+      "交易信息、认证方式参数或数字盾相关配置 / Transaction details, authentication method parameters, or trusted-authentication configuration",
+      "相机图像数据、地理位置数据或待安全处理的图片 / Camera image data, location data, or image content to be securely processed",
+      "需要订阅或查询的安全审计事件类型 / Security audit event types to subscribe to or query",
+      "反诈选择器查询条件或目标记录范围 / Anti-fraud picker query conditions or target record scope"
+    ],
+    "outputs": [
+      "简介与配置",
+      "应用设备状态检测",
+      "安全检测",
+      "可信应用服务",
+      "数字盾服务",
+      "业务风险检测",
+      "安全审计",
+      "反诈选择器",
+      "防窥保护",
+      "病毒防护服务管理"
+    ],
+    "postconditions": [
+      {
+        "statement": "代码中已接入至少一种 Device Security Kit 能力调用，并处理其结果或回调 / The code integrates at least one Device Security Kit capability call and handles its result or callback",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set show an actual Device Security Kit API invocation (such as integrity/URL detection, DeviceToken, trusted app service, trusted authentication, risk detection, audit, anti-fraud picker, or anti-peep) and subsequent handling of its returned result or callback?"
+      },
+      {
+        "statement": "已根据所选能力补充必要的配置、权限声明或开通说明，而非仅添加空壳调用 / Necessary configuration, permission declarations, or enablement steps for the chosen capability are added rather than only a placeholder API call",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, did the agent add or modify supporting setup such as permissions, initialization, AGC/service enablement notes, or related configuration required for the chosen Device Security capability?"
+      },
+      {
+        "statement": "业务逻辑已消费安全结论、证明数据或认证结果，并形成明确分支处理 / The business logic consumes the security verdict, attestation data, or authentication result and applies clear branch handling",
+        "verifier": "model_judge",
+        "judge_prompt": "Do the edits show the returned security verdict/attestation/authentication result being used in conditional logic, UI update, blocking, warning, or downstream request handling rather than being ignored?"
+      }
+    ],
+    "overlaps_with": [
+      "crypto-architecture-kit",
+      "device-certificate-kit",
+      "universal-keystore-kit",
+      "user-authentication-kit",
+      "online-authentication-kit",
+      "drm-kit"
+    ],
+    "safety_tier": "high-risk",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

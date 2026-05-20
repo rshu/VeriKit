@@ -1,0 +1,90 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "pen-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:29.062Z"
+  },
+  "references": [
+    {
+      "path": "references/Pen Kit手写套件是否支持自定义笔刷？.md",
+      "title": "Pen Kit手写套件是否支持自定义笔刷？",
+      "snippet": "Pen Kit当前支持圆珠笔、钢笔、铅笔、马克笔、荧光笔、马赛克笔和激光笔，暂不支持自定义笔刷。"
+    },
+    {
+      "path": "references/Pen Kit手写套件是否支持自定义笔宽？.md",
+      "title": "Pen Kit手写套件是否支持自定义笔宽？",
+      "snippet": "Pen Kit当前支持设置5档笔宽范围，取值由华为笔宽算法决定，暂不支持自定义其他笔宽值。"
+    },
+    {
+      "path": "references/Pen Kit手写套件是否支持自定义颜色？.md",
+      "title": "Pen Kit手写套件是否支持自定义颜色？",
+      "snippet": "工具栏支持100+种颜色选择以及全局取色，暂不支持自定义颜色。"
+    },
+    {
+      "path": "references/Pen Kit手写套件的工具栏是否可以单独提供？.md",
+      "title": "Pen Kit手写套件的工具栏是否可以单独提供？",
+      "snippet": "Pen Kit手写套件画布和工具栏是配套提供的，暂不支持单独使用。"
+    },
+    {
+      "path": "references/Pen Kit报点预测功能能够调整预测的程度吗？.md",
+      "title": "Pen Kit报点预测功能能够调整预测的程度吗？",
+      "snippet": "当前的预测程度是由华为算法调试优化后的结果，暂不提供设置程度类的接口。"
+    },
+    {
+      "path": "references/Pen Kit简介.md",
+      "title": "Pen Kit简介",
+      "snippet": "Pen Kit（手写笔服务）是华为提供的一套手写套件，提供笔刷效果、笔迹编辑、报点预测、一笔成形、全局取色和手写交互的功能。手写笔服务可以为产品带来优质手写体验，为您创造更多的手写应用场景。 目前Pen Kit提供了五种能力：手写套件、报点预测、一笔成形、全局取色和手写交互。 #### 手写套件 三方应用直接集成手写套件组件，提供如下功能。 - 画布 笔迹绘制、笔迹保存、画布缩放、一笔成形功能。 - 工具栏 - 笔刷：圆珠笔、钢笔、铅笔、马克笔、荧光笔、马赛克笔、激光笔七种笔刷效果，5档笔宽，100+种颜色选择。 - 橡皮擦：笔划擦除、像素擦除、仅擦除荧光笔、清空画布。 - 套索：框选、移动、剪切粘贴、复制粘贴、删除、调整大小。 - 其他功能：撤销、重做、禁止手指书写。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4e/v3/aM9vJl5xQaS5JxYxAUHyUQ/zh-cn_image_0000002543374168.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111226Z&HW-CC-Expire=86400&HW-CC-Sign=8DE3A5598C7A360638670FEF9EBF07D4F9D3DB9102DF"
+    },
+    {
+      "path": "references/为什么一笔成形识别不出来？.md",
+      "title": "为什么一笔成形识别不出来？",
+      "snippet": "一笔成形能力需要在绘制某一笔画结束时，手写笔/手指停留在屏幕上并保持静止一定时间后（默认为300ms，应用侧可自行定制），才会触发图形识别。也可在套件工具栏的设置中，打开“抬笔成形”，开启后则不需要停顿，抬笔即可触发形状的识别。另外目前暂不支持画爱心和云朵。"
+    },
+    {
+      "path": "references/接入一笔成形.md",
+      "title": "接入一笔成形",
+      "snippet": "接入一笔成形功能，可以传入手写笔迹的点位信息、通过手写笔/手指在屏幕上停顿一定的时间后触发此功能，触发功能后将自动识别当前绘制的图形，并生成对应的图像信息。 #### 场景介绍 在应用中实现一笔成形，效果如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/62/v3/R-ljsGM1RfepeKH_UP216Q/zh-cn_image_0000002573854421.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111226Z&HW-CC-Expire=86400&HW-CC-Sign=DA86BC62C668109AF2C3062D63AF3D35EBC8D1C9B1E443CA44E7CC2993A88A9D) 1. 支持获取识别的图像信息，图像信息支持存储。 2. 支持从存储的图像信息中读取信息。 #### 接口说明 #### 开发步骤 1. 导入相关模块。 import { InstantShapeGenerator, ShapeInfo } from '@kit.Penkit'; 2. 构造包含一笔成形能力，下面以控件为例： @Entry @Component struct InstantShapeDemo { priva"
+    },
+    {
+      "path": "references/接入全局取色-1.md",
+      "title": "接入全局取色",
+      "snippet": "接入全局取色功能，用户可以使用手指或者手写笔操作取色器在屏幕上移动，在目标位置抬起手指/抬起手写笔，会生成该位置色值对应的图像信息。 #### 场景介绍 在应用中拉起全局取色，效果如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cf/v3/O_FMYutFTFSsclIyOAubaA/zh-cn_image_0000002573974399.png?HW-CC-KV=V1&HW-CC-Date=20260421T111227Z&HW-CC-Expire=86400&HW-CC-Sign=B20D85FE1F21EF3A7CD5BF6DC059ED94E045A7CFA1DA356EB08C31610BBF7CD3) 支持获取当前屏幕上选中位置的色值和色域空间。 #### 限制与约束 全局取色能力支持设备：Tablet、PC/2in1，并且从5.1.1(19)版本开始，新增支持设备：Phone（只支持部分机型）。 #### 接口说明 #### 接入步骤 #### 在 CMake 脚本中链接动态库 target_link_libraries(entry PUBLIC libace_napi.z.so libcolorpicker_ndk.z.so libhil"
+    },
+    {
+      "path": "references/接入全局取色.md",
+      "title": "接入全局取色",
+      "snippet": "接入全局取色功能，用户可以使用手指或者手写笔操作取色器在屏幕上移动，在目标位置抬起手指/抬起手写笔，会生成该位置色值对应的图像信息。 #### 场景介绍 在应用中拉起全局取色，效果如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f/v3/zu6aT1SqQ3aCz3XC9kpaTw/zh-cn_image_0000002573974397.png?HW-CC-KV=V1&HW-CC-Date=20260421T111226Z&HW-CC-Expire=86400&HW-CC-Sign=FC490418EAA274E325FF2A835E6373530F5BB274270A9DBB215C651B1D77723D) 支持获取当前屏幕上选中位置的色值和色域空间。 #### 限制与约束 - 全局取色能力支持设备：Tablet、PC/2in1，并且从5.1.1(19)版本开始，新增支持设备：Phone。 - 设备不支持连接手写笔的话，无法使用全局取色能力。 #### 接口说明 #### 开发步骤 1. 导入相关模块。 import { imageFeaturePicker } from '@kit.Penkit'; import { BusinessError }"
+    },
+    {
+      "path": "references/接入手写交互.md",
+      "title": "接入手写交互",
+      "snippet": "接入手写交互功能，对于需要接入支持双击/轻捏功能的手写笔的第三方应用，可以通过调用下面相应接口来监听手写笔双击/轻捏事件，从而触发自身应用内部回调，来执行指定操作。 #### 接口说明 #### 手写笔轻捏事件 1. 导入相关模块。 import { stylusInteraction } from '@kit.Penkit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 监听手写笔轻捏事件。 try { stylusInteraction.on('squeeze', (event: stylusInteraction.SqueezeEvent) => { console.info(`got squeeze event, time: ${event.timestamp}`); }); } catch (err) { console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message); } 3. 取消监听手写笔轻捏事件。 try { stylusInteraction.off('squeeze', (event: stylusInteraction.SqueezeE"
+    },
+    {
+      "path": "references/接入手写套件.md",
+      "title": "接入手写套件",
+      "snippet": "接入手写套件后，可以在应用中创建手写功能界面。界面包括画布和工具栏两部分，画布部分支持手写笔和手指的书写效果绘制，工具栏部分提供多种笔刷和编辑工具，并支持对手写功能进行设置。接入手写套件后将自动开启一笔成形和报点预测功能，无需再单独接入。 从5.1.0(18)开始，手写套件新增支持设置工具栏默认笔刷、各笔刷默认宽度。 从6.0.0(20)开始，手写套件新增支持自定义画布大小、缩略图能力。 从6.1.0(23)开始，手写套件新增禁用画布缩放、设置滚动位置ScrollTo及监听长画布滚动位置、自定义长画布最大高度能力。 #### 场景介绍 在应用中创建手写功能界面，效果如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0b/v3/ZrDLJRwMRzyb_rHnKklaiw/zh-cn_image_0000002543374170.png?HW-CC-KV=V1&HW-CC-Date=20260421T111226Z&HW-CC-Expire=86400&HW-CC-Sign=3329533782F8C4142DBD67401F346925D4384945AF1FF98129397C8659A40BED) 1. 可以加载和显示手写文件。 2. 可以编辑和保存手写"
+    },
+    {
+      "path": "references/接入报点预测-1.md",
+      "title": "接入报点预测",
+      "snippet": "从6.0.0(20)开始，报点预测新增C API接口。 接入报点预测功能，可以优化应用中手写效果的绘制跟手性，提升应用中手写笔书写场景的跟手体验。 #### 场景介绍 在应用的自定义界面中，获取到界面的触摸事件，通过调用报点预测的接口，可以得到预测的下一个报点的位置信息。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f1/v3/dMoXa91mTSKRA3Byw8mDsw/zh-cn_image_0000002573854423.png?HW-CC-KV=V1&HW-CC-Date=20260421T111227Z&HW-CC-Expire=86400&HW-CC-Sign=8E0772EDFF4D8A43F1359EF8696C62067622BE3FFBE7E96F36CD8535488E9E23) #### 接口说明 #### 接入步骤 报点预测功能的历史点，通常需要在自定义渲染（XComponent）上注册触摸事件回调获得，请参考 自定义渲染开发指南 ，获得历史触摸点。 #### 在CMake脚本中链接动态库 target_include_directories(entry PUBLIC ${HMOS_SDK_NATIVE}/sysroot/usr/i"
+    },
+    {
+      "path": "references/接入报点预测.md",
+      "title": "接入报点预测",
+      "snippet": "接入报点预测功能，可以优化应用中手写效果的绘制跟手性，提升应用中手写笔书写场景的跟手体验。 #### 场景介绍 在应用的自定义界面中，获取到界面的触摸事件，通过调用报点预测的接口，可以得到预测的下一个报点的位置信息。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4/v3/sH5cczarTXiGEy5O1zravg/zh-cn_image_0000002573854423.png?HW-CC-KV=V1&HW-CC-Date=20260421T111226Z&HW-CC-Expire=86400&HW-CC-Sign=E64587F2131B5F5C189340FA84F69C534E0ADA15A5409D0BB96F2CC0B82EEDC4) #### 接口说明 #### 开发步骤 1. 导入相关模块。 import { PointPredictor } from '@kit.Penkit'; 2. 获取当前界面的触摸事件信息，调用接口计算预测点信息。 @Entry @Component struct PointPredictorDemo { @State actualXCoordinate: number = 0 @State actualYCoordi"
+    },
+    {
+      "path": "references/集成了Pen Kit手写套件，还需要集成一笔成形吗？.md",
+      "title": "集成了Pen Kit手写套件，还需要集成一笔成形吗？",
+      "snippet": "不需要，手写套件已经自带一笔成形功能。"
+    },
+    {
+      "path": "references/集成了Pen Kit手写套件，还需要集成报点预测吗？.md",
+      "title": "集成了Pen Kit手写套件，还需要集成报点预测吗？",
+      "snippet": "不需要，手写套件已经自带报点预测功能。"
+    }
+  ]
+}

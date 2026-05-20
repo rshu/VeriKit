@@ -1,0 +1,114 @@
+{
+  "format": "skill-contract-sidecar/v1",
+  "skill": "ui-design-kit",
+  "source_path": "skills/ui-design-kit/SKILL.md",
+  "extracted": {
+    "tool": "extract-contracts.ts + refine-contracts.ts",
+    "at": "2026-05-12T07:59:56.878Z",
+    "refinement": "auto+llm",
+    "use_when_bilingual": true
+  },
+  "contract": {
+    "version": "1.0.0",
+    "use_when": [
+      "UI设计",
+      "设计系统",
+      "光照效果",
+      "图标处理",
+      "多窗口",
+      "如何设置导航组件标题栏的动态模糊效果？",
+      "如何配置半模态页面样式和自定义标题栏区域？",
+      "如何设置overlay模式和embed模式的侧边栏？",
+      "如何配置侧边栏菜单的一级、二级菜单样式及红点提醒？",
+      "如何设置底部页签栏的分割线、模糊样式和悬浮样式？",
+      "如何使用即时操作控件发送常驻或定时通知弹窗？",
+      "如何配置核心操作栏的主按钮展开收起动效？",
+      "如何实现列表卡片的横滑删除效果？",
+      "如何使用点光源、流光、按压阴影等HDS沉浸视效？",
+      "如何对分层图标进行合成、剪切、缩放及描边处理？",
+      "当你的应用需要使用符合HarmonyOS设计规范的高端UI组件时使用本Kit，例如需要动态模糊标题栏、流光效果、按压阴影等沉浸式视觉体验的场景",
+      "当需要对应用图标进行分层处理、剪切、缩放、描边等批量操作时，或者需要注册自定义Symbol图标资源时，应使用本Kit的图标处理能力",
+      "当ArkUI基础组件无法满足你的视觉设计需求时，可以考虑使用UI Design Kit提供的增强型组件",
+      "本Kit支持模拟器开发，但模拟器不支持HDS沉浸视效相关能力",
+      "实现符合 Harmony Design System 的页面布局和组件样式 / Implement page layouts and component styles that follow the Harmony Design System",
+      "给应用接入统一的主题色、圆角、间距和字体规范 / Apply consistent theme colors, corner radius, spacing, and typography guidelines",
+      "设计带沉浸式光效和阴影反馈的界面视觉效果 / Design immersive UI visuals with light effects and shadow feedback",
+      "实现支持折叠屏和平板的自适应多栏界面 / Build adaptive multi-pane layouts for foldables and tablets",
+      "配置导航栏、标题栏和内容区的整体视觉层级 / Configure the visual hierarchy of navigation bar, title bar, and content area",
+      "实现带模糊背景和悬浮效果的底部导航与侧边菜单 / Create bottom navigation and side menus with blur backgrounds and floating styles",
+      "设计列表、卡片和操作区的统一交互动效 / Design consistent interaction animations for lists, cards, and action areas",
+      "为设置页和详情页套用系统化的页面模板 / Apply standardized page templates for settings and detail screens",
+      "实现应用图标、菜单图标和状态标记的统一视觉规范 / Standardize visuals for app icons, menu icons, and status badges",
+      "配置通知提示、红点提醒和快捷操作入口的界面样式 / Style notification prompts, badge indicators, and quick action entry points",
+      "实现分栏导航、嵌入式面板和覆盖式面板的界面结构 / Implement split navigation, embedded panels, and overlay panels",
+      "优化深色模式下的界面对比度、光效和层次表现 / Optimize contrast, lighting effects, and visual depth for dark mode"
+    ],
+    "do_not_use_when": [
+      "需求是做界面自动化、单元测试、截图回归或测试框架接入，应改用 test-kit / If the goal is UI automation, unit testing, screenshot regression, or test framework integration, use test-kit instead",
+      "需求是分析界面卡顿、渲染耗时、启动速度或资源性能瓶颈，应改用 performance-analysis-kit / If the task is to analyze UI jank, render time, startup speed, or performance bottlenecks, use performance-analysis-kit instead",
+      "需求是实现无障碍语义、读屏适配、焦点导航或辅助功能增强，应改用 accessibility-kit / If the requirement is accessibility semantics, screen reader support, focus navigation, or assistive enhancements, use accessibility-kit instead",
+      "需求是做多语言翻译、区域化格式、RTL适配或本地化资源管理，应改用 localization-kit / If the need is multilingual translation, locale formatting, RTL adaptation, or localization resource management, use localization-kit instead",
+      "需求是接入日历事件、天气数据或屏幕使用时长管控等业务能力，而不是界面样式本身，应分别改用 calendar-kit、weather-service-kit 或 screen-time-guard-kit / If the task is business capability integration such as calendar events, weather data, or screen-time control rather than UI styling itself, use calendar-kit, weather-service-kit, or screen-time-guard-kit instead"
+    ],
+    "preconditions": [
+      "工程已集成并启用可用的HarmonyOS UI Design Kit相关SDK能力 / The project has integrated and enabled the required HarmonyOS UI Design Kit SDK capability",
+      "目标设备或运行环境支持所选能力，且若使用HDS沉浸视效需在真机上验证而非仅依赖模拟器 / The target device or runtime supports the selected feature, and HDS immersive effects must be validated on real hardware rather than relying only on the emulator",
+      "应用已有ArkUI页面与组件开发基础，并可在对应页面中挂载扩展组件或样式 / The app already uses ArkUI pages/components and can host the extended components or styles in the relevant page",
+      "若进行图标批处理或Symbol注册，输入资源文件已准备且满足接口数量与并发限制 / If performing icon batch processing or Symbol registration, the input assets are prepared and meet the API limits for count and concurrency"
+    ],
+    "inputs": [
+      "页面布局与组件配置需求 / page layout and component configuration requirements",
+      "视觉效果参数，如模糊、阴影、流光或光感材质配置 / visual effect parameters such as blur, shadow, shimmer, or light-material settings",
+      "图标资源或分层图标描述对象 / icon assets or layered icon descriptor objects",
+      "自定义Symbol图标及动效资源 / custom Symbol icon and animation resources"
+    ],
+    "outputs": [
+      "简介",
+      "组件导航",
+      "侧边栏",
+      "底部页签",
+      "即时操作与核心操作栏",
+      "列表",
+      "应用内多窗",
+      "HDS沉浸视效",
+      "资源与图标能力"
+    ],
+    "postconditions": [
+      {
+        "statement": "已在ArkUI页面代码中引入并使用至少一种UI Design Kit增强组件、视效或图标处理能力 / At least one UI Design Kit enhanced component, visual effect, or icon-processing capability is introduced and used in the ArkUI page code",
+        "verifier": "model_judge",
+        "judge_prompt": "Does the edit set clearly add or configure a UI Design Kit capability such as enhanced navigation/sidebar/tab/list/multi-window components, HDS immersive effects, icon processing, or custom Symbol registration?"
+      },
+      {
+        "statement": "实现内容体现为界面结构、样式或视觉效果增强，而非测试、性能分析或无障碍业务逻辑 / The implementation results in UI structure, styling, or visual enhancement rather than test, performance-analysis, or accessibility business logic",
+        "verifier": "model_judge",
+        "judge_prompt": "By inspecting the edits, is the primary change a UI design/styling enhancement instead of adding testing, performance analysis, localization, or accessibility logic?"
+      },
+      {
+        "statement": "若使用HDS沉浸视效或图标处理，相关参数与资源引用已在代码中完成配置 / If HDS immersive effects or icon processing are used, the related parameters and asset references are configured in code",
+        "verifier": "model_judge",
+        "judge_prompt": "If the edits involve immersive visual effects or icon processing, do they include concrete parameter settings or asset/resource references rather than only placeholder comments?"
+      }
+    ],
+    "overlaps_with": [
+      "basic-services-kit",
+      "accessibility-kit",
+      "localization-kit",
+      "test-kit",
+      "performance-analysis-kit",
+      "calendar-kit",
+      "weather-service-kit",
+      "screen-time-guard-kit"
+    ],
+    "safety_tier": "low-risk-diagnostic",
+    "telemetry": {
+      "collect": [
+        "selected_by_router",
+        "called_by_agent",
+        "preconditions_satisfied",
+        "postconditions_satisfied",
+        "final_user_success_label"
+      ]
+    }
+  }
+}

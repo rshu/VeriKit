@@ -1,0 +1,524 @@
+{
+  "format": "skill-compositions/v1",
+  "description": "Hand-vetted multi-Kit composition recipes for common HarmonyOS app features. A feature-shaped task typically needs several Kits in a defined order; the typed-chaining algorithm can't infer these because the catalog's I/O fields aren't clean type names. The 'when' phrasings are bilingual so the router matches both Chinese and English prompts. 'skills' is ordered: the first is the headline Kit, the rest are supporting.",
+  "provenance": {
+    "authored_by": "Claude (LLM-authored from training knowledge + the in-session HarmonyOS work). Several recipes are now lifecycle.status=validated — their Kit bundle is corroborated by a building HarmonyOS sample app under DemoApp/HarmonyOS_NEXT/ that uses exactly those APIs (see each recipe's lifecycle.validated.exemplar); the rest are still draft (LLM-authored, unverified).",
+    "default_status": "draft",
+    "catalog_sdk": "HarmonyOS SDK as shipped in skill.zip (API ~12+); reference docs in each Kit's references/ are the source of truth for current API names. The DemoApp exemplars' build-profiles declare HarmonyOS 4.0.0(10) — older than the catalog, but the corroborated APIs (AVPlayer, notificationManager, formProvider, distributedKVStore, ...) are stable through HarmonyOS NEXT.",
+    "policy": "Recipes are advisory. The `skills` bundle is curated cross-Kit judgment and is usually right; the API names in `notes` can go stale — always cross-check the headline Kit's current reference docs (run `route --deep` on it) before relying on a recipe's prose. A `validated` recipe has a known good exemplar; bump it to draft if a catalog refresh breaks it (`npm run lint-recipes` catches a removed/renamed Kit). See compositions/RECIPES.md."
+  },
+  "compositions": [
+    {
+      "id": "local-persistence",
+      "name": "本地数据持久化 / Local data persistence",
+      "when": [
+        "保存应用数据使其在应用重启后仍可读取 / Persist app data so it survives an app restart",
+        "用首选项或数据库保存用户设置、列表和记录 / Save user settings, lists, and records with Preferences or a database",
+        "把待办事项、笔记、订单或聊天记录保存到本地 / Save todos, notes, orders, or chat history to local storage",
+        "实现本地离线数据存储和增删改查 / Implement local offline data storage with CRUD"
+      ],
+      "skills": [
+        "arkdata",
+        "arkts"
+      ],
+      "notes": "arkdata = the storage API: @ohos.data.preferences for lightweight key-value config, @ohos.data.relationalStore (RDB) for structured records. arkts = the async/await + file handling around it. Add arkui only if you also render the persisted data in the UI.",
+      "lifecycle": {
+        "status": "validated",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-12"
+        },
+        "validated": {
+          "by": "claude",
+          "at": "2026-05-13",
+          "against_sdk": "HarmonyOS 4.0.0(10)",
+          "exemplar": "DemoApp/HarmonyOS_NEXT/Preferences"
+        }
+      }
+    },
+    {
+      "id": "notification-with-action",
+      "name": "带跳转的本地通知 / Local notification with a tap action",
+      "when": [
+        "给用户发一条本地通知，点击后打开指定页面 / Send a local notification that opens a page when tapped",
+        "发布带进度条的下载通知 / Publish a download-progress notification",
+        "在某个事件或定时器触发时提醒用户 / Remind the user when an event or timer fires",
+        "实现任务到期提醒或后台事件通知 / Implement a task-due reminder or a background-event notification",
+        "当一条待办到期时给用户发送提醒通知 / Send a reminder notification when a todo or task is due",
+        "添加任务提醒通知，到点弹出并可点击查看 / Add a task-reminder notification that pops up at the due time and is tappable"
+      ],
+      "skills": [
+        "notification-kit",
+        "ability-kit",
+        "arkts"
+      ],
+      "notes": "notification-kit = NotificationRequest + publish/cancel. ability-kit = the WantAgent that the notification's tap action launches (the target UIAbility/page). arkts = async control. Declare ohos.permission for notifications in module.json5. NOT push-kit (that's server-side/offline cloud delivery).",
+      "lifecycle": {
+        "status": "validated",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-12"
+        },
+        "validated": {
+          "by": "claude",
+          "at": "2026-05-13",
+          "against_sdk": "HarmonyOS 4.0.0(10)",
+          "exemplar": "DemoApp/HarmonyOS_NEXT/DownloadNotification"
+        }
+      }
+    },
+    {
+      "id": "http-fetch-and-render",
+      "name": "网络请求并展示数据 / HTTP fetch then render",
+      "when": [
+        "从服务器拉取 JSON 数据并在列表中展示 / Fetch JSON from a server and show it in a list",
+        "调用 REST API 获取数据并渲染到界面 / Call a REST API and render the result in the UI",
+        "实现新闻、商品或动态列表的网络加载 / Load a news / product / feed list over the network",
+        "用 http 模块发起 GET/POST 请求并处理响应 / Make GET/POST requests with the http module and handle the response"
+      ],
+      "skills": [
+        "network-kit",
+        "arkui",
+        "arkts"
+      ],
+      "notes": "network-kit = @ohos.net.http for the request. arkui = List/LazyForEach to render the result. arkts = async/await + the data model. Declare ohos.permission.INTERNET in module.json5.",
+      "lifecycle": {
+        "status": "validated",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-12"
+        },
+        "validated": {
+          "by": "claude",
+          "at": "2026-05-13",
+          "against_sdk": "HarmonyOS 4.0.0(10)",
+          "exemplar": "DemoApp/HarmonyOS_NEXT/NewsDataArkTS"
+        }
+      }
+    },
+    {
+      "id": "service-widget",
+      "name": "桌面服务卡片 / Home-screen service widget",
+      "when": [
+        "做一个显示应用数据的桌面卡片 / Build a home-screen card that shows app data",
+        "实现 ArkTS 服务卡片，支持点击刷新 / Implement an ArkTS service widget with tap-to-refresh",
+        "把今日待办或天气展示在桌面小组件上 / Show today's todos or weather on a desktop widget",
+        "添加锁屏卡片或互动卡片 / Add a lock-screen card or an interactive card"
+      ],
+      "skills": [
+        "form-kit",
+        "arkui",
+        "ability-kit"
+      ],
+      "notes": "form-kit = form_config.json + the FormExtensionAbility lifecycle (onAddForm/onUpdateForm). arkui = the card's declarative UI. ability-kit = the FormExtensionAbility itself and any WantAgent for card actions. Only ONE card may be isDefault:true.",
+      "lifecycle": {
+        "status": "validated",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-12"
+        },
+        "validated": {
+          "by": "claude",
+          "at": "2026-05-13",
+          "against_sdk": "HarmonyOS 4.0.0(10)",
+          "exemplar": "DemoApp/HarmonyOS_NEXT/OxHornCampus"
+        }
+      }
+    },
+    {
+      "id": "voice-input",
+      "name": "语音输入 / Voice input",
+      "when": [
+        "点击麦克风按钮，说话后转成文字填入界面 / Tap a mic button, speak, and put the transcribed text into the UI",
+        "实现语音转文字输入功能 / Implement speech-to-text input",
+        "用语音口述一条待办或备忘 / Dictate a todo or memo by voice",
+        "集成离线或在线语音识别 / Integrate offline or online speech recognition"
+      ],
+      "skills": [
+        "core-speech-kit",
+        "arkui",
+        "ability-kit"
+      ],
+      "notes": "core-speech-kit = the SpeechRecognizer (online/offline) API. arkui = the mic button + the text field that receives the result. ability-kit = permission prompt flow if needed. Declare ohos.permission.MICROPHONE in module.json5.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-12"
+        }
+      }
+    },
+    {
+      "id": "photo-pick-and-edit",
+      "name": "选图并编辑 / Pick a photo and edit it",
+      "when": [
+        "让用户从相册选一张图片然后裁剪或调整 / Let the user pick a photo from the gallery, then crop or adjust it",
+        "实现图片选择、编辑和保存功能 / Implement photo pick, edit, and save",
+        "做一个简单的图片编辑器界面 / Build a simple image-editor screen",
+        "用 Picker 选图并用 image 模块处理 / Pick an image with Picker and process it with the image module"
+      ],
+      "skills": [
+        "media-library-kit",
+        "image-kit",
+        "arkui"
+      ],
+      "notes": "media-library-kit = PhotoViewPicker to select (no broad media permission needed for the picker). image-kit = ImageSource/PixelMap/ImagePacker for decode/edit/encode. arkui = the editor canvas and controls. NOT the removed @ohos.multimedia.mediaLibrary — use photoAccessHelper / the picker.",
+      "lifecycle": {
+        "status": "validated",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-12"
+        },
+        "validated": {
+          "by": "claude",
+          "at": "2026-05-13",
+          "against_sdk": "HarmonyOS 4.0.0(10)",
+          "exemplar": "DemoApp/HarmonyOS_NEXT/ImageEdit"
+        }
+      }
+    },
+    {
+      "id": "background-task",
+      "name": "后台任务 / Background task",
+      "when": [
+        "在后台执行长时任务，比如下载、上传或同步数据 / Run a long-running background task such as download, upload, or data sync",
+        "应用切到后台后继续运行某个任务直到完成 / Keep a task running after the app goes to background until it finishes",
+        "实现延迟任务或定时后台刷新 / Implement a deferred task or a scheduled background refresh",
+        "用前台服务通知保持后台进程不被回收 / Use a foreground-service notification to keep a background process alive",
+        "添加后台代理提醒（AgentReminder） / Add a background agent reminder (AgentReminder)"
+      ],
+      "skills": [
+        "background-tasks-kit",
+        "ability-kit",
+        "arkts"
+      ],
+      "notes": "background-tasks-kit = 长时任务 (continuous task — download/upload/sync/audioPlayback; keeps running after the app backgrounds) / 短时任务 (transient task — brief window) / 延迟任务 (deferred WorkScheduler) / 后台代理提醒 (AgentReminder). ability-kit = the WantAgent that startBackgroundRunning(context, BackgroundMode.*, wantAgent) requires — taps on the system-shown ongoing notification open this UIAbility. arkts = the async logic of the task itself (TaskPool/Worker for CPU-heavy work). Add notification-kit only if you want a *custom* progress notification (e.g. a download bar) on top of the system one. Declare ohos.permission.KEEP_BACKGROUND_RUNNING plus the matching backgroundModes in module.json5. NOT a plain setInterval/setTimeout — it's killed when the app suspends.",
+      "lifecycle": {
+        "status": "validated",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-13"
+        },
+        "validated": {
+          "by": "claude",
+          "at": "2026-05-13",
+          "against_sdk": "HarmonyOS 4.0.0(10)",
+          "exemplar": "DemoApp/HarmonyOS_NEXT/PedometerApp"
+        }
+      }
+    },
+    {
+      "id": "distributed-sync",
+      "name": "跨设备数据同步 / Cross-device data sync",
+      "when": [
+        "把应用数据在用户的多台设备之间自动同步 / Automatically sync app data across the user's devices",
+        "手机和平板共享同一份业务数据 / Share the same business data between phone and tablet",
+        "用分布式数据对象在跨端实现数据一致 / Use a distributed data object to keep data consistent across devices",
+        "实现跨设备的待办、收藏或进度同步 / Sync todos, favorites, or progress across devices",
+        "建立跨设备协同会话并交换数据 / Set up a cross-device collaboration session and exchange data"
+      ],
+      "skills": [
+        "arkdata",
+        "distributed-service-kit",
+        "arkts"
+      ],
+      "notes": "arkdata = the data layer that actually syncs: distributed KV-Store / distributed RDB / distributed data object. distributed-service-kit = device discovery + the collaboration session those distributed objects ride on. arkts = the data model + async glue. Declare ohos.permission.DISTRIBUTED_DATASYNC in module.json5. For local-only persistence use the local-persistence recipe; for cloud (not device-to-device) sync use cloud-foundation-kit instead.",
+      "lifecycle": {
+        "status": "validated",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-13"
+        },
+        "validated": {
+          "by": "claude",
+          "at": "2026-05-13",
+          "against_sdk": "HarmonyOS 4.0.0(10)",
+          "exemplar": "DemoApp/HarmonyOS_NEXT/DistributedContacts"
+        }
+      }
+    },
+    {
+      "id": "camera-capture",
+      "name": "相机拍摄 / Camera capture",
+      "when": [
+        "在应用内打开相机拍照或录像 / Open the camera in-app to take a photo or record video",
+        "做一个自定义相机界面，带预览、对焦、闪光灯 / Build a custom camera screen with preview, focus, and flash",
+        "拍照后把图片返回给上层界面处理 / Capture a photo and return it to the calling screen for processing",
+        "录制一段视频并保存到应用 / Record a video clip and save it in the app",
+        "实现自定义拍摄功能（不是扫码） / Implement custom capture (not code scanning)"
+      ],
+      "skills": [
+        "camera-kit",
+        "arkui",
+        "ability-kit"
+      ],
+      "notes": "camera-kit = the capture pipeline — camera input + CaptureSession + output streams (preview / photo / video). arkui = the XComponent surface for preview plus the shutter/flash controls. ability-kit = the runtime permission prompt flow. Declare ohos.permission.CAMERA (plus MICROPHONE for video) in module.json5 with reason/usedScene. To just *pick* an existing photo (no live capture) use the photo-pick-and-edit recipe — the picker needs no camera permission. To scan a QR/barcode use the scan-code recipe.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-13"
+        }
+      }
+    },
+    {
+      "id": "map-and-location",
+      "name": "地图与定位 / Map and location",
+      "when": [
+        "在界面上显示一张地图并标出当前位置 / Show a map in the UI and mark the current location",
+        "获取用户的经纬度并做地理编码/逆地理编码 / Get the user's lat/long and do geocoding / reverse geocoding",
+        "在地图上添加标记、画路线或做路径规划 / Add markers, draw routes, or do route planning on a map",
+        "实现附近搜索、POI 检索或定位打卡 / Implement nearby search, POI lookup, or a location check-in",
+        "持续追踪位置变化，比如运动轨迹 / Continuously track location changes, e.g. an activity track"
+      ],
+      "skills": [
+        "map-kit",
+        "location-kit",
+        "arkui"
+      ],
+      "notes": "map-kit = the MapComponent + markers/overlays/route polylines + geocoding + place (POI) search. location-kit = the position fixes (single or continuous; GNSS/network) and geofencing that feed the map. arkui = the map container and the surrounding controls. Declare ohos.permission.APPROXIMATELY_LOCATION (plus LOCATION, plus LOCATION_IN_BACKGROUND for background tracking) in module.json5 with reason/usedScene.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-13"
+        }
+      }
+    },
+    {
+      "id": "secure-credential-storage",
+      "name": "安全凭据存储 / Secure credential storage",
+      "when": [
+        "安全地保存用户密码、Token 或密钥 / Securely store a user password, token, or key",
+        "把登录凭据加密存储，避免明文落盘 / Store login credentials encrypted, never plaintext on disk",
+        "实现自动登录所需的凭据保管 / Keep the credentials needed for auto-login",
+        "需要硬件级保护的敏感数据存储 / Sensitive-data storage with hardware-backed protection",
+        "管理应用的关键资产，增删改查 / Manage the app's critical assets — add / query / update / remove"
+      ],
+      "skills": [
+        "asset-store-kit",
+        "arkts"
+      ],
+      "notes": "asset-store-kit = the Asset API — hardware-backed (TEE) storage for short secrets: passwords, tokens, keys; access can be gated on screen-lock state. arkts = the async calls + the data model around it. For ordinary (non-secret) app data use the local-persistence recipe (arkdata). To perform crypto operations (encrypt/sign with managed keys) add universal-keystore-kit. NOT plain Preferences or files for secrets — those are unencrypted.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-13"
+        }
+      }
+    },
+    {
+      "id": "share-content",
+      "name": "分享内容 / Share content",
+      "when": [
+        "把文本、图片或文件分享到其他应用 / Share text, images, or files to other apps",
+        "弹出系统分享面板让用户选择目标应用 / Pop the system share sheet for the user to pick a target app",
+        "实现\"分享给朋友\"或导出到第三方应用 / Implement 'share with a friend' or export to a third-party app",
+        "通过 UDMF 把内容传给接收方应用 / Hand content to the receiving app via UDMF",
+        "把当前页面内容，如链接或截图，分享出去 / Share the current page's content, such as a link or a screenshot"
+      ],
+      "skills": [
+        "share-kit",
+        "arkui"
+      ],
+      "notes": "share-kit = the system share-sheet API (SharePanel / system share), built on UDMF (Unified Data Management Framework) records. arkui = the trigger (a share button) and any pre-share preview. To *receive* shared content, add ability-kit (the abilities + skills filters in module.json5 that declare what your app accepts). For device-to-device file transfer (not the app share sheet) use service-collaboration-kit / distributed-service-kit instead.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-13"
+        }
+      }
+    },
+    {
+      "id": "scan-code",
+      "name": "扫码 / Scan a code",
+      "when": [
+        "扫描二维码或条形码并拿到结果 / Scan a QR code or barcode and get the result",
+        "在应用里加一个扫一扫入口 / Add a 'scan' entry point in the app",
+        "用相机识别二维码后跳转或填表 / Recognize a QR code with the camera then navigate or fill a form",
+        "调用默认扫码界面或做自定义扫码界面 / Use the default scan UI or build a custom scan screen",
+        "从相册图片里识别二维码 / Recognize a QR code from a gallery image"
+      ],
+      "skills": [
+        "scan-kit",
+        "arkui",
+        "ability-kit"
+      ],
+      "notes": "scan-kit = the scanning API — the default scan UI (scanBarcode) or a customizable scanner component; also decodes codes from a still image. arkui = the scan button + result handling. ability-kit = the camera permission prompt flow. Declare ohos.permission.CAMERA in module.json5 with reason/usedScene. For general in-app camera capture (photos/video, not code scanning) use the camera-capture recipe instead.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-13"
+        }
+      }
+    },
+    {
+      "id": "in-app-purchase",
+      "name": "应用内购买 / In-app purchase",
+      "when": [
+        "在应用内销售数字商品、会员或订阅 / Sell digital goods, memberships, or subscriptions in-app",
+        "实现购买流程并校验购买凭据 / Implement the purchase flow and verify the purchase token",
+        "查询商品信息、发起支付、处理结果回调 / Query product info, start payment, handle the result callback",
+        "做一个解锁高级功能的内购页面 / Build an in-app-purchase screen that unlocks premium features",
+        "管理已购项目和补单或恢复购买 / Manage owned items and reconcile or restore purchases"
+      ],
+      "skills": [
+        "iap-kit",
+        "account-kit",
+        "arkui"
+      ],
+      "notes": "iap-kit = the IAP API — query products, launch purchase, get/verify the purchase token, handle consumables vs non-consumables vs subscriptions. account-kit = the Huawei-account sign-in that IAP requires. arkui = the store/paywall UI. Verify purchase tokens server-side. For paying *out* / wallet passes (not selling digital goods) use payment-kit / wallet-kit. Requires AppGallery Connect setup.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-13"
+        }
+      }
+    },
+    {
+      "id": "deep-linking",
+      "name": "深度链接 / Deep linking",
+      "when": [
+        "处理从外部链接打开应用并跳到指定页面 / Handle opening the app from an external link and routing to a specific page",
+        "实现 Deep Linking 或 App Linking / Implement Deep Linking or App Linking",
+        "用 Want 传参在应用间跳转 / Pass parameters across apps with a Want",
+        "点击短信或网页里的链接直接打开应用对应页面 / Tapping a link in a text or web page opens the matching app page",
+        "配置 URI scheme 或 https 域名关联来拉起应用 / Configure a URI scheme or an https domain association to launch the app"
+      ],
+      "skills": [
+        "ability-kit",
+        "app-linking-kit",
+        "arkts"
+      ],
+      "notes": "ability-kit = the Want / UIAbility entry that receives the incoming link, the skills filters in module.json5 that declare which URIs/schemes/actions the app handles, and the code that parses the Want's parameters. app-linking-kit = the verified-https-domain App Linking flow (vs. plain Deep Linking's URI scheme). arkts = the routing logic that takes the parsed params to the right page. For *outgoing* links to other apps use ability-kit's startAbility with an explicit or implicit Want.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-13"
+        }
+      }
+    },
+    {
+      "id": "media-playback",
+      "name": "音视频播放 / Audio & video playback",
+      "when": [
+        "在应用里播放一段视频或音频，带播放/暂停/进度条 / Play a video or audio clip in-app with play/pause/seek controls",
+        "用 AVPlayer 播放本地文件或网络流 / Use AVPlayer to play a local file or a network stream",
+        "做一个简单的视频播放器界面 / Build a simple video-player screen",
+        "实现播放进度、倍速、音量和全屏控制 / Implement playback progress, speed, volume, and full-screen controls"
+      ],
+      "skills": [
+        "media-kit",
+        "arkui",
+        "arkts"
+      ],
+      "notes": "media-kit = AVPlayer — note its strict state machine (idle->initialized->prepared->playing/paused->stopped->released) and the on('stateChange'/'timeUpdate'/'error') events; AVPlayer.fdSrc for a local file fd, .url for a stream. arkui = the Video component (simple) or an XComponent surface (custom render) plus the transport controls. arkts = the async/await around prepare()/play() and the state model. For *recording* (not playback) use the audio-video-recording recipe; for a background music app with lock-screen controls use background-music-player.",
+      "lifecycle": {
+        "status": "validated",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-13"
+        },
+        "validated": {
+          "by": "claude",
+          "at": "2026-05-13",
+          "against_sdk": "HarmonyOS 4.0.0(10)",
+          "exemplar": "DemoApp/HarmonyOS_NEXT/VideoPlayer"
+        }
+      }
+    },
+    {
+      "id": "audio-video-recording",
+      "name": "录音录像 / Audio & video recording",
+      "when": [
+        "在应用里录一段音频或视频并保存成文件 / Record audio or video in-app and save it to a file",
+        "用 AVRecorder 录音并写入沙箱文件 / Record audio with AVRecorder and write it to a sandbox file",
+        "做一个录音机功能，开始/暂停/停止/保存 / Build a voice-recorder feature with start/pause/stop/save",
+        "录制后回放或导出录音文件 / Play back or export the recorded file afterward"
+      ],
+      "skills": [
+        "media-kit",
+        "core-file-kit",
+        "arkts"
+      ],
+      "notes": "media-kit = AVRecorder — build an AVRecorderConfig (audio/video source, profile, the output file fd via url='fd://'+fd), then prepare()/start()/pause()/stop()/release(); same on('stateChange'/'error') discipline as AVPlayer. core-file-kit = @ohos.file.fs to open the output file and get the fd you hand to the recorder. arkts = the async glue + recorder state model. Declare ohos.permission.MICROPHONE (and CAMERA for video). For *playing back* the result use the media-playback recipe; for live camera capture (preview/photo/video frames) use camera-capture.",
+      "lifecycle": {
+        "status": "validated",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-13"
+        },
+        "validated": {
+          "by": "claude",
+          "at": "2026-05-13",
+          "against_sdk": "HarmonyOS 4.0.0(10)",
+          "exemplar": "DemoApp/HarmonyOS_NEXT/Recorder"
+        }
+      }
+    },
+    {
+      "id": "background-music-player",
+      "name": "后台音乐播放器 / Background music player",
+      "when": [
+        "做一个能在后台继续播放的音乐播放器 / Build a music player that keeps playing in the background",
+        "在锁屏和控制中心显示播放控制和歌曲信息 / Show playback controls and song info on the lock screen and in Control Center",
+        "实现 AVSession 媒体会话，支持系统媒体控件 / Implement an AVSession media session wired to the system media controls",
+        "音乐应用：后台播放 + 媒体通知 + 桌面卡片 / Music app: background playback + media notification + a home-screen widget"
+      ],
+      "skills": [
+        "avsession-kit",
+        "media-kit",
+        "background-tasks-kit",
+        "ability-kit"
+      ],
+      "notes": "avsession-kit = AVSession.createAVSession + setAVMetadata (title/artist/cover) + setAVPlaybackState + the control-command listeners (play/pause/next/prev/seek) that drive lock-screen & Control-Center media controls. media-kit = the AVPlayer that actually decodes the audio. background-tasks-kit = startBackgroundRunning with BackgroundMode.AUDIO_PLAYBACK so playback continues after the app backgrounds. ability-kit = the WantAgent that startBackgroundRunning requires (taps on the system media notification open this UIAbility). Optionally add form-kit for a now-playing home-screen card (as DemoApp/HarmonyOS_NEXT/MusicHome does). Declare ohos.permission.KEEP_BACKGROUND_RUNNING + backgroundModes:['audioPlayback'] in module.json5. For one-off playback without lock-screen controls / background, the media-playback recipe is enough.",
+      "lifecycle": {
+        "status": "validated",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-13"
+        },
+        "validated": {
+          "by": "claude",
+          "at": "2026-05-13",
+          "against_sdk": "HarmonyOS 4.0.0(10)",
+          "exemplar": "DemoApp/HarmonyOS_NEXT/MusicHome"
+        }
+      }
+    },
+    {
+      "id": "file-pick-and-manage",
+      "name": "文件选择与管理 / File pick & manage",
+      "when": [
+        "让用户选一个文件或文档，读写它的内容 / Let the user pick a file or document and read/write its contents",
+        "做一个文件管理器界面，浏览、打开、保存文件 / Build a file-manager screen to browse, open, and save files",
+        "用 DocumentViewPicker 选文件，用 file.fs 读写 / Pick files with DocumentViewPicker and read/write with file.fs",
+        "浏览相册里的图片或保存文件到指定目录 / Browse photos in the gallery or save a file to a chosen directory"
+      ],
+      "skills": [
+        "core-file-kit",
+        "media-library-kit",
+        "arkui"
+      ],
+      "notes": "core-file-kit = @ohos.file.picker's DocumentViewPicker (DocumentSelectOptions to pick, DocumentSaveOptions to choose a save location — both return URIs, no broad storage permission needed) plus @ohos.file.fs (open/read/write/stat/close, OpenMode flags, sync + stream APIs) for the file contents. media-library-kit = photoAccessHelper.getPhotoAccessHelper to browse/query images & videos (PhotoType) when the files are media. arkui = the file list / browser UI. For *editing an image* you picked, chain into photo-pick-and-edit (image-kit); for the system share sheet use share-content.",
+      "lifecycle": {
+        "status": "validated",
+        "authored": {
+          "by": "claude",
+          "at": "2026-05-13"
+        },
+        "validated": {
+          "by": "claude",
+          "at": "2026-05-13",
+          "against_sdk": "HarmonyOS 4.0.0(10)",
+          "exemplar": "DemoApp/HarmonyOS_NEXT/FilesManger"
+        }
+      }
+    }
+  ]
+}

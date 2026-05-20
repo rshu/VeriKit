@@ -1,0 +1,295 @@
+{
+  "format": "skill-reference-manifest/v1",
+  "skill": "camera-kit",
+  "extracted": {
+    "tool": "build-reference-manifests.ts",
+    "at": "2026-05-12T07:49:28.323Z"
+  },
+  "references": [
+    {
+      "path": "references/Camera Kit简介.md",
+      "title": "Camera Kit简介",
+      "snippet": "开发者通过调用Camera Kit（相机服务）提供的接口可以开发相机应用，应用通过访问和操作相机硬件，实现基础操作，如预览、拍照和录像；还可以通过接口组合完成更多操作，如控制闪光灯和曝光时间、对焦或调焦等。 #### 开发场景 当开发者需要开发一个相机应用（或是在应用内开发相机模块）时，可参考以下开发模型了解相机的工作流程，进而开发相机应用。 如果开发者仅是需要拉起系统相机拍摄一张照片、录制一段视频，可直接使用CameraPicker，无需申请相机权限，直接拉起系统相机完成拍摄，具体可参考 CameraPicker 。 #### 开发模型 相机应用调用相机设备采集、加工图像视频数据，精确控制对应的硬件，灵活输出图像、视频内容，满足多镜头硬件适配（如广角、长焦、TOF）、多业务场景适配（如不同分辨率、不同格式、不同效果）的要求。 相机应用开发的工作流程如图1所示，可概括为相机设备、相机会话管理和相机输出管理三部分。 - 相机应用调用相机设备采集数据，作为相机输入流。 - 相机会话管理可配置输入流，即选择合适的相机镜头（如前置、后置）进行拍摄。另外还可以配置闪光灯、曝光时间、对焦和调焦等参数，实现不同效果的拍摄，从而适配不同的业务场景。应用可以通过切换会话满足不同场景的拍摄需求。 - 相机输出管理配置相机的输出流，即将图像内容以预览流、拍照流或视频流输出。 **图1** 相机工作流程 "
+    },
+    {
+      "path": "references/HDR Vivid相机录像(ArkTS).md",
+      "title": "HDR Vivid相机录像(ArkTS)",
+      "snippet": "HarmonyOS支持调用接口，录制HDR Vivid视频，可以拍出层次表现更细腻、光影细节更丰富的画面，提升画面质感，呈现更卓越的视觉效果。 当前示例提供完整的HDR Vivid录像开发步骤，方便开发者实现录制HDR Vivid视频的功能。更多HDR Vivid的开发指导，请参考 使用HDR Vivid特性开发媒体应用 。 在参考以下示例前，建议开发者查看 相机开发指导(ArkTS) 的具体章节，了解 设备输入 、 会话管理 、 录像 等单个流程。 #### 开发步骤 1. 导入接口。 import { camera } from '@kit.CameraKit'; import { colorSpaceManager } from '@kit.ArkGraphics2D'; import { BusinessError } from '@kit.BasicServicesKit'; import { media } from '@kit.MediaKit'; import { common } from '@kit.AbilityKit'; import { photoAccessHelper } from '@kit.MediaLibraryKit'; import { fileIo as fs } from '@kit.CoreFileKit'; 2. 获取预览、录像的配置"
+    },
+    {
+      "path": "references/HDR Vivid相机拍照(ArkTS).md",
+      "title": "HDR Vivid相机拍照(ArkTS)",
+      "snippet": "HarmonyOS支持调用接口拍摄HDR Vivid照片，可以拍出层次表现更细腻、光影细节更丰富的画面，提升画面质感，呈现更卓越的视觉效果。 当前示例提供完整的HDR Vivid拍照开发步骤，方便开发者实现HDR拍照的功能。更多HDR Vivid的开发指导，请参考 使用HDR Vivid特性开发媒体应用 。 在参考以下示例前，建议开发者查看 相机开发指导(ArkTS) 的具体章节，了解 设备输入 、 会话管理 、 拍照 等单个流程。 #### 开发步骤 1. 导入接口。 import { camera } from '@kit.CameraKit'; import { colorSpaceManager } from '@kit.ArkGraphics2D'; import { image } from '@kit.ImageKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { fileIo as fs } from '@kit.CoreFileKit'; import { photoAccessHelper } from '@kit.MediaLibraryKit'; 2. 查询支持的色彩空间。 function getSupportedColorSpaces(session: camera.P"
+    },
+    {
+      "path": "references/YUV拍照(ArkTS).md",
+      "title": "YUV拍照(ArkTS)",
+      "snippet": "从API version 23开始，相机框架提供YUV格式图片拍照能力。与普通拍照相比，YUV拍照获取到的是未经过编码的图像数据，完整保留了传感器捕获的原始亮度和色度信息，适用于视频编码或专业处理。同时，拍摄过程会产生更高的能耗开销，保存会占用更多的存储空间。 #### 开发步骤 详细的相机功能API说明请参考Camera模块描述 OH_Camera 。 1. 导入依赖模块。 获取拍照输出的数据需要用到系统提供的image、dataSharePredicates、photoAccessHelper接口能力，方法如下。 import { BusinessError } from '@kit.BasicServicesKit'; import { camera } from '@kit.CameraKit'; import { dataSharePredicates } from '@kit.ArkData'; import { fileIo } from '@kit.CoreFileKit'; import { image } from '@kit.ImageKit'; import { photoAccessHelper} from '@kit.MediaLibraryKit'; 2. 获取相机设备完整输出能力。 通过 getSupportedFullOutputCapabilit"
+    },
+    {
+      "path": "references/YUV拍照(C_C++).md",
+      "title": "YUV拍照(C/C++)",
+      "snippet": "从API version 23开始，相机框架提供YUV格式图片拍照能力。与普通拍照相比，YUV拍照获取到的是未经过编码的图像数据，完整保留了传感器捕获的原始亮度和色度信息，适用于视频编码或专业处理。同时，拍摄过程会产生更高的能耗开销，保存会占用更多的存储空间。 #### 开发步骤 详细的相机功能API说明请参考Camera模块描述 OH_Camera 。 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。 // 导入NDK接口头文件。 #include <cstdint> #include <cstdlib> #include <cstring> #include <string.h> #include <new> #include \"hilog/log.h\" #include \"multimedia/image_framework/image/image_source_native.h\" #include \"multimedia/image_framework/image/image_packer_native.h\" #include \"multimedia/media_library/media_access_helper_capi.h\" #include \"multimedia/media_library/media_asset_base_capi.h\" "
+    },
+    {
+      "path": "references/会话管理(ArkTS).md",
+      "title": "会话管理(ArkTS)",
+      "snippet": "相机使用预览、拍照、录像、元数据功能前，均需要创建相机会话。 在会话中，可以完成以下功能： - 配置相机的输入流和输出流。相机在拍摄前，必须完成输入输出流的配置。 配置输入流即添加设备输入，对用户而言，相当于选择设备的某一相机拍摄；配置输出流，即选择数据将以什么形式输出。当应用需要实现拍照时，输出流应配置为预览流和拍照流，预览流的数据将显示在 XComponent 组件上，拍照流的数据将通过 ImageReceiver 接口的能力保存到相册中。 - 添加闪光灯、调整焦距等配置。具体支持的配置及接口说明请参考 @ohos.multimedia.camera (相机管理) 。 - 会话切换控制。应用可以通过移除和添加输出流的方式，切换相机模式。如当前会话的输出流为拍照流，应用可以将拍照流移除，然后添加视频流作为输出流，即完成了拍照到录像的切换。 完成会话配置后，应用提交和开启会话，可以开始调用相机相关功能。 #### 开发步骤 1. 导入相关接口，导入方法如下。 import { camera } from '@kit.CameraKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 调用 cameraManager 中的 createSession 方法创建一个会话。 // 此处以videoSession为例。"
+    },
+    {
+      "path": "references/会话管理(C_C++).md",
+      "title": "会话管理(C/C++)",
+      "snippet": "相机使用预览、拍照、录像、元数据功能前，均需要创建相机会话。 在会话中，可以完成以下功能： - 配置相机的输入流和输出流。相机在拍摄前，必须完成输入输出流的配置。 配置输入流即添加设备输入，对用户而言，相当于选择设备的某一相机拍摄；配置输出流，即选择数据将以什么形式输出。当应用需要实现拍照时，输出流应配置为预览流和拍照流，预览流的数据将显示在XComponent组件上，拍照流的数据将通过ImageReceiver接口的能力保存到相册中。 - 添加闪光灯、调整焦距等配置。具体支持的配置及接口说明请参考 OH_Camera 。 - 会话切换控制。应用可以通过移除和添加输出流的方式，切换相机模式。如当前会话的输出流为拍照流，应用可以将拍照流移除，然后添加视频流作为输出流，即完成了拍照到录像的切换。 完成会话配置后，应用提交和开启会话，可以开始调用相机相关功能。 #### 开发步骤 1. 导入NDK相关接口，导入方法如下。 #include \"hilog/log.h\" #include \"ohcamera/camera.h\" #include \"ohcamera/camera_input.h\" #include \"ohcamera/capture_session.h\" #include \"ohcamera/photo_output.h\" #include \"ohcamera/preview"
+    },
+    {
+      "path": "references/使用相机预配置(ArkTS).md",
+      "title": "使用相机预配置(ArkTS)",
+      "snippet": "相机预配置（Preconfig），对常用的场景和分辨率进行了预配置集成，可简化开发相机应用流程，提高应用的开发效率。 开发者在开发相机应用时，在获取到 CameraDevice 之后，如果遵循通用流程开发，步骤较为繁琐。需要先调用 CameraManager 的 getSupportedOutputCapability 来查询当前相机在指定模式下所支持的各类输出的配置信息，拿到 CameraOutputCapability 之后，应用开发者还需要对里面的各类数据进行解析，筛选，找到自己需要的配置数据 Profile 以及 VideoProfile 。最后使用对应的Profile以及VideoProfile创建对应的 PreviewOutput 、 PhotoOutput 以及 VideoOutput 。 为了解决上述问题，优化应用开发流程，系统针对拍照（ PhotoSession ）、录像（ VideoSession ）两类场景，提供了 preconfig 接口帮助开发者快速完成相机参数配置。推荐仅需要自定义拍照界面的无需开发专业相机应用的开发者，使用相机预配置功能快速开发应用。 在开发相机应用时，需要先 申请相关权限 。以拍照（PhotoSession）为例，相机预配置（Preconfig）开发流程与 通用流程 开发，存在以下差异： ![](https://contentcent"
+    },
+    {
+      "path": "references/使用相机预配置(C_C++).md",
+      "title": "使用相机预配置(C/C++)",
+      "snippet": "相机预配置（Preconfig），对常用的场景和分辨率进行了预配置集成，可简化开发相机应用流程，提高应用的开发效率。 开发者在开发相机应用时，在获取到CameraDevice之后，如果遵循通用流程开发，步骤较为繁琐。需要先查询当前相机在指定模式下所支持的各类输出的配置信息，拿到 Camera_OutputCapability 之后，应用开发者还需要对里面的各类数据进行解析，筛选，找到自己需要的配置数据 Camera_Profile 和 Camera_VideoProfile 。最后使用对应的Profile以及VideoProfile创建对应的 Camera_PreviewOutput 、 Camera_PhotoOutput 以及 Camera_VideoOutput 。 为了解决上述问题，优化应用开发流程，系统针对拍照、录像两类场景（即 Camera_SceneMode 为NORMAL_PHOTO或NORMAL_VIDEO），提供了 OH_CameraManager_CreatePreviewOutputUsedInPreconfig 、 OH_CameraManager_CreatePhotoOutputUsedInPreconfig 、 OH_CameraManager_CreateVideoOutputUsedInPreconfig 接口帮助开发者快速完成相机参数配置。推荐"
+    },
+    {
+      "path": "references/元数据(ArkTS).md",
+      "title": "元数据(ArkTS)",
+      "snippet": "在开发相机应用时，需要先 申请相关权限 。 元数据（Metadata）是对相机返回的图像信息的描述和上下文。针对图像信息，提供更详细的数据，如照片或视频中，识别人像的取景框坐标的信息等。 Metadata主要是通过一个TAG（Key），去找对应的Data，用于传递参数和配置信息，减少内存拷贝操作。 #### 适用场景 检测图片中的人脸，返回高精度的人脸矩形框坐标。应用可基于人脸定位结果，灵活集成后处理算法，将其应用于多样化场景。 #### 开发步骤 详细的API说明请参考 @ohos.multimedia.camera (相机管理) 。 1. 导入相关接口，导入方法如下。 import { camera } from '@kit.CameraKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 调用 CameraOutputCapability 中的supportedMetadataObjectTypes属性，获取当前设备支持的元数据类型，并通过 createMetadataOutput 方法创建元数据输出流。 function getMetadataOutput(cameraManager: camera.CameraManager, cameraOutputCapability: camera.Camer"
+    },
+    {
+      "path": "references/元数据(C_C++).md",
+      "title": "元数据(C/C++)",
+      "snippet": "元数据（Metadata）是对相机返回的图像信息的描述和上下文。针对图像信息，提供更详细的数据，如照片或视频中，识别人像的取景框坐标等信息。 Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用于传递参数和配置信息，减少内存拷贝操作。 #### 开发步骤 详细的API说明请参考 OH_Camera 。 1. 导入NDK接口，导入方法如下。 #include <cstdint> #include <native_buffer/buffer_common.h> #include <unistd.h> #include <string> #include <thread> #include <cstdio> #include <fcntl.h> #include <map> #include <string> #include <vector> #include <native_buffer/native_buffer.h> #include \"iostream\" #include \"mutex\" #include \"hilog/log.h\" #include \"ohcamera/camera.h\" #include \"ohcamera/camera_input.h\" #include \"ohcamera/capture_session.h\" #inclu"
+    },
+    {
+      "path": "references/分段式拍照(ArkTS).md",
+      "title": "分段式拍照(ArkTS)",
+      "snippet": "分段式拍照是相机的重要功能之一，即应用下发拍照任务后，系统将分多阶段上报不同质量的图片。 - 在第一阶段，系统快速上报轻量处理的图片，轻量处理的图片比全质量图低，出图速度快。应用通过回调会收到一个PhotoAsset对象，通过该对象可调用媒体库接口，读取图片或落盘图片。 - 在第二阶段，相机框架会根据应用的请求图片诉求或在相机进入后台时，进行图像增强处理得到全质量图，并将处理好的图片传回给媒体库，替换轻量处理的图片。 通过分段式拍照，优化了系统的拍照响应时延，从而提升用户体验。 应用开发分段式拍照主要分为以下步骤： - 通过PhotoOutput，监听photoAssetAvailable回调，获取photoAccessHelper的PhotoAsset对象。 - 通过PhotoAsset对象，调用媒体库相关接口，读取或落盘图片。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c3/v3/OrNgf0IESZKQsftisqIEew/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111319Z&HW-CC-Expire=86400&HW-CC-Sign=67494DAFC8E6CCB3A0932578AAD"
+    },
+    {
+      "path": "references/分段式拍照(C_C++).md",
+      "title": "分段式拍照(C/C++)",
+      "snippet": "分段式拍照是相机的最重要功能之一，相机输出低质量图用作快速显示，提升用户感知拍照速度，同时使用高质量图保证最后的成图质量达到系统相机的水平，既满足了后处理算法的需求，又不阻塞前台的拍照速度，构筑相机性能竞争力，提升了用户的体验。 - 在第一阶段，系统快速上报轻量处理的图片，轻量处理的图片比全质量图低，出图速度快。应用通过回调会收到一个PhotoAsset对象，通过该对象可调用媒体库接口，读取图片或落盘图片。 - 在第二阶段，相机框架会根据应用的请求图片诉求或者在系统闲时，进行图像增强处理得到全质量图，将处理好的图片传回给媒体库，替换轻量处理的图片。 #### 开发步骤 详细的API说明请参考 OH_Camera 。 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。 #include <cstdint> #include <unistd.h> #include <string> #include <thread> #include <cstdio> #include <fcntl.h> #include <map> #include <string> #include <vector> #include <native_buffer/native_buffer.h> #include \"iostream\" #include \"mutex\" #include \"h"
+    },
+    {
+      "path": "references/分段式拍照实践(ArkTS).md",
+      "title": "分段式拍照实践(ArkTS)",
+      "snippet": "在开发相机应用时，需要先 申请相关权限 。 当前示例提供完整的分段式拍照流程介绍，方便开发者了解完整的接口调用顺序。 在参考以下示例前，建议开发者查看 分段式拍照(ArkTS) 的具体章节，了解 设备输入 、 会话管理 、 拍照 等单个流程。 #### 开发流程 在获取到相机支持的输出流能力后，开始创建拍照流，开发流程如下。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f6/v3/NVJgJKPCTL-8GCmqgCfd1Q/zh-cn_image_0000002543214598.png?HW-CC-KV=V1&HW-CC-Date=20260421T111319Z&HW-CC-Expire=86400&HW-CC-Sign=563AFE4D92E8745BEBA9B63A259AA9DC7A72B99570A51B4D4502CB5A580F30E1) #### 完整示例 Context获取方式请参考： 获取UIAbility的上下文信息 。 import { camera } from '@kit.CameraKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { abi"
+    },
+    {
+      "path": "references/动态照片拍摄(ArkTS).md",
+      "title": "动态照片拍摄(ArkTS)",
+      "snippet": "相机框架提供动态照片拍摄能力，业务应用可以类似拍摄普通照片一样，一键式拍摄得到动态照片。 应用开发动态照片主要分为以下步骤： - 应用开发动态照片前，请参考申请相机开发的权限、相机管理、设备输入、会话管理等流程完成相机应用开发必选能力配置。 - 查询当前设备的当前模式是否支持拍摄动态照片。 - 如果支持动态照片，可以调用相机框架提供的使能接口**使能**动态照片能力。 - 监听照片回调，将照片存入媒体库。可参考MediaLibrary Kit-访问和管理动态照片资源。 #### 开发步骤 详细的API说明请参考 @ohos.multimedia.camera (相机管理) 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e7/v3/ZUb-fsdsSbeyU-VteaUF2Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111319Z&HW-CC-Expire=86400&HW-CC-Sign=820450FAB36A2F73627351719FB74B44E1296BF51B1FA70E8E288EDFAA5E65CF) - 拍摄动态照片需要麦克风权限ohos.permission.MICROPHON"
+    },
+    {
+      "path": "references/动态调整预览帧率(ArkTS).md",
+      "title": "动态调整预览帧率(ArkTS)",
+      "snippet": "动态调整帧率是直播、视频等场景下控制预览效果的重要能力之一。应用可通过此能力，显式地控制流输出帧率，以适应不同帧率下的业务目标。 某些场景下降低帧率可在相机设备启用时降低功耗。 #### 约束与限制 支持的帧率范围及帧率的设置依赖于硬件能力的实现，不同的硬件平台可能拥有不同的默认帧率。 #### 开发流程 相机使用预览功能前，均需要创建相机会话。完成会话配置后，应用提交和开启会话，才可以开始调用相机相关功能。 流程图如下所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c0/v3/2V3sQ9ntTXSm-S6QJHN0RA/zh-cn_image_0000002573854527.png?HW-CC-KV=V1&HW-CC-Date=20260421T111322Z&HW-CC-Expire=86400&HW-CC-Sign=F3C833C5511030425C007C5FAE358E36DD65904D00DF499C3CDFB172A3CA4A3F) 与普通的 预览 流程相比，动态调整预览帧率的注意点如图上标识： 1. 调用 createSession 创建会话（Session）时，需要指定模式为NORMAL_PHOTO或NORMAL_VIDEO。 仅"
+    },
+    {
+      "path": "references/动态调整预览帧率(C_C++).md",
+      "title": "动态调整预览帧率(C/C++)",
+      "snippet": "动态调整帧率是直播、视频等场景下控制预览效果的重要能力之一。应用可通过此能力，显式地控制流输出帧率，以适应不同帧率下的业务目标。 某些场景下降低帧率可在相机设备启用时降低功耗。 #### 约束与限制 支持的帧率范围及帧率的设置依赖于硬件能力的实现，不同的硬件平台可能拥有不同的默认帧率。 #### 开发流程 相机使用预览功能前，均需要创建相机会话。完成会话配置后，应用提交和开启会话，才可以开始调用相机相关功能。 流程图如下所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ad/v3/7LTXCYpHTleo_PaNxkkt-w/zh-cn_image_0000002573854529.png?HW-CC-KV=V1&HW-CC-Date=20260421T111328Z&HW-CC-Expire=86400&HW-CC-Sign=AC2C441E4DC9A162F873E6BB29DBAC0D85E4A18E3A01F907BFF616AD655AD366) 与普通的 预览 流程相比，动态调整预览帧率的注意点如图上标识： 1. 调用 OH_CameraManager_CreateCaptureSession 创建会话（Session）时，需要指定模式为NORM"
+    },
+    {
+      "path": "references/压力管控(ArkTS).md",
+      "title": "压力管控(ArkTS)",
+      "snippet": "从API version 20开始，相机框架提供对系统压力等级的监听。 在长时间使用相机的场景（如直播业务）中，相机应用可以通过监听系统压力等级变化，动态调整画质（如帧率、分辨率等），平衡功耗、发热和系统负载，保证功能长时间可用。 #### 状态监听 可以通过注册 systemPressureLevelChange 的回调函数获取系统压力的监听结果。 当系统压力发生变化时，callback返回SystemPressureLevel参数。 参数的具体内容可参考相机管理器回调接口实例 SystemPressureLevel 。 import { BusinessError } from '@kit.BasicServicesKit'; function callback(err: BusinessError, systemPressureLevel: camera.SystemPressureLevel): void { if (err !== undefined && err.code !== 0) { console.error(`Callback Error, errorCode: ${err.code}`); return; } console.info(`systemPressureLevel: ${systemPressureLevel}`); } function reg"
+    },
+    {
+      "path": "references/压力管控(C_C++).md",
+      "title": "压力管控(C/C++)",
+      "snippet": "从API version 20开始，相机框架提供对系统压力等级的监听。 在长时间使用相机的场景（如直播业务）中，相机应用可以通过监听系统压力等级变化，动态调整画质（如帧率、分辨率等），平衡功耗、发热和系统负载，保证功能长时间可用。 #### 状态监听 可以通过注册 OH_CaptureSession_OnSystemPressureLevelChange 的回调函数获取系统压力的监听结果。 当系统压力发生变化时，callback返回Camera_SystemPressureLevel参数。 参数的具体内容可参考相机管理器回调接口实例 Camera_SystemPressureLevel 。 void SystemPressureLevelChangeCallback(Camera_CaptureSession *captureSession, Camera_SystemPressureLevel systemPressureLevel) { OH_LOG_INFO(LOG_APP, \"SystemPressureLevelChangeCallback level: %{public}d\", systemPressureLevel); } Camera_ErrorCode NDKCamera::RegisterSystemPressureCallback() { Camera_Err"
+    },
+    {
+      "path": "references/双路预览(ArkTS).md",
+      "title": "双路预览(ArkTS)",
+      "snippet": "在开发相机应用时，需要先 申请相关权限 。 双路预览，即应用可同时使用两路预览流，一路用于在屏幕上显示，一路用于图像处理等其他操作，提升处理效率。 相机应用通过控制相机，实现图像显示（预览）、照片保存（拍照）、视频录制（录像）等基础操作。相机开发模型为Surface模型，即应用通过Surface进行数据传递，通过 ImageReceiver 的Surface获取拍照流的数据、通过XComponent的Surface获取预览流的数据。 如果要实现双路预览，可以先参考 拍照 ，在双路预览中将拍照流改为另一路预览流，通过 ImageReceiver 的Surface创建另一个previewOutput，其余流程与拍照一致。 详细的API说明请参考 @ohos.multimedia.camera (相机管理) 。 #### 约束与限制 - 暂不支持动态添加流，即不能在没有调用session.stop的情况下，调用addOutput添加流。 - 对ImageReceiver组件获取到的图像数据处理后，需要将对应的图像Buffer释放，确保Surface的BufferQueue正常轮转。 #### 调用流程 双路方案调用流程图建议如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_1"
+    },
+    {
+      "path": "references/在Worker线程中使用相机(ArkTS).md",
+      "title": "在Worker线程中使用相机(ArkTS)",
+      "snippet": "Worker 主要作用是为应用程序提供一个多线程的运行环境，可满足应用程序在执行过程中与主线程分离，在后台线程中运行一个脚本进行耗时操作，极大避免类似计算密集型或高延迟的任务阻塞主线程的运行。 通常开发者使用相机功能需要创建相机会话，并持续接收处理预览流、拍照流、录像流等从而实现相关相机功能，这些密集型操作如果都放在主线程即UI线程，可能会阻塞UI绘制，推荐开发者在worker线程中实现相机功能。 #### 开发步骤 1. 导入依赖，本篇文档需要用到worker和相机框架等相关依赖包。 import { BusinessError } from '@kit.BasicServicesKit'; import { camera } from '@kit.CameraKit'; import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS'; 2. 创建相机服务代理类，调用CameraKit方法都放在这个类里执行。 class CameraService { private imageWidth: number = 1920; private imageHeight: number = 1080; private cameraManager: camera.CameraMan"
+    },
+    {
+      "path": "references/多摄同开(ArkTS).md",
+      "title": "多摄同开(ArkTS)",
+      "snippet": "从API version 18开始支持多摄同开，即应用同时开启前置/后置相机进行预览和录像（前置/后置相机同时拍照功能待开放）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a5/v3/dcgx3jJbQYGKpFpNLHckOQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111321Z&HW-CC-Expire=86400&HW-CC-Sign=10489347C3ED8EE1B65016A77B138DB0BAB5D29C4D74C2B446531B577F9C7CBE) 由于多摄同开需要前置/后置相机同时运行，所以对于相机功能有较大限制。当前版本仅支持以下七项基础功能，请勿对多摄同开开启的相机进行超出以下七种基础功能范围之外的查询、设置和使能。 1. 闪光灯。 2. 曝光。 3. 变焦。 4. 曝光补偿。 5. 对焦。 6. 防抖。 7. 色彩空间。 #### 开发步骤 详细的API说明请参考 Camera 。 Context获取方式请参考： 获取UIAbility的上下文信息 。 1. 需要导入相机框架、媒体库、图片等相关领域依赖。 import { photoAccessHelper } f"
+    },
+    {
+      "path": "references/多摄同开(C_C++).md",
+      "title": "多摄同开(C/C++)",
+      "snippet": "从API version 18开始支持多摄同开，即应用同时开启前置/后置相机进行预览和录像（前置/后置相机同时拍照功能待开放）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1c/v3/K-PpJMPiSrurZh_Qxc55jA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111326Z&HW-CC-Expire=86400&HW-CC-Sign=D5321C43B70BA411814190B8E59E150D9994AED841F1B6D3976CB4B3C3D81086) 由于多摄同开需要前置/后置相机同时运行，所以对于相机功能有较大限制。当前版本仅支持以下七项基础功能，请勿对多摄同开开启的相机进行超出以下七种基础功能范围之外的查询、设置和使能。 1. 闪光灯。 2. 曝光。 3. 变焦。 4. 曝光补偿。 5. 对焦。 6. 防抖。 7. 色彩空间。 #### 开发步骤 详细的API说明请参考 Camera 。 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。 #include <cstdint> #include <unistd.h> #include <string> "
+    },
+    {
+      "path": "references/安全相机(ArkTS).md",
+      "title": "安全相机(ArkTS)",
+      "snippet": "安全相机主要为银行等有活体检测等安全诉求的应用提供，安全相机的使用需要加密算法框架及可信应用服务。 应用具体使用步骤如下： - 通过Camera Kit打开安全摄像头，成功打开安全摄像头后，Camera Kit会返回给应用一个**安全摄像头序列号**。 - 通过Device Security Kit来创建证明密钥（安全摄像头序列号会作为入参）、初始化证明会话。Device Security Kit初始化证明会话完成后会返回给应用**匿名证书链**。 - 通过Camera Kit配置安全相机输入输出流，重点是配置**安全数据流**，注册安全数据流每帧安全图像回调监听。 - 解析安全数据流每帧安全图像，在服务器侧完成安全图像的签名验证。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/de/v3/F5cLEhsfR4q3v_a_Se_Ejw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111322Z&HW-CC-Expire=86400&HW-CC-Sign=06F41D887ADB597ACF1880011A1C3AEBB1B1AFB3B44065A8E88E6C65A288EE4B) 当前文档主要说明通过C"
+    },
+    {
+      "path": "references/对焦(ArkTS).md",
+      "title": "对焦(ArkTS)",
+      "snippet": "相机框架提供对设备对焦的能力，业务应用可以根据使用场景进行对焦模式和对焦点的设置。 #### 开发步骤 详细的API说明请参考 Camera API参考 。 1. 导入相关接口，导入方法如下。 import { camera } from '@kit.CameraKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 在设置对焦模式前，需要先调用 isFocusModeSupported 检查设备是否支持指定的焦距模式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/63/v3/LR8qX3WSTC-wnmR-fwonWA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111322Z&HW-CC-Expire=86400&HW-CC-Sign=D2C586150D8DBDD59D3AE383ADF4132D796F415E8B741E1CF3C052E42DD6B82F) 需要在Session调用 commitConfig 完成配流之后调用。 function isFocusModeSupported(photoSession: cam"
+    },
+    {
+      "path": "references/对焦(C_C++).md",
+      "title": "对焦(C/C++)",
+      "snippet": "相机框架提供对设备对焦的能力，业务应用可以根据使用场景进行对焦模式和对焦点的设置。 #### 开发步骤 详细的API说明请参考 Camera API参考 。 1. 导入NDK接口，导入方法如下。 // 导入NDK接口头文件 #include \"hilog/log.h\" #include \"ohcamera/camera.h\" #include \"ohcamera/camera_input.h\" #include \"ohcamera/capture_session.h\" #include \"ohcamera/photo_output.h\" #include \"ohcamera/preview_output.h\" #include \"ohcamera/video_output.h\" #include \"ohcamera/camera_manager.h\" 2. 在CMake脚本中链接相关动态库。 target_link_libraries(entry PUBLIC libohcamera.so libhilog_ndk.z.so) 3. 调用 OH_CaptureSession_SetFocusMode 设置对焦模式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/"
+    },
+    {
+      "path": "references/录像(ArkTS).md",
+      "title": "录像(ArkTS)",
+      "snippet": "在开发相机应用时，需要先 申请相关权限 。 相机应用可通过调用和控制相机设备，完成预览、拍照和录像等基础操作。 录像也是相机应用的最重要功能之一，录像是循环帧的捕获。对于录像的自定义配置，开发者可以参考 拍照 中的步骤4，设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。 #### 开发步骤 详细的API说明请参考 @ohos.multimedia.camera (相机管理) 。 1. 导入media模块。 创建录像输出流的SurfaceId以及录像输出的数据，都需要用到系统提供的media接口 @ohos.multimedia.media (媒体服务) 能力，导入media接口的方法如下。 import { BusinessError } from '@kit.BasicServicesKit'; import { camera } from '@kit.CameraKit'; import { media } from '@kit.MediaKit'; 2. 创建Surface。 系统提供的media接口可以创建一个录像 AVRecorder 实例，通过该实例的 getInputSurface 方法获取SurfaceId，与录像输出流做关联，处理录像输出流输出的数据。 async function getVideoSurfaceId(aVRecorderConfig: med"
+    },
+    {
+      "path": "references/录像(C_C++).md",
+      "title": "录像(C/C++)",
+      "snippet": "录像也是相机应用的最重要功能之一，录像是循环帧的捕获。对于录像的流畅度，开发者可以参考 拍照参考 中的步骤5，设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。 #### 开发步骤 详细的API说明请参考 OH_Camera 。 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。 #include <cstdint> #include <native_buffer/buffer_common.h> #include <unistd.h> #include <string> #include <thread> #include <cstdio> #include <fcntl.h> #include <map> #include <string> #include <vector> #include <native_buffer/native_buffer.h> #include \"iostream\" #include \"mutex\" #include \"hilog/log.h\" #include \"ohcamera/camera.h\" #include \"ohcamera/camera_input.h\" #include \"ohcamera/capture_session.h\" #include \"ohcamera/photo_output.h\" #inclu"
+    },
+    {
+      "path": "references/录像实践(ArkTS).md",
+      "title": "录像实践(ArkTS)",
+      "snippet": "在开发相机应用时，需要先 申请相关权限 。 当前示例提供完整的录像流程介绍，方便开发者了解完整的接口调用顺序。 在参考以下示例前，建议开发者查看 相机开发指导(ArkTS) 的具体章节，了解 设备输入 、 会话管理 、 录像 等单个流程。 如需要将视频保存到媒体库中可参考 保存媒体库资源 。 #### 开发流程 在获取到相机支持的输出流能力后，开始创建录像流，开发流程如下。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5e/v3/D-DCV086Q6ODfMhMNZ2t-w/zh-cn_image_0000002543374260.png?HW-CC-KV=V1&HW-CC-Date=20260421T111318Z&HW-CC-Expire=86400&HW-CC-Sign=4809663CB86FE6312D1F5D8F62C9DC63DFF6E7A4E22DD9A4C514EADF3504B351) #### 完整示例 Context获取方式请参考： 获取UIAbility的上下文信息 。 import { camera } from '@kit.CameraKit'; import { BusinessError } from '@kit.BasicS"
+    },
+    {
+      "path": "references/录像实践(C_C++).md",
+      "title": "录像实践(C/C++)",
+      "snippet": "在开发相机应用时，需要先 申请相关权限 。 当前示例提供完整的录像流程及其接口调用顺序的介绍。对于单个流程（如 设备输入 、 会话管理 、 录像 ）的介绍请参考具体章节。 #### 开发流程 在获取到相机支持的输出流能力后，开始创建录像流，开发流程如下。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0d/v3/auxO-IX5SfmkqtJq0j9lfg/zh-cn_image_0000002543214614.png?HW-CC-KV=V1&HW-CC-Date=20260421T111325Z&HW-CC-Expire=86400&HW-CC-Sign=A0F4810783DF02FAC82AC24998E846DB1DE06BF8E6B66C7C7F167FF1E354586C) #### 完整示例 1. 在CMake脚本中链接相关动态库。 target_link_libraries(entry PUBLIC libace_napi.z.so libohcamera.so libhilog_ndk.z.so ) 2. 创建头文件ndk_camera.h。 #include \"ohcamera/camera.h\" #include \"ohcamera/ca"
+    },
+    {
+      "path": "references/微距能力设置(ArkTS).md",
+      "title": "微距能力设置(ArkTS)",
+      "snippet": "从API version 19开始，支持设置微距能力。微距能力是指通过光学设计与算法优化，实现近距离对焦并清晰捕捉微小物体细节的相机功能。 #### 开发步骤 详细的API说明请参考 Camera 。 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。 import { camera } from '@kit.CameraKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 通过 isMacroSupported 接口，查询当前设备是否支持微距能力。 let isSupported: boolean = photoSession.isMacroSupported(); 3. 通过 enableMacro 接口，开启或关闭微距能力。 function EnableMacro(photoSession: camera.PhotoSession): void { let isSupported: boolean = photoSession.isMacroSupported(); if (isSupported) { photoSession.enableMacro(true); } } #### 状态监听 从API version 20开始，支持监听微距能力是否发生改变。 注册macro"
+    },
+    {
+      "path": "references/微距能力设置(C_C++).md",
+      "title": "微距能力设置(C/C++)",
+      "snippet": "从API version 19开始，支持设置微距能力。微距能力是指通过光学设计与算法优化，实现近距离对焦并清晰捕捉微小物体细节的相机功能。 #### 开发步骤 详细的API说明请参考 OH_Camera 。 1. 导入NDK接口。选择系统提供的NDK接口能力，导入NDK接口的方法如下。 #include <cstdint> #include <native_buffer/buffer_common.h> #include <unistd.h> #include <string> #include <thread> #include <cstdio> #include <fcntl.h> #include <map> #include <string> #include <vector> #include <native_buffer/native_buffer.h> #include \"iostream\" #include \"mutex\" #include \"hilog/log.h\" #include \"ohcamera/camera.h\" #include \"ohcamera/camera_input.h\" #include \"ohcamera/capture_session.h\" #include \"ohcamera/photo_output.h\" #include \"ohca"
+    },
+    {
+      "path": "references/手电筒使用(ArkTS).md",
+      "title": "手电筒使用(ArkTS)",
+      "snippet": "通过操作设备启用手电筒功能，可使设备的手电筒保持常亮状态。 在使用相机应用并操作手电筒功能时，存在以下几种情况说明： - 当使用后置相机并设置闪光灯模式FlashMode关闭时，手电筒功能无法启用。 - 当使用前置相机时，手电筒可以正常启用并保持常亮状态。 - 从前置相机切换至后置相机时，如果手电筒原本处于开启状态，它将会被自动关闭。 #### 开发步骤 详细的API说明请参考 @ohos.multimedia.camera (相机管理) 。 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。 import { camera } from '@kit.CameraKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 通过 CameraManager 中的 isTorchSupported 方法，检测当前设备是否支持手电筒功能。 function isTorchSupported(cameraManager: camera.CameraManager) : boolean { let torchSupport: boolean = false; try { torchSupport = cameraManager.isTorchSupported(); } catch (error) "
+    },
+    {
+      "path": "references/手电筒使用(C++).md",
+      "title": "手电筒使用(C++)",
+      "snippet": "通过操作设备启用手电筒功能，可使设备的手电筒保持常亮状态。 在使用相机应用并操作手电筒功能时，存在以下几种情况说明： - 当使用后置相机并设置闪光灯模式Camera_FlashMode关闭时，手电筒功能无法启用。 - 当使用前置相机时，手电筒可以正常启用并保持常亮状态。 - 从前置相机切换至后置相机时，如果手电筒原本处于开启状态，它将会被自动关闭。 #### 开发步骤 详细的API说明请参考 OH_Camera 。 1. 导入NDK接口。选择系统提供的NDK接口能力，导入NDK接口的方法如下。 // 导入NDK接口头文件。 #include \"hilog/log.h\" #include \"ohcamera/camera.h\" #include \"ohcamera/camera_input.h\" #include \"ohcamera/capture_session.h\" #include \"ohcamera/camera_manager.h\" 2. 在CMake脚本中链接相关动态库。 target_link_libraries(entry PUBLIC libace_napi.z.so libohcamera.so libhilog_ndk.z.so ) 3. 通过 OH_CameraManager_IsTorchSupported() 方法，检测当前设备是否支持手电筒。 bool "
+    },
+    {
+      "path": "references/拍照(ArkTS).md",
+      "title": "拍照(ArkTS)",
+      "snippet": "拍照是相机的重要功能之一，拍照模块基于相机复杂的逻辑，为了保证用户拍出的照片质量，在中间步骤可以设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。 目前相机开发有两种相机拍照方案，分别是相机 分段式拍照 和相机单段式拍照（ **本文将以单段式拍照为基础进行说明** ）。 - 分段式拍照是指相机拍照既可以输出低质量图用作缩略图，提升用户感知拍照速度，也可以使用高质量图保证最后的成图质量达到系统相机的水平。满足了图像处理算法的需求的同时，又不会阻塞前台的拍照速度，构筑相机性能竞争力，提升用户体验。 - 单段式拍照是指在拍照过程中通过多帧融合以及多个底层算法处理之后返回一张高质量图片，所以Shot2See（用户点击拍照控件到在缩略图显示区域显示缩略图的过程）完成时延较长。此外，单段式拍照支持通过高性能拍照功能调整画质优先策略，以加快出图速度或提升图片质量。 #### 开发步骤 详细的API说明请参考 @ohos.multimedia.camera (相机管理) 。 1. 导入 Image 接口。获取拍照输出的数据需要用到系统提供的Image接口能力，导入Image接口的方法如下。 import { image } from '@kit.ImageKit'; import { camera } from '@kit.CameraKit'; import { fileIo as fs } "
+    },
+    {
+      "path": "references/拍照(C_C++).md",
+      "title": "拍照(C/C++)",
+      "snippet": "拍照是相机的重要功能之一，拍照模块基于相机复杂的逻辑，为了保证用户拍出的照片质量，在中间步骤可以设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。 目前相机开发有两种相机拍照方案，分别是相机 分段式拍照 和相机单段式拍照（ **本文将以单段式拍照为基础进行说明** ）。 - 分段式拍照是指相机拍照既可以输出低质量图用作缩略图，提升用户感知拍照速度，也可以使用高质量图保证最后的成图质量达到系统相机的水平。满足了图像处理算法的需求的同时，又不会阻塞前台的拍照速度，构筑相机性能竞争力，提升用户体验。 - 单段式拍照是指在拍照过程中通过多帧融合以及多个底层算法处理之后返回一张高质量图片，所以Shot2See（用户点击拍照控件到在缩略图显示区域显示缩略图的过程）完成时延较长。此外，单段式拍照支持通过高性能拍照功能调整画质优先策略，以加快出图速度或提升图片质量。 #### 开发步骤 详细的API说明请参考 OH_Camera 。 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。 #include <cstdint> #include <native_buffer/buffer_common.h> #include <unistd.h> #include <string> #include <thread> #include <cstdio> #include <fcnt"
+    },
+    {
+      "path": "references/拍照实践(ArkTS).md",
+      "title": "拍照实践(ArkTS)",
+      "snippet": "在开发相机应用时，需要先 申请相关权限 。 当前示例提供完整的拍照流程介绍，方便开发者了解完整的接口调用顺序。 在参考以下示例前，建议开发者查看 相机开发指导(ArkTS) 的具体章节，了解 设备输入 、 会话管理 、 拍照 等单个流程。 #### 开发流程 在获取到相机支持的输出流能力后，开始创建拍照流，开发流程如下。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/13/v3/GAm5T_u7TPSGHf3ARHMMew/zh-cn_image_0000002573974487.png?HW-CC-KV=V1&HW-CC-Date=20260421T111318Z&HW-CC-Expire=86400&HW-CC-Sign=A724C7A8794701071E946148B96E0E7D407BBD2C13BF19AEEAAEFD1748F78360) #### 完整示例 Context获取方式请参考： 获取UIAbility的上下文信息 。 如需要在图库中看到所保存的图片、视频资源，需要将其保存到媒体库，保存方式请参考： 保存媒体库资源 。 需要在 photoOutput.on('photoAvailable') 接口获取到buffer时，将buffer在安"
+    },
+    {
+      "path": "references/拍照实践(C_C++).md",
+      "title": "拍照实践(C/C++)",
+      "snippet": "在开发相机应用时，需要先 申请相关权限 。 当前示例提供完整的拍照流程及其接口调用顺序的介绍。对于单个流程（如设备输入、会话管理、拍照）的介绍请参考 相机开发指导(Native) 的具体章节。 #### 开发流程 在获取到相机支持的输出流能力后，开始创建拍照流，开发流程如下。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ab/v3/P1VY33n7SXmvfOtcLduUgg/zh-cn_image_0000002543374276.png?HW-CC-KV=V1&HW-CC-Date=20260421T111325Z&HW-CC-Expire=86400&HW-CC-Sign=E28B9720E30C8397E8B8A5BC09847B00128257E5A71FE261C829DC093653558A) #### 完整示例 1. 在CMake脚本中链接相关动态库。 target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libnative_buffer.so libohcamera.so libohimage.so libohfileuri.so ) 2. 创建头文件ndk"
+    },
+    {
+      "path": "references/申请相机开发的权限.md",
+      "title": "申请相机开发的权限",
+      "snippet": "相机应用开发的主要流程包含开发准备、设备输入、会话管理、预览、拍照和录像等。 在开发相机应用时，需要先申请相机相关权限，确保应用拥有访问相机硬件及其他功能的权限，需要的权限如下表。在申请权限前，请保证符合 权限使用的基本原则 。 - 使用相机拍摄前，需要申请**ohos.permission.CAMERA**相机权限。 - 当需要使用麦克风同时录制音频时，需要申请**ohos.permission.MICROPHONE**麦克风权限。 - 当需要拍摄的图片/视频显示地理位置信息时，需要申请**ohos.permission.MEDIA_LOCATION**，来访问用户媒体文件中的地理位置信息。 以上权限均需要配置文件权限声明和通过弹窗向用户申请授权，具体申请方式及校验方式，请参考 声明权限 和 向用户申请授权 。 - 当需要读取图片或视频文件时，请优先使用媒体库Picker选择媒体资源。 - 当需要保存图片或视频文件时，请优先使用安全控件保存媒体资源。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f1/v3/0slal13QQPyn-N5hNno_cA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111"
+    },
+    {
+      "path": "references/白平衡设置(ArkTS).md",
+      "title": "白平衡设置(ArkTS)",
+      "snippet": "从API version 20开始，支持设置白平衡效果。白平衡是相机的色彩校正技术，通过设置白平衡，使照片产生不同的效果。目前白平衡效果支持：拍照（ PhotoSession ）、录像（ VideoSession ）和安全相机模式（ SecureSession ）。 #### 开发步骤 详细的API说明请参考 Camera 。 1. 导入camera接口，接口中提供相机相关的属性和方法。 import { camera } from '@kit.CameraKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 白平衡的设置提供两种方法。 - 方法一：通过 isWhiteBalanceModeSupported 判断是否支持该白平衡模式。再通过 setWhiteBalanceMode 和 getWhiteBalanceMode 分别设置和查看白平衡模式（只能查看当前已设置的白平衡模式）。该接口提供白平衡模式设置，目前包括：自动，手动，阴天、白炽光、荧光和日光。当同时设置白平衡模式和设置白平衡值时，仅可生效一种，默认白平衡模式优先生效。 function isWhiteBalanceModeSupported(session: camera.PhotoSession | camera.VideoSession):"
+    },
+    {
+      "path": "references/相机启动恢复实践(ArkTS).md",
+      "title": "相机启动恢复实践(ArkTS)",
+      "snippet": "当前示例提供完整的相机应用从后台切换至前台启动恢复的流程介绍，方便开发者了解完整的接口调用顺序。 相机应用在前后台切换过程中的状态变化说明： - 当相机应用在退后台之后由于安全策略会被强制断流，并且此时相机状态回调会返回相机可用状态，表示当前相机设备已经被关闭，处于空闲状态。 - 当相机应用从后台切换至前台时，相机状态回调会返回相机不可用状态，表示当前相机设备被打开，处于忙碌状态。 - 相机应用从后台切换至前台时，需要重启相机设备的预览流、拍照流以及相机会话管理。 在参考以下示例前，建议开发者查看 相机开发指导(ArkTS) 的具体章节，了解 相机管理 、 设备输入 、 会话管理 等单个操作。 #### 开发流程 相机应用从后台切换至前台启动恢复的调用流程建议如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/77/v3/PAz9D40TThGl_YTG5u2QcQ/zh-cn_image_0000002573974491.png?HW-CC-KV=V1&HW-CC-Date=20260421T111320Z&HW-CC-Expire=86400&HW-CC-Sign=21176657536AA3BF9A3EFC0BE0546E1C22A031417A771A"
+    },
+    {
+      "path": "references/相机基础动效(ArkTS).md",
+      "title": "相机基础动效(ArkTS)",
+      "snippet": "在使用相机过程中，当遇到相机模式切换、前后置镜头切换等场景时，会不可避免地出现预览流替换。为优化用户体验，可合理使用动效过渡。本文主要介绍如何使用预览流截图，并通过ArkUI提供的 animateToImmediately 接口触发显式动画功能，实现下方三种核心场景动效。 - 模式切换动效，使用预览流截图做模糊动效过渡。 图片为从录像模式切换为拍照模式的效果。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2d/v3/nKhFOG2LQIuAGTGlxMsGfg/zh-cn_image_0000002573854513.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111320Z&HW-CC-Expire=86400&HW-CC-Sign=97B1528796F4B5F62118B976AF89AAE441CB3B94A091E6CC080336B219A0F23E) - 前后置切换动效，使用预览流截图做翻转模糊动效过渡。 图片为从前置相机切换为后置相机的效果。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ee/v"
+    },
+    {
+      "path": "references/相机控制器(ArkTS).md",
+      "title": "相机控制器(ArkTS)",
+      "snippet": "从API version 20开始，相机框架通过相机控制器，为应用在直播场景提供美颜、虚化等能力。 相机控制器为直播和视频通话场景设计，目前仅支持在前置镜头的录像模式下使用，最高可支持1080P分辨率和30fps帧率。 #### 开发步骤 详细的API说明请参考 Camera 。 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。 import { camera } from '@kit.CameraKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 通过 isControlCenterSupported 接口，查询当前设备及当前场景是否支持相机控制器。 function isControlCenterSupported(videoSession: camera.VideoSession): boolean { let isSupported: boolean = videoSession.isControlCenterSupported(); return isSupported; } 3. 通过 getSupportedEffectTypes 接口，查询当前设备及当前场景下，相机控制器支持的效果类型。 function getSupportedEffectTypes(video"
+    },
+    {
+      "path": "references/相机旋转角度的术语-1.md",
+      "title": "相机旋转角度的术语",
+      "snippet": "在适配相机旋转角度中涉及设备方向、镜头角度、屏幕显示角度等多个术语，开发者可以了解相关概念，帮助理解框架的运作机制。 #### 设备自然方向 **设备自然方向** 指设备默认的使用方向，以手机为例，如图所示，手机的自然方向为竖屏且充电口向下。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2d/v3/z5wBJtAyTTaKjL5akBvYtg/zh-cn_image_0000002543214604.png?HW-CC-KV=V1&HW-CC-Date=20260421T111327Z&HW-CC-Expire=86400&HW-CC-Sign=C10B1DCB78540C8C0FEEDCFB48D082318372BC96AD03451187BDECF645702314) #### 屏幕显示方向 **屏幕显示方向** 指当前用户视角下，设备正确的显示方向。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/75/v3/kx7ylHcBSdK6R4bLdpBpnw/zh-cn_image_0000002573854519.png?HW-CC-K"
+    },
+    {
+      "path": "references/相机旋转角度的术语.md",
+      "title": "相机旋转角度的术语",
+      "snippet": "在适配相机旋转角度中涉及设备方向、镜头角度、屏幕显示角度等多个术语，开发者可以了解相关概念，帮助理解框架的运作机制。 #### 设备自然方向 **设备自然方向** 指设备默认的使用方向，以手机为例，如图所示，手机的自然方向为竖屏且充电口向下。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/84/v3/UTTuvPUpTUqRcAxwb3lCYA/zh-cn_image_0000002543214604.png?HW-CC-KV=V1&HW-CC-Date=20260421T111322Z&HW-CC-Expire=86400&HW-CC-Sign=349C41260054268730B73BE5AE745256FBF0EBD2BD2D86705B0EDD9711F982A3) #### 屏幕显示方向 **屏幕显示方向** 指当前用户视角下，设备正确的显示方向。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2e/v3/5l6FZCk_T_iBJhealk0Dng/zh-cn_image_0000002573854519.png?HW-CC-K"
+    },
+    {
+      "path": "references/相机管理 (C_C++).md",
+      "title": "相机管理 (C/C++)",
+      "snippet": "在开发一个相机应用前，需要先通过调用相机接口来创建一个独立的相机设备。 #### 开发步骤 详细的API说明请参考 OH_Camera 。 1. 导入NDK接口。选择系统提供的NDK接口能力，导入NDK接口的方法如下。 // 导入NDK接口头文件。 #include \"hilog/log.h\" #include \"ohcamera/camera.h\" #include \"ohcamera/camera_input.h\" #include \"ohcamera/capture_session.h\" #include \"ohcamera/photo_output.h\" #include \"ohcamera/preview_output.h\" #include \"ohcamera/video_output.h\" #include \"ohcamera/camera_manager.h\" 2. 在CMake脚本中链接相关动态库。 target_link_libraries(entry PUBLIC libace_napi.z.so libohcamera.so libhilog_ndk.z.so ) 3. 通过 OH_Camera_GetCameraManager() 方法，获取cameraManager对象。 Camera_ErrorCode CreateCameraManager(Came"
+    },
+    {
+      "path": "references/相机管理(ArkTS).md",
+      "title": "相机管理(ArkTS)",
+      "snippet": "在开发一个相机应用前，需要先通过调用相机接口来创建一个相机管理实例。 #### 开发步骤 详细的API说明请参考 @ohos.multimedia.camera (相机管理) 。 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。 import { camera } from '@kit.CameraKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { common } from '@kit.AbilityKit'; 2. 通过 getCameraManager 方法，获取cameraManager对象。 Context获取方式请参考： 获取UIAbility的上下文信息 。 function getCameraManager(context: common.BaseContext): camera.CameraManager | undefined { let cameraManager: camera.CameraManager; try { cameraManager = camera.getCameraManager(context); } catch (error) { let err = error as BusinessError; console.erro"
+    },
+    {
+      "path": "references/自动切换摄像头实践(ArkTS).md",
+      "title": "自动切换摄像头实践(ArkTS)",
+      "snippet": "应用适配折叠屏时，在简单UX交互场景下，如人脸识别场景推荐使用相机镜头自动切换能力。在有多个前置镜头的折叠设备上，应用使能自动切换镜头能力后，系统能够自动完成镜头切换、会话配置，在不同的折叠状态下，可自动切换到当前可使用的前置镜头，避免前置镜头被折入内部导致黑屏。 例如，折叠设备拥有三颗摄像头：后置摄像头A、前置摄像头B和前置摄像头C。在展开状态下，通过 CameraManager.getSupportedCameras 接口可获取到后置摄像头A和前置摄像头B；在折叠状态下，可获取到后置摄像头A和前置摄像头C。在当前折叠状态下启用前置摄像头，并调用 enableAutoDeviceSwitch 开启自动切换镜头；这样，在下次折叠屏状态变化时，会自动切换到对应折叠状态下的前置摄像头。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b5/v3/gLSIXWU-QaeZOoipyzo6bQ/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111320Z&HW-CC-Expire=86400&HW-CC-Sign=4C48376DE3CC84A361B3D2E1C3DA766276BED98F89951CF00"
+    },
+    {
+      "path": "references/设备输入(ArkTS).md",
+      "title": "设备输入(ArkTS)",
+      "snippet": "在开发相机应用时，需要先 申请相关权限 。 相机应用可通过调用和控制相机设备，完成预览、拍照和录像等基础操作。 #### 开发步骤 详细的API说明请参考 @ohos.multimedia.camera (相机管理) 。 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。 import { camera } from '@kit.CameraKit'; import { BusinessError } from '@kit.BasicServicesKit'; ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/50/v3/gyy0ytk9Sxe0IStY9gwy2A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111317Z&HW-CC-Expire=86400&HW-CC-Sign=747DD8ECC246F203305CA5747DC3559364366253C6EAA4AC7673A3BB07DA568F) 在相机设备输入之前需要先完成相机管理，详细开发步骤请参考 相机管理 。 2. 通过 cameraManager 中的 createCameraInput 方法创建相机输入流"
+    },
+    {
+      "path": "references/设备输入(C_C++).md",
+      "title": "设备输入(C/C++)",
+      "snippet": "在开发相机应用时，需要先 申请相关权限 。 相机应用通过调用和控制相机设备，完成预览、拍照和录像等基础操作。 #### 开发步骤 详细的API说明请参考 OH_Camera 。 1. 导入NDK接口。选择系统提供的NDK接口能力，导入NDK接口的方法如下。 // 导入NDK接口头文件。 #include \"hilog/log.h\" #include \"ohcamera/camera.h\" #include \"ohcamera/camera_input.h\" #include \"ohcamera/capture_session.h\" #include \"ohcamera/photo_output.h\" #include \"ohcamera/preview_output.h\" #include \"ohcamera/video_output.h\" #include \"ohcamera/camera_manager.h\" 2. 在CMake脚本中链接相关动态库。 target_link_libraries(entry PUBLIC libace_napi.z.so libohcamera.so libhilog_ndk.z.so ) 3. 通过 OH_CameraManager_CreateCameraInput() 方法，获取cameraInput对象。 // 监听cameraInput"
+    },
+    {
+      "path": "references/适配不同折叠状态的摄像头变更(ArkTS).md",
+      "title": "适配不同折叠状态的摄像头变更(ArkTS)",
+      "snippet": "折叠设备形态各异，在相机应用的开发过程中需要统一的摄像头切换方案，以确保用户在拍照、录像过程中获得更好的体验。 一台可折叠设备在不同折叠状态下，可使用不同的相机。系统会标识所有摄像头，每个摄像头与一个折叠状态相对应，表示该摄像头可在对应的折叠状态下使用。应用可调用 CameraManager.on('foldStatusChange') 或 display.on('foldStatusChange') 监听设备的折叠状态变化，并调用 CameraManager.getSupportedCameras 获取当前状态下可用相机，完成相应适配，确保应用在折叠状态变更时的用户体验。 不同折叠设备在不同折叠状态下支持的摄像头数量不同。 例如，折叠设备拥有三颗摄像头：后置摄像头A、前置摄像头B和前置摄像头C。在展开状态下，通过 CameraManager.getSupportedCameras 接口可获取到后置摄像头A和前置摄像头B；在折叠状态下，可获取到后置摄像头A和前置摄像头C。不同的折叠状态获取到的镜头不同，因此，在折叠状态变化时，需要重新获取镜头信息。 详细的API说明请参考 @ohos.multimedia.camera (相机管理) 。 Context获取方式请参考： 获取UIAbility的上下文信息 。 在开发相机应用时，需要先申请相机相关权限，请参考 申请相关权限 。 ###"
+    },
+    {
+      "path": "references/适配相机旋转角度(ArkTS).md",
+      "title": "适配相机旋转角度(ArkTS)",
+      "snippet": "屏幕处于不同的屏幕状态时，原始图像需旋转不同的角度，以确保图像在合适的方向显示，效果如图所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/05/v3/8DxB2JhzSGOdl0RiJAJMjQ/zh-cn_image_0000002573854517.png?HW-CC-KV=V1&HW-CC-Date=20260421T111322Z&HW-CC-Expire=86400&HW-CC-Sign=9377C4F33793BEDE7E47B9898BE95988BE26D89A1B70B0D4CA10A883730824AF) 本开发指导将指导开发者在预览、拍照、录像等不同场景下，如何适配相机的旋转角度。 - 在预览时，图像旋转角度与屏幕显示旋转角度（ Display .rotation）相关。具体开发指导： 创建会话 > 预览 。 - 在拍照、录像时，图像旋转角度与设备重力方向（即 设备旋转角度 ）相关。 拍照开发指导： 创建会话 > 计算设备旋转角度 > 拍照 。 录像开发指导： 创建会话 > 计算设备旋转角度 > 录像 。 详细的API参考说明，请参考 Camera API文档 。 #### 创建会话 1. 导入相机等相关模块。 import { ca"
+    },
+    {
+      "path": "references/适配相机旋转角度(C_C++).md",
+      "title": "适配相机旋转角度(C/C++)",
+      "snippet": "屏幕处于不同的屏幕状态时，原始图像需旋转不同的角度，以确保图像在合适的方向显示，效果如图所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c3/v3/d46lD7e0SSGNpwCc2wpqvA/zh-cn_image_0000002573854517.png?HW-CC-KV=V1&HW-CC-Date=20260421T111327Z&HW-CC-Expire=86400&HW-CC-Sign=ACE43749E8B6218100616414BB72A72DACF2B36BB139523A5E7D8D608635B75B) 本开发指导将指导开发者在预览、拍照、录像等不同场景下，如何适配相机的旋转角度。 - 在预览时，图像旋转角度与屏幕显示旋转角度（ NativeDisplayManager_Rotation ）相关。具体开发指导： 创建会话 > 预览 。 - 在拍照、录像时，图像旋转角度与设备重力方向（即 设备旋转角度 ）相关。 拍照开发指导： 创建会话 > 计算设备旋转角度 > 拍照 。 录像开发指导： 创建会话 > 计算设备旋转角度 > 录像 。 详细的API参考说明，请参考 Camera API文档 。 #### 创建会话 1. 导入相机等相关模块"
+    },
+    {
+      "path": "references/通过系统相机拍照和录像(CameraPicker).md",
+      "title": "通过系统相机拍照和录像(CameraPicker)",
+      "snippet": "应用可调用CameraPicker拍摄照片或录制视频，无需申请相机权限。 CameraPicker的相机交互界面由系统提供，在用户点击拍摄和确认按钮后，调用CameraPicker的应用获取对应的照片或者视频。 应用开发者如果只是需要获取即时拍摄的照片或者视频，则可以使用CameraPicker能力来轻松实现。 由于照片的拍摄和确认都是由用户进行主动确认，因此应用开发者可以不用申请操作相机的相关权限。 #### 开发步骤 详细的API说明请参考 @ohos.multimedia.cameraPicker (相机选择器) 。 1. 导入相关接口，导入方法如下。 import { camera, cameraPicker as picker } from '@kit.CameraKit'; import { fileIo, fileUri } from '@kit.CoreFileKit'; 2. 配置 PickerProfile 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d1/v3/T9cbQPtnQJ2fxS_kPqWGxg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111317Z&HW-CC-"
+    },
+    {
+      "path": "references/预览(ArkTS).md",
+      "title": "预览(ArkTS)",
+      "snippet": "在开发相机应用时，需要先 申请相关权限 。 预览是启动相机后看见的画面，通常在拍照和录像前执行。 #### 开发步骤 详细的API说明请参考 @ohos.multimedia.camera (相机管理) 。 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。 import { camera } from '@kit.CameraKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 创建Surface。 相机开发模型为Surface模型，该模型主要通过Surface实现数据交互。在开发相机应用界面时，首先需要通过创建XComponent组件为预览流提供Surface，再通过获取XComponent组件对应Surface的ID创建预览流，预览流画面即可直接在XComponent组件内渲染，详细获取surfaceId请参考 getXComponentSurfaceId 方法。而XComponent的能力由UI提供，相关介绍可参考 XComponent组件参考 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4c/v3/uUBa2iiGTY-eYo5cGt_9aQ/no"
+    },
+    {
+      "path": "references/预览(C_C++).md",
+      "title": "预览(C/C++)",
+      "snippet": "预览是启动相机后看见的画面，通常在拍照和录像前执行。 #### 开发步骤 详细的API说明请参考 OH_Camera 。 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。 #include <cstdint> #include <native_buffer/buffer_common.h> #include <unistd.h> #include <string> #include <thread> #include <cstdio> #include <fcntl.h> #include <map> #include <string> #include <vector> #include <native_buffer/native_buffer.h> #include \"iostream\" #include \"mutex\" #include \"hilog/log.h\" #include \"ohcamera/camera.h\" #include \"ohcamera/camera_input.h\" #include \"ohcamera/capture_session.h\" #include \"ohcamera/photo_output.h\" #include \"ohcamera/preview_output.h\" #include \"ohcamera/video"
+    },
+    {
+      "path": "references/预览流二次处理(C_C++).md",
+      "title": "预览流二次处理(C/C++)",
+      "snippet": "通过ImageReceiver创建预览输出，获取预览流实时数据，以供后续进行图像二次处理，比如应用可以对其添加滤镜算法等。 #### 开发步骤 详细的API说明请参考 OH_Camera 。 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。 #include <cstdint> #include <cstdlib> #include \"hilog/log.h\" #include <memory> #include <new> #include <multimedia/image_framework/image/image_native.h> #include <multimedia/image_framework/image/image_receiver_native.h> #include \"ohcamera/camera.h\" #include \"ohcamera/camera_input.h\" #include \"ohcamera/camera_device.h\" #include \"ohcamera/capture_session.h\" #include \"ohcamera/photo_output.h\" #include \"ohcamera/preview_output.h\" #include \"ohcamera/video_output.h\" #i"
+    }
+  ]
+}

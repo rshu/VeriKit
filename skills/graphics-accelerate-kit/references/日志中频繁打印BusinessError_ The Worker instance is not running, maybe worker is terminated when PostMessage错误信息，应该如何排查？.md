@@ -1,0 +1,20 @@
+# 日志中频繁打印BusinessError: The Worker instance is not running, maybe worker is terminated when PostMessage错误信息，应该如何排查？
+---
+# 日志中频繁打印BusinessError: The Worker instance is not running, maybe worker is terminated when PostMessage错误信息，应该如何排查？
+该错误通常是由于Worker线程崩溃或被终止导致。
+开发者可在日志中进一步查找worker.onerror相关日志，确认Worker线程崩溃时的具体异常信息。
+```typescript
+TuanjieMainWorker Error TypeError: undefined is not callable entry|entry|1.0.0|src/main/ets/workers/TuanjieMainWorkerHandler.ts
+```
+![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/57/v3/Df9zoG08S2KqXxL5PW1OPQ/zh-cn_image_0000002573854679.png?HW-CC-KV=V1&HW-CC-Date=20260421T111425Z&HW-CC-Expire=86400&HW-CC-Sign=FE0246F7DD8F6EE4490F2651D7168B56135D7DDD3831AC25996E5B5731BB486B)
+根据worker.onerror日志排查，确认是否同时存在以下情况：
+-
+在onDestroy生命周期中销毁三方SDK。
+-
+三方SDK被销毁后，仍继续向Worker线程发送消息。
+-
+Worker线程在处理消息过程中仍继续调用已销毁的三方SDK，且未进行异常处理。
+在秒级启动场景下，如果用户重新启动游戏后又上滑移除游戏App，游戏进程不会主动销毁Worker线程和团结引擎。当上述三种情况同时发生时，可能导致Worker线程崩溃，并在日志中频繁打印如下错误信息：
+```typescript
+BusinessError: The Worker instance is not running, maybe worker is terminated when PostMessage
+```
