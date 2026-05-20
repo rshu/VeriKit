@@ -34,45 +34,7 @@ VeriKit 是一个 Claude Code 插件，在 agent 写代码之前，先帮开发�
 
 - **Node ≥ 20** 在 `PATH` 中（Windows：`winget install OpenJS.NodeJS`，或使用 DevEco Studio 自带的 `node.exe`）。
 
-## 3. 三种使用入口
-
-### a) 斜杠命令 `/verikit-route`（最直观）
-
-Claude 运行排序器并直接把结果总结给你：
-
-```
-/verikit-route 保存待办事项让应用重启后还能读出来
-```
-
-Claude 会回复：该用哪个 Kit，哪个配方（若有）适用，先读哪些参考文档。
-
-### b) 自动 UserPromptSubmit 钩子
-
-每次你给 Claude Code 发消息时，这个钩子会自动运行完整的 VeriKit 排序器（与 `/verikit-route` 输出相同），并以 `<verikit-routing>` 块的形式将结果注入到 agent 的上下文中——agent 据此挑选 Kit、读参考文档，你无需手动调用。
-
-该块默认不显示在终端上。若想自己也看到注入的内容，用 `--debug` 启动 Claude Code：
-
-```bash
-claude --debug
-```
-
-### c) 直接调用 CLI
-
-用于脚本化、批量测试，或不通过 Claude Code 直接查看排序结果（例如在 CI 中验证某个新任务的 Kit 选择是否符合预期）：
-
-```bash
-node <plugin>/dist/verikit-cli.js route \
-  --task "你的任务描述" \
-  --top 5 --compose --deep --refs 5
-```
-
-上面这串 `--top 5 --compose --deep --refs 5` 就是斜杠命令和钩子默认使用的完整策略，逐个参数的作用：
-
-- `--top N`——返回排序器打分最高的前 N 个候选 Kit。
-- `--compose`——额外返回匹配的多 Kit 组合配方，并运行冲突确认检测器（详见示例 ii）。
-- `--deep --refs K`——对每个相关 Kit 的约 30 篇参考文档进行二级排序，返回前 K 篇最相关的（agent 据此知道先读哪些文档）。
-
-## 4. 三个代表性示例
+## 3. 代表性示例
 
 ### 示例 (i)——端到端：从一句话到能跑的代码
 
@@ -153,21 +115,9 @@ agent 不会静默挑——而是直接问你：
 
 **这一机制存在的意义：** "通知" / "notification" 在 100 个 Kit 里被多个 Kit 用到（notification / ringtone / push / live-view / localization），BM25 单凭词无法区分。VeriKit 不静默替换，而是把模糊性暴露给用户——比让 agent 凭直觉猜可靠。
 
-### 示例 (iii)——使用自定义目录（进阶）
+## 4. 许可
 
-如果你有自己的 SDK 和对应的技能目录（分叉、企业内部产品、追加的供应商 SDK），可以让 VeriKit 跑在你的目录上而不必改源码——同一套排序器、冲突检测器和二级参考逻辑会照常工作：
-
-```bash
-export VERIKIT_SKILL_ROOT=/path/to/your/skills      # 含 <skill>/SKILL.md
-export VERIKIT_CONTRACTS_DIR=/path/to/contracts     # JSON 边车合约
-node <plugin>/dist/verikit-cli.js route --task "你的任务描述" --top 5
-```
-
-完整环境变量清单：`VERIKIT_SKILL_ROOT`、`VERIKIT_CONTRACTS_DIR`、`VERIKIT_MANIFESTS_DIR`、`VERIKIT_COMPOSITIONS_FILE`——详见 `bin/verikit-cli.ts`（仓库内已含 TS 源码以便审计）。
-
-## 5. 许可
-
-VeriKit 的排序器、CLI、钩子、斜杠命令、合约编写、组合配方和构建脚本采用 MIT 协议。详见 [`LICENSE`](./LICENSE)。
+VeriKit 的排序器、CLI、钩子、合约编写、组合配方和构建脚本采用 MIT 协议。详见 [`LICENSE`](./LICENSE)。
 
 ---
 
@@ -201,45 +151,7 @@ Restart Claude Code if it doesn't auto-reload. That's it — `dist/` and `skills
 
 - **Node ≥ 20** on `PATH` (Windows: `winget install OpenJS.NodeJS`, or use the bundled `node.exe` from DevEco Studio).
 
-## 3. Usage — three entry points
-
-### a) The `/verikit-route` slash command (most visible)
-
-Claude runs the router and summarizes the selection back to you:
-
-```
-/verikit-route 保存待办事项让应用重启后还能读出来
-```
-
-Claude replies with: which Kit to load, which recipe (if any) governs, and which reference docs to read first.
-
-### b) The automatic UserPromptSubmit hook
-
-Fires on every message you send to Claude Code. Runs the full VeriKit router (same payload as `/verikit-route`) and injects the result as a `<verikit-routing>` block into the agent's context — the agent uses it to pick the right Kit and reference docs without you typing anything.
-
-The block isn't echoed in the terminal by default. To see it yourself, start Claude Code with `--debug`:
-
-```bash
-claude --debug
-```
-
-### c) The raw CLI
-
-For scripting, batch testing, or inspecting the ranker's output outside Claude Code (e.g. in CI, verifying that a new task selects the expected Kit):
-
-```bash
-node <plugin>/dist/verikit-cli.js route \
-  --task "your task description" \
-  --top 5 --compose --deep --refs 5
-```
-
-That `--top 5 --compose --deep --refs 5` combination is the full default the slash command and hook also run. Each flag in turn:
-
-- `--top N` — return the N highest-scoring Kit candidates.
-- `--compose` — additionally return matched multi-Kit recipes and run the conflict-confirmation detector (see Example ii).
-- `--deep --refs K` — second-stage rank each relevant Kit's ~30 reference docs and return the top K (so the agent knows which docs to read first).
-
-## 4. Three representative walkthroughs
+## 3. Walkthroughs
 
 ### Example (i) — End-to-end: from one sentence to working code
 
@@ -320,18 +232,6 @@ You pick (1). The agent loads the `notification-kit + ability-kit` SKILL.mds and
 
 **Why this matters:** "notification" / `通知` is shared vocabulary across several Kits (notification / ringtone / push / live-view / localization), and BM25 alone can't disambiguate them. VeriKit doesn't silently swap; it surfaces the ambiguity to you — more reliable than letting the agent guess.
 
-### Example (iii) — Bring your own catalog (advanced)
+## 4. License
 
-If you have your own SDK and its own skill catalog (a fork, an internal product, an additional vendor SDK), VeriKit's ranker / conflict detector / two-stage reference logic can run against it without source changes — just point at two directories:
-
-```bash
-export VERIKIT_SKILL_ROOT=/path/to/your/skills      # contains <skill>/SKILL.md
-export VERIKIT_CONTRACTS_DIR=/path/to/contracts     # JSON sidecar contracts
-node <plugin>/dist/verikit-cli.js route --task "your task description" --top 5
-```
-
-Full env-var list: `VERIKIT_SKILL_ROOT`, `VERIKIT_CONTRACTS_DIR`, `VERIKIT_MANIFESTS_DIR`, `VERIKIT_COMPOSITIONS_FILE` — see `bin/verikit-cli.ts` (TS source included in the repo for audit).
-
-## 5. License
-
-MIT for the VeriKit ranker, CLI, hooks, slash command, contract authoring, composition recipes, and build scripts. See [`LICENSE`](./LICENSE).
+MIT for the VeriKit ranker, CLI, hooks, contract authoring, composition recipes, and build scripts. See [`LICENSE`](./LICENSE).
