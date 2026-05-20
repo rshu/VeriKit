@@ -8,7 +8,7 @@
 
 ## 1. VeriKit 简介
 
-VeriKit 是一个 Claude Code 插件，在代理写代码之前，先帮开发者选好任务该用哪些 **HarmonyOS Kit** 和哪些 **参考文档**。它内置了完整的 100 Kit HarmonyOS SDK 目录，并提供：
+VeriKit 是一个 Claude Code 插件，在 agent 写代码之前，先帮开发者选好任务该用哪些 **HarmonyOS Kit** 和哪些 **参考文档**。它内置了完整的 100 Kit HarmonyOS SDK 目录，并提供：
 
 - **确定性排序器**（BM25 + 人工编写的正负触发子句），对全部 100 个 Kit 打分，返回最相关的候选。
 - **精选组合配方**，用于常见的多 Kit 特性（例如「带跳转的本地通知」→ `notification-kit + ability-kit + arkts`）。
@@ -60,7 +60,7 @@ Claude 会回复：该用哪个 Kit，哪个配方（若有）适用，先读哪
 
 ### b) 自动 UserPromptSubmit 钩子
 
-每次提示都会运行，结果以 `<verikit-routing>` 块的形式注入到代理上下文。想看到内容，用 `--debug` 启动 Claude Code：
+每次提示都会运行，结果以 `<verikit-routing>` 块的形式注入到 agent 上下文。想看到内容，用 `--debug` 启动 Claude Code：
 
 ```bash
 claude --debug
@@ -150,7 +150,7 @@ node <plugin>/dist/verikit-cli.js route \
 }
 ```
 
-**解读：** 排序器选了 `ringtone-kit`（`通知` / "notification" 在 notification-kit / ringtone-kit / push-kit 之间共享，BM25 无法区分），但配方建议用 `notification-kit + ability-kit + arkts`。VeriKit 拒绝静默替换——将 `bundle_source` 设为 `"ask-human"` 并发出 directive，让代理询问用户怎么选。这就是冲突确认机制存在的意义——静默走配方在这类任务上有过半概率出错。
+**解读：** 排序器选了 `ringtone-kit`（`通知` / "notification" 在 notification-kit / ringtone-kit / push-kit 之间共享，BM25 无法区分），但配方建议用 `notification-kit + ability-kit + arkts`。VeriKit 拒绝静默替换——将 `bundle_source` 设为 `"ask-human"` 并发出 directive，让 agent 询问用户怎么选。这就是冲突确认机制存在的意义——静默走配方在这类任务上有过半概率出错。
 
 ### 示例 (iv)——使用自定义目录（进阶）
 
