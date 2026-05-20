@@ -25,4 +25,6 @@ hooks, slash command, contract authoring, composition recipes, and build
 scripts). The HarmonyOS SDK documentation incorporated under
 `skills/<kit>/references/` is (C) Huawei Device Co., Ltd. and is redistributed
 here as developer reference material under Huawei's published terms for
-HarmonyOS documentation — see ATTRIBUTION.md.
+HarmonyOS documentation. The 100 Kit identifiers and the "HarmonyOS" / "ArkTS"
+names are trademarks of Huawei Device Co., Ltd., referenced here only to
+identify the SDK components VeriKit selects against.
