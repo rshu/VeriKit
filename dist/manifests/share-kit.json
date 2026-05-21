@@ -3,28 +3,28 @@
   "skill": "share-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.201Z"
+    "at": "2026-05-21T03:47:44.766Z"
   },
   "references": [
     {
       "path": "references/Share Kit术语.md",
       "title": "Share Kit术语",
-      "snippet": "负责显示分享内容标题、预览、是否选中等信息，供用户选择。 #### Host app宿主应用 分享行为的发起者。通过调用分享接口，配置分享的内容、预览样式等信息后展示分享面板。 #### Operation area操作区 内容相关的操作，由系统提供的复制、保存、另存为、打印等能力。 #### Recommendation area推荐区 对接华为分享和 意图框架 ，通过算法高效、精准推荐能够处理内容的设备和目标应用用户。 #### Sharing mode area分享方式区 通过HarmonyOS的包管理服务获取支持分享内容的目标应用。支持2种跳转方式： 1、跳转目标应用内UIAbility组件。 2、跳转目标应用提供的ExtensionAbility组件。 应用组件需通过在 module.json5配置文件 中配置UIAbility组件和ExtensionAbility组件的描述信息，以声明支持分享的能力。 #### Sharing details page分享详情页 点击分享方式可跳转\"分享详情页\"。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/47/v3/gIffQisaSXWNByop_SJD4Q/zh-cn_image_0000002573855"
+      "snippet": "负责显示分享内容标题、预览、是否选中等信息，供用户选择。 #### Host app宿主应用 分享行为的发起者。通过调用分享接口，配置分享的内容、预览样式等信息后展示分享面板。 #### Operation area操作区 内容相关的操作，由系统提供的复制、保存、另存为、打印等能力。 #### Recommendation area推荐区 对接华为分享和 意图框架 ，通过算法高效、精准推荐能够处理内容的设备和目标应用用户。 #### Sharing mode area分享方式区 通过HarmonyOS的包管理服务获取支持分享内容的目标应用。支持2种跳转方式： 1、跳转目标应用内UIAbility组件。 2、跳转目标应用提供的ExtensionAbility组件。 应用组件需通过在 module.json5配置文件 中配置UIAbility组件和ExtensionAbility组件的描述信息，以声明支持分享的能力。 #### Sharing details page分享详情页 点击分享方式可跳转\"分享详情页\"。 #### Source device源端设备 分享内容的发起端设备。发起端设备通过华为分享服务，将分享数据发送到对端设备。 #### Target app目标应用 分享内容的接收者。需要在应用中构建数据处理能力并按照目标应用接入指南进行能力声明，使得包管理服务可以识别应用支持"
     },
     {
       "path": "references/Share Kit简介.md",
       "title": "Share Kit简介",
-      "snippet": "Share Kit（分享服务）为应用提供文本、图片、视频等内容跨应用、跨端分享能力。 应用把需要分享的内容和预览样式配置给Share Kit，Share Kit将根据不同的场景进行使用： - 针对应用间分享的场景，根据分享的数据类型、数量等信息构建分享面板，为用户提供内容预览、推荐分享联系人、关联应用及操作界面，便于用户快速选择分享应用或操作，将内容分发到目标应用。 - 针对跨端分享的场景，根据分享的数据类型、数量等信息构建预览界面，用于跨端分享。 如果应用需要显示在分享面板，则需要构建数据处理能力并按照配置要求在应用配置文件中声明，社交类应用可以通过 意图框架 接口捐献联系人信息，可以让用户一步分享到应用内的指定用户。 Share Kit（分享服务）提供的 SampleCode示例工程 体现了系统分享接入模式、文本/图片等分享示例、碰一碰分享示例及卡片模板，可参考该工程进行应用的相关内容开发。 **图1** 手机分享面板效果图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2c/v3/2cAZwPrQT4y3TonWgddY-g/zh-cn_image_0000002573855123.png?HW-CC-KV=V1&HW-CC-Date=20260421T1"
+      "snippet": "Share Kit（分享服务）为应用提供文本、图片、视频等内容跨应用、跨端分享能力。 应用把需要分享的内容和预览样式配置给Share Kit，Share Kit将根据不同的场景进行使用： - 针对应用间分享的场景，根据分享的数据类型、数量等信息构建分享面板，为用户提供内容预览、推荐分享联系人、关联应用及操作界面，便于用户快速选择分享应用或操作，将内容分发到目标应用。 - 针对跨端分享的场景，根据分享的数据类型、数量等信息构建预览界面，用于跨端分享。 如果应用需要显示在分享面板，则需要构建数据处理能力并按照配置要求在应用配置文件中声明，社交类应用可以通过 意图框架 接口捐献联系人信息，可以让用户一步分享到应用内的指定用户。 Share Kit（分享服务）提供的 SampleCode示例工程 体现了系统分享接入模式、文本/图片等分享示例、碰一碰分享示例及卡片模板，可参考该工程进行应用的相关内容开发。 **图1** 手机分享面板效果图 **图2** 手机碰一碰跨端发起华为分享效果图 **图3** 手机与PC/2in1设备碰一碰分享效果图 #### 基本概念 - 宿主应用 分享行为的发起者。通过调用分享接口，配置分享的内容、预览样式等信息后展示分享面板。 - 目标应用 分享内容的接收者。需要在应用中构建数据处理能力并按照目标应用接入指南进行能力声明，使得包管理服务可以识别应用支持的能力。 "
     },
     {
       "path": "references/共享联系人信息到分享推荐区.md",
       "title": "共享联系人信息到分享推荐区",
-      "snippet": "通过意图框架服务，目标应用可以将联系人信息共享到分享推荐区。参考： 习惯推荐-接入方案 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/42/v3/mpWvbZVFQW6w5IxY4JT3pw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111651Z&HW-CC-Expire=86400&HW-CC-Sign=EC90E920F8140CE13CE11F29A87F515251C7FB13E05DCDFFD33B7C92B1E71B5A) 该示例代码无法直接运行，需要申请意图框架白名单。参见： Intents Kit接入流程 。 #### 开发步骤 1. 导入相关模块。 import BuildProfile from 'BuildProfile'; import { util } from '@kit.ArkTS'; import { BusinessError } from '@kit.BasicServicesKit'; import { insightIntent } from '@kit.IntentsKit'; 2. 目标应用构造联系人数据。 const intent: insightIn"
+      "snippet": "通过意图框架服务，目标应用可以将联系人信息共享到分享推荐区。参考： 习惯推荐-接入方案 。 该示例代码无法直接运行，需要申请意图框架白名单。参见： Intents Kit接入流程 。 #### 开发步骤 1. 导入相关模块。 import BuildProfile from 'BuildProfile'; import { util } from '@kit.ArkTS'; import { BusinessError } from '@kit.BasicServicesKit'; import { insightIntent } from '@kit.IntentsKit'; 2. 目标应用构造联系人数据。 const intent: insightIntent.InsightIntent = { intentName: 'SendMessage', // 意图名 intentVersion: '1.0', // 意图版本 identifier: util.generateRandomUUID(), // 意图标识符 intentActionInfo: { // 意图执行信息 actionMode: 'EXECUTED', // 动作模式 executedTimeSlots: { // 实际发生时间段 executedStartTime: new Date().getTime()"
     },
     {
       "path": "references/内容分享.md",
       "title": "内容分享",
-      "snippet": "当用户进入支持碰一碰分享的界面或场景时，给出适当的引导和提示，可有效提升用户分享意愿。 引导方式参考以下效果图： - 文本提示 **可碰一碰分享至 HarmonyOS 5 及以上版本手机** 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/da/v3/qn7zgAlvS52Mf5DQyVkZfw/zh-cn_image_0000002573855131.png?HW-CC-KV=V1&HW-CC-Date=20260421T111653Z&HW-CC-Expire=86400&HW-CC-Sign=DB8B0BB97CFA5FE184B18F4B4B596D7B4ADB6C752888EA2876EFD4C4A52B4538) - 动图提示 **可碰一碰分享** 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d2/v3/hItulsPoTKSnDUqsutUW3w/zh-cn_image_0000002573975113.png?HW-CC-KV=V1&HW-CC-Date=20260421T111653Z&HW-CC-Expire=8"
+      "snippet": "当用户进入支持碰一碰分享的界面或场景时，给出适当的引导和提示，可有效提升用户分享意愿。 引导方式参考以下效果图： - 文本提示 **可碰一碰分享至 HarmonyOS 5 及以上版本手机** 。 - 动图提示 **可碰一碰分享** 。 Share Kit提供统一的动图资源文件以方便应用接入。 - 下载地址：碰一碰引导资源，请完整下载knock_share_guide目录所有文件，并放置于应用entry/src/main/resources/rawfile目录下。 - 示例代码：碰一碰引导示例代码。 #### 设置分享预览 接入碰一碰分享时，需根据不同的分享数据类型，适配相应的卡片模板。详细参见： 碰一碰分享设计指南 。 #### 设置配套的卡片样式 为保证碰一碰分享用户体验，Share Kit支持三种卡片模板供手机发起碰一碰分享时选择。 #### 设置合适的预览图 预览图的质量直接影响碰一碰卡片的显示效果。预览图太大或太小，会导致加载较慢或显示模糊等体验问题，建议开发者按照下表的推荐比例和分辨率设置合适的预览图。 #### 使用预览图更新能力 当应用使用云端存储的图片作为预览图时，碰一碰分享的回调触发时，可能存在无法及时下载到本地，而导致超时失败的情况。 针对以上场景，Share Kit提供预览图延迟更新的能力。 1. 开发者在接到碰一碰事件触发的回调时，可仅发送分享的核心数据内容"
     },
     {
       "path": "references/分享App Linking直达应用.md",
@@ -39,7 +39,7 @@
     {
       "path": "references/分享图片.md",
       "title": "分享图片",
-      "snippet": "图片类型分享支持将一张或多张图片分享到目标设备/目标应用。 - 目标设备接收时，图片会保存到图库中。 - 目标应用接收时，可便捷的处理图片内容。例如：将一张图片分享给畅连，发送给畅连好友。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3b/v3/IXt1Xd_KT4KDiEzhEFSaLQ/zh-cn_image_0000002543215216.png?HW-CC-KV=V1&HW-CC-Date=20260421T111652Z&HW-CC-Expire=86400&HW-CC-Sign=9651324323D7733FD87C01D65CBEC2E82A08B3FBD6440F012B9042FEA5B8C1FE) #### 开发步骤 1. 导入相关模块。 import { systemShare } from '@kit.ShareKit'; import { uniformTypeDescriptor as utd } from '@kit.ArkData'; import { common } from '@kit.AbilityKit'; import { fileUri } from '@kit.CoreFileKit'; import { B"
+      "snippet": "图片类型分享支持将一张或多张图片分享到目标设备/目标应用。 - 目标设备接收时，图片会保存到图库中。 - 目标应用接收时，可便捷的处理图片内容。例如：将一张图片分享给畅连，发送给畅连好友。 #### 开发步骤 1. 导入相关模块。 import { systemShare } from '@kit.ShareKit'; import { uniformTypeDescriptor as utd } from '@kit.ArkData'; import { common } from '@kit.AbilityKit'; import { fileUri } from '@kit.CoreFileKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 构造分享数据。 // 构造ShareData，需配置一条有效数据信息 let uiContext: UIContext = this.getUIContext(); let contextFaker: Context = uiContext.getHostContext() as Context; let filePath = contextFaker.filesDir + '/exampleImage.jpg'; // 仅为示例 请替换正确的文件路径 // 获取"
     },
     {
       "path": "references/分享数据类型不支持.md",
@@ -49,7 +49,7 @@
     {
       "path": "references/分享文本.md",
       "title": "分享文本",
-      "snippet": "纯文本类型分享支持将一段文字分享到目标设备/目标应用。 - 目标设备接收时，文本会转化为.txt文件保存在文件管理中。 - 目标应用接收时，可便捷地处理文本内容。例如：将文字分享给备忘录，可新增一条备忘录内容。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4e/v3/Q3qQ-NbuRyOJ2Gp1-82xxg/zh-cn_image_0000002573975111.png?HW-CC-KV=V1&HW-CC-Date=20260421T111653Z&HW-CC-Expire=86400&HW-CC-Sign=12696E36DF234D58FA1B27A131C1E0F4B30A56B42586313D1B233B892C94533A) #### 开发步骤 1. 导入相关模块。 import { systemShare } from '@kit.ShareKit'; import { uniformTypeDescriptor as utd } from '@kit.ArkData'; import { common } from '@kit.AbilityKit'; import { BusinessError } from '@kit.BasicSe"
+      "snippet": "纯文本类型分享支持将一段文字分享到目标设备/目标应用。 - 目标设备接收时，文本会转化为.txt文件保存在文件管理中。 - 目标应用接收时，可便捷地处理文本内容。例如：将文字分享给备忘录，可新增一条备忘录内容。 #### 开发步骤 1. 导入相关模块。 import { systemShare } from '@kit.ShareKit'; import { uniformTypeDescriptor as utd } from '@kit.ArkData'; import { common } from '@kit.AbilityKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 构造分享数据。 // 构造ShareData，需配置一条有效数据信息 let shareData: systemShare.SharedData = new systemShare.SharedData({ utd: utd.UniformDataType.TEXT, content: '这是一段文本内容', title: '文本内容', // 不传title字段时,显示content description: '文本描述', // thumbnail: new Uint8Array() // 推荐传入适合的缩略图 不传则显示默"
     },
     {
       "path": "references/分享时提示“您选择的文件不支持分享”.md",
@@ -59,7 +59,7 @@
     {
       "path": "references/分享视频.md",
       "title": "分享视频",
-      "snippet": "视频类型分享支持将一个或多个视频分享到目标设备/目标应用。 - 目标设备接收时，视频会保存到图库中。 - 目标应用接收时，可便捷地处理视频内容。例如：将一个视频分享给畅连，发送给畅连好友。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f4/v3/2wObyA8wTLSltinSFf4Wpw/zh-cn_image_0000002573855129.png?HW-CC-KV=V1&HW-CC-Date=20260421T111652Z&HW-CC-Expire=86400&HW-CC-Sign=893CDC53B722F40FAB814796F90193268B010AEFB1D33E0094F9D940F4077C79) #### 开发步骤 1. 导入相关模块。 import { systemShare } from '@kit.ShareKit'; import { uniformTypeDescriptor as utd } from '@kit.ArkData'; import { common } from '@kit.AbilityKit'; import { fileUri } from '@kit.CoreFileKit'; import { i"
+      "snippet": "视频类型分享支持将一个或多个视频分享到目标设备/目标应用。 - 目标设备接收时，视频会保存到图库中。 - 目标应用接收时，可便捷地处理视频内容。例如：将一个视频分享给畅连，发送给畅连好友。 #### 开发步骤 1. 导入相关模块。 import { systemShare } from '@kit.ShareKit'; import { uniformTypeDescriptor as utd } from '@kit.ArkData'; import { common } from '@kit.AbilityKit'; import { fileUri } from '@kit.CoreFileKit'; import { image } from '@kit.ImageKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 生成视频封面图（推荐）。 // 生成视频封面图 let uiContext: UIContext = this.getUIContext(); let contextFaker: Context = uiContext.getHostContext() as Context; let thumbnailPath = contextFaker.filesDir + '/exampleIma"
     },
     {
       "path": "references/分享详情页关闭分享面板.md",
@@ -74,7 +74,7 @@
     {
       "path": "references/分享链接.md",
       "title": "分享链接",
-      "snippet": "使用App Linking分享应用，目标设备接收后可直达应用，参见： 使用App Linking实现应用间跳转 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d2/v3/1lFs2hnER7-hHpyuozJ5Tw/zh-cn_image_0000002543374876.png?HW-CC-KV=V1&HW-CC-Date=20260421T111652Z&HW-CC-Expire=86400&HW-CC-Sign=74F911F17DDB7F4220101D45F85D6C5CB27CB5FA18AC92725C161551ACF2B154) #### 开发步骤 1. 开通App Linking服务，并完成相关配置，App Linking需经过调试。参见： 调试App Linking 。 2. 在应用配置文件（src/main/module.json5）的 skills 配置中增加关联配置。参见： 声明应用关联的网站域名 。 3. 使用App Linking发起系统分享。 import { systemShare } from '@kit.ShareKit'; import { uniformTypeDescriptor as utd } from '@"
+      "snippet": "使用App Linking分享应用，目标设备接收后可直达应用，参见： 使用App Linking实现应用间跳转 。 #### 开发步骤 1. 开通App Linking服务，并完成相关配置，App Linking需经过调试。参见： 调试App Linking 。 2. 在应用配置文件（src/main/module.json5）的 skills 配置中增加关联配置。参见： 声明应用关联的网站域名 。 3. 使用App Linking发起系统分享。 import { systemShare } from '@kit.ShareKit'; import { uniformTypeDescriptor as utd } from '@kit.ArkData'; import { common } from '@kit.AbilityKit'; import { image } from '@kit.ImageKit'; import { BusinessError } from '@kit.BasicServicesKit'; @Component export default struct Index { private async share() { // 生成应用图标缩略图 let uiContext: UIContext = this.getUIContext(); let co"
     },
     {
       "path": "references/判断应用是否被系统分享拉起.md",
@@ -84,7 +84,7 @@
     {
       "path": "references/可信任设备间传输.md",
       "title": "可信任设备间传输",
-      "snippet": "- 若双端已登录相同的华为账号，则默认设备可信，无需确认即可传输。 - 若双端未登录相同的华为账号，需询问用户是否信任对端设备。双端同时信任后，1小时内再次传输无需确认。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e5/v3/k220Nfk1RsuJgrfohGkgjg/zh-cn_image_0000002543215230.png?HW-CC-KV=V1&HW-CC-Date=20260421T111655Z&HW-CC-Expire=86400&HW-CC-Sign=A04F09DC674B09B24A51C83A513CFCBF06E6259C275211EE22CCF75C676AE9C8)"
+      "snippet": "- 若双端已登录相同的华为账号，则默认设备可信，无需确认即可传输。 - 若双端未登录相同的华为账号，需询问用户是否信任对端设备。双端同时信任后，1小时内再次传输无需确认。"
     },
     {
       "path": "references/宿主应用发起分享需使用精细化的utd类型.md",
@@ -94,7 +94,7 @@
     {
       "path": "references/宿主应用接入模式.md",
       "title": "宿主应用接入模式",
-      "snippet": "为应对开发者接入系统分享能力时的不同诉求，Share Kit支持两种宿主应用接入模式。 #### 全接模式示例代码 参考：手机应用发起系统分享开发步骤 #### 半接模式示例代码片段 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/af/v3/Mj073z1YTqiKtk0BsuI_uQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111650Z&HW-CC-Expire=86400&HW-CC-Sign=C5F714C26ACEAAC541B1B281B31FE6A38A62124A8F1D071FB7EAECB4307F80E8) 为了确保用户获得良好的分享体验，图标请使用HarmonyOS系统资源\"$r('sys.symbol.share')\"，文本使用\"系统分享\"，请勿自行更改。 // 分享图标使用系统提供的Symbol格式图标 SymbolGlyph($r('sys.symbol.share')) // 文本使用'系统分享' Text('系统分享') 完整示例代码请参见： samplecode-接入模式 。"
+      "snippet": "为应对开发者接入系统分享能力时的不同诉求，Share Kit支持两种宿主应用接入模式。 #### 全接模式示例代码 参考：手机应用发起系统分享开发步骤 #### 半接模式示例代码片段 为了确保用户获得良好的分享体验，图标请使用HarmonyOS系统资源\"$r('sys.symbol.share')\"，文本使用\"系统分享\"，请勿自行更改。 // 分享图标使用系统提供的Symbol格式图标 SymbolGlyph($r('sys.symbol.share')) // 文本使用'系统分享' Text('系统分享') 完整示例代码请参见： samplecode-接入模式 。"
     },
     {
       "path": "references/应用内处理分享内容.md",
@@ -109,7 +109,7 @@
     {
       "path": "references/打开设备侧隔空传送开关.md",
       "title": "打开设备侧隔空传送开关",
-      "snippet": "使用隔空传送功能前，需要先打开隔空传送开关。 开启路径：设置 > 系统 > 快捷启动和手势 > 隔空传送。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/be/v3/j5qEj3EmRXCae1LGmMGCjQ/zh-cn_image_0000002573975123.png?HW-CC-KV=V1&HW-CC-Date=20260421T111655Z&HW-CC-Expire=86400&HW-CC-Sign=75428AE5C08E1827A4C9D576CCA41D47B8AFB6ECB9855979403BB183FA952C15) #### 隔空传送与隔空截屏的联动 隔空传送与隔空截屏使用相同的手势触发，开关是否开启影响如下： 当隔空传送和隔空截屏开关同时开启，且当前界面已注册隔空传送事件时，用户抓取握拳会同时触发隔空传送和隔空截屏，此时隔空传送的卡片下方同步出现保存截屏的提示（首次默认不保存）。 用户可手动勾选“保存截屏至本机”，则传送的同时截屏图片会被保存至图库。系统会记录本次选择结果，并作为下次操作的默认值。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAllia"
+      "snippet": "使用隔空传送功能前，需要先打开隔空传送开关。 开启路径：设置 > 系统 > 快捷启动和手势 > 隔空传送。 #### 隔空传送与隔空截屏的联动 隔空传送与隔空截屏使用相同的手势触发，开关是否开启影响如下： 当隔空传送和隔空截屏开关同时开启，且当前界面已注册隔空传送事件时，用户抓取握拳会同时触发隔空传送和隔空截屏，此时隔空传送的卡片下方同步出现保存截屏的提示（首次默认不保存）。 用户可手动勾选“保存截屏至本机”，则传送的同时截屏图片会被保存至图库。系统会记录本次选择结果，并作为下次操作的默认值。"
     },
     {
       "path": "references/拉起系统分享框失败.md",
@@ -119,22 +119,22 @@
     {
       "path": "references/概述-1.md",
       "title": "概述",
-      "snippet": "Share Kit推出碰一碰分享，支持用户通过碰一碰发起跨端分享，可实现传输图片、共享Wi-Fi等。 #### 场景介绍 - 宿主应用进入一个可以分享的界面，比如打开或者选中的一个文件、一条备忘录、一个联系人详情，或个人热点/Wi-Fi等。 - 宿主应用可以分享多个内容，如选中的多张图片等。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/dc/v3/A8SeIHGOQNC0wN6twS4uAQ/zh-cn_image_0000002573975105.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111653Z&HW-CC-Expire=86400&HW-CC-Sign=E4928348421D5166625E4F9FD3232C2B951AB6F5A9836C33DE5A32DDB5CECCE7) #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/38/v3/e_2FQ4O9Qo6gsrJ_H1Fg7g/zh-cn_image_0000002543374878.png?HW-CC-KV=V1&HW-"
+      "snippet": "Share Kit推出碰一碰分享，支持用户通过碰一碰发起跨端分享，可实现传输图片、共享Wi-Fi等。 #### 场景介绍 - 宿主应用进入一个可以分享的界面，比如打开或者选中的一个文件、一条备忘录、一个联系人详情，或个人热点/Wi-Fi等。 - 宿主应用可以分享多个内容，如选中的多张图片等。 #### 业务流程 流程说明： 1. 宿主应用注册碰一碰分享事件，并与亮屏且解锁的对端设备碰一碰。 2. 宿主应用发现设备，调用碰一碰分享事件回调，在回调事件中构造分享数据并发送。 3. 目标设备接收并处理分享数据。 4. 宿主应用解除注册碰一碰分享事件。 #### 使用约束 手机应用发起碰一碰分享时，双端设备需要在 **亮屏、且解锁** 的状态下并且都已开启华为分享服务（系统默认开启），设备顶部轻碰即可触发。如果用户已手动关闭华为分享服务开关，轻碰事件触发时，用户会接收到系统通知提示开启。 Share Kit的处理机制： - 任意一端设备不支持碰一碰能力时，轻碰无任何响应。 - 宿主应用无法获得分享结果，Share Kit会通过系统通知消息告知用户对端接收或拒绝。 #### 环境要求 - 支持的手机系统： HarmonyOS NEXT Release 及以上版本，可使用 canIUse 判断系统能力是否支持。 if (canIUse('SystemCapability.Collaborati"
     },
     {
       "path": "references/概述-2.md",
       "title": "概述",
-      "snippet": "在手机设备中，分享框通过模态弹窗方式被拉起，效果如下图所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/50/v3/KlvwxS6kTsWjn01TbYZd1w/zh-cn_image_0000002573975107.png?HW-CC-KV=V1&HW-CC-Date=20260421T111649Z&HW-CC-Expire=86400&HW-CC-Sign=388CF3042FAC1083135F315393E1E7A3FCE61D1C18C8E78B001B5F4CF2B8762D) 在2in1设备上分享框通过Popup形式展示，效果如图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d9/v3/4sCYRwk1RAWGMHFEljCykw/zh-cn_image_0000002543374874.png?HW-CC-KV=V1&HW-CC-Date=20260421T111649Z&HW-CC-Expire=86400&HW-CC-Sign=53FEB341D9085D6B807CE7615EEE475FE2CF080F"
+      "snippet": "在手机设备中，分享框通过模态弹窗方式被拉起，效果如下图所示。 在2in1设备上分享框通过Popup形式展示，效果如图所示： 1. 宿主应用可以分享一段文本、一个文件或一条备忘录到其他应用。 2. 宿主应用可以分享多个内容，如文本、图片等到其他应用。 #### 业务流程 流程说明： 1、宿主应用构造分享数据、构造ShareController以及注册分享面板状态监听（可选）。 2、宿主应用拉起系统分享面板。 3、用户可选择目标设备或者应用。 4、目标应用处理分享数据，并关闭系统分享面板。 #### 设计规范 宿主应用接入系统分享时，根据不同的内容类型，应选择恰当的分享方式。详细参见： 系统分享设计指南 。"
     },
     {
       "path": "references/概述-3.md",
       "title": "概述",
-      "snippet": "Share Kit新推出隔空传送分享，支持用户通过“一抓一放”实现跨端传输。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a6/v3/2f6JDEpgT9S8ZE3pZkTB2g/zh-cn_image_0000002543215228.png?HW-CC-KV=V1&HW-CC-Date=20260421T111654Z&HW-CC-Expire=86400&HW-CC-Sign=411B8EAEA7228B46AAB05C8DADA0C2255C43F87346770B461AFE143B8A7F5837) #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/52/v3/y6eLGq4OT_ekOQkIGM8NeA/zh-cn_image_0000002573855141.png?HW-CC-KV=V1&HW-CC-Date=20260421T111654Z&HW-CC-Expire=86400&HW-CC-Sign=5F8A95817355DE0BB55CFA0CF861FA89D31DE5556BE13C63F5446"
+      "snippet": "Share Kit新推出隔空传送分享，支持用户通过“一抓一放”实现跨端传输。 #### 业务流程"
     },
     {
       "path": "references/概述.md",
       "title": "概述",
-      "snippet": "Share Kit支持Phone和PC/2in1之间的碰一碰分享。利用PC/2in1设备的屏幕感知能力，识别Phone轻碰屏幕的动作及位置，实现PC/2in1窗口级的交互。 **从6.1.0(23)版本开始，支持Phone与Tablet设备之间的碰一碰分享。** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d2/v3/bUCLCHKhTfSjVIC3RViJtw/zh-cn_image_0000002543374872.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111654Z&HW-CC-Expire=86400&HW-CC-Sign=81C8A2E8C017A4C89884700C201D3578CDC1B52D28F040E5F8A62732B342B93F) #### 业务流程 - PC/2in1设备作为数据接收端 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0d/v3/ue9T7bK_SzOAydSjRguV5g/zh-cn_image_0000002573855137.png?HW-CC-KV=V1"
+      "snippet": "Share Kit支持Phone和PC/2in1之间的碰一碰分享。利用PC/2in1设备的屏幕感知能力，识别Phone轻碰屏幕的动作及位置，实现PC/2in1窗口级的交互。 **从6.1.0(23)版本开始，支持Phone与Tablet设备之间的碰一碰分享。** #### 业务流程 - PC/2in1设备作为数据接收端 - PC/2in1设备作为数据发送端 #### 双向分享限制 从6.0.0(20) Beta5版本开始，手机与PC/2in1设备之间不支持双向分享。遵循以下机制： - 当手机前台有可分享内容时，无论PC/2in1设备前台窗口是否有可分享内容，优先将手机作为发送端，PC/2in1设备作为接收端。 - 当手机前台无可分享内容且PC/2in1设备前台窗口有可分享内容时，PC/2in1设备作为发送端，手机作为接收端。 - 当手机前台和PC/2in1设备前台窗口均无可分享内容时，遵循无内容分享逻辑。 对于6.0.0(20) Beta3及之前的版本，当手机前台和PC/2in1设备前台窗口均有可分享内容时，支持双向分享（发送分享内容的同时也可接收到分享内容）。 #### 使用约束 - 手机与PC/2in1设备间碰一碰分享需登录相同的华为账号。 - 仅支持直板手机或折叠手机直板态与PC/2in1屏幕碰一碰分享。 - 轻碰屏幕交互约束： - 手机与PC/2in1屏幕俯视夹角应≤5°。"
     },
     {
       "path": "references/目标应用设计规范.md",
@@ -164,12 +164,12 @@
     {
       "path": "references/邀请组队.md",
       "title": "邀请组队",
-      "snippet": "在组队房间邀请界面注册碰一碰事件。 **图1** 横屏应用示例 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3a/v3/NEel5zwfTb633GxKup0K7w/zh-cn_image_0000002543374884.png?HW-CC-KV=V1&HW-CC-Date=20260421T111653Z&HW-CC-Expire=86400&HW-CC-Sign=18CE378C01363826EDE6F6EC38C36A8815D597F9DC42584894114AF57DAD1CD4) **图2** 竖屏应用示例 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b1/v3/AJquNWoyRIqM6e_iEyuYtA/zh-cn_image_0000002543215224.png?HW-CC-KV=V1&HW-CC-Date=20260421T111653Z&HW-CC-Expire=86400&HW-CC-Sign=6CAC4BBE980B1A42D740232470019BD26ADBA656BAF0E6AB5B23201E"
+      "snippet": "在组队房间邀请界面注册碰一碰事件。 **图1** 横屏应用示例 **图2** 竖屏应用示例 #### 注册单向分享能力 通过碰一碰分享邀请好友加入组队房间，若双方都同时在组队房间内互相邀请，无法相互加入对方的组队房间。 针对以上场景，Share Kit提供单向仅发送能力。参考： SendCapabilityRegistry 的sendOnly属性。 若碰一碰的双方都设置单向仅发送，则终止本次分享并提示用户\"请任意一方退出当前应用后再试\"；反之，均可分享成功。 import { uniformTypeDescriptor as utd } from '@kit.ArkData'; import { systemShare, harmonyShare } from '@kit.ShareKit'; import { fileUri } from '@kit.CoreFileKit'; @Component export default struct Index { aboutToAppear(): void { let capabilityRegistry: harmonyShare.SendCapabilityRegistry = { windowId: 999, // 此值仅为示例 实际使用时请替换正确的windowId sendOnly: true, // 声明仅支持单向发送 若"
     },
     {
       "path": "references/配置目标应用名单（仅对企业应用开放）.md",
       "title": "配置目标应用名单（仅对企业应用开放）",
-      "snippet": "该功能仅对企业应用开放。6.0.1(21)版本开始，支持宿主应用配置目标应用名单列表（最多支持50个应用）。配置成功后，仅名单内的目标可出现在系统分享面板的分享推荐区和分享方式区。 #### 申请权限 当前能力受限开放，需要申请受限开放权限ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c9/v3/OnlHvpWuRBiITC6STNXLUA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111650Z&HW-CC-Expire=86400&HW-CC-Sign=ECF01338CFF0AEEACDAB675922B557477AFCB239E89AC4E32241A642291AFA4B) 该权限用于限制应用分享范围，仅支持企业应用限制内部数据分享到企业集团信任的应用。 申请权限时，需要在reasonPrompt里面填写企业应用的信息和管控场景。如：用于XXX集团应用管控内部资料仅限于企业内部分享。 申请方式请参考： 申请使用受限权限 。 #### 示例代码 1. 应用必须在module.json5配置文"
+      "snippet": "该功能仅对企业应用开放。6.0.1(21)版本开始，支持宿主应用配置目标应用名单列表（最多支持50个应用）。配置成功后，仅名单内的目标可出现在系统分享面板的分享推荐区和分享方式区。 #### 申请权限 当前能力受限开放，需要申请受限开放权限ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST。 该权限用于限制应用分享范围，仅支持企业应用限制内部数据分享到企业集团信任的应用。 申请权限时，需要在reasonPrompt里面填写企业应用的信息和管控场景。如：用于XXX集团应用管控内部资料仅限于企业内部分享。 申请方式请参考： 申请使用受限权限 。 #### 示例代码 1. 应用必须在module.json5配置文件的requestPermissions标签中声明权限。参考： 声明权限 。 { \"module\": { // ... \"requestPermissions\": [ { \"name\": \"ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST\", \"reason\": '$string:permission_reason_set_system_share_app_launch_trust_list' }, ] } } 2. 启动分享面板时，通过配置appLaunchTrustInfo参"
     }
   ]
 }

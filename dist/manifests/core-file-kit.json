@@ -3,13 +3,13 @@
   "skill": "core-file-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.644Z"
+    "at": "2026-05-21T03:47:44.357Z"
   },
   "references": [
     {
       "path": "references/Core File Kit简介.md",
       "title": "Core File Kit简介",
-      "snippet": "Core File Kit（文件基础服务）为开发者提供一套访问和管理应用文件和用户文件的能力。帮助用户更高效地管理、查找和备份各类文件，使用户能够轻松应对各种文件管理的需求。 #### Core File Kit概述 在Core File Kit套件中，按文件所有者的不同，有如下文件分类模型，其示意图如下： - 应用文件 ：文件所有者为应用，包括应用安装文件、应用资源文件、应用缓存文件等。 - 用户文件 ：文件所有者为登录到该终端设备的用户，包括用户私有的图片、视频、音频、文档等。 - 系统文件：与应用和用户无关的其它文件，包括公共库、设备文件、系统资源文件等。这类文件不需要开发者进行文件管理，本文不展开介绍。 按文件系统管理的文件存储位置（数据源位置）的不同，有如下文件系统分类模型： - 本地文件系统：提供本地设备或外置存储设备（如U盘、移动硬盘）的文件访问能力。本地文件系统是最基本的文件系统，本文不展开介绍。 - 分布式文件系统 ：提供跨设备的文件访问能力。所谓跨设备，指文件不一定存储在本地设备或外置存储设备，而是通过计算机网络与其它分布式设备相连。 - 端云文件协同 ：端云文件协同为应用开发提供端云一体的统一文件系统能力，为用户和应用提供一致的文件同步与跨端访问体验。 **图1** 文件分类模型示意图 ![](https://contentcenter-vali-drcn.d"
+      "snippet": "Core File Kit（文件基础服务）为开发者提供一套访问和管理应用文件和用户文件的能力。帮助用户更高效地管理、查找和备份各类文件，使用户能够轻松应对各种文件管理的需求。 #### Core File Kit概述 在Core File Kit套件中，按文件所有者的不同，有如下文件分类模型，其示意图如下： - 应用文件 ：文件所有者为应用，包括应用安装文件、应用资源文件、应用缓存文件等。 - 用户文件 ：文件所有者为登录到该终端设备的用户，包括用户私有的图片、视频、音频、文档等。 - 系统文件：与应用和用户无关的其它文件，包括公共库、设备文件、系统资源文件等。这类文件不需要开发者进行文件管理，本文不展开介绍。 按文件系统管理的文件存储位置（数据源位置）的不同，有如下文件系统分类模型： - 本地文件系统：提供本地设备或外置存储设备（如U盘、移动硬盘）的文件访问能力。本地文件系统是最基本的文件系统，本文不展开介绍。 - 分布式文件系统 ：提供跨设备的文件访问能力。所谓跨设备，指文件不一定存储在本地设备或外置存储设备，而是通过计算机网络与其它分布式设备相连。 - 端云文件协同 ：端云文件协同为应用开发提供端云一体的统一文件系统能力，为用户和应用提供一致的文件同步与跨端访问体验。 **图1** 文件分类模型示意图 #### Kit使用场景 Core File Kit常见的使用场景： - "
     },
     {
       "path": "references/FileUri开发指导(C_C++).md",
@@ -24,22 +24,22 @@
     {
       "path": "references/分布式文件系统概述.md",
       "title": "分布式文件系统概述",
-      "snippet": "分布式文件系统（hmdfs，HarmonyOS Distributed File System）提供跨设备的文件访问能力，适用于以下场景： - 两台设备组网，用户可以利用一台设备上的编辑软件编辑另外一台设备上的文档。 - 平板保存的音乐，车载系统直接可见并可播放。 - 户外拍摄的照片，回家打开平板直接访问原设备拍摄的照片。 hmdfs在分布式软总线动态组网的基础上，为网络上各个设备节点提供一个全局一致的访问视图，支持开发者通过基础文件系统的接口进行读写访问，具有高性能、低延时等优点。 #### 分布式文件系统架构 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/dc/v3/RKWSUd-MRWyOSnXmQalLjg/zh-cn_image_0000002543214312.png?HW-CC-KV=V1&HW-CC-Date=20260421T111001Z&HW-CC-Expire=86400&HW-CC-Sign=0C5FDD7ED23F73568945578FAD3B9682163DDB3802BAD9C50CF4EA0ED8F4DA71) - distributedfile_daemon：主要负责设备上线监听、通过软总线建立链路，并根据分布式的设备安全等"
+      "snippet": "分布式文件系统（hmdfs，HarmonyOS Distributed File System）提供跨设备的文件访问能力，适用于以下场景： - 两台设备组网，用户可以利用一台设备上的编辑软件编辑另外一台设备上的文档。 - 平板保存的音乐，车载系统直接可见并可播放。 - 户外拍摄的照片，回家打开平板直接访问原设备拍摄的照片。 hmdfs在分布式软总线动态组网的基础上，为网络上各个设备节点提供一个全局一致的访问视图，支持开发者通过基础文件系统的接口进行读写访问，具有高性能、低延时等优点。 #### 分布式文件系统架构 - distributedfile_daemon：主要负责设备上线监听、通过软总线建立链路，并根据分布式的设备安全等级执行不同的数据流转策略。 - hmdfs：实现在内核的网络文件系统，包括缓存管理、文件访问、元数据管理和冲突管理等。 /data/storage/el2/distributedfiles/ 目录下面的文件不能随意删除，详细注意事项请参考 跨设备文件共享和访问 。 - - 设备分布式组网后，hmdfs提供文件的互访能力，但不会主动进行文件数据传输和拷贝。如果应用需要将数据保存到本地，需主动拷贝。 - hmdfs保证Close-to-Open的一致性，即一端写关闭后，另外一端可以读取到最新数据，不保证文件内容的实时一致性。 - 数据在远端写入，但是由于网络原因"
     },
     {
       "path": "references/常见问题与异常处理.md",
       "title": "常见问题与异常处理",
-      "snippet": "**问题现象1** 在数据加载界面，应用数据迁移暂停。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/72/v3/0PM0teXDR6KGMk0nKsGD0A/zh-cn_image_0000002573974199.png?HW-CC-KV=V1&HW-CC-Date=20260421T110958Z&HW-CC-Expire=86400&HW-CC-Sign=6FF10402D80215E62FF025ECAEE4C22571BE47791E6EF804192532958FDDE0A7) **可能原因** 应用数据迁移的过程中需要使用到网络，当前终端设备网络不可用，导致数据迁移暂停。 **解决方法** 单击“稍后连接WLAN加载”按钮，进入桌面后连接网络，终端设备网络可用后，恢复应用数据迁移。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/84/v3/15_UIDZ8QlWPZ7kkDkBioA/zh-cn_image_0000002543373972.png?HW-CC-KV=V1&HW-CC-Date=20260421T110958Z"
+      "snippet": "**问题现象1** 在数据加载界面，应用数据迁移暂停。 **可能原因** 应用数据迁移的过程中需要使用到网络，当前终端设备网络不可用，导致数据迁移暂停。 **解决方法** 单击“稍后连接WLAN加载”按钮，进入桌面后连接网络，终端设备网络可用后，恢复应用数据迁移。 **问题现象2** 进入桌面之后，若应用数据迁移还未结束，可通过通知栏进入应用加载界面查看加载进度 在应用加载界面，应用数据迁移暂停。 **可能原因** 应用数据迁移的过程中需要使用到网络，当前终端设备网络不可用，导致数据迁移暂停。 **解决方法** 单击“稍后连接WLAN加载”按钮，进入桌面后连接网络，终端设备网络可用后，恢复应用数据迁移。 #### 应用数据迁移执行十五分钟后失败 **问题现象** 应用数据迁移执行十五分钟后显示失败。 **可能原因** 单个应用数据迁移执行超过十五分钟，超过设定的单个应用最长数据迁移时间，任务执行失败。 **解决方法** 请优化应用BackupExtensionAbility的代码实现，在十五分钟内完成应用数据迁移。 已接入“数据迁移框架”的应用完成数据迁移后，才可以被消费者使用。尽可能快的完成应用数据迁移，可以带给消费者更好的体验。"
     },
     {
       "path": "references/应用克隆适配指导.md",
       "title": "应用克隆适配指导",
-      "snippet": "用户在日常换机过程中，需要将一台设备的数据备份并发送到另一台设备上进行恢复，以完成跨设备的数据迁移，此时需要使用克隆工具（\"数据克隆\"应用）。接入克隆工具时，应用需实现备份恢复接口 BackupExtensionAbility ，在onBackup中实现数据备份，在onRestore中实现数据恢复。若应用未实现BackupExtensionAbility，克隆过程将仅迁移旧设备上的应用，而不迁移应用数据。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/36/v3/-C-U5QMCSk2PUKBWv7bepQ/zh-cn_image_0000002573974187.png?HW-CC-KV=V1&HW-CC-Date=20260421T110957Z&HW-CC-Expire=86400&HW-CC-Sign=6451840D199F4F5E29A7B527DEB49605B647AF45497B705C4CF6906CDDB16DA3) #### 适配指导 API version 12开始，三方应用接入克隆只需要接入备份恢复能力即可，接入指导： **应用接入数据备份恢复** 。"
+      "snippet": "用户在日常换机过程中，需要将一台设备的数据备份并发送到另一台设备上进行恢复，以完成跨设备的数据迁移，此时需要使用克隆工具（\"数据克隆\"应用）。接入克隆工具时，应用需实现备份恢复接口 BackupExtensionAbility ，在onBackup中实现数据备份，在onRestore中实现数据恢复。若应用未实现BackupExtensionAbility，克隆过程将仅迁移旧设备上的应用，而不迁移应用数据。 #### 适配指导 API version 12开始，三方应用接入克隆只需要接入备份恢复能力即可，接入指导： **应用接入数据备份恢复** 。"
     },
     {
       "path": "references/应用共享目录配置.md",
       "title": "应用共享目录配置",
-      "snippet": "从API version 23开始，系统新增支持共享目录配置功能。在 应用文件分享 场景中，开发者可配置共享目录范围，防止应用敏感数据泄露。 #### 开发步骤 1. 开发者可在应用模块级配置文件 src/main/module.json5 的module标签中添加shareFiles标签，以实现对沙箱共享目录权限的限制。若未配置共享目录，则默认允许应用共享其自身沙箱内的文件。 **shareFiles标签** { \"module\": { // ... \"shareFiles\": \"$profile:share_files\", // 资源配置，指向profile下面定义的配置文件share_files.json // ... } } 2. 在开发视图的resources/base/profile下面定义配置文件share_files.json，以标识当前模块所有共享路径的权限信息。 文件名share_files可修改为任意合法文件名，但需要和shareFiles标签配置的文件名一致。 **share_files标签说明** **scopes标签说明** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/84/v3/yJKl4r3FSVq5mKKvAkP9SQ/not"
+      "snippet": "从API version 23开始，系统新增支持共享目录配置功能。在 应用文件分享 场景中，开发者可配置共享目录范围，防止应用敏感数据泄露。 #### 开发步骤 1. 开发者可在应用模块级配置文件 src/main/module.json5 的module标签中添加shareFiles标签，以实现对沙箱共享目录权限的限制。若未配置共享目录，则默认允许应用共享其自身沙箱内的文件。 **shareFiles标签** { \"module\": { // ... \"shareFiles\": \"$profile:share_files\", // 资源配置，指向profile下面定义的配置文件share_files.json // ... } } 2. 在开发视图的resources/base/profile下面定义配置文件share_files.json，以标识当前模块所有共享路径的权限信息。 文件名share_files可修改为任意合法文件名，但需要和shareFiles标签配置的文件名一致。 **share_files标签说明** **scopes标签说明** 应用更新时如涉及配置变更，将依据新配置进行管控，已分享文件的临时权限不受影响。 share_files.json示例： { \"share_files\": { \"scopes\": [ { \"path\": \"/base/files\", "
     },
     {
       "path": "references/应用升级过程代码开发注意事项.md",
@@ -49,7 +49,7 @@
     {
       "path": "references/应用及文件系统空间统计.md",
       "title": "应用及文件系统空间统计",
-      "snippet": "在系统中，可能出现系统空间不够或者cacheDir等目录受系统配额限制等情况，需要应用开发者关注系统剩余空间，同时控制应用自身占用的空间大小。 #### 接口说明 API的详细介绍请参见 ohos.file.statvfs 、 ohos.file.storageStatistics 。 **表1** 文件系统空间和应用空间统计 **表2** 应用空间统计 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b1/v3/kodGW5WATmWk6mNsLOAGwg/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110956Z&HW-CC-Expire=86400&HW-CC-Sign=2437EAE09A6DAFA06840EA00729FD28106DDA35902B896F00EA92E2950CE7DFE) 表格中统计路径列涉及的目录均指应用的沙箱路径，查看路径前需要先进入对应的应用沙箱空间。进入沙箱空间需要执行以下命令： 1. hdc shell。 2. nsenter -t {pid} -m sh。 #### 开发示例 - 获取文件系统数据分区剩余空间大小。 import { statfs } fr"
+      "snippet": "在系统中，可能出现系统空间不够或者cacheDir等目录受系统配额限制等情况，需要应用开发者关注系统剩余空间，同时控制应用自身占用的空间大小。 #### 接口说明 API的详细介绍请参见 ohos.file.statvfs 、 ohos.file.storageStatistics 。 **表1** 文件系统空间和应用空间统计 **表2** 应用空间统计 表格中统计路径列涉及的目录均指应用的沙箱路径，查看路径前需要先进入对应的应用沙箱空间。进入沙箱空间需要执行以下命令： 1. hdc shell。 2. nsenter -t {pid} -m sh。 #### 开发示例 - 获取文件系统数据分区剩余空间大小。 import { statfs } from '@kit.CoreFileKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { common } from '@kit.AbilityKit'; let context = this.getUIContext().getHostContext() as common.UIAbilityContext; let path = context.filesDir; statfs.getFreeSize(path, (err: BusinessErro"
     },
     {
       "path": "references/应用接入数据备份恢复.md",
@@ -64,22 +64,22 @@
     {
       "path": "references/应用数据备份恢复验证指导.md",
       "title": "应用数据备份恢复验证指导",
-      "snippet": "为方便开发者验证 应用接入数据备份恢复 结果，此篇指南介绍了在鸿蒙设备上通过数据克隆应用触发数据备份恢复，以及常见问题说明。 #### 环境准备 - 调试设备：两部鸿蒙设备，系统版本在HarmonyOS 6.0.0.115及以上，数据克隆版本在6.0.0.516及以上。 - 安装应用：两部设备都要安装待测试应用。 #### 触发数据备份恢复 1. 打开数据克隆应用，一部设备选择“这是新设备”，作为数据恢复侧，另一部设备选择“这是旧设备”，作为数据备份侧，按照提示连接两部设备。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/62/v3/vSv32ZeNQHuCY_CLsSd2LA/zh-cn_image_0000002573974185.png?HW-CC-KV=V1&HW-CC-Date=20260421T110957Z&HW-CC-Expire=86400&HW-CC-Sign=86BB170C48F09A1D00E3AB9F8B8E1A4650F748971ADADC3FAE87472248F50465) 2. 在选择数据页面，点击应用及数据，勾选待测试应用。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/p"
+      "snippet": "为方便开发者验证 应用接入数据备份恢复 结果，此篇指南介绍了在鸿蒙设备上通过数据克隆应用触发数据备份恢复，以及常见问题说明。 #### 环境准备 - 调试设备：两部鸿蒙设备，系统版本在HarmonyOS 6.0.0.115及以上，数据克隆版本在6.0.0.516及以上。 - 安装应用：两部设备都要安装待测试应用。 #### 触发数据备份恢复 1. 打开数据克隆应用，一部设备选择“这是新设备”，作为数据恢复侧，另一部设备选择“这是旧设备”，作为数据备份侧，按照提示连接两部设备。 2. 在选择数据页面，点击应用及数据，勾选待测试应用。 3. 等待备份恢复完成，根据备份恢复结果，并结合日志分析备份和恢复流程是否正常。 #### 常见问题说明 #### 在“应用及数据”页面没有找到待测试应用 **问题现象** 在“应用及数据”页面勾选应用时，找不到待测试应用。 **可能原因** 备份侧设备没有安装待测试应用。 **解决措施** 在备份侧设备安装待测试应用。 #### 迁移结果显示“仅克隆应用，不迁移数据” **问题现象** 克隆结束后，迁移结果显示“仅克隆应用，不迁移数据”。 **可能原因** onBackup/onBackupEx未按照规范实现。 **解决措施** 请排查是否符合 应用接入数据备份恢复 规范，并结合日志分析onBackup/onBackupEx执行流程。 #### 迁移结"
     },
     {
       "path": "references/应用数据迁移功能介绍.md",
       "title": "应用数据迁移功能介绍",
-      "snippet": "终端设备从HarmonyOS 3.1 Release API 9及之前版本（简称HarmonyOS）升级到HarmonyOS NEXT Developer Preview1及之后版本（简称HarmonyOS NEXT）时，原HarmonyOS中运行的APK应用，升级后需要切换为HarmonyOS NEXT中的HarmonyOS应用。APK应用的部分数据需要转换并迁移到指定位置后，才能被HarmonyOS应用访问。HarmonyOS NEXT提供了“数据迁移框架”和“备份恢复框架”，为开发者提供应用数据的迁移和转换能力。开发者完成适配，APK应用切换为HarmonyOS应用后，可继承原APK应用中适配HarmonyOS应用的数据。 如下图所示，应用需要的数据，包含云端服务器中的数据，本地应用沙箱中的数据和本地公共媒体库中的数据。为了应用的数据可以继承，开发者需要保证云端数据定义兼容APK应用和HarmonyOS应用，确保系统升级后同一账号下的数据可识别。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ea/v3/b0aa0aueRwGmp-5cvvZYQw/zh-cn_image_0000002543373960.png?HW-CC-KV=V1&HW-CC-Dat"
+      "snippet": "终端设备从HarmonyOS 3.1 Release API 9及之前版本（简称HarmonyOS）升级到HarmonyOS NEXT Developer Preview1及之后版本（简称HarmonyOS NEXT）时，原HarmonyOS中运行的APK应用，升级后需要切换为HarmonyOS NEXT中的HarmonyOS应用。APK应用的部分数据需要转换并迁移到指定位置后，才能被HarmonyOS应用访问。HarmonyOS NEXT提供了“数据迁移框架”和“备份恢复框架”，为开发者提供应用数据的迁移和转换能力。开发者完成适配，APK应用切换为HarmonyOS应用后，可继承原APK应用中适配HarmonyOS应用的数据。 如下图所示，应用需要的数据，包含云端服务器中的数据，本地应用沙箱中的数据和本地公共媒体库中的数据。为了应用的数据可以继承，开发者需要保证云端数据定义兼容APK应用和HarmonyOS应用，确保系统升级后同一账号下的数据可识别。 #### 数据迁移机制 #### 应用沙箱数据迁移机制 终端设备从HarmonyOS升级到HarmonyOS NEXT后，APK应用沙箱数据被搬迁到中间目录。针对应用沙箱数据，HarmonyOS NEXT提供“数据迁移框架”统一调度应用数据迁移任务。 应用数据迁移任务需要执行的步骤包括：应用安装，数据迁移和数据恢复。 1. **应用"
     },
     {
       "path": "references/应用数据迁移适配指导.md",
       "title": "应用数据迁移适配指导",
-      "snippet": "开发者需要通过OTA升级的形式，将终端设备升级到HarmonyOS NEXT Developer Beta1及之后版本。 #### 应用数据迁移适配流程 #### 创建新工程 本章节从 创建新工程 开始，指导开发者接入“备份恢复框架”，已经创建工程的开发者可以跳过本节。 #### BackupExtensionAbility的实现 开发者可以在BackupExtension.ts文件中自定义类继承BackupExtensionAbility，通过重写其中的onBackup和onRestore方法，自定义应用数据的转换和迁移。终端设备从HarmonyOS升级到HarmonyOS NEXT数据迁移场景中，onRestore回调接口中的参数 **bundleVersion.name** 的 **前缀** 为“ **0.0.0.0** ”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f5/v3/2WkHISpISF2n_WbGe3SQ_w/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110958Z&HW-CC-Expire=86400&HW-CC-Sign=3703D90648B40C3E30FFF07"
+      "snippet": "开发者需要通过OTA升级的形式，将终端设备升级到HarmonyOS NEXT Developer Beta1及之后版本。 #### 应用数据迁移适配流程 #### 创建新工程 本章节从 创建新工程 开始，指导开发者接入“备份恢复框架”，已经创建工程的开发者可以跳过本节。 #### BackupExtensionAbility的实现 开发者可以在BackupExtension.ts文件中自定义类继承BackupExtensionAbility，通过重写其中的onBackup和onRestore方法，自定义应用数据的转换和迁移。终端设备从HarmonyOS升级到HarmonyOS NEXT数据迁移场景中，onRestore回调接口中的参数 **bundleVersion.name** 的 **前缀** 为“ **0.0.0.0** ”。 **onRestore 接口是同步接口，其内部所有的异步操作请进行同步等待。** 以下步骤以空工程为例，介绍如何实现BackupExtensionAbility： 1. 在 **entry/src/main/ets/**目录下，点击**New > Directory**创建**backupExtension** 目录。 2. 点击 **entry/src/main/ets/backupExtension/**目录，点击**New > File**创建*"
     },
     {
       "path": "references/应用文件分享.md",
       "title": "应用文件分享",
-      "snippet": "应用文件分享是应用之间通过分享URI（Uniform Resource Identifier）进行文件共享的过程。 #### 通过拉起文件处理类应用进行文件分享(startAbility) 基于 文件选择器(startAbility) 的分享方式，应用可分享单个文件，通过 ohos.app.ability.wantConstant的wantConstant.Flags接口 以只读或读写权限授权给其他应用。被分享应用可通过 fileIo.open 打开URI，并进行读写操作。 #### 应用可分享目录 #### 文件URI规范 文件URI的格式： 格式为：file://<bundleName>/<path> - file：文件URI的标志。 - bundleName：该文件资源的属主。 - path：文件资源在应用沙箱中的路径。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2c/v3/hkfrtNJvQFi0E_sjK9PItw/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110956Z&HW-CC-Expire=86400&HW-CC-Sign=02FCC7E6722FAB6F5D626FA175"
+      "snippet": "应用文件分享是应用之间通过分享URI（Uniform Resource Identifier）进行文件共享的过程。 #### 通过拉起文件处理类应用进行文件分享(startAbility) 基于 文件选择器(startAbility) 的分享方式，应用可分享单个文件，通过 ohos.app.ability.wantConstant的wantConstant.Flags接口 以只读或读写权限授权给其他应用。被分享应用可通过 fileIo.open 打开URI，并进行读写操作。 #### 应用可分享目录 #### 文件URI规范 文件URI的格式： 格式为：file://<bundleName>/<path> - file：文件URI的标志。 - bundleName：该文件资源的属主。 - path：文件资源在应用沙箱中的路径。 1. 因URI处理涉及编解码，系统无法保证应用自行拼接的URI地址的可用性。 2. 推荐使用系统提供的接口获取URI，如getUriFromPath接口。"
     },
     {
       "path": "references/应用文件概述.md",
@@ -89,7 +89,7 @@
     {
       "path": "references/应用文件访问(ArkTS).md",
       "title": "应用文件访问(ArkTS)",
-      "snippet": "应用需要对应用文件目录下的应用文件进行查看、创建、读写、删除、移动、复制、获取属性等访问操作，下文介绍具体方法。 #### 接口说明 开发者通过基础文件操作接口（ ohos.file.fs ）实现应用文件访问能力，主要功能如下表所示。 **表1** 基础文件操作接口功能，其中“√”表示支持，“-”表示不区分同步和异步。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5f/v3/e0JoRRV1TGWRuhlxBvplPg/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110955Z&HW-CC-Expire=86400&HW-CC-Sign=A11195EAAED68B34076CAE6CF26E900AABAD21D1C186FB10BCE3E5D9E99A2E58) 使用基础文件操作接口时，耗时较长的操作，例如：read、write等，建议使用异步接口，避免应用崩溃。 #### 开发示例 在对应用文件开始访问前，开发者需要 获取应用文件路径 。以从UIAbilityContext获取HAP级别的文件路径为例进行说明，UIAbilityContext的获取方式请参见 获取UIAbility的上下文信"
+      "snippet": "应用需要对应用文件目录下的应用文件进行查看、创建、读写、删除、移动、复制、获取属性等访问操作，下文介绍具体方法。 #### 接口说明 开发者通过基础文件操作接口（ ohos.file.fs ）实现应用文件访问能力，主要功能如下表所示。 **表1** 基础文件操作接口功能，其中“√”表示支持，“-”表示不区分同步和异步。 使用基础文件操作接口时，耗时较长的操作，例如：read、write等，建议使用异步接口，避免应用崩溃。 #### 开发示例 在对应用文件开始访问前，开发者需要 获取应用文件路径 。以从UIAbilityContext获取HAP级别的文件路径为例进行说明，UIAbilityContext的获取方式请参见 获取UIAbility的上下文信息 。 下面介绍几种常用操作示例。 #### 新建并读写一个文件 以下示例代码演示了如何新建一个文件并对其读写。 // pages/xxx.ets import { fileIo, ReadOptions } from '@kit.CoreFileKit'; import { common } from '@kit.AbilityKit'; import { buffer } from '@kit.ArkTS'; // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为U"
     },
     {
       "path": "references/应用文件访问(C_C++).md",
@@ -99,12 +99,12 @@
     {
       "path": "references/应用沙箱目录.md",
       "title": "应用沙箱目录",
-      "snippet": "应用沙箱是一种以安全防护为目的的隔离机制，避免数据受到恶意路径穿越访问。在这种沙箱的保护机制下，应用可见的目录范围即为“应用沙箱目录”。 - 对于每个应用，系统会在内部存储空间映射出一个专属的“应用沙箱目录”，它是“ 应用文件目录 ”与一部分系统文件（应用运行必需的少量系统文件）所在的目录组成的集合。 - 应用沙箱限制了应用可见的数据范围。在“应用沙箱目录”中，应用默认仅能看到自己的应用文件以及少量的系统文件（应用运行必需的少量系统文件）。在全量挂载的设备平台上，文件管理应用可查看其他应用存放在el2/base下的数据。 - 应用可以在“应用文件目录”下保存和处理自己的应用文件；系统文件及其目录对于应用是只读的；应用若需要访问用户文件，请参考 用户文件 使用指导。 下图展示了应用沙箱下，应用可访问的文件范围和方式。 **图1** 应用沙箱文件访问关系图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/24/v3/XGaekeqgSsaDtbv6rM8c-w/zh-cn_image_0000002543373956.png?HW-CC-KV=V1&HW-CC-Date=20260421T110955Z&HW-CC-Expire=86400&HW-CC-Sign=39"
+      "snippet": "应用沙箱是一种以安全防护为目的的隔离机制，避免数据受到恶意路径穿越访问。在这种沙箱的保护机制下，应用可见的目录范围即为“应用沙箱目录”。 - 对于每个应用，系统会在内部存储空间映射出一个专属的“应用沙箱目录”，它是“ 应用文件目录 ”与一部分系统文件（应用运行必需的少量系统文件）所在的目录组成的集合。 - 应用沙箱限制了应用可见的数据范围。在“应用沙箱目录”中，应用默认仅能看到自己的应用文件以及少量的系统文件（应用运行必需的少量系统文件）。在全量挂载的设备平台上，文件管理应用可查看其他应用存放在el2/base下的数据。 - 应用可以在“应用文件目录”下保存和处理自己的应用文件；系统文件及其目录对于应用是只读的；应用若需要访问用户文件，请参考 用户文件 使用指导。 下图展示了应用沙箱下，应用可访问的文件范围和方式。 **图1** 应用沙箱文件访问关系图 #### 应用沙箱目录与应用沙箱路径 在应用沙箱保护机制下，应用无法获知除自身应用文件目录之外的其他应用或用户的数据目录位置及存在。同时，所有应用的目录可见范围均经过权限隔离与文件路径挂载隔离，形成了独立的路径视图，屏蔽了实际物理路径： - 如下图所示，在普通应用（也称三方应用）视角下，不仅可见的目录与文件数量限制了范围，并且可见的目录与文件路径也与系统进程等其他进程看到的不同。我们将普通应用视角下看到的“应用沙箱目录”下某个文件或"
     },
     {
       "path": "references/开发者自验证.md",
       "title": "开发者自验证",
-      "snippet": "在开发的过程中，当开发者完成所需 适配流程 后，可导入提前准备好的APK应用沙箱数据，自验证HarmonyOS应用数据迁移适配结果。 在HarmonyOS应用适配完成并上架到华为应用市场之后，开发者仍需要将终端设备从HarmonyOS升级到HarmonyOS NEXT， 端到端验证 应用数据迁移结果。 #### 开发者自验证流程 #### 应用沙箱数据准备 请自行构造APK应用沙箱数据，并将构造好的APK应用沙箱数据按指定格式打包成“{APK包名}.zip”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fd/v3/s61Cgm-cTeSQTXOnt2EpFw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110958Z&HW-CC-Expire=86400&HW-CC-Sign=29651C93B4DEA9C84F865DE1F4A65F67AFA165611587C205CFC2932368FC9708) 在打包‘{APK包名}.zip’文件时，必须使用UTF-8编码格式进行压缩，否则压缩中文命名的文件时，文件名会出现乱码。 打包好的“{APK包名}.zip”解压后，要满足包含一个“APK包名”根目录"
+      "snippet": "在开发的过程中，当开发者完成所需 适配流程 后，可导入提前准备好的APK应用沙箱数据，自验证HarmonyOS应用数据迁移适配结果。 在HarmonyOS应用适配完成并上架到华为应用市场之后，开发者仍需要将终端设备从HarmonyOS升级到HarmonyOS NEXT， 端到端验证 应用数据迁移结果。 #### 开发者自验证流程 #### 应用沙箱数据准备 请自行构造APK应用沙箱数据，并将构造好的APK应用沙箱数据按指定格式打包成“{APK包名}.zip”。 在打包‘{APK包名}.zip’文件时，必须使用UTF-8编码格式进行压缩，否则压缩中文命名的文件时，文件名会出现乱码。 打包好的“{APK包名}.zip”解压后，要满足包含一个“APK包名”根目录，根目录下包含对应沙箱目录文件夹，文件结构如下。 ─com.demo.demo ├─A │ ├─data │ └─obb ├─ce └─de 1. 将打包好的“{APK包名}.zip”推送到外部存储设备（U盘或者移动硬盘），连接终端设备和外部存储设备。 当前终端设备支持识别NTFS格式的外部存储设备，请使用NTFS格式的外部存储设备连接终端设备。 2. 在终端设备中，打开“文件管理”应用，长按选中外部存储设备中的“{APK包名}.zip”。 3. 单击“复制”按钮，将数据复制到文件管理器的“下载”目录下，作为后续自验证的测试数据源"
     },
     {
       "path": "references/授权持久化(C_C++).md",
@@ -119,7 +119,7 @@
     {
       "path": "references/用户文件URI介绍.md",
       "title": "用户文件URI介绍",
-      "snippet": "用户文件URI是文件的唯一标识，在对用户文件进行访问与修改等操作时往往都会使用到URI，不建议开发者解析URI中的片段用于业务代码开发，不同类型的URI使用方式将在下文详细介绍。 #### URI的类型 URI类型可以归纳为文档类URI和媒体文件URI两类 - 文档类URI：由picker拉起文件管理器选择或保存返回。具体获取方式参见文档类URI获取方式。 - 媒体文件URI：由picker通过拉起图库选择图片或者视频返回，通过photoAccessHelper模块获取图片或者视频文件的URI，以及通过userFileManager模块获取图片、视频或者音频文件的URI。具体获取方式参见媒体文件URI获取方式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/63/v3/w2WrFFX6SqCD9jST80-kYA/zh-cn_image_0000002543373974.png?HW-CC-KV=V1&HW-CC-Date=20260421T110959Z&HW-CC-Expire=86400&HW-CC-Sign=E598840054DE62F4CF180AD8580F01108F2E6559AAC1ABC748EF78DC4C78951B) #### 文档类"
+      "snippet": "用户文件URI是文件的唯一标识，在对用户文件进行访问与修改等操作时往往都会使用到URI，不建议开发者解析URI中的片段用于业务代码开发，不同类型的URI使用方式将在下文详细介绍。 #### URI的类型 URI类型可以归纳为文档类URI和媒体文件URI两类 - 文档类URI：由picker拉起文件管理器选择或保存返回。具体获取方式参见文档类URI获取方式。 - 媒体文件URI：由picker通过拉起图库选择图片或者视频返回，通过photoAccessHelper模块获取图片或者视频文件的URI，以及通过userFileManager模块获取图片、视频或者音频文件的URI。具体获取方式参见媒体文件URI获取方式。 #### 文档类URI #### 文档类URI介绍 **文档类URI的格式类型为：** 'file://docs/storage/Users/currentUser/<relative_path>/test.txt' **其中各个字段表示的含义为：** #### 文档类URI获取方式 1. 通过 DocumentViewPicker 接口选择或保存文件，返回选择或保存的文件URI。 2. 通过 AudioViewPicker 接口选择或保存文件，返回选择或保存的文件URI。 #### 文档类URI的使用方式 应用使用此类URI可通过 文件管理 进行进一步处理。示例代码参见p"
     },
     {
       "path": "references/用户文件概述.md",
@@ -134,7 +134,7 @@
     {
       "path": "references/端云文件协同适配指导.md",
       "title": "端云文件协同适配指导",
-      "snippet": "为方便开发者使用端云文件协同的文件缓存、同步等能力，此篇指南介绍了环境准备、文件同步和文件缓存，并且在指南的最后提供了完整的应用工程示例。 #### 环境准备 - 调试设备：两部鸿蒙设备，系统版本在HarmonyOS 6.0.0.115及以上，云空间版本在6.0.0.300及以上。 - 开发环境：受云空间版本限制，IDE为DevEco Studio 6.0.1 Release或更新版本，构建版本为6.0.1.251，SDK 版本为 API Version 21 Release及以上。 - 配置应用：在项目路径AppScope/app.json5中添加cloudFileSyncEnabled字段为true。 { \"app\": { \"cloudFileSyncEnabled\": true } } - 安装应用：两部设备应用安装后，登录账号，在设置->云空间中找到开发应用同步开关，如下图中的端云协同demo，打开同步开关，可以借助IDE的 Device File Browser 浏览/data/storage/el2/cloud目录。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/44/v3/TjiTAQlGQ5yJQ6X8VFRGhA/zh-cn_image_000"
+      "snippet": "为方便开发者使用端云文件协同的文件缓存、同步等能力，此篇指南介绍了环境准备、文件同步和文件缓存，并且在指南的最后提供了完整的应用工程示例。 #### 环境准备 - 调试设备：两部鸿蒙设备，系统版本在HarmonyOS 6.0.0.115及以上，云空间版本在6.0.0.300及以上。 - 开发环境：受云空间版本限制，IDE为DevEco Studio 6.0.1 Release或更新版本，构建版本为6.0.1.251，SDK 版本为 API Version 21 Release及以上。 - 配置应用：在项目路径AppScope/app.json5中添加cloudFileSyncEnabled字段为true。 { \"app\": { \"cloudFileSyncEnabled\": true } } - 安装应用：两部设备应用安装后，登录账号，在设置->云空间中找到开发应用同步开关，如下图中的端云协同demo，打开同步开关，可以借助IDE的 Device File Browser 浏览/data/storage/el2/cloud目录。 #### 文件同步 开发者可以使用基本的 文件操作接口 ，在沙箱路径/data/storage/el2/cloud下进行文件的读写、重命名、拷贝、创建目录等操作，在文件完成写入或文件夹创建成功后，端云协同服务会自动触发同步流程，将新建的文件或文件夹同步上云"
     },
     {
       "path": "references/端到端验证.md",
@@ -154,12 +154,12 @@
     {
       "path": "references/设置分布式文件数据等级.md",
       "title": "设置分布式文件数据等级",
-      "snippet": "不同设备本身的安全能力差异较大，一些小的嵌入式设备安全能力远弱于平板等设备类型。用户或者应用不同的文件数据有不同安全诉求，例如个人的健康信息和银行卡信息等不期望被弱设备读取。因此，HarmonyOS提供一套完整的数据分级、设备分级标准，并针对不同设备制定不同的数据流转策略，具体规则请参见 数据、设备安全分级 。 #### 接口说明 API详细介绍请参见 ohos.file.securityLabel 。 **表1** 设置文件数据等级，其中“√”表示支持。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6e/v3/SB8EZrQXQYeQa7tEFUrHtg/notice_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111001Z&HW-CC-Expire=86400&HW-CC-Sign=42F0AAAEB17B513EA866FEFADBCAAD41572AB58F91F68D32136C2C8F4A1DC75B) 1. 对于不满足安全等级的文件，跨设备仍然可以看到该文件，但是无权限打开访问该文件。 2. 分布式文件系统的数据等级默认为S3，应用可以主动设置文件的安全等级。 #### 开发示例 获取通用文件沙箱"
+      "snippet": "不同设备本身的安全能力差异较大，一些小的嵌入式设备安全能力远弱于平板等设备类型。用户或者应用不同的文件数据有不同安全诉求，例如个人的健康信息和银行卡信息等不期望被弱设备读取。因此，HarmonyOS提供一套完整的数据分级、设备分级标准，并针对不同设备制定不同的数据流转策略，具体规则请参见 数据、设备安全分级 。 #### 接口说明 API详细介绍请参见 ohos.file.securityLabel 。 **表1** 设置文件数据等级，其中“√”表示支持。 1. 对于不满足安全等级的文件，跨设备仍然可以看到该文件，但是无权限打开访问该文件。 2. 分布式文件系统的数据等级默认为S3，应用可以主动设置文件的安全等级。 #### 开发示例 获取通用文件沙箱路径，并设置数据等级标签。示例中的context的获取方式请参见 获取UIAbility的上下文信息 。 import { securityLabel } from '@kit.CoreFileKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { common } from '@kit.AbilityKit'; import { fileIo } from '@kit.CoreFileKit'; let context = this.getUICon"
     },
     {
       "path": "references/跨设备文件共享和访问.md",
       "title": "跨设备文件共享和访问",
-      "snippet": "分布式文件系统为应用提供了跨设备文件访问的能力，开发者在两个设备上安装同一应用时，通过 基础文件接口 ，可跨设备读写另一个设备上该应用 分布式目录 （/data/storage/el2/distributedfiles/）下的文件。例如：多设备数据流转的场景，设备组网互联之后，设备A上的应用可访问设备B上的同应用分布式目录下的文件，当期望应用文件被其他设备访问时，只需将文件移动到分布式目录即可。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a2/v3/zQzksEvPSwuRbfWrTVU8nw/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111001Z&HW-CC-Expire=86400&HW-CC-Sign=F25924B2D15E70CC5DA7419F8AB41CA7596F7F67EF23B36E654A693AA482F32A) - distributedfiles目录为本应用在多设备间共享文件的合集。为避免误删其他设备生成的文件，应用在执行删除操作前，请务必确认操作是否符合预期。 - /data/storage/el2/distributedfiles/.remote_share/"
+      "snippet": "分布式文件系统为应用提供了跨设备文件访问的能力，开发者在两个设备上安装同一应用时，通过 基础文件接口 ，可跨设备读写另一个设备上该应用 分布式目录 （/data/storage/el2/distributedfiles/）下的文件。例如：多设备数据流转的场景，设备组网互联之后，设备A上的应用可访问设备B上的同应用分布式目录下的文件，当期望应用文件被其他设备访问时，只需将文件移动到分布式目录即可。 - distributedfiles目录为本应用在多设备间共享文件的合集。为避免误删其他设备生成的文件，应用在执行删除操作前，请务必确认操作是否符合预期。 - /data/storage/el2/distributedfiles/.remote_share/目录由系统自动创建并管理。开发者不得手动删除该目录下的文件。该目录中的文件与应用的base目录直接映射（不占用额外存储空间），任何删除操作可能导致base目录中的原始文件永久丢失。 #### 开发步骤 1. 完成分布式组网。 将需要跨设备访问的两个设备登录同一账号，保证设备蓝牙和Wi-Fi功能开启，蓝牙无需互连，Wi-Fi无需接入同一个局域网。 2. 授权分布式数据同步权限。 分布式数据同步权限的授权方式为user_grant，因此需要调用requestPermissionsFromUser接口，以动态弹窗的方式向用户申请授权。示例中的"
     },
     {
       "path": "references/跨设备文件拷贝.md",
@@ -169,7 +169,7 @@
     {
       "path": "references/适配流程.md",
       "title": "适配流程",
-      "snippet": "适配流程包括：适配准备、应用适配、开发者自验证、应用上架和端到端验证。 **图1** 适配流程图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cb/v3/tY_SFLK8QsqxuPc5ybP5FA/zh-cn_image_0000002573974189.png?HW-CC-KV=V1&HW-CC-Date=20260421T110957Z&HW-CC-Expire=86400&HW-CC-Sign=95E6B84CAB67939DE85D064B089D973C56F7D0531F04C3BE2C11802345B94C80) #### 适配准备阶段 在适配准备阶段，开发者需要分析清楚HarmonyOS中APK应用和HarmonyOS NEXT中HarmonyOS应用的数据范围和差异。 在开发之前，需要通过OTA升级的形式，将终端设备升级到HarmonyOS NEXT Developer Preview1及之后版本。 #### 应用适配 在适配准备工作完成后，进入应用适配阶段。开发者需要在HarmonyOS应用的代码中，实现“BackupExtensionAbility”，使应用接入到“备份恢复框架”中，完成应用数据的转换和迁移。更多适配指导可参考： 应用"
+      "snippet": "适配流程包括：适配准备、应用适配、开发者自验证、应用上架和端到端验证。 **图1** 适配流程图 #### 适配准备阶段 在适配准备阶段，开发者需要分析清楚HarmonyOS中APK应用和HarmonyOS NEXT中HarmonyOS应用的数据范围和差异。 在开发之前，需要通过OTA升级的形式，将终端设备升级到HarmonyOS NEXT Developer Preview1及之后版本。 #### 应用适配 在适配准备工作完成后，进入应用适配阶段。开发者需要在HarmonyOS应用的代码中，实现“BackupExtensionAbility”，使应用接入到“备份恢复框架”中，完成应用数据的转换和迁移。更多适配指导可参考： 应用数据迁移适配指导 。 应用的“BackupExtensionAbility”执行完后，“备份恢复框架”会清空备份恢复目录，开发者请在应用的“BackupExtensionAbility”执行结束前，完成所有所需数据的转换和迁移。 后续HarmonyOS应用通过访问HarmonyOS应用沙箱获取应用的数据。 备份恢复目录如下表中所示： HarmonyOS应用沙箱目录请参考 应用沙箱目录 。 #### 开发者自验证 开发者完成应用适配后，需要完成自验证HarmonyOS应用数据迁移适配结果。更多自验证指导可参考： 开发者自验证 。 其中自验证所需“迁移调试”工具"
     },
     {
       "path": "references/选择用户文件.md",

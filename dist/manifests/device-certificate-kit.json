@@ -3,18 +3,18 @@
   "skill": "device-certificate-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.729Z"
+    "at": "2026-05-21T03:47:44.420Z"
   },
   "references": [
     {
       "path": "references/CA证书开发指导.md",
       "title": "CA证书开发指导",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b1/v3/-1s6UPlmRhGH3KUYDGzJIQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111105Z&HW-CC-Expire=86400&HW-CC-Sign=C74E5699CD1996698A33D3218F61059CBFB062F83BCF4D0478D4AF1D57E2CB6F) 本开发指导需使用API version 12及以上版本SDK。 #### 场景说明 典型场景。 - - 安装在当前用户时，仅当前用户的业务可以访问该证书。 - 安装在设备公共位置下，所有用户下的业务都可以访问。 - 获取用户CA证书列表。可以选择获取当前用户或者设备公共位置下的用户CA证书列表。 - 获取用户CA证书详情。 - 删除指定的用户CA证书。 - 获取CA证书的存储路径。 #### 接口说明 详细接口说明可参考 @ohos.security.certManager (证书管理模块) 。 以上场景涉及的常用接口如下表所示。 #### 开发步骤 1. 权限申请和声明。 使用安装和删除接口需要申请权限：ohos.permission.ACCESS_EN"
+      "snippet": "本开发指导需使用API version 12及以上版本SDK。 #### 场景说明 典型场景。 - - 安装在当前用户时，仅当前用户的业务可以访问该证书。 - 安装在设备公共位置下，所有用户下的业务都可以访问。 - 获取用户CA证书列表。可以选择获取当前用户或者设备公共位置下的用户CA证书列表。 - 获取用户CA证书详情。 - 删除指定的用户CA证书。 - 获取CA证书的存储路径。 #### 接口说明 详细接口说明可参考 @ohos.security.certManager (证书管理模块) 。 以上场景涉及的常用接口如下表所示。 #### 开发步骤 1. 权限申请和声明。 使用安装和删除接口需要申请权限：ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT或ohos.permission.ACCESS_USER_TRUSTED_CERT 使用获取列表和获取详情接口需要申请权限：ohos.permission.ACCESS_CERT_MANAGER 申请流程请参考： 申请应用权限 声明权限请参考： 声明权限 2. 导入相关模块。 import { certificateManager } from '@kit.DeviceCertificateKit'; 3. 安装用户CA证书、获取用户CA证书列表、获取用户证书详情、删除用户CA证"
     },
     {
       "path": "references/Device Certificate Kit简介.md",
       "title": "Device Certificate Kit简介",
-      "snippet": "Device Certificate Kit（设备证书服务）面向应用开发者，提供了 证书算法库 和 证书管理 的能力。 #### 证书算法库 证书算法库提供接口用于解析和验证数字证书。 证书算法库向应用提供证书、证书扩展域段、证书吊销列表的解析及校验能力，以及证书链的校验能力。 通过调用证书算法库框架接口，开发者可以忽略底层不同三方算法库的差异，实现迅捷开发。 **常见使用场景** 应用对接收的服务端证书或用户输入的证书进行解析，获取证书基本字段或扩展字段用于显示或校验，并使用CA证书链和CRL校验证书的合法性。 #### 框架原理 系统提供证书算法库框架，开发者只需要调用API接口层即可实现证书的操作，证书算法库框架能够屏蔽不同三方算法库的差异。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c9/v3/lmZoo2dtTyCW73KQ3pf3VQ/zh-cn_image_0000002573854323.png?HW-CC-KV=V1&HW-CC-Date=20260421T111101Z&HW-CC-Expire=86400&HW-CC-Sign=BEF7A760E55427CF165112718438B9D38A4646D8B9CE8319B1F798E"
+      "snippet": "Device Certificate Kit（设备证书服务）面向应用开发者，提供了 证书算法库 和 证书管理 的能力。 #### 证书算法库 证书算法库提供接口用于解析和验证数字证书。 证书算法库向应用提供证书、证书扩展域段、证书吊销列表的解析及校验能力，以及证书链的校验能力。 通过调用证书算法库框架接口，开发者可以忽略底层不同三方算法库的差异，实现迅捷开发。 **常见使用场景** 应用对接收的服务端证书或用户输入的证书进行解析，获取证书基本字段或扩展字段用于显示或校验，并使用CA证书链和CRL校验证书的合法性。 #### 框架原理 系统提供证书算法库框架，开发者只需要调用API接口层即可实现证书的操作，证书算法库框架能够屏蔽不同三方算法库的差异。 #### 与相关Kit的关系 证书算法库的功能使用时，涉及公钥的生成和获取，这部分依赖 Crypto Architecture Kit 加解密算法框架服务的能力。 #### 证书管理 证书管理主要提供系统级的证书管理能力，通过证书管理模块可以确保证书在传输和存储过程中的安全性，防止未经授权的访问和使用。 当前提供的能力包括： 1. 应用证书凭据的安装、获取、使用及删除的能力。 2. 用户CA证书的安装、获取及删除的能力。 3. 应用可以调用证书管理提供的接口拉起证书管理应用界面对CA证书、凭据进行管理。 通过证书管理能力，可以实现证书全"
     },
     {
       "path": "references/使用系统预置CA证书校验证书链.md",
@@ -24,7 +24,7 @@
     {
       "path": "references/应用证书凭据开发指导.md",
       "title": "应用证书凭据开发指导",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b9/v3/zFMvZ6TtTY2PakvDLRFgag/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111105Z&HW-CC-Expire=86400&HW-CC-Sign=74A0BDE5F0234357A3BC71FB0897B7C390C7E2EFD011121E7619F51C48D5F581) 本开发指导需使用API version 11及以上版本SDK。 #### 场景说明 1. 典型场景。 - 安装应用证书凭据。 - 获取应用证书凭据。 - 使用应用证书凭据对数据进行签名、验签。 - 卸载指定的应用证书凭据。 2. 安装应用证书凭据支持的算法类型和签名验签支持的参数组合。 - 证书管理安装凭据及使用凭据中的密钥进行签名、验签，依赖密钥管理服务（HUKS）能力。 - 证书管理支持的算法为HUKS支持的子集，当前仅支持RSA、ECC及SM2算法类型的私有凭据安装及使用。 - 签名、验签支持的参数组合，详见HUKS声明的签名/验签介绍及算法规格中RSA、ECC及SM2的描述。 #### 接口说明 详细接口说明可参考 @ohos.security.c"
+      "snippet": "本开发指导需使用API version 11及以上版本SDK。 #### 场景说明 1. 典型场景。 - 安装应用证书凭据。 - 获取应用证书凭据。 - 使用应用证书凭据对数据进行签名、验签。 - 卸载指定的应用证书凭据。 2. 安装应用证书凭据支持的算法类型和签名验签支持的参数组合。 - 证书管理安装凭据及使用凭据中的密钥进行签名、验签，依赖密钥管理服务（HUKS）能力。 - 证书管理支持的算法为HUKS支持的子集，当前仅支持RSA、ECC及SM2算法类型的私有凭据安装及使用。 - 签名、验签支持的参数组合，详见HUKS声明的签名/验签介绍及算法规格中RSA、ECC及SM2的描述。 #### 接口说明 详细接口说明可参考 @ohos.security.certManager (证书管理模块) 。 以上场景涉及的常用接口如下表所示。 #### 开发步骤 1. 权限申请和声明。 需要申请的权限：ohos.permission.ACCESS_CERT_MANAGER 申请流程请参考： 申请应用权限 声明权限请参考： 声明权限 2. 导入相关模块。 import { certificateManager } from '@kit.DeviceCertificateKit'; 3. 安装应用证书凭据，获取应用证书凭据，并使用应用证书凭据进行签名、验签，最后删除应用证书凭据。 import "
     },
     {
       "path": "references/证书CMS封装.md",
@@ -69,12 +69,12 @@
     {
       "path": "references/证书算法库框架概述.md",
       "title": "证书算法库框架概述",
-      "snippet": "证书算法库框架是一个屏蔽了第三方算法库实现差异的证书算法框架，向应用提供证书、证书扩展域段、证书吊销列表的创建、解析及校验能力，此外还提供了证书链的校验能力。 开发者通过调用证书算法库框架接口，忽略底层不同三方算法库的差异，实现迅捷开发。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/64/v3/AowtO6WmRRG9ENMi1eAcbQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111101Z&HW-CC-Expire=86400&HW-CC-Sign=404D62853531D398F65BCD368B3CA581A6D4ED1FEC46E85F5E4A4155AD03259C) 本框架具备处理已有证书及证书吊销列表数据后处理的能力，并不具备生成或签发证书及证书吊销列表的能力，签发证书及证书吊销列表的能力由证书颁发机构（CA）来完成，不由单个应用签发。 #### 基本概念 证书算法库框架提供X509证书的解析、序列化、X509证书签名验证、X509证书吊销列表、证书链校验器等相关的功能。 在开发具体的功能前，开发者需要先了解证书领域的一些基本概念。包括但不限于： 数字证书、数字证书标准X.509（"
+      "snippet": "证书算法库框架是一个屏蔽了第三方算法库实现差异的证书算法框架，向应用提供证书、证书扩展域段、证书吊销列表的创建、解析及校验能力，此外还提供了证书链的校验能力。 开发者通过调用证书算法库框架接口，忽略底层不同三方算法库的差异，实现迅捷开发。 本框架具备处理已有证书及证书吊销列表数据后处理的能力，并不具备生成或签发证书及证书吊销列表的能力，签发证书及证书吊销列表的能力由证书颁发机构（CA）来完成，不由单个应用签发。 #### 基本概念 证书算法库框架提供X509证书的解析、序列化、X509证书签名验证、X509证书吊销列表、证书链校验器等相关的功能。 在开发具体的功能前，开发者需要先了解证书领域的一些基本概念。包括但不限于： 数字证书、数字证书标准X.509（本指导中的“X509”均代指X.509）、证书链、TBS（To Be Signed，待签名部分：指X.509证书中被签名的数据结构，通常包含版本号、序列号、签名算法标识、颁发者、有效期、主体、主体公钥信息和扩展等字段）、CRL（Certificate Revoked List，证书吊销列表）。 #### 证书规格 证书相关规格说明如下所示。 #### 证书链校验不包含对时间有效性的校验 由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X509证书的 checkValidityWit"
     },
     {
       "path": "references/证书管理对话框开发指导.md",
       "title": "证书管理对话框开发指导",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/17/v3/9OcfhQMUQ3aPr4XWZfVRTg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111105Z&HW-CC-Expire=86400&HW-CC-Sign=87BED1DF915D5CD49642FB1812C60DA048C29A79092A92DAFAE86B0791038DA1) 本开发指导需使用API version 13及以上版本SDK。 证书管理对话框，可用于拉起证书管理页面并管理证书，如安装、存储、使用、销毁证书。 #### 接口说明 详细接口说明可参考 @ohos.security.certManagerDialog (证书管理对话框模块) 。 以上场景涉及的常用接口如下表所示。 #### 开发步骤 1. 权限申请和声明。 需要申请的权限：ohos.permission.ACCESS_CERT_MANAGER 申请流程请参考： 申请应用权限 声明权限请参考： 声明权限 2. 导入相关模块。 import { certificateManagerDialog } from '@kit.DeviceCertificateKit"
+      "snippet": "本开发指导需使用API version 13及以上版本SDK。 证书管理对话框，可用于拉起证书管理页面并管理证书，如安装、存储、使用、销毁证书。 #### 接口说明 详细接口说明可参考 @ohos.security.certManagerDialog (证书管理对话框模块) 。 以上场景涉及的常用接口如下表所示。 #### 开发步骤 1. 权限申请和声明。 需要申请的权限：ohos.permission.ACCESS_CERT_MANAGER 申请流程请参考： 申请应用权限 声明权限请参考： 声明权限 2. 导入相关模块。 import { certificateManagerDialog } from '@kit.DeviceCertificateKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { common } from '@kit.AbilityKit'; import { UIContext } from '@kit.ArkUI'; 3. 拉起证书管理界面。 import { certificateManagerDialog } from '@kit.DeviceCertificateKit'; import { BusinessError } from '@kit.BasicServ"
     },
     {
       "path": "references/证书管理概述.md",
@@ -94,12 +94,12 @@
     {
       "path": "references/证书链校验器对象的创建和校验.md",
       "title": "证书链校验器对象的创建和校验",
-      "snippet": "证书链是由一组证书组成的证书集合，以图中样例证书文件为例，即可放在一个证书链中。 样例中可以看到GlobalSign自签名了证书，GlobalSign也签发了GlobalSign RSA OV SSL CA 2018的证书，GlobalSign RSA OV SSL CA 2018又签发了第三级证书。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c7/v3/LdShfN5fSLy7s2Fk2_AtkQ/zh-cn_image_0000002573974301.png?HW-CC-KV=V1&HW-CC-Date=20260421T111102Z&HW-CC-Expire=86400&HW-CC-Sign=4C246113AE42330E72C6FD56C3F681A880E821AE40D375F59787FF75772421EF) 开发者可以参考示例将已有的多个证书构建出证书链数据。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. cert.createCertChainValidator 创建证书链校验器对象。 3. 基于已有的证书数据，创建证"
+      "snippet": "证书链是由一组证书组成的证书集合，以图中样例证书文件为例，即可放在一个证书链中。 样例中可以看到GlobalSign自签名了证书，GlobalSign也签发了GlobalSign RSA OV SSL CA 2018的证书，GlobalSign RSA OV SSL CA 2018又签发了第三级证书。 开发者可以参考示例将已有的多个证书构建出证书链数据。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. cert.createCertChainValidator 创建证书链校验器对象。 3. 基于已有的证书数据，创建证书链数据对象 CertChainData 。 证书算法库框架提供了证书链校验器对象可用于校验证书链，以验证信任链根源，但待校验的证书链数据对象应符合证书链数据对象的数据结构定义 CertChainData 。 4. 调用 CertChainValidator.validate 校验证书链数据。 import { cert } from '@kit.DeviceCertificateKit'; import { util } from '@kit.ArkTS'; // CA数据，这只是一个示例，需要根据具体业务来赋值。 let caCertData = '--"
     },
     {
       "path": "references/证书链校验时下载缺失的中间CA证书.md",
       "title": "证书链校验时下载缺失的中间CA证书",
-      "snippet": "从API 23开始，支持证书链校验时下载缺失的中间CA证书。 以创建X509证书链为例，完成证书链对象的创建，创建过程校验时允许下载缺失的中间证书。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 基于已有的证书数据，调用 cert.createX509Cert 创建X509证书对象，并返回结果。 3. 调用 cert.buildX509CertChain 创建X509证书链对象，将validationParameters的allowDownloadIntermediateCa参数设置为true，开启允许校验过程中从网络下载缺失的中间CA。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8a/v3/EJBkjyYFRQunzb-dLtnk3w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111104Z&HW-CC-Expire=86400&HW-CC-Sign=BC2ABC6C8651D4F528C91675FF8F41C7390D6110D40C8C22FB43A88E6FCDFCD2) 本"
+      "snippet": "从API 23开始，支持证书链校验时下载缺失的中间CA证书。 以创建X509证书链为例，完成证书链对象的创建，创建过程校验时允许下载缺失的中间证书。 #### 开发步骤 1. 导入 证书算法库框架模块 。 import { cert } from '@kit.DeviceCertificateKit'; 2. 基于已有的证书数据，调用 cert.createX509Cert 创建X509证书对象，并返回结果。 3. 调用 cert.buildX509CertChain 创建X509证书链对象，将validationParameters的allowDownloadIntermediateCa参数设置为true，开启允许校验过程中从网络下载缺失的中间CA。 本开发指导中提供的示例代码需要在配置网络的前提下执行。需要申请ohos.permission.INTERNET权限，配置方式请参见 声明权限 。 import { cert } from '@kit.DeviceCertificateKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { util } from '@kit.ArkTS'; let rootCert = '-----BEGIN CERTIFICATE-----\\n' + 'MIIDjj"
     },
     {
       "path": "references/证书链校验时从p12文件构造TrustAnchor对象数组.md",

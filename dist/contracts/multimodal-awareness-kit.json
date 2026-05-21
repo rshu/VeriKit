@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:18:45.715Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -56,9 +57,13 @@
       "用于记忆链接的 App Linking 链接与内容元数据 / App Linking URL and content metadata for metadata binding"
     ],
     "outputs": [
-      "简介",
-      "感知能力开发",
-      "记忆链接"
+      "设备支架态感知结果（是否处于支架态） / Device stand-posture awareness result (whether the device is in stand mode)",
+      "用户年龄组感知结果 / User age-group awareness result",
+      "用户操作手识别结果（左手或右手操作） / Operating-hand recognition result (left-hand or right-hand operation)",
+      "用户握持手/握持姿态识别结果 / Holding-hand or grip-posture recognition result",
+      "Stationary静止检测结果（绝对静止或相对静止状态） / Stationary detection result (absolute or relative stationary state)",
+      "实时感知事件回调数据 / Real-time awareness event callback data",
+      "记忆链接元数据绑定结果（App Linking链接与当前浏览内容的关联保存结果） / Metadata binding result for Memory Link (saved association between an App Linking URL and current browsing content)"
     ],
     "postconditions": [
       {

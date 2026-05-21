@@ -3,7 +3,7 @@
   "skill": "weather-service-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.295Z"
+    "at": "2026-05-21T03:47:44.833Z"
   },
   "references": [
     {
@@ -19,7 +19,7 @@
     {
       "path": "references/个人数据处理说明.md",
       "title": "个人数据处理说明",
-      "snippet": "Weather Service Kit基于调用方提供的位置信息查询对应位置的天气预报数据，不主动采集用户的位置信息。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b7/v3/3YRQmVM1RQKlWmKY97knaA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111701Z&HW-CC-Expire=86400&HW-CC-Sign=E947696913BE400487B3F4F4A4D6E4C58CFA0361AD10A35DE697CA072E5CB2E9) 全球范围支持大致位置信息（小数点后两位），仅中国支持精确位置信息（小数点后五位）。 #### 华为处理的个人数据清单 最后修改时间：2026/1/30 #### 指导开发者如何帮助最终用户实现对数据的控制 - 如何清除最终用户的数据 经纬度经过假名化处理，不与用户ID、设备ID等可识别用户身份的信息关联，云侧服务器不存储。"
+      "snippet": "Weather Service Kit基于调用方提供的位置信息查询对应位置的天气预报数据，不主动采集用户的位置信息。 全球范围支持大致位置信息（小数点后两位），仅中国支持精确位置信息（小数点后五位）。 #### 华为处理的个人数据清单 最后修改时间：2026/1/30 #### 指导开发者如何帮助最终用户实现对数据的控制 - 如何清除最终用户的数据 经纬度经过假名化处理，不与用户ID、设备ID等可识别用户身份的信息关联，云侧服务器不存储。"
     },
     {
       "path": "references/如何获取指定城市的天气数据？.md",
@@ -29,7 +29,7 @@
     {
       "path": "references/开发准备.md",
       "title": "开发准备",
-      "snippet": "在阅读本章节前，请先参考“ 应用开发准备 ”完成基本准备工作及指纹配置，再继续进行以下开发活动。 #### 开通天气服务 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/21/v3/LxpstyogTTOSAOPK5OS8xA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111700Z&HW-CC-Expire=86400&HW-CC-Sign=5FF6B7387F476AF6A90AF66860F9F09C231F91E6B61888E4AA515D5E1822F5A6) Weather Service Kit当前仅面向系统应用开放，暂不对外开放。 1. 登录 AppGallery Connect 。 2. 选择“开发与服务”，找到您的项目，选择您创建的HarmonyOS应用。 3. 选择“开放能力管理”标签，勾选“天气服务”能力开关，点击保存按钮。 #### 申请权限 应用在使用Weather Service Kit能力前，需在应用的module.json5配置文件中声明所需权限。涉及的权限包括： - ohos.permission.INTERNET：用于请求对应天气相关数据。 { \"module\": "
+      "snippet": "在阅读本章节前，请先参考“ 应用开发准备 ”完成基本准备工作及指纹配置，再继续进行以下开发活动。 #### 开通天气服务 Weather Service Kit当前仅面向系统应用开放，暂不对外开放。 1. 登录 AppGallery Connect 。 2. 选择“开发与服务”，找到您的项目，选择您创建的HarmonyOS应用。 3. 选择“开放能力管理”标签，勾选“天气服务”能力开关，点击保存按钮。 #### 申请权限 应用在使用Weather Service Kit能力前，需在应用的module.json5配置文件中声明所需权限。涉及的权限包括： - ohos.permission.INTERNET：用于请求对应天气相关数据。 { \"module\": { // ... \"requestPermissions\": [ { \"name\": \"ohos.permission.INTERNET\", // ... } // ... ] } } #### 配置Profile文件 在接口调用过程中，天气服务会对您的Profile文件进行鉴权。因此，您需要在开通天气服务后，按照 配置签名信息 的流程，申请并配置签名信息。 #### （可选）申请位置权限 获取用户当前位置的天气数据，需要调用Location Kit（位置服务）获取当前位置经纬度信息，使用前参考 申请权限 。"
     },
     {
       "path": "references/获取天气数据.md",

@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:15:48.117Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -49,8 +50,9 @@
       "快捷方式文件URI / shortcut file URI"
     ],
     "outputs": [
-      "Kit 简介",
-      "文件管理功能"
+      "移入回收站的公共目录文件 / Public-directory files moved to the Recycle Bin",
+      "文件类型图标图像对象（如 image.PixelMap） / File-type icon image object, such as image.PixelMap",
+      "快捷方式解析得到的原文件 URI 字符串 / Original file URI string resolved from a shortcut file"
     ],
     "postconditions": [
       {

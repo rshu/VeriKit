@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:16:25.646Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -61,13 +62,19 @@
       "待近场传输的安装包或资源包路径 / installation package or resource package path for nearby transfer"
     ],
     "outputs": [
-      "Kit 简介",
-      "模块概述",
-      "开发准备",
-      "基础游戏服务 - 登录",
-      "基础游戏服务 - 支付与密钥",
-      "近场快传",
-      "开发自检与常见问题"
+      "华为账号联合登录结果（登录成功状态、玩家标识、登录凭证/授权码等） / Huawei Account federated sign-in result (success status, player ID, login credential/authorization code, etc.)",
+      "游戏官方账号登录结果（账号选择结果、登录状态、账号关联信息） / Official game account sign-in result (account selection result, sign-in status, account linking information)",
+      "单机游戏登录结果（本地/匿名玩家身份、登录状态） / Standalone game sign-in result (local/anonymous player identity, sign-in status)",
+      "实名认证结果（是否已实名、年龄段/成年状态、校验结论） / Real-name verification result (verified status, age group/adult status, verification conclusion)",
+      "未成年人防沉迷校验结果（是否允许进入游戏、可玩时长/限制原因） / Minor anti-addiction check result (whether gameplay is allowed, playable duration/restriction reason)",
+      "小游戏登录结果（小游戏用户身份、登录凭证、会话状态） / Mini-game sign-in result (mini-game user identity, login credential, session status)",
+      "小游戏支付结果（支付成功/失败/取消状态、订单或交易结果信息） / Mini-game payment result (payment success/failure/cancel status, order or transaction result information)",
+      "游戏服务端通信密钥/验签材料（用于登录、支付、回调等服务端验证） / Game server communication key/signature-verification material (for server-side verification of sign-in, payment, callbacks, etc.)",
+      "游戏服务端回调通知数据（登录、支付或账号相关事件回调内容） / Game server callback notification data (callback payloads for sign-in, payment, or account-related events)",
+      "游戏场景感知反馈结果（系统状态、资源/性能协作反馈、网络状态反馈） / Game scene awareness feedback result (system status, resource/performance collaboration feedback, network status feedback)",
+      "游戏场景上报处理结果（场景信息、配置或网络信息上报后的确认/状态） / Game scene report handling result (acknowledgement/status after reporting scene, configuration, or network information)",
+      "近场快传安装包传输结果（接收设备、传输状态、成功/失败信息） / Near-field APK/app package transfer result (receiving device, transfer status, success/failure information)",
+      "近场快传资源包传输结果（资源包接收结果、传输进度/完成状态） / Near-field resource package transfer result (resource package receiving result, transfer progress/completion status)"
     ],
     "postconditions": [
       {

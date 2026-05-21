@@ -1,6 +1,6 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
-import { classifyConflict, oldPolicyBundle, band } from "./conflict.js"
+import { classifyConflict, oldPolicyBundle, band, topKits } from "./conflict.js"
 
 const r = (name: string, combinedScore: number, disqualified = false) => ({ name, combinedScore, disqualified })
 const rec = (id: string, skills: string[], score: number) => ({ composition: { id, skills }, score })
@@ -43,4 +43,11 @@ test("band: fixed ordinal cuts, not probabilities", () => {
   assert.equal(band(0.8), "high")
   assert.equal(band(0.45), "medium")
   assert.equal(band(0.2), "low")
+})
+
+test("topKits: top-k non-disqualified at/above floor, best-first; never pads", () => {
+  const ranked = [r("a", 0.8), r("b", 0.6), r("c", 0.5, true), r("d", 0.3)]
+  assert.deepEqual(topKits(ranked, 0.4, 3).map((x) => x.name), ["a", "b"]) // c disqualified, d below floor
+  assert.deepEqual(topKits(ranked, 0.4, 1).map((x) => x.name), ["a"]) // k=1
+  assert.equal(topKits([], 0.4, 3).length, 0)
 })

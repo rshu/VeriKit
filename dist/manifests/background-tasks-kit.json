@@ -3,7 +3,7 @@
   "skill": "background-tasks-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.277Z"
+    "at": "2026-05-21T03:47:44.094Z"
   },
   "references": [
     {
@@ -19,7 +19,7 @@
     {
       "path": "references/延迟任务(ArkTS).md",
       "title": "延迟任务(ArkTS)",
-      "snippet": "应用退至后台后，需要执行时效性要求不高的任务，例如有网络时不定期主动获取邮件等，可以使用延迟任务。当应用满足设定的触发条件（包括网络类型、充电类型、存储状态、电池状态、定时状态等）时，将任务添加到执行队列，系统会根据内存、功耗、设备温度、用户使用习惯等统一调度拉起应用，执行相应的延迟任务。 #### 运行原理 **图1** 延迟任务实现原理 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/80/v3/znBBtR3kRkePpA8sUO_YUg/zh-cn_image_0000002543214290.png?HW-CC-KV=V1&HW-CC-Date=20260421T110954Z&HW-CC-Expire=86400&HW-CC-Sign=52711DFA2B4C00BA6AB5B56F71E6BA3C850FC2BBBCF9D9F979AC96EE45483EBA) 应用调用延迟任务接口添加、删除、查询延迟任务，延迟任务管理模块会根据任务设置的条件（通过 WorkInfo 参数设置，包括网络类型、充电类型、存储状态等）和系统状态（包括内存、功耗、设备温度、用户使用习惯等）统一决策调度时机。 当满足调度条件或调度结束时，系统会回调应用 WorkSchedu"
+      "snippet": "应用退至后台后，需要执行时效性要求不高的任务，例如有网络时不定期主动获取邮件等，可以使用延迟任务。当应用满足设定的触发条件（包括网络类型、充电类型、存储状态、电池状态、定时状态等）时，将任务添加到执行队列，系统会根据内存、功耗、设备温度、用户使用习惯等统一调度拉起应用，执行相应的延迟任务。 #### 运行原理 **图1** 延迟任务实现原理 应用调用延迟任务接口添加、删除、查询延迟任务，延迟任务管理模块会根据任务设置的条件（通过 WorkInfo 参数设置，包括网络类型、充电类型、存储状态等）和系统状态（包括内存、功耗、设备温度、用户使用习惯等）统一决策调度时机。 当满足调度条件或调度结束时，系统会回调应用 WorkSchedulerExtensionAbility 中 onWorkStart() 或 onWorkStop() 的方法，同时会为应用单独创建一个Extension扩展进程用以承载 WorkSchedulerExtensionAbility ，并给 WorkSchedulerExtensionAbility 一定的活动周期，开发者可以在对应回调方法中实现自己的任务逻辑。 #### 约束与限制 - **数量限制** ：一个应用同一时刻最多申请10个延迟任务。 - **执行频率限制** ：系统会根据应用的活跃分组，对延迟任务做分级管控，限制延迟任务调度的执行频率。 **表1"
     },
     {
       "path": "references/短时任务(ArkTS).md",

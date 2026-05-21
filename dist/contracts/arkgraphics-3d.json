@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:11:20.732Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -16,7 +17,7 @@
       "glTF",
       "材质",
       "Shader",
-      "光照",
+      "在HarmonyOS应用的自定义3D场景中，为glTF模型配置Light节点、环境资源和PBR材质以控制渲染光照效果 / Configuring Light nodes, Environment resources, and PBR materials for a glTF model in a custom 3D scene in a HarmonyOS app to control rendered lighting effects",
       "3D模型",
       "ArkGraphics Editor",
       "如何在HarmonyOS应用中加载和展示glTF 3D模型",
@@ -58,10 +59,18 @@
       "动画名称、状态或控制参数 / animation names, states, or control parameters"
     ],
     "outputs": [
-      "简介",
-      "场景管理",
-      "资源创建与管理",
-      "工具"
+      "3D场景对象（Scene） / 3D scene object (Scene)",
+      "加载后的glTF模型或场景资源（.gltf/.glb） / Loaded glTF model or scene resource (.gltf/.glb)",
+      "场景节点对象（Node） / Scene node object (Node)",
+      "相机对象（Camera） / Camera object (Camera)",
+      "光源对象（Light，如方向光、点光源、聚光灯） / Light object (Light, such as directional light, point light, spotlight)",
+      "环境资源对象（Environment，用于天空盒和环境光照） / Environment resource object (Environment, for skybox and image-based lighting)",
+      "图片/纹理资源对象（Image，来源于png、jpg、ktx） / Image or texture resource object (Image, from png, jpg, ktx)",
+      "PBR材质对象（PBR Material） / PBR material object (PBR Material)",
+      "自定义Shader材质对象（Shader Material） / Custom shader material object (Shader Material)",
+      "着色器资源文件（.shader） / Shader resource file (.shader)",
+      "动画对象或动画控制句柄（Animation） / Animation object or animation control handle (Animation)",
+      "渲染后的3D场景画面 / Rendered 3D scene output"
     ],
     "postconditions": [
       {

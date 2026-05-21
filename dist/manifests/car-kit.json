@@ -3,43 +3,43 @@
   "skill": "car-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.591Z"
+    "at": "2026-05-21T03:47:44.317Z"
   },
   "references": [
     {
       "path": "references/Car Kit简介.md",
       "title": "Car Kit简介",
-      "snippet": "Car Kit（车服务）为开发者提供一套便捷接入出行服务的能力，开发者通过集成Car Kit，可以轻松实现在手机与鸿蒙智行车机之间无缝传递导航信息、通过超级桌面在鸿蒙智行车机上使用手机上的应用、通过HiCar在认证车机上使用手机上的应用等功能，为用户提供更加良好的出行体验。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/61/v3/h4o3RQ7wRoalVVmjBeCG1w/zh-cn_image_0000002543374158.png?HW-CC-KV=V1&HW-CC-Date=20260421T111220Z&HW-CC-Expire=86400&HW-CC-Sign=A09A35CE88E7C90F22E702B8457B512E03BD031FCA03C659DFF9BE19B29611DB) #### 场景介绍 Car Kit为华为手机用户提供驾驶鸿蒙智行车辆的出行场景和驾驶HiCar认证车辆的出行场景两类解决方案。 #### 驾驶鸿蒙智行车辆的出行场景 如果用户驾驶鸿蒙智行车辆（包括仪表/HUD显示）出行，华为提供了导航流转和超级桌面解决方案： 导航流转： - 是华为为用户提供的手机与车机之间无缝传递导航信息的解决方案，涵盖多种使用场景，如导航"
+      "snippet": "Car Kit（车服务）为开发者提供一套便捷接入出行服务的能力，开发者通过集成Car Kit，可以轻松实现在手机与鸿蒙智行车机之间无缝传递导航信息、通过超级桌面在鸿蒙智行车机上使用手机上的应用、通过HiCar在认证车机上使用手机上的应用等功能，为用户提供更加良好的出行体验。 #### 场景介绍 Car Kit为华为手机用户提供驾驶鸿蒙智行车辆的出行场景和驾驶HiCar认证车辆的出行场景两类解决方案。 #### 驾驶鸿蒙智行车辆的出行场景 如果用户驾驶鸿蒙智行车辆（包括仪表/HUD显示）出行，华为提供了导航流转和超级桌面解决方案： 导航流转： - 是华为为用户提供的手机与车机之间无缝传递导航信息的解决方案，涵盖多种使用场景，如导航信息流转至车机、地址流转至车机，以及下车后地图导航自动流转回手机，实现步行导航接续等。 - 应用通过接入 Car Kit 的导航类接口，提供导航信息，响应系统流转事件，从而完成手机与车机之间的导航流转业务。 超级桌面： - 是华为为用户提供手机应用在鸿蒙座舱车机操作系统上使用，丰富鸿蒙智行生态的解决方案。 - 应用接入Car Kit出行互联类接口，可根据超级桌面连接状态，获取车机的屏幕信息用于UI呈现，或使用车机摄像头优化业务交互等。 #### 驾驶HiCar认证车辆的出行场景 如果用户驾驶HUAWEI HiCar（以下简称HiCar ）认证车辆出行，华为提"
     },
     {
       "path": "references/下车步行导航流转.md",
       "title": "下车步行导航流转",
-      "snippet": "支持将车机指定的地图应用的步行导航数据流转至手机。 #### 场景介绍 下车步行导航流转：用户下车前，车机地图应用导航还未结束，下车后可将车机上的导航数据流转至手机，发起步行导航。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e/v3/unvSKIcYQl2_eM7Rp6bLnw/zh-cn_image_0000002543214500.png?HW-CC-KV=V1&HW-CC-Date=20260421T111221Z&HW-CC-Expire=86400&HW-CC-Sign=0A3580691A64C75AC5B7542244BA9D101B0676472D5AEE5A8983ED5088FC0C3E) #### 接口说明 #### 开发流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/98/v3/RLcwXov1TSqnwOzVt_HTFw/zh-cn_image_0000002573854415.png?HW-CC-KV=V1&HW-CC-Date=20260421T111221Z&HW-CC-Expire=86400&HW-"
+      "snippet": "支持将车机指定的地图应用的步行导航数据流转至手机。 #### 场景介绍 下车步行导航流转：用户下车前，车机地图应用导航还未结束，下车后可将车机上的导航数据流转至手机，发起步行导航。 #### 接口说明 #### 开发流程 #### 开发步骤 1. 能力配置。 请参考 配置能力 进行配置。下车步行导航流转场景下，metadata的name取值为carHopCapability，value取值应为 **getOffCarNavi** 。示例代码如下所示： \"metadata\": [ { \"name\": \"carHopCapability\", \"value\": \"getOffCarNavi\" } ] 2. 导入相关模块。 import { navigationInfoMgr } from '@kit.CarKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 3. 监听系统导航信息和指令。 地图应用需要注册监听系统导航信息和指令，方便地图应用接收系统指令。用户下车后，系统会给地图应用发送START_NAVIGATION指令，地图应用在收到指令后即可开启步行导航任务。 // 实现SystemNavigationListener接口 class Listener implements navigationInfoMgr.Syst"
     },
     {
       "path": "references/主动获取HiCar的连接状态.md",
       "title": "主动获取HiCar的连接状态",
-      "snippet": "生态应用可以通过主动获取智慧出行连接状态接口来获取HiCar的连接状态（如：判断应用是否在HiCar上拉起）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/49/v3/0d5hVgFdRySsPYgpAwjOhg/zh-cn_image_0000002573974391.png?HW-CC-KV=V1&HW-CC-Date=20260421T111221Z&HW-CC-Expire=86400&HW-CC-Sign=EF168F4F45893B478AFC02F7562C323230E27097F110EF168799ECFB1E942CC8) #### 接口说明 获取HiCar连接状态的接口如下： #### SmartMobilityInfo事件名说明 SmartMobilityInfo状态（status）取值如下： SmartMobilityInfo业务类型（type）取值如下： SmartMobilityInfo业务数据（data）参数如下： #### 开发步骤 1. 导入相关模块。 import { smartMobilityCommon } from '@kit.CarKit'; import { UIAbility } from '@kit.Abi"
+      "snippet": "生态应用可以通过主动获取智慧出行连接状态接口来获取HiCar的连接状态（如：判断应用是否在HiCar上拉起）。 #### 接口说明 获取HiCar连接状态的接口如下： #### SmartMobilityInfo事件名说明 SmartMobilityInfo状态（status）取值如下： SmartMobilityInfo业务类型（type）取值如下： SmartMobilityInfo业务数据（data）参数如下： #### 开发步骤 1. 导入相关模块。 import { smartMobilityCommon } from '@kit.CarKit'; import { UIAbility } from '@kit.AbilityKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 查询智慧出行连接状态。 应用在适配HiCar时，可以实时查询接口来获取智慧出行连接状态（如：判断应用是否在HiCar上）。 export default class EntryAbility extends UIAbility { isAppOnHiCar(): boolean { try { // 应用所在的屏幕id const currentDisplayId = this.context.config.displayId;"
     },
     {
       "path": "references/地址流转至车机.md",
       "title": "地址流转至车机",
-      "snippet": "将手机应用的地址文本流转至车机指定地图应用的能力。 #### 场景介绍 碰一碰地址流转：用户在手机地址文本页面与车机中控屏指定区域碰一碰后，将手机上的地址数据流转至车机的地图应用，发起地址搜索。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c7/v3/_E07stCgRWGnTlJhW2Iagg/zh-cn_image_0000002543374162.png?HW-CC-KV=V1&HW-CC-Date=20260421T111221Z&HW-CC-Expire=86400&HW-CC-Sign=7A4EDDBBB725A6342622A3B8EB85CFF1FEFE7E13EEE3F868F9A92EA72260F3D5) #### 接口说明 #### 参数value说明 value是一个Json格式的字符串，具体属性说明如下： 给手机地址文本（Text）设置accessibilityTextHint属性后即可使用地址流转能力。 #### 开发步骤 1. 能力配置。 碰一碰地址流转场景下，metadata的name取值为carHopCapability，value取值应为 **carHopAddress** ，具体配置请参考 配置能力 。示例代码如下所示："
+      "snippet": "将手机应用的地址文本流转至车机指定地图应用的能力。 #### 场景介绍 碰一碰地址流转：用户在手机地址文本页面与车机中控屏指定区域碰一碰后，将手机上的地址数据流转至车机的地图应用，发起地址搜索。 #### 接口说明 #### 参数value说明 value是一个Json格式的字符串，具体属性说明如下： 给手机地址文本（Text）设置accessibilityTextHint属性后即可使用地址流转能力。 #### 开发步骤 1. 能力配置。 碰一碰地址流转场景下，metadata的name取值为carHopCapability，value取值应为 **carHopAddress** ，具体配置请参考 配置能力 。示例代码如下所示： \"metadata\": [ { \"name\": \"carHopCapability\", \"value\": \"carHopAddress\" } ] 2. 定义accessibilityTextHint的value值。 const hintContentValue = JSON.stringify({ type: 'location', // 类型，必须是 'location' groupId: 1, // 分组id index: 2, // 索引 }); 3. 给地址文本设置accessibilityTextHint属性。 Text('xxx一路') .fo"
     },
     {
       "path": "references/导航流转至车机.md",
       "title": "导航流转至车机",
-      "snippet": "导航流转至车机包含如下几个常见使用场景： - 碰一碰导航流转：用户在手机地图的指定页面中（地图选点页面、规划路线页面、驾车导航页面），与车机中控屏指定区域碰一碰后，将手机上的导航数据流转至车机。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0e/v3/qWP0mNK3RbKZq2tU6mrYGg/zh-cn_image_0000002543374160.png?HW-CC-KV=V1&HW-CC-Date=20260421T111221Z&HW-CC-Expire=86400&HW-CC-Sign=F174F9CBB955127236E01DFFA8D6A30DCAF310D5A1C522D5A2D8B9440B241C8E) - 上车导航自动流转：用户使用手机地图应用发起驾车导航后上车，手机上的导航数据会自动流转至车机。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/21/v3/4zemqUR8QUu-BdWdLinKCg/zh-cn_image_0000002543214498.png?HW-CC-KV=V1&HW-CC-Date=20"
+      "snippet": "导航流转至车机包含如下几个常见使用场景： - 碰一碰导航流转：用户在手机地图的指定页面中（地图选点页面、规划路线页面、驾车导航页面），与车机中控屏指定区域碰一碰后，将手机上的导航数据流转至车机。 - 上车导航自动流转：用户使用手机地图应用发起驾车导航后上车，手机上的导航数据会自动流转至车机。 - 车内导航自动流转：用户在车内，使用手机地图应用发起驾车导航，手机上的导航数据会自动流转至车机。 #### 接口说明 导航流转至车机使用接口如下： #### SmartMobilityEvent事件名说明 SmartMobilityEvent事件名（eventName）取值如下： #### 开发流程 #### 开发步骤 1. 能力配置。 请参考 配置能力 进行配置。导航流转至车机场景下，metadata的name取值为carHopCapability。对应的value值根据不同的使用场景取值如下： - 碰一碰导航流转场景下，value取值为**carHopNavi**。 - 上车导航自动流转场景下，value取值为**getOnCarNavi**。 - 车内导航自动流转场景下，value取值为**insideCarNavi**。 2. 导入相关模块。 import { navigationInfoMgr, smartMobilityCommon } from '@kit.CarKit'; i"
     },
     {
       "path": "references/开发准备.md",
       "title": "开发准备",
-      "snippet": "应用在使用Car Kit能力前，开发者需要完成的配置：配置编译模式、配置权限、配置能力。 #### 配置编译模式 在打包应用时，请在DevEco Studio中，点击右上角 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d7/v3/Q5XMBisZSrmQfu9Qe-cd4Q/zh-cn_image_0000002573854411.png?HW-CC-KV=V1&HW-CC-Date=20260421T111220Z&HW-CC-Expire=86400&HW-CC-Sign=C10441C6F34C39CB6E4F8AB33A66D25B46AAF96D34C16764811917254BB7ED66) 图标，将编译模式修改为“release”，然后点击右下角的“Apply”即可。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8/v3/BERAXbkkSEmMjf3ua2IjgQ/zh-cn_image_0000002573974387.png?HW-CC-KV=V1&HW-CC-Date=20260421T111220Z&HW-CC-"
+      "snippet": "应用在使用Car Kit能力前，开发者需要完成的配置：配置编译模式、配置权限、配置能力。 #### 配置编译模式 在打包应用时，请在DevEco Studio中，点击右上角 图标，将编译模式修改为“release”，然后点击右下角的“Apply”即可。 #### 配置权限 Car Kit为开发者提供了两类接口：导航类接口和出行互联类接口，使用对应接口需要分别配置相应的权限。 - 使用导航类接口需要配置ohos.permission.ACCESS_SERVICE_NAVIGATION_INFO权限。 - 使用出行互联类接口需要配置ohos.permission.ACCESS_CAR_DISTRIBUTED_ENGINE权限。 开发者需要在entry/src/main路径下的应用配置文件module.json5中配置所需权限。示例代码如下所示： { \"module\": { \"requestPermissions\": [ { \"name\": \"ohos.permission.ACCESS_CAR_DISTRIBUTED_ENGINE\" }, { \"name\": \"ohos.permission.ACCESS_SERVICE_NAVIGATION_INFO\" } ] } } #### 配置能力 开发者需要在entry/src/main路径下的应用配置文件module.json5的abili"
     },
     {
       "path": "references/监听HiCar的连接状态.md",
       "title": "监听HiCar的连接状态",
-      "snippet": "生态应用可以通过监听智慧出行连接状态接口获取连接信息，适配HiCar业务（如：应用流转）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5d/v3/UZZ7y209SCOTW_dE-MJ7yg/zh-cn_image_0000002543374164.png?HW-CC-KV=V1&HW-CC-Date=20260421T111222Z&HW-CC-Expire=86400&HW-CC-Sign=3B2C82BC00E704444B149D462486CA5B2D5F8ADBA6D4A76B2408EE6E14E75208) #### 接口说明 监听HiCar的连接状态使用接口如下： #### 开发流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ab/v3/iVMvM6odRBmNZhsY7O0TAw/zh-cn_image_0000002543214502.png?HW-CC-KV=V1&HW-CC-Date=20260421T111222Z&HW-CC-Expire=86400&HW-CC-Sign=17F1F9CD734118CC"
+      "snippet": "生态应用可以通过监听智慧出行连接状态接口获取连接信息，适配HiCar业务（如：应用流转）。 #### 接口说明 监听HiCar的连接状态使用接口如下： #### 开发流程 #### 开发步骤 1. 导入相关模块。 import { smartMobilityCommon } from '@kit.CarKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 监听HiCar连接状态。 应用在适配HiCar时，需要注册智慧出行连接状态的监听，用于对应的业务逻辑处理。 try { // 获取SmartMobilityAwareness实例 let awareness: smartMobilityCommon.SmartMobilityAwareness = smartMobilityCommon.getSmartMobilityAwareness(); // 业务类型 let types: smartMobilityCommon.SmartMobilityType[] = [smartMobilityCommon.SmartMobilityType.HICAR]; // 智慧出行连接状态回调函数 const callBack = (info: smartMobilityCommon.SmartMobilityInfo) "
     },
     {
       "path": "references/超级桌面应用接入分布式相机.md",

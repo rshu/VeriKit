@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:19:47.623Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -63,15 +64,18 @@
       "身份验证要素或营销组件参数 / identity verification factors or marketing component parameters"
     ],
     "outputs": [
-      "概述与规范",
-      "开发准备",
-      "支付场景",
-      "签约代扣",
-      "数字人民币",
-      "营销服务",
-      "用户身份验证",
-      "其他场景",
-      "常见问题"
+      "预下单响应（prepayId、商户订单号、订单有效期等） / Pre-order response (prepayId, merchant order number, order validity period, etc.)",
+      "华为支付收银台支付结果（支付成功、失败或取消状态，错误码和错误信息） / Huawei Pay cashier payment result (paid, failed, or canceled status, error code and error message)",
+      "支付结果异步通知报文（交易状态、支付流水号、支付金额、支付时间等） / Asynchronous payment result notification payload (transaction status, payment transaction ID, paid amount, payment time, etc.)",
+      "订单查询响应（商户订单号、交易状态、支付流水号、金额明细等） / Order query response (merchant order number, transaction status, payment transaction ID, amount details, etc.)",
+      "合单支付预下单响应（主订单prepayId、子订单列表信息） / Combined-payment pre-order response (main-order prepayId and sub-order list information)",
+      "混合支付或纯外部支付收银台返回结果（三方支付渠道选择结果或跳转/拉起结果） / Mixed-payment or external-payment cashier return result (third-party payment channel selection result or redirect/launch result)",
+      "签约代扣签约结果（协议号/签约号、签约状态、生效时间等） / Withholding agreement signing result (agreement/contract number, signing status, effective time, etc.)",
+      "支付并签约结果（支付交易结果和代扣签约结果） / Pay-and-sign result (payment transaction result and withholding agreement result)",
+      "数字人民币支付结果（数字人民币订单状态、交易流水号、金额等） / Digital RMB payment result (Digital RMB order status, transaction ID, amount, etc.)",
+      "实名信息验证结果（姓名与证件号一致性结果或用户授权的实名信息） / Real-name verification result (name-ID consistency result or user-authorized real-name information)",
+      "人脸核身实人验证结果（核验通过/失败状态、核验流水号、错误信息等） / Face liveness identity verification result (verified/failed status, verification transaction ID, error information, etc.)",
+      "营销组件返回结果（领券结果、选中的优惠券信息、商家券发放或核销结果） / Marketing component return result (coupon claim result, selected coupon information, merchant coupon issuance or redemption result)"
     ],
     "postconditions": [
       {

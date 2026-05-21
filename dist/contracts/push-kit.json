@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:20:26.275Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -58,14 +59,18 @@
       "通知样式或场景化消息参数 / Notification style or scenario-message parameters"
     ],
     "outputs": [
-      "简介",
-      "开发准备",
-      "消息推送",
-      "端云调试",
-      "可选功能",
-      "规范与政策",
-      "其他",
-      "常见问题"
+      "Push Token字符串 / Push Token string",
+      "AAID应用匿名标识符 / AAID anonymous app identifier",
+      "服务端推送接口响应结果（code、msg、requestId等） / Server push API response result (code, msg, requestId, etc.)",
+      "通知消息展示结果（通知中心、锁屏、横幅等） / Rendered notification message (Notification Center, lock screen, banner, etc.)",
+      "语音播报消息 / Voice broadcast message",
+      "后台消息数据负载 / Background message data payload",
+      "卡片刷新消息与卡片刷新触发结果 / Form refresh message and form refresh trigger result",
+      "实况窗创建或更新消息 / Live Window creation or update message",
+      "应用内通话来电消息与来电横幅 / In-app call incoming message and incoming-call banner",
+      "通知消息或语音播报消息撤回结果 / Notification or voice broadcast message recall result",
+      "消息送达状态回执 / Message delivery status receipt",
+      "推送报告统计数据 / Push report analytics data"
     ],
     "postconditions": [
       {

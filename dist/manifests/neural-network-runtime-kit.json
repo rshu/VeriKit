@@ -3,7 +3,7 @@
   "skill": "neural-network-runtime-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.017Z"
+    "at": "2026-05-21T03:47:44.634Z"
   },
   "references": [
     {
@@ -14,7 +14,7 @@
     {
       "path": "references/Neural Network Runtime对接AI推理框架开发指导.md",
       "title": "Neural Network Runtime对接AI推理框架开发指导",
-      "snippet": "Neural Network Runtime作为AI推理引擎和加速芯片的桥梁，为AI推理引擎提供精简的Native接口，满足推理引擎通过加速芯片执行端到端推理的需求。 本文以图1展示的Add单算子模型为例，介绍Neural Network Runtime的开发流程。Add算子包含两个输入、一个参数和一个输出，其中的activation参数用于指定Add算子中激活函数的类型。 **图1** Add单算子网络示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0/v3/kM8GW3UKSBigdhYIwh2qeQ/zh-cn_image_0000002543215386.png?HW-CC-KV=V1&HW-CC-Date=20260421T111946Z&HW-CC-Expire=86400&HW-CC-Sign=7F36DB3FC9E216CC3A39534CDFB7E11D84AEE8E822F694179772873E514AD461) #### 环境准备 #### 环境要求 Neural Network Runtime部件的环境要求如下： - 开发环境：Ubuntu 18.04及以上。 - 接入设备：系统定义的标准设备，系统中内置AI硬件驱动并已接入Ne"
+      "snippet": "Neural Network Runtime作为AI推理引擎和加速芯片的桥梁，为AI推理引擎提供精简的Native接口，满足推理引擎通过加速芯片执行端到端推理的需求。 本文以图1展示的Add单算子模型为例，介绍Neural Network Runtime的开发流程。Add算子包含两个输入、一个参数和一个输出，其中的activation参数用于指定Add算子中激活函数的类型。 **图1** Add单算子网络示意图 #### 环境准备 #### 环境要求 Neural Network Runtime部件的环境要求如下： - 开发环境：Ubuntu 18.04及以上。 - 接入设备：系统定义的标准设备，系统中内置AI硬件驱动并已接入Neural Network Runtime。 由于Neural Network Runtime通过Native API对外开放，需要下载对应的SDK并通过Native开发套件编译Neural Network Runtime应用。可以使用DevEco Studio来搭建环境和编译代码。 #### 环境搭建 1. 使用Ubuntu编译服务器的终端。 2. 指定native工具链路径来编译代码，可以使用DevEco Studio来下载对应的SDK来进行编译。 3. DevEco Studio安装目录下的SDK路径可以在DevEco Studio工程界面，点击Fil"
     }
   ]
 }

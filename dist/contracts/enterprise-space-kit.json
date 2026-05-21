@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:15:31.770Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -58,12 +59,20 @@
       "系统服务进程名称及受限路径列表 / system service process names and restricted path list"
     ],
     "outputs": [
-      "Kit 简介与开发准备",
-      "工作空间管理",
-      "深度冻结管控",
-      "空间事件与认证",
-      "空间互传管控",
-      "后台用户数据管控"
+      "工作空间ID或用户ID / Workspace ID or user ID",
+      "工作空间详情对象或列表 / Workspace detail object or list",
+      "工作空间策略信息对象（深度冻结、引导页等） / Workspace policy information object (deep freeze, guide page, etc.)",
+      "深度冻结豁免应用包名列表 / Deep-freeze exempt application bundle-name list",
+      "空间事件回调通知（如空间切换事件） / Space event callback notification (such as space switch event)",
+      "企业账号认证结果 / Enterprise account authentication result",
+      "企业用户身份信息 / Enterprise user identity information",
+      "企业应用访问令牌 / Enterprise application access token",
+      "文件外发审批信息对象 / File outbound approval information object",
+      "文件外发审批结果 / File outbound approval result",
+      "后台用户数据访问管控状态 / Background user data access-control status",
+      "不可访问后台用户数据的系统服务进程列表 / List of system service processes blocked from accessing background user data",
+      "系统服务进程受限路径列表 / Restricted path list for system service processes",
+      "接口调用成功结果或错误码 / API call success result or error code"
     ],
     "postconditions": [
       {

@@ -3,13 +3,13 @@
   "skill": "xengine-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.303Z"
+    "at": "2026-05-21T03:47:44.839Z"
   },
   "references": [
     {
       "path": "references/Subpass Shading.md",
       "title": "Subpass Shading",
-      "snippet": "随着游戏场景的复杂化，越来越多的光照效果被应用到游戏场景中，随之也带来大量的光照计算以及带宽消耗。目前通过Tile-Based Deferred Rendering（TBDR）和Forward+等方法可以解决大量光照的渲染时间消耗，但是大量带宽的占用问题还是没有解决，Subpass Shading能力主要减少计算过程中的读写从而减少带宽的占用。 下图说明Subpass Shading节省渲染通道1和Compute Pass从Device memory上面的一次读写带宽。 **图1** Forward+读取过程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2a/v3/d3P1EKbPRiaNQZuHWZCn9Q/zh-cn_image_0000002543214770.png?HW-CC-KV=V1&HW-CC-Date=20260421T111429Z&HW-CC-Expire=86400&HW-CC-Sign=FF30CF57CC820FE4F9E8DD671DEC189E21AB507AB6274A2345A438E3F6FE135A) **图2** Subpass Shading读取过程 ![](https://contentcenter-vali-dr"
+      "snippet": "随着游戏场景的复杂化，越来越多的光照效果被应用到游戏场景中，随之也带来大量的光照计算以及带宽消耗。目前通过Tile-Based Deferred Rendering（TBDR）和Forward+等方法可以解决大量光照的渲染时间消耗，但是大量带宽的占用问题还是没有解决，Subpass Shading能力主要减少计算过程中的读写从而减少带宽的占用。 下图说明Subpass Shading节省渲染通道1和Compute Pass从Device memory上面的一次读写带宽。 **图1** Forward+读取过程 **图2** Subpass Shading读取过程 #### 约束与限制 支持的设备类型：Phone，从5.0.2(14)版本开始，新增支持Tablet、PC/2in1设备，从5.1.0(18)版本开始新增支持TV设备。 #### 接口说明 通过Vulkan扩展接口 VK_HUAWEI_subpass_shading 提供Subpass Shading API，该扩展支持在Subpass中使用Compute Shader，并在Compute Shader中使用SubpassLoad从Tile buffer中直接读取数据，可用于降低DDR带宽，适用于TBDR和Forward+管线。 Subpass Shading能力具体使用请参见 Demo（GPU加速引擎-Subpass S"
     },
     {
       "path": "references/XEngine Kit简介.md",
@@ -24,7 +24,7 @@
     {
       "path": "references/光线追踪反射.md",
       "title": "光线追踪反射",
-      "snippet": "从6.0.0(20) 版本开始，新增光线追踪反射特性。 XEngine Kit提供光线追踪反射（Ray-Traced Reflections）渲染能力。相比于该效果的传统光线追踪实现方式，依托于华为马良GPU的软硬结合优化，XEngine支持FERT(Flexible Entry Raytracing)求交加速技术，可以减少光线与场景几何的求交计算次数，从而降低实现高画质光追效果时的GPU负载。 #### 约束与限制 - 支持的设备类型：此特性依赖设备支持Vulkan光线追踪扩展 VK_KHR_acceleration_structure 、 VK_KHR_ray_query - 可通过以下方式查询相关扩展特性是否支持： 对于Vulkan，使用 HMS_XEG_EnumerateDeviceExtensionProperties 扩展特性查询接口进行查询，如查询结果包含XEG_RT_REFLECTION_EXTENSION_NAME，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为使用光线追踪反射特性需要使用的接口，关于这些接口的详细说明见 接口文档 。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8"
+      "snippet": "从6.0.0(20) 版本开始，新增光线追踪反射特性。 XEngine Kit提供光线追踪反射（Ray-Traced Reflections）渲染能力。相比于该效果的传统光线追踪实现方式，依托于华为马良GPU的软硬结合优化，XEngine支持FERT(Flexible Entry Raytracing)求交加速技术，可以减少光线与场景几何的求交计算次数，从而降低实现高画质光追效果时的GPU负载。 #### 约束与限制 - 支持的设备类型：此特性依赖设备支持Vulkan光线追踪扩展 VK_KHR_acceleration_structure 、 VK_KHR_ray_query - 可通过以下方式查询相关扩展特性是否支持： 对于Vulkan，使用 HMS_XEG_EnumerateDeviceExtensionProperties 扩展特性查询接口进行查询，如查询结果包含XEG_RT_REFLECTION_EXTENSION_NAME，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为使用光线追踪反射特性需要使用的接口，关于这些接口的详细说明见 接口文档 。 #### 业务流程 1. 用户进入光线追踪反射适用的游戏场景。 2. 游戏应用调用HMS_XEG_CreateRTReflection接口创建光线追踪反射实例。如果光线追踪反射创建失败，直接"
     },
     {
       "path": "references/光线追踪阴影和环境光遮蔽.md",
@@ -44,12 +44,12 @@
     {
       "path": "references/时域AI超分.md",
       "title": "时域AI超分",
-      "snippet": "从6.0.0(20) 版本开始，新增支持OpenGL ES协议。 XEngine Kit提供时域AI超分能力，利用相机的抖动获取不同位置的采样信息，融合时域实现超采样率和超分辨率功能，并利用神经网络达到抗锯齿效果，建议超分倍率为[1.25, 2.0]。 #### 业务流程 - 下面是基于GLES图形API平台集成时域AI超分的主要业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/74/v3/nX7r1Ib1RLK6BM4xPn75YQ/zh-cn_image_0000002543374430.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111428Z&HW-CC-Expire=86400&HW-CC-Sign=8357E323972D4207643FE64DFE3A37F7B3D7718ADF36692C9877602CBE959B1F) 1. 用户在进入游戏初始化场景时调用HMS_XEG_GetString接口查询XEngine支持的特性，当查询接口返回支持的特性列表中包含时域AI超分时代表可以使用此特性。 2. 此时调用HMS_XEG_TemporalUpscaleParameter接口配置超分参数。 3. 当游戏运行时，游"
+      "snippet": "从6.0.0(20) 版本开始，新增支持OpenGL ES协议。 XEngine Kit提供时域AI超分能力，利用相机的抖动获取不同位置的采样信息，融合时域实现超采样率和超分辨率功能，并利用神经网络达到抗锯齿效果，建议超分倍率为[1.25, 2.0]。 #### 业务流程 - 下面是基于GLES图形API平台集成时域AI超分的主要业务流程 1. 用户在进入游戏初始化场景时调用HMS_XEG_GetString接口查询XEngine支持的特性，当查询接口返回支持的特性列表中包含时域AI超分时代表可以使用此特性。 2. 此时调用HMS_XEG_TemporalUpscaleParameter接口配置超分参数。 3. 当游戏运行时，游戏渲染待超分的当前帧纹理。 4. 当待超分纹理渲染完成时，即已经做完了带jitter的主pass渲染，准备好了depth，motion vector，color等输入纹理，此时调用HMS_XEG_RenderTemporalUpscale接口对待超分的纹理超分。 5. 当超分渲染完成时，游戏渲染剩下的纹理，如UI等。 6. 当前帧已全部渲染完成，进行送显。 7. 当游戏退出时，超分资源会自行释放。 - 下面是基于Vulkan图形API平台集成时域AI超分的主要业务流程 1. 用户在进入游戏初始化场景时调用HMS_XEG_EnumerateDeviceExte"
     },
     {
       "path": "references/空域AI超分.md",
       "title": "空域AI超分",
-      "snippet": "XEngine Kit提供空域AI超分能力，基于单帧图像使用AI推理生成滤波参数进行超采样，通过GPU、NPU协同工作，实现比空域GPU超分更好的画质，建议超分倍率在1.5倍以下时使用。 #### 约束与限制 - 支持的设备类型：Phone，从5.1.0(18)版本开始新增支持Tablet、PC/2in1、TV设备。 - 可通过以下方式查询相关扩展特性是否支持： 对于OpenGL ES，使用 HMS_XEG_GetString 扩展特性查询接口进行查询，如查询结果包含 XEG_NEURAL_UPSCALE_EXTENSION_NAME ，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为OpenGL ES空域AI超分设置接口，如需使用更丰富的设置和查询接口，具体API说明详见 接口文档 。 #### 业务流程 - 下面是基于GLES图形API平台集成空域GPU超分的主要业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/20/v3/oeOyd7yKQBWRBKW_aKp1nA/zh-cn_image_0000002573854683.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111429Z&"
+      "snippet": "XEngine Kit提供空域AI超分能力，基于单帧图像使用AI推理生成滤波参数进行超采样，通过GPU、NPU协同工作，实现比空域GPU超分更好的画质，建议超分倍率在1.5倍以下时使用。 #### 约束与限制 - 支持的设备类型：Phone，从5.1.0(18)版本开始新增支持Tablet、PC/2in1、TV设备。 - 可通过以下方式查询相关扩展特性是否支持： 对于OpenGL ES，使用 HMS_XEG_GetString 扩展特性查询接口进行查询，如查询结果包含 XEG_NEURAL_UPSCALE_EXTENSION_NAME ，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为OpenGL ES空域AI超分设置接口，如需使用更丰富的设置和查询接口，具体API说明详见 接口文档 。 #### 业务流程 - 下面是基于GLES图形API平台集成空域GPU超分的主要业务流程 1. 用户在进入游戏初始化场景时调用HMS_XEG_GetString接口查询XEngine支持的特性，当查询接口返回支持的特性列表中包含空域AI超分时代表可以使用此特性。 2. 初始化场景，空域AI超分的输入纹理需要使用OH_NativeBuffer来创建。 3. 调用HMS_XEG_NeuralUpscaleParameter接口配置超分参数，包含超分输入纹理对应的"
     },
     {
       "path": "references/空域AI超分的输出颜色附件是否需要通过OH_NativeBuffer创建.md",
@@ -59,12 +59,12 @@
     {
       "path": "references/空域GPU超分.md",
       "title": "空域GPU超分",
-      "snippet": "XEngine Kit提供空域GPU超分能力，其基于单帧输入图像，使用空间邻域信息实现超采样，开销较小同时收益可观，建议使用超分倍率为[1.2, 1.5]。 #### 约束与限制 - 支持的设备类型：Phone，从5.0.2(14)版本开始，新增支持Tablet、PC/2in1设备，从5.1.0(18)版本开始新增支持TV设备。 - 可通过以下方式查询相关扩展特性是否支持： - 对于OpenGL ES，使用 HMS_XEG_GetString 扩展特性查询接口进行查询。 - 对于Vulkan，使用 HMS_XEG_EnumerateDeviceExtensionProperties 扩展特性查询接口进行查询。 如查询结果包含 XEG_SPATIAL_UPSCALE_EXTENSION_NAME ，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为OpenGL ES和Vulkan空域GPU超分设置接口，如需使用更丰富的设置和查询接口，具体API说明详见 接口文档 。 #### 业务流程 - 下面是基于GLES图形API平台集成空域GPU超分的主要业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/40/v3/AXGsIYK"
+      "snippet": "XEngine Kit提供空域GPU超分能力，其基于单帧输入图像，使用空间邻域信息实现超采样，开销较小同时收益可观，建议使用超分倍率为[1.2, 1.5]。 #### 约束与限制 - 支持的设备类型：Phone，从5.0.2(14)版本开始，新增支持Tablet、PC/2in1设备，从5.1.0(18)版本开始新增支持TV设备。 - 可通过以下方式查询相关扩展特性是否支持： - 对于OpenGL ES，使用 HMS_XEG_GetString 扩展特性查询接口进行查询。 - 对于Vulkan，使用 HMS_XEG_EnumerateDeviceExtensionProperties 扩展特性查询接口进行查询。 如查询结果包含 XEG_SPATIAL_UPSCALE_EXTENSION_NAME ，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为OpenGL ES和Vulkan空域GPU超分设置接口，如需使用更丰富的设置和查询接口，具体API说明详见 接口文档 。 #### 业务流程 - 下面是基于GLES图形API平台集成空域GPU超分的主要业务流程 1. 用户在进入游戏初始化场景时调用HMS_XEG_GetString接口查询XEngine支持的特性，当查询接口返回支持的特性列表中包含空域GPU超分时代表可以使用此特性。 2. 调用HMS_"
     },
     {
       "path": "references/自适应VRS.md",
       "title": "自适应VRS",
-      "snippet": "XEngine Kit提供自适应VRS功能，其通过合理分配画面的计算资源，视觉无损降低渲染频次，使不同的渲染图像使用不同的渲染速率，能够有效提高渲染性能。 #### 约束与限制 - 支持的设备类型：Phone，从5.0.2(14)版本开始，新增支持Tablet、PC/2in1设备，从5.1.0(18)版本开始新增支持TV设备。 - 可通过以下方式查询相关扩展特性是否支持： 对于OpenGL ES，使用 HMS_XEG_GetString 扩展特性查询接口进行查询，如查询结果包含 XEG_ADAPTIVE_VRS_EXTENSION_NAME ，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为自适应VRS设置接口，如需使用更丰富的设置和查询接口，具体API说明详见 接口文档 。 #### 业务流程 - 下面是基于GLES图形API平台集成自适应VRS的主要业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4a/v3/c6XTUr1_R5Wt9ZFPM-YyBg/zh-cn_image_0000002573974659.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111429Z&HW-CC-E"
+      "snippet": "XEngine Kit提供自适应VRS功能，其通过合理分配画面的计算资源，视觉无损降低渲染频次，使不同的渲染图像使用不同的渲染速率，能够有效提高渲染性能。 #### 约束与限制 - 支持的设备类型：Phone，从5.0.2(14)版本开始，新增支持Tablet、PC/2in1设备，从5.1.0(18)版本开始新增支持TV设备。 - 可通过以下方式查询相关扩展特性是否支持： 对于OpenGL ES，使用 HMS_XEG_GetString 扩展特性查询接口进行查询，如查询结果包含 XEG_ADAPTIVE_VRS_EXTENSION_NAME ，则表示支持该特性，若查询结果未包含，则表示不支持该特性。 #### 接口说明 以下接口为自适应VRS设置接口，如需使用更丰富的设置和查询接口，具体API说明详见 接口文档 。 #### 业务流程 - 下面是基于GLES图形API平台集成自适应VRS的主要业务流程 1. 用户在进入游戏初始化场景时调用HMS_XEG_GetString接口查询XEngine支持的特性，当查询接口返回支持的特性列表中包含自适应VRS时代表可以使用此特性。 2. 此时调用HMS_XEG_AdaptiveVRSParameter接口配置超分参数。 3. 当游戏运行时，游戏渲染当前帧纹理。 4. 在使用自适应VRS特性的阶段前，调用HMS_XEG_DispatchAda"
     },
     {
       "path": "references/自适应VRS深度附件使用说明.md",

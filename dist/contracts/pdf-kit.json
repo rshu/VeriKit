@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:19:54.686Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -59,13 +60,22 @@
       "编辑或批注内容参数（文本、图片、水印、书签等） / Edit or annotation parameters (text, image, watermark, bookmark, etc.)"
     ],
     "outputs": [
-      "概述",
-      "文档打开与保存",
-      "文档预览",
-      "文档编辑",
-      "文档转换",
-      "预览交互",
-      "常见问题"
+      "已打开的PDF文档对象 / Opened PDF document object",
+      "保存后的PDF文件或文件流 / Saved PDF file or file stream",
+      "编辑后的PDF文档内容 / Edited PDF document content",
+      "PdfView预览组件渲染结果 / Rendered PdfView preview output",
+      "PDF页面渲染图片（PixelMap） / Rendered PDF page image (PixelMap)",
+      "整份PDF转换得到的页面图片列表 / List of page images converted from the full PDF",
+      "指定页面或指定区域转换得到的图片 / Image converted from a specified page or region",
+      "PDF页面缩略图（PixelMap） / PDF page thumbnail (PixelMap)",
+      "文本、图片、页眉页脚、水印或背景等新增页面元素 / Added page elements such as text, images, headers, footers, watermarks, or backgrounds",
+      "高亮、下划线、删除线等批注数据 / Annotation data such as highlight, underline, or strikethrough",
+      "书签数据（标题、颜色、跳转位置） / Bookmark data including title, color, and destination",
+      "PDF页面变更结果（新增页、删除页、导入页后的文档） / PDF page update result after adding, deleting, or importing pages",
+      "关键字搜索结果（页码、命中区域、匹配文本） / Keyword search results including page number, matched region, and matched text",
+      "高亮显示区域数据 / Highlighted region data",
+      "PDF加密状态布尔结果 / Boolean PDF encryption status result",
+      "解除加密后的PDF文档 / Decrypted PDF document"
     ],
     "postconditions": [
       {

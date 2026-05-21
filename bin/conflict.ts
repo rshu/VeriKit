@@ -59,6 +59,19 @@ export function classifyConflict(
 }
 
 /**
+ * The top-`k` non-disqualified Kits at or above `topHigh` confidence,
+ * best-first (input is assumed ranker-sorted). Powers option 2 of the HITL
+ * conflict menu ("the high-confidence Kit options"); returns fewer than `k`
+ * when fewer Kits clear the floor — never pads with low-confidence Kits.
+ */
+export function topKits(ranked: RankedLike[], topHigh: number, k: number): { name: string; combinedScore: number }[] {
+  return ranked
+    .filter((r) => !r.disqualified && r.combinedScore >= topHigh)
+    .slice(0, k)
+    .map((r) => ({ name: r.name, combinedScore: r.combinedScore }))
+}
+
+/**
  * The PRE-change auto-pick (reference for the held-out contrast in the eval).
  * Reproduces verikit-cli's old cascade exactly: recipe wins if matched;
  * else confident top; else none.

@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:15:40.538Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -57,9 +58,12 @@
       "求解或数据结构配置参数（不透明配置对象） / solver or data-structure configuration parameters (opaque configuration object)"
     ],
     "outputs": [
-      "Kit 简介",
-      "高阶数据结构",
-      "规划求解"
+      "线段表实例/句柄 / Segment Map instance or handle",
+      "线段表区间更新后的数据状态 / Segment Map state after range updates",
+      "区间查询结果（匹配的区间段及其关联数据或聚合信息） / Range query results, including matched intervals and associated or aggregated data",
+      "矩形划分求解器实例/句柄 / RectPartition Solver instance or handle",
+      "矩形划分结果（覆盖相同区域且数量尽可能少的矩形列表） / Rectangle partition result, a minimized list of rectangles covering the same area",
+      "算法调用结果状态或错误码 / Algorithm invocation status or error code"
     ],
     "postconditions": [
       {

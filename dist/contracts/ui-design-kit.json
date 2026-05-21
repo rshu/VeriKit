@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:22:15.175Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -15,7 +16,7 @@
       "设计系统",
       "光照效果",
       "图标处理",
-      "多窗口",
+      "需要为应用内多窗界面配置符合HarmonyOS Design System的动态模糊标题栏、侧边栏和底部页签增强组件 / Configure HarmonyOS Design System enhanced components such as dynamic-blur title bars, sidebars, and bottom tabs for an in-app multi-window interface",
       "如何设置导航组件标题栏的动态模糊效果？",
       "如何配置半模态页面样式和自定义标题栏区域？",
       "如何设置overlay模式和embed模式的侧边栏？",
@@ -59,15 +60,18 @@
       "自定义Symbol图标及动效资源 / custom Symbol icon and animation resources"
     ],
     "outputs": [
-      "简介",
-      "组件导航",
-      "侧边栏",
-      "底部页签",
-      "即时操作与核心操作栏",
-      "列表",
-      "应用内多窗",
-      "HDS沉浸视效",
-      "资源与图标能力"
+      "符合 HarmonyOS Design System 的增强型导航组件界面 / HDS-compliant enhanced navigation component UI",
+      "带动态模糊、半模态或自定义标题栏的导航页面 / Navigation pages with dynamic blur, semi-modal style, or custom title bar",
+      "Overlay 或 Embed 模式侧边栏容器 / Sidebar container in overlay or embed mode",
+      "带一级/二级菜单、红点提醒的侧边栏菜单界面 / Sidebar menu UI with primary/secondary items and badge indicators",
+      "带分割线、背景模糊、悬浮或图标出血效果的底部页签栏 / Bottom tab bar with divider, background blur, floating style, or icon-bleed effect",
+      "常驻型或定时型即时操作通知弹窗 / Persistent or scheduled instant-action notification pop-up",
+      "带主按钮展开/收起动效或无主按钮样式的核心操作栏 / Core action bar with primary-button expand/collapse animation or no-primary-button style",
+      "支持横滑删除的列表卡片界面 / List card UI with swipe-to-delete interaction",
+      "应用内多窗界面容器 / In-app multi-window UI container",
+      "点光源、流光、按压阴影、沉浸光感材质等 HDS 沉浸视效 / HDS immersive visual effects such as point light, light streak, press shadow, and immersive light material",
+      "合成、剪切、缩放或描边后的分层图标资源 / Layered icon resources after composition, clipping, scaling, or outlining",
+      "已注册的自定义 Symbol 图标资源及动效参数资源 / Registered custom Symbol icon resources and animation-parameter resources"
     ],
     "postconditions": [
       {

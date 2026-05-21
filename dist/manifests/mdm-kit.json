@@ -3,13 +3,13 @@
   "skill": "mdm-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.961Z"
+    "at": "2026-05-21T03:47:44.586Z"
   },
   "references": [
     {
       "path": "references/EnterpriseAdminExtensionAbility开发指南.md",
       "title": "EnterpriseAdminExtensionAbility开发指南",
-      "snippet": "企业设备管理扩展能力组件，是设备管理应用必备组件。当开发者为企业开发设备管理应用时，需继承EnterpriseAdminExtensionAbility，在EnterpriseAdminExtensionAbility实例中实现MDM业务逻辑，EnterpriseAdminExtensionAbility实现了系统管理状态变化通知功能，并定义了管理应用激活、去激活、应用安装、卸载事件等回调接口。 #### 接口说明 以下为本次开发示例所使用的接口，更多接口及使用方式请见 企业设备管理扩展能力接口文档 。 #### 开发步骤 新建一个工程后，结构如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/15/v3/rE4ZcV7ZSoieRhWkrE0BBA/zh-cn_image_0000002573854409.png?HW-CC-KV=V1&HW-CC-Date=20260421T111219Z&HW-CC-Expire=86400&HW-CC-Sign=85689B0A6A9E1F64B49E1A8B0F69654D61D6E26246A5299E3273EC10A7CB082B) 首先，创建一个EnterpriseAdmin类型的ExtensionAbili"
+      "snippet": "企业设备管理扩展能力组件，是设备管理应用必备组件。当开发者为企业开发设备管理应用时，需继承EnterpriseAdminExtensionAbility，在EnterpriseAdminExtensionAbility实例中实现MDM业务逻辑，EnterpriseAdminExtensionAbility实现了系统管理状态变化通知功能，并定义了管理应用激活、去激活、应用安装、卸载事件等回调接口。 #### 接口说明 以下为本次开发示例所使用的接口，更多接口及使用方式请见 企业设备管理扩展能力接口文档 。 #### 开发步骤 新建一个工程后，结构如下： 首先，创建一个EnterpriseAdmin类型的ExtensionAbility（也就是EnterpriseAdminExtensionAbility）。 其次，打开新建的EnterpriseAdminAbility文件，导入EnterpriseAdminExtensionAbility模块，使其继承EnterpriseAdminExtensionAbility并加上需要的应用通知回调方法，如onAdminEnabled()、onAdminDisabled()等回调方法。当设备管理应用激活或者解除激活时，可以在对应回调方法中接收系统发送通知。 import { EnterpriseAdminExtensionAbility } fr"
     },
     {
       "path": "references/MDM Kit开发指南.md",
@@ -34,12 +34,12 @@
     {
       "path": "references/多应用管控.md",
       "title": "多应用管控",
-      "snippet": "在企业PC设备管理场景下，企业可以引入多家 EMM厂商 来共同管理企业PC设备，分散管理权限，满足不同场景的管控诉求。在这种背景下，MDM Kit抽象出不同的设备管理员角色，用来支持多家EMM厂商在PC设备上同时部署自己的MDM业务。 由于这种场景下存在多个 MDM应用 同时调用MDM管控接口的情况，建议企业与EMM厂商提前约定各自MDM应用的管控范围，避免管控策略冲突， 管控策略冲突 可能会导致企业管控失效，引发企业数据泄露等问题。 #### Admin组件的激活角色 Admin组件可以通过不同的方式激活，不同的激活方式，成为的角色也不同。 1.通过 adminManager.enableDeviceAdmin 接口, 激活后成为 DA角色 。 2.通过 adminManager.startAdminProvision 接口, 激活后成为 BDA角色 。 #### 管控策略冲突 当单一设备上同时部署多个MDM应用时，各应用可能同时调用同一个MDM管控接口，传入的策略值各不相同，从而产生策略冲突。针对这类冲突，系统建立了策略冲突处理机制。根据不同的策略类型，可归纳为以下四条冲突规则。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/96/v3/53AFHiQaSg"
+      "snippet": "在企业PC设备管理场景下，企业可以引入多家 EMM厂商 来共同管理企业PC设备，分散管理权限，满足不同场景的管控诉求。在这种背景下，MDM Kit抽象出不同的设备管理员角色，用来支持多家EMM厂商在PC设备上同时部署自己的MDM业务。 由于这种场景下存在多个 MDM应用 同时调用MDM管控接口的情况，建议企业与EMM厂商提前约定各自MDM应用的管控范围，避免管控策略冲突， 管控策略冲突 可能会导致企业管控失效，引发企业数据泄露等问题。 #### Admin组件的激活角色 Admin组件可以通过不同的方式激活，不同的激活方式，成为的角色也不同。 1.通过 adminManager.enableDeviceAdmin 接口, 激活后成为 DA角色 。 2.通过 adminManager.startAdminProvision 接口, 激活后成为 BDA角色 。 #### 管控策略冲突 当单一设备上同时部署多个MDM应用时，各应用可能同时调用同一个MDM管控接口，传入的策略值各不相同，从而产生策略冲突。针对这类冲突，系统建立了策略冲突处理机制。根据不同的策略类型，可归纳为以下四条冲突规则。 MDM Kit不支持自定义策略冲突处理机制，如果现有策略冲突处理机制无法满足企业的管控场景，企业需要提前规划好多个MDM应用的管控边界，避免管控策略冲突，或仅使用一个MDM应用进行设备管控。 ####"
     },
     {
       "path": "references/应用模型.md",
       "title": "应用模型",
-      "snippet": "应用模型是系统为开发者提供的应用程序所需能力的抽象提炼，它提供了应用程序必需的组件和运行机制。借助应用模型，开发者可以基于一套统一的模型进行应用开发，使应用开发更简单、高效。 #### Admin组件的基础概念 企业设备管理扩展组件 ，是 MDM应用 的必备组件。开发MDM应用时，需要定义一个 EnterpriseAdminExtensionAbility 类型的 ExtensionAbility 组件用于激活MDM应用，该组件被激活后将作为独立的后台进程存在。 #### 进程模型 MDM应用进程模型继承于普通应用 进程模型 ，在普通应用模型基础上MDM应用会多一个独立的EnterpriseAdmin进程，MDM应用的Admin组件被激活后，EnterpriseAdmin进程会被创建，EnterpriseAdmin进程作为设备管理应用的后台进程，用于接收MDM应用的激活、取消激活等事件的回调。EnterpriseAdmin进程的生命周期不受到主进程的影响，由系统管理其生命周期。Admin组件的激活方式不同，EnterpriseAdmin进程的生命周期的 管理方式 也不同。 **图1** MDM应用进程模型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f3/v3"
+      "snippet": "应用模型是系统为开发者提供的应用程序所需能力的抽象提炼，它提供了应用程序必需的组件和运行机制。借助应用模型，开发者可以基于一套统一的模型进行应用开发，使应用开发更简单、高效。 #### Admin组件的基础概念 企业设备管理扩展组件 ，是 MDM应用 的必备组件。开发MDM应用时，需要定义一个 EnterpriseAdminExtensionAbility 类型的 ExtensionAbility 组件用于激活MDM应用，该组件被激活后将作为独立的后台进程存在。 #### 进程模型 MDM应用进程模型继承于普通应用 进程模型 ，在普通应用模型基础上MDM应用会多一个独立的EnterpriseAdmin进程，MDM应用的Admin组件被激活后，EnterpriseAdmin进程会被创建，EnterpriseAdmin进程作为设备管理应用的后台进程，用于接收MDM应用的激活、取消激活等事件的回调。EnterpriseAdmin进程的生命周期不受到主进程的影响，由系统管理其生命周期。Admin组件的激活方式不同，EnterpriseAdmin进程的生命周期的 管理方式 也不同。 **图1** MDM应用进程模型 #### EnterpriseAdmin进程的生命周期 Admin组件被激活后有独立的进程，支持系统状态变更回调。与应用的主进程分属不同的进程，进程的启停由 EDM 服务管理，应"
     }
   ]
 }

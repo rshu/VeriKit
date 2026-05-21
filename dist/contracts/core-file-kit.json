@@ -5,14 +5,15 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:13:43.853Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
     "use_when": [
-      "文件管理",
-      "应用文件",
+      "应用需要读写自身沙箱内的配置、缓存或日志文件，并通过FilePicker让用户选择或保存文档、图片等用户文件 / When an app needs to read and write its own sandboxed config, cache, or log files, and use FilePicker to let users select or save documents, images, and other user files",
+      "在应用沙箱目录中创建、读写、移动或删除配置、缓存、日志等应用文件 / Create, read, write, move, or delete app files such as configuration, cache, and logs in the app sandbox directory",
       "用户文件",
       "数据备份恢复",
       "分布式文件",
@@ -58,13 +59,26 @@
       "备份恢复、迁移、分布式访问或端云协同的配置参数 / Configuration parameters for backup/restore, migration, distributed access, or device-cloud collaboration"
     ],
     "outputs": [
-      "服务概述",
-      "应用文件",
-      "用户文件",
-      "应用数据备份恢复",
-      "应用数据迁移",
-      "分布式文件系统",
-      "端云文件协同"
+      "应用沙箱目录路径（filesDir、cacheDir、tempDir、preferencesDir、databaseDir等） / Application sandbox directory paths such as filesDir, cacheDir, tempDir, preferencesDir, and databaseDir",
+      "文件对象与文件描述符（fs.File、fd） / File objects and file descriptors such as fs.File and fd",
+      "文件读写流对象（fs.Stream） / File read/write stream objects such as fs.Stream",
+      "读取到的文件内容数据（ArrayBuffer、字符串、字节数据） / File content data read from files, such as ArrayBuffer, strings, or bytes",
+      "文件或目录元数据对象（fs.Stat：大小、时间、类型、权限等） / File or directory metadata objects such as fs.Stat with size, time, type, and permission information",
+      "目录项或文件名列表 / Directory entries or file name lists",
+      "应用文件分享URI / Shareable application file URIs",
+      "用户选择的文件URI列表（文档、图片、视频、音频等） / URI lists of user-selected files such as documents, images, videos, and audio",
+      "图片选择结果对象（PhotoSelectResult，包含photoUris等） / Photo picker result objects such as PhotoSelectResult containing photoUris",
+      "FilePicker保存后生成的目标文件URI / Destination file URIs generated after saving through FilePicker",
+      "URI与本地路径转换结果（URI字符串、路径字符串） / URI and local path conversion results, including URI strings and path strings",
+      "持久化授权后的可持续访问文件或目录URI / Persistently authorized file or directory URIs for continued access",
+      "公共用户目录路径（Download、Desktop、Documents等） / Public user directory paths such as Download, Desktop, and Documents",
+      "应用空间与文件系统空间统计结果 / Application storage and file system space statistics",
+      "备份生成的应用数据文件或备份数据集 / Application data files or backup datasets produced during backup",
+      "恢复后的应用沙箱数据文件 / Restored application sandbox data files",
+      "迁移后的应用数据文件 / Migrated application data files",
+      "跨设备拷贝生成的目标文件 / Target files produced by cross-device copy",
+      "分布式文件系统中的共享文件路径或可访问文件 / Shared file paths or accessible files in the distributed file system",
+      "端云同步后的本地缓存文件、云端文件副本或版本化文件 / Local cached files, cloud file copies, or versioned files produced by device-cloud file synchronization"
     ],
     "postconditions": [
       {

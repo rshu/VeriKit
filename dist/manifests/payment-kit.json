@@ -3,7 +3,7 @@
   "skill": "payment-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.049Z"
+    "at": "2026-05-21T03:47:44.655Z"
   },
   "references": [
     {
@@ -49,17 +49,17 @@
     {
       "path": "references/业务规则说明.md",
       "title": "业务规则说明",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e0/v3/2Ej4rrM-QTOCydzZbx5kBw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111612Z&HW-CC-Expire=86400&HW-CC-Sign=ABB2F21C3363F0435F3A3CB213405B9CC539573F4CE5D3F7F51954CE239684EF) 接入通用收银台需先开通对应的产品，参见 产品开通操作 。 Payment Kit通用收银台上可以包含多种支付方式，支持自由组合。根据不同的资金处理方式可将通用收银台支付分为以下支付模式： #### 产品开通与配置 如接入 混合支付 、 纯外部支付 ，开发者需与华为支付业务侧沟通（合作咨询可 点击此处 ）后提供以下信息给华为支付业务侧添加支付模式相关配置，配置项内容参考如下： 可参考如下表格格式填写配置提供： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cd/v3/fXM29mQaR7K1vV7Xjw2JFg/zh-cn_image_0"
+      "snippet": "接入通用收银台需先开通对应的产品，参见 产品开通操作 。 Payment Kit通用收银台上可以包含多种支付方式，支持自由组合。根据不同的资金处理方式可将通用收银台支付分为以下支付模式： #### 产品开通与配置 如接入 混合支付 、 纯外部支付 ，开发者需与华为支付业务侧沟通（合作咨询可 点击此处 ）后提供以下信息给华为支付业务侧添加支付模式相关配置，配置项内容参考如下： 可参考如下表格格式填写配置提供： #### 约束与限制 设备类型：华为手机。 HarmonyOS系统：HarmonyOS 5.0.2(14)及以上。 HarmonyOS SDK版本：HarmonyOS 5.0.2(14)及以上。"
     },
     {
       "path": "references/云侧服务准备.md",
       "title": "云侧服务准备",
-      "snippet": "Payment Kit服务提供了支付系统相关的一系列API接口。为减少API接口的接入工作量，提供了相应java版本的Maven依赖用于云侧服务对接。 开发者可通过Maven集成来完成服务器开发环境的构建，以此来快速使用华为支付提供的API接口。 可下载 示例代码-服务端 用以快速完成商户服务器接入。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c8/v3/Z91nO9UMSYKFQnd3vrUTEg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111610Z&HW-CC-Expire=86400&HW-CC-Sign=6A76745A43510E83248981B24D980BA60415A443DF419309FC7FE23981E1FC69) 因业务发展需要，API接口响应、通知回调请求字段可能会发生变动，如开发者自行实现验签逻辑，一定要使用原始的字符串转为Map对象进行验签处理后再转换成自定义的业务对象去使用，以确保验签正常通过。 #### 约束与限制 商户使用提供的示例代码接入华为支付前请确保网络已正常连接，可以从华为支付仓库地址正常拉取Maven依赖。 开发环境： JDK 1.8及以上。 #"
+      "snippet": "Payment Kit服务提供了支付系统相关的一系列API接口。为减少API接口的接入工作量，提供了相应java版本的Maven依赖用于云侧服务对接。 开发者可通过Maven集成来完成服务器开发环境的构建，以此来快速使用华为支付提供的API接口。 可下载 示例代码-服务端 用以快速完成商户服务器接入。 因业务发展需要，API接口响应、通知回调请求字段可能会发生变动，如开发者自行实现验签逻辑，一定要使用原始的字符串转为Map对象进行验签处理后再转换成自定义的业务对象去使用，以确保验签正常通过。 #### 约束与限制 商户使用提供的示例代码接入华为支付前请确保网络已正常连接，可以从华为支付仓库地址正常拉取Maven依赖。 开发环境： JDK 1.8及以上。 #### 集成Maven依赖 在示例代码pom.xml文件中已配置仓库地址，如无法正常拉取依赖，可在Maven配置文件“settings.xml”中添加华为支付的Maven仓库地址。 <mirror> <id>central</id> <mirrorOf>central</mirrorOf> <url> </mirror> 在示例代码pom.xml文件中已引入jar包的Maven坐标。如商户自己构建工程则需在pom.xml文件中引入如下坐标： <dependency> <groupId>com.huawei.petalpay</gr"
     },
     {
       "path": "references/人脸核身实人验证场景.md",
       "title": "人脸核身实人验证场景",
-      "snippet": "从5.1.1(19)版本开始，新增支持人脸核身实人验证场景。 开发者需要验证当前应用/元服务操作的用户的信息且验证是否为用户本人操作时，可接入人脸核身实人验证能力。 支持商户模型：不涉及 人脸核身实人验证页面展示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cb/v3/q7Dd8y6jSKCqi91yZpxC6g/zh-cn_image_0000002543215128.png?HW-CC-KV=V1&HW-CC-Date=20260421T111614Z&HW-CC-Expire=86400&HW-CC-Sign=9E4E317A8E56F3E9D3349B84A67FB2254C2BB3B15A1A16A97F85289B73496B38) #### 约束与限制 为确保人脸识别的准确性，必须在全屏模式下调用人脸核身实人验证功能。 以下场景均不支持： 1. 特殊显示模式：半模态、上下分屏、左右分屏、单手模式、分栏、悬浮窗、智慧多窗、自由多窗等。 2. 设备模式：PC模式、直板机横屏模式。 3. 折叠设备：上下折叠手机外屏、折叠电脑全展开状态。 #### 接入流程 华为支付人脸核身实人验证接入流程如下： #### 业务流程 开发者通过接入人脸核身实人验证能力"
+      "snippet": "从5.1.1(19)版本开始，新增支持人脸核身实人验证场景。 开发者需要验证当前应用/元服务操作的用户的信息且验证是否为用户本人操作时，可接入人脸核身实人验证能力。 支持商户模型：不涉及 人脸核身实人验证页面展示： #### 约束与限制 为确保人脸识别的准确性，必须在全屏模式下调用人脸核身实人验证功能。 以下场景均不支持： 1. 特殊显示模式：半模态、上下分屏、左右分屏、单手模式、分栏、悬浮窗、智慧多窗、自由多窗等。 2. 设备模式：PC模式、直板机横屏模式。 3. 折叠设备：上下折叠手机外屏、折叠电脑全展开状态。 #### 接入流程 华为支付人脸核身实人验证接入流程如下： #### 业务流程 开发者通过接入人脸核身实人验证能力，可以简便快捷的实现用户信息验证及本人操作的验证。具体接入流程如下： 1. 开发者客户端收集用户实名信息加密后请求开发者服务端发起人脸核身实人预验证。 2. 开发者服务端请求Payment Kit服务端 人脸核身实人预验证 接口获取预验证ID（preVerifyId）。 3. Payment Kit服务端解密并获取请求传入的用户实名信息进行验证处理。 4. Payment Kit服务端验证用户实名信息通过后，返回预验证ID给开发者服务端。 5. 开发者服务端返回预验证信息给开发者客户端。 6. 开发者客户端使用预验证ID调用 startFaceVerific"
     },
     {
       "path": "references/免密代扣说明.md",
@@ -74,7 +74,7 @@
     {
       "path": "references/准备证书.md",
       "title": "准备证书",
-      "snippet": "开发者接入华为支付开放API接口，需要通过证书来对请求内容及响应内容做签名和验证签名，以保证请求的安全性和可靠性。 本文将介绍接入过程中相关证书的作用和获取方法。在准备证书前，请在 华为支付商户平台 入网，具体请参见 商户入网 。 需准备证书：商户证书、华为支付证书（公钥）。 #### 证书说明 证书使用如图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8f/v3/SZU9B2GNRySVEPSj1UdoEw/zh-cn_image_0000002543374776.png?HW-CC-KV=V1&HW-CC-Date=20260421T111610Z&HW-CC-Expire=86400&HW-CC-Sign=F3D63E637A0DDFF99D16910565E4531575ACA7D820A9FA6146ED997BBAE11DBA) #### 商户证书 商户证书是指由商户自行生成（参见 生成商户证书 ）或申请（可自行选择符合资质的CA认证机构申请证书）的，包含商户公钥和私钥信息的证书。 私钥用于商户在华为支付开放API接口请求过程中的 签名 ，公钥用于提供给华为支付侧进行请求验签。 该证书文件要求为pem格式，支持RSA和SM2两种算法类型的证书"
+      "snippet": "开发者接入华为支付开放API接口，需要通过证书来对请求内容及响应内容做签名和验证签名，以保证请求的安全性和可靠性。 本文将介绍接入过程中相关证书的作用和获取方法。在准备证书前，请在 华为支付商户平台 入网，具体请参见 商户入网 。 需准备证书：商户证书、华为支付证书（公钥）。 #### 证书说明 证书使用如图所示： #### 商户证书 商户证书是指由商户自行生成（参见 生成商户证书 ）或申请（可自行选择符合资质的CA认证机构申请证书）的，包含商户公钥和私钥信息的证书。 私钥用于商户在华为支付开放API接口请求过程中的 签名 ，公钥用于提供给华为支付侧进行请求验签。 该证书文件要求为pem格式，支持RSA和SM2两种算法类型的证书。 **证书私钥** 商户自行生成或申请商户证书时，会配套生成商户私钥。 - 商户私钥用于商户对华为支付开放API请求中的信息进行签名。 - 请妥善保管好商户私钥文件，不要把私钥文件暴露在公共场合，如上传到Github，写在客户端代码等。 **证书公钥** 商户自行生成或申请商户证书时，会配套生成商户公钥。 - 商户需将生成的证书公钥上传到 华为支付商户平台 来获取证书ID，证书ID为请求华为支付开放API接口时请求头鉴权信息 PayMercAuth 对象中的authId字段以及订单信息参数 orderStr 中的auth_id字段。 - 证书上传（参见 上"
     },
     {
       "path": "references/华为支付签约的免密代扣在哪里可以解约？.md",
@@ -94,7 +94,7 @@
     {
       "path": "references/商家券场景.md",
       "title": "商家券场景",
-      "snippet": "商家券是华为支付为商户提供的电子优惠券解决方案，通过该产品实现商家优惠券创建、投放、领取、核销及券查询等管理操作，商家券优惠规则和玩法由商家自定义，商家可将自有营销体系的优惠券同步到华为服务分发平台流量（日日有礼、搜索、品牌专区、支付成功页等）和商家自有流量进行发放和运营。 有开发意愿的商户或者服务商可使用API接口完成商家券创建、发放、领取、核销、券查询等全链路操作。 支持商户模型：直连商户、平台类商户、服务商。 用户在华为钱包卡包可见的商家券样式（参考下图，商家自定义）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/eb/v3/PwFpXKJFQziUhI2kSrdYiQ/zh-cn_image_0000002543374792.png?HW-CC-KV=V1&HW-CC-Date=20260421T111614Z&HW-CC-Expire=86400&HW-CC-Sign=DB21B0589D42A72A2DBF2AFD1862FD9EDBEF754711F8E4ADCA3429C0212A849E) #### 接入前置条件 1. 商家有营销系统以及具备开发能力且存在应用/元服务。 2. 商家在华为支付完成 商户入网 。 #### 业务模式 #### 支"
+      "snippet": "商家券是华为支付为商户提供的电子优惠券解决方案，通过该产品实现商家优惠券创建、投放、领取、核销及券查询等管理操作，商家券优惠规则和玩法由商家自定义，商家可将自有营销体系的优惠券同步到华为服务分发平台流量（日日有礼、搜索、品牌专区、支付成功页等）和商家自有流量进行发放和运营。 有开发意愿的商户或者服务商可使用API接口完成商家券创建、发放、领取、核销、券查询等全链路操作。 支持商户模型：直连商户、平台类商户、服务商。 用户在华为钱包卡包可见的商家券样式（参考下图，商家自定义）。 #### 接入前置条件 1. 商家有营销系统以及具备开发能力且存在应用/元服务。 2. 商家在华为支付完成 商户入网 。 #### 业务模式 #### 支持的券类型 可支持满减券、折扣券和换购券三种优惠类型的商家券。 #### 支持的券码类型 商家券Code码可支持随机Code和商户自定义Code两类。其中，商户自定义Code支持导入Code模式和发放时指定Code模式。 #### 支持的发放渠道 当前商家券支持的发放渠道有商家自有流量场景、平台流量场景。 #### 支持的核销方式 线上应用/元服务核销。用户领取商家券后可通过卡包点击去使用，跳转至商家应用/元服务。商家查询到用户已领取的所有商家券信息，再根据商家优惠规则进行使用判断，用户使用商家券并支付完成后，商家调用核销接口将用户钱包卡包里的商家券状态标为"
     },
     {
       "path": "references/商户侧没有传营销信息，支付回调里面为什么会有营销信息？.md",
@@ -114,17 +114,17 @@
     {
       "path": "references/商户号绑定AppID.md",
       "title": "商户号绑定AppID",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/be/v3/b8WJOG3OQrm7fJ-2RMwOmg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111609Z&HW-CC-Expire=86400&HW-CC-Sign=17905FD35CEF192DDEE0F1523195C1DD0FE19F2296BB9E684ACA400257F5BB29) 商户号绑定AppID的商户需要通过 华为支付商户平台 入网，详见 商户入网和获取商户号 。通过 华为开发者联盟官网 开通 商户服务 入网的商户暂不支持直接接入华为支付以及绑定AppID操作。 商户（以下所称商户均包含所有商户模型）后续支付交易依赖于 AppGallery Connect 中 创建应用 生成的AppID与商户号的关联关系。商户在请求预下单接口传递AppID入参，后续可以在 AppGallery Connect 网站上基于应用维度查看交易报表数据。传递AppID参数后，华为支付侧会校验商户号与传递的AppID是否匹配，如不匹配则会直接响应异常。因此，接入鸿蒙支付服务前商户需要为商户号绑定AppID，如无商户号则需要先申请，详细介绍参考 商户入网"
+      "snippet": "商户号绑定AppID的商户需要通过 华为支付商户平台 入网，详见 商户入网和获取商户号 。通过 华为开发者联盟官网 开通 商户服务 入网的商户暂不支持直接接入华为支付以及绑定AppID操作。 商户（以下所称商户均包含所有商户模型）后续支付交易依赖于 AppGallery Connect 中 创建应用 生成的AppID与商户号的关联关系。商户在请求预下单接口传递AppID入参，后续可以在 AppGallery Connect 网站上基于应用维度查看交易报表数据。传递AppID参数后，华为支付侧会校验商户号与传递的AppID是否匹配，如不匹配则会直接响应异常。因此，接入鸿蒙支付服务前商户需要为商户号绑定AppID，如无商户号则需要先申请，详细介绍参考 商户入网和获取商户号 。 AppID绑定详细可参见 AppID管理及关联 。 #### 基本概念 **同主体** ：商户号与AppID所关联的营业主体信息一致。 **异主体** ：商户号与AppID关联的营业主体信息不一致。 #### 绑定AppID说明 1. 暂不支持平台子商户及特约商户发起绑定AppID申请。 2. 商户发起绑定AppID申请，异主体绑定需要商户与华为支付侧沟通申请开通异主体绑定权限（可参考 产品开通操作 ）后才可在 华为支付商户平台 发起异主体AppID绑定操作。 3. AppID关联的营业主体与特约商户商户号或与服"
     },
     {
       "path": "references/商户号绑定AppID提示“主体不一致”？.md",
       "title": "商户号绑定AppID提示“主体不一致”？",
-      "snippet": "可能是开发者联盟上商户应用管理员的企业证件号码（营业执照注册号）未正确维护导致。 1. 商户应用管理员实名认证（在 AppGallery Connect “个人信息 > 管理 > 实名认证”查询）需为 企业开发者 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b6/v3/6bxbodmHRGSj93Ai4mFaiw/zh-cn_image_0000002543374796.png?HW-CC-KV=V1&HW-CC-Date=20260421T111620Z&HW-CC-Expire=86400&HW-CC-Sign=BD9DD88804ED8A15F550B47A453F6675D2A8627E81FAE83CBE60866BA2C2FBA0) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e9/v3/kHV4LhC2T0mhyb0ATWROEw/zh-cn_image_0000002543215134.png?HW-CC-KV=V1&HW-CC-Date=20260421T111620Z&HW-CC-Expire=86400&HW-C"
+      "snippet": "可能是开发者联盟上商户应用管理员的企业证件号码（营业执照注册号）未正确维护导致。 1. 商户应用管理员实名认证（在 AppGallery Connect “个人信息 > 管理 > 实名认证”查询）需为 企业开发者 。 2. 检查商户应用管理员关联的主体企业证件号码和 商户号关联营业主体 的企业证件号码是否一致。"
     },
     {
       "path": "references/商户基础支付场景.md",
       "title": "商户基础支付场景",
-      "snippet": "从4.1.0(11)版本开始，新增支持商户基础支付场景。 例如用户出行需要提前预订酒店房间，此时用户可打开商户开发的APP应用/元服务，选好预订房间后发起支付，商户通过接入华为支付拉起华为支付收银台完成单个订单支付。 支持商户模型：直连商户、平台类商户、服务商 华为支付收银台展示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/82/v3/wpqljDs_Sz2SPnHMsOGZ3A/zh-cn_image_0000002573855033.png?HW-CC-KV=V1&HW-CC-Date=20260421T111611Z&HW-CC-Expire=86400&HW-CC-Sign=6F3C73DAFC294B1DEF06962270F8F967D77325F177B0791304C54D222E49CC6B) #### 业务流程 开发者通过接入Payment Kit基础支付，可以简便快捷的实现应用的支付能力。具体接入流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/66/v3/ROPzR52VQzesjPPCSL65wg/zh-"
+      "snippet": "从4.1.0(11)版本开始，新增支持商户基础支付场景。 例如用户出行需要提前预订酒店房间，此时用户可打开商户开发的APP应用/元服务，选好预订房间后发起支付，商户通过接入华为支付拉起华为支付收银台完成单个订单支付。 支持商户模型：直连商户、平台类商户、服务商 华为支付收银台展示： #### 业务流程 开发者通过接入Payment Kit基础支付，可以简便快捷的实现应用的支付能力。具体接入流程如下： 1. 商户客户端请求商户服务器创建商品订单。 2. 商户服务器按照商户模型调用Payment Kit服务端 直连商户预下单 或 平台类商户/服务商预下单 接口。 3. Payment Kit服务端返回预支付ID（prepayId）。 4. 商户服务端组建订单信息参数 orderStr 返回给商户客户端。 5. 商户客户端调用 requestPayment 接口拉起Payment Kit支付收银台。 6. Payment Kit客户端展示收银台。 7. 用户通过收银台完成支付，Payment Kit客户端会收到支付结果信息并请求Payment Kit服务端处理支付。 8. Payment Kit服务端成功受理支付订单并异步处理支付。 9. Payment Kit服务端将支付结果返回给Payment Kit客户端。 10. Payment Kit客户端展示支付结果页。 11. 用户关闭支付"
     },
     {
       "path": "references/商户提供的回调通知接口在Payment Kit生产环境需要加网络允许清单吗？如何验证提供的回调地址Payment Kit服务器访问是否正常？.md",
@@ -139,7 +139,7 @@
     {
       "path": "references/基于接口拉起方式.md",
       "title": "基于接口拉起方式",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e4/v3/UUFBNWZDQOiYDnwuVExrkA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111613Z&HW-CC-Expire=86400&HW-CC-Sign=5F9B2E796EBF6C06739E5703114A0F812898B9880CB9D7105B8CFE04C1CCD999) - 当前基于接口拉起方式拉起三方支付收银台支持的支付方式参见 PayMethod 。 - 基于接口拉起三方支付收银台起始版本为：6.0.0(20)。 1. 商户客户端根据Payment Kit接口返回的支付信息 PayResult (混合支付场景）/ PickerResult （纯外部支付场景），按照三方支付平台接入要求构建三方支付信息 payInfo 调用 ThirdPayClient.pay 接口拉起三方支付收银台。 拉起三方支付收银台示例代码如下： import { BusinessError } from '@kit.BasicServicesKit'; import { thirdPaymentService } from '@kit.Payme"
+      "snippet": "- 当前基于接口拉起方式拉起三方支付收银台支持的支付方式参见 PayMethod 。 - 基于接口拉起三方支付收银台起始版本为：6.0.0(20)。 1. 商户客户端根据Payment Kit接口返回的支付信息 PayResult (混合支付场景）/ PickerResult （纯外部支付场景），按照三方支付平台接入要求构建三方支付信息 payInfo 调用 ThirdPayClient.pay 接口拉起三方支付收银台。 拉起三方支付收银台示例代码如下： import { BusinessError } from '@kit.BasicServicesKit'; import { thirdPaymentService } from '@kit.PaymentKit'; import { common } from '@kit.AbilityKit'; export let thirdPayClient: thirdPaymentService.ThirdPayClient | undefined = undefined; @Entry @Component struct Index { context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext"
     },
     {
       "path": "references/如何联系运营机构或受理服务机构获取开发指引？.md",
@@ -149,27 +149,27 @@
     {
       "path": "references/实名信息验证_授权场景.md",
       "title": "实名信息验证/授权场景",
-      "snippet": "从5.1.1(19)版本开始，新增支持实名信息验证/授权场景。 例如应用/元服务登录、注册或账户认证等操作，开发者需要验证或获取用户实名信息时可接入实名信息验证/授权能力。 支持商户模型：不涉及 实名信息验证授权页面展示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d5/v3/kdE3aMlVSWyDzxiPulVLjA/zh-cn_image_0000002573975023.png?HW-CC-KV=V1&HW-CC-Date=20260421T111614Z&HW-CC-Expire=86400&HW-CC-Sign=EF9832DAC328935DB23C9CF675C1C822D482F52DB951EC7A1AAA0D1A5D8DDD73) #### 接入流程 华为支付实名信息验证授权接入流程如下： #### 业务流程 开发者通过接入Payment Kit实名信息验证授权能力，可以简便快捷地实现用户实名信息验证或获取用户授权后的实名信息（可二选一）。具体接入流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/22/v3/"
+      "snippet": "从5.1.1(19)版本开始，新增支持实名信息验证/授权场景。 例如应用/元服务登录、注册或账户认证等操作，开发者需要验证或获取用户实名信息时可接入实名信息验证/授权能力。 支持商户模型：不涉及 实名信息验证授权页面展示： #### 接入流程 华为支付实名信息验证授权接入流程如下： #### 业务流程 开发者通过接入Payment Kit实名信息验证授权能力，可以简便快捷地实现用户实名信息验证或获取用户授权后的实名信息（可二选一）。具体接入流程如下： #### 实名信息验证 1. 开发者客户端收集用户实名信息请求开发者服务端发起实名信息预验证。 2. 开发者服务端请求Payment Kit服务端 实名信息预验证 接口获取预验证ID（preVerifyId）。 3. Payment Kit服务端返回预验证ID给开发者服务端。 4. 开发者服务端返回预验证信息给开发者客户端。 5. 开发者客户端使用预验证ID调用 startRealNameVerification 接口拉起实名信息验证页面。 6. Payment Kit客户端展示验证信息。 7. 用户同意授权实名信息校验，Payment Kit客户端请求Payment Kit服务端处理校验。 8. Payment Kit服务端完成校验处理并返回校验结果给Payment Kit客户端展示给用户。 9. Payment Kit客户端同步返"
     },
     {
       "path": "references/平台类商户合单支付场景.md",
       "title": "平台类商户合单支付场景",
-      "snippet": "从4.1.0(11)版本开始，新增支持平台类商户合单支付场景。 用户在商户开发的APP应用/元服务上购买了一个旅行套餐，包含机票、保险、酒店等这几个不同的产品对应不同的收单商户，但用户是一次支付。平台类商户通过接入合单支付将多个不同商户的订单合到同一订单下发起支付。 支持商户模型：平台类商户 华为支付收银台合单支付展示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4b/v3/nsDoiQliTA-FbJoJl1ORBg/zh-cn_image_0000002543374782.png?HW-CC-KV=V1&HW-CC-Date=20260421T111611Z&HW-CC-Expire=86400&HW-CC-Sign=BAC02CFCEE5EB75ABA2C399F2952FD57690161DC1327F27F508427B5C15043E7) #### 业务流程 开发者通过接入Payment Kit合单支付，可以将多个子订单合并到同一个主订单里完成支付。具体接入流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2f/v3/"
+      "snippet": "从4.1.0(11)版本开始，新增支持平台类商户合单支付场景。 用户在商户开发的APP应用/元服务上购买了一个旅行套餐，包含机票、保险、酒店等这几个不同的产品对应不同的收单商户，但用户是一次支付。平台类商户通过接入合单支付将多个不同商户的订单合到同一订单下发起支付。 支持商户模型：平台类商户 华为支付收银台合单支付展示： #### 业务流程 开发者通过接入Payment Kit合单支付，可以将多个子订单合并到同一个主订单里完成支付。具体接入流程如下： 1. 商户客户端请求商户服务端创建合单支付订单。 2. 商户服务器通过调用Payment Kit服务端 平台类商户合单支付预下单 接口。 3. Payment Kit服务端返回预支付ID（prepayId）给商户服务端。 4. 商户服务端组建订单信息参数 orderStr 返回给客户端。 5. 商户客户端使用orderStr作为入参调用 requestPayment 接口拉起Payment Kit支付收银台。 6. Payment Kit客户端展示支付收银台，通过支付收银台可查看多个订单详情信息。 7. 用户在Payment Kit客户端收银台完成支付操作后。 8. Payment Kit服务端受理支付，异步处理支付订单。 9. Payment Kit服务端同步返回支付结果信息给Payment Kit客户端。 10. Payment "
     },
     {
       "path": "references/开通支付服务.md",
       "title": "开通支付服务",
-      "snippet": "请先参考“ 应用开发准备 ”完成基本准备工作及指纹配置，再继续进行以下开发活动。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a6/v3/k_qLhTnQSJmK9CPgzGKNEg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111609Z&HW-CC-Expire=86400&HW-CC-Sign=00ECC318561C4DFC085A7F673F970587B7045C8A6DB0C6A42F96CB46DE553BCD) 1. 后续接入涉及AppID绑定，仅限企业开发者接入。开发者注册后发起实名认证请选择 企业开发者实名认证 ，并且需要准备企业营业执照等必要材料。 2. 每个应用/元服务最多支持添加4个签名证书指纹。 3. **配置签名信息需选择手动签名** 。 #### 开通步骤 1. 登录 AppGallery Connect 网站，选择“开发与服务”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7c/v3/ISng3nsHR0OdjN_ROsoxug/zh-cn_"
+      "snippet": "请先参考“ 应用开发准备 ”完成基本准备工作及指纹配置，再继续进行以下开发活动。 1. 后续接入涉及AppID绑定，仅限企业开发者接入。开发者注册后发起实名认证请选择 企业开发者实名认证 ，并且需要准备企业营业执照等必要材料。 2. 每个应用/元服务最多支持添加4个签名证书指纹。 3. **配置签名信息需选择手动签名** 。 #### 开通步骤 1. 登录 AppGallery Connect 网站，选择“开发与服务”。 2. 在项目列表中找到项目（如未创建项目可点击添加项目先完成项目创建），在项目下的应用列表中选择需要开通Payment Kit的应用。 3. 在左侧导航栏选择“盈利 > 鸿蒙支付服务（可在‘全部功能’中搜索服务并固定到导航栏） > 支付服务（非虚拟类）> 立即开通”。 4. 如涉及商户入网，在服务开通后需要为商户号申请绑定AppID，详细参见 商户号绑定AppID （如未完成商户入网，可点击“申请支付商户号”先进行商户入网，详细介绍参考 商户入网 章节）。"
     },
     {
       "path": "references/引导用户绑卡场景.md",
       "title": "引导用户绑卡场景",
-      "snippet": "从5.0.5(17)版本开始，新增支持引导用户绑卡场景。 支持拉起绑卡页面，结合商户营销活动，有效引导用户完成绑卡操作。例如商户针对银行卡开展某营销活动，需要引导用户拉起绑卡页面完成银行卡绑定。 支持商户模型：直连商户、平台类商户、服务商 引导用户绑卡页面展示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/49/v3/m26E1OM3Qfmr8U4y1KmZcQ/zh-cn_image_0000002543215126.png?HW-CC-KV=V1&HW-CC-Date=20260421T111613Z&HW-CC-Expire=86400&HW-CC-Sign=CE473F2F3F826BB025767797E15BE8757232911E1FF613C0594100A40668A82F) #### 提供绑卡跳转应用信息 开发者需与华为支付业务侧沟通（合作咨询可 点击此处 ）后提供以下应用信息： #### 业务流程 开发者接入引导用户绑卡，具体接入流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2c/v3/PcukxhwNQI"
+      "snippet": "从5.0.5(17)版本开始，新增支持引导用户绑卡场景。 支持拉起绑卡页面，结合商户营销活动，有效引导用户完成绑卡操作。例如商户针对银行卡开展某营销活动，需要引导用户拉起绑卡页面完成银行卡绑定。 支持商户模型：直连商户、平台类商户、服务商 引导用户绑卡页面展示： #### 提供绑卡跳转应用信息 开发者需与华为支付业务侧沟通（合作咨询可 点击此处 ）后提供以下应用信息： #### 业务流程 开发者接入引导用户绑卡，具体接入流程如下： **场景1：用户取消绑卡** 1. 商户客户端调用 requestBindCard 接口拉起用户绑卡页面。 2. Payment Kit客户端展示绑卡页面，商户客户端可根据用户不同处理场景完成后续流程。 3. 用户返回或取消绑卡。 4. Payment Kit客户端返回商户客户端并将绑卡结果一并返回，商户客户端根据绑卡结果完成后续业务处理。 **场景2：用户完成绑卡** 1. 商户客户端调用 requestBindCard 接口拉起用户绑卡页面。 2. Payment Kit客户端展示绑卡页面，商户客户端可根据用户不同处理场景完成后续流程。 3. 用户通过绑卡页面完成绑卡操作，Payment Kit客户端会请求Payment Kit服务端处理绑卡。 4. Payment Kit服务端处理绑卡。 5. Payment Kit服务端将绑卡结果返回给Payme"
     },
     {
       "path": "references/找不到“支付服务（非虚拟类）”菜单或AppID关联授权的页面怎么处理？.md",
       "title": "找不到“支付服务（非虚拟类）”菜单或AppID关联授权的页面怎么处理？",
-      "snippet": "登录 AppGallery Connect 网站选择对应的项目后，在‘全部功能’中搜索“鸿蒙支付服务”并固定到菜单导航栏中。在“支付服务（非虚拟类）> 待关联商户号”选择对应的商户点击“授权”即可。可参考下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3d/v3/D59-t1vuRPupwlmttZ7Z3Q/zh-cn_image_0000002573855049.png?HW-CC-KV=V1&HW-CC-Date=20260421T111620Z&HW-CC-Expire=86400&HW-CC-Sign=C09A1D70CEB5A117C7CDF80B1D2FD05DE87D008AE4C7216E5FA2A804E74CA8C2)"
+      "snippet": "登录 AppGallery Connect 网站选择对应的项目后，在‘全部功能’中搜索“鸿蒙支付服务”并固定到菜单导航栏中。在“支付服务（非虚拟类）> 待关联商户号”选择对应的商户点击“授权”即可。可参考下图所示："
     },
     {
       "path": "references/拉起收银台无反应或报错？.md",
@@ -189,7 +189,7 @@
     {
       "path": "references/接入规范学习.md",
       "title": "接入规范学习",
-      "snippet": "为了确保用户获得良好的支付体验，Payment Kit制定了相关接入规范，请开发者遵照执行，具体要求（非强制性）如下： #### 支付方式呈现 1. 涉及支付公司名称，请统一使用： **花瓣支付（深圳）有限公司** 。 2. 涉及支付方式说明（如涉及根据系统语言环境做国际化，也请对该支付方式说明一并做处理），请统一使用： **华为支付（中文）** 、 **Huawei Pay（英文）** 。 3. 华为支付提供了支付图标设计规范，以此保证用户在使用华为支付时拥有一致的支付视觉体验，有关设计规范请参阅 华为支付设计规范 。 4. 华为支付logo资源可 在此下载 。 #### 支付体验要求 1. 建议在应用的订单页或支付页内直接拉起华为支付收银台，不建议跳转空白页拉起收银台。 2. 商户收银台展示数字人民币支付入口时，需与其他支付App在同一层级，建议不要隐藏数字人民币支付入口或满足一定条件后才在收银台页面展示。具体参考如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/31/v3/GN-EytTESGmpx-zrwIWscw/zh-cn_image_0000002573975001.png?HW-CC-KV=V1&HW-CC-Date=20260421T111"
+      "snippet": "为了确保用户获得良好的支付体验，Payment Kit制定了相关接入规范，请开发者遵照执行，具体要求（非强制性）如下： #### 支付方式呈现 1. 涉及支付公司名称，请统一使用： **花瓣支付（深圳）有限公司** 。 2. 涉及支付方式说明（如涉及根据系统语言环境做国际化，也请对该支付方式说明一并做处理），请统一使用： **华为支付（中文）** 、 **Huawei Pay（英文）** 。 3. 华为支付提供了支付图标设计规范，以此保证用户在使用华为支付时拥有一致的支付视觉体验，有关设计规范请参阅 华为支付设计规范 。 4. 华为支付logo资源可 在此下载 。 #### 支付体验要求 1. 建议在应用的订单页或支付页内直接拉起华为支付收银台，不建议跳转空白页拉起收银台。 2. 商户收银台展示数字人民币支付入口时，需与其他支付App在同一层级，建议不要隐藏数字人民币支付入口或满足一定条件后才在收银台页面展示。具体参考如下："
     },
     {
       "path": "references/接口请求响应“无效的签名”应该如何排查？.md",
@@ -199,7 +199,7 @@
     {
       "path": "references/支付并签约场景.md",
       "title": "支付并签约场景",
-      "snippet": "从4.1.0(11)版本开始，新增支持支付并签约场景。 用户在商户APP应用/元服务选购完不同的商品确认订单后，跳转至用户支付并签约确认页面，用户完成支付并签约后，后续再次购买商品时，商户可以直接发起代扣，减少用户拉起收银台、输入支付密码等相关操作。 支持商户模型：直连商户、服务商 华为支付支付并签约页面展示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6c/v3/l7T6Z0D-S7inpkCDIHgDbA/zh-cn_image_0000002573855035.png?HW-CC-KV=V1&HW-CC-Date=20260421T111611Z&HW-CC-Expire=86400&HW-CC-Sign=D57FF9CD256B81DC266D336B7501D7F641E283052D06407F8C6902CFF7D522F9) #### 业务流程 开发者通过接入Payment Kit 提供的支付并签约能力，可以让用户在支付完成后快速与商户建立签约代扣的关系。具体接入流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4"
+      "snippet": "从4.1.0(11)版本开始，新增支持支付并签约场景。 用户在商户APP应用/元服务选购完不同的商品确认订单后，跳转至用户支付并签约确认页面，用户完成支付并签约后，后续再次购买商品时，商户可以直接发起代扣，减少用户拉起收银台、输入支付密码等相关操作。 支持商户模型：直连商户、服务商 华为支付支付并签约页面展示： #### 业务流程 开发者通过接入Payment Kit 提供的支付并签约能力，可以让用户在支付完成后快速与商户建立签约代扣的关系。具体接入流程如下： 1. 商户客户端请求商户服务端创建商品订单。 2. 商户服务端调用Payment Kit服务端 直连商户预下单 或 服务商预下单 接口。 3. Payment Kit服务端返回预支付ID（prepayId）给商户服务端。 4. 商户服务端组建订单信息参数 orderStr 返回给商户客户端。 5. 商户客户端使用orderStr调用 requestPayment 接口拉起Payment Kit支付收银台。 6. Payment Kit客户端展示支付收银台。 7. 用户通过收银台完成支付并签约。 8. Payment Kit服务端处理支付并同步返回支付受理成功结果给Payment Kit客户端。 9. Payment Kit异步处理支付完成并回调支付结果给商户服务端（支付失败场景不会有支付结果回调通知）。商户服务端需要使用 S"
     },
     {
       "path": "references/支付成功后没有收到回调？.md",
@@ -219,12 +219,12 @@
     {
       "path": "references/收银台设计规范.md",
       "title": "收银台设计规范",
-      "snippet": "开发者可在应用项目中实现支付收银台。应用项目由配置文件（module.json5）、页面代码（ets文件）以及资源文件（图片、字符串等）组成，实现的收银台包含以下功能：展示商户信息、金额、支付方式列表（用户选择的支付方式会变成选中状态）和支付按钮。 实现效果如下（具体实现可参见 示例代码 ）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1b/v3/SQ3O_IzkQ0eQsjqYJU36iw/zh-cn_image_0000002543374768.png?HW-CC-KV=V1&HW-CC-Date=20260421T111609Z&HW-CC-Expire=86400&HW-CC-Sign=CCC0B5A096CA82948B805D11738B9B96A5BB12B6B6A6378852233D13CE072160) #### 定义收银台页面容器 定义收银台页面容器用于展示支付收银台。UX规范要求以半模态弹窗展示收银台，使用说明可参考 半模态转场 。 半模态容器CashierBindSheetContainer.ets示例代码如下： import { CashierComponent } from './CashierComponent'; @Comp"
+      "snippet": "开发者可在应用项目中实现支付收银台。应用项目由配置文件（module.json5）、页面代码（ets文件）以及资源文件（图片、字符串等）组成，实现的收银台包含以下功能：展示商户信息、金额、支付方式列表（用户选择的支付方式会变成选中状态）和支付按钮。 实现效果如下（具体实现可参见 示例代码 ）。 #### 定义收银台页面容器 定义收银台页面容器用于展示支付收银台。UX规范要求以半模态弹窗展示收银台，使用说明可参考 半模态转场 。 半模态容器CashierBindSheetContainer.ets示例代码如下： import { CashierComponent } from './CashierComponent'; @Component export struct CashierBindSheetContainer { @Builder cashierBuilder() { Column() { CashierComponent(); } } build() { Column() { Column() { }.bindSheet(true, this.cashierBuilder(), { title: () => {}, height: SheetSize.FIT_CONTENT, showClose: true, enableOutsideInteractive: false"
     },
     {
       "path": "references/数字人民币支付场景.md",
       "title": "数字人民币支付场景",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cc/v3/1GeEbBvaSUandHpxkoB5XQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111612Z&HW-CC-Expire=86400&HW-CC-Sign=97DFADF2B45048B3EE9E52AD66E477C3D72679ED82F50E6A16F27A855280ADE1) 1. 用户手机端rom版本过低可能导致应用闪退，建议开发者对开放接口抛出的异常错误进行捕获并进行处理。 2. 华为钱包最低版本要求为 **1.0.8.305** 。 #### 场景介绍 从5.0.1(13)版本开始，新增支持数字人民币支付场景。 例如用户需要通过数字钱包充值话费，此时用户可打开商户APP应用，选好充值金额发起支付，商户通过接入数字人民币支付服务，拉起数字人民币收银台完成订单支付。 支持商户模型： 运营机构或受理服务机构入网的商户 数字人民币收银台展示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ca/v3/fZ8Ou"
+      "snippet": "1. 用户手机端rom版本过低可能导致应用闪退，建议开发者对开放接口抛出的异常错误进行捕获并进行处理。 2. 华为钱包最低版本要求为 **1.0.8.305** 。 #### 场景介绍 从5.0.1(13)版本开始，新增支持数字人民币支付场景。 例如用户需要通过数字钱包充值话费，此时用户可打开商户APP应用，选好充值金额发起支付，商户通过接入数字人民币支付服务，拉起数字人民币收银台完成订单支付。 支持商户模型： 运营机构或受理服务机构入网的商户 数字人民币收银台展示： #### 接入流程 数字人民币支付接入流程如下： #### 业务流程 开发者接入数字人民币支付服务，可以快速实现应用的数字人民币支付能力。 1. 商户客户端请求商户服务器创建商品订单。 2. 商户服务器按照商户模式（运营机构商户或受理服务机构商户）调用运营机构或受理服务机构提供的下单接口到数字人民币服务端下单，接口详情请参照商户合作的 运营机构或受理服务机构提供的开发指引 。 3. 数字人民币服务端返回订单加密信息。 4. 商户服务端组建订单信息参数 orderInfo 返回给商户客户端。 5. 商户客户端调用 requestEcnyPayment 接口拉起Payment Kit客户端数字人民币收银台。 6. Payment Kit客户端展示数字人民币支付收银台。 7. 用户通过收银台选择数字人民币钱包完成支付，Pa"
     },
     {
       "path": "references/服务与支持.md",
@@ -234,12 +234,12 @@
     {
       "path": "references/沙盒环境验证.md",
       "title": "沙盒环境验证",
-      "snippet": "华为支付提供沙盒环境，开发者无需真实完成商户入网即可开始调试华为支付接入，模拟真实环境下华为支付交易过程，提前介入方案设计和开发联调，提升接入效率。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e5/v3/BANFvKMJQiqfY8PIqkD6fQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111614Z&HW-CC-Expire=86400&HW-CC-Sign=EB59280137E5DAFC667F6AB2420E78DA31E8D6925C66CBC8EE13D000AEEB3993) - 沙盒环境当前仅支持部分能力及接口调试，具体可参见 沙盒环境接口请求及支持维度说明 。 - 使用沙盒环境验证支付场景，支付成功不会产生真实扣款。 - 当前沙盒环境创建的订单与真实环境订单暂无明确的沙盒验证相关标识，开发者应自行将沙盒验证订单与真实订单做区分（如在商户订单号中添加沙盒标识、预下单通过payload字段添加标识等）。 - 沙盒环境支付订单暂不支持分账，生成、查询及下载账单数据。 #### 沙盒环境调试配置 #### 获取沙盒环境配置 在沙盒验证前，需要生成沙盒环境配置信息（如商户号、证书ID、用"
+      "snippet": "华为支付提供沙盒环境，开发者无需真实完成商户入网即可开始调试华为支付接入，模拟真实环境下华为支付交易过程，提前介入方案设计和开发联调，提升接入效率。 - 沙盒环境当前仅支持部分能力及接口调试，具体可参见 沙盒环境接口请求及支持维度说明 。 - 使用沙盒环境验证支付场景，支付成功不会产生真实扣款。 - 当前沙盒环境创建的订单与真实环境订单暂无明确的沙盒验证相关标识，开发者应自行将沙盒验证订单与真实订单做区分（如在商户订单号中添加沙盒标识、预下单通过payload字段添加标识等）。 - 沙盒环境支付订单暂不支持分账，生成、查询及下载账单数据。 #### 沙盒环境调试配置 #### 获取沙盒环境配置 在沙盒验证前，需要生成沙盒环境配置信息（如商户号、证书ID、用户账号、支付密码等）进行调试，生成沙盒环境配置暂不支持开发者生成，请联系华为工程师获取，相关咨询可 点击此处 或者通过 在线工单系统 与我们联系。 生成沙盒环境配置信息需提供如下信息： #### 构建debug签名应用 开发者应用为debug模式，应用相关测试场景才能正常进入沙盒环境。 构建debug签名应用步骤如下： 1. 参见 手动签名方式调试HarmonyOS应用/元服务 ，申请应用调试证书->注册调试设备->申请调试Profile。 2. 参见 配置签名信息 ，在DevEco Studio侧配置签名信息。 3. 在 App"
     },
     {
       "path": "references/混合支付场景.md",
       "title": "混合支付场景",
-      "snippet": "从5.0.2(14)版本开始，新增支持通用收银台混合支付场景。 用户在开发者的应用/元服务中选购完商品，点击确认支付，应用/元服务拉起通用收银台支付时，用户可以在通用收银台支付方式中选择华为支付方式或第三方支付方式完成商品订单的支付。 支持商户模型：直连商户、平台类商户、服务商 通用收银台混合支付页面展示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4f/v3/q97SQZ2xRRaHplUtym-TXw/zh-cn_image_0000002543215124.png?HW-CC-KV=V1&HW-CC-Date=20260421T111612Z&HW-CC-Expire=86400&HW-CC-Sign=CFD62D3F3E98645EE49A19989B5BE42C04D8D711BB1570FC8BF30A8F7D57B311) #### 接入流程 华为支付通用收银台混合支付接入流程如下： #### 业务流程 混合支付模式，收银台上用户可选择华为支付或三方支付方式支付。具体接入流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_"
+      "snippet": "从5.0.2(14)版本开始，新增支持通用收银台混合支付场景。 用户在开发者的应用/元服务中选购完商品，点击确认支付，应用/元服务拉起通用收银台支付时，用户可以在通用收银台支付方式中选择华为支付方式或第三方支付方式完成商品订单的支付。 支持商户模型：直连商户、平台类商户、服务商 通用收银台混合支付页面展示： #### 接入流程 华为支付通用收银台混合支付接入流程如下： #### 业务流程 混合支付模式，收银台上用户可选择华为支付或三方支付方式支付。具体接入流程如下： 1. 商户客户端请求商户服务器创建订单。 2. 商户服务器按照商户模型调用Payment Kit服务端 直连商户预下单 或 平台类商户/服务商预下单 接口。 3. Payment Kit服务端返回预支付ID（prepayId）。 4. 商户服务端构建 **订单支付信息** orderStr 返回给商户客户端。 5. 商户客户端调用 requestPayment 接口拉起Payment Kit通用收银台。 6. Payment Kit客户端展示含华为支付方式的通用收银台，根据用户所选择的不同支付方式完成支付操作。 #### 选择华为支付场景 1. 用户选择华为支付方式支付，Payment Kit客户端向Payment Kit服务端发起支付请求。 2. Payment Kit服务端处理支付操作。 3. Payment Ki"
     },
     {
       "path": "references/端侧应用配置.md",
@@ -249,12 +249,12 @@
     {
       "path": "references/签约代扣场景.md",
       "title": "签约代扣场景",
-      "snippet": "从4.1.0(11)版本开始，新增支持签约代扣场景。 用户在商户APP应用/元服务开通会员一段时间后，想要每个月自动续费而不用自己每个月都重新开通，商户可提供自动续费选项，用户主动选择开启，商户通过请求预签约接口发起签约，待签约生效后，商家可以按照协议中的时间，会员到期后直接发起免密代扣请求完成扣款续费，无需用户每个月都进行开通会员操作。 支持商户模型：直连商户、平台类商户、服务商 华为支付签约页面展示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3b/v3/ha7OJVs9Qt-In9laA7i-Xw/zh-cn_image_0000002543374784.png?HW-CC-KV=V1&HW-CC-Date=20260421T111612Z&HW-CC-Expire=86400&HW-CC-Sign=994FE20B0674755E7016EA1C164B418889007D5B89E880E5D083FD662A50B195) #### 业务流程 开发者通过接入Payment Kit 签约代扣能力，在获取用户签约授权的前提下，可以向用户的华为支付账户发起支付扣款，无需用户输入支付密码就可以优先使用签约的支付方式完成扣款。具体接入流程如下： ![](h"
+      "snippet": "从4.1.0(11)版本开始，新增支持签约代扣场景。 用户在商户APP应用/元服务开通会员一段时间后，想要每个月自动续费而不用自己每个月都重新开通，商户可提供自动续费选项，用户主动选择开启，商户通过请求预签约接口发起签约，待签约生效后，商家可以按照协议中的时间，会员到期后直接发起免密代扣请求完成扣款续费，无需用户每个月都进行开通会员操作。 支持商户模型：直连商户、平台类商户、服务商 华为支付签约页面展示： #### 业务流程 开发者通过接入Payment Kit 签约代扣能力，在获取用户签约授权的前提下，可以向用户的华为支付账户发起支付扣款，无需用户输入支付密码就可以优先使用签约的支付方式完成扣款。具体接入流程如下： 1. 商户客户端请求商户服务端创建签约订单。 2. 商户服务端按照商户模型调用Payment Kit服务端 直连商户预签约 或 服务商预签约 接口。 3. Payment Kit服务端返回预签约号（preSignNo）给商户服务端。 4. 商户服务端构建 contractStr 参数返回给商户客户端。 5. 商户客户端通过contractStr调用 requestContract 接口拉起Payment Kit签约收银台。 6. Payment Kit客户端通过签约收银台展示签约相关信息。 7. 用户在Payment Kit客户端签约收银台完成签约操作。 8. Pay"
     },
     {
       "path": "references/纯外部支付场景.md",
       "title": "纯外部支付场景",
-      "snippet": "从5.0.2(14)版本开始，新增支持通用收银台纯外部支付场景。 用户在开发者的应用/元服务中选购完商品，点击下单购买，应用/元服务拉起通用收银台支付仅可以选择三方支付方式完成商品订单的支付。 支持商户模型：不涉及华为支付商户入网。 通用收银台纯外部支付页面展示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e/v3/H57noFvBQySPQjCsKFh1LA/zh-cn_image_0000002573975021.png?HW-CC-KV=V1&HW-CC-Date=20260421T111612Z&HW-CC-Expire=86400&HW-CC-Sign=347D8471E4674229EDBDF3EF200E94DCE5BD9A3A9433CE8187352CBE06AE30DB) #### 接入流程 华为支付通用收银台纯外部支付接入流程如下： #### 业务流程 纯外部支付模式下，收银台仅支持第三方平台支付，用户无法使用华为支付。具体接入流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2b/v3/oexGUDX-T0"
+      "snippet": "从5.0.2(14)版本开始，新增支持通用收银台纯外部支付场景。 用户在开发者的应用/元服务中选购完商品，点击下单购买，应用/元服务拉起通用收银台支付仅可以选择三方支付方式完成商品订单的支付。 支持商户模型：不涉及华为支付商户入网。 通用收银台纯外部支付页面展示： #### 接入流程 华为支付通用收银台纯外部支付接入流程如下： #### 业务流程 纯外部支付模式下，收银台仅支持第三方平台支付，用户无法使用华为支付。具体接入流程如下： 1. 商户客户端根据商户已开通的支付模式构建 PaymentInfo 参数调用 cashierPicker 接口拉起Payment Kit通用收银台。 2. Payment Kit通用收银台展示可用的三方支付方式，用户选择三方支付方式并确认支付。 3. Payment Kit客户端将用户在通用收银台选择支付方式并确认支付后的支付信息 PickerResult 返回给商户客户端。 **基于URL跳转方式拉起收银台：** 1. 商户客户端将支付方式通知给商户服务端。 2. 商户服务端调用三方支付的接口获取支付信息。 3. 三方支付服务端将支付跳转链接信息返回给商户服务端。 4. 商户服务端将支付跳转链接信息返回给商户客户端。 5. 商户客户端构建 **订单支付跳转信息** orderStr 请求Payment Kit的 requestPayment 接口跳"
     },
     {
       "path": "references/请求头PayMercAuth中的callerId和请求体中的mercNo或者combineMercNo是什么关系？.md",
@@ -269,17 +269,17 @@
     {
       "path": "references/身份验证服务调用记录查看.md",
       "title": "身份验证服务调用记录查看",
-      "snippet": "开发者接入用户身份验证服务后，可登录 AppGallery Connect ，在“鸿蒙支付服务 > 身份验证服务”菜单的“实名信息验证服务”、“人脸核身实人验证服务”页签下的“调用记录”查看（近7日）用户信息验证、授权相关调用记录。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3f/v3/r5HKmZLrRre494DkHQPoZg/zh-cn_image_0000002573975025.png?HW-CC-KV=V1&HW-CC-Date=20260421T111614Z&HW-CC-Expire=86400&HW-CC-Sign=3F330ED1E33F0D4D99100D4B339B584F49A3656807173FACFBFF2B2EBDA96E4C)"
+      "snippet": "开发者接入用户身份验证服务后，可登录 AppGallery Connect ，在“鸿蒙支付服务 > 身份验证服务”菜单的“实名信息验证服务”、“人脸核身实人验证服务”页签下的“调用记录”查看（近7日）用户信息验证、授权相关调用记录。"
     },
     {
       "path": "references/选券场景.md",
       "title": "选券场景",
-      "snippet": "从6.1.0(23)版本开始，新增支持选券场景。 当用户在商家服务选好商品后进入订单结算页，可选券组件切换优惠券，让用户选择可用平台券进行下单。 如下图所示，首先商户应用会调用云侧接口选择1张10元优惠券，然后点击优惠券弹出选券组件，选择1张6元优惠券，最后商户应用将优惠券渲染成6元。 支持商户模型：直连商户、平台类商户、服务商 选券场景效果如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ff/v3/OMBjodfZSPeq6qCY7b2hrg/zh-cn_image_0000002573855047.png?HW-CC-KV=V1&HW-CC-Date=20260421T111615Z&HW-CC-Expire=86400&HW-CC-Sign=9717C9E4F3C394DA052693B1A5BA281CBC5F0C8025F50443A7D51ED5666CA6B9) #### 接入流程 #### 业务流程 关于选券场景的业务流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a1/v3/rhJ-GxaYSJmywLLc2"
+      "snippet": "从6.1.0(23)版本开始，新增支持选券场景。 当用户在商家服务选好商品后进入订单结算页，可选券组件切换优惠券，让用户选择可用平台券进行下单。 如下图所示，首先商户应用会调用云侧接口选择1张10元优惠券，然后点击优惠券弹出选券组件，选择1张6元优惠券，最后商户应用将优惠券渲染成6元。 支持商户模型：直连商户、平台类商户、服务商 选券场景效果如下： #### 接入流程 #### 业务流程 关于选券场景的业务流程如下： 1. 用户选好商品后进入商家服务结算页。 2. 商户客户端请求商户服务端查询用户可用券。 3. 商户服务端请求华为支付服务端 查询用户可用券 。 4. 华为支付服务端返回用户可用券给商户服务端。 5. 商户服务端给商户客户端返回券信息。 6. 商户客户端展示优惠券列表中的第1张券。 7. 用户点击优惠券进行选券。 8. 商户客户端根据订单信息请求服务端，服务端参考 签名规则 构造 OrderContext 签名信息。 9. 商户服务端返回签名信息。 10. 客户端根据签名信息组装好拉起选券组件的请求体，调用Payment Kit客户端 startUserChooseCouponsPopup 接口拉起选券组件。 11. Payment Kit客户端收到调用后，判断用户是否已签署过华为支付隐私协议，如果没签署则不走后续流程。 12. 向服务端查询用户可用券。 13. Pa"
     },
     {
       "path": "references/部分提供通知回调的API接口中的callbackUrl参数是否可以自定义？回调通知的报文是否支持商户自定义？.md",
       "title": "部分提供通知回调的API接口中的callbackUrl参数是否可以自定义？回调通知的报文是否支持商户自定义？",
-      "snippet": "1. API接口callbackUrl参数是可以由商户自行定义的HTTPS协议的有效接口。如：https://www.xxxxxx.com/hw/pay/callback。 2. 回调通知报文暂时无法由商户自定义。"
+      "snippet": "1. API接口callbackUrl参数是可以由商户自行定义的HTTPS协议的有效接口。如： 2. 回调通知报文暂时无法由商户自定义。"
     },
     {
       "path": "references/预下单一段时间后再支付，能否有接口查到prepayId？.md",
@@ -294,7 +294,7 @@
     {
       "path": "references/领券场景.md",
       "title": "领券场景",
-      "snippet": "从6.1.0(23)版本开始，新增支持领券场景。 如图1所示，当存在领券活动并且用户可参与时，在应用底部展示活动“领取”按钮，同时也支持用户关闭领券入口。用户点击“领取”按钮后，展示图2中的领券组件。 如图2所示，在领券组件中，用户可点击“领取”按钮领券，领券成功时组件会将按钮刷成“去使用”。 如图3所示，用户点击“去使用”按钮后商户可跳转至商品选择页。 支持商户模型：直连商户、平台类商户、服务商 领券场景展示效果如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bb/v3/9TxPc-TiRxKQRYWlo-w3ZA/zh-cn_image_0000002543374794.png?HW-CC-KV=V1&HW-CC-Date=20260421T111615Z&HW-CC-Expire=86400&HW-CC-Sign=B19776E5030767C90AACAD0E842F0F966D79A488CDC48B6FB106561659EAEEB6) #### 接入流程 #### 业务流程 关于领券场景的业务流程如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAllianc"
+      "snippet": "从6.1.0(23)版本开始，新增支持领券场景。 如图1所示，当存在领券活动并且用户可参与时，在应用底部展示活动“领取”按钮，同时也支持用户关闭领券入口。用户点击“领取”按钮后，展示图2中的领券组件。 如图2所示，在领券组件中，用户可点击“领取”按钮领券，领券成功时组件会将按钮刷成“去使用”。 如图3所示，用户点击“去使用”按钮后商户可跳转至商品选择页。 支持商户模型：直连商户、平台类商户、服务商 领券场景展示效果如下： #### 接入流程 #### 业务流程 关于领券场景的业务流程如下： 1. 用户进入商户服务。 2. 商户客户端调用Payment Kit客户端的 startPromotionEntryDialog 拉起活动入口组件。 3. Payment Kit客户端判断是否已签署华为支付隐私协议，如果没签署过，后续流程将会结束，需要用户自行签署华为支付隐私协议。 4. Payment Kit客户端向服务端查询活动信息。 5. Payment Kit服务端根据用户信息查询可参与的活动并返回活动信息给Payment Kit客户端。 6. Payment Kit客户端根据活动信息展示活动入口组件。 7. 用户点击活动入口组件中的“领取”按钮。 8. Payment Kit客户端向服务端查询营销信息。 9. Payment Kit服务端返回营销信息。 10. Payment Kit客"
     },
     {
       "path": "references/（可选）数字人民币接入准备.md",
@@ -304,12 +304,12 @@
     {
       "path": "references/（可选）特定场景配置操作.md",
       "title": "（可选）特定场景配置操作",
-      "snippet": "如涉及以下场景，需提前完成相关产品的开通或配置操作。如不涉及，请直接跳转 下一章节 。 #### 场景一：产品开通操作 部分支付场景接入涉及产品开通，未开通产品直接接入，商户请求华为支付开放的API接口时可能会导致“商户未找到对应的产品示例”、“不支持的操作”等异常响应。开通产品需商户侧与华为支付侧沟通（合作咨询可 点击此处 ）后申请开通对应产品。 涉及产品开通的支付场景如下： - 平台类商户合单支付场景 - 支付并签约场景 - 签约代扣场景 - 通用收银台支付相关场景 涉及商户：直连商户、服务商、平台类商户 处理人：商户产品、商户BD等 #### 场景二：涉及结算账单下载 如需要生成及下载账单，需商户在 华为支付商户平台 入网时设置的管理员先在“ 华为支付商户平台 > 商户中心 > 产品功能 > 功能设置”中开启“账单接口获取开关”，开启后 **次日开始生成** 前一日的账单。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8b/v3/ghP0ag3kTbGN3mapxE5Abw/zh-cn_image_0000002543374770.png?HW-CC-KV=V1&HW-CC-Date=20260421T111609Z&HW-CC-Expire=86400"
+      "snippet": "如涉及以下场景，需提前完成相关产品的开通或配置操作。如不涉及，请直接跳转 下一章节 。 #### 场景一：产品开通操作 部分支付场景接入涉及产品开通，未开通产品直接接入，商户请求华为支付开放的API接口时可能会导致“商户未找到对应的产品示例”、“不支持的操作”等异常响应。开通产品需商户侧与华为支付侧沟通（合作咨询可 点击此处 ）后申请开通对应产品。 涉及产品开通的支付场景如下： - 平台类商户合单支付场景 - 支付并签约场景 - 签约代扣场景 - 通用收银台支付相关场景 涉及商户：直连商户、服务商、平台类商户 处理人：商户产品、商户BD等 #### 场景二：涉及结算账单下载 如需要生成及下载账单，需商户在 华为支付商户平台 入网时设置的管理员先在“ 华为支付商户平台 > 商户中心 > 产品功能 > 功能设置”中开启“账单接口获取开关”，开启后 **次日开始生成** 前一日的账单。 涉及商户：直连商户、服务商、平台类商户 处理人：商户在 华为支付商户平台 设置的超级管理员 #### 场景三：服务商代特约商户发起退款 服务商商户模型接入，特约商户需要发起退款，涉及 **服务商代特约商户发起退款** ，需要服务商在 华为支付商户平台 上 申请API退款授权 完成特约商户退款授权操作。 涉及商户：服务商 处理人：商户在 华为支付商户平台 设置的超级管理员 #### 场景四：设置支付账户留存"
     },
     {
       "path": "references/（可选）用户身份验证服务接入准备.md",
       "title": "（可选）用户身份验证服务接入准备",
-      "snippet": "如不涉及身份验证服务接入，可跳过该章节。 #### 开启用户身份验证服务权限开关 开发者可登录 AppGallery Connect ，在“项目设置 > 开放能力管理”的“鸿蒙支付服务”中开启身份验证服务相关权限开关。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/38/v3/7MpKad_6SGyoWymacFYwUA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111610Z&HW-CC-Expire=86400&HW-CC-Sign=FAA910F114D38CD8B1873094F29C8F1AB652252D84F5F7A7DFE5B3F0330510F5) 开启身份验证服务相关权限开关时，开发者需签署一份“开发者协议”，开发者同意协议并提交申请资料后需要等待审核（审核周期一般在1-3个工作日）通过后才能使用相关服务。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b0/v3/rex-go3KQpi_n8AGs9Yk6A/zh-cn_image_000000257397501"
+      "snippet": "如不涉及身份验证服务接入，可跳过该章节。 #### 开启用户身份验证服务权限开关 开发者可登录 AppGallery Connect ，在“项目设置 > 开放能力管理”的“鸿蒙支付服务”中开启身份验证服务相关权限开关。 开启身份验证服务相关权限开关时，开发者需签署一份“开发者协议”，开发者同意协议并提交申请资料后需要等待审核（审核周期一般在1-3个工作日）通过后才能使用相关服务。 #### 上传开发者公钥及下载华为公钥 开发者可登录 AppGallery Connect ，在“鸿蒙支付服务 > 身份验证服务”菜单中的“公钥管理”页签下完成开发者证书的上传以及华为公钥证书下载。 证书使用如图所示： 证书说明如下： #### SM2公私钥对生成示例代码参考 - 只支持ASN.1格式的SM2公私钥对（以下示例代码为服务端生成示例）。如需在应用端生成ASN.1格式SM2公私钥对（公钥91字节，私钥51字节）可参考： 1. 随机生成非对称密钥对(ArkTS)（应用端生成的公私钥对可能无法在服务端使用）。 2. 参考数据编码格式差异将生成的秘钥对转成16进制hex格式。 - 生成的SM2公私钥对，还请先自测验证加解密是否正常，正常后再正式对外使用，避免生成错误的公私钥对，阻塞后续业务进度。 import org.bouncycastle.jce.provider.BouncyCastlePro"
     }
   ]
 }

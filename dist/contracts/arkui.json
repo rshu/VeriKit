@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:11:39.296Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -63,18 +64,18 @@
       "导航结构或页面路由信息 / navigation structure or page routing information"
     ],
     "outputs": [
-      "Kit简介与概述",
-      "状态管理V2（装饰器）",
-      "状态管理V1（装饰器）",
-      "全局状态管理",
-      "状态管理框架与迁移",
-      "状态管理工具接口",
-      "自定义构建函数与样式",
-      "Navigation路由",
-      "渲染控制",
-      "布局",
-      "列表与网格",
-      "组件 - 按钮、文本、输入"
+      "ArkTS声明式页面与组件树 / ArkTS declarative pages and component tree",
+      "标准UI组件实例（Button、Text、TextInput、Image等） / Standard UI component instances (Button, Text, TextInput, Image, etc.)",
+      "布局与容器视图（Row、Column、Stack、Flex、List、Grid、WaterFlow等） / Layout and container views (Row, Column, Stack, Flex, List, Grid, WaterFlow, etc.)",
+      "自定义组件实例（@Component、@Builder构建的复用UI） / Custom component instances (reusable UI built with @Component and @Builder)",
+      "Navigation页面栈与NavDestination页面 / Navigation page stack and NavDestination pages",
+      "状态驱动的UI刷新结果（@State、@Local、@Link等状态变更后的界面更新） / State-driven UI update results (UI updates after @State, @Local, @Link, etc. changes)",
+      "动画与转场效果（属性动画、帧动画、页面转场、弹簧动画等） / Animation and transition effects (property animation, frame animation, page transition, spring animation, etc.)",
+      "手势、触摸、鼠标、键盘与拖拽事件回调数据 / Gesture, touch, mouse, keyboard, and drag event callback data",
+      "Canvas绘制内容与自定义绘制结果 / Canvas drawing content and custom drawing output",
+      "自定义节点对象（FrameNode、BuilderNode、RenderNode） / Custom node objects (FrameNode, BuilderNode, RenderNode)",
+      "自定义修改器对象（DrawModifier、AttributeModifier） / Custom modifier objects (DrawModifier, AttributeModifier)",
+      "通过NDK创建的原生UI节点和界面内容 / Native UI nodes and UI content created through NDK"
     ],
     "postconditions": [
       {

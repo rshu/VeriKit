@@ -3,7 +3,7 @@
   "skill": "ui-design-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.224Z"
+    "at": "2026-05-21T03:47:44.784Z"
   },
   "references": [
     {
@@ -19,17 +19,17 @@
     {
       "path": "references/侧边栏菜单样式.md",
       "title": "侧边栏菜单样式",
-      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置侧边栏菜单样式。 HdsSideMenu 提供一种菜单栏样式组件。设置侧边栏对应的一级菜单和二级菜单，并显示其新消息数量。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9e/v3/d6ReJwKVRgmzq3mhiSf_bA/zh-cn_image_0000002543214372.png?HW-CC-KV=V1&HW-CC-Date=20260421T111024Z&HW-CC-Expire=86400&HW-CC-Sign=815EB64789ED319296122D1D61DE9D097EAD168A31B8C4FCF0F380EB29686196) #### 开发步骤 1. 导入相关模块。 import { HdsSideMenu, HdsSideMenuMainItem, HdsSideMenuSubItem, HdsSideMenuBadgeParam, HdsSideBar } from '@kit.UIDesignKit'; import { SymbolGlyphModifier } from '@kit.ArkUI'; 2. 设置对应的一级菜单和二级菜单，并显示其新消息数量。 @Entr"
+      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置侧边栏菜单样式。 HdsSideMenu 提供一种菜单栏样式组件。设置侧边栏对应的一级菜单和二级菜单，并显示其新消息数量。 #### 开发步骤 1. 导入相关模块。 import { HdsSideMenu, HdsSideMenuMainItem, HdsSideMenuSubItem, HdsSideMenuBadgeParam, HdsSideBar } from '@kit.UIDesignKit'; import { SymbolGlyphModifier } from '@kit.ArkUI'; 2. 设置对应的一级菜单和二级菜单，并显示其新消息数量。 @Entry @ComponentV2 struct Index { @Local showControlButton: boolean = true; @Local sideBarMask: boolean = false; @Local autoHide: boolean = true; @Local barStateTypeText: string = \"Select BarState\"; @Local widthIndex: number = 0; @Local badgeNumber: HdsSideMenuBadgeParam = { count: 50 "
     },
     {
       "path": "references/半模态样式.md",
       "title": "半模态样式",
-      "snippet": "从6.0.0(20) Beta1版本开始，导航组件新增支持半模态样式和半模态样式下的标题栏模糊。 用于半模态弹窗中使用导航组件场景。通过设置 HdsNavigationTitleMode 为MODAL可以实现标题栏半模态样式及动态模糊。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5e/v3/H_Mn51wxRcu08bIBi7-AyQ/zh-cn_image_0000002573854283.png?HW-CC-KV=V1&HW-CC-Date=20260421T111023Z&HW-CC-Expire=86400&HW-CC-Sign=907157EC897A5580D57968B68611CEAC983179A268EBE0F8E31D7D475B940B20) #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsNavigationAttribute。具体请参考HdsNavigation的导入模块说明。 import { HdsNavigation, HdsNavigationTitleMode, HdsNavigationAttribute } from '@kit.UIDesignKit'; 2. 创建一"
+      "snippet": "从6.0.0(20) Beta1版本开始，导航组件新增支持半模态样式和半模态样式下的标题栏模糊。 用于半模态弹窗中使用导航组件场景。通过设置 HdsNavigationTitleMode 为MODAL可以实现标题栏半模态样式及动态模糊。 #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsNavigationAttribute。具体请参考HdsNavigation的导入模块说明。 import { HdsNavigation, HdsNavigationTitleMode, HdsNavigationAttribute } from '@kit.UIDesignKit'; 2. 创建一级导航组件，通过设置titleMode属性为HdsNavigationTitleMode.MODAL实现标题栏半模态样式。 @Entry @Component struct Index { build() { HdsNavigation() { // 创建HdsNavigation组件 } .titleBar({ content: { title: {mainTitle: 'MainTitle', subTitle: 'SubTitle'}, } }) .titleMode(HdsNavigationTitleMode.MODAL) // 设置HdsNavi"
     },
     {
       "path": "references/单层图标处理.md",
       "title": "单层图标处理",
-      "snippet": "从5.0.0(12)版本开始， Hds支持单层图标处理能力。 适用于图标为单层资源，且图标展示风格要与华为HarmonyOS Design System设计风格一致的应用场景，典型应用场景可参考分层图标 场景介绍 。 #### 约束条件 单层图标处理支持Phone、Tablet、PC/2in1设备，并且从5.1.1(19)版本开始，新增支持TV设备。 #### 开发步骤 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d7/v3/GBaTE47qSeGWF-bO9Ccbfg/zh-cn_image_0000002573854279.png?HW-CC-KV=V1&HW-CC-Date=20260421T111022Z&HW-CC-Expire=86400&HW-CC-Sign=5645C4AFAC395878FA5CE3030635420FEB8D7F2698BDA1E63A5B89FBB61716D5) 1. 在entry/src/main/resources/base/media下，配置一张图片资源normal_icon.png。 2. 将图标处理的相关类添加至工程。 import { LayeredDrawableDescriptor, DrawableDe"
+      "snippet": "从5.0.0(12)版本开始， Hds支持单层图标处理能力。 适用于图标为单层资源，且图标展示风格要与华为HarmonyOS Design System设计风格一致的应用场景，典型应用场景可参考分层图标 场景介绍 。 #### 约束条件 单层图标处理支持Phone、Tablet、PC/2in1设备，并且从5.1.1(19)版本开始，新增支持TV设备。 #### 开发步骤 1. 在entry/src/main/resources/base/media下，配置一张图片资源normal_icon.png。 2. 将图标处理的相关类添加至工程。 import { LayeredDrawableDescriptor, DrawableDescriptor } from '@kit.ArkUI'; import { hdsDrawable } from '@kit.UIDesignKit'; import { image } from '@kit.ImageKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { resourceManager } from '@kit.LocalizationKit'; import { common } from '@kit.AbilityKit'; 3. 简单配置页面的布局"
     },
     {
       "path": "references/双边边缘流光.md",
@@ -39,7 +39,7 @@
     {
       "path": "references/图标类型设置.md",
       "title": "图标类型设置",
-      "snippet": "从6.0.0(20) Beta1版本开始，导航组件新增支持文本型与图片型图标类型设置。 当应用开发者需要配置图片型图标大小，或者使用普通文字型图标（胶囊型按钮）、单字图标（圆形按钮）时，可通过设置titleBar图标内容配置中的 type 属性实现该功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bb/v3/8a0m-kHRTPOCLPCHMtzhBA/zh-cn_image_0000002573974259.png?HW-CC-KV=V1&HW-CC-Date=20260421T111023Z&HW-CC-Expire=86400&HW-CC-Sign=C13D7E136BD8EC8E9876EF2F4B6CFA6E5EA3DC5BDFE01F22088ECD2EAEEB5C49) #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsNavigationAttribute。具体请参考HdsNavigation的导入模块说明。 import { HdsNavigation, HdsNavigationTitleMode, TextStyleMode, IconStyleMode, HdsNavigationAtt"
+      "snippet": "从6.0.0(20) Beta1版本开始，导航组件新增支持文本型与图片型图标类型设置。 当应用开发者需要配置图片型图标大小，或者使用普通文字型图标（胶囊型按钮）、单字图标（圆形按钮）时，可通过设置titleBar图标内容配置中的 type 属性实现该功能。 #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsNavigationAttribute。具体请参考HdsNavigation的导入模块说明。 import { HdsNavigation, HdsNavigationTitleMode, TextStyleMode, IconStyleMode, HdsNavigationAttribute } from '@kit.UIDesignKit'; 2. 创建一级导航组件，通过配置titleBar中的menu上的type属性，实现文字型图标以及图片型图标大小设置。 @Entry @Component struct Index { build() { HdsNavigation() { // 创建HdsNavigation组件 } .titleBar({ content: { title: { mainTitle: 'MainTitle', subTitle: 'SubTitle' }, menu: { // 设置HdsNavigatio"
     },
     {
       "path": "references/应用内多窗.md",
@@ -49,7 +49,7 @@
     {
       "path": "references/应用加载自定义Symbol.md",
       "title": "应用加载自定义Symbol",
-      "snippet": "从5.1.1 (19)版本开始，新增支持资源注册。 适用于需要快速定制应用内 Symbol图标 ，不想强依赖于系统版本中预制的系统Symbol图标资源。 #### 约束条件 资源注册支持Phone、Tablet、PC/2in1设备，并且从5.1.1(19)版本开始，新增支持TV设备。 #### 开发步骤 1. 将UX设计师提供的Symbol图标资源（TTF文件）与动效参数资源（JSON文件）放入entry/src/main/resources/rawfile下，可新建目录。 说明： Symbol资源制作流程参考 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e0/v3/ce1jqwIKQ9agr5YNTVGINA/zh-cn_image_0000002543374044.png?HW-CC-KV=V1&HW-CC-Date=20260421T111027Z&HW-CC-Expire=86400&HW-CC-Sign=DA6831B83904CB0673CA8369FDF266722C5FB1A5E19BAD0BD8766A79DCDC78CA) 2. 多语言场景，在entry/src/main/resources目录中对应语言目录下的string.json文件中"
+      "snippet": "从5.1.1 (19)版本开始，新增支持资源注册。 适用于需要快速定制应用内 Symbol图标 ，不想强依赖于系统版本中预制的系统Symbol图标资源。 #### 约束条件 资源注册支持Phone、Tablet、PC/2in1设备，并且从5.1.1(19)版本开始，新增支持TV设备。 #### 开发步骤 1. 将UX设计师提供的Symbol图标资源（TTF文件）与动效参数资源（JSON文件）放入entry/src/main/resources/rawfile下，可新建目录。 说明： Symbol资源制作流程参考 2. 多语言场景，在entry/src/main/resources目录中对应语言目录下的string.json文件中配置对应的Symbol图标Unicode值。 { \"string\": [ { \"name\": \"symbol_custom_phone_fill_1\", \"value\": \"0x100016\" } ] } 3. 导入相关模块。 import { symbolRegister } from '@kit.UIDesignKit'; import { BusinessError } from '@kit.BasicServicesKit'; 4. 在通过SymbolGlyph/SymbolSpan组件展示自定义Symbol图标前，需要注册加载图标资源与动效参数资源"
     },
     {
       "path": "references/开发实例.md",
@@ -69,7 +69,7 @@
     {
       "path": "references/标题栏动态显隐.md",
       "title": "标题栏动态显隐",
-      "snippet": "从6.0.0(20) Beta1版本开始，导航组件新增支持设置标题栏动态显隐及隐藏类型。 当应用开发者需要动态隐藏标题栏时，可通过使用 dynamicHideTitleBar 属性实现该功能。设置隐藏标题区域前提下，才可以设置隐藏状态栏。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c5/v3/dikoXCASTRqXXVNO2QS0Hg/zh-cn_image_0000002543214368.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111023Z&HW-CC-Expire=86400&HW-CC-Sign=06341E7D69FA2F321864D4FDFC4F192A90E4965FBBB73BD849B7006F0B9684C0) #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsNavigationAttribute。具体请参考HdsNavigation的导入模块说明。 import { HdsNavigation, BottomBuilderShowType, HideMode, HdsNavigationAttribute } from '@kit.UIDesignKi"
+      "snippet": "从6.0.0(20) Beta1版本开始，导航组件新增支持设置标题栏动态显隐及隐藏类型。 当应用开发者需要动态隐藏标题栏时，可通过使用 dynamicHideTitleBar 属性实现该功能。设置隐藏标题区域前提下，才可以设置隐藏状态栏。 #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsNavigationAttribute。具体请参考HdsNavigation的导入模块说明。 import { HdsNavigation, BottomBuilderShowType, HideMode, HdsNavigationAttribute } from '@kit.UIDesignKit'; 2. 创建一级导航组件，通过设置dynamicHideTitleBar属性，可隐藏状态栏、标题区域、BottomBuilder区域。 @Entry @Component struct Index { @Builder BottomBuilder() { // 自定义BottomBuilder组件 Column() { Search() } .width('100%') .height(56) .backgroundColor(Color.Orange) } build() { HdsNavigation() { // 创建HdsNavigation组"
     },
     {
       "path": "references/沉浸光感.md",
@@ -94,42 +94,42 @@
     {
       "path": "references/设置embed模式的侧边栏.md",
       "title": "设置embed模式的侧边栏",
-      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置embed模式的侧边栏。 HdsSideBar 提供可以显示和隐藏的侧边栏容器，通过子组件定义侧边栏和内容区，第一个子组件表示侧边栏，第二个子组件表示内容区，通过设置 sideBarContainerType 的值为SideBarContainerType.Embed，使得当前HdsSideBar为嵌入样式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f5/v3/EQ399b2zSTOIlN2QoiqeyA/zh-cn_image_0000002573974261.png?HW-CC-KV=V1&HW-CC-Date=20260421T111024Z&HW-CC-Expire=86400&HW-CC-Sign=4517F1FCDD8DF2A3921D493021FF1592D5E1C7655F5BB7152E77266AD03F0200) #### 开发步骤 1. 导入相关模块。 import { HdsSideBar } from '@kit.UIDesignKit'; 2. 设置图片。 将图片资源，放到entry/src/main/resources/base/media下。 ![](https://"
+      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置embed模式的侧边栏。 HdsSideBar 提供可以显示和隐藏的侧边栏容器，通过子组件定义侧边栏和内容区，第一个子组件表示侧边栏，第二个子组件表示内容区，通过设置 sideBarContainerType 的值为SideBarContainerType.Embed，使得当前HdsSideBar为嵌入样式。 #### 开发步骤 1. 导入相关模块。 import { HdsSideBar } from '@kit.UIDesignKit'; 2. 设置图片。 将图片资源，放到entry/src/main/resources/base/media下。 3. 创建HdsSideBar侧边栏组件，设置展开模式为embed。 @Entry @ComponentV2 struct Index { @Local isSideBarContainerMask: boolean = true; @Local blankHeight: number = 48; @Local isAutoHide: boolean = false; @Local isShowSidebar: boolean = true; @Local triggerValueReplace: number = 0; //左侧侧边栏区 @Builder SideBarPanel"
     },
     {
       "path": "references/设置overlay模式的侧边栏.md",
       "title": "设置overlay模式的侧边栏",
-      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置overlay模式的侧边栏。 HdsSideBar 提供可以显示和隐藏的侧边栏容器，通过子组件定义侧边栏和内容区，第一个子组件表示侧边栏，第二个子组件表示内容区，通过设置 sideBarContainerType 的值为SideBarContainerType.Overlay，使得当前HdsSideBar为悬浮样式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/af/v3/8ekjwsMSRG2TAZkdXG7bsQ/zh-cn_image_0000002543214370.png?HW-CC-KV=V1&HW-CC-Date=20260421T111024Z&HW-CC-Expire=86400&HW-CC-Sign=93EEFD30CDED4351A92B69A2A0067ED53356FE5BCD160BE183A0CDF837969A50) #### 开发步骤 1. 导入相关模块。 import { HdsSideBar } from '@kit.UIDesignKit'; 2. 设置图片。 将图片资源，放到entry/src/main/resources/base/media下。 ![](http"
+      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置overlay模式的侧边栏。 HdsSideBar 提供可以显示和隐藏的侧边栏容器，通过子组件定义侧边栏和内容区，第一个子组件表示侧边栏，第二个子组件表示内容区，通过设置 sideBarContainerType 的值为SideBarContainerType.Overlay，使得当前HdsSideBar为悬浮样式。 #### 开发步骤 1. 导入相关模块。 import { HdsSideBar } from '@kit.UIDesignKit'; 2. 设置图片。 将图片资源，放到entry/src/main/resources/base/media下。 3. 创建HdsSideBar侧边栏组件，设置展开模式为overlay。 @Entry @ComponentV2 struct Index { @Local isSideBarContainerMask: boolean = true; @Local blankHeight: number = 48; @Local isAutoHide: boolean = false; @Local isShowSidebar: boolean = true; @Local triggerValueReplace: number = 0; //左侧侧边栏区 @Builder SideBa"
     },
     {
       "path": "references/设置侧边栏半屏居中对齐样式.md",
       "title": "设置侧边栏半屏居中对齐样式",
-      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置侧边栏半屏居中对齐样式。 HdsTabs 容器组件侧边栏支持半屏居中对齐布局。横向Tabs时，若没有主动设置TabBar高度，则TabBar默认高度为48vp，纵向TabBar默认宽度为96vp，barHeight设成固定值后，TabBar无法扩展底部安全区。当safeAreaPadding不设置bottom或者bottom设置为0时，可以实现扩展安全区。 - 半屏居中对齐布局 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/44/v3/AFL8KrI4RtScYDjc5rlXoQ/zh-cn_image_0000002543374038.png?HW-CC-KV=V1&HW-CC-Date=20260421T111025Z&HW-CC-Expire=86400&HW-CC-Sign=853FAE0C526FD5AF823F3FE7ACAE590E364B8AEF99AEDB577BB0BD86B154D530) - 默认横向和纵向宽度 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/dd/v"
+      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置侧边栏半屏居中对齐样式。 HdsTabs 容器组件侧边栏支持半屏居中对齐布局。横向Tabs时，若没有主动设置TabBar高度，则TabBar默认高度为48vp，纵向TabBar默认宽度为96vp，barHeight设成固定值后，TabBar无法扩展底部安全区。当safeAreaPadding不设置bottom或者bottom设置为0时，可以实现扩展安全区。 - 半屏居中对齐布局 - 默认横向和纵向宽度 #### 约束条件 1. 依赖页签位于侧边栏，vertical设置为true。 2. 页签使用BottomTabBarStyle样式。 #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsTabsAttribute。具体请参考HdsTabs的导入模块说明。 import { HdsTabs, ExtendBarMode, HdsTabsAttribute } from '@kit.UIDesignKit'; 2. 创建Hds一级容器组件，设置HdsTabs组件的barMode样式为ExtendBarMode.HALF_SCREEN_FIXED，所有页签总高度之和为HdsTabs组件高度的四分之一，且处在二分之一屏的居中位置。 @Entry @Component struct Index "
     },
     {
       "path": "references/设置信息提醒.md",
       "title": "设置信息提醒",
-      "snippet": "从5.1.0(18)版本开始，导航组件新增支持菜单栏设置信息提醒能力。 当应用开发者需要在导航组件菜单项右上角附加消息提醒时，可以通过设置标题栏菜单中的 badge 配置，实现信息提醒能力。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/18/v3/x-uRgxS3QGSFAwS0fJWpEA/zh-cn_image_0000002573854281.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111022Z&HW-CC-Expire=86400&HW-CC-Sign=94037878D55999155F26F2471F14A9F438D9D514D9EA5B61947DB6090B6C50EB) #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsNavigationAttribute。具体请参考HdsNavigation的导入模块说明。 import { HdsNavigation, HdsNavigationAttribute } from '@kit.UIDesignKit'; 2. 创建一级导航组件，通过配置titleBar中menu的badge属性，设置信息提醒样式。 @Entr"
+      "snippet": "从5.1.0(18)版本开始，导航组件新增支持菜单栏设置信息提醒能力。 当应用开发者需要在导航组件菜单项右上角附加消息提醒时，可以通过设置标题栏菜单中的 badge 配置，实现信息提醒能力。 #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsNavigationAttribute。具体请参考HdsNavigation的导入模块说明。 import { HdsNavigation, HdsNavigationAttribute } from '@kit.UIDesignKit'; 2. 创建一级导航组件，通过配置titleBar中menu的badge属性，设置信息提醒样式。 @Entry @Component struct Index { build() { HdsNavigation() { // 创建HdsNavigation组件 }.titleBar({ content: { // HdsNavigation标题栏内容设置 menu: { // HdsNavigation标题栏菜单区域内容设置 value: [{ content: { // 第一个菜单项内容设置 label: 'menu1', icon: 'resources/base/media/startIcon.png', isEnabled: true, }, badge:"
     },
     {
       "path": "references/设置列表卡片样式.md",
       "title": "设置列表卡片样式",
-      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置列表卡片样式。 应用使用 HdsListItemCard 组件实现多设备上的系统列表样式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ba/v3/-4WiKS7vRNq9jdLS-FfrAQ/zh-cn_image_0000002573974271.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111027Z&HW-CC-Expire=86400&HW-CC-Sign=F9875CB0110450C8370CDAA0533C788BB9B16127852E03C841976427BC2DC737) #### 开发步骤 1. 导入相关模块。 import { HdsListItemCard, PrefixImage, SuffixSwitch} from '@kit.UIDesignKit'; import { promptAction } from '@kit.ArkUI'; 2. 创建HdsListItemCard组件，设置左边为Image，中间为Text，右边为Switch的场景。 @Entry @Component struct Test { private scrolle"
+      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置列表卡片样式。 应用使用 HdsListItemCard 组件实现多设备上的系统列表样式。 #### 开发步骤 1. 导入相关模块。 import { HdsListItemCard, PrefixImage, SuffixSwitch} from '@kit.UIDesignKit'; import { promptAction } from '@kit.ArkUI'; 2. 创建HdsListItemCard组件，设置左边为Image，中间为Text，右边为Switch的场景。 @Entry @Component struct Test { private scroller: ListScroller = new ListScroller(); build() { Column() { List({ space: 10, scroller: this.scroller }) { ListItem() { HdsListItemCard({ // A区图片 prefixItem: new PrefixImage({ image: $r('app.media.background'), onClick: () => { promptAction.openToast({ message: 'left image' }); } })"
     },
     {
       "path": "references/设置动态模糊样式.md",
       "title": "设置动态模糊样式",
-      "snippet": "从5.1.0(18)版本开始， 导航组件新增支持标题栏 通用模糊 样式。 从6.0.0(20) Beta1版本开始，新增支持 过渡模糊 与 渐变模糊 样式。 当应用开发者需要使用标题栏样式随内容区滚动而动态改变样式的导航组件时，可以通过设置titleBar属性中的 style 配置，自定义滚动前后的标题栏样式。 #### 通用模糊样式 对组件背景进行均匀的模糊处理，模糊强度一致，边界清晰，用于强调控件与内容的层级分隔。滑动内容进入/离开标题栏区域过程中，模糊背板和分割线透明渐变出现/消失。此方式适用于非沉浸式场景。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/af/v3/9VRFHuo1TfmKsWv7ZIbgqw/zh-cn_image_0000002573974255.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111022Z&HW-CC-Expire=86400&HW-CC-Sign=DDE3ECAFB1D7C9B36203A42BB6CE28BBA9093219BFAFCDFDBC4EF75B347A2A1D) #### 过渡模糊样式 对组件背景进行均匀的模糊处理，模糊强度一致，边界清晰，用于强调控件与内容的层级分隔。滑动前"
+      "snippet": "从5.1.0(18)版本开始， 导航组件新增支持标题栏 通用模糊 样式。 从6.0.0(20) Beta1版本开始，新增支持 过渡模糊 与 渐变模糊 样式。 当应用开发者需要使用标题栏样式随内容区滚动而动态改变样式的导航组件时，可以通过设置titleBar属性中的 style 配置，自定义滚动前后的标题栏样式。 #### 通用模糊样式 对组件背景进行均匀的模糊处理，模糊强度一致，边界清晰，用于强调控件与内容的层级分隔。滑动内容进入/离开标题栏区域过程中，模糊背板和分割线透明渐变出现/消失。此方式适用于非沉浸式场景。 #### 过渡模糊样式 对组件背景进行均匀的模糊处理，模糊强度一致，边界清晰，用于强调控件与内容的层级分隔。滑动前后标题栏内容发生颜色/状态变化，滑动过程中，线性跟手变化。此方式仅适用于沉浸式到非沉浸式相互切换的场景。 #### 渐变模糊样式 模糊效果在空间维度上呈现渐强/渐弱的变化，模糊边界柔和，用于增强页面沉浸感。 #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsNavigationAttribute。具体请参考HdsNavigation的导入模块说明。 import { HdsNavigation, ScrollEffectType, HdsNavigationAttribute } from '@kit.UIDes"
     },
     {
       "path": "references/设置定时通知弹窗.md",
       "title": "设置定时通知弹窗",
-      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置定时通知弹窗。 HdsSnackBar 支持定时通知弹窗。当应用开发者需要定时通知提醒弹窗时，可以通过HdsSnackBar的show方法显示HdsSnackBar弹窗，设置duration是大于0的时间表示弹窗是定时消失的，默认定时时间是5000ms。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1e/v3/kV_kUWhgSgqVTK79DVkymA/zh-cn_image_0000002573974269.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111026Z&HW-CC-Expire=86400&HW-CC-Sign=C1EC7B2A3B327E22E999298533A2529A4C7C98C7E04C20B89EDCBB6A5B8DDEE2) #### 开发步骤 1. 导入相关模块。 import { HdsSnackBar, SnackBarIconOptions, SnackBarMessageOptions, SnackBarOperationOptions, SnackBarStyleOptions, SnackBarOperationType } fro"
+      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置定时通知弹窗。 HdsSnackBar 支持定时通知弹窗。当应用开发者需要定时通知提醒弹窗时，可以通过HdsSnackBar的show方法显示HdsSnackBar弹窗，设置duration是大于0的时间表示弹窗是定时消失的，默认定时时间是5000ms。 #### 开发步骤 1. 导入相关模块。 import { HdsSnackBar, SnackBarIconOptions, SnackBarMessageOptions, SnackBarOperationOptions, SnackBarStyleOptions, SnackBarOperationType } from '@kit.UIDesignKit' 2. 创建UIContext，创建HdsSnackBar对象hdsSnackBar，调用HdsSnackBar对象的show方法可以显示HdsSnackBar弹窗，入参是左侧图标icon、中间文本message、右侧操作区operation、样式style，其中右侧操作区设置类型是带有右箭头的文本按钮，其中style中设置duration是2000ms表示HdsSnackBar弹窗2秒后定时消失。 3. 设置arrowButtonId和nextFocusId两个属性，支持开发者自定义Tab键走焦能力。 @Entry "
     },
     {
       "path": "references/设置常驻通知弹窗.md",
       "title": "设置常驻通知弹窗",
-      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置常驻通知弹窗。 HdsSnackBar 支持常驻通知弹窗。当应用开发者需要常驻通知提醒弹窗时，可以通过HdsSnackBar的show方法显示HdsSnackBar弹窗，设置duration是-1表示常驻弹窗。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cc/v3/n-gKwz5GQriGIEIEjcfyvg/zh-cn_image_0000002573854293.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111026Z&HW-CC-Expire=86400&HW-CC-Sign=3559CB03195F2C83C1E702D0FCC5B217482944E6A21CA17D3B4B2C62FC953819) #### 开发步骤 1. 导入相关模块。 import { HdsSnackBar, SnackBarIconOptions, SnackBarMessageOptions, SnackBarOperationOptions, SnackBarStyleOptions, SnackBarOperationType } from '@kit.UIDesignKit' 2"
+      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置常驻通知弹窗。 HdsSnackBar 支持常驻通知弹窗。当应用开发者需要常驻通知提醒弹窗时，可以通过HdsSnackBar的show方法显示HdsSnackBar弹窗，设置duration是-1表示常驻弹窗。 #### 开发步骤 1. 导入相关模块。 import { HdsSnackBar, SnackBarIconOptions, SnackBarMessageOptions, SnackBarOperationOptions, SnackBarStyleOptions, SnackBarOperationType } from '@kit.UIDesignKit' 2. 创建UIContext，创建HdsSnackBar对象hdsSnackBar，调用HdsSnackBar对象的show方法可以显示HdsSnackBar弹窗，入参是左侧图标icon、中间文本message、右侧操作区operation、样式style，其中右侧操作区设置类型是带有关闭按钮的文本按钮，其中style中设置duration是-1表示HdsSnackBar弹窗常驻。 3. 设置textButtonId和nextFocusId两个属性，支持开发者自定义Tab键走焦能力。 @Entry @ComponentV2 struct TestSnackBa"
     },
     {
       "path": "references/设置应用内多窗.md",
@@ -139,22 +139,22 @@
     {
       "path": "references/设置无主按钮的组件.md",
       "title": "设置无主按钮的组件",
-      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置无主按钮的组件。 HdsActionBar 组件支持多个按钮的样式。当应用开发者需要多个按钮并且没有主按钮，没有展开和收缩的动效时，可以通过设置左按钮和右按钮配置样式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9a/v3/vVODvdbLQ9iu_G6-bp-Kyg/zh-cn_image_0000002543214380.png?HW-CC-KV=V1&HW-CC-Date=20260421T111026Z&HW-CC-Expire=86400&HW-CC-Sign=925B60F0A4F0ED703484F78AF98EA30FBAF1BA87F5EB5AB341EF31C2E5C37C6A) #### 开发步骤 1. 导入相关模块。 import { HdsActionBar, ActionBarButton } from '@kit.UIDesignKit' 2. 创建左边的按钮数组startButtons，创建右边的按钮数组endButtons，无主按钮，不支持切换展开和收缩状态。 @Entry @ComponentV2 struct TestNoPrimaryButton { build()"
+      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置无主按钮的组件。 HdsActionBar 组件支持多个按钮的样式。当应用开发者需要多个按钮并且没有主按钮，没有展开和收缩的动效时，可以通过设置左按钮和右按钮配置样式。 #### 开发步骤 1. 导入相关模块。 import { HdsActionBar, ActionBarButton } from '@kit.UIDesignKit' 2. 创建左边的按钮数组startButtons，创建右边的按钮数组endButtons，无主按钮，不支持切换展开和收缩状态。 @Entry @ComponentV2 struct TestNoPrimaryButton { build() { Column() { HdsActionBar({ startButtons: [new ActionBarButton({ baseIcon: $r('sys.symbol.stopwatch_fill') }), new ActionBarButton({ baseIcon: $r('sys.symbol.stopwatch_fill') })], endButtons: [new ActionBarButton({ baseIcon: $r('sys.symbol.mic_fill') })] }) } .width('100%') .heigh"
     },
     {
       "path": "references/设置有主按钮的组件.md",
       "title": "设置有主按钮的组件",
-      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置有主按钮的组件。 HdsActionBar 组件支持多个按钮的样式。当应用开发者需要多个按钮并且有主按钮，支持展开和收缩的动效时，可以通过设置主按钮配置样式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9d/v3/ks3N33kdRw-Y0CX9R7JW7A/zh-cn_image_0000002543374042.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111026Z&HW-CC-Expire=86400&HW-CC-Sign=48F030BCE3DDC9FBE2D8D3CF303E055A1FC73C0B5D94820EF011380F64B5AE4D) #### 开发步骤 1. 导入相关模块。 import { HdsActionBar, ActionBarButton, ActionBarStyle } from '@kit.UIDesignKit'; 2. 创建左边的按钮数组startButtons，创建右边的按钮数组endButtons，创建主按钮primaryButton，设置isExpand初始值是true表示HdsActionBar的初始状态是展开状态，点"
+      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置有主按钮的组件。 HdsActionBar 组件支持多个按钮的样式。当应用开发者需要多个按钮并且有主按钮，支持展开和收缩的动效时，可以通过设置主按钮配置样式。 #### 开发步骤 1. 导入相关模块。 import { HdsActionBar, ActionBarButton, ActionBarStyle } from '@kit.UIDesignKit'; 2. 创建左边的按钮数组startButtons，创建右边的按钮数组endButtons，创建主按钮primaryButton，设置isExpand初始值是true表示HdsActionBar的初始状态是展开状态，点击主按钮会收起，再次点击可以展开。 @Entry @ComponentV2 struct TestActionBar { @Local isExpand: boolean = true; @Local isPrimaryIconChanged: boolean = false; @Local primaryHoverTips: ResourceStr = '开始'; build() { Column() { HdsActionBar({ startButtons: [new ActionBarButton({ baseIcon: $r('sys.symbol"
     },
     {
       "path": "references/设置自定义区域.md",
       "title": "设置自定义区域",
-      "snippet": "从6.0.0(20) Beta1版本开始，导航组件新增支持设置标题栏 stackBuilder 以及 bottomBuilder 。 当应用开发者需要在标题栏区域增加自定义节点时，例如在标题栏上方区域增加分段按钮，标题栏底部区域增加搜索框、页签时，可以使用标题栏自定义区域设置能力。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d0/v3/B5VXSqEJTs2RC5uIGM2_QQ/zh-cn_image_0000002573974257.png?HW-CC-KV=V1&HW-CC-Date=20260421T111023Z&HW-CC-Expire=86400&HW-CC-Sign=9D4C6F1465D80DA6B8C3680465EF059748319E5FBA26FE2EC4754B1F78BD8A6A) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f4/v3/bNe_7aweSp6G563bpXPqXg/zh-cn_image_0000002543374030.png?HW-CC-KV=V1&HW-CC-Date=2026042"
+      "snippet": "从6.0.0(20) Beta1版本开始，导航组件新增支持设置标题栏 stackBuilder 以及 bottomBuilder 。 当应用开发者需要在标题栏区域增加自定义节点时，例如在标题栏上方区域增加分段按钮，标题栏底部区域增加搜索框、页签时，可以使用标题栏自定义区域设置能力。 #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsNavigationAttribute。具体请参考HdsNavigation的导入模块说明。 import { HdsNavigation, BottomBuilderShowType, HdsNavigationAttribute } from '@kit.UIDesignKit'; 2. 创建一级导航组件，通过配置titleBar中content属性的stackBuilder以及bottomBuilder属性，可以使用导航组件的自定义区域设置功能。 @Entry @Component struct Index { @Builder StackBuilder() { // 自定义StackBuilder组件 Column() { Button(\"Hello\") } .height(56) .justifyContent(FlexAlign.Center) } @Builder BottomBuilder()"
     },
     {
       "path": "references/设置附带横滑的列表样式.md",
       "title": "设置附带横滑的列表样式",
-      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置附带横滑的列表样式。 应用使用 HdsListItem 组件实现多设备上的系统列表的横滑动效按钮的内容和样式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/05/v3/n1J1gAmCTzySsf07csrFzg/zh-cn_image_0000002573854295.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111027Z&HW-CC-Expire=86400&HW-CC-Sign=92495931FCAA62567FC8A8B3197FC398B1BFD523EBC62A1409EFFBDAD8906037) #### 开发步骤 1. 导入相关模块。 import { promptAction, SymbolGlyphModifier, TextModifier } from '@kit.ArkUI'; import { HdsListItem } from '@kit.UIDesignKit'; 2. 简单配置页面的布局，调用HdsListItem的接口绘制列表的横滑动效按钮的内容和样式。 @Entry @Component struct HdsListItemExam"
+      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置附带横滑的列表样式。 应用使用 HdsListItem 组件实现多设备上的系统列表的横滑动效按钮的内容和样式。 #### 开发步骤 1. 导入相关模块。 import { promptAction, SymbolGlyphModifier, TextModifier } from '@kit.ArkUI'; import { HdsListItem } from '@kit.UIDesignKit'; 2. 简单配置页面的布局，调用HdsListItem的接口绘制列表的横滑动效按钮的内容和样式。 @Entry @Component struct HdsListItemExample { @State dataSource: LazyDataSource<Item> = new LazyDataSource(); @State dataArr: Array<Item> = []; @State EndOffset: number = 0; private scroller: Scroller = new Scroller(); build() { Column() { List({ space: 10, scroller: this.scroller }) { LazyForEach(this.dataSource, (item:"
     },
     {
       "path": "references/设置页签栏的分割线.md",
@@ -164,22 +164,22 @@
     {
       "path": "references/设置页签栏的悬浮样式.md",
       "title": "设置页签栏的悬浮样式",
-      "snippet": "从6.1.0(23) 版本开始，新增支持设置页签栏的悬浮样式以及迷你栏。 #### 页签栏 页签栏悬浮样式如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7b/v3/JUuo2pCPSI67icsZwwZMAA/zh-cn_image_0000002573974267.png?HW-CC-KV=V1&HW-CC-Date=20260421T111025Z&HW-CC-Expire=86400&HW-CC-Sign=9CFAF80A99E01C632836066C662CC295E26F91727F0721E5D804A6077AFF7634) #### 迷你栏 迷你栏是新增的自定义区域，跟页签栏高度相等且水平对齐，支持展开和折叠两种样式。 迷你栏的折叠样式如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fd/v3/5jVp_LrfQXmENVKR6PeQNg/zh-cn_image_0000002543374040.png?HW-CC-KV=V1&HW-CC-Date=20260421T111025Z&HW-CC-Ex"
+      "snippet": "从6.1.0(23) 版本开始，新增支持设置页签栏的悬浮样式以及迷你栏。 #### 页签栏 页签栏悬浮样式如下图所示： #### 迷你栏 迷你栏是新增的自定义区域，跟页签栏高度相等且水平对齐，支持展开和折叠两种样式。 迷你栏的折叠样式如下图所示： 迷你栏的展开样式如下图所示： #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsTabsAttribute。具体请参考HdsTabs的导入模块说明。 import { hdsMaterial } from '@hms.hds.hdsMaterial' import { HdsTabs, HdsTabsAttribute, HdsTabsController } from '@kit.UIDesignKit'; 2. 创建Hds一级容器组件，设置HdsTabs组件的barFloatingStyle样式，并设置barOverlap为true，vertical为false，barPosition为BarPosition.End，可实现页签栏的悬浮样式。若在barFloatingStyle中设置miniBar，则可实现迷你栏。 @Entry @Component struct Index { // 初始化HdsTabs控制器。 private controller: HdsTabsController"
     },
     {
       "path": "references/设置页签栏的模糊样式.md",
       "title": "设置页签栏的模糊样式",
-      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置页签栏的模糊样式。 HdsTabs 容器组件扩展支持页签栏设置直接模糊和渐变模糊效果。 - 直接模糊 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b0/v3/vZ4nmHDjRfm4Q925w3Npzg/zh-cn_image_0000002543214374.png?HW-CC-KV=V1&HW-CC-Date=20260421T111025Z&HW-CC-Expire=86400&HW-CC-Sign=83850D5FB3AFD1C1B81CDB9E92D85A3EE7A273231028B7C0EB9BAC749672780B) - 渐变模糊 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1d/v3/jeWz9YchQkyths2ztqw8-A/zh-cn_image_0000002573854289.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111025Z&HW-CC-Expire=86400&HW-CC-Sign=A842656CA6CFDF3D4"
+      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置页签栏的模糊样式。 HdsTabs 容器组件扩展支持页签栏设置直接模糊和渐变模糊效果。 - 直接模糊 - 渐变模糊 #### 约束条件 1. 依赖页签栏位于容器底部，barPosition设置为BarPosition.End，vertical设置为false。 2. TabBar叠加在TabContent之上，barOverlap设置为true。 3. 去掉TabBar节点，barBackgroundBlurStyle默认设置的模糊的属性值为BlurStyle.NONE。 #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsTabsAttribute。具体请参考HdsTabs的导入模块说明。 import { HdsTabs, HdsTabsAttribute, HdsTabsController } from '@kit.UIDesignKit'; 2. 创建Hds一级容器组件，设置HdsTabs组件的barBackgroundStyle样式，可以自定义模糊的颜色和高度，实现渐变模糊。 1. 当开发者通过Tabs组件属性barBackgroundBlurStyle设置模糊时，HdsTabs的默认模糊效果失效。 2. 当开发者通过Tabs组件属性barBackgroundEffect设"
     },
     {
       "path": "references/设置页签的图标出血样式.md",
       "title": "设置页签的图标出血样式",
-      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置页签的图标出血样式。 HdsTabs 容器组件扩展支持出血图标样式。当应用开发者需要tabBar内的页签高度超出tabBar时，可以通过设置对应页签的属性，添加出血效果的自定义组件，图标超出容器部分最大高度为4vp。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7b/v3/aajZ97T5S9CvB4NyuWjOrA/zh-cn_image_0000002573974265.png?HW-CC-KV=V1&HW-CC-Date=20260421T111025Z&HW-CC-Expire=86400&HW-CC-Sign=35DF428DC714B60DE3F23E754BD899A99CDC98CF8F68FD30C97B26B0AB4B0083) #### 约束条件 依赖页签栏位于容器底部，barPosition设置为BarPosition.End，vertical设置为false。 #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsTabsAttribute。具体请参考HdsTabs的导入模块说明。 import { HdsTabs, HdsTabsAttr"
+      "snippet": "从6.0.0(20) Beta1版本开始，新增支持设置页签的图标出血样式。 HdsTabs 容器组件扩展支持出血图标样式。当应用开发者需要tabBar内的页签高度超出tabBar时，可以通过设置对应页签的属性，添加出血效果的自定义组件，图标超出容器部分最大高度为4vp。 #### 约束条件 依赖页签栏位于容器底部，barPosition设置为BarPosition.End，vertical设置为false。 #### 开发步骤 1. 导入相关模块。 // 从6.0.2(22)版本开始，无需手动导入HdsTabsAttribute。具体请参考HdsTabs的导入模块说明。 import { HdsTabs, HdsTabsAttribute } from '@kit.UIDesignKit'; import { bleedIconStyle } from '@hms.hds.HdsStyle'; 2. 创建Hds一级容器组件，设置HdsTabs组件的子组件TabContent的tabBar样式。 @Entry @Component struct Index { build() { Stack() { HdsTabs() { TabContent() { Column().width('100%').height('100%').backgroundColor(Color.Yellow"
     },
     {
       "path": "references/（推荐）分层图标处理.md",
       "title": "（推荐）分层图标处理",
-      "snippet": "从5.0.0(12)版本开始， Hds支持分层图标处理能力。 适用于图标为分层资源，且图标展示风格要与华为HarmonyOS Design System设计风格一致的应用场景。以下是一些典型的应用场景： - 展示带图标的应用列表：可调用UI Design Kit批量处理分层图标的接口获取处理后的应用图标。 - 展示应用详情：可调用UI Design Kit处理单个分层图标的接口获取处理后的应用图标。 - 展示跟随在线主题的应用图标：可调用UI Design Kit处理分层图标的接口获取主题换肤后的应用图标。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/de/v3/XtSlyNgYR3C65ANtrdtWZA/zh-cn_image_0000002573854277.png?HW-CC-KV=V1&HW-CC-Date=20260421T111022Z&HW-CC-Expire=86400&HW-CC-Sign=3D7A46D7E430C601A998B78C19F73488733B585EA021978A356C76270BDDEA88) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/Develop"
+      "snippet": "从5.0.0(12)版本开始， Hds支持分层图标处理能力。 适用于图标为分层资源，且图标展示风格要与华为HarmonyOS Design System设计风格一致的应用场景。以下是一些典型的应用场景： - 展示带图标的应用列表：可调用UI Design Kit批量处理分层图标的接口获取处理后的应用图标。 - 展示应用详情：可调用UI Design Kit处理单个分层图标的接口获取处理后的应用图标。 - 展示跟随在线主题的应用图标：可调用UI Design Kit处理分层图标的接口获取主题换肤后的应用图标。 #### 约束条件 分层图标处理支持Phone、Tablet、PC/2in1设备，并且从5.1.1(19)版本开始，新增支持TV设备。 #### 开发步骤 1. 设置分层图标，将前景资源和背景资源放至entry/src/main/resources/base/media文件中，并在该目录下创建一个json文件（例如：drawable.json）： { \"layered-image\": { \"background\" : \"$media:background\", \"foreground\" : \"$media:foreground\" } } 2. 将图标处理的相关类添加至工程。 import { LayeredDrawableDescriptor } from '@kit.ArkUI"
     }
   ]
 }

@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:20:57.978Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -57,12 +58,16 @@
       "识别或生成参数（码制式、尺寸、颜色、是否连续扫码等） / Recognition or generation parameters (symbology, size, colors, continuous scan, etc.)"
     ],
     "outputs": [
-      "入门与概述",
-      "扫码直达",
-      "默认界面扫码",
-      "自定义界面扫码",
-      "图像识别与码图生成",
-      "常见问题与技巧"
+      "扫码结果对象（包含码内容、码制式等） / Scan result object containing decoded content and barcode format",
+      "扫码结果数组（用于多码识别或连续识别） / Array of scan results for multi-code or continuous scanning",
+      "码内容字符串或字节数据 / Decoded barcode value as string or byte data",
+      "码制式信息（QR Code、Data Matrix、EAN-13、Code 128等） / Barcode format information such as QR Code, Data Matrix, EAN-13, Code 128",
+      "码图位置信息或坐标区域 / Barcode position information or bounding rectangle coordinates",
+      "自定义扫码相机预览流画面 / Camera preview stream rendered for custom scan UI",
+      "扫码直达触发的应用跳转结果 / App navigation result triggered by Scan-to-App entry",
+      "本地图片或图像数据的识别结果 / Recognition results from local images or image data",
+      "生成的二维码或条形码图片 / Generated QR code or barcode image",
+      "生成码图的PixelMap图像对象 / PixelMap image object of the generated code"
     ],
     "postconditions": [
       {

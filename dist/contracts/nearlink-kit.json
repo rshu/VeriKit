@@ -5,15 +5,16 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:19:01.603Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
     "use_when": [
       "星闪",
       "SparkLink",
-      "短距通信",
+      "应用需要扫描星闪（NearLink/SparkLink）手写笔，并通过SSAP建立加密配对和端口通道进行低功耗高速率数据传输 / When an app needs to scan for a NearLink/SparkLink stylus and use SSAP to establish encrypted pairing and a port channel for low-power high-speed data transfer",
       "设备发现",
       "如何查询当前设备是否支持星闪服务？",
       "如何查询和监听星闪开关状态的变化？",
@@ -57,10 +58,20 @@
       "待发送的数据载荷或端口通道参数 / data payload to send or port channel parameters"
     ],
     "outputs": [
-      "简介",
-      "开发准备",
-      "设备发现",
-      "连接与数据传输"
+      "星闪服务支持能力查询结果（支持/不支持） / NearLink service capability query result (supported or not supported)",
+      "星闪开关当前状态与状态变化事件 / Current NearLink switch state and switch-state change events",
+      "星闪广播启动/停止操作结果 / NearLink advertising start/stop operation result",
+      "星闪扫描发现结果（设备标识、设备名称、RSSI、广播数据等） / NearLink scan discovery result (device identifier, device name, RSSI, advertising data, etc.)",
+      "星闪设备信息对象（本端或对端设备地址、名称、角色等） / NearLink device information object (local or peer address, name, role, etc.)",
+      "SSAP服务端实例及服务注册结果 / SSAP server instance and service registration result",
+      "SSAP客户端实例及连接结果 / SSAP client instance and connection result",
+      "SSAP连接状态事件（连接成功、断开、连接失败等） / SSAP connection state events (connected, disconnected, connection failed, etc.)",
+      "SSAP服务发现结果（服务、属性、描述符、UUID等） / SSAP service discovery result (services, properties, descriptors, UUIDs, etc.)",
+      "SSAP属性读取返回值与属性写入结果 / SSAP property read return value and property write result",
+      "端口通道对象或通道标识及通道状态 / Port channel object or channel identifier and channel state",
+      "配对与加密处理结果（配对成功/失败、安全连接状态等） / Pairing and encryption result (pairing success/failure, secure connection state, etc.)",
+      "星闪数据传输发送结果与接收数据载荷（字节数据/数据帧） / NearLink data transfer send result and received payload (byte data/data frames)",
+      "星闪接口调用失败时返回的错误码或异常信息 / Error codes or exception information returned when NearLink API calls fail"
     ],
     "postconditions": [
       {

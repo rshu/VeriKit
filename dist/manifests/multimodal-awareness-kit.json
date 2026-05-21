@@ -3,7 +3,7 @@
   "skill": "multimodal-awareness-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.995Z"
+    "at": "2026-05-21T03:47:44.615Z"
   },
   "references": [
     {
@@ -29,7 +29,7 @@
     {
       "path": "references/记忆链接开发指导.md",
       "title": "记忆链接开发指导",
-      "snippet": "MetadataBinding（记忆链接）指由第三方应用提供 鸿蒙App Linking链接 ，系统将当前用户浏览的内容与鸿蒙App Linking链接进行关联并保存的功能。 详细的接口介绍请参考 @ohos.multimodalAwareness.metadataBinding (记忆链接) 。 #### 场景介绍 第三方应用可使用记忆链接功能，将鸿蒙App Linking链接映射到调用接口的系统应用或服务。例如，用户在【电商应用】中浏览某个商品时，截图保存了该商品的图片，系统将记录图片与【电商应用】提供的鸿蒙App Linking链接的映射关系。当用户再次浏览该图片时，系统会提醒用户是否需要返回【电商应用】查看商品详情。 #### 演示示例 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b8/v3/jYzjdLmNSheOoQt03uT68g/zh-cn_image_0000002573974395.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111225Z&HW-CC-Expire=86400&HW-CC-Sign=EDC9DD5DCEBC608A70BF5B12348FFA881AC7E0DA79AED291696DF092A"
+      "snippet": "MetadataBinding（记忆链接）指由第三方应用提供 鸿蒙App Linking链接 ，系统将当前用户浏览的内容与鸿蒙App Linking链接进行关联并保存的功能。 详细的接口介绍请参考 @ohos.multimodalAwareness.metadataBinding (记忆链接) 。 #### 场景介绍 第三方应用可使用记忆链接功能，将鸿蒙App Linking链接映射到调用接口的系统应用或服务。例如，用户在【电商应用】中浏览某个商品时，截图保存了该商品的图片，系统将记录图片与【电商应用】提供的鸿蒙App Linking链接的映射关系。当用户再次浏览该图片时，系统会提醒用户是否需要返回【电商应用】查看商品详情。 #### 演示示例 #### 接口说明 - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 - 本模块支持记忆链接的功能。 #### 约束与限制 - 鸿蒙App Linking链接的最大字节数为128。 #### 开发步骤 1. 导入模块。 import { metadataBinding } from '@kit.MultimodalAwarenessKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { Call"
     },
     {
       "path": "references/设备状态感知开发指导.md",

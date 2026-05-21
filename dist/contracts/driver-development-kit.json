@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:15:07.226Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -59,9 +60,20 @@
       "协议交互参数（USB/HID/串口/SCSI 读写或配置参数） / Protocol interaction parameters (USB/HID/serial/SCSI read-write or configuration parameters)"
     ],
     "outputs": [
-      "简介与环境",
-      "基础驱动开发",
-      "协议驱动开发"
+      "基于DriverExtensionAbility实现的外设驱动HAP/驱动应用 / Peripheral driver HAP or driver application implemented with DriverExtensionAbility",
+      "即插即用外设驱动实例及其设备绑定结果 / Plug-and-play peripheral driver instance and device binding result",
+      "扩展外设查询返回的设备信息列表 / Device information list returned by extension peripheral queries",
+      "USB设备打开后返回的设备句柄和接口句柄 / Device handles and interface handles returned after opening a USB device",
+      "USB控制传输和中断传输返回的数据缓冲区、传输长度与状态码 / Data buffers, transfer lengths, and status codes returned by USB control and interrupt transfers",
+      "HID设备创建后返回的HID设备对象或设备标识 / HID device object or device identifier returned after HID device creation",
+      "发送到系统输入链路的HID输入报告和HID事件 / HID input reports and HID events sent to the system input pipeline",
+      "USB串口打开后返回的串口设备句柄或端口句柄 / Serial device handle or port handle returned after opening a USB serial device",
+      "USB串口读取返回的字节数据、写入字节数与操作结果 / Byte data returned by USB serial reads, written byte count, and operation result",
+      "USB串口属性配置后的配置结果 / Configuration result after setting USB serial port attributes",
+      "SCSI外设打开后返回的SCSI设备句柄或逻辑单元句柄 / SCSI device handle or logical unit handle returned after opening a SCSI peripheral",
+      "SCSI INQUIRY、READ CAPACITY等命令返回的设备标识、容量和能力信息 / Device identity, capacity, and capability information returned by SCSI INQUIRY, READ CAPACITY, and related commands",
+      "SCSI读写操作返回的块数据、写入结果与状态码 / Block data, write result, and status codes returned by SCSI read/write operations",
+      "非标HID外设增强配置结果，如快捷键、压感、绘图区域、灯光和DPI设置结果 / Enhanced configuration results for non-standard HID peripherals, such as shortcut keys, pressure sensitivity, drawing area, lighting, and DPI settings"
     ],
     "postconditions": [
       {

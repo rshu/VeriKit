@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:17:49.955Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -59,12 +60,14 @@
       "地址文本或经纬度坐标 / address text or latitude-longitude coordinates"
     ],
     "outputs": [
-      "概述",
-      "权限与配置",
-      "定位开发",
-      "地理围栏",
-      "地理编码",
-      "示例与参考"
+      "设备当前位置对象 geoLocationManager.Location（经纬度、海拔、精度、速度、方向、时间戳等） / Device current-location object geoLocationManager.Location (latitude, longitude, altitude, accuracy, speed, bearing, timestamp, etc.)",
+      "持续定位的位置变化回调数据 geoLocationManager.Location / Continuous location-change callback data as geoLocationManager.Location",
+      "C/C++ NDK定位结果 Location_Info / C/C++ NDK location result Location_Info",
+      "正地理编码结果 geoLocationManager.GeoAddress[]（地址文本转换得到的坐标与地址信息） / Forward geocoding result geoLocationManager.GeoAddress[] (coordinates and address data resolved from an address string)",
+      "逆地理编码结果 geoLocationManager.GeoAddress[]（经纬度转换得到的可读地址信息） / Reverse geocoding result geoLocationManager.GeoAddress[] (human-readable address data resolved from coordinates)",
+      "端侧GNSS地理围栏进入、离开或驻留触发事件 / Device-side GNSS geofence enter, exit, or dwell transition event",
+      "云侧公共围栏触发信息（FenceExtensionAbility接收的围栏到达/离开事件数据） / Cloud public geofence trigger information (arrival/exit event data received by FenceExtensionAbility)",
+      "位置服务可用性或位置开关状态布尔值 / Boolean location-service availability or location-switch enabled state"
     ],
     "postconditions": [
       {

@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:10:01.253Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -67,18 +68,22 @@
       "生命周期回调或启动模式需求 / Lifecycle callback or launch mode requirements"
     ],
     "outputs": [
-      "Kit简介与术语",
-      "应用模型与配置",
-      "Stage模型开发",
-      "UIAbility组件",
-      "FA模型开发",
-      "PageAbility组件",
-      "ServiceAbility组件",
-      "DataAbility组件",
-      "Want与应用间跳转",
-      "拉起指定应用",
-      "意图框架",
-      "多端协同与其他能力"
+      "UIAbility组件实例 / UIAbility component instance",
+      "ExtensionAbility或ServiceExtensionAbility组件实例 / ExtensionAbility or ServiceExtensionAbility component instance",
+      "FA模型PageAbility、ServiceAbility、DataAbility组件实例 / FA-model PageAbility, ServiceAbility, and DataAbility component instances",
+      "Want启动与数据传递对象 / Want launch and data-transfer object",
+      "AbilityResult返回结果对象（startAbilityForResult） / AbilityResult return object from startAbilityForResult",
+      "UIAbilityContext、ExtensionContext、ApplicationContext上下文对象 / UIAbilityContext, ExtensionContext, and ApplicationContext objects",
+      "WindowStage窗口舞台对象 / WindowStage window-stage object",
+      "WantAgent延迟意图代理对象 / WantAgent deferred-intent agent object",
+      "Caller跨端Call调用代理对象 / Caller proxy object for cross-device Call invocation",
+      "rpc.RemoteObject服务连接代理对象 / rpc.RemoteObject service-connection proxy object",
+      "服务连接ID或连接句柄 / Service connection ID or connection handle",
+      "DataAbilityResult数组或数据操作结果 / DataAbilityResult array or data-operation result",
+      "Deep Linking或App Linking解析后的目标Want / Target Want resolved from Deep Linking or App Linking",
+      "InsightIntentExecuteResult意图执行结果 / InsightIntentExecuteResult intent-execution result",
+      "应用异常退出原因信息 / Application abnormal-exit reason information",
+      "应用启动框架AppStartup任务执行结果 / AppStartup task execution result"
     ],
     "postconditions": [
       {

@@ -3,13 +3,13 @@
   "skill": "contacts-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.627Z"
+    "at": "2026-05-21T03:47:44.345Z"
   },
   "references": [
     {
       "path": "references/Contacts Kit简介.md",
       "title": "Contacts Kit简介",
-      "snippet": "Contacts Kit（联系人服务）可以帮助开发者轻松实现联系人的增删改查等功能。该Kit提供了一系列API，可以让开发者在应用中快速集成联系人管理功能。 详情请参考 @ohos.contact (联系人) 文档。 #### 能力范围 通过Contacts Kit，开发者可以对联系人进行管理，包括增加、删除、修改、查询联系人信息。开发者还可以通过Picker的方式，拉起联系人列表。 面向所有应用开放如下能力： - 使用Picker选择联系人 面向三方应用受限开放如下能力： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ac/v3/3FxTTQ85QPaaGWNBrGjOQw/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111513Z&HW-CC-Expire=86400&HW-CC-Sign=FC94E1DC46ABD04FE0512C213D5559B9EB6CAE6800CB231509E6514A6EFE0307) 当前能力受限开放，需要申请受限开放权限ohos.permission.READ_CONTACTS或ohos.permission.WRITE_CONTACTS。该权限通常不允许三"
+      "snippet": "Contacts Kit（联系人服务）可以帮助开发者轻松实现联系人的增删改查等功能。该Kit提供了一系列API，可以让开发者在应用中快速集成联系人管理功能。 详情请参考 @ohos.contact (联系人) 文档。 #### 能力范围 通过Contacts Kit，开发者可以对联系人进行管理，包括增加、删除、修改、查询联系人信息。开发者还可以通过Picker的方式，拉起联系人列表。 面向所有应用开放如下能力： - 使用Picker选择联系人 面向三方应用受限开放如下能力： 当前能力受限开放，需要申请受限开放权限ohos.permission.READ_CONTACTS或ohos.permission.WRITE_CONTACTS。该权限通常不允许三方应用申请，仅符合 指定场景 的应用可申请该权限。 申请方式请参考： 申请使用受限权限 。 - 联系人管理 #### 使用Picker选择联系人 当用户选择联系人的时候，通过Picker的方式，拉起联系人列表，引导用户完成界面操作，接口本身无需申请权限。 1. 导入相关的联系人模块。 import { contact } from '@kit.ContactsKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 调用联系人接口，拉起联系人列表，用户点击对应的联系人"
     },
     {
       "path": "references/使用picker管理联系人.md",

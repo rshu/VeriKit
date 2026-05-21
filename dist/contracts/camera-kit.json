@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:12:57.377Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -17,7 +18,7 @@
       "预览",
       "闪光灯",
       "焦距",
-      "hdr",
+      "在自定义相机模块中配置相机会话和拍照/录像输出，开启 HDR Vivid 高动态范围拍摄并控制预览、曝光与对焦 / Configure a camera session and photo/video outputs in a custom camera module to enable HDR Vivid high-dynamic-range capture with preview, exposure, and focus control",
       "如何使用CameraPicker直接拉起系统相机拍照和录像",
       "如何实现相机预览、拍照和录像的基础功能（ArkTS/C/C++）",
       "如何控制相机的闪光灯、曝光、对焦和白平衡",
@@ -32,7 +33,7 @@
       "当你仅需要简单拍照或录像而不需要自定义相机界面时，可以直接使用CameraPicker拉起系统相机完成拍摄",
       "当需要高级特性如HDR Vivid、动态照片、安全相机、多摄同开、折叠屏适配时，可以使用Camera Kit提供的相应高级接口",
       "集成拍照页面并把照片保存到相册 / Integrate a capture screen and save photos to the gallery",
-      "实现视频录制功能并导出本地文件 / Implement video recording and export a local file",
+      "在自定义相机页面通过Camera Kit管理相机设备输入、CaptureSession、预览流和VideoOutput，实现带对焦/曝光控制的摄像头录像 / Build a custom camera screen that uses Camera Kit to manage camera device input, CaptureSession, preview stream, and VideoOutput for camera hardware video capture with focus/exposure control",
       "接入系统相机选择器快速完成拍照或录像 / Integrate the system camera picker for quick photo or video capture",
       "显示相机取景画面并切换前后摄像头 / Show the camera preview and switch between front and rear cameras",
       "获取相机帧数据做实时图像处理 / Get camera frame data for real-time image processing",
@@ -60,10 +61,25 @@
       "相机会话控制参数（如对焦、曝光、变焦、闪光灯） / camera session control parameters such as focus, exposure, zoom, and flash"
     ],
     "outputs": [
-      "服务概述",
-      "C/C++ 开发",
-      "ArkTS 开发",
-      "系统相机"
+      "相机管理器 CameraManager / CameraManager object",
+      "可用相机设备列表 CameraDevice[] / list of available CameraDevice objects",
+      "相机输出能力 CameraOutputCapability / CameraOutputCapability describing supported preview, photo, video and metadata profiles",
+      "相机输入流 CameraInput / CameraInput stream bound to a selected camera device",
+      "拍摄会话 CaptureSession、PhotoSession、VideoSession 等 / CaptureSession, PhotoSession, VideoSession and related session objects",
+      "预览输出流 PreviewOutput / PreviewOutput stream for preview frames",
+      "预览画面 Surface 帧数据 / preview frame data delivered to a Surface",
+      "拍照输出流 PhotoOutput / PhotoOutput stream for still capture",
+      "拍照结果 Photo 或 image.Image 图像数据 / captured Photo or image.Image data",
+      "JPEG/HEIF/YUV 等格式的照片文件或图像缓存 / photo files or image buffers such as JPEG, HEIF or YUV",
+      "录像输出流 VideoOutput / VideoOutput stream for video recording",
+      "录制生成的视频文件或写入的文件描述符内容 / recorded video file or media data written to a file descriptor",
+      "元数据输出流 MetadataOutput / MetadataOutput stream",
+      "人脸、焦点、曝光等相机元数据 MetadataObject[] / camera metadata objects such as face, focus and exposure metadata",
+      "HDR Vivid 照片或视频结果 / HDR Vivid photo or video output",
+      "动态照片 Motion Photo 媒体结果 / Motion Photo media output",
+      "分段式拍照生成的分段图像结果 / staged-capture image results",
+      "多摄同开产生的多路预览或拍摄输出流 / multiple concurrent preview or capture output streams from multi-camera mode",
+      "CameraPicker 返回的拍照或录像结果 URI / photo or video result URI returned by CameraPicker"
     ],
     "postconditions": [
       {

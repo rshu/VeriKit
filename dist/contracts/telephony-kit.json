@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:22:00.079Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -55,9 +56,23 @@
       "需要查询或设置的蜂窝网络参数 / cellular network parameters to query or set"
     ],
     "outputs": [
-      "简介",
-      "通话",
-      "短信"
+      "通话发起结果（makeCall 的 Promise/回调完成结果） / Call initiation result (makeCall Promise/callback completion result)",
+      "通话状态变更事件（拨号、振铃、接通、挂断等状态） / Call state change events (dialing, ringing, connected, disconnected, etc.)",
+      "紧急号码判断结果（布尔值） / Emergency number check result (boolean)",
+      "短信消息对象（创建或解析得到的短信内容对象） / SMS message object (created or parsed message content object)",
+      "短信发送结果或发送状态回执 / SMS send result or delivery/status report",
+      "短信服务中心地址（SMSC 地址字符串） / SMS service center address (SMSC address string)",
+      "短信收发能力查询结果（布尔值） / SMS capability query result (boolean)",
+      "当前注册网络名称 / Current registered network name",
+      "蜂窝服务状态信息 / Cellular service state information",
+      "信号强度信息 / Signal strength information",
+      "蜂窝数据连接状态 / Cellular data connection state",
+      "蜂窝数据开关状态 / Cellular data enabled/disabled state",
+      "SIM 卡状态信息 / SIM card state information",
+      "SIM 卡运营商、服务提供商、国家码等标识信息 / SIM operator, service provider, country code and related identifiers",
+      "默认语音、短信或数据 SIM 卡槽标识 / Default voice, SMS or data SIM slot identifier",
+      "eSIM 配置文件信息 / eSIM profile information",
+      "eSIM 下载、启用、禁用或删除操作结果 / eSIM download, enable, disable or delete operation result"
     ],
     "postconditions": [
       {

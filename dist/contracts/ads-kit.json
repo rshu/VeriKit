@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:10:24.381Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -63,10 +64,16 @@
       "OAID获取请求或归因相关配置 / OAID request or attribution-related configuration"
     ],
     "outputs": [
-      "Kit简介与准备",
-      "流量变现服务",
-      "开放匿名设备标识",
-      "常见问题"
+      "横幅广告视图/广告素材（在页面顶部或底部渲染的Banner） / Banner ad view or creative rendered at the top or bottom of a page",
+      "插屏广告对象及全屏广告展示结果 / Interstitial ad object and full-screen ad display result",
+      "激励广告对象、奖励发放回调数据和服务端验证参数 / Rewarded ad object, reward callback data, and server-side verification parameters",
+      "开屏广告视图/启动页广告素材（含倒计时和点击跳转事件） / Splash ad view or startup creative with countdown and click-through events",
+      "原生广告数据对象（标题、描述、图片/视频、图标、广告标识、CTA等素材） / Native ad data object with assets such as title, description, image/video, icon, ad label, and CTA",
+      "贴片/视频广告对象或广告素材（前贴片、中贴片、后贴片） / In-stream video ad object or creative for pre-roll, mid-roll, or post-roll ads",
+      "实时竞价广告填充结果和出价相关数据 / Real-time bidding ad fill result and bid-related data",
+      "开放匿名设备标识OAID字符串/标识信息 / Open Anonymous Device Identifier (OAID) string or identifier information",
+      "广告生命周期事件回调（加载成功/失败、展示、曝光、点击、关闭、奖励完成等） / Ad lifecycle callback events such as load success/failure, show, impression, click, close, and reward completion",
+      "广告错误码和失败原因对象（如无填充、网络异常、设备不支持等） / Ad error code and failure-reason object, such as no fill, network error, or unsupported device"
     ],
     "postconditions": [
       {

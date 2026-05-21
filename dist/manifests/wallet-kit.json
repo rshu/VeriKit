@@ -3,7 +3,7 @@
   "skill": "wallet-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.278Z"
+    "at": "2026-05-21T03:47:44.824Z"
   },
   "references": [
     {
@@ -19,32 +19,32 @@
     {
       "path": "references/云侧开发准备.md",
       "title": "云侧开发准备",
-      "snippet": "在 创建Wallet Kit服务 的配置参数里填写。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/88/v3/2fZ2e0GiS9ims6DCKSPFlQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111657Z&HW-CC-Expire=86400&HW-CC-Sign=C12FC6EEEAD94F6B81CE9CAF352BF7FB548FE8441FAADDF750C757A693052218) 这里的“是否开通NFC能力”，只要支持蓝牙功能，就需要选择是。 #### 配置车钥匙管理台地址至钱包服务器 在车钥匙的开通激活阶段，钱包需要向商户服务器请求数据；这整个的数据链路为：华为钱包APP->钱包云服务器->DK业务管理服务。 钱包云服务器向DK业务管理服务请求需要知道DK业务管理服务的地址，因此需要将DK业务管理服务的地址配置进钱包云服务器。 \"registrationsUrl\": \"商户服务器地址/v1/passes/registrations\", \"requestPersonalizeTokenUrl\": \"商户服务器地址/v1/passes/requestPersonalizeToken"
+      "snippet": "在 创建Wallet Kit服务 的配置参数里填写。 这里的“是否开通NFC能力”，只要支持蓝牙功能，就需要选择是。 #### 配置车钥匙管理台地址至钱包服务器 在车钥匙的开通激活阶段，钱包需要向商户服务器请求数据；这整个的数据链路为：华为钱包APP->钱包云服务器->DK业务管理服务。 钱包云服务器向DK业务管理服务请求需要知道DK业务管理服务的地址，因此需要将DK业务管理服务的地址配置进钱包云服务器。 \"registrationsUrl\": \"商户服务器地址/v1/passes/registrations\", \"requestPersonalizeTokenUrl\": \"商户服务器地址/v1/passes/requestPersonalizeToken\", \"requestPersonalizeUrl\": \"商户服务器地址/v1/passes/requestPersonalize\", \"spNfcOperCallBackUrl\"：\"商户服务器地址/v1/passes/nfccallback\" #### UI设计 所有图片请直接提供直角，请勿切圆角；注意在深色模式下，图片的边框不要有白边。"
     },
     {
       "path": "references/交通卡充值.md",
       "title": "交通卡充值",
-      "snippet": "交通卡的充值过程分为：卡片展示、生成并支付充值订单和发起充值三个步骤，整体流程如下图，相关接口定义请参照 钱包服务API 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f/v3/jlAPDRIwSrK6yfwr3NRjDA/zh-cn_image_0000002573855155.png?HW-CC-KV=V1&HW-CC-Date=20260421T111658Z&HW-CC-Expire=86400&HW-CC-Sign=3DC7EFC19C682B8C127DFA61ECD55C1F3FA7540AE0E9ED583044D69E568CAAF2) - 开发者的app启动后，可调用 getCardMetadataInDevice 接口获取指定设备上开发者的app可以访问的交通卡的信息以数组的方式返回。如返回的数组为空，则表示开发者的app在该设备上没有可访问的交通卡，无需显示卡片开通入口；如返回数组不为空，则按具体的交通卡信息做展示。如果交通卡信息中包括卡号、余额信息，则表明该卡片在设备上已开通，显示卡片信息即可；否则可显示卡片的开通入口。 - 用户选择了给指定的交通卡充值时，开发者的app需向开发者的后台服务器发起充值订单的生成请求，并让用户完成支付"
+      "snippet": "交通卡的充值过程分为：卡片展示、生成并支付充值订单和发起充值三个步骤，整体流程如下图，相关接口定义请参照 钱包服务API 。 - 开发者的app启动后，可调用 getCardMetadataInDevice 接口获取指定设备上开发者的app可以访问的交通卡的信息以数组的方式返回。如返回的数组为空，则表示开发者的app在该设备上没有可访问的交通卡，无需显示卡片开通入口；如返回数组不为空，则按具体的交通卡信息做展示。如果交通卡信息中包括卡号、余额信息，则表明该卡片在设备上已开通，显示卡片信息即可；否则可显示卡片的开通入口。 - 用户选择了给指定的交通卡充值时，开发者的app需向开发者的后台服务器发起充值订单的生成请求，并让用户完成支付。 - 开发者的app在查询到订单已支付完成后，可调用 rechargeTransitCard 接口发起将订单金额充值到卡内的处理过程。如果充值正常结束，开发者的app会收到充值成功的返回值并携带了新的余额；如果充值过程出现失败，在钱包app自行发起重试后仍然失败的情况下，钱包会发起订单退款的请求。在SP TSM或开发者的后台服务器确认订单状态是可退款的情况下，需调用对应支付渠道的订单撤销接口，将订单金额原路退回，这种情况下开发者的app会收到充值失败的错误码，可参考 ArkTS API错误码 。 #### 开发步骤 1. 获取设备上已开通的交通卡列表。 "
     },
     {
       "path": "references/交通卡删卡.md",
       "title": "交通卡删卡",
-      "snippet": "交通卡的删卡过程分为：卡片展示、生成删卡业务订单和发起删卡三个步骤，整体流程如下图，相关接口定义请参照 钱包服务API 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/51/v3/tz_S68__Rwa8xPVLD8tK7w/zh-cn_image_0000002543374902.png?HW-CC-KV=V1&HW-CC-Date=20260421T111658Z&HW-CC-Expire=86400&HW-CC-Sign=D186ED563F40780C55B1385C3700E5953FD197D97B856A917010EDDB8F8E6FA9) - 开发者的app启动后，可调用 getCardMetadataInDevice 接口获取指定设备上开发者的app可以访问的交通卡的信息以数组的方式返回。如返回的数组为空，则表示开发者的app在该设备上没有可访问的交通卡，无需显示卡片开通入口；如返回数组不为空，则按具体的交通卡信息做展示。 - 如果交通卡信息中包括卡号、余额信息，则表明该卡片在设备上已开通，显示卡片信息即可；否则可显示卡片的开通入口。 - 用户选择了要删除的交通卡后，开发者的app需向开发者的后台服务器发起删卡业务订单的生成请求。 - 开发"
+      "snippet": "交通卡的删卡过程分为：卡片展示、生成删卡业务订单和发起删卡三个步骤，整体流程如下图，相关接口定义请参照 钱包服务API 。 - 开发者的app启动后，可调用 getCardMetadataInDevice 接口获取指定设备上开发者的app可以访问的交通卡的信息以数组的方式返回。如返回的数组为空，则表示开发者的app在该设备上没有可访问的交通卡，无需显示卡片开通入口；如返回数组不为空，则按具体的交通卡信息做展示。 - 如果交通卡信息中包括卡号、余额信息，则表明该卡片在设备上已开通，显示卡片信息即可；否则可显示卡片的开通入口。 - 用户选择了要删除的交通卡后，开发者的app需向开发者的后台服务器发起删卡业务订单的生成请求。 - 开发者的app可调用 deleteTransitCard 接口发起删卡处理过程。如删卡过程出现异常导致失败，开发者的app会收到相应的错误码，可参考 ArkTS API错误码 。 #### 开发步骤 1. 获取设备上已开通的交通卡列表。 初始化TransitCardClient时，构造方法的第二个入参callerId是接口调用方ID。开发者可以联系钱包运营申请交通卡服务时获取。 import { common } from '@kit.AbilityKit'; import { walletTransitCard } from '@kit.WalletKit';"
     },
     {
       "path": "references/交通卡开通.md",
       "title": "交通卡开通",
-      "snippet": "交通卡的开通过程分为：获取卡片开通入口、确认卡片是否支持添加、生成并支付订单和完成开卡四个步骤，整体流程如下图，相关接口定义请参考 钱包服务API 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/65/v3/xgvHenICTY-ONoX-ihoK8A/zh-cn_image_0000002543215240.png?HW-CC-KV=V1&HW-CC-Date=20260421T111658Z&HW-CC-Expire=86400&HW-CC-Sign=5A08EB12E987773A2ADF643E346AE2FDE30FEF9699147FF0419C514E6D8AD71B) - 开发者的app启动后，可调用 getCardMetadataInDevice 接口获取指定设备上开发者的app可以访问的交通卡的信息以数组的方式返回。如返回的数组为空，则表示开发者的app在该设备上没有可访问的交通卡，无需显示卡片开通入口；如返回数组不为空，则按具体的交通卡信息做展示。如果交通卡信息中包括卡号、余额信息，则表明该卡片在设备上已开通，显示卡片信息即可；否则可显示卡片的开通入口。 - 用户在选择开通交通卡后，先调用 canAddTransitCard 传入issu"
+      "snippet": "交通卡的开通过程分为：获取卡片开通入口、确认卡片是否支持添加、生成并支付订单和完成开卡四个步骤，整体流程如下图，相关接口定义请参考 钱包服务API 。 - 开发者的app启动后，可调用 getCardMetadataInDevice 接口获取指定设备上开发者的app可以访问的交通卡的信息以数组的方式返回。如返回的数组为空，则表示开发者的app在该设备上没有可访问的交通卡，无需显示卡片开通入口；如返回数组不为空，则按具体的交通卡信息做展示。如果交通卡信息中包括卡号、余额信息，则表明该卡片在设备上已开通，显示卡片信息即可；否则可显示卡片的开通入口。 - 用户在选择开通交通卡后，先调用 canAddTransitCard 传入issuerId和指定的设备Id接口，钱包会检查指定设备上目标卡片的开卡条件是否满足，如有条件不满足，会返回相应错误码，可参考 ArkTS API错误码 ，按错误码类型给用户具体的错误提示。如条件满足则会返回开卡凭证数据addCardOpaqueData。 - 在开卡条件检查通过获取到开卡凭证数据后，开发者的app需要将用户的开卡和首充值的订单信息连同开卡凭证addCardOpaqueData一起提交给开发者的服务器生成开卡+首充的订单，addCardOpaqueData需和订单关联存储。开发者的服务器将订单提交给支付机构，在用户授权完成支付并收到支付机构的支付完成"
     },
     {
       "path": "references/交通卡更新.md",
       "title": "交通卡更新",
-      "snippet": "交通卡的更新可以用在更新卡片有效期等卡内数据的场景，其过程分为：卡片展示、生成更新业务订单和发起更新三个步骤，整体流程如下图，相关接口定义请参照 钱包服务API 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4f/v3/R8t8N1ywSty_L7XTzKUeBw/zh-cn_image_0000002573975135.png?HW-CC-KV=V1&HW-CC-Date=20260421T111658Z&HW-CC-Expire=86400&HW-CC-Sign=60E6C2EA6C81CD7734E0862A2C9F148F789F890DEAD91F93A1E2DFDAE76AFEE4) - 开发者的app启动后，可调用 getCardMetadataInDevice 接口获取指定设备上开发者的app可以访问的交通卡的信息以数组的方式返回。如返回的数组为空，则表示开发者的app在该设备上没有可访问的交通卡，无需显示卡片开通入口；如返回数组不为空，则按具体的交通卡信息做展示。如果交通卡信息中包括卡号、余额信息，则表明该卡片在设备上已开通，显示卡片信息即可；否则可显示卡片的开通入口。 - 用户选择了要更新的交通卡后，开发者的app需向开发者的后台服务器发"
+      "snippet": "交通卡的更新可以用在更新卡片有效期等卡内数据的场景，其过程分为：卡片展示、生成更新业务订单和发起更新三个步骤，整体流程如下图，相关接口定义请参照 钱包服务API 。 - 开发者的app启动后，可调用 getCardMetadataInDevice 接口获取指定设备上开发者的app可以访问的交通卡的信息以数组的方式返回。如返回的数组为空，则表示开发者的app在该设备上没有可访问的交通卡，无需显示卡片开通入口；如返回数组不为空，则按具体的交通卡信息做展示。如果交通卡信息中包括卡号、余额信息，则表明该卡片在设备上已开通，显示卡片信息即可；否则可显示卡片的开通入口。 - 用户选择了要更新的交通卡后，开发者的app需向开发者的后台服务器发起更新业务订单的生成请求。 - 开发者的app可调用 updateTransitCard 接口发起更新处理过程。如更新过程出现异常导致失败，开发者的app会收到相应的错误码，可参考 ArkTS API错误码 。 #### 开发步骤 1. 获取设备上已开通的交通卡列表。 初始化TransitCardClient时，构造方法的第二个入参callerId是接口调用方ID。开发者可以联系钱包运营申请交通卡服务时获取。 import { common } from '@kit.AbilityKit'; import { walletTransitCard } from"
     },
     {
       "path": "references/创建Wallet Kit服务.md",
       "title": "创建Wallet Kit服务",
-      "snippet": "请先参考“ 应用开发准备 ”完成基本准备工作和指纹配置，再继续以下开发活动。 1. 登录 AppGallery Connect ，选择“我的项目”。 2. 点击进入对应的项目，在左侧“项目设置”页签，上侧导航选择“开放能力管理”，打开华为钱包的开关。用于钱包对车钥匙管理台向钱包服务器发起http/https请求时的权限控制。关闭状态下，开发者服务器将访问不了钱包服务器。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/63/v3/F8biAd2vQOGKfvBnfEjTkg/zh-cn_image_0000002573855143.png?HW-CC-KV=V1&HW-CC-Date=20260421T111656Z&HW-CC-Expire=86400&HW-CC-Sign=47F4C088BD948E25C6E078DEAAFB71A29CC5442290B08B019D5B2D2D93F87D6B) 3. 在“项目设置”页签，左侧导航选择“盈利 > 华为钱包”，点击“申请Wallet Kit服务”，进入申请Wallet Kit服务。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/Developer"
+      "snippet": "请先参考“ 应用开发准备 ”完成基本准备工作和指纹配置，再继续以下开发活动。 1. 登录 AppGallery Connect ，选择“我的项目”。 2. 点击进入对应的项目，在左侧“项目设置”页签，上侧导航选择“开放能力管理”，打开华为钱包的开关。用于钱包对车钥匙管理台向钱包服务器发起http/https请求时的权限控制。关闭状态下，开发者服务器将访问不了钱包服务器。 3. 在“项目设置”页签，左侧导航选择“盈利 > 华为钱包”，点击“申请Wallet Kit服务”，进入申请Wallet Kit服务。 4. 点击“产品接入华为钱包服务”的“点击申请”按钮。 5. 各业务场景对应的参数有差异，具体参数请参考各业务的Wallet Kit服务基本信息。 **公钥生成方式：** （1）配置好node执行环境并使用文本编辑器新建文件，拷贝以下代码到文件中并保存命名为generateKeyPair.js。 const crypto = require('crypto'); // 生成密钥对 const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', { modulusLength: 4096, // 密钥长度，不少于4096 publicKeyEncoding: { type: 'spki', // 公钥编码格式 f"
     },
     {
       "path": "references/如何查看已添加卡券？.md",
@@ -64,12 +64,12 @@
     {
       "path": "references/概述-1.md",
       "title": "概述",
-      "snippet": "华为数字车钥匙依托华为钱包数字车钥匙业务集成方案，基于华为手机“芯-端-云”一体化的安全能力，且满足ICCE标准，可快速实现手机模拟车钥匙的功能。 相较于传统的车钥匙，华为数字车钥匙无需借助车钥匙实体，仅将车钥匙功能集成在移动智能终端设备中，基于SE、TEE等安全功能，使用蓝牙、NFC技术连接手机和车，即可实现车辆的开门、启动等功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3b/v3/hSVCDP4qS0K_XFRECtchug/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111656Z&HW-CC-Expire=86400&HW-CC-Sign=5F5175F58EF6FD5E807D287EB0FBB23114291023EBA656E4C08006DBCAC156CA) 此方式当前仅支持中国境内（不包含中国香港、中国澳门、中国台湾）。 #### 整体架构 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6f/v3/n6UlJ7TESmK0pMyjMufrVg/zh-cn_i"
+      "snippet": "华为数字车钥匙依托华为钱包数字车钥匙业务集成方案，基于华为手机“芯-端-云”一体化的安全能力，且满足ICCE标准，可快速实现手机模拟车钥匙的功能。 相较于传统的车钥匙，华为数字车钥匙无需借助车钥匙实体，仅将车钥匙功能集成在移动智能终端设备中，基于SE、TEE等安全功能，使用蓝牙、NFC技术连接手机和车，即可实现车辆的开门、启动等功能。 此方式当前仅支持中国境内（不包含中国香港、中国澳门、中国台湾）。 #### 整体架构 #### 按照参与各方的角色说明 #### 典型的交互流程 用户持手机在车主APP申请开通车钥匙： DK业务管理服务将钥匙卡片信息通过钱包云服务器传递给华为钱包，同时写入到手机安全芯片的车钥匙Applet实例。 车辆和移动终端的通信方式： - 车辆NFC模块（通常位于主驾后视镜，主驾B柱），使用NFC通道和终端设备安全芯片通信。 - 车辆BLE模块，通过蓝牙通道，使用终端设备上的华为钱包和终端设备的安全芯片通信。"
     },
     {
       "path": "references/概述.md",
       "title": "概述",
-      "snippet": "Wallet Kit中的交通卡服务提供了开通新卡、在线充值、卡片更新和删卡的开放能力。由于交通卡的实际发行方是交通卡公司，所以开发者的app想要实现上述功能，需要： 1. 对接支付机构（如：华为支付、微信、支付宝、银联等），完成开卡、充值的订单支付。 2. 获得交通卡公司的同意并且用开发者的业务服务器对接交通卡公司的系统完成上述功能对应的业务申请。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f1/v3/lPmo-OtCR5q22Luhg45ScA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111657Z&HW-CC-Expire=86400&HW-CC-Sign=E91ACF25C9FD7265AB108C271CDD46FDB21A10A71FF40BDB36988836A613638A) 交通卡服务开放能力 **仅对受邀应用** 开放使用。 #### 整体架构 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/75/v3/pSPYueNORUejrH3rt5UEgQ/zh-cn_"
+      "snippet": "Wallet Kit中的交通卡服务提供了开通新卡、在线充值、卡片更新和删卡的开放能力。由于交通卡的实际发行方是交通卡公司，所以开发者的app想要实现上述功能，需要： 1. 对接支付机构（如：华为支付、微信、支付宝、银联等），完成开卡、充值的订单支付。 2. 获得交通卡公司的同意并且用开发者的业务服务器对接交通卡公司的系统完成上述功能对应的业务申请。 交通卡服务开放能力 **仅对受邀应用** 开放使用。 #### 整体架构 - **角色分工：** **Your App：** 开发者的客户端app，实现开卡、卡信息展示、充值、更新和删卡等UX体验 **Your Server：** 开发者的业务服务器。负责受理来自开发者的客户端的开卡、充值和卡片管理的业务请求，并将相应的任务下发给交通卡公司的SP TSM系统。还需对接支付机构完成开卡、充值场景的订单支付。 **支付机构：** 完成支付订单的支付。 **SP TSM：** 交通卡公司的TSM系统，负责开卡、充值和卡片管理的指令生成。 **Wallet App：** 负责实现Wallet Kit的api。将来自于SP TSM系统的开卡、充值和卡片管理的指令下发到安全芯片。 **Wallet Server：** 对接SP TSM系统，实现开卡、充值和卡片管理的指令的获取。 - **接口说明**"
     },
     {
       "path": "references/添加卡券时商户服务器主要需要执行哪些步骤？.md",
@@ -94,12 +94,12 @@
     {
       "path": "references/车控.md",
       "title": "车控",
-      "snippet": "数字车钥匙开通完成后，车主APP可以通过车控指令远程控制车辆的开门等操作。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6f/v3/oIZhcyjqSZ-Cvf_YhDJ0fg/zh-cn_image_0000002573975133.png?HW-CC-KV=V1&HW-CC-Date=20260421T111657Z&HW-CC-Expire=86400&HW-CC-Sign=9FE4C232F2B11D8E68562A805D7F80E3C6912C9470C182DDC07087A14226CCB3) 典型的交互流程如下: - 通过 queryICCEConnectionState 接口检查车控蓝牙的连接状态，如果未连接则使用 startICCEConnection 主动连接。 - 通过 registerICCEListener 注册监听，接收华为钱包发送的消息。 - 车主APP可以通过 sendICCERKEMessage 接口发送车控指令。 - 用户退出数字钥匙车控页面，通过 unregisterICCEListener 接口取消监听。 #### 开发步骤 1. 车主APP使用 创建Wallet Kit服务 时注册的服务号和 申请钥匙卡片 时定义的"
+      "snippet": "数字车钥匙开通完成后，车主APP可以通过车控指令远程控制车辆的开门等操作。 典型的交互流程如下: - 通过 queryICCEConnectionState 接口检查车控蓝牙的连接状态，如果未连接则使用 startICCEConnection 主动连接。 - 通过 registerICCEListener 注册监听，接收华为钱包发送的消息。 - 车主APP可以通过 sendICCERKEMessage 接口发送车控指令。 - 用户退出数字钥匙车控页面，通过 unregisterICCEListener 接口取消监听。 #### 开发步骤 1. 车主APP使用 创建Wallet Kit服务 时注册的服务号和 申请钥匙卡片 时定义的卡券唯一标识，通过 queryICCEConnectionState 判断车钥匙的蓝牙链路状态。 import { common } from '@kit.AbilityKit'; import { walletPass } from '@kit.WalletKit'; import { BusinessError } from '@kit.BasicServicesKit'; @Entry @Component struct Index { private walletPassClient: walletPass.WalletPassClient = ne"
     },
     {
       "path": "references/钥匙开通.md",
       "title": "钥匙开通",
-      "snippet": "钥匙开通分为添加钥匙和激活钥匙两步，整体交互流程图如下。相关接口定义请参照 钱包服务API 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4a/v3/y1BgL6xYSTqlZCqn-r4sUQ/zh-cn_image_0000002543215234.png?HW-CC-KV=V1&HW-CC-Date=20260421T111657Z&HW-CC-Expire=86400&HW-CC-Sign=7A0E7FFC41D61EEA82544BE2A71C7700558A20F7F0E6B9FECFEE632E11611723) 1. 车主APP调用 queryPass 接口检查当前设备车钥匙的开通情况。 2. 如果 queryPass 接口返回 1010220501 查询卡券不存在 ，则调用 canAddPass 接口检查当前设备是否支持添加车钥匙。 3. 如果 queryPass 接口或是 canAddPass 接口返回 1010200003 访问钱包的前置环境没有准备好 ，则调用 initWalletEnvironment 接口初始化钱包开通车钥匙的同意协议或是登录账号等必要条件，引导用户跳转钱包App完成应用初始化。 4. 车主APP调用 queryP"
+      "snippet": "钥匙开通分为添加钥匙和激活钥匙两步，整体交互流程图如下。相关接口定义请参照 钱包服务API 。 1. 车主APP调用 queryPass 接口检查当前设备车钥匙的开通情况。 2. 如果 queryPass 接口返回 1010220501 查询卡券不存在 ，则调用 canAddPass 接口检查当前设备是否支持添加车钥匙。 3. 如果 queryPass 接口或是 canAddPass 接口返回 1010200003 访问钱包的前置环境没有准备好 ，则调用 initWalletEnvironment 接口初始化钱包开通车钥匙的同意协议或是登录账号等必要条件，引导用户跳转钱包App完成应用初始化。 4. 车主APP调用 queryPassDeviceInfo 接口查询设备类型，指定目标设备标识，提升安全性。 5. 车主服务器预置模板后申请钥匙卡片以及JWE数据，参考 车主服务器开发 。 6. 用户主动发起开卡时，车主APP跳转钱包应用，调用 addPass 接口携带上述流程中生成的编码后的JWE数据，开通车钥匙到钱包。 7. 卡片激活的过程中钱包服务器需要和DK业务管理服务进行交互的包括：设备的认证（和车钥匙管理台交换证书信息）、获取请求个人化数据时的token（用于向车钥匙管理台请求Applet个人化数据）、以及最后的请求Applet个人化数据，最后写入安全芯片，参考 车主服务器激活"
     }
   ]
 }

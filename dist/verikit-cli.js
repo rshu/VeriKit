@@ -3908,6 +3908,9 @@ function classifyConflict(ranked, recipeMatches, topHigh) {
   else status = "uncertain";
   return { status, top, recipe, top_in_recipe: topInRecipe };
 }
+function topKits(ranked, topHigh, k) {
+  return ranked.filter((r) => !r.disqualified && r.combinedScore >= topHigh).slice(0, k).map((r) => ({ name: r.name, combinedScore: r.combinedScore }));
+}
 
 // bin/verikit-cli.ts
 var __filename = fileURLToPath(import.meta.url);
@@ -4062,6 +4065,7 @@ async function cmdRoute(args) {
   const deep = args.flags.has("deep");
   const compose = args.flags.has("compose");
   const refsK = parseInt(args.flags.get("refs") ?? "5", 10);
+  const topKArg = Math.min(5, Math.max(1, parseInt(args.flags.get("top-k") ?? "3", 10) || 3));
   const skills = await loadSkills(args.flags.get("root"));
   if (skills.length === 0) {
     process.stdout.write(JSON.stringify({ task, top: [], warning: "no skills found" }) + "\n");
@@ -4111,18 +4115,24 @@ async function cmdRoute(args) {
       TOP_HIGH
     );
     const maturity = cls.recipe ? recipeStatus(recipeMatches[0].composition) : null;
+    const HIGH_CONF = 0.6;
+    const kitOpts = topKits(ranked, HIGH_CONF, topKArg);
     const routing = {
       status: cls.status,
       top: cls.top ? { name: cls.top.name, combinedScore: Number(cls.top.combinedScore.toFixed(4)), band: band(cls.top.combinedScore) } : null,
+      top_k: kitOpts.map((k) => ({ name: k.name, combinedScore: Number(k.combinedScore.toFixed(4)), band: band(k.combinedScore) })),
       recipes: cls.recipe ? [{ id: cls.recipe.id, skills: cls.recipe.skills, score: Number(cls.recipe.score.toFixed(4)), band: band(cls.recipe.score), maturity }] : [],
       top_in_recipe: cls.top_in_recipe
     };
     let directive;
     if (cls.status === "conflict") {
+      const kitMenu = kitOpts.length ? kitOpts.map((k) => `${k.name} (${k.combinedScore.toFixed(2)})`).join(", ") : null;
+      const option2 = kitMenu ? `  2. One of the top high-confidence Kits: ${kitMenu} (single-Kit choices, see routing.top_k).
+` : `  2. (no high-confidence single Kit alternative this time.)
+`;
       directive = `CONFLICT: the curated recipe and the top-ranked Kit disagree. Do NOT silently pick. Ask the human to choose one of:
   1. Recipe bundle "${cls.recipe.id}" [${cls.recipe.skills.join(", ")}] \u2014 recommended (curated multi-Kit answer; maturity: ${maturity}).
-  2. Top-ranked Kit "${cls.top?.name ?? "?"}" (single-Kit; ranker score ${(cls.top?.combinedScore ?? 0).toFixed(2)}).
-  3. Specify the Kit(s) yourself.
+` + option2 + `  3. Specify the Kit(s) yourself.
 Wait for the human's selection, then proceed with exactly that. Do not override their choice. Note: deep_references below reflect the top-ranked Kit only until the human picks.`;
       out.bundle = cls.top ? [cls.top.name] : [];
       out.bundle_source = "ask-human";

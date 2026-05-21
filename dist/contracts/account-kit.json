@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:10:18.594Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -64,13 +65,24 @@
       "用户信息类型或事件订阅类型 / Requested user info type or event subscription type"
     ],
     "outputs": [
-      "Kit简介与配置",
-      "登录功能",
-      "获取用户信息",
-      "订阅与事件",
-      "未成年人模式",
-      "常见问题与错误码",
-      "参考信息"
+      "授权响应对象（包含授权码、OpenID/UnionID、ID Token等登录结果） / Authorization response object containing authorization code, OpenID/UnionID, ID Token and other sign-in results",
+      "Authorization Code授权码 / Authorization Code",
+      "ID Token身份令牌（用于服务端身份认证） / ID Token for server-side identity verification",
+      "Access Token访问令牌 / Access Token",
+      "Refresh Token刷新令牌 / Refresh Token",
+      "OpenID用户应用内唯一标识 / OpenID, user identifier unique within an app",
+      "UnionID同一开发者下用户统一标识 / UnionID, user identifier shared across apps of the same developer",
+      "用户手机号信息（明文手机号或匿名手机号） / User phone number information, including plain or anonymized phone number",
+      "静默登录结果对象 / Silent sign-in result object",
+      "快速验证结果对象（手机号身份校验结果） / Quick verification result object for phone-number identity verification",
+      "用户头像昵称信息对象 / User profile object containing avatar and nickname",
+      "用户收货地址信息对象 / User shipping address object",
+      "用户发票抬头信息对象 / User invoice title object",
+      "用户风险等级评估结果 / User risk level assessment result",
+      "华为账号登录/登出事件数据 / Huawei ID sign-in/sign-out event data",
+      "用户信息变更事件数据 / User information change event data",
+      "未成年人模式状态结果 / Minor mode status result",
+      "未成年人模式设置变更结果 / Minor mode settings update result"
     ],
     "postconditions": [
       {

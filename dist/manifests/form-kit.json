@@ -3,13 +3,13 @@
   "skill": "form-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.793Z"
+    "at": "2026-05-21T03:47:44.468Z"
   },
   "references": [
     {
       "path": "references/ArkTS卡片为组件添加动效.md",
       "title": "ArkTS卡片为组件添加动效",
-      "snippet": "ArkTS卡片开放了使用动画效果的能力，支持 显式动画 、 属性动画 、 组件内转场 能力。ArkTS卡片使用动画效果时具有以下限制： **表1** 动效参数限制 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6e/v3/f_79KIxHSAKAin11tJ1FPA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111006Z&HW-CC-Expire=86400&HW-CC-Sign=7C5EB54C6AADA79B61547264FADE93B47728023376E706F243944ED5ED96E134) 静态卡片不支持使用动效能力。 #### 组件自身动效 以下示例代码使用 animation 接口实现了按钮旋转的动画效果。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b1/v3/uAcxNCptRriZzK3ZgBFDbw/zh-cn_image_0000002543214324.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111006Z&HW"
+      "snippet": "ArkTS卡片开放了使用动画效果的能力，支持 显式动画 、 属性动画 、 组件内转场 能力。ArkTS卡片使用动画效果时具有以下限制： **表1** 动效参数限制 静态卡片不支持使用动效能力。 #### 组件自身动效 以下示例代码使用 animation 接口实现了按钮旋转的动画效果。 @Entry @Component struct AnimationCard { @State rotateAngle: number = 0; build() { Row() { Button('change rotate angle') .height('20%') .width('90%') .margin('5%') .onClick(() => { this.rotateAngle = (this.rotateAngle === 0 ? 90 : 0); }) .rotate({ angle: this.rotateAngle }) .animation({ curve: Curve.EaseOut, playMode: PlayMode.Normal, }) }.height('100%') .alignItems(VerticalAlign.Center) } } #### 组件转场动效 以下示例代码使用 transition 接口实现了在卡片内图片出现与消失的动画效果。 // ent"
     },
     {
       "path": "references/ArkTS卡片主动刷新.md",
@@ -29,17 +29,17 @@
     {
       "path": "references/ArkTS卡片概述.md",
       "title": "ArkTS卡片概述",
-      "snippet": "以下内容介绍基于ArkTS声明式开发范式语言开发卡片。 #### 亮点/特征 1. 统一开发范式 - ArkTS卡片统一了卡片和应用页面的开发范式，应用页面的布局可以直接复用到卡片布局中，提升开发体验和开发效率。具体请参考图1 卡片工程结构对比。 **图1** 卡片工程结构对比 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/77/v3/JjdgSQBtTD-kMdGaFbCn9w/zh-cn_image_0000002543214316.png?HW-CC-KV=V1&HW-CC-Date=20260421T111005Z&HW-CC-Expire=86400&HW-CC-Sign=C99FFCDF0FC29B4393EEE03A6AD1E3426B6621C8D944112072123DD42A9FE3DE) 2. 卡片能力增强 - 新增了动效的能力：ArkTS卡片开放了属性动画和显式动画的能力，使卡片的交互更加友好。 - 新增了自定义绘制的能力：ArkTS卡片开放了Canvas画布组件的能力，卡片可以使用自定义绘制的能力构建更多样的显示和交互效果。 - 允许卡片中运行逻辑代码：开放逻辑代码运行能力后，部分业务逻辑可以在卡片内部实现，拓宽了业务适用场景。 ##"
+      "snippet": "以下内容介绍基于ArkTS声明式开发范式语言开发卡片。 #### 亮点/特征 1. 统一开发范式 - ArkTS卡片统一了卡片和应用页面的开发范式，应用页面的布局可以直接复用到卡片布局中，提升开发体验和开发效率。具体请参考图1 卡片工程结构对比。 **图1** 卡片工程结构对比 2. 卡片能力增强 - 新增了动效的能力：ArkTS卡片开放了属性动画和显式动画的能力，使卡片的交互更加友好。 - 新增了自定义绘制的能力：ArkTS卡片开放了Canvas画布组件的能力，卡片可以使用自定义绘制的能力构建更多样的显示和交互效果。 - 允许卡片中运行逻辑代码：开放逻辑代码运行能力后，部分业务逻辑可以在卡片内部实现，拓宽了业务适用场景。 #### 实现原理 - 卡片使用方：显示卡片内容的宿主应用，控制卡片在宿主中展示的位置，当前仅系统应用可以作为卡片使用方。 - 卡片提供方：提供卡片显示内容的应用，控制卡片的显示内容、控件布局以及控件点击事件。 - 卡片管理服务：用于管理系统中所添加卡片的常驻代理服务，提供 formProvider 的接口能力，同时提供卡片对象的管理与使用以及卡片周期性刷新等能力。 - 卡片渲染服务：用于管理卡片渲染实例，渲染实例与卡片使用方的卡片组件一一绑定。卡片渲染服务根据form_config.json配置的卡片信息运行widget.abc文件的卡片页面代码进行渲染，并将"
     },
     {
       "path": "references/ArkTS卡片界面开发概述.md",
       "title": "ArkTS卡片界面开发概述",
-      "snippet": "ArkTS卡片开发采用通用 ArkTS语言 ，开发者可以使用 ArkTS声明式开发范式 开发ArkTS卡片页面。 如下卡片页面由DevEco Studio模板自动生成，开发者可以根据自身的业务场景进行调整。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5d/v3/3uCkveruSSa_CybSxte_1w/zh-cn_image_0000002573974213.png?HW-CC-KV=V1&HW-CC-Date=20260421T111006Z&HW-CC-Expire=86400&HW-CC-Sign=BBAF100C61DCB3D719F0B77236CD6C9B0AE10789C127984EBC987470AB744D20) #### ArkTS卡片支持的页面能力 ArkTS卡片具备JS卡片的全量能力，并且新增了动效能力和自定义绘制的能力，支持 ArkTS声明式开发范式 的部分组件、事件、动效、数据管理、状态管理能力。 对于支持在ArkTS卡片UI界面中使用的接口，会添加“卡片能力”的标记，如：从API version 12开始，该接口支持在ArkTS卡片中使用。同时请留意卡片场景下的能力差异说明。 例如：以下说明表示CircleShape可在A"
+      "snippet": "ArkTS卡片开发采用通用 ArkTS语言 ，开发者可以使用 ArkTS声明式开发范式 开发ArkTS卡片页面。 如下卡片页面由DevEco Studio模板自动生成，开发者可以根据自身的业务场景进行调整。 #### ArkTS卡片支持的页面能力 ArkTS卡片具备JS卡片的全量能力，并且新增了动效能力和自定义绘制的能力，支持 ArkTS声明式开发范式 的部分组件、事件、动效、数据管理、状态管理能力。 对于支持在ArkTS卡片UI界面中使用的接口，会添加“卡片能力”的标记，如：从API version 12开始，该接口支持在ArkTS卡片中使用。同时请留意卡片场景下的能力差异说明。 例如：以下说明表示CircleShape可在ArkTS卡片中使用。"
     },
     {
       "path": "references/ArkTS卡片编辑概述.md",
       "title": "ArkTS卡片编辑概述",
-      "snippet": "ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内容的功能，例如：编辑联系人卡片、修改卡片中展示的联系人、编辑天气卡片等。 卡片页面编辑分为半模态卡片编辑和全屏卡片编辑两种方式，从API version 18开始，支持半模态卡片编辑。 #### 半模态卡片编辑 下面给出一个示例，介绍半模态卡片编辑的使用步骤。 #### 实现原理 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d0/v3/D_UsjIYlTDG98yyUsh7IbA/zh-cn_image_0000002573854245.png?HW-CC-KV=V1&HW-CC-Date=20260421T111009Z&HW-CC-Expire=86400&HW-CC-Sign=A6790AD0B7AC5EEC0F853228A2C311625311BF3262D93C0C43902213FAE5357C) 1. 长按卡片弹出菜单，此时桌面通过formConfigAbility字段判断卡片是否支持卡片编辑能力来决定是否显示编辑按钮。 2. - 预览区：灰色区域为预览区，用于呈现卡片编辑后的效果。预览区的布局是由桌面决定的。 - 编辑区：白色区域为编辑区，为应用自定义布局区域，用来实现卡片编辑的布局"
+      "snippet": "ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内容的功能，例如：编辑联系人卡片、修改卡片中展示的联系人、编辑天气卡片等。 卡片页面编辑分为半模态卡片编辑和全屏卡片编辑两种方式，从API version 18开始，支持半模态卡片编辑。 #### 半模态卡片编辑 下面给出一个示例，介绍半模态卡片编辑的使用步骤。 #### 实现原理 1. 长按卡片弹出菜单，此时桌面通过formConfigAbility字段判断卡片是否支持卡片编辑能力来决定是否显示编辑按钮。 2. - 预览区：灰色区域为预览区，用于呈现卡片编辑后的效果。预览区的布局是由桌面决定的。 - 编辑区：白色区域为编辑区，为应用自定义布局区域，用来实现卡片编辑的布局。卡片编辑区的布局由应用继承FormEditExtensionAbility后绘制而成，可用于简单的编辑布局。 - FormEditDemo：该字段为卡片宿主应用的应用名称，通过app.json5配置文件中的label字段配置。 - widget：该字段为卡片名称，通过卡片form_config.json配置文件中的name字段配置。 - “完成”按钮：编辑完成之后，点击按钮可退出半模态卡片编辑页面。 3. 在卡片编辑区，点击“切换到：上海”按钮后，卡片提供方可以通过updateForm接口更新卡片信息，并在预览区显示。 4. 在卡片编辑区，点击“进入二级编"
     },
     {
       "path": "references/ArkTS卡片被动刷新.md",
@@ -49,12 +49,12 @@
     {
       "path": "references/ArkTS卡片进程模型.md",
       "title": "ArkTS卡片进程模型",
-      "snippet": "本文主要介绍，卡片从创建到显示整个过程中各个进程的含义。具体请参考卡片进程模型。 **图1** 卡片进程模型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/af/v3/eAvzn39gQvCfh4zfCHQ-FA/zh-cn_image_0000002573854237.png?HW-CC-KV=V1&HW-CC-Date=20260421T111006Z&HW-CC-Expire=86400&HW-CC-Sign=1968A9D762645DFDC72524AA55E38B3D9E8E820E12161B4B18BF24BC9935D6CA) - 卡片使用方进程：显示卡片的宿主进程，例如桌面进程。 - 卡片渲染服务进程：系统内统一加载渲染卡片UI的进程，所有卡片渲染在同一个进程内，不同的应用卡片通过虚拟机隔离。 - 卡片管理服务进程：系统内统一卡片生命周期的系统SA服务。 - 卡片提供方进程：提供卡片的应用进程，包括应用自身UIAbility运行的主进程，以及卡片单独的FormExtensionAbility进程。两个进程之间内存隔离，但是共享相同的文件沙箱。"
+      "snippet": "本文主要介绍，卡片从创建到显示整个过程中各个进程的含义。具体请参考卡片进程模型。 **图1** 卡片进程模型 - 卡片使用方进程：显示卡片的宿主进程，例如桌面进程。 - 卡片渲染服务进程：系统内统一加载渲染卡片UI的进程，所有卡片渲染在同一个进程内，不同的应用卡片通过虚拟机隔离。 - 卡片管理服务进程：系统内统一卡片生命周期的系统SA服务。 - 卡片提供方进程：提供卡片的应用进程，包括应用自身UIAbility运行的主进程，以及卡片单独的FormExtensionAbility进程。两个进程之间内存隔离，但是共享相同的文件沙箱。"
     },
     {
       "path": "references/ArkTS卡片适配常见问题.md",
       "title": "ArkTS卡片适配常见问题",
-      "snippet": "ArkTS卡片开发支持V2装饰器语法(如 @ObservedV2 、 @ComponentV2 )，建议开发者使用V2装饰器替代V1语法进行状态管理，以获得更优的组件渲染性能和状态同步能力。 完整的语法差异对比、迁移步骤及示例代码，请参见官方文档: V1->V2迁移指导概述 。 #### 如何定位ArkTS卡片白屏问题？ ArkTS卡片白屏问题定位请参考 服务卡片显示问题定位指导 #### ArkTS卡片如何适配深浅色模式？ 当前系统存在深浅色两种显示模式，为了给用户更好的使用体验，保障卡片与页面视觉体验一致性，ArkTS卡片支持适配深浅色模式，具体请参考 应用深浅色适配 。 #### 导入particleAbility、audio、camera、media、backgroundTaskManager模块导致应用崩溃问题。 #### 问题现象 导入particleAbility、audio、camera、media、backgroundTaskManager后应用崩溃，FaultLog指向相关调用行。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/24/v3/bdwn-Iy_R82xUY-HPVhVWA/zh-cn_image_0000002573974235."
+      "snippet": "ArkTS卡片开发支持V2装饰器语法(如 @ObservedV2 、 @ComponentV2 )，建议开发者使用V2装饰器替代V1语法进行状态管理，以获得更优的组件渲染性能和状态同步能力。 完整的语法差异对比、迁移步骤及示例代码，请参见官方文档: V1->V2迁移指导概述 。 #### 如何定位ArkTS卡片白屏问题？ ArkTS卡片白屏问题定位请参考 服务卡片显示问题定位指导 #### ArkTS卡片如何适配深浅色模式？ 当前系统存在深浅色两种显示模式，为了给用户更好的使用体验，保障卡片与页面视觉体验一致性，ArkTS卡片支持适配深浅色模式，具体请参考 应用深浅色适配 。 #### 导入particleAbility、audio、camera、media、backgroundTaskManager模块导致应用崩溃问题。 #### 问题现象 导入particleAbility、audio、camera、media、backgroundTaskManager后应用崩溃，FaultLog指向相关调用行。 报错对应的代码行如下： #### 原因 ArkTS卡片的FormExtensionAbility不支持加载上述模块，参考 @ohos.app.form.FormExtensionAbility 。强行加载得到的对象是undefined，使用时就会产生JS crash。 #### 解决"
     },
     {
       "path": "references/ArkTS卡片页面交互概述.md",
@@ -64,12 +64,12 @@
     {
       "path": "references/ArkTS卡片页面刷新概述.md",
       "title": "ArkTS卡片页面刷新概述",
-      "snippet": "卡片使用方（例如：桌面）和卡片提供方均可主动触发卡片页面刷新。此外，卡片管理服务会根据开发者声明的定时信息，按需通知卡片提供方进行卡片刷新。因此，卡片刷新方式包括：卡片提供方主动触发刷新、卡片使用方主动触发刷新以及卡片定时定点刷新。这些刷新方式均需由卡片提供方推送需要刷新的卡片数据。 #### 卡片数据交互 ArkTS卡片管理服务支持卡片提供方（例如：应用）和卡片之间的数据交互。卡片通过 postCardAction 传递数据给卡片提供方，卡片提供方则通过 updateForm 接口传递数据给卡片。卡片提供方将数据提供给卡片后，可以用于卡片页面刷新等。 由于卡片提供方和卡片为相互独立的进程，两者间的数据共享只能通过 LocalStorageProp 传递，不能使用getContext方法。因此卡片提供方推送数据后，卡片UI需要通过LocalStorageProp接收数据，且接收数据时，卡片数据会被转换成string类型。 #### 页面刷新分类 根据触发方式的差异，卡片刷新分为主动刷新和被动刷新。 #### 主动刷新 主动刷新包括卡片提供方主动刷新卡片和卡片使用方主动刷新卡片。开发指导请参考 ArkTS卡片主动刷新 。 **图1 卡片提供方主动刷新卡片流程图** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/Develo"
+      "snippet": "卡片使用方（例如：桌面）和卡片提供方均可主动触发卡片页面刷新。此外，卡片管理服务会根据开发者声明的定时信息，按需通知卡片提供方进行卡片刷新。因此，卡片刷新方式包括：卡片提供方主动触发刷新、卡片使用方主动触发刷新以及卡片定时定点刷新。这些刷新方式均需由卡片提供方推送需要刷新的卡片数据。 #### 卡片数据交互 ArkTS卡片管理服务支持卡片提供方（例如：应用）和卡片之间的数据交互。卡片通过 postCardAction 传递数据给卡片提供方，卡片提供方则通过 updateForm 接口传递数据给卡片。卡片提供方将数据提供给卡片后，可以用于卡片页面刷新等。 由于卡片提供方和卡片为相互独立的进程，两者间的数据共享只能通过 LocalStorageProp 传递，不能使用getContext方法。因此卡片提供方推送数据后，卡片UI需要通过LocalStorageProp接收数据，且接收数据时，卡片数据会被转换成string类型。 #### 页面刷新分类 根据触发方式的差异，卡片刷新分为主动刷新和被动刷新。 #### 主动刷新 主动刷新包括卡片提供方主动刷新卡片和卡片使用方主动刷新卡片。开发指导请参考 ArkTS卡片主动刷新 。 **图1 卡片提供方主动刷新卡片流程图** 卡片提供方应用运行过程中，如果识别到有要更新卡片数据的诉求，可以主动通过formProvider提供的 updateFo"
     },
     {
       "path": "references/Form Kit简介.md",
       "title": "Form Kit简介",
-      "snippet": "Form Kit（卡片开发服务）提供了一种在桌面、锁屏等系统应用上嵌入显示应用信息的开发框架和API，可以将应用内用户关注的重要信息或常用操作抽取到服务卡片（简称“卡片”）上，通过将卡片添加到桌面、锁屏等系统应用上，以达到信息展示、服务直达的便捷体验效果。 #### 卡片使用场景 - 支持设备类型：手机、平板、PC/2in1、智慧屏、智能手表、车机。轻量级智能穿戴设备不支持使用本Kit。 - 支持开发卡片应用类型：应用和元服务内均支持开发卡片。 - 支持卡片使用位置：用户可以在桌面、锁屏等系统应用上添加使用，不支持在普通应用内嵌入显示卡片。 - 卡片常见使用步骤： 1. 长按“桌面的应用图标”，弹出操作菜单。 2. 点击“卡片”选项，进入卡片管理页面，可以预览卡片。 3. 点击“添加到桌面”按钮，即可在桌面上看到新添加的卡片。 **图1** 卡片常见使用步骤 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ae/v3/lEk5AUmOQYOo_qWNYs4z-Q/zh-cn_image_0000002573974205.png?HW-CC-KV=V1&HW-CC-Date=20260421T111005Z&HW-CC-Expire=86400&HW-CC-Sign"
+      "snippet": "Form Kit（卡片开发服务）提供了一种在桌面、锁屏等系统应用上嵌入显示应用信息的开发框架和API，可以将应用内用户关注的重要信息或常用操作抽取到服务卡片（简称“卡片”）上，通过将卡片添加到桌面、锁屏等系统应用上，以达到信息展示、服务直达的便捷体验效果。 #### 卡片使用场景 - 支持设备类型：手机、平板、PC/2in1、智慧屏、智能手表、车机。轻量级智能穿戴设备不支持使用本Kit。 - 支持开发卡片应用类型：应用和元服务内均支持开发卡片。 - 支持卡片使用位置：用户可以在桌面、锁屏等系统应用上添加使用，不支持在普通应用内嵌入显示卡片。 - 卡片常见使用步骤： 1. 长按“桌面的应用图标”，弹出操作菜单。 2. 点击“卡片”选项，进入卡片管理页面，可以预览卡片。 3. 点击“添加到桌面”按钮，即可在桌面上看到新添加的卡片。 **图1** 卡片常见使用步骤 #### 服务卡片架构 **图2** 服务卡片架构 **卡片场景中涉及到的基本概念** - 卡片使用方：如上图中的桌面，作为显示卡片内容的宿主应用，用于与用户直接进行交互，完成卡片添加、删除、显示功能，并能控制卡片在宿主中具体展示的位置。 - 卡片提供方：提供卡片的应用或元服务，是卡片功能的具体实现者，需要设计实现卡片UI、数据更新、以及点击交互处理功能。 - 卡片管理服务：操作系统内管理整机卡片信息的系统服务，作为卡片提供方"
     },
     {
       "path": "references/JS卡片开发指导（FA模型）.md",
@@ -84,17 +84,17 @@
     {
       "path": "references/JS卡片概述.md",
       "title": "JS卡片概述",
-      "snippet": "JS卡片是使用类Web范式（HML+CSS+JSON）开发页面的卡片，现在已经支持FA模型和Stage模型两种 应用模型 。开发指导请参见 JS卡片开发指导（Stage模型） 和 JS卡片开发指导（FA模型） 。在开发新卡片时，推荐采用ArkTS声明式来构建UI，声明式和类web范式差异点可参考 ArkUI简介 。 #### 实现原理 JS卡片实现原理如图1所示。 **图1** JS卡片实现原理 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5/v3/k0wS1KnqS36sfVt_CLNvsQ/zh-cn_image_0000002543214346.png?HW-CC-KV=V1&HW-CC-Date=20260421T111012Z&HW-CC-Expire=86400&HW-CC-Sign=25EE9AFBA7C7CA4C099F35ECB103CF125597AAF83AC37ACCE8F3B9C2BDED9FFA) 卡片使用方包含以下模块： - 卡片使用：包含卡片的创建、删除、请求更新等操作。 - 通信适配层：由HarmonyOS SDK提供，负责与卡片管理服务通信，用于将卡片的相关操作指令发送到卡片管理服务。 卡片管理服务包含以下模块： - 周期性"
+      "snippet": "JS卡片是使用类Web范式（HML+CSS+JSON）开发页面的卡片，现在已经支持FA模型和Stage模型两种 应用模型 。开发指导请参见 JS卡片开发指导（Stage模型） 和 JS卡片开发指导（FA模型） 。在开发新卡片时，推荐采用ArkTS声明式来构建UI，声明式和类web范式差异点可参考 ArkUI简介 。 #### 实现原理 JS卡片实现原理如图1所示。 **图1** JS卡片实现原理 卡片使用方包含以下模块： - 卡片使用：包含卡片的创建、删除、请求更新等操作。 - 通信适配层：由HarmonyOS SDK提供，负责与卡片管理服务通信，用于将卡片的相关操作指令发送到卡片管理服务。 卡片管理服务包含以下模块： - 周期性刷新：在卡片添加后，根据卡片的刷新策略启动定时任务周期性触发卡片的刷新。 - 卡片缓存管理：在卡片添加到卡片管理服务后，对卡片的视图信息进行缓存，以便下次获取卡片时可以直接返回缓存数据，降低时延。 - 卡片生命周期管理：对于卡片切换到后台或者被遮挡时，暂停卡片的刷新；以及卡片的升级/卸载场景下对卡片数据的更新和清理。 - 卡片使用方对象管理：对卡片使用方的RPC对象进行管理，用于使用方请求进行校验以及对卡片更新后的回调处理。 - 通信适配层：负责与卡片使用方和提供方进行RPC通信。 卡片提供方包含以下模块： - 卡片服务：由卡片提供方开发者实现，开发者实现"
     },
     {
       "path": "references/互动卡片概述.md",
       "title": "互动卡片概述",
-      "snippet": "从API version 20开始，支持互动卡片。互动卡片提供卡片动效能力，例如卡片破框动效，丰富信息提醒、浅层交互功能，显著提升用户体验。 #### 使用场景 互动卡片包含两种类型：趣味交互类型互动卡片和场景动效类型互动卡片。 #### 趣味交互类型 趣味交互类型互动卡片，提供卡片小游戏功能，当用户点击卡片时，开始体验对应卡片小游戏。当前仅支持基于 快游戏 开发。详细请参考 趣味交互类型互动卡片开发指导 。 **图1** 趣味交互类型互动卡片样例 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0a/v3/8mf0IUA8RZSG7aK_vFdDIg/zh-cn_image_0000002543214340.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111011Z&HW-CC-Expire=86400&HW-CC-Sign=0A323003100E8265CDD5D4C6000F452E04BDF97723D32CBEE774D7AFA46EAEC9) #### 场景动效类型 场景动效类型互动卡片支持实现动态效果。以天气卡片为例，当天气变为雷雨天气时，卡片激活并触发互动卡片动效。动效结束后，卡片恢复原有显示效果。详细信息请参考 场景"
+      "snippet": "从API version 20开始，支持互动卡片。互动卡片提供卡片动效能力，例如卡片破框动效，丰富信息提醒、浅层交互功能，显著提升用户体验。 #### 使用场景 互动卡片包含两种类型：趣味交互类型互动卡片和场景动效类型互动卡片。 #### 趣味交互类型 趣味交互类型互动卡片，提供卡片小游戏功能，当用户点击卡片时，开始体验对应卡片小游戏。当前仅支持基于 快游戏 开发。详细请参考 趣味交互类型互动卡片开发指导 。 **图1** 趣味交互类型互动卡片样例 #### 场景动效类型 场景动效类型互动卡片支持实现动态效果。以天气卡片为例，当天气变为雷雨天气时，卡片激活并触发互动卡片动效。动效结束后，卡片恢复原有显示效果。详细信息请参考 场景动效类型互动卡片概述 。 #### 约束和限制 - 互动卡片作为卡片功能的增强，卡片自身业务不能强依赖互动卡片动效能力。"
     },
     {
       "path": "references/创建ArkTS卡片.md",
       "title": "创建ArkTS卡片",
-      "snippet": "ArkTS卡片有两种创建卡片包的方式。开发者在开发过程中任选其一即可。 方式一：卡片和应用共包方式，创建步骤请参考 共包方式创建卡片 ，此时卡片UI和应用代码在一个module内，最终编译产物也在同一个HAP包内。 方式二：独立卡片包方式，创建步骤请参考 独立包方式创建卡片 ，此时卡片UI和应用代码在不同module内，最终编译产物分为卡片包和应用包。从API version 20开始支持。 ArkTS卡片创建完成，在开发卡片过程中，支持对卡片进行 实时预览 。 #### 方式一：共包方式创建卡片 #### 创建步骤 **1. 新建工程** 在DevEco Studio中，选择创建Application或Atomic Service工程，这两种都支持创建卡片。工程创建指导具体请参考 创建一个新的工程 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/53/v3/JnpWMAMSTSyRN3T29MgrmA/zh-cn_image_0000002543214318.png?HW-CC-KV=V1&HW-CC-Date=20260421T111005Z&HW-CC-Expire=86400&HW-CC-Sign=16E6B8F8165009C1E6021D6A44A"
+      "snippet": "ArkTS卡片有两种创建卡片包的方式。开发者在开发过程中任选其一即可。 方式一：卡片和应用共包方式，创建步骤请参考 共包方式创建卡片 ，此时卡片UI和应用代码在一个module内，最终编译产物也在同一个HAP包内。 方式二：独立卡片包方式，创建步骤请参考 独立包方式创建卡片 ，此时卡片UI和应用代码在不同module内，最终编译产物分为卡片包和应用包。从API version 20开始支持。 ArkTS卡片创建完成，在开发卡片过程中，支持对卡片进行 实时预览 。 #### 方式一：共包方式创建卡片 #### 创建步骤 **1. 新建工程** 在DevEco Studio中，选择创建Application或Atomic Service工程，这两种都支持创建卡片。工程创建指导具体请参考 创建一个新的工程 。 基于不同版本的DevEco Studio，请以实际界面为准。 **2. 新建卡片** 在已有的应用工程中，右键新建ArkTS卡片，具体操作如下。 - 选中entry目录单击右键选择【New】->【Service Widget】->【Dynamic Widget】。在API 10及以上 Stage模型的工程中，开发者可通过Service Widget菜单直接选择创建动态卡片（Dynamic Widget）或静态卡片（Static Widget）。创建卡片后，也可在卡片的 form_c"
     },
     {
       "path": "references/刷新本地图片和网络图片.md",
@@ -104,17 +104,17 @@
     {
       "path": "references/卡片传递消息给应用（message事件）.md",
       "title": "卡片传递消息给应用（message事件）",
-      "snippet": "在卡片页面中可以通过 postCardAction 接口触发message事件拉起 FormExtensionAbility ，通过 onFormEvent 接口回调通知，以完成点击卡片控件后传递消息给应用的功能，然后由FormExtensionAbility刷新卡片内容，下面是这种刷新方式的简单示例。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/84/v3/BWJT8eBHTDy9NHUM2jl7jw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111009Z&HW-CC-Expire=86400&HW-CC-Sign=1A9AD6472B1C6BA220A1FDDD460BB8701B9E10C9818F94DAB6C453A87BABBA77) 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见 FormLink 。 - 在卡片页面通过注册Button的onClick点击事件回调，并在回调中调用postCardAction接口触发message事件拉起FormExtensionAbility。卡片页面中使用 LocalStorageProp 装饰需要刷新的卡片数据。 // entry/src/m"
+      "snippet": "在卡片页面中可以通过 postCardAction 接口触发message事件拉起 FormExtensionAbility ，通过 onFormEvent 接口回调通知，以完成点击卡片控件后传递消息给应用的功能，然后由FormExtensionAbility刷新卡片内容，下面是这种刷新方式的简单示例。 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见 FormLink 。 - 在卡片页面通过注册Button的onClick点击事件回调，并在回调中调用postCardAction接口触发message事件拉起FormExtensionAbility。卡片页面中使用 LocalStorageProp 装饰需要刷新的卡片数据。 // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets let storageUpdateByMsg = new LocalStorage(); @Entry(storageUpdateByMsg) @Component struct UpdateByMessageCard { // $r('app.string.default_title')和$r('app.string.DescriptionDefault')需要替换为开发者所需的资源文件 @LocalStorageProp"
     },
     {
       "path": "references/卡片拉起应用UIAbility到后台（call事件）.md",
       "title": "卡片拉起应用UIAbility到后台（call事件）",
-      "snippet": "许多应用希望借助卡片的能力，实现和应用在前台时相同的功能。例如音乐卡片，卡片上提供播放、暂停等按钮，点击不同按钮将触发音乐应用的不同功能，进而提高用户的体验。在卡片中使用 postCardAction 接口的call能力，能够将卡片提供方应用的指定的UIAbility拉到后台。同时，call能力提供了调用应用指定方法、传递数据的功能，使应用在后台运行时可以通过卡片上的按钮执行不同的功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/40/v3/d4k_VxreRviztSfNkOUIdw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111009Z&HW-CC-Expire=86400&HW-CC-Sign=60E5ABCD0ACC5A607EAFAE54A1699DA0EB6B14498B6F34D0A24BEC592D77C01B) 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见 FormLink 。 #### 开发步骤 1. 创建动态卡片 新建一个名为WidgetEventCall的ArkTs动态卡片。 2. 页面布局代码实现 在卡片页面中布局两个按钮，点击按钮A或按钮B，会调用postCar"
+      "snippet": "许多应用希望借助卡片的能力，实现和应用在前台时相同的功能。例如音乐卡片，卡片上提供播放、暂停等按钮，点击不同按钮将触发音乐应用的不同功能，进而提高用户的体验。在卡片中使用 postCardAction 接口的call能力，能够将卡片提供方应用的指定的UIAbility拉到后台。同时，call能力提供了调用应用指定方法、传递数据的功能，使应用在后台运行时可以通过卡片上的按钮执行不同的功能。 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见 FormLink 。 #### 开发步骤 1. 创建动态卡片 新建一个名为WidgetEventCall的ArkTs动态卡片。 2. 页面布局代码实现 在卡片页面中布局两个按钮，点击按钮A或按钮B，会调用postCardAction向指定UIAbility发送call事件，在call事件内定义了需要调用的方法。按钮A和按钮B分别对应调用funA、funB方法，其中funA携带了formID参数，funB携带了formID和num参数，开发过程中请根据实际需要传参。postCardAction中的method参数为必填参数，用于标识需要调用的方法名称，与步骤3中UIAbility监听的方法一致，其他参数为非必填。 //src/main/ets/widgeteventcall/pages/WidgetEventCallCard.ets let st"
     },
     {
       "path": "references/卡片跳转到应用页面（router事件）.md",
       "title": "卡片跳转到应用页面（router事件）",
-      "snippet": "在动态卡片中使用 postCardAction 接口的router能力，能够快速拉起动态卡片提供方应用的指定UIAbility(页面)，因此UIAbility较多的应用往往会通过卡片提供不同的跳转按钮，实现一键直达的效果。例如相机卡片，卡片上提供拍照、录像等按钮，点击不同按钮将拉起相机应用的不同UIAbility，从而提升用户的体验。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e4/v3/Zqo0KZ_aTlOR_VZVV8SrEQ/zh-cn_image_0000002573854243.png?HW-CC-KV=V1&HW-CC-Date=20260421T111008Z&HW-CC-Expire=86400&HW-CC-Sign=915354913105FE18DE76346156ECD9222098FF3A453112014853DE8329127B8F) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/43/v3/qlcwvknpT0eDIOuBxgZDQg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC"
+      "snippet": "在动态卡片中使用 postCardAction 接口的router能力，能够快速拉起动态卡片提供方应用的指定UIAbility(页面)，因此UIAbility较多的应用往往会通过卡片提供不同的跳转按钮，实现一键直达的效果。例如相机卡片，卡片上提供拍照、录像等按钮，点击不同按钮将拉起相机应用的不同UIAbility，从而提升用户的体验。 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见 FormLink 。 #### 开发步骤 1. 创建动态卡片，在工程的entry模块中，新建名为WidgetEventRouterCard的ArkTS卡片。 2. 构建ArkTS卡片页面代码布局，卡片页面布局中有两个按钮，点击其中一个按钮时调用postCardAction向指定UIAbility发送router事件，并在事件内定义需要传递的内容。 // src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets @Entry @Component struct WidgetEventRouterCard { build() { Column() { // $r('app.string.JumpLabel')需要替换为开发者所需的资源文件 Text($r('app.string.JumpLabel')) .fontColor('#FF"
     },
     {
       "path": "references/场景动效类型互动卡片开发指导.md",
@@ -124,7 +124,7 @@
     {
       "path": "references/场景动效类型互动卡片概述.md",
       "title": "场景动效类型互动卡片概述",
-      "snippet": "从API version 20开始，场景动效类型互动卡片支持在特定场景下触发互动卡片的特有效果。例如，开发者可以选择将动效渲染区域扩展到卡片自身的渲染区域之外，营造“破框”效果。 #### 基本概念 场景动效类型互动卡片主要包含两个状态：激活态和非激活态。卡片生命周期中的事件，如数据定时或定点刷新、用户点击等交互场景，可触发卡片动效，使卡片切换至激活态。动效结束后，卡片切回非激活态。 **非激活态** ：在此状态下，卡片与普通卡片行为无异，遵循既有的卡片开发规范，卡片UI由卡片提供方widgetCard.ets中的内容所呈现。 **激活态** ： 表示互动卡片动效渲染状态，在此状态下，卡片UI由卡片提供方所开发的 LiveFormExtensionAbility 对应page页面完成渲染。详细可参考 场景动效类型互动卡片开发指导 。 **图1** 互动卡片状态切换说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d1/v3/m0skr1o4QSqn2ToxFxi8pw/zh-cn_image_0000002543214342.png?HW-CC-KV=V1&HW-CC-Date=20260421T111011Z&HW-CC-Expire=86400&HW-CC"
+      "snippet": "从API version 20开始，场景动效类型互动卡片支持在特定场景下触发互动卡片的特有效果。例如，开发者可以选择将动效渲染区域扩展到卡片自身的渲染区域之外，营造“破框”效果。 #### 基本概念 场景动效类型互动卡片主要包含两个状态：激活态和非激活态。卡片生命周期中的事件，如数据定时或定点刷新、用户点击等交互场景，可触发卡片动效，使卡片切换至激活态。动效结束后，卡片切回非激活态。 **非激活态** ：在此状态下，卡片与普通卡片行为无异，遵循既有的卡片开发规范，卡片UI由卡片提供方widgetCard.ets中的内容所呈现。 **激活态** ： 表示互动卡片动效渲染状态，在此状态下，卡片UI由卡片提供方所开发的 LiveFormExtensionAbility 对应page页面完成渲染。详细可参考 场景动效类型互动卡片开发指导 。 **图1** 互动卡片状态切换说明 **图2** 互动卡片动效触发流程 #### 实现原理 开发者可以通过 formProvider.requestOverflow 接口触发互动卡片动效，例如在用户点击时触发，典型时序图如下。 **图3** 点击触发互动卡片动效时序图 定时定点刷新互动卡片动效的时序图如下。 **图4** 定时定点触发互动卡片动效时序图 #### 约束和限制 #### 支持的场景 1. 当前互动卡片动效只有在FormLocation为“"
     },
     {
       "path": "references/应用内拉起卡片管理加桌.md",
@@ -144,27 +144,27 @@
     {
       "path": "references/背板透明卡片开发指导.md",
       "title": "背板透明卡片开发指导",
-      "snippet": "从API version 22开始，Form Kit提供卡片背板元素透明显示的能力，满足更丰富的UI设计以及美观诉求。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fd/v3/_uu8RPCFTRKnvLDhJzTxSg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111010Z&HW-CC-Expire=86400&HW-CC-Sign=E33D43B0D93A9438EBF36FC0CE0B129816D3A1DD15E44ADBBA4C39B48D426952) 示例效果请以真机运行为准，当前不支持DevEco Studio预览器。 #### 约束和限制 1. 非透明区域要求大于等于10%，不能有大面积全透明，让用户误以为此区域没有卡片的UI设计和实现。 2. 为保障卡片内容和文字清晰可见，建议根据加卡时系统告知的推荐颜色值来显示文字。 #### 开发准备 #### 透明卡片开放能力申请 因为背板透明卡片仅使用于符合UI规范以及声明使用的场景，不允许对用户隐藏卡片显示或者功能按钮的恶意设计，所以需要开发者申请上架开放能力。 1. 登录AppGallery Connect，选择“开发与服务”。 !["
+      "snippet": "从API version 22开始，Form Kit提供卡片背板元素透明显示的能力，满足更丰富的UI设计以及美观诉求。 示例效果请以真机运行为准，当前不支持DevEco Studio预览器。 #### 约束和限制 1. 非透明区域要求大于等于10%，不能有大面积全透明，让用户误以为此区域没有卡片的UI设计和实现。 2. 为保障卡片内容和文字清晰可见，建议根据加卡时系统告知的推荐颜色值来显示文字。 #### 开发准备 #### 透明卡片开放能力申请 因为背板透明卡片仅使用于符合UI规范以及声明使用的场景，不允许对用户隐藏卡片显示或者功能按钮的恶意设计，所以需要开发者申请上架开放能力。 1. 登录AppGallery Connect，选择“开发与服务”。 2. 在项目列表中找到您的项目，并点击选择需开启开放能力的应用/元服务。 3. 在“开放能力管理”页面，点击背板透明卡片对应的申请按钮。 4. 在“新建业务申请”窗口填写申请信息，然后点击“提交”。申请原因：必填，包括应用介绍、使用场景、申请用途，不超过256个字符。上传附件：必填，提供对应卡片UI设计释义材料，仅可上传1个附件，大小不超过500MB。支持文本、表格、图片、视频、压缩包格式。 5. 返回“开放能力管理”页面，原“申请”按钮变为“申请中”，1-3个工作日反馈申请结果。 6. 申请审批通过后，互动中心会发送通知给您，同时“"
     },
     {
       "path": "references/趣味交互类型互动卡片开发指导.md",
       "title": "趣味交互类型互动卡片开发指导",
-      "snippet": "趣味交互类型互动卡片当前仅支持基于 快游戏 开发的卡片小游戏，互动卡片默认处于非激活态，当用户点击卡片时，卡片切换为激活态，并开始游戏。在游戏过程中，用户可以点击“暂停”按钮进入暂停态。在暂停态，用户可以通过“继续游戏”和“停止游戏”按钮选择返回激活态继续游戏，或者结束游戏。 #### 基本概念 趣味交互类型互动卡片主要包含三个状态：激活态、暂停态和非激活态，分别对应游戏进行、游戏暂停、游戏结束。 #### 激活态 在此状态下，卡片UI由卡片提供方基于快游戏所开发的卡片小游戏页面承载。此时系统支持游戏内容渲染到卡片自身渲染区域之外的“破框”效果。 **图1** 趣味交互类型互动卡片激活态 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/83/v3/Gwn9yK6cR5KTzdgXdf3hfQ/zh-cn_image_0000002573854255.gif?HW-CC-KV=V1&HW-CC-Date=20260421T111011Z&HW-CC-Expire=86400&HW-CC-Sign=7D5550A1B0952D2D80C72A67B0923B2FCFE107FCCC479FD5CDEF775AF92BB95E) #### 暂停态 在此状态下，卡片UI由"
+      "snippet": "趣味交互类型互动卡片当前仅支持基于 快游戏 开发的卡片小游戏，互动卡片默认处于非激活态，当用户点击卡片时，卡片切换为激活态，并开始游戏。在游戏过程中，用户可以点击“暂停”按钮进入暂停态。在暂停态，用户可以通过“继续游戏”和“停止游戏”按钮选择返回激活态继续游戏，或者结束游戏。 #### 基本概念 趣味交互类型互动卡片主要包含三个状态：激活态、暂停态和非激活态，分别对应游戏进行、游戏暂停、游戏结束。 #### 激活态 在此状态下，卡片UI由卡片提供方基于快游戏所开发的卡片小游戏页面承载。此时系统支持游戏内容渲染到卡片自身渲染区域之外的“破框”效果。 **图1** 趣味交互类型互动卡片激活态 #### 暂停态 在此状态下，卡片UI由卡片提供方widgetCard.ets中的内容所承载。同时系统在卡片上默认展示“继续游戏”和“停止游戏”按钮。 **图2** 趣味交互类型互动卡片暂停态 #### 非激活态 即普通卡片状态，在此状态下，卡片与普通卡片行为无异，遵循既有的卡片开发规范，卡片UI由卡片提供方widgetCard.ets中的内容所承载。 **图3** 趣味交互类型互动卡片非激活态 #### 约束与限制 1. 用户与卡片交互时，例如点击、长按、拖拽等，卡片的交互响应热区始终与卡片自身渲染区域等大。即使动效渲染区域大于卡片自身渲染区域，超出部分也仅做UI呈现，不响应交互事件。 2. 激"
     },
     {
       "path": "references/通过router或call事件刷新卡片内容.md",
       "title": "通过router或call事件刷新卡片内容",
-      "snippet": "使用router事件，点击卡片可拉起对应应用的UIAbility至前台，并刷新卡片。使用call事件，点击卡片可拉起对应应用的UIAbility至后台，并刷新卡片。在卡片页面中可以通过 postCardAction 接口触发router事件或者call事件拉起UIAbility，然后由UIAbility刷新卡片内容，下面是这种刷新方式的简单示例。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/73/v3/Vo-Zyf9ZSkSGHEeo7bmClw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111009Z&HW-CC-Expire=86400&HW-CC-Sign=16C6661BD8ED3E283C8E07DF14A4205EA79865C0A0E78E887FE346A656EDCAB3) 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见 FormLink 。 #### 通过router事件刷新卡片内容 - 在卡片页面代码文件中，通过注册Button的onClick点击事件回调并在回调中调用postCardAction接口，触发router事件拉起UIAbility至前台。 // entry/s"
+      "snippet": "使用router事件，点击卡片可拉起对应应用的UIAbility至前台，并刷新卡片。使用call事件，点击卡片可拉起对应应用的UIAbility至后台，并刷新卡片。在卡片页面中可以通过 postCardAction 接口触发router事件或者call事件拉起UIAbility，然后由UIAbility刷新卡片内容，下面是这种刷新方式的简单示例。 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见 FormLink 。 #### 通过router事件刷新卡片内容 - 在卡片页面代码文件中，通过注册Button的onClick点击事件回调并在回调中调用postCardAction接口，触发router事件拉起UIAbility至前台。 // entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets let storageUpdateRouter = new LocalStorage(); @Entry(storageUpdateRouter) @Component struct WidgetUpdateRouterCard { // $r('app.string.init')需要替换为开发者所需的资源文件 @LocalStorageProp('routerDetail') routerDetail:"
     },
     {
       "path": "references/配置ArkTS卡片的配置文件.md",
       "title": "配置ArkTS卡片的配置文件",
-      "snippet": "卡片相关的配置文件包括 FormExtensionAbility 配置和卡片配置。如果是 独立卡片包 ，还会包含 独立卡片包配置 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/57/v3/RXX1rs84StWiZCNx2GAgmg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111005Z&HW-CC-Expire=86400&HW-CC-Sign=F7AB6142947EAB7B64A148CAD94082F1D04AF08C7031E79729997A8F0FE2FD61) - 卡片五元组是确认卡片唯一的要素信息。五元组分别为bundleName、moduleName、abilityName、formName、formDimension。其中bundleName是app.json5配置文件标签中bundleName配置项、moduleName是module.json5配置文件标签中的name配置项、abilityName是abilities标签中的name配置项、formName是配置文件字段说明中的name配置项、formDimension对应的是配置文件字段说明中的supportDimens"
+      "snippet": "卡片相关的配置文件包括 FormExtensionAbility 配置和卡片配置。如果是 独立卡片包 ，还会包含 独立卡片包配置 。 - 卡片五元组是确认卡片唯一的要素信息。五元组分别为bundleName、moduleName、abilityName、formName、formDimension。其中bundleName是app.json5配置文件标签中bundleName配置项、moduleName是module.json5配置文件标签中的name配置项、abilityName是abilities标签中的name配置项、formName是配置文件字段说明中的name配置项、formDimension对应的是配置文件字段说明中的supportDimensions配置项。 - 五元组不建议使用资源文件导入配置。使用资源文件导入时，资源文件新增字段等，对应的ID都会发生改变，会被认为五元组有改变。 - 如果应用升级后五元组有改变，系统中对应的卡片会被删除，在屏幕上会消失。 #### FormExtensionAbility配置 卡片需要在 module.json5配置文件 的extensionAbilities标签下，配置FormExtensionAbility相关信息。FormExtensionAbility需要填写metadata元信息标签，其中键名称为固定字符串 “ohos.e"
     },
     {
       "path": "references/锁屏卡片开发指导.md",
       "title": "锁屏卡片开发指导",
-      "snippet": "从API version 18开始，Form Kit提供在设备锁屏界面上显示卡片的能力，用以展示重要信息或快捷操作，旨在让用户无需解锁即可获取关键资讯或执行常用功能。锁屏卡片常用于展示天气、时钟等内容，并支持用户个性化定制。 本文介绍了锁屏卡片的使用步骤、约束限制，并给出开发指导。 #### 亮点/特征 - 应用信息浅层触达，不解锁即可查看，通过浅层信息持续获得用户关注，吸引用户复访。 - 应用快捷功能一键直达，提供更便捷的访问路径，提升操作效率。 #### 使用步骤 锁屏卡片除了在锁屏界面显示卡片，还支持添加、删除、移动卡片，具体操作步骤如下。 1. 进入锁屏编辑态：在设备锁屏界面双手捏合手势进入锁屏编辑态，出现4个卡片添加位。 锁屏卡片只支持1*1、1*2尺寸的卡片，1*1尺寸卡片对应1个卡片添加位，1*2对应2个卡片添加位。 2. 进入锁屏卡片管理页面：点击卡片添加位会弹出锁屏卡片管理页面。 3. 添加卡片：在锁屏卡片管理页面选择任一卡片，例如运动健康和时钟，卡片就会添加到锁屏上。 4. 删除卡片：在锁屏编辑态，点击卡片右上角的减号即可删除卡片。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/33/v3/FKWUIjBTTi-UNYbKahRisA/zh-"
+      "snippet": "从API version 18开始，Form Kit提供在设备锁屏界面上显示卡片的能力，用以展示重要信息或快捷操作，旨在让用户无需解锁即可获取关键资讯或执行常用功能。锁屏卡片常用于展示天气、时钟等内容，并支持用户个性化定制。 本文介绍了锁屏卡片的使用步骤、约束限制，并给出开发指导。 #### 亮点/特征 - 应用信息浅层触达，不解锁即可查看，通过浅层信息持续获得用户关注，吸引用户复访。 - 应用快捷功能一键直达，提供更便捷的访问路径，提升操作效率。 #### 使用步骤 锁屏卡片除了在锁屏界面显示卡片，还支持添加、删除、移动卡片，具体操作步骤如下。 1. 进入锁屏编辑态：在设备锁屏界面双手捏合手势进入锁屏编辑态，出现4个卡片添加位。 锁屏卡片只支持1*1、1*2尺寸的卡片，1*1尺寸卡片对应1个卡片添加位，1*2对应2个卡片添加位。 2. 进入锁屏卡片管理页面：点击卡片添加位会弹出锁屏卡片管理页面。 3. 添加卡片：在锁屏卡片管理页面选择任一卡片，例如运动健康和时钟，卡片就会添加到锁屏上。 4. 删除卡片：在锁屏编辑态，点击卡片右上角的减号即可删除卡片。 #### 约束和限制 - 设备限制：仅手机、平板设备支持使用。 - 界面限制： 1. 锁屏卡片只支持 1*1、1*2尺寸的卡片。 2. 锁屏卡片不推荐展示涉及用户的隐私敏感数据，具体界面约束请参考 卡片内容设计 。 #### 开发步"
     }
   ]
 }

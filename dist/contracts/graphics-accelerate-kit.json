@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:16:33.484Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -63,17 +64,16 @@
       "快速启动所需的应用启动流程与内存镜像相关配置 / App startup flow and memory-image-related configuration for fast launch"
     ],
     "outputs": [
-      "Kit 简介",
-      "业务概述",
-      "超帧概述",
-      "开发准备",
-      "ABR 功能开发",
-      "OpenGTX 功能开发",
-      "OpenGL ES 平台超帧开发",
-      "Vulkan 平台超帧开发",
-      "游戏资源加速服务 - 功能开发",
-      "游戏启动加速服务",
-      "常见问题"
+      "超帧生成帧（内插帧、外插预测帧、增强模式生成帧） / Frame-generation output frames (interpolated frames, extrapolated predicted frames, enhanced-mode generated frames)",
+      "经系统送显的加速渲染画面帧 / Accelerated rendered frames submitted for system display",
+      "ABR 自适应分辨率调整后的渲染缓冲区与画面结果 / Render buffers and image output after ABR adaptive resolution adjustment",
+      "OpenGTX 动态调整后的目标帧率、刷新率与频率策略结果 / OpenGTX-adjusted target frame rate, refresh rate, and frequency-policy results",
+      "游戏资源包后台下载任务结果 / Background game resource package download task result",
+      "已下载或更新完成的游戏资源包文件 / Downloaded or updated game resource package files",
+      "资源包下载进度、状态与完成/失败结果回调数据 / Resource package download progress, status, and completion/failure callback data",
+      "前台下载切后台后的接续下载结果 / Continued-download result after switching from foreground download to background",
+      "游戏启动加速生成的游戏内存镜像 / Game memory image generated for launch acceleration",
+      "基于内存镜像恢复后的秒级启动游戏运行状态 / Seconds-level restored game runtime state from the memory image"
     ],
     "postconditions": [
       {

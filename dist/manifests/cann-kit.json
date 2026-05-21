@@ -3,7 +3,7 @@
   "skill": "cann-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.585Z"
+    "at": "2026-05-21T03:47:44.310Z"
   },
   "references": [
     {
@@ -14,22 +14,22 @@
     {
       "path": "references/AIPP参数.md",
       "title": "AIPP参数",
-      "snippet": "AIPP分为静态AIPP和动态AIPP，两者使用严格区分，静态AIPP模型不能接收模型推理时传入的AIPP参数，不兼容动态AIPP场景，静态与动态AIPP区别详见下表。 #### AIPP支持的输入格式 AIPP可配置的图片格式如下： - YUV420SP_U8 - XRGB8888_U8 - ARGB8888_U8 - YUYV_U8 - YUV422SP_U8 - AYUV444_U8 - YUV400_U8 - RGB888_U8 格式后缀U8表示图片像素点为Uint8类型，范围为0到255。当图片的输入为YUV类型时，无论是YUV420还是YUV422或者YUYV，AIPP自动将图片数据补齐为YUV444格式。 除以上列举的图片类型，AIPP还可以通过开启Channel Swap通道交换功能，支持更加丰富的图片输入格式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/83/v3/XBIkK0W-QTeiK9Imr9wb6g/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111706Z&HW-CC-Expire=86400&HW-CC-Sign=24AD51DB1A9969B2C8B26D0CA789"
+      "snippet": "AIPP分为静态AIPP和动态AIPP，两者使用严格区分，静态AIPP模型不能接收模型推理时传入的AIPP参数，不兼容动态AIPP场景，静态与动态AIPP区别详见下表。 #### AIPP支持的输入格式 AIPP可配置的图片格式如下： - YUV420SP_U8 - XRGB8888_U8 - ARGB8888_U8 - YUYV_U8 - YUV422SP_U8 - AYUV444_U8 - YUV400_U8 - RGB888_U8 格式后缀U8表示图片像素点为Uint8类型，范围为0到255。当图片的输入为YUV类型时，无论是YUV420还是YUV422或者YUYV，AIPP自动将图片数据补齐为YUV444格式。 除以上列举的图片类型，AIPP还可以通过开启Channel Swap通道交换功能，支持更加丰富的图片输入格式。 YUYV_U8和AYUV444_U8当前版本不支持。 #### AIPP支持的功能 AIPP按照芯片的处理顺序，支持的功能如下： - Crop ：图片裁剪。 - Channel Swap ：通道交换。 - Color Space Conversion ：色域转换。 - Resize ：图片缩放。 - Data Type Conversion ：数据类型转换。 - Rotation ：图片旋转。 - Padding ：图片补边。 #### Crop AIPP"
     },
     {
       "path": "references/AIPP部署.md",
       "title": "AIPP部署",
-      "snippet": "AIPP部署是指动态AIPP推理时开发者按需配置动态AIPP参数，从而达到使能AIPP功能。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/40/v3/VX7MbvCuQDWR4eLeovQ5hg/zh-cn_image_0000002543374916.png?HW-CC-KV=V1&HW-CC-Date=20260421T111707Z&HW-CC-Expire=86400&HW-CC-Sign=1ED07CA678D4B670DAA22F43D1A214E9EFA5D35ECC2601D3C06EEFD42CF25BE4) #### 接口说明 以下接口为AIPP参数设置接口，如要使用更丰富的设置和查询接口，请参见 API参考 。 **表1** CANN Kit模型推理AIPP设置相关接口功能介绍 #### 开发步骤 1. 调用 HMS_HiAIAippParam_Create 创建动态AIPP配置实例。 2. 设置与计算图关联的配置。 - 调用HMS_HiAIAippParam_SetInputIndex设置此动态AIPP配置所在输入的索引。 - 调用HMS_HiAIAippParam_SetInputAippIndex设置此动态AIP"
+      "snippet": "AIPP部署是指动态AIPP推理时开发者按需配置动态AIPP参数，从而达到使能AIPP功能。 #### 业务流程 #### 接口说明 以下接口为AIPP参数设置接口，如要使用更丰富的设置和查询接口，请参见 API参考 。 **表1** CANN Kit模型推理AIPP设置相关接口功能介绍 #### 开发步骤 1. 调用 HMS_HiAIAippParam_Create 创建动态AIPP配置实例。 2. 设置与计算图关联的配置。 - 调用HMS_HiAIAippParam_SetInputIndex设置此动态AIPP配置所在输入的索引。 - 调用HMS_HiAIAippParam_SetInputAippIndex设置此动态AIPP配置所在某个输入的输出分支索引。 3. 设置动态AIPP输入图片相关配置。 - 调用HMS_HiAIAippParam_SetInputFormat设置输入图片的格式。 - 调用HMS_HiAIAippParam_SetInputShape设置输入图片原始宽高。 4. 开发者按需设置以下动态AIPP功能参数。 - 调用HMS_HiAIAippParam_SetChannelSwapConfig设置通道交换参数。 - 调用HMS_HiAIAippParam_SetCscConfig设置图片色域转换参数。 - 调用HMS_HiAIAippParam_SetCr"
     },
     {
       "path": "references/AI框架算子适配概述.md",
       "title": "AI框架算子适配概述",
-      "snippet": "本章节内容介绍AI框架调用自定义算子的方法。如下图所示，PyTorch和TensorFlow仅支持图模式。 AI框架调用时，除了需要提供DDK框架调用时需要的代码实现文件，还需要对插件进行适配开发。下文仅展示通过ONNX框架进行算子适配，TensorFlow框架开发流程与ONNX框架开发流程一致。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/92/v3/llgoxRiyQXWprZqzgNCy5g/zh-cn_image_0000002573975181.png?HW-CC-KV=V1&HW-CC-Date=20260421T111718Z&HW-CC-Expire=86400&HW-CC-Sign=F67788B0C214E14D0D06DEA00257F00F22D3BCE1A29F60738C8324F80E374C60)"
+      "snippet": "本章节内容介绍AI框架调用自定义算子的方法。如下图所示，PyTorch和TensorFlow仅支持图模式。 AI框架调用时，除了需要提供DDK框架调用时需要的代码实现文件，还需要对插件进行适配开发。下文仅展示通过ONNX框架进行算子适配，TensorFlow框架开发流程与ONNX框架开发流程一致。"
     },
     {
       "path": "references/Abs.md",
       "title": "Abs",
-      "snippet": "按元素取绝对值，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ab/v3/PtWWhGx8R2eWU82-qydF9g/zh-cn_image_0000002573855209.png?HW-CC-KV=V1&HW-CC-Date=20260421T111724Z&HW-CC-Expire=86400&HW-CC-Sign=43A4FB6360A7CC157D5AAF7B5983AD7C802D37AE41C01754298F65E4629F7CE3) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Abs(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 操作数地址偏移对齐要求请参见 "
+      "snippet": "按元素取绝对值，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Abs(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。本样例的srcLocal和dstLocal均为half类型，占16位bit。 如果开发者需要运行样例代码，请将该代码段拷贝并替换 样例模板 中Compute函数的部分代码即可。 tensor前n个数据计算接口样例： AscendC::Abs(dstLocal, srcLocal, 512); 结果示例如下。 输入数据(srcLocal): [0.0 -1.0 2.0 -3.0 ...] 输出数据(dstLocal): [0.0 1.0 2.0 3.0 ...]"
     },
     {
       "path": "references/Add-1.md",
@@ -39,7 +39,7 @@
     {
       "path": "references/Add.md",
       "title": "Add",
-      "snippet": "按元素求和，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d4/v3/6G4vEvWxQ-S2SVhqF6lerQ/zh-cn_image_0000002543374958.png?HW-CC-KV=V1&HW-CC-Date=20260421T111726Z&HW-CC-Expire=86400&HW-CC-Sign=F42FB534032F28D9E750F4043CB2280984A335473B17DE36A3E777A0449943FF) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Add(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX9"
+      "snippet": "按元素求和，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Add(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。如果开发者需要运行样例代码，请将该代码段拷贝并替换双目指令样例模板 更多样例 中的Compute函数即可。 tensor前n个数据计算样例： AscendC::Add(dstLocal, src0Local, src1Local, 512); 结果示例如下。 输入数据(src0Local): [1 2 3 ... 512] 输入数据(src1Local): [513 514 515 ... 1024] 输出数据(ds"
     },
     {
       "path": "references/AddAutoMappingSubgraphIOIndexFunc.md",
@@ -69,7 +69,7 @@
     {
       "path": "references/Adds.md",
       "title": "Adds",
-      "snippet": "矢量内每个元素与标量求和，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/62/v3/4buAJ-ovSsqhZWGyqpltvg/zh-cn_image_0000002543374962.png?HW-CC-KV=V1&HW-CC-Date=20260421T111728Z&HW-CC-Expire=86400&HW-CC-Sign=225BD6E94B7FEC80B0A7CC3660EB5BFD268FBAA39FF8156D24499615D75955E7) #### 函数原型 tensor前n个数据计算： template <typename T, bool isSetMask = true> __aicore__ inline void Adds(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const T& scalarValue, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kir"
+      "snippet": "矢量内每个元素与标量求和，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T, bool isSetMask = true> __aicore__ inline void Adds(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const T& scalarValue, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。如果开发者需要运行样例代码，请将该代码段拷贝并替换标量双目指令样例模板 更多样例 中的Compute函数即可。 tensor前n个数据计算样例： int16_t scalar = 2; AscendC::Adds(dstLocal, srcLocal, scalar, 512); 结果示例如下。 输入数据(src0Local): [1 2 3 ... 512] 输入数据(scal"
     },
     {
       "path": "references/AllocEventID.md",
@@ -79,7 +79,7 @@
     {
       "path": "references/AllocTensor-1.md",
       "title": "AllocTensor",
-      "snippet": "从队列中分配Tensor，Tensor所占大小为InitBuffer时设置的每块内存长度。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ca/v3/JW7dmWC5Q_qLQLJK5AW29A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111737Z&HW-CC-Expire=86400&HW-CC-Sign=22DFE63369464CF29887B4ABFBDCFB6D0C316B40799B0803B52D2EAAB9E7D35E) 分配的Tensor内容并非全0，可能会是随机值。 #### 函数原型 template <typename T> __aicore__ inline LocalTensor<T> AllocTensor() #### 参数说明 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 LocalTensor对象。 #### 调用示例 // 使用AllocTensor分配Tensor AscendC::TPipe pipe; AscendC::TQueBind<AscendC::TPosition::"
+      "snippet": "从队列中分配Tensor，Tensor所占大小为InitBuffer时设置的每块内存长度。 分配的Tensor内容并非全0，可能会是随机值。 #### 函数原型 template <typename T> __aicore__ inline LocalTensor<T> AllocTensor() #### 参数说明 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 LocalTensor对象。 #### 调用示例 // 使用AllocTensor分配Tensor AscendC::TPipe pipe; AscendC::TQueBind<AscendC::TPosition::VECOUT, AscendC::TPosition::GM, 2> que; int num = 4; int len = 1024; pipe.InitBuffer(que, num, len); // InitBuffer分配内存块数为4，每块大小为1024Bytes AscendC::LocalTensor<half> tensor1 = que.AllocTensor<half>(); // AllocTensor分配Tensor长度为1024Bytes"
     },
     {
       "path": "references/AllocTensor.md",
@@ -89,7 +89,7 @@
     {
       "path": "references/And.md",
       "title": "And",
-      "snippet": "每对元素按位与运算，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f4/v3/KaCmSAa_QnaFe8DQHQR4Lg/zh-cn_image_0000002573855215.png?HW-CC-KV=V1&HW-CC-Date=20260421T111727Z&HW-CC-Expire=86400&HW-CC-Sign=F828CE0B18645E957A293F13F1160B010B3F1640E7D823723A64319C8E691169) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void And(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 Kir"
+      "snippet": "每对元素按位与运算，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void And(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。如果开发者需要运行样例代码，请将该代码段拷贝并替换双目指令样例模板 更多样例 中的Compute函数即可。 tensor前n个数据计算样例： AscendC::And(dstLocal, src0Local, src1Local, 512); 结果示例如下。 输入数据(src0Local): [1 2 3 ... 512] 输入数据(src1Local): [513 512 511 ... 2] 输出数据(d"
     },
     {
       "path": "references/Append.md",
@@ -109,7 +109,7 @@
     {
       "path": "references/AscendC简介.md",
       "title": "AscendC简介",
-      "snippet": "AscendC是CANN Kit针对算子开发场景推出的编程语言，遵循C和C++标准规范，匹配开发者开发习惯；通过多层接口抽象、自动并行计算、孪生调试等关键技术，提高算子开发效率，助力AI开发者低成本完成算子开发和模型调优部署。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0f/v3/k3YwklIUSMOL5ewm--j_-w/zh-cn_image_0000002573975153.png?HW-CC-KV=V1&HW-CC-Date=20260421T111709Z&HW-CC-Expire=86400&HW-CC-Sign=B599959BFB4B631E1E5D7D6557BDBCF54ADB6746DF5220F5B62BF68BCEFFED4D) 使用AscendC进行自定义算子开发的突出优势有： - 遵循C/C++编程规范，匹配开发者开发习惯 - 自动并行调度，获得最优执行性能 - 结构化核函数编程，简化算子开发逻辑 - CPU/NPU孪生调试，提升算子调试效率 开发者可以通过 AscendC主页 了解更详细的内容。 #### 使用须知 当前AscendC支持的产品型号为：Kirin9030/Kirin9020/KirinX90系列处理器产品。"
+      "snippet": "AscendC是CANN Kit针对算子开发场景推出的编程语言，遵循C和C++标准规范，匹配开发者开发习惯；通过多层接口抽象、自动并行计算、孪生调试等关键技术，提高算子开发效率，助力AI开发者低成本完成算子开发和模型调优部署。 使用AscendC进行自定义算子开发的突出优势有： - 遵循C/C++编程规范，匹配开发者开发习惯 - 自动并行调度，获得最优执行性能 - 结构化核函数编程，简化算子开发逻辑 - CPU/NPU孪生调试，提升算子调试效率 开发者可以通过 AscendC主页 了解更详细的内容。 #### 使用须知 当前AscendC支持的产品型号为：Kirin9030/Kirin9020/KirinX90系列处理器产品。"
     },
     {
       "path": "references/AscendStringToDataType.md",
@@ -159,7 +159,7 @@
     {
       "path": "references/Axpy.md",
       "title": "Axpy",
-      "snippet": "源操作数(srcLocal)中每个元素与标量求积后和目的操作数(dstLocal)中的对应元素相加，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2b/v3/ooQHaijzRzWxDf7YXXEkXA/zh-cn_image_0000002543374966.png?HW-CC-KV=V1&HW-CC-Date=20260421T111729Z&HW-CC-Expire=86400&HW-CC-Sign=EF60E41F514936E42687633E83B7789CFDAA4A5F421359D193612100D658D83C) #### 函数原型 tensor前n个数据计算： template <typename T, typename U> __aicore__ inline void Axpy(const LocalTensor<T>& dstLocal, const LocalTensor<U>& srcLocal, const U& scalarValue, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明"
+      "snippet": "源操作数(srcLocal)中每个元素与标量求积后和目的操作数(dstLocal)中的对应元素相加，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T, typename U> __aicore__ inline void Axpy(const LocalTensor<T>& dstLocal, const LocalTensor<U>& srcLocal, const U& scalarValue, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 该接口支持的精度组合如下。 - half精度组合：srcLocal数据类型=half；scalar数据类型=half；dstLocal数据类型=half；PAR=128。 - float精度组合：srcLocal数据类型=float；scalar数据类型=float；dstLocal数据类型=float；PAR=64。 - mixed精度组合：srcLocal数据类型=half；scalar数据类型=half；dstLocal数据类型="
     },
     {
       "path": "references/BROADCAST_INFER.md",
@@ -189,7 +189,7 @@
     {
       "path": "references/CPU孪生调试功能.md",
       "title": "CPU孪生调试功能",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b1/v3/szm4KO6uRgaUnsAvFLwwzQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111716Z&HW-CC-Expire=86400&HW-CC-Sign=E5512A989399B9B33F9CEA6B777ADD0820BA9D55C219921569A1967CCE892F2D) - 当开发者需要快速进行代码逻辑调试，可优先选择算子CPU调测。使用通用的打印、gdb调测手段，快速定位代码问题。 - 在NPU板端上板运行之前，可优先选择算子CPU调测初步定位算子精度问题，提高算子NPU上板成功率。 CPU孪生调试主要基于开发者输入生成编译所需的二进制bin文件，然后自动执行算子编译和运行，该阶段支持的调测项如表1所示。 **表1** CPU调测功能列表 #### 使用方法（命令行） 通过命令行进行CPU调测的关键步骤如下。 1. 完成环境搭建，并准备好输入/标杆数据文件。 2. 执行如下命令进行CPU调测，这里仅提供关键参数项示例，其他参数请参考 CPU调测参数 按需设置。 ascendebug kernel --backend cp"
+      "snippet": "- 当开发者需要快速进行代码逻辑调试，可优先选择算子CPU调测。使用通用的打印、gdb调测手段，快速定位代码问题。 - 在NPU板端上板运行之前，可优先选择算子CPU调测初步定位算子精度问题，提高算子NPU上板成功率。 CPU孪生调试主要基于开发者输入生成编译所需的二进制bin文件，然后自动执行算子编译和运行，该阶段支持的调测项如表1所示。 **表1** CPU调测功能列表 #### 使用方法（命令行） 通过命令行进行CPU调测的关键步骤如下。 1. 完成环境搭建，并准备好输入/标杆数据文件。 2. 执行如下命令进行CPU调测，这里仅提供关键参数项示例，其他参数请参考 CPU调测参数 按需设置。 ascendebug kernel --backend cpu --chip-version ${chip_version} --repo-type customize --json-file ${op_config_json_file} --core-type ${core_type} --work-dir ${work_dir} ... {其他参数} CPU调测涉及的所有参数可通过 **ascendebug kernel -h** 或 **ascendebug kernel --help** 查看。 3. 查看结果文件，详细说明参见 产物说明 。 #### 产物说明 CPU调测结果存放"
     },
     {
       "path": "references/CalcSize.md",
@@ -259,7 +259,7 @@
     {
       "path": "references/CreateOperator.md",
       "title": "CreateOperator",
-      "snippet": "基于算子名称和算子类型获取算子对象实例。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/10/v3/b3VZ22QWTQe5cO0UoZASMg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111850Z&HW-CC-Expire=86400&HW-CC-Sign=E137D5C95DA9D82E68ADC100B482A8A5C634B8DA0524877E12234DED9E557A60) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 static Operator CreateOperator(const std::string &operator_name, const std::string &operator_type) static Operator CreateOperator(const char_t *const operator_name, const char_t *const operator_type) #### 参数说明 #### 返回值 #### 约束说明 无"
+      "snippet": "基于算子名称和算子类型获取算子对象实例。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 static Operator CreateOperator(const std::string &operator_name, const std::string &operator_type) static Operator CreateOperator(const char_t *const operator_name, const char_t *const operator_type) #### 参数说明 #### 返回值 #### 约束说明 无"
     },
     {
       "path": "references/CreateVecIndex.md",
@@ -304,22 +304,22 @@
     {
       "path": "references/DeQue-1.md",
       "title": "DeQue",
-      "snippet": "将Tensor从队列中取出，用于后续处理。 #### 函数原型 template <typename T> __aicore__ inline LocalTensor<T> DeQue() **图1** 将LocalTensor通过EnQue放入A1/B1的Queue中后再通过DeQue搬出 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/df/v3/R0r9oykiReW0JiqnNfPqFw/zh-cn_image_0000002543215320.png?HW-CC-KV=V1&HW-CC-Date=20260421T111738Z&HW-CC-Expire=86400&HW-CC-Sign=D7405F961EC20C0BE16C63E904ACE37BB2BFA617D1104E4423FECDB99A1B7EEB) #### 参数说明 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 从队列中取出的 LocalTensor 。 #### 调用示例 // 接口: DeQue Tensor AscendC::TPipe pipe; AscendC::TQueBind<AscendC"
+      "snippet": "将Tensor从队列中取出，用于后续处理。 #### 函数原型 template <typename T> __aicore__ inline LocalTensor<T> DeQue() **图1** 将LocalTensor通过EnQue放入A1/B1的Queue中后再通过DeQue搬出 #### 参数说明 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 从队列中取出的 LocalTensor 。 #### 调用示例 // 接口: DeQue Tensor AscendC::TPipe pipe; AscendC::TQueBind<AscendC::TPosition::VECOUT, AscendC::TPosition::GM, 4> que; int num = 4; int len = 1024; pipe.InitBuffer(que, num, len); AscendC::LocalTensor<half> tensor1 = que.AllocTensor<half>(); que.EnQue(tensor1); AscendC::LocalTensor<half> tensor2 = que.DeQue<half>(); // 将tensor从VECOUT的Queue中搬出"
     },
     {
       "path": "references/DeQue.md",
       "title": "DeQue",
-      "snippet": "将Tensor从队列中取出，用于后续处理。 #### 函数原型 - 无需指定源和目的位置 template <typename T> __aicore__ inline LocalTensor<T> DeQue() - 需要指定源和目的位置 通过 TQueBind 绑定VECIN和VECOUT可实现VECIN和VECOUT内存复用，如下接口用于存在Vector计算的场景下实现复用，在出队时需要指定源和目的位置，不存在Vector计算的场景下可直接调用LocalTensor<T> DeQue()出队接口。 template <TPosition srcUserPos, TPosition dstUserPos, typename T> __aicore__ inline LocalTensor<T> DeQue() **图1** 将LocalTensor通过EnQue放入A1/B1的Queue中后再通过DeQue搬出 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/23/v3/H3WV1IfsQqiW2pipPPLNHg/zh-cn_image_0000002543374978.png?HW-CC-KV=V1&HW-CC-Date=20260421T111736Z&"
+      "snippet": "将Tensor从队列中取出，用于后续处理。 #### 函数原型 - 无需指定源和目的位置 template <typename T> __aicore__ inline LocalTensor<T> DeQue() - 需要指定源和目的位置 通过 TQueBind 绑定VECIN和VECOUT可实现VECIN和VECOUT内存复用，如下接口用于存在Vector计算的场景下实现复用，在出队时需要指定源和目的位置，不存在Vector计算的场景下可直接调用LocalTensor<T> DeQue()出队接口。 template <TPosition srcUserPos, TPosition dstUserPos, typename T> __aicore__ inline LocalTensor<T> DeQue() **图1** 将LocalTensor通过EnQue放入A1/B1的Queue中后再通过DeQue搬出 #### 参数说明 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 从队列中取出的 LocalTensor 。 #### 调用示例 // 接口: DeQue Tensor AscendC::TPipe pipe; AscendC::TQue<AscendC::TPosition::VECOUT"
     },
     {
       "path": "references/DelInputWithCond.md",
       "title": "DelInputWithCond",
-      "snippet": "根据算子属性，删除算子指定输入边。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cd/v3/SQ1IqjIRSD6AjS-6ml04MQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111902Z&HW-CC-Expire=86400&HW-CC-Sign=0AE4B7AD5632ED556A03DF01B8DB2D5798656A0D1B48FB26A1A3AFEF37086A52) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 OpRegistrationData &DelInputWithCond(int32_t inputIdx, const std::string &attrName, bool attrValue); OpRegistrationData &DelInputWithCond(int32_t input_idx, const char_t *attr_name, bool attr_value); #### 参数说明 #### 约束说明 无"
+      "snippet": "根据算子属性，删除算子指定输入边。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 OpRegistrationData &DelInputWithCond(int32_t inputIdx, const std::string &attrName, bool attrValue); OpRegistrationData &DelInputWithCond(int32_t input_idx, const char_t *attr_name, bool attr_value); #### 参数说明 #### 约束说明 无"
     },
     {
       "path": "references/DelInputWithOriginalType.md",
       "title": "DelInputWithOriginalType",
-      "snippet": "根据算子类型，删除算子指定输入边。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d8/v3/PigbjcVESiizSyYNE_moSQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111902Z&HW-CC-Expire=86400&HW-CC-Sign=68255F9557436DDCC22D00DDC9BF5FD5F32E8B58C6AB501E7A4FECC25D2F4AC8) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 OpRegistrationData &DelInputWithOriginalType(int32_t input_idx, const std::string &ori_type) OpRegistrationData &DelInputWithOriginalType(int32_t input_idx, const char_t *ori_type) #### 参数说明 #### 约束说明 无"
+      "snippet": "根据算子类型，删除算子指定输入边。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 OpRegistrationData &DelInputWithOriginalType(int32_t input_idx, const std::string &ori_type) OpRegistrationData &DelInputWithOriginalType(int32_t input_idx, const char_t *ori_type) #### 参数说明 #### 约束说明 无"
     },
     {
       "path": "references/Destroy.md",
@@ -329,32 +329,32 @@
     {
       "path": "references/Div.md",
       "title": "Div",
-      "snippet": "按元素求商，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/38/v3/HXSTNvwpRhS5jdnpWaPUNQ/zh-cn_image_0000002573975193.png?HW-CC-KV=V1&HW-CC-Date=20260421T111726Z&HW-CC-Expire=86400&HW-CC-Sign=303713FCDEE69A238DCC32B6FE12AE16952640CCF138DD38A3661B396FF06B6C) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Div(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020 系列处理器 KirinX"
+      "snippet": "按元素求商，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Div(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020 系列处理器 KirinX90系列处理器 #### 注意事项 - 注意除零错误。 - 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 tensor前n个数据计算样例（本样例中只展示Compute流程中的部分代码。如果开发者需要运行样例代码，请将该代码段拷贝并替换上方样例的Compute函数中粗体部分即可。） AscendC::Div(dstLocal, src0Local, src1Local, 512); 结果示例如下。 输入数据(src0Local): [1.0 2.0 3.0 ... 512.0] 输入数据(src1Local): [2.0 2.0 2.0 .."
     },
     {
       "path": "references/DumpAccChkPoint.md",
       "title": "DumpAccChkPoint",
-      "snippet": "基于算子工程开发的算子，可以使用该接口Dump指定Tensor的内容。同时支持打印自定义的附加信息（仅支持uint32_t数据类型的信息），比如打印当前行号等。区别于 DumpTensor ，使用该接口可以支持指定偏移位置的Tensor打印。 在算子kernel侧实现代码中需要打印偏移后Tensor数据的地方调用DumpAccChkPoint接口打印相关内容。样例如下。 AscendC::DumpAccChkPoint(srcLocal,5, 32, dataLen); ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/88/v3/eOkq9ISoQGSQUbWRmCi20A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111742Z&HW-CC-Expire=86400&HW-CC-Sign=1317992DAC29A3E36FD3CDF1445274FBAFA5B2669C5DD8CC6EC1CC413E25BAB7) DumpAccChkPoint接口打印功能会对算子实际运行的性能带来一定影响，通常在调测阶段使用。开发者可以按需通过如下方式关闭打印功能。 自定义算子工程： 修改算子工程op_kernel"
+      "snippet": "基于算子工程开发的算子，可以使用该接口Dump指定Tensor的内容。同时支持打印自定义的附加信息（仅支持uint32_t数据类型的信息），比如打印当前行号等。区别于 DumpTensor ，使用该接口可以支持指定偏移位置的Tensor打印。 在算子kernel侧实现代码中需要打印偏移后Tensor数据的地方调用DumpAccChkPoint接口打印相关内容。样例如下。 AscendC::DumpAccChkPoint(srcLocal,5, 32, dataLen); DumpAccChkPoint接口打印功能会对算子实际运行的性能带来一定影响，通常在调测阶段使用。开发者可以按需通过如下方式关闭打印功能。 自定义算子工程： 修改算子工程op_kernel目录下的CMakeLists.txt文件，首行增加编译选项-DASCENDC_DUMP=0，关闭ASCENDC_DUMP开关。 Dump时，每个block核的dump信息前会增加对应信息头DumpHead（32字节大小），用于记录核号和资源使用信息。每次Dump的Tensor数据前也会添加信息头DumpTensorHead（32字节大小），用于记录Tensor的相关信息。如下图所示，展示了多核打印场景下的打印信息结构。 **DumpHead的具体信息如下。** - block_id：当前运行的核号。 - total_block_n"
     },
     {
       "path": "references/DumpAccChkPoint功能.md",
       "title": "DumpAccChkPoint功能",
-      "snippet": "使用工具进行算子调测时，支持指定偏移位置的Tensor打印。 **该功能与** DumpTensor功能 **类似** ，其使用更加灵活。 当Tensor数据较大时，可通过DumpAccChkPoint指定偏移位置，截取指定长度的元素值打印。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/38/v3/zIU8NlG-Q9aCJkizgx0w3A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111717Z&HW-CC-Expire=86400&HW-CC-Sign=F9B3BA78FD7456020264C8C79929339C5E214DC0C063159CE0108F5316387FF3) - simulator调测场景下的Dump偏移位置Tensor，受dump mode参数控制。 - 固定为每个核分配的打印数据的最大可使用空间为1M，目前该大小不支持修改，若打印超过1M，打印内容不再显示，请开发者控制待打印的数据量。 #### 使用方法（命令行） 1. 在核函数代码中按需在需要打印Tensor偏移数据的地方调用DumpAccChkPoint接口，详情请参见接口说明，样例如下。 DumpAccChkP"
+      "snippet": "使用工具进行算子调测时，支持指定偏移位置的Tensor打印。 **该功能与** DumpTensor功能 **类似** ，其使用更加灵活。 当Tensor数据较大时，可通过DumpAccChkPoint指定偏移位置，截取指定长度的元素值打印。 - simulator调测场景下的Dump偏移位置Tensor，受dump mode参数控制。 - 固定为每个核分配的打印数据的最大可使用空间为1M，目前该大小不支持修改，若打印超过1M，打印内容不再显示，请开发者控制待打印的数据量。 #### 使用方法（命令行） 1. 在核函数代码中按需在需要打印Tensor偏移数据的地方调用DumpAccChkPoint接口，详情请参见接口说明，样例如下。 DumpAccChkPoint(srcLocal, 5, 32, dataLen); 2. simulator调测场景执行如下命令，使能Dump开关。 ascendebug kernel --backend simulator --dump-mode acc_chk ... {其他simulator调测参数} --dump-mode取acc_chk，开启偏移位置打印Tensor模式，其他参数参考 NPU调测参数 按需配置。 3. 查看dump结果。 Dump偏移位置Tensor数据存放在${root}/${work_dir}/npu路径下，其目录结构、"
     },
     {
       "path": "references/DumpTensor.md",
       "title": "DumpTensor",
-      "snippet": "基于算子工程开发的算子，可以使用该接口Dump指定Tensor的内容。同时支持打印自定义的附加信息（仅支持uint32_t数据类型的信息），比如打印当前行号等。 在算子kernel侧实现代码中需要打印Tensor数据的地方调用DumpTensor接口打印相关内容。样例如下。 AscendC::DumpTensor(srcLocal,5, dataLen); ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/77/v3/6SJNUnHwQ5mhunw2JRQUxg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111742Z&HW-CC-Expire=86400&HW-CC-Sign=23FBB91A7BC91DC66B7985F2343C26A55366ADFF5F735A43D672B7ED47BB2E9C) DumpTensor接口打印功能会对算子实际运行的性能带来一定影响，通常在调测阶段使用。开发者可以按需通过如下方式关闭打印功能。 自定义算子工程： 修改算子工程op_kernel目录下的CMakeLists.txt文件，首行增加编译选项-DASCENDC_DUMP=0，关闭ASCENDC_DUMP开关。"
+      "snippet": "基于算子工程开发的算子，可以使用该接口Dump指定Tensor的内容。同时支持打印自定义的附加信息（仅支持uint32_t数据类型的信息），比如打印当前行号等。 在算子kernel侧实现代码中需要打印Tensor数据的地方调用DumpTensor接口打印相关内容。样例如下。 AscendC::DumpTensor(srcLocal,5, dataLen); DumpTensor接口打印功能会对算子实际运行的性能带来一定影响，通常在调测阶段使用。开发者可以按需通过如下方式关闭打印功能。 自定义算子工程： 修改算子工程op_kernel目录下的CMakeLists.txt文件，首行增加编译选项-DASCENDC_DUMP=0，关闭ASCENDC_DUMP开关。 打印示例如下。 -19.046875,62.15625,-56.0625,-12.515625,-82.8125,70.5625,-57.65625,67.0625, 62.8125,30.234375,48.0,-10.8984375,18.171875,-30.4375,-25.3125,-77.1875, 21.21875,-70.25,-2.8125,69.375,-69.1875,-60.8125,-48.3125,51.21875, 74.3125,-47.5,2.923828125,-7.05859375,63.5"
     },
     {
       "path": "references/DumpTensor功能.md",
       "title": "DumpTensor功能",
-      "snippet": "使用工具进行算子调测时，支持DumpTensor功能，默认从Tensor的第0位元素开始打印指定长度的元素值。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9d/v3/OjTm444nR4G-NYBaMzvqLA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111716Z&HW-CC-Expire=86400&HW-CC-Sign=CCC32C9416594E6C86C660BA59DB1EEC8C812DE2BC8A7267501F41B6E2114564) - simulator调测场景下的DumpTensor，受dump mode参数控制。 - 固定为每个核分配的打印数据的最大可使用空间为1M，目前该大小不支持修改，若打印超过1M，打印内容不再显示，请开发者控制待打印的数据量。 #### 使用方法（命令行） 1. 在核函数代码中按需在目标位置调用DumpTensor接口，接口说明参见表1，样例如下。 DumpTensor(srcLocal, 5, dataNum); 2. simulator调测场景执行如下命令，使能Dump开关。 ascendebug kernel --backend simul"
+      "snippet": "使用工具进行算子调测时，支持DumpTensor功能，默认从Tensor的第0位元素开始打印指定长度的元素值。 - simulator调测场景下的DumpTensor，受dump mode参数控制。 - 固定为每个核分配的打印数据的最大可使用空间为1M，目前该大小不支持修改，若打印超过1M，打印内容不再显示，请开发者控制待打印的数据量。 #### 使用方法（命令行） 1. 在核函数代码中按需在目标位置调用DumpTensor接口，接口说明参见表1，样例如下。 DumpTensor(srcLocal, 5, dataNum); 2. simulator调测场景执行如下命令，使能Dump开关。 ascendebug kernel --backend simulator --dump-mode normal ... {其他simulator调测参数} --dump-mode取normal，开启通用打印Tensor模式，其他参数参考 NPU调测参数 按需配置。 3. 查看dump结果，具体参见 产物说明 。 #### 接口说明 DumpTensor接口说明如下。 - **函数原型：** - void DumpTensor(const LocalTensor<T> &tensor, uint32_t desc, uint32_t dumpNum) - void DumpTensor(cons"
     },
     {
       "path": "references/Duplicate.md",
       "title": "Duplicate",
-      "snippet": "将一个变量或一个立即数，复制多次并填充到向量，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/80/v3/CX8MT67RQyGlNE1ux2NFxw/zh-cn_image_0000002573855227.png?HW-CC-KV=V1&HW-CC-Date=20260421T111730Z&HW-CC-Expire=86400&HW-CC-Sign=09E1E8EDB63A4DB11C8D97F09A1F9C64091C5C2763CBCA7B4B1DDFDCD975EC3D) #### 函数原型 tensor前n个数据计算： template <typename T> void Duplicate(const LocalTensor<T>& dstLocal, const T& scalarValue, const int32_t& calCount) #### 参数说明 **表1** 参数说明 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 - 操作数地址偏移对齐要求请参见 通用约束 。 - 开发者输入立即数需自行保证不超出dstLocal中元素数"
+      "snippet": "将一个变量或一个立即数，复制多次并填充到向量，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> void Duplicate(const LocalTensor<T>& dstLocal, const T& scalarValue, const int32_t& calCount) #### 参数说明 **表1** 参数说明 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 - 操作数地址偏移对齐要求请参见 通用约束 。 - 开发者输入立即数需自行保证不超出dstLocal中元素数据类型对应的大小范围。 #### 返回值 无 #### 调用示例 本样例中只展示Compute流程中的部分代码。如果开发者需要运行样例代码，请将该代码段拷贝并替换 样例模板 中的Compute函数粗体部分即可。 tensor前n个数据计算样例： half inputVal(18.0); AscendC::Duplicate<half>(dstLocal, inputVal, srcDataSize); 结果示例如下。 输入数据：[0 1.0 2.0 ... 254.0 255.0] // 不关心输入数据，会被Duplicate盖掉 输出数据：[18.0 18"
     },
     {
       "path": "references/DynamicInputRegister.md",
@@ -379,12 +379,12 @@
     {
       "path": "references/EnQue-1.md",
       "title": "EnQue",
-      "snippet": "将Tensor push到队列。 #### 函数原型 template <typename T> __aicore__ inline bool EnQue(const LocalTensor<T>& tensor) #### 参数说明 **表1** bool EnQue(LocalTensor<T>& tensor)原型定义参数说明 **图1** 将LocalTensor通过EnQue放入A1/B1的Queue中 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8c/v3/fko5mLKJR2q0shnvjGMtdg/zh-cn_image_0000002543374980.png?HW-CC-KV=V1&HW-CC-Date=20260421T111738Z&HW-CC-Expire=86400&HW-CC-Sign=5C22371ED64BB67D396715745464B13E7A235844D3E27056D5EC4A9934CD83F2) #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 - true：表示Tensor加入Queue成功。 - false：表示Queue已满，入队失败"
+      "snippet": "将Tensor push到队列。 #### 函数原型 template <typename T> __aicore__ inline bool EnQue(const LocalTensor<T>& tensor) #### 参数说明 **表1** bool EnQue(LocalTensor<T>& tensor)原型定义参数说明 **图1** 将LocalTensor通过EnQue放入A1/B1的Queue中 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 无 #### 返回值 - true：表示Tensor加入Queue成功。 - false：表示Queue已满，入队失败。 #### 调用示例 // 接口: EnQue Tensor AscendC::TPipe pipe; AscendC::TQueBind<AscendC::TPosition::VECOUT, AscendC::TPosition::GM, 4> que; int num = 4; int len = 1024; pipe.InitBuffer(que, num, len); AscendC::LocalTensor<half> tensor1 = que.AllocTensor<half>(); que.EnQue(tensor1);// 将tenso"
     },
     {
       "path": "references/EnQue.md",
       "title": "EnQue",
-      "snippet": "将Tensor push到队列。 #### 函数原型 - 无需指定源和目的位置 template <typename T> __aicore__ inline bool EnQue(const LocalTensor<T>& tensor) - 需要指定源和目的位置 通过 TQueBind 绑定VECIN和VECOUT可实现VECIN和VECOUT内存复用，如下接口用于存在Vector计算的场景下实现复用，在入队时需要指定源和目的位置，不存在Vector计算的场景下可直接调用bool EnQue(LocalTensor<T>& tensor)入队接口。 template <TPosition srcUserPos, TPosition dstUserPos> __aicore__ inline bool EnQue(TBufHandle buf) #### 参数说明 **表1** bool EnQue(LocalTensor<T>& tensor)原型定义参数说明 **表2** template <TPosition srcUserPos, TPosition dstUserPos> bool EnQue(LocalTensor<T>& tensor)原型定义参数说明 **图1** 将LocalTensor通过EnQue放入A1/B1的Queue中 ![](https://cont"
+      "snippet": "将Tensor push到队列。 #### 函数原型 - 无需指定源和目的位置 template <typename T> __aicore__ inline bool EnQue(const LocalTensor<T>& tensor) - 需要指定源和目的位置 通过 TQueBind 绑定VECIN和VECOUT可实现VECIN和VECOUT内存复用，如下接口用于存在Vector计算的场景下实现复用，在入队时需要指定源和目的位置，不存在Vector计算的场景下可直接调用bool EnQue(LocalTensor<T>& tensor)入队接口。 template <TPosition srcUserPos, TPosition dstUserPos> __aicore__ inline bool EnQue(TBufHandle buf) #### 参数说明 **表1** bool EnQue(LocalTensor<T>& tensor)原型定义参数说明 **表2** template <TPosition srcUserPos, TPosition dstUserPos> bool EnQue(LocalTensor<T>& tensor)原型定义参数说明 **图1** 将LocalTensor通过EnQue放入A1/B1的Queue中 #### 支持的型号 Kirin"
     },
     {
       "path": "references/End.md",
@@ -394,7 +394,7 @@
     {
       "path": "references/Exp.md",
       "title": "Exp",
-      "snippet": "按元素取自然指数，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9e/v3/UXq6voZpQbuHfmRROHlyQg/zh-cn_image_0000002543374954.png?HW-CC-KV=V1&HW-CC-Date=20260421T111724Z&HW-CC-Expire=86400&HW-CC-Sign=E03F5CF6400891DB8BE5C44114E7145CCBF7F4C1D91E4C816C2294827F869957) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Exp(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 操作数地址偏移对齐要求请参见"
+      "snippet": "按元素取自然指数，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Exp(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。本样例的srcLocal和dstLocal均为half类型，占16位bit。 如果开发者需要运行样例代码，请将该代码段拷贝并替换 样例模板 中Compute函数的部分代码即可。 tensor前n个数据计算接口样例： AscendC::Exp(dstLocal, srcLocal, 512); 结果示例如下。 输入数据(srcLocal): [0.0 1.0 2.0 3.0 ...] 输出数据(dstLocal): [1.0 2.719 7.391 20.08 ...]"
     },
     {
       "path": "references/Expand(更改原shape).md",
@@ -534,7 +534,7 @@
     {
       "path": "references/GetAllAttrNamesAndTypes.md",
       "title": "GetAllAttrNamesAndTypes",
-      "snippet": "获取算子所有已配置的属性名称及类型，包含IR定义的普通属性和开发者自定义属性。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/31/v3/IjCingHMTCu7UyeVXj5z2A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111852Z&HW-CC-Expire=86400&HW-CC-Sign=B3DD7E08901EEE26B59C2E6E98677ACCE839292CCD0686C3AFD1062652B5956F) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 const std::map<std::string, std::string> GetAllAttrNamesAndTypes() const; graphStatus GetAllAttrNamesAndTypes(std::map<AscendString, AscendString> &attr_name_types) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "获取算子所有已配置的属性名称及类型，包含IR定义的普通属性和开发者自定义属性。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 const std::map<std::string, std::string> GetAllAttrNamesAndTypes() const; graphStatus GetAllAttrNamesAndTypes(std::map<AscendString, AscendString> &attr_name_types) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetAllIrAttrNamesAndTypes.md",
@@ -544,7 +544,7 @@
     {
       "path": "references/GetAttr.md",
       "title": "GetAttr",
-      "snippet": "根据属性名称获取对应的属性值。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7a/v3/xe2Q9Gg4R1GTzMEl9wtYGQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111851Z&HW-CC-Expire=86400&HW-CC-Sign=2D7E7D6A3406B2E4F6BF2C09C473EF8EEBFD36B2DD9A68417D022EC0FBA429E2) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus GetAttr(const std::string &name, int64_t &attr_value) const; graphStatus GetAttr(const std::string &name, int32_t &attr_value) const; graphStatus GetAttr(const std::string &name, uint32_t &attr_value) const; graphStatus GetAttr(const std::string &name"
+      "snippet": "根据属性名称获取对应的属性值。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus GetAttr(const std::string &name, int64_t &attr_value) const; graphStatus GetAttr(const std::string &name, int32_t &attr_value) const; graphStatus GetAttr(const std::string &name, uint32_t &attr_value) const; graphStatus GetAttr(const std::string &name, std::vector<int64_t> &attr_value) const; graphStatus GetAttr(const std::string &name, std::vector<int32_t> &attr_value) const; graphStatus GetAttr(const std::string &name, std::vector<uint32_t> &attr_value) const; graphStatus GetAttr(const std::string &name, float32"
     },
     {
       "path": "references/GetAttrNum.md",
@@ -759,7 +759,7 @@
     {
       "path": "references/GetDynamicInputDesc-1.md",
       "title": "GetDynamicInputDesc",
-      "snippet": "根据name和index的组合获取算子动态Input的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9a/v3/_YIeU88ITkWvB0tmldbquA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111852Z&HW-CC-Expire=86400&HW-CC-Sign=524DC97A72B3DF06EF5C73A7D428BB14A4E94361320DAA0F9D500ABE3EAD43AD) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 TensorDesc GetDynamicInputDesc(const std::string &name, uint32_t index) const; TensorDesc GetDynamicInputDesc(const char_t *name, uint32_t index) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "根据name和index的组合获取算子动态Input的TensorDesc。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 TensorDesc GetDynamicInputDesc(const std::string &name, uint32_t index) const; TensorDesc GetDynamicInputDesc(const char_t *name, uint32_t index) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetDynamicInputDesc.md",
@@ -769,7 +769,7 @@
     {
       "path": "references/GetDynamicInputNum.md",
       "title": "GetDynamicInputNum",
-      "snippet": "获取算子的动态Input的实际个数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/98/v3/GnShU8oDQMiZS6-rZmaKUg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111852Z&HW-CC-Expire=86400&HW-CC-Sign=8006862B2F06A9F9C72F63A9030FEEF60423D9B442181EA3E551796918B4AAB5) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 int32_t GetDynamicInputNum(const std::string &name) const; int32_t GetDynamicInputNum(const char_t *name) const; #### 参数说明 #### 返回值 #### 约束说明 无"
+      "snippet": "获取算子的动态Input的实际个数。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 int32_t GetDynamicInputNum(const std::string &name) const; int32_t GetDynamicInputNum(const char_t *name) const; #### 参数说明 #### 返回值 #### 约束说明 无"
     },
     {
       "path": "references/GetDynamicInputShapeRange.md",
@@ -784,22 +784,22 @@
     {
       "path": "references/GetDynamicOutputDesc.md",
       "title": "GetDynamicOutputDesc",
-      "snippet": "根据name和index的组合获取算子动态Output的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9d/v3/w6yae7BbThCLDHKLbnd_FA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111852Z&HW-CC-Expire=86400&HW-CC-Sign=C11E1E53805B57546290D4D2C6740E4331E2BDE8947B00A3E7399640F0B7FA41) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 TensorDesc GetDynamicOutputDesc(const std::string &name, uint32_t index) const; TensorDesc GetDynamicOutputDesc(const char_t *name, uint32_t index) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "根据name和index的组合获取算子动态Output的TensorDesc。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 TensorDesc GetDynamicOutputDesc(const std::string &name, uint32_t index) const; TensorDesc GetDynamicOutputDesc(const char_t *name, uint32_t index) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetDynamicOutputNum.md",
       "title": "GetDynamicOutputNum",
-      "snippet": "获取算子的动态Output的实际个数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2c/v3/JZHXAKHaSEillyNPQNypfw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111852Z&HW-CC-Expire=86400&HW-CC-Sign=68F1F0D67B62E883009B499564BDDF635A29F7472A5D2D018C608AE637617F8A) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 int32_t GetDynamicOutputNum(const std::string &name) const; int32_t GetDynamicOutputNum(const char_t *name) const; #### 参数说明 #### 返回值 #### 约束说明 无"
+      "snippet": "获取算子的动态Output的实际个数。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 int32_t GetDynamicOutputNum(const std::string &name) const; int32_t GetDynamicOutputNum(const char_t *name) const; #### 参数说明 #### 返回值 #### 约束说明 无"
     },
     {
       "path": "references/GetDynamicSubgraph.md",
       "title": "GetDynamicSubgraph",
-      "snippet": "根据子图名称和子图索引获取算子对应的动态输入子图。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5a/v3/ChcDA9_aTVu_YBK9Hpfu1Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111853Z&HW-CC-Expire=86400&HW-CC-Sign=F088835D890433387513B360419035AA43DA5E664C1019031F5E70316996B78E) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 Graph GetDynamicSubgraph(const std::string &name, uint32_t index) const; Graph GetDynamicSubgraph(const char_t *name, uint32_t index) const; #### 参数说明 #### 返回值 Graph对象。 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "根据子图名称和子图索引获取算子对应的动态输入子图。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 Graph GetDynamicSubgraph(const std::string &name, uint32_t index) const; Graph GetDynamicSubgraph(const char_t *name, uint32_t index) const; #### 参数说明 #### 返回值 Graph对象。 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetDynamicSubgraphBuilder.md",
       "title": "GetDynamicSubgraphBuilder",
-      "snippet": "根据子图名称和子图索引获取算子对应的动态输入子图的构建函数对象。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/18/v3/KeJYWYhpRsuZre7v18Gnxw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111853Z&HW-CC-Expire=86400&HW-CC-Sign=A74B0DC312B8C3C4DB75ACEAC037A25CCB8358A91FBA6AEDD6C2EF5E20B0D185) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 SubgraphBuilder GetDynamicSubgraphBuilder(const std::string &name, uint32_t index) const; SubgraphBuilder GetDynamicSubgraphBuilder(const char_t *name, uint32_t index) const; #### 参数说明 #### 返回值 SubgraphBuilder对象。 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "根据子图名称和子图索引获取算子对应的动态输入子图的构建函数对象。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 SubgraphBuilder GetDynamicSubgraphBuilder(const std::string &name, uint32_t index) const; SubgraphBuilder GetDynamicSubgraphBuilder(const char_t *name, uint32_t index) const; #### 参数说明 #### 返回值 SubgraphBuilder对象。 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetExpandDimsRule-1.md",
@@ -914,7 +914,7 @@
     {
       "path": "references/GetInputConstData.md",
       "title": "GetInputConstData",
-      "snippet": "如果指定算子Input对应的节点为Const节点，可调用该接口获取Const节点的数据。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6a/v3/EjR8LQjJSHedal3bsf_X1Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111853Z&HW-CC-Expire=86400&HW-CC-Sign=0EE8BEE6006BEBC92DA3CD54E4DF3AB6AB703DDD012D14C9D71BFEEAEA592B05) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus GetInputConstData(const std::string &dst_name, Tensor &data) const; graphStatus GetInputConstData(const char_t *dst_name, Tensor &data) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "如果指定算子Input对应的节点为Const节点，可调用该接口获取Const节点的数据。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus GetInputConstData(const std::string &dst_name, Tensor &data) const; graphStatus GetInputConstData(const char_t *dst_name, Tensor &data) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetInputDataType.md",
@@ -924,7 +924,7 @@
     {
       "path": "references/GetInputDesc-1.md",
       "title": "GetInputDesc",
-      "snippet": "根据算子Input名称或Input索引获取算子Input的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/69/v3/0N5HGfHVS_uapra3FTlkEw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111854Z&HW-CC-Expire=86400&HW-CC-Sign=264B8D73CF6B88B30192D69A6BF64C1B14CC98DDF8E21A07DA1BB6DFE73D3A00) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 TensorDesc GetInputDesc(const std::string &name) const; TensorDesc GetInputDescByName(const char_t *name) const; TensorDesc GetInputDesc(uint32_t index) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "根据算子Input名称或Input索引获取算子Input的TensorDesc。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 TensorDesc GetInputDesc(const std::string &name) const; TensorDesc GetInputDescByName(const char_t *name) const; TensorDesc GetInputDesc(uint32_t index) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetInputDesc.md",
@@ -1064,7 +1064,7 @@
     {
       "path": "references/GetMarks.md",
       "title": "GetMarks",
-      "snippet": "在资源类算子推理的上下文中，获取成对资源算子的标记。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/68/v3/e-HXIo8CT4abyXdw2fooyQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111845Z&HW-CC-Expire=86400&HW-CC-Sign=E3BA882A8464F2C289F283600513CC7F17F9856B83DA50C84CEF3AB2E3DB0F4A) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 const std::vector<std::string> &GetMarks() const void GetMarks(std::vector<AscendString> &marks) const #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "在资源类算子推理的上下文中，获取成对资源算子的标记。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 const std::vector<std::string> &GetMarks() const void GetMarks(std::vector<AscendString> &marks) const #### 参数说明 无 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetMax.md",
@@ -1079,12 +1079,12 @@
     {
       "path": "references/GetName-1.md",
       "title": "GetName",
-      "snippet": "获取TensorDesc所描述Tensor的名称。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/33/v3/bbjoKDAmT9Wpz3qOpgDekg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111909Z&HW-CC-Expire=86400&HW-CC-Sign=F61C5DA3F0EF9FD743D6D508489718EE3932F72B68063CAD78559C78BEB0EF33) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 std::string GetName() const; graphStatus GetName(AscendString &name); graphStatus GetName(AscendString &name) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "获取TensorDesc所描述Tensor的名称。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 std::string GetName() const; graphStatus GetName(AscendString &name); graphStatus GetName(AscendString &name) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetName.md",
       "title": "GetName",
-      "snippet": "获取算子名称。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ea/v3/Of0ZwTcWRNaBU8NQDuSp0w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111854Z&HW-CC-Expire=86400&HW-CC-Sign=C65B02833605A0D50CCC04A68C8BD99FAC3E24EB459A0585E93B1003434A023A) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 std::string GetName() const; graphStatus GetName(AscendString &name) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "获取算子名称。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 std::string GetName() const; graphStatus GetName(AscendString &name) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetNodeName-1.md",
@@ -1109,17 +1109,17 @@
     {
       "path": "references/GetOmOptype.md",
       "title": "GetOmOptype",
-      "snippet": "获取模型的算子类型。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d3/v3/fOy9OWWbT4CuLWKS6dQi5A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111902Z&HW-CC-Expire=86400&HW-CC-Sign=7C2A00F01C621C32F9C630B34E1557BBED5FE079F7F9307D686299AB6AB96514) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 std::string GetOmOptype () const; Status GetOmOptype(ge::AscendString &om_op_type) const; #### 参数说明 #### 约束说明 无"
+      "snippet": "获取模型的算子类型。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 std::string GetOmOptype () const; Status GetOmOptype(ge::AscendString &om_op_type) const; #### 参数说明 #### 约束说明 无"
     },
     {
       "path": "references/GetOpType.md",
       "title": "GetOpType",
-      "snippet": "获取算子类型。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bc/v3/Fu1FwciEQdu8RXqleWQ_hA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111855Z&HW-CC-Expire=86400&HW-CC-Sign=B7EF2D7A0D6D253E96522F70EA01E58E1F8E92E78EB1109B884C53640C3C6892) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 std::string GetOpType() const; graphStatus GetOpType(AscendString &type) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "获取算子类型。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 std::string GetOpType() const; graphStatus GetOpType(AscendString &type) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetOpsTypeList.md",
       "title": "GetOpsTypeList",
-      "snippet": "获取系统支持的所有算子类型列表。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/11/v3/cmXxqUmnTV6Uy89uaG-Lfg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111850Z&HW-CC-Expire=86400&HW-CC-Sign=ACDC8C2C1CA7C2C4BFCAFE3E3E23FEED12B24F8649E764A7FD3534E98C84DB06) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 static graphStatus GetOpsTypeList(std::vector<std::string> &all_ops); static graphStatus GetOpsTypeList(std::vector<AscendString> &all_ops); #### 参数说明 #### 返回值 #### 约束说明 无"
+      "snippet": "获取系统支持的所有算子类型列表。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 static graphStatus GetOpsTypeList(std::vector<std::string> &all_ops); static graphStatus GetOpsTypeList(std::vector<AscendString> &all_ops); #### 参数说明 #### 返回值 #### 约束说明 无"
     },
     {
       "path": "references/GetOptionalInputDataType.md",
@@ -1184,7 +1184,7 @@
     {
       "path": "references/GetOriginOpTypeSet.md",
       "title": "GetOriginOpTypeSet",
-      "snippet": "获取原始模型的算子类型集合。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/69/v3/gRUmA_W-S0mg3CM8X_uruQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111902Z&HW-CC-Expire=86400&HW-CC-Sign=2A9488221AA5753B07D81A5D364AEA27C2FDA1EA748A2EE149ACC4A5FBDA1DC4) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 std::set<std::string> GetOriginOpTypeSet () const; Status GetOriginOpTypeSet(std::set<ge::AscendString> &ori_op_type) const; #### 参数说明 #### 约束说明 无"
+      "snippet": "获取原始模型的算子类型集合。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 std::set<std::string> GetOriginOpTypeSet () const; Status GetOriginOpTypeSet(std::set<ge::AscendString> &ori_op_type) const; #### 参数说明 #### 约束说明 无"
     },
     {
       "path": "references/GetOriginShape-1.md",
@@ -1224,7 +1224,7 @@
     {
       "path": "references/GetOutputDesc-1.md",
       "title": "GetOutputDesc",
-      "snippet": "根据算子Output名称或Output索引获取算子Output的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/46/v3/5Par3YJ5TiirjQX6GI82WA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111855Z&HW-CC-Expire=86400&HW-CC-Sign=2E629EC19FA19A0EA37FCA12CE4CABC60AB2B72D8B54FCA5392C14CB222E3FEF) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 TensorDesc GetOutputDesc(const std::string &name) const; TensorDesc GetOutputDescByName(const char_t *name) const; TensorDesc GetOutputDesc(uint32_t index) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "根据算子Output名称或Output索引获取算子Output的TensorDesc。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 TensorDesc GetOutputDesc(const std::string &name) const; TensorDesc GetOutputDescByName(const char_t *name) const; TensorDesc GetOutputDesc(uint32_t index) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetOutputDesc.md",
@@ -1294,7 +1294,7 @@
     {
       "path": "references/GetParseSubgraphPostFn.md",
       "title": "GetParseSubgraphPostFn",
-      "snippet": "根据算子类型，获取算子注册的子图中输入输出节点跟算子的输入输出的对应关系实现的函数对象。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/98/v3/fBhJTuisRti731KF7A_J0A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111904Z&HW-CC-Expire=86400&HW-CC-Sign=1162908AD3F3EBF4C64483F91FF017DC67E0BD62CFE033C5B6C6CA34337FADF7) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 - **ParseSubgraphFunc GetParseSubgraphPostFn() const** 该函数会返回ParseSubgraphFunc类型的函数对象，ParseSubgraphFunc函数的声明如下。 using ParseSubgraphFunc = std::function<Status(const std::string &subgraph_name, const ge::Graph &graph)> - **Status GetPa"
+      "snippet": "根据算子类型，获取算子注册的子图中输入输出节点跟算子的输入输出的对应关系实现的函数对象。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 - **ParseSubgraphFunc GetParseSubgraphPostFn() const** 该函数会返回ParseSubgraphFunc类型的函数对象，ParseSubgraphFunc函数的声明如下。 using ParseSubgraphFunc = std::function<Status(const std::string &subgraph_name, const ge::Graph &graph)> - **Status GetParseSubgraphPostFn(ParseSubgraphFuncV2 &func) const** 该函数会返回ParseSubgraphFuncV2类型的函数对象，ParseSubgraphFuncV2函数的声明如下。 using ParseSubgraphFuncV2 = std::function<Status(const ge::AscendString &subgraph_name, const ge::Graph &graph)> #### 参数说明 - GetParseSubgraphPostFn()函数 无 "
     },
     {
       "path": "references/GetPlacement-1.md",
@@ -1519,17 +1519,17 @@
     {
       "path": "references/GetSubgraph.md",
       "title": "GetSubgraph",
-      "snippet": "根据子图名称获取算子对应的子图。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b2/v3/tRlqIU4FSFePSVCKu0XNzQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111854Z&HW-CC-Expire=86400&HW-CC-Sign=22A5133C89019510C9D414F41DD15E19C873FC006EAE8DD4EBCCD3F2DF49F89D) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 Graph GetSubgraph(const std::string &name) const; Graph GetSubgraph(const char_t *name) const; #### 参数说明 #### 返回值 Graph对象。 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "根据子图名称获取算子对应的子图。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 Graph GetSubgraph(const std::string &name) const; Graph GetSubgraph(const char_t *name) const; #### 参数说明 #### 返回值 Graph对象。 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetSubgraphBuilder.md",
       "title": "GetSubgraphBuilder",
-      "snippet": "根据子图名称获取算子对应的子图构建的函数对象。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c3/v3/zSBTy60UTU2Q_9TYd3cTPg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111854Z&HW-CC-Expire=86400&HW-CC-Sign=B8B1736824AE1CE647E0A3FF43DAA80198FC8F61703F8F056EF8A71F00A719DD) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 SubgraphBuilder GetSubgraphBuilder(const std::string &name) const; SubgraphBuilder GetSubgraphBuilder(const char_t *name) const; #### 参数说明 #### 返回值 SubgraphBuilder对象。 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "根据子图名称获取算子对应的子图构建的函数对象。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 SubgraphBuilder GetSubgraphBuilder(const std::string &name) const; SubgraphBuilder GetSubgraphBuilder(const char_t *name) const; #### 参数说明 #### 返回值 SubgraphBuilder对象。 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetSubgraphNames.md",
       "title": "GetSubgraphNames",
-      "snippet": "获取一个算子的子图名称列表。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bf/v3/Ul8uCFbZTcyDd-It0Ex2nA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111855Z&HW-CC-Expire=86400&HW-CC-Sign=7DA00161723BA8ADB726DF660B4288ED70FB40180E7974C97F288D46C980F1E6) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 std::vector<std::string> GetSubgraphNames() const; graphStatus GetSubgraphNames(std::vector<AscendString> &names) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "获取一个算子的子图名称列表。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 std::vector<std::string> GetSubgraphNames() const; graphStatus GetSubgraphNames(std::vector<AscendString> &names) const; #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetSubgraphNamesCount.md",
@@ -1599,7 +1599,7 @@
     {
       "path": "references/GetValue.md",
       "title": "GetValue",
-      "snippet": "获取属性key-value键值对中的value值，并将value值从T类型转换为DT类型。 - 支持将INT类型转换为int64_t类型。 - 支持将FLOAT类型转换为float类型。 - 支持将STR类型转换为std::string类型。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/05/v3/gFZILvQ5QQWIUKARbgulMA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111843Z&HW-CC-Expire=86400&HW-CC-Sign=EC9E84D602D464E64DF39C39DC27B150E11EC2384FB6D6A18CC43D94E0C2BE6C) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 template<typename T, typename DT> graphStatus GetValue(DT &val) const graphStatus GetValue(AscendString &val); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "获取属性key-value键值对中的value值，并将value值从T类型转换为DT类型。 - 支持将INT类型转换为int64_t类型。 - 支持将FLOAT类型转换为float类型。 - 支持将STR类型转换为std::string类型。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 template<typename T, typename DT> graphStatus GetValue(DT &val) const graphStatus GetValue(AscendString &val); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/GetWithOffset.md",
@@ -1674,7 +1674,7 @@
     {
       "path": "references/Host侧Tiling实现.md",
       "title": "Host侧Tiling实现",
-      "snippet": "在 算子实现 章节已经介绍了host侧tiling核心的实现方法，本章节侧重于介绍接入DDK框架时编程模式和API的使用。 大多数情况下，Local Memory的存储，无法完整的容纳算子的输入与输出，需要每次搬运一部分输入进行计算然后搬出，再搬运下一部分输入进行计算，直到得到完整的最终结果，这个数据切分、分块计算的过程称之为 **Tiling** 。根据算子的shape等信息来确定数据切分算法相关参数（比如每次搬运的块大小，以及总共循环多少次）的计算程序，称之为 **Tiling实现** 。 Tiling实现完成后，获取到的Tiling切分算法相关参数，会传递给kernel侧，用于指导并行数据的切分。由于Tiling实现中完成的均为标量计算，AI Core并不擅长，所以我们将其独立出来放在host CPU上执行。 **图1** Tiling实现的输入输出 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e6/v3/HvZJMwxJTBODaiJZ4fdFJg/zh-cn_image_0000002573975177.png?HW-CC-KV=V1&HW-CC-Date=20260421T111714Z&HW-CC-Expire=86400&HW-CC-Sign="
+      "snippet": "在 算子实现 章节已经介绍了host侧tiling核心的实现方法，本章节侧重于介绍接入DDK框架时编程模式和API的使用。 大多数情况下，Local Memory的存储，无法完整的容纳算子的输入与输出，需要每次搬运一部分输入进行计算然后搬出，再搬运下一部分输入进行计算，直到得到完整的最终结果，这个数据切分、分块计算的过程称之为 **Tiling** 。根据算子的shape等信息来确定数据切分算法相关参数（比如每次搬运的块大小，以及总共循环多少次）的计算程序，称之为 **Tiling实现** 。 Tiling实现完成后，获取到的Tiling切分算法相关参数，会传递给kernel侧，用于指导并行数据的切分。由于Tiling实现中完成的均为标量计算，AI Core并不擅长，所以我们将其独立出来放在host CPU上执行。 **图1** Tiling实现的输入输出 如上图所示，Tiling实现即为根据算子shape等信息来确定切分算法相关参数的过程，这里的算子shape等信息可以理解为是 **Tiling实现的输入** ，切分算法相关参数可以理解为是 **Tiling实现的输出** 。输入和输出都通过Tiling函数的参数（TilingContext* context上下文结构）来承载。也就是说，开发者可以从上下文结构中获取算子的输入、输出以及属性信息，也就是 **Tiling实现的输入*"
     },
     {
       "path": "references/ICPU_RUN_KF.md",
@@ -1729,7 +1729,7 @@
     {
       "path": "references/InferFormatFuncRegister.md",
       "title": "InferFormatFuncRegister",
-      "snippet": "InferFormatFuncRegister构造函数和析构函数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/60/v3/2wbuKERMR2e5rSAUcJoxyw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111847Z&HW-CC-Expire=86400&HW-CC-Sign=2E63954F6B47B799C43659B25DB278ED2AFF24D9E57A8D3979618956E3C33F90) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 InferFormatFuncRegister(const std::string &operator_type, const InferFormatFunc &infer_format_func); InferFormatFuncRegister(const char_t *const operator_type, const InferFormatFunc &infer_format_func); ~InferFormatFuncRegister() = default; ####"
+      "snippet": "InferFormatFuncRegister构造函数和析构函数。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 InferFormatFuncRegister(const std::string &operator_type, const InferFormatFunc &infer_format_func); InferFormatFuncRegister(const char_t *const operator_type, const InferFormatFunc &infer_format_func); ~InferFormatFuncRegister() = default; #### 参数说明 #### 返回值 InferFormatFuncRegister构造函数返回InferFormatFuncRegister类型的对象。 #### 约束说明 算子InferFormat函数注册接口，此接口被其他头文件引用，一般不用由算子开发者直接调用。"
     },
     {
       "path": "references/InferOutDataTypeSameWithFirstInput.md",
@@ -1749,7 +1749,7 @@
     {
       "path": "references/InferShapeFuncRegister.md",
       "title": "InferShapeFuncRegister",
-      "snippet": "InferShapeFuncRegister构造函数和析构函数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a5/v3/VxB4-TSSRu2siggKtVHBiQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111847Z&HW-CC-Expire=86400&HW-CC-Sign=5144C2B35E9F20F2811FCA9183CD062EEF5506E1109D23041D05DCE4036AAF10) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 InferShapeFuncRegister (const std::string &operator_type, const InferShapeFunc &infer_shape_func); InferShapeFuncRegister(const char *const operator_type, const InferShapeFunc &infer_shape_func); ~ InferShapeFuncRegister() #### 参数说明 #### 返回值 Infe"
+      "snippet": "InferShapeFuncRegister构造函数和析构函数。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 InferShapeFuncRegister (const std::string &operator_type, const InferShapeFunc &infer_shape_func); InferShapeFuncRegister(const char *const operator_type, const InferShapeFunc &infer_shape_func); ~ InferShapeFuncRegister() #### 参数说明 #### 返回值 InferShapeFuncRegister构造函数返回InferShapeFuncRegister类型的对象。 #### 约束说明 算子InferShape函数注册接口，此接口被其他头文件引用，一般不用由算子开发者直接调用。"
     },
     {
       "path": "references/InferShapeRange.md",
@@ -1834,7 +1834,7 @@
     {
       "path": "references/IsExistOp.md",
       "title": "IsExistOp",
-      "snippet": "查询指定的算子类型是否支持。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/14/v3/U6oU7cQ5TgOob4r7CbDzig/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111850Z&HW-CC-Expire=86400&HW-CC-Sign=991196392E7651D6819C3811F4C43323779C738DAB63010D692C3CF1B884B0FD) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 static bool IsExistOp(const std::string &operator_type) static bool IsExistOp(const char_t *const operator_type) #### 参数说明 #### 返回值 #### 约束说明 无"
+      "snippet": "查询指定的算子类型是否支持。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 static bool IsExistOp(const std::string &operator_type) static bool IsExistOp(const char_t *const operator_type) #### 参数说明 #### 返回值 #### 约束说明 无"
     },
     {
       "path": "references/IsExpandIndex.md",
@@ -1884,12 +1884,12 @@
     {
       "path": "references/LLM模型一站式量化.md",
       "title": "LLM模型一站式量化",
-      "snippet": "本工具提供大语言模型（Large Language Model，以下简称LLM）的4bit低位量化能力，采用标准的三段式量化流程：权重量化、激活量化和量化参数提取。三段式量化流程说明如下表所示。 **表1** 大语言模型4bit低位量化三阶段流程 #### 量化前准备工作 - HuggingFace浮点模型 - JSON格式数据集，使用“text”字段作为prompt关键字 - 量化配置文件 config.yaml - run.sh 执行脚本 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/24/v3/R8ioLWlfSfyg4KjXx3AYmg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111703Z&HW-CC-Expire=86400&HW-CC-Sign=0FF1B7470342918BA84C4D7A402DD821586AC7938334A3F8047B1BC2CB3BB5E5) - LLM在量化过程中使用AutoModelForCausalLM以及AutoTokenizer加载，所以开发者的HuggingFace浮点模型需要满足该加载方式约束。 - run.sh执行脚本环境须与开发者推理或者"
+      "snippet": "本工具提供大语言模型（Large Language Model，以下简称LLM）的4bit低位量化能力，采用标准的三段式量化流程：权重量化、激活量化和量化参数提取。三段式量化流程说明如下表所示。 **表1** 大语言模型4bit低位量化三阶段流程 #### 量化前准备工作 - HuggingFace浮点模型 - JSON格式数据集，使用“text”字段作为prompt关键字 - 量化配置文件 config.yaml - run.sh 执行脚本 - LLM在量化过程中使用AutoModelForCausalLM以及AutoTokenizer加载，所以开发者的HuggingFace浮点模型需要满足该加载方式约束。 - run.sh执行脚本环境须与开发者推理或者训练环境保持一致，否则模型加载或推理失败。 #### config.yaml示例 config.yaml用于模型量化配置，开发者可根据实际需要进行配置。以下示例可供参考，主要参数说明请参见 config.yaml配置参数说明 。 kd: enable: False loss: mse micro_batch_size: 2 gradient_accumulation_steps: 4 weight_decay: 0.0 warmup_steps: 10 num_epochs: 3 learning_rate: !!float 1e"
     },
     {
       "path": "references/LeakyRelu.md",
       "title": "LeakyRelu",
-      "snippet": "按元素做带泄露线性整流Leaky ReLU： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/22/v3/PnlTp71LQNy1wyT-ozhmwQ/zh-cn_image_0000002543374964.png?HW-CC-KV=V1&HW-CC-Date=20260421T111729Z&HW-CC-Expire=86400&HW-CC-Sign=CF240186686031622F55108DC27ECFEF1DC771006D972D5B571F4FA26DFE9F2C) 带泄露线性整流函数（Leaky Rectified Linear Unit, Leaky ReLU激活函数），是一种人工神经网络中常用的激活函数，其数学表达式为： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2a/v3/haTpFcWJSN6R9s4FNCEkzA/zh-cn_image_0000002543215304.png?HW-CC-KV=V1&HW-CC-Date=20260421T111729Z&HW-CC-Expire=86400&HW-CC-Si"
+      "snippet": "按元素做带泄露线性整流Leaky ReLU： 带泄露线性整流函数（Leaky Rectified Linear Unit, Leaky ReLU激活函数），是一种人工神经网络中常用的激活函数，其数学表达式为： 和ReLU的区别是：ReLU是将所有的负值都设为零，而Leaky Relu 是给所有负值赋予一个斜率。下图表示了Relu和Leaky Relu的区别： 对于Leaky ReLU函数，如果src的值小于零，dst的值等于src的值乘以scalar的值。如果src大于等于零，则dst的值等于src的值。 #### 函数原型 tensor前n个数据计算： template <typename T, bool isSetMask = true> __aicore__ inline void LeakyRelu(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const T& scalarValue, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 t"
     },
     {
       "path": "references/ListTensorType.md",
@@ -1899,7 +1899,7 @@
     {
       "path": "references/Ln.md",
       "title": "Ln",
-      "snippet": "按元素取自然对数，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cf/v3/eqGhpGB7Rmy7Lawg20ivZg/zh-cn_image_0000002543215294.png?HW-CC-KV=V1&HW-CC-Date=20260421T111724Z&HW-CC-Expire=86400&HW-CC-Sign=171CC6DB7E48DE46E50E2755C759329B0DE76B4C2EF3800F259A0AFF40F5EF9D) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Ln(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 操作数地址偏移对齐要求请参见 "
+      "snippet": "按元素取自然对数，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Ln(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。本样例的srcLocal和dstLocal均为half类型，占16位bit。 如果开发者需要运行样例代码，请将该代码段拷贝并替换 样例模板 中Compute函数的部分代码即可。 tensor前n个数据计算样例： AscendC::Ln(dstLocal, srcLocal, 512); 结果示例如下。 输入数据(srcLocal): [1 2 3 4 ...] 输出数据(dstLocal): [0 0.6931 1.0986 1.3863 ...]"
     },
     {
       "path": "references/LocalTensor.md",
@@ -1924,42 +1924,42 @@
     {
       "path": "references/Matmul模板参数.md",
       "title": "Matmul模板参数",
-      "snippet": "创建Matmul对象时需要传入： - A、B、C、Bias的参数类型信息，类型信息通过MatmulType来定义，包括：内存逻辑位置、数据格式、数据类型、是否转置、数据排布和是否使能L1复用。 - MatmulConfig信息（可选），用于配置Matmul模板信息以及相关的配置参数。不配置默认使能Norm模板。 针对Kirin9020系列处理器，当前只支持使能默认的MDL模板。 - MatmulCallBack回调函数信息（可选），用于配置左右矩阵从GM拷贝到L1、计算结果从CO1拷贝到GM的自定义函数。 - MatmulPolicy信息（可选），预留参数。 #### 实现原理 以输入矩阵A (GM, ND, half)、矩阵B(GM, ND, half)，输出矩阵C (GM, ND, float)，无Bias场景为例，其中(GM, ND, half)表示数据存放在GM上，数据格式为ND，数据类型为half，描述Matmul高阶API典型场景的内部算法框图，如下图所示。 **图1** Matmul算法框图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8b/v3/ykdlrDEVQJa4Mo1SfFfwdQ/zh-cn_image_000000254321532"
+      "snippet": "创建Matmul对象时需要传入： - A、B、C、Bias的参数类型信息，类型信息通过MatmulType来定义，包括：内存逻辑位置、数据格式、数据类型、是否转置、数据排布和是否使能L1复用。 - MatmulConfig信息（可选），用于配置Matmul模板信息以及相关的配置参数。不配置默认使能Norm模板。 针对Kirin9020系列处理器，当前只支持使能默认的MDL模板。 - MatmulCallBack回调函数信息（可选），用于配置左右矩阵从GM拷贝到L1、计算结果从CO1拷贝到GM的自定义函数。 - MatmulPolicy信息（可选），预留参数。 #### 实现原理 以输入矩阵A (GM, ND, half)、矩阵B(GM, ND, half)，输出矩阵C (GM, ND, float)，无Bias场景为例，其中(GM, ND, half)表示数据存放在GM上，数据格式为ND，数据类型为half，描述Matmul高阶API典型场景的内部算法框图，如下图所示。 **图1** Matmul算法框图 计算过程分为如下几步： 1. 数据从GM搬到A1：DataCopy每次从矩阵A，搬出一个stepM*baseM*stepKa*baseK的矩阵块a1，循环多次完成矩阵A的搬运；数据从GM搬到B1：DataCopy每次从矩阵B，搬出一个stepKb*baseK*stepN*base"
     },
     {
       "path": "references/Max.md",
       "title": "Max",
-      "snippet": "按元素求最大值，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/56/v3/IW3tvZD4REqQsEV978fsDA/zh-cn_image_0000002543374960.png?HW-CC-KV=V1&HW-CC-Date=20260421T111726Z&HW-CC-Expire=86400&HW-CC-Sign=1FCD8C573A9BF3865147CB4BD6C25EB8870BA7397D2F73DC341307034DDD6A11) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Max(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 Kirin"
+      "snippet": "按元素求最大值，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Max(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。如果开发者需要运行样例代码，请将该代码段拷贝并替换双目指令样例模板 更多样例 中的Compute函数即可。 tensor前n个数据计算样例： AscendC::Max(dstLocal, src0Local, src1Local, 512); 结果示例如下。 输入数据(src0Local): [1 2 3 ... 512] 输入数据(src1Local): [513 512 511 ... 2] 输出数据(dst"
     },
     {
       "path": "references/Maxs.md",
       "title": "Maxs",
-      "snippet": "源操作数矢量内每个元素与标量相比，如果比标量大，则取源操作数值，比标量的值小，则取标量值。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/12/v3/b4Ot6aPfQl20W-PS4GD64w/zh-cn_image_0000002573855217.png?HW-CC-KV=V1&HW-CC-Date=20260421T111728Z&HW-CC-Expire=86400&HW-CC-Sign=B9A458178E54FF4E1F1FBADF2C1C92772B278A1E50766561A7664DF037D78910) #### 函数原型 tensor前n个数据计算： template <typename T, bool isSetMask = true> __aicore__ inline void Maxs(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const T& scalarValue, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin"
+      "snippet": "源操作数矢量内每个元素与标量相比，如果比标量大，则取源操作数值，比标量的值小，则取标量值。 #### 函数原型 tensor前n个数据计算： template <typename T, bool isSetMask = true> __aicore__ inline void Maxs(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const T& scalarValue, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。如果开发者需要运行样例代码，请将该代码段拷贝并替换标量双目指令样例模板 更多样例 中的Compute函数即可。 tensor前n个数据计算样例： int16_t scalar = 2; AscendC::Maxs(dstLocal, srcLocal, scalar, 512); 结果示例如下。 输入数据(src0Local): [1 2 3 ... 512] 输入数据 scalar"
     },
     {
       "path": "references/Min.md",
       "title": "Min",
-      "snippet": "按元素求最小值，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/21/v3/41eSVfEASlaPjGobeXzhFw/zh-cn_image_0000002543215300.png?HW-CC-KV=V1&HW-CC-Date=20260421T111727Z&HW-CC-Expire=86400&HW-CC-Sign=FD2D9FE44CB82FD6AA06B592B522CEDB8BB79D44BF0349F20650F9EB1BF88363) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Min(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 Kirin"
+      "snippet": "按元素求最小值，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Min(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。如果开发者需要运行样例代码，请将该代码段拷贝并替换双目指令样例模板 更多样例 中的Compute函数即可。 tensor前n个数据计算样例： AscendC::Min(dstLocal, src0Local, src1Local, 512); 结果示例如下。 输入数据(src0Local): [1 2 3 ... 512] 输入数据(src1Local): [513 512 511 ... 2] 输出数据(dst"
     },
     {
       "path": "references/Mins.md",
       "title": "Mins",
-      "snippet": "源操作数矢量内每个元素与标量相比，如果比标量大，则取标量值，比标量的值小，则取源操作数。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/09/v3/J-eEyTdmTOOFaPCsH5uE3g/zh-cn_image_0000002573975197.png?HW-CC-KV=V1&HW-CC-Date=20260421T111728Z&HW-CC-Expire=86400&HW-CC-Sign=BA8F553723770EBF14BAF58654B4E883F6ABC0414BD34E238210A08951961028) #### 函数原型 tensor前n个数据计算： template <typename T, bool isSetMask = true> __aicore__ inline void Mins(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const T& scalarValue, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9"
+      "snippet": "源操作数矢量内每个元素与标量相比，如果比标量大，则取标量值，比标量的值小，则取源操作数。 #### 函数原型 tensor前n个数据计算： template <typename T, bool isSetMask = true> __aicore__ inline void Mins(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const T& scalarValue, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。如果开发者需要运行样例代码，请将该代码段拷贝并替换标量双目指令样例模板 更多样例 中的Compute函数即可。 tensor前n个数据计算样例： int16_t scalar = 2; AscendC::Mins(dstLocal, srcLocal, scalar, 512); 结果示例如下。 输入数据(src0Local): [1 2 3 ... 512] 输入数据 scalar "
     },
     {
       "path": "references/Model Zoo.md",
       "title": "Model Zoo",
-      "snippet": "Model Zoo提供了可直接调用的硬件最优模型库，集成图片分类、目标检测、语义分割、超分等典型场景的网络模型，包含CANN性能调优使用指导、性能友好模型结构和推荐指数。帮助开发者快速了解算子的参数取值如何在硬件上获得更好的性能和能效收益，以及如何优化模型结构可以实现高性能与低功耗。 #### Model Zoo模型下载 在模型下载中，.caffemodel、.pb、.onnx文件是原始浮点模型，基于相关论文实现，并进行了NPU硬件亲和性调整。因此，这些模型的输入尺寸可能与论文中描述的尺寸有所差异。 .om是标准IR算子构建的OM模型文件，其中quant8_8.om是量化生成的OM模型文件，所有模型可通过 Netron工具 可视化。 Model Zoo中模型的名称、性能、模型下载信息如下表所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/45/v3/0A-32oTERvyFsJTo-e1pAg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111702Z&HW-CC-Expire=86400&HW-CC-Sign=EAB9136BCF39827DC5D93EFE68570EA7EA45932501574"
+      "snippet": "Model Zoo提供了可直接调用的硬件最优模型库，集成图片分类、目标检测、语义分割、超分等典型场景的网络模型，包含CANN性能调优使用指导、性能友好模型结构和推荐指数。帮助开发者快速了解算子的参数取值如何在硬件上获得更好的性能和能效收益，以及如何优化模型结构可以实现高性能与低功耗。 #### Model Zoo模型下载 在模型下载中，.caffemodel、.pb、.onnx文件是原始浮点模型，基于相关论文实现，并进行了NPU硬件亲和性调整。因此，这些模型的输入尺寸可能与论文中描述的尺寸有所差异。 .om是标准IR算子构建的OM模型文件，其中quant8_8.om是量化生成的OM模型文件，所有模型可通过 Netron工具 可视化。 Model Zoo中模型的名称、性能、模型下载信息如下表所示。 - [1] 此性能数据测试基于kirin 9000芯片的华为手机。 - [2] 原始模型文件是参考论文和实现中的模型训练而来。 除Model Zoo中推荐的网络模型，还可以构建自定义的网络模型。性能优势的算子和计算结构如下。 #### CANN算子性能指导 从易用性角度上来说，提供的算子功能不存在限制，但是从性能的使用角度上来说，是基于算子实现方式给出对应的性能使用指导。 #### NN算子 #### Math算子 #### Array算子 #### Detection算子 #### Im"
     },
     {
       "path": "references/Mul.md",
       "title": "Mul",
-      "snippet": "按元素求积，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/db/v3/g3Qqst1uSXKLbtY11uCLtA/zh-cn_image_0000002573855213.png?HW-CC-KV=V1&HW-CC-Date=20260421T111726Z&HW-CC-Expire=86400&HW-CC-Sign=CC2B6CCA2F556919561845B4A10D6FACA98B0293919AABDD624D429866377530) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Mul(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX9"
+      "snippet": "按元素求积，公式表达如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Mul(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。如果开发者需要运行样例代码，请将该代码段拷贝并替换双目指令样例模板 更多样例 中的Compute函数即可。 tensor前n个数据计算样例： AscendC::Mul(dstLocal, src0Local, src1Local, 512); 结果示例如下。 输入数据(src0Local): [1 2 3 ... 512] 输入数据(src1Local): [2 2 2 ... 2] 输出数据(dstLocal): "
     },
     {
       "path": "references/Muls.md",
       "title": "Muls",
-      "snippet": "矢量内每个元素与标量求积，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/35/v3/dZ76ndNqQdaz-DcZ0pWebA/zh-cn_image_0000002543215302.png?HW-CC-KV=V1&HW-CC-Date=20260421T111728Z&HW-CC-Expire=86400&HW-CC-Sign=DA8A577593FBD30D038DD875272343E47C26ECB1EF52BB48BEC898AB07347CEE) #### 函数原型 tensor前n个数据计算： template <typename T, bool isSetMask = true> __aicore__ inline void Muls(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const T& scalarValue, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kir"
+      "snippet": "矢量内每个元素与标量求积，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T, bool isSetMask = true> __aicore__ inline void Muls(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const T& scalarValue, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。如果开发者需要运行样例代码，请将该代码段拷贝并替换标量双目指令样例模板 更多样例 中的Compute函数即可。 tensor前n个数据计算样例： int16_t scalar = 2; AscendC::Muls(dstLocal, srcLocal, scalar, 512); 结果示例如下。 输入数据(src0Local): [1 2 3 ... 512] 输入数据 scal"
     },
     {
       "path": "references/MutableAttrs.md",
@@ -2034,12 +2034,12 @@
     {
       "path": "references/Not.md",
       "title": "Not",
-      "snippet": "按元素做按位取反，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数 : ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c0/v3/gczMkZPYRUiBgBqEUgeEUQ/zh-cn_image_0000002573855211.png?HW-CC-KV=V1&HW-CC-Date=20260421T111725Z&HW-CC-Expire=86400&HW-CC-Sign=12AA46B6EC0FFB3BB56B07DFDD5EAAB0293FE4329FE045BABBE1CE563A8F38AF) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Not(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 操作数地址偏移对齐要求请参见 通用约束 。 #"
+      "snippet": "按元素做按位取反，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数 : #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Not(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。本样例的srcLocal和dstLocal均为int16_t类型，占16位bit。 如果开发者需要运行样例代码，请将该代码段拷贝并替换 样例模板 中Compute函数的部分代码即可。 tensor前n个数据计算样例： AscendC::Not(dstLocal, srcLocal, 512); 结果示例如下。 输入数据(srcLocal): [9 -2 8 ... 9 0] 输出数据(dstLocal): [-10 1 -9 ... -10 -1]"
     },
     {
       "path": "references/OMG参数.md",
       "title": "OMG参数",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d3/v3/5iNhUkS_SsKZc0YVsZZYCg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111705Z&HW-CC-Expire=86400&HW-CC-Sign=86CE04740E33C7A2F3479D6B083D24C36B4BA1F02A0A48CD59693D79B440544D) - 路径：支持大小写字母、数字、下划线。 - 文件名：支持大小写字母、数字、下划线和点(.)。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/db/v3/Rz55IFbbSvmWpq7pgEi5Bg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111705Z&HW-CC-Expire=86400&HW-CC-Sign=1993C0105B50E0961C49AAD1E2FB1EAF9151DDFC8CA33B430871214BE3B78811) 当前只支持下表列出的情况。 - "
+      "snippet": "- 路径：支持大小写字母、数字、下划线。 - 文件名：支持大小写字母、数字、下划线和点(.)。 当前只支持下表列出的情况。 - 非AIPP场景设定输入类型支持情况 - AIPP场景设定输入类型支持情况 - 设定输出类型支持情况"
     },
     {
       "path": "references/ONNX框架.md",
@@ -2064,17 +2064,17 @@
     {
       "path": "references/OperatorCreatorRegister.md",
       "title": "OperatorCreatorRegister",
-      "snippet": "OperatorCreatorRegister构造函数和析构函数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4d/v3/B0K5yZ8MQu6Scx1sOYigRQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111850Z&HW-CC-Expire=86400&HW-CC-Sign=6D4C5515747745B4EB7674E2169010B9B8B64495E82CABD7B86436CAF5F5C021) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 OperatorCreatorRegister(const std::string &operator_type, OpCreator const &op_creator); OperatorCreatorRegister(const char_t *const operator_type, OpCreatorV2 const &op_creator); ~OperatorCreatorRegister() = default; #### 参数说明 #### 返回值 OperatorC"
+      "snippet": "OperatorCreatorRegister构造函数和析构函数。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 OperatorCreatorRegister(const std::string &operator_type, OpCreator const &op_creator); OperatorCreatorRegister(const char_t *const operator_type, OpCreatorV2 const &op_creator); ~OperatorCreatorRegister() = default; #### 参数说明 #### 返回值 OperatorCreatorRegister构造函数返回OperatorCreatorRegister类型的对象。 #### 约束说明 算子注册接口，注册一个算子原型，此接口被其他头文件引用，一般不用由算子开发者直接调用。"
     },
     {
       "path": "references/Or.md",
       "title": "Or",
-      "snippet": "每对元素按位或运算： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/79/v3/pOo9d_tnRmmwYjqLArFG9Q/zh-cn_image_0000002573975195.png?HW-CC-KV=V1&HW-CC-Date=20260421T111727Z&HW-CC-Expire=86400&HW-CC-Sign=B95102CFE36BB0277EC983B2FF457A26FA048F83FADAB70651AA029F09CF050E) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Or(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 操作数地址偏移对齐要求请参见"
+      "snippet": "每对元素按位或运算： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Or(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。如果开发者需要运行样例代码，请将该代码段拷贝并替换双目指令样例模板 更多样例 中的Compute函数即可。 tensor前n个数据计算样例： AscendC::Or(dstLocal, src0Local, src1Local, 512); 结果示例如下。 输入数据(src0Local): [1 2 3 ... 512] 输入数据(src1Local): [513 512 511 ... 2] 输出数据(dstLocal): [513 514 511 ... 514]"
     },
     {
       "path": "references/OriginOpType.md",
       "title": "OriginOpType",
-      "snippet": "设置原始模型的算子类型或算子类型列表。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4d/v3/jl3ITOxZSf6SBLuxkvkdpg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111900Z&HW-CC-Expire=86400&HW-CC-Sign=DA96663FCC2955F0CC47E925C95083EB44B8C7DD1ACBFB7B982789F94D7DD39E) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 OpRegistrationData &OriginOpType(const std::vector<ge::AscendString> &ori_op_type_list); OpRegistrationData &OriginOpType(const char_t *ori_op_type); OpRegistrationData &OriginOpType(const std::initializer_list<std::string> &ori_optype_list); OpRegistrationDa"
+      "snippet": "设置原始模型的算子类型或算子类型列表。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 OpRegistrationData &OriginOpType(const std::vector<ge::AscendString> &ori_op_type_list); OpRegistrationData &OriginOpType(const char_t *ori_op_type); OpRegistrationData &OriginOpType(const std::initializer_list<std::string> &ori_optype_list); OpRegistrationData &OriginOpType(const std::string &ori_optype); #### 参数说明"
     },
     {
       "path": "references/Output.md",
@@ -2109,12 +2109,12 @@
     {
       "path": "references/ParseSubgraphPostFn.md",
       "title": "ParseSubgraphPostFn",
-      "snippet": "根据算子类型，注册算子的子图中输入输出节点跟算子的输入输出的对应关系函数实现。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/98/v3/XPYag3UFTLerdZlhuNioLQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111901Z&HW-CC-Expire=86400&HW-CC-Sign=BEEFC4238BFBA2C313CE10E2F7D30C7317CD6C0A1940133ECFA9AD7B90F2EC07) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 OpRegistrationData &ParseSubgraphPostFn(const ParseSubgraphFunc &subgraph_post_fn) OpRegistrationData &ParseSubgraphPostFn(const ParseSubgraphFuncV2 &subgraph_post_fn); #### 参数说明 #### 约束说明 无 #### 回调函数ParseSubgraphFuncV2 开发者自定义并实现ParseSubgr"
+      "snippet": "根据算子类型，注册算子的子图中输入输出节点跟算子的输入输出的对应关系函数实现。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 OpRegistrationData &ParseSubgraphPostFn(const ParseSubgraphFunc &subgraph_post_fn) OpRegistrationData &ParseSubgraphPostFn(const ParseSubgraphFuncV2 &subgraph_post_fn); #### 参数说明 #### 约束说明 无 #### 回调函数ParseSubgraphFuncV2 开发者自定义并实现ParseSubgraphFuncV2函数，完成解析子图中输入输出节点跟算子的输入输出的对应关系功能，回调函数原型定义如下。 Status ParseSubgraphFuncV2(const ge::AscendString &subgraph_name, const ge::Graph &graph) **表1** 参数说明"
     },
     {
       "path": "references/PipeBarrier(ISASI).md",
       "title": "PipeBarrier(ISASI)",
-      "snippet": "阻塞相同流水，具有数据依赖的相同流水之间需要插入此同步。 #### 函数原型 template <pipe_t pipe> __aicore__ inline void PipeBarrier() #### 参数说明 **表1** 模板参数说明 **表2** 指令流水类型和相关说明 #### 返回值 无 #### 支持的型号 KirinX90系列处理器 #### 注意事项 无 #### 约束说明 Scalar流水之间的同步由硬件自动保证，调用PipeBarrier<PIPE_S>()会引发硬件错误。 #### 调用示例 如下示例，Mul指令的输入dst0Local是Add指令的输出，两个矢量运算指令产生依赖，需要插入PipeBarrier保证两条指令的执行顺序。 注：仅作为示例参考，开启自动同步的情况下，编译器自动插入PIPE_V同步，无需开发者手动插入。 **图1** Mul指令和Add指令是串行关系，必须等待Add指令执行完成后，才能执行Mul指令。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a7/v3/JZH4Vr8ARQmYGpAVAreiiQ/zh-cn_image_0000002573855235.png?HW-CC-KV=V1&HW-CC-Da"
+      "snippet": "阻塞相同流水，具有数据依赖的相同流水之间需要插入此同步。 #### 函数原型 template <pipe_t pipe> __aicore__ inline void PipeBarrier() #### 参数说明 **表1** 模板参数说明 **表2** 指令流水类型和相关说明 #### 返回值 无 #### 支持的型号 KirinX90系列处理器 #### 注意事项 无 #### 约束说明 Scalar流水之间的同步由硬件自动保证，调用PipeBarrier<PIPE_S>()会引发硬件错误。 #### 调用示例 如下示例，Mul指令的输入dst0Local是Add指令的输出，两个矢量运算指令产生依赖，需要插入PipeBarrier保证两条指令的执行顺序。 注：仅作为示例参考，开启自动同步的情况下，编译器自动插入PIPE_V同步，无需开发者手动插入。 **图1** Mul指令和Add指令是串行关系，必须等待Add指令执行完成后，才能执行Mul指令。 AscendC::LocalTensor<half> src0Local; AscendC::LocalTensor<half> src1Local; AscendC::LocalTensor<half> src2Local; AscendC::LocalTensor<half> dst0Local; AscendC::Local"
     },
     {
       "path": "references/PrivateAttr.md",
@@ -2134,7 +2134,7 @@
     {
       "path": "references/Reciprocal.md",
       "title": "Reciprocal",
-      "snippet": "按元素取倒数，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a0/v3/7h9aKgeYTgmFCeucQ7Jqiw/zh-cn_image_0000002573975189.png?HW-CC-KV=V1&HW-CC-Date=20260421T111724Z&HW-CC-Expire=86400&HW-CC-Sign=A7B9ECDFA6A367F9AEEDF66F861693CB4E2C7E78CECD19E0320FC9ABB023F545) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Reciprocal(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 - 操作数地址偏移"
+      "snippet": "按元素取倒数，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Reciprocal(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 - 操作数地址偏移对齐要求请参见 通用约束 。 - 如果srcLocal中的数值为0，可能会产生未知结果。 - 使用Reciprocal时，half的算子结果对比误差不满足双千分之一的要求，float的算子结果对比误差不满足双万分之一的要求，如果需要高精度，建议使用Div替代实现。 #### 调用示例 本样例中只展示Compute流程中的部分代码。本样例的srcLocal和dstLocal均为half类型，占16位bit。 如果开发者需要运行样例代码，请将该代码段拷贝并替换 样例模板 中Compute函数的部分代码即可。 tensor前n个数据计算样例： AscendC::R"
     },
     {
       "path": "references/RegisterReliedOnResourceKey.md",
@@ -2149,7 +2149,7 @@
     {
       "path": "references/Relu.md",
       "title": "Relu",
-      "snippet": "按元素做线性整流Relu，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数 ： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/12/v3/sF2Bzq8uSAqGufN0BJYaSg/zh-cn_image_0000002573975191.png?HW-CC-KV=V1&HW-CC-Date=20260421T111725Z&HW-CC-Expire=86400&HW-CC-Sign=B46619AA7FE3DF9501EC39B38E4125823226306C8F8E8D4E0041E2CD4933160F) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Relu(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 #### 约束说明 操作数地址偏移对齐要求请参见 通用约束 。 "
+      "snippet": "按元素做线性整流Relu，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数 ： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Relu(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 #### 约束说明 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。本样例的srcLocal和dstLocal均为half类型，占16位bit。 如果开发者需要运行样例代码，请将该代码段拷贝并替换 样例模板 中Compute函数的部分代码即可。 tensor前n个数据计算样例： AscendC::Relu(dstLocal, srcLocal, 512); 结果示例如下。 输入数据(srcLocal): [6.938 -8.86 -0.2263 ... 1.971 1.778] 输出数据(dstLocal): [6.938 0 0 ... 1.971 1.77"
     },
     {
       "path": "references/Reset-1.md",
@@ -2169,12 +2169,12 @@
     {
       "path": "references/Rsqrt.md",
       "title": "Rsqrt",
-      "snippet": "按元素做开方后取倒数，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d0/v3/SlBig7i9Qpe6r74M_ZkCbQ/zh-cn_image_0000002543215296.png?HW-CC-KV=V1&HW-CC-Date=20260421T111725Z&HW-CC-Expire=86400&HW-CC-Sign=4980BFEE2E25375D8B12D7A15F48E3DE265416349AE714060A3750D3DA634B70) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Rsqrt(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 - 操作数地址偏移对"
+      "snippet": "按元素做开方后取倒数，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Rsqrt(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 - 操作数地址偏移对齐要求请参见 通用约束 。 - 如果srcLocal中的数值为非正数，可能会产生未知结果。 - 使用Rsqrt时，half的算子结果对比误差不满足双千分之一的要求，float的算子结果对比误差不满足双万分之一的要求，如果需要高精度，建议使用Div和Sqrt替代实现。 #### 调用示例 本样例中只展示Compute流程中的部分代码。本样例的srcLocal和dstLocal均为half类型，占16位bit。 如果开发者需要运行样例代码，请将该代码段拷贝并替换 样例模板 中Compute函数的部分代码即可。 tensor前n个数据计算样例： AscendC::"
     },
     {
       "path": "references/SPMD模型.md",
       "title": "SPMD模型",
-      "snippet": "AscendC算子编程是SPMD(Single-Program Multiple-Data)编程，SPMD是一种常用的并行计算的方法，是提高计算速度的有效手段。 假设，从输入数据到输出数据需要经过3个阶段任务的处理（T1、T2、T3）。如下图所示，SPMD模式下，系统会启动一组进程，并行处理待处理的数据：首先待处理数据会被切分成多个数据分片，切分后的数据分片随后被分发给不同进程处理，每个进程接收到一个或多个数据分片，并独立地对这些分片进行3个任务的处理。 **图1** SPMD数据并行示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/48/v3/_B3qbG-0Qy-MDq1XNBDAew/zh-cn_image_0000002543374924.png?HW-CC-KV=V1&HW-CC-Date=20260421T111710Z&HW-CC-Expire=86400&HW-CC-Sign=01A3069F3626EC694D3A5330586DEFAB0656EBE4F68365DD14363D8923F1E049) 具体到AscendC编程模型中的应用，是将需要处理的数据拆分并同时在多个计算核心（类比于上文介绍中的多个进程）上运行，从而获取更高的性能。"
+      "snippet": "AscendC算子编程是SPMD(Single-Program Multiple-Data)编程，SPMD是一种常用的并行计算的方法，是提高计算速度的有效手段。 假设，从输入数据到输出数据需要经过3个阶段任务的处理（T1、T2、T3）。如下图所示，SPMD模式下，系统会启动一组进程，并行处理待处理的数据：首先待处理数据会被切分成多个数据分片，切分后的数据分片随后被分发给不同进程处理，每个进程接收到一个或多个数据分片，并独立地对这些分片进行3个任务的处理。 **图1** SPMD数据并行示意图 具体到AscendC编程模型中的应用，是将需要处理的数据拆分并同时在多个计算核心（类比于上文介绍中的多个进程）上运行，从而获取更高的性能。多个AI Core共享相同的指令代码，每个核上的运行实例唯一的区别是block_idx不同，每个核通过不同的block_idx来识别自己的身份。block的概念类似于上文中进程的概念，block_idx就是标识进程唯一性的进程ID。并行计算过程如下图所示。 **图2** SPMD并行计算示意图 下面的代码片段取自于AscendC Add算子的实现代码，算子被调用时，所有的计算核心都执行相同的实现代码，入口函数的入参也是相同的。每个核上处理的数据地址需要在起始地址上增加 GetBlockIdx *BLOCK_LENGTH（每个block处理的数据长度）的偏移来"
     },
     {
       "path": "references/ScalarCast.md",
@@ -2229,7 +2229,7 @@
     {
       "path": "references/SetData-1.md",
       "title": "SetData",
-      "snippet": "向Tensor中设置数据。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ac/v3/Cvg4ZuWxQUemcCysoHc7TQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111917Z&HW-CC-Expire=86400&HW-CC-Sign=D4F1B7DD57D1857C10310B2F2A4A7C68D5E2C7D135C57114BC0C796728EEE74A) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus SetData(std::vector<uint8_t> &&data); graphStatus SetData(const std::vector<uint8_t> &data); graphStatus SetData(const uint8_t *data, size_t size); graphStatus SetData(const std::string &data); graphStatus SetData(const char_t *data); graphStatus SetDat"
+      "snippet": "向Tensor中设置数据。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus SetData(std::vector<uint8_t> &&data); graphStatus SetData(const std::vector<uint8_t> &data); graphStatus SetData(const uint8_t *data, size_t size); graphStatus SetData(const std::string &data); graphStatus SetData(const char_t *data); graphStatus SetData(const std::vector<std::string> &data); graphStatus SetData(const std::vector<AscendString> &datas); graphStatus SetData(uint8_t *data, size_t size, const Tensor::DeleteFunc &deleter_func); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/SetData.md",
@@ -2334,7 +2334,7 @@
     {
       "path": "references/SetInput.md",
       "title": "SetInput",
-      "snippet": "设置算子Input，即由哪个算子的输出连到本算子。 有如下几种SetInput方法： - 如果指定srcOprt第0个Output为当前算子Input，使用第一个函数原型设置当前算子Input，不需要指定srcOprt的Output名称。 - 如果指定srcOprt的其它Output为当前算子Input，使用第二个函数原型设置当前算子Input，需要指定srcOprt的Output名称。 - 如果指定srcOprt的其它Output为当前算子Input，使用第三个函数原型设置当前算子Input，需要指定srcOprt的第index个Output。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ff/v3/bjEHcUElQdiYjXDJESbZyw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111856Z&HW-CC-Expire=86400&HW-CC-Sign=5EE55C858A378AAB3073BCD83321462D40D1F1CCF3857199F6C33BDDCE95165F) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 Op"
+      "snippet": "设置算子Input，即由哪个算子的输出连到本算子。 有如下几种SetInput方法： - 如果指定srcOprt第0个Output为当前算子Input，使用第一个函数原型设置当前算子Input，不需要指定srcOprt的Output名称。 - 如果指定srcOprt的其它Output为当前算子Input，使用第二个函数原型设置当前算子Input，需要指定srcOprt的Output名称。 - 如果指定srcOprt的其它Output为当前算子Input，使用第三个函数原型设置当前算子Input，需要指定srcOprt的第index个Output。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 Operator &SetInput(const std::string &dst_name, const Operator &src_oprt); Operator &SetInput(const char_t *dst_name, const Operator &src_oprt); Operator &SetInput(const std::string &dst_name, const Operator &src_oprt, const std::string &name); Operator &SetInput(const "
     },
     {
       "path": "references/SetInputAttr.md",
@@ -2359,7 +2359,7 @@
     {
       "path": "references/SetMarks.md",
       "title": "SetMarks",
-      "snippet": "在资源类算子推理的上下文中，设置成对资源算子的标记。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/51/v3/ZxAuajzvQUC4Qfrdxv9AyQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111845Z&HW-CC-Expire=86400&HW-CC-Sign=2237CB1A7AC87CEB87CA581635639098B6421DDFD5E1DA89559CD2D0CFAA3748) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 void SetMarks(const std::vector<std::string> &marks) void SetMarks(const std::vector<AscendString> &marks) #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "在资源类算子推理的上下文中，设置成对资源算子的标记。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 void SetMarks(const std::vector<std::string> &marks) void SetMarks(const std::vector<AscendString> &marks) #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/SetMax.md",
@@ -2374,7 +2374,7 @@
     {
       "path": "references/SetName.md",
       "title": "SetName",
-      "snippet": "向TensorDesc中设置Tensor的名称。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bb/v3/tvyOVNv4TeqJEBeaop-DUg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111912Z&HW-CC-Expire=86400&HW-CC-Sign=A3C35AA34C0F820ECEBEFDDDAB94422A9463B377E0889D1B2A2DE0DFEFFFB519) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 void SetName(const std::string &name); void SetName(const char_t *name); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "向TensorDesc中设置Tensor的名称。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 void SetName(const std::string &name); void SetName(const char_t *name); #### 参数说明 #### 返回值 无 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/SetNodeName.md",
@@ -2614,27 +2614,27 @@
     {
       "path": "references/Sigmoid.md",
       "title": "Sigmoid",
-      "snippet": "按元素做逻辑回归Sigmoid，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数 ： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f/v3/dYlbSLx2QDOFv-TYqVQkkw/zh-cn_image_0000002543374986.png?HW-CC-KV=V1&HW-CC-Date=20260421T111747Z&HW-CC-Expire=86400&HW-CC-Sign=B6D1494AFC58A9CE9A399EB1890B9F5C388B31435DA6A1948C54C2DDC10A6C6C) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/69/v3/FvblZA9IQRyApBJ65q9Ung/zh-cn_image_0000002543215326.png?HW-CC-KV=V1&HW-CC-Date=20260421T111747Z&HW-CC-Expire=86400&HW-CC-Sign=3EC97399E9309E4E6594625DEAA4C94488168727CCAC4BDCD3E"
+      "snippet": "按元素做逻辑回归Sigmoid，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数 ： #### 函数原型 - 通过sharedTmpBuffer入参传入临时空间 - template <typename T, bool isReuseSource = false> __aicore__ inline void Sigmoid(const LocalTensor<T>& dstTensor, const LocalTensor<T>& srcTensor, const LocalTensor<uint8_t>& sharedTmpBuffer, const uint32_t calCount) - template <typename T, bool isReuseSource = false> __aicore__ inline void Sigmoid(const LocalTensor<T>& dstTensor, const LocalTensor<T>& srcTensor, const LocalTensor<uint8_t>& sharedTmpBuffer) - 接口框架申请临时空间 - template <typename T, bool isReuseSource = false> __aicore__ inline void Sigmoid(c"
     },
     {
       "path": "references/Simulator性能仿真功能.md",
       "title": "Simulator性能仿真功能",
-      "snippet": "算子可以在仿真器上进行性能仿真，目前主要支持CAModel仿真器。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/84/v3/gMAnvl62TO6XzXvRq4A6gw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111716Z&HW-CC-Expire=86400&HW-CC-Sign=3AAF33490C7F0B004788D2D3A5525B7335A4EC295B09A86D5D9BD808722F6C02) - 由于model本身存在准确性问题，CAModel建议只跑单核，仿真性能会比较准，多核一块跑比较慢，误差也大很多。 #### 使用方法（命令行） 通过命令行进行性能仿真的关键步骤如下。 1. 完成环境搭建，并准备好输入/标杆数据文件。 2. 执行如下命令进行CAModel性能仿真，仅提供关键参数项示例，其他参数请参考 Simulator仿真参数 按需设置。 ascendebug kernel --backend simulator --repo-type customize --json-file ${op_config_json_file} --core-type ${core_typ"
+      "snippet": "算子可以在仿真器上进行性能仿真，目前主要支持CAModel仿真器。 - 由于model本身存在准确性问题，CAModel建议只跑单核，仿真性能会比较准，多核一块跑比较慢，误差也大很多。 #### 使用方法（命令行） 通过命令行进行性能仿真的关键步骤如下。 1. 完成环境搭建，并准备好输入/标杆数据文件。 2. 执行如下命令进行CAModel性能仿真，仅提供关键参数项示例，其他参数请参考 Simulator仿真参数 按需设置。 ascendebug kernel --backend simulator --repo-type customize --json-file ${op_config_json_file} --core-type ${core_type} –chip-version ${chip_version} --work-dir ${work_dir} --block-num 1 --timeout 1200 ... {其他参数} 一般情况下，CAModel仿真时运行比较慢，--timeout一般设置为1200秒，--block-num一般设置为1，开发者需按实际情况设置。 3. 查看性能仿真结果，详细说明参见 产物说明 。 #### 产物说明 CAModel仿真结果存放在${root}/${work_dir}/simulator路径下，其中${root}表示当前操作路"
     },
     {
       "path": "references/SoftmaxFlashV2.md",
       "title": "SoftmaxFlashV2",
-      "snippet": "将输入tensor[m 0 , m 1 , ...m t , n]（t大于等于0）的非尾轴长度相乘的结果看作m，则输入tensor的shape看作[m, n]。对输入tensor[m,n]按行做如下计算，不同的update值对应不同的计算公式，其中x、inmax和insum为输入，M、S、E均为输出。 - update为false： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/23/v3/hX8Vjl_MSLy57V0PxoVvWQ/zh-cn_image_0000002573855239.png?HW-CC-KV=V1&HW-CC-Date=20260421T111747Z&HW-CC-Expire=86400&HW-CC-Sign=AFE9F2F330C5037C8CB2FB84467630D07F4C6E2EA13178DD319308E2C76780BF) - update为true： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6a/v3/xCrrDt0RTsS4FQJFZefdtQ/zh-cn_image_0000002573"
+      "snippet": "将输入tensor[m 0 , m 1 , ...m t , n]（t大于等于0）的非尾轴长度相乘的结果看作m，则输入tensor的shape看作[m, n]。对输入tensor[m,n]按行做如下计算，不同的update值对应不同的计算公式，其中x、inmax和insum为输入，M、S、E均为输出。 - update为false： - update为true： 当输入shape为ND格式时，内部的reduce过程按last轴进行。当输入shape为NZ格式时，内部的reduce过程按照last轴和first轴进行 #### 实现原理 计算过程根据isUpdate是否使能分为两个分支处理，均在Vector上进行。 - 当isUpdate为false时，分为如下几步： 1. reducemax步骤：对输入x的每一行数据求最大值得到[m, 1]，计算结果会保存到一个临时空间temp中。 2. broadcast步骤：对temp中的数据[m, 1]做一个按datablock为单位的填充，比如float类型下，把[m, 1]扩展成[m, 8]，同时输出max。 3. sub步骤：对输入x的所有数据按行减去max。 4. exp步骤：对sub之后的所有数据求exp，并且输出y。 5. reducesum步骤：对exp结果的每一行数据求和得到[m, 1]，计算结果会保存到临时空间temp中。 "
     },
     {
       "path": "references/Sqrt.md",
       "title": "Sqrt",
-      "snippet": "按元素做开方，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3f/v3/7vhXDsXdSmudMU-iyFnC1w/zh-cn_image_0000002543374956.png?HW-CC-KV=V1&HW-CC-Date=20260421T111725Z&HW-CC-Expire=86400&HW-CC-Sign=22D06280247BC0EB9AF88595ACCDC48C35288FDD4484C04E4929365AB7D34ED1) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Sqrt(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 操作数地址偏移对齐要求请参见 "
+      "snippet": "按元素做开方，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Sqrt(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcLocal, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。本样例的srcLocal和dstLocal均为half类型，占16位bit。 如果开发者需要运行样例代码，请将该代码段拷贝并替换 样例模板 中Compute函数的部分代码即可。 tensor前n个数据计算样例： AscendC::Sqrt(dstLocal, srcLocal, 512); 结果示例如下。 输入数据(srcLocal): [1.0 2.0 3.0 4.0 ...] 输出数据(dstLocal): [1.0 1.414 1.732 2.0...]"
     },
     {
       "path": "references/Sub.md",
       "title": "Sub",
-      "snippet": "按元素求差，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ac/v3/A5vMmNCeQJKGpC6-2TzzdA/zh-cn_image_0000002543215298.png?HW-CC-KV=V1&HW-CC-Date=20260421T111726Z&HW-CC-Expire=86400&HW-CC-Sign=30C40AA8FF2D432B3F90CBDE0B9BA210F1F4E8907EC346BC39B3BA9BE6D0EE34) #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Sub(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX9"
+      "snippet": "按元素求差，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数： #### 函数原型 tensor前n个数据计算： template <typename T> __aicore__ inline void Sub(const LocalTensor<T>& dstLocal, const LocalTensor<T>& src0Local, const LocalTensor<T>& src1Local, const int32_t& calCount) #### 参数说明 **表1** 模板参数说明 **表2** 参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 注意事项 操作数地址偏移对齐要求请参见 通用约束 。 #### 调用示例 本样例中只展示Compute流程中的部分代码。如果开发者需要运行样例代码，请将该代码段拷贝并替换双目指令样例模板 更多样例 中的Compute函数即可。 tensor前n个数据计算样例： AscendC::Sub(dstLocal, src0Local, src1Local, 512); 结果示例如下。 输入数据(src0Local): [1 2 3 ... 512] 输入数据(src1Local): [513 514 515 ... 1024] 输出数据(ds"
     },
     {
       "path": "references/SubCount.md",
@@ -2669,7 +2669,7 @@
     {
       "path": "references/Tanh.md",
       "title": "Tanh",
-      "snippet": "按元素做逻辑回归Tanh，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数 ： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/22/v3/dsiJBllgTHmHPvY1ySu06A/zh-cn_image_0000002543374984.png?HW-CC-KV=V1&HW-CC-Date=20260421T111746Z&HW-CC-Expire=86400&HW-CC-Sign=D9AC7FF951908DF8E165B4238840ACBDD2516722409A586D1AD217B6EBD3CEC5) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4f/v3/BZUSIz8JRlSJZeOaV4lXIg/zh-cn_image_0000002543215324.png?HW-CC-KV=V1&HW-CC-Date=20260421T111746Z&HW-CC-Expire=86400&HW-CC-Sign=3BC41EF81ED2503C85073A6AB9EC196FEB3C9D01839C308227965"
+      "snippet": "按元素做逻辑回归Tanh，计算公式如下，其中PAR表示矢量计算单元一个迭代能够处理的元素个数 ： #### 函数原型 template <typename T, bool isReuseSource = false> __aicore__ inline void Tanh(const LocalTensor<T>& dstTensor, const LocalTensor<T>& srcTensor, const uint32_t calCount) #### 参数说明 **表1** 模板参数说明 **表2** 接口参数说明 #### 返回值 无 #### 支持的型号 Kirin9020系列处理器 KirinX90系列处理器 #### 约束说明 - 操作数地址偏移对齐要求请参见 通用约束 。 - 输入输出操作数参与计算的数据长度要求32B对齐。 #### 调用示例 AscendC::TPipe pipe; // calCount为实际计算数据元素个数 // 其它处理省略 AscendC::Tanh<T, false>(yLocal, xLocal, calCount);"
     },
     {
       "path": "references/TensorDescInfo.md",
@@ -2724,12 +2724,12 @@
     {
       "path": "references/Tiling调测功能.md",
       "title": "Tiling调测功能",
-      "snippet": "Tiling是算子开发中独立且关键的部分，描述了Kirin AI处理器SoC NPU IP加速器上算子的输入/输出数据切分、分块计算、多核并行等策略，以满足片上存储限制和计算pipeline的需求，最大化计算并行性和数据局部性(data locality OR data reuse)，从而发挥硬件的极致性能。 对单算子执行Tiling调测时，根据Tiling so文件执行Tiling运算，生成Tiling bin文件。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bb/v3/L11XW1N0QHuFBiVIB4mDow/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111716Z&HW-CC-Expire=86400&HW-CC-Sign=A8EE0427D18AB8D7D62F39F3EE43C78A98EE11E1F25DBA2FF6E0750A3D86684E) 目前仅标准自定义算子工程场景、ops_adv算子工程场景、built-in工程场景、内源框架工程场景需要进行Tiling调测，其余场景不涉及。 #### 使用方法（命令行） 通过命令行进行Tiling调测的关键步骤如下，详细样例请参考Til"
+      "snippet": "Tiling是算子开发中独立且关键的部分，描述了Kirin AI处理器SoC NPU IP加速器上算子的输入/输出数据切分、分块计算、多核并行等策略，以满足片上存储限制和计算pipeline的需求，最大化计算并行性和数据局部性(data locality OR data reuse)，从而发挥硬件的极致性能。 对单算子执行Tiling调测时，根据Tiling so文件执行Tiling运算，生成Tiling bin文件。 目前仅标准自定义算子工程场景、ops_adv算子工程场景、built-in工程场景、内源框架工程场景需要进行Tiling调测，其余场景不涉及。 #### 使用方法（命令行） 通过命令行进行Tiling调测的关键步骤如下，详细样例请参考Tiling调测功能。 1. 完成环境搭建，并准备好输入/标杆数据文件。 2. 执行如下命令进行Tiling调测，这里仅提供关键参数项示例，其他参数请参考 Tiling调测参数 按需配置。 标准自定义算子场景： ascendebug tiling --json-file {op_config_json_file } --chip-version ${chip_version} --work-dir ${work_dir} ... {其他参数} Tiling调测涉及的所有参数可通过 **ascendebug tiling -h** 或 *"
     },
     {
       "path": "references/TransDataTo5HD.md",
       "title": "TransDataTo5HD",
-      "snippet": "数据格式转换，一般用于将NCHW格式转换成NC1HWC0格式。特别的，也可以用于二维矩阵数据块的转置。完成转置功能时，相比于 Transpose 接口，Transpose仅支持16*16大小的矩阵转置。本接口单次repeat内可处理512Byte的数据（16个datablock），根据数据类型不同，支持不同shape的矩阵转置（比如数据类型为half时，单次repeat可完成16*16大小的矩阵转置），同时还可以支持多次repeat操作。 单次repeat内转换规则如下。 - 当输入数据类型是int16_t/uint16_t/half时，每个datablock中包含16个数，指令内部会循环16次，每次循环都会分别从指定的16个datablock中的对应位置取值，组成一个新的datablock单元放入目的地址中。如下图所示，图中的srcLocalList[0]-srcLocalList[15]代表源操作数的16个datablock。 **图1** 输入数据类型为int16_t/uint16_t/half时的转换规则 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d1/v3/xQjaBSjOQRqZASBkEHLWIA/zh-cn_image_00000025738"
+      "snippet": "数据格式转换，一般用于将NCHW格式转换成NC1HWC0格式。特别的，也可以用于二维矩阵数据块的转置。完成转置功能时，相比于 Transpose 接口，Transpose仅支持16*16大小的矩阵转置。本接口单次repeat内可处理512Byte的数据（16个datablock），根据数据类型不同，支持不同shape的矩阵转置（比如数据类型为half时，单次repeat可完成16*16大小的矩阵转置），同时还可以支持多次repeat操作。 单次repeat内转换规则如下。 - 当输入数据类型是int16_t/uint16_t/half时，每个datablock中包含16个数，指令内部会循环16次，每次循环都会分别从指定的16个datablock中的对应位置取值，组成一个新的datablock单元放入目的地址中。如下图所示，图中的srcLocalList[0]-srcLocalList[15]代表源操作数的16个datablock。 **图1** 输入数据类型为int16_t/uint16_t/half时的转换规则 - 当数据类型是float/int32_t/uint32_t时，每个datablock包含8个数，指令内部会循环8次，每次循环都会分别从指定的16个datablock中的对应位置取值，组成2个新的datablock放入目的地址中。如下图所示： **图2** 输入数据类型为"
     },
     {
       "path": "references/Transpose.md",
@@ -2744,7 +2744,7 @@
     {
       "path": "references/TryGetInputDesc.md",
       "title": "TryGetInputDesc",
-      "snippet": "根据算子Input名称获取算子Input的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5b/v3/W917jjNpSbylq7uU0y0stQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111857Z&HW-CC-Expire=86400&HW-CC-Sign=D1CC8A31809EE30EE55FC8D8EDE24445964227D389C9B6611BB32C6361D3E3EF) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus TryGetInputDesc(const std::string &name, TensorDesc &tensor_desc) const; graphStatus TryGetInputDesc(const char_t *name, TensorDesc &tensor_desc) const; #### 参数说明 #### 返回值 #### 异常处理 #### 约束说明 无"
+      "snippet": "根据算子Input名称获取算子Input的TensorDesc。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus TryGetInputDesc(const std::string &name, TensorDesc &tensor_desc) const; graphStatus TryGetInputDesc(const char_t *name, TensorDesc &tensor_desc) const; #### 参数说明 #### 返回值 #### 异常处理 #### 约束说明 无"
     },
     {
       "path": "references/UnaryRepeatParams.md",
@@ -2759,22 +2759,22 @@
     {
       "path": "references/UpdateDynamicInputDesc.md",
       "title": "UpdateDynamicInputDesc",
-      "snippet": "根据name和index的组合更新算子动态Input的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1d/v3/h7781rh7TLywY26QBMjwFA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111857Z&HW-CC-Expire=86400&HW-CC-Sign=75F51614DAA85D4D087CCB765E24934613794D0A0903E461710744E019687869) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus UpdateDynamicInputDesc(const std::string &name, uint32_t index, const TensorDesc &tensor_desc); graphStatus UpdateDynamicInputDesc(const char_t *name, uint32_t index, const TensorDesc &tensor_desc); #### 参数说明 #### 返回值 #### 异常处理 "
+      "snippet": "根据name和index的组合更新算子动态Input的TensorDesc。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus UpdateDynamicInputDesc(const std::string &name, uint32_t index, const TensorDesc &tensor_desc); graphStatus UpdateDynamicInputDesc(const char_t *name, uint32_t index, const TensorDesc &tensor_desc); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/UpdateDynamicOutputDesc.md",
       "title": "UpdateDynamicOutputDesc",
-      "snippet": "根据name和index的组合更新算子动态Output的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/63/v3/dGviOLMyTtC6Xigvr01zWA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111857Z&HW-CC-Expire=86400&HW-CC-Sign=8E23A373CC5186EDFFEC612CEC27DD54A1775CC242F2C9F392AA3D71CED6F41F) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus UpdateDynamicOutputDesc(const std::string &name, uint32_t index, const TensorDesc &tensor_desc); graphStatus UpdateDynamicOutputDesc(const char_t *name, uint32_t index, const TensorDesc &tensor_desc); #### 参数说明 #### 返回值 #### 异常"
+      "snippet": "根据name和index的组合更新算子动态Output的TensorDesc。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus UpdateDynamicOutputDesc(const std::string &name, uint32_t index, const TensorDesc &tensor_desc); graphStatus UpdateDynamicOutputDesc(const char_t *name, uint32_t index, const TensorDesc &tensor_desc); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/UpdateInputDesc.md",
       "title": "UpdateInputDesc",
-      "snippet": "根据算子Input名称更新Input的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/44/v3/UVCDFmcmQy-AEEWTk0DEug/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111857Z&HW-CC-Expire=86400&HW-CC-Sign=551B1AEA418C39F654C51437D532A155467B12E81EA28B1D78117F2EBDBA2469) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus UpdateInputDesc(const std::string &name, const TensorDesc &tensor_desc); graphStatus UpdateInputDesc(const char_t *name, const TensorDesc &tensor_desc); #### 参数说明 #### 返回值 #### 异常处理 #### 约束说明 无"
+      "snippet": "根据算子Input名称更新Input的TensorDesc。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus UpdateInputDesc(const std::string &name, const TensorDesc &tensor_desc); graphStatus UpdateInputDesc(const char_t *name, const TensorDesc &tensor_desc); #### 参数说明 #### 返回值 #### 异常处理 #### 约束说明 无"
     },
     {
       "path": "references/UpdateOutputDesc.md",
       "title": "UpdateOutputDesc",
-      "snippet": "根据算子Output名称更新Output的TensorDesc。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b1/v3/qLZiEpILQvSjbhDlHS2R3w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111857Z&HW-CC-Expire=86400&HW-CC-Sign=D6CD2A66EF45B8BFDA3FBF01E45FCC4660A4A3FAEE5EE97880ECCBCBB69E16CC) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus UpdateOutputDesc(const std::string &name, const TensorDesc &tensor_desc); graphStatus UpdateOutputDesc(const char_t *name, const TensorDesc &tensor_desc); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "根据算子Output名称更新Output的TensorDesc。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 graphStatus UpdateOutputDesc(const std::string &name, const TensorDesc &tensor_desc); graphStatus UpdateOutputDesc(const char_t *name, const TensorDesc &tensor_desc); #### 参数说明 #### 返回值 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/VERIFY_FUNC_REG.md",
@@ -2804,7 +2804,7 @@
     {
       "path": "references/VerifyFuncRegister.md",
       "title": "VerifyFuncRegister",
-      "snippet": "VerifyFuncRegister构造函数和析构函数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/96/v3/K7fw2bupRWmRcZE5DXrgcw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111921Z&HW-CC-Expire=86400&HW-CC-Sign=0965E7BEDA4A38326168084EEE79497ADA6075967EDCD02F391B6212F7D7CBE3) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 VerifyFuncRegister(const std::string &operator_type, const VerifyFunc &verify_func); VerifyFuncRegister(const char_t *const operator_type, const VerifyFunc &verify_func); ~VerifyFuncRegister() = default; #### 参数说明 #### 返回值 VerifyFuncRegister构造函数返回Ver"
+      "snippet": "VerifyFuncRegister构造函数和析构函数。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 VerifyFuncRegister(const std::string &operator_type, const VerifyFunc &verify_func); VerifyFuncRegister(const char_t *const operator_type, const VerifyFunc &verify_func); ~VerifyFuncRegister() = default; #### 参数说明 #### 返回值 VerifyFuncRegister构造函数返回VerifyFuncRegister类型的对象。 #### 约束说明 算子verifyFunc函数注册接口，此接口被其他头文件引用，一般不用由算子开发者直接调用。"
     },
     {
       "path": "references/ascendebug调测工具参数说明.md",
@@ -2814,12 +2814,12 @@
     {
       "path": "references/assert.md",
       "title": "assert",
-      "snippet": "基于算子工程开发的算子，可以使用该接口实现CPU/NPU域assert断言功能。算子执行中，如果assert内部条件判断不为真，则输出assert条件并将输入的信息格式化打印在屏幕上。 在算子kernel侧实现代码中需要增加断言的地方使用assert检查代码，并格式化输出一些调测信息。示例如下。 int assertFlag = 10; assert(assertFlag == 10); assert(assertFlag == 10, \"The assertFlag value is 10.\\n\"); assert(assertFlag == 10, \"The assertFlag value is %d.\\n\", assertFlag); ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/34/v3/nIRwr9w-SjCBxZraraSxeA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111742Z&HW-CC-Expire=86400&HW-CC-Sign=28D185B385242145A558BF0E3A14389AF65FCA1DD36E5D991C21C751E9379628) assert"
+      "snippet": "基于算子工程开发的算子，可以使用该接口实现CPU/NPU域assert断言功能。算子执行中，如果assert内部条件判断不为真，则输出assert条件并将输入的信息格式化打印在屏幕上。 在算子kernel侧实现代码中需要增加断言的地方使用assert检查代码，并格式化输出一些调测信息。示例如下。 int assertFlag = 10; assert(assertFlag == 10); assert(assertFlag == 10, \"The assertFlag value is 10.\\n\"); assert(assertFlag == 10, \"The assertFlag value is %d.\\n\", assertFlag); assert接口打印功能会对算子实际运行的性能带来一定影响（每一条assert，系统会额外增加一条逻辑判断，具体性能影响取决于代码中assert的使用数量），通常在调测阶段使用。开发者可以按需通过如下方式关闭打印功能。 自定义算子工程： 修改算子工程op_kernel目录下的CMakeLists.txt文件，首行增加编译选项-DASCENDC_DUMP=0，关闭ASCENDC_DUMP开关。 在assert条件被触发时，在断言信息前面会自动打印CANN_VERSION_STR值与CANN_TIMESTAMP值。其中，CANN_VERSION_"
     },
     {
       "path": "references/assert功能.md",
       "title": "assert功能",
-      "snippet": "使用工具进行算子调测时，支持断言功能。当核函数代码中条件判断为false时，则立即中断运行流程并打印相关信息，方便快速定位错误。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/88/v3/awnUq2viRbqJ-ehoIgT5Gw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111717Z&HW-CC-Expire=86400&HW-CC-Sign=31B3976C9A8A470A3C55F09DBA4D94519B8CEDF6750B94526E9FF95F7706F5F8) 固定为每个核分配的打印数据的最大可使用空间为1M，目前该大小不支持修改，若打印超过1M，打印内容不再显示，请开发者控制待打印的数据量。 #### 使用方法（命令行） 1. 在核函数代码中根据需要，在目标位置调用assert接口，详情请参见接口说明，样例如下。 int32_t x = 31; assert(x < 0, \"Invalid input_num: %d\\n\", x); 2. simulator调测场景执行如下命令，使能Dump开关。 ascendebug kernel --backend simulator --dum"
+      "snippet": "使用工具进行算子调测时，支持断言功能。当核函数代码中条件判断为false时，则立即中断运行流程并打印相关信息，方便快速定位错误。 固定为每个核分配的打印数据的最大可使用空间为1M，目前该大小不支持修改，若打印超过1M，打印内容不再显示，请开发者控制待打印的数据量。 #### 使用方法（命令行） 1. 在核函数代码中根据需要，在目标位置调用assert接口，详情请参见接口说明，样例如下。 int32_t x = 31; assert(x < 0, \"Invalid input_num: %d\\n\", x); 2. simulator调测场景执行如下命令，使能Dump开关。 ascendebug kernel --backend simulator --dump-mode normal ... {其他simulator调测参数} --dump-mode取normal，开启通用打印Scalar模式，其他参数参考 NPU调测参数 根据需要进行配置。 3. 查看断言结果。 若调用时传入的判断条件为false，会中断程序并在屏幕上显示断言内容（带文件名、行号），结果示例如下。 [ASSERT] /home/.../add_custom.cpp:94: Assertion `x < 0' Invalid input_num: 31 #### 接口说明 assert接口说明如下。 - **函数原型"
     },
     {
       "path": "references/gdb调试.md",
@@ -2884,17 +2884,17 @@
     {
       "path": "references/params归一格式的算子json配置.md",
       "title": "params归一格式的算子json配置",
-      "snippet": "为了支持输入/输出参数交叉配置的场景，params归一配置格式应运而生，所有输入/输出参数均放在“params”配置项中。该算子json配置文件中参数可以按 **输入/输出规则排布** ，也可以按 **输入/输出交叉排布** ，只要保证参数顺序与Kernel入口函数的参数顺序保持一致即可。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/52/v3/BkvHMQaURnCDjaPF41va4A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111715Z&HW-CC-Expire=86400&HW-CC-Sign=273C5639D9FB1E682F7106866BD8A5FB82D8949ADC314CC3F2D791DAFD9E6120) - **调试工具暂不支持该配置** 。 - **输入/输出规则排布** （所有输出参数排布在输入参数之后）：例如Kernel入口函数的参数排布为extern \"C\" __global__ __aicore__ void add_custom(GM_ADDR input1, GM_ADDR input2, GM_ADDR input3, **GM_ADDR output*"
+      "snippet": "为了支持输入/输出参数交叉配置的场景，params归一配置格式应运而生，所有输入/输出参数均放在“params”配置项中。该算子json配置文件中参数可以按 **输入/输出规则排布** ，也可以按 **输入/输出交叉排布** ，只要保证参数顺序与Kernel入口函数的参数顺序保持一致即可。 - **调试工具暂不支持该配置** 。 - **输入/输出规则排布** （所有输出参数排布在输入参数之后）：例如Kernel入口函数的参数排布为extern \"C\" __global__ __aicore__ void add_custom(GM_ADDR input1, GM_ADDR input2, GM_ADDR input3, **GM_ADDR output** )。 - **输入/输出交叉排布** （输入/输出参数排布顺序有交叉）：例如Kernel入口函数的参数排布为extern \"C\" __global__ __aicore__ void add_custom(GM_ADDR input1, GM_ADDR input2, **GM_ADDR output** , GM_ADDR input3)，output参数排在input3之前。 - **核函数直调工程场景** 的开发人员一般按此方式配置。 以AddCustom算子为例，对应的json配置示例如下，参数说明参见表1。 { \"o"
     },
     {
       "path": "references/printf.md",
       "title": "printf",
-      "snippet": "基于算子工程开发的算子，可以使用该接口实现CPU侧/NPU侧调试场景下的格式化输出功能。 在算子kernel侧实现代码中需要输出日志信息的地方调用printf接口打印相关内容。样例如下。 #include \"kernel_operator.h\" AscendC::printf(\"fmt string %d\\n\", 0x123); AscendC::PRINTF(\"fmt string %d\\n\", 0x123); ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/22/v3/VEurVD-MS-yJuwc_eJanZg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111742Z&HW-CC-Expire=86400&HW-CC-Sign=1A460B2D83E7A587ECAA36052F34D5B07A22468D4EEBAA96001B48AC1366AD10) printf(PRINTF)接口打印功能会对算子实际运行的性能带来一定影响，通常在调测阶段使用。开发者可以按需通过如下方式关闭打印功能。 自定义算子工程： 修改算子工程op_kernel目录下的CMakeLists.txt文件，首行增加编译选项-"
+      "snippet": "基于算子工程开发的算子，可以使用该接口实现CPU侧/NPU侧调试场景下的格式化输出功能。 在算子kernel侧实现代码中需要输出日志信息的地方调用printf接口打印相关内容。样例如下。 #include \"kernel_operator.h\" AscendC::printf(\"fmt string %d\\n\", 0x123); AscendC::PRINTF(\"fmt string %d\\n\", 0x123); printf(PRINTF)接口打印功能会对算子实际运行的性能带来一定影响，通常在调测阶段使用。开发者可以按需通过如下方式关闭打印功能。 自定义算子工程： 修改算子工程op_kernel目录下的CMakeLists.txt文件，首行增加编译选项-DASCENDC_DUMP=0，关闭ASCENDC_DUMP开关。 **需要注意的是，关闭CPU侧的打印开关时，只对PRINTF接口生效，对printf不生效。** printf打印结果示例如下。 fmt string 291 fmt string 291 根据算子执行方式的不同，printf的打印结果输出方式不同。动态图或者单算子直调场景下，待输出内容会被解析并打印在屏幕上。静态图场景下，整图算子需要全下沉到NPU侧执行，无法直接调用接口打印出单个算子的信息，因此需要在模型执行完毕后，将待输出内容落盘在dump文件中，dump文"
     },
     {
       "path": "references/printf_PRINTF功能.md",
       "title": "printf/PRINTF功能",
-      "snippet": "使用工具进行算子调测时，支持printf/PRINTF功能，可以打印Scalar数据。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8e/v3/4vgt5Ee6RsOv6x7s7EilZA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111716Z&HW-CC-Expire=86400&HW-CC-Sign=DBF65191DF70B4F19C13DB73A77D3AD2ADE6050797BCFFAE848063ACD4731E07) - CPU调测场景支持printf和PRINTF打印，其中printf采用C++自身打印功能，不受dump-mode参数控制。 - simulator调测场景支持printf和PRINTF打印，受dump mode参数控制。 - 固定为每个核分配的打印数据的最大可使用空间为1M，目前该大小不支持修改，若打印超过1M，打印内容不再显示，请开发者控制待打印的数据量。 #### 使用方法（命令行） 1. 在核函数代码中按需在目标位置加上printf或PRINTF语句，接口说明参见表1，以PRINTF打印为例： PRINTF(\"1 fmt string d %d\\n\", 666"
+      "snippet": "使用工具进行算子调测时，支持printf/PRINTF功能，可以打印Scalar数据。 - CPU调测场景支持printf和PRINTF打印，其中printf采用C++自身打印功能，不受dump-mode参数控制。 - simulator调测场景支持printf和PRINTF打印，受dump mode参数控制。 - 固定为每个核分配的打印数据的最大可使用空间为1M，目前该大小不支持修改，若打印超过1M，打印内容不再显示，请开发者控制待打印的数据量。 #### 使用方法（命令行） 1. 在核函数代码中按需在目标位置加上printf或PRINTF语句，接口说明参见表1，以PRINTF打印为例： PRINTF(\"1 fmt string d %d\\n\", 6666); PRINTF(\"1 fmt string lf %lf\\n\", float(61.556)); 2. simulator调测场景执行如下命令，使能Dump开关。 ascendebug kernel --backend simulator --dump-mode normal ... {其他simulator调测参数} --dump-mode取normal，开启通用打印Scalar模式，其他参数参考 NPU调测参数 按需配置。 3. 查看屏显打印结果，示例如下。 #### 接口说明 printf/PRINTF接口说明如下。 "
     },
     {
       "path": "references/使用说明-1.md",
@@ -2904,7 +2904,7 @@
     {
       "path": "references/使用说明.md",
       "title": "使用说明",
-      "snippet": "AscendC提供一组Matmul高阶API，方便开发者快速实现Matmul矩阵乘法的运算操作。 Matmul的计算公式为：C = A * B，其示意图如下。 - A、B为源操作数，A为左矩阵，形状为[M, K]；B为右矩阵，形状为[K, N]。 - C为目的操作数，存放矩阵乘结果的矩阵，形状为[M, N]。 **图1** Matmul矩阵乘示意图（当前不支持bias计算） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/be/v3/Quq6Hli3R8-H8GkfyRUZyw/zh-cn_image_0000002543374982.png?HW-CC-KV=V1&HW-CC-Date=20260421T111744Z&HW-CC-Expire=86400&HW-CC-Sign=46441B74224073D6ED7AB874850AEFF31B56C3D6C7A28273070D922EDEF4E6D4) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/29/v3/E-UwI-zyTt2ooRQcMga-sw/note_3.0-zh-cn.p"
+      "snippet": "AscendC提供一组Matmul高阶API，方便开发者快速实现Matmul矩阵乘法的运算操作。 Matmul的计算公式为：C = A * B，其示意图如下。 - A、B为源操作数，A为左矩阵，形状为[M, K]；B为右矩阵，形状为[K, N]。 - C为目的操作数，存放矩阵乘结果的矩阵，形状为[M, N]。 **图1** Matmul矩阵乘示意图（当前不支持bias计算） 下文中提及的M轴方向，即为A矩阵纵向；K轴方向，即为A矩阵横向或B矩阵纵向；N轴方向，即为B矩阵横向。 实现Matmul矩阵乘运算的具体步骤如下。 1. 创建Matmul对象。示例如下。 - CUBE_ONLY（只有矩阵计算）场景下，需要设置ASCENDC_CUBE_ONLY代码宏。 - 默认为MIX模式（包含矩阵计算和矢量计算），该场景下，不能设置ASCENDC_CUBE_ONLY代码宏。 // 纯cube模式（只有矩阵计算）场景下，需要设置该代码宏，并且必须在#include \"lib/matmul_intf.h\"之前设置 // #define ASCENDC_CUBE_ONLY #include \"lib/matmul_intf.h\" typedef matmul::MatmulType<AscendC::TPosition::GM, CubeFormat::ND, half> aType; typede"
     },
     {
       "path": "references/关系符重载.md",
@@ -2914,12 +2914,12 @@
     {
       "path": "references/兼容性说明.md",
       "title": "兼容性说明",
-      "snippet": "总体兼容性策略见表1 Ascend C API兼容策略，兼容性范围不包含编译器BuiltIn API、Ascend C内部实现接口等。若开发者希望在新平台运行其它平台开发的Ascend C程序，需要在新平台重新编译并运行，并可能需要根据迁移指导进行代码调整。 **图1** Ascend C API层次结构 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d2/v3/ats1vUbbRN245s9eLM7bYg/zh-cn_image_0000002543374988.png?HW-CC-KV=V1&HW-CC-Date=20260421T111927Z&HW-CC-Expire=86400&HW-CC-Sign=5164AAC697D08A912E5C830A131ED29A7AA7516AC82F76BC1DF7372315BFBF3C) **表1** Ascend C API兼容策略 **简要说明** 1. 为了保证兼容性，建议开发者在开发过程中尽量避免使用如下接口或编程方式，否则开发者需自行保证兼容性。 - 非Ascend C公开接口、结构体，例如impl目录下的接口、结构体等； - uint32_t MAX_UB_SIZE = 256 * 1024; //"
+      "snippet": "总体兼容性策略见表1 Ascend C API兼容策略，兼容性范围不包含编译器BuiltIn API、Ascend C内部实现接口等。若开发者希望在新平台运行其它平台开发的Ascend C程序，需要在新平台重新编译并运行，并可能需要根据迁移指导进行代码调整。 **图1** Ascend C API层次结构 **表1** Ascend C API兼容策略 **简要说明** 1. 为了保证兼容性，建议开发者在开发过程中尽量避免使用如下接口或编程方式，否则开发者需自行保证兼容性。 - 非Ascend C公开接口、结构体，例如impl目录下的接口、结构体等； - uint32_t MAX_UB_SIZE = 256 * 1024; // 建议获取方式：ascendcPlatform.GetCoreMemSize(platform_ascendc::CoreMemType::UB, MAX_UB_SIZE); // ... - copy_gm_to_ubuf(input_1_local_ub, input_1, 0, 1, 8, 0, 0); - TilingKey编程。 2. 建议开发者使用如下接口或编程方式。 - 兼容的API。 - 若涉及特定领域扩展特性，在Device侧用NPU_ARCH编译宏进行隔离，在Host侧用SocVersion进行隔离。 - 使用Tiling模板编程。"
     },
     {
       "path": "references/内存零拷贝.md",
       "title": "内存零拷贝",
-      "snippet": "对于GPU的纹理数据或模型的输入数据等已经存在于ION内存中的场景，就可以使用“内存零拷贝方式”，即将存放数据的ION内存封装为输入输出张量，直接进行推理，不需要进行输入张量和输出张量的数据拷贝，以便节省内存以及推理时间。 #### 使用说明 对于零拷贝使用场景，在模型加载完成后，使用 OH_NNTensor_CreateWithFd ，将ION内存封装为输入张量“input_tensor”，输出张量\"output_tensor\"，执行推理。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/11/v3/0t7UgosXSUep_QcoSqcVAg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111707Z&HW-CC-Expire=86400&HW-CC-Sign=E08002E29435A3ECF3840721C62B7C8D19779F1ACC9CAB19AF11F95F81B444FE) 若size为模型输出大小，对于输出张量，建议开发者申请ION内存的大小为 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance"
+      "snippet": "对于GPU的纹理数据或模型的输入数据等已经存在于ION内存中的场景，就可以使用“内存零拷贝方式”，即将存放数据的ION内存封装为输入输出张量，直接进行推理，不需要进行输入张量和输出张量的数据拷贝，以便节省内存以及推理时间。 #### 使用说明 对于零拷贝使用场景，在模型加载完成后，使用 OH_NNTensor_CreateWithFd ，将ION内存封装为输入张量“input_tensor”，输出张量\"output_tensor\"，执行推理。 若size为模型输出大小，对于输出张量，建议开发者申请ION内存的大小为 。"
     },
     {
       "path": "references/内部关联接口-1.md",
@@ -2939,7 +2939,7 @@
     {
       "path": "references/创建项目.md",
       "title": "创建项目",
-      "snippet": "本章以 Caffe SqueezeNet 模型集成为例，说明App集成操作过程。 1. 创建DevEco Studio项目，选择“Native C++”模板，点击“Next”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6c/v3/JzGiHT_iQjuJU97yaUOu1g/zh-cn_image_0000002573975151.png?HW-CC-KV=V1&HW-CC-Date=20260421T111708Z&HW-CC-Expire=86400&HW-CC-Sign=BFB86E6276DA6DE6DAC0661D394A48FC415CA736279BA2B89F8E22D931658F5B) 2. 按需填写“Project name”、“Save location”和“Module name”，选择“Compile SDK”为“5.1.0(18)”及以上版本，点击“Finish”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a1/v3/5B-fvpauTxiRoFB7j8vKPA/zh-cn_image_0000002"
+      "snippet": "本章以 Caffe SqueezeNet 模型集成为例，说明App集成操作过程。 1. 创建DevEco Studio项目，选择“Native C++”模板，点击“Next”。 2. 按需填写“Project name”、“Save location”和“Module name”，选择“Compile SDK”为“5.1.0(18)”及以上版本，点击“Finish”。"
     },
     {
       "path": "references/判断模型能否在手机上运行？.md",
@@ -2949,7 +2949,7 @@
     {
       "path": "references/单算子应用.md",
       "title": "单算子应用",
-      "snippet": "CANN Kit提供独立的算子创建和计算通路，三方框架可以在模型加载、推理过程中，将卷积、深度卷积等算子通过单算子对接的方式迁移至NPU，经过硬件平台的加速计算，与整网模式对比灵活度更高，相比于整网CPU计算性能更优。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/09/v3/JwKAQFhnT0SestleTk1vpw/zh-cn_image_0000002573855173.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111709Z&HW-CC-Expire=86400&HW-CC-Sign=3A443E82F2ED0A076C3A75680D4CC06E9DE6B38B9A5D59366F6536E2055759E7) 以下为单算子Tensor创建，单算子执行器创建、加载、执行接口，接口使用请参见 开发步骤 。如要使用更丰富的设置和查询接口，请参见 API参考 。 **表1** 单算子接口及功能介绍 #### 开发步骤 以下开发步骤以卷积单算子为例。 1. 创建单算子执行器。 1. 调用 HMS_HiAISingleOpOptions_Create ，创建单算子配置对象。 2. 调用 HMS_HiAISingleOpDescri"
+      "snippet": "CANN Kit提供独立的算子创建和计算通路，三方框架可以在模型加载、推理过程中，将卷积、深度卷积等算子通过单算子对接的方式迁移至NPU，经过硬件平台的加速计算，与整网模式对比灵活度更高，相比于整网CPU计算性能更优。 以下为单算子Tensor创建，单算子执行器创建、加载、执行接口，接口使用请参见 开发步骤 。如要使用更丰富的设置和查询接口，请参见 API参考 。 **表1** 单算子接口及功能介绍 #### 开发步骤 以下开发步骤以卷积单算子为例。 1. 创建单算子执行器。 1. 调用 HMS_HiAISingleOpOptions_Create ，创建单算子配置对象。 2. 调用 HMS_HiAISingleOpDescriptor_CreateConvolution ，创建卷积类算子描述符对象。 3. 调用 HMS_HiAISingleOpTensor_CreateFromConst ，分别创建卷积算子的权重、偏置单算子Tensor。 4. 调用 HMS_HiAISingleOpTensorDesc_Create ，分别创建单算子输入Tensor、输出Tensor的描述对象。 5. 调用 HMS_HiAISingleOpExecutor_CreateConvolution ，将上述创建好的卷积类算子描述符对象、卷积算子的权重Tensor、卷积算子的偏置Tensor、输入Ten"
     },
     {
       "path": "references/原型定义接口（REG_OP）.md",
@@ -2979,7 +2979,7 @@
     {
       "path": "references/可视化工具.md",
       "title": "可视化工具",
-      "snippet": "Netron 是一个神经网络模型可视化工具，支持许多主流AI框架模型的可视化。 Netron 5.1.6版本开始支持.om模型可视化。如下图所示，使用Netron工具加载.om模型后，可以展示模型的拓扑结构、图、节点的信息等。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7c/v3/imRcfvoVSgKhE_9d4K3ZUQ/zh-cn_image_0000002573975233.png?HW-CC-KV=V1&HW-CC-Date=20260421T111932Z&HW-CC-Expire=86400&HW-CC-Sign=85199570EDC474E4D72F9AF594194215E90E8E0CCFFC42FB6E5801DC28D92E34) #### 功能描述 - 支持加载.om模型。 - 支持展示拓扑结构和数据流shape。 - 支持查看模型的format、input和output等参数。 - 支持查看编译后模型的子图和算子设备信息。 - 支持查看节点的NODE PROPERTIES、ATTRIBUTES、INPUTS和OUTPUTS等信息。 - 支持保存可视化结果导出为图片。 #### 使用可视化工具 #### 安装工具 1. 下载最新的"
+      "snippet": "Netron 是一个神经网络模型可视化工具，支持许多主流AI框架模型的可视化。 Netron 5.1.6版本开始支持.om模型可视化。如下图所示，使用Netron工具加载.om模型后，可以展示模型的拓扑结构、图、节点的信息等。 #### 功能描述 - 支持加载.om模型。 - 支持展示拓扑结构和数据流shape。 - 支持查看模型的format、input和output等参数。 - 支持查看编译后模型的子图和算子设备信息。 - 支持查看节点的NODE PROPERTIES、ATTRIBUTES、INPUTS和OUTPUTS等信息。 - 支持保存可视化结果导出为图片。 #### 使用可视化工具 #### 安装工具 1. 下载最新的 Netron 。 2. 安装Netron。 - macOS: 下载.dmg文件或者执行brew cask install netron。 - Linux: 下载.AppImage文件或者执行snap install netron。 - Windows: 下载.exe文件或者执行winget install netron。 - Python服务器：执行pip install netron安装Netron，然后通过netron [FILE]或netron.start('[FILE]')加载模型。 - 浏览器：无需安装，直接打开网页端Netron可使用。 3. "
     },
     {
       "path": "references/同步控制.md",
@@ -2999,12 +2999,12 @@
     {
       "path": "references/图编译和图执行.md",
       "title": "图编译和图执行",
-      "snippet": "单算子模型执行是指基于图IR执行算子，先编译算子（例如，使用OMG工具将Ascend IR定义的单算子描述文件编译成算子omc模型文件），再调用模型加载推理接口执行单算子网络。下文仅提供单算子模型执行的样例和基础内容讲解，详细内容请参考 端侧部署 章节。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b5/v3/FfvbBpBxSO68Lyrth27cOQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111718Z&HW-CC-Expire=86400&HW-CC-Sign=87778128F3FAA9FB0244C973109151B2FD1712C4E8BC86CDBCBA1F6D83557C1C) HarmonyOS Next暂不支持图编译与图执行，仅支持通过 AI框架算子适配 方式集成自定义算子，以下步骤仅供参考。 #### 环境要求 - 已参考 环境准备 ，完成DDK驱动和软件的安装，配置DDK软件所需基本环境变量。 安装DDK软件后，使用DDK运行开发者进行编译、运行时，需要以DDK运行开发者登录环境，执行 **source ${install_path}/ddk/tools/tools_as"
+      "snippet": "单算子模型执行是指基于图IR执行算子，先编译算子（例如，使用OMG工具将Ascend IR定义的单算子描述文件编译成算子omc模型文件），再调用模型加载推理接口执行单算子网络。下文仅提供单算子模型执行的样例和基础内容讲解，详细内容请参考 端侧部署 章节。 HarmonyOS Next暂不支持图编译与图执行，仅支持通过 AI框架算子适配 方式集成自定义算子，以下步骤仅供参考。 #### 环境要求 - 已参考 环境准备 ，完成DDK驱动和软件的安装，配置DDK软件所需基本环境变量。 安装DDK软件后，使用DDK运行开发者进行编译、运行时，需要以DDK运行开发者登录环境，执行 **source ${install_path}/ddk/tools/tools_ascendc/set_ascendc_env.sh** 命令设置环境变量。其中${install_path}为DDK软件的安装目录，例如：/home。 - 已参考完成算子的开发和部署。 #### 准备验证代码工程 在执行NPU调试命令时，例如： ascendebug kernel --backend npu --chip-version kirin9020 --repo-type customize --json-file ./temp.json --core-type AiCore 命令行参数详见 NPU调测参数 ，会在${deb"
     },
     {
       "path": "references/基本架构.md",
       "title": "基本架构",
-      "snippet": "如下展示了总体的硬件基本架构。其中，AI Core通过数据总线与硬件结构中其它基本单元相连接，基于AscendC开发的算子，通过总线传输并最终运行在AI Core上。下文的编程模型基于硬件架构的抽象进行介绍，了解该内容能够更好的理解编程模型；对于需要完成高性能编程的深度开发者，更需要了解硬件架构相关知识，最佳实践中很多内容都以本章为基础进行介绍。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/21/v3/iICSmgnKQXqxKTUjo-8aJQ/zh-cn_image_0000002543215260.png?HW-CC-KV=V1&HW-CC-Date=20260421T111709Z&HW-CC-Expire=86400&HW-CC-Sign=1BA220D74BE498C5F0A359D24DBE95521B08D031B8D8478F20B1859A6C31F0F7) AI Core负责执行标量、向量和张量相关的计算密集型算子，包括三种基础 **计算单元** ：Cube（矩阵）计算单元、Vector（向量）计算单元和Scalar（标量）计算单元，同时还包含 **存储单元** （包括硬件存储和用于数据搬运的搬运单元）和 **控制单元** 。硬件架构根据"
+      "snippet": "如下展示了总体的硬件基本架构。其中，AI Core通过数据总线与硬件结构中其它基本单元相连接，基于AscendC开发的算子，通过总线传输并最终运行在AI Core上。下文的编程模型基于硬件架构的抽象进行介绍，了解该内容能够更好的理解编程模型；对于需要完成高性能编程的深度开发者，更需要了解硬件架构相关知识，最佳实践中很多内容都以本章为基础进行介绍。 AI Core负责执行标量、向量和张量相关的计算密集型算子，包括三种基础 **计算单元** ：Cube（矩阵）计算单元、Vector（向量）计算单元和Scalar（标量）计算单元，同时还包含 **存储单元** （包括硬件存储和用于数据搬运的搬运单元）和 **控制单元** 。硬件架构根据Cube计算单元和Vector计算单元是否同核部署分为 **耦合架构** 和 **分离架构** 两种。 Kirin9020/KirinX90系列处理器：耦合架构 #### 耦合架构 耦合架构是指Cube计算单元和Vector计算单元同核部署，架构图如下图所示。下图中列出了计算架构中的 存储单元 和 计算单元 ，箭头表示数据处理流向，MTE1/MTE2/MTE3代表 搬运单元 。 图中的虚线箭头表明Kirin9020/KirinX90系列处理器支持Scalar直接读写GM数据。 #### 分离架构 如下图所示，分离架构将AI Core拆成矩阵计算(AI Cub"
     },
     {
       "path": "references/基础API.md",
@@ -3019,12 +3019,12 @@
     {
       "path": "references/基础知识.md",
       "title": "基础知识",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/77/v3/BaIZQXUqR2uE3x0MU6Rc7w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111712Z&HW-CC-Expire=86400&HW-CC-Sign=ABEFF22A26BDAB34126EBE4C742086B51BF23ADAF34045D577FC7437002E1022) 本节内容为使用高阶API进行矩阵乘法的编程指导。使用高阶API进行实际的矩阵编程时，需要通过 Matmul 查看确认接口支持的产品型号。 #### 矩阵乘法概述 MatMul的计算公式为：C = A * B + bias，其示意图如下。 - A、B为源操作数，A为左矩阵，形状为[M, K]；B为右矩阵，形状为[K, N]。 - C为目的操作数，存放矩阵乘结果的矩阵，形状为[M, N]。 - bias为矩阵乘偏置，形状为[1, N]。对A*B结果矩阵的每一行都采用该bias进行偏置。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2d/v"
+      "snippet": "本节内容为使用高阶API进行矩阵乘法的编程指导。使用高阶API进行实际的矩阵编程时，需要通过 Matmul 查看确认接口支持的产品型号。 #### 矩阵乘法概述 MatMul的计算公式为：C = A * B + bias，其示意图如下。 - A、B为源操作数，A为左矩阵，形状为[M, K]；B为右矩阵，形状为[K, N]。 - C为目的操作数，存放矩阵乘结果的矩阵，形状为[M, N]。 - bias为矩阵乘偏置，形状为[1, N]。对A*B结果矩阵的每一行都采用该bias进行偏置。 #### 矩阵乘法数据流 在了解矩阵乘法数据流之前，需要先回顾一下几个重要的存储 **逻辑位置** 的概念： - 搬入数据的存放位置：A1，用于存放整块A矩阵，可类比CPU多级缓存中的二级缓存。 - 搬入数据的存放位置：B1，用于存放整块B矩阵，可类比CPU多级缓存中的二级缓存。 - 搬入数据的存放位置：A2，用于存放切分后的小块A矩阵，可类比CPU多级缓存中的一级缓存。 - 搬入数据的存放位置：B2，用于存放切分后的小块B矩阵，可类比CPU多级缓存中的一级缓存。 - 结果数据的存放位置：CO1，用于存放小块结果C矩阵，可理解为Cube Out。 - 结果数据的存放位置：CO2，用于存放整块结果C矩阵，可理解为Cube Out。 - 搬入数据的存放位置：VECCALC，一般在计算需要临时变量时使用此位置"
     },
     {
       "path": "references/如何使用double buffer优化性能.md",
       "title": "如何使用double buffer优化性能",
-      "snippet": "执行于AI Core上的指令队列主要包括如下几类，即：Vector指令队列（V）、Matrix指令队列（M）和存储移动指令队列（MTE2、MTE3）。不同指令队列间的相互独立性和可并行执行性，是double buffer优化机制的基石。 矢量计算CopyIn、CopyOut过程使用存储移动指令队列（MTE2、MTE3），Compute过程使用Vector指令队列（V），意味着CopyIn、CopyOut过程和Compute过程是可以并行的。 如图1所示，考虑一个完整的数据搬运和计算过程，CopyIn过程将数据从Global Memory搬运到Local Memory，Vector计算单元完成计算后，经过CopyOut过程将计算结果搬回Global Memory。 **图1** 数据搬运与Vector计算过程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8f/v3/S_AeWkRiRdWtEsl6eZ483g/zh-cn_image_0000002543374950.png?HW-CC-KV=V1&HW-CC-Date=20260421T111719Z&HW-CC-Expire=86400&HW-CC-Sign=FE29A61AB5D23001B38A1E8B2"
+      "snippet": "执行于AI Core上的指令队列主要包括如下几类，即：Vector指令队列（V）、Matrix指令队列（M）和存储移动指令队列（MTE2、MTE3）。不同指令队列间的相互独立性和可并行执行性，是double buffer优化机制的基石。 矢量计算CopyIn、CopyOut过程使用存储移动指令队列（MTE2、MTE3），Compute过程使用Vector指令队列（V），意味着CopyIn、CopyOut过程和Compute过程是可以并行的。 如图1所示，考虑一个完整的数据搬运和计算过程，CopyIn过程将数据从Global Memory搬运到Local Memory，Vector计算单元完成计算后，经过CopyOut过程将计算结果搬回Global Memory。 **图1** 数据搬运与Vector计算过程 在此过程中，数据搬运与Vector计算串行执行，Vector计算单元无可避免存在资源闲置问题。举例而言，若CopyIn、Compute、CopyOut三阶段分别耗时_t_，则Vector的时间利用率仅为1/3，等待时间过长，资源利用率严重不足。 为减少Vector等待时间，double buffer机制将待处理的数据一分为二，比如Tensor1、Tensor2。如图2所示，当Vector对Tensor1中数据进行Compute时，Tensor2可以执行CopyIn的过程；而当V"
     },
     {
       "path": "references/如何升级工程到最新版本.md",
@@ -3034,7 +3034,7 @@
     {
       "path": "references/如何处理OMG离线模型输出算子类型错误？.md",
       "title": "如何处理OMG离线模型输出算子类型错误？",
-      "snippet": "Caffe网络中具有相同类型名但计算功能不同的层。比如DetectionOutput层，需要使用算子映射指明为FSRDetectionOutput、SSDDetectionOutput等检测算子类型，否则OMG生成离线模型会执行失败。为了避免出现错误，以下两种方案二选一即可。 - 方案1：可以在OMG命令中加入--op_name_map参数，参考 OMG参数 中op_name_map参数设置。 - 方案2：可以在原始网络proto模型文件中将输出算子类型指定为SSDDetectionOutput等算子类型，如下图所示。 **图1** 输出算子类型修改前（左）和修改后（右） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c6/v3/zyes2MPEQmi5LIUaph-CMw/zh-cn_image_0000002573855243.png?HW-CC-KV=V1&HW-CC-Date=20260421T111931Z&HW-CC-Expire=86400&HW-CC-Sign=63116FC5A544E4A8F8214A4B1A79536D391E47827077ACBF3FA24DC654D85472)"
+      "snippet": "Caffe网络中具有相同类型名但计算功能不同的层。比如DetectionOutput层，需要使用算子映射指明为FSRDetectionOutput、SSDDetectionOutput等检测算子类型，否则OMG生成离线模型会执行失败。为了避免出现错误，以下两种方案二选一即可。 - 方案1：可以在OMG命令中加入--op_name_map参数，参考 OMG参数 中op_name_map参数设置。 - 方案2：可以在原始网络proto模型文件中将输出算子类型指定为SSDDetectionOutput等算子类型，如下图所示。 **图1** 输出算子类型修改前（左）和修改后（右）"
     },
     {
       "path": "references/如何申请workspace作为临时内存.md",
@@ -3044,12 +3044,12 @@
     {
       "path": "references/存储单元.md",
       "title": "存储单元",
-      "snippet": "AI处理器中的计算资源要想发挥强劲算力，必要条件是保证输入数据能够及时准确地出现在计算单元中，需要精心设计存储系统，保证计算单元所需的数据供应。 AI Core中包含多级 **内部存储** ，AI Core需要把 **外部存储** 中的数据加载到内部存储中，才能完成相应的计算。AI Core的主要内部存储包括：L1 Buffer（L1缓冲区）、L0 Buffer（L0缓冲区）、Unified Buffer（统一缓冲区）等。为了配合AI Core中的数据传输和搬运，AI Core中还包含MTE（Memory Transfer Engine，存储转换引擎）搬运单元，在搬运过程中可执行 随路数据格式类型转换 。 AI Core的内部存储列表如表1所示。 **表1** 存储单元介绍 **表2** 搬运单元介绍 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e4/v3/o_nVDE_tQ-eE5U4yvbLqcg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111710Z&HW-CC-Expire=86400&HW-CC-Sign=0F30D878A04B33D069225EE34A0235BBB611414262"
+      "snippet": "AI处理器中的计算资源要想发挥强劲算力，必要条件是保证输入数据能够及时准确地出现在计算单元中，需要精心设计存储系统，保证计算单元所需的数据供应。 AI Core中包含多级 **内部存储** ，AI Core需要把 **外部存储** 中的数据加载到内部存储中，才能完成相应的计算。AI Core的主要内部存储包括：L1 Buffer（L1缓冲区）、L0 Buffer（L0缓冲区）、Unified Buffer（统一缓冲区）等。为了配合AI Core中的数据传输和搬运，AI Core中还包含MTE（Memory Transfer Engine，存储转换引擎）搬运单元，在搬运过程中可执行 随路数据格式类型转换 。 AI Core的内部存储列表如表1所示。 **表1** 存储单元介绍 **表2** 搬运单元介绍 - 不同类型的AI处理器，存储单元大小不同，开发者可通过 GetCoreMemSize 接口获取。 - 所有通过搬运单元读写GM的数据都缺省被缓存在L2Cache，以此加快访问速度，提高访问效率。核外L2Cache以cacheline为单位加载数据，根据硬件规格不同，cacheline大小不同（128/256/512Byte等）。"
     },
     {
       "path": "references/工程化算子开发概述.md",
       "title": "工程化算子开发概述",
-      "snippet": "工程化算子开发是指基于自动生成的 **自定义算子工程** 完成算子实现、编译部署、单算子调用代码自动生成等一系列流程。 该开发流程是标准的开发流程，建议开发者按照该流程进行算子开发。该方式下，算子开发的代码会更规范、统一、易于维护；同时该方式考虑了单算子API调用、算子入图、AI框架调用等功能的集成，使得开发者易于借助DDK框架实现上述功能。 工程化算子开发流程如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0d/v3/MvnbDxdxRq2CW7uLcoHY3w/zh-cn_image_0000002543215282.png?HW-CC-KV=V1&HW-CC-Date=20260421T111713Z&HW-CC-Expire=86400&HW-CC-Sign=BF4482482DF898D9EFF719C02F84CF6A4670CF3AC2C092498CCE638325D1E357) 1. 环境准备。 1. DDK软件安装请参考环境准备。 2. 创建算子工程。使用msOpGen工具创建算子开发工程。 2. 算子实现。 - 算子原型定义实现。通过原型定义来描述算子输入输出、属性等信息以及算子在AI处理器上相关实现信息，并关联tiling实现"
+      "snippet": "工程化算子开发是指基于自动生成的 **自定义算子工程** 完成算子实现、编译部署、单算子调用代码自动生成等一系列流程。 该开发流程是标准的开发流程，建议开发者按照该流程进行算子开发。该方式下，算子开发的代码会更规范、统一、易于维护；同时该方式考虑了单算子API调用、算子入图、AI框架调用等功能的集成，使得开发者易于借助DDK框架实现上述功能。 工程化算子开发流程如下图所示： 1. 环境准备。 1. DDK软件安装请参考环境准备。 2. 创建算子工程。使用msOpGen工具创建算子开发工程。 2. 算子实现。 - 算子原型定义实现。通过原型定义来描述算子输入输出、属性等信息以及算子在AI处理器上相关实现信息，并关联tiling实现等函数。 - Kernel侧算子实现和host侧tiling实现请参考算子实现；工程化算子开发，支持开发者调用Tiling API基于DDK提供的编程框架进行tiling开发，kernel侧也提供对应的接口方便开发者获取tiling参数，具体内容请参考Kernel侧算子实现和Host侧Tiling实现，由此而带来的额外约束也在上述章节说明。 3. 编译部署 。通过工程编译脚本完成算子的编译部署。 4. 算子调用。调用单算子API接口，基于C语言的API执行算子。"
     },
     {
       "path": "references/常见问题.md",
@@ -3064,12 +3064,12 @@
     {
       "path": "references/开发流程.md",
       "title": "开发流程",
-      "snippet": "该开发流程以 工程化算子开发 为基础，除了需要提供 算子实现 中的算子实现文件外，还需要额外交付算子入图的代码文件。本节仅提供算子入图代码文件的开发指导。 假设下图是我们需要使用的网络模型，开发者可能会想直接逐个算子调用，根据输入tensor得到输出tensor就可以完成网络的运行，但在图模式场景下，实际的网络模型生成过程中，会先进行tensor shape以及datatype的推导。这样可以让我们在图执行之前，就知道各tensor的数据类型和形状，提前校验其正确性；同时提前推导出算子的输出张量描述，包括张量的形状、数据类型及数据排布格式等信息，算子构图准备阶段就可以为所有的张量静态分配内存，避免动态内存分配带来的开销。 下面的网络模型经过shape和datatype推导之后，可以得到灰色底纹框中的推导信息。 **图1** shape与datatype推导示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1d/v3/X6GCZtK1RISNw9dYYIG7Mg/zh-cn_image_0000002573855201.png?HW-CC-KV=V1&HW-CC-Date=20260421T111718Z&HW-CC-Expire=86400&HW-CC-Si"
+      "snippet": "该开发流程以 工程化算子开发 为基础，除了需要提供 算子实现 中的算子实现文件外，还需要额外交付算子入图的代码文件。本节仅提供算子入图代码文件的开发指导。 假设下图是我们需要使用的网络模型，开发者可能会想直接逐个算子调用，根据输入tensor得到输出tensor就可以完成网络的运行，但在图模式场景下，实际的网络模型生成过程中，会先进行tensor shape以及datatype的推导。这样可以让我们在图执行之前，就知道各tensor的数据类型和形状，提前校验其正确性；同时提前推导出算子的输出张量描述，包括张量的形状、数据类型及数据排布格式等信息，算子构图准备阶段就可以为所有的张量静态分配内存，避免动态内存分配带来的开销。 下面的网络模型经过shape和datatype推导之后，可以得到灰色底纹框中的推导信息。 **图1** shape与datatype推导示意图 除了tiling实现外，算子入图时需要额外提供的实现代码有以下几种： - datatype推导：根据算子的输入datatype、算子逻辑及算子属性等信息，推理出算子的输出张量datatype。 - shape推导：根据算子的输入shape、算子逻辑及算子属性等信息，推理出算子的输出张量shape。 - 声明数据依赖：部分算子在InferShape时，需要依赖某个输入的具体值才可以进行，这类算子被称为“数据依赖算子”，对应的"
     },
     {
       "path": "references/异构.md",
       "title": "异构",
-      "snippet": "异构是CANN Kit提供的异构计算能力，能够使开发者App在华为平台上充分享受到硬件平台的计算加速性能，同时提供非华为硬件平台的模型计算兼容性和计算加速，使开发者App开发过程归一化，不再需要为不同硬件平台适配不同模型或者计算框架，减少App开发及维护的难度。 异构的原理如下图所示，指定OP1、OP2、OP5~OPn在CPU上进行推理，OP3、OP4在NPU上进行推理。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b2/v3/giHnhH0dRGW9ExulPcxcJA/zh-cn_image_0000002543215256.png?HW-CC-KV=V1&HW-CC-Date=20260421T111707Z&HW-CC-Expire=86400&HW-CC-Sign=F25D8E44DB03E7C2B36850181EF2024B8E59FAF14EDF2E7E4C535C67B8FAA54E) 实现异构可以通过在线调优方式，以下为在线调优参数设置接口，接口使用见 在线调优开发步骤 。如要使用更丰富的设置和查询接口，请参见 API参考 。 **表1** 在线调优接口及功能介绍 #### 在线调优开发步骤 1. 设置芯片调优模式。 - 调用OH_NNCo"
+      "snippet": "异构是CANN Kit提供的异构计算能力，能够使开发者App在华为平台上充分享受到硬件平台的计算加速性能，同时提供非华为硬件平台的模型计算兼容性和计算加速，使开发者App开发过程归一化，不再需要为不同硬件平台适配不同模型或者计算框架，减少App开发及维护的难度。 异构的原理如下图所示，指定OP1、OP2、OP5~OPn在CPU上进行推理，OP3、OP4在NPU上进行推理。 实现异构可以通过在线调优方式，以下为在线调优参数设置接口，接口使用见 在线调优开发步骤 。如要使用更丰富的设置和查询接口，请参见 API参考 。 **表1** 在线调优接口及功能介绍 #### 在线调优开发步骤 1. 设置芯片调优模式。 - 调用OH_NNCompilation_ConstructWithOfflineModelFile，读取模型buffer，创建模型编译实例。 - 调用HMS_HiAIOptions_SetTuningMode向模型编译实例中设置芯片调优模式调优选项。 2. 调用 HMS_HiAIOptions_SetTuningCacheDir 向模型编译实例中设置芯片调优缓存目录调优选项。 3. 执行模型编译。 设置好所需调优选项参数后，通过调用 OH_NNCompilation_Build ，传入创建模型编译实例，即可执行模型编译，编译成功则返回编译后的模型指针。后续流程同 模型推理 。 "
     },
     {
       "path": "references/快速入门.md",
@@ -3084,12 +3084,12 @@
     {
       "path": "references/接口概述.md",
       "title": "接口概述",
-      "snippet": "AscendC算子采用标准C++语法和一组类库API进行编程，开发者可以根据自己的需求选择合适的API。AscendC编程类库API示意图如下所示，AscendC API的操作数都是Tensor类型：GlobalTensor和LocalTensor；类库API分为基础API和高阶API。 - **基础API：** 实现对硬件能力的抽象，开放芯片的能力，保证完备性和兼容性。标注为ISASI（Instruction Set Architecture Special Interface，硬件体系结构相关的接口）类别的API，不能保证跨硬件版本兼容。 - **高阶API：** 实现一些常用的计算算法，用于提高编程开发效率，通常会调用多种基础API实现。高阶API包括数学库、Matmul、Softmax等API。高阶API可以保证兼容性。 **图1** AscendC编程类库API示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9c/v3/wgTqFKvFSc6hNaSmYknXrA/zh-cn_image_0000002573975167.png?HW-CC-KV=V1&HW-CC-Date=20260421T111711Z&HW-CC-Expire=86400&"
+      "snippet": "AscendC算子采用标准C++语法和一组类库API进行编程，开发者可以根据自己的需求选择合适的API。AscendC编程类库API示意图如下所示，AscendC API的操作数都是Tensor类型：GlobalTensor和LocalTensor；类库API分为基础API和高阶API。 - **基础API：** 实现对硬件能力的抽象，开放芯片的能力，保证完备性和兼容性。标注为ISASI（Instruction Set Architecture Special Interface，硬件体系结构相关的接口）类别的API，不能保证跨硬件版本兼容。 - **高阶API：** 实现一些常用的计算算法，用于提高编程开发效率，通常会调用多种基础API实现。高阶API包括数学库、Matmul、Softmax等API。高阶API可以保证兼容性。 **图1** AscendC编程类库API示意图 对于基础API，主要分为以下几类： - **计算API** ，包括标量计算API、向量计算API、矩阵计算API，分别实现调用Scalar计算单元、Vector计算单元、Cube计算单元执行计算的功能。 - **数据搬运API** ，计算API基于Local Memory数据进行计算，所以数据需要先从Global Memory搬运至Local Memory，再使用计算API完成计算，最后从Local Mem"
     },
     {
       "path": "references/控制单元.md",
       "title": "控制单元",
-      "snippet": "控制单元为整个计算过程提供了指令控制，负责整个AI Core的运行。AI Core包含的控制单元如图1所示，每个模块的具体介绍请参考表1。 **图1** 控制单元 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c8/v3/bR1pjlYORLOjbNbvYiscEQ/zh-cn_image_0000002573975157.png?HW-CC-KV=V1&HW-CC-Date=20260421T111710Z&HW-CC-Expire=86400&HW-CC-Sign=2C39719C97B8A91993B8A6DB121D30D140BB00849710D42DCC743E842BD9A1B9) **表1** 控制单元及相关的指令队列介绍 多条指令从系统内存通过总线接口进入到AI Core的指令缓存模块(Instruction Cache)中，后续的指令执行过程，根据指令的类型，有两种可能： - 如果指令是Scalar指令，指令会被Scalar单元直接执行。 - 其他指令，指令会被调度到5个独立的分类队列（Vector指令队列、Cube指令队列、MTE1/MTE2/MTE3指令队列），然后再分配到某个执行单元执行。 同一个指令执行队列中的指令是按照进入队列的顺"
+      "snippet": "控制单元为整个计算过程提供了指令控制，负责整个AI Core的运行。AI Core包含的控制单元如图1所示，每个模块的具体介绍请参考表1。 **图1** 控制单元 **表1** 控制单元及相关的指令队列介绍 多条指令从系统内存通过总线接口进入到AI Core的指令缓存模块(Instruction Cache)中，后续的指令执行过程，根据指令的类型，有两种可能： - 如果指令是Scalar指令，指令会被Scalar单元直接执行。 - 其他指令，指令会被调度到5个独立的分类队列（Vector指令队列、Cube指令队列、MTE1/MTE2/MTE3指令队列），然后再分配到某个执行单元执行。 同一个指令执行队列中的指令是按照进入队列的顺序进行执行的，不同指令执行队列之间可以并行执行，通过多个指令执行队列的并行执行可以提升整体执行效率。对于并行执行过程中可能出现的数据依赖，通过事件同步模块插入同步指令来控制流水线的同步，提供PipeBarrier、SetFlag/WaitFlag两种指令，保证队列内部以及队列之间按照逻辑关系执行。 - PipeBarrier本身是一条指令，用于在队列内部约束执行顺序。其作用是，保证前序队列中所有数据的读写工作全部完成，后序指令才能执行。 - SetFlag/WaitFlag为两条指令，在SetFlag/WaitFlag的指令中，可以指定一对指令队列的关系，表"
     },
     {
       "path": "references/推理函数支持的数据格式有哪些？.md",
@@ -3099,12 +3099,12 @@
     {
       "path": "references/插件式量化-1.md",
       "title": "插件式量化",
-      "snippet": "插件式量化不区分模型类型，包含语言类视觉类，可以针对各种Transform结构的模型进行快速量化。 #### 插件式整体流程 PTQ和QAT是两种量化参数优化策略，PTQ使用推理工程即可完成量化校准，QAT需要结合训练工程来进行量化感知训练。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/37/v3/iFH-0foPSZa3MzXm9I1WdQ/zh-cn_image_0000002573975139.png?HW-CC-KV=V1&HW-CC-Date=20260421T111703Z&HW-CC-Expire=86400&HW-CC-Sign=FDE64CA1F95B305340450B863FB7B66159C76ADF3DF2AA5FDA23EEC36592D75A) #### 接口使用说明 import os import sys sys.path.append('path/to/dopt_torch_py3') #### 接口导入 from dopt.dopt_lm.do_opt import ( generate_config_file, ## 生成量化配置文件 optimize_model, ## 使用生成和配置好的量化配置文件将浮点nn.mod"
+      "snippet": "插件式量化不区分模型类型，包含语言类视觉类，可以针对各种Transform结构的模型进行快速量化。 #### 插件式整体流程 PTQ和QAT是两种量化参数优化策略，PTQ使用推理工程即可完成量化校准，QAT需要结合训练工程来进行量化感知训练。 #### 接口使用说明 import os import sys sys.path.append('path/to/dopt_torch_py3') #### 接口导入 from dopt.dopt_lm.do_opt import ( generate_config_file, ## 生成量化配置文件 optimize_model, ## 使用生成和配置好的量化配置文件将浮点nn.module 转成插入量化算子的nn.module set_quant_state, ## 分别对激活和量化设置量化推理使能 set_calibrate_state, ## 设置量化参数可更新状态 generate_quant_params, ## 导出量化参数接口 ) #### 量化算子插入 首次调用该接口会生成量化配置文件，完成配置后进行PTQ或者QAT def get_quant_model(model, dopt_config): ## model: nn.module实例对象 浮点模型定义 ## dopt_config: \"path/to/config."
     },
     {
       "path": "references/插件式量化.md",
       "title": "插件式量化",
-      "snippet": "插件式量化运行环境依赖开发者本身的训练工程环境，目前轻量化工具支持TensorFlow和PyTorch两种框架的插件式量化。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f7/v3/NKPUdjKPTlitA3Mgh14-HA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111703Z&HW-CC-Expire=86400&HW-CC-Sign=C71C47A053F81BE3BFA90FCBFFE1C587A6593D3716FC2D006C10854F643F945B) 插件式量化环境配置完成后，可同时支持无训练和重训练量化。 #### TensorFlow插件式量化 TensorFlow模型优化训练如下步骤： 前提条件：准备模型训练数据集、全精度的基线ckpt文件。 1. 准备TensorFlow环境（ 准备TensorFlow环境 ）。 2. 调用API生成模型优化策略模板（ 获取量化配置模板 ）。 3. 优化策略文件配置（ 优化策略配置 ）。 4. 训练模型（ 训练或校准模型 ）。（重训练模式对量化模型训练，无训练模式对量化模型进行校准） 5. 提取模型及量化参数（ 转换模型 ）。 #### "
+      "snippet": "插件式量化运行环境依赖开发者本身的训练工程环境，目前轻量化工具支持TensorFlow和PyTorch两种框架的插件式量化。 插件式量化环境配置完成后，可同时支持无训练和重训练量化。 #### TensorFlow插件式量化 TensorFlow模型优化训练如下步骤： 前提条件：准备模型训练数据集、全精度的基线ckpt文件。 1. 准备TensorFlow环境（ 准备TensorFlow环境 ）。 2. 调用API生成模型优化策略模板（ 获取量化配置模板 ）。 3. 优化策略文件配置（ 优化策略配置 ）。 4. 训练模型（ 训练或校准模型 ）。（重训练模式对量化模型训练，无训练模式对量化模型进行校准） 5. 提取模型及量化参数（ 转换模型 ）。 #### 准备TensorFlow环境 准备Linux环境，使用轻量化工具插件式量化功能，开发者需要准备如下依赖。 - python 3.10版本 - 依赖python库说明： pip3 install ruamel_yaml pip3 install pathlib pip3 install protobuf==3.20.0 pip3 install opencv-python - 轻量化工具当前支持tensorflow-gpu 2.8.0版本，使用如下的命令安装： pip3 install tensorflow-gpu==2.8.0 #"
     },
     {
       "path": "references/支持的算子.md",
@@ -3119,12 +3119,12 @@
     {
       "path": "references/数据填充.md",
       "title": "数据填充",
-      "snippet": "将输入按照输出shape进行广播。 比如A的shape为(2,1)，广播的目标shape为(2,16)，则会将原来的一列扩展为相同的16列。 输入数据： [[ 1] [ 2]] 输出数据： [[ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1] [ 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2]] #### 实现原理 以float类型，ND格式，[m, 1]广播到[m, k]为例，描述Broadcast高阶API内部算法框图，如下图所示。 **图1** Broadcast算法框图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/54/v3/-Yu1_SpxQKiSYDTEPm8S_w/zh-cn_image_0000002573855241.png?HW-CC-KV=V1&HW-CC-Date=20260421T111747Z&HW-CC-Expire=86400&HW-CC-Sign=F978673B6E1D70388D169990B31503720964A7F20106866AC6C5B26190D9C312) 计算过程分为如下几步，均在Vector上进行： 1. Brcb步骤：将每个元素广播为一个datablock； 2. "
+      "snippet": "将输入按照输出shape进行广播。 比如A的shape为(2,1)，广播的目标shape为(2,16)，则会将原来的一列扩展为相同的16列。 输入数据： [[ 1] [ 2]] 输出数据： [[ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1] [ 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2]] #### 实现原理 以float类型，ND格式，[m, 1]广播到[m, k]为例，描述Broadcast高阶API内部算法框图，如下图所示。 **图1** Broadcast算法框图 计算过程分为如下几步，均在Vector上进行： 1. Brcb步骤：将每个元素广播为一个datablock； 2. Copy步骤：将每个datablock均复制为多个datablock，k对齐场景下即为结果y； 3. 对于k非对齐的场景，再使用GatherMask截取[m, k]个元素， 其中k'表示k向上对齐32B的大小。 #### 函数原型 - 通过sharedTmpBuffer入参传入临时空间 template <typename T, int32_t dim, int32_t axis, bool isReuseSource = false> __aicore__ inline void Broadcast(const LocalTensor<T> &dstLoc"
     },
     {
       "path": "references/数据排布格式.md",
       "title": "数据排布格式",
-      "snippet": "Format为数据的物理排布格式，定义了解读数据的维度，比如1D，2D，3D，4D，5D等。 #### NCHW和NHWC 在深度学习领域，多维数据通过多维数组存储，比如卷积神经网络的特征图(Feature Map)通常用四维数组保存，即4D，4D格式解释如下。 - N：Batch数量，例如图像的数目。 - H：Height，特征图高度，即垂直高度方向的像素个数。 - W：Width，特征图宽度，即水平宽度方向的像素个数。 - C：Channels，特征图通道，例如彩色RGB图像的Channels为3。 由于数据只能线性存储，因此这四个维度有对应的顺序。不同深度学习框架会按照不同的顺序存储特征图数据，比如Caffe，排列顺序为[Batch, Channels, Height, Width]，即NCHW。TensorFlow中，排列顺序为[Batch, Height, Width, Channels]，即NHWC。 如下图所示，以一张格式为RGB的图片为例，NCHW中，C排列在外层，实际存储的是“RRRRRRGGGGGGBBBBBB”，即同一通道的所有像素值顺序存储在一起；而NHWC中C排列在最内层，实际存储的则是“RGBRGBRGBRGBRGBRGB”，即多个通道的同一位置的像素值顺序存储在一起。 ![](https://contentcenter-vali-drcn.dbankc"
+      "snippet": "Format为数据的物理排布格式，定义了解读数据的维度，比如1D，2D，3D，4D，5D等。 #### NCHW和NHWC 在深度学习领域，多维数据通过多维数组存储，比如卷积神经网络的特征图(Feature Map)通常用四维数组保存，即4D，4D格式解释如下。 - N：Batch数量，例如图像的数目。 - H：Height，特征图高度，即垂直高度方向的像素个数。 - W：Width，特征图宽度，即水平宽度方向的像素个数。 - C：Channels，特征图通道，例如彩色RGB图像的Channels为3。 由于数据只能线性存储，因此这四个维度有对应的顺序。不同深度学习框架会按照不同的顺序存储特征图数据，比如Caffe，排列顺序为[Batch, Channels, Height, Width]，即NCHW。TensorFlow中，排列顺序为[Batch, Height, Width, Channels]，即NHWC。 如下图所示，以一张格式为RGB的图片为例，NCHW中，C排列在外层，实际存储的是“RRRRRRGGGGGGBBBBBB”，即同一通道的所有像素值顺序存储在一起；而NHWC中C排列在最内层，实际存储的则是“RGBRGBRGBRGBRGBRGB”，即多个通道的同一位置的像素值顺序存储在一起。 尽管存储的数据相同，但不同的存储顺序会导致数据的访问特性不一致，因此即便进行同样的运"
     },
     {
       "path": "references/数据搬运.md",
@@ -3144,7 +3144,7 @@
     {
       "path": "references/无训练量化.md",
       "title": "无训练量化",
-      "snippet": "- TensorFlow开发者 开发者需提供需要量化的pb模型。 - PyTorch开发者 开发者需提供需要量化的模型定义py文件以及模型参数pth文件。 - ONNX开发者 开发者需提供需要量化的ONNX模型。 #### 准备校准集 开发者需提供bin格式或图片格式的校准集。bin格式的输入数据需按照以下方式存储，如表1。图片格式的数据为存放测试图片的文件夹，图片格式的输入默认以BGR的三通道彩图读取，读出的数据格式为NCHW，其中N为提供图片的数量。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/28/v3/u03Ki8JuS7qop1WeCzMT5A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111703Z&HW-CC-Expire=86400&HW-CC-Sign=F52F97293C06E55F1295A91A8A575C095196E9DE787307798C1FB41878D752AD) 轻量化工具支持的图片格式包括 \".bmp\"，\".dib\"，\".jpeg\"，\".jpg\"，\".jpe\"，\".png\"，\".webp\"，\".pbm\"，\".pgm\"，\".ppm\"，\".tiff\"，\".tif\"，"
+      "snippet": "- TensorFlow开发者 开发者需提供需要量化的pb模型。 - PyTorch开发者 开发者需提供需要量化的模型定义py文件以及模型参数pth文件。 - ONNX开发者 开发者需提供需要量化的ONNX模型。 #### 准备校准集 开发者需提供bin格式或图片格式的校准集。bin格式的输入数据需按照以下方式存储，如表1。图片格式的数据为存放测试图片的文件夹，图片格式的输入默认以BGR的三通道彩图读取，读出的数据格式为NCHW，其中N为提供图片的数量。 轻量化工具支持的图片格式包括 \".bmp\"，\".dib\"，\".jpeg\"，\".jpg\"，\".jpe\"，\".png\"，\".webp\"，\".pbm\"，\".pgm\"，\".ppm\"，\".tiff\"，\".tif\"，\".BMP\"，\".DIB\"，\".JPEG\"，\".JPG\"，\".JPE\"，\".PNG\"，\".WEBP\"，\".PBM\"，\".PGM\"，\".PPM\"，\".TIFF\"，\".TIF\"。 bin格式的输入数据支持两种定义方式，分别适用于任意维度（除4维之外）的输入数据和4维的输入数据（推荐开发者使用任意维度的定义方式）。 对于任意维度（除4维之外）的输入数据，bin文件需按照以下方式定义，以维度（50, 100, 300）的3维数据为例，读出的数据形状为（50, 100, 300）。 **表1** 任意维度（除4维之外）二进制校准集说明 对于"
     },
     {
       "path": "references/昇腾和麒麟同代AI处理器的映射关系.md",
@@ -3259,7 +3259,7 @@
     {
       "path": "references/构造函数与析构函数.md",
       "title": "构造函数与析构函数",
-      "snippet": "构造一个TensorData。 - 构造方式1：指定了tensor数据的地址以及用于管理tensor数据的函数manager。 - 构造方式2：指定了tensor数据的地址、用于管理tensor数据的函数manager、tensor数据所占内存大小、tensor数据所在的位置（host、device）。 - 构造方式3：移动构造形式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/64/v3/i9KW_y1hRGCJ-cuo0cyQWw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111826Z&HW-CC-Expire=86400&HW-CC-Sign=CD69CAE70A2397B33CEBBAA7EE4EEE3648B6D75FD87CD6E307DE6BF5CB78CF93) 若manager为nullptr，则认为addr就是tensor的数据地址。否则，tensor数据的地址由manager给出。 #### 函数原型 - 构造函数 TensorData(TensorAddress addr = nullptr, const TensorAddrManager manager = nullptr"
+      "snippet": "构造一个TensorData。 - 构造方式1：指定了tensor数据的地址以及用于管理tensor数据的函数manager。 - 构造方式2：指定了tensor数据的地址、用于管理tensor数据的函数manager、tensor数据所占内存大小、tensor数据所在的位置（host、device）。 - 构造方式3：移动构造形式。 若manager为nullptr，则认为addr就是tensor的数据地址。否则，tensor数据的地址由manager给出。 #### 函数原型 - 构造函数 TensorData(TensorAddress addr = nullptr, const TensorAddrManager manager = nullptr) TensorData(TensorAddress addr, const TensorAddrManager manager, size_t size, TensorPlacement placement) TensorData(TensorData &&other) noexcept TensorData(const TensorData &) = delete; - 析构函数 ~TensorData() #### 参数说明 #### 返回值 初始化后的TensorData对象。 #### 约束说明 无 #### 调用示例 "
     },
     {
       "path": "references/构造函数和析构函数-1.md",
@@ -3299,12 +3299,12 @@
     {
       "path": "references/构造函数和析构函数-6.md",
       "title": "构造函数和析构函数",
-      "snippet": "Operator构造函数和析构函数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ab/v3/AzYfiUkjStat9Bret1rlNA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111850Z&HW-CC-Expire=86400&HW-CC-Sign=CBB329EC9F0C5B7645E5280ADA3C9D0E84C22D79DF7BF19E612F8D8404835C32) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 Operator() explicit Operator(const std::string &type); explicit Operator(const char_t *type); Operator(const std::string &name, const std::string &type); Operator(const AscendString &name, const AscendString &type); Operator(const char_t *name, const char_t *t"
+      "snippet": "Operator构造函数和析构函数。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 Operator() explicit Operator(const std::string &type); explicit Operator(const char_t *type); Operator(const std::string &name, const std::string &type); Operator(const AscendString &name, const AscendString &type); Operator(const char_t *name, const char_t *type); virtual ~Operator() = default; #### 参数说明 #### 返回值 Operator构造函数返回Operator类型的对象。 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/构造函数和析构函数-7.md",
       "title": "构造函数和析构函数",
-      "snippet": "OpRegistrationData构造函数和析构函数。 #### 函数原型 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/97/v3/hXmK3VmcQw26-cdgMW-1rQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111859Z&HW-CC-Expire=86400&HW-CC-Sign=711DF3A4C3FF6DF20CBD85EDFD901610556551F44E986C001AC211A79A8E0722) 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 OpRegistrationData(const std::string &om_optype); OpRegistrationData(const char_t *om_optype); ~OpRegistrationData(); #### 参数说明 #### 返回值 OpRegistrationData构造函数返回OpRegistrationData类型的对象。 #### 异常处理 无 #### 约束说明 无"
+      "snippet": "OpRegistrationData构造函数和析构函数。 #### 函数原型 数据类型为string的接口后续版本会废弃，建议使用数据类型为非string的接口。 OpRegistrationData(const std::string &om_optype); OpRegistrationData(const char_t *om_optype); ~OpRegistrationData(); #### 参数说明 #### 返回值 OpRegistrationData构造函数返回OpRegistrationData类型的对象。 #### 异常处理 无 #### 约束说明 无"
     },
     {
       "path": "references/构造函数和析构函数-8.md",
@@ -3329,12 +3329,12 @@
     {
       "path": "references/核函数.md",
       "title": "核函数",
-      "snippet": "从 SPMD模型 可以得知，使用AscendC进行编程时，我们编写一份算子实现代码，算子被调用时，将启动N个运行实例，在N个核上运行。本节将介绍算子实现的入口函数。 核函数(Kernel Function)是AscendC算子设备侧实现的入口。在核函数中，需要为在一个核上执行的代码规定要进行的数据访问和计算操作，当核函数被调用时，多个核都执行相同的核函数代码，具有相同的参数，并行执行。 AscendC允许开发者使用核函数这种C/C++函数的语法扩展来管理设备端的运行代码，开发者在核函数中进行算子类对象的创建和其成员函数的调用，由此实现该算子的所有功能。核函数是主机端和设备端连接的桥梁，本章将具体介绍核函数的用法。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c8/v3/Ao_DO9Y7TAKlqkxdV0Zp8A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111710Z&HW-CC-Expire=86400&HW-CC-Sign=C5C653E14FF3DBB78DF68CA0CEC2EA23C5C55B197EBF4E19142AF8880DD1C1A8) Kirin9020/KirinX90系列处"
+      "snippet": "从 SPMD模型 可以得知，使用AscendC进行编程时，我们编写一份算子实现代码，算子被调用时，将启动N个运行实例，在N个核上运行。本节将介绍算子实现的入口函数。 核函数(Kernel Function)是AscendC算子设备侧实现的入口。在核函数中，需要为在一个核上执行的代码规定要进行的数据访问和计算操作，当核函数被调用时，多个核都执行相同的核函数代码，具有相同的参数，并行执行。 AscendC允许开发者使用核函数这种C/C++函数的语法扩展来管理设备端的运行代码，开发者在核函数中进行算子类对象的创建和其成员函数的调用，由此实现该算子的所有功能。核函数是主机端和设备端连接的桥梁，本章将具体介绍核函数的用法。 Kirin9020/KirinX90系列处理器暂不支持通过<<<>>>调用核函数。 #### 核函数定义 extern \"C\" __global__ __aicore__ void add_custom(__gm__ uint8_t* x, __gm__ uint8_t* y, __gm__ uint8_t* z) 以上是一个核函数声明的例子，编写核函数时需要遵循以下规则。 - **使用函数类型限定符** 除了需要按照C/C++函数声明的方式定义核函数之外，还要为核函数加上额外的函数类型限定符，包含__global__和__aicore__。 使用__global__函数"
     },
     {
       "path": "references/概述-1.md",
       "title": "概述",
-      "snippet": "轻量化工具是一款集模型压缩算法和网络结构搜索算法于一体的自动模型轻量化工具，针对NPU架构对深度神经网络模型进行深度的模型优化，可以帮助开发者自动地完成模型轻量化以及网络结构的生成任务。目前支持无训练模式、插件式量化模式、大语言模型低位量化和网络结构搜索训练。 - 无训练量化：开发者可以直接输入模型，无需重训练，快速的完成模型轻量化。适用于快捷方便量化的开发者使用。 - 插件式量化：为开发者提供模型量化API，在开发者训练工程中对浮点模型进行量化模型校准或量化模型重训练，易用性高，插件式重训练量化适用于较高精度要求的开发者。 - 大语言模型低位量化：提供大语言模型的4bit低位量化支持。通过权重量化、激活量化和参数提取三段式执行流程，实现大模型压缩。 - 网络结构搜索训练：支持分类网络、检测网络、分割网络三种网络类型。开发者配置相应的搜索参数和接口函数后，使用网络结构搜索工具进行搜索，在设定的算力约束下，得到优秀的网络模型。适用于需要自动生成网络结构的开发者。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/df/v3/CeWOZla9RhmXrEot6Zxabw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421"
+      "snippet": "轻量化工具是一款集模型压缩算法和网络结构搜索算法于一体的自动模型轻量化工具，针对NPU架构对深度神经网络模型进行深度的模型优化，可以帮助开发者自动地完成模型轻量化以及网络结构的生成任务。目前支持无训练模式、插件式量化模式、大语言模型低位量化和网络结构搜索训练。 - 无训练量化：开发者可以直接输入模型，无需重训练，快速的完成模型轻量化。适用于快捷方便量化的开发者使用。 - 插件式量化：为开发者提供模型量化API，在开发者训练工程中对浮点模型进行量化模型校准或量化模型重训练，易用性高，插件式重训练量化适用于较高精度要求的开发者。 - 大语言模型低位量化：提供大语言模型的4bit低位量化支持。通过权重量化、激活量化和参数提取三段式执行流程，实现大模型压缩。 - 网络结构搜索训练：支持分类网络、检测网络、分割网络三种网络类型。开发者配置相应的搜索参数和接口函数后，使用网络结构搜索工具进行搜索，在设定的算力约束下，得到优秀的网络模型。适用于需要自动生成网络结构的开发者。 Quant_INT8-8：数据8bit量化，权重8bit量化。 Quant_INT16-4：数据16bit量化，权重4bit量化。 通过模型轻量化以及网络结构搜索获得模型在NPU上的收益可以参见 模型收益 。 经过轻量化工具小型化后的模型，可以使用OMG转换工具转为OM离线模型，使用方式可参见 量化模型转换 。 该轻量化工具"
     },
     {
       "path": "references/概述-2.md",
@@ -3349,12 +3349,12 @@
     {
       "path": "references/模型推理.md",
       "title": "模型推理",
-      "snippet": "该场景是基本模型的使用场景，主要包含模型的编译和推理，其他场景是基础场景的一个扩展和功能增强。 #### 业务流程 模型推理的主要开发流程如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/26/v3/3LLBBTSQQqGF_dyv4SKTyw/zh-cn_image_0000002573975149.png?HW-CC-KV=V1&HW-CC-Date=20260421T111707Z&HW-CC-Expire=86400&HW-CC-Sign=AEEB1A983F17BC5F9373F7E0BB3013B989D9E70085637172C071852BFE00AA82) #### 接口说明 以下接口为主要流程接口，如要使用更丰富的编译、加载和执行时的配置，请参见 API参考 。 **表1** CANN Kit模型推理相关接口功能介绍 #### 开发步骤 以下为模型推理的主要开发步骤，具体实现请参见 SampleCode 。 1. 准备模型和开发环境。 - 准备离线模型(OM模型)，可以通过tools_omg工具生成或从Model Zoo获取。 - 下载并配置DevEco Studio环境，确保可以正常开发和调试HarmonyOS应用。 2. 创建"
+      "snippet": "该场景是基本模型的使用场景，主要包含模型的编译和推理，其他场景是基础场景的一个扩展和功能增强。 #### 业务流程 模型推理的主要开发流程如下图所示： #### 接口说明 以下接口为主要流程接口，如要使用更丰富的编译、加载和执行时的配置，请参见 API参考 。 **表1** CANN Kit模型推理相关接口功能介绍 #### 开发步骤 以下为模型推理的主要开发步骤，具体实现请参见 SampleCode 。 1. 准备模型和开发环境。 - 准备离线模型(OM模型)，可以通过tools_omg工具生成或从Model Zoo获取。 - 下载并配置DevEco Studio环境，确保可以正常开发和调试HarmonyOS应用。 2. 创建DevEco Studio项目 。 3. 创建模型编译实例。 调用 OH_NNCompilation_ConstructWithOfflineModelBuffer 读取模型buffer，创建模型编译实例。或者通过调用 OH_NNCompilation_ConstructWithOfflineModelFile 直接读取模型文件，创建模型编译实例。 4. 选择目标device。 调用 OH_NNDevice_GetAllDevicesID ，获取所有的设备ID，查找name为\"HIAI_F\"字段的设备ID，记录并通过 OH_NNCompilation_Set"
     },
     {
       "path": "references/模型收益.md",
       "title": "模型收益",
-      "snippet": "以resnet-18为例，使用轻量化工具后（Quant_INT8-8量化）的收益如下。 #### 网络结构搜索工具分类场景收益对比 以resnet-18为例，使用轻量化工具后（网络结构搜索）的收益如下。 #### 检测场景收益对比 #### 分割场景收益对比 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/21/v3/k_RNusVHRouymDWp7_2axQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111704Z&HW-CC-Expire=86400&HW-CC-Sign=5FC20D7CA49B18B6DFF5A000E9B53C91E778ED68B79350ADC8BDB076F3A43A3D) [1] 此精度是使用tensorpack重训练模型得出。 [2] 此指标的计算方法为：IoU(Intersection over Union)从0.5~0.95区间上，以0.05为间隔计算AP的值，再计算所有AP的均值。 [3] 此精度是在COCO val2017数据集上测试得出。 [4] 此指标为平均交并比，计算方法为先求每个类别的交并比，再平均。 [5] 此精度是在VOC val2012数据集上测"
+      "snippet": "以resnet-18为例，使用轻量化工具后（Quant_INT8-8量化）的收益如下。 #### 网络结构搜索工具分类场景收益对比 以resnet-18为例，使用轻量化工具后（网络结构搜索）的收益如下。 #### 检测场景收益对比 #### 分割场景收益对比 [1] 此精度是使用tensorpack重训练模型得出。 [2] 此指标的计算方法为：IoU(Intersection over Union)从0.5~0.95区间上，以0.05为间隔计算AP的值，再计算所有AP的均值。 [3] 此精度是在COCO val2017数据集上测试得出。 [4] 此指标为平均交并比，计算方法为先求每个类别的交并比，再平均。 [5] 此精度是在VOC val2012数据集上测试得出。"
     },
     {
       "path": "references/模型转换AIPP配置文件说明.md",
@@ -3364,7 +3364,7 @@
     {
       "path": "references/模型转换前准备.md",
       "title": "模型转换前准备",
-      "snippet": "CANN Kit当前仅支持Caffe、TensorFlow、ONNX和MindSpore模型转换为离线模型，其他格式的模型需要开发者自行转换为CANN Kit支持的模型格式。 1. 准备训练好的Caffe、TensorFlow、ONNX等模型。例如： Caffe SqueezeNet V1.0 模型。 2. 下载 Tools ，解压使用Tools下的OMG工具，将TensorFlow或Caffe模型转换为IR模型，使用方式请参见 模型转换示例 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/74/v3/pXdXRVbdQHeJOVulzfOm9g/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111705Z&HW-CC-Expire=86400&HW-CC-Sign=8FFD0D09EC2AA75A5894F1EA0D5FC433B16C94A798BB695E35ABE3BBBE46DAF2) 若TensorFlow或Caffe模型过大，可以在OMG转换之前使用 Tools下载 的轻量化工具，使用方式请参见 模型轻量化 。"
+      "snippet": "CANN Kit当前仅支持Caffe、TensorFlow、ONNX和MindSpore模型转换为离线模型，其他格式的模型需要开发者自行转换为CANN Kit支持的模型格式。 1. 准备训练好的Caffe、TensorFlow、ONNX等模型。例如： Caffe SqueezeNet V1.0 模型。 2. 下载 Tools ，解压使用Tools下的OMG工具，将TensorFlow或Caffe模型转换为IR模型，使用方式请参见 模型转换示例 。 若TensorFlow或Caffe模型过大，可以在OMG转换之前使用 Tools下载 的轻量化工具，使用方式请参见 模型轻量化 。"
     },
     {
       "path": "references/模型转换示例.md",
@@ -3374,7 +3374,7 @@
     {
       "path": "references/模型轻量化示例.md",
       "title": "模型轻量化示例",
-      "snippet": "请参见 环境准备 ，安装TensorFlow及依赖。 #### 模型配置 - 准备量化模型 将基线模型的pb文件放入\"dopt_tf_py3/demo/quant8-8/notrain/tensorflow_mnist/basemodel/\"中。该路径下已经放入了mnist基线模型mnist.pb。 - 准备量化输入数据 参见 模型量化 ，将图片或二进制形式的校准集放入\"dopt_tf_py3/demo/quant8-8/notrain/tensorflow_mnist/mnist_test/\"中。该路径下已经放入了图片校准集。 #### 模型量化 执行\"dopt_tf_py3/demo/quant8-8/notrain/tensorflow_mnist/\"下run_release.sh即可。 \"dopt_tf_py3/demo/quant8-8/notrain/tensorflow_mnist\"中存有量化后的pb模型和量化配置文件，运行demo后生成的文件如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a4/v3/RokEgLhlSUSeVVECkIa6Hg/zh-cn_image_0000002543215248.png?HW-CC-KV=V1&"
+      "snippet": "请参见 环境准备 ，安装TensorFlow及依赖。 #### 模型配置 - 准备量化模型 将基线模型的pb文件放入\"dopt_tf_py3/demo/quant8-8/notrain/tensorflow_mnist/basemodel/\"中。该路径下已经放入了mnist基线模型mnist.pb。 - 准备量化输入数据 参见 模型量化 ，将图片或二进制形式的校准集放入\"dopt_tf_py3/demo/quant8-8/notrain/tensorflow_mnist/mnist_test/\"中。该路径下已经放入了图片校准集。 #### 模型量化 执行\"dopt_tf_py3/demo/quant8-8/notrain/tensorflow_mnist/\"下run_release.sh即可。 \"dopt_tf_py3/demo/quant8-8/notrain/tensorflow_mnist\"中存有量化后的pb模型和量化配置文件，运行demo后生成的文件如下图所示： #### PyTorch Quant_INT8-8无训练量化Demo #### 环境准备 请参见 环境准备 ，安装PyTorch及依赖。 #### 模型配置 - 准备量化模型 将基线模型的模型定义文件(.py)以及模型参数文件放入\"dopt_pytorch_py3/demo/quant8-8/notrain/pyt"
     },
     {
       "path": "references/深度融合.md",
@@ -3389,27 +3389,27 @@
     {
       "path": "references/环境准备.md",
       "title": "环境准备",
-      "snippet": "进行环境准备前，你需要了解如下基本概念，以便更好的理解后续操作。 - 开发环境：指编译开发代码的环境。 - 运行环境：指运行算子、推理程序等的Linux环境。运行环境必须连接上带有Kirin AI处理器的设备，如手机、平板等。 - 开发环境与运行环境合设场景：开发环境和运行环境在同一台机器上，开发者使用连接上Kirin AI处理器的机器作为运行环境，同时在该环境上进行代码开发与编译。 - 开发环境与运行环境分设场景：开发环境和运行环境不在同一台机器上，开发者使用连接上Kirin AI处理器的机器作为运行环境；使用其他独立机器进行代码开发与编译，作为开发环境。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e9/v3/7DPF_j7CRhWd4vvQcLnBUg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111709Z&HW-CC-Expire=86400&HW-CC-Sign=5D183697B8D89B0C7DD2B34578B52CDDB9870ED7D87AF6C2CE73A727B92B3FFF) 开发运行环境需要满足以下要求： - ubuntu版本大于等于22.04，ubuntu架构为x86_"
+      "snippet": "进行环境准备前，你需要了解如下基本概念，以便更好的理解后续操作。 - 开发环境：指编译开发代码的环境。 - 运行环境：指运行算子、推理程序等的Linux环境。运行环境必须连接上带有Kirin AI处理器的设备，如手机、平板等。 - 开发环境与运行环境合设场景：开发环境和运行环境在同一台机器上，开发者使用连接上Kirin AI处理器的机器作为运行环境，同时在该环境上进行代码开发与编译。 - 开发环境与运行环境分设场景：开发环境和运行环境不在同一台机器上，开发者使用连接上Kirin AI处理器的机器作为运行环境；使用其他独立机器进行代码开发与编译，作为开发环境。 开发运行环境需要满足以下要求： - ubuntu版本大于等于22.04，ubuntu架构为x86_64， python版本在3.7与3.10之间（包含），gcc/g++版本大于等于7.0。 - 设备连接与调试参考 hdc 。 进行自定义算子开发前，需要完成驱动及DDK的安装。 1. 下载tools_ascendc ，并在Linux环境上解压。 在Windows平台解压会导致软链接失效。 2. 下载需要的 平台插件包 ，在linux开发环境上解压，并将需要的平台插件拷贝到${install_path}/ddk/tools/platform下。其中${install_path}为tools包的解压目录。拷贝后的目录结构如下。 to"
     },
     {
       "path": "references/矢量编程.md",
       "title": "矢量编程",
-      "snippet": "基于AscendC方式实现矢量算子的流程如图1所示。 **图1** 矢量算子实现流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cf/v3/A6yMrLiUSa22JQtRhsqkIQ/zh-cn_image_0000002573855189.png?HW-CC-KV=V1&HW-CC-Date=20260421T111712Z&HW-CC-Expire=86400&HW-CC-Sign=678A6D440FA0549DEB6C307DC61438CDF941075BD8D5F96A5AD524F484FBFFF1) - 算子分析：分析算子的数学表达式、输入、输出以及计算逻辑的实现，明确需要调用的AscendC接口。 - 核函数定义：定义AscendC算子入口函数。 - 根据矢量编程范式实现算子类：完成核函数的内部实现。 下文以ElemWise(Add)算子为例，对上述步骤进行详细介绍。本样例中介绍的算子完整代码参见 add_custom.cpp 。 #### 算子分析 在开发算子代码之前需要分析算子的数学表达式、输入、输出以及计算逻辑的实现，明确需要调用的AscendC接口。 1. 明确算子的数学表达式及计算逻辑。 Add算子的数学表达式为： z = x "
+      "snippet": "基于AscendC方式实现矢量算子的流程如图1所示。 **图1** 矢量算子实现流程 - 算子分析：分析算子的数学表达式、输入、输出以及计算逻辑的实现，明确需要调用的AscendC接口。 - 核函数定义：定义AscendC算子入口函数。 - 根据矢量编程范式实现算子类：完成核函数的内部实现。 下文以ElemWise(Add)算子为例，对上述步骤进行详细介绍。本样例中介绍的算子完整代码参见 add_custom.cpp 。 #### 算子分析 在开发算子代码之前需要分析算子的数学表达式、输入、输出以及计算逻辑的实现，明确需要调用的AscendC接口。 1. 明确算子的数学表达式及计算逻辑。 Add算子的数学表达式为： z = x + y 计算逻辑是：AscendC提供的 矢量计算 接口的操作元素都为LocalTensor，输入数据需要先搬运进片上存储，然后使用计算接口完成两个输入参数相加，得到最终结果，再搬出到外部存储上。AscendC Add算子的计算逻辑如下图所示。 **图2** 算子计算逻辑 2. 明确输入和输出。 - Add算子有两个输入：x与y，输出为z。 - 本样例中算子的输入支持的数据类型为half(float16)，算子输出的数据类型与输入数据类型相同。 - 算子输入支持shape(8，2048)，输出shape与输入shape相同。 - 算子输入支持的format为"
     },
     {
       "path": "references/矩阵编程算子实现.md",
       "title": "矩阵编程算子实现",
-      "snippet": "上文介绍了Matmul矩阵乘的数据切分方案和数据流。AscendC提供一组Matmul高阶API，封装了这些常用的切分和数据搬运、计算的算法逻辑，方便开发者快速实现Matmul矩阵乘法的运算操作。开发者在host侧通过调用API自动获取Tiling参数，该参数传递到kernel侧后，在初始化操作时传入，通过几个简单的API即可完成矩阵乘操作。以下代码仅包含Matmul的关键步骤，不能直接运行。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/64/v3/an7qh8a9QR-PQ6ph45LzLQ/zh-cn_image_0000002543215280.png?HW-CC-KV=V1&HW-CC-Date=20260421T111712Z&HW-CC-Expire=86400&HW-CC-Sign=CAEFC584B418805EC867C99D90C15FE1E7ADAA50B2D96BD48F385B559D44BA00) **host侧自动获取Tiling参数的关键步骤介绍如下。** 1. 创建Tiling对象。 auto ascendcPlatform = platform_ascendc::PlatformAscendC(context->GetPla"
+      "snippet": "上文介绍了Matmul矩阵乘的数据切分方案和数据流。AscendC提供一组Matmul高阶API，封装了这些常用的切分和数据搬运、计算的算法逻辑，方便开发者快速实现Matmul矩阵乘法的运算操作。开发者在host侧通过调用API自动获取Tiling参数，该参数传递到kernel侧后，在初始化操作时传入，通过几个简单的API即可完成矩阵乘操作。以下代码仅包含Matmul的关键步骤，不能直接运行。 **host侧自动获取Tiling参数的关键步骤介绍如下。** 1. 创建Tiling对象。 auto ascendcPlatform = platform_ascendc::PlatformAscendC(context->GetPlatformInfo()); matmul_tiling::MatmulApiTiling cubeTiling(ascendcPlatform); 创建对象时需要传入硬件平台信息，硬件平台信息可以通过 GetPlatformInfo 获取。 2. 设置A、B、Bias的数据类型和格式。 cubeTiling.SetAType(AscendC::TPosition::GM, CubeFormat::ND, matmul_tiling::DataType::DT_FLOAT16); cubeTiling.SetBType(AscendC::TPosition::"
     },
     {
       "path": "references/矩阵计算.md",
       "title": "矩阵计算",
-      "snippet": "KirinX90/Kirin9030处理器不支持结构化稀疏功能，并且Mmad左矩阵分形结构在Kirin9030有差异。 **表1** 矩阵计算兼容说明 Mmad左矩阵分形格式变换修改适配方案： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/32/v3/4lIRnndyRQyOnSw7XNeZJA/zh-cn_image_0000002543215328.png?HW-CC-KV=V1&HW-CC-Date=20260421T111929Z&HW-CC-Expire=86400&HW-CC-Sign=918FCEFD428B46C611B83149656697B23384FD7A04F64281FCDB5C9059EE55B4) // 示例代码 __aicore__ inline void SplitA() { int srcOffset = 0; int dstOffset = 0; AscendC::LocalTensor<half> a1Local = inQueueA1.DeQue<half>(); AscendC::LocalTensor<half> a2Local = inQueueA2.AllocTensor<half>(); #if defined"
+      "snippet": "KirinX90/Kirin9030处理器不支持结构化稀疏功能，并且Mmad左矩阵分形结构在Kirin9030有差异。 **表1** 矩阵计算兼容说明 Mmad左矩阵分形格式变换修改适配方案： // 示例代码 __aicore__ inline void SplitA() { int srcOffset = 0; int dstOffset = 0; AscendC::LocalTensor<half> a1Local = inQueueA1.DeQue<half>(); AscendC::LocalTensor<half> a2Local = inQueueA2.AllocTensor<half>(); #if defined(__NPU_ARCH__) && (__NPU_ARCH__ == 2201 || __NPU_ARCH__ == 3003) // Ascend910B、Ascend910C和KirinX90，LoadData时做Nz2Zz的分形转换 for (int i = 0; i < mBlocks; ++i) { AscendC::LoadData2DParams loadDataParams; // kBlocks表示列方向上有几个宽为16的half类型矩阵 loadDataParams.repeatTimes = kBlocks; // mBlocks表示行"
     },
     {
       "path": "references/硬件架构抽象.md",
       "title": "硬件架构抽象",
-      "snippet": "AscendC基于硬件抽象架构进行编程， 屏蔽不同硬件之间的差异。 **图1** 硬件架构抽象 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/89/v3/kqEcU27STqiAcHrhsDRM1A/zh-cn_image_0000002573975159.png?HW-CC-KV=V1&HW-CC-Date=20260421T111711Z&HW-CC-Expire=86400&HW-CC-Sign=D3B85E869C0F6FE122E563029B33D914BC20B74108E7659891CA31EFDA104505) AI Core中包含 **计算单元、存储单元、搬运单元** 等核心组件。 - 计算单元包括了三种基础计算资源：Cube计算单元、Vector计算单元和Scalar计算单元。 - 存储单元包括内部存储和外部存储： - AI Core的内部存储，统称为Local Memory，对应的数据类型为LocalTensor。由于不同芯片间硬件资源不固定，可以为UB、L1、L0A、L0B等。 - AI Core能够访问的外部存储称之为Global Memory，对应的数据类型为GlobalTensor。 - DMA(Direct Memory Ac"
+      "snippet": "AscendC基于硬件抽象架构进行编程， 屏蔽不同硬件之间的差异。 **图1** 硬件架构抽象 AI Core中包含 **计算单元、存储单元、搬运单元** 等核心组件。 - 计算单元包括了三种基础计算资源：Cube计算单元、Vector计算单元和Scalar计算单元。 - 存储单元包括内部存储和外部存储： - AI Core的内部存储，统称为Local Memory，对应的数据类型为LocalTensor。由于不同芯片间硬件资源不固定，可以为UB、L1、L0A、L0B等。 - AI Core能够访问的外部存储称之为Global Memory，对应的数据类型为GlobalTensor。 - DMA(Direct Memory Access)搬运单元：负责在Global Memory和Local Memory之间搬运数据。 AI Core内部核心组件及组件功能详细说明如下表。 **表1** AI Core内部核心组件 开发者在理解硬件架构的抽象时，需要重点关注如下 **异步指令流、同步信号流** 、 **计算数据流** 三个过程： - AI Core内部的异步并行计算过程：Scalar计算单元读取指令序列，并把向量计算、矩阵计算、数据搬运指令发射给对应单元的指令队列，向量计算单元、矩阵计算单元、数据搬运单元异步的并行执行接收到的指令。该过程可以参考图1中蓝色箭头所示的指令流。 - 不同"
     },
     {
       "path": "references/简介-1.md",
@@ -3439,7 +3439,7 @@
     {
       "path": "references/简介-2.md",
       "title": "简介",
-      "snippet": "TPipe可以管理全局内存资源，而TBufPool可以手动管理或复用Unified Buffer/L1 Buffer物理内存，主要用于多个stage计算中Unified Buffer/L1 Buffer物理内存不足的场景。 #### 功能图示 下图展示了资源池划分的过程： - 通过TPipe::InitBuffer接口可以申请Buffer内存并使用队列进行管理。 - 通过TPipe::InitBufPool可以划分出资源池BufPool1。 - 通过TPipe::InitBufPool可以指定BufPool1与BufPool3地址和长度复用。 - 通过TBufPool::InitBuffer及TBufPool::InitBufPool接口继续将BufPool1及BufPool3划分成Buffer或TBufPool资源池。 **图1** BufPool资源池划分 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/79/v3/udBWuoZ3SZurwND_AeBnkg/zh-cn_image_0000002573855231.png?HW-CC-KV=V1&HW-CC-Date=20260421T111734Z&HW-CC-Expire=86400&HW-CC-Sig"
+      "snippet": "TPipe可以管理全局内存资源，而TBufPool可以手动管理或复用Unified Buffer/L1 Buffer物理内存，主要用于多个stage计算中Unified Buffer/L1 Buffer物理内存不足的场景。 #### 功能图示 下图展示了资源池划分的过程： - 通过TPipe::InitBuffer接口可以申请Buffer内存并使用队列进行管理。 - 通过TPipe::InitBufPool可以划分出资源池BufPool1。 - 通过TPipe::InitBufPool可以指定BufPool1与BufPool3地址和长度复用。 - 通过TBufPool::InitBuffer及TBufPool::InitBufPool接口继续将BufPool1及BufPool3划分成Buffer或TBufPool资源池。 **图1** BufPool资源池划分 如图示的嵌套关系，最外层TBufPool(BufPool1与BufPool3)需要通过TPipe::InitBufPool申请并初始化，内层TBufPool(BufPool2)可以通过TBufPool::InitBufPool申请并初始化。 #### 注意事项 - TBufPool必须通过TPipe::InitBufPool或TBufPool::InitBufPool接口进行划分和初始化。资源池只能整体划分成部分，无法部分拼"
     },
     {
       "path": "references/简介-3.md",
@@ -3449,7 +3449,7 @@
     {
       "path": "references/简介-4.md",
       "title": "简介",
-      "snippet": "TQueBind绑定源逻辑位置和目的逻辑位置，根据源位置和目的位置，来确定内存分配的位置、插入对应的同步事件，帮助开发者解决内存分配和管理、同步等问题。TQue是TQueBind的简化模式。通常情况下开发者使用TQue进行编程，TQueBind对外提供一些特殊数据通路的内存管理和同步控制，涉及这些通路时可以直接使用TQueBind。 如下图的数据通路示意图所示，红色线条和蓝色线条的通路可通过TQueBind定义表达，蓝色线条的通路可通过TQue进行简化表达。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ad/v3/tQxp2awHTuWQyUkY-FoJhg/zh-cn_image_0000002543215318.png?HW-CC-KV=V1&HW-CC-Date=20260421T111737Z&HW-CC-Expire=86400&HW-CC-Sign=AD99979AD6BAC99B92A45ED1012C216631646E891AA5AD8B6DF9290430E860B1) l **表1** TQueBind和TQue对于数据通路的表达 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/"
+      "snippet": "TQueBind绑定源逻辑位置和目的逻辑位置，根据源位置和目的位置，来确定内存分配的位置、插入对应的同步事件，帮助开发者解决内存分配和管理、同步等问题。TQue是TQueBind的简化模式。通常情况下开发者使用TQue进行编程，TQueBind对外提供一些特殊数据通路的内存管理和同步控制，涉及这些通路时可以直接使用TQueBind。 如下图的数据通路示意图所示，红色线条和蓝色线条的通路可通过TQueBind定义表达，蓝色线条的通路可通过TQue进行简化表达。 l **表1** TQueBind和TQue对于数据通路的表达 上述表格中的Cube相关数据通路建议使用Cube高阶API（如Matmul）实现，直接使用TQueBind控制会相对复杂。 下面通过两个具体的示例展示了矢量编程场景下TQueBind的使用方法： - 如下的编程范式示例，图中的两个队列分别绑定的是GM VECIN和VECOUT GM。 - 如果不需要进行Vector计算，比如仅需要做格式随路转换等场景，可对上述流程进行优化，对VECIN和VECOUT进行绑定，绑定的效果可以实现输入输出使用相同buffer，实现double buffer。"
     },
     {
       "path": "references/简介-5.md",
@@ -3479,12 +3479,12 @@
     {
       "path": "references/简介.md",
       "title": "简介",
-      "snippet": "在实现Host侧的Tiling函数时，可能需要获取一些硬件平台的信息，来支撑Tiling的计算，比如获取硬件平台的核数等信息。PlatformAscendC类提供获取这些平台信息的功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bd/v3/fJ8lY0o4QVOL8AgHT8mnyQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111751Z&HW-CC-Expire=86400&HW-CC-Sign=A082CEFEDF8BC80FA9FCFF7B2D92CD0072D9C07F2C49D0E44B1165C834AFF2AC) 使用该功能需要包含\"tiling/platform/platform_ascendc.h\"头文件。 #### 函数原型 PlatformAscendC() = delete ~PlatformAscendC() = default explicit PlatformAscendC(fe::PlatFormInfos *platformInfo): platformInfo_(platformInfo) {} #### 参数说明 #### 返回值 无 #### 约束说明 无"
+      "snippet": "在实现Host侧的Tiling函数时，可能需要获取一些硬件平台的信息，来支撑Tiling的计算，比如获取硬件平台的核数等信息。PlatformAscendC类提供获取这些平台信息的功能。 使用该功能需要包含\"tiling/platform/platform_ascendc.h\"头文件。 #### 函数原型 PlatformAscendC() = delete ~PlatformAscendC() = default explicit PlatformAscendC(fe::PlatFormInfos *platformInfo): platformInfo_(platformInfo) {} #### 参数说明 #### 返回值 无 #### 约束说明 无 #### 调用示例 ge::graphStatus TilingXXX(gert::TilingContext* context) { auto ascendcPlatform = platform_ascendc::PlatformAscendC(context->GetPlatformInfo()); uint64_t ub_size, l1_size; ascendcPlatform.GetCoreMemSize(platform_ascendc::CoreMemType::UB, ub_size); ascendcPla"
     },
     {
       "path": "references/算子json配置文件样例.md",
       "title": "算子json配置文件样例",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f9/v3/iD7eT2bvTUeMNV_V5nl1Og/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111720Z&HW-CC-Expire=86400&HW-CC-Sign=719B7EDC96E06F222846C9FDD6DD42FD6FFBFB4E2D0379A946D19972D93F009B) - 在\"param_type\"：\"optional\"时， \"ignore\" : true，表示不需要该输入。 - 在\"param_type\"：\"required\"时，\"ignore\"不能配置为true。 { \"op_type\": \"FlashAttentionScore\", \"data_script\": \"./flash_attention_score_golden.py\", \"gen_data\": true, \"inputs\": [ { \"name\": \"query\", \"dtype\": \"float16\", \"format\": \"ND\", \"ignore\": false, \"shape\": [24,144,1280], \"param_type\": \"r"
+      "snippet": "- 在\"param_type\"：\"optional\"时， \"ignore\" : true，表示不需要该输入。 - 在\"param_type\"：\"required\"时，\"ignore\"不能配置为true。 { \"op_type\": \"FlashAttentionScore\", \"data_script\": \"./flash_attention_score_golden.py\", \"gen_data\": true, \"inputs\": [ { \"name\": \"query\", \"dtype\": \"float16\", \"format\": \"ND\", \"ignore\": false, \"shape\": [24,144,1280], \"param_type\": \"required\", \"data_file\": \"q.bin\" }, { \"name\": \"key\", \"dtype\": \"float16\", \"format\": \"ND\", \"ignore\": false, \"shape\": [24,144,1280], \"param_type\": \"required\", \"data_file\": \"k.bin\" }, { \"name\": \"value\", \"dtype\": \"float16\", \"format\": \"ND\", \"ignore\": false, \"shape\": [24,144,1"
     },
     {
       "path": "references/算子json配置模板获取.md",
@@ -3494,12 +3494,12 @@
     {
       "path": "references/算子入图概述.md",
       "title": "算子入图概述",
-      "snippet": "图模式是神经网络模型的一种运行模式，在图模式下开发者首先将模型的计算过程构造成一张图，然后通过GE将图下发到Kirin硬件执行。相对于单个算子依次下发的方式，图模式下，GE可以通过计算图优化、多流并行、内存复用、模型下沉等技术手段，加速模型执行效率，减少模型内存占用。 算子入图的开发流程如下图所示，算子工程创建完成后，基于工程代码框架完成算子原型定义、Kernel侧算子实现、Host侧Tiling实现并完成算子入图开发，通过工程编译脚本完成算子的编译部署，之后即可基于图IR执行算子，比如单算子模型执行或者IR构图的方式调用自定义算子。该开发流程以 工程化算子开发 为基础，除了需要提供 算子实现 中的算子实现文件外，还需要额外交付算子入图的代码文件。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/20/v3/IbEcRMHFQiibntjoo4B6VQ/zh-cn_image_0000002543215286.png?HW-CC-KV=V1&HW-CC-Date=20260421T111717Z&HW-CC-Expire=86400&HW-CC-Sign=26624B8EB8E3149BFEC84FC15E6251843AFD7666CEDD2D17E5929D4"
+      "snippet": "图模式是神经网络模型的一种运行模式，在图模式下开发者首先将模型的计算过程构造成一张图，然后通过GE将图下发到Kirin硬件执行。相对于单个算子依次下发的方式，图模式下，GE可以通过计算图优化、多流并行、内存复用、模型下沉等技术手段，加速模型执行效率，减少模型内存占用。 算子入图的开发流程如下图所示，算子工程创建完成后，基于工程代码框架完成算子原型定义、Kernel侧算子实现、Host侧Tiling实现并完成算子入图开发，通过工程编译脚本完成算子的编译部署，之后即可基于图IR执行算子，比如单算子模型执行或者IR构图的方式调用自定义算子。该开发流程以 工程化算子开发 为基础，除了需要提供 算子实现 中的算子实现文件外，还需要额外交付算子入图的代码文件。 1. 环境准备。 1. DDK软件安装请参考环境准备。 2. 创建算子工程。使用msOpGen工具创建算子开发工程。 2. 算子实现。 - 算子原型定义实现。通过原型定义来描述算子输入输出、属性等信息以及算子在AI处理器上相关实现信息，并关联Tiling实现等函数。 - Kernel侧算子实现和Host侧Tiling实现请参考算子实现；工程化算子开发，支持开发者调用Tiling API基于DDK提供的编程框架进行Tiling开发，Kernel侧也提供对应的接口方便开发者获取Tiling参数，具体内容请参考Kernel侧算子实现和Host"
     },
     {
       "path": "references/算子包安装.md",
       "title": "算子包安装",
-      "snippet": "执行算子工程的编译时，编译结果会自动部署到算子包安装目录下。 1. 自定义算子包安装。 算子编译完成后，会自动将算子交付件安装到DDK指定目录，开发者无需关注。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fc/v3/REmPDJf1Tj-onFAEOZriXw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111714Z&HW-CC-Expire=86400&HW-CC-Sign=775FDC82393014A3143E27772676C4BCADD8E93AF6BAF0F582A7EB5900EEE234) 自定义算子包默认安装路径为${DDK_INSTALL_PATH}/tools/platform。 2. 安装后的目录结构如下所示： platform // 平台插件目录 ├── kirin9020 // Kirin AI处理器类型 │ ├── config │ │ └── npu_custom_opinfo.json // 算子信息库 │ ├── lib64 │ │ └── libcustom_op.so // host侧二进制文件 │ ├── ops │ │ └── impl │ │ ├── c"
+      "snippet": "执行算子工程的编译时，编译结果会自动部署到算子包安装目录下。 1. 自定义算子包安装。 算子编译完成后，会自动将算子交付件安装到DDK指定目录，开发者无需关注。 自定义算子包默认安装路径为${DDK_INSTALL_PATH}/tools/platform。 2. 安装后的目录结构如下所示： platform // 平台插件目录 ├── kirin9020 // Kirin AI处理器类型 │ ├── config │ │ └── npu_custom_opinfo.json // 算子信息库 │ ├── lib64 │ │ └── libcustom_op.so // host侧二进制文件 │ ├── ops │ │ └── impl │ │ ├── custom // kernel交付件 │ │ │ ├── add_custom.cpp │ │ │ ├── add_custom.py │ │ │ └── op_proto.h │ │ └── impl │ └── simulator └── README.md"
     },
     {
       "path": "references/算子原型定义实现.md",
@@ -3514,12 +3514,12 @@
     {
       "path": "references/算子工程创建工具参数说明.md",
       "title": "算子工程创建工具参数说明",
-      "snippet": "完成算子分析和原型定义后，可使用msOpGen工具生成自定义算子工程，并进行编译部署。 #### 命令汇总 执行如下命令，参数说明请参见表1。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a3/v3/bw1Ui5SgQLqaBTo_52zs0w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111720Z&HW-CC-Expire=86400&HW-CC-Sign=CFA92839B809DEA6C1FA4C9E890E38D91F97658567354188EAD1B9FC798B1637) 开发者按照输入的配置参数生成算子模板后，建议在运行前确认算子工程代码的安全性。 msopgen gen -i {*.json} -f {framework type} -c {Compute Resource} -lan cpp -out {Output Path} **表1** 创建算子工程参数说明 **表2** json文件配置参数说明"
+      "snippet": "完成算子分析和原型定义后，可使用msOpGen工具生成自定义算子工程，并进行编译部署。 #### 命令汇总 执行如下命令，参数说明请参见表1。 开发者按照输入的配置参数生成算子模板后，建议在运行前确认算子工程代码的安全性。 msopgen gen -i {*.json} -f {framework type} -c {Compute Resource} -lan cpp -out {Output Path} **表1** 创建算子工程参数说明 **表2** json文件配置参数说明"
     },
     {
       "path": "references/算子工程编译.md",
       "title": "算子工程编译",
-      "snippet": "算子kernel侧和host侧实现开发完成后，需要对算子工程进行编译，将自定义算子部署到omg工具中，详细的编译操作包括： - 编译AscendC算子kernel侧代码实现文件*.cpp，分为源码发布和二进制发布两种方式。 - **源码发布：**不对算子kernel侧实现进行编译，保留算子kernel源码文件*.cpp。该方式可以支持模型的离线编译场景。 - **二进制发布：**对算子kernel侧实现进行编译，生成描述算子相关信息的json文件*.json和算子二进制文件*.o。算子调用时，如果需要直接调用算子二进制，则使用该编译方式，当前暂不支持该方式进行部署。 - 编译AscendC算子host侧代码实现文件*.cpp、*.h。 - 将原型定义和shape推导实现编译成算子原型定义动态库libcustom_op.so，并生成算子原型对外接口op_proto.h。 - 将算子信息库定义编译成信息库定义文件*.json。 上述编译过程示意图如下。 **图1** 算子工程编译示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d2/v3/JwdIyXtyRdqYVfEoJ7W49w/zh-cn_image_0000002543215284.png?HW-CC-"
+      "snippet": "算子kernel侧和host侧实现开发完成后，需要对算子工程进行编译，将自定义算子部署到omg工具中，详细的编译操作包括： - 编译AscendC算子kernel侧代码实现文件*.cpp，分为源码发布和二进制发布两种方式。 - **源码发布：**不对算子kernel侧实现进行编译，保留算子kernel源码文件*.cpp。该方式可以支持模型的离线编译场景。 - **二进制发布：**对算子kernel侧实现进行编译，生成描述算子相关信息的json文件*.json和算子二进制文件*.o。算子调用时，如果需要直接调用算子二进制，则使用该编译方式，当前暂不支持该方式进行部署。 - 编译AscendC算子host侧代码实现文件*.cpp、*.h。 - 将原型定义和shape推导实现编译成算子原型定义动态库libcustom_op.so，并生成算子原型对外接口op_proto.h。 - 将算子信息库定义编译成信息库定义文件*.json。 上述编译过程示意图如下。 **图1** 算子工程编译示意图 #### 编译步骤 1. 完成工程编译相关配置。 修改工程目录下的 **CMakePresets.json** cacheVariables的配置项。 **CMakePresets.json** 文件内容如下。 { \"version\": 1, \"cmakeMinimumRequired\": { \"maj"
     },
     {
       "path": "references/算子开发常见问题.md",
@@ -3549,7 +3549,7 @@
     {
       "path": "references/精度转换指令.md",
       "title": "精度转换指令",
-      "snippet": "根据源操作数和目的操作数Tensor的数据类型进行精度转换。 在了解精度转换规则之前，需要先了解浮点数的表示方式和二进制的舍入规则： **浮点数的表示方式** ： - half共16bit，包括1bit符号位（S），5bit指数位（E）和10bit尾数位（M）。 当E不全为0或不全为1时，表示的结果为： (-1) S * 2 E - 15 * (1 + M) 当E全为0时，表示的结果为： (-1) S * 2 -14 * M 当E全为1时，若M全为0，表示的结果为±inf（取决于符号位）；若M不全为0，表示的结果为nan。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/97/v3/InaSYyQlQ6qsmUKw-pzaaA/zh-cn_image_0000002543215306.png?HW-CC-KV=V1&HW-CC-Date=20260421T111730Z&HW-CC-Expire=86400&HW-CC-Sign=A568D9CC3EFA9159A68CA0DFF9C1FE55CE4EDB73911011A000E8F45C8595C7A3) 上图中S=0，E=15，M = 2 -1 + 2 -2 ，表示的结果为1.75。 - float共32bi"
+      "snippet": "根据源操作数和目的操作数Tensor的数据类型进行精度转换。 在了解精度转换规则之前，需要先了解浮点数的表示方式和二进制的舍入规则： **浮点数的表示方式** ： - half共16bit，包括1bit符号位（S），5bit指数位（E）和10bit尾数位（M）。 当E不全为0或不全为1时，表示的结果为： (-1) S * 2 E - 15 * (1 + M) 当E全为0时，表示的结果为： (-1) S * 2 -14 * M 当E全为1时，若M全为0，表示的结果为±inf（取决于符号位）；若M不全为0，表示的结果为nan。 上图中S=0，E=15，M = 2 -1 + 2 -2 ，表示的结果为1.75。 - float共32bit，包括1bit符号位（S），8bit指数位（E）和23bit尾数位（M）。 当E不全为0或不全为1时，表示的结果为： (-1) S * 2 E - 127 * (1 + M) 当E全为0时，表示的结果为： (-1) S * 2 -126 * M 当E全为1时，若M全为0，表示的结果为±inf（取决于符号位）；若M不全为0，表示的结果为nan。 上图中S = 0，E = 127，M = 2 -1 + 2 -2 ，最终表示的结果为1.75 。 - bfloat16_t共16bit，包括1bit符号位（S），8bit指数位（E）和7bit尾数位（M）。 当E不全"
     },
     {
       "path": "references/系统变量.md",
@@ -3564,17 +3564,17 @@
     {
       "path": "references/编程范式.md",
       "title": "编程范式",
-      "snippet": "编程范式描述了算子实现的固定流程，基于编程范式进行编程，可以快速搭建算子实现的代码框架。 根据 硬件架构抽象 可以了解到，AI Core内部的执行单元异步并行地执行接收到的指令。如下图所示，从输入数据到输出数据需要经过3个阶段任务的处理（T1、T2、T3），多个执行单元并行处理，每个执行单元只会专注于一个任务的处理，会处理所有的数据分片。可以看出，流水线并行和工业生产中的流水线是类似的，每一个执行单元都可以看成是流水线上的节点，通过流水线并行的方式来提高计算效率：执行单元1完成对某个数据分片的处理后，将其加入到通信队列，执行单元2空闲时就会从队列中取出数据继续处理；可以类比为生产流水线中的工人只完成某一项固定工序，完成后就交由下一项工序负责人继续处理。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/39/v3/Rl5GCPlHRCmkTbD6PvlDPg/zh-cn_image_0000002543374926.png?HW-CC-KV=V1&HW-CC-Date=20260421T111711Z&HW-CC-Expire=86400&HW-CC-Sign=AF5A432FCC47C29870679C080D237BCD36DC61BE6FA38326AEA31"
+      "snippet": "编程范式描述了算子实现的固定流程，基于编程范式进行编程，可以快速搭建算子实现的代码框架。 根据 硬件架构抽象 可以了解到，AI Core内部的执行单元异步并行地执行接收到的指令。如下图所示，从输入数据到输出数据需要经过3个阶段任务的处理（T1、T2、T3），多个执行单元并行处理，每个执行单元只会专注于一个任务的处理，会处理所有的数据分片。可以看出，流水线并行和工业生产中的流水线是类似的，每一个执行单元都可以看成是流水线上的节点，通过流水线并行的方式来提高计算效率：执行单元1完成对某个数据分片的处理后，将其加入到通信队列，执行单元2空闲时就会从队列中取出数据继续处理；可以类比为生产流水线中的工人只完成某一项固定工序，完成后就交由下一项工序负责人继续处理。 AscendC编程范式就是这样一种流水线式的编程范式，把算子核内的处理程序，分成多个 **流水任务** ，通过队列(Queue)完成 **任务间通信和同步** ，并通过统一的 **资源管理** 模块(Pipe)来统一管理内存、事件等资源。 #### Vector编程范式 如上图所示，Vector编程范式把算子的实现流程分为3个基本任务：CopyIn，Compute，CopyOut。 - **CopyIn** 负责搬入操作：将输入数据从Global Memory搬运到Local Memory（VECIN用于表达矢量计算搬入数据的存放位"
     },
     {
       "path": "references/网络结构搜索训练.md",
       "title": "网络结构搜索训练",
-      "snippet": "网络结构搜索训练请按照如下步骤进行： 1. 准备环境（ 环境准备 ）。 2. 准备数据集（ 数据集准备 ）。 3. 配置搜索参数（ 搜索参数配置 ）。 4. 配置开发者接口（ TensorFlow开发者自定义接口 、 PyTorch开发者自定义接口 ）。 5. 搜索和训练网络结构（ 搜索训练 ）。 #### 环境准备 #### Linux环境 1. NASEA策略运行环境的依赖在如下的requirements中： tensorflow-gpu==2.8 ruamel.yaml==0.17.28 PyYAML==5.4.1 Cython==0.29.35 pymoo==0.3.2 pathlib mpi4py==3.1.4 sklearn opencv-python matplotlib numpy==1.23.5 tqdm==4.43.0 protobuf==3.20.3 requests==2.31.0 Pillow==7.1.2 请使用pip或者conda安装上述依赖。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/92/v3/RQDANn5lT8a6bUUb0mdw1g/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=2"
+      "snippet": "网络结构搜索训练请按照如下步骤进行： 1. 准备环境（ 环境准备 ）。 2. 准备数据集（ 数据集准备 ）。 3. 配置搜索参数（ 搜索参数配置 ）。 4. 配置开发者接口（ TensorFlow开发者自定义接口 、 PyTorch开发者自定义接口 ）。 5. 搜索和训练网络结构（ 搜索训练 ）。 #### 环境准备 #### Linux环境 1. NASEA策略运行环境的依赖在如下的requirements中： tensorflow-gpu==2.8 ruamel.yaml==0.17.28 PyYAML==5.4.1 Cython==0.29.35 pymoo==0.3.2 pathlib mpi4py==3.1.4 sklearn opencv-python matplotlib numpy==1.23.5 tqdm==4.43.0 protobuf==3.20.3 requests==2.31.0 Pillow==7.1.2 请使用pip或者conda安装上述依赖。 如果仅需要在单机单卡运行工具，可跳过后续步骤。如需要单机多卡环境运行，请继续完成如下步骤。 2. 安装并配置 Horovod 和Open MPI。 3. 安装mpi4py。 pip3 install mpi4py 4. 验证安装。 下载 Horovod 官方对应的 Demo 到当前目录。在一台服务器上利用4张加"
     },
     {
       "path": "references/计算单元.md",
       "title": "计算单元",
-      "snippet": "计算单元是AI Core中提供强大算力的核心单元，包括三种基础 **计算单元** ：Cube（矩阵）计算单元、Vector（向量）计算单元和Scalar（标量）计算单元，完成AI Core中不同类型的数据计算。 #### Scalar Scalar负责各类型的标量数据运算和程序的流程控制。功能上可以看做一个小CPU，完成整个程序的循环控制、分支判断、Cube/Vector等指令的地址和参数计算以及基本的算术运算，并且可以通过在事件同步模块中插入同步符的方式来控制AI Core中其他功能性单元的执行流水。相对于Host CPU，Scalar的计算能力较弱，重点用于发射指令，性能调优时尽量减少if/else及变量运算。 如下图所示：Scalar通过标准的ALU(Arithmetic Logic Unit)执行标量运算指令。 **图1** Scalar对指令和数据的访问 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e5/v3/HzWX4dMgT86WDCCWKhVWoA/zh-cn_image_0000002543374922.png?HW-CC-KV=V1&HW-CC-Date=20260421T111710Z&HW-CC-Expire=86400&HW-CC-S"
+      "snippet": "计算单元是AI Core中提供强大算力的核心单元，包括三种基础 **计算单元** ：Cube（矩阵）计算单元、Vector（向量）计算单元和Scalar（标量）计算单元，完成AI Core中不同类型的数据计算。 #### Scalar Scalar负责各类型的标量数据运算和程序的流程控制。功能上可以看做一个小CPU，完成整个程序的循环控制、分支判断、Cube/Vector等指令的地址和参数计算以及基本的算术运算，并且可以通过在事件同步模块中插入同步符的方式来控制AI Core中其他功能性单元的执行流水。相对于Host CPU，Scalar的计算能力较弱，重点用于发射指令，性能调优时尽量减少if/else及变量运算。 如下图所示：Scalar通过标准的ALU(Arithmetic Logic Unit)执行标量运算指令。 **图1** Scalar对指令和数据的访问 ALU需要的代码段和数据段（栈空间）都来自于GM。ICache用于缓存代码段，缓存大小与硬件规格相关，比如为16K或32K，以2K为单位加载；DCache用于缓存数据段，大小也与硬件规格相关，比如为16K，以cacheline(64Byte)为单位加载。 考虑到核内访问效率最高，应尽量保证代码段和数据段被缓存在ICache和DCache，避免核外访问； 同时根据数据加载单位不同，编程时可以考虑单次加载数据大小，来提升加载"
     },
     {
       "path": "references/资源管理.md",
@@ -3594,7 +3594,7 @@
     {
       "path": "references/部署全流程.md",
       "title": "部署全流程",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/64/v3/3XQH7gAHRuqicAnm6k5j2A/zh-cn_image_0000002573855169.png?HW-CC-KV=V1&HW-CC-Date=20260421T111707Z&HW-CC-Expire=86400&HW-CC-Sign=F5AAA84E4F51A3A85EAC54C89A6FC679175BAE6BFA6680EC55951FA2D2ECD631) #### 离线模型转换 离线模型转换需要将Caffe、TensorFlow、ONNX、MindSpore模型转换为CANN Kit平台支持的模型格式，并可以按需进行AIPP操作、量化操作，使用场景及方法如下： - AIPP操作 AIPP用于在硬件上完成图像预处理，包括改变图像尺寸、色域转换（转换图像格式）、减均值/乘系数（改变图像像素），运用后可避免重新训练匹配推理计算平台需要的数据格式，只通过AIPP参数配置或者在软件层面上调用AIPP接口即可完成适配，同时由于硬件专用，可以获得较好的推理性能收益，具体操作可参见 AIPP模型转换 。 - 量化操作 量化是一种可以把FP32模型转化为低bit模型的操作，以节约网络存储空间、降低"
+      "snippet": "#### 离线模型转换 离线模型转换需要将Caffe、TensorFlow、ONNX、MindSpore模型转换为CANN Kit平台支持的模型格式，并可以按需进行AIPP操作、量化操作，使用场景及方法如下： - AIPP操作 AIPP用于在硬件上完成图像预处理，包括改变图像尺寸、色域转换（转换图像格式）、减均值/乘系数（改变图像像素），运用后可避免重新训练匹配推理计算平台需要的数据格式，只通过AIPP参数配置或者在软件层面上调用AIPP接口即可完成适配，同时由于硬件专用，可以获得较好的推理性能收益，具体操作可参见 AIPP模型转换 。 - 量化操作 量化是一种可以把FP32模型转化为低bit模型的操作，以节约网络存储空间、降低传输时延以及提高运算执行效率，量化操作可参见 量化模型转换 。 #### App集成 App集成流程包含创建项目、配置项目里的NAPI、集成模型，集成模型又包含加载模型、编译模型、模型输入数据预处理、运行模型、模型输出数据后处理流程。"
     },
     {
       "path": "references/配置项目NAPI.md",
@@ -3609,17 +3609,17 @@
     {
       "path": "references/随路格式转换.md",
       "title": "随路格式转换",
-      "snippet": "随路格式转换数据搬运，适用于在搬运时进行格式转换。 #### 函数原型 - 源操作数为GlobalTensor，目的操作数为LocalTensor（只支持ND2NZ格式转换） template <typename T> __aicore__ inline void DataCopy(const LocalTensor<T>& dstLocal, const GlobalTensor<T>& srcGlobal, const Nd2NzParams& intriParams); 该原型接口支持的数据通路和数据类型如下所示： **表1** 数据通路和数据类型（源操作数为GlobalTensor，目的操作数为LocalTensor） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e8/v3/QAAuKqPASP6OY6MLcA6sqQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111731Z&HW-CC-Expire=86400&HW-CC-Sign=2B4B6FD3D7A2584513848E824635D24E616EC0044485CC082F044586F4A1F9A2) 使用该接口时需要预留8K的U"
+      "snippet": "随路格式转换数据搬运，适用于在搬运时进行格式转换。 #### 函数原型 - 源操作数为GlobalTensor，目的操作数为LocalTensor（只支持ND2NZ格式转换） template <typename T> __aicore__ inline void DataCopy(const LocalTensor<T>& dstLocal, const GlobalTensor<T>& srcGlobal, const Nd2NzParams& intriParams); 该原型接口支持的数据通路和数据类型如下所示： **表1** 数据通路和数据类型（源操作数为GlobalTensor，目的操作数为LocalTensor） 使用该接口时需要预留8K的Unified Buffer空间，作为接口的临时数据存放区。 - 源操作数为LocalTensor，目的操作数为LocalTensor 支持ND2NZ格式转换： // 支持ND2NZ格式转换 template <typename T> __aicore__ inline void DataCopy(const LocalTensor<T>& dstLocal, const LocalTensor<T>& srcGlobal, const Nd2NzParams& intriParams); 该原型接口支持的数据通路和数据类型如下所示"
     },
     {
       "path": "references/集成模型.md",
       "title": "集成模型",
-      "snippet": "模型的加载、编译和推理主要是在native层实现，应用层主要作为数据传递和展示作用。 模型推理之前需要对输入数据进行预处理以匹配模型的输入，同样对于模型的输出也需要做处理获取自己期望的结果。另外SDK中提供了设置模型编译和运行时的配置接口，开发者可根据实际需求选择使用接口。 本节阐述同步模式下单模型的使用，从流程上分别阐述每个步骤在应用层和native层的实现和调用。接口请参见 API参考 ，示例请参见 SampleCode ，本示例支持加载离线模型对图片中的物体进行分类，App运行效果图如下所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/06/v3/kLLP0lIKSfKoJwnJEH3mag/zh-cn_image_0000002543215258.png?HW-CC-KV=V1&HW-CC-Date=20260421T111708Z&HW-CC-Expire=86400&HW-CC-Sign=E322474CC14C4A1BB0FF5398D08D908D9E470F2DD556660DC41866C5046C6ADF) #### 预置模型 为了让App运行时能够读取到模型文件和处理推理结果，需要先把离线模型和模型对应的结果标签文件预置到工程的“en"
+      "snippet": "模型的加载、编译和推理主要是在native层实现，应用层主要作为数据传递和展示作用。 模型推理之前需要对输入数据进行预处理以匹配模型的输入，同样对于模型的输出也需要做处理获取自己期望的结果。另外SDK中提供了设置模型编译和运行时的配置接口，开发者可根据实际需求选择使用接口。 本节阐述同步模式下单模型的使用，从流程上分别阐述每个步骤在应用层和native层的实现和调用。接口请参见 API参考 ，示例请参见 SampleCode ，本示例支持加载离线模型对图片中的物体进行分类，App运行效果图如下所示。 #### 预置模型 为了让App运行时能够读取到模型文件和处理推理结果，需要先把离线模型和模型对应的结果标签文件预置到工程的“entry/src/main/resources/rawfile”目录中。 本示例所使用的离线模型的转换和生成请参考 Caffe模型转换 。 #### 加载离线模型 在App应用创建时加载模型和读取结果标签文件。 1. 调用NAPI层的LoadModel函数，读取模型的buffer。 2. （可选）根据需要调用 HMS_HiAIOptions_SetOmOptions 接口，打开维测功能（如Profiling）。 3. 把模型buffer传递给HIAIModelManager类的HIAIModelManager::LoadModelFromBuffer接口，该接"
     },
     {
       "path": "references/高阶API.md",
       "title": "高阶API",
-      "snippet": "高阶API一般是基于单核对常见算法的抽象和封装，用于提高编程开发效率，通常会调用多种基础API实现。高阶API当前仅支持Matmul。 如下图所示，实现一个矩阵乘操作，使用基础API需要的步骤较多，需要关注格式转换、数据切分等逻辑；使用高阶API则无需关注这些逻辑，直接传入输入矩阵，调用接口获取输出即可。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0/v3/DjXYEeIESsyNNpjuwNg_Kw/zh-cn_image_0000002543215274.png?HW-CC-KV=V1&HW-CC-Date=20260421T111711Z&HW-CC-Expire=86400&HW-CC-Sign=663B03ABB3EE2FB630D236F5EFF76B06770AF145B7830CA6CAD4F5F5343DA09E) 注意，在程序中调用高阶API的Tiling接口或者使用高阶API的Tiling结构体参数时，需要引入依赖的头文件，示例如下。 #include \"register/tilingdata_base.h\" #include \"lib/tiling_api.h\" namespace optiling { BEGIN_TILING_DA"
+      "snippet": "高阶API一般是基于单核对常见算法的抽象和封装，用于提高编程开发效率，通常会调用多种基础API实现。高阶API当前仅支持Matmul。 如下图所示，实现一个矩阵乘操作，使用基础API需要的步骤较多，需要关注格式转换、数据切分等逻辑；使用高阶API则无需关注这些逻辑，直接传入输入矩阵，调用接口获取输出即可。 注意，在程序中调用高阶API的Tiling接口或者使用高阶API的Tiling结构体参数时，需要引入依赖的头文件，示例如下。 #include \"register/tilingdata_base.h\" #include \"lib/tiling_api.h\" namespace optiling { BEGIN_TILING_DATA_DEF(MatmulCustomTilingData) TILING_DATA_FIELD_DEF_STRUCT(TCubeTiling, cubeTilingData); END_TILING_DATA_DEF; REGISTER_TILING_DATA_CLASS(MatmulCustom, MatmulCustomTilingData); } // namespace optiling"
     },
     {
       "path": "references/高阶API迁移指导.md",

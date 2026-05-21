@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:11:13.895Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -58,16 +59,22 @@
       "期望帧率或渲染时序配置 / Desired frame rate or rendering timing configuration"
     ],
     "outputs": [
-      "Kit简介与术语",
-      "图形绘制与显示概述",
-      "文本绘制与显示",
-      "字体管理",
-      "图元绘制",
-      "绘制效果",
-      "画布操作",
-      "可变帧率",
-      "Native图形能力",
-      "调试与问题排查"
+      "Canvas画布对象（ArkTS drawing.Canvas / Native OH_Drawing_Canvas） / Canvas drawing object (ArkTS drawing.Canvas / Native OH_Drawing_Canvas)",
+      "Bitmap位图与Image图像对象（drawing.Bitmap、drawing.Image、OH_Drawing_Bitmap、OH_Drawing_Image） / Bitmap and image objects (drawing.Bitmap, drawing.Image, OH_Drawing_Bitmap, OH_Drawing_Image)",
+      "由几何图形、文本和图片组成的2D绘制结果 / 2D rendering output composed of shapes, text, and images",
+      "可上屏显示的绘制帧（ArkTS通过RenderNode，C/C++通过XComponent） / Displayable rendered frames (via RenderNode in ArkTS, via XComponent in C/C++)",
+      "Brush画刷、Pen画笔、Path路径等绘制效果与图元对象 / Drawing effect and primitive objects such as Brush, Pen, and Path",
+      "TextBlob字块、Paragraph段落/复杂文本布局对象 / TextBlob glyph-run objects and Paragraph/complex text layout objects",
+      "文本测量结果（文本宽度、高度、边界矩形、字形位置等） / Text measurement results such as width, height, bounds, and glyph positions",
+      "系统字体信息列表与字体描述对象 / System font information lists and font descriptor objects",
+      "注册后的自定义字体/Typeface字体对象 / Registered custom font or Typeface objects",
+      "图像效果处理后的图像结果（模糊、灰度、亮度调整、取色等） / Image results after effects processing such as blur, grayscale, brightness adjustment, and color extraction",
+      "NativeWindow窗口对象与NativeWindowBuffer窗口缓冲区 / NativeWindow objects and NativeWindowBuffer window buffers",
+      "NativeBuffer图形缓冲区对象 / NativeBuffer graphics buffer objects",
+      "NativeImage图像对象及其关联的Surface/纹理数据 / NativeImage objects and associated surface or texture data",
+      "NativeVSync垂直同步回调时间戳/帧信号 / NativeVSync callback timestamps and frame signals",
+      "NativeDisplaySoloist显示独奏器帧调度结果 / NativeDisplaySoloist display-frame scheduling results",
+      "可变帧率请求/配置结果与生效的帧率策略 / Variable frame-rate request/configuration results and effective frame-rate policy"
     ],
     "postconditions": [
       {

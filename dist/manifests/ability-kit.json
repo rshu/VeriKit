@@ -3,7 +3,7 @@
   "skill": "ability-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:27.814Z"
+    "at": "2026-05-21T03:47:43.723Z"
   },
   "references": [
     {
@@ -39,12 +39,12 @@
     {
       "path": "references/DataAbility组件配置.md",
       "title": "DataAbility组件配置",
-      "snippet": "DataAbility的提供方和使用方都通过URI（Uniform Resource Identifier）来标识一个具体的数据，例如数据库中的某个表或磁盘上的某个文件。此处的URI仍基于URI通用标准，格式如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bf/v3/VZZUhzdfRYeCMqHz0UfCbQ/zh-cn_image_0000002573973435.png?HW-CC-KV=V1&HW-CC-Date=20260421T110749Z&HW-CC-Expire=86400&HW-CC-Sign=898162315B7CE5547CC418869DEF9E49566AB1C54538AD2E82A049414C87F61E) - scheme：协议方案名，固定为\"dataability\"，代表Data Ability所使用的协议类型。 - authority：设备ID。如果为跨设备场景，则为目标设备的ID；如果为本地设备场景，则不需要填写。 - path：资源的路径信息，代表特定资源的位置信息。 - query：查询参数。 - fragment：可以用于指示要访问的子资源。 URI示例： - 跨设备场景：dataability://dev"
+      "snippet": "DataAbility的提供方和使用方都通过URI（Uniform Resource Identifier）来标识一个具体的数据，例如数据库中的某个表或磁盘上的某个文件。此处的URI仍基于URI通用标准，格式如下： - scheme：协议方案名，固定为\"dataability\"，代表Data Ability所使用的协议类型。 - authority：设备ID。如果为跨设备场景，则为目标设备的ID；如果为本地设备场景，则不需要填写。 - path：资源的路径信息，代表特定资源的位置信息。 - query：查询参数。 - fragment：可以用于指示要访问的子资源。 URI示例： - 跨设备场景：dataability://device_id/com.domainname.dataability.persondata/person/10 - 本地设备：dataability:///com.domainname.dataability.persondata/person/1 本地设备的\"device_id\"字段为空，因此在\"dataability:\"后面有三个\"/\"。 #### 部分配置项介绍 与PageAbility类似，DataAbility的相关配置在config.json配置文件的\"module\"对象的\"abilities\"对象中，与PageAbility的区别在于\"type\""
     },
     {
       "path": "references/EmbeddedUIExtensionAbility.md",
       "title": "EmbeddedUIExtensionAbility",
-      "snippet": "EmbeddedUIExtensionAbility 是EMBEDDED_UI类型的 ExtensionAbility 组件，提供了跨进程界面嵌入的能力。 EmbeddedUIExtensionAbility需要和 EmbeddedComponent 一起配合使用，开发者可以在 UIAbility 的页面中通过EmbeddedComponent嵌入本应用的EmbeddedUIExtensionAbility提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，完成其页面的布局和渲染，与UIAbility数据不互通，适用于有进程隔离诉求的模块化开发场景。 在下面的示例中，UIAbility运行在主进程，其中包含多个EmbeddedComponent。每个EmbeddedComponent对应一个EmbeddedUIExtensionAbility。多个EmbeddedUIExtensionAbility可以分别用于实现办公软件中的文档、表格、演示文件。 **图1** EmbeddedUIExtensionAbility示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4/v3/NEnWIRl2SbWFOcLjbTuLeA/zh-cn"
+      "snippet": "EmbeddedUIExtensionAbility 是EMBEDDED_UI类型的 ExtensionAbility 组件，提供了跨进程界面嵌入的能力。 EmbeddedUIExtensionAbility需要和 EmbeddedComponent 一起配合使用，开发者可以在 UIAbility 的页面中通过EmbeddedComponent嵌入本应用的EmbeddedUIExtensionAbility提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，完成其页面的布局和渲染，与UIAbility数据不互通，适用于有进程隔离诉求的模块化开发场景。 在下面的示例中，UIAbility运行在主进程，其中包含多个EmbeddedComponent。每个EmbeddedComponent对应一个EmbeddedUIExtensionAbility。多个EmbeddedUIExtensionAbility可以分别用于实现办公软件中的文档、表格、演示文件。 **图1** EmbeddedUIExtensionAbility示意图 #### 约束限制 当前EmbeddedUIExtensionAbility和EmbeddedComponent仅支持在拥有多进程配置的设备上使用，目前支持多进程配置的设备有2in1与Tablet。 #### 生命周期 Embedde"
     },
     {
       "path": "references/FA模型应用配置文件.md",
@@ -69,7 +69,7 @@
     {
       "path": "references/PageAbility的生命周期.md",
       "title": "PageAbility的生命周期",
-      "snippet": "PageAbility生命周期是PageAbility被调度到INACTIVE、ACTIVE、BACKGROUND等各个状态的统称。PageAbility生命周期流转及状态说明如图1、表1所示。 **图1** PageAbility生命周期流转 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ab/v3/W_BEpLP6ROydomafAithpg/zh-cn_image_0000002543213544.png?HW-CC-KV=V1&HW-CC-Date=20260421T110746Z&HW-CC-Expire=86400&HW-CC-Sign=9CBA1E0068D2D283B12EC9516D3DB58317414F6354D7329D5D00BFF3D7C20FD9) **表1** PageAbility生命周期状态说明 开发者可以在app.js/app.ets中实现生命周期相关回调函数，PageAbility生命周期相关回调函数见下表。 **表2** PageAbility生命周期回调接口说明 PageAbility生命周期回调与生命周期状态的关系如下图所示。 **图2** PageAbility生命周期回调与生命周期状态的关系 ![](https:"
+      "snippet": "PageAbility生命周期是PageAbility被调度到INACTIVE、ACTIVE、BACKGROUND等各个状态的统称。PageAbility生命周期流转及状态说明如图1、表1所示。 **图1** PageAbility生命周期流转 **表1** PageAbility生命周期状态说明 开发者可以在app.js/app.ets中实现生命周期相关回调函数，PageAbility生命周期相关回调函数见下表。 **表2** PageAbility生命周期回调接口说明 PageAbility生命周期回调与生命周期状态的关系如下图所示。 **图2** PageAbility生命周期回调与生命周期状态的关系 1. PageAbility的生命周期回调均为同步接口。 2. 目前app.js环境中仅支持onCreate和onDestroy回调，app.ets环境支持全量生命周期回调。 #### 开发指导 下面通过一个完整的示例展示FA模型PageAbility生命周期的使用。 1. 在app.ets文件中实现Ability生命周期回调。 // app.ets示例代码如下： import commonEvent from '@ohos.commonEvent'; import { BusinessError } from '@kit.BasicServicesKit'; const TA"
     },
     {
       "path": "references/PageAbility组件概述.md",
@@ -104,12 +104,12 @@
     {
       "path": "references/Stage模型开发概述.md",
       "title": "Stage模型开发概述",
-      "snippet": "下图展示了 Stage模型 中的基本概念。 **图1** Stage模型概念图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/47/v3/f6NuQJYWSMaCagB_aKntGQ/zh-cn_image_0000002543373180.png?HW-CC-KV=V1&HW-CC-Date=20260421T110734Z&HW-CC-Expire=86400&HW-CC-Sign=C898B53750F8514C14B743B1212A5A74A0F8E50E49ADF982E6D0747C20DDC0A0) - AbilityStage 每个Entry类型或者Feature类型的 HAP 在运行期都有一个AbilityStage实例，当 HAP 中的代码首次被加载到进程中的时候，系统会先创建AbilityStage实例。 - UIAbility组件 和 ExtensionAbility组件 Stage模型提供UIAbility和ExtensionAbility两种类型的组件，这两种组件都有具体的类承载，支持面向对象的开发方式。 - UIAbility组件是一种包含UI的应用组件，主要用于和用户交互。例如，图库类应用可以在UIAbility组件中展示图片瀑"
+      "snippet": "下图展示了 Stage模型 中的基本概念。 **图1** Stage模型概念图 - AbilityStage 每个Entry类型或者Feature类型的 HAP 在运行期都有一个AbilityStage实例，当 HAP 中的代码首次被加载到进程中的时候，系统会先创建AbilityStage实例。 - UIAbility组件 和 ExtensionAbility组件 Stage模型提供UIAbility和ExtensionAbility两种类型的组件，这两种组件都有具体的类承载，支持面向对象的开发方式。 - UIAbility组件是一种包含UI的应用组件，主要用于和用户交互。例如，图库类应用可以在UIAbility组件中展示图片瀑布流，在用户选择某个图片后，在新的页面中展示图片的详细内容。同时用户可以通过返回键返回到瀑布流页面。UIAbility组件的生命周期只包含创建、销毁、前台、后台等状态，与显示相关的状态通过WindowStage的事件暴露给开发者。 - ExtensionAbility组件是一种面向特定场景的应用组件。开发者并不直接从ExtensionAbility组件派生，而是需要使用ExtensionAbility组件的派生类。目前ExtensionAbility组件有用于卡片场景的FormExtensionAbility，用于输入法场景的InputMethodExten"
     },
     {
       "path": "references/UIAbility备份恢复.md",
       "title": "UIAbility备份恢复",
-      "snippet": "当应用后台运行时，可能由于系统资源管控等原因导致应用关闭、进程退出，应用直接退出可能会导致用户数据丢失。如果应用在 UIAbilityContext 中启用了 UIAbility 备份恢复功能，并对临时数据进行保存，则可以在应用退出后的下一次启动时恢复先前的状态和数据（包括应用的页面栈以及 onSaveState 接口中保存的数据），从而保证用户体验的连贯性。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ba/v3/ADcoDO6MRCe9NF8FxWwH9g/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110736Z&HW-CC-Expire=86400&HW-CC-Sign=E06AF6CDC42EB4D3BB90561362E7B3A8A82BB0994D4DA5EF295A835B55665B00) 应用正常关闭时，不会触发 UIAbility 备份流程。应用正常启动（例如通过startAbility接口启动或点击图标启动）时，不触发 UIAbility 恢复流程。 #### 运行机制 - UIAbility数据备份：当应用后台运行时，如果因系统资源管控、进程被kill、异常崩溃等非正常原因退出"
+      "snippet": "当应用后台运行时，可能由于系统资源管控等原因导致应用关闭、进程退出，应用直接退出可能会导致用户数据丢失。如果应用在 UIAbilityContext 中启用了 UIAbility 备份恢复功能，并对临时数据进行保存，则可以在应用退出后的下一次启动时恢复先前的状态和数据（包括应用的页面栈以及 onSaveState 接口中保存的数据），从而保证用户体验的连贯性。 应用正常关闭时，不会触发 UIAbility 备份流程。应用正常启动（例如通过startAbility接口启动或点击图标启动）时，不触发 UIAbility 恢复流程。 #### 运行机制 - UIAbility数据备份：当应用后台运行时，如果因系统资源管控、进程被kill、异常崩溃等非正常原因退出时，系统自动调用onSaveState进行备份。 - UIAbility数据恢复：恢复的Want数据可以在应用的onCreate生命周期中获取，页面栈数据在应用的onWindowStageCreate生命周期中恢复。 #### 约束限制 - UIAbility 备份恢复支持多实例，备份数据保存7天，以文件的形式存储在应用的沙箱路径中。 - 备份数据存储在 Want 中的parameter字段中，由于序列化大小限制，支持的最大数据量为200KB。 - 重启设备不支持还原备份。 - UIExtensionAbility 不支持备份恢复"
     },
     {
       "path": "references/UIAbility组件与UI的数据同步.md",
@@ -119,7 +119,7 @@
     {
       "path": "references/UIAbility组件启动模式.md",
       "title": "UIAbility组件启动模式",
-      "snippet": "UIAbility 的启动模式是指UIAbility实例在启动时的不同呈现状态。针对不同的业务场景，系统提供了三种启动模式： - singleton（单实例模式） - multiton（多实例模式） - specified（指定实例模式） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8d/v3/Ew5EUzKbQrip1X8te2wIbg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110735Z&HW-CC-Expire=86400&HW-CC-Sign=91F797B29407285568A62034871CD63320C40E6358964D1A9FA027BEBD005EF8) standard是multiton的曾用名，效果与多实例模式一致。 #### singleton启动模式 singleton启动模式为单实例模式，也是默认情况下的启动模式。 每次调用 startAbility() 方法时，如果应用进程中该类型的 UIAbility 实例已经存在，则复用系统中的UIAbility实例。系统中只存在唯一一个该UIAbility实例，即在最近任务列表中只存在一个该类型的UIAbility实例。"
+      "snippet": "UIAbility 的启动模式是指UIAbility实例在启动时的不同呈现状态。针对不同的业务场景，系统提供了三种启动模式： - singleton（单实例模式） - multiton（多实例模式） - specified（指定实例模式） standard是multiton的曾用名，效果与多实例模式一致。 #### singleton启动模式 singleton启动模式为单实例模式，也是默认情况下的启动模式。 每次调用 startAbility() 方法时，如果应用进程中该类型的 UIAbility 实例已经存在，则复用系统中的UIAbility实例。系统中只存在唯一一个该UIAbility实例，即在最近任务列表中只存在一个该类型的UIAbility实例。 **图1** 单实例模式演示效果 应用的UIAbility实例已创建，该UIAbility配置为单实例模式，再次调用 startAbility() 方法启动该UIAbility实例。由于启动的还是原来的UIAbility实例，并未重新创建一个新的UIAbility实例，此时只会进入该UIAbility的 onNewWant() 回调，不会进入其 onCreate() 和 onWindowStageCreate() 生命周期回调。如果已经创建的实例仍在启动过程中，调用startAbility()方法启动该实例，将收到错误码1600"
     },
     {
       "path": "references/UIAbility组件基本用法.md",
@@ -129,17 +129,17 @@
     {
       "path": "references/UIAbility组件概述.md",
       "title": "UIAbility组件概述",
-      "snippet": "UIAbility 组件是一种包含UI的应用组件，主要用于和用户交互。例如，图库类应用可以在UIAbility组件中展示图片瀑布流。 UIAbility的设计理念： 1. 支持应用组件级的跨端迁移和多端协同。 2. 支持多设备和多窗口形态。 UIAbility划分原则与建议： UIAbility组件是系统调度的基本单元，为应用提供绘制界面的窗口。一个应用可以包含一个或多个UIAbility组件。例如，在支付应用中，可以将入口功能和收付款功能分别配置为独立的UIAbility。 每一个UIAbility组件实例都会在最近任务列表中显示一个对应的任务。 对于开发者而言，可以根据具体场景选择单个还是多个UIAbility，划分建议如下： - 如果开发者希望在任务视图中看到一个任务，建议使用“一个UIAbility+多个页面”的方式，可以避免不必要的资源加载。 - 如果开发者希望在任务视图中看到多个任务，或者需要同时开启多个窗口，建议使用多个UIAbility实现不同的功能。 例如，即时通讯类应用中的消息列表与音视频通话采用不同的UIAbility进行开发，既可以方便地切换任务窗口，又可以实现应用的两个任务窗口在一个屏幕上分屏显示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_1"
+      "snippet": "UIAbility 组件是一种包含UI的应用组件，主要用于和用户交互。例如，图库类应用可以在UIAbility组件中展示图片瀑布流。 UIAbility的设计理念： 1. 支持应用组件级的跨端迁移和多端协同。 2. 支持多设备和多窗口形态。 UIAbility划分原则与建议： UIAbility组件是系统调度的基本单元，为应用提供绘制界面的窗口。一个应用可以包含一个或多个UIAbility组件。例如，在支付应用中，可以将入口功能和收付款功能分别配置为独立的UIAbility。 每一个UIAbility组件实例都会在最近任务列表中显示一个对应的任务。 对于开发者而言，可以根据具体场景选择单个还是多个UIAbility，划分建议如下： - 如果开发者希望在任务视图中看到一个任务，建议使用“一个UIAbility+多个页面”的方式，可以避免不必要的资源加载。 - 如果开发者希望在任务视图中看到多个任务，或者需要同时开启多个窗口，建议使用多个UIAbility实现不同的功能。 例如，即时通讯类应用中的消息列表与音视频通话采用不同的UIAbility进行开发，既可以方便地切换任务窗口，又可以实现应用的两个任务窗口在一个屏幕上分屏显示。 任务视图用于快速查看和管理当前设备上运行的所有任务或应用。 #### 声明配置 为使应用能够正常使用UIAbility，需要在 module.json5配置文"
     },
     {
       "path": "references/UIAbility组件生命周期.md",
       "title": "UIAbility组件生命周期",
-      "snippet": "当用户在执行应用启动、应用前后台切换、应用退出等操作时，系统会触发相关应用组件的生命周期回调。其中，UIAbility组件的核心生命周期回调包括 onCreate 、 onForeground 、 onBackground 、 onDestroy 。作为一种包含UI的应用组件，UIAbility的生命周期不可避免地与 WindowStage 的生命周期存在关联关系。 UIAbility的生命周期示意图如下所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ad/v3/vScYLCUTSQKweL0_cHA_PQ/zh-cn_image_0000002573853433.png?HW-CC-KV=V1&HW-CC-Date=20260421T110735Z&HW-CC-Expire=86400&HW-CC-Sign=9F6DBABFB029D049E30CEFEDFABDB47420900BFD0752D517256FAFD66A222FDD) 以下是UIAbility启动到前台和后台两种场景说明，以及生命周期回调流程讲解。 - UIAbility启动到前台，对应流程图参见上图。 1. 当用户启动一个UIAbility时，系统会依次触发onCreate()、on"
+      "snippet": "当用户在执行应用启动、应用前后台切换、应用退出等操作时，系统会触发相关应用组件的生命周期回调。其中，UIAbility组件的核心生命周期回调包括 onCreate 、 onForeground 、 onBackground 、 onDestroy 。作为一种包含UI的应用组件，UIAbility的生命周期不可避免地与 WindowStage 的生命周期存在关联关系。 UIAbility的生命周期示意图如下所示。 以下是UIAbility启动到前台和后台两种场景说明，以及生命周期回调流程讲解。 - UIAbility启动到前台，对应流程图参见上图。 1. 当用户启动一个UIAbility时，系统会依次触发onCreate()、onWindowStageCreate()、onForeground()生命周期回调。 2. 当用户跳转到其他应用（当前UIAbility切换到后台）时，系统会触发onBackground()生命周期回调。 3. 当用户再次将UIAbility切换到前台时，系统会依次触发onNewWant()、onForeground()生命周期回调。 - UIAbility启动到后台，对应流程图参见下图。 1. 当用户通过 UIAbilityContext.startAbilityByCall() 接口启动一个UIAbility到后台时，系统会依次触发onCreate()、o"
     },
     {
       "path": "references/Want概述.md",
       "title": "Want概述",
-      "snippet": "Want 是一种对象，用于在应用组件之间传递信息。 其中，一种常见的使用场景是作为 startAbility() 方法的参数。例如，当UIAbilityA需要启动UIAbilityB并向UIAbilityB传递一些数据时，可以使用Want作为一个载体，将数据传递给UIAbilityB。 **图1** Want用法示意 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/22/v3/w_r9a3AbSwKU4W8uYV1S4g/zh-cn_image_0000002573853439.png?HW-CC-KV=V1&HW-CC-Date=20260421T110737Z&HW-CC-Expire=86400&HW-CC-Sign=DB24C693C9A379811B5D57712BEE7EFAB8D5956156BBB3ECBF501C3B22B278E2) #### Want的类型 - **显式Want** ：在启动目标应用组件时，调用方传入的 want 参数中指定了abilityName和bundleName，称为显式Want。 显式Want通常用于应用内组件启动，通过在Want对象内指定本应用Bundle名称信息（bundleName）和abilityName来启"
+      "snippet": "Want 是一种对象，用于在应用组件之间传递信息。 其中，一种常见的使用场景是作为 startAbility() 方法的参数。例如，当UIAbilityA需要启动UIAbilityB并向UIAbilityB传递一些数据时，可以使用Want作为一个载体，将数据传递给UIAbilityB。 **图1** Want用法示意 #### Want的类型 - **显式Want** ：在启动目标应用组件时，调用方传入的 want 参数中指定了abilityName和bundleName，称为显式Want。 显式Want通常用于应用内组件启动，通过在Want对象内指定本应用Bundle名称信息（bundleName）和abilityName来启动应用内目标组件。当有明确处理请求的对象时，显式Want是一种简单有效的启动目标应用组件的方式。 从API 12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用，推荐通过指定 应用链接 的方式来实现。 import { common, Want } from '@kit.AbilityKit'; // ··· let wantInfo: Want = { deviceId: '', // deviceId为空表示本设备 bundleName: 'com.samples.wantoverview', abilityName: '"
     },
     {
       "path": "references/使用App Linking实现应用间跳转.md",
@@ -149,12 +149,12 @@
     {
       "path": "references/使用AppServiceExtensionAbility组件实现后台服务.md",
       "title": "使用AppServiceExtensionAbility组件实现后台服务",
-      "snippet": "从API version 20开始，支持开发者使用 AppServiceExtensionAbility 组件，为应用提供后台服务能力，其他三方应用可通过启动或连接该AppServiceExtensionAbility组件获取相应的服务。 例如，企业部署的数据防泄漏 (DLP) 软件需要能够长期无界面运行，持续监听文件操作、网络流量，并拦截违规行为，可以使用AppServiceExtensionAbility组件来实现其核心的后台监控服务。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/af/v3/YiLj3ObBQoq0QMe2mlc0Tg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110736Z&HW-CC-Expire=86400&HW-CC-Sign=2759D48CC9514BF8FC8146ED4A05E8332ABC692785AF8907B4BCCDADFDC5F80A) 本文将被启动或被连接的AppServiceExtensionAbility组件称为服务端，将启动或连接AppServiceExtensionAbility组件的应用组件（当前仅支持UIAbility）称为客户端。 ##"
+      "snippet": "从API version 20开始，支持开发者使用 AppServiceExtensionAbility 组件，为应用提供后台服务能力，其他三方应用可通过启动或连接该AppServiceExtensionAbility组件获取相应的服务。 例如，企业部署的数据防泄漏 (DLP) 软件需要能够长期无界面运行，持续监听文件操作、网络流量，并拦截违规行为，可以使用AppServiceExtensionAbility组件来实现其核心的后台监控服务。 本文将被启动或被连接的AppServiceExtensionAbility组件称为服务端，将启动或连接AppServiceExtensionAbility组件的应用组件（当前仅支持UIAbility）称为客户端。 #### 约束与限制 #### 设备限制 AppServiceExtensionAbility组件当前仅支持2in1设备。 #### 规格限制 - 应用集成AppServiceExtensionAbility组件需要申请ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。该ACL权限当前只对企业普通应用开放申请。 - AppServiceExtensionAbility组件内不支持调用 window 相关API。 #### 运作机制 开发者可以在 UIAbility 中以 启动 或"
     },
     {
       "path": "references/使用Deep Linking实现应用间跳转.md",
       "title": "使用Deep Linking实现应用间跳转",
-      "snippet": "采用Deep Linking进行跳转时，系统会根据接口中传入的uri信息，在本地已安装的应用中寻找到符合条件的应用并进行拉起。当匹配到多个应用时，会拉起应用选择框。 #### 实现原理 Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标应用。隐式Want的uri匹配规则详见 uri匹配规则 。 #### 目标应用操作指导 #### 配置module.json5文件 为了能够支持被其他应用访问，目标应用需要在 module.json5配置文件 中配置 skills标签 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/44/v3/OWbAdeFgTJWFmSUnLgPJUw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110740Z&HW-CC-Expire=86400&HW-CC-Sign=CE83711ABAAFCF4E66D4DA4748DE52359B4A1418D95FCD4E298C4694368000AC) skills标签下默认包含一个skill对象，用于标识应用入口。应用跳转链接不能在该skill对象中配置，需要创建独立的skill对象。如果存在多个跳转场景，需"
+      "snippet": "采用Deep Linking进行跳转时，系统会根据接口中传入的uri信息，在本地已安装的应用中寻找到符合条件的应用并进行拉起。当匹配到多个应用时，会拉起应用选择框。 #### 实现原理 Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标应用。隐式Want的uri匹配规则详见 uri匹配规则 。 #### 目标应用操作指导 #### 配置module.json5文件 为了能够支持被其他应用访问，目标应用需要在 module.json5配置文件 中配置 skills标签 。 skills标签下默认包含一个skill对象，用于标识应用入口。应用跳转链接不能在该skill对象中配置，需要创建独立的skill对象。如果存在多个跳转场景，需要在skills标签下创建不同的skill对象，否则会导致配置无法生效。 Deep Linking中的scheme可以自定义，但不能以\"ohos\"开头，也不建议使用\"https\"、\"http\"、\"file\"等系统已保留的scheme值，否则可能会拉起默认的系统应用而非目标应用。 配置示例如下： { \"module\": { // ··· \"abilities\": [ // ··· { // ··· \"skills\": [ { \"entities\": [ \"entity.system.home\" ], \"actions\": [ \"oh"
     },
     {
       "path": "references/使用显式Want启动应用组件.md",
@@ -199,7 +199,7 @@
     {
       "path": "references/创建_终止Native子进程（C_C++）.md",
       "title": "创建/终止Native子进程（C/C++）",
-      "snippet": "本模块提供了两种创建 Native子进程 的方式，以及一种终止子进程的方式。 - 创建支持IPC通信的Native子进程：创建子进程，并在父子进程间建立IPC通道，适用于父子进程需要IPC通信的场景。对IPCKit存在依赖。 - 创建支持参数传递的Native子进程：创建子进程，并传递字符串和fd句柄参数到子进程。适用于需要传递参数到子进程的场景。 - 终止子进程：终止当前进程创建的Native子进程或ArkTS子进程。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c4/v3/a0Pgs61zT-yFRzAH_1aR-g/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110751Z&HW-CC-Expire=86400&HW-CC-Sign=867D73B87E21D00897814889EC6B28993294773730B7D31B15094645E885AFB2) 创建的子进程会随着父进程的退出而退出，无法脱离父进程独立运行。 #### 创建支持IPC通信的Native子进程 #### 场景介绍 本章节介绍如何在主进程中创建Native子进程，并在父子进程间建立IPC通道，方便开发者在Native层"
+      "snippet": "本模块提供了两种创建 Native子进程 的方式，以及一种终止子进程的方式。 - 创建支持IPC通信的Native子进程：创建子进程，并在父子进程间建立IPC通道，适用于父子进程需要IPC通信的场景。对IPCKit存在依赖。 - 创建支持参数传递的Native子进程：创建子进程，并传递字符串和fd句柄参数到子进程。适用于需要传递参数到子进程的场景。 - 终止子进程：终止当前进程创建的Native子进程或ArkTS子进程。 创建的子进程会随着父进程的退出而退出，无法脱离父进程独立运行。 #### 创建支持IPC通信的Native子进程 #### 场景介绍 本章节介绍如何在主进程中创建Native子进程，并在父子进程间建立IPC通道，方便开发者在Native层进行多进程编程。 #### 接口说明 从API version 14开始，支持2in1和Tablet设备。API version 13及之前版本，仅支持2in1设备。 从API version 15开始，单个进程最多支持启动50个Native子进程。API version 14及之前版本，单个进程只能启动1个Native子进程。 #### 开发步骤 基于已创建完成的Native应用开发工程，在此基础上介绍如何使用AbilityKit提供的C API接口，创建Native子进程，并同时在父子进程间建立IPC通道。 **动态库文件**"
     },
     {
       "path": "references/启动DataAbility.md",
@@ -229,7 +229,7 @@
     {
       "path": "references/常见action与entities（不推荐使用）.md",
       "title": "常见action与entities（不推荐使用）",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/92/v3/xONl8uuDTXW2T9bHHf6mug/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110738Z&HW-CC-Expire=86400&HW-CC-Sign=63CBA8ED1935E7856637E50A82139B7149A85D1E684F21A7CD49D2C299F3CD2E) 由于action/entity被泛化使用，系统对应用声明action/entity的行为缺少管控，恶意应用虚假声明，抢占流量，导致跳转后功能不可用。后续系统会逐步废弃非必要action/entity，建议通过 指定类型的方式拉起应用 。 **action** ：表示调用方要执行的通用操作（如查看、分享、应用详情）。在隐式 Want 中，您可定义该字段，配合uri或parameters来表示对数据要执行的操作。如打开，查看该uri数据。例如，当uri为一段网址，action为ACTION_VIEW_DATA则表示匹配可访问该网址的应用组件。在Want内声明action字段表示希望被调用方应用支持声明的操作。在被调用方应用配置文件的 skills字段 内声明a"
+      "snippet": "由于action/entity被泛化使用，系统对应用声明action/entity的行为缺少管控，恶意应用虚假声明，抢占流量，导致跳转后功能不可用。后续系统会逐步废弃非必要action/entity，建议通过 指定类型的方式拉起应用 。 **action** ：表示调用方要执行的通用操作（如查看、分享、应用详情）。在隐式 Want 中，您可定义该字段，配合uri或parameters来表示对数据要执行的操作。如打开，查看该uri数据。例如，当uri为一段网址，action为ACTION_VIEW_DATA则表示匹配可访问该网址的应用组件。在Want内声明action字段表示希望被调用方应用支持声明的操作。在被调用方应用配置文件的 skills字段 内声明actions表示该应用支持声明操作。常见的action如下，具体的action取值请见 action常数说明 。 **常见action** - ACTION_HOME：启动应用入口组件的动作，需要和ENTITY_HOME配合使用；系统桌面应用图标就是显式的入口组件，点击也是启动入口组件；入口组件可以配置多个。 - ACTION_CHOOSE：选择本地资源数据，例如联系人、相册等；系统一般对不同类型的数据有对应的Picker应用，例如联系人和图库。 - ACTION_VIEW_DATA：查看数据，当使用网址uri时，则表示显示该网址"
     },
     {
       "path": "references/应用_组件级配置-1.md",
@@ -244,12 +244,12 @@
     {
       "path": "references/应用上下文Context.md",
       "title": "应用上下文Context",
-      "snippet": "Context 是应用中对象的上下文，其提供了应用的一些基础信息，例如 resourceManager （资源管理）、 applicationInfo （当前应用信息）、 area （文件分区）等。 #### 不同类型Context的对比 UIAbility 组件和各种 ExtensionAbility 派生类组件都有各自不同的Context类。分别有基类Context、 ApplicationContext 、 AbilityStageContext 、 UIAbilityContext 、 ExtensionContext 等Context。各类Context的继承和持有关系详见 不同类型Context的继承和持有关系 。 不同类型Context的获取方式与使用场景说明，如下表所示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b4/v3/215XXGiGTxqcNBocxCjBcg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110737Z&HW-CC-Expire=86400&HW-CC-Sign=DA0A1EE3275A3B7052B4D13584D6EB4B162930ED8FFB81A53"
+      "snippet": "Context 是应用中对象的上下文，其提供了应用的一些基础信息，例如 resourceManager （资源管理）、 applicationInfo （当前应用信息）、 area （文件分区）等。 #### 不同类型Context的对比 UIAbility 组件和各种 ExtensionAbility 派生类组件都有各自不同的Context类。分别有基类Context、 ApplicationContext 、 AbilityStageContext 、 UIAbilityContext 、 ExtensionContext 等Context。各类Context的继承和持有关系详见 不同类型Context的继承和持有关系 。 不同类型Context的获取方式与使用场景说明，如下表所示。 不同类型的Context具有不同的能力，不可相互替代或强行转换。例如， ApplicationContext 绑定了 setFontSizeScale 方法，但 UIAbilityContext 中没有此方法。因此，即使将UIAbilityContext强行转换为ApplicationContext，也无法调用setFontSizeScale方法。 **表1** 不同类型Context的说明 #### Context的获取方式 开发者如果需要通过Context获取应用资源、应用路径等信息，或者使用"
     },
     {
       "path": "references/应用启动框架AppStartup.md",
       "title": "应用启动框架AppStartup",
-      "snippet": "应用启动时通常需要执行一系列初始化启动任务，如果将启动任务都放在 HAP 的 UIAbility 组件的 onCreate 生命周期中，那么只能在主线程中依次执行，不但影响应用的启动速度，而且当启动任务过多时，任务之间复杂的依赖关系还会使得代码难以维护。 AppStartup提供了一种简单高效的应用启动方式，可以支持任务的异步启动，加快应用启动速度。同时，通过在一个配置文件中统一设置多个启动任务的执行顺序以及依赖关系，让执行启动任务的代码变得更加简洁清晰、容易维护。 #### 运行机制 启动框架支持以自动模式或手动模式执行启动任务，默认采用自动模式。在构造 AbilityStage 过程中开始加载开发者配置的启动任务，以自动模式执行启动任务。开发者也可以在AbilityStage创建完后调用 startupManager.run 方法，执行手动模式的启动任务。 **图1** 启动框架执行时机 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fb/v3/EI7gW297QzWYfshLFGiJaQ/zh-cn_image_0000002543373192.png?HW-CC-KV=V1&HW-CC-Date=20260421T110738Z&HW-CC-Expire"
+      "snippet": "应用启动时通常需要执行一系列初始化启动任务，如果将启动任务都放在 HAP 的 UIAbility 组件的 onCreate 生命周期中，那么只能在主线程中依次执行，不但影响应用的启动速度，而且当启动任务过多时，任务之间复杂的依赖关系还会使得代码难以维护。 AppStartup提供了一种简单高效的应用启动方式，可以支持任务的异步启动，加快应用启动速度。同时，通过在一个配置文件中统一设置多个启动任务的执行顺序以及依赖关系，让执行启动任务的代码变得更加简洁清晰、容易维护。 #### 运行机制 启动框架支持以自动模式或手动模式执行启动任务，默认采用自动模式。在构造 AbilityStage 过程中开始加载开发者配置的启动任务，以自动模式执行启动任务。开发者也可以在AbilityStage创建完后调用 startupManager.run 方法，执行手动模式的启动任务。 **图1** 启动框架执行时机 #### 支持的范围 - HAP：entry类型的HAP支持以自动和手动模式启动。从API version 20开始，feature类型的HAP支持以自动和手动模式启动。 - HSP/HAR: 从API version 18开始，支持在 HSP 和 HAR 中配置启动任务。HSP和HAR的启动任务、so预加载任务无法主动配置为自动模式，但可以被HAP中自动模式的启动任务、so预加载任务拉起。 "
     },
     {
       "path": "references/应用模型.md",
@@ -259,17 +259,17 @@
     {
       "path": "references/应用链接说明.md",
       "title": "应用链接说明",
-      "snippet": "当在 module.json5 文件的 skills字段 中声明uris时，主要包含如下字段。 - scheme：协议名称。常见的取值有http、https、file、ftp等，也可以自定义。 - host：域名或IP地址。例如域名developer.huawei.com或IP地址127.0.0.1。 - port：端口号。例如developer.huawei.com:80后面的80即为端口号。 - path：路径，表示域名服务器上的目录或文件路径，该字段在scheme存在时才有意义。path字段不支持通配符，如果需要使用通配符，可以采用pathRegex字段。 - pathStartWith：路径前缀，该字段在scheme存在时才有意义，表示域名服务器上的目录或文件路径的前缀，用于前缀匹配。 - pathRegex：路径正则，该字段在scheme存在时才有意义，表示域名服务器上的目录或文件路径的正则表达式，用于正则匹配。 - linkFeature ：应用的功能类型（如文件打开、分享、导航等）。取值为长度不超过127字节的字符串，不支持中文。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c4/v3/wCTj2WVAQwGsZ4Fa6edUlw/note_3."
+      "snippet": "当在 module.json5 文件的 skills字段 中声明uris时，主要包含如下字段。 - scheme：协议名称。常见的取值有http、https、file、ftp等，也可以自定义。 - host：域名或IP地址。例如域名developer.huawei.com或IP地址127.0.0.1。 - port：端口号。例如developer.huawei.com:80后面的80即为端口号。 - path：路径，表示域名服务器上的目录或文件路径，该字段在scheme存在时才有意义。path字段不支持通配符，如果需要使用通配符，可以采用pathRegex字段。 - pathStartWith：路径前缀，该字段在scheme存在时才有意义，表示域名服务器上的目录或文件路径的前缀，用于前缀匹配。 - pathRegex：路径正则，该字段在scheme存在时才有意义，表示域名服务器上的目录或文件路径的正则表达式，用于正则匹配。 - linkFeature ：应用的功能类型（如文件打开、分享、导航等）。取值为长度不超过127字节的字符串，不支持中文。 - 通过浏览器拉起应用页面时，浏览器会将uri中scheme和host中的大写字母自动转化为小写字母，导致无法正确匹配应用。因此建议scheme和host中不要包含大写字母。 - path、pathStartWith、pathRegex的取"
     },
     {
       "path": "references/应用间跳转概述.md",
       "title": "应用间跳转概述",
-      "snippet": "应用跳转是指从一个应用跳转至另外一个应用，传递相应的数据、执行特定的功能。通过应用跳转可以满足用户更为真实丰富的场景诉求、提升交互体验的便捷性和流畅性。 #### 应用场景 应用间跳转在社交分享、推广营销等场景广泛使用。举例如下： - **社交分享：**在社交软件中分享位置链接、美食推荐链接、购物链接、游戏链接等，可以通过该链接快速跳转到匹配的导航App、美食App、购物App、游戏App等应用。 - **推广营销：**在视频类App、社交类App、浏览器App等广告投放平台中，嵌入需要推广的应用链接（该链接可能以文本、卡片、视频等形式呈现），通过该链接信息可以跳转到目标应用的指定页面；也可以在推送短信、发送邮件时，在正文中携带需要推广的应用链接，通过该链接信息可以跳转到目标应用的指定页面。 #### 应用跳转的两种类型 - 拉起指定应用 ：拉起方应用明确指定跳转的目标应用，来实现应用跳转。指向性跳转可以分为指定应用链接、指定Ability两种方式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/69/v3/JvYbpXUcSf2wLK5dWx3Erw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T1107"
+      "snippet": "应用跳转是指从一个应用跳转至另外一个应用，传递相应的数据、执行特定的功能。通过应用跳转可以满足用户更为真实丰富的场景诉求、提升交互体验的便捷性和流畅性。 #### 应用场景 应用间跳转在社交分享、推广营销等场景广泛使用。举例如下： - **社交分享：**在社交软件中分享位置链接、美食推荐链接、购物链接、游戏链接等，可以通过该链接快速跳转到匹配的导航App、美食App、购物App、游戏App等应用。 - **推广营销：**在视频类App、社交类App、浏览器App等广告投放平台中，嵌入需要推广的应用链接（该链接可能以文本、卡片、视频等形式呈现），通过该链接信息可以跳转到目标应用的指定页面；也可以在推送短信、发送邮件时，在正文中携带需要推广的应用链接，通过该链接信息可以跳转到目标应用的指定页面。 #### 应用跳转的两种类型 - 拉起指定应用 ：拉起方应用明确指定跳转的目标应用，来实现应用跳转。指向性跳转可以分为指定应用链接、指定Ability两种方式。 从API 12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用。关于如何从指定Ability方式切换到指定 应用链接 方式，详见 显式Want跳转切换应用链接跳转适配指导 。 - 指定应用链接（推荐）：通过 openLink 或 startAbility 接口来指定 应用链接 ，拉起目标应用页面。 - "
     },
     {
       "path": "references/应用预加载.md",
       "title": "应用预加载",
-      "snippet": "从API version 20开始，提供应用预加载机制。该机制会根据用户的使用习惯，在系统资源充足时提前加载应用至特定阶段。当用户启动应用时，由于此前已完成了应用的部分加载，所需的启动时间会缩短，有助于提升用户体验和应用竞争力。 该机制尤其适用于因加载大量资源而启动耗时较长的应用，例如大型游戏应用和大型办公应用。 #### 约束限制 - 当前仅支持2in1设备。 - 仅支持entry模块的AbilityStage和UIAbility预加载。无论预加载到哪种阶段，entry模块必须配置入口UIAbility，详见 开发步骤 中步骤2。 - 应用配置预加载后，实际是否进行预加载以及具体的预加载时机，均由系统根据用户习惯等信息来综合决定。开发者无法对此进行干预。 #### 运行机制 当系统资源充足时，系统将应用加载到特定阶段，提升启动速度。当前支持预加载到三种阶段。开发者可以根据应用冷启动各阶段耗时情况，选择其中的一种。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/01/v3/WEtV7K4fQ6qJFko_UV0s3g/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110738Z&HW-CC-Expire=8"
+      "snippet": "从API version 20开始，提供应用预加载机制。该机制会根据用户的使用习惯，在系统资源充足时提前加载应用至特定阶段。当用户启动应用时，由于此前已完成了应用的部分加载，所需的启动时间会缩短，有助于提升用户体验和应用竞争力。 该机制尤其适用于因加载大量资源而启动耗时较长的应用，例如大型游戏应用和大型办公应用。 #### 约束限制 - 当前仅支持2in1设备。 - 仅支持entry模块的AbilityStage和UIAbility预加载。无论预加载到哪种阶段，entry模块必须配置入口UIAbility，详见 开发步骤 中步骤2。 - 应用配置预加载后，实际是否进行预加载以及具体的预加载时机，均由系统根据用户习惯等信息来综合决定。开发者无法对此进行干预。 #### 运行机制 当系统资源充足时，系统将应用加载到特定阶段，提升启动速度。当前支持预加载到三种阶段。开发者可以根据应用冷启动各阶段耗时情况，选择其中的一种。 在应用预加载过程中不会显示任何界面，因此在预加载的任何阶段不应包含与界面显示、界面交互或依赖用户可见的相关操作，同时应确保用户正式启动应用后，所有功能正常运行且体验不受影响。 - processCreated：进程创建完成阶段。开发者配置此阶段后，预加载机制会创建空进程并初始化Application，但是不会触发任何生命周期回调。 - abilityStageCreat"
     },
     {
       "path": "references/意图开发概述.md",
@@ -284,12 +284,12 @@
     {
       "path": "references/拉起图片编辑类应用（startAbilityByType）.md",
       "title": "拉起图片编辑类应用（startAbilityByType）",
-      "snippet": "当应用自身不具备图片编辑能力、但存在图片编辑的场景时，可以通过startAbilityByType拉起图片编辑类应用扩展面板，由对应的应用完成图片编辑操作。图片编辑类应用可以通过PhotoEditorExtensionAbility实现图片编辑页面，并将该页面注册到图片编辑面板，从而将图片编辑能力开放给其他应用。 流程示意图如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/91/v3/n50kZt8cS7mjYtQ53mvrCw/zh-cn_image_0000002573973431.png?HW-CC-KV=V1&HW-CC-Date=20260421T110742Z&HW-CC-Expire=86400&HW-CC-Sign=859EC4D0340FAD51BEDDBBC7BAFD042E515A3D4D71639FD60384BF1538DC82D9) 例如：用户在图库App中选择编辑图片时，图库App可以通过startAbilityByType拉起图片编辑类应用扩展面板。用户可以从已实现PhotoEditorExtensionAbility应用中选择一款，并进行图片编辑。 #### 接口说明 接口详情参见 PhotoEditorExtensionA"
+      "snippet": "当应用自身不具备图片编辑能力、但存在图片编辑的场景时，可以通过startAbilityByType拉起图片编辑类应用扩展面板，由对应的应用完成图片编辑操作。图片编辑类应用可以通过PhotoEditorExtensionAbility实现图片编辑页面，并将该页面注册到图片编辑面板，从而将图片编辑能力开放给其他应用。 流程示意图如下： 例如：用户在图库App中选择编辑图片时，图库App可以通过startAbilityByType拉起图片编辑类应用扩展面板。用户可以从已实现PhotoEditorExtensionAbility应用中选择一款，并进行图片编辑。 #### 接口说明 接口详情参见 PhotoEditorExtensionAbility 和 PhotoEditorExtensionContext 。 #### 图片编辑类应用实现图片编辑页面 1. 在DevEco Studio工程中手动新建一个PhotoEditorExtensionAbility。 1. 在工程Module对应的ets目录下，右键选择“New > Directory”，新建一个目录，如PhotoEditorExtensionAbility。 2. 在PhotoEditorExtensionAbility目录中，右键选择“New > File”，新建一个.ets文件，如ExamplePhotoEditorAbil"
     },
     {
       "path": "references/拉起导航类应用（startAbilityByType）.md",
       "title": "拉起导航类应用（startAbilityByType）",
-      "snippet": "本章节介绍如何拉起导航类应用扩展面板。 #### 导航类应用扩展面板参数说明 startAbilityByType接口中type字段为navigation，支持路线规划、导航、位置搜索三种意图场景，对应的wantParam参数如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ae/v3/Z-i4WQBbQ-KP3ZTguX66Og/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110741Z&HW-CC-Expire=86400&HW-CC-Sign=C92B51BE00D30C484E0286F7C7C30E10587597C267FDDED9D467BCD8E37B071D) 本文中的经纬度均采用GCJ-02坐标系统。 - 路线规划场景 - 导航场景 - 位置搜索场景 #### 拉起方开发步骤 1. 导入相关模块。 import { common } from '@kit.AbilityKit'; 2. 构造接口参数并调用startAbilityByType接口。 终点POI ID列表（destinationPoiIds）和起点POI ID列表（originPoiIds）需开发者自行从各地图系统中获"
+      "snippet": "本章节介绍如何拉起导航类应用扩展面板。 #### 导航类应用扩展面板参数说明 startAbilityByType接口中type字段为navigation，支持路线规划、导航、位置搜索三种意图场景，对应的wantParam参数如下： 本文中的经纬度均采用GCJ-02坐标系统。 - 路线规划场景 - 导航场景 - 位置搜索场景 #### 拉起方开发步骤 1. 导入相关模块。 import { common } from '@kit.AbilityKit'; 2. 构造接口参数并调用startAbilityByType接口。 终点POI ID列表（destinationPoiIds）和起点POI ID列表（originPoiIds）需开发者自行从各地图系统中获取，并按照对应关系传参。 @Entry @Component struct Index { @State hideAbility: string = 'hideAbility' build() { Row() { Column() { Text(this.hideAbility) .fontSize(30) .fontWeight(FontWeight.Bold) .onClick(() => { let context = this.getUIContext().getHostContext() as common.UIAbil"
     },
     {
       "path": "references/拉起快递类应用（startAbilityByType）.md",
@@ -299,22 +299,22 @@
     {
       "path": "references/拉起指定应用概述.md",
       "title": "拉起指定应用概述",
-      "snippet": "本章节主要介绍如何通过应用链接跳转的方式拉起指定应用。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/54/v3/YQeUkERgQNyGOSI9OCYhfA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110739Z&HW-CC-Expire=86400&HW-CC-Sign=8EA8DA9C14A430D458663A7E33EBC4D1A47F87156F38DEBE93C6F731C00F08CF) 从API 12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用。关于如何从指定Ability方式切换到指定 应用链接 方式，详见 显式Want跳转切换应用链接跳转适配指导 。 #### 应用链接 应用链接是指可以将用户引导至应用内特定位置或相关网页的URL，常见的格式如下。更多关于应用链接格式与字段含义的说明，详见 应用链接说明 。 scheme://host[:port]/path #### 运作机制 1. 目标应用在配置文件中注册自己的URL，并对外提供URL。 2. 拉起方应用在跳转接口中传入目标应用的URL等信息。 3. 系统接收到URL等相关信息，会寻找对应匹"
+      "snippet": "本章节主要介绍如何通过应用链接跳转的方式拉起指定应用。 从API 12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用。关于如何从指定Ability方式切换到指定 应用链接 方式，详见 显式Want跳转切换应用链接跳转适配指导 。 #### 应用链接 应用链接是指可以将用户引导至应用内特定位置或相关网页的URL，常见的格式如下。更多关于应用链接格式与字段含义的说明，详见 应用链接说明 。 scheme://host[:port]/path #### 运作机制 1. 目标应用在配置文件中注册自己的URL，并对外提供URL。 2. 拉起方应用在跳转接口中传入目标应用的URL等信息。 3. 系统接收到URL等相关信息，会寻找对应匹配项，并跳转至目标应用。 #### 应用链接分类 按照应用链接的scheme以及校验机制的不同，可以分为Deep Linking与App Linking两种方式。 - **Deep Linking** ：是一种通过链接跳转至应用特定页面的技术，其特点是支持开发者定义任意形式的scheme。由于缺乏域名校验机制，容易被其他应用所仿冒。 - **App Linking** ：其限定了scheme必须为https，同时通过增加域名校验机制，可以从已匹配到的应用中筛选过滤出目标应用，消除应用查询和定位中产生的歧义，直达受信的目标应用。 相"
     },
     {
       "path": "references/拉起指定类型的应用概述.md",
       "title": "拉起指定类型的应用概述",
-      "snippet": "本章节主要介绍拉起方应用如何通过指定应用类型、而非某个具体的应用，来实现应用跳转。通常有以下几种方式： - 通过startAbilityByType接口拉起垂类应用选择框：调用startAbilityByType接口拉起对应的垂类应用选择框（目前支持拉起导航、金融、邮件、航班、快递类应用）。选择框中将展示已接入的垂类应用，由用户选择打开指定的目标应用。 - 通过mailto方式跳转电子邮件应用：通过mailto电子邮件协议，可以创建指向电子邮件地址的超链接，方便用户通过网页或应用中的超链接直接跳转电子邮件应用。 - 通过startAbility接口打开文件：开发者可以通过调用startAbility接口，由系统从已安装的应用中寻找符合要求的应用，打开特定类型的文件。 #### 通过startAbilityByType接口拉起垂类应用选择框 #### 实现机制 开发者可通过特定的业务类型如导航、金融、邮件等，调用startAbilityByType接口拉起对应的垂类应用选择框。 - 如果当前设备已安装应用中存在匹配的应用，选择框中将展示已接入的垂类应用，由用户选择打开指定应用以实现相应的意图。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/28/v3/Yh1PfW"
+      "snippet": "本章节主要介绍拉起方应用如何通过指定应用类型、而非某个具体的应用，来实现应用跳转。通常有以下几种方式： - 通过startAbilityByType接口拉起垂类应用选择框：调用startAbilityByType接口拉起对应的垂类应用选择框（目前支持拉起导航、金融、邮件、航班、快递类应用）。选择框中将展示已接入的垂类应用，由用户选择打开指定的目标应用。 - 通过mailto方式跳转电子邮件应用：通过mailto电子邮件协议，可以创建指向电子邮件地址的超链接，方便用户通过网页或应用中的超链接直接跳转电子邮件应用。 - 通过startAbility接口打开文件：开发者可以通过调用startAbility接口，由系统从已安装的应用中寻找符合要求的应用，打开特定类型的文件。 #### 通过startAbilityByType接口拉起垂类应用选择框 #### 实现机制 开发者可通过特定的业务类型如导航、金融、邮件等，调用startAbilityByType接口拉起对应的垂类应用选择框。 - 如果当前设备已安装应用中存在匹配的应用，选择框中将展示已接入的垂类应用，由用户选择打开指定应用以实现相应的意图。 - 如果当前设备已安装应用中没有匹配的应用，系统将自动弹窗提示用户没有相关应用（下图以导航类应用匹配失败为例）。无需开发者适配。 这种方式可以为调用方提供统一的安全、可信的目标方应用，同时降低"
     },
     {
       "path": "references/拉起文件处理类应用（startAbility）.md",
       "title": "拉起文件处理类应用（startAbility）",
-      "snippet": "开发者可以通过调用 startAbility 接口，由系统从已安装的应用中寻找符合要求的应用，打开特定文件。 例如，在浏览器应用中下载PDF文件，可以调用此接口选择文件处理应用打开此PDF文件。开发者需要在请求中设置待打开文件的URI路径（ uri ）、文件格式（ type ）等字段，以便系统能够识别，直接拉起文件打开应用或弹出一个选择框，让用户选择合适的应用来打开文件，效果示意如下图所示。 图1 效果示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8d/v3/GoFJFVKnT6yvqrB8jew0mQ/zh-cn_image_0000002543373202.jpeg?HW-CC-KV=V1&HW-CC-Date=20260421T110742Z&HW-CC-Expire=86400&HW-CC-Sign=5188CFD64387BEEF49E6C9B0F9F7B620EC113F92225427D6F5C4B7694AD28529) #### 接口关键参数说明 开发者通过调用 startAbility 接口即可实现由已安装的垂域应用来打开文件。 表1 startAbility请求中 want 相关参数说明 **表2** parameters 相关参数"
+      "snippet": "开发者可以通过调用 startAbility 接口，由系统从已安装的应用中寻找符合要求的应用，打开特定文件。 例如，在浏览器应用中下载PDF文件，可以调用此接口选择文件处理应用打开此PDF文件。开发者需要在请求中设置待打开文件的URI路径（ uri ）、文件格式（ type ）等字段，以便系统能够识别，直接拉起文件打开应用或弹出一个选择框，让用户选择合适的应用来打开文件，效果示意如下图所示。 图1 效果示意图 #### 接口关键参数说明 开发者通过调用 startAbility 接口即可实现由已安装的垂域应用来打开文件。 表1 startAbility请求中 want 相关参数说明 **表2** parameters 相关参数说明 **表3** flags 相关参数说明 #### 接入步骤 #### 调用方接入步骤 1. 导入相关模块。 // xxx.ets import { fileUri } from '@kit.CoreFileKit'; import { UIAbility, Want, common, wantConstant } from '@kit.AbilityKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { window } from '@kit.ArkUI'; 2. 获取 "
     },
     {
       "path": "references/拉起系统应用.md",
       "title": "拉起系统应用",
-      "snippet": "本章节介绍拉起系统应用的方式，以及支持跳转系统应用的能力清单。 #### 拉起系统应用的方式 拉起系统应用除了使用前面章节介绍的方式（比如使用openLink拉起指定应用、使用startAbilityByType指定类型的应用），还可以采用如下方式。 - **使用系统Picker组件** 相机、文件管理、联系人等系统应用提供了系统Picker组件，支持开发者无需申请权限、即可使用系统应用的一些常用功能，比如访问用户的资源文件。 应用拉起系统Picker组件（文件选择器、照片选择器、联系人选择器等）后，由用户在Picker上选择对应的文件、照片、联系人等资源，应用即可获取到Picker的返回结果。例如，一个音频播放器应用可以通过AudioViewPicker让用户选择音频文件，然后获取所选的音频文件路径进行播放。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2b/v3/r2PAA4UxRNW64vbkvzdHkA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110742Z&HW-CC-Expire=86400&HW-CC-Sign=F161C93E6A98FA811B09CAF4D1830E1AA68D8"
+      "snippet": "本章节介绍拉起系统应用的方式，以及支持跳转系统应用的能力清单。 #### 拉起系统应用的方式 拉起系统应用除了使用前面章节介绍的方式（比如使用openLink拉起指定应用、使用startAbilityByType指定类型的应用），还可以采用如下方式。 - **使用系统Picker组件** 相机、文件管理、联系人等系统应用提供了系统Picker组件，支持开发者无需申请权限、即可使用系统应用的一些常用功能，比如访问用户的资源文件。 应用拉起系统Picker组件（文件选择器、照片选择器、联系人选择器等）后，由用户在Picker上选择对应的文件、照片、联系人等资源，应用即可获取到Picker的返回结果。例如，一个音频播放器应用可以通过AudioViewPicker让用户选择音频文件，然后获取所选的音频文件路径进行播放。 由于系统Picker已经获取了对应权限的预授权，开发者使用系统Picker时，无需再次申请权限也可临时受限访问对应的资源。例如，当应用需要读取用户图片时，可通过使用照片Picker，在用户选择所需要的图片资源后，直接返回该图片资源，而不需要授予应用读取图片文件的权限。 系统Picker由系统独立进程实现。 - **使用特定接口** 设置、电话、日历等应用提供了一些接口，通过这些接口可以直接跳转系统应用。 #### 支持跳转系统应用的能力清单 #### 设置 当前支持直接拉起"
     },
     {
       "path": "references/拉起航班类应用（startAbilityByType）.md",
@@ -324,12 +324,12 @@
     {
       "path": "references/拉起邮件类应用（mailto方式）.md",
       "title": "拉起邮件类应用（mailto方式）",
-      "snippet": "通过mailto电子邮件协议，可以创建指向电子邮件地址的超链接，方便用户通过网页或应用中的超链接直接跳转电子邮件应用。同时，支持在mailto:的相关字段中定义邮件的收件人、主题、正文内容等，节省用户编辑邮件的时间。 常见的应用场景举例如下： - - 用户在购物网站浏览产品页面时，看到“联系我们”按钮，点击后会拉起默认邮件客户端。收件人自动填写为客服邮箱，邮件主题设定为产品咨询。 - 在招聘岗位页面，点击“申请职位”按钮，会拉起邮件客户端。收件人地址为招聘邮箱，邮件主题为“应聘某职位”，正文可以预先填入申请模板。 - - 移动应用中，用户点击“反馈”按钮时，应用调用系统功能，拉起默认邮件客户端，预先填写反馈邮箱、问题描述等信息。 - ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f5/v3/gsmpFx3cRLWGlr_opCBuyw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110741Z&HW-CC-Expire=86400&HW-CC-Sign=BAA347B828ED17602532FE1B7196B2C3A44927C5203C2A4636E477F2A4140F6D) - 如果使用mailt"
+      "snippet": "通过mailto电子邮件协议，可以创建指向电子邮件地址的超链接，方便用户通过网页或应用中的超链接直接跳转电子邮件应用。同时，支持在mailto:的相关字段中定义邮件的收件人、主题、正文内容等，节省用户编辑邮件的时间。 常见的应用场景举例如下： - - 用户在购物网站浏览产品页面时，看到“联系我们”按钮，点击后会拉起默认邮件客户端。收件人自动填写为客服邮箱，邮件主题设定为产品咨询。 - 在招聘岗位页面，点击“申请职位”按钮，会拉起邮件客户端。收件人地址为招聘邮箱，邮件主题为“应聘某职位”，正文可以预先填入申请模板。 - - 移动应用中，用户点击“反馈”按钮时，应用调用系统功能，拉起默认邮件客户端，预先填写反馈邮箱、问题描述等信息。 - - 如果使用mailto方式拉起邮件应用，需要拉起方先按mailto格式封装字符串，再使用mailto方式拉起。邮件应用会解析收到的mailto协议字符串，并填充发件人、收件人、邮件内容等信息。 - 如果拉起方已知发件人、收件人、邮件内容等信息，推荐使用startAbilityByType方式拉起邮件应用。 #### mailto协议格式 mailto协议标准格式如下： mailto:someone@example.com?key1=value1&key2=value2 - mailto:：mailto scheme，必填。 - someone@exa"
     },
     {
       "path": "references/拉起邮件类应用（startAbilityByType）.md",
       "title": "拉起邮件类应用（startAbilityByType）",
-      "snippet": "本章节介绍如何拉起邮件类应用扩展面板。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c9/v3/udysGCgWSXmwMN7Rd-0wng/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110741Z&HW-CC-Expire=86400&HW-CC-Sign=9C812B3F958E5A9746C7B60305429A920D11701190D1605987908C08C4521F0D) 如果拉起方的参数为mailto协议字符串，可以 使用mailto方式拉起邮件应用 。邮件应用会解析收到的mailto协议字符串，并填充发件人、收件人、邮件内容等信息。 #### 邮件类应用扩展面板参数说明 startAbilityByType接口中type字段为mail，对应的wantParam参数： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f0/v3/IKijxPjmQI-v8eONCR6JEg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260"
+      "snippet": "本章节介绍如何拉起邮件类应用扩展面板。 如果拉起方的参数为mailto协议字符串，可以 使用mailto方式拉起邮件应用 。邮件应用会解析收到的mailto协议字符串，并填充发件人、收件人、邮件内容等信息。 #### 邮件类应用扩展面板参数说明 startAbilityByType接口中type字段为mail，对应的wantParam参数： - 邮件类应用扩展面板中的类型为string的参数，都要经过encodeURI编码。 - 邮件类应用扩展面板中的类型为string[]的参数，数组中的元素都要经过encodeURI编码。 #### 拉起方开发步骤 1. 导入相关模块。 import { common, wantConstant } from '@kit.AbilityKit'; 2. 构造接口参数并调用startAbilityByType接口。 @Entry @Component struct Index { @State hideAbility: string = 'hideAbility' build() { Row() { Column() { Text(this.hideAbility) .fontSize(30) .fontWeight(FontWeight.Bold) .onClick(() => { let context = this.getUIContext("
     },
     {
       "path": "references/拉起金融类应用（startAbilityByType）.md",
@@ -359,17 +359,17 @@
     {
       "path": "references/线程模型-1.md",
       "title": "线程模型",
-      "snippet": "线程是操作系统进行运算调度的基本单位，是 进程 中的执行流，共享进程的资源。一个进程可以包含多个线程。 #### 线程类型 Stage模型 下的线程主要有如下三类： - - 执行UI绘制。 - 管理主线程的ArkTS引擎实例，使多个UIAbility组件能够运行在其之上。 - 管理其他线程的ArkTS引擎实例，例如使用TaskPool（任务池）创建任务或取消任务、启动和终止Worker线程。 - 分发交互事件。 - 处理应用代码的回调，包括事件处理和生命周期管理。 - 接收TaskPool以及Worker线程发送的消息。 - TaskPool线程 - 用于执行耗时操作，支持设置调度优先级、负载均衡等功能，推荐使用。 - Worker线程 - 用于执行耗时操作，支持线程间通信。 TaskPool与Worker的运作机制、通信手段和使用方法可以参考 TaskPool和Worker的对比 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/17/v3/96tQK5dJTFebgAtWn3DABA/zh-cn_image_0000002573973433.png?HW-CC-KV=V1&HW-CC-Date=20260421T110743Z&HW-CC-Expire=86"
+      "snippet": "线程是操作系统进行运算调度的基本单位，是 进程 中的执行流，共享进程的资源。一个进程可以包含多个线程。 #### 线程类型 Stage模型 下的线程主要有如下三类： - - 执行UI绘制。 - 管理主线程的ArkTS引擎实例，使多个UIAbility组件能够运行在其之上。 - 管理其他线程的ArkTS引擎实例，例如使用TaskPool（任务池）创建任务或取消任务、启动和终止Worker线程。 - 分发交互事件。 - 处理应用代码的回调，包括事件处理和生命周期管理。 - 接收TaskPool以及Worker线程发送的消息。 - TaskPool线程 - 用于执行耗时操作，支持设置调度优先级、负载均衡等功能，推荐使用。 - Worker线程 - 用于执行耗时操作，支持线程间通信。 TaskPool与Worker的运作机制、通信手段和使用方法可以参考 TaskPool和Worker的对比 。 - TaskPool自行管理线程数量，其生命周期由TaskPool统一管理。Worker线程的生命周期由开发者自行维护。 - 同一线程中存在多个组件，例如UIAbility组件和UI组件都存在于主线程中。在Stage模型中目前主要使用EventHub进行数据通信。 - 执行hdc shell命令，进入设备的shell命令行。在shell命令行中，执行ps -p <pid> -T命令，可以查看指定应用"
     },
     {
       "path": "references/线程模型.md",
       "title": "线程模型",
-      "snippet": "FA模型 下的线程主要有如下三类： - 主线程： 负责管理其他线程。 - Ability线程： - 每个Ability一个线程。 - 输入事件分发。 - UI绘制。 - 应用代码回调（事件处理，生命周期）。 - 接收Worker发送的消息。 - Worker线程： 执行耗时操作。 基于当前的线程模型，不同的业务功能运行在不同的线程上，业务功能的交互就需要线程间通信。线程间通信目前主要有 Emitter 和 Worker 两种方式，其中Emitter主要适用于线程间的事件同步， Worker主要用于新开一个线程执行耗时任务。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/22/v3/ayvykvCGQN6MietMG5jLBA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110751Z&HW-CC-Expire=86400&HW-CC-Sign=50B3342749B7298CBC2700D59F2BAB1CC19C5B6B33C906C42DAA8B27E92EC8E3) FA模型每个Ability都有一个独立的线程，Emitter可用于Ability线程内、Ability线程间、Ability线程与Wo"
+      "snippet": "FA模型 下的线程主要有如下三类： - 主线程： 负责管理其他线程。 - Ability线程： - 每个Ability一个线程。 - 输入事件分发。 - UI绘制。 - 应用代码回调（事件处理，生命周期）。 - 接收Worker发送的消息。 - Worker线程： 执行耗时操作。 基于当前的线程模型，不同的业务功能运行在不同的线程上，业务功能的交互就需要线程间通信。线程间通信目前主要有 Emitter 和 Worker 两种方式，其中Emitter主要适用于线程间的事件同步， Worker主要用于新开一个线程执行耗时任务。 FA模型每个Ability都有一个独立的线程，Emitter可用于Ability线程内、Ability线程间、Ability线程与Worker线程的事件同步。"
     },
     {
       "path": "references/组件启动规则（FA模型）.md",
       "title": "组件启动规则（FA模型）",
-      "snippet": "启动组件是指一切启动或连接应用组件的行为： - 启动PageAbility、ServiceAbility，如使用startAbility()等相关接口。 - 连接ServiceAbility、DataAbility，如使用connectAbility()、acquireDataAbilityHelper()等相关接口。 为了保证用户具有更好的使用体验，对以下几种易影响用户体验与系统安全的行为做了限制： - 后台应用任意弹框，如各种广告弹窗，影响用户使用。 - 后台应用相互唤醒，不合理的占用系统资源，导致系统功耗增加或系统卡顿。 - 前台应用任意跳转至其他应用，如随意跳转到其他应用的支付页面，存在安全风险。 鉴于此，系统制定了一套组件启动规则，主要包括： - **跨应用启动组件，需校验目标组件Visible** - 只针对跨应用场景。 - 若目标组件visible字段配置为false，则需校验ohos.permission.START_INVISIBLE_ABILITY权限（该权限仅系统应用可申请）。 - 组件visible配置参考abilities对象的内部结构的visible属性。 - **位于后台的应用，启动组件需校验BACKGROUND权限** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAll"
+      "snippet": "启动组件是指一切启动或连接应用组件的行为： - 启动PageAbility、ServiceAbility，如使用startAbility()等相关接口。 - 连接ServiceAbility、DataAbility，如使用connectAbility()、acquireDataAbilityHelper()等相关接口。 为了保证用户具有更好的使用体验，对以下几种易影响用户体验与系统安全的行为做了限制： - 后台应用任意弹框，如各种广告弹窗，影响用户使用。 - 后台应用相互唤醒，不合理的占用系统资源，导致系统功耗增加或系统卡顿。 - 前台应用任意跳转至其他应用，如随意跳转到其他应用的支付页面，存在安全风险。 鉴于此，系统制定了一套组件启动规则，主要包括： - **跨应用启动组件，需校验目标组件Visible** - 只针对跨应用场景。 - 若目标组件visible字段配置为false，则需校验ohos.permission.START_INVISIBLE_ABILITY权限（该权限仅系统应用可申请）。 - 组件visible配置参考abilities对象的内部结构的visible属性。 - **位于后台的应用，启动组件需校验BACKGROUND权限** 基于API 8或更早版本SDK开发的应用在启动ServiceAbility组件或DataAbility组件时不受此限制的约束。 - "
     },
     {
       "path": "references/组件启动规则（Stage模型）.md",
@@ -419,7 +419,7 @@
     {
       "path": "references/进程模型概述.md",
       "title": "进程模型概述",
-      "snippet": "系统的进程模型如下图所示： - 应用中（同一包名）的所有PageAbility、ServiceAbility、DataAbility、FormAbility运行在同一个独立进程中，即图中绿色部分的“Main Process”。 - WebView拥有独立的渲染进程，即图中黄色部分的“Render Process”。 **图1** 进程模型示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/29/v3/bD4NQg8lRjKTwOblkOAfZQ/zh-cn_image_0000002573853459.png?HW-CC-KV=V1&HW-CC-Date=20260421T110751Z&HW-CC-Expire=86400&HW-CC-Sign=AD2BD772FF03D0FE33689DB939B1CC0BD0A469A9ADCA12FFD5648090BAF614FC) 基于当前的进程模型，针对应用间存在多个进程的情况，系统提供了如下进程间通信机制： 公共事件机制：多用于一对多的通信场景，公共事件发布者可能存在多个订阅者同时接收事件。"
+      "snippet": "系统的进程模型如下图所示： - 应用中（同一包名）的所有PageAbility、ServiceAbility、DataAbility、FormAbility运行在同一个独立进程中，即图中绿色部分的“Main Process”。 - WebView拥有独立的渲染进程，即图中黄色部分的“Render Process”。 **图1** 进程模型示意图 基于当前的进程模型，针对应用间存在多个进程的情况，系统提供了如下进程间通信机制： 公共事件机制：多用于一对多的通信场景，公共事件发布者可能存在多个订阅者同时接收事件。"
     },
     {
       "path": "references/连接ServiceAbility.md",
@@ -429,7 +429,7 @@
     {
       "path": "references/通过Call调用实现多端协同.md",
       "title": "通过Call调用实现多端协同",
-      "snippet": "Call调用是 UIAbility 能力的扩展，它为UIAbility提供一种能够被外部调用并与外部进行通信的能力。Call调用支持前台与后台两种启动方式，使UIAbility既能被拉起到前台展示UI，也可以在后台被创建并运行。通过建立跨进程通信（IPC）链路，它在调用方与被调用方间构建起数据通道。当在分布式场景下使用时，Call调用可以跨设备发起，使得一个设备上的应用能够将任务迁移至另一个设备上的UIAbility继续执行，从而完成跨端迁移。 Call调用的核心接口是 startAbilityByCall() 方法，与 startAbility() 接口的不同之处在于： - startAbilityByCall支持前台与后台两种启动方式，而startAbility()仅支持前台启动。 - 调用方可使用startAbilityByCall()所返回的 Caller 对象与被调用方进行通信，而startAbility()不具备通信能力。 #### 基本概念 **表1** Call调用相关名词解释 #### 约束限制 - CalleeAbility的启动模式不支持指定实例模式。 - 当前仅分布式迁移场景对第三方应用开放Call调用权限，其余所有Call调用场景均限定为系统内部调用。 #### 运行机制 Call调用示意图如下所示。 **图1** Call调用示意图 ![](https:"
+      "snippet": "Call调用是 UIAbility 能力的扩展，它为UIAbility提供一种能够被外部调用并与外部进行通信的能力。Call调用支持前台与后台两种启动方式，使UIAbility既能被拉起到前台展示UI，也可以在后台被创建并运行。通过建立跨进程通信（IPC）链路，它在调用方与被调用方间构建起数据通道。当在分布式场景下使用时，Call调用可以跨设备发起，使得一个设备上的应用能够将任务迁移至另一个设备上的UIAbility继续执行，从而完成跨端迁移。 Call调用的核心接口是 startAbilityByCall() 方法，与 startAbility() 接口的不同之处在于： - startAbilityByCall支持前台与后台两种启动方式，而startAbility()仅支持前台启动。 - 调用方可使用startAbilityByCall()所返回的 Caller 对象与被调用方进行通信，而startAbility()不具备通信能力。 #### 基本概念 **表1** Call调用相关名词解释 #### 约束限制 - CalleeAbility的启动模式不支持指定实例模式。 - 当前仅分布式迁移场景对第三方应用开放Call调用权限，其余所有Call调用场景均限定为系统内部调用。 #### 运行机制 Call调用示意图如下所示。 **图1** Call调用示意图 - CallerAb"
     },
     {
       "path": "references/附录：标准意图接入规范.md",
@@ -439,7 +439,7 @@
     {
       "path": "references/（可选）使用canOpenLink判断应用是否可访问.md",
       "title": "（可选）使用canOpenLink判断应用是否可访问",
-      "snippet": "在应用A想要拉起应用B的场景中，应用A可先调用canOpenLink接口判断应用B是否可访问，如果可访问，再拉起应用B。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/27/v3/EarK0RopTjeqcAXhcIqCzA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110739Z&HW-CC-Expire=86400&HW-CC-Sign=3314A11A2182B1074FD9B14368B40E83E47FF431B77CE23E3D326D1A2DA49840) canOpenLink接口不支持判断以App Linking方式跳转的目标应用是否可访问。 #### 约束限制 在entry模块的module.json5文件中的 querySchemes 字段中，从API version 21开始，最多允许配置200个URL scheme。API version 20及之前的版本，最多允许配置50个URL scheme。 #### 接口说明 canOpenLink是 bundleManager 提供的支持判断目标应用是否可访问的接口。 匹配规则请参考 显式Want与隐式Want匹配规则 。 #### "
+      "snippet": "在应用A想要拉起应用B的场景中，应用A可先调用canOpenLink接口判断应用B是否可访问，如果可访问，再拉起应用B。 canOpenLink接口不支持判断以App Linking方式跳转的目标应用是否可访问。 #### 约束限制 在entry模块的module.json5文件中的 querySchemes 字段中，从API version 21开始，最多允许配置200个URL scheme。API version 20及之前的版本，最多允许配置50个URL scheme。 #### 接口说明 canOpenLink是 bundleManager 提供的支持判断目标应用是否可访问的接口。 匹配规则请参考 显式Want与隐式Want匹配规则 。 #### 操作步骤 #### 调用方操作步骤 1. 在entry模块的module.json5文件中配置 querySchemes 属性，声明想要查询的URL scheme。 { \"module\": { //... \"querySchemes\": [ \"app1Scheme\" ] } } 2. 导入ohos.bundle.bundleManager模块。 3. 调用canOpenLink接口。 import { bundleManager } from '@kit.AbilityKit'; import { BusinessError } "
     }
   ]
 }

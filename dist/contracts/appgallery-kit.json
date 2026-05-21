@@ -5,13 +5,14 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:10:50.120Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
     "use_when": [
-      "应用市场",
+      "在HarmonyOS应用中接入AppGallery Kit数字商品服务（IAP），通过AppGallery Connect配置消耗型、非消耗型或订阅型数字商品，处理购买结果并发放商品权益 / Integrate AppGallery Kit Digital Goods service (IAP) in a HarmonyOS app to configure consumable, non-consumable, or subscription digital products in AppGallery Connect, handle purchase results, and grant product entitlements",
       "数字商品",
       "应用推荐",
       "按需分发",
@@ -61,14 +62,22 @@
       "应用更新、评论、推荐或图标管理相关请求参数 / app update, review, recommendation, or icon-management request parameters"
     ],
     "outputs": [
-      "Kit简介",
-      "数字商品服务",
-      "产品特性按需分发",
-      "应用归因服务",
-      "其他服务",
-      "数字商品常见问题",
-      "按需分发常见问题",
-      "归因与其他常见问题"
+      "数字商品详情列表（商品ID、名称、价格、类型、描述等） / Digital product details list (product ID, name, price, type, description, etc.)",
+      "购买结果对象（订单号、购买令牌、商品ID、支付状态、签名购买数据等） / Purchase result object (order ID, purchase token, product ID, payment status, signed purchase data, etc.)",
+      "已购商品或订阅查询结果（已拥有权益、订阅状态、到期时间、续费状态等） / Owned product or subscription query result (entitlements, subscription status, expiry time, renewal status, etc.)",
+      "消耗型商品消耗确认结果 / Consumable product consumption confirmation result",
+      "数字商品权益发放结果或服务端验签结果 / Digital entitlement delivery result or server-side purchase verification result",
+      "按需分发模块加载请求结果（模块名、任务ID、加载状态） / On-demand feature module loading request result (module name, task ID, loading status)",
+      "按需分发模块下载与安装进度事件（进度、状态码、错误码） / On-demand module download and installation progress event (progress, status code, error code)",
+      "已安装或已加载的按需分发模块列表 / Installed or loaded on-demand feature module list",
+      "归因来源登记结果与转化事件登记结果 / Attribution source registration result and conversion event registration result",
+      "归因结果回传数据（渠道、广告、场景值、转化信息等） / Attribution result postback data (channel, ad, scene value, conversion information, etc.)",
+      "应用市场推荐应用列表（应用名称、图标、包名或应用ID、跳转链接等） / AppGallery recommended app list (app name, icon, bundle name or app ID, deep link, etc.)",
+      "应用更新检测结果（是否有新版本、版本号、更新说明、更新入口等） / App update check result (whether a new version exists, version number, release notes, update entry, etc.)",
+      "生态查询结果（应用在华为生态中的场景值、分发状态等） / Ecosystem query result (scene value, distribution status, etc. in Huawei ecosystem)",
+      "隐私设置或用户授权状态结果 / Privacy settings or user authorization status result",
+      "应用评论调用结果或评论窗口展示结果 / App review invocation result or review dialog display result",
+      "应用图标切换结果与当前启用图标信息 / App icon switching result and currently enabled icon information"
     ],
     "postconditions": [
       {

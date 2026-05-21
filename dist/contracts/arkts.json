@@ -5,15 +5,16 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:11:30.349Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
     "use_when": [
       "ArkTS",
       "方舟语言",
-      "并发",
+      "在HarmonyOS ArkTS应用中，为避免阻塞UI主线程，将CPU密集型图片处理放入TaskPool执行，并使用Sendable对象在线程间高效传递结果 / In a HarmonyOS ArkTS app, offload CPU-intensive image processing to TaskPool to avoid blocking the UI thread, and use Sendable objects to efficiently pass results between threads",
       "Sendable",
       "字节码",
       "代码混淆",
@@ -62,18 +63,30 @@
       "构建与混淆配置文件（如build-profile.json5、ArkGuard配置） / Build and obfuscation config files (such as build-profile.json5 and ArkGuard config)"
     ],
     "outputs": [
-      "简介与概述",
-      "并发编程",
-      "并发场景与开发指导",
-      "并发高级场景",
-      "Sendable并发对象",
-      "线程间通信",
-      "高级应用场景",
-      "模块加载",
-      "方舟字节码",
-      "ArkGuard源码混淆",
-      "ArkGuard字节码混淆",
-      "编译工具链"
+      "ArkTS源码模块（.ets/.ts文件） / ArkTS source modules (.ets/.ts files)",
+      "方舟字节码文件（.abc） / Ark bytecode files (.abc)",
+      "包含ArkTS字节码的应用或模块包（HAP/HSP/HAR） / application or module packages containing ArkTS bytecode (HAP/HSP/HAR)",
+      "Promise<T>异步结果对象 / Promise<T> asynchronous result objects",
+      "TaskPool任务对象（taskpool.Task） / TaskPool task objects (taskpool.Task)",
+      "TaskPool任务组对象（taskpool.TaskGroup） / TaskPool task group objects (taskpool.TaskGroup)",
+      "TaskPool执行结果Promise / Promise results returned by TaskPool execution",
+      "Worker线程对象（worker.ThreadWorker） / Worker thread objects (worker.ThreadWorker)",
+      "Worker消息事件对象与线程间传输数据 / Worker message event objects and inter-thread transferred data",
+      "Sendable对象实例 / Sendable object instances",
+      "共享容器对象 / shared container objects",
+      "异步锁与异步等待对象 / asynchronous lock and asynchronous wait objects",
+      "ArkTS基础类库容器对象（如ArrayList、HashMap、HashSet等） / ArkTS standard library container objects (such as ArrayList, HashMap, HashSet)",
+      "二进制缓冲区对象（ArrayBuffer/Buffer） / binary buffer objects (ArrayBuffer/Buffer)",
+      "高精度数值计算结果对象 / high-precision numeric computation result objects",
+      "XML文档对象或XML字符串 / XML document objects or XML strings",
+      "JSON对象或JSON字符串 / JSON objects or JSON strings",
+      "ASON序列化或反序列化结果对象 / ASON serialization or deserialization result objects",
+      "动态加载的模块命名空间对象 / dynamically imported module namespace objects",
+      "Native模块导出的ArkTS可调用对象 / ArkTS-callable objects exported from Native modules",
+      "ArkGuard混淆后的源码文件 / ArkGuard-obfuscated source files",
+      "ArkGuard混淆后的字节码文件 / ArkGuard-obfuscated bytecode files",
+      "ArkGuard混淆名称缓存或映射文件 / ArkGuard obfuscation name cache or mapping files",
+      "方舟字节码反汇编文本 / Ark bytecode disassembly text"
     ],
     "postconditions": [
       {

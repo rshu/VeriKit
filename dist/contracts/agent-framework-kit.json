@@ -5,14 +5,15 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:10:33.408Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
     "use_when": [
       "智能体框架",
-      "AI Agent",
+      "在应用界面集成Function组件以拉起小艺开放平台上线的指定智能体 / Integrate the Function component in an app UI to launch a specified agent published on Xiaoyi Open Platform",
       "Function组件",
       "应用+智能体",
       "如何使用Function组件拉起小艺开放平台上线的智能体",
@@ -55,7 +56,10 @@
       "承载入口的页面或界面位置 / page or UI location hosting the entry"
     ],
     "outputs": [
-      "Kit简介与开发"
+      "绑定指定小艺开放平台智能体的 Function 组件入口 / Function component entry bound to a specified Xiaoyi Open Platform agent",
+      "用户点击 Function 组件后触发的智能体拉起结果 / Agent launch result triggered when the user taps the Function component",
+      "已打开的智能体自然语言交互会话 / Opened natural-language interaction session with the agent",
+      "随拉起请求传递给智能体的业务参数或上下文参数 / Business or context parameters passed to the agent with the launch request"
     ],
     "postconditions": [
       {

@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:23:14.728Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -62,11 +63,19 @@
       "场景或帧的输入纹理、颜色附件或缓冲资源 / scene or frame input textures, color attachments, or buffer resources"
     ],
     "outputs": [
-      "简介",
-      "超分能力",
-      "渲染优化",
-      "光线追踪",
-      "常见问题"
+      "XEngine系统能力与扩展特性查询结果 / XEngine system-capability and extension-feature query results",
+      "已创建的XEngine特性实例或句柄 / Created XEngine feature instance or handle",
+      "空域GPU超分后的高分辨率颜色纹理或渲染附件 / High-resolution color texture or render attachment produced by spatial GPU super resolution",
+      "空域AI超分后的高分辨率颜色纹理或渲染附件 / High-resolution color texture or render attachment produced by spatial AI super resolution",
+      "时域AI超分后的高分辨率抗锯齿帧纹理 / High-resolution anti-aliased frame texture produced by temporal AI super resolution",
+      "自适应VRS生成或使用的着色率图、片段密度图或VRS附件 / Shading-rate image, fragment-density map, or VRS attachment generated or used by adaptive VRS",
+      "Subpass Shading管线输出的颜色、深度或中间渲染附件 / Color, depth, or intermediate render attachments output by the Subpass Shading pipeline",
+      "光线追踪反射结果纹理 / Ray-traced reflection result texture",
+      "光线追踪阴影遮罩或阴影结果纹理 / Ray-traced shadow mask or shadow result texture",
+      "光线追踪环境光遮蔽AO结果纹理 / Ray-traced ambient-occlusion result texture",
+      "DDGI或NNGI全局光照结果纹理、辐照度数据或探针数据 / DDGI or NNGI global-illumination result texture, irradiance data, or probe data",
+      "高性能GPU排序后的键值缓冲区、索引缓冲区或排序结果缓冲区 / GPU-sorted key-value buffer, index buffer, or sorted-result buffer",
+      "XEngine接口调用返回的状态码或错误码 / Status codes or error codes returned by XEngine API calls"
     ],
     "postconditions": [
       {

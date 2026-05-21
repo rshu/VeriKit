@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:19:41.120Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -57,9 +58,16 @@
       "认证场景类型（开通、认证、注销、跨设备扫码） / authentication scenario type (enrollment, authentication, deregistration, cross-device QR flow)"
     ],
     "outputs": [
-      "概述",
-      "通行密钥（Passkey）",
-      "免密认证"
+      "通行密钥注册凭据（PublicKeyCredential，含credentialId/rawId、clientDataJSON、attestationObject） / Passkey registration credential (PublicKeyCredential with credentialId/rawId, clientDataJSON, and attestationObject)",
+      "通行密钥认证断言（PublicKeyCredential，含credentialId/rawId、clientDataJSON、authenticatorData、signature、userHandle） / Passkey authentication assertion (PublicKeyCredential with credentialId/rawId, clientDataJSON, authenticatorData, signature, and userHandle)",
+      "跨设备扫码认证返回的通行密钥认证断言 / Passkey authentication assertion returned from cross-device QR-code authentication",
+      "FIDO开通/注册响应报文（发送给业务服务器校验） / FIDO enrollment or registration response message for server verification",
+      "FIDO认证响应报文或签名断言（发送给业务服务器校验） / FIDO authentication response message or signed assertion for server verification",
+      "FIDO注销/解绑操作结果 / FIDO deregistration or unbinding operation result",
+      "IFAA开通/认证/注销协议响应报文（发送给IFAA业务服务器校验） / IFAA enrollment, authentication, or deregistration protocol response message for IFAA server verification",
+      "SOTER开通/认证/注销结果数据（含生物认证签名结果） / SOTER enrollment, authentication, or deregistration result data, including biometric authentication signature result",
+      "认证能力查询结果（设备是否支持指纹、人脸、Passkey/FIDO/IFAA/SOTER等） / Authentication capability query result, such as whether the device supports fingerprint, face, Passkey, FIDO, IFAA, or SOTER",
+      "认证操作状态码与错误码 / Authentication operation status codes and error codes"
     ],
     "postconditions": [
       {

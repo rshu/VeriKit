@@ -3,13 +3,13 @@
   "skill": "media-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.978Z"
+    "at": "2026-05-21T03:47:44.600Z"
   },
   "references": [
     {
       "path": "references/AVScreenCapture录屏基础流程.md",
       "title": "AVScreenCapture录屏基础流程",
-      "snippet": "屏幕录制功能支持开发者获取屏幕数据，适用于屏幕录制、会议共享、直播等场景。开发者可通过调用 AVScreenCapture 模块的C API，采集设备内外的音视频数据源。该模块需与窗口管理（Window）、图形处理（Graphic）等模块协同工作，以完成完整的视频采集流程。 从API version 22开始，在PC/2in1设备上录屏时新增如下能力： - 支持在熄屏但不锁屏的情况下保持录制：需要申请权限**ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK**。配置方式请参见声明权限。 - 支持在录制屏幕时不再弹出隐私告警弹窗：需要申请权限**ohos.permission.CUSTOM_SCREEN_RECORDING**。配置方式请参见受限开放权限。 #### 流程介绍 基础屏幕录制功能涉及到AVScreenCapture实例创建、音视频参数配置、回调设置、开始与停止、结果处理、资源释放等步骤。 在此基础上，开发者可以根据视频录制、直播等特定场景进行更高级的设置，详情参见 AVScreenCapture录屏自定义场景 。 基础流程如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bb/v3/tGeY2hF"
+      "snippet": "屏幕录制功能支持开发者获取屏幕数据，适用于屏幕录制、会议共享、直播等场景。开发者可通过调用 AVScreenCapture 模块的C API，采集设备内外的音视频数据源。该模块需与窗口管理（Window）、图形处理（Graphic）等模块协同工作，以完成完整的视频采集流程。 从API version 22开始，在PC/2in1设备上录屏时新增如下能力： - 支持在熄屏但不锁屏的情况下保持录制：需要申请权限**ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK**。配置方式请参见声明权限。 - 支持在录制屏幕时不再弹出隐私告警弹窗：需要申请权限**ohos.permission.CUSTOM_SCREEN_RECORDING**。配置方式请参见受限开放权限。 #### 流程介绍 基础屏幕录制功能涉及到AVScreenCapture实例创建、音视频参数配置、回调设置、开始与停止、结果处理、资源释放等步骤。 在此基础上，开发者可以根据视频录制、直播等特定场景进行更高级的设置，详情参见 AVScreenCapture录屏自定义场景 。 基础流程如下图所示： 录屏采集的内容输出方式如下。 - 文件形式：保存为文件，该文件可以播放、分享等。 - 码流形式：该码流可根据场景进行不同的处理，例如将码流流转到其他模块，实现桌面共享、视频直播等。 #### 约"
     },
     {
       "path": "references/AVScreenCapture录屏自定义场景.md",
@@ -24,7 +24,7 @@
     {
       "path": "references/使用AVImageGenerator提取视频指定时间图像(ArkTS).md",
       "title": "使用AVImageGenerator提取视频指定时间图像(ArkTS)",
-      "snippet": "使用 AVImageGenerator 可以实现从原始媒体资源中获取视频指定时间的缩略图，本开发指导将以获取一个视频资源的缩略图作为示例，向开发者讲解AVImageGenerator相关功能。 获取视频资源的缩略图的全流程包含：创建AVImageGenerator对象，设置资源，获取缩略图，销毁资源。 #### 开发步骤及注意事项 详细的API说明请参考 AVImageGenerator 。 1. 使用 createAVImageGenerator() 创建实例。 import { media } from '@kit.MediaKit'; let avImageGenerator: media.AVImageGenerator = await media.createAVImageGenerator(); 2. 设置资源：需要设置属性fdSrc（表示文件描述符）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/37/v3/U_ivCNYGQqKEqPkHHVXnJw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111339Z&HW-CC-Expire=86400&HW-CC-Sign=FE6FAF653"
+      "snippet": "使用 AVImageGenerator 可以实现从原始媒体资源中获取视频指定时间的缩略图，本开发指导将以获取一个视频资源的缩略图作为示例，向开发者讲解AVImageGenerator相关功能。 获取视频资源的缩略图的全流程包含：创建AVImageGenerator对象，设置资源，获取缩略图，销毁资源。 #### 开发步骤及注意事项 详细的API说明请参考 AVImageGenerator 。 1. 使用 createAVImageGenerator() 创建实例。 import { media } from '@kit.MediaKit'; let avImageGenerator: media.AVImageGenerator = await media.createAVImageGenerator(); 2. 设置资源：需要设置属性fdSrc（表示文件描述符）。 开发者需根据实际情况，确认资源有效性并设置fdSrc： - 可以使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法可参考 ResourceManager API参考 。 - 也可以使用应用沙箱路径访问对应资源（必须确认资源文件可用），参考 获取应用文件路径 。应用沙箱的介绍及如何向应用沙箱推送文件，请参考 文件管理 。 - 不同AVImageGenerator或者 AVMetadat"
     },
     {
       "path": "references/使用AVImageGenerator获取视频帧(C_C++).md",
@@ -44,27 +44,27 @@
     {
       "path": "references/使用AVPlayer播放流媒体(ArkTS).md",
       "title": "使用AVPlayer播放流媒体(ArkTS)",
-      "snippet": "本开发指导将介绍如何使用 AVPlayer 开发流媒体直播和点播功能。示例展示如何完整播放流媒体视频，实现端到端的流媒体资源播放。 本指导仅介绍流媒体播放功能。本地音视频播放等其他场景，请参考 视频播放 。 #### 流媒体支持的格式 #### 开发步骤 创建AVPlayer、设置播放资源和窗口、设置播放参数（音量/倍速/缩放模式）、进行播放控制（播放/暂停/跳转/停止）、重置资源、销毁资源。应用开发时，开发者可通过AVPlayer的state属性主动获取当前状态，或使用on('stateChange')方法监听状态变化。视频播放器处于错误状态时执行操作，可能导致异常或未定义行为。状态详细参见 AVPlayerState 。具体步骤如下： 1. 创建实例createAVPlayer()，初始化AVPlayer为idle状态。 2. 设置业务需要的监听事件，搭配全流程场景使用。支持的监听事件包括： 3. 设置资源： 使用AVPlayer设置播放URL ，使AVPlayer进入initialized状态。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ba/v3/RalL-OlAQ1--P8mq3wNMBg/note_3.0-zh-cn.png?HW-CC-KV=V"
+      "snippet": "本开发指导将介绍如何使用 AVPlayer 开发流媒体直播和点播功能。示例展示如何完整播放流媒体视频，实现端到端的流媒体资源播放。 本指导仅介绍流媒体播放功能。本地音视频播放等其他场景，请参考 视频播放 。 #### 流媒体支持的格式 #### 开发步骤 创建AVPlayer、设置播放资源和窗口、设置播放参数（音量/倍速/缩放模式）、进行播放控制（播放/暂停/跳转/停止）、重置资源、销毁资源。应用开发时，开发者可通过AVPlayer的state属性主动获取当前状态，或使用on('stateChange')方法监听状态变化。视频播放器处于错误状态时执行操作，可能导致异常或未定义行为。状态详细参见 AVPlayerState 。具体步骤如下： 1. 创建实例createAVPlayer()，初始化AVPlayer为idle状态。 2. 设置业务需要的监听事件，搭配全流程场景使用。支持的监听事件包括： 3. 设置资源： 使用AVPlayer设置播放URL ，使AVPlayer进入initialized状态。 下面代码示例中的url仅作示意，开发者需根据实际情况确认资源有效性并设置。 - 使用网络播放路径，需 声明权限 ：ohos.permission.INTERNET。 - 使用支持的播放格式和协议。 4. 设置窗口：获取并设置SurfaceID属性，用于配置显示画面。 应用从XComp"
     },
     {
       "path": "references/使用AVPlayer播放视频(ArkTS).md",
       "title": "使用AVPlayer播放视频(ArkTS)",
-      "snippet": "当前提供两种视频播放开发的方案： - AVPlayer ：功能较完善的音视频播放ArkTS/JS API，集成了流媒体和本地资源解析，媒体资源解封装，视频解码和渲染功能，适用于对媒体资源进行端到端播放的场景，可直接播放mp4、mkv等格式的视频文件。 - Video组件：封装了视频播放的基础能力，需要设置数据源及基础信息即可播放视频，但相对扩展能力较弱。Video组件由ArkUI提供能力，相关指导请参考UI开发文档- Video组件 。 本开发指导将介绍如何使用AVPlayer开发视频播放功能，以完整播放一个视频作为示例，实现端到端播放原始媒体资源。 播放的全流程包含：创建AVPlayer，设置播放资源和窗口，设置播放参数（音量/倍速/缩放模式），播放控制（播放/暂停/跳转/停止），重置，销毁资源。在进行应用开发的过程中，开发者可以通过AVPlayer的state属性主动获取当前状态或使用on('stateChange')方法监听状态变化。如果应用在视频播放器处于错误状态时执行操作，系统可能会抛出异常或生成其他未定义的行为。 **图1** 播放状态变化示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/82/v3/3GzdTRoUTdOWDcIE43a6ng/"
+      "snippet": "当前提供两种视频播放开发的方案： - AVPlayer ：功能较完善的音视频播放ArkTS/JS API，集成了流媒体和本地资源解析，媒体资源解封装，视频解码和渲染功能，适用于对媒体资源进行端到端播放的场景，可直接播放mp4、mkv等格式的视频文件。 - Video组件：封装了视频播放的基础能力，需要设置数据源及基础信息即可播放视频，但相对扩展能力较弱。Video组件由ArkUI提供能力，相关指导请参考UI开发文档- Video组件 。 本开发指导将介绍如何使用AVPlayer开发视频播放功能，以完整播放一个视频作为示例，实现端到端播放原始媒体资源。 播放的全流程包含：创建AVPlayer，设置播放资源和窗口，设置播放参数（音量/倍速/缩放模式），播放控制（播放/暂停/跳转/停止），重置，销毁资源。在进行应用开发的过程中，开发者可以通过AVPlayer的state属性主动获取当前状态或使用on('stateChange')方法监听状态变化。如果应用在视频播放器处于错误状态时执行操作，系统可能会抛出异常或生成其他未定义的行为。 **图1** 播放状态变化示意图 状态的详细说明请参考 AVPlayerState 。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时"
     },
     {
       "path": "references/使用AVPlayer播放视频(C_C++).md",
       "title": "使用AVPlayer播放视频(C/C++)",
-      "snippet": "使用 AVPlayer 可以实现端到端播放原始媒体资源，本开发指导将以完整地播放一个视频作为示例，向开发者讲解AVPlayer视频播放相关功能。 播放的全流程包含：创建AVPlayer，设置回调监听函数，设置播放资源，设置播放参数（音量/倍速/焦点模式），设置播放窗口，播放控制（播放/暂停/跳转/停止），重置，销毁播放器实例。 在进行应用开发的过程中，开发者可以通过AVPlayer的信息监听回调函数 OH_AVPlayerOnInfoCallback 和错误监听回调函数 OH_AVPlayerOnErrorCallback 主动获取播放过程信息。如果应用在视频播放器处于错误状态时执行操作，系统可能会抛出异常或生成其他未定义的行为。 **图1** 播放状态变化示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a3/v3/DfFIUha_TDeDO0aoCjq8Fg/zh-cn_image_0000002543374292.png?HW-CC-KV=V1&HW-CC-Date=20260421T111341Z&HW-CC-Expire=86400&HW-CC-Sign=DCB3497A045E849129D491189F3D7FEC1821957D868BDCC"
+      "snippet": "使用 AVPlayer 可以实现端到端播放原始媒体资源，本开发指导将以完整地播放一个视频作为示例，向开发者讲解AVPlayer视频播放相关功能。 播放的全流程包含：创建AVPlayer，设置回调监听函数，设置播放资源，设置播放参数（音量/倍速/焦点模式），设置播放窗口，播放控制（播放/暂停/跳转/停止），重置，销毁播放器实例。 在进行应用开发的过程中，开发者可以通过AVPlayer的信息监听回调函数 OH_AVPlayerOnInfoCallback 和错误监听回调函数 OH_AVPlayerOnErrorCallback 主动获取播放过程信息。如果应用在视频播放器处于错误状态时执行操作，系统可能会抛出异常或生成其他未定义的行为。 **图1** 播放状态变化示意图 状态的详细说明请参考 AVPlayerState 。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源利用。 #### 开发建议 当前指导仅介绍如何实现媒体资源播放，在应用开发过程中可能会涉及后台播放、播放冲突等情况，请根据实际需要参考以下说明。 - 如果要实现后台播放或熄屏播放，需要接入AVSession（媒体会话）和申请长时任务，避免"
     },
     {
       "path": "references/使用AVPlayer播放音频(ArkTS).md",
       "title": "使用AVPlayer播放音频(ArkTS)",
-      "snippet": "使用 AVPlayer 可以实现端到端播放原始媒体资源，本开发指导将以完整播放一首音乐作为示例，向开发者讲解AVPlayer音频播放相关功能。如需播放PCM音频数据，请使用 AudioRenderer 。 播放的全流程包含：创建AVPlayer，设置播放资源，设置播放参数（音量/倍速/焦点模式），播放控制（播放/暂停/跳转/停止），重置，销毁资源。 在应用开发的过程中，开发者可以通过AVPlayer的state属性主动获取当前状态，或使用on('stateChange')方法监听状态变化。如果应用在音频播放器处于错误状态时执行操作，系统可能会抛出异常或产生其他未定义的行为。 **图1** 播放状态变化示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/40/v3/cHYTFv51R9m8kx5-RFUHaw/zh-cn_image_0000002543214626.png?HW-CC-KV=V1&HW-CC-Date=20260421T111337Z&HW-CC-Expire=86400&HW-CC-Sign=1843B47E8C3E95D62CC0C1AA6F0AF945455E6FF67594653D84D9E6CF0AC7D725) 状态的详细说明请参考"
+      "snippet": "使用 AVPlayer 可以实现端到端播放原始媒体资源，本开发指导将以完整播放一首音乐作为示例，向开发者讲解AVPlayer音频播放相关功能。如需播放PCM音频数据，请使用 AudioRenderer 。 播放的全流程包含：创建AVPlayer，设置播放资源，设置播放参数（音量/倍速/焦点模式），播放控制（播放/暂停/跳转/停止），重置，销毁资源。 在应用开发的过程中，开发者可以通过AVPlayer的state属性主动获取当前状态，或使用on('stateChange')方法监听状态变化。如果应用在音频播放器处于错误状态时执行操作，系统可能会抛出异常或产生其他未定义的行为。 **图1** 播放状态变化示意图 状态的详细说明请参考 AVPlayerState 。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统大量的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源利用。 #### 开发建议 当前指导仅介绍如何实现媒体资源播放，在应用开发过程中，涉及后台播放、播放冲突等情况时，请根据实际需要参考以下说明。 - 若要实现后台播放或熄屏播放，需要接入AVSession（媒体会话）和申请长时任务，避免播放被系统强制中断。 - 应用在播放过程中，若播放的媒体数据涉"
     },
     {
       "path": "references/使用AVPlayer播放音频(C_C++).md",
       "title": "使用AVPlayer播放音频(C/C++)",
-      "snippet": "使用 AVPlayer 可以实现端到端播放原始媒体资源，本开发指导将以完整地播放一首音乐作为示例，向开发者讲解AVPlayer音频播放相关功能。 播放的全流程包含：创建AVPlayer，设置回调监听函数，设置播放资源，设置播放参数（音量/倍速/焦点模式），播放控制（播放/暂停/跳转/停止），重置，销毁播放器实例。 在进行应用开发的过程中，开发者可以通过AVPlayer的信息监听回调函数 OH_AVPlayerOnInfoCallback 和错误监听回调函数 OH_AVPlayerOnErrorCallback 主动获取播放过程信息。如果应用在音频播放器处于错误状态时执行操作，系统可能会抛出异常或生成其他未定义的行为。 **图1** 播放状态变化示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/af/v3/4PKmsLdNSsSOetHO5m2T5w/zh-cn_image_0000002543374292.png?HW-CC-KV=V1&HW-CC-Date=20260421T111340Z&HW-CC-Expire=86400&HW-CC-Sign=C7C345964E771183F23FC41582351FC0E15848889D34587722A826"
+      "snippet": "使用 AVPlayer 可以实现端到端播放原始媒体资源，本开发指导将以完整地播放一首音乐作为示例，向开发者讲解AVPlayer音频播放相关功能。 播放的全流程包含：创建AVPlayer，设置回调监听函数，设置播放资源，设置播放参数（音量/倍速/焦点模式），播放控制（播放/暂停/跳转/停止），重置，销毁播放器实例。 在进行应用开发的过程中，开发者可以通过AVPlayer的信息监听回调函数 OH_AVPlayerOnInfoCallback 和错误监听回调函数 OH_AVPlayerOnErrorCallback 主动获取播放过程信息。如果应用在音频播放器处于错误状态时执行操作，系统可能会抛出异常或生成其他未定义的行为。 **图1** 播放状态变化示意图 状态的详细说明请参考 AVPlayerState 。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源利用。 #### 开发建议 当前指导仅介绍如何实现媒体资源播放，在应用开发过程中可能会涉及后台播放、播放冲突等情况，请根据实际需要参考以下说明。 - 如果要实现后台播放或熄屏播放，需要接入AVSession（媒体会话）和申请长时任务，避免播放被系统强制"
     },
     {
       "path": "references/使用AVPlayer添加视频外挂字幕(ArkTS).md",
@@ -74,27 +74,27 @@
     {
       "path": "references/使用AVPlayer设置播放URL(ArkTS).md",
       "title": "使用AVPlayer设置播放URL(ArkTS)",
-      "snippet": "本开发指导将介绍如何使用AVPlayer开发播放功能，在不同的场景下如何设置URL。 当前指导仅介绍播放URL设置方法，其他场景及完整示例代码，请参考 视频播放 。 当前开发指导将提供以下设置播放URL的方法： - 流媒体播放场景下设置URL - 本地Raw文件播放场景下设置URL #### 流媒体播放场景下设置URL **情况一：播放HTTP/HTTPS媒体资源** import { media } from '@kit.MediaKit'; // 类成员定义avPlayer。 private avPlayer: media.AVPlayer | null = null; // 在业务函数中（示例工程函数名为avSetupURL）： // 创建avPlayer实例对象。 this.avPlayer = await media.createAVPlayer(); // 设置对应的播放url。 let url = 'https://xxx.xxx.xxx.mp4'; if (this.avPlayer == null) { return; } this.avPlayer.url = url; **情况二：HLS媒体资源播放（点播/直播）** import { media } from '@kit.MediaKit'; // 类成员定义avPlayer。 private avPlaye"
+      "snippet": "本开发指导将介绍如何使用AVPlayer开发播放功能，在不同的场景下如何设置URL。 当前指导仅介绍播放URL设置方法，其他场景及完整示例代码，请参考 视频播放 。 当前开发指导将提供以下设置播放URL的方法： - 流媒体播放场景下设置URL - 本地Raw文件播放场景下设置URL #### 流媒体播放场景下设置URL **情况一：播放HTTP/HTTPS媒体资源** import { media } from '@kit.MediaKit'; // 类成员定义avPlayer。 private avPlayer: media.AVPlayer | null = null; // 在业务函数中（示例工程函数名为avSetupURL）： // 创建avPlayer实例对象。 this.avPlayer = await media.createAVPlayer(); // 设置对应的播放url。 let url = ' if (this.avPlayer == null) { return; } this.avPlayer.url = url; **情况二：HLS媒体资源播放（点播/直播）** import { media } from '@kit.MediaKit'; // 类成员定义avPlayer。 private avPlayer: media.AVPlayer | null "
     },
     {
       "path": "references/使用AVRecorder录制视频(ArkTS).md",
       "title": "使用AVRecorder录制视频(ArkTS)",
-      "snippet": "当前仅支持 AVRecorder 开发视频录制，集成了音频捕获，音频编码，视频编码，音视频封装功能，适用于实现简单视频录制并直接得到视频本地文件的场景。 本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为示例，向开发者讲解如何使用AVRecorder进行视频录制。 在进行应用开发的过程中，开发者可以通过AVRecorder的state属性主动获取当前状态，或使用 on('stateChange') 方法监听状态变化。开发过程中应该严格遵循状态机要求，例如只能在started状态下调用 pause 接口，只能在paused状态下调用 resume 接口。 **图1** 录制状态变化示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9a/v3/J3XurnkiT8-Q1XvC3ddg7A/zh-cn_image_0000002543374290.png?HW-CC-KV=V1&HW-CC-Date=20260421T111339Z&HW-CC-Expire=86400&HW-CC-Sign=E56D4593B83D50FC8430548EE23F6766C668B680E8391DE0299D072747286824) 状态的详细说明请参考 A"
+      "snippet": "当前仅支持 AVRecorder 开发视频录制，集成了音频捕获，音频编码，视频编码，音视频封装功能，适用于实现简单视频录制并直接得到视频本地文件的场景。 本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为示例，向开发者讲解如何使用AVRecorder进行视频录制。 在进行应用开发的过程中，开发者可以通过AVRecorder的state属性主动获取当前状态，或使用 on('stateChange') 方法监听状态变化。开发过程中应该严格遵循状态机要求，例如只能在started状态下调用 pause 接口，只能在paused状态下调用 resume 接口。 **图1** 录制状态变化示意图 状态的详细说明请参考 AVRecorderState 。 #### 申请权限 在开发此功能前，开发者应根据实际需求申请相关权限： - 当需要使用麦克风时，需要申请**ohos.permission.MICROPHONE**麦克风权限。申请方式请参考：向用户申请授权。 - 当需要使用相机拍摄时，需要申请**ohos.permission.CAMERA**相机权限。申请方式请参考：向用户申请授权。 - 当需要从图库读取图片或视频文件时，请优先使用媒体库Picker选择媒体资源。 - 当需要保存图片或视频文件至图库时，请优先使用安全控件保存媒体资源。 仅应用需要克隆、备份或同步用户公共目"
     },
     {
       "path": "references/使用AVRecorder录制视频(C_C++).md",
       "title": "使用AVRecorder录制视频(C/C++)",
-      "snippet": "AVRecorder支持开发音视频录制，集成了音频捕获，音频编码，视频编码，音视频封装功能，适用于实现简单视频录制并直接得到本地媒体文件的场景。 本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为示例，向开发者讲解如何使用AVRecorder进行视频录制。 在进行应用开发的过程中，开发者可以通过AVRecorder的state属性主动获取当前状态，或使用OH_AVRecorder_SetStateCallback方法注册回调监听状态变化。开发过程中应严格遵循状态机要求，例如只能在started状态下调用pause()接口，只能在paused状态下调用resume()接口。 **图1** 录制状态变化示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/88/v3/M7xF22xBQJeK-vdlEuZSjw/zh-cn_image_0000002573854545.png?HW-CC-KV=V1&HW-CC-Date=20260421T111341Z&HW-CC-Expire=86400&HW-CC-Sign=F17A23AB60A99EEE63959A51B6309AF43D05792C6DED7886B945E115C94B7C24) 状态"
+      "snippet": "AVRecorder支持开发音视频录制，集成了音频捕获，音频编码，视频编码，音视频封装功能，适用于实现简单视频录制并直接得到本地媒体文件的场景。 本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为示例，向开发者讲解如何使用AVRecorder进行视频录制。 在进行应用开发的过程中，开发者可以通过AVRecorder的state属性主动获取当前状态，或使用OH_AVRecorder_SetStateCallback方法注册回调监听状态变化。开发过程中应严格遵循状态机要求，例如只能在started状态下调用pause()接口，只能在paused状态下调用resume()接口。 **图1** 录制状态变化示意图 状态的详细说明请参考 AVRecorderState 。 #### 申请权限 在开发此功能前，开发者应根据实际需求申请相关权限： - 当需要使用麦克风时，需要申请**ohos.permission.MICROPHONE**麦克风权限。申请方式请参考：向用户申请授权。 - 当需要使用相机拍摄时，需要申请**ohos.permission.CAMERA**相机权限。申请方式请参考：向用户申请授权。 - 当需要从图库读取图片或视频文件时，请优先使用媒体库Picker选择媒体资源。 - 当需要保存图片或视频文件至图库时，请优先使用安全控件保存媒体资源。 仅应用需要克隆、"
     },
     {
       "path": "references/使用AVRecorder录制音频(ArkTS).md",
       "title": "使用AVRecorder录制音频(ArkTS)",
-      "snippet": "使用 AVRecorder 可以实现音频录制功能，本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为例，向开发者讲解AVRecorder音频录制相关功能。 在进行应用开发的过程中，开发者可以通过AVRecorder的state属性，主动获取当前状态或使用 on('stateChange') 方法监听状态变化。开发过程中必须严格遵循状态机要求，例如只能在started状态下调用 pause 接口，只能在paused状态下调用 resume 接口。 **图1** 录制状态变化示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e7/v3/KQWmomgkRaevPCqVyvvebg/zh-cn_image_0000002573974517.png?HW-CC-KV=V1&HW-CC-Date=20260421T111338Z&HW-CC-Expire=86400&HW-CC-Sign=94830AB8EEE80075312AA94B1EB0C1D2D790F128C60D985541CD6F163BC0F05C) 状态的详细说明请参考 AVRecorderState 。 #### 申请权限 在开发此功能前，开发者应根据实际需求申请相关权限： - "
+      "snippet": "使用 AVRecorder 可以实现音频录制功能，本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为例，向开发者讲解AVRecorder音频录制相关功能。 在进行应用开发的过程中，开发者可以通过AVRecorder的state属性，主动获取当前状态或使用 on('stateChange') 方法监听状态变化。开发过程中必须严格遵循状态机要求，例如只能在started状态下调用 pause 接口，只能在paused状态下调用 resume 接口。 **图1** 录制状态变化示意图 状态的详细说明请参考 AVRecorderState 。 #### 申请权限 在开发此功能前，开发者应根据实际需求申请相关权限： - 当需要使用麦克风时，需要申请**ohos.permission.MICROPHONE**麦克风权限。申请方式请参考：向用户申请授权。 - 当需要读取和保存音频文件时，请优先使用AudioViewPicker音频选择器对象。 仅应用需要克隆、备份或同步用户公共目录的音频类文件时，可申请ohos.permission.READ_AUDIO、ohos.permission.WRITE_AUDIO权限来读写音频文件，申请方式请参考 申请受控权限 ，通过AGC审核后才能使用。为避免应用的上架申请被驳回，开发者应优先使用Picker/控件等替代方案，仅少量符合 特殊场景"
     },
     {
       "path": "references/使用AVRecorder录制音频(C_C++).md",
       "title": "使用AVRecorder录制音频(C/C++)",
-      "snippet": "AVRecorder支持开发音频或视频单独录制，集成了音频捕获，音频编码，视频编码，音视频封装功能，适用于实现简单音视频录制并直接得到本地媒体文件的场景。 本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为示例，向开发者讲解如何使用AVRecorder进行音频录制。 在进行应用开发的过程中，开发者可以通过AVRecorder的state属性主动获取当前状态，或使用OH_AVRecorder_SetStateCallback方法注册回调监听状态变化。开发过程中应该严格遵循状态机要求，例如只能在started状态下调用pause()接口，只能在paused状态下调用resume()接口。 **图1** 录制状态变化示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d5/v3/t4VTdAY3R3aCbXsiIlfYfA/zh-cn_image_0000002573974517.png?HW-CC-KV=V1&HW-CC-Date=20260421T111341Z&HW-CC-Expire=86400&HW-CC-Sign=81FF5766F4E9ACF7B7C6D044EBB57DD76743FE576C944A8EC0353614EF2661"
+      "snippet": "AVRecorder支持开发音频或视频单独录制，集成了音频捕获，音频编码，视频编码，音视频封装功能，适用于实现简单音视频录制并直接得到本地媒体文件的场景。 本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为示例，向开发者讲解如何使用AVRecorder进行音频录制。 在进行应用开发的过程中，开发者可以通过AVRecorder的state属性主动获取当前状态，或使用OH_AVRecorder_SetStateCallback方法注册回调监听状态变化。开发过程中应该严格遵循状态机要求，例如只能在started状态下调用pause()接口，只能在paused状态下调用resume()接口。 **图1** 录制状态变化示意图 状态的详细说明请参考 AVRecorderState 。 #### 申请权限 在开发此功能前，开发者应根据实际需求申请相关权限： - 当需要使用麦克风时，需要申请**ohos.permission.MICROPHONE**麦克风权限。申请方式请参考：向用户申请授权。 - 当需要读取和保存音频文件时，请优先使用AudioViewPicker音频选择器对象。 仅应用需要克隆、备份或同步用户公共目录的音频类文件时，可申请ohos.permission.READ_AUDIO、ohos.permission.WRITE_AUDIO权限来读写音频文件，申请方式请"
     },
     {
       "path": "references/使用AVScreenCaptureRecorder录屏写文件(ArkTS).md",
@@ -109,22 +109,22 @@
     {
       "path": "references/使用AVTranscoder实现视频转码(ArkTS).md",
       "title": "使用AVTranscoder实现视频转码(ArkTS)",
-      "snippet": "使用 AVTranscoder 可以实现视频转码功能，从API 20开始支持视频转码的C/C++开发，转码功能可在手机、平板、2in1设备上作为系统提供的基础能力使用。可以通过调用 canIUse 接口来判断当前设备是否支持AVTranscoder，当canIUse(\"SystemCapability.Multimedia.Media.AVTranscoder\")的返回值为true时，表示可以使用转码能力。 本开发指导将以“开始转码-暂停转码-恢复转码-转码完成”的一次流程为示例，向开发者讲解AVTranscoder视频转码相关功能。 #### 开发步骤及注意事项 详细的API说明请参考 AVTranscoder 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/05/v3/ryMiVzQvQEapdKARfx46GQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111340Z&HW-CC-Expire=86400&HW-CC-Sign=8EF71F110A346EC5D31DD73B4248419F9A705D907DD51D830CA0F282C88CD171) 如需对转码后的文件进行转发、上传、转存"
+      "snippet": "使用 AVTranscoder 可以实现视频转码功能，从API 20开始支持视频转码的C/C++开发，转码功能可在手机、平板、2in1设备上作为系统提供的基础能力使用。可以通过调用 canIUse 接口来判断当前设备是否支持AVTranscoder，当canIUse(\"SystemCapability.Multimedia.Media.AVTranscoder\")的返回值为true时，表示可以使用转码能力。 本开发指导将以“开始转码-暂停转码-恢复转码-转码完成”的一次流程为示例，向开发者讲解AVTranscoder视频转码相关功能。 #### 开发步骤及注意事项 详细的API说明请参考 AVTranscoder 。 如需对转码后的文件进行转发、上传、转存等处理，应用须收到complete事件后调用系统接口await avTranscoder.release()，以保证视频文件完整性。 1. 创建 AVTranscoder 实例。 import { media } from '@kit.MediaKit'; private avTranscoder: media.AVTranscoder | undefined = undefined; // 创建转码实例。 this.avTranscoder = await media.createAVTranscoder(); 2. 设置业务需"
     },
     {
       "path": "references/使用AVTranscoder实现视频转码(C_C++).md",
       "title": "使用AVTranscoder实现视频转码(C/C++)",
-      "snippet": "从API version 20开始支持使用NDK接口（C/C++）实现视频转码。 使用 AVTranscoder 可以实现视频转码功能，从API 12开始，转码功能可在手机、平板、2in1设备上作为系统提供的基础能力使用。可以通过调用 canIUse 接口来判断当前设备是否支持AVTranscoder。当canIUse(\"SystemCapability.Multimedia.Media.AVTranscoder\")返回值为true时，表示可以使用转码能力。 本开发指导将以“开始转码-暂停转码-恢复转码-完成转码”的一次完整流程为示例，向开发者讲解AVTranscoder视频转码相关功能。 **图1** 转码状态变化示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4/v3/BC2pe7mJS0Okiv6BXNgmOw/zh-cn_image_0000002573974523.png?HW-CC-KV=V1&HW-CC-Date=20260421T111344Z&HW-CC-Expire=86400&HW-CC-Sign=F974AB19F9B8BD60F2D603B87F3757623065191FFEF381BD37DC54951DB1741B) 状态的"
+      "snippet": "从API version 20开始支持使用NDK接口（C/C++）实现视频转码。 使用 AVTranscoder 可以实现视频转码功能，从API 12开始，转码功能可在手机、平板、2in1设备上作为系统提供的基础能力使用。可以通过调用 canIUse 接口来判断当前设备是否支持AVTranscoder。当canIUse(\"SystemCapability.Multimedia.Media.AVTranscoder\")返回值为true时，表示可以使用转码能力。 本开发指导将以“开始转码-暂停转码-恢复转码-完成转码”的一次完整流程为示例，向开发者讲解AVTranscoder视频转码相关功能。 **图1** 转码状态变化示意图 状态的详细说明请参考 OH_AVTranscoder_State 。 #### 开发步骤及注意事项 在CMake脚本中链接动态库。 target_link_libraries(entry PUBLIC libavtranscoder.so libace_napi.z.so) 开发者使用系统日志能力时，需引入如下头文件： #include <hilog/log.h> 并需要在CMake脚本中链接如下动态库: target_link_libraries(sample PUBLIC libhilog_ndk.z.so) 开发者通过引入avtranscoder.h和av"
     },
     {
       "path": "references/使用LPP播放器播放视频 (C_C++).md",
       "title": "使用LPP播放器播放视频 (C/C++)",
-      "snippet": "从API version 20开始，使用LPP（low power player）播放器可以通过低功耗实现从媒体源到渲染的视频通路能力。本指南通过播放本地视频的示例，讲解如何使用LowPowerPlayer播放视频。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8f/v3/Yag85xigT5OchWJ-0C60PQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111341Z&HW-CC-Expire=86400&HW-CC-Sign=AE0A16F7B3CA7CDE0254B5AFE544BC4B1EB3E18F567A08A50F9BB7069B650CCF) LowPowerPlayer播放器不支持纯视频和纯音频播放。纯音频低功耗播放请参考 低功耗音频播放 。 播放流程包含：创建解封装器、创建播放器、设置回调监听函数、配置播放参数、播放控制（播放/暂停/继续/倍速/音量/停止/重置）、销毁播放器实例。 **图1** 播放状态变化示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_"
+      "snippet": "从API version 20开始，使用LPP（low power player）播放器可以通过低功耗实现从媒体源到渲染的视频通路能力。本指南通过播放本地视频的示例，讲解如何使用LowPowerPlayer播放视频。 LowPowerPlayer播放器不支持纯视频和纯音频播放。纯音频低功耗播放请参考 低功耗音频播放 。 播放流程包含：创建解封装器、创建播放器、设置回调监听函数、配置播放参数、播放控制（播放/暂停/继续/倍速/音量/停止/重置）、销毁播放器实例。 **图1** 播放状态变化示意图 播放流程包含：创建（created）、初始化（initialized）、就绪（ready）、解码（decoding）和渲染（rendering）五个阶段。 应用通过调用CreateByMime初始化创建解码器实例。完成解码器参数配置Configure，切换到initialized（已初始化）状态。 在初始化完成的状态下，完成解码器资源预加载（Prepare），视频进入准备就绪状态（ready）。然后启动解码流程（StartDecode），切换到解码（decoding）状态，触发首帧渲染（RenderFirstFrame）。最后启动渲染（StartRender）流程，切换到渲染（rendering）状态。 在渲染过程中，遇到暂停（Pause）会切换到paused状态，此时解码与渲染被临时挂起，"
     },
     {
       "path": "references/使用SoundPool播放短音频(ArkTS).md",
       "title": "使用SoundPool播放短音频(ArkTS)",
-      "snippet": "使用 SoundPool （音频池）提供的接口，可以实现低时延短音播放。 当应用开发时，经常需要使用一些急促简短的音效（如相机快门音效、系统通知音效等），此时建议调用SoundPool，实现一次加载，多次低时延播放。 SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小超过1MB的长音频将截取前面的1MB大小数据进行播放，这相当于44.1kHz的16bit位深的立体声下约5.6秒的音频时长（在较低采样率或单声道配置下，持续时间会相应延长）。 本开发指导将以SoundPool进行一次低时延播放音频的过程为例，向开发者讲解如何使用SoundPool。详细的API声明请参考 SoundPool (音频池) 。 过程包括：创建SoundPool实例，加载音频资源（包括资源的解封装与解码：解码格式参考 音频解码支持 ），设置播放参数（循环模式/播放优先级等），播放控制（播放/停止），释放资源。 在应用开发过程中，开发者应通过监听方法检查当前播放状态并按照一定顺序调用接口，执行对应操作，否则系统可能会抛出异常或生成其他未定义的行为。具体顺序可参考下列开发步骤及对应说明。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5b/v3/oHj7tRS-SVS6rtZ"
+      "snippet": "使用 SoundPool （音频池）提供的接口，可以实现低时延短音播放。 当应用开发时，经常需要使用一些急促简短的音效（如相机快门音效、系统通知音效等），此时建议调用SoundPool，实现一次加载，多次低时延播放。 SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小超过1MB的长音频将截取前面的1MB大小数据进行播放，这相当于44.1kHz的16bit位深的立体声下约5.6秒的音频时长（在较低采样率或单声道配置下，持续时间会相应延长）。 本开发指导将以SoundPool进行一次低时延播放音频的过程为例，向开发者讲解如何使用SoundPool。详细的API声明请参考 SoundPool (音频池) 。 过程包括：创建SoundPool实例，加载音频资源（包括资源的解封装与解码：解码格式参考 音频解码支持 ），设置播放参数（循环模式/播放优先级等），播放控制（播放/停止），释放资源。 在应用开发过程中，开发者应通过监听方法检查当前播放状态并按照一定顺序调用接口，执行对应操作，否则系统可能会抛出异常或生成其他未定义的行为。具体顺序可参考下列开发步骤及对应说明。 使用SoundPool播放短音频时，涉及音频焦点管控策略的问题，请参考 音频焦点指南 。 #### 开发步骤及注意事项 1. 调用 createSoundPool 方法创建SoundPool实例。 import"
     },
     {
       "path": "references/创建异步线程执行AVTranscoder视频转码(ArkTS).md",
@@ -134,7 +134,7 @@
     {
       "path": "references/屏幕录制支持矩形区域录制.md",
       "title": "屏幕录制支持矩形区域录制",
-      "snippet": "从API20开始，屏幕录制支持矩形区域录制是在现有的录制区域捕获基础上开放的能力，允许开发者自主选择录屏需要捕获的区域位置，并通过调整屏幕捕获ID和指定的捕获区域area确定矩形录制区域。 在功能开发前，开发者需要掌握以下基础概念： - 屏幕捕获ID（displayId）：需要执行矩形区域录制的屏幕ID。 - 指定的捕获区域（area）：依据需要设置区域坐标和尺寸，如创建区域的起点和录制矩形的长度和宽度。 #### 适用场景 用户希望能够提供矩形区域录制功能的场景，例如： - **在线教育场景**：教师在进行课程讲解时，会在一个较大的屏幕上展示多种内容。若能够选择性地录制某个矩形区域，则可以减少不必要的干扰，使学生更加专注于教学内容。 - **游戏直播场景**：对于玩家来说，在直播或录制游戏时，仅关注游戏界面本身，可通过区域录制让观众专注于游戏本身。 #### 开发指导 **在CMake脚本中链接动态库** target_link_libraries(sample PUBLIC libnative_avscreen_capture.so) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/68/v3/6rq32mgjTaWbGicPeDQscg/note_3.0-z"
+      "snippet": "从API20开始，屏幕录制支持矩形区域录制是在现有的录制区域捕获基础上开放的能力，允许开发者自主选择录屏需要捕获的区域位置，并通过调整屏幕捕获ID和指定的捕获区域area确定矩形录制区域。 在功能开发前，开发者需要掌握以下基础概念： - 屏幕捕获ID（displayId）：需要执行矩形区域录制的屏幕ID。 - 指定的捕获区域（area）：依据需要设置区域坐标和尺寸，如创建区域的起点和录制矩形的长度和宽度。 #### 适用场景 用户希望能够提供矩形区域录制功能的场景，例如： - **在线教育场景**：教师在进行课程讲解时，会在一个较大的屏幕上展示多种内容。若能够选择性地录制某个矩形区域，则可以减少不必要的干扰，使学生更加专注于教学内容。 - **游戏直播场景**：对于玩家来说，在直播或录制游戏时，仅关注游戏界面本身，可通过区域录制让观众专注于游戏本身。 #### 开发指导 **在CMake脚本中链接动态库** target_link_libraries(sample PUBLIC libnative_avscreen_capture.so) 上述'sample'字样仅为示例，此处由开发者根据实际工程目录自定义。 **添加头文件** #include \"napi/native_api.h\" #include <multimedia/player_framework/native_avs"
     },
     {
       "path": "references/录屏常见问题.md",
@@ -144,7 +144,7 @@
     {
       "path": "references/视频动态元数据生成.md",
       "title": "视频动态元数据生成",
-      "snippet": "调用者可以调用本模块提供的 C API接口 ，实现HDRVivid标准动态元数据生成。 该能力常用于视频编辑中，如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1a/v3/GSWNUzrpRQqVthGvIhfERA/zh-cn_image_0000002543374296.png?HW-CC-KV=V1&HW-CC-Date=20260421T111344Z&HW-CC-Expire=86400&HW-CC-Sign=A19C7EF01269DC90AF66E771602515EB29D701448C41870EF8B3EFAACE1B2FE6) #### 规格说明 当前支持的数据输入格式类型组合如下： - 格式类型组合一： - 格式类型组合二： - 格式类型组合三： - 格式类型组合四： - 格式类型组合五（从API version 23 开始支持）： - 格式类型组合六（从API version 23 开始支持）： - 格式类型组合七（从API version 23 开始支持）： - 格式类型组合八（从API version 23 开始支持）： **支持的分辨率规格：** #### 约束与限制 1. 为保障转换效率，建议并行转换不超过5个。 2"
+      "snippet": "调用者可以调用本模块提供的 C API接口 ，实现HDRVivid标准动态元数据生成。 该能力常用于视频编辑中，如下图所示： #### 规格说明 当前支持的数据输入格式类型组合如下： - 格式类型组合一： - 格式类型组合二： - 格式类型组合三： - 格式类型组合四： - 格式类型组合五（从API version 23 开始支持）： - 格式类型组合六（从API version 23 开始支持）： - 格式类型组合七（从API version 23 开始支持）： - 格式类型组合八（从API version 23 开始支持）： **支持的分辨率规格：** #### 约束与限制 1. 为保障转换效率，建议并行转换不超过5个。 2. 视频动态元数据生成，只支持生成OH_VIDEO_HDR_VIVID类型的动态元数据，转换后会将metadataType修改为OH_VIDEO_HDR_VIVID。 3. 不允许在视频处理回调函数中，直接调用视频处理相关接口或其他耗时操作，请在应用自己的线程中调用。 #### 开发指导 具体实现可参考 示例工程 。 #### 在 CMake 脚本中链接动态库 target_link_libraries(sample PUBLIC libvideo_processing.so) #### 开发步骤 1. 添加头文件。 #include <multimedia"
     },
     {
       "path": "references/视频缩放.md",
@@ -154,7 +154,7 @@
     {
       "path": "references/视频色彩空间转换.md",
       "title": "视频色彩空间转换",
-      "snippet": "开发者可以调用本模块提供的 C API接口 ，实现HDR2SDR、HDR2HDR、SDR2SDR、SDR2HDR的色彩空间转换。 该能力常用于视频编辑、视频分享和视频直播中： - **视频编辑** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/39/v3/jHW338fkTmyps9IO3XQHJg/zh-cn_image_0000002543214634.png?HW-CC-KV=V1&HW-CC-Date=20260421T111344Z&HW-CC-Expire=86400&HW-CC-Sign=E8A608E8E84C41545FBDA7EB387B48C63652C1BC406B23CCA7B723F2D41697BA) - **视频分享** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/34/v3/d3x6vI9zQ76iQYPUMBRKBA/zh-cn_image_0000002573854549.png?HW-CC-KV=V1&HW-CC-Date=20260421T111344Z&HW-CC-Expire=86400&HW-"
+      "snippet": "开发者可以调用本模块提供的 C API接口 ，实现HDR2SDR、HDR2HDR、SDR2SDR、SDR2HDR的色彩空间转换。 该能力常用于视频编辑、视频分享和视频直播中： - **视频编辑** - **视频分享** - **视频直播** **支持以下场景使用：** 使用HDR Vivid视频直播连麦，且对端不支持HDR Vivid视频录制场景。 #### 规格说明 视频色彩空间转换算法为SDR2SDR时，支持的格式类型组合如下： - 格式类型组合一： - 格式类型组合二： - 视频色彩空间转换算法为SDR2SDR时，支持的分辨率规格： 视频色彩空间转换算法为HDR2SDR时，支持的格式类型组合如下： - 格式类型组合一： - 格式类型组合二： - 格式类型组合三（从API version 20开始支持该格式类型）： - 格式类型组合四（从API version 20开始支持该格式类型）： - 格式类型组合五（从API version 23开始支持该格式类型）： - 格式类型组合六（从API version 23开始支持该格式类型）： - 视频色彩空间转换算法为HDR2SDR时，支持的分辨率规格： 视频色彩空间转换算法为HDR2HDR时，支持的格式类型组合如下： - 格式类型组合一： - 格式类型组合二： - 格式类型组合三： - 格式类型组合四： - 视频色彩空间转换算法为HD"
     },
     {
       "path": "references/转码常见问题.md",

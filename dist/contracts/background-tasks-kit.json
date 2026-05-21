@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:12:24.774Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -62,8 +63,15 @@
       "任务标识或提醒标识 / task ID or reminder ID"
     ],
     "outputs": [
-      "Kit简介",
-      "后台任务开发"
+      "短时任务延迟挂起申请结果 DelaySuspendInfo（包含 requestId 与 actualDelayTime） / Short-time task suspend-delay result DelaySuspendInfo containing requestId and actualDelayTime",
+      "短时任务剩余可运行时间 remainingDelayTime（毫秒） / Remaining short-time task execution time remainingDelayTime in milliseconds",
+      "长时任务后台运行状态回调信息 ContinuousTaskCallbackInfo / Continuous-task background running state callback information ContinuousTaskCallbackInfo",
+      "长时任务常驻通知展示结果（系统为用户可感知后台任务显示的通知） / Ongoing notification display result for user-visible continuous background tasks",
+      "延迟任务状态信息 WorkInfo（任务 ID、触发条件、执行状态等） / Deferred-task status information WorkInfo, including work ID, trigger conditions, and execution state",
+      "延迟任务执行回调事件 onWorkStart / onWorkStop / Deferred-task execution callback events onWorkStart and onWorkStop",
+      "代理提醒发布结果 reminderId（提醒 ID） / Proxy reminder publish result reminderId",
+      "代理提醒查询结果 ReminderRequest 列表（倒计时、日历、闹钟提醒请求） / Queried proxy reminder results as a list of ReminderRequest objects for timer, calendar, and alarm reminders",
+      "代理提醒触发后的系统提醒通知 / System reminder notification triggered by a proxy reminder"
     ],
     "postconditions": [
       {

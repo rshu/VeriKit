@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:20:12.777Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -63,17 +64,25 @@
       "设备日志、命令输出或现场信息 / device logs, command output, or captured diagnostic context"
     ],
     "outputs": [
-      "概述",
-      "故障检测",
-      "事件订阅（HiAppEvent）",
-      "系统事件订阅",
-      "性能与功耗检测",
-      "日志（HiLog）",
-      "性能跟踪（HiTraceMeter）",
-      "分布式调用链跟踪（HiTraceChain）",
-      "调试信息与检测",
-      "错误管理与恢复",
-      "调试命令工具"
+      "HiLog日志记录（日志级别、标签、格式化消息、时间戳） / HiLog log records (level, tag, formatted message, timestamp)",
+      "HiAppEvent应用事件记录（domain/name/eventType/params） / HiAppEvent application event records (domain/name/eventType/params)",
+      "HiAppEvent订阅回调事件包（批量事件数据） / HiAppEvent subscription callback event packages (batched event data)",
+      "JS Crash故障事件记录与异常堆栈 / JS Crash fault event records and exception stack traces",
+      "Cpp Crash故障事件记录、信号信息与tombstone崩溃日志 / Cpp Crash fault event records, signal information, and tombstone crash logs",
+      "AppFreeze冻屏事件记录与主线程/调用栈信息 / AppFreeze event records with main-thread and stack information",
+      "Resource Leak资源泄漏事件记录与泄漏资源详情 / Resource Leak event records with leaked-resource details",
+      "App Killed应用终止事件记录与终止原因 / App Killed event records with termination reasons",
+      "AddrSanitizer地址越界检测报告 / AddrSanitizer out-of-bounds access reports",
+      "主线程超时/任务执行超时事件记录 / Main-thread timeout and task execution timeout event records",
+      "启动耗时、滑动丢帧、CPU高负载等性能/功耗事件记录 / Startup latency, frame-drop, and high-CPU performance/power event records",
+      "FaultLogExtensionAbility接收到的故障日志事件数据 / Fault log event data delivered to FaultLogExtensionAbility",
+      "HiTraceMeter性能跟踪切片与trace文件 / HiTraceMeter performance trace slices and trace files",
+      "HiTraceChain调用链标识HiTraceId及跨线程/跨进程链路上下文 / HiTraceChain HiTraceId and cross-thread/cross-process trace context",
+      "HiDebug调试信息对象（CPU、内存、堆、PSS等运行时指标） / HiDebug diagnostic information objects (CPU, memory, heap, PSS, and runtime metrics)",
+      "HiChecker线程耗时、资源泄漏等违规检测报告 / HiChecker violation reports for thread time cost, resource leaks, and similar issues",
+      "HiCollie业务线程卡死/卡顿超时报告与watchdog记录 / HiCollie business-thread freeze/jank timeout reports and watchdog records",
+      "ErrorManager错误观察回调中的错误对象与应用恢复状态 / ErrorManager error objects from observer callbacks and application recovery status",
+      "hdc、hilog、hitrace、hiperf命令导出的日志、trace、性能采样文件和分析报告 / Logs, traces, performance sample files, and analysis reports exported by hdc, hilog, hitrace, and hiperf commands"
     ],
     "postconditions": [
       {

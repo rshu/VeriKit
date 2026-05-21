@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:21:37.071Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -36,7 +37,7 @@
       "实现应用接收其他应用分享进来的图片、文档或链接 / Implement receiving images, documents, or links shared from other apps",
       "处理分享到应用后的拉起参数并跳转到指定页面 / Handle share launch parameters and route to a specific page",
       "分享海报、截图或导出的文件给其他应用 / Share posters, screenshots, or exported files to other apps",
-      "从应用内直接把商品详情页或文章链接分享出去 / Share a product detail page or article link directly from the app",
+      "在宿主应用中拉起Share Kit分享面板，配置文本、图片、视频或链接的分享内容与预览，并让用户选择目标应用、推荐联系人或附近设备发送 / Invoke the Share Kit share panel in a host app, configure shared text, images, videos, or links with previews, and let users send them to a target app, recommended contact, or nearby device",
       "获取分享成功、取消或失败的结果回调 / Get callbacks for share success, cancel, or failure",
       "配置分享面板的推荐目标和操作入口 / Configure recommended targets and action entries in the share panel",
       "实现一键把联系人名片或内容分享到指定联系人 / Implement one-tap sharing of a contact card or content to a specified contact",
@@ -63,11 +64,16 @@
       "分享结果回调或接收处理入口参数 / Share result callback or receiver handling entry parameters"
     ],
     "outputs": [
-      "入门与概述",
-      "发起分享",
-      "接收分享",
-      "跨端分享",
-      "常见问题"
+      "系统分享面板 / System share panel",
+      "跨端分享预览界面 / Cross-device sharing preview screen",
+      "可处理分享内容的目标应用列表 / List of target applications that can handle the shared content",
+      "推荐分享目标（联系人、应用内用户、附近或可信任设备） / Recommended share targets (contacts, in-app users, nearby or trusted devices)",
+      "分享面板操作区系统操作项（复制、保存、另存为、打印等） / System action items in the share panel action area (copy, save, save as, print, etc.)",
+      "分享操作结果回调数据 / Share operation result callback data",
+      "目标应用接收到的分享内容数据（符合UDMF/UTD的数据记录） / Shared content data received by the target application (UDMF/UTD-compliant data records)",
+      "用于直达目标应用或指定界面的启动信息（Want或App Linking） / Launch information for opening the target application or a specific page directly (Want or App Linking)",
+      "跨设备传输到目标设备的分享数据 / Shared data delivered to the target device across devices",
+      "分享推荐区的一步分享联系人入口 / One-step contact share entries in the recommendation area"
     ],
     "postconditions": [
       {

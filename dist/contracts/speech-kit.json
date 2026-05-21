@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:21:52.849Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -57,9 +58,12 @@
       "音色、播放控制或显示隐藏等控件参数 / control parameters such as voice timbre, playback, or show/hide state"
     ],
     "outputs": [
-      "入门与概述",
-      "朗读控件",
-      "AI 字幕控件"
+      "TextReader朗读控件实例 / TextReader reading component instance",
+      "文本转语音后的中文朗读音频播放 / Chinese text-to-speech audio playback",
+      "朗读播放状态、进度与错误事件回调数据 / Text reading playback state, progress, and error event callback data",
+      "AICaptionComponent AI字幕控件实例 / AICaptionComponent AI caption component instance",
+      "中英文实时字幕识别文本 / Real-time Chinese and English caption recognition text",
+      "AI字幕显示或隐藏后的字幕渲染视图 / Rendered caption view after AI caption show or hide control"
     ],
     "postconditions": [
       {

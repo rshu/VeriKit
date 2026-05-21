@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:18:12.955Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -56,8 +57,17 @@
       "状态监听回调或事件订阅对象 / state listener callback or event subscription object"
     ],
     "outputs": [
-      "简介",
-      "开发指南"
+      "已连接机械体设备列表 / Connected mechanic device list",
+      "机械体设备信息对象（设备标识、名称、类型、能力等） / Mechanic device information object (device ID, name, type, capabilities, etc.)",
+      "设备连接状态变化事件（连接、断开） / Device connection state change event (connected, disconnected)",
+      "摄像头目标跟踪启用或禁用结果 / Camera target tracking enable or disable result",
+      "摄像头跟踪布局设置结果（默认、左侧、中间、右侧） / Camera tracking layout setting result (default, left, center, right)",
+      "目标跟踪状态变化事件（跟踪开始、跟踪丢失、用户操作、布局变化等） / Target tracking state change event (tracking started, target lost, user operation, layout changed, etc.)",
+      "三轴当前角度数据（俯仰、横滚、偏航） / Current three-axis angle data (pitch, roll, yaw)",
+      "各轴向最大旋转范围和旋转限制数据 / Maximum rotation range and rotation limit data for each axis",
+      "旋转轴状态变化事件 / Rotation axis state change event",
+      "设备运动参数数据（最大旋转速度、连续旋转时间等） / Device motion parameter data (maximum rotation speed, continuous rotation duration, etc.)",
+      "角度调整和运动控制执行结果 / Angle adjustment and motion control execution result"
     ],
     "postconditions": [
       {

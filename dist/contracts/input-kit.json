@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:17:12.717Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -14,7 +15,7 @@
       "多模输入",
       "触摸",
       "鼠标",
-      "键盘",
+      "监听物理键盘热插拔并查询键盘类型 / Listen for physical keyboard hot-plug events and query the keyboard type",
       "光标管理",
       "输入事件分发",
       "如何设置和切换鼠标光标的显示隐藏和样式？",
@@ -54,8 +55,20 @@
       "需要拦截的按键、鼠标、触摸或轴事件规则 / Rules for keyboard, mouse, touch, or axis events to intercept"
     ],
     "outputs": [
-      "简介",
-      "开发指导"
+      "输入设备ID列表 / Input device ID list",
+      "输入设备信息对象 / InputDeviceData object",
+      "输入设备热插拔变更事件 / Input device hot-plug change event",
+      "键盘类型结果 / KeyboardType result",
+      "鼠标光标可见状态 / Pointer visibility state",
+      "鼠标光标样式结果 / PointerStyle result",
+      "按键事件对象 / KeyEvent object",
+      "鼠标事件对象 / MouseEvent object",
+      "触摸事件对象 / TouchEvent object",
+      "轴事件对象 / AxisEvent object",
+      "被拦截的按键事件对象 / Intercepted KeyEvent object",
+      "被拦截的鼠标事件对象 / Intercepted MouseEvent object",
+      "被拦截的触摸事件对象 / Intercepted TouchEvent object",
+      "被拦截的轴事件对象 / Intercepted AxisEvent object"
     ],
     "postconditions": [
       {

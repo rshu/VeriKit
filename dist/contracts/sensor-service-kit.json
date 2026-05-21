@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:21:22.164Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -58,9 +59,18 @@
       "目标振动器或动态设备标识 / Target vibrator or dynamic device identifier"
     ],
     "outputs": [
-      "入门与概述",
-      "传感器开发",
-      "振动开发"
+      "传感器数据回调对象（如加速度、陀螺仪、温度、接近光等原始采样值及时间戳） / Sensor data callback objects, such as raw accelerometer, gyroscope, temperature, proximity/light samples with timestamps",
+      "传感器信息对象或列表（传感器类型、名称、厂商、版本、量程、分辨率、功耗等元数据） / Sensor information object or list, including sensor type, name, vendor, version, range, resolution, power and other metadata",
+      "动态传感器设备上下线事件对象 / Dynamic sensor device online/offline event objects",
+      "单次传感器采样结果 / One-shot sensor sampling result",
+      "C/C++传感器事件结构体（传感器ID、时间戳、数据数组、数据长度等） / C/C++ sensor event structures containing sensor ID, timestamp, data array and data length",
+      "C/C++传感器信息结构体数组 / C/C++ sensor information structure arrays",
+      "振动执行结果或异步完成回调 / Vibration execution result or asynchronous completion callback",
+      "预设振动效果支持性查询结果（布尔值） / Preset vibration effect support query result as a boolean value",
+      "振动器信息对象或列表（振动器ID、设备ID、名称、能力等） / Vibrator information object or list, including vibrator ID, device ID, name and capabilities",
+      "动态马达设备连接和断开事件对象 / Dynamic vibrator or motor connection and disconnection event objects",
+      "自定义振动模式执行结果 / Custom vibration pattern execution result",
+      "接口调用错误码或BusinessError异常对象 / API error codes or BusinessError exception objects"
     ],
     "postconditions": [
       {

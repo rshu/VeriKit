@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:10:10.155Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -60,12 +61,18 @@
       "动态变化、弹窗或焦点切换触发条件 / triggers for dynamic updates, dialogs, or focus changes"
     ],
     "outputs": [
-      "Kit简介",
-      "屏幕朗读与焦点场景",
-      "内容播报与标注场景",
-      "控件与布局场景",
-      "交互与错误场景",
-      "测试"
+      "无障碍服务开启状态布尔值 / Accessibility service enabled status boolean",
+      "屏幕朗读（TalkBack）开启状态布尔值 / Screen reader (TalkBack) enabled status boolean",
+      "触摸浏览开启状态布尔值 / Touch exploration enabled status boolean",
+      "无障碍事件对象（如主动朗读、请求无障碍焦点、页面变化通知） / Accessibility event object, such as announcement, accessibility focus request, or page-change notification",
+      "屏幕朗读播报内容 / Screen reader announcement content",
+      "无障碍焦点变更结果 / Accessibility focus change result",
+      "UI元素无障碍语义信息（文本、描述、状态、角色、操作提示） / UI element accessibility semantics, including text, description, state, role, and action hint",
+      "自定义控件无障碍状态播报信息 / Custom component accessibility state announcement information",
+      "动态内容变化通知 / Dynamic content update notification",
+      "操作错误提示播报信息 / Operation error announcement information",
+      "列表项或组合控件的合并朗读信息 / Combined announcement information for list items or grouped components",
+      "无障碍滚动步数配置效果 / Accessibility scroll step configuration effect"
     ],
     "postconditions": [
       {

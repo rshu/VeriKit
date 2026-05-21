@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:16:40.516Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -53,12 +54,14 @@
       "数据源信息或同步/授权操作参数 / Data source info or sync/authorization operation parameters"
     ],
     "outputs": [
-      "Kit 简介与接入",
-      "数据开放总览",
-      "采样数据",
-      "锻炼记录",
-      "健康记录",
-      "数据管理与授权"
+      "用户授权状态与已授权权限范围 / User authorization status and granted permission scopes",
+      "运动健康采样数据记录（步数、热量、距离、心率、血氧、压力、体温、血压、体重、身高、睡眠分期、情绪等） / Health sampling data records (steps, calories, distance, heart rate, SpO₂, stress, body temperature, blood pressure, weight, height, sleep stage samples, mood, etc.)",
+      "锻炼记录数据（跑步、骑行、健走、跳绳、游泳、登山、滑雪等运动记录） / Workout record data (running, cycling, walking, rope skipping, swimming, hiking, skiing, etc.)",
+      "健康记录数据（睡眠等健康档案记录） / Health record data (sleep and other health record entries)",
+      "数据源对象或数据源列表（应用、设备、传感器等来源信息） / Data source object or data source list (source information for apps, devices, sensors, etc.)",
+      "实时三环数据（活动、锻炼、站立进度与状态） / Real-time three-ring data (activity, exercise, and stand progress/status)",
+      "运动健康数据写入、更新或删除结果 / Health and fitness data write, update, or delete result",
+      "手动数据同步触发结果 / Manual data synchronization trigger result"
     ],
     "postconditions": [
       {

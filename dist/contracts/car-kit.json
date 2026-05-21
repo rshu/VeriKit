@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:13:12.376Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -50,10 +51,14 @@
       "车机屏幕信息或分布式相机能力请求 / car screen information or distributed camera capability request"
     ],
     "outputs": [
-      "服务概述与准备",
-      "HiCar互联",
-      "导航流转",
-      "超级桌面"
+      "导航流转事件/流转请求（碰一碰、上车自动、车内导航等） / Navigation handoff events or transfer requests (tap-to-transfer, automatic in-car transfer, in-car navigation, etc.)",
+      "下车步行导航流转事件 / Off-car walking navigation handoff event",
+      "地址流转事件及地址文本数据 / Address handoff event and address text data",
+      "HiCar连接状态查询结果 / HiCar connection status query result",
+      "HiCar连接状态变化回调数据 / HiCar connection status change callback data",
+      "车机屏幕信息（鸿蒙智行或HiCar认证车机） / Head-unit screen information (HarmonyOS cockpit or HiCar-certified vehicle)",
+      "车机摄像头/分布式相机设备能力信息 / Vehicle camera or distributed camera capability information",
+      "手机应用共享至车机中控屏的显示/交互会话信息 / Display and interaction session information for sharing a mobile app to the vehicle center screen"
     ],
     "postconditions": [
       {

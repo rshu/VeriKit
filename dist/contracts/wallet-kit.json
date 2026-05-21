@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:22:51.651Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -60,10 +61,17 @@
       "车控操作类型与车辆连接信息 / vehicle control action type and vehicle connection information"
     ],
     "outputs": [
-      "简介",
-      "车钥匙",
-      "交通卡",
-      "常见问题"
+      "写入华为钱包的数字车钥匙凭证 / Provisioned digital car key credential in Huawei Wallet",
+      "数字车钥匙开通结果（钥匙ID、开通状态） / Digital car key issuance result (key ID, issuance status)",
+      "数字车钥匙激活结果（激活状态、错误码） / Digital car key activation result (activation status, error code)",
+      "蓝牙车控指令执行结果（开锁、闭锁、启动车辆等） / Bluetooth vehicle-control command result (unlock, lock, start vehicle, etc.)",
+      "已开通的NFC交通卡实例 / Issued NFC transit card instance",
+      "交通卡开卡订单与开通结果 / Transit card issuance order and activation result",
+      "交通卡充值订单、支付结果与写卡充值结果 / Transit card top-up order, payment result, and card-write recharge result",
+      "更新后的交通卡数据（余额、有效期、卡状态等） / Updated transit card data (balance, validity period, card status, etc.)",
+      "交通卡更新处理结果 / Transit card update processing result",
+      "交通卡删卡订单与删卡结果 / Transit card deletion order and deletion result",
+      "用户已添加的卡券/卡片列表查询结果 / Query result of cards or passes added by the user"
     ],
     "postconditions": [
       {

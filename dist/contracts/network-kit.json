@@ -5,13 +5,14 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:19:16.147Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
     "use_when": [
-      "HTTP",
+      "通过 Network Kit 使用 HttpRequest.request/requestInstream 发起 HTTP/HTTPS GET、POST 等后端 API 请求或流式上传下载数据 / Use Network Kit HttpRequest.request/requestInstream to send HTTP/HTTPS GET, POST, and other backend API requests or stream data uploads and downloads",
       "WebSocket",
       "Socket",
       "DNS",
@@ -32,7 +33,7 @@
       "典型场景包括：通过HTTP协议请求后端API数据、通过WebSocket实现实时双向通信（聊天、推送、协作）、通过Socket进行底层TCP/UDP数据传输、管理多网络连接并监控网络状态变化等",
       "当您需要开发VPN客户端应用、在局域网中通过MDNS发现和解析服务、配置网络防火墙规则、统计应用流量使用情况、或者进行域名解析时，也应使用Network Kit提供的相应能力",
       "发起 REST API 请求并处理 GET/POST/PUT/DELETE 响应 / Send REST API requests and handle GET/POST/PUT/DELETE responses",
-      "下载大文件并显示下载进度，支持断点续传 / Download large files with progress display and resume support",
+      "使用 Network Kit 的 HttpRequest.requestInstream 发起 HTTP 流式请求，接收后端文件数据块并按已接收字节统计下载进度 / Use Network Kit HttpRequest.requestInstream to send an HTTP streaming request, receive backend file data chunks, and calculate download progress by received bytes",
       "上传图片或日志文件到服务器，支持流式上传 / Upload images or log files to a server with streaming upload",
       "建立 WebSocket 长连接实现实时聊天或消息推送 / Create a WebSocket long-lived connection for real-time chat or push messages",
       "用 TCP 或 UDP 与自定义服务端通信传输二进制数据 / Communicate with a custom backend over TCP or UDP for binary data transfer",
@@ -61,12 +62,26 @@
       "网络管理参数（如DNS名称、MDNS服务类型、VPN或防火墙配置） / network management parameters (such as DNS name, MDNS service type, VPN, or firewall configuration)"
     ],
     "outputs": [
-      "简介",
-      "网络连接管理",
-      "网络访问",
-      "DNS与MDNS",
-      "VPN与安全",
-      "流量与认证"
+      "HTTP请求响应对象（状态码、响应头、响应体、Cookie等） / HTTP response object (status code, headers, body, cookies, etc.)",
+      "HTTP流式传输返回的数据分片和下载/上传进度事件 / HTTP streaming data chunks and upload/download progress events",
+      "WebSocket客户端连接对象 / WebSocket client connection object",
+      "WebSocket接收的消息数据、关闭事件和错误事件 / WebSocket received messages, close events, and error events",
+      "TCP Socket连接对象及接收的字节数据 / TCP socket connection object and received byte data",
+      "UDP Socket对象及接收的数据报 / UDP socket object and received datagrams",
+      "TLS Socket安全连接对象及加密传输数据 / TLS socket secure connection object and encrypted transport data",
+      "网络句柄NetHandle / Network handle NetHandle",
+      "网络能力信息NetCapabilities / Network capability information NetCapabilities",
+      "网络连接属性ConnectionProperties / Network connection properties ConnectionProperties",
+      "网络连接状态变更事件 / Network connection state change events",
+      "DNS解析得到的IP地址列表 / IP address list returned by DNS resolution",
+      "MDNS本地服务注册信息 / MDNS local service registration information",
+      "MDNS发现或解析得到的局域网服务信息 / LAN service information discovered or resolved by MDNS",
+      "VPN连接对象 / VPN connection object",
+      "VPN虚拟网卡/TUN接口文件描述符 / VPN virtual network adapter or TUN interface file descriptor",
+      "网络防火墙规则或规则列表 / Network firewall rule or rule list",
+      "网络防火墙规则配置结果 / Network firewall rule configuration result",
+      "按网卡统计的收发流量字节数 / Transmitted and received traffic bytes by network interface",
+      "按UID统计的应用收发流量字节数 / Application transmitted and received traffic bytes by UID"
     ],
     "postconditions": [
       {

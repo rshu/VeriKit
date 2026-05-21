@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:12:00.764Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -64,12 +65,21 @@
       "播放或录制控制需求（开始、暂停、停止、低时延、耳返、设备路由） / Playback or recording control requirements (start, pause, stop, low latency, monitoring, device routing)"
     ],
     "outputs": [
-      "Kit简介",
-      "音频播放",
-      "音频录制",
-      "音频通话与编创",
-      "音频管理与策略",
-      "音频设备管理"
+      "音频播放器实例（AudioRenderer） / AudioRenderer playback instance",
+      "音频录制器实例（AudioCapturer） / AudioCapturer recording instance",
+      "原生音频渲染器句柄（OH_AudioRenderer） / Native audio renderer handle (OH_AudioRenderer)",
+      "原生音频采集器句柄（OH_AudioCapturer） / Native audio capturer handle (OH_AudioCapturer)",
+      "系统音效播放器实例（SoundPlayer） / System sound player instance (SoundPlayer)",
+      "音振协同播放器实例（AudioHapticPlayer） / Audio-haptic synchronized player instance (AudioHapticPlayer)",
+      "输出到扬声器、耳机或蓝牙设备的播放音频流 / Rendered playback audio stream to speaker, headset, or Bluetooth device",
+      "录制得到的PCM音频数据缓冲区 / Captured PCM audio data buffers",
+      "低时延播放或录制音频流 / Low-latency playback or recording audio stream",
+      "音频设备描述信息列表（AudioDeviceDescriptor） / Audio device descriptor list (AudioDeviceDescriptor)",
+      "音量级别、静音状态和音量组查询结果 / Volume level, mute state, and volume group query results",
+      "音频焦点或音频打断事件 / Audio focus or audio interruption events",
+      "音频会话对象或会话状态 / Audio session object or session state",
+      "其他应用录音状态信息 / Recording state information of other applications",
+      "空间音频能力和空间音频状态查询结果 / Spatial audio capability and spatial audio state query results"
     ],
     "postconditions": [
       {

@@ -3,18 +3,18 @@
   "skill": "agent-framework-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:27.859Z"
+    "at": "2026-05-21T03:47:43.755Z"
   },
   "references": [
     {
       "path": "references/Agent Framework Kit简介.md",
       "title": "Agent Framework Kit简介",
-      "snippet": "Agent Framework Kit（智能体框架服务）提供了拉起指定智能体的能力。 应用在 小艺开放平台 上线智能体后，向用户提供应用+智能体组合的服务，让用户可以在适当的场景下通过Agent Framework Kit的UI控件能力主动拉起智能体。 Agent Framework Kit主要包含Function组件。 #### Kit场景介绍 - Agent Framework Kit 通过标准化组件，满足应用在不同场景、不同界面下的智能体入口诉求。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f0/v3/CL0AuhHpSpixOH8_WoDNtA/zh-cn_image_0000002543215242.png?HW-CC-KV=V1&HW-CC-Date=20260421T111701Z&HW-CC-Expire=86400&HW-CC-Sign=B272E0AAE12A937C91FFD0270ACD6D0AA707E6A67C9387DC1C8A855EDE577A8C) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2f/v"
+      "snippet": "Agent Framework Kit（智能体框架服务）提供了拉起指定智能体的能力。 应用在 小艺开放平台 上线智能体后，向用户提供应用+智能体组合的服务，让用户可以在适当的场景下通过Agent Framework Kit的UI控件能力主动拉起智能体。 Agent Framework Kit主要包含Function组件。 #### Kit场景介绍 - Agent Framework Kit 通过标准化组件，满足应用在不同场景、不同界面下的智能体入口诉求。 #### 约束与限制 #### 支持的设备 当前支持Phone和Tablet设备。 #### 支持的国家/地区 仅适用于中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）。 #### 模拟器支持情况 本Kit暂不支持模拟器。"
     },
     {
       "path": "references/通过Function组件拉起智能体.md",
       "title": "通过Function组件拉起智能体",
-      "snippet": "- Function组件分为图标组件和按钮组件，无标题时默认显示图标组件，有标题时默认显示按钮组件。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/93/v3/HngtSUQcTtuOU2Tkp_02jw/zh-cn_image_0000002573975137.png?HW-CC-KV=V1&HW-CC-Date=20260421T111702Z&HW-CC-Expire=86400&HW-CC-Sign=841BA4F27848AC293D927BB73A04AD6F9D8B6F509879ADB631EBED4ABE61FE56) - Function图标组件效果：综合型入口。不带用户意图，可作为应用内智能体主入口。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/17/v3/rg8HgrMLSBC8qbn1bUspGg/zh-cn_image_0000002543374904.png?HW-CC-KV=V1&HW-CC-Date=20260421T111702Z&HW-CC-Expire=86400&HW-CC-Sign=54AAA46"
+      "snippet": "- Function组件分为图标组件和按钮组件，无标题时默认显示图标组件，有标题时默认显示按钮组件。 - Function图标组件效果：综合型入口。不带用户意图，可作为应用内智能体主入口。 - Function按钮组件：允许应用自定义功能描述的组件。 #### 开发前准备 - 创建智能体，具体请参见 快速创建智能体 。 - 关联应用，具体请参见 关联应用 。 - 确保已在终端设备上登录华为账号，并且处于联网状态。 #### 开发步骤 1. 从项目根目录进入/src/main/ets/pages/Index.ets文件，将FunctionComponent及相关其它类引入到工程。 import { FunctionComponent, FunctionController } from '@kit.AgentFrameworkKit'; import { BusinessError } from \"@kit.BasicServicesKit\"; import { hilog } from \"@kit.PerformanceAnalysisKit\"; import { common } from '@kit.AbilityKit' 2. （可选）可以在组件加载前通过 isAgentSupport 来判断当前的AgentId是否可用，若agentId有效且Agent功能支持时再加载组件。"
     }
   ]
 }

@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:20:33.982Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -58,10 +59,16 @@
       "阅读页组件或其挂载上下文 / reading page component or its hosting context"
     ],
     "outputs": [
-      "简介",
-      "阅读器构建",
-      "阅读交互",
-      "个性化设置"
+      "书籍元信息（书名、作者、书封等） / Book metadata (title, author, cover, etc.)",
+      "书籍目录节点列表 / Table-of-contents node list",
+      "目录节点对应的正文内容 / Body text/content corresponding to TOC nodes",
+      "分页排版结果 / Paginated layout result",
+      "排版快照 / Layout snapshot",
+      "排版信息（页码、章节位置等） / Layout information (page numbers, chapter positions, etc.)",
+      "ReadPageComponent阅读页组件 / ReadPageComponent reading-page UI component",
+      "当前阅读进度回调数据 / Current reading progress callback data",
+      "当前页码信息 / Current page number information",
+      "翻页显示与翻页动效渲染结果 / Page-turn display and animation rendering result"
     ],
     "postconditions": [
       {

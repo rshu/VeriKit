@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:19:30.386Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -60,12 +61,20 @@
       "通知点击行为对应的WantAgent对象 / WantAgent object for notification click action"
     ],
     "outputs": [
-      "概述",
-      "通知发布与管理",
-      "通知授权与渠道",
-      "跨设备协同通知",
-      "通知订阅扩展",
-      "其他"
+      "本地通知提醒（普通文本、多行文本、进度条样式） / Local notification alerts (plain text, multi-line text, progress style)",
+      "NotificationRequest 通知请求对象 / NotificationRequest notification request object",
+      "NotificationContent 通知内容对象（文本、多行文本、进度条内容） / NotificationContent object (text, multi-line, progress content)",
+      "WantAgent 通知行为意图对象（点击通知拉起页面或发布公共事件） / WantAgent notification action intent object (open a page or publish a common event on tap)",
+      "已发布通知列表（NotificationRequest[]） / Published notification list (NotificationRequest[])",
+      "通知发布、更新、取消操作结果（成功回调或 BusinessError） / Publish, update, and cancel operation result (success callback or BusinessError)",
+      "应用通知授权状态或通知开关状态 / App notification permission or notification switch status",
+      "通知渠道类型与提醒方式配置结果 / Notification channel/slot type and reminder-mode configuration result",
+      "应用通知角标数字 / App notification badge number",
+      "跨设备协同通知消息 / Cross-device collaborative notification message",
+      "跨设备通知去重标识 appMessageId / Cross-device notification deduplication identifier appMessageId",
+      "NotificationSubscriberExtensionAbility 接收到的系统通知数据 / System notification data received by NotificationSubscriberExtensionAbility",
+      "优先通知权益申请结果 / Priority notification entitlement application result",
+      "应用内通知设置快捷入口 / In-app notification settings shortcut entry"
     ],
     "postconditions": [
       {

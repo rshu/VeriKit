@@ -5,13 +5,13 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:18:22.705Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
     "use_when": [
-      "媒体",
       "音视频播放",
       "录制",
       "录屏",
@@ -60,14 +60,24 @@
       "视频帧时间点、区域范围或元数据提取键 / video frame timestamp, region range, or metadata extraction keys"
     ],
     "outputs": [
-      "简介",
-      "音视频播放（ArkTS）",
-      "音视频播放（C/C++）",
-      "音视频录制",
-      "屏幕录制",
-      "视频转码",
-      "元数据与缩略图",
-      "视频处理"
+      "AVPlayer播放器实例 / AVPlayer playback controller object",
+      "SoundPool短音频播放池实例 / SoundPool low-latency sound pool object",
+      "AVRecorder录制器实例 / AVRecorder audio/video recorder object",
+      "AVScreenCapture或AVScreenCaptureRecorder录屏实例 / AVScreenCapture or AVScreenCaptureRecorder screen-capture object",
+      "AVTranscoder转码器实例 / AVTranscoder video transcoder object",
+      "AVMetadataExtractor元数据提取器实例 / AVMetadataExtractor metadata extractor object",
+      "AVImageGenerator视频帧提取器实例 / AVImageGenerator video frame generator object",
+      "音频播放输出流 / Audio playback output stream",
+      "视频渲染帧到Surface / Video frames rendered to a Surface",
+      "录制生成的音频文件 / Recorded audio media file",
+      "录制生成的视频文件 / Recorded video media file",
+      "屏幕录制生成的视频文件 / Screen recording video file",
+      "转码后的视频文件 / Transcoded video file",
+      "媒体元数据对象（如时长、分辨率、编码格式） / Media metadata object such as duration, resolution, and codec format",
+      "视频缩略图或指定时间点帧PixelMap / Video thumbnail or frame PixelMap at a specified timestamp",
+      "HDR/SDR色彩空间转换后的视频输出 / Video output after HDR/SDR color-space conversion",
+      "视频缩放或清晰度增强后的输出视频 / Video output after scaling or clarity enhancement",
+      "HDRVivid动态元数据 / HDR Vivid dynamic metadata"
     ],
     "postconditions": [
       {

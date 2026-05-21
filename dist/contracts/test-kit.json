@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:22:09.002Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -57,7 +58,18 @@
       "断言条件、控件定位条件或性能指标阈值 / assertion conditions, UI selectors, or performance metric thresholds"
     ],
     "outputs": [
-      "简介"
+      "单元测试用例执行结果（通过、失败、跳过、错误信息） / Unit test case execution results (passed, failed, skipped, error details)",
+      "测试套件执行汇总结果 / Test suite execution summary results",
+      "断言执行结果与失败堆栈信息 / Assertion results and failure stack traces",
+      "UI控件查询返回的Component对象 / Component objects returned by UI component queries",
+      "UI窗口查询返回的Window对象 / Window objects returned by UI window queries",
+      "UI自动化操作执行结果 / UI automation action execution results",
+      "代码段执行耗时数据 / Code block execution time data",
+      "CPU占用率采集数据 / CPU usage sampling data",
+      "内存占用采集数据 / Memory usage sampling data",
+      "应用启动时延测量结果 / Application startup latency measurement results",
+      "页面切换帧率数据 / Page transition frame rate data",
+      "测试运行日志与结果报告 / Test execution logs and result reports"
     ],
     "postconditions": [
       {

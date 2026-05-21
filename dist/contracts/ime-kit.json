@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:17:04.414Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -53,10 +54,16 @@
       "输入法子类型配置（语言、模式等） / IME subtype configuration such as language and mode"
     ],
     "outputs": [
-      "简介",
-      "输入法应用开发",
-      "自绘编辑框",
-      "工具"
+      "输入法扩展能力实例（InputMethodExtensionAbility） / Input method extension ability instance (InputMethodExtensionAbility)",
+      "输入法能力对象（InputMethodAbility） / Input method ability object (InputMethodAbility)",
+      "输入法面板对象（Panel，固定态、悬浮态或状态栏类型） / Input method panel object (Panel: fixed, floating, or status-bar type)",
+      "键盘控制器对象（KeyboardController） / Keyboard controller object (KeyboardController)",
+      "文本输入客户端对象（TextInputClient） / Text input client object (TextInputClient)",
+      "输入法控制器对象（InputMethodController） / Input method controller object (InputMethodController)",
+      "输入法设置管理对象（InputMethodSetting） / Input method setting and management object (InputMethodSetting)",
+      "输入法属性描述信息（InputMethodProperty） / Input method property descriptor (InputMethodProperty)",
+      "输入法子类型信息（InputMethodSubtype，多语言、多模式） / Input method subtype information (InputMethodSubtype: multilingual and multimode)",
+      "自绘编辑框与输入法的绑定会话或文本编辑代理 / Custom editor input-method binding session or text editing proxy"
     ],
     "postconditions": [
       {

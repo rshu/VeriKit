@@ -3,18 +3,18 @@
   "skill": "ime-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.894Z"
+    "at": "2026-05-21T03:47:44.538Z"
   },
   "references": [
     {
       "path": "references/IME Kit简介.md",
       "title": "IME Kit简介",
-      "snippet": "IME Kit 负责建立编辑框所在应用与输入法应用之间的通信通道，确保两者可以共同协作提供文本输入功能，也为系统应用提供管理输入法应用的能力。 #### Kit使用场景 IME Kit提供输入法框架和输入法服务两类API。用于实现输入法应用，也可以用于实现自绘编辑框以及实现对输入法应用的控制。 #### 框架原理 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/08/v3/8s1M_IcUQr-jb99FsWLNZg/zh-cn_image_0000002543374010.png?HW-CC-KV=V1&HW-CC-Date=20260421T111013Z&HW-CC-Expire=86400&HW-CC-Sign=CB57252B2B0AC1D5947F7CC4605E663DF6406F78B4001829F925B662A1A730F4) #### 功能特点 - 输入法应用： 支持创建固定态、悬浮态、状态栏三种类型的Panel，可支持开发一个输入法应用同时部署在手机、平板等多设备中。 - 自定义编辑框： 支持开发者自定义编辑框，实现绑定输入法应用，并实现输入法应用的文字输入、删除、选中、光标移动等操作。 #### 能力范围 - 提供输入法服务相关API，"
+      "snippet": "IME Kit 负责建立编辑框所在应用与输入法应用之间的通信通道，确保两者可以共同协作提供文本输入功能，也为系统应用提供管理输入法应用的能力。 #### Kit使用场景 IME Kit提供输入法框架和输入法服务两类API。用于实现输入法应用，也可以用于实现自绘编辑框以及实现对输入法应用的控制。 #### 框架原理 #### 功能特点 - 输入法应用： 支持创建固定态、悬浮态、状态栏三种类型的Panel，可支持开发一个输入法应用同时部署在手机、平板等多设备中。 - 自定义编辑框： 支持开发者自定义编辑框，实现绑定输入法应用，并实现输入法应用的文字输入、删除、选中、光标移动等操作。 #### 能力范围 - 提供输入法服务相关API，用于输入法应用，包括：创建软键盘窗口、插入/删除字符、选中文本、监听物理键盘按键事件等。 - 提供输入法框架相关API，可用于自绘编辑框，包括绑定输入法，实现输入、删除、选中、光标移动等。 - 提供系统应用管理输入法应用能力，实现对输入法应用的控制，包括显示/隐藏输入法软键盘、切换输入法、获取所有输入法列表。 #### 与相关Kit的关系 ArkUI: IME Kit在输入法软键盘和自绘编辑框时使用ArkUI提供的部分组件、事件、动效、状态管理等能力，例如Text、Button组件，onClick点击事件。 #### 约束限制 针对切换输入法应用的系统API"
     },
     {
       "path": "references/Ime工具.md",
       "title": "Ime工具",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/78/v3/L-dHDn-VT4O8ahpQ-dKyGQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111014Z&HW-CC-Expire=86400&HW-CC-Sign=E0CD1E24C1BA8D0AEA785F14917DA48C01B61529BA6C30484B3C9D868F1C89FF) Ime工具从API version 20开始支持。 **工具用法** hdc shell ime [选项] [参数] **命令列表** #### 通过Ime工具管理输入法示例代码 1. 启用输入法，支持启用三方输入法到基础模式或者完整体验模式。 # 输入：hdc命令启用输入法。 # 处理：检查为shell调用后，将调用系统输入法管理接口。 # 输出：效果等同于启用API调用。 # 基础模式 hdc shell ime -e com.xxx.yyy # 完整体验模式 hdc shell ime -e com.xxx.yyy -f 2. 禁用输入法，支持停用三方输入法应用。 # 输入：hdc命令禁用输入法。 # 处理：检查为shell调用后，将接到禁用输入法的"
+      "snippet": "Ime工具从API version 20开始支持。 **工具用法** hdc shell ime [选项] [参数] **命令列表** #### 通过Ime工具管理输入法示例代码 1. 启用输入法，支持启用三方输入法到基础模式或者完整体验模式。 # 输入：hdc命令启用输入法。 # 处理：检查为shell调用后，将调用系统输入法管理接口。 # 输出：效果等同于启用API调用。 # 基础模式 hdc shell ime -e com.xxx.yyy # 完整体验模式 hdc shell ime -e com.xxx.yyy -f 2. 禁用输入法，支持停用三方输入法应用。 # 输入：hdc命令禁用输入法。 # 处理：检查为shell调用后，将接到禁用输入法的接口。 # 输出：效果等同于禁用API调用。 hdc shell ime -d com.xxx.yyy 3. 切换到指定输入法。 # 输入：hdc命令切换输入法。 # 处理：检查为shell调用后，将接到切换输入法接口。 # 输出：效果等同于切换输入法API调用。 hdc shell ime -s com.xxx.yyy 4. 获取当前输入法。 # 输入：hdc命令获取当前输入法。 # 处理：检查为shell调用后，将接到获取当前输入法接口。 # 输出：效果等同于获取当前输入法API调用。 hdc shell ime -g 5. "
     },
     {
       "path": "references/不可获焦窗口中输入框与输入法交互指南.md",
@@ -24,7 +24,7 @@
     {
       "path": "references/切换输入法应用.md",
       "title": "切换输入法应用",
-      "snippet": "输入法框架服务提供了切换输入法应用的API，支持切换输入法、切换输入法和子类型、切换当前输入法的子类型。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1f/v3/rLDk2pmjRmmjZ49vpOw3Ng/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111013Z&HW-CC-Expire=86400&HW-CC-Sign=11EC046B48D6713E5F041A2A7C797D0F9144BFDF6B7BCD635EFC4C1F7836C542) 1. 以下接口的使用仅允许在当前输入法应用中调用。 2. 本示例假设已经在输入法应用中执行，如何实现一个输入法应用，请参考 实现一个输入法应用 开发指导。 #### 切换当前输入法子类型 1. 在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用 switchCurrentInputMethodSubtype 接口，传入当前输入法的子类型 InputMethodSubtype 作为参数即可切换当前输入法子类型。 async switchCurrentInputMethodSubtype(item: InputMethodSub"
+      "snippet": "输入法框架服务提供了切换输入法应用的API，支持切换输入法、切换输入法和子类型、切换当前输入法的子类型。 1. 以下接口的使用仅允许在当前输入法应用中调用。 2. 本示例假设已经在输入法应用中执行，如何实现一个输入法应用，请参考 实现一个输入法应用 开发指导。 #### 切换当前输入法子类型 1. 在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用 switchCurrentInputMethodSubtype 接口，传入当前输入法的子类型 InputMethodSubtype 作为参数即可切换当前输入法子类型。 async switchCurrentInputMethodSubtype(item: InputMethodSubtype) { try { await inputMethod.switchCurrentInputMethodSubtype(item); this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id; } catch (err) { console.error(`SwitchCurrentInputMethodSubtype error: ${err.code} ${err.message}`); let error: Busine"
     },
     {
       "path": "references/在自绘编辑框中使用输入法.md",
@@ -39,7 +39,7 @@
     {
       "path": "references/实现一个输入法应用.md",
       "title": "实现一个输入法应用",
-      "snippet": "InputMethodExtensionAbility 提供了onCreate()和onDestroy()生命周期回调，根据需要重写对应的回调方法。InputMethodExtensionAbility的生命周期如下： - **onCreate()** 服务被首次创建时触发该回调，开发者可以在此进行一些初始化的操作，例如注册公共事件监听等。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/30/v3/kiSCOW01QoOTxeUdZyltNA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111013Z&HW-CC-Expire=86400&HW-CC-Sign=3A5458471034791347F3FB88872908937E9A4BBC99E8C9BD172EBB722B14361D) 如果服务已创建，再次启动该InputMethodExtensionAbility不会触发onCreate()回调。 - **onDestroy()** 当不再使用服务且准备将该实例销毁时，触发该回调。开发者可以在该回调中清理资源，如注销监听等。 #### 开发步骤 开发者在实现一个输入法应用时，需要在DevEco St"
+      "snippet": "InputMethodExtensionAbility 提供了onCreate()和onDestroy()生命周期回调，根据需要重写对应的回调方法。InputMethodExtensionAbility的生命周期如下： - **onCreate()** 服务被首次创建时触发该回调，开发者可以在此进行一些初始化的操作，例如注册公共事件监听等。 如果服务已创建，再次启动该InputMethodExtensionAbility不会触发onCreate()回调。 - **onDestroy()** 当不再使用服务且准备将该实例销毁时，触发该回调。开发者可以在该回调中清理资源，如注销监听等。 #### 开发步骤 开发者在实现一个输入法应用时，需要在DevEco Studio工程中新建一个InputMethodExtensionAbility，具体步骤如下： 1. 在工程Module对应的ets目录下，右键选择“New > Directory”，新建一个目录，并命名为InputMethodExtensionAbility。 2. 在InputMethodExtensionAbility目录下，右键选择“New > File”，新建四个文件，分别为KeyboardController.ets、InputMethodService.ets、Index.ets以及KeyboardKeyData.et"
     },
     {
       "path": "references/输入法子类型开发指南.md",
@@ -54,7 +54,7 @@
     {
       "path": "references/输入法应用沉浸模式.md",
       "title": "输入法应用沉浸模式",
-      "snippet": "为了让应用能够提供一致的沉浸式体验，我们提供了前台应用和输入法应用之间的通信机制。通过该机制，输入法应用根据前台应用设置的沉浸模式来决定最终沉浸模式。 #### 框架原理 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/db/v3/BI2A4SywSAulQf2iUNIGqQ/zh-cn_image_0000002573854265.png?HW-CC-KV=V1&HW-CC-Date=20260421T111014Z&HW-CC-Expire=86400&HW-CC-Sign=66155E48672C6B116C075D9E7E39058FCBE72E0505B5A94143AA5C2CB98604FD) - 前台应用根据应用场景，设置应用期望的沉浸模式。 - 输入法框架在拉起输入法应用时会将前台应用期望的沉浸模式传递给输入法应用。 - 输入法应用根据前台应用的沉浸模式决定最终的沉浸模式，并设置最终沉浸模式给输入法框架。 #### 接入指导 1. 前台应用 设置编辑框沉浸模式 。示例代码如下。 TextArea({placeholder: '沉浸模式'}) .keyboardAppearance(KeyboardAppearance.IMMERSIVE) Tex"
+      "snippet": "为了让应用能够提供一致的沉浸式体验，我们提供了前台应用和输入法应用之间的通信机制。通过该机制，输入法应用根据前台应用设置的沉浸模式来决定最终沉浸模式。 #### 框架原理 - 前台应用根据应用场景，设置应用期望的沉浸模式。 - 输入法框架在拉起输入法应用时会将前台应用期望的沉浸模式传递给输入法应用。 - 输入法应用根据前台应用的沉浸模式决定最终的沉浸模式，并设置最终沉浸模式给输入法框架。 #### 接入指导 1. 前台应用 设置编辑框沉浸模式 。示例代码如下。 TextArea({placeholder: '沉浸模式'}) .keyboardAppearance(KeyboardAppearance.IMMERSIVE) TextArea({placeholder: '非沉浸模式'}) .keyboardAppearance(KeyboardAppearance.NONE_IMMERSIVE) 2. 输入法应用 订阅编辑框属性变化事件 ，通过回调参数EditorAttribute中的immersiveMode字段感知前台应用期望的沉浸模式。示例代码如下。 // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型 inputMethodEngine.getKeyboardDelegate().on(\"editorAttributeChanged\", (attr : inputMet"
     }
   ]
 }

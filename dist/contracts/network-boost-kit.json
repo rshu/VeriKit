@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:19:09.979Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -59,12 +60,20 @@
       "传输体验反馈数据 / transport experience feedback data"
     ],
     "outputs": [
-      "简介",
-      "开发准备",
-      "连接迁移 - ArkTS接口",
-      "连接迁移 - C/C++接口",
-      "网络质量感知 - ArkTS接口",
-      "网络质量感知 - C/C++接口"
+      "可用网络状态变更事件（Wi‑Fi/蜂窝网络可用性、网络标识、承载类型等） / Available network status change event (Wi‑Fi/cellular availability, network ID, bearer type, etc.)",
+      "系统多网加速建议事件（建议发起或释放多网并发、建议原因等） / System multi-network acceleration recommendation event (recommendation to start or release multi-network concurrency, reason, etc.)",
+      "多网并发配额信息（已使用和剩余的次数、时长） / Multi-network concurrency quota information (used and remaining count and duration)",
+      "多网并发请求结果（发起成功/失败状态、错误码） / Multi-network concurrency request result (start success/failure status, error code)",
+      "多网并发释放结果（释放成功/失败状态、错误码） / Multi-network concurrency release result (release success/failure status, error code)",
+      "业务场景设置结果（设置成功/失败状态、错误码） / Service scenario setting result (success/failure status, error code)",
+      "连接迁移开始通知（源网络、目标网络、迁移原因等） / Connection migration started notification (source network, target network, migration reason, etc.)",
+      "连接迁移完成通知（迁移结果、源网络、目标网络、错误码等） / Connection migration completed notification (migration result, source network, target network, error code, etc.)",
+      "迁移模式设置结果（委托模式或自主模式设置成功/失败状态） / Migration mode setting result (delegated or autonomous mode setting success/failure status)",
+      "网络质量QoS评估结果（时延、抖动、丢包、带宽或质量等级等） / Network QoS evaluation result (latency, jitter, packet loss, bandwidth or quality level, etc.)",
+      "网络场景实时识别结果（高铁、电梯等场景类型及置信度） / Real-time network scene recognition result (scene type such as high-speed railway or elevator, and confidence)",
+      "网络场景预测结果（预测场景类型、预计发生时间或持续时间等） / Network scene prediction result (predicted scene type, expected occurrence time or duration, etc.)",
+      "弱网判决结果（是否弱网、弱网等级、判决来源或触发门限） / Weak-network decision result (whether the network is weak, weak-network level, decision source or trigger threshold)",
+      "应用传输体验反馈提交结果（反馈上报成功/失败状态、错误码） / Application transmission experience feedback submission result (feedback reporting success/failure status, error code)"
     ],
     "postconditions": [
       {

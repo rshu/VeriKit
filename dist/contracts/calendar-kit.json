@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:12:41.790Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -53,10 +54,14 @@
       "一键服务跳转链接或 DeepLink 信息 / one-click service link or DeepLink information"
     ],
     "outputs": [
-      "服务概述",
-      "日历账户管理",
-      "日程管理",
-      "一键服务"
+      "应用专属日历账户对象及账户ID / App-specific calendar account object and account ID",
+      "日程事件对象及日程ID / Calendar event object and event ID",
+      "日程查询结果列表（按ID、标题或时间范围返回） / Calendar event query result list returned by ID, title, or time range",
+      "日程提醒配置与提醒时间 / Event reminder configuration and reminder time",
+      "系统日历中的日程提醒通知 / Calendar event reminder notification in the system Calendar",
+      "写入日程的一键服务DeepLink跳转信息 / One-click service DeepLink information written into a calendar event",
+      "日历通知、日历应用或桌面卡片中展示的一键服务按钮 / One-click service button shown in Calendar notifications, Calendar app, or home-screen cards",
+      "日历账户或日程的创建、更新、删除操作结果 / Create, update, and delete operation results for calendar accounts or events"
     ],
     "postconditions": [
       {

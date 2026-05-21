@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:18:53.181Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -55,8 +56,18 @@
       "实体类型结果需求 / desired entity types in the result"
     ],
     "outputs": [
-      "简介",
-      "文本处理能力"
+      "分词结果：词语或词组列表（包含从输入文本切分出的中文、英文、数字词元） / Word segmentation results: list of words or phrases tokenized from the input text, including Chinese, English, and numeric tokens",
+      "实体抽取结果：命名实体列表（包含实体文本、实体类型及其在原文中的位置） / Entity extraction results: list of named entities, including entity text, entity type, and position in the source text",
+      "日期时间实体 / Date and time entities",
+      "地址实体 / Address entities",
+      "电话号码或手机号实体 / Telephone or mobile number entities",
+      "电子邮件地址实体 / Email address entities",
+      "快递单号实体 / Express delivery tracking number entities",
+      "航班号实体 / Flight number entities",
+      "人名实体 / Person name entities",
+      "网址链接实体 / URL entities",
+      "验证码实体 / Verification code entities",
+      "身份证号实体 / ID card number entities"
     ],
     "postconditions": [
       {

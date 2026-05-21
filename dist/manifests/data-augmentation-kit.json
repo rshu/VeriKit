@@ -3,7 +3,7 @@
   "skill": "data-augmentation-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.713Z"
+    "at": "2026-05-21T03:47:44.407Z"
   },
   "references": [
     {
@@ -14,12 +14,12 @@
     {
       "path": "references/RAG概述.md",
       "title": "RAG概述",
-      "snippet": "RAG（Retrieval-Augmented Generation，检索增强生成）融合了智能检索与知识库技术，通过知识库驱动内容生成，具备强大的可解释性和深度定制能力。应用可通过接入Data Augmentation Kit提供的 RAG 能力，快速实现知识问答、智慧助手等业务场景。本模块还支持通过模板灵活配置RAG运行的核心参数，实现全流程的深度定制。 其工作原理为：请求大语言模型解析用户问题，智能检索知识库内容，最终由大模型融合检索结果并生成自然流畅的回复。下文将以流式的知识问答场景为例，详细说明RAG的使用。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/be/v3/nCrp9vPWQ9a0q7s0lw72Pw/zh-cn_image_0000002543373976.png?HW-CC-KV=V1&HW-CC-Date=20260421T111003Z&HW-CC-Expire=86400&HW-CC-Sign=F59CF58EE34CE084AFBCC80ADE0AD4CBB100972E27015E317D3623BF1C18F13C)"
+      "snippet": "RAG（Retrieval-Augmented Generation，检索增强生成）融合了智能检索与知识库技术，通过知识库驱动内容生成，具备强大的可解释性和深度定制能力。应用可通过接入Data Augmentation Kit提供的 RAG 能力，快速实现知识问答、智慧助手等业务场景。本模块还支持通过模板灵活配置RAG运行的核心参数，实现全流程的深度定制。 其工作原理为：请求大语言模型解析用户问题，智能检索知识库内容，最终由大模型融合检索结果并生成自然流畅的回复。下文将以流式的知识问答场景为例，详细说明RAG的使用。"
     },
     {
       "path": "references/完整示例代码.md",
       "title": "完整示例代码",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7b/v3/4x83tMTZThScqvihTi-dNw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111004Z&HW-CC-Expire=86400&HW-CC-Sign=CE9D980137BED143501F155AFE3B5CFA634A8AFD2E1638419D8DAFC26A6B51E9) 需要完成网络权限的申请，参见： 开发准备 。 #### EntryAbility.ets 应用的生命周期实现在这个文件中，主要在应用启动时进行RagSession、数据库连接的创建，应用关闭时进行RagSession、数据库连接的释放。 // src/main/ets/entryability/EntryAbility.ets import { AbilityConstant, UIAbility, Want, common } from '@kit.AbilityKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { window } from '@kit.ArkUI'; i"
+      "snippet": "需要完成网络权限的申请，参见： 开发准备 。 #### EntryAbility.ets 应用的生命周期实现在这个文件中，主要在应用启动时进行RagSession、数据库连接的创建，应用关闭时进行RagSession、数据库连接的释放。 // src/main/ets/entryability/EntryAbility.ets import { AbilityConstant, UIAbility, Want, common } from '@kit.AbilityKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { window } from '@kit.ArkUI'; import { BusinessError } from '@kit.BasicServicesKit'; import SetUp from '../entryability/SetUp'; import Config from '../entryability/Config'; import { rag } from '@kit.DataAugmentationKit'; const DOMAIN = 0x0000; export default class EntryAbility extends UIAbility { o"
     },
     {
       "path": "references/智慧化数据检索-ArkTS.md",
@@ -39,12 +39,12 @@
     {
       "path": "references/知识问答.md",
       "title": "知识问答",
-      "snippet": "知识问答是通过检索增强生成（RAG）技术，从数据源中精准提取信息并生成答案的智能交互方式。可用于企业客服、医疗辅助、IT支持等领域。 #### 约束限制 1. 知识问答需要先对数据源库进行 知识加工 生成知识库，否则无法问答。 2. 用户问答时，RAG可使用的历史记录范围为最近1次问答内容。 3. RAG不提供敏感词风控检测能力，开发者需要自行对用户输入内容和RAG返回内容进行敏感词风控检测。 4. 开发者应选择上下文长度至少应该为30k Tokens的LLM，如Qwen2.5-7B-32K、Mistral-7B-Instruct-v0.2、Llama-3.1-8B等。否则可能会因大模型上下文长度超限而导致知识问答失败。 5. LLM由开发者自行选择，问答支持的语言受选择的LLM影响。 #### 接口说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2f/v3/_1xSyybmTCaGj3kPcaXZsg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111003Z&HW-CC-Expire=86400&HW-CC-Sign=366217334A362C4F90438FD926D5FC7DB20D5333"
+      "snippet": "知识问答是通过检索增强生成（RAG）技术，从数据源中精准提取信息并生成答案的智能交互方式。可用于企业客服、医疗辅助、IT支持等领域。 #### 约束限制 1. 知识问答需要先对数据源库进行 知识加工 生成知识库，否则无法问答。 2. 用户问答时，RAG可使用的历史记录范围为最近1次问答内容。 3. RAG不提供敏感词风控检测能力，开发者需要自行对用户输入内容和RAG返回内容进行敏感词风控检测。 4. 开发者应选择上下文长度至少应该为30k Tokens的LLM，如Qwen2.5-7B-32K、Mistral-7B-Instruct-v0.2、Llama-3.1-8B等。否则可能会因大模型上下文长度超限而导致知识问答失败。 5. LLM由开发者自行选择，问答支持的语言受选择的LLM影响。 #### 接口说明 接口需在页面或自定义组件生命周期内调用。 RAG关键接口如下表所示，具体API说明详见 API参考 。除接口外，还可以通过配置文件进行深度定制RAG，详见 RAG配置 。 #### 开发准备 1. 申请网络权限。 streamChat 中需要开发者实现与LLM交互的功能，因此需要为应用申请网络权限。 // module.json5中配置\"requestPermissions\"字段 // src/main/module.json5 \"requestPermissions\": [ {"
     },
     {
       "path": "references/端侧问答模型.md",
       "title": "端侧问答模型",
-      "snippet": "当应用通过RAG接口进行知识问答时，系统会经过以下处理流程：问题分解、查询改写、知识检索和检索生成，该流程需要与大语言模型（LLM）进行多次交互。应用可选择两种部署方案： - 使用自建的云端大模型。 - 采用Kit提供的端侧问答模型能力。 选择端侧问答模型方案具有以下优势： - 免除云端大模型的运维成本。 - 增强用户数据安全性（数据在端侧处理）。 #### 约束与限制 开发者需要申请接口调用。 #### 接口说明 端侧问答模型关键接口如下表所示，具体API说明详见API参考。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f/v3/46FrLafYSD2WMN5u6b_p2w/notice_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111005Z&HW-CC-Expire=86400&HW-CC-Sign=2BE7B2BE419AB637B8ACB4C40846B376BA7482117EEF5814021CE693409CF831) 模型资源来自 Matrix 模型库，chat接口默认调用模型为Qwen25-7B-Instruct。 #### 白名单申请 打开华为开发者联盟的“ 在线提单 ”页面，填写“概述”"
+      "snippet": "当应用通过RAG接口进行知识问答时，系统会经过以下处理流程：问题分解、查询改写、知识检索和检索生成，该流程需要与大语言模型（LLM）进行多次交互。应用可选择两种部署方案： - 使用自建的云端大模型。 - 采用Kit提供的端侧问答模型能力。 选择端侧问答模型方案具有以下优势： - 免除云端大模型的运维成本。 - 增强用户数据安全性（数据在端侧处理）。 #### 约束与限制 开发者需要申请接口调用。 #### 接口说明 端侧问答模型关键接口如下表所示，具体API说明详见API参考。 模型资源来自 Matrix 模型库，chat接口默认调用模型为Qwen25-7B-Instruct。 #### 白名单申请 打开华为开发者联盟的“ 在线提单 ”页面，填写“概述”，端侧模型问答接口调用申请，问题分类选择“HarmonyOS NEXT > 系统 > Data Augmentation Kit”，描述问题详情并单击“提交问题”。提交问题后，有时需要您进一步澄清问题，请及时关注进展并予以回复，以便更好地解决问题。 1.当前端侧模型问答仅支持PC/2in1设备类型，其它设备类型（Phone、Tablet等）无法使用此能力。 2.为了提供优质的开发体验，当前端侧模型问答接口需要申请，优先处理华为开放生态团队对接的企业方应用。 申请接口调用信息模板： 1. 应用名称：xxx。 2. bundleName"
     },
     {
       "path": "references/配置分析过程模板.md",

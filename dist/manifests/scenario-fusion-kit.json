@@ -3,33 +3,33 @@
   "skill": "scenario-fusion-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.169Z"
+    "at": "2026-05-21T03:47:44.747Z"
   },
   "references": [
     {
       "path": "references/ContentType使用场景说明.md",
       "title": "ContentType使用场景说明",
-      "snippet": "华为账号昵称 用户姓名 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b3/v3/fK7rBJ7hRamHRXgMdO6Fnw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111641Z&HW-CC-Expire=86400&HW-CC-Sign=73FD1A3D507EBB075DF8E7CD84F324F663F06816E84C658035D038959F1A6BBE) - PERSON_FULL_NAME和（PERSON_LAST_NAME，PERSON_FIRST_NAME）不能同时在同一个表单中使用（在护照信息场景中可以同时使用）。 - 请在收集使用用户敏感个人信息的表单界面告知目的以及必要性。 联系方式 身份信息 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/44/v3/gXK1v9nwSkOfI-_ao9PNcg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111641Z&HW-CC-Expire=86400&H"
+      "snippet": "华为账号昵称 用户姓名 - PERSON_FULL_NAME和（PERSON_LAST_NAME，PERSON_FIRST_NAME）不能同时在同一个表单中使用（在护照信息场景中可以同时使用）。 - 请在收集使用用户敏感个人信息的表单界面告知目的以及必要性。 联系方式 身份信息 - ID_CARD_NUMBER目前只支持身份证号的推荐、填充，不支持其他类型的证件，可参考动态修改ContentType值动态配置输入框的ContentType。 - 请在收集使用用户敏感个人信息的表单界面告知目的以及必要性。 护照信息 请在收集使用用户敏感个人信息的表单界面告知目的以及必要性。 车牌信息 地址信息 发票抬头信息"
     },
     {
       "path": "references/Flutter框架+H5接入智能填充.md",
       "title": "Flutter框架+H5接入智能填充",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d2/v3/8gDBaxW_RYmR9nMcpEqW3g/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111642Z&HW-CC-Expire=86400&HW-CC-Sign=612DA6EA677EF22614A701A58EA7B83A70F5ECBFE3B24569D04E69DD8D141728) 目前仅支持已适配HarmonyOS的三方框架应用使用。 HarmonyOS版Flutter环境搭建请参考官方文档 Flutter环境搭建指导 。 #### 前提条件 - 设备智能填充开关必须处于打开状态，请前往“设置 > 隐私和安全 > 智能填充”页面开启开关。 - 设备已连接互联网并且登录华为账号。 - 该应用需已接入 智能填充服务 。 #### 开发准备 配置Flutter已适配HarmonyOS的开发环境。 #### 效果图与示例代码 请参考 H5接入智能填充效果图 。"
+      "snippet": "目前仅支持已适配HarmonyOS的三方框架应用使用。 HarmonyOS版Flutter环境搭建请参考官方文档 Flutter环境搭建指导 。 #### 前提条件 - 设备智能填充开关必须处于打开状态，请前往“设置 > 隐私和安全 > 智能填充”页面开启开关。 - 设备已连接互联网并且登录华为账号。 - 该应用需已接入 智能填充服务 。 #### 开发准备 配置Flutter已适配HarmonyOS的开发环境。 #### 效果图与示例代码 请参考 H5接入智能填充效果图 。"
     },
     {
       "path": "references/H5_三方框架和HarmonyOS配置项映射关系.md",
       "title": "H5/三方框架和HarmonyOS配置项映射关系",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ad/v3/E-7ykNe3QO2RIasWW7GrZg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111643Z&HW-CC-Expire=86400&HW-CC-Sign=764C6AD506D525D66BCDC92DAF688F5C6BC83E6165A3D795B2FEFDE56911D5D7) autocomplete配置项name和（family-name，given-name）不能同时在同一个表单中使用（在护照信息场景中可以同时使用）。 #### React Native textContentType和HarmonyOS的ContentType的映射关系 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ac/v3/3m9l5noCTvKr-b4gxOC-QQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111643Z&HW-CC-Expire=86400&HW-CC"
+      "snippet": "autocomplete配置项name和（family-name，given-name）不能同时在同一个表单中使用（在护照信息场景中可以同时使用）。 #### React Native textContentType和HarmonyOS的ContentType的映射关系 textContentType配置项name和（familyName，givenName）不能同时在同一个表单中使用（在护照信息场景中可以同时使用）。"
     },
     {
       "path": "references/H5接入智能填充.md",
       "title": "H5接入智能填充",
-      "snippet": "本章节介绍在ArkWeb的Web组件加载H5文件如何实现智能填充功能。 #### 前提条件 - 设备智能填充开关必须处于打开状态，请前往“设置 > 隐私和安全 > 智能填充”页面开启开关。 - 设备已连接互联网并且登录华为账号。 - 该应用需已接入 智能填充服务 。 #### 效果图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ce/v3/UNQycutmQfykrz5H9uraBw/zh-cn_image_0000002543215194.png?HW-CC-KV=V1&HW-CC-Date=20260421T111641Z&HW-CC-Expire=86400&HW-CC-Sign=90C7E1F078E216F56938CA5DEBC2B17259C099A9CD4AA53CFE2D66DB7927F5B4) #### 示例代码一 通过ArkWeb的 Web组件 加载H5文件。 import { webview } from '@kit.ArkWeb'; @Entry @Component struct Index { controller: webview.WebviewController = new webview.WebviewControlle"
+      "snippet": "本章节介绍在ArkWeb的Web组件加载H5文件如何实现智能填充功能。 #### 前提条件 - 设备智能填充开关必须处于打开状态，请前往“设置 > 隐私和安全 > 智能填充”页面开启开关。 - 设备已连接互联网并且登录华为账号。 - 该应用需已接入 智能填充服务 。 #### 效果图 #### 示例代码一 通过ArkWeb的 Web组件 加载H5文件。 import { webview } from '@kit.ArkWeb'; @Entry @Component struct Index { controller: webview.WebviewController = new webview.WebviewController(); build() { Column() { // 在组件创建过程中加载HTML5文件。 Web({ src: $rawfile(\"autofill_h5.html\"), controller: this.controller }) } } } #### 示例代码二 autofill_h5.html如下所示。其中通过给form表单的input输入框（form表单的子节点）配置 autocomplete 属性来支持智能填充，action需要配置表单提交接口链接，当form表单提交后，页面导航发生变化时，满足历史表单输入保存的条件时会触发对应弹窗。参考下面"
     },
     {
       "path": "references/React Native框架+H5接入智能填充.md",
       "title": "React Native框架+H5接入智能填充",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8b/v3/FY9RQZaVQHCNBMKYtBHOvg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111642Z&HW-CC-Expire=86400&HW-CC-Sign=B95635B2FD08A08C76789868C1829305F2802AEB6DB3D6DA3F03283AA7CBFAF8) 目前仅支持已适配HarmonyOS的三方框架应用使用。 HarmonyOS版React Native环境搭建请参考官方文档 React Native环境搭建指导 。 #### 前提条件 - 设备智能填充开关必须处于打开状态，请前往“设置 > 隐私和安全 > 智能填充”页面开启开关。 - 设备已连接互联网并且登录华为账号。 - 该应用需已接入 智能填充服务 。 #### 开发准备 配置React Native已适配HarmonyOS的工程。 #### React Native输入框效果图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/09"
+      "snippet": "目前仅支持已适配HarmonyOS的三方框架应用使用。 HarmonyOS版React Native环境搭建请参考官方文档 React Native环境搭建指导 。 #### 前提条件 - 设备智能填充开关必须处于打开状态，请前往“设置 > 隐私和安全 > 智能填充”页面开启开关。 - 设备已连接互联网并且登录华为账号。 - 该应用需已接入 智能填充服务 。 #### 开发准备 配置React Native已适配HarmonyOS的工程。 #### React Native输入框效果图 #### 示例代码 在React Native输入框TextInput需要配置 textContentType 属性来支持智能填充，代码如下： import React from 'react'; import { Text, TextInput, View, StyleSheet } from 'react-native'; const styles = StyleSheet.create({ default: { borderWidth: StyleSheet.hairlineWidth, borderColor: '#0f0f0f', flex: 1, fontSize: 13, padding: 4, height: 80, width: 200, }, labelContainer: { "
     },
     {
       "path": "references/Scenario Fusion Kit简介.md",
@@ -39,17 +39,17 @@
     {
       "path": "references/Taro框架+H5接入智能填充.md",
       "title": "Taro框架+H5接入智能填充",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/49/v3/2jOJWmvwT7-wSu5gz_b9eg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111642Z&HW-CC-Expire=86400&HW-CC-Sign=20D098D451A6C09CFCD8CC4C40D32B5D8D7247773E22FBC1F0E875341B5F1BAF) 目前仅支持已适配HarmonyOS的三方框架应用使用。 Taro及HarmonyOS版工程的搭建请参考官方文档 Harmony Hybrid | Taro 文档 。 #### 前提条件 - 基于Web开发HarmonyOS应用。 - 设备智能填充开关必须处于打开状态，请前往“设置 > 隐私和安全 > 智能填充”页面开启开关。 - 设备已连接互联网并且登录华为账号。 - 该应用需已接入 智能填充服务 。 #### 开发准备 配置Taro已适配HarmonyOS的开发环境。 #### 效果图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c"
+      "snippet": "目前仅支持已适配HarmonyOS的三方框架应用使用。 Taro及HarmonyOS版工程的搭建请参考官方文档 Harmony Hybrid | Taro 文档 。 #### 前提条件 - 基于Web开发HarmonyOS应用。 - 设备智能填充开关必须处于打开状态，请前往“设置 > 隐私和安全 > 智能填充”页面开启开关。 - 设备已连接互联网并且登录华为账号。 - 该应用需已接入 智能填充服务 。 #### 开发准备 配置Taro已适配HarmonyOS的开发环境。 #### 效果图 #### 示例代码 示例代码仅展示接入智能填充相关部分，请按照实际场景修改后使用。在Taro的Input组件（Form表单的子节点）中添加nativeProps属性，并配置nativeProps中 autocomplete 属性来支持智能填充，Form表单提交后，当页面导航发生变化时，满足历史表单输入保存的条件时会触发对应弹窗（建议使用HTML <button> 标签进行Form表单提交）。代码如下： import { View, Text, Input, Form } from \"@tarojs/components\"; import Taro, { useLoad } from \"@tarojs/taro\"; import \"./index.scss\"; export default func"
     },
     {
       "path": "references/Weex框架+H5接入智能填充.md",
       "title": "Weex框架+H5接入智能填充",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/72/v3/D73LJ1N-T_KR0BuxMoZfvA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111642Z&HW-CC-Expire=86400&HW-CC-Sign=B76E1C6AC7F3D09800064E6D9F68F9145A80BE00811A63AC161F087DDD919072) 目前仅支持已适配HarmonyOS的三方框架应用使用。 #### 前提条件 - 设备智能填充开关必须处于打开状态，请前往“设置 > 隐私和安全 > 智能填充”页面开启开关。 - 设备已连接互联网并且登录华为账号。 - 该应用需已接入 智能填充服务 。 #### 开发准备 配置Weex已适配HarmonyOS的工程。 #### 效果图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/37/v3/5Dj0msYYTrW-Z8woigEYQQ/zh-cn_image_0000002543215196.png?HW-CC-KV=V1&HW-CC-"
+      "snippet": "目前仅支持已适配HarmonyOS的三方框架应用使用。 #### 前提条件 - 设备智能填充开关必须处于打开状态，请前往“设置 > 隐私和安全 > 智能填充”页面开启开关。 - 设备已连接互联网并且登录华为账号。 - 该应用需已接入 智能填充服务 。 #### 开发准备 配置Weex已适配HarmonyOS的工程。 #### 效果图 #### 示例代码 在Weex的form表单中给input输入框（form表单的子节点）配置 autocomplete 属性以实现智能填充，代码中action需要配置表单提交接口链接，当form表单提交后，页面导航发生变化时，满足历史表单输入保存的条件时会触发对应弹窗。代码如下： <template> <div class=\"text-auto-fill\"> <text class=\"header\">Weex H5表单验证</text> <form action=\"\"> <div class=\"form-item\"> <label for=\"nickname\" class=\"label\">昵称</label> <div class=\"input\"> <input id=\"nickname\" type=\"text\" class=\"form-value\" name=\"nickname\" autocomplete=\"nickname\"> </div> </d"
     },
     {
       "path": "references/mPaas框架+H5接入智能填充.md",
       "title": "mPaas框架+H5接入智能填充",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/02/v3/3APUMitxQZSGKPSpzvgPVA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111642Z&HW-CC-Expire=86400&HW-CC-Sign=1E4496F0ADDBD39EA4C2E7254A224B2FDBC1029B1006B63A853E83071A88CDAA) 目前仅支持已适配HarmonyOS的三方框架应用使用。 HarmonyOS版工程接入mPaas请参考官方文档： 接入HarmonyOS NEXT快速开始 。 #### 前提条件 - 设备智能填充开关必须处于打开状态，请前往“设置 > 隐私和安全 > 智能填充”页面开启开关。 - 设备已连接互联网并且登录华为账号。 - 该应用需已接入 智能填充服务 。 #### 开发准备 配置mPaas已适配HarmonyOS的工程，并引入@mpaas/hriver依赖。 #### 效果图与示例代码 请参考 H5接入智能填充效果图 。"
+      "snippet": "目前仅支持已适配HarmonyOS的三方框架应用使用。 HarmonyOS版工程接入mPaas请参考官方文档： 接入HarmonyOS NEXT快速开始 。 #### 前提条件 - 设备智能填充开关必须处于打开状态，请前往“设置 > 隐私和安全 > 智能填充”页面开启开关。 - 设备已连接互联网并且登录华为账号。 - 该应用需已接入 智能填充服务 。 #### 开发准备 配置mPaas已适配HarmonyOS的工程，并引入@mpaas/hriver依赖。 #### 效果图与示例代码 请参考 H5接入智能填充效果图 。"
     },
     {
       "path": "references/个人数据处理说明.md",
@@ -59,17 +59,17 @@
     {
       "path": "references/典型场景展示.md",
       "title": "典型场景展示",
-      "snippet": "如下展示两种智能填充的典型场景。 #### 实名购票场景 示例一：智能识别剪贴板内容，一键复制，一键填充。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ac/v3/oZ95wvv3Rz6cVB_SvlVcVg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111640Z&HW-CC-Expire=86400&HW-CC-Sign=034A642A16B02FBA558496A5384B337EB3E2DCFFBFCEB1D3252C288CDC80A8FF) 剪贴板数据源推荐场景目前仅支持中文姓名和中文地址。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/26/v3/6IW0FamkTtyKQluMmRQ_XA/zh-cn_image_0000002573855103.png?HW-CC-KV=V1&HW-CC-Date=20260421T111640Z&HW-CC-Expire=86400&HW-CC-Sign=265D301249B2CCD10E5297BB2AFEDC44000D"
+      "snippet": "如下展示两种智能填充的典型场景。 #### 实名购票场景 示例一：智能识别剪贴板内容，一键复制，一键填充。 剪贴板数据源推荐场景目前仅支持中文姓名和中文地址。 示例二：根据用户输入，智能关联设备上历史表单输入、华为账号等信息提供输入建议，一键填充。 #### 填写收货地址场景 示例一：智能识别剪贴板内容，一键复制，一键填充。 剪贴板数据源推荐场景目前仅支持中文姓名和中文地址。 示例二：根据用户输入，智能关联设备上历史表单输入、华为账号等信息提供输入建议，一键填充。 #### 示例代码 import { autoFillManager } from '@kit.AbilityKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { BusinessError } from '@kit.BasicServicesKit'; @Entry @Component struct SmartFill { @State isClicked: boolean = false; build() { Column({ space: 5 }) { Row() { Text('昵称：').textAlign(TextAlign.End).width('25%') TextInput().width('75%').contentT"
     },
     {
       "path": "references/剪贴板粘贴框遮挡智能填充选择框.md",
       "title": "剪贴板粘贴框遮挡智能填充选择框",
-      "snippet": "**现象描述** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/82/v3/Hvf3P_bjQ-moN56Xp4LMCg/zh-cn_image_0000002573855109.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111643Z&HW-CC-Expire=86400&HW-CC-Sign=AEBC678CEA39FCCE22817C538FCEF3E812B2A6EC4BD370BF27CB139047CD0CD8) **解决措施** 在代码文件中设置.selectionMenuHidden(true)，使剪贴板粘贴框隐藏。 Row() { Text('收货人：').textAlign(TextAlign.End).width('25%') TextInput().width('75%').contentType(ContentType.PERSON_FULL_NAME).selectionMenuHidden(true) }"
+      "snippet": "**现象描述** **解决措施** 在代码文件中设置.selectionMenuHidden(true)，使剪贴板粘贴框隐藏。 Row() { Text('收货人：').textAlign(TextAlign.End).width('25%') TextInput().width('75%').contentType(ContentType.PERSON_FULL_NAME).selectionMenuHidden(true) }"
     },
     {
       "path": "references/动态修改ContentType值.md",
       "title": "动态修改ContentType值",
-      "snippet": "在填写实名信息表单的场景，表单中存在身份证和其他证件输入，其中，多种证件号共用一个输入框，ContentType.ID_CARD_NUMBER目前只支持身份证号的推荐、填充，不支持其他类型的证件，需要开发者根据输入场景动态配置输入框的ContentType，只在身份证输入场景下使用ContentType.ID_CARD_NUMBER。 #### 效果图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3a/v3/_lKEPVngSa2z_pVlN9sV8A/zh-cn_image_0000002573855105.png?HW-CC-KV=V1&HW-CC-Date=20260421T111640Z&HW-CC-Expire=86400&HW-CC-Sign=F9DC74B97E82BA8E3A0E86764B473BDF9560DCAE8B59E59D7CBA00CC1A0BA218) #### 示例代码 import { hilog } from '@kit.PerformanceAnalysisKit'; import { autoFillManager } from '@kit.AbilityKit'; import { BusinessError } f"
+      "snippet": "在填写实名信息表单的场景，表单中存在身份证和其他证件输入，其中，多种证件号共用一个输入框，ContentType.ID_CARD_NUMBER目前只支持身份证号的推荐、填充，不支持其他类型的证件，需要开发者根据输入场景动态配置输入框的ContentType，只在身份证输入场景下使用ContentType.ID_CARD_NUMBER。 #### 效果图 #### 示例代码 import { hilog } from '@kit.PerformanceAnalysisKit'; import { autoFillManager } from '@kit.AbilityKit'; import { BusinessError } from '@kit.BasicServicesKit'; @Entry @Component struct SmartFill { // 与证件号码类型对应的ContentType。在此情况下，默认将ContentType设置为身份证号码对应的类型值。 @State type: ContentType | undefined = ContentType.ID_CARD_NUMBER; @State isClicked: boolean = false; build() { Column({ space: 5 }) { Row() { Text('证件类型：'"
     },
     {
       "path": "references/单击快速验证手机号按钮，无法拉起页面.md",
@@ -84,17 +84,17 @@
     {
       "path": "references/开发准备.md",
       "title": "开发准备",
-      "snippet": "请先参考“ 应用开发准备 ”完成基本准备工作及指纹配置，再继续进行以下开发活动。 #### 申请权限 开发者需要根据实际场景申请对应权限，请保证符合 权限使用的基本原则 。然后参考 声明权限 声明对应权限。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/12/v3/iQ3xOPeyRBuiyMXXjJ2Jgg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111637Z&HW-CC-Expire=86400&HW-CC-Sign=A4D8DC67BD21D59821965AEB308392EF92502E9E3221E6DB16467F0764AC21CF) 获取用户程序访问控制权限可参考 程序访问控制管理 。"
+      "snippet": "请先参考“ 应用开发准备 ”完成基本准备工作及指纹配置，再继续进行以下开发活动。 #### 申请权限 开发者需要根据实际场景申请对应权限，请保证符合 权限使用的基本原则 。然后参考 声明权限 声明对应权限。 获取用户程序访问控制权限可参考 程序访问控制管理 。"
     },
     {
       "path": "references/快速验证手机号Button.md",
       "title": "快速验证手机号Button",
-      "snippet": "快速验证手机号Button功能用于帮助开发者向用户发起手机号申请，应用在满足《 常见类型移动互联网应用程序必要个人信息范围规定 》（对第三方网站的内容，华为公司不承担任何责任）中使用手机号的必要业务场景，经用户同意后，应用可获取手机号，为用户提供相应服务（详见快速验证 场景介绍 ）。 运行示例代码单击“快速验证手机号”按钮，拉起验证页面（完整场景可参考 快速验证 ）。 #### 约束与限制 快速验证手机号Button支持Phone、Tablet和2in1设备，并且从5.1.0(18)版本开始，新增支持TV设备。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/32/v3/nNVwp1v7QRyxc9SKqTLa8A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111637Z&HW-CC-Expire=86400&HW-CC-Sign=B21C61A91ACA795BC44AC45B4F1BD09F2929C43C1218AE9FB6C8941219E77C1B) 应用/元服务仅在首次使用时需要用户进行授权，授权成功后，后续只验证授权手机号，不可修改。 #### 前提条件 参见 开发前提 。 #### 开发步"
+      "snippet": "快速验证手机号Button功能用于帮助开发者向用户发起手机号申请，应用在满足《 常见类型移动互联网应用程序必要个人信息范围规定 》（对第三方网站的内容，华为公司不承担任何责任）中使用手机号的必要业务场景，经用户同意后，应用可获取手机号，为用户提供相应服务（详见快速验证 场景介绍 ）。 运行示例代码单击“快速验证手机号”按钮，拉起验证页面（完整场景可参考 快速验证 ）。 #### 约束与限制 快速验证手机号Button支持Phone、Tablet和2in1设备，并且从5.1.0(18)版本开始，新增支持TV设备。 应用/元服务仅在首次使用时需要用户进行授权，授权成功后，后续只验证授权手机号，不可修改。 #### 前提条件 参见 开发前提 。 #### 开发步骤 1. 导入Scenario Fusion Kit模块以及相关公共模块。 import { FunctionalButton, functionalButtonComponentManager } from '@kit.ScenarioFusionKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 在容器中声明FunctionalButton，指定Button的openType，并设置对应的回调函数，代码如下： @Entry @Component struc"
     },
     {
       "path": "references/打开APP Button.md",
       "title": "打开APP Button",
-      "snippet": "打开APP功能可以帮助调用对应Button组件打开另一个应用。 运行示例代码单击“打开APP”按钮，出现提示弹窗，单击“允许”，跳转至新的应用页面。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8/v3/e3SGAPLFRbGoHDiRjAPgug/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111638Z&HW-CC-Expire=86400&HW-CC-Sign=23250BD5257C0477938556F5F7671DB88C1E501F7F9AD0322981C1BB209A9E03) 弹窗是否弹出以及弹窗效果与跳转目标APP相关。 #### 约束与限制 打开APP Button支持Phone、Tablet和2in1设备，并且从5.1.0(18)版本开始，新增支持TV设备。 #### 开发步骤 1. 导入Scenario Fusion Kit模块以及相关公共模块。 import { FunctionalButton, functionalButtonComponentManager } from '@kit.ScenarioFusionKit'; import { hilog } from '"
+      "snippet": "打开APP功能可以帮助调用对应Button组件打开另一个应用。 运行示例代码单击“打开APP”按钮，出现提示弹窗，单击“允许”，跳转至新的应用页面。 弹窗是否弹出以及弹窗效果与跳转目标APP相关。 #### 约束与限制 打开APP Button支持Phone、Tablet和2in1设备，并且从5.1.0(18)版本开始，新增支持TV设备。 #### 开发步骤 1. 导入Scenario Fusion Kit模块以及相关公共模块。 import { FunctionalButton, functionalButtonComponentManager } from '@kit.ScenarioFusionKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 在容器中声明FunctionalButton，指定Button的openType，并设置对应的回调函数，代码如下： @Entry @Component struct Index { build() { Row() { Column() { // 构建FunctionalButton组件实例。 FunctionalButton({ params: { // OpenType.LAUNCH_APP表示该按钮用于启动应用。 openType: functionalBut"
     },
     {
       "path": "references/打开应用功能跳转第三方应用失败.md",
@@ -104,17 +104,17 @@
     {
       "path": "references/推荐数据源及推荐逻辑说明.md",
       "title": "推荐数据源及推荐逻辑说明",
-      "snippet": "智能填充将从华为账号、剪贴板、最近日程、联系人和历史表单输入获取数据，以提供填充建议。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/86/v3/kh-bcMyOTImO8Aqgo35Oww/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111641Z&HW-CC-Expire=86400&HW-CC-Sign=4BD36DCCF4358E7391E09E1ABABA2375B59D6A6BCD671D17E85D77D3117F033B) 上述优先级为默认推荐排序。智能填充在匹配推荐时会根据数据匹配度从高到低进行排序（剪贴板数据源优先级始终是最高的）。 #### 填充数据源推荐方式说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4b/v3/mxTJYVPPQBy-HqC9Anod0w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111641Z&HW-CC-Expire=86400&HW-CC-Sign=A959FD2FC53"
+      "snippet": "智能填充将从华为账号、剪贴板、最近日程、联系人和历史表单输入获取数据，以提供填充建议。 上述优先级为默认推荐排序。智能填充在匹配推荐时会根据数据匹配度从高到低进行排序（剪贴板数据源优先级始终是最高的）。 #### 填充数据源推荐方式说明 剪贴板数据源推荐场景目前仅支持中文姓名和中文地址。 #### 主动推荐与匹配推荐区别 #### 部分场景数据推荐来源说明"
     },
     {
       "path": "references/推荐车牌号场景.md",
       "title": "推荐车牌号场景",
-      "snippet": "从5.1.0(18)开始，支持智能填充的推荐车牌号场景。 在填写车牌号表单场景时，智能填充可从用户的历史表单输入中提供输入建议，开发者可以参考如下代码进行开发。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/47/v3/4OTG531MStOLTjA_Rb7XUQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111641Z&HW-CC-Expire=86400&HW-CC-Sign=893113F1F71356B19E0911FF4B0CC72FEE0245F3F2E012B4B150458836363CBA) 只推荐机主本人历史表单信息的车牌号信息（与登录设备的账号信息，实名姓名+手机号或邮箱信息相同）。 #### 效果图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/eb/v3/Wj62xHSgQJWAStkcG8jUGg/zh-cn_image_0000002543374854.png?HW-CC-KV=V1&HW-CC-Date=20260421T111641Z&HW-CC-E"
+      "snippet": "从5.1.0(18)开始，支持智能填充的推荐车牌号场景。 在填写车牌号表单场景时，智能填充可从用户的历史表单输入中提供输入建议，开发者可以参考如下代码进行开发。 只推荐机主本人历史表单信息的车牌号信息（与登录设备的账号信息，实名姓名+手机号或邮箱信息相同）。 #### 效果图 #### 示例代码 import { display } from '@kit.ArkUI'; const NEW_ENERGY_TEXT = '新能源'; @Extend(Text) function extendStyles(value: string, width: number, height: number, active: boolean) { .fontSize(value === NEW_ENERGY_TEXT ? 10 : 18) .fontWeight(FontWeight.Medium) .textAlign(TextAlign.Center) .width(width) .height(height) .borderWidth('3px') .borderColor(active ? Color.Blue : '#ccc') .borderRadius(5) } @Entry @Component struct LicensePlate { // 车牌号输入框的数量。 private "
     },
     {
       "path": "references/支持的国家_地区.md",
       "title": "支持的国家/地区",
-      "snippet": ""
+      "snippet": "支持的国家/地区"
     },
     {
       "path": "references/文件路径转换API.md",
@@ -124,22 +124,22 @@
     {
       "path": "references/智能填充概述.md",
       "title": "智能填充概述",
-      "snippet": "智能填充服务提供场景化的输入建议，完善应用/元服务的系统开发能力，实现用户对复杂表单的一键填充，助力打造HarmonyOS极致输入效率。开发ArkUI输入组件后（ TextInput 、 TextArea 以下统称输入组件），一行代码配置快速启用功能。 #### 约束与限制 智能填充支持Phone、Tablet设备，并且从5.1.0(18)版本开始，新增支持2in1设备。 #### 申请接入智能填充服务 #### 接入须知 - 智能填充服务仅提供给 已完成认证的企业开发者 使用。 - 智能填充支持的填充字段满足应用使用智能填充的业务场景需求。字段请参考 ContentType使用场景说明 。 #### 接入操作 智能填充服务开放能力接入需要申请与审批，申请接入流程如下： 1. 请参考 创建HarmonyOS应用/元服务 完成为HarmonyOS应用/元服务创建APP ID工作。 2. 登录 AppGallery Connect ，选择“ **开发与服务** ”。 3. 选择应用后，在“开放能力管理”栏，找到智能填充服务的开放能力，点击右侧“申请”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/17/v3/MVUWfkBvRr-ZApjn9n9JZg/zh-cn"
+      "snippet": "智能填充服务提供场景化的输入建议，完善应用/元服务的系统开发能力，实现用户对复杂表单的一键填充，助力打造HarmonyOS极致输入效率。开发ArkUI输入组件后（ TextInput 、 TextArea 以下统称输入组件），一行代码配置快速启用功能。 #### 约束与限制 智能填充支持Phone、Tablet设备，并且从5.1.0(18)版本开始，新增支持2in1设备。 #### 申请接入智能填充服务 #### 接入须知 - 智能填充服务仅提供给 已完成认证的企业开发者 使用。 - 智能填充支持的填充字段满足应用使用智能填充的业务场景需求。字段请参考 ContentType使用场景说明 。 #### 接入操作 智能填充服务开放能力接入需要申请与审批，申请接入流程如下： 1. 请参考 创建HarmonyOS应用/元服务 完成为HarmonyOS应用/元服务创建APP ID工作。 2. 登录 AppGallery Connect ，选择“ **开发与服务** ”。 3. 选择应用后，在“开放能力管理”栏，找到智能填充服务的开放能力，点击右侧“申请”。 4. 在“新建业务申请”窗口填写申请原因，选择上传附件，然后点击“提交”。 - 申请原因：请详细描述使用**智能填充的具体场景**。（例如：***应用是***（应用简介），希望在***场景中使用智能填充***字段信息，以提升用户表单填写"
     },
     {
       "path": "references/权限设置Button.md",
       "title": "权限设置Button",
-      "snippet": "权限设置Button可以帮助开发者调用对应Button组件，二次拉起权限设置弹框。 运行示例代码单击“请求用户授权”按钮触发首次权限设置弹框，选择“不允许”后，单击“权限设置”按钮拉起二次授权页面。 #### 约束与限制 权限设置Button支持Phone、Tablet和2in1设备，并且从5.1.0(18)版本开始，新增支持TV设备。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6e/v3/NBR5RrhrRSGOGqKvob1pTQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111638Z&HW-CC-Expire=86400&HW-CC-Sign=05B19C75226718F97F57F967C63308F278DDB25267138D5614D9CE5E97FF52D3) 仅支持UIAbility/UIExtensionAbility。 在调用此接口前，应用需要先调用 requestPermissionsFromUser ，如果用户在首次权限设置弹框时已授权，调用当前接口将无法拉起二次授权页面。 #### 前提条件 - 调用 requestPermissionsFromUser 接口，用户在"
+      "snippet": "权限设置Button可以帮助开发者调用对应Button组件，二次拉起权限设置弹框。 运行示例代码单击“请求用户授权”按钮触发首次权限设置弹框，选择“不允许”后，单击“权限设置”按钮拉起二次授权页面。 #### 约束与限制 权限设置Button支持Phone、Tablet和2in1设备，并且从5.1.0(18)版本开始，新增支持TV设备。 仅支持UIAbility/UIExtensionAbility。 在调用此接口前，应用需要先调用 requestPermissionsFromUser ，如果用户在首次权限设置弹框时已授权，调用当前接口将无法拉起二次授权页面。 #### 前提条件 - 调用 requestPermissionsFromUser 接口，用户在首次权限设置弹框时拒绝授权。 - 参见 开发准备 。 #### 开发步骤 1. 导入Scenario Fusion Kit模块以及相关公共模块。 import { FunctionalButton, functionalButtonComponentManager } from '@kit.ScenarioFusionKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { abilityAccessCtrl, common, PermissionReq"
     },
     {
       "path": "references/省市区选择器Input.md",
       "title": "省市区选择器Input",
-      "snippet": "从5.1.0(18)开始，支持省市区选择器Input功能。 省市区选择器Input功能可以帮助开发者调用对应FunctionalInput组件快速拉起选择地区页面，供用户选择地区信息。 运行示例代码后单击“所在地区”文本框，拉起选择地区页面，按照需求选择地址信息，选择完成后将所选地址回填至文本框中。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d1/v3/XBGbbCFXSpuLMIg7NSlSZg/zh-cn_image_0000002573855093.png?HW-CC-KV=V1&HW-CC-Date=20260421T111639Z&HW-CC-Expire=86400&HW-CC-Sign=352ACFA27D6270DBEF3F35CA7948342C7FB2B067662021F22047D940B5BED596) #### 前提条件 参见 开发准备 。 #### 开发步骤 1. 导入Scenario Fusion Kit模块以及相关公共模块。 import { FunctionalInput, functionalInputComponentManager } from '@kit.ScenarioFusionKit'; import { h"
+      "snippet": "从5.1.0(18)开始，支持省市区选择器Input功能。 省市区选择器Input功能可以帮助开发者调用对应FunctionalInput组件快速拉起选择地区页面，供用户选择地区信息。 运行示例代码后单击“所在地区”文本框，拉起选择地区页面，按照需求选择地址信息，选择完成后将所选地址回填至文本框中。 #### 前提条件 参见 开发准备 。 #### 开发步骤 1. 导入Scenario Fusion Kit模块以及相关公共模块。 import { FunctionalInput, functionalInputComponentManager } from '@kit.ScenarioFusionKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { SymbolGlyphModifier, TextInputModifier } from '@kit.ArkUI'; 2. 在容器中声明FunctionalInput，指定FunctionalInput的inputType，并设置对应的回调函数，代码如下： @Entry @Component struct Index { @State inputContent: string = ''; build() { Column() { Row() { Text"
     },
     {
       "path": "references/自动补全地址表单所在地区.md",
       "title": "自动补全地址表单所在地区",
-      "snippet": "在填写地址表单场景时，当应用使用了所在地区的省市区选择器，需要开发者对表单中的地址字段进行开发。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/75/v3/zwxm14wmSGSFeiu-F3kplA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111641Z&HW-CC-Expire=86400&HW-CC-Sign=7D3CA84D04331F31AB490ECB74A21E32BA4CFD1C822C082CB473F6A67B9C2760) - 需要在module.json5文件中设置模糊位置权限： ohos.permission.APPROXIMATELY_LOCATION 。 - 所在地区地址选择器需要 开通地图服务 。 - 需要 配置签名和指纹 。 #### 效果图 地址表单中的所在地区能根据详细地址内容自动补全，当补全内容不符合预期时，可通过地址选择器进行修改。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/35/v3/6lJ_n99FQpCRqIBWyfxiHA/zh"
+      "snippet": "在填写地址表单场景时，当应用使用了所在地区的省市区选择器，需要开发者对表单中的地址字段进行开发。 - 需要在module.json5文件中设置模糊位置权限： ohos.permission.APPROXIMATELY_LOCATION 。 - 所在地区地址选择器需要 开通地图服务 。 - 需要 配置签名和指纹 。 #### 效果图 地址表单中的所在地区能根据详细地址内容自动补全，当补全内容不符合预期时，可通过地址选择器进行修改。 #### 示例代码 import { util } from '@kit.ArkTS'; import { i18n } from '@kit.LocalizationKit'; import { sceneMap, site } from '@kit.MapKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { geoLocationManager } from '@kit.LocationKit'; import { abilityAccessCtrl, autoFillManager, common, PermissionRequestResult, Permis"
     },
     {
       "path": "references/获取手机号和风险等级Button.md",
@@ -164,7 +164,7 @@
     {
       "path": "references/通过API展示关注组件.md",
       "title": "通过API展示关注组件",
-      "snippet": "从6.0.1(21)版本开始，支持关注组件API功能。 Scenario Fusion Kit提供服务号关注组件功能，调用该接口可以在业务应用/元服务页面展示服务号关注组件，用户点击关注按钮可关注上对应服务号。 - 用户关注服务号成功，按钮会变为已关注并置灰，在1.5秒后关注组件会自动消失。 - 用户关注服务号失败，则会出现错误提示。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/94/v3/3l71IZFRTN2cd05kjHo5nA/zh-cn_image_0000002573975075.png?HW-CC-KV=V1&HW-CC-Date=20260421T111640Z&HW-CC-Expire=86400&HW-CC-Sign=5DD5A06FBB4D7081CA839AF5632C3598404FB350EBFA6DB5175B8D7DC9D24536) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6/v3/ZNVIS789SKm9IIvY8JOfWA/zh-cn_image_0000002543374842.png?HW-C"
+      "snippet": "从6.0.1(21)版本开始，支持关注组件API功能。 Scenario Fusion Kit提供服务号关注组件功能，调用该接口可以在业务应用/元服务页面展示服务号关注组件，用户点击关注按钮可关注上对应服务号。 - 用户关注服务号成功，按钮会变为已关注并置灰，在1.5秒后关注组件会自动消失。 - 用户关注服务号失败，则会出现错误提示。 #### 前提条件 在 华为开发者联盟服务号管理首页 ，申请华为服务号，并获取服务号id。 1. 使用企业开发者账号登录，并完成企业认证。 2. 申请服务号并完成认证。 3. 元服务/应用须与服务号处于同一个开发者账号下。 #### 接口说明 以下是关注组件的接口说明，更多接口及使用方法请参见 atomicService（融合场景化API） 。 #### 开发步骤 1. 导入Scenario Fusion Kit模块以及相关公共模块。 import { atomicService } from '@kit.ScenarioFusionKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 在需要添加关注组件的页面，调用接口展示关注组件，示例代码如下： @Entry @Comp"
     },
     {
       "path": "references/通过API异步获取系统信息属性.md",

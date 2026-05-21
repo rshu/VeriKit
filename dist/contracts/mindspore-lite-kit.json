@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:18:37.846Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -58,10 +59,18 @@
       "输入输出张量形状、类型或预处理参数 / input-output tensor shapes, types, or preprocessing parameters"
     ],
     "outputs": [
-      "简介",
-      "模型转换",
-      "模型推理",
-      "模型训练"
+      "转换后的 .ms 格式模型文件 / Converted .ms model file",
+      "可在 NNRt 加载的 MindIR 模型图 / MindIR model graph loadable by NNRt",
+      "运行时模型对象或模型句柄（如 Model、OH_AI_ModelHandle） / Runtime model object or model handle, such as Model or OH_AI_ModelHandle",
+      "模型输入/输出张量对象（如 MSTensor、OH_AI_TensorHandle） / Model input/output tensor objects, such as MSTensor or OH_AI_TensorHandle",
+      "推理输出张量数据 / Inference output tensor data",
+      "图像分类结果（类别 ID、类别名称、置信度） / Image classification results, including class ID, label, and confidence",
+      "目标检测结果（检测框、类别、置信度） / Object detection results, including bounding boxes, classes, and confidence scores",
+      "图像分割结果（像素级掩码或类别图） / Image segmentation results, such as pixel-level masks or class maps",
+      "文字识别结果文本 / Text recognition output text",
+      "语音识别转写文本或识别结果 / Speech recognition transcription text or recognition results",
+      "端侧训练产生的更新后模型参数或权重 / Updated model parameters or weights produced by on-device training",
+      "端侧训练过程输出的损失值或评估指标张量 / Loss values or evaluation metric tensors output during on-device training"
     ],
     "postconditions": [
       {

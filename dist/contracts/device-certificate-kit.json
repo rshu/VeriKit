@@ -5,15 +5,16 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:14:42.385Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
     "use_when": [
       "设备证书",
       "证书解析",
-      "X.509",
+      "解析服务器X509证书并使用CA证书链与CRL校验证书合法性 / Parse a server X509 certificate and validate its legitimacy using a CA certificate chain and CRL",
       "证书链验证",
       "凭证管理",
       "如何创建、解析和校验X509证书对象？",
@@ -59,11 +60,36 @@
       "应用证书凭据别名、证书标识或管理操作参数 / App credential alias, certificate identifier, or management operation parameters"
     ],
     "outputs": [
-      "简介",
-      "证书管理",
-      "证书算法库框架",
-      "CMS签名与封装",
-      "PKCS12"
+      "X509证书对象（X509Cert） / X.509 certificate object (X509Cert)",
+      "X509证书编码数据（DER/PEM字节数据） / Encoded X.509 certificate data (DER/PEM bytes)",
+      "证书字段解析结果（颁发者、使用者、序列号、有效期、公钥、签名算法等） / Parsed certificate field values (issuer, subject, serial number, validity period, public key, signature algorithm, etc.)",
+      "证书扩展信息对象（CertExtension） / Certificate extension object (CertExtension)",
+      "证书扩展OID列表和扩展项内容 / Certificate extension OID list and extension entry values",
+      "CA证书判断结果 / CA certificate determination result",
+      "X509证书吊销列表对象（X509Crl） / X.509 certificate revocation list object (X509Crl)",
+      "CRL编码数据和吊销条目解析结果 / Encoded CRL data and parsed revoked-certificate entries",
+      "证书吊销状态校验结果 / Certificate revocation status validation result",
+      "证书集合对象和按条件查询得到的证书列表 / Certificate collection object and condition-matched certificate list",
+      "CRL集合对象和按条件查询得到的CRL列表 / CRL collection object and condition-matched CRL list",
+      "证书链对象（X509CertChain） / X.509 certificate chain object (X509CertChain)",
+      "证书链中的证书列表 / Certificate list contained in a certificate chain",
+      "证书链校验器对象（CertChainValidator） / Certificate chain validator object (CertChainValidator)",
+      "证书链合法性校验结果 / Certificate chain validity validation result",
+      "信任锚对象数组（TrustAnchor[]） / Trust anchor object array (TrustAnchor[])",
+      "在线吊销校验结果（CRL/终端实体证书状态） / Online revocation validation result (CRL/end-entity certificate status)",
+      "自动下载的中间CA证书 / Automatically downloaded intermediate CA certificates",
+      "已安装的应用证书凭据标识或别名 / Installed application certificate credential identifier or alias",
+      "应用证书凭据对象或凭据详情 / Application certificate credential object or credential details",
+      "使用应用证书凭据生成的签名数据 / Signature data generated with an application certificate credential",
+      "用户CA证书列表 / User CA certificate list",
+      "用户CA证书详情或编码数据 / User CA certificate details or encoded data",
+      "证书管理对话框操作结果 / Certificate management dialog operation result",
+      "CMS签名数据（SignedData） / CMS signed data (SignedData)",
+      "CMS验签结果 / CMS signature verification result",
+      "CMS封装数据或加密封装数据（EnvelopedData） / CMS enveloped data or encrypted enveloped data (EnvelopedData)",
+      "CMS解封装后的明文数据 / Plaintext data after CMS de-enveloping",
+      "PKCS12密钥库文件或字节数据（.p12/.pfx） / PKCS#12 keystore file or byte data (.p12/.pfx)",
+      "PKCS12解析得到的私钥、证书和证书链 / Private key, certificate, and certificate chain parsed from PKCS#12"
     ],
     "postconditions": [
       {

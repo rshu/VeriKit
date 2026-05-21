@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:12:16.579Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -59,10 +60,18 @@
       "投播目标设备信息或投播组件上下文 / cast target device information or cast-picker component context"
     ],
     "outputs": [
-      "Kit简介与概述",
-      "媒体会话开发",
-      "播控与投播",
-      "高级功能"
+      "AVSession媒体会话实例 / AVSession media session instance",
+      "AVSessionController媒体会话控制器对象 / AVSessionController media session controller object",
+      "AVSessionDescriptor媒体会话描述对象或列表 / AVSessionDescriptor media session descriptor object or list",
+      "AVPlaybackState播放状态对象 / AVPlaybackState playback state object",
+      "AVMetadata媒体元数据对象（标题、作者、封面等） / AVMetadata media metadata object (title, artist, artwork, etc.)",
+      "AVQueueItem播放队列条目对象 / AVQueueItem playback queue item object",
+      "OutputDeviceInfo音频输出或投播设备信息 / OutputDeviceInfo audio output or cast device information",
+      "AVCastPicker统一投播选择组件 / AVCastPicker unified cast picker component",
+      "AVCastController投播控制器对象 / AVCastController cast controller object",
+      "系统播控中心媒体控制卡片 / system media control center card",
+      "后台播放可见可控的媒体控制入口 / visible and controllable background-playback media control entry",
+      "桌面歌词悬浮窗 / desktop lyrics floating window"
     ],
     "postconditions": [
       {

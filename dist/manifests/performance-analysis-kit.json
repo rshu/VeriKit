@@ -3,13 +3,13 @@
   "skill": "performance-analysis-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.104Z"
+    "at": "2026-05-21T03:47:44.697Z"
   },
   "references": [
     {
       "path": "references/24h功耗器件分解统计事件介绍.md",
       "title": "24h功耗器件分解统计事件介绍",
-      "snippet": "24h功耗器件分解统计事件用于统计应用在一天内的耗电统计信息，包含前后台使用时长以及耗电分解信息，每日0点统计应用耗电数据并上报。 如需了解如何使用HiAppEvent提供订阅24h功耗器件分解统计事件，请参考以下文档。目前仅提供ArkTS接口。 - 订阅24h功耗器件分解统计事件（ArkTS） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/61/v3/sFAXUEn8QCGOlhe7A70IkQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111247Z&HW-CC-Expire=86400&HW-CC-Sign=07A1DF43CF8878FD9FE2CBE38126EC1EA7B2AEA99455CC0D167FAE920336EDE1) 24h功耗器件分解统计事件不支持在 应用分身场景 或 元服务场景 使用HiAppEvent进行订阅，从API version 22开始支持在 输入法应用场景 下使用HiAppEvent进行订阅。 #### 检测原理 24h功耗器件分解统计是由系统hiview进程的功耗维测统计服务（XPower）实现相应的能力，它实现的基本过程如下： 1. 器件功耗建模：依据不同器"
+      "snippet": "24h功耗器件分解统计事件用于统计应用在一天内的耗电统计信息，包含前后台使用时长以及耗电分解信息，每日0点统计应用耗电数据并上报。 如需了解如何使用HiAppEvent提供订阅24h功耗器件分解统计事件，请参考以下文档。目前仅提供ArkTS接口。 - 订阅24h功耗器件分解统计事件（ArkTS） 24h功耗器件分解统计事件不支持在 应用分身场景 或 元服务场景 使用HiAppEvent进行订阅，从API version 22开始支持在 输入法应用场景 下使用HiAppEvent进行订阅。 #### 检测原理 24h功耗器件分解统计是由系统hiview进程的功耗维测统计服务（XPower）实现相应的能力，它实现的基本过程如下： 1. 器件功耗建模：依据不同器件（屏幕、WIFI、Audio、蓝牙、Modem、CPU等）的耗电特征，建立器件的耗电模型，例如：屏幕的耗电与屏幕亮度、刷新帧率、显示内容等相关。 2. 在设备运行过程中，XPower实时采集各器件的耗电特性相关的状态数据，并依据器件耗电模型估算器件的耗电。 3. 器件的耗电关联到使用资源的应用，当多个应用使用某项器件时，XPower会将器件的耗电分摊到这些应用上，但不一定是均分。 4. 每日零点，XPower统计应用在24h的所有器件上的耗电信息，通过本事件上报给应用。 #### 事件字段说明 params字段说明 24h功耗器"
     },
     {
       "path": "references/AddrSanitizer（地址越界）检测.md",
@@ -24,17 +24,17 @@
     {
       "path": "references/AppFreeze（应用冻屏）检测.md",
       "title": "AppFreeze（应用冻屏）检测",
-      "snippet": "用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为应用冻屏（AppFreeze），即应用无响应。系统会检测应用无响应，并生成AppFreeze日志，供应用开发者分析。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e3/v3/Qo9j1AdsTzCP82xNLkdoYA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111238Z&HW-CC-Expire=86400&HW-CC-Sign=D2936B8623BF9ACD87BE3A895AC75E04C96B9477CCAAA173F25D60ECBD12D202) 本文仅适用于Stage模型下的应用。在根据本文分析日志前，开发者需要具备JS在系统中运行情况、C++程序堆栈信息的相关基础知识，并对应用相关的子系统有一定了解。 #### 检测原理 目前应用冻屏检测从以下维度检测，了解其原理有助于应用开发者定位和分析AppFreeze故障。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a9/v"
+      "snippet": "用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为应用冻屏（AppFreeze），即应用无响应。系统会检测应用无响应，并生成AppFreeze日志，供应用开发者分析。 本文仅适用于Stage模型下的应用。在根据本文分析日志前，开发者需要具备JS在系统中运行情况、C++程序堆栈信息的相关基础知识，并对应用相关的子系统有一定了解。 #### 检测原理 目前应用冻屏检测从以下维度检测，了解其原理有助于应用开发者定位和分析AppFreeze故障。 AppFreeze检测仅对 release版本应用 生效，对 debug版本应用 不生效。 当应用发生上述故障时，为了保证可恢复，会杀死应用。并上报应用冻屏事件，可通过HiAppEvent订阅 应用冻屏事件 。 #### THREAD_BLOCK_6S 应用主线程卡死超时 **概述** ：发生该故障，表示当前应用主线程有卡死或者执行任务过多的情况，影响应用的流畅度和体验。 **检测原理** ：应用的watchdog线程定期向主线程插入判活检测任务。如果判活检测超过3s未被执行，将上报THREAD_BLOCK_3S告警事件；如果超过6s仍未被执行，将上报THREAD_BLOCK_6S主线程卡死事件。两个事件匹配生成THREAD_BLOCK的应用无响应日志。 检测原理如下图： **图1** #### APP"
     },
     {
       "path": "references/ArkWeb抛滑丢帧事件介绍.md",
       "title": "ArkWeb抛滑丢帧事件介绍",
-      "snippet": "ArkWeb 提供了Web组件，用于在应用程序中显示Web页面内容，为开发者提供了丰富的控制Web页面能力。页面滑动一般分为两个阶段：拖滑和抛滑。拖滑指触摸屏幕时的滑动。抛滑指在手指离开屏幕后，页面仍以一定速度滑动。从API version 23开始，支持订阅ArkWeb抛滑丢帧事件，用户在使用应用时滑动web页面，如果出现抛滑丢帧且卡顿持续时间超过50ms及以上，就会被定义为ArkWeb抛滑丢帧，并生成相关丢帧数据。 本文面向开发者介绍ArkWeb抛滑丢帧事件检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅ArkWeb抛滑丢帧事件，请参考以下文档。 - 订阅ArkWeb抛滑丢帧事件（ArkTS） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/61/v3/HAcMjCc1TKa5XwvKLQGA8Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111245Z&HW-CC-Expire=86400&HW-CC-Sign=6BEB3A3D1BA3E74C1EE2656F4B1E21D1A0572EF3C1B0F119E638DCF023CC1FF6) ArkWeb抛滑丢帧事件仅提"
+      "snippet": "ArkWeb 提供了Web组件，用于在应用程序中显示Web页面内容，为开发者提供了丰富的控制Web页面能力。页面滑动一般分为两个阶段：拖滑和抛滑。拖滑指触摸屏幕时的滑动。抛滑指在手指离开屏幕后，页面仍以一定速度滑动。从API version 23开始，支持订阅ArkWeb抛滑丢帧事件，用户在使用应用时滑动web页面，如果出现抛滑丢帧且卡顿持续时间超过50ms及以上，就会被定义为ArkWeb抛滑丢帧，并生成相关丢帧数据。 本文面向开发者介绍ArkWeb抛滑丢帧事件检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅ArkWeb抛滑丢帧事件，请参考以下文档。 - 订阅ArkWeb抛滑丢帧事件（ArkTS） ArkWeb抛滑丢帧事件仅提供发生卡顿的Web组件对应的web_id，最长丢帧时长及其他相关数据，不提供卡顿日志等信息。开发者可以借助web_id，参考“订阅ArkWeb抛滑丢帧事件（ArkTS）”文件中的示例代码获取到发生丢帧的网页地址，再结合业界成熟的 DevTools工具 复现并排查根因。 从API version 23开始，ArkWeb抛滑丢帧事件支持在 应用分身 、元服务及 输入法应用 场景下使用 HiAppEvent 进行订阅。 #### 检测原理 ArkWeb在渲染绘制完成之后会生成buffer，并将生成的buffer送至图形缓冲区，图形侧取出"
     },
     {
       "path": "references/CPU高负载事件介绍.md",
       "title": "CPU高负载事件介绍",
-      "snippet": "CPU高负载事件用于检测应用在前台或后台时，应用相关的进程使用CPU资源超过系统的门限，导致手机发热等问题。 CPU高负载事件包含以下3类： 1. 前台CPU高负载异常：5分钟内应用平均负载大于30%。 2. 后台CPU高负载异常：5分钟内应用平均负载大于10%。 3. 线程CPU高负载异常：1分钟内单线程平均负载大于70%。 如需了解如何使用HiAppEvent提供订阅CPU高负载事件，请参考以下文档。目前仅提供ArkTS接口。 - 订阅CPU高负载事件（ArkTS） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f3/v3/ZcUrACHfQUKATYXfngLdhw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111247Z&HW-CC-Expire=86400&HW-CC-Sign=977B1C825248D68C83FC13179DB123FED60FDAE6F7BF5B5700A2D5127F4C772B) CPU高负载事件不支持在 应用分身场景 或 元服务场景 使用HiAppEvent进行订阅，从API version 22开始支持在 输入法应用场景 下使用HiAppEvent进行订阅。 #"
+      "snippet": "CPU高负载事件用于检测应用在前台或后台时，应用相关的进程使用CPU资源超过系统的门限，导致手机发热等问题。 CPU高负载事件包含以下3类： 1. 前台CPU高负载异常：5分钟内应用平均负载大于30%。 2. 后台CPU高负载异常：5分钟内应用平均负载大于10%。 3. 线程CPU高负载异常：1分钟内单线程平均负载大于70%。 如需了解如何使用HiAppEvent提供订阅CPU高负载事件，请参考以下文档。目前仅提供ArkTS接口。 - 订阅CPU高负载事件（ArkTS） CPU高负载事件不支持在 应用分身场景 或 元服务场景 使用HiAppEvent进行订阅，从API version 22开始支持在 输入法应用场景 下使用HiAppEvent进行订阅。 #### 检测原理 CPU高负载事件检测原理详见 功耗检测 章节。 #### 自定义参数 configEventPolicy接口说明 configEventPolicy接口参数设置 EventPolicy接口参数设置 #### 事件字段说明 params字段说明 #### threads字段说明"
     },
     {
       "path": "references/Cpp Crash（进程崩溃）检测.md",
@@ -99,12 +99,12 @@
     {
       "path": "references/Resource Leak（资源泄漏）检测.md",
       "title": "Resource Leak（资源泄漏）检测",
-      "snippet": "资源泄漏是指句柄、线程或内存等资源，在应用运行过程中没有被正确释放，导致资源被长期占用且无法被其他应用使用，如果某一类资源耗尽，系统可能出现卡死或重启等异常情况。为了应对资源泄漏问题，系统会提供资源泄漏检测、判决、维测日志抓取、日志上报的能力，为开发者提供详细的维测日志以辅助故障定位。本文将主要介绍 资源泄漏检测能力 以及 资源泄漏日志的规格 。 #### 基本概念 资源泄漏主要分为三类：内存泄漏、句柄泄漏和线程泄漏。对于每种泄漏，系统会通过周期采样的方式对进程的资源使用情况进行检测，如果资源使用超过阈值，会抓取对应维测并上报泄漏事件。通过Hiappevent资源泄漏事件进行订阅，订阅方法详见 资源泄漏事件 。 #### 实现原理 资源泄漏具体检测方式如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3e/v3/YNatUNLARh2kA6rXgFh_9A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111238Z&HW-CC-Expire=86400&HW-CC-Sign=108F88CB59CA6E12D955C97762D9AEC70B66ACCEF28258FFD54B106C1AD98943"
+      "snippet": "资源泄漏是指句柄、线程或内存等资源，在应用运行过程中没有被正确释放，导致资源被长期占用且无法被其他应用使用，如果某一类资源耗尽，系统可能出现卡死或重启等异常情况。为了应对资源泄漏问题，系统会提供资源泄漏检测、判决、维测日志抓取、日志上报的能力，为开发者提供详细的维测日志以辅助故障定位。本文将主要介绍 资源泄漏检测能力 以及 资源泄漏日志的规格 。 #### 基本概念 资源泄漏主要分为三类：内存泄漏、句柄泄漏和线程泄漏。对于每种泄漏，系统会通过周期采样的方式对进程的资源使用情况进行检测，如果资源使用超过阈值，会抓取对应维测并上报泄漏事件。通过Hiappevent资源泄漏事件进行订阅，订阅方法详见 资源泄漏事件 。 #### 实现原理 资源泄漏具体检测方式如下： 1. 表格中所述阈值/基线均为系统默认，如果生态在开发过程中需要自行设定基线，可以使用 hidebug.setAppResourceLimit接口 进行设置，该接口建议在开发阶段调用，不要在正式发布阶段使用。 2. 虚拟机内存使用率计算公式 = heapUsed / totalHeap。 heapUsed：当前虚拟机使用的堆大小，单位：KB。可通过 hidebug.getAppVMMemoryInfo() 接口获取。 totalHeap：当前虚拟机的堆总大小，单位：KB。可通过 hidebug.getAppVMMemoryIn"
     },
     {
       "path": "references/hdc.md",
       "title": "hdc",
-      "snippet": "hdc（HarmonyOS Device Connector）是提供给开发人员的命令行调试工具，用于与设备进行交互调试、数据传输、日志查看以及应用安装等操作。该工具支持在Windows/Linux/MacOS系统上运行，为开发者提供高效，便捷的设备调试能力。 hdc包含三部分： **客户端（client）** ：运行在电脑端的进程，开发者在执行hdc命令时启动该进程，命令结束后进程自动退出。 **服务器（server）** ：运行在电脑端的后台服务进程，用来管理客户端进程和设备端守护进程之间的数据交互，设备发现等。 **守护程序（daemon）** ：运行在调试设备端的进程，用来响应服务器发来的请求。 如图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/eb/v3/E7JIX-K4SGCrKK_Tk765ng/zh-cn_image_0000002543214532.png?HW-CC-KV=V1&HW-CC-Date=20260421T111253Z&HW-CC-Expire=86400&HW-CC-Sign=D7C06233E56026E305370400CCC8BDB2827F5C6E05EE83D0368E513C28F0DA28) ![](htt"
+      "snippet": "hdc（HarmonyOS Device Connector）是提供给开发人员的命令行调试工具，用于与设备进行交互调试、数据传输、日志查看以及应用安装等操作。该工具支持在Windows/Linux/MacOS系统上运行，为开发者提供高效，便捷的设备调试能力。 hdc包含三部分： **客户端（client）** ：运行在电脑端的进程，开发者在执行hdc命令时启动该进程，命令结束后进程自动退出。 **服务器（server）** ：运行在电脑端的后台服务进程，用来管理客户端进程和设备端守护进程之间的数据交互，设备发现等。 **守护程序（daemon）** ：运行在调试设备端的进程，用来响应服务器发来的请求。 如图所示： 客户端进程在启动时，默认会判断服务器进程是否正在运行。如果没有运行则会启动一个新的hdc进程作为服务器进程，运行在后台。 服务器运行时，默认会监听电脑端的8710端口。开发者可通过设置系统环境变量OHOS_HDC_SERVER_PORT自定义监听的端口号，范围为1~65535。 #### 环境准备 hdc可以选择以下任意一种方式获取： 1.通过HarmonyOS SDK获取hdc工具。HarmonyOS SDK已嵌入 DevEco Studio 中，无需额外下载配置。hdc默认安装在DevEco Studio/sdk/default/openharmony/toolcha"
     },
     {
       "path": "references/hidumper.md",
@@ -114,12 +114,12 @@
     {
       "path": "references/hilog.md",
       "title": "hilog",
-      "snippet": "HiLog日志系统，提供给系统框架、服务、以及应用，用于打印日志，记录用户操作、系统运行状态等。开发者可以通过hilog命令行查询相关日志信息。 #### 环境要求 - 根据hdc命令行工具指导，完成 环境准备 。 - 确保设备已正常连接，并执行hdc shell。 #### hilog概述 #### hilog日志生成 业务代码中，如果调用了HiLog接口，那么业务运行时就会生成对应的hilog日志。 #### hilog日志查看 **在线查看** - 使用hdc shell hilog命令在线查看日志。 - 使用DevEco Studio工具在线查看日志，参考： 日志分析 。 **查看落盘的文件** - log版本 ：hilog日志默认开启落盘，不同产品之间落盘数量可能存在差异，具体可以使用 查看和设置落盘任务 命令进行查询。 - nolog版本 ：hilog日志默认不落盘，需要手动开启落盘，参考 查看和设置落盘任务 ；设备打开开发者模式后自动开启落盘。 - 日志保存位置：设备data/log/hilog目录下，可以导出日志进行查看。导出及解析工具参考： hilogtool 。 #### hilog日志格式说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/"
+      "snippet": "HiLog日志系统，提供给系统框架、服务、以及应用，用于打印日志，记录用户操作、系统运行状态等。开发者可以通过hilog命令行查询相关日志信息。 #### 环境要求 - 根据hdc命令行工具指导，完成 环境准备 。 - 确保设备已正常连接，并执行hdc shell。 #### hilog概述 #### hilog日志生成 业务代码中，如果调用了HiLog接口，那么业务运行时就会生成对应的hilog日志。 #### hilog日志查看 **在线查看** - 使用hdc shell hilog命令在线查看日志。 - 使用DevEco Studio工具在线查看日志，参考： 日志分析 。 **查看落盘的文件** - log版本 ：hilog日志默认开启落盘，不同产品之间落盘数量可能存在差异，具体可以使用 查看和设置落盘任务 命令进行查询。 - nolog版本 ：hilog日志默认不落盘，需要手动开启落盘，参考 查看和设置落盘任务 ；设备打开开发者模式后自动开启落盘。 - 日志保存位置：设备data/log/hilog目录下，可以导出日志进行查看。导出及解析工具参考： hilogtool 。 #### hilog日志格式说明 日志级别：I表示Info级别，其余级别参考 日志等级 首字母。 domainID：A03200中A表示应用日志（LOG_APP），3200表示domainID为0x32"
     },
     {
       "path": "references/hilogtool.md",
       "title": "hilogtool",
-      "snippet": "当前hilog日志为编码后二进制形式保存的gz格式文件，开发者从设备/data/log/hilog路径下导出后无法直接解压查看，需要使用hilogtool工具进行解析，将转换为明文hilog日志。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/59/v3/JC4mYmLtQ9qHdJdEp5Yn6A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111253Z&HW-CC-Expire=86400&HW-CC-Sign=113F5132BFC31F05114B9812E123AB0D602AD60DBFBEF5E9D7FEB60451CB3AC8) 当前机制下：kmsg日志不受影响，可直接查看；hilog日志，在shell窗口直接使用hilog命令在线查看日志，不受影响。 #### 使用指导 #### 工具获取 下载HarmonyOS SDK，hilogtool解析工具默认在对应平台的 hms/toolchains目录下。 #### 环境配置 **Windows环境变量设置方法** 在此电脑 > 属性 > 高级系统设置 > 高级 > 环境变量 > Path > 编辑 中，将hilogtool.exe所在路径"
+      "snippet": "当前hilog日志为编码后二进制形式保存的gz格式文件，开发者从设备/data/log/hilog路径下导出后无法直接解压查看，需要使用hilogtool工具进行解析，将转换为明文hilog日志。 当前机制下：kmsg日志不受影响，可直接查看；hilog日志，在shell窗口直接使用hilog命令在线查看日志，不受影响。 #### 使用指导 #### 工具获取 下载HarmonyOS SDK，hilogtool解析工具默认在对应平台的 hms/toolchains目录下。 #### 环境配置 **Windows环境变量设置方法** 在此电脑 > 属性 > 高级系统设置 > 高级 > 环境变量 > Path > 编辑 中，将hilogtool.exe所在路径添加到 Path，环境变量配置完成后，请重启电脑，即可在cmd 窗口执行hilogtool命令。 **MacOS环境变量设置方法** 1. 打开终端工具，执行以下命令，根据输出结果分别执行不同命令。 echo $SHELL 如果输出结果为/bin/bash，则执行以下命令，打开.bash_profile文件。 vi ~/.bash_profile 如果输出结果为/bin/zsh，则执行以下命令，打开.zshrc文件。 vi ~/.zshrc 2. 单击字母“i”，进入Insert模式。 3. 输入以下内容，添加PATH信息。 ex"
     },
     {
       "path": "references/hiperf.md",
@@ -134,17 +134,17 @@
     {
       "path": "references/hitrace.md",
       "title": "hitrace",
-      "snippet": "hitrace命令行工具提供trace信息采集能力，支持采集系统提供的打点和开发者使用 HitraceMeter接口 在应用中设置的打点。该工具支持多种方式采集文本格式或二进制格式的trace信息，帮助开发者观测程序运行情况和定位故障问题。 #### 环境要求 - 根据hdc命令行工具指导，完成 hdc环境准备 。 - 确保设备已正常连接，并执行hdc shell。 #### 命令行说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2d/v3/_dc2Lg4NQkujnK9c7ft-ag/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111254Z&HW-CC-Expire=86400&HW-CC-Sign=D908DEEFACA994D322647E6EF1797497D12590EB7954F6563F8CD5E0E3967731) trace信息可以用两种不同的格式保存，分别为文本格式和二进制格式。文本格式的trace可以直接用文本编辑器查看，二进制格式的trace可以使用 Smartperf_Host 工具进行可视化trace分析。工具下载链接： developtools_smartperf_ho"
+      "snippet": "hitrace命令行工具提供trace信息采集能力，支持采集系统提供的打点和开发者使用 HitraceMeter接口 在应用中设置的打点。该工具支持多种方式采集文本格式或二进制格式的trace信息，帮助开发者观测程序运行情况和定位故障问题。 #### 环境要求 - 根据hdc命令行工具指导，完成 hdc环境准备 。 - 确保设备已正常连接，并执行hdc shell。 #### 命令行说明 trace信息可以用两种不同的格式保存，分别为文本格式和二进制格式。文本格式的trace可以直接用文本编辑器查看，二进制格式的trace可以使用 Smartperf_Host 工具进行可视化trace分析。工具下载链接： developtools_smartperf_host官方发行版 。 #### 常用命令 #### 查看帮助信息 hitrace -h **使用样例** ： $ hitrace -h 2025/05/28 15:19:52 hitrace enter, running_state is SHOW_HELP usage: hitrace [options] [categories...] options include: -b N Set the size of the buffer (KB) for storing and reading traces. The default "
     },
     {
       "path": "references/uinput.md",
       "title": "uinput",
-      "snippet": "uinput 可模拟用户操作，例如鼠标、键盘、触控板等设备，适用于稳定性等压力测试。 #### 环境要求 - 根据hdc命令行工具指导，完成 环境准备 。 - 确保设备已成功连接，并执行hdc shell。 #### uinput功能 **用法** uinput <option> <command> <arg> ... **支持能力** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a8/v3/FUSUHTOrRgigeGW6sfxsqw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111255Z&HW-CC-Expire=86400&HW-CC-Sign=AFF4ADFA0C6CDA218CB4C6575208E985BE9AB9FC393F376B71334E294F4CF877) 命令中与坐标相关的参数，单位均为 px(屏幕物理像素单位) 。 #### 帮助命令 显示uinput工具支持的命令信息。 **命令** uinput -? uinput --help **使用示例** # 显示帮助信息 uinput -? # 执行结果 Usage: uinput <option> <command> <a"
+      "snippet": "uinput 可模拟用户操作，例如鼠标、键盘、触控板等设备，适用于稳定性等压力测试。 #### 环境要求 - 根据hdc命令行工具指导，完成 环境准备 。 - 确保设备已成功连接，并执行hdc shell。 #### uinput功能 **用法** uinput <option> <command> <arg> ... **支持能力** 命令中与坐标相关的参数，单位均为 px(屏幕物理像素单位) 。 #### 帮助命令 显示uinput工具支持的命令信息。 **命令** uinput -? uinput --help **使用示例** # 显示帮助信息 uinput -? # 执行结果 Usage: uinput <option> <command> <arg>... The option are: -K --keyboard commands for keyboard: -d <key> --down <key> -press down a key -u <key> --up <key> -release a key -l <key> [long press time] --long_press <key> [long press time] -press and hold the key -r <key> [repeat output time] --repeat output"
     },
     {
       "path": "references/主线程超时事件介绍.md",
       "title": "主线程超时事件介绍",
-      "snippet": "当应用的主线程执行耗时任务时，开发者会感知到应用卡顿，但卡顿时间未达到系统设定的 应用冻屏 时间限制，因此不会生成故障日志。为了更好地定位和分析问题，开发者可以查看 主线程超时事件检测原理 ，根据生成的 主线程超时事件日志规格 ，分析主线程任务的执行情况。 本文面向开发者介绍主线程超时检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅主线程超时事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。 - 订阅主线程超时事件（ArkTS） 。 - 订阅主线程超时事件（C/C++） 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a7/v3/YRHbxjaOQVmg5pZVMObM0A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111243Z&HW-CC-Expire=86400&HW-CC-Sign=85A04EE4B912B2E8F9B01968B7416D3573994462F27D4EC19F0D21A36DE8F0B0) 主线程超时事件支持在 应用分身 场景下使用 HiAppEvent 进行订阅，支持在元服务场景下使用HiAppEvent 进行订阅，从"
+      "snippet": "当应用的主线程执行耗时任务时，开发者会感知到应用卡顿，但卡顿时间未达到系统设定的 应用冻屏 时间限制，因此不会生成故障日志。为了更好地定位和分析问题，开发者可以查看 主线程超时事件检测原理 ，根据生成的 主线程超时事件日志规格 ，分析主线程任务的执行情况。 本文面向开发者介绍主线程超时检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅主线程超时事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。 - 订阅主线程超时事件（ArkTS） 。 - 订阅主线程超时事件（C/C++） 。 主线程超时事件支持在 应用分身 场景下使用 HiAppEvent 进行订阅，支持在元服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在 输入法应用 场景下使用 HiAppEvent 进行订阅。 #### 检测原理 详见 主线程超时检测原理 。 #### 自定义参数 setEventConfig接口不提供主线程超时结束自动停止采样栈的功能；从API version 22开始，提供configEventPolicy接口，该接口提供主线程超时结束自动停止采样栈的功能。 #### setEventConfig接口说明 #### setEventConfig接口参数设置说明 主线程超时采样栈配置参数的定义。 log_type参数为"
     },
     {
       "path": "references/事件订阅简介.md",
@@ -154,7 +154,7 @@
     {
       "path": "references/事件订阅（ArkTS）.md",
       "title": "事件订阅（ArkTS）",
-      "snippet": "HiAppEvent提供了事件订阅接口，用于获取应用的事件。 #### 接口说明 API接口使用说明，包括参数使用限制和具体取值范围。请参考 @ohos.hiviewdfx.hiAppEvent 。 **订阅接口功能介绍** ： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5f/v3/1Uo11CiDR06IyoZwZt_ZDw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111240Z&HW-CC-Expire=86400&HW-CC-Sign=30E2093EA32AC43260FEF9DA4B61751FFB5654E0CB4B02076426365744411CE9) addWatcher接口涉及I/O操作。在对性能敏感的业务场景中，开发者应根据实际需要确定该接口是在主线程还是在子线程中调用。 如果选择在子线程中调用addWatcher，需要确保该子线程在整个接口使用周期内不会被销毁，以免影响接口的正常工作。 可参考 多线程并发概述 ，以实现在子线程中调用接口。 **打点接口功能介绍** ： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_"
+      "snippet": "HiAppEvent提供了事件订阅接口，用于获取应用的事件。 #### 接口说明 API接口使用说明，包括参数使用限制和具体取值范围。请参考 @ohos.hiviewdfx.hiAppEvent 。 **订阅接口功能介绍** ： addWatcher接口涉及I/O操作。在对性能敏感的业务场景中，开发者应根据实际需要确定该接口是在主线程还是在子线程中调用。 如果选择在子线程中调用addWatcher，需要确保该子线程在整个接口使用周期内不会被销毁，以免影响接口的正常工作。 可参考 多线程并发概述 ，以实现在子线程中调用接口。 **打点接口功能介绍** ： write接口涉及I/O操作，执行时间通常在毫秒级别。因此，开发者应根据实际业务需求，确定该接口是在主线程还是在子线程中调用。 可参考 多线程并发概述 ，以实现在子线程中调用接口。 #### 事件订阅开发指导 以订阅崩溃事件（系统事件）和按钮点击事件（应用事件）为例，说明开发步骤。 1. 新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入所需的依赖模块： import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit'; 2. 编辑工程中的“entry "
     },
     {
       "path": "references/事件订阅（C_C++）.md",
@@ -164,17 +164,17 @@
     {
       "path": "references/任务执行超时事件介绍.md",
       "title": "任务执行超时事件介绍",
-      "snippet": "任务执行超时指要监控的业务代码逻辑执行时长超过业务逻辑预期时间。为了更好地定位和分析问题，开发者可以利用 任务执行超时检测 机制，根据生成的 日志规格 ，主动分析任务执行超时的执行情况。 本文面向开发者介绍任务执行超时检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅任务执行超时事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。 - 订阅任务执行超时事件（ArkTS） 。 - 订阅任务执行超时事件（C/C++） 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c3/v3/EvyktxmlQseC3U3KtAhsLw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111244Z&HW-CC-Expire=86400&HW-CC-Sign=84B20A773A65F9F9A1ABC24CAA0A8E9647EABAC1F1EB324984476196D33122E8) 任务执行超时事件支持在 应用分身 场景下使用 HiAppEvent 进行订阅，不支持在元服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在 输入法应用 场"
+      "snippet": "任务执行超时指要监控的业务代码逻辑执行时长超过业务逻辑预期时间。为了更好地定位和分析问题，开发者可以利用 任务执行超时检测 机制，根据生成的 日志规格 ，主动分析任务执行超时的执行情况。 本文面向开发者介绍任务执行超时检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅任务执行超时事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。 - 订阅任务执行超时事件（ArkTS） 。 - 订阅任务执行超时事件（C/C++） 。 任务执行超时事件支持在 应用分身 场景下使用 HiAppEvent 进行订阅，不支持在元服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在 输入法应用 场景下使用 HiAppEvent 进行订阅。 #### 检测原理 详见 任务执行超时检测原理 。 #### 事件字段说明 #### params字段说明 任务执行超时事件信息中params属性的详细描述如下： #### exception字段说明 exception属性的详细描述如下： #### memory字段说明 memory属性的详细描述如下："
     },
     {
       "path": "references/任务超时检测.md",
       "title": "任务超时检测",
-      "snippet": "开发者在开发应用时，某一段业务逻辑期望执行一定时间，如果该业务逻辑执行时长超过预期时间，即为任务超时。 任务超时检测主要包括主线程超时检测和任务执行超时检测，二者均可使用HiCollie实现自定义时长来对开发者选择的业务逻辑进行主动检测，主线程超时也可采用默认时长进行检测。详见： HiCollie使用指导 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9e/v3/i7DICb9IQX-ZkYjfa2I0Ag/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111238Z&HW-CC-Expire=86400&HW-CC-Sign=1177F406BD085E238AFCBE0FDB854DFA0271427296C0074D86B991C75E313D4E) AppFreeze（应用冻屏）检测 相比任务超时检测，主要是由系统侧提供检测周期性检测逻辑，无需开发者感知和适配。 #### 主线程超时检测 #### 检测原理 检测主线程处理事件耗时情况，当任务时长超过阈值时，会触发日志采集流程，包含堆栈采集和trace采集两种流程。两种流程触发条件互斥，同一次超时只会触发一种采集流程。 根据主线程单次事件处理时长"
+      "snippet": "开发者在开发应用时，某一段业务逻辑期望执行一定时间，如果该业务逻辑执行时长超过预期时间，即为任务超时。 任务超时检测主要包括主线程超时检测和任务执行超时检测，二者均可使用HiCollie实现自定义时长来对开发者选择的业务逻辑进行主动检测，主线程超时也可采用默认时长进行检测。详见： HiCollie使用指导 。 AppFreeze（应用冻屏）检测 相比任务超时检测，主要是由系统侧提供检测周期性检测逻辑，无需开发者感知和适配。 #### 主线程超时检测 #### 检测原理 检测主线程处理事件耗时情况，当任务时长超过阈值时，会触发日志采集流程，包含堆栈采集和trace采集两种流程。两种流程触发条件互斥，同一次超时只会触发一种采集流程。 根据主线程单次事件处理时长，触发不同的采集流程。具体的触发条件、采集日志格式及频率限制如下所示： 边界值（主线程处理时长等于450ms）不触发任何采集流程。 关闭开发者模式后，可能无法使用DevEco Studio。因此，可以提前安装应用，再关闭开发者模式。 1. 堆栈采集流程 当主线程处理超时（150ms < 主线程处理时长 < 450ms）后，启动周期性检测任务，每隔150ms执行一次任务。前2轮检测中，至少有一轮检测到主线程处理时长超过150ms才会生成堆栈文件。分以下三种情况： （1）第1轮检测到主线程处理超时（主线程处理时长 > 150ms），开"
     },
     {
       "path": "references/使用FaultLogExtensionAbility订阅事件.md",
       "title": "使用FaultLogExtensionAbility订阅事件",
-      "snippet": "从API version 21开始，可以在FaultLogExtensionAbility中使用HiAppEvent事件订阅接口，实现应用故障事件（仅包括 崩溃事件 和 应用冻屏事件 ）的延迟通知。应用因崩溃或冻屏退出后，无法启动或长时间未启动的场景下，可以不依赖应用启动实现故障事件信息的订阅回调。FaultLogExtensionAbility仅用于补充处理故障事件，不能替代 主进程 正常启动时进行故障事件处理。 在应用发生崩溃或者冻屏事件30分钟后，系统拉起FaultLogExtensionAbility进程，实际拉起时间可能会因为系统调度有所延迟。该30分钟是设备在非休眠状态下累积的时间。测试时需要保持测试设备屏幕常亮，防止设备休眠。灭屏状态下设备可能会休眠，导致实际接收到回调的时间延长。 #### 原理机制说明 FaultLogExtensionAbility的原理机制如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/84/v3/OglgPdHcRDOPKcjf8mEGmQ/zh-cn_image_0000002573974419.png?HW-CC-KV=V1&HW-CC-Date=20260421T111249Z&HW-CC-Expire="
+      "snippet": "从API version 21开始，可以在FaultLogExtensionAbility中使用HiAppEvent事件订阅接口，实现应用故障事件（仅包括 崩溃事件 和 应用冻屏事件 ）的延迟通知。应用因崩溃或冻屏退出后，无法启动或长时间未启动的场景下，可以不依赖应用启动实现故障事件信息的订阅回调。FaultLogExtensionAbility仅用于补充处理故障事件，不能替代 主进程 正常启动时进行故障事件处理。 在应用发生崩溃或者冻屏事件30分钟后，系统拉起FaultLogExtensionAbility进程，实际拉起时间可能会因为系统调度有所延迟。该30分钟是设备在非休眠状态下累积的时间。测试时需要保持测试设备屏幕常亮，防止设备休眠。灭屏状态下设备可能会休眠，导致实际接收到回调的时间延长。 #### 原理机制说明 FaultLogExtensionAbility的原理机制如下图所示： 1. 主进程启动后，在主进程中添加事件观察者A和事件观察者B，其中A包含正常实现的回调处理函数以及事件订阅过滤条件appEventFilter，应用发生故障后正常重启会由A的回调处理HiAppEvent事件；B的回调处理函数为空实现，仅用于生成需要保存的事件订阅过滤条件。 2. 事件观察者A和B的事件订阅过滤条件会被保存到应用沙箱中。当应用移除事件观察者时，应用沙箱中保存的相应观察者的事件订阅过"
     },
     {
       "path": "references/使用HiChecker检测问题（ArkTS）.md",
@@ -184,7 +184,7 @@
     {
       "path": "references/使用HiCollie检测业务线程卡死卡顿问题（C_C++）.md",
       "title": "使用HiCollie检测业务线程卡死卡顿问题（C/C++）",
-      "snippet": "用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为 应用冻屏 。本文面向开发者介绍HiCollie模块对外提供检测业务线程卡死、卡顿，以及上报卡死事件的能力。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/92/v3/D1fYPyzuRSuH_Hb3jmybmA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111252Z&HW-CC-Expire=86400&HW-CC-Sign=79C113911D0CB42E50062637BB2B6E0362F958C16BDA9B17D42784D298D11B2D) 在非主线程使用相关接口。 #### 接口说明 API接口的具体使用说明（参数使用限制、具体取值范围等）请参考 HiCollie 。 #### 检测原理 1. 业务线程卡顿OH_HiCollie_Init_JankDetection故障规格，请参考 主线程超时事件检测原理 。 2. 业务线程卡死故障： （1）OH_HiCollie_Init_StuckDetection检测原理：应用的watchdog线程会周期性进行业务线程判活检测。当判活检测超过3s没有被"
+      "snippet": "用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为 应用冻屏 。本文面向开发者介绍HiCollie模块对外提供检测业务线程卡死、卡顿，以及上报卡死事件的能力。 在非主线程使用相关接口。 #### 接口说明 API接口的具体使用说明（参数使用限制、具体取值范围等）请参考 HiCollie 。 #### 检测原理 1. 业务线程卡顿OH_HiCollie_Init_JankDetection故障规格，请参考 主线程超时事件检测原理 。 2. 业务线程卡死故障： （1）OH_HiCollie_Init_StuckDetection检测原理：应用的watchdog线程会周期性进行业务线程判活检测。当判活检测超过3s没有被执行，上报BUSSINESS_THREAD_BLOCK_3S线程告警事件；超过6s依然没有被执行，会上报BUSSINESS_THREAD_BLOCK_6S线程卡死事件。两个事件根据系统匹配规则生成appfreeze故障日志。 （2）OH_HiCollie_Init_StuckDetectionWithTimeout检测原理：应用的watchdog线程会周期性进行业务线程判活检测。当判活检测超过stuckTimeout时间没有被执行，上报BUSSINESS_THREAD_BLOCK_3S告警事件；超过stuckTimeout * 2"
     },
     {
       "path": "references/使用HiCollie监控函数执行时间超长问题（C_C++）.md",
@@ -194,12 +194,12 @@
     {
       "path": "references/使用HiLog打印日志（ArkTS）.md",
       "title": "使用HiLog打印日志（ArkTS）",
-      "snippet": "在应用开发过程中，可在关键代码处输出日志信息。在运行应用后，通过查看日志信息来分析应用执行情况（如应用是否正常运行、代码运行时序、运行逻辑分支是否正常等）。 系统提供不同的API供开发者调用并输出日志信息，即HiLog与Console。两个API在使用时略有差异，本文重点介绍HiLog的用法，Console的具体用法可查看API参考 Console 。 #### 接口说明 HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅 @ohos.hilog 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/44/v3/-TAMwZqcStmT_2ug1k0YEQ/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111239Z&HW-CC-Expire=86400&HW-CC-Sign=B1EAE9FA3604E295E07C705338C2301BF9D6DB2ADA5D813ECC814A00E297013F) 如果设置的日志级别低于 全局日志级别 ，setMinLogLevel()设置不生效。 debug版"
+      "snippet": "在应用开发过程中，可在关键代码处输出日志信息。在运行应用后，通过查看日志信息来分析应用执行情况（如应用是否正常运行、代码运行时序、运行逻辑分支是否正常等）。 系统提供不同的API供开发者调用并输出日志信息，即HiLog与Console。两个API在使用时略有差异，本文重点介绍HiLog的用法，Console的具体用法可查看API参考 Console 。 #### 接口说明 HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅 @ohos.hilog 。 如果设置的日志级别低于 全局日志级别 ，setMinLogLevel()设置不生效。 debug版本应用下，setMinLogLevel()和setLogLevel()函数均不生效。 #### 参数解析 - **domain** ：用于指定输出日志所对应的业务领域，取值范围为0x0000~0xFFFF，开发者可以根据需要进行自定义。 - **tag** ：用于指定日志标识，可以为任意字符串，建议标识调用所在的类或者业务行为。tag最多为31字节，超出后会截断。不建议使用中文字符，可能出现乱码或者对齐问题。 - **level** ：用于指定日志级别。取值见 LogLevel 。 - **prefer** ：用于指定偏好策略。取值见 "
     },
     {
       "path": "references/使用HiLog打印日志（C_C++）.md",
       "title": "使用HiLog打印日志（C/C++）",
-      "snippet": "在应用开发过程中，可在关键代码处输出日志信息。在运行应用后，通过查看日志信息来分析应用执行情况（如应用是否正常运行、代码运行时序、运行逻辑分支是否正常等）。 HiLog日志系统，提供给系统框架、服务、以及应用，用于打印日志，记录用户操作、系统运行状态等。 #### 接口说明 HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅 log.h 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/13/v3/v2Lc3dkbSK6yZVdASWiXPA/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111240Z&HW-CC-Expire=86400&HW-CC-Sign=EB5132A3C437F5C11C498A459FCF4E2203C2806C801067D4E20CAED48AA7D91C) hilog日志接口是非信号安全函数，禁止在信号处理函数中调用非信号安全的hilog日志接口。 如果设置的日志级别低于 全局日志级别 ，OH_LOG_SetMinLogLevel()设置不生效。 debug版本应"
+      "snippet": "在应用开发过程中，可在关键代码处输出日志信息。在运行应用后，通过查看日志信息来分析应用执行情况（如应用是否正常运行、代码运行时序、运行逻辑分支是否正常等）。 HiLog日志系统，提供给系统框架、服务、以及应用，用于打印日志，记录用户操作、系统运行状态等。 #### 接口说明 HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅 log.h 。 hilog日志接口是非信号安全函数，禁止在信号处理函数中调用非信号安全的hilog日志接口。 如果设置的日志级别低于 全局日志级别 ，OH_LOG_SetMinLogLevel()设置不生效。 debug版本应用下，OH_LOG_SetMinLogLevel()和OH_LOG_SetLogLevel()函数均不生效。 #### 参数解析 - domain：用于指定输出日志所对应的业务领域，取值范围为0x0000~0xFFFF，开发者可以根据需要进行自定义。 - tag：用于指定日志标识，可以为任意字符串，建议标识调用所在的类或者业务行为。tag最多为31字节，超出后会截断。不建议使用中文字符，可能出现乱码或者对齐问题。 - level：用于指定日志级别。取值见 LogLevel 。 - prefer：用于指定偏好策略。取值见 PreferSt"
     },
     {
       "path": "references/使用HiTraceChain打点（ArkTS）.md",
@@ -214,12 +214,12 @@
     {
       "path": "references/使用HiTraceMeter跟踪性能（ArkTS）.md",
       "title": "使用HiTraceMeter跟踪性能（ArkTS）",
-      "snippet": "HiTraceMeter提供系统性能打点接口。开发者在关键代码位置调用这些API，能够有效跟踪进程轨迹，查看系统和应用性能。 #### 接口说明 性能打点跟踪接口由HiTraceMeter模块提供，详细API请参考 @ohos.hiTraceMeter (性能打点) 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9a/v3/zOKMpuY4SAa01h4NSaZSyg/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111249Z&HW-CC-Expire=86400&HW-CC-Sign=692F2EA8BE276AFBAAC582656C95FDCB3DB486380A9A6910B58827881ED365DA) 用户态trace格式 使用竖线 | 作为分隔符，所以通过HiTraceMeter接口传递的字符串类型参数应避免包含该字符，防止trace解析异常。 #### 接口分类 HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片跟踪和整数跟踪。HiTraceMeter接口实现均为同步，同步和异步针对的是被跟踪的业务。同步业务使用同步时间片跟踪接口，异步业务使用异步时间片跟踪接"
+      "snippet": "HiTraceMeter提供系统性能打点接口。开发者在关键代码位置调用这些API，能够有效跟踪进程轨迹，查看系统和应用性能。 #### 接口说明 性能打点跟踪接口由HiTraceMeter模块提供，详细API请参考 @ohos.hiTraceMeter (性能打点) 。 用户态trace格式 使用竖线 | 作为分隔符，所以通过HiTraceMeter接口传递的字符串类型参数应避免包含该字符，防止trace解析异常。 #### 接口分类 HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片跟踪和整数跟踪。HiTraceMeter接口实现均为同步，同步和异步针对的是被跟踪的业务。同步业务使用同步时间片跟踪接口，异步业务使用异步时间片跟踪接口。HiTraceMeter打点接口可与 HiTraceChain 一起使用，进行跨设备、跨进程或跨线程的打点关联与分析。 #### 接口使用场景 - 同步时间片跟踪接口 用于顺序执行的打点场景，需按序成对使用startSyncTrace()接口和finishSyncTrace()接口，否则会导致trace文件在smartperf等可视化工具上显示异常。 - 异步时间片跟踪接口 在异步操作执行前调用startAsyncTrace()接口进行开始打点，在异步操作完成后调用finishAsyncTrace()接口进行结束打点。 解析trac"
     },
     {
       "path": "references/使用HiTraceMeter跟踪性能（C_C++）.md",
       "title": "使用HiTraceMeter跟踪性能（C/C++）",
-      "snippet": "HiTraceMeter提供系统性能打点接口。开发者在关键代码位置调用这些API，能够有效跟踪进程轨迹，查看系统和应用性能。 #### 接口说明 性能打点跟踪接口由HiTraceMeter模块提供，详细API请参考 trace.h 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/16/v3/rI5YZ3PqRXKpt2sL-6UwMA/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111249Z&HW-CC-Expire=86400&HW-CC-Sign=91160E221929E034D6C9DEB0D8C6C07A260375CF7A86F17BECC46975E504DB6A) 用户态trace格式 使用竖线 | 作为分隔符，所以通过HiTraceMeter接口传递的字符串类型参数应避免包含该字符，以防止trace解析异常。 #### 接口分类 HiTraceMeter打点接口主要分为三类：同步时间片跟踪接口、异步时间片跟踪接口和整数跟踪接口。HiTraceMeter接口实现均为同步，同步和异步针对的是被跟踪的业务。同步业务使用同步时间片跟踪接口，异步业务使用异步时间片跟踪接口。HiTrace"
+      "snippet": "HiTraceMeter提供系统性能打点接口。开发者在关键代码位置调用这些API，能够有效跟踪进程轨迹，查看系统和应用性能。 #### 接口说明 性能打点跟踪接口由HiTraceMeter模块提供，详细API请参考 trace.h 。 用户态trace格式 使用竖线 | 作为分隔符，所以通过HiTraceMeter接口传递的字符串类型参数应避免包含该字符，以防止trace解析异常。 #### 接口分类 HiTraceMeter打点接口主要分为三类：同步时间片跟踪接口、异步时间片跟踪接口和整数跟踪接口。HiTraceMeter接口实现均为同步，同步和异步针对的是被跟踪的业务。同步业务使用同步时间片跟踪接口，异步业务使用异步时间片跟踪接口。HiTraceMeter打点接口可与 HiTraceChain 一起使用，进行跨设备、跨进程或跨线程的打点关联与分析。 #### 接口使用场景 - 同步时间片跟踪接口 用于顺序执行的打点场景，需按序成对使用OH_HiTrace_StartTraceEx()接口和OH_HiTrace_FinishTraceEx()接口，否则会导致trace文件在smartperf等可视化工具上显示异常。 - 异步时间片跟踪接口 在异步操作执行前调用OH_HiTrace_StartAsyncTraceEx()接口进行开始打点，在异步操作完成后调用OH_HiTrace_F"
     },
     {
       "path": "references/功耗检测.md",
@@ -229,22 +229,22 @@
     {
       "path": "references/启动耗时事件介绍.md",
       "title": "启动耗时事件介绍",
-      "snippet": "用户在使用应用时，如果出现点击应用后启动缓慢的情况，并且整个过程超过了一定的时间，就会被定义为启动耗时事件。系统会采集相关流程耗时，并生成HiappEvent事件，供应用开发者分析。 如何使用HiAppEvent提供订阅启动耗时事件的接口可参见以下文档： - 订阅启动耗时事件（ArkTS） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1d/v3/aG_xFACRRjiE7SVdZ5menQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111246Z&HW-CC-Expire=86400&HW-CC-Sign=BB0627EB607DFC1E4D9A2097B87F244020C3262B9F3C21A831106A0122C81D15) 启动耗时事件支持在 元服务场景 下使用HiAppEvent进行订阅。不支持在 应用分身场景 或 输入法应用场景 下使用HiAppEvent进行订阅。 #### 事件检测原理 检测原理可参考 启动耗时事件检测 。 #### 约束与限制 1. 系统在监控应用启动时，依赖多个系统内部事件的打点记录。若这些事件在完成应用启动的5秒内全部完成打点上报，系统将立即生成启动耗时事件，"
+      "snippet": "用户在使用应用时，如果出现点击应用后启动缓慢的情况，并且整个过程超过了一定的时间，就会被定义为启动耗时事件。系统会采集相关流程耗时，并生成HiappEvent事件，供应用开发者分析。 如何使用HiAppEvent提供订阅启动耗时事件的接口可参见以下文档： - 订阅启动耗时事件（ArkTS） 启动耗时事件支持在 元服务场景 下使用HiAppEvent进行订阅。不支持在 应用分身场景 或 输入法应用场景 下使用HiAppEvent进行订阅。 #### 事件检测原理 检测原理可参考 启动耗时事件检测 。 #### 约束与限制 1. 系统在监控应用启动时，依赖多个系统内部事件的打点记录。若这些事件在完成应用启动的5秒内全部完成打点上报，系统将立即生成启动耗时事件，并通过回调函数将事件内容传递给应用；若非关键事件存在缺失，系统将在5秒后根据实际接收到的事件生成启动耗时事件。 2. 单设备上的所有应用在每个自然日内最多可以累计上报2000次启动耗时事件，系统会在每日 0 点重置统计计数。若在一次启动流程中，涉及多个同一依赖事件的触发（如在启动过程中调用多次 startAbility ），会导致实际可上报的启动耗时事件数量少于理论上限。 3. 启动完成前（如应用 首帧绘制 前）终止启动不会生成启动耗时事件。 #### 启动耗时优化指导 启动耗时优化方法可参看 优化应用冷启动时延问题 。 ####"
     },
     {
       "path": "references/地址越界事件介绍.md",
       "title": "地址越界事件介绍",
-      "snippet": "地址越界问题是指访问了不合法的地址，导致程序运行出现异常，通常表现为应用崩溃。 开发者可通过HiAppEvent接口订阅地址越界事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。 - 订阅地址越界事件（ArkTS） - 订阅地址越界事件（C/C++） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6a/v3/tZFBjtAvR72wDZBOSCAfzA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111243Z&HW-CC-Expire=86400&HW-CC-Sign=F7AFF2937B28E69B81FA78762FFD1A5AEF15D7FAC6807FE10947C195C3826514) 地址越界事件支持在 应用分身 场景下使用 HiAppEvent 进行订阅，从 API version 22 开始支持在 输入法应用 场景下使用 HiAppEvent 进行订阅。不支持在元服务场景下使用 HiAppEvent 进行订阅。 #### 检测原理 详见 地址越界类问题检测 。 #### 事件字段说明 #### params字段说明 地址越界事件信息中params属性的详细描述如下"
+      "snippet": "地址越界问题是指访问了不合法的地址，导致程序运行出现异常，通常表现为应用崩溃。 开发者可通过HiAppEvent接口订阅地址越界事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。 - 订阅地址越界事件（ArkTS） - 订阅地址越界事件（C/C++） 地址越界事件支持在 应用分身 场景下使用 HiAppEvent 进行订阅，从 API version 22 开始支持在 输入法应用 场景下使用 HiAppEvent 进行订阅。不支持在元服务场景下使用 HiAppEvent 进行订阅。 #### 检测原理 详见 地址越界类问题检测 。 #### 事件字段说明 #### params字段说明 地址越界事件信息中params属性的详细描述如下： #### type字段说明 地址越界事件信息中type的详细描述如下："
     },
     {
       "path": "references/崩溃事件介绍.md",
       "title": "崩溃事件介绍",
-      "snippet": "崩溃是指应用进程非预期退出，以下两种场景会生成崩溃事件： 1. Native代码未处理 崩溃信号 时，会生成NativeCrash类型崩溃事件。 2. ArkTS/JS代码未处理异常时，会生成JsError类型崩溃事件。 本文面向开发者介绍崩溃事件检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅系统崩溃事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。 - 订阅崩溃事件（ArkTS） 。 - 订阅崩溃事件（C/C++） 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7f/v3/J67uWGAzT4CMmkDgmrb1DQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111241Z&HW-CC-Expire=86400&HW-CC-Sign=A5402F301A6A55C5B24FA710D2C10940615DB658A989C2EBF234578305238061) 崩溃事件支持在 应用分身 和元服务场景下使用HiAppEvent进行订阅。从API version 22开始支持在 输入法应用 场景下使用HiAppEvent进行订阅。 #### 检测"
+      "snippet": "崩溃是指应用进程非预期退出，以下两种场景会生成崩溃事件： 1. Native代码未处理 崩溃信号 时，会生成NativeCrash类型崩溃事件。 2. ArkTS/JS代码未处理异常时，会生成JsError类型崩溃事件。 本文面向开发者介绍崩溃事件检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅系统崩溃事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。 - 订阅崩溃事件（ArkTS） 。 - 订阅崩溃事件（C/C++） 。 崩溃事件支持在 应用分身 和元服务场景下使用HiAppEvent进行订阅。从API version 22开始支持在 输入法应用 场景下使用HiAppEvent进行订阅。 #### 检测原理 #### NativeCrash崩溃类型检测原理 系统的进程崩溃检测能力主要基于POSIX信号机制，当进程崩溃后收到崩溃信号，进入系统注册信号处理流程，进行崩溃信息收集、事件生成、事件上报等操作，最终将崩溃事件发布给应用进程的崩溃事件订阅者。 系统检测进程崩溃的详细流程如下： 1. 进程运行时崩溃后收到来自内核发送的崩溃信号，由进程在启动时注册的信号处理模块进行处理。 2. 进程接收到崩溃信号后，保存当前进程上下文并fork出子进程执行ProcessDump二进制抓取崩溃信息。 3. ProcessDump进程收集完崩溃信息"
     },
     {
       "path": "references/应用冻屏事件介绍.md",
       "title": "应用冻屏事件介绍",
-      "snippet": "用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为应用冻屏，也被称为应用无响应。为了应对应用冻屏问题，系统会提供应用冻屏检测、维测日志抓取、日志上报的能力，为开发者提供详细的维测日志以辅助故障定位。 本文面向开发者介绍AppFreeze（应用冻屏）检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅应用冻屏事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。 - 订阅应用冻屏事件（ArkTS） 。 - 订阅应用冻屏事件（C/C++） 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f8/v3/UQVYq3ZkS2W1WCSY35MJeA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111241Z&HW-CC-Expire=86400&HW-CC-Sign=8EAA5E38E30558039018D25682C048B2D3B7FAB70BC0C883952AD9E270F29564) 应用冻屏事件支持在 应用分身 场景下使用 HiAppEvent 进行订阅，支持在元服务场景下使用HiAppEvent 进行订阅，从 "
+      "snippet": "用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为应用冻屏，也被称为应用无响应。为了应对应用冻屏问题，系统会提供应用冻屏检测、维测日志抓取、日志上报的能力，为开发者提供详细的维测日志以辅助故障定位。 本文面向开发者介绍AppFreeze（应用冻屏）检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅应用冻屏事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。 - 订阅应用冻屏事件（ArkTS） 。 - 订阅应用冻屏事件（C/C++） 。 应用冻屏事件支持在 应用分身 场景下使用 HiAppEvent 进行订阅，支持在元服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在 输入法应用 场景下使用 HiAppEvent 进行订阅。 #### 检测原理 详见 AppFreeze（应用冻屏）检测原理 。 #### 事件字段说明 #### params字段说明 应用无响应事件信息中params属性的详细描述如下： #### exception字段说明 #### thread字段说明 #### frame字段说明 **Native帧frame字段说明** 详细说明请参见 调用栈帧内容说明 。 **Js帧frame字段说明** 详细说明请参见 JS混合栈帧内容说明 。 "
     },
     {
       "path": "references/应用恢复开发指导.md",
@@ -254,12 +254,12 @@
     {
       "path": "references/应用终止事件介绍.md",
       "title": "应用终止事件介绍",
-      "snippet": "从API version 20开始，HiAppEvent提供接口用于订阅应用终止事件。 应用终止是指应用程序被系统强制退出的一种现象。与应用崩溃不同，终止并非源于应用自身业务代码的异常，而是主要归因于系统基于资源管控策略而对应用实施的终止行为。 HiAppEvent提供接口用于订阅应用终止事件。 - 订阅应用终止事件（ArkTS） - 订阅应用终止事件（C/C++） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b8/v3/xnjqsn0QQpKTe_5H59JGXA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111245Z&HW-CC-Expire=86400&HW-CC-Sign=27FEBF31ACBFADD062C34EDD7EC1230CC9558D3CC9301B5B73E4EAAC411C928F) 应用终止事件支持在 应用分身 场景下使用 HiAppEvent 进行订阅，支持在元服务场景下使用 HiAppEvent 进行订阅，从 API version 22 开始支持在 输入法应用 场景下使用 HiAppEvent 进行订阅。 应用终止事件信息中params属性的详细描述如下： ####"
+      "snippet": "从API version 20开始，HiAppEvent提供接口用于订阅应用终止事件。 应用终止是指应用程序被系统强制退出的一种现象。与应用崩溃不同，终止并非源于应用自身业务代码的异常，而是主要归因于系统基于资源管控策略而对应用实施的终止行为。 HiAppEvent提供接口用于订阅应用终止事件。 - 订阅应用终止事件（ArkTS） - 订阅应用终止事件（C/C++） 应用终止事件支持在 应用分身 场景下使用 HiAppEvent 进行订阅，支持在元服务场景下使用 HiAppEvent 进行订阅，从 API version 22 开始支持在 输入法应用 场景下使用 HiAppEvent 进行订阅。 应用终止事件信息中params属性的详细描述如下： #### 事件字段说明 #### params字段说明 终止事件信息中params属性的详细描述如下： #### reason字段说明"
     },
     {
       "path": "references/性能检测.md",
       "title": "性能检测",
-      "snippet": "启动耗时事件是用于度量应用启动过程在系统可感知阶段耗时的事件，主要是针对用户可感知的应用启动过程进行性能度量，包括桌面启动、状态栏启动、最近任务列表启动等场景。开发者订阅此事件可以获取到启动过程中关键阶段耗时。 #### 实现原理 启动事件统计时间起点为用户点击屏幕，默认结束点为启动动效完成，使用者可调用 reportDrawCompleted 接口根据实际情况传入定制结束时间。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/27/v3/1zDaDDglTp-n-Qw4EJvYAw/zh-cn_image_0000002573854441.png?HW-CC-KV=V1&HW-CC-Date=20260421T111239Z&HW-CC-Expire=86400&HW-CC-Sign=312118D2212CBAC74323802D63DD72B5C8641285EC6C3E988836EFDB841D8F7B) icon_input_time：用户点击屏幕时间点。 animation_finish_time：系统定义的启动耗时，开发者无法干预，该时间为手指离开屏幕到启动动效结束的时间。 extend_time：开发者定制的启动耗时，该时间为手指离开屏幕到开发者"
+      "snippet": "启动耗时事件是用于度量应用启动过程在系统可感知阶段耗时的事件，主要是针对用户可感知的应用启动过程进行性能度量，包括桌面启动、状态栏启动、最近任务列表启动等场景。开发者订阅此事件可以获取到启动过程中关键阶段耗时。 #### 实现原理 启动事件统计时间起点为用户点击屏幕，默认结束点为启动动效完成，使用者可调用 reportDrawCompleted 接口根据实际情况传入定制结束时间。 icon_input_time：用户点击屏幕时间点。 animation_finish_time：系统定义的启动耗时，开发者无法干预，该时间为手指离开屏幕到启动动效结束的时间。 extend_time：开发者定制的启动耗时，该时间为手指离开屏幕到开发者调用 reportDrawnCompleted 接口的时间。开发者可以根据业务需要在合适的时机调用reportDrawnCompleted接口，不调用或手指离开屏幕后5s未调用则该指标大小为0。 #### 约束与限制 1. 启动事件是指用户操作的应用启动，不包括进程自动重启等情况。 2. 启动时间为行为类事件，触发后即上报不受阈值限制。 #### 事件获取方式 可以通过订阅HiAppEvent获取启动耗时事件及其相关信息，详见 HiAppEvent介绍 。参考 订阅启动耗时事件（ArkTS） 完成启动耗时事件订阅。 #### 滑动事件检测 #### 简介 滑"
     },
     {
       "path": "references/查看HiTraceMeter日志.md",
@@ -269,12 +269,12 @@
     {
       "path": "references/滑动丢帧事件介绍.md",
       "title": "滑动丢帧事件介绍",
-      "snippet": "用户在使用应用时，如果出现滑动列表丢帧的情况，并且持续时间超过一定限制，就会被定义为滑动卡顿，并生成HiAppEvent日志，供应用开发者分析。 如何使用HiAppEvent提供订阅滑动丢帧事件的接口可参见以下文档： - 订阅滑动丢帧事件（ArkTS） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f6/v3/q81zQiqxRF2mqGRvWglzGg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111246Z&HW-CC-Expire=86400&HW-CC-Sign=9C7D6C28191FAE63A3CC4AD59C3966574B6814B05F8161B2DEF682A7E2A7BCE2) 滑动丢帧事件支持在 元服务场景 下使用HiAppEvent进行订阅。不支持在 应用分身场景 或 输入法应用场景 下使用HiAppEvent进行订阅。 #### 事件检测原理 具体检测原理可参见 滑动事件检测 章节。 #### 事件params属性描述 **params属性：**"
+      "snippet": "用户在使用应用时，如果出现滑动列表丢帧的情况，并且持续时间超过一定限制，就会被定义为滑动卡顿，并生成HiAppEvent日志，供应用开发者分析。 如何使用HiAppEvent提供订阅滑动丢帧事件的接口可参见以下文档： - 订阅滑动丢帧事件（ArkTS） 滑动丢帧事件支持在 元服务场景 下使用HiAppEvent进行订阅。不支持在 应用分身场景 或 输入法应用场景 下使用HiAppEvent进行订阅。 #### 事件检测原理 具体检测原理可参见 滑动事件检测 章节。 #### 事件params属性描述 **params属性：**"
     },
     {
       "path": "references/简介.md",
       "title": "简介",
-      "snippet": "基于 Performance Analysis Kit（性能分析服务），为开发者提供了完善的故障检测、异常处理等能力。由于故障种类繁多，产品和软件业务不同，故障的原因和表现也千差万别，从而导致应用的稳定性发生劣化，严重影响应用开发效率、交付成本以及用户体验。因此需要开发者通过开发态和运行态的故障管理设计来提升版本质量，包括故障检测、故障分析、定位、恢复、质量度量等。 为了帮助开发者更好更快的定位和解决应用故障，本章节将介绍进程崩溃、地址越界、应用冻屏、资源泄漏、任务执行超时、应用终止等故障的检测原理、日志规格、日志获取方法、约束限制等内容。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/25/v3/5Jj1A7GTQVa_u5Qri14mpQ/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111237Z&HW-CC-Expire=86400&HW-CC-Sign=7E549A74F6EA1EAB7AFF8538AA43EE463D1D469A8B1E930B92D4B74EEAE5EC5C) 如下故障场景会造成应用或者系统进程非预期退出： 1. Native代码未处理崩溃异常信号时会生成CppCras"
+      "snippet": "基于 Performance Analysis Kit（性能分析服务），为开发者提供了完善的故障检测、异常处理等能力。由于故障种类繁多，产品和软件业务不同，故障的原因和表现也千差万别，从而导致应用的稳定性发生劣化，严重影响应用开发效率、交付成本以及用户体验。因此需要开发者通过开发态和运行态的故障管理设计来提升版本质量，包括故障检测、故障分析、定位、恢复、质量度量等。 为了帮助开发者更好更快的定位和解决应用故障，本章节将介绍进程崩溃、地址越界、应用冻屏、资源泄漏、任务执行超时、应用终止等故障的检测原理、日志规格、日志获取方法、约束限制等内容。 如下故障场景会造成应用或者系统进程非预期退出： 1. Native代码未处理崩溃异常信号时会生成CppCrash日志，详见 Cpp Crash（进程崩溃）检测 。 2. JS/ArkTS代码未处理异常时会生成JsCrash日志，详见 JS Crash（进程崩溃）检测 。 3. 应用卡死后生成AppFreeze日志并被强制终止退出，详见 AppFreeze（应用冻屏）检测 。 4. 应用进程被系统终止造成其非预期退出，详见 App Killed（应用终止）检测 。"
     },
     {
       "path": "references/订阅24h功耗器件分解统计事件（ArkTS）.md",
@@ -329,12 +329,12 @@
     {
       "path": "references/订阅崩溃事件（ArkTS）.md",
       "title": "订阅崩溃事件（ArkTS）",
-      "snippet": "本文介绍如何使用HiAppEvent提供的ArkTS接口订阅应用崩溃事件。接口的详细使用说明（参数限制、取值范围等）请参考 @ohos.hiviewdfx.hiAppEvent 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/47/v3/A1j2vetSTpCT_l7BCYi6hA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111241Z&HW-CC-Expire=86400&HW-CC-Sign=BA40C275D0D24D4D9D1A50CAEB61BD3C09110E6BB595DDD28701E001162CDD22) 使用ArkTS接口可以订阅JsError和NativeCrash两种崩溃事件。 #### 接口说明 #### 开发步骤 #### 添加事件观察者 **建议在应用启动后、执行业务逻辑前添加事件观察者，以确保能够订阅到崩溃事件。** 以订阅用户点击按钮触发崩溃生成的崩溃事件为例，说明开发步骤。 1. DevEco Studio新建Native C++模板工程，编辑“entry > src > main > ets > entryability > EntryAbility.ets”"
+      "snippet": "本文介绍如何使用HiAppEvent提供的ArkTS接口订阅应用崩溃事件。接口的详细使用说明（参数限制、取值范围等）请参考 @ohos.hiviewdfx.hiAppEvent 。 使用ArkTS接口可以订阅JsError和NativeCrash两种崩溃事件。 #### 接口说明 #### 开发步骤 #### 添加事件观察者 **建议在应用启动后、执行业务逻辑前添加事件观察者，以确保能够订阅到崩溃事件。** 以订阅用户点击按钮触发崩溃生成的崩溃事件为例，说明开发步骤。 1. DevEco Studio新建Native C++模板工程，编辑“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入依赖模块。示例代码如下： import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit'; import { deviceInfo } from '@kit.BasicServicesKit'; 2. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在onCreate函数中设置事件的 崩溃事件自定义参数 和 崩溃日志规格自定义参数 ，示例代码如下： // 构建崩溃事件的"
     },
     {
       "path": "references/订阅崩溃事件（C_C++）.md",
       "title": "订阅崩溃事件（C/C++）",
-      "snippet": "本文介绍如何使用HiAppEvent提供的C/C++接口订阅应用崩溃事件。详细使用说明请参考 hiappevent.h 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/85/v3/vkV8FFzURcWZAkhM_QYAKA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111241Z&HW-CC-Expire=86400&HW-CC-Sign=C38B173EBE5B440A62630B6EB2D5DF3860B4479681EAAC2B885263C17D26D611) 使用C/C++接口订阅JsError和NativeCrash崩溃事件。 #### 接口说明 #### 开发步骤 #### 添加事件观察者 **在应用启动后，在执行业务逻辑前添加事件观察者，以确保订阅到崩溃事件。否则，应用可能因崩溃而退出，无法订阅崩溃事件。** 以用户点击按钮触发崩溃事件为例，开发步骤如下： 1. 获取该示例工程依赖的jsoncpp文件，打开链接 HiAppEvent示例工程EventSub ，点击“下载当前目录”，下载EventSub工程文件。 2. 新建Native C++工程，并将上述文件导入到新建工程，目录结构"
+      "snippet": "本文介绍如何使用HiAppEvent提供的C/C++接口订阅应用崩溃事件。详细使用说明请参考 hiappevent.h 。 使用C/C++接口订阅JsError和NativeCrash崩溃事件。 #### 接口说明 #### 开发步骤 #### 添加事件观察者 **在应用启动后，在执行业务逻辑前添加事件观察者，以确保订阅到崩溃事件。否则，应用可能因崩溃而退出，无法订阅崩溃事件。** 以用户点击按钮触发崩溃事件为例，开发步骤如下： 1. 获取该示例工程依赖的jsoncpp文件，打开链接 HiAppEvent示例工程EventSub ，点击“下载当前目录”，下载EventSub工程文件。 2. 新建Native C++工程，并将上述文件导入到新建工程，目录结构如下。 entry: libs: // 放置jsoncpp关联三方库的文件夹 src: main: cpp: - thirdparty: jsoncpp: // 放置jsoncpp关联三方库的文件夹 - types: libentry: - index.d.ts - CMakeLists.txt - napi_init.cpp ets: - entryability: - EntryAbility.ets - pages: - Index.ets 该示例工程中jsoncpp库文件对应的源码来自 三方开源库jsoncpp 。 3. "
     },
     {
       "path": "references/订阅应用冻屏事件（ArkTS）.md",
@@ -384,17 +384,17 @@
     {
       "path": "references/资源泄漏事件介绍.md",
       "title": "资源泄漏事件介绍",
-      "snippet": "资源泄漏是指句柄、线程或内存等资源在应用运行过程中未被正确释放，导致资源长期占用且无法被其他应用使用。如果某一类资源耗尽，系统可能出现卡死或重启等异常情况。 本文面向开发者介绍资源泄漏事件各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅系统资源泄漏事件，请参考以下文档。目前提供ArkTs和C/C++两种接口。 - 订阅资源泄漏事件（ArkTS） - 订阅资源泄漏事件（C/C++） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/12/v3/ZF6TrHdJTvKdA7z8u2vHYg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111242Z&HW-CC-Expire=86400&HW-CC-Sign=774F5BFB69E0A9E5EDF94906B7C018FB86B622260C329F594D36D74352A80F8A) 资源泄漏事件支持在 应用分身 场景下使用 HiAppEvent 进行订阅，支持在元服务场景下使用 HiAppEvent 进行订阅，从 API version 22 开始支持在 输入法应用 场景下使用 HiAppEvent 进行订阅。 #### 检测原理 检测原理详"
+      "snippet": "资源泄漏是指句柄、线程或内存等资源在应用运行过程中未被正确释放，导致资源长期占用且无法被其他应用使用。如果某一类资源耗尽，系统可能出现卡死或重启等异常情况。 本文面向开发者介绍资源泄漏事件各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅系统资源泄漏事件，请参考以下文档。目前提供ArkTs和C/C++两种接口。 - 订阅资源泄漏事件（ArkTS） - 订阅资源泄漏事件（C/C++） 资源泄漏事件支持在 应用分身 场景下使用 HiAppEvent 进行订阅，支持在元服务场景下使用 HiAppEvent 进行订阅，从 API version 22 开始支持在 输入法应用 场景下使用 HiAppEvent 进行订阅。 #### 检测原理 检测原理详见 Resource Leak（资源泄漏检测） 。 #### 自定义规格设置 #### 接口说明 #### 参数设置 开发者可以使用HiAppEvent提供的接口，在Record<string, ParamType>中设置RESOURCE_OVERLIMIT的日志和回调事件规格。具体参数说明如下： 即使参数js_heap_logtype设置为是event_rawheap，也不能保证生成堆快照文件。这是因为生成堆快照时，应用可能因性能问题触发冻屏而提前退出。 参数配置示例： let configParams: Record<stri"
     },
     {
       "path": "references/错误管理开发指导.md",
       "title": "错误管理开发指导",
-      "snippet": "当应用的代码存在规范问题或错误时，会在运行中产生异常和错误，如应用未捕获异常等。在错误产生后，应用会异常退出。错误日志通常会保存在用户本地存储设备中，不方便开发者定位问题。所以，应用开发者可以使用错误管理的接口，在应用退出前，及时将相关错误及日志上报到开发者的服务平台来定位问题。 使用errorManager接口监听异常和错误后，应用不会退出，建议在回调函数执行完后，增加同步退出操作，如果只是为了获取错误日志，建议使用 HiAppEvent订阅事件 。 #### 接口说明 应用错误管理接口由 @ohos.app.ability.errorManager (错误管理模块) 提供，使用接口能力前需注册错误观测器，开发者可以通过import引入，详见 开发示例 。 **错误管理接口功能介绍** ： 当采用callback作为异步回调时，可以在callback中进行下一步处理。 当采用Promise对象返回时，可以在Promise对象中类似地处理接口返回值，具体结果码说明见 解除注册结果码 。 **错误监听(ErrorObserver)接口功能介绍** ： **应用主线程监听(LoopObserver)接口功能介绍** ： #### 解除注册结果码 #### 开发示例 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/Develop"
+      "snippet": "当应用的代码存在规范问题或错误时，会在运行中产生异常和错误，如应用未捕获异常等。在错误产生后，应用会异常退出。错误日志通常会保存在用户本地存储设备中，不方便开发者定位问题。所以，应用开发者可以使用错误管理的接口，在应用退出前，及时将相关错误及日志上报到开发者的服务平台来定位问题。 使用errorManager接口监听异常和错误后，应用不会退出，建议在回调函数执行完后，增加同步退出操作，如果只是为了获取错误日志，建议使用 HiAppEvent订阅事件 。 #### 接口说明 应用错误管理接口由 @ohos.app.ability.errorManager (错误管理模块) 提供，使用接口能力前需注册错误观测器，开发者可以通过import引入，详见 开发示例 。 **错误管理接口功能介绍** ： 当采用callback作为异步回调时，可以在callback中进行下一步处理。 当采用Promise对象返回时，可以在Promise对象中类似地处理接口返回值，具体结果码说明见 解除注册结果码 。 **错误监听(ErrorObserver)接口功能介绍** ： **应用主线程监听(LoopObserver)接口功能介绍** ： #### 解除注册结果码 #### 开发示例 建议在异常回调函数处理的最后，增加同步退出操作，以避免多次异常回调。 #### 单线程监听场景 引入头文件。 import"
     },
     {
       "path": "references/音频卡顿事件介绍.md",
       "title": "音频卡顿事件介绍",
-      "snippet": "从API version 21开始，支持订阅音频卡顿事件。音频卡顿事件是指音频流卡顿导致的音频播放不流畅，音频卡顿发生场景可以分为应用进程问题卡顿、系统问题卡顿。当出现音频长时间无数据时被定义为音频卡顿事件，并生成HiAppEvent日志，供应用开发者分析。如何使用HiAppEvent订阅音频卡顿事件可参见以下文档： - 订阅音频卡顿事件（ArkTS） - 订阅音频卡顿事件（C/C++） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ba/v3/kFmiIPFBSfedmFPtXtRGqQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111248Z&HW-CC-Expire=86400&HW-CC-Sign=89FDA7354473E5C5AB622B678BE68A81FC773FC4A01BDBD8C37CF9D66D14175D) 音频卡顿事件不支持在 应用分身场景 、 输入法应用场景 或 元服务场景 下使用HiAppEvent进行订阅。 #### 检测原理 - **应用卡顿** ：通过检测应用将音频数据写入音频引擎的共享缓冲区超时异常，来判断是否为 **应用进程问题导致卡顿** 。当应用在120m"
+      "snippet": "从API version 21开始，支持订阅音频卡顿事件。音频卡顿事件是指音频流卡顿导致的音频播放不流畅，音频卡顿发生场景可以分为应用进程问题卡顿、系统问题卡顿。当出现音频长时间无数据时被定义为音频卡顿事件，并生成HiAppEvent日志，供应用开发者分析。如何使用HiAppEvent订阅音频卡顿事件可参见以下文档： - 订阅音频卡顿事件（ArkTS） - 订阅音频卡顿事件（C/C++） 音频卡顿事件不支持在 应用分身场景 、 输入法应用场景 或 元服务场景 下使用HiAppEvent进行订阅。 #### 检测原理 - **应用卡顿** ：通过检测应用将音频数据写入音频引擎的共享缓冲区超时异常，来判断是否为 **应用进程问题导致卡顿** 。当应用在120ms内未传入音频数据时，将触发上报音频卡顿事件。 - **系统卡顿：** 通过检测音频引擎周期性处理数据超时异常，来判断是否为 **系统进程问题导致卡顿** 。当单次音频引擎处理时长达到200ms时触发上报音频卡顿事件。 #### params字段说明"
     }
   ]
 }

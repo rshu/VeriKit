@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:22:59.326Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -55,12 +56,26 @@
       "设备状态查询或监听参数 / device status query or listener parameters"
     ],
     "outputs": [
-      "简介",
-      "开发准备",
-      "设备管理",
-      "通信能力",
-      "常见问题",
-      "其他"
+      "用户授权结果 / User authorization result",
+      "已连接穿戴设备列表 / Connected wearable device list",
+      "已连接对端设备列表 / Connected peer device list",
+      "目标穿戴设备对象 / Target wearable device object",
+      "穿戴设备基础信息对象 / Wearable device information object",
+      "Wear Engine能力集 / Wear Engine capability set",
+      "Device设备能力集 / Device capability set",
+      "应用与Wear Engine服务连接状态事件 / App-to-Wear Engine service connection state event",
+      "设备连接状态 / Device connection status",
+      "设备电量状态 / Device battery level status",
+      "设备充电状态 / Device charging status",
+      "设备佩戴状态 / Device wearing status",
+      "应用间消息数据 / Inter-application message payload",
+      "文件传输结果 / File transfer result",
+      "接收文件对象或文件路径 / Received file object or file path",
+      "模板化通知发送结果 / Templated notification delivery result",
+      "穿戴设备传感器列表 / Wearable device sensor list",
+      "传感器数据上报对象（ECG、PPG、HR、ACC等） / Sensor data report object (ECG, PPG, HR, ACC, etc.)",
+      "传感器订阅状态或取消订阅结果 / Sensor subscription status or unsubscribe result",
+      "接口错误码与错误信息 / API error code and error message"
     ],
     "postconditions": [
       {

@@ -3,7 +3,7 @@
   "skill": "arkweb",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.223Z"
+    "at": "2026-05-21T03:47:44.052Z"
   },
   "references": [
     {
@@ -14,7 +14,7 @@
     {
       "path": "references/ArkWeb进程.md",
       "title": "ArkWeb进程",
-      "snippet": "ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程、Web孵化进程和Foundation进程。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9a/v3/B2KS6KaiRSGvgl0_R1opFg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110941Z&HW-CC-Expire=86400&HW-CC-Sign=B59CCD04F4E90E40A67967E780F0E71D056FA1B4587E0E0D990411ED30ECD49E) Web内核对内存大小的申请无限制约束。 **图1** ArkWeb进程模型图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2/v3/IscE5f6JTk-M_p0364go7w/zh-cn_image_0000002573854153.png?HW-CC-KV=V1&HW-CC-Date=20260421T110941Z&HW-CC-Expire=86400&HW-CC-Sign=4007BFDCEF58C85E3E"
+      "snippet": "ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程、Web孵化进程和Foundation进程。 Web内核对内存大小的申请无限制约束。 **图1** ArkWeb进程模型图 - 应用进程中Web相关线程（应用唯一） - 应用进程为主进程。包含网络线程、Video线程、Audio线程和IO线程等。 - 负责Web组件的对外接口与回调处理，网络请求、媒体服务等需要与其他系统服务交互的功能。 - Foundation进程（系统唯一） 负责接收应用进程进行孵化进程的请求，管理应用进程和Web渲染进程的绑定关系。 - Web孵化进程（系统唯一） - 负责接收Foundation进程的请求，执行孵化Web渲染进程与Web GPU进程。 - 执行孵化后处理安全沙箱降权、预加载动态链接库，以提升性能。 - Web渲染进程（应用可指定多Web实例间共享或独立进程） - 负责运行Web渲染进程引擎（HTML解析、排版、绘制、渲染）。 - 负责运行ArkWeb执行引擎（JavaScript、Web Assembly）。 - 提供接口供应用选择多Web实例间是否共享渲染进程，满足不同场景对安全性、稳定性、内存占用的诉求。 - 默认策略：移动设备上共享渲染进程以节省内存，2in1设备上独立渲染进程提升安全与稳定性。 - Web GPU进程（应用唯一） 负责光栅化、合成送显等与GPU、"
     },
     {
       "path": "references/User-Agent开发指导.md",
@@ -34,7 +34,7 @@
     {
       "path": "references/Web组件在不同的窗口间迁移.md",
       "title": "Web组件在不同的窗口间迁移",
-      "snippet": "Web组件能够实现在不同窗口的组件树上进行挂载或移除操作，这一能力使得开发者可以将同一个Web组件在不同窗口间迁移。例如，将浏览器的Tab页拖出成独立窗口，或拖入浏览器的另一个窗口。 Web组件在不同窗口间迁移，是基于 自定义节点 能力实现的。实现的基本原理是：通过 BuilderNode ，开发者可创建Web组件的离线节点，并结合 自定义占位节点 控制Web节点的挂载与移除。当从一个窗口上移除Web节点，并挂载到另一个窗口中，即完成Web组件在窗口间的迁移。 在以下示例中，主窗Ability启动时，通过命令式的方式创建了一个Web组件。开发者可以利用common.ets中提供的方法和类，实现Web组件的挂载和移除。Index.ets则提供了一种挂载和移除Web组件的实现方法。通过这种方式，开发者能够实现Web组件在不同窗口中页面的挂载与移除，即实现了Web组件在不同窗口间的迁移。下图是展示了这一迁移过程的示意图。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/80/v3/BTUKFb-aQLG3faaJIs3XCQ/zh-cn_image_0000002543214260.png?HW-CC-KV=V1&HW-CC-Date=20260421T110949Z&"
+      "snippet": "Web组件能够实现在不同窗口的组件树上进行挂载或移除操作，这一能力使得开发者可以将同一个Web组件在不同窗口间迁移。例如，将浏览器的Tab页拖出成独立窗口，或拖入浏览器的另一个窗口。 Web组件在不同窗口间迁移，是基于 自定义节点 能力实现的。实现的基本原理是：通过 BuilderNode ，开发者可创建Web组件的离线节点，并结合 自定义占位节点 控制Web节点的挂载与移除。当从一个窗口上移除Web节点，并挂载到另一个窗口中，即完成Web组件在窗口间的迁移。 在以下示例中，主窗Ability启动时，通过命令式的方式创建了一个Web组件。开发者可以利用common.ets中提供的方法和类，实现Web组件的挂载和移除。Index.ets则提供了一种挂载和移除Web组件的实现方法。通过这种方式，开发者能够实现Web组件在不同窗口中页面的挂载与移除，即实现了Web组件在不同窗口间的迁移。下图是展示了这一迁移过程的示意图。 不要将一个Web组件同时挂载在两个父节点下，这会导致非预期行为。 // 主窗口Ability import { createNWeb, defaultUrl } from '../pages/common'; // ... onWindowStageCreate(windowStage: window.WindowStage): void { hilog.info(0x"
     },
     {
       "path": "references/Web组件大小自适应页面内容布局.md",
@@ -44,17 +44,17 @@
     {
       "path": "references/Web组件对接软键盘.md",
       "title": "Web组件对接软键盘",
-      "snippet": "开发者能够通过Web组件对接软键盘，来处理系统软键盘的显示与交互问题，同时实现软键盘的自定义功能。主要有以下场景： - 拉起系统软键盘输入文字：点击网页输入框时，屏幕下方将弹出系统默认的软键盘。开发者可以通过软键盘输入文字，输入的内容会显示在输入框中。 - 自定义系统软键盘的回车键类型：设置不同的回车键类型，例如：确认、下一个和提交。 - 软键盘避让：在移动设备上，由于输入法通常显示在屏幕下方区域，应用可设置不同的Web页面软键盘避让模式，来避让软键盘。例如：平移、调整大小和不避让。 - 自定义软键盘输入：在移动设备上，可以使用自绘制输入法在Web页面输入，以此替代系统软键盘。 #### Web页面输入框输入与软键盘交互的W3C标准支持 为支持Web页面与系统软键盘、自定义软键盘等的良好交互，ArkWeb遵循并实现了W3C规范中的以下输入控制属性： - type属性 type属性定义了input元素的类型，影响输入的验证、显示方式和键盘类型。常见的type值包括： - inputmode属性 inputmode属性用于配置输入法类型，默认值：text。 - enterkeyhint属性 enterkeyhint属性用于指定移动设备虚拟键盘上回车键的显示方式。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/Develope"
+      "snippet": "开发者能够通过Web组件对接软键盘，来处理系统软键盘的显示与交互问题，同时实现软键盘的自定义功能。主要有以下场景： - 拉起系统软键盘输入文字：点击网页输入框时，屏幕下方将弹出系统默认的软键盘。开发者可以通过软键盘输入文字，输入的内容会显示在输入框中。 - 自定义系统软键盘的回车键类型：设置不同的回车键类型，例如：确认、下一个和提交。 - 软键盘避让：在移动设备上，由于输入法通常显示在屏幕下方区域，应用可设置不同的Web页面软键盘避让模式，来避让软键盘。例如：平移、调整大小和不避让。 - 自定义软键盘输入：在移动设备上，可以使用自绘制输入法在Web页面输入，以此替代系统软键盘。 #### Web页面输入框输入与软键盘交互的W3C标准支持 为支持Web页面与系统软键盘、自定义软键盘等的良好交互，ArkWeb遵循并实现了W3C规范中的以下输入控制属性： - type属性 type属性定义了input元素的类型，影响输入的验证、显示方式和键盘类型。常见的type值包括： - inputmode属性 inputmode属性用于配置输入法类型，默认值：text。 - enterkeyhint属性 enterkeyhint属性用于指定移动设备虚拟键盘上回车键的显示方式。 点击网页输入框时，屏幕下方将弹出系统默认的软键盘，用户可以进行文字输入。 type属性影响键盘显示、输入验证和元素外观。 i"
     },
     {
       "path": "references/Web组件嵌套滚动.md",
       "title": "Web组件嵌套滚动",
-      "snippet": "Web组件嵌套滚动的典型应用场景为，在页面中，多个独立区域需进行滚动，当用户滚动Web区域内容时，可联动其他滚动区域，实现上下左右全方位滑动页面的嵌套滚动体验。内嵌于可滚动容器（ Grid 、 List 、 Scroll 、 Swiper 、 Tabs 、 WaterFlow 、 Refresh 、 bindSheet ）中的Web组件，接收到滑动手势事件后，需要设置ArkUI的 NestedScrollMode 枚举属性，实现Web组件与ArkUI可滚动容器的嵌套滚动。 Web组件嵌套滚动可通过 方案1：使用nestedScroll属性实现嵌套滚动 或 方案2：滚动偏移量由滚动父组件统一派发 两个方案实现，方案的选择应取决于应用嵌套滚动的具体业务场景。如果只是简单的Web组件与其他父组件联动滚动建议通过方案1实现；如果应用需要自定义控制Web组件和其他滚动组件滚动，以及一些复杂场景建议使用方案2。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/90/v3/pOVKsOTxQouUYgz18cxDUw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110945Z&HW-CC-Expire=86400&HW-"
+      "snippet": "Web组件嵌套滚动的典型应用场景为，在页面中，多个独立区域需进行滚动，当用户滚动Web区域内容时，可联动其他滚动区域，实现上下左右全方位滑动页面的嵌套滚动体验。内嵌于可滚动容器（ Grid 、 List 、 Scroll 、 Swiper 、 Tabs 、 WaterFlow 、 Refresh 、 bindSheet ）中的Web组件，接收到滑动手势事件后，需要设置ArkUI的 NestedScrollMode 枚举属性，实现Web组件与ArkUI可滚动容器的嵌套滚动。 Web组件嵌套滚动可通过 方案1：使用nestedScroll属性实现嵌套滚动 或 方案2：滚动偏移量由滚动父组件统一派发 两个方案实现，方案的选择应取决于应用嵌套滚动的具体业务场景。如果只是简单的Web组件与其他父组件联动滚动建议通过方案1实现；如果应用需要自定义控制Web组件和其他滚动组件滚动，以及一些复杂场景建议使用方案2。 如果Web组件用到了全量展开的场景（layoutMode为WebLayoutMode.FIT_CONTENT），需要显式指明渲染模式(RenderMode.SYNC_RENDER)，详见 layoutMode 。 #### 使用nestedScroll属性实现嵌套滚动 使用Web组件 nestedScroll 属性来设置上下左右四个方向，或者设置向前、向后两个方向的嵌套滚动模式，实现与"
     },
     {
       "path": "references/Web组件支持画中画.md",
       "title": "Web组件支持画中画",
-      "snippet": "Web组件提供画中画功能支持，应用可利用W3C标准的Picture-in-Picture API在网页中创建浮动窗口以播放视频，使用户在浏览其他网页或与其他应用交互时，可通过该画中画窗口继续观看视频。 若使用线上视频资源，则需在配置文件中设置网络权限。权限的添加方法请参考 在配置文件中声明权限 。 \"requestPermissions\": [ { \"name\": \"ohos.permission.INTERNET\" } ] #### 约束与限制 1. 当前H264/H265/HLS格式的视频可在创建的画中画窗口中播放。 2. 画中画窗口的大小调整依据系统能力，具体参照设计指南中的系统特性与能力部分。 #### 进入画中画 以仅包含媒体源的video元素和一个用户交互的button元素为例，介绍如何创建一个浮动窗口播放视频，使用户在浏览其他网页或与其他应用交互时，能够通过该画中画窗口持续观看视频。 <!-- 使用时需要自行替换视频链接 --> <video id=\"video\" src=\"https://example.com/file.mp4\" controls></video> <button id=\"togglePipButton\">开启画中画</button> HTMLVideoElement接口提供的requestPictureInPicture()方法请求启动画中画，如"
+      "snippet": "Web组件提供画中画功能支持，应用可利用W3C标准的Picture-in-Picture API在网页中创建浮动窗口以播放视频，使用户在浏览其他网页或与其他应用交互时，可通过该画中画窗口继续观看视频。 若使用线上视频资源，则需在配置文件中设置网络权限。权限的添加方法请参考 在配置文件中声明权限 。 \"requestPermissions\": [ { \"name\": \"ohos.permission.INTERNET\" } ] #### 约束与限制 1. 当前H264/H265/HLS格式的视频可在创建的画中画窗口中播放。 2. 画中画窗口的大小调整依据系统能力，具体参照设计指南中的系统特性与能力部分。 #### 进入画中画 以仅包含媒体源的video元素和一个用户交互的button元素为例，介绍如何创建一个浮动窗口播放视频，使用户在浏览其他网页或与其他应用交互时，能够通过该画中画窗口持续观看视频。 <!-- 使用时需要自行替换视频链接 --> <video id=\"video\" src=\" controls></video> <button id=\"togglePipButton\">开启画中画</button> HTMLVideoElement接口提供的requestPictureInPicture()方法请求启动画中画，如果系统支持画中画能力，则会以画中画模式显示视频。 togg"
     },
     {
       "path": "references/Web组件支持视频沉浸式全屏播放.md",
@@ -64,7 +64,7 @@
     {
       "path": "references/Web组件渲染模式.md",
       "title": "Web组件渲染模式",
-      "snippet": "Web组件提供了两种可配置的渲染模式，能够根据不同的容器大小进行适配，从而满足使用场景中对容器尺寸的需求。 #### 异步渲染模式（默认） 异步渲染模式下（renderMode: RenderMode .ASYNC_RENDER），Web组件作为图形surface节点，独立送显。建议在仅由Web组件构成的应用页面中使用此模式，以提高性能并降低功耗。 - Web组件的宽高不能超过7,680px（物理像素），超过会导致白屏。 - 不支持动态切换模式。 开发者预期Web组件作为主体显示应用页面，如图一所示，在此场景下，Web组件高度正好为一屏或接近一屏（内嵌在navigation中）。加载的H5页面高度大于Web组件高度，Web内部将产生滚动条，用户可以通过在Web内部滑动来浏览H5页面的信息。只需使用Web组件即可实现应用业务主体内容，建议采用异步渲染模式以提升性能。 **图一 异步渲染模式场景** ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a7/v3/A6sWm_gITyaGBoaqeQpiJw/zh-cn_image_0000002543373904.png?HW-CC-KV=V1&HW-CC-Date=20260421T110943Z&HW-CC-Expi"
+      "snippet": "Web组件提供了两种可配置的渲染模式，能够根据不同的容器大小进行适配，从而满足使用场景中对容器尺寸的需求。 #### 异步渲染模式（默认） 异步渲染模式下（renderMode: RenderMode .ASYNC_RENDER），Web组件作为图形surface节点，独立送显。建议在仅由Web组件构成的应用页面中使用此模式，以提高性能并降低功耗。 - Web组件的宽高不能超过7,680px（物理像素），超过会导致白屏。 - 不支持动态切换模式。 开发者预期Web组件作为主体显示应用页面，如图一所示，在此场景下，Web组件高度正好为一屏或接近一屏（内嵌在navigation中）。加载的H5页面高度大于Web组件高度，Web内部将产生滚动条，用户可以通过在Web内部滑动来浏览H5页面的信息。只需使用Web组件即可实现应用业务主体内容，建议采用异步渲染模式以提升性能。 **图一 异步渲染模式场景** #### 同步渲染模式 同步渲染模式下（renderMode: RenderMode .SYNC_RENDER），Web组件作为图形canvas节点，Web渲染跟随系统组件一起送显，可以渲染更长Web组件内容，但会增加性能消耗。 - 不支持DSS（显示子系统）合成。 - 不支持动态切换模式。 开发者预期Web组件作为富文本显示的载体，成为应用页面的一部分，与其他ArkUI组件共同滑动交互。"
     },
     {
       "path": "references/Web组件焦点管理.md",
@@ -74,7 +74,7 @@
     {
       "path": "references/Web组件的生命周期.md",
       "title": "Web组件的生命周期",
-      "snippet": "开发者可以使用Web组件加载本地或者在线网页。 Web组件提供生命周期回调接口，用于感知状态变化和处理业务。 Web组件的状态主要包括：Controller绑定到Web组件、网页加载开始、网页加载进度、网页加载结束、页面即将可见。 Web页面保活可以参考 使用离线Web组件 。 自定义组件析构销毁时执行 aboutToDisappear 函数，Web组件会被销毁，Web组件与 WebviewController 解绑，js运行环境也会一并销毁。 **图1** Web组件网页正常加载过程中的回调事件 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f1/v3/CEGZbyd3S0mGQ_u_45KrBA/zh-cn_image_0000002573974129.png?HW-CC-KV=V1&HW-CC-Date=20260421T110941Z&HW-CC-Expire=86400&HW-CC-Sign=758DCDC959A75EDB820D397A0F7CF5BDDD38DA6B61E3766070E51C70222575D9) #### Web组件网页正常加载过程所涉及的状态说明 - aboutToAppear 函数：在创建自定义组件的新实例后，在执行其bu"
+      "snippet": "开发者可以使用Web组件加载本地或者在线网页。 Web组件提供生命周期回调接口，用于感知状态变化和处理业务。 Web组件的状态主要包括：Controller绑定到Web组件、网页加载开始、网页加载进度、网页加载结束、页面即将可见。 Web页面保活可以参考 使用离线Web组件 。 自定义组件析构销毁时执行 aboutToDisappear 函数，Web组件会被销毁，Web组件与 WebviewController 解绑，js运行环境也会一并销毁。 **图1** Web组件网页正常加载过程中的回调事件 #### Web组件网页正常加载过程所涉及的状态说明 - aboutToAppear 函数：在创建自定义组件的新实例后，在执行其build函数前执行。建议在此设置WebDebug调试模式、自定义协议URL的权限、Cookie等。 - onControllerAttached 事件：当Controller成功绑定到Web组件时触发该回调，且禁止在该事件回调前调用Web组件相关的接口，否则会抛出js-error异常。建议在此事件中注入JS对象、设置自定义用户代理，使用操作网页不相关的接口。但因为该回调调用时网页还未加载，因此无法在回调中使用有关操作网页的接口，例如 zoomIn 、 zoomOut 等。 - onLoadIntercept 事件：当Web组件加载url之前触发该回调，用于判断"
     },
     {
       "path": "references/Web页面显示内容滚动.md",
@@ -84,7 +84,7 @@
     {
       "path": "references/优化跳转至新Web组件过程中的页面闪烁现象.md",
       "title": "优化跳转至新Web组件过程中的页面闪烁现象",
-      "snippet": "应用使用 Navigation 等路由策略导航至Web组件页面时，在网页加载过程中，页面底部可能出现闪烁现象，这会影响用户体验。 #### 闪烁原因 使用Navigation等路由策略导航至Web组件页面时，通常根据网页的回调通知判断是否隐藏系统导航栏。若决定隐藏，Web组件布局会进行调整。这一布局调整过程可简化为如下四个阶段： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5f/v3/U_8s64ByTvmegZgUrIgiFw/zh-cn_image_0000002573854159.png?HW-CC-KV=V1&HW-CC-Date=20260421T110943Z&HW-CC-Expire=86400&HW-CC-Sign=758075289FDE8241099B89553C40165C5663029DE117CE554B09C9A0AA73E068) 图中四个状态的说明（从左至右）： 1. 将应用路由至Web页面，页面顶部为系统导航栏，底部是Web组件。在此情况下，网页能够正常加载。 2. 在网页加载过程中，系统会回调通知应用侧隐藏系统导航栏，以便切换至网页端的导航栏。此时系统导航栏被隐藏，Web组件的布局随即进行调整，页面底部最初会显露出Web组件"
+      "snippet": "应用使用 Navigation 等路由策略导航至Web组件页面时，在网页加载过程中，页面底部可能出现闪烁现象，这会影响用户体验。 #### 闪烁原因 使用Navigation等路由策略导航至Web组件页面时，通常根据网页的回调通知判断是否隐藏系统导航栏。若决定隐藏，Web组件布局会进行调整。这一布局调整过程可简化为如下四个阶段： 图中四个状态的说明（从左至右）： 1. 将应用路由至Web页面，页面顶部为系统导航栏，底部是Web组件。在此情况下，网页能够正常加载。 2. 在网页加载过程中，系统会回调通知应用侧隐藏系统导航栏，以便切换至网页端的导航栏。此时系统导航栏被隐藏，Web组件的布局随即进行调整，页面底部最初会显露出Web组件的背景色（假设为灰色）。 3. 网页继续根据新的尺寸加载并显示，首先呈现的是HTML网页的背景色（假设为白色）。 4. 最后，网页内容完全加载，展现出完整的HTML网页内容。 在上述流程中，如果Web组件的背景色与网页背景色不同，跳转时可能会出现闪烁。闪烁的概率取决于网页的复杂度和网络状况。 #### 优化方法 应用可以通过设置与网页背景色相同的Web组件的背景色，避免视觉闪烁，提升用户体验。例如，将Web组件的背景色设置为白色。 在类似情况下，如果Web组件的默认背景色为白色，而网页背景色为灰色，导航到新的Web页面时可能会出现白色闪烁。同理，将Web组件"
     },
     {
       "path": "references/使用Crashpad收集Web组件崩溃信息.md",
@@ -104,7 +104,7 @@
     {
       "path": "references/使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景.md",
       "title": "使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景",
-      "snippet": "浏览器的扩展程序（extension）支持与系统上安装的应用交换消息，应用向扩展提供服务，帮助扩展实现一些应用才具备的能力，常见的例子是密码管理器：应用负责存储和加密你的密码信息，以便浏览器扩展程序自动填充网页中的表单字段。 从API version 21开始，支持开发者在应用中使用 WebNativeMessagingExtensionAbility 组件，为浏览器扩展提供后台服务能力。 浏览器扩展通过 WebExtensions runtime API 连接WebNativeMessagingExtensionAbility，双方通信是通过共享pipe文件描述符后调用IO接口实现。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e2/v3/ZBOnWj83R2mYE7a66J9B4Q/zh-cn_image_0000002543214280.png?HW-CC-KV=V1&HW-CC-Date=20260421T110952Z&HW-CC-Expire=86400&HW-CC-Sign=188731F899441C28ADFF7239AA1BF0AC428FA4E92534493711473476F0593D7A) ![](https://contentce"
+      "snippet": "浏览器的扩展程序（extension）支持与系统上安装的应用交换消息，应用向扩展提供服务，帮助扩展实现一些应用才具备的能力，常见的例子是密码管理器：应用负责存储和加密你的密码信息，以便浏览器扩展程序自动填充网页中的表单字段。 从API version 21开始，支持开发者在应用中使用 WebNativeMessagingExtensionAbility 组件，为浏览器扩展提供后台服务能力。 浏览器扩展通过 WebExtensions runtime API 连接WebNativeMessagingExtensionAbility，双方通信是通过共享pipe文件描述符后调用IO接口实现。 本文将浏览器扩展调用WebExtension接口runtime.connectNative建立的连接称为NativeMessaging连接。 NativeMessaging面向两类开发者：应用开发者和浏览器应用开发者。两者均需要了解WebNativeMessagingExtensionAbility运作机制，但关注的场景和接口不同。应用开发者关注 WebNativeMessagingExtensionAbility 组件的使用，负责相关业务开发；浏览器应用开发者负责建立NativeMessaging连接，关注 WebNativeMessagingExtensionManager 相关接口。 本文会在"
     },
     {
       "path": "references/使用Web组件上传文件.md",
@@ -114,12 +114,12 @@
     {
       "path": "references/使用Web组件与系统剪贴板交互处理网页内容.md",
       "title": "使用Web组件与系统剪贴板交互处理网页内容",
-      "snippet": "开发者能够通过Web组件和系统剪贴板进行交互，实现各种类型数据的复制和粘贴。支持通过 菜单 、键盘快捷键以及 W3C剪贴板接口 对网页内容执行剪切、复制和粘贴操作。 #### 通过菜单或键盘快捷键与系统剪贴板交互 开发者能够自定义菜单中的功能选项，当用户选择特定选项时，开发者可以通过调用 cut 、 copy 、 copyImage 、 paste 、 pasteAndMatchStyle 等接口，将网页中的文本、HTML或图片数据复制到系统剪贴板，或从系统剪贴板粘贴到网页的可输入区域。 菜单功能接口的使用可参考 使用Web组件菜单处理网页内容 。 当设备有物理键盘时，用户也能够通过键盘快捷键：CTRL + X（剪切）、CTRL + C（复制）、CTRL + V（粘贴），与剪贴板进行交互。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/25/v3/EBmQZCM9Q3CaPNA8Vh2daw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110951Z&HW-CC-Expire=86400&HW-CC-Sign=86588BCAAB93B5D40D931882B0235E2741E7C9BED7CF4B2E"
+      "snippet": "开发者能够通过Web组件和系统剪贴板进行交互，实现各种类型数据的复制和粘贴。支持通过 菜单 、键盘快捷键以及 W3C剪贴板接口 对网页内容执行剪切、复制和粘贴操作。 #### 通过菜单或键盘快捷键与系统剪贴板交互 开发者能够自定义菜单中的功能选项，当用户选择特定选项时，开发者可以通过调用 cut 、 copy 、 copyImage 、 paste 、 pasteAndMatchStyle 等接口，将网页中的文本、HTML或图片数据复制到系统剪贴板，或从系统剪贴板粘贴到网页的可输入区域。 菜单功能接口的使用可参考 使用Web组件菜单处理网页内容 。 当设备有物理键盘时，用户也能够通过键盘快捷键：CTRL + X（剪切）、CTRL + C（复制）、CTRL + V（粘贴），与剪贴板进行交互。 通过 paste 、 pasteAndMatchStyle 接口读取系统剪贴板数据，需 申请访问剪贴板权限 ：ohos.permission.READ_PASTEBOARD。 #### 通过W3C异步剪贴板接口与系统剪贴板交互 异步剪贴板接口（Async Clipboard API） 提供给网页开发者读写系统剪贴板的方法，这让Web应用程序可以实现剪切、复制和粘贴的功能。 - writeText：将文本内容写入系统剪贴板。 // 写入文本到剪贴板 await navigator.clipboar"
     },
     {
       "path": "references/使用Web组件保存前端页面为PDF.md",
       "title": "使用Web组件保存前端页面为PDF",
-      "snippet": "从API version 14开始，支持使用Web组件的 createPdf 方法，为应用提供了保存前端页面为PDF的功能。 使用 createPdf 生成实例后，调用pdfArrayBuffer方法获取二进制数据流，再使用 fileIo 方法将二进制数据流保存为PDF文件。用户可以将前端页面内容保存为PDF以便分享或保存。例如，生成报告、发票等，方便用户保存和传输。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/33/v3/13ivoNr4TmiqxgWBfpxxSQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110951Z&HW-CC-Expire=86400&HW-CC-Sign=7F8FC9A9F0E84EA6E9C18381454FBAC6EEF853A55874189107F0F0FDC6CA6226) 通过 pdfConfiguration 的配置，可调整PDF每页大小、前端页面缩放比例等；推荐使用前端页面适配策略，通过CSS媒体查询（@media print）优化PDF排版。 #### 需要权限 若涉及网络文档获取，需在module.json5中配置网络访问权限。具体添加方法请参考 在配"
+      "snippet": "从API version 14开始，支持使用Web组件的 createPdf 方法，为应用提供了保存前端页面为PDF的功能。 使用 createPdf 生成实例后，调用pdfArrayBuffer方法获取二进制数据流，再使用 fileIo 方法将二进制数据流保存为PDF文件。用户可以将前端页面内容保存为PDF以便分享或保存。例如，生成报告、发票等，方便用户保存和传输。 通过 pdfConfiguration 的配置，可调整PDF每页大小、前端页面缩放比例等；推荐使用前端页面适配策略，通过CSS媒体查询（@media print）优化PDF排版。 #### 需要权限 若涉及网络文档获取，需在module.json5中配置网络访问权限。具体添加方法请参考 在配置文件中声明权限 。 \"requestPermissions\": [ { \"name\": \"ohos.permission.INTERNET\" } ], #### callback方式保存PDF 通过callback方式调用createPdf接口，获取到的result通过pdfArrayBuffer接口取得PDF二进制数据流，最后使用fileIo方法将二进制数据流保存为PDF文件。 import { fileIo as fs } from '@kit.CoreFileKit'; import { webview } from '@"
     },
     {
       "path": "references/使用Web组件加载页面.md",
@@ -139,7 +139,7 @@
     {
       "path": "references/使用Web组件的PDF文档预览能力.md",
       "title": "使用Web组件的PDF文档预览能力",
-      "snippet": "Web组件 支持在网页中预览PDF。应用通过 WebOptions 的src参数和 loadUrl() 接口加载PDF文档。具体场景包括：网络PDF文档、应用沙箱内PDF文档和本地PDF文档。 若涉及网络文档获取，需在module.json5中配置网络访问权限。添加方法请参考 在配置文件中声明权限 。 \"requestPermissions\":[ { \"name\" : \"ohos.permission.INTERNET\" } ], #### 通过不同的方式加载PDF文档 在下面的示例中，Web组件创建时指定默认加载的网络PDF文档https://www.example.com/test.pdf。使用时需替换为真实的可访问URL。 import { webview } from '@kit.ArkWeb'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webview.WebviewController(); build() { Column() { Web({ src: 'https://www.example.com/test.pdf', // 方式一 加载网络PDF文档 // this.getUIContext().getHostContext()!.fil"
+      "snippet": "Web组件 支持在网页中预览PDF。应用通过 WebOptions 的src参数和 loadUrl() 接口加载PDF文档。具体场景包括：网络PDF文档、应用沙箱内PDF文档和本地PDF文档。 若涉及网络文档获取，需在module.json5中配置网络访问权限。添加方法请参考 在配置文件中声明权限 。 \"requestPermissions\":[ { \"name\" : \"ohos.permission.INTERNET\" } ], #### 通过不同的方式加载PDF文档 在下面的示例中，Web组件创建时指定默认加载的网络PDF文档 import { webview } from '@kit.ArkWeb'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webview.WebviewController(); build() { Column() { Web({ src: ' // 方式一 加载网络PDF文档 // this.getUIContext().getHostContext()!.filesDir + '/test.pdf', // 方式二 加载本地应用沙箱内PDF文档 // 'resource://rawfile/test.pdf', // 方式三 "
     },
     {
       "path": "references/使用Web组件的下载能力.md",
@@ -154,7 +154,7 @@
     {
       "path": "references/使用Web组件的手势与应用交互.md",
       "title": "使用Web组件的手势与应用交互",
-      "snippet": "在移动端或支持触控的Web应用中，用户通过触摸屏与页面交互，Web组件支持了常见的手势识别，例如长按、滑动、点击等，以支持丰富的用户交互体验。 #### ArkWeb手势识别 ArkWeb接收ArkUI的 触摸事件 ，并识别出手势（触摸事件的分发策略详见 交互基础机制说明 ）。ArkWeb手势符合W3C标准：Touch Events、UI Events、Pointer Events。 常见事件识别说明： #### ArkWeb手势与ArkUI手势 ArkUI提供了 手势绑定 ，Web组件有独立的手势识别，因此需要区分两种手势： - ArkWeb手势：Web组件接收触摸事件自动生成的手势，这些手势作用于网页上。 - ArkUI手势：Web组件作为通用组件会接收ArkUI手势，ArkUI手势并不直接作用于网页，而作用于Web组件上。 以缩放为例说明两种手势的区别： - 在Web上使用双指捏合时，Web组件中的内容将会缩放。这是由于ArkWeb识别了Pinch事件并将其作用于网页上。 - 使用三指捏合，Web组件本身会进行缩放。这是因为ArkWeb接收到ArkUI识别出的PinchGesture，执行绑定的回调函数。同时，ArkWeb支持scale方法，能够调整Web组件的缩放比例。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_"
+      "snippet": "在移动端或支持触控的Web应用中，用户通过触摸屏与页面交互，Web组件支持了常见的手势识别，例如长按、滑动、点击等，以支持丰富的用户交互体验。 #### ArkWeb手势识别 ArkWeb接收ArkUI的 触摸事件 ，并识别出手势（触摸事件的分发策略详见 交互基础机制说明 ）。ArkWeb手势符合W3C标准：Touch Events、UI Events、Pointer Events。 常见事件识别说明： #### ArkWeb手势与ArkUI手势 ArkUI提供了 手势绑定 ，Web组件有独立的手势识别，因此需要区分两种手势： - ArkWeb手势：Web组件接收触摸事件自动生成的手势，这些手势作用于网页上。 - ArkUI手势：Web组件作为通用组件会接收ArkUI手势，ArkUI手势并不直接作用于网页，而作用于Web组件上。 以缩放为例说明两种手势的区别： - 在Web上使用双指捏合时，Web组件中的内容将会缩放。这是由于ArkWeb识别了Pinch事件并将其作用于网页上。 - 使用三指捏合，Web组件本身会进行缩放。这是因为ArkWeb接收到ArkUI识别出的PinchGesture，执行绑定的回调函数。同时，ArkWeb支持scale方法，能够调整Web组件的缩放比例。 该示例仅用于说明ArkUI手势和ArkWeb手势的区别，不建议使用此方法进行Web组件的缩放。 impo"
     },
     {
       "path": "references/使用Web组件的拖拽功能与网页交互.md",
@@ -169,7 +169,7 @@
     {
       "path": "references/使用Web组件管理网页缩放.md",
       "title": "使用Web组件管理网页缩放",
-      "snippet": "Web组件支持手势缩放、鼠标滚轮、键盘缩放，以方便用户调整到舒适的显示大小。并对应用提供监听、控制页面缩放比例的功能，以便应用实现个性化的视觉效果。 #### 启用/禁用网页缩放 #### 启用/禁用网页手势缩放 通过属性 zoomAccess 控制网页缩放功能，当设置为false时，网页不允许手势缩放行为。 当html网页设置<meta name=\"viewport\" id=\"viewport\" content=\"user-scalable=no\">时，网页不允许手势缩放。 仅当zoomAccess和viewport标签都设置为允许缩放时，才允许手势缩放。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8f/v3/cQR4FLXhSuGbx3tyUbYGpA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110946Z&HW-CC-Expire=86400&HW-CC-Sign=5A3EBFE863667A44DE9A3277D86987753E776DED5808B39555731107B3B3C059) 在PC/2in1设备上，viewport标签不生效，仅能通过设置zoomAccess为false来"
+      "snippet": "Web组件支持手势缩放、鼠标滚轮、键盘缩放，以方便用户调整到舒适的显示大小。并对应用提供监听、控制页面缩放比例的功能，以便应用实现个性化的视觉效果。 #### 启用/禁用网页缩放 #### 启用/禁用网页手势缩放 通过属性 zoomAccess 控制网页缩放功能，当设置为false时，网页不允许手势缩放行为。 当html网页设置<meta name=\"viewport\" id=\"viewport\" content=\"user-scalable=no\">时，网页不允许手势缩放。 仅当zoomAccess和viewport标签都设置为允许缩放时，才允许手势缩放。 在PC/2in1设备上，viewport标签不生效，仅能通过设置zoomAccess为false来禁用手势缩放。 以上方法仅能控制缩放功能的开关，但如果网页在viewport标签中设置了minimum-scale和maximum-scale，那么缩放的范围也会受到这两个属性的限制，当最大、最小值相等时，网页也是不能缩放的。 另外，网页的内容宽度也会限制缩小的比例。 import { webview } from '@kit.ArkWeb'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webview.We"
     },
     {
       "path": "references/使用Web组件菜单处理网页内容.md",
@@ -204,7 +204,7 @@
     {
       "path": "references/加速Web页面的访问.md",
       "title": "加速Web页面的访问",
-      "snippet": "当Web页面加载缓慢时，可以使用预连接、预加载和预获取POST请求的能力加速Web页面的访问。 针对Web页面加载性能优化的详细内容请参考 Web页面加载优化性能指导 。 #### 预解析和预连接 此方法可以针对域名级进行优化，通过 prepareForPageLoad() 来预解析或者预连接将要加载的页面。该方式仅对url进行DNS解析以及建立tcp连接，但不会获取主资源子资源。 在下面的示例中，在Web组件的onAppear中对要加载的页面进行预连接。 import { webview } from '@kit.ArkWeb'; // ... @Entry @Component struct WebComponent { webviewController: webview.WebviewController = new webview.WebviewController(); build() { Column() { Button('loadData') .onClick(() => { if (this.webviewController.accessBackward()) { this.webviewController.backward(); } }) Web({ src: 'https://www.example.com/', controller: this.web"
+      "snippet": "当Web页面加载缓慢时，可以使用预连接、预加载和预获取POST请求的能力加速Web页面的访问。 针对Web页面加载性能优化的详细内容请参考 Web页面加载优化性能指导 。 #### 预解析和预连接 此方法可以针对域名级进行优化，通过 prepareForPageLoad() 来预解析或者预连接将要加载的页面。该方式仅对url进行DNS解析以及建立tcp连接，但不会获取主资源子资源。 在下面的示例中，在Web组件的onAppear中对要加载的页面进行预连接。 import { webview } from '@kit.ArkWeb'; // ... @Entry @Component struct WebComponent { webviewController: webview.WebviewController = new webview.WebviewController(); build() { Column() { Button('loadData') .onClick(() => { if (this.webviewController.accessBackward()) { this.webviewController.backward(); } }) Web({ src: ' controller: this.webviewController }) .onAppea"
     },
     {
       "path": "references/同层渲染.md",
@@ -219,12 +219,12 @@
     {
       "path": "references/在新窗口中打开页面.md",
       "title": "在新窗口中打开页面",
-      "snippet": "Web组件提供了在新窗口打开页面的能力，开发者可以通过 multiWindowAccess() 接口来设置是否允许网页在新窗口打开。当有新窗口打开时，应用侧会在 onWindowNew() 接口或 onWindowNewExt() 接口中收到Web组件新窗口事件。开发者需要在此接口事件中新建窗口来处理Web组件的窗口请求。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/88/v3/SWICSuunTGOLTYeyuILwpw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110942Z&HW-CC-Expire=86400&HW-CC-Sign=4A6CFF628DF02EC68D71385D068BC92D51F6350272AFFBD791FD9BB159CFB44D) - onWindowNewExt() 接口为 onWindowNew() 接口的功能增强接口，OnWindowNewExtEvent比OnWindowNewEvent新增了 NavigationPolicy 和 WindowFeatures ，用于通知应用新窗口的打开方式和位置大小信息。当在同一个Web组件上同时使用这两个接口时，只有 "
+      "snippet": "Web组件提供了在新窗口打开页面的能力，开发者可以通过 multiWindowAccess() 接口来设置是否允许网页在新窗口打开。当有新窗口打开时，应用侧会在 onWindowNew() 接口或 onWindowNewExt() 接口中收到Web组件新窗口事件。开发者需要在此接口事件中新建窗口来处理Web组件的窗口请求。 - onWindowNewExt() 接口为 onWindowNew() 接口的功能增强接口，OnWindowNewExtEvent比OnWindowNewEvent新增了 NavigationPolicy 和 WindowFeatures ，用于通知应用新窗口的打开方式和位置大小信息。当在同一个Web组件上同时使用这两个接口时，只有 onWindowNewExt() 接口会被触发。 - allowWindowOpenMethod() 接口设置为true时，前端页面通过JavaScript函数调用的方式打开新窗口。 - 当在Web页面调用window.open(url, name)打开新窗口时，ArkWeb内核会根据name查找是否存在已绑定的Web组件。若存在，该Web组件将收到 onActivateContent() 接口通知，以便应用可将其展示至前台；若不存在，ArkWeb内核将通过onWindowNew()接口通知应用创建新窗口。 - 如果在onWind"
     },
     {
       "path": "references/坚盾守护模式.md",
       "title": "坚盾守护模式",
-      "snippet": "坚盾守护模式提供给高安全需求用户的系统级别安全模式。该模式通过限制设备基础功能，增强安全性，有效抵御远程攻击面的针对性攻击。 #### ArkWeb限制的HTML5特性 坚盾守护模式开启时，ArkWeb通过限制以下HTML5特性减少攻击面。 - 禁止使用WebAssembly能力。 - 禁止使用WebGL、WebGL2能力。 - 禁止使用PDF Viewer预览功能。 - 禁止使用MathML能力。 - 禁止使用Web Speech API语音识别能力。 - 禁止使用RTCDataChannel接口。 - 禁止使用MediaDevices.getUserMedia接口提示用户允许访问媒体输入设备。 - 禁止使用Service Worker能力。 - 禁止使用非代理UDP流量，防止WebRTC泄露真实源IP。 - 禁止即时编译（JIT）能力。 #### 评估对应用的影响 要评估应用在坚盾守护模式下的受影响程度及兼容性，可前往“设置 > 隐私和安全 > 坚盾守护模式”开启。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/71/v3/2QnIaSWAR4SIq08io1Gbaw/zh-cn_image_0000002543373920.png?HW-CC-KV=V1&"
+      "snippet": "坚盾守护模式提供给高安全需求用户的系统级别安全模式。该模式通过限制设备基础功能，增强安全性，有效抵御远程攻击面的针对性攻击。 #### ArkWeb限制的HTML5特性 坚盾守护模式开启时，ArkWeb通过限制以下HTML5特性减少攻击面。 - 禁止使用WebAssembly能力。 - 禁止使用WebGL、WebGL2能力。 - 禁止使用PDF Viewer预览功能。 - 禁止使用MathML能力。 - 禁止使用Web Speech API语音识别能力。 - 禁止使用RTCDataChannel接口。 - 禁止使用MediaDevices.getUserMedia接口提示用户允许访问媒体输入设备。 - 禁止使用Service Worker能力。 - 禁止使用非代理UDP流量，防止WebRTC泄露真实源IP。 - 禁止即时编译（JIT）能力。 #### 评估对应用的影响 要评估应用在坚盾守护模式下的受影响程度及兼容性，可前往“设置 > 隐私和安全 > 坚盾守护模式”开启。 - 如果需要评估调试版本（未上架应用市场）应用的兼容性，先开启开发者选项，然后开启坚盾守护模式。 - 可以采用Device Security Kit提供的查询设备安全模式(C/C++)能力，判断坚盾守护模式是否开启。 运行应用的相应功能后，可通过以下方式确认是否受影响： - 排查前端代码是否存在WebAssembl"
     },
     {
       "path": "references/定位与解决Web白屏问题.md",
@@ -234,7 +234,7 @@
     {
       "path": "references/应用侧与前端页面的相互调用(C_C++).md",
       "title": "应用侧与前端页面的相互调用(C/C++)",
-      "snippet": "本指导适用于ArkWeb应用侧与前端网页通信场景，开发者可根据应用架构选择使用ArkWeb Native接口完成业务通信机制（以下简称Native JSBridge）。 针对JSBridge进行性能优化可参考 JSBridge优化解决方案 #### 适用的应用架构 应用使用ArkTS、C++语言混合开发，或本身应用架构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在Native侧提供的 ArkWeb_ControllerAPI 、 ArkWeb_ComponentAPI 实现JSBridge功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f4/v3/iMJ1Ncu7RdGXNlBfnwqC5g/zh-cn_image_0000002543373908.png?HW-CC-KV=V1&HW-CC-Date=20260421T110944Z&HW-CC-Expire=86400&HW-CC-Sign=0C987C0568905D9B0536D34D96B3E2C9648C506CC3FDB1F21F82C6A5DA3C60A2) 上图展示了具有普遍适用性的小程序的通用架构。在这一架构中，逻辑层依赖于应用程序自带的JavaScript运行时，该运行时"
+      "snippet": "本指导适用于ArkWeb应用侧与前端网页通信场景，开发者可根据应用架构选择使用ArkWeb Native接口完成业务通信机制（以下简称Native JSBridge）。 针对JSBridge进行性能优化可参考 JSBridge优化解决方案 #### 适用的应用架构 应用使用ArkTS、C++语言混合开发，或本身应用架构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在Native侧提供的 ArkWeb_ControllerAPI 、 ArkWeb_ComponentAPI 实现JSBridge功能。 上图展示了具有普遍适用性的小程序的通用架构。在这一架构中，逻辑层依赖于应用程序自带的JavaScript运行时，该运行时在一个已有的C++环境中运行。通过Native接口，逻辑层能够直接在C++环境中与视图层（其中ArkWeb充当渲染器）进行通信，无需回退至ArkTS环境使用ArkTS JSBridge接口。 左图是使用ArkTS JSBridge接口构建小程序的方案，如红框所示，应用需要先调用到ArkTS环境，再调用到C++环境。右图是使用Native JSBridge接口构建小程序的方案，不需要ArkTS环境和C++环境的切换，执行效率更高。 Native JSBridge方案解决了ArkTS环境的冗余切换，同时允许回调在非UI线程上运行，避免造成UI阻塞。 #### 使"
     },
     {
       "path": "references/应用侧调用前端页面函数.md",
@@ -244,7 +244,7 @@
     {
       "path": "references/建立应用侧与前端页面数据通道(C_C++).md",
       "title": "建立应用侧与前端页面数据通道(C/C++)",
-      "snippet": "前端页面和应用侧之间可以使用Native方法实现两端通信（以下简称Native PostWebMessage），可解决ArkTS环境的冗余切换，同时允许发送消息、回调在非UI线程上运行，避免造成UI阻塞。当前只支持string和buffer数据类型。 #### 适用的应用架构 应用使用ArkTS、C++语言混合开发，或本身应用架构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在Native侧提供的 ArkWeb_ControllerAPI 、 ArkWeb_WebMessageAPI 、 ArkWeb_WebMessagePortAPI 实现PostWebMessage功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b/v3/j4HV3iveQA-_PH1z9gSQRQ/zh-cn_image_0000002543373908.png?HW-CC-KV=V1&HW-CC-Date=20260421T110945Z&HW-CC-Expire=86400&HW-CC-Sign=1FC8B9BEC1B5AE7EFCFA8CBB5942B64858D8954573537433E73186BD0CCB5351) 上图展示了具有普遍适用性的小程序的通用架构"
+      "snippet": "前端页面和应用侧之间可以使用Native方法实现两端通信（以下简称Native PostWebMessage），可解决ArkTS环境的冗余切换，同时允许发送消息、回调在非UI线程上运行，避免造成UI阻塞。当前只支持string和buffer数据类型。 #### 适用的应用架构 应用使用ArkTS、C++语言混合开发，或本身应用架构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在Native侧提供的 ArkWeb_ControllerAPI 、 ArkWeb_WebMessageAPI 、 ArkWeb_WebMessagePortAPI 实现PostWebMessage功能。 上图展示了具有普遍适用性的小程序的通用架构。在这一架构中，逻辑层依赖于应用程序自带的JavaScript运行时，该运行时在一个已有的C++环境中运行。通过Native接口，逻辑层能够直接在C++环境中与视图层（其中ArkWeb充当渲染器）进行通信，无需回退至ArkTS环境使用ArkTS PostWebMessage接口。 左图是使用ArkTS PostWebMessage接口构建小程序的方案，如红框所示，应用需要先调用到ArkTS环境，再调用到C++环境。右图是使用Native PostWebMessage接口构建小程序的方案，不需要ArkTS环境和C++环境的切换，执行效率更高。 #### 使用"
     },
     {
       "path": "references/建立应用侧与前端页面数据通道.md",
@@ -254,12 +254,12 @@
     {
       "path": "references/托管网页中的媒体播放.md",
       "title": "托管网页中的媒体播放",
-      "snippet": "Web组件提供了应用接管网页中媒体播放的能力，用来支持应用增强网页的媒体播放，如画质增强等。 #### 使用场景 网页播放媒体时，存在以下问题：网页清晰度低、网页播放器播放控件功能有限、某些视频无法播放。 应用开发者可以使用该功能，通过自己或者第三方播放器接管网页媒体播放，从而改善播放体验。 #### 实现原理 #### ArkWeb内核播放媒体的框架 不开启该功能时，ArkWeb内核的播放架构如下所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c9/v3/lEaemE6BQ86HvKi6hA2w2A/zh-cn_image_0000002573974153.png?HW-CC-KV=V1&HW-CC-Date=20260421T110950Z&HW-CC-Expire=86400&HW-CC-Sign=6910BA7518AC9BE5CF979D5176F4EE06D282B67E75B209763CC3CC7E2B1ABC70) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/88/v3/ahNb0RULQF-AQnYXbByIrQ/"
+      "snippet": "Web组件提供了应用接管网页中媒体播放的能力，用来支持应用增强网页的媒体播放，如画质增强等。 #### 使用场景 网页播放媒体时，存在以下问题：网页清晰度低、网页播放器播放控件功能有限、某些视频无法播放。 应用开发者可以使用该功能，通过自己或者第三方播放器接管网页媒体播放，从而改善播放体验。 #### 实现原理 #### ArkWeb内核播放媒体的框架 不开启该功能时，ArkWeb内核的播放架构如下所示： - 上图中1表示ArkWeb内核创建WebMediaPlayer来播放网页中的媒体资源。 - 上图中2表示WebMediaPlayer使用系统解码器来渲染媒体数据。 开启该功能后，ArkWeb内核的播放架构如下： - 上图中1表示ArkWeb内核创建WebMediaPlayer来播放网页中的媒体资源。 - 上图中2表示WebMediaPlayer使用应用提供的本地播放器（NativeMediaPlayer）来渲染媒体数据。 #### ArkWeb内核与应用的交互 - 上图中1的详细说明见开启接管网页媒体播放。 - 上图中2的详细说明见创建本地播放器。 - 上图中3的详细说明见绘制本地播放器组件。 - 上图中4的详细说明见执行ArkWeb内核发送给本地播放器的播控命令。 - 上图中5的详细说明见将本地播放器的状态信息通知给ArkWeb内核。 #### 开发指导 #### 开启接管网"
     },
     {
       "path": "references/拦截Web组件发起的网络请求.md",
       "title": "拦截Web组件发起的网络请求",
-      "snippet": "应用可以通过 onInterceptRequest 拦截Web组件发起的网络请求，也可以通过SchemeHandler来拦截Web组件发起的网络请求。SchemeHandler提供了ArkTS与NDK两套接口。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/64/v3/PWqkvnHERqe25LeQMfLdiw/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T110948Z&HW-CC-Expire=86400&HW-CC-Sign=4F076E5EBA5A825FA7CB8C0884EFD2457C4CF0E8D60D34179937765D06D00F28) - onInterceptRequest接口中无法获取Post Data，如果想要获取Post Data需使用SchemeHandler机制来进行拦截。 #### 网络请求拦截处理 (onInterceptRequest接口) 通过onInterceptRequest接口拦截Web组件发起的网络请求可参考 自定义页面请求响应 。 #### 网络请求拦截处理 (SchemeHandler机制) 通过SchemeHandler机制来拦截Web组件"
+      "snippet": "应用可以通过 onInterceptRequest 拦截Web组件发起的网络请求，也可以通过SchemeHandler来拦截Web组件发起的网络请求。SchemeHandler提供了ArkTS与NDK两套接口。 - onInterceptRequest接口中无法获取Post Data，如果想要获取Post Data需使用SchemeHandler机制来进行拦截。 #### 网络请求拦截处理 (onInterceptRequest接口) 通过onInterceptRequest接口拦截Web组件发起的网络请求可参考 自定义页面请求响应 。 #### 网络请求拦截处理 (SchemeHandler机制) 通过SchemeHandler机制来拦截Web组件发起的网络请求。 #### 为Web组件设置SchemeHandler ArkWeb支持通过SchemeHandler拦截Web组件或者ServiceWorker发出的HTTP(s)及自定义协议的请求。 当Web内核发出相应scheme请求时，会触发为该scheme设置的SchemeHandler的回调。SchemeHandler包含请求开始与请求结束两个回调，应用需要在请求开始的回调中告知Web内核是否进行拦截，在请求结束后清理相关的资源，避免内存泄漏。 请求开始的回调： NDK： ArkWeb_OnRequestStart ArkT"
     },
     {
       "path": "references/管理Cookie及数据存储.md",
@@ -284,7 +284,7 @@
     {
       "path": "references/自定义页面请求响应.md",
       "title": "自定义页面请求响应",
-      "snippet": "Web组件支持在应用拦截到页面请求后自定义响应请求能力。开发者通过 onInterceptRequest() 接口来实现自定义资源请求响应。自定义请求能力可以用于开发者自定义Web页面响应、自定义文件资源响应等场景。 Web网页上发起资源加载请求，应用层收到资源请求信息。应用层构造本地资源响应信息发送给Web内核。Web内核解析应用层响应信息，根据此响应信息进行页面资源加载。 在下面的示例中，Web组件通过拦截页面请求“https://www.example.com/test.html”，在应用侧代码构建响应资源，实现自定义页面响应场景。 - 前端页面index1.html代码。 <!DOCTYPE html> <html> <head> <meta charset=\"utf-8\"> </head> <body> <!-- 页面资源请求 --> <a href=\"https://www.example.com/test.html\">intercept test!</a> </body> </html> - 应用侧代码。 import { webview } from '@kit.ArkWeb'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webview.We"
+      "snippet": "Web组件支持在应用拦截到页面请求后自定义响应请求能力。开发者通过 onInterceptRequest() 接口来实现自定义资源请求响应。自定义请求能力可以用于开发者自定义Web页面响应、自定义文件资源响应等场景。 Web网页上发起资源加载请求，应用层收到资源请求信息。应用层构造本地资源响应信息发送给Web内核。Web内核解析应用层响应信息，根据此响应信息进行页面资源加载。 在下面的示例中，Web组件通过拦截页面请求“ - 前端页面index1.html代码。 <!DOCTYPE html> <html> <head> <meta charset=\"utf-8\"> </head> <body> <!-- 页面资源请求 --> <a href=\" test!</a> </body> </html> - 应用侧代码。 import { webview } from '@kit.ArkWeb'; @Entry @Component struct WebComponent { controller: webview.WebviewController = new webview.WebviewController(); responseResource: WebResourceResponse = new WebResourceResponse(); // 开发者自定义响应数据 @Sta"
     },
     {
       "path": "references/获取网页内容高度.md",

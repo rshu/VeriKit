@@ -5,14 +5,15 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:14:58.765Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
     "use_when": [
       "分布式",
-      "跨设备",
+      "需要通过分布式设备管理发现并认证周边同账号设备，然后跨设备连接同应用的UIAbility传输图片或字节流 / When you need to use distributed device management to discover and authenticate nearby same-account devices, then connect the same app's UIAbility across devices to transfer images or byte streams",
       "设备管理",
       "UIAbility连接",
       "多设备协同",
@@ -59,10 +60,19 @@
       "待传输的数据内容（信息、字节流、图片或传输流） / data payload to transfer (message, byte stream, image, or transport stream)"
     ],
     "outputs": [
-      "简介与概述",
-      "设备管理",
-      "跨设备协同",
-      "增强连接"
+      "设备管理器实例（DeviceManager） / DeviceManager instance",
+      "本机设备信息对象（DeviceBasicInfo） / Local device information object (DeviceBasicInfo)",
+      "发现到的周边设备信息对象（DeviceBasicInfo） / Discovered nearby device information object (DeviceBasicInfo)",
+      "已认证/可信设备列表（Array<DeviceBasicInfo>） / Authenticated or trusted device list (Array<DeviceBasicInfo>)",
+      "设备认证或绑定结果对象 / Device authentication or binding result object",
+      "设备状态变化事件（上线、下线、信息变化） / Device state change events (online, offline, information changed)",
+      "设备发现失败结果（订阅ID、失败原因） / Device discovery failure result (subscription ID and failure reason)",
+      "跨设备UIAbility连接句柄或调用对象 / Cross-device UIAbility connection handle or caller object",
+      "跨设备UIAbility返回的RemoteObject或通信代理对象 / RemoteObject or communication proxy returned by cross-device UIAbility connection",
+      "跨设备交互返回数据（消息、字节数组、图片、传输流） / Cross-device interaction result data (messages, byte arrays, images, transfer streams)",
+      "增强蓝牙连接会话或链路对象 / Enhanced Bluetooth connection session or link object",
+      "增强连接状态事件（已连接、断开、异常） / Enhanced connection state events (connected, disconnected, error)",
+      "增强连接接收到的数据包或数据流 / Data packets or streams received through enhanced connection"
     ],
     "postconditions": [
       {

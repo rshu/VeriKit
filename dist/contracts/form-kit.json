@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:16:01.048Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -56,13 +57,19 @@
       "卡片交互事件参数（message、router、call） / form interaction event parameters (message, router, call)"
     ],
     "outputs": [
-      "Kit 简介",
-      "ArkTS 卡片开发",
-      "卡片事件与交互",
-      "互动卡片开发",
-      "特殊卡片类型",
-      "JS 卡片开发",
-      "常见问题"
+      "服务卡片实例（Form，包含唯一 formId，可添加到桌面、锁屏等系统界面） / Form instance with a unique formId that can be added to launcher, lock screen, and other system surfaces",
+      "ArkTS 声明式卡片界面产物（动态卡片或静态卡片，支持动效、Canvas、自定义字体） / ArkTS declarative form UI artifact, either dynamic or static, with animation, Canvas, and custom font support",
+      "JS 卡片界面产物（HML、CSS、JSON 类 Web 卡片渲染结果） / JS form UI artifact rendered from HML, CSS, and JSON web-like resources",
+      "FormBindingData 数据绑定对象（创建卡片或刷新卡片内容时返回/提交的数据载体） / FormBindingData object used as the data payload returned or submitted when creating or refreshing a form",
+      "更新后的卡片内容（主动刷新、定时刷新、按状态刷新、本地图片或网络图片刷新后的显示结果） / Updated form content after active refresh, scheduled refresh, state-based refresh, or local/network image refresh",
+      "FormInfo 卡片元数据对象或列表（卡片名称、尺寸、类型、能力等信息） / FormInfo metadata object or list containing form name, dimensions, type, capabilities, and related information",
+      "message 事件消息负载（卡片向应用传递的用户操作或业务消息） / message event payload carrying user actions or business messages from the form to the application",
+      "router 事件跳转请求（从卡片跳转到应用指定页面的目标信息） / router event navigation request containing the target information for opening a specific application page from the form",
+      "call 事件后台拉起结果/请求数据（卡片触发应用 UIAbility 在后台处理业务） / call event background invocation result or request data for triggering an application UIAbility to process work in the background",
+      "互动卡片运行产物（趣味交互/小游戏卡片、场景动效卡片） / Interactive form runtime artifact such as a fun-interaction mini-game form or a scene-animation form",
+      "锁屏卡片渲染结果（锁屏界面展示的重要信息或快捷操作卡片） / Lock-screen form rendering result showing key information or quick actions on the lock screen",
+      "背板透明卡片渲染结果（透明背景视觉样式的服务卡片） / Transparent-background form rendering result with a see-through visual style",
+      "卡片发布或加桌结果（应用内拉起卡片管理后生成的桌面卡片或返回的发布标识） / Form publishing or add-to-home result, such as the created launcher form or returned publishing identifier"
     ],
     "postconditions": [
       {

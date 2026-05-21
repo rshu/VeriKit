@@ -3,23 +3,23 @@
   "skill": "call-service-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.296Z"
+    "at": "2026-05-21T03:47:44.114Z"
   },
   "references": [
     {
       "path": "references/Call Service Kit简介.md",
       "title": "Call Service Kit简介",
-      "snippet": "Call Service Kit（通话服务）是HarmonyOS为开发者提供的应用内通话管理服务。 开发者通过集成Call Service Kit，可以实现便捷的来电一键接听、横幅通知、静音与取消静音等功能，提升用户体验。 #### 场景分类 应用内通话，主要分为来电场景、去电场景两类。 - 来电场景 应用接收到来自网络的音/视频通话，称为来电场景。 在来电场景中，应用需要将来电信息上报给Call Service Kit，系统会为用户展示来电横幅通知。用户可以在横幅上执行接听或拒接来电、静音与解除静音、挂断通话等操作。 此外，Call Service Kit还支持锁屏来电通知、多路来电通知等。 - 去电场景 应用主动发起音/视频通话，称为去电场景。去电场景与来电场景大部分功能相似，但有以下几点区别： - 去电时，由于应用在前台，不需要展示横幅通知，只在屏幕左上角展示通话胶囊。 - 去电不支持多路共存，即同一时间，只能有1路去电存在。 #### 与相关Kit的关系 当应用在后台时，如果有来电，需要 Push Kit（推送服务） 先拉起应用主进程，应用才能给Call Service Kit上报来电。 业务流程如下图所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1"
+      "snippet": "Call Service Kit（通话服务）是HarmonyOS为开发者提供的应用内通话管理服务。 开发者通过集成Call Service Kit，可以实现便捷的来电一键接听、横幅通知、静音与取消静音等功能，提升用户体验。 #### 场景分类 应用内通话，主要分为来电场景、去电场景两类。 - 来电场景 应用接收到来自网络的音/视频通话，称为来电场景。 在来电场景中，应用需要将来电信息上报给Call Service Kit，系统会为用户展示来电横幅通知。用户可以在横幅上执行接听或拒接来电、静音与解除静音、挂断通话等操作。 此外，Call Service Kit还支持锁屏来电通知、多路来电通知等。 - 去电场景 应用主动发起音/视频通话，称为去电场景。去电场景与来电场景大部分功能相似，但有以下几点区别： - 去电时，由于应用在前台，不需要展示横幅通知，只在屏幕左上角展示通话胶囊。 - 去电不支持多路共存，即同一时间，只能有1路去电存在。 #### 与相关Kit的关系 当应用在后台时，如果有来电，需要 Push Kit（推送服务） 先拉起应用主进程，应用才能给Call Service Kit上报来电。 业务流程如下图所示： #### 约束和限制 #### 设备限制 本示例仅支持标准系统上运行，不支持模拟器。 #### 通话数量 - 同一时间，最多支持3路应用内来电。 - 同一时间，最多支"
     },
     {
       "path": "references/企业联系人信息来去电页面显示.md",
       "title": "企业联系人信息来去电页面显示",
-      "snippet": "本功能仅供企业应用开发者接入。 #### 场景介绍 来去电时，页面显示已安装企业应用的联系人信息，方便用户识别来去电人信息，快速回应，增强企业内部沟通效率。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3a/v3/zft-hp5MSBat-_V_AZO3FA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111501Z&HW-CC-Expire=86400&HW-CC-Sign=8E00091E881FC668E59250B99BD5521F2746DB3876BCAB0B0A8E2B1C13F35484) 来去电页面或横幅仅展示一个联系人信息，对于多个应用里存在相同联系人的情况，按照应用包名的字典序排序，展示首个查询结果。 #### 接口说明 #### 申请接入 企业来电显示能力使用受限，如需接入，需要在AGC网站申请对应权限。 1.登录 AGC网站 ，选择“开发与服务”。 2.在项目列表选择项目，并在应用列表下选择需要申请企业来电显示的应用。 3.进入“项目设置 > 开放能力管理”页面，点击“企业来电显示”对应的“申请”。 ![](https://contentcenter-vali-drcn.dba"
+      "snippet": "本功能仅供企业应用开发者接入。 #### 场景介绍 来去电时，页面显示已安装企业应用的联系人信息，方便用户识别来去电人信息，快速回应，增强企业内部沟通效率。 来去电页面或横幅仅展示一个联系人信息，对于多个应用里存在相同联系人的情况，按照应用包名的字典序排序，展示首个查询结果。 #### 接口说明 #### 申请接入 企业来电显示能力使用受限，如需接入，需要在AGC网站申请对应权限。 1.登录 AGC网站 ，选择“开发与服务”。 2.在项目列表选择项目，并在应用列表下选择需要申请企业来电显示的应用。 3.进入“项目设置 > 开放能力管理”页面，点击“企业来电显示”对应的“申请”。 4.请根据实际业务需求在弹框中填写对应信息，完成后，点击右上角“提交”，提交后将在3个工作日内回复。 #### 替换调试Profile 当企业来电显示能力申请成功后，需要重新 申请调试Profile 。并且在DevEco Studio中替换新申请的调试Profile。 #### 开发步骤 1. 在工程内创建一个 ExtensionAbility 类型的自定义组件并继承 CallerInfoQueryExtensionAbility ，完成onQueryCallerInfo方法的复写。 说明： 由于调用onQueryCallerInfo方法时，系统先创建应用的AbilityStage实例，请勿在Ability"
     },
     {
       "path": "references/去电场景.md",
       "title": "去电场景",
-      "snippet": "应用主动发起音/视频通话，称为去电场景。 去电场景，由于应用在前台，不需要横幅通知，只在屏幕左上角，展示通话胶囊。去电场景的效果图展示如下： 去电场景，用户也可以拉起通知中心面板，在实况窗横幅上做静音与解除静音、挂断通话等操作。 #### 约束与限制 去电场景支持Phone、Tablet设备，并从6.0(20)版本开始支持Wearable设备。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/69/v3/SYaXY8UKS-GzKRIbcgwICw/zh-cn_image_0000002573974759.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111501Z&HW-CC-Expire=86400&HW-CC-Sign=FD071A93B20D67273CFCF56317F1C482AEB8A7DBBD21D65DD33E304D8620BA29) #### 接口说明 去电场景的接口，由 voipCall 提供。更多接口信息详见 接口文档 。 #### 开发步骤 去电场景的开发步骤与来电场景相似。 1. 导入相关依赖。 import { voipCall } from '@kit.CallServiceKit';"
+      "snippet": "应用主动发起音/视频通话，称为去电场景。 去电场景，由于应用在前台，不需要横幅通知，只在屏幕左上角，展示通话胶囊。去电场景的效果图展示如下： 去电场景，用户也可以拉起通知中心面板，在实况窗横幅上做静音与解除静音、挂断通话等操作。 #### 约束与限制 去电场景支持Phone、Tablet设备，并从6.0(20)版本开始支持Wearable设备。 #### 业务流程 #### 接口说明 去电场景的接口，由 voipCall 提供。更多接口信息详见 接口文档 。 #### 开发步骤 去电场景的开发步骤与来电场景相似。 1. 导入相关依赖。 import { voipCall } from '@kit.CallServiceKit'; import { image } from '@kit.ImageKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 为了感知到用户在实况窗上做的静音与解除静音、挂断通话等操作，应用需要注册voipCallUiEvent事件。建议在上报去电之前注册。 示例代码如下： // 注册voipCallUiEvent事件 voipCall.on('voipCallUiEvent', callback => { hilog.info(0x0000, 'CallDemo', 'Succeeded i"
     },
     {
       "path": "references/开发准备.md",
@@ -29,7 +29,7 @@
     {
       "path": "references/来电场景.md",
       "title": "来电场景",
-      "snippet": "应用接收到来自网络的音/视频通话，称为来电场景。 来电场景的效果图展示如下： #### 约束与限制 来电场景支持Phone、Tablet设备，并从6.0(20)版本开始支持Wearable设备。 #### 业务流程 #### 来电场景：接听流程图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/33/v3/YfZOKiHUQ--SyzgtZJMSww/zh-cn_image_0000002543214862.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111501Z&HW-CC-Expire=86400&HW-CC-Sign=5D1CE561D60F93BE66B686000A85E0E12C4229D16F1D70E585D75927BC42A62D) #### 来电场景：拒接流程图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/09/v3/Bd2hpO05SZuxNbN_reViIA/zh-cn_image_0000002573854777.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T"
+      "snippet": "应用接收到来自网络的音/视频通话，称为来电场景。 来电场景的效果图展示如下： #### 约束与限制 来电场景支持Phone、Tablet设备，并从6.0(20)版本开始支持Wearable设备。 #### 业务流程 #### 来电场景：接听流程图 #### 来电场景：拒接流程图 #### 接口说明 来电场景的接口，由 voipCall 提供。更多接口信息详见 接口文档 。 #### 开发步骤 1. 导入相关依赖。 import { voipCall } from '@kit.CallServiceKit'; import { image } from '@kit.ImageKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 为了感知到用户在横幅通知上做的接听、挂断、静音与解除静音等操作，应用需要注册voipCallUiEvent事件。建议在上报来电之前注册。 示例代码如下： // 注册voipCallUiEvent事件 voipCall.on('voipCallUiEvent', callback => { hilog.info(0x0000, 'CallDemo', 'Succeeded in registering voipCallUiEvent'); }); 3. 应用内部建立通话连接之后，需要向Call"
     },
     {
       "path": "references/来电横幅无法拉起.md",

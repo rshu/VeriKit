@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:20:51.602Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -53,8 +54,15 @@
       "页面上下文或UI宿主对象（集成铃声设置组件时） / page context or UI host object (when integrating the ringtone setting component)"
     ],
     "outputs": [
-      "简介",
-      "铃声设置"
+      "已设置的来电铃声 / Configured incoming-call ringtone",
+      "已设置的通知铃声 / Configured notification ringtone",
+      "已设置的信息/短信铃声 / Configured message/SMS ringtone",
+      "已设置的闹钟铃声 / Configured alarm ringtone",
+      "双卡分别配置的来电铃声设置 / Per-SIM incoming-call ringtone settings",
+      "双卡分别配置的信息/短信铃声设置 / Per-SIM message/SMS ringtone settings",
+      "铃声设置结果（成功或失败及错误信息） / Ringtone setting result (success or failure with error information)",
+      "铃声设置组件界面 / Ringtone setting UI component",
+      "跳转到系统“声音与振动”页面的操作结果 / Navigation result to the system Sound & vibration settings page"
     ],
     "postconditions": [
       {

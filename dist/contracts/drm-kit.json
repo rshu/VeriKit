@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:15:13.857Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -57,9 +58,18 @@
       "媒体初始化数据或会话相关的DRM初始化信息 / Media initialization data or session-related DRM init information"
     ],
     "outputs": [
-      "简介与概述",
-      "ArkTS开发",
-      "C/C++开发"
+      "可用DRM插件/密钥系统名称列表 / List of available DRM plugin or key-system names",
+      "MediaKeySystem实例或C/C++ MediaKeySystem句柄 / MediaKeySystem instance or C/C++ MediaKeySystem handle",
+      "MediaKeySession会话实例或C/C++ MediaKeySession句柄 / MediaKeySession instance or C/C++ MediaKeySession handle",
+      "DRM证书请求ProvisionRequest（请求数据、默认URL） / DRM provisioning request ProvisionRequest with request data and default URL",
+      "DRM证书处理结果与证书状态CertificateStatus / DRM provisioning result and certificate status CertificateStatus",
+      "DRM许可证请求MediaKeyRequest（请求数据、默认URL、请求类型） / DRM license request MediaKeyRequest with request data, default URL, and request type",
+      "许可证响应处理后生成的媒体密钥ID或许可证ID / Media key ID or license ID generated after processing the license response",
+      "离线许可证/离线媒体密钥ID列表 / Offline license or offline media-key ID list",
+      "媒体密钥状态MediaKeyStatus与离线许可证状态OfflineMediaKeyStatus / Media key status MediaKeyStatus and offline license status OfflineMediaKeyStatus",
+      "许可证过期时间、更新通知和密钥变更事件数据 / License expiration time, renewal notifications, and key-change event data",
+      "用于AVPlayer或AVCodec解密播放的DRM会话绑定信息 / DRM session binding information for AVPlayer or AVCodec protected playback",
+      "解密后的媒体输出或安全视频通路中的受保护渲染输出 / Decrypted media output or protected rendering output through the secure video path"
     ],
     "postconditions": [
       {

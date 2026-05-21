@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:14:51.979Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -61,16 +62,34 @@
       "反诈选择器查询条件或目标记录范围 / Anti-fraud picker query conditions or target record scope"
     ],
     "outputs": [
-      "简介与配置",
-      "应用设备状态检测",
-      "安全检测",
-      "可信应用服务",
-      "数字盾服务",
-      "业务风险检测",
-      "安全审计",
-      "反诈选择器",
-      "防窥保护",
-      "病毒防护服务管理"
+      "设备应用标识令牌（DeviceToken） / Device-app identity token (DeviceToken)",
+      "系统完整性检测结果（设备是否越狱、Root、模拟器/非真实设备等风险状态） / System integrity verdict (risk status such as jailbroken/rooted, emulator or non-genuine device)",
+      "系统完整性增强检测结果与风险码 / Enhanced system integrity verdict and risk codes",
+      "本地系统完整性检测结果 / Local system integrity check result",
+      "URL威胁检测结果（恶意软件、钓鱼、风险网址等分类） / URL threat detection result (malware, phishing, risky URL categories, etc.)",
+      "安全摄像头图像数据及其安全证明 / Secure camera image data with attestation evidence",
+      "安全地理位置数据及其安全证明 / Secure location data with attestation evidence",
+      "安全证明签名与匿名证书链 / Attestation signature and anonymous certificate chain",
+      "安全压缩或裁剪后的图像数据 / Securely compressed or cropped image data",
+      "运行进程信息列表 / Running process information list",
+      "数字盾密码设置、修改、关闭操作结果 / Digital Shield PIN setup, change, and disable operation result",
+      "交易信息密码认证结果 / Transaction PIN authentication result",
+      "生物特征认证开通或关闭结果 / Biometric authentication enrollment or disablement result",
+      "生物特征交易认证结果 / Biometric transaction authentication result",
+      "数字盾交易签名结果或签名凭据 / Digital Shield transaction signature result or signing credential",
+      "数字盾签名密钥备份与恢复结果 / Digital Shield signing key backup and restore result",
+      "模拟点击检测结果（自动化点击、设备墙等作弊风险） / Simulated-click detection result (automation, device-farm cheating risks, etc.)",
+      "模拟点击增强检测结果 / Enhanced simulated-click detection result",
+      "涉诈剧本检测结果 / Fraud-script scenario detection result",
+      "安全审计阻断类事件通知数据 / Security audit blocking-event notification data",
+      "安全审计通知类事件通知数据 / Security audit informational-event notification data",
+      "设备安全状态改变事件数据 / Device security state change event data",
+      "当前设备安全状态查询结果 / Current device security status query result",
+      "诈骗通话记录列表 / Fraudulent call record list",
+      "诈骗消息列表 / Fraudulent message list",
+      "诈骗应用信息列表 / Fraudulent application information list",
+      "屏幕窥视状态或防窥保护状态结果 / Screen peeping status or anti-peep protection state result",
+      "病毒防护服务管理操作结果或状态信息 / Virus protection service management operation result or status information"
     ],
     "postconditions": [
       {

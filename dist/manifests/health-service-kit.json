@@ -3,7 +3,7 @@
   "skill": "health-service-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.857Z"
+    "at": "2026-05-21T03:47:44.512Z"
   },
   "references": [
     {
@@ -14,7 +14,7 @@
     {
       "path": "references/Health Service Kit简介.md",
       "title": "Health Service Kit简介",
-      "snippet": "Health Service Kit（运动健康服务）是为华为生态应用打造的基于华为账号和用户授权的运动健康数据开放平台。在获取用户授权后，开发者可以使用Health Service Kit提供的开放能力获取运动健康数据，基于多种类型数据构建运动健康领域应用与服务，为用户打造丰富、便捷、专业的运动健康场景体验。 #### 业务介绍 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fd/v3/8xY_fuL9RM--C_jXCSzPGw/zh-cn_image_0000002543374600.png?HW-CC-KV=V1&HW-CC-Date=20260421T111527Z&HW-CC-Expire=86400&HW-CC-Sign=9DF1F8B7CFFC482373A4E0AE2DD661A0824465E56AD7661E360596B5AC830F14) #### 应用服务 优质应用服务联合三方设备，结合Health Service Kit提供的运动健康数据服务，共同打造“智能运动健康设备+华为终端+应用服务”生态，为用户带来安全、智慧、便捷的运动健康体验。 服务包含华为应用及生态应用： - 华为应用： - 华为运动健康App为您提供专业的运动记录与减脂"
+      "snippet": "Health Service Kit（运动健康服务）是为华为生态应用打造的基于华为账号和用户授权的运动健康数据开放平台。在获取用户授权后，开发者可以使用Health Service Kit提供的开放能力获取运动健康数据，基于多种类型数据构建运动健康领域应用与服务，为用户打造丰富、便捷、专业的运动健康场景体验。 #### 业务介绍 #### 应用服务 优质应用服务联合三方设备，结合Health Service Kit提供的运动健康数据服务，共同打造“智能运动健康设备+华为终端+应用服务”生态，为用户带来安全、智慧、便捷的运动健康体验。 服务包含华为应用及生态应用： - 华为应用： - 华为运动健康App为您提供专业的运动记录与减脂塑形等训练课程，结合科学睡眠及健康服务，让您跑得更快更远，变得更健康。 - 智慧生活App是华为IoT智能设备统一管理平台，可以发现、连接和管理华为8+N智能产品，实现智能设备之间的互联互通，打造您专属的智慧场景，畅享美好生活。 - 生态应用：运动&健身、医疗研究、保险等生态应用基于华为智能运动健康设备+华为运动健康数据平台，更易构建专业的场景化用户体验。 #### 运动健康服务 如上图所示，华为运动健康开放平台提供了多种形式的开放能力，支持应用生态开放能力和设备接入开放能力。提供丰富的运动健康类的API，支持多种运动类型和健康数据的数据开放，如步数、心率等"
     },
     {
       "path": "references/个人数据处理说明.md",
@@ -29,7 +29,7 @@
     {
       "path": "references/体重.md",
       "title": "体重",
-      "snippet": "此数据记录用户在某时刻的体重数据。 Harmony SDK类型常量： samplePointHelper.weight.DATA_TYPE ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ad/v3/S3rAJ081T4e2wvpsaKFjeg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111533Z&HW-CC-Expire=86400&HW-CC-Sign=50179CC71465F469C82DFF852212956BED21DED6EA67451E62E3944E8E3D797B) Wearable设备暂不支持该数据类型。 #### OAuth权限 联盟卡片申请的权限名称：健康数据 > 体脂数据 #### 采样明细数据 #### 明细字段说明 字段定义： samplePointHelper.weight.Fields #### 数据开放说明"
+      "snippet": "此数据记录用户在某时刻的体重数据。 Harmony SDK类型常量： samplePointHelper.weight.DATA_TYPE Wearable设备暂不支持该数据类型。 #### OAuth权限 联盟卡片申请的权限名称：健康数据 > 体脂数据 #### 采样明细数据 #### 明细字段说明 字段定义： samplePointHelper.weight.Fields #### 数据开放说明"
     },
     {
       "path": "references/健康记录.md",
@@ -44,7 +44,7 @@
     {
       "path": "references/其他运动.md",
       "title": "其他运动",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9d/v3/RMFl1mUrQe2RnmWgm1sUMg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111537Z&HW-CC-Expire=86400&HW-CC-Sign=94D250F94033B7522C671F91B79532A61EB455D75C9C4ABF19F9B1B1C7C9D307) 本章节锻炼记录类型，共用相同的统计数据模型与明细数据模型，后续部分锻炼记录类型可能扩充，扩充后的锻炼记录类型将拥有独立的命名空间，关联更多的统计/明细数据。 其他运动类型相关锻炼记录类型如下： #### 关联的统计数据说明 字段定义： exerciseSequenceHelper.sports.SummaryFields #### 关联的明细数据说明 字段定义： exerciseSequenceHelper.sports.DetailFields"
+      "snippet": "本章节锻炼记录类型，共用相同的统计数据模型与明细数据模型，后续部分锻炼记录类型可能扩充，扩充后的锻炼记录类型将拥有独立的命名空间，关联更多的统计/明细数据。 其他运动类型相关锻炼记录类型如下： #### 关联的统计数据说明 字段定义： exerciseSequenceHelper.sports.SummaryFields #### 关联的明细数据说明 字段定义： exerciseSequenceHelper.sports.DetailFields"
     },
     {
       "path": "references/划船机.md",
@@ -59,22 +59,22 @@
     {
       "path": "references/如何获取帮助.md",
       "title": "如何获取帮助",
-      "snippet": "建议优先查找官方文档，快速获取所需指导。查阅文档后，仍不能解决的问题，可以通过以下方式进行反馈。 - 通过 在线提单 反馈问题。提交问题后，通常会在1~2个工作日内收到回复。有时需要您进一步澄清问题，请及时关注进展并予以回复，以便更好地解决问题。 - 通过 华为开发者论坛 反馈问题。通过华为开发者论坛中的 运动健康 板块反馈的相关问题，通常会在1~2个工作日内收到回复。 - 通过官网文档反馈问题。 1. 选中您存在疑问的文档内容，单击意见反馈按钮。 2. ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ba/v3/FYPJwt2LRVqikBb-hOeDUg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111538Z&HW-CC-Expire=86400&HW-CC-Sign=EA2F785919BB0A721E9776A4DF0B62AC33A54D272E357894071BD085DD787950) - 文档修改和版本更新发布需要一定的周期，非紧急问题可以通过该途径反馈。 - 文档反馈系统不支持问题答复。问题描述得越清晰，将越有可能得以解决。"
+      "snippet": "建议优先查找官方文档，快速获取所需指导。查阅文档后，仍不能解决的问题，可以通过以下方式进行反馈。 - 通过 在线提单 反馈问题。提交问题后，通常会在1~2个工作日内收到回复。有时需要您进一步澄清问题，请及时关注进展并予以回复，以便更好地解决问题。 - 通过 华为开发者论坛 反馈问题。通过华为开发者论坛中的 运动健康 板块反馈的相关问题，通常会在1~2个工作日内收到回复。 - 通过官网文档反馈问题。 1. 选中您存在疑问的文档内容，单击意见反馈按钮。 2. - 文档修改和版本更新发布需要一定的周期，非紧急问题可以通过该途径反馈。 - 文档反馈系统不支持问题答复。问题描述得越清晰，将越有可能得以解决。"
     },
     {
       "path": "references/实时三环数据-1.md",
       "title": "实时三环数据",
-      "snippet": "实时三环数据，包括实时步数，活动热量，锻炼时长，活动小时数以及目标类数据。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a5/v3/L3G4b1rvSOyo2VVOQ-aBEw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111531Z&HW-CC-Expire=86400&HW-CC-Sign=4C02B859F627A18F32F1F936BC66F061760EEFFF14E44FACFE456A49B8DA221E) 此接口使用日常活动数据类型读权限，参考 权限说明 。 #### 约束与限制 从5.1.1(19) Release版本开始支持。 #### OAuth权限 联盟卡片申请的权限名称：日常活动 > 日常活动数据（读） #### 接口说明 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权日常活动数据类型读权限（参考 权限说明 ）后，才有权限读取实时三环数据。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service "
+      "snippet": "实时三环数据，包括实时步数，活动热量，锻炼时长，活动小时数以及目标类数据。 此接口使用日常活动数据类型读权限，参考 权限说明 。 #### 约束与限制 从5.1.1(19) Release版本开始支持。 #### OAuth权限 联盟卡片申请的权限名称：日常活动 > 日常活动数据（读） #### 接口说明 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权日常活动数据类型读权限（参考 权限说明 ）后，才有权限读取实时三环数据。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 1. 导入运动健康服务功能模块及相关公共模块。 import { healthService } from '@kit.HealthServiceKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 调用 readActivityReport 方法读取实时三环数据，并处理返回结果。 try { const result: healthService.workout.ActivityReport = await health"
     },
     {
       "path": "references/实时三环数据.md",
       "title": "实时三环数据",
-      "snippet": "实时三环数据，包括实时步数，活动热量，锻炼时长，活动小时数以及目标类数据。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/11/v3/Uc43gxVtSVqU3eJQdqY2Xg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111530Z&HW-CC-Expire=86400&HW-CC-Sign=EC285611EA37770447CFB9D38B4F37D5CA5C546CFD54FB98721D09AA5F44A1D3) 此接口使用日常活动数据类型读权限，参考 权限说明 。 #### OAuth权限 联盟卡片申请的权限名称：日常活动 > 日常活动数据（读） #### 接口说明 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权日常活动数据类型读权限（参考 权限说明 ）后，才有权限读取实时三环数据。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 1. 导入运动健康服务功能模块及相"
+      "snippet": "实时三环数据，包括实时步数，活动热量，锻炼时长，活动小时数以及目标类数据。 此接口使用日常活动数据类型读权限，参考 权限说明 。 #### OAuth权限 联盟卡片申请的权限名称：日常活动 > 日常活动数据（读） #### 接口说明 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权日常活动数据类型读权限（参考 权限说明 ）后，才有权限读取实时三环数据。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 1. 导入运动健康服务功能模块及相关公共模块。 import { healthService } from '@kit.HealthServiceKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 调用 readActivityReport 方法读取实时三环数据，并处理返回结果。 try { const result: healthService.workout.ActivityReport = await healthService.workout.readActivityReport();"
     },
     {
       "path": "references/应用开发者申请资质说明.md",
       "title": "应用开发者申请资质说明",
-      "snippet": "- 个人开发者应用需上架至华为应用市场。个人开发者应用未上架华为应用市场，暂不开放Health Service Kit数据。 - 申请访问开放等级为基础的用户数据，个人开发者不得有个人信用不良记录。开放等级为高阶的用户数据暂不向个人开发者开放。数据开放等级请参见 数据开放总览 。 #### 企业、事业单位/政府机构、社会团体开发者接入资质审核要求 - 企业申请资质要求：企业以实缴注册资本为准，申请访问开放等级为基础的用户数据，企业实缴注册资本不低于50万元；申请访问开放等级为高阶的用户数据，企业实缴注册资本不低于500万元。申请主体存续且成立时间需1年以上； - 事业单位/政府机构申请资质要求：如果申请主体为事业单位或政府机构，可免除资金和成立年限要求。事业单位或政府机构委托的企业，需遵循企业申请资质要求。 - 社会团体申请资质要求：社会团体以活动资金（注册资本）为准，申请访问开放等级为基础的用户数据，活动资金不低于50万元；申请访问开放等级为高阶的用户数据，活动资金不低于500万元。申请主体存续且成立时间需1年以上。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e9/v3/U0c_CcfGSCSYwy3unuzUbw/note_3.0-zh-cn.png?H"
+      "snippet": "- 个人开发者应用需上架至华为应用市场。个人开发者应用未上架华为应用市场，暂不开放Health Service Kit数据。 - 申请访问开放等级为基础的用户数据，个人开发者不得有个人信用不良记录。开放等级为高阶的用户数据暂不向个人开发者开放。数据开放等级请参见 数据开放总览 。 #### 企业、事业单位/政府机构、社会团体开发者接入资质审核要求 - 企业申请资质要求：企业以实缴注册资本为准，申请访问开放等级为基础的用户数据，企业实缴注册资本不低于50万元；申请访问开放等级为高阶的用户数据，企业实缴注册资本不低于500万元。申请主体存续且成立时间需1年以上； - 事业单位/政府机构申请资质要求：如果申请主体为事业单位或政府机构，可免除资金和成立年限要求。事业单位或政府机构委托的企业，需遵循企业申请资质要求。 - 社会团体申请资质要求：社会团体以活动资金（注册资本）为准，申请访问开放等级为基础的用户数据，活动资金不低于50万元；申请访问开放等级为高阶的用户数据，活动资金不低于500万元。申请主体存续且成立时间需1年以上。 - 以上企业实缴注册资本数据以 国家企业信用信息公示系统 中最新年报数据为准。 - 若企业实缴注册资本与社会团体活动资金不符合要求，请参见对应 解决方案 。 - 数据开放等级请参见 数据开放总览 。 #### 申请材料准备 为保障用户隐私和数据安全，运动健康服务需要"
     },
     {
       "path": "references/心率.md",
@@ -99,37 +99,37 @@
     {
       "path": "references/手动数据同步.md",
       "title": "手动数据同步",
-      "snippet": "为了保障生态应用数据的实时性，当运动健康App数据未能及时同步到云端时，生态App应用在获得用户授权的前提下，通过让用户主动触发数据同步的操作，以达到用户数据实时上云的目的，便于能够从Health Service Kit云及时获取到用户最新的运动健康数据。 #### OAuth权限 联盟卡片申请的权限名称：数据同步 > 手动数据同步 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7b/v3/hs-2PFVGQRq8sZG7DOrdYA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111530Z&HW-CC-Expire=86400&HW-CC-Sign=85C3C9E6BBF9167FB89F78AFD8F158D87FFB13BA9C6886D56DACD0BC0CB55928) 该权限仅企业开发者账号可见。 #### 接口说明 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，参见 AuthorizationRequest 中scopes参数。用户授权数据同步权限后，才可"
+      "snippet": "为了保障生态应用数据的实时性，当运动健康App数据未能及时同步到云端时，生态App应用在获得用户授权的前提下，通过让用户主动触发数据同步的操作，以达到用户数据实时上云的目的，便于能够从Health Service Kit云及时获取到用户最新的运动健康数据。 #### OAuth权限 联盟卡片申请的权限名称：数据同步 > 手动数据同步 该权限仅企业开发者账号可见。 #### 接口说明 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，参见 AuthorizationRequest 中scopes参数。用户授权数据同步权限后，才可调用手动数据同步接口。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 1. 导入运动健康服务功能模块及相关公共模块。 import { healthStore } from '@kit.HealthServiceKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 调用 syncAll 方法同步数据，并处理返回结果。 try { await healthStore.syncAl"
     },
     {
       "path": "references/拉起运动健康App隐私授权.md",
       "title": "拉起运动健康App隐私授权",
-      "snippet": "用户在设备上首次使用运动健康服务时，需要用户同意运动健康服务隐私协议，当前隐私授权依赖运动健康App，需引导用户打开运动健康App并完成隐私授权。 开发者调用后续章节的接口后，如果返回错误码 1002703001 ，可参考本章节，引导用户同意运动健康服务隐私授权。 #### 开发步骤 1. 在module.json5文件中增加querySchemes字段，并在列表中配置\"huaweischeme\"。 \"huaweischeme\"为需要跳转到的运动健康App首页的scheme，页面参考如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3b/v3/pJCIgF1tTpy7GAL3h_B3kA/zh-cn_image_0000002573854859.png?HW-CC-KV=V1&HW-CC-Date=20260421T111529Z&HW-CC-Expire=86400&HW-CC-Sign=F397CCF0DFC26B3C817FB7EDF8DFCF73793C0C3A081BE6AE9B5DD512AC298130) 2. 导入相关功能模块。 import { bundleManager, common, Want } from '@kit.Ability"
+      "snippet": "用户在设备上首次使用运动健康服务时，需要用户同意运动健康服务隐私协议，当前隐私授权依赖运动健康App，需引导用户打开运动健康App并完成隐私授权。 开发者调用后续章节的接口后，如果返回错误码 1002703001 ，可参考本章节，引导用户同意运动健康服务隐私授权。 #### 开发步骤 1. 在module.json5文件中增加querySchemes字段，并在列表中配置\"huaweischeme\"。 \"huaweischeme\"为需要跳转到的运动健康App首页的scheme，页面参考如下： 2. 导入相关功能模块。 import { bundleManager, common, Want } from '@kit.AbilityKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { productViewManager } from '@kit.AppGalleryKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 3. 调用 canOpenLink 判断运动健康App是否安装。 - 已安装则调用openLink接口拉起运动健康App； - 未安装调用应用市场推荐接口，引导用户下载运动健康App。 try { // 请在组件内获取co"
     },
     {
       "path": "references/接入流程.md",
       "title": "接入流程",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ed/v3/yWkTa0sASmmQDzuQlitsJg/zh-cn_image_0000002543214938.png?HW-CC-KV=V1&HW-CC-Date=20260421T111527Z&HW-CC-Expire=86400&HW-CC-Sign=41E1989BF6C5B025406466C6AC47E802B8C73117FDC9DA62FC377E740559CF5A) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ed/v3/rFecjipNSD25aiYjNFpu-A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111527Z&HW-CC-Expire=86400&HW-CC-Sign=9A72814EA26FFBC5C0DBAAC755CE610EF5B0C5DC6CCF0D0893854488379BD7BC) - 开发者可实名认证为个人开发者或者企业开发者，认证前，请先了解二者的 权益区别 。 - 提交运动健"
+      "snippet": "- 开发者可实名认证为个人开发者或者企业开发者，认证前，请先了解二者的 权益区别 。 - 提交运动健康服务测试权限申请前，请先查阅 开发者申请资质说明 和 申请被驳回的常见问题 。 - 运动健康服务测试阶段有100位用户数量的限制，申请验证并通过后将解除该限制。 - 开发者等级（是否为优质/重点/战略合作伙伴）将根据实际项目合作情况而定。"
     },
     {
       "path": "references/数据开放总览.md",
       "title": "数据开放总览",
-      "snippet": "当前提供如下Health Service Kit数据，开发者可申请对应数据权限进行应用开发。开放等级中， ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f7/v3/btXDqRBXQXaUJI4k-GpsmA/zh-cn_image_0000002573854853.png?HW-CC-KV=V1&HW-CC-Date=20260421T111528Z&HW-CC-Expire=86400&HW-CC-Sign=EB19DC3460D5FF9DFD13200CBE31DDE813AD530BBEAF7A0B3F45A7B89D697D9B) 表示该数据权限为高阶数据，暂不对个人开发者开放。如需使用，请使用企业账号重新注册并申请权限； ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/bb/v3/z4ydPKjMRX274-NJstHWyA/zh-cn_image_0000002573974831.png?HW-CC-KV=V1&HW-CC-Date=20260421T111528Z&HW-CC-Expire=86400&HW-CC-Sign=A7"
+      "snippet": "当前提供如下Health Service Kit数据，开发者可申请对应数据权限进行应用开发。开放等级中， 表示该数据权限为高阶数据，暂不对个人开发者开放。如需使用，请使用企业账号重新注册并申请权限； 表示该数据权限为基础数据，个人及企业开发者均可申请查询/使用。 - 数据及时性体验依赖用户使用方式，若穿戴设备未连接至手机蓝牙、华为运动健康App未设置后台保活等情况下，将无法保证数据及时性体验。开发者需考虑数据及时性体验各类极端情况，综合判断合适的数据使用场景，确保给用户提供的产品/服务的稳定性，保证用户体验。 - 相关数据类型对应权限参考 权限说明 。 **表1** **采样数据** **表2** **健康记录和锻炼记录**"
     },
     {
       "path": "references/日常活动.md",
       "title": "日常活动",
-      "snippet": "此数据记录用户在一小段时间内的日常活动数据。 - samplePointHelper.dailyActivities.DATA_TYPE ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2e/v3/xEMoAdUORK68uWxFcMhQmQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111532Z&HW-CC-Expire=86400&HW-CC-Sign=CA3DA0ED44829FA09A1C5065ABC4BF7586FC6014FDFED550F30D2B56B3B23C80) Wearable设备暂不支持该数据类型。读取实时日常活动数据使用 读取实时三环数据 接口。 #### OAuth权限 联盟卡片申请的权限名称：日常活动 > 日常活动数据 #### 采样明细数据 #### 明细字段说明 - 字段定义：samplePointHelper.dailyActivities.Fields #### 数据开放说明 #### 采样统计数据 #### 聚合统计策略说明 - samplePointHelper.dailyActivities.AggregateFields #### 数据开放说明"
+      "snippet": "此数据记录用户在一小段时间内的日常活动数据。 - samplePointHelper.dailyActivities.DATA_TYPE Wearable设备暂不支持该数据类型。读取实时日常活动数据使用 读取实时三环数据 接口。 #### OAuth权限 联盟卡片申请的权限名称：日常活动 > 日常活动数据 #### 采样明细数据 #### 明细字段说明 - 字段定义：samplePointHelper.dailyActivities.Fields #### 数据开放说明 #### 采样统计数据 #### 聚合统计策略说明 - samplePointHelper.dailyActivities.AggregateFields #### 数据开放说明"
     },
     {
       "path": "references/权限说明.md",
       "title": "权限说明",
-      "snippet": "运动健康数据读写需要相应的权限，权限申请参考 申请运动健康服务 ，数据类型对应权限如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fb/v3/jVzkmi1zRFqxuGtJxaELKQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111532Z&HW-CC-Expire=86400&HW-CC-Sign=4C5A1E52DCAA47485A24AB2624AE5E4C006F4D4EC2D07EC02F8E46E3A0FC446A) - 如需读/写锻炼记录，请申请锻炼记录概要的读/写权限。 - 如需读/写锻炼记录且关联对应的详情数据，则需同时申请锻炼记录概要读/写权限、锻炼记录详情数据的读/写权限。 - 如需读/写锻炼记录且关联的详情数据包含位置详情，则需同时申请锻炼记录概要读/写权限、锻炼记录详情数据读/写、锻炼记录位置详情数据的读/写权限。"
+      "snippet": "运动健康数据读写需要相应的权限，权限申请参考 申请运动健康服务 ，数据类型对应权限如下： - 如需读/写锻炼记录，请申请锻炼记录概要的读/写权限。 - 如需读/写锻炼记录且关联对应的详情数据，则需同时申请锻炼记录概要读/写权限、锻炼记录详情数据的读/写权限。 - 如需读/写锻炼记录且关联的详情数据包含位置详情，则需同时申请锻炼记录概要读/写权限、锻炼记录详情数据读/写、锻炼记录位置详情数据的读/写权限。"
     },
     {
       "path": "references/标志使用规范.md",
       "title": "标志使用规范",
-      "snippet": "开发者应用在面向用户呈现华为运动健康品牌图标时，需要遵循《 HUAWEI Health授权使用规范 》，图标样式请点击 资源下载 获取。 #### 标志说明 标志以“心形”为主要图形元素，并结合了运动跑道元素，凸显了运动健康品牌的专属性和识别性，品牌色用橙色来体现运动的活力。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/94/v3/9eokRygqTOeCAJgDlccE4w/zh-cn_image_0000002573974839.png?HW-CC-KV=V1&HW-CC-Date=20260421T111539Z&HW-CC-Expire=86400&HW-CC-Sign=4F6DF25B7664A28B1C68468FE1C25BEAE19007A2E41C73B172943A1FCF9F56E4) #### 标志使用 #### 仅使用图标 单图标可用于授权入口、授权连接详情页面等场景，用于向用户展示数据来源。 - 在授权入口展示数据来源、授权状态信息等。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/23/v3/3InXqyfIS"
+      "snippet": "开发者应用在面向用户呈现华为运动健康品牌图标时，需要遵循《 HUAWEI Health授权使用规范 》，图标样式请点击 资源下载 获取。 #### 标志说明 标志以“心形”为主要图形元素，并结合了运动跑道元素，凸显了运动健康品牌的专属性和识别性，品牌色用橙色来体现运动的活力。 #### 标志使用 #### 仅使用图标 单图标可用于授权入口、授权连接详情页面等场景，用于向用户展示数据来源。 - 在授权入口展示数据来源、授权状态信息等。 - 授权连接详情页面，展示应用连接情况。 #### 使用HUAWEI Health标志 包括英文和中文标志，且有横版和竖版两种版式，需要满足《 HUAWEI Health授权使用规范 》中横版和竖版网格正确比例的要求。 #### 仅使用文本 如开发者应用仅通过文本向用户展示数据来源时，请使用华为运动健康或HUAWEI Health。 #### 使用Work with HUAWEI Health徽章标志（以下简称：Health徽章） **1.Health 徽章使用原则** 除联合品牌使用HUAWEI Health标志外，仅华为运动健康授权的软件生态合作伙伴可以使用Health徽章。 **2.Health 徽章使用场景及示例** - Health徽章在已授权的软件生态合作伙伴产品KV中的使用规范 **核心原则** - 在已授权的软件生态合作伙伴的产品KV中"
     },
     {
       "path": "references/椭圆机.md",
@@ -169,12 +169,12 @@
     {
       "path": "references/申请运动健康服务.md",
       "title": "申请运动健康服务",
-      "snippet": "申请运动健康服务前，请先参考 应用开发准备 ，确认开发环境并完成 创建项目 、 创建HarmonyOS应用 、 添加公钥指纹 等基本准备工作，再继续进行以下开发活动。 1. 登录 开发者联盟网站 ，单击进入“管理中心”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/77/v3/7B2Eec9BSrOu2t0Qusv3bQ/zh-cn_image_0000002543374602.png?HW-CC-KV=V1&HW-CC-Date=20260421T111528Z&HW-CC-Expire=86400&HW-CC-Sign=42BD8383DFBEDADDA45A797FB60194DC4DDD1EB5D7FF3C7F2211A62DC6EAAFFE) 若您尚未注册开发者账号，请先完成 注册账号 和 实名认证 。开发者可实名认证为个人开发者或者企业开发者，认证前，请先了解二者的 权益区别 。 2. 在应用服务中，单击 **Health Service Kit** 卡片。如果无“Health Service Kit”卡片，请单击右上角“自定义桌面”添加卡片。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_"
+      "snippet": "申请运动健康服务前，请先参考 应用开发准备 ，确认开发环境并完成 创建项目 、 创建HarmonyOS应用 、 添加公钥指纹 等基本准备工作，再继续进行以下开发活动。 1. 登录 开发者联盟网站 ，单击进入“管理中心”。 若您尚未注册开发者账号，请先完成 注册账号 和 实名认证 。开发者可实名认证为个人开发者或者企业开发者，认证前，请先了解二者的 权益区别 。 2. 在应用服务中，单击 **Health Service Kit** 卡片。如果无“Health Service Kit”卡片，请单击右上角“自定义桌面”添加卡片。 - 暂不支持团队账号下的成员账号独立使用运动健康开发服务，详情请参见团队账号。 3. 单击 **申请Health Service Kit服务** ，同意协议后，进入数据权限申请页面。 4. 产品类型选择 **HarmonyOS应用** ，并填写申请信息，勾选产品必需申请的数据权限。 - 添加运动健康服务时，遵循权限最小化原则。数据访问权限应与业务相符，不可申请超出业务范围或者暂不使用的权限。 - 在应用或服务发布后，华为会对权限使用情况进行不定期抽查，抽查形式包括但不限于对已发布的应用进行抽样检查、对API调用情况进行监控、派遣专员核查等。您可以通过在申请运动健康服务前签署的合作协议，了解核查标准以及核查后的处理方式。 - 数据类型对应的OAuth权限请参见 "
     },
     {
       "path": "references/申请验证获取正式权限.md",
       "title": "申请验证获取正式权限",
-      "snippet": "完成 申请运动健康服务 后，审核通过的权限为测试权限，有100个用户数量的限制。为解除用户数的限制，应用开发完成后，在上架之前，请按照以下步骤提交验证申请，以获取正式权限。完成验证后，您的应用可支持正式大规模商用。 #### 申请验证 1. 登录 开发者联盟网站 ，进入“管理中心”，在应用服务中，单击 **Health Service Kit** 卡片。如果无“Health Service Kit”卡片，请单击右上角“自定义桌面”添加卡片。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/11/v3/pcwFM1mdTDCogSshiaYWfg/zh-cn_image_0000002543374608.png?HW-CC-KV=V1&HW-CC-Date=20260421T111538Z&HW-CC-Expire=86400&HW-CC-Sign=CDEF60D7F739FB89C423426ADBB3A9F1E84303BE1A7FB99C68C678B7971331B4) 2. 单击“申请验证”按钮，选择验证的权限，提交审核材料由专家组进行评审，审批周期约为15个工作日，请耐心等待。 ![](https://contentcenter-vali-drcn.db"
+      "snippet": "完成 申请运动健康服务 后，审核通过的权限为测试权限，有100个用户数量的限制。为解除用户数的限制，应用开发完成后，在上架之前，请按照以下步骤提交验证申请，以获取正式权限。完成验证后，您的应用可支持正式大规模商用。 #### 申请验证 1. 登录 开发者联盟网站 ，进入“管理中心”，在应用服务中，单击 **Health Service Kit** 卡片。如果无“Health Service Kit”卡片，请单击右上角“自定义桌面”添加卡片。 2. 单击“申请验证”按钮，选择验证的权限，提交审核材料由专家组进行评审，审批周期约为15个工作日，请耐心等待。 审核结果会出现以下两种类型，将以短信和邮件的形式通知您。 1. “验证通过”，应用可正式接入运动健康服务； 2. “验证驳回”，我们会以邮件的形式告知驳回原因（也可在开发者联盟中运动健康服务卡片上查看您应用的状态信息），请在我们的指引下调整并再次提交“申请验证”。重新提交的审核周期约为15个工作日，如有其他疑问，请通过智能客服反馈。 申请验证审核通过后，您申请的权限将于24小时后生效。 #### 申请验证被驳回的常见问题 以下为申请验证被驳回的高频问题，请您在申请前阅读以下内容，避免在您的申请材料中出现下述问题影响您审核通过的进度。若您已提交申请并被驳回，也可参考以下解决方案修改申请材料并重新提交。 - 应用上线checkList中"
     },
     {
       "path": "references/登山.md",
@@ -189,12 +189,12 @@
     {
       "path": "references/简介.md",
       "title": "简介",
-      "snippet": "用户一段持续时间的锻炼记录数据，由运动类型、应用信息、时间范围、关联的详情数据、关联的统计数据等组成，如跑步、跳绳等锻炼记录。 开发者可以通过 锻炼记录数据查询 接口获取华为运动健康App“运动记录”卡片中的数据。 锻炼记录数据模型组成参考 ExerciseSequence 。 锻炼记录类型常量： exerciseSequenceHelper.DATA_TYPE #### OAuth权限 联盟卡片申请的权限名称： 锻炼记录 > 锻炼记录概要 锻炼记录 > 锻炼记录详情数据 锻炼记录 > 锻炼记录位置详情数据 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/94/v3/n6KREbl6Q32LhWrTM_wXYw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111534Z&HW-CC-Expire=86400&HW-CC-Sign=93CEE12A9688C5C5FF52CD4D75DDD2F571826B54FF828AB12B9A38E7E3F890EA) - 如需读/写锻炼记录，请申请锻炼记录概要的读/写权限。 - 如需读/写锻炼记录且关联对应的详情数据，则需同时申请锻炼记录概要读/写权限、锻炼记录详情"
+      "snippet": "用户一段持续时间的锻炼记录数据，由运动类型、应用信息、时间范围、关联的详情数据、关联的统计数据等组成，如跑步、跳绳等锻炼记录。 开发者可以通过 锻炼记录数据查询 接口获取华为运动健康App“运动记录”卡片中的数据。 锻炼记录数据模型组成参考 ExerciseSequence 。 锻炼记录类型常量： exerciseSequenceHelper.DATA_TYPE #### OAuth权限 联盟卡片申请的权限名称： 锻炼记录 > 锻炼记录概要 锻炼记录 > 锻炼记录详情数据 锻炼记录 > 锻炼记录位置详情数据 - 如需读/写锻炼记录，请申请锻炼记录概要的读/写权限。 - 如需读/写锻炼记录且关联对应的详情数据，则需同时申请锻炼记录概要读/写权限、锻炼记录详情数据的读/写权限。 - 如需读/写锻炼记录且关联的详情数据包含位置详情，则需同时申请锻炼记录概要读/写权限、锻炼记录详情数据读/写、锻炼记录位置详情数据的读/写权限。 #### 数据开放说明"
     },
     {
       "path": "references/管理数据源.md",
       "title": "管理数据源",
-      "snippet": "数据源提供了应用或者设备的信息，每一个运动健康数据必须关联数据源信息，通过DataSourceId进行关联。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7c/v3/KTQAgamrSc6I-GfqFdOGAg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111529Z&HW-CC-Expire=86400&HW-CC-Sign=AC98420D90CDAD0DDE419EC70692210E8DE8A0A93102562E954869FAEE9C6348) DataSourceId在插入数据源信息时由平台生成，无法更改。 #### 接口说明 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权任意数据类型权限后，才有权限调用数据源相关接口。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 #### 插入数据源 1.导入运动健康服务功能模块及相关公共模块。 import { healt"
+      "snippet": "数据源提供了应用或者设备的信息，每一个运动健康数据必须关联数据源信息，通过DataSourceId进行关联。 DataSourceId在插入数据源信息时由平台生成，无法更改。 #### 接口说明 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权任意数据类型权限后，才有权限调用数据源相关接口。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 #### 插入数据源 1.导入运动健康服务功能模块及相关公共模块。 import { healthStore } from '@kit.HealthServiceKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2.创建数据源。 let dataSource: healthStore.DataSourceBase = { deviceInfo: { uniqueId: 'test', name: 'test', // 插入数据源时此字段必填 category: healthStore.DeviceCategory.WEARABLE_BAND, // 插入数据"
     },
     {
       "path": "references/管理用户授权-1.md",
@@ -204,7 +204,7 @@
     {
       "path": "references/管理用户授权.md",
       "title": "管理用户授权",
-      "snippet": "应用拉起华为账号登录和授权界面，由用户授权相应的数据访问权限。用户可以自主选择授权的数据类型，可以只授权部分数据权限。 应用所能操作的用户数据，是用户授权和运动健康服务审批通过的数据权限的交集。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/dc/v3/VfHb1IvCR6yLwb9dMRXfDQ/zh-cn_image_0000002573974837.png?HW-CC-KV=V1&HW-CC-Date=20260421T111529Z&HW-CC-Expire=86400&HW-CC-Sign=A12C14491AFEBA3748AB4F8A141510F2B287212D9A387FDF08C7FCC131075958) #### 接口说明 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口需在页面或自定义组件生命周期内调用。接口首次调用前，需先使用 init 方法进行初始化。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 #### 用户授权 1.导入运动健康功能模块及相关公共模块。 import { healthStore } "
+      "snippet": "应用拉起华为账号登录和授权界面，由用户授权相应的数据访问权限。用户可以自主选择授权的数据类型，可以只授权部分数据权限。 应用所能操作的用户数据，是用户授权和运动健康服务审批通过的数据权限的交集。 #### 接口说明 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口需在页面或自定义组件生命周期内调用。接口首次调用前，需先使用 init 方法进行初始化。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 #### 用户授权 1.导入运动健康功能模块及相关公共模块。 import { healthStore } from '@kit.HealthServiceKit'; import { common } from '@kit.AbilityKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2.创建授权请求，确保授权参数中的权限已在申请运动健康服务时勾选，权限说明请参考 权限说明 。 let authorizationParameter: healthStore.AuthorizationRequest = { readDataTypes: [healthStore.exerciseSequence"
     },
     {
       "path": "references/篮球.md",
@@ -214,7 +214,7 @@
     {
       "path": "references/血压.md",
       "title": "血压",
-      "snippet": "此数据记录用户在某时刻的血压数据。 Harmony SDK类型常量： samplePointHelper.bloodPressure.DATA_TYPE ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b8/v3/o1oWKwkqSAiVN8jsn32r8A/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111533Z&HW-CC-Expire=86400&HW-CC-Sign=9372EAC94C5E41B2C906BFC2B18D0E3B24A69C461EA89E9DDCA311B76D3ADDCE) Wearable设备暂不支持该数据类型。 #### OAuth权限 联盟卡片申请的权限名称：健康数据 > 血压数据 #### 采样明细数据 #### 明细字段说明 字段定义： samplePointHelper.bloodPressure.Fields #### 数据开放说明"
+      "snippet": "此数据记录用户在某时刻的血压数据。 Harmony SDK类型常量： samplePointHelper.bloodPressure.DATA_TYPE Wearable设备暂不支持该数据类型。 #### OAuth权限 联盟卡片申请的权限名称：健康数据 > 血压数据 #### 采样明细数据 #### 明细字段说明 字段定义： samplePointHelper.bloodPressure.Fields #### 数据开放说明"
     },
     {
       "path": "references/血氧.md",
@@ -224,17 +224,17 @@
     {
       "path": "references/读取健康记录.md",
       "title": "读取健康记录",
-      "snippet": "读取最新一条健康记录。 #### 约束与限制 从5.1.1(19) Release版本开始支持。 #### 接口说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/25/v3/IqEM1h2tS3W-2N7OyNHO1g/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111531Z&HW-CC-Expire=86400&HW-CC-Sign=80C95F2E584E1E6A21AF4EF4E6341936EC06FEEC92AD784F0378F3B88BC312E0) 当前HealthSequenceReadRequest里的时间参数暂不生效，仅支持返回手表侧最新一条数据。 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权对应数据类型权限后，才有权限调用接口操作相关数据类型数据。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 1. 导入运动健康服务功能模块及相关公共模块。 impo"
+      "snippet": "读取最新一条健康记录。 #### 约束与限制 从5.1.1(19) Release版本开始支持。 #### 接口说明 当前HealthSequenceReadRequest里的时间参数暂不生效，仅支持返回手表侧最新一条数据。 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权对应数据类型权限后，才有权限调用接口操作相关数据类型数据。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 1. 导入运动健康服务功能模块及相关公共模块。 import { healthStore } from '@kit.HealthServiceKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 创建查询健康记录请求。 let healthSequenceReadRequest: healthStore.HealthSequenceReadRequest = { healthSequenceDataType: healthStore.healthSequenceHelper.sleepRecord.DATA_TYPE"
     },
     {
       "path": "references/读取运动健康采样数据.md",
       "title": "读取运动健康采样数据",
-      "snippet": "读取最新一条运动健康采样数据。 #### 约束与限制 从5.1.1(19) Release版本开始支持。 #### 接口说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6d/v3/66_N4NpHS3ifkcpmRcOIBQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111530Z&HW-CC-Expire=86400&HW-CC-Sign=ADB9BC9FB09ADAF2E1609506FD871A4DE3621E1CC87BB26C6D592BBAEFC9A79D) 当前SamplePointReadRequest里的时间参数暂不生效，仅支持返回手表侧最新一条数据，读取实时日常活动数据使用 读取实时三环数据 接口。 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权对应数据类型权限后，才有权限调用接口操作相关数据类型数据。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 1."
+      "snippet": "读取最新一条运动健康采样数据。 #### 约束与限制 从5.1.1(19) Release版本开始支持。 #### 接口说明 当前SamplePointReadRequest里的时间参数暂不生效，仅支持返回手表侧最新一条数据，读取实时日常活动数据使用 读取实时三环数据 接口。 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权对应数据类型权限后，才有权限调用接口操作相关数据类型数据。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 1. 导入运动健康服务功能模块及相关公共模块。 import { healthStore } from '@kit.HealthServiceKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 创建查询请求。 let samplePointReadRequest: healthStore.SamplePointReadRequest = { samplePointDataType: healthStore.samplePointHelper.bodyTempera"
     },
     {
       "path": "references/读取锻炼记录.md",
       "title": "读取锻炼记录",
-      "snippet": "读取最新一条锻炼记录。 #### 约束与限制 从5.1.1(19) Release版本开始支持。 #### 接口说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/39/v3/dUTeUzAxQfWeoFPWT5opiA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111531Z&HW-CC-Expire=86400&HW-CC-Sign=0364D68D23B45E298C07E74380620793D7CC0538B2F6E738EB81C00250DBF08C) 当前ExerciseSequenceReadRequest里的时间参数暂不生效，仅支持返回手表侧最新一条数据。 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权对应数据类型权限后，才有权限调用接口操作相关数据类型数据。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 1. 导入运动健康服务功能模块及相关公共模块。 im"
+      "snippet": "读取最新一条锻炼记录。 #### 约束与限制 从5.1.1(19) Release版本开始支持。 #### 接口说明 当前ExerciseSequenceReadRequest里的时间参数暂不生效，仅支持返回手表侧最新一条数据。 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权对应数据类型权限后，才有权限调用接口操作相关数据类型数据。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 1. 导入运动健康服务功能模块及相关公共模块。 import { healthStore } from '@kit.HealthServiceKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 创建查询请求。 // 查询跑步记录 const sequenceReadRequest: healthStore.ExerciseSequenceReadRequest<healthStore.exerciseSequenceHelper.running.DetailFields> = { startTime: 1698"
     },
     {
       "path": "references/跑步.md",
@@ -249,17 +249,17 @@
     {
       "path": "references/身高.md",
       "title": "身高",
-      "snippet": "此数据记录用户在某时刻的身高数据。 Harmony SDK类型常量： samplePointHelper.height.DATA_TYPE ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/54/v3/b3tvrtalRiusDrsiVYFfOg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111533Z&HW-CC-Expire=86400&HW-CC-Sign=ED7D9AEA6BC220B2EAA0AC12A91CD8895FA6179323641D3506C6D3F59998C4BF) Wearable设备暂不支持该数据类型。 #### OAuth权限 联盟卡片申请的权限名称：健康数据 > 体脂数据 #### 采样明细数据 #### 明细字段说明 字段定义： samplePointHelper.height.Fields #### 数据开放说明"
+      "snippet": "此数据记录用户在某时刻的身高数据。 Harmony SDK类型常量： samplePointHelper.height.DATA_TYPE Wearable设备暂不支持该数据类型。 #### OAuth权限 联盟卡片申请的权限名称：健康数据 > 体脂数据 #### 采样明细数据 #### 明细字段说明 字段定义： samplePointHelper.height.Fields #### 数据开放说明"
     },
     {
       "path": "references/运动健康采样数据.md",
       "title": "运动健康采样数据",
-      "snippet": "运动健康采样数据(SamplePoint)，表示在某时刻（或一段时间）采集到的特定数据类型的样本，由时间、样本值及采样的数据源组成，支持保存、读取和删除等操作。 #### 接口说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/30/v3/t_4IYTLwTeOv6EOG8raY8Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111529Z&HW-CC-Expire=86400&HW-CC-Sign=82074293C9BCD1973EBF0C4DC5A3F1EE7E4085243EAC9FAA6736AF76378334B8) aggregateData接口读取今日日常活动数据，数据上报存在延时，读取实时日常活动数据建议使用 读取实时三环数据 接口。 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权对应数据类型权限后，才有权限调用接口操作相关数据类型数据。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题"
+      "snippet": "运动健康采样数据(SamplePoint)，表示在某时刻（或一段时间）采集到的特定数据类型的样本，由时间、样本值及采样的数据源组成，支持保存、读取和删除等操作。 #### 接口说明 aggregateData接口读取今日日常活动数据，数据上报存在延时，读取实时日常活动数据建议使用 读取实时三环数据 接口。 #### 开发前检查 - 完成 申请运动健康服务 与 配置Client ID 。 - 接口首次调用前，需先使用 init 方法进行初始化。 - 需先通过 用户授权 接口引导用户授权，用户授权对应数据类型权限后，才有权限调用接口操作相关数据类型数据。 - 错误码请参考 ArkTS API错误码 ，常见问题请参考 Health Service Kit常见问题 。 #### 开发步骤 #### 保存用户的运动健康数据 1. 导入运动健康服务功能模块及相关公共模块。 import { healthStore } from '@kit.HealthServiceKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 获取dataSourceId，参考 管理数据源 ，插入一个新的数据源或读取已有数据源。 3. 创建运动健康采样数据。 let samplePoint: healthStore.samplePointHelper"
     },
     {
       "path": "references/配置Client ID.md",
       "title": "配置Client ID",
-      "snippet": "1. 登录 AppGallery Connect 平台，在“开发与服务”中选择目标应用，获取“项目设置 > 常规 > 应用”的Client ID。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a9/v3/mS1ugKAVQ1mmSOhRB5qaZw/zh-cn_image_0000002543214944.png?HW-CC-KV=V1&HW-CC-Date=20260421T111528Z&HW-CC-Expire=86400&HW-CC-Sign=7596580963F28B9A3B4A2CDF5C83E422BA242F8E977CF4B471D5B3C2F7080AE7) 2. 在工程中entry模块的module.json5文件中，新增metadata，配置name为client_id，value为上一步获取的Client ID的值，如下所示： \"module\": { \"name\": \"xxxx\", \"type\": \"entry\", \"description\": \"xxxx\", \"mainElement\": \"xxxx\", \"deviceTypes\": [], \"pages\": \"xxxx\", \"abilities\": [], \"metadata\":"
+      "snippet": "1. 登录 AppGallery Connect 平台，在“开发与服务”中选择目标应用，获取“项目设置 > 常规 > 应用”的Client ID。 2. 在工程中entry模块的module.json5文件中，新增metadata，配置name为client_id，value为上一步获取的Client ID的值，如下所示： \"module\": { \"name\": \"xxxx\", \"type\": \"entry\", \"description\": \"xxxx\", \"mainElement\": \"xxxx\", \"deviceTypes\": [], \"pages\": \"xxxx\", \"abilities\": [], \"metadata\": [ // 配置如下信息 { \"name\": \"client_id\", \"value\": \"xxxxxx\" } ] }"
     },
     {
       "path": "references/锻炼记录.md",

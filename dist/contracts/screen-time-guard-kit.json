@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:21:12.988Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -58,12 +59,15 @@
       "策略标识、启停动作或访问限制参数 / policy identifier, start-stop action, or access restriction parameters"
     ],
     "outputs": [
-      "入门与概述",
-      "开发准备",
-      "用户授权管理",
-      "应用选择页",
-      "守护策略管理",
-      "应用访问限制"
+      "用户健康使用设备授权结果（已授权/未授权、授权或取消授权操作结果） / User Screen Time Guard authorization result (authorized/unauthorized, grant or revoke operation result)",
+      "授权开关变更回调事件（应用授权开启或关闭） / Authorization switch change callback event (app authorization enabled or disabled)",
+      "应用选择页返回的已选应用列表（包名、应用标识等应用信息） / Selected app list returned by the app selection page (bundle name, app identifier, and related app info)",
+      "许可应用跳转页返回的跳转或选择结果 / Navigation or selection result returned by the allowed-app jump page",
+      "守护策略ID（添加策略后生成或返回的策略标识） / Guard policy ID (policy identifier generated or returned after adding a policy)",
+      "守护策略对象或策略列表（起止时间策略、总时长策略、共享时长策略及其生效范围） / Guard policy object or policy list (start-end time, total duration, shared duration policies, and their effective scope)",
+      "策略操作结果（添加、修改、删除、启动、停止的成功状态或错误信息） / Policy operation result (success status or error information for add, update, delete, start, and stop operations)",
+      "应用访问限制结果（指定应用被立即允许或禁止访问的设置结果） / App access restriction result (result of immediately allowing or blocking specified apps)",
+      "应用访问限制解除结果（解除指定应用访问限制后的操作结果） / App access restriction removal result (operation result after removing restrictions from specified apps)"
     ],
     "postconditions": [
       {

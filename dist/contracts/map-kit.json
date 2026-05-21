@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:17:58.712Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -17,7 +18,7 @@
       "覆盖物",
       "POI搜索",
       "路线规划",
-      "地理编码",
+      "在地图页将用户输入的地址进行正地理编码，生成坐标并在MapComponent上添加标记覆盖物用于地点展示或路线规划 / Geocode a user-entered address on a map page into coordinates, then add a marker overlay on MapComponent for place display or route planning",
       "如何在HarmonyOS应用中创建和显示地图组件？",
       "如何在地图上添加标记、折线、多边形、圆形等绘制元素？",
       "如何实现POI关键字搜索和周边搜索功能？",
@@ -65,15 +66,30 @@
       "起点、终点、途经点及出行方式等路径规划参数 / origin, destination, waypoint, and travel mode routing parameters"
     ],
     "outputs": [
-      "概述与准备",
-      "地图显示",
-      "地图交互",
-      "地图绘制元素",
-      "图层",
-      "搜索与编码",
-      "路径规划与计算",
-      "场景化控件",
-      "常见问题"
+      "地图显示组件（MapComponent） / Map display component (MapComponent)",
+      "地图实例或地图控制器对象 / Map instance or map controller object",
+      "地图相机与可视区域状态（CameraPosition、VisibleRegion） / Map camera and visible-region state (CameraPosition, VisibleRegion)",
+      "当前地图截图图像（PixelMap/图片数据） / Current map snapshot image (PixelMap/image data)",
+      "标记覆盖物对象（Marker） / Marker overlay object (Marker)",
+      "信息窗气泡对象 / Info window bubble object",
+      "折线、弧线、多边形、圆形等绘制覆盖物对象（Polyline、Arc、Polygon、Circle） / Drawing overlay objects such as polyline, arc, polygon, and circle (Polyline, Arc, Polygon, Circle)",
+      "矢量图层、瓦片图层、热力图、点聚合、海量点、流场等图层对象 / Layer objects such as vector layer, tile layer, heatmap layer, cluster layer, massive-point layer, and flow-field layer",
+      "用户当前位置显示层或蓝点展示结果 / User-location layer or blue-dot display result",
+      "POI搜索结果列表（兴趣点/地点对象） / POI search result list (POI/place objects)",
+      "地点自动补全建议列表 / Place autocomplete suggestion list",
+      "地点详情结果对象 / Place detail result object",
+      "正地理编码结果（地址对应的经纬度坐标） / Forward geocoding result (coordinates for an address)",
+      "逆地理编码结果（坐标对应的地址与行政区信息） / Reverse geocoding result (address and administrative-area information for coordinates)",
+      "驾车、步行、骑行、公交路线规划结果对象 / Driving, walking, cycling, and transit route planning result objects",
+      "路线方案、路段、步骤、距离和耗时信息 / Route alternatives, legs, steps, distance, and duration information",
+      "批量算路结果对象 / Batch route calculation result object",
+      "轨迹绑路后的路径点与道路匹配结果 / Snap-to-road trajectory points and road-matching result",
+      "两点或多点间距离计算结果 / Distance calculation result between two or more points",
+      "坐标转换结果（GCJ02与WGS84坐标） / Coordinate conversion result (GCJ02 and WGS84 coordinates)",
+      "地点选取控件返回的已选地点信息 / Selected place information returned by the place picker",
+      "行政区划选择控件返回的区划信息 / Administrative-division information returned by the district selector",
+      "静态地图图片 / Static map image",
+      "用于拉起花瓣地图导航或路线查看的Want/URI意图数据 / Want/URI intent data for launching Petal Maps navigation or route viewing"
     ],
     "postconditions": [
       {

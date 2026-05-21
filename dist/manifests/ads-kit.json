@@ -3,7 +3,7 @@
   "skill": "ads-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:27.858Z"
+    "at": "2026-05-21T03:47:43.754Z"
   },
   "references": [
     {
@@ -24,7 +24,7 @@
     {
       "path": "references/原生广告.md",
       "title": "原生广告",
-      "snippet": "原生广告是与应用内容融于一体的广告，通过“和谐”的内容呈现广告信息，在不破坏用户体验的前提下，为用户提供有价值的信息，展示形式包含图片和视频，支持您自由定制界面。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/de/v3/4O-kJEQDRQWCrgZ8JJtHBg/zh-cn_image_0000002573854711.png?HW-CC-KV=V1&HW-CC-Date=20260421T111442Z&HW-CC-Expire=86400&HW-CC-Sign=E5948715335091BBB3B6C74C63A065AE732318990288234201A9B0E005E90070) #### 约束与限制 支持Phone、Tablet、PC/2in1设备。 使用PC/2in1设备时，需要确保设备上智慧营销服务或广告服务的版本在8.4.80.300及以上，版本号可通过选择“设置> 应用和元服务 > 更多应用”查看。 #### 接口说明 #### AdComponent组件建议宽高 #### 开发步骤 #### 请求广告 1. 导入相关模块。 import { abilityAccessCtrl, common, PermissionRequestRe"
+      "snippet": "原生广告是与应用内容融于一体的广告，通过“和谐”的内容呈现广告信息，在不破坏用户体验的前提下，为用户提供有价值的信息，展示形式包含图片和视频，支持您自由定制界面。 #### 约束与限制 支持Phone、Tablet、PC/2in1设备。 使用PC/2in1设备时，需要确保设备上智慧营销服务或广告服务的版本在8.4.80.300及以上，版本号可通过选择“设置> 应用和元服务 > 更多应用”查看。 #### 接口说明 #### AdComponent组件建议宽高 #### 开发步骤 #### 请求广告 1. 导入相关模块。 import { abilityAccessCtrl, common, PermissionRequestResult } from '@kit.AbilityKit'; import { advertising, identifier } from '@kit.AdsKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 获取OAID。 若需提升广告推送精准度，可以在请求参数 AdRequestParams 中添加oaid属性。 如何获取OAID参见 获取OAID信息 。 使用以下示例中提供的测试广告位时，必须先获取OAID信息。 3. 请求广告。 请求广告需要创建一个AdLoader对象。 - "
     },
     {
       "path": "references/实时竞价.md",
@@ -44,22 +44,22 @@
     {
       "path": "references/开屏广告.md",
       "title": "开屏广告",
-      "snippet": "开屏广告是一种在应用启动时且在应用主界面显示之前需要被展示的广告。您需要预先为App设计一张开屏默认的Slogan图片，确保在未获取到开屏广告之前展示默认的Slogan，提供良好的用户体验。 开屏广告分为全屏开屏广告、半屏开屏广告，其中全屏开屏广告展示形式为广告铺满整个页面；半屏开屏广告展示形式会根据媒体页面自定义布局渲染广告、icon和版权信息，一般情况下建议将icon和版权信息展示在广告下方。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2c/v3/H6UEVDUjTcS_QBvuA9blyw/zh-cn_image_0000002543214800.png?HW-CC-KV=V1&HW-CC-Date=20260421T111443Z&HW-CC-Expire=86400&HW-CC-Sign=57A0D398D7F5255544AAB708A60A75FE348C78409BA59AE6ED89CA862753EFDF) #### 约束与限制 支持Phone、Tablet、PC/2in1设备。 使用PC/2in1设备时，需要确保设备上智慧营销服务或广告服务的版本在8.4.80.300及以上，版本号可通过选择“设置> 应用和元服务 > 更多应用”查看。 "
+      "snippet": "开屏广告是一种在应用启动时且在应用主界面显示之前需要被展示的广告。您需要预先为App设计一张开屏默认的Slogan图片，确保在未获取到开屏广告之前展示默认的Slogan，提供良好的用户体验。 开屏广告分为全屏开屏广告、半屏开屏广告，其中全屏开屏广告展示形式为广告铺满整个页面；半屏开屏广告展示形式会根据媒体页面自定义布局渲染广告、icon和版权信息，一般情况下建议将icon和版权信息展示在广告下方。 #### 约束与限制 支持Phone、Tablet、PC/2in1设备。 使用PC/2in1设备时，需要确保设备上智慧营销服务或广告服务的版本在8.4.80.300及以上，版本号可通过选择“设置> 应用和元服务 > 更多应用”查看。 #### 接口说明 #### 开发步骤 #### 请求广告 1. 导入相关模块。 import { abilityAccessCtrl, common, PermissionRequestResult } from '@kit.AbilityKit'; import { advertising, identifier } from '@kit.AdsKit'; import { router, window } from '@kit.ArkUI'; import { BusinessError } from '@kit.BasicServicesKit'; "
     },
     {
       "path": "references/开放匿名设备标识服务.md",
       "title": "开放匿名设备标识服务",
-      "snippet": "开放匿名设备标识符（Open Anonymous Device Identifier, OAID，以下简称OAID）：是一种非永久性设备标识符，基于开放匿名设备标识符，可在保护用户个人数据隐私安全的前提下，向用户提供个性化广告，同时三方监测平台也可以向广告主提供转化归因分析。 媒体App、广告平台、三方监测平台等开发者，可获取设备上的OAID，您可基于OAID进行个性化广告推荐或广告转化归因分析。 OAID是基于华为自有算法生成的32位类UUID（Universally Unique Identifier）标识符，格式为xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx。 OAID的特性： - OAID是设备级标识符，同一台设备上不同的App获取到的OAID值一样。 - OAID的获取受应用的“跨应用关联访问权限”开关影响：当应用的“跨应用关联访问权限”开关开启时，该应用可获取到非全0的有效OAID；当应用的“跨应用关联访问权限”开关关闭时，该应用仅能获取到全0的OAID。 - 同一台设备上首个应用开启应用“跨应用关联访问权限”开关时，会首次生成OAID。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7c/v3/jpkMtqfcSn-Re"
+      "snippet": "开放匿名设备标识符（Open Anonymous Device Identifier, OAID，以下简称OAID）：是一种非永久性设备标识符，基于开放匿名设备标识符，可在保护用户个人数据隐私安全的前提下，向用户提供个性化广告，同时三方监测平台也可以向广告主提供转化归因分析。 媒体App、广告平台、三方监测平台等开发者，可获取设备上的OAID，您可基于OAID进行个性化广告推荐或广告转化归因分析。 OAID是基于华为自有算法生成的32位类UUID（Universally Unique Identifier）标识符，格式为xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx。 OAID的特性： - OAID是设备级标识符，同一台设备上不同的App获取到的OAID值一样。 - OAID的获取受应用的“跨应用关联访问权限”开关影响：当应用的“跨应用关联访问权限”开关开启时，该应用可获取到非全0的有效OAID；当应用的“跨应用关联访问权限”开关关闭时，该应用仅能获取到全0的OAID。 - 同一台设备上首个应用开启应用“跨应用关联访问权限”开关时，会首次生成OAID。 设置项“跨应用关联访问权限”在HarmonyOS NEXT Developer Beta5及更早版本名称为“应用跟踪访问权限”。 OAID会在下述场景中发生变化： - 用户将设备恢复出厂设置。 - 用户操作"
     },
     {
       "path": "references/插屏广告.md",
       "title": "插屏广告",
-      "snippet": "插屏广告是一种在应用开启、暂停或退出时以全屏或半屏的形式弹出的广告形式，展示时机巧妙避开用户对应用的正常体验，尺寸大，曝光效果好。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/dc/v3/w0kq-avfQ36z5NjTnbAMaQ/zh-cn_image_0000002543374462.png?HW-CC-KV=V1&HW-CC-Date=20260421T111443Z&HW-CC-Expire=86400&HW-CC-Sign=B5A7E690EE32A44A47E654B6177B33A308FBB730036D5B9D7A9889B545A6F16C) #### 约束与限制 支持Phone、Tablet、PC/2in1设备。 使用PC/2in1设备时，需要确保设备上智慧营销服务或广告服务的版本在8.4.80.300及以上，版本号可通过选择“设置> 应用和元服务 > 更多应用”查看。 #### 接口说明 #### 开发步骤 #### 请求广告 1. 导入相关模块。 import { abilityAccessCtrl, common, PermissionRequestResult } from '@kit.AbilityKit'; import {"
+      "snippet": "插屏广告是一种在应用开启、暂停或退出时以全屏或半屏的形式弹出的广告形式，展示时机巧妙避开用户对应用的正常体验，尺寸大，曝光效果好。 #### 约束与限制 支持Phone、Tablet、PC/2in1设备。 使用PC/2in1设备时，需要确保设备上智慧营销服务或广告服务的版本在8.4.80.300及以上，版本号可通过选择“设置> 应用和元服务 > 更多应用”查看。 #### 接口说明 #### 开发步骤 #### 请求广告 1. 导入相关模块。 import { abilityAccessCtrl, common, PermissionRequestResult } from '@kit.AbilityKit'; import { advertising, identifier } from '@kit.AdsKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 获取OAID。 若需提升广告推送精准度，可以在请求参数 AdRequestParams 中添加oaid属性。 如何获取OAID参见 获取OAID信息 。 使用以下示例中提供的测试广告位时，必须先获取OAID信息。 3. 请求单广告位广告。 需要先创建一个AdLoader对象，通过AdLoader的 loadAd 方法请求广告，最后通过 AdLoadList"
     },
     {
       "path": "references/横幅广告.md",
       "title": "横幅广告",
-      "snippet": "横幅广告又名Banner广告，是在应用程序顶部、中部或底部占据一个位置的矩形图片，广告内容每隔一段时间会自动刷新。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e4/v3/HsCRNevTRG26R6TNn5Ar1w/zh-cn_image_0000002543214796.png?HW-CC-KV=V1&HW-CC-Date=20260421T111442Z&HW-CC-Expire=86400&HW-CC-Sign=52212C99706367BFEFDD5504597D12CE36375C62213166D16194F3823138D12F) #### 约束与限制 支持Phone、Tablet、PC/2in1设备。 使用PC/2in1设备时，需要确保设备上智慧营销服务或广告服务的版本在8.4.80.300及以上，版本号可通过选择“设置> 应用和元服务 > 更多应用”查看。 #### 接口说明 #### 开发步骤 1. 导入相关模块。 import { abilityAccessCtrl, common, PermissionRequestResult } from '@kit.AbilityKit'; import { advertising, Auto"
+      "snippet": "横幅广告又名Banner广告，是在应用程序顶部、中部或底部占据一个位置的矩形图片，广告内容每隔一段时间会自动刷新。 #### 约束与限制 支持Phone、Tablet、PC/2in1设备。 使用PC/2in1设备时，需要确保设备上智慧营销服务或广告服务的版本在8.4.80.300及以上，版本号可通过选择“设置> 应用和元服务 > 更多应用”查看。 #### 接口说明 #### 开发步骤 1. 导入相关模块。 import { abilityAccessCtrl, common, PermissionRequestResult } from '@kit.AbilityKit'; import { advertising, AutoAdComponent, identifier } from '@kit.AdsKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 获取OAID。 若需提升广告推送精准度，可以在请求参数 AdRequestParams 中添加oaid属性以提升广告推送精准度和广告填充率。 如何获取OAID参考 获取OAID信息 。 使用以下示例中提供的测试广告位时，必须先获取OAID信息。 3. 请求和展示广告。 在您的页面中使用AutoAdComponent组件请求和展示横幅广告。 请求广告关键参数如"
     },
     {
       "path": "references/流量变现服务开发概述.md",
@@ -69,12 +69,12 @@
     {
       "path": "references/激励广告.md",
       "title": "激励广告",
-      "snippet": "激励广告是一种全屏幕的视频广告，用户可以选择点击观看，以换取相应奖励。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e3/v3/IfUP3Zn6R5iLV8bBdDqC_A/zh-cn_image_0000002573974687.png?HW-CC-KV=V1&HW-CC-Date=20260421T111443Z&HW-CC-Expire=86400&HW-CC-Sign=DD3B4CE2896AEDC62E855E7FBD583F5E2CEDCDE3FDA2F41D0B7E0523150A1636) #### 约束与限制 支持Phone、Tablet、PC/2in1设备。 使用PC/2in1设备时，需要确保设备上智慧营销服务或广告服务的版本在8.4.80.300及以上，版本号可通过选择“设置> 应用和元服务 > 更多应用”查看。 #### 接口说明 #### 开发步骤 #### 请求广告 1. 导入相关模块。 import { abilityAccessCtrl, common, PermissionRequestResult } from '@kit.AbilityKit'; import { advertising, identifier } fro"
+      "snippet": "激励广告是一种全屏幕的视频广告，用户可以选择点击观看，以换取相应奖励。 #### 约束与限制 支持Phone、Tablet、PC/2in1设备。 使用PC/2in1设备时，需要确保设备上智慧营销服务或广告服务的版本在8.4.80.300及以上，版本号可通过选择“设置> 应用和元服务 > 更多应用”查看。 #### 接口说明 #### 开发步骤 #### 请求广告 1. 导入相关模块。 import { abilityAccessCtrl, common, PermissionRequestResult } from '@kit.AbilityKit'; import { advertising, identifier } from '@kit.AdsKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 获取OAID。 若需提升广告推送精准度，可以在请求参数 AdRequestParams 中添加oaid属性。 如何获取OAID参见 获取OAID信息 。 使用以下示例中提供的测试广告位时，必须先获取OAID信息。 3. 请求单广告位广告。 需要先创建一个AdLoader对象，通过AdLoader的 loadAd 方法请求广告，最后通过 AdLoadListener ，来监听广告的加载状态。 请求广告关键参数如下所示"
     },
     {
       "path": "references/贴片广告.md",
       "title": "贴片广告",
-      "snippet": "贴片广告是一种在视频播放前、视频播放中或视频播放结束后插入的视频或图片广告。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/70/v3/KEpUqaKuQ5agGt90aQ6-Uw/zh-cn_image_0000002573854715.png?HW-CC-KV=V1&HW-CC-Date=20260421T111443Z&HW-CC-Expire=86400&HW-CC-Sign=5EFBAE444C6874348D3990D789945AE6E202CA6F5F5A4F2FB47CEE26B2425FED) #### 约束与限制 支持Phone、Tablet、PC/2in1设备。 使用PC/2in1设备时，需要确保设备上智慧营销服务或广告服务的版本在8.4.80.300及以上，版本号可通过选择“设置> 应用和元服务 > 更多应用”查看。 #### 接口说明 #### 开发步骤 #### 请求广告 1. 导入相关模块。 import { abilityAccessCtrl, common, PermissionRequestResult } from '@kit.AbilityKit'; import { advertising, identifier } "
+      "snippet": "贴片广告是一种在视频播放前、视频播放中或视频播放结束后插入的视频或图片广告。 #### 约束与限制 支持Phone、Tablet、PC/2in1设备。 使用PC/2in1设备时，需要确保设备上智慧营销服务或广告服务的版本在8.4.80.300及以上，版本号可通过选择“设置> 应用和元服务 > 更多应用”查看。 #### 接口说明 #### 开发步骤 #### 请求广告 1. 导入相关模块。 import { abilityAccessCtrl, common, PermissionRequestResult } from '@kit.AbilityKit'; import { advertising, identifier } from '@kit.AdsKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 获取OAID。 若需提升广告推送精准度，可以在请求参数 AdRequestParams 中添加oaid属性。 如何获取OAID参见 获取OAID信息 。 使用以下示例中提供的测试广告位时，必须先获取OAID信息。 3. 请求单广告位广告。 需要创建一个AdLoader对象，通过AdLoader的 loadAd 方法请求广告，最后通过 AdLoadListener 来监听广告的加载状态。 在请求贴片广告时，需要"
     },
     {
       "path": "references/鲸鸿动能Ads Kit个人数据处理说明.md",

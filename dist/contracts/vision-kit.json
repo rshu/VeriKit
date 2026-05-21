@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:22:43.884Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -15,7 +16,7 @@
       "人脸活体检测",
       "证件识别",
       "文档扫描",
-      "AI图像分析",
+      "在商品搜索页面接入 Vision Kit 的 AI识图控件（visionImageAnalyzer），从用户拍摄的商品图片中识别主体并发起识图搜索 / Integrate Vision Kit's AI image recognition control (visionImageAnalyzer) on a product search page to identify the main subject in a user-captured product photo and start visual search",
       "如何实现人脸活体检测，通过引导用户完成指定动作验证真实身份？",
       "如何使用卡证识别功能提取身份证、银行卡、护照等证件的结构化信息？",
       "如何实现文档扫描，自动裁剪并生成高清扫描件？",
@@ -60,12 +61,14 @@
       "所选视觉任务类型与相关配置参数 / Selected visual task type and related configuration parameters"
     ],
     "outputs": [
-      "简介",
-      "人脸活体检测",
-      "卡证识别",
-      "文档扫描",
-      "AI识图",
-      "数据隐私"
+      "人脸活体检测结果对象（检测是否通过、失败/错误原因等） / Face liveness detection result object (pass/fail status, failure/error reason, etc.)",
+      "卡证OCR结构化识别结果（身份证、银行卡、护照、驾驶证、行驶证等字段信息） / Structured card OCR recognition results (fields from ID cards, bank cards, passports, driver licenses, vehicle licenses, etc.)",
+      "自动裁剪和增强后的文档扫描图片 / Auto-cropped and enhanced document scan images",
+      "文档扫描生成的PDF文件 / PDF file generated from document scanning",
+      "表格识别生成的可编辑表格文档 / Editable spreadsheet document generated from table recognition",
+      "AI识图OCR文本识别结果（文本内容、文本区域/坐标等） / AI image analyzer OCR text recognition results (recognized text, text regions/coordinates, etc.)",
+      "主体分割结果（主体掩膜、抠图结果或前景图像） / Subject segmentation result (subject mask, cutout result, or foreground image)",
+      "识图搜索结果（识别到的实体、目标或相关搜索信息） / Image search results (recognized entities, objects, or related search information)"
     ],
     "postconditions": [
       {

@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:13:04.167Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -15,8 +16,8 @@
       "异构计算",
       "AscendC",
       "算子开发",
-      "模型推理",
-      "模型训练",
+      "将ONNX模型通过OMG转换为CANN离线模型，并在Kirin设备端结合AIPP预处理和NPU/CPU异构调度部署推理 / Convert an ONNX model with OMG into a CANN offline model and deploy it on a Kirin device with AIPP preprocessing and NPU/CPU heterogeneous scheduling for inference",
+      "将已训练的ONNX模型通过OMG转换为CANN离线模型，并在Kirin端侧配置AIPP和NPU/CPU异构调度进行推理 / Convert a trained ONNX model with OMG into a CANN offline model, then configure AIPP and NPU/CPU heterogeneous scheduling for inference on a Kirin device",
       "麒麟芯片",
       "GE图",
       "如何将训练好的模型转换为CANN Kit支持的离线模型格式",
@@ -30,9 +31,9 @@
       "如何调试和调测AscendC自定义算子",
       "如何将ONNX框架模型适配到CANN Kit",
       "当你需要在HarmonyOS设备上进行AI模型推理、优化或部署时，可以使用CANN Kit提供的模型转换、模型推理、模型优化等能力",
-      "特别是需要将训练好的模型部署到端侧设备进行图像分割、语音识别、自然语言处理等智能推理场景",
+      "需要在Kirin芯片HarmonyOS设备上使用CANN OMG将ONNX模型转换为离线模型，配置AIPP预处理，并通过NPU/CPU异构调度执行端侧推理 / When you need to use CANN OMG for a Kirin-based HarmonyOS device to convert an ONNX model into an offline model, configure AIPP preprocessing, and run on-device inference with NPU/CPU heterogeneous scheduling",
       "当你需要开发自定义NPU算子（AscendC编程）或进行算子工程化开发（算子原型定义、注册、编译、调试）时，可以使用CANN Kit提供的完整AscendC工具链和GE图操作API",
-      "集成 Ascend NPU 做端侧 AI 推理加速 / Integrate Ascend NPU acceleration for on-device AI inference",
+      "将ONNX模型通过OMG转换为CANN离线模型并配置AIPP，在Kirin设备上进行NPU/CPU异构部署 / Convert an ONNX model to a CANN offline model with OMG, configure AIPP, and deploy it with NPU/CPU heterogeneous scheduling on a Kirin device",
       "把 ONNX 或 TensorFlow 模型转换成可在昇腾设备运行的离线模型 / Convert ONNX or TensorFlow models into offline models runnable on Ascend devices",
       "部署人脸识别或目标检测模型到昇腾芯片 / Deploy face recognition or object detection models to Ascend chips",
       "实现图片输入的 AIPP 预处理并接入推理流水线 / Implement image AIPP preprocessing and connect it to the inference pipeline",
@@ -61,18 +62,18 @@
       "AscendC自定义算子源码与编译配置 / AscendC custom operator source code and build configuration"
     ],
     "outputs": [
-      "服务概述",
-      "AscendC编程",
-      "AscendC算子API（数学运算）",
-      "AscendC算子API（标量与数据搬运）",
-      "AscendC算子API（矩阵与高级功能）",
-      "AscendC算子API（队列与事件管理）",
-      "AscendC算子API（内存管理）",
-      "AscendC算子API（Tiling相关）",
-      "AscendC算子API（格式与数据类型）",
-      "AscendC算子API（平台与硬件信息）",
-      "AscendC算子API（调试功能）",
-      "AscendC算子API（Host侧操作）"
+      "CANN离线模型文件（.om） / CANN offline model file (.om)",
+      "量化、轻量化或网络结构搜索后的优化模型文件 / Quantized, compressed, or NAS-optimized model file",
+      "AIPP预处理配置文件或固化到模型中的AIPP参数 / AIPP preprocessing configuration file or AIPP parameters embedded in the model",
+      "端侧模型推理输出Tensor或结果缓冲区 / On-device inference output tensors or result buffers",
+      "单算子调用输出Tensor / Single-operator invocation output tensors",
+      "图编译与图执行后的输出Tensor / Output tensors from compiled graph execution",
+      "AscendC自定义算子核函数二进制文件 / AscendC custom operator kernel binary",
+      "自定义算子动态库或算子包 / Custom operator shared library or operator package",
+      "自定义算子原型定义与注册元数据 / Custom operator prototype definition and registration metadata",
+      "算子Tiling切分参数数据 / Operator tiling parameter data",
+      "GE计算图或编译后的可执行图 / GE computation graph or compiled executable graph",
+      "模型转换、算子编译、调试与性能分析结果文件 / Model conversion, operator build, debugging, and profiling result files"
     ],
     "postconditions": [
       {

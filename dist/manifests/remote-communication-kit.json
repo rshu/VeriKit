@@ -3,13 +3,13 @@
   "skill": "remote-communication-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.143Z"
+    "at": "2026-05-21T03:47:44.726Z"
   },
   "references": [
     {
       "path": "references/DnsConfiguration：定制DNS.md",
       "title": "DnsConfiguration：定制DNS",
-      "snippet": "在远程通信服务框架中，Remote Communication Kit提供了一套高度可定制的 DNS（Domain Name System）请求规则服务，这一服务允许开发者根据自身需求调整 DNS 查询行为。此外，支持用户自定义 DNS 服务器设置。开发者可根据具体的网络环境或安全需求，选择最适合的 DNS 服务器进行配置。通过这些功能，开发者不仅能够实现网络管理的高效性，还能增强网络的安全性，确保数据传输的稳定与安全。DnsConfiguration中可设置dnsRules、dnsOverHttps。 - dnsRules（配置DNS规则） 自定义DNS服务器（ DnsServers ）：可指定自定义的DNS服务器提供解析服务。 自定义静态DNS（ StaticDnsRules ）：当默认的DNS不能正常解析部分域名，就需要手动添加静态DNS。添加静态DNS后，如果hostname匹配，则优先使用指定的地址。 自定义动态DNS（ DynamicDnsRule ）：除了添加静态DNS外，还可以添加动态DNS。动态DNS可看作一个可以根据hostname和port直接返回IP地址的函数，如果设置，则优先使用函数中返回的地址。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_10"
+      "snippet": "在远程通信服务框架中，Remote Communication Kit提供了一套高度可定制的 DNS（Domain Name System）请求规则服务，这一服务允许开发者根据自身需求调整 DNS 查询行为。此外，支持用户自定义 DNS 服务器设置。开发者可根据具体的网络环境或安全需求，选择最适合的 DNS 服务器进行配置。通过这些功能，开发者不仅能够实现网络管理的高效性，还能增强网络的安全性，确保数据传输的稳定与安全。DnsConfiguration中可设置dnsRules、dnsOverHttps。 - dnsRules（配置DNS规则） 自定义DNS服务器（ DnsServers ）：可指定自定义的DNS服务器提供解析服务。 自定义静态DNS（ StaticDnsRules ）：当默认的DNS不能正常解析部分域名，就需要手动添加静态DNS。添加静态DNS后，如果hostname匹配，则优先使用指定的地址。 自定义动态DNS（ DynamicDnsRule ）：除了添加静态DNS外，还可以添加动态DNS。动态DNS可看作一个可以根据hostname和port直接返回IP地址的函数，如果设置，则优先使用函数中返回的地址。 针对同一域名配置多个静态或者动态DNS规则后，Remote Communication Kit将按照配置的规则轮询服务器。 - dnsOverHttps DNS"
     },
     {
       "path": "references/HTTP缓存基本功能.md",
@@ -19,12 +19,12 @@
     {
       "path": "references/ProcessingConfiguration：定制处理行为.md",
       "title": "ProcessingConfiguration：定制处理行为",
-      "snippet": "ProcessingConfiguration 是 Remote Communication Kit 中用于定制响应处理行为的一个重要组件。它允许你在消息被分发到不同的处理器之前或之后执行一些自定义的逻辑。场景如检验响应状态是否为成功即响应码是否为200。 #### 约束与限制 定制处理行为能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 使用示例 1. 导入需要的模块。 import { rcp } from '@kit.RemoteCommunicationKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 创建会话、请求以及定义相关处理配置。 const session = rcp.createSession(); const request = new rcp.Request(\"https://www.example.com\"); // 定义处理配置，用于验证响应状态码是否为200 const processing: rcp.ProcessingConfiguration = { validateResponse: (response: rcp.Response): boolean => { return response."
+      "snippet": "ProcessingConfiguration 是 Remote Communication Kit 中用于定制响应处理行为的一个重要组件。它允许你在消息被分发到不同的处理器之前或之后执行一些自定义的逻辑。场景如检验响应状态是否为成功即响应码是否为200。 #### 约束与限制 定制处理行为能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 使用示例 1. 导入需要的模块。 import { rcp } from '@kit.RemoteCommunicationKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 创建会话、请求以及定义相关处理配置。 const session = rcp.createSession(); const request = new rcp.Request(\" // 定义处理配置，用于验证响应状态码是否为200 const processing: rcp.ProcessingConfiguration = { validateResponse: (response: rcp.Response): boolean => { return response.statusCode === 200; }, }; "
     },
     {
       "path": "references/ProxyConfiguration：定制代理.md",
       "title": "ProxyConfiguration：定制代理",
-      "snippet": "在远场通信框架中，ProxyConfiguration配置会话代理设置，提供system、no-proxy和WebProxy三种选项。 - system使用系统代理，适合快速部署； - no-proxy不使用代理，适用于需直接访问特定资源或有代理限制的环境； - WebProxy允许开发者自定义代理设置，解决特定网络问题，优化代理路径，提升性能和用户体验。 #### 约束与限制 定制代理能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 使用示例 下面将对框架提供的三种选项（'system'，'no-proxy'，'WebProxy'）以示例代码的方式进行说明。 #### 'no-proxy' 1. 导入需要的模块。 import { rcp } from '@kit.RemoteCommunicationKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 创建一个新的会话对象和请求，会话用于管理后续的网络请求。 const session = rcp.createSession(); // 定义请求的URL（请根据实际需求调整） const requestURL = 'https://example.com'; 3. 定义发起请求时"
+      "snippet": "在远场通信框架中，ProxyConfiguration配置会话代理设置，提供system、no-proxy和WebProxy三种选项。 - system使用系统代理，适合快速部署； - no-proxy不使用代理，适用于需直接访问特定资源或有代理限制的环境； - WebProxy允许开发者自定义代理设置，解决特定网络问题，优化代理路径，提升性能和用户体验。 #### 约束与限制 定制代理能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 使用示例 下面将对框架提供的三种选项（'system'，'no-proxy'，'WebProxy'）以示例代码的方式进行说明。 #### 'no-proxy' 1. 导入需要的模块。 import { rcp } from '@kit.RemoteCommunicationKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 创建一个新的会话对象和请求，会话用于管理后续的网络请求。 const session = rcp.createSession(); // 定义请求的URL（请根据实际需求调整） const requestURL = ' 3. 定义发起请求时需要的代理配置，在定义proxyConfi"
     },
     {
       "path": "references/Remote Communication Kit简介.md",
@@ -34,7 +34,7 @@
     {
       "path": "references/SecurityConfiguration：定制安全传输行为.md",
       "title": "SecurityConfiguration：定制安全传输行为",
-      "snippet": "在软件开发中，安全是非常重要的一环。Remote Communication Kit提供的 SecurityConfiguration 是一个用于定制安全传输行为的工具，能够帮助开发者更好地保护其应用程序。通过合理的配置和使用，可以显著降低应用程序遭受攻击的风险。下面将详细说明如何使用证书校验来增强安全性。 #### 约束与限制 定制安全传输行为能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 客户端校验服务端证书 #### 1. 使用系统默认证书 1. 导入需要的模块。 import { rcp } from '@kit.RemoteCommunicationKit'; 2. 在remoteValidation中配置'system'时，将使用系统中默认的CA。 async function TestRcp() { const session = rcp.createSession(); const request = new rcp.Request('https://example.com'); // 请替换为实际的网址 request.configuration = { security: { remoteValidation: 'system', } } try { const response = "
+      "snippet": "在软件开发中，安全是非常重要的一环。Remote Communication Kit提供的 SecurityConfiguration 是一个用于定制安全传输行为的工具，能够帮助开发者更好地保护其应用程序。通过合理的配置和使用，可以显著降低应用程序遭受攻击的风险。下面将详细说明如何使用证书校验来增强安全性。 #### 约束与限制 定制安全传输行为能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 客户端校验服务端证书 #### 1. 使用系统默认证书 1. 导入需要的模块。 import { rcp } from '@kit.RemoteCommunicationKit'; 2. 在remoteValidation中配置'system'时，将使用系统中默认的CA。 async function TestRcp() { const session = rcp.createSession(); const request = new rcp.Request(' // 请替换为实际的网址 request.configuration = { security: { remoteValidation: 'system', } } try { const response = await session.fetch(re"
     },
     {
       "path": "references/Session间缓存共享.md",
@@ -64,22 +64,22 @@
     {
       "path": "references/发送网络请求（ArkTS）.md",
       "title": "发送网络请求（ArkTS）",
-      "snippet": "发送网络请求能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 如何使用FETCH发起网络请求 发送一个HTTP请求，也可以设置请求头和请求体等参数，并返回来自服务器的HTTP响应。使用Promise异步回调。常用于获取资源，支持流处理和通过拦截器来处理请求和响应。 #### 接口说明 具体API说明详见 接口文档 。 #### 使用示例 1. 导入模块。 import { rcp } from '@kit.RemoteCommunicationKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 创建Request对象。\"https://www.example.com\"请根据实际情况替换为想要请求的URL地址。 const kHttpServerAddress = \"https://www.example.com/fetch\"; const request = new rcp.Request(kHttpServerAddress, 'GET'); 3. 创建会话。 const session = rcp.createSession(); 4. 发起请求，并处理返回结果。 session.fetch(request).then((rep"
+      "snippet": "发送网络请求能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 如何使用FETCH发起网络请求 发送一个HTTP请求，也可以设置请求头和请求体等参数，并返回来自服务器的HTTP响应。使用Promise异步回调。常用于获取资源，支持流处理和通过拦截器来处理请求和响应。 #### 接口说明 具体API说明详见 接口文档 。 #### 使用示例 1. 导入模块。 import { rcp } from '@kit.RemoteCommunicationKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 创建Request对象。\" const kHttpServerAddress = \" const request = new rcp.Request(kHttpServerAddress, 'GET'); 3. 创建会话。 const session = rcp.createSession(); 4. 发起请求，并处理返回结果。 session.fetch(request).then((rep: rcp.Response) => { console.info(`Response succeeded: ${rep}`); }).catch((e"
     },
     {
       "path": "references/发送网络请求（C++）.md",
       "title": "发送网络请求（C++）",
-      "snippet": "发送网络请求能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 如何使用fetchsync发起网络请求 发送一个同步HTTP请求，也可以设置请求头和请求体等参数，并返回来自服务器的HTTP响应。常用于获取资源，支持通过拦截器来处理请求和响应。 #### 接口说明 具体API说明详见 接口文档 。 #### 使用示例 1. CPP侧导入模块。 #include \"RemoteCommunicationKit/rcp.h\" #include <stdio.h> 2. CMakeLists.txt中添加以下lib。（具体请见 C API开发准备 ）。 librcp_c.so 3. 创建Request对象。\"https://www.example.com\"请根据实际情况替换为想要请求的URL地址。（实际使用时请将该代码块放入main函数或者其他函数区域内）。 const char *kHttpServerAddress = \"https://www.example.com\"; Rcp_Request *request = HMS_Rcp_CreateRequest(kHttpServerAddress); 4. 创建会话。（实际使用时请将该代码块放入main函数或者其他函数区域内）。 uint32_t errCode"
+      "snippet": "发送网络请求能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 如何使用fetchsync发起网络请求 发送一个同步HTTP请求，也可以设置请求头和请求体等参数，并返回来自服务器的HTTP响应。常用于获取资源，支持通过拦截器来处理请求和响应。 #### 接口说明 具体API说明详见 接口文档 。 #### 使用示例 1. CPP侧导入模块。 #include \"RemoteCommunicationKit/rcp.h\" #include <stdio.h> 2. CMakeLists.txt中添加以下lib。（具体请见 C API开发准备 ）。 librcp_c.so 3. 创建Request对象。\" const char *kHttpServerAddress = \" Rcp_Request *request = HMS_Rcp_CreateRequest(kHttpServerAddress); 4. 创建会话。（实际使用时请将该代码块放入main函数或者其他函数区域内）。 uint32_t errCode = 0; Rcp_Session *session = HMS_Rcp_CreateSession(NULL, &errCode); 5. 发起请求，并处理返回结果。（实际使用时请将该代码块放入mai"
     },
     {
       "path": "references/取消网络请求（ArkTS）.md",
       "title": "取消网络请求（ArkTS）",
-      "snippet": "在远场通信服务的框架中，没有明确指定任何request的情况下，通过调用session.cancel，可以取消所有正在进行的网络请求。当开发者需要取消特定的一个网络请求时，可以使用session.cancel方法，并传入需要取消的请求，以实现这一目标。这样，开发者们就能根据具体需求，灵活地管理和控制网络请求的执行。 #### 约束与限制 取消网络请求能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 接口说明 具体API说明详见 接口文档 。 #### 使用示例 1. 导入模块。 import { rcp } from '@kit.RemoteCommunicationKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 创建会话并创建两个Request，分别发起请求，在请求完成后进行cancel操作。 - // 创建会话 const session = rcp.createSession(); // 创建request1、request2 let request1 = new rcp.Request(\"https://www.example.com\"); let request2 = new rcp.Request(\"https://"
+      "snippet": "在远场通信服务的框架中，没有明确指定任何request的情况下，通过调用session.cancel，可以取消所有正在进行的网络请求。当开发者需要取消特定的一个网络请求时，可以使用session.cancel方法，并传入需要取消的请求，以实现这一目标。这样，开发者们就能根据具体需求，灵活地管理和控制网络请求的执行。 #### 约束与限制 取消网络请求能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 接口说明 具体API说明详见 接口文档 。 #### 使用示例 1. 导入模块。 import { rcp } from '@kit.RemoteCommunicationKit'; import { BusinessError } from '@kit.BasicServicesKit'; 2. 创建会话并创建两个Request，分别发起请求，在请求完成后进行cancel操作。 - // 创建会话 const session = rcp.createSession(); // 创建request1、request2 let request1 = new rcp.Request(\" let request2 = new rcp.Request(\" // 分别发起请求 session.fetch(request1)"
     },
     {
       "path": "references/取消网络请求（C++）.md",
       "title": "取消网络请求（C++）",
-      "snippet": "在远场通信服务的框架中，没有明确指定任何request的情况下，可以取消所有正在进行的网络请求。如果开发者需要取消特定的一个网络请求，可以使用HMS_Rcp_CancelRequest方法，并传入需要取消的请求，以实现这一目标。开发者们可以根据具体需求，灵活地管理和控制网络请求的执行。总之，HMS_Rcp_CancelRequest方法的灵活运用，不仅能够优化网络资源的使用，还能提升应用程序的用户体验。 #### 约束与限制 取消网络请求能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 接口说明 具体API说明详见 接口文档 。 #### 使用示例 1. CPP侧导入模块。 #include \"RemoteCommunicationKit/rcp.h\" #include <stdio.h> 2. CMakeLists.txt中添加以下lib。（具体请见 C API开发准备 ）。 librcp_c.so 3. 创建会话，会话发起请求，并在使用fetch请求后，使用HMS_Rcp_CancelRequest取消网络请求。销毁request并关闭session。“http://www.example.com”请根据实际情况替换为想要请求的URL地址。 void ResponseCallback(void *usr"
+      "snippet": "在远场通信服务的框架中，没有明确指定任何request的情况下，可以取消所有正在进行的网络请求。如果开发者需要取消特定的一个网络请求，可以使用HMS_Rcp_CancelRequest方法，并传入需要取消的请求，以实现这一目标。开发者们可以根据具体需求，灵活地管理和控制网络请求的执行。总之，HMS_Rcp_CancelRequest方法的灵活运用，不仅能够优化网络资源的使用，还能提升应用程序的用户体验。 #### 约束与限制 取消网络请求能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 接口说明 具体API说明详见 接口文档 。 #### 使用示例 1. CPP侧导入模块。 #include \"RemoteCommunicationKit/rcp.h\" #include <stdio.h> 2. CMakeLists.txt中添加以下lib。（具体请见 C API开发准备 ）。 librcp_c.so 3. 创建会话，会话发起请求，并在使用fetch请求后，使用HMS_Rcp_CancelRequest取消网络请求。销毁request并关闭session。“ void ResponseCallback(void *usrCtx, Rcp_Response *response, uint32_t errCod"
     },
     {
       "path": "references/基于TracingConfiguration实现性能维测.md",
@@ -89,7 +89,7 @@
     {
       "path": "references/实现请求暂停、恢复与断点续传.md",
       "title": "实现请求暂停、恢复与断点续传",
-      "snippet": "请求暂停、恢复与断点续传能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 请求暂停、恢复 #### 场景介绍 Remote Communication Kit提供完善的功能支持，包括请求的暂停和恢复功能。这不仅涵盖接收暂停，还包括发送暂停。 #### 使用实例 1. 导入需要的模块。 import { rcp } from '@kit.RemoteCommunicationKit'; import { util } from '@kit.ArkTS'; 2. 定义调试信息接口、调试信息源类型以及调试信息序列化函数，用于将调试信息序列化为StringifiedDebugInfo数组。函数首先根据infoSource的类型获取调试信息，然后使用TextDecoder将调试信息的data字段解码为字符串，并返回一个包含解码后的调试信息的数组。 const HTTP_SERVER_POST: string = \"https://example.org/anything\"; // 定义调试信息接口 interface StringifiedDebugInfo { type: rcp.DebugEvent; data: string; }; // 定义调试信息源类型 type DebugInfoSource = und"
+      "snippet": "请求暂停、恢复与断点续传能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 请求暂停、恢复 #### 场景介绍 Remote Communication Kit提供完善的功能支持，包括请求的暂停和恢复功能。这不仅涵盖接收暂停，还包括发送暂停。 #### 使用实例 1. 导入需要的模块。 import { rcp } from '@kit.RemoteCommunicationKit'; import { util } from '@kit.ArkTS'; 2. 定义调试信息接口、调试信息源类型以及调试信息序列化函数，用于将调试信息序列化为StringifiedDebugInfo数组。函数首先根据infoSource的类型获取调试信息，然后使用TextDecoder将调试信息的data字段解码为字符串，并返回一个包含解码后的调试信息的数组。 const HTTP_SERVER_POST: string = \" // 定义调试信息接口 interface StringifiedDebugInfo { type: rcp.DebugEvent; data: string; }; // 定义调试信息源类型 type DebugInfoSource = undefined | rcp.DebugInfo[] | rcp"
     },
     {
       "path": "references/开发准备.md",
@@ -104,7 +104,7 @@
     {
       "path": "references/拦截器：更丰富、更高阶的定制能力.md",
       "title": "拦截器：更丰富、更高阶的定制能力",
-      "snippet": "使用拦截器可以便捷地对HTTP的请求与响应进行修改，您可以创建拦截器链，按需定制一组拦截器对网络请求/响应进行修改。Remote Communication Kit模块提供了拦截器能力，在 SessionConfiguration 中添加interceptors参数，传入自定义的拦截器，即可在HTTP请求和响应的过程中添加拦截器功能。 #### 约束与限制 拦截器：更丰富、更高阶的定制能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 拦截器工作原理 在客户端发送HTTP请求到达目标服务器之前，可以使用拦截器对请求进行修改。如下图，定义了链式拦截器，RequestUrlChangeInterceptor拦截器（下文以拦截器1代替）和ResponseHeaderRemoveInterceptor拦截器（下文以拦截器2代替）。拦截器1会将请求先拦截，该拦截器可以实现当网络质量差时，通过修改HTTP请求中的URL，来调整请求资源的大小。然后经过拦截器2，最后到达Internet。当请求到达目标服务器，服务器返回请求响应的结果给客户端之前，可以使用拦截器对HTTP的响应进行修改。响应先被拦截器2拦截，在响应返回给应用前检查和修改服务器的请求头。然后经过拦截器1，最后客户端接收响应结果。 ![](https://con"
+      "snippet": "使用拦截器可以便捷地对HTTP的请求与响应进行修改，您可以创建拦截器链，按需定制一组拦截器对网络请求/响应进行修改。Remote Communication Kit模块提供了拦截器能力，在 SessionConfiguration 中添加interceptors参数，传入自定义的拦截器，即可在HTTP请求和响应的过程中添加拦截器功能。 #### 约束与限制 拦截器：更丰富、更高阶的定制能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 拦截器工作原理 在客户端发送HTTP请求到达目标服务器之前，可以使用拦截器对请求进行修改。如下图，定义了链式拦截器，RequestUrlChangeInterceptor拦截器（下文以拦截器1代替）和ResponseHeaderRemoveInterceptor拦截器（下文以拦截器2代替）。拦截器1会将请求先拦截，该拦截器可以实现当网络质量差时，通过修改HTTP请求中的URL，来调整请求资源的大小。然后经过拦截器2，最后到达Internet。当请求到达目标服务器，服务器返回请求响应的结果给客户端之前，可以使用拦截器对HTTP的响应进行修改。响应先被拦截器2拦截，在响应返回给应用前检查和修改服务器的请求头。然后经过拦截器1，最后客户端接收响应结果。 RequestUrlChang"
     },
     {
       "path": "references/流式传输.md",
@@ -119,7 +119,7 @@
     {
       "path": "references/通过配置Configuration优化传输性能.md",
       "title": "通过配置Configuration优化传输性能",
-      "snippet": "通过配置Configuration优化传输性能能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 导入模块 import { rcp } from '@kit.RemoteCommunicationKit'; import { BusinessError } from '@kit.BasicServicesKit'; #### 请求预处理阶段 - 基于Session抽象的高并发网络框架 - 支持创建多个Session - 支持请求动态取消 - 支持关闭Session - Session中的资源互相独立、互不影响 - 应用可以通过使用Session来获取最佳的网络性能体验 const session1 = rcp.createSession({ requestConfiguration: { transfer: { timeout: { connectMs: 5000, transferMs: 5000 } } } }); const request1 = new rcp.Request('https://example.com'); const request2 = new rcp.Request('https://example.com'); session1.fetch(request1).then((r"
+      "snippet": "通过配置Configuration优化传输性能能力支持Phone、2in1、Tablet、Wearable设备。并且从5.1.1(19)开始，新增支持TV设备。 #### 导入模块 import { rcp } from '@kit.RemoteCommunicationKit'; import { BusinessError } from '@kit.BasicServicesKit'; #### 请求预处理阶段 - 基于Session抽象的高并发网络框架 - 支持创建多个Session - 支持请求动态取消 - 支持关闭Session - Session中的资源互相独立、互不影响 - 应用可以通过使用Session来获取最佳的网络性能体验 const session1 = rcp.createSession({ requestConfiguration: { transfer: { timeout: { connectMs: 5000, transferMs: 5000 } } } }); const request1 = new rcp.Request(' const request2 = new rcp.Request(' session1.fetch(request1).then((response) => { console.info(`Request1 succeed"
     }
   ]
 }

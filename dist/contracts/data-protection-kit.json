@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:14:25.543Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -56,9 +57,14 @@
       "分享、打开或查看DLP文件的业务上下文参数 / business context parameters for sharing, opening, or viewing a DLP file"
     ],
     "outputs": [
-      "简介与概述",
-      "开发指导",
-      "适配指南"
+      "加密后的DLP文件（.dlp后缀） / Encrypted DLP file (.dlp suffix)",
+      "DLP文件权限配置与授权元数据（只读、编辑、拥有者等权限级别） / DLP file permission configuration and authorization metadata (read-only, edit, owner permission levels)",
+      "基于账号认证生成的访问凭据或授权令牌 / Account-authenticated access credential or authorization token",
+      "云端鉴权生成的证书与解密授权信息 / Cloud-authenticated certificate and decryption authorization information",
+      "DLP文件的明文映射文件或可编辑明文视图 / Plaintext mapped file or editable plaintext view of a DLP file",
+      "DLP沙箱应用实例或受限运行环境 / DLP sandbox application instance or restricted runtime environment",
+      "权限校验结果与访问控制结果 / Permission verification result and access-control result",
+      "可授权分享的DLP密文文件或分享载荷 / Authorizable encrypted DLP file or sharing payload"
     ],
     "postconditions": [
       {

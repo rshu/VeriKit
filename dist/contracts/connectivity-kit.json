@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:13:30.806Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -16,7 +17,7 @@
       "WLAN",
       "NFC",
       "短距通信",
-      "设备发现",
+      "扫描周边传统蓝牙（BR/EDR）或BLE设备，并完成配对或GATT连接 / Scan nearby Bluetooth BR/EDR or BLE devices and complete pairing or a GATT connection",
       "如何开启和关闭蓝牙并获取蓝牙开关状态",
       "如何扫描周边蓝牙设备并进行配对连接",
       "如何基于SPP协议实现蓝牙数据传输",
@@ -58,11 +59,26 @@
       "待发送数据、标签负载或读写内容 / data to send, tag payload, or read/write content"
     ],
     "outputs": [
-      "服务概述",
-      "蓝牙开发",
-      "WLAN开发",
-      "NFC开发",
-      "融合短距服务"
+      "蓝牙开关状态（开启、关闭、正在开启、正在关闭） / Bluetooth adapter state (on, off, turning on, turning off)",
+      "已发现的传统蓝牙设备信息（设备ID、名称、类型、RSSI等） / Discovered classic Bluetooth device information (device ID, name, type, RSSI, etc.)",
+      "已配对蓝牙设备列表与配对状态 / Paired Bluetooth device list and bonding state",
+      "蓝牙Profile连接状态（如A2DP、HFP、HID、SPP连接状态） / Bluetooth profile connection state (such as A2DP, HFP, HID, SPP connection state)",
+      "SPP连接套接字与收发数据字节流 / SPP connection socket and transmitted or received byte streams",
+      "BLE扫描结果（ScanResult，含设备地址、广播数据、RSSI等） / BLE scan results (ScanResult with device address, advertising data, RSSI, etc.)",
+      "BLE广播发布状态与广播参数结果 / BLE advertising publish state and advertising parameter result",
+      "GATT服务、特征值、描述符及读写/通知数据 / GATT services, characteristics, descriptors, and read/write/notification data",
+      "Wi-Fi扫描结果列表（WifiScanInfo） / Wi-Fi scan result list (WifiScanInfo)",
+      "当前Wi-Fi连接信息（SSID、BSSID、频段、RSSI、链路速率、IP等） / Current Wi-Fi connection information (SSID, BSSID, band, RSSI, link speed, IP, etc.)",
+      "Wi-Fi连接、断开和网络状态变化事件 / Wi-Fi connection, disconnection, and network state change events",
+      "Wi-Fi P2P发现设备列表（WifiP2pDevice） / Wi-Fi P2P discovered device list (WifiP2pDevice)",
+      "Wi-Fi P2P群组信息与连接信息（群主、成员、连接状态等） / Wi-Fi P2P group and link information (group owner, members, connection state, etc.)",
+      "热点/AP模式状态与已连接终端信息 / Hotspot/AP mode state and connected station information",
+      "NFC标签信息对象（TagInfo，含标签技术类型、ID等） / NFC tag information object (TagInfo with tag technology types, ID, etc.)",
+      "NDEF消息与记录（NdefMessage、NdefRecord） / NDEF messages and records (NdefMessage, NdefRecord)",
+      "NFC标签原始读写响应数据（字节数组） / Raw NFC tag read/write response data (byte arrays)",
+      "HCE卡模拟APDU命令与响应数据 / HCE card-emulation APDU command and response data",
+      "安全单元会话、通道、ATR与APDU响应数据 / Secure element sessions, channels, ATR, and APDU response data",
+      "伙伴设备发现结果、连接状态与生命周期事件 / Companion device discovery results, connection state, and lifecycle events"
     ],
     "postconditions": [
       {

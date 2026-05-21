@@ -519,6 +519,3263 @@
           "exemplar": "DemoApp/HarmonyOS_NEXT/FilesManger"
         }
       }
+    },
+    {
+      "id": "image",
+      "name": "图片编辑与预览 / Image Editing and Preview",
+      "when": [
+        "我想做一个能裁剪、旋转、滤镜处理并预览图片的页面 / I want to build a page that crops, rotates, filters, and previews images",
+        "需要在 HarmonyOS 应用里读取图片 EXIF 并展示到界面上 / I need to read image EXIF in a HarmonyOS app and show it in the UI",
+        "实现图片解码后在自定义组件中显示和编辑 / Decode an image, then display and edit it in a custom component",
+        "做一个相册图片处理界面，用户调整后实时刷新预览 / Build a gallery image processing screen where user adjustments refresh the preview in real time"
+      ],
+      "skills": [
+        "arkui",
+        "image-kit"
+      ],
+      "notes": "Image Kit decodes image sources, reads EXIF, and performs image processing or editing to produce updated image data, while ArkUI builds the interactive preview/editing UI and binds state so processed results are rendered back to the screen.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 22,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "HmosWorld",
+          "ImageEdit",
+          "MultiDeviceMusic",
+          "MusicPlay",
+          "VideoPlayer"
+        ]
+      }
+    },
+    {
+      "id": "arkweb",
+      "name": "内嵌网页交互界面 / Embedded Web Interaction UI",
+      "when": [
+        "我想在应用页面中嵌入并加载网页 / I want to embed and load a web page inside an app screen",
+        "需要用原生声明式界面承载 Web 组件 / I need a declarative native UI to host a Web component",
+        "希望在 HarmonyOS 应用中实现网页与页面状态联动 / I want a HarmonyOS app where web content interacts with page state",
+        "我要做一个带 WebView、网页加载和 JS 交互的页面 / I need a page with WebView-style loading and JavaScript interaction"
+      ],
+      "skills": [
+        "arkui",
+        "arkweb"
+      ],
+      "notes": "ArkUI builds the declarative native page, component layout, and state holders, then ArkWeb provides the embedded Web component that loads web content and exposes web events, JavaScript interaction, and security controls back to the ArkUI page state.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 20,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "HmosWorld",
+          "HttpsRequest",
+          "SelectContact",
+          "WebComponent",
+          "WebCookie"
+        ]
+      }
+    },
+    {
+      "id": "core-file",
+      "name": "文件存储与备份 / File Storage and Backup",
+      "when": [
+        "我需要在应用沙箱中创建、读取、修改和删除文件 / I need to create, read, update, and delete files in the app sandbox",
+        "我想让用户选择本地文件并导入到应用中 / I want users to select local files and import them into the app",
+        "我需要管理图片、文档或新闻稿等应用生成的文件 / I need to manage app-generated files such as images, documents, or news drafts",
+        "我想实现应用数据的备份与恢复 / I want to implement app data backup and restore"
+      ],
+      "skills": [
+        "core-file-kit"
+      ],
+      "notes": "core-file-kit provides the file access, app-file/user-file management, and backup/restore capabilities; the app reads or writes file data through this Kit, then reuses the same stored data for editing, publishing, or recovery flows.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 18,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "HmosWorld",
+          "ImageEdit",
+          "NewsRelease"
+        ]
+      }
+    },
+    {
+      "id": "basic-services",
+      "name": "基础服务操作界面 / Basic Services Action UI",
+      "when": [
+        "我想做一个页面，让用户复制内容到剪贴板并显示操作结果 / I want to build a page where users copy content to the clipboard and see the operation result",
+        "需要在应用里提供文件上传、下载入口，并用界面展示进度或状态 / I need upload and download entry points in the app with UI showing progress or status",
+        "想实现一个文件压缩功能，并在页面上触发和反馈压缩结果 / I want to implement file compression triggered from a page with result feedback",
+        "需要把剪贴板、文件上传下载、压缩这些基础能力封装成可交互组件 / I need to wrap clipboard, file upload/download, and compression basics into interactive components"
+      ],
+      "skills": [
+        "arkui",
+        "basic-services-kit"
+      ],
+      "notes": "ArkUI builds the declarative screens, buttons, state, and feedback components; Basic Services Kit performs clipboard, file upload/download, or compression actions triggered by the UI, then returns status or result data for ArkUI to render.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 16,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "LoginDemo",
+          "MultiShopping",
+          "NewsRelease",
+          "SystemCommonEvent"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-form",
+      "name": "本地数据驱动服务卡片 / Local Data-Driven Service Widgets",
+      "when": [
+        "我想把应用里的本地数据展示到桌面服务卡片上 / I want to show local app data in a home-screen service widget",
+        "需要服务卡片读取 Preferences 或 KV 数据并保持更新 / I need a service widget to read Preferences or KV data and stay updated",
+        "应用启动后保存用户状态，再让卡片展示最新状态 / Save user state after app launch and display the latest state in the widget",
+        "为健康、音乐、电影等场景做可持久化的 ArkTS 卡片 / Build a persistent ArkTS widget for health, music, movie, or similar scenarios"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "form-kit"
+      ],
+      "notes": "Ability Kit provides the application lifecycle entry points, ArkData persists app state through Preferences, KV storage, or relational data, and Form Kit renders that stored state as an ArkTS service card. The typical flow is UIAbility or AbilityStage writes/updates local data, then the FormExtension/card logic reads the data and refreshes the desktop or lock-screen card UI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 11,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "Healthy_life",
+          "HmosWorld",
+          "MovieCard",
+          "MultiDeviceMusic",
+          "MusicPlay",
+          "StepsCardJS"
+        ]
+      }
+    },
+    {
+      "id": "core-file-kit-image",
+      "name": "本地图片编辑与保存 / Local Image Editing and Saving",
+      "when": [
+        "我想从应用或用户文件中读取图片，编辑后再保存 / I want to read an image from app or user files, edit it, and save it back",
+        "需要实现本地图片裁剪、旋转或滤镜处理，并管理输出文件 / Need local image crop, rotate, or filter processing with output file management",
+        "如何解析图片 EXIF 信息并把修改后的图片写入文件 / How to parse image EXIF metadata and write the edited image to a file",
+        "做一个离线图片编辑器，支持打开、处理和保存图片 / Build an offline image editor that can open, process, and save images"
+      ],
+      "skills": [
+        "core-file-kit",
+        "image-kit"
+      ],
+      "notes": "Core File Kit locates, opens, reads, writes, and persists image files from app or user storage; Image Kit consumes the file data for decoding, EXIF reading, image processing/editing, and encoding, then returns encoded image bytes or metadata updates for Core File Kit to save.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 9,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "HmosWorld",
+          "ImageEdit"
+        ]
+      }
+    },
+    {
+      "id": "test",
+      "name": "应用UI与生命周期自动化测试 / App UI and Lifecycle Automated Testing",
+      "when": [
+        "我想为HarmonyOS应用的页面和组件编写单元测试与UI测试 / I want to write unit and UI tests for HarmonyOS app pages and components",
+        "如何测试UIAbility启动后的界面状态和交互流程 / How can I test UI state and interaction flows after a UIAbility starts",
+        "需要给ArkUI声明式组件添加自动化测试用例 / I need to add automated test cases for ArkUI declarative components",
+        "想验证登录页等应用页面的渲染、点击和状态变化是否正确 / I want to verify rendering, taps, and state changes on app pages such as a login screen"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "test-kit"
+      ],
+      "notes": "Ability Kit provides the app entry and lifecycle under test, ArkTS implements the app logic and test code, ArkUI renders the declarative components and state that tests interact with, and Test Kit drives unit, UI, or performance test execution against those Ability and UI surfaces.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 7,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "LoginDemo"
+        ]
+      }
+    },
+    {
+      "id": "media-library",
+      "name": "媒体库资源管理 / Media Library Asset Management",
+      "when": [
+        "需要从系统相册选择图片或视频并读取媒体信息 / Need to pick images or videos from the system album and read media metadata",
+        "需要把编辑后的图片保存回相册 / Need to save edited images back to the photo album",
+        "需要将录制生成的视频写入媒体库并管理相册 / Need to write recorded videos to the media library and manage albums",
+        "需要浏览、查询、创建或删除照片和视频资源 / Need to browse, query, create, or delete photo and video assets"
+      ],
+      "skills": [
+        "media-library-kit"
+      ],
+      "notes": "Media Library Kit provides album, photo, and video asset access and management; the app queries or selects existing media from the library, processes or records content, then creates or updates the resulting media asset back in the library.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 7,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "ImageEdit",
+          "Recorder"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-background-tasks",
+      "name": "后台数据持久化 / Background Data Persistence",
+      "when": [
+        "我想在后台任务中定期保存计步、闹钟或播放状态 / I want to periodically save step counts, alarms, or playback state from a background task",
+        "应用退到后台后仍需执行任务并把结果写入本地数据库 / The app needs to keep running work in the background and write results to local storage",
+        "需要用延迟或短时后台任务同步本地偏好设置和KV数据 / I need delayed or short background tasks to sync local preferences and KV data",
+        "后台采集的数据要持久化，前台页面下次打开时继续读取 / Data collected in the background must be persisted and read again when the UI is reopened"
+      ],
+      "skills": [
+        "arkdata",
+        "background-tasks-kit"
+      ],
+      "notes": "background-tasks-kit schedules or runs short, long, or delayed background work, and arkdata persists the task output as Preferences, KV records, or relational database rows for later foreground use.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 7,
+        "mined_from": [
+          "AlarmClock",
+          "HarmonyOS_NEXT",
+          "Healthy_life",
+          "MultiDeviceMusic",
+          "MusicPlay",
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-notification",
+      "name": "持久化提醒通知 / Persistent Reminder Notifications",
+      "when": [
+        "需要保存闹钟或健康目标，并在到点时发送本地通知 / Save alarms or health goals and send local notifications when due",
+        "想把用户设置存到本地，然后根据设置展示通知、角标或进度通知 / Store user preferences locally and show notifications, badges, or progress notifications based on them",
+        "需要应用重启后仍能恢复待提醒事项并继续通知用户 / Restore pending reminders after app restart and continue notifying the user",
+        "想记录步数、习惯或任务进度，并用通知提醒或展示进度 / Record steps, habits, or task progress and surface reminders or progress through notifications"
+      ],
+      "skills": [
+        "arkdata",
+        "notification-kit"
+      ],
+      "notes": "ArkData persists user preferences, key-value state, or relational records such as alarms, goals, steps, and reminder schedules; Notification Kit consumes that stored state to publish local notifications, badge updates, or progress notifications when the app logic determines an alert or update is needed.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 7,
+        "mined_from": [
+          "AlarmClock",
+          "HarmonyOS_NEXT",
+          "Healthy_life",
+          "StepsCardJS"
+        ]
+      }
+    },
+    {
+      "id": "localization",
+      "name": "应用界面国际化 / Localized App UI",
+      "when": [
+        "我想让应用根据系统语言显示不同文案 / I want the app to show different text based on the system language",
+        "需要在 ArkUI 页面中接入多语言资源 / Need to use multilingual resources in ArkUI pages",
+        "应用启动后按用户区域设置渲染本地化界面 / Render a localized UI after app launch according to the user locale",
+        "给 UIAbility 应用添加国际化和本地化支持 / Add i18n and l10n support to a UIAbility app"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkui",
+        "localization-kit"
+      ],
+      "notes": "Ability Kit provides the app lifecycle entry through AbilityStage/UIAbility, Localization Kit supplies locale-aware resources and formatting, and ArkUI consumes those localized strings or values to render declarative pages and update UI state when locale-related data changes.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 5,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "PedometerApp",
+          "StepsCardJS"
+        ]
+      }
+    },
+    {
+      "id": "form-kit-media",
+      "name": "媒体播放服务卡片 / Media Playback Widget",
+      "when": [
+        "我想做一个桌面音乐播放卡片，可以显示歌曲并控制播放 / I want to build a home-screen music widget that shows the current track and controls playback",
+        "需要在锁屏卡片上展示音频播放状态 / I need to display audio playback status on a lock-screen card",
+        "做一个音乐 App 的服务卡片，点击后打开应用并继续播放 / Build a music app service widget that opens the app and continues playback when tapped",
+        "希望用 ArkTS 卡片展示媒体内容并和播放器联动 / I want an ArkTS widget that presents media content and stays in sync with the player"
+      ],
+      "skills": [
+        "ability-kit",
+        "form-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit provides the application and UIAbility lifecycle entry points, Form Kit renders the desktop or lock-screen service card UI, and Media Kit manages audio/video playback state; playback metadata and controls flow between the Media Kit player and the Form Kit card, while Ability Kit opens or resumes the full app when the card is interacted with.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 5,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "background-tasks-kit-notification",
+      "name": "后台提醒与任务通知 / Background Reminders and Task Notifications",
+      "when": [
+        "我想在后台定时触发闹钟、习惯或健康提醒，并弹出本地通知 / I want to trigger alarms, habits, or health reminders in the background and show local notifications",
+        "应用退到后台后仍需执行延迟任务，完成时通知用户 / I need delayed tasks to run after the app goes to the background and notify the user when finished",
+        "需要用长时或短时后台任务维持处理，并通过通知显示状态或进度 / I need long-running or short background tasks to keep processing and display status or progress through notifications",
+        "想实现后台计划任务，到点后更新角标或发送提醒通知 / I want scheduled background tasks that update badges or send reminder notifications when due"
+      ],
+      "skills": [
+        "background-tasks-kit",
+        "notification-kit"
+      ],
+      "notes": "Background Tasks Kit schedules or runs short, long-running, or delayed work while the app is not foregrounded, then Notification Kit consumes the task result or timing event to publish local notifications, badge updates, or progress notifications to the user.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 5,
+        "mined_from": [
+          "AlarmClock",
+          "HarmonyOS_NEXT",
+          "Healthy_life"
+        ]
+      }
+    },
+    {
+      "id": "distributed-service",
+      "name": "跨设备分布式界面协同 / Cross-Device Distributed UI Collaboration",
+      "when": [
+        "需要在应用界面中发现并连接附近设备 / Need to discover and connect nearby devices from the app UI",
+        "想把当前页面或业务能力拉起到另一台设备上 / Want to launch the current page or capability on another device",
+        "需要做手机、平板等设备间的分布式新闻或内容浏览体验 / Need a distributed news or content browsing experience across phone, tablet, and other devices",
+        "希望通过 UIAbility 连接实现跨设备协同操作 / Want to use UIAbility connection for cross-device collaborative operations"
+      ],
+      "skills": [
+        "arkui",
+        "distributed-service-kit"
+      ],
+      "notes": "ArkUI builds the interactive pages and state-driven controls for selecting devices and triggering actions, while Distributed Service Kit provides device management and cross-device UIAbility connection. The user action starts in ArkUI, selected device or ability parameters are passed to Distributed Service Kit, and connection or launch results are reflected back in the UI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 4,
+        "mined_from": [
+          "DistributeNewsETS",
+          "HarmonyOS_NEXT"
+        ]
+      }
+    },
+    {
+      "id": "arkweb-network",
+      "name": "带预检请求的网页容器 / Web Container with Preflight Networking",
+      "when": [
+        "我想先用 HTTP 检查接口或拿到配置，再加载 Web 页面 / I want to check an API or fetch config via HTTP before loading a Web page",
+        "应用里需要嵌入网页，并把网络请求结果展示到页面或传给 JS / I need to embed a Web page and pass network results to the page or JavaScript",
+        "我要做一个支持 HTTPS 请求验证的 WebView 示例 / I want to build a WebView sample that validates HTTPS requests",
+        "页面加载前需要通过网络获取 URL、Token 或业务数据 / Before loading the page, I need to fetch the URL, token, or business data from the network"
+      ],
+      "skills": [
+        "arkui",
+        "arkweb",
+        "network-kit"
+      ],
+      "notes": "ArkUI builds the declarative screen and hosts the Web component; Network Kit performs HTTP/WebSocket/Socket/DNS requests to fetch or verify remote data, then ArkWeb loads the target page and can exchange the fetched results with JavaScript in the Web content.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 4,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "HmosWorld",
+          "HttpsRequest"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-background-tasks-kit-notification",
+      "name": "持久化提醒与后台通知 / Persistent Reminders with Background Notifications",
+      "when": [
+        "我想保存用户设置的闹钟或健康提醒，并在后台到点通知 / I want to save user-configured alarms or health reminders and notify at the right time in the background",
+        "需要把提醒计划持久化，应用不在前台时也能触发本地通知 / Need to persist reminder schedules and trigger local notifications even when the app is not in the foreground",
+        "如何实现可恢复的定时提醒、延迟任务和通知角标 / How to implement recoverable timed reminders, deferred tasks, and notification badges",
+        "我要用数据库记录任务状态，再由后台任务更新进度通知 / I want to record task state in a database, then update progress notifications from a background task"
+      ],
+      "skills": [
+        "arkdata",
+        "background-tasks-kit",
+        "notification-kit"
+      ],
+      "notes": "ArkData persists reminder/task definitions, user preferences, and execution state; Background Tasks reads that stored data to run short, long, or deferred work at the appropriate time; Notification Kit then publishes local notifications, badge changes, or progress notifications based on the background task result.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 4,
+        "mined_from": [
+          "AlarmClock",
+          "HarmonyOS_NEXT",
+          "Healthy_life"
+        ]
+      }
+    },
+    {
+      "id": "core-file-kit-image-kit-media-library",
+      "name": "相册图片编辑与保存 / Album Image Editing and Save",
+      "when": [
+        "从系统相册选择一张照片，裁剪或处理后保存回相册 / Select a photo from the system album, crop or process it, then save it back to the album",
+        "做一个图片编辑器，能读取相册图片、修改像素或EXIF并导出文件 / Build an image editor that reads album photos, modifies pixels or EXIF, and exports a file",
+        "把用户相册里的照片解码编辑后，保存到应用沙箱用于后续上传 / Decode and edit photos from the user album, then save them to the app sandbox for later upload",
+        "实现照片管理中的编辑功能：选图、处理、生成新图片 / Implement an edit feature in photo management: pick an image, process it, and generate a new image"
+      ],
+      "skills": [
+        "core-file-kit",
+        "image-kit",
+        "media-library-kit"
+      ],
+      "notes": "Media Library Kit provides access to user albums and photo assets, Image Kit decodes the selected image, performs image processing/editing and EXIF handling, and Core File Kit stores the edited result as an app/user file or provides the file data that can be written back through the media library.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 4,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "ImageEdit"
+        ]
+      }
+    },
+    {
+      "id": "location",
+      "name": "定位界面与位置更新 / Location UI with Position Updates",
+      "when": [
+        "我想在应用页面显示用户当前位置并持续更新 / I want to show the user's current location on an app page and keep it updated",
+        "需要在 UIAbility 中申请并使用定位能力，然后把结果展示到 ArkUI 页面 / I need to use location in a UIAbility and display the result in an ArkUI page",
+        "构建一个包含定位、逆地理编码结果展示的 HarmonyOS 页面 / Build a HarmonyOS page that shows location and reverse-geocoding results",
+        "应用启动后进入页面获取 GNSS/定位信息并刷新界面状态 / After app launch, enter a page, obtain GNSS/location data, and refresh UI state"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkui",
+        "location-kit"
+      ],
+      "notes": "Ability Kit provides the application and UIAbility lifecycle entry, Location Kit obtains location/GNSS data or reverse-geocoded address information, and ArkUI consumes that data through component state to render and update the interface.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "sensor-service",
+      "name": "计步传感器界面 / Pedometer Sensor UI",
+      "when": [
+        "我想做一个计步器页面，实时读取运动传感器并更新界面 / I want to build a pedometer screen that reads motion sensors in real time and updates the UI",
+        "需要在 HarmonyOS 应用中展示步数或运动状态，并在达到条件时触发振动 / I need to show step count or motion status in a HarmonyOS app and trigger vibration when conditions are met",
+        "如何把传感器数据接入 ArkUI 组件做实时运动监测 / How can I connect sensor data to ArkUI components for real-time motion monitoring",
+        "我要开发一个基于加速度或陀螺仪的运动检测应用 / I want to develop a motion-detection app based on accelerometer or gyroscope data"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkui",
+        "sensor-service-kit"
+      ],
+      "notes": "Ability Kit starts and manages the application lifecycle, Sensor Service Kit provides accelerometer/gyroscope readings and optional vibration feedback, and ArkUI consumes the sensor state to render and update the declarative UI. The data flow is lifecycle entry -> subscribe to sensor events -> update UI state -> optionally invoke vibration based on sensor-derived conditions.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "ime",
+      "name": "自定义文本输入与键盘接入 / Custom Text Input and Keyboard Integration",
+      "when": [
+        "我想在应用里接入系统输入法并处理文本输入 / I want to integrate the system IME in my app and handle text input",
+        "需要为登录页、表单或搜索框提供键盘输入能力 / I need keyboard input for a login page, form, or search box",
+        "如何管理输入框焦点、弹出键盘和接收用户输入 / How can I manage text-field focus, show the keyboard, and receive user input",
+        "我要实现与 HarmonyOS 输入法框架兼容的文本输入体验 / I want to implement a text input experience compatible with the HarmonyOS IME framework"
+      ],
+      "skills": [
+        "ime-kit"
+      ],
+      "notes": "ime-kit provides the IME framework connection for text fields, enabling the app to request keyboard display, receive composed/committed text, and manage input interaction between focused UI controls and the system keyboard.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "LoginDemo"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-image",
+      "name": "图片数据持久化展示 / Persistent Image Data Display",
+      "when": [
+        "我想把应用里的图片记录、标题和设置保存下来，并在页面中恢复显示 / I want to save image records, titles, and settings in the app and restore them in the UI",
+        "需要对图片做解码或读取EXIF后，把结果写入本地数据库或KV存储 / I need to decode images or read EXIF and then write the results to a local database or KV store",
+        "做一个带缩略图或封面图的列表，图片信息要可持久化并随应用启动加载 / Build a list with thumbnails or cover images whose image information is persisted and loaded on app startup",
+        "希望在ArkUI页面中展示经过处理的图片，同时保存处理状态和用户偏好 / I want to show processed images in ArkUI pages while saving processing state and user preferences"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "image-kit"
+      ],
+      "notes": "Ability Kit starts the UIAbility lifecycle, ArkUI renders the image list/detail UI and state, Image Kit decodes/edits images and extracts EXIF or pixel information, ArkTS coordinates the async data models, and ArkData persists image paths, metadata, preferences, or relational records that are loaded back into the UI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "HmosWorld",
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-media",
+      "name": "媒体播放/录制历史与偏好管理 / Media Playback/Recording History and Preferences",
+      "when": [
+        "我想做一个音乐播放器，并保存播放列表、播放进度和用户偏好 / I want to build a music player that saves playlists, playback position, and user preferences",
+        "我需要录音或录屏功能，并把录制文件的元数据保存起来供列表展示 / I need audio or screen recording and want to persist recording metadata for list display",
+        "如何在 HarmonyOS 应用中播放音视频，同时用本地数据库管理媒体记录 / How can I play audio/video in a HarmonyOS app while managing media records in a local database",
+        "我要开发一个带最近播放、收藏和设置记忆的媒体应用 / I want to develop a media app with recent plays, favorites, and remembered settings"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "media-kit"
+      ],
+      "notes": "Ability Kit starts the app lifecycle, ArkUI presents playback/recording controls and media lists, ArkTS implements the interaction logic, Media Kit produces or consumes media playback/recording state and file information, and ArkData persists preferences, KV data, or relational records such as playlists, progress, favorites, and recording metadata.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay",
+          "Recorder"
+        ]
+      }
+    },
+    {
+      "id": "background-tasks-kit-form",
+      "name": "后台刷新服务卡片 / Background-Refreshed Service Widget",
+      "when": [
+        "我想让桌面或锁屏卡片在应用退到后台后仍能定时更新数据 / I want a home-screen or lock-screen widget to keep updating data after the app goes to background",
+        "需要用后台任务刷新服务卡片上的健康、音乐或状态信息 / Need background tasks to refresh health, music, or status information shown on a service widget",
+        "应用不打开时也要维护卡片内容，例如播放状态、步数或提醒 / Maintain widget content such as playback state, steps, or reminders even when the app is not opened",
+        "实现一个 ArkTS 服务卡片，并通过短时、长时或延迟后台任务推送最新内容 / Build an ArkTS service widget and push fresh content through short, long, or deferred background tasks"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "form-kit"
+      ],
+      "notes": "Ability Kit provides the application and UIAbility/Form lifecycle entry points, ArkTS implements the data and task logic, ArkUI renders the in-app and card UI, Background Tasks Kit runs scheduled or permitted work while the app is backgrounded, and Form Kit consumes the refreshed data to update desktop or lock-screen service cards.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "Healthy_life",
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "form-kit-image",
+      "name": "图片服务卡片 / Image-Driven Service Widget",
+      "when": [
+        "我想做一个桌面服务卡片，显示经过解码或裁剪的图片 / I want to build a home-screen service widget that displays decoded or cropped images",
+        "需要在锁屏卡片或桌面卡片中展示专辑封面、头像、海报等图片内容 / I need to show album art, avatars, posters, or similar images in a lock-screen or home-screen widget",
+        "如何用 ArkTS 创建带图片处理能力的服务卡片 / How can I create an ArkTS service widget with image processing support",
+        "想让应用能力提供卡片入口，并在卡片 UI 中渲染处理后的图片 / I want the app ability to provide a widget entry and render processed images in the widget UI"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "form-kit",
+        "image-kit"
+      ],
+      "notes": "Ability Kit defines the app and widget lifecycle entry, ArkTS implements the card logic, Image Kit decodes or transforms the source image data, and ArkUI renders the resulting pixels or image resource inside the Form Kit service card. Form Kit packages the ArkTS/ArkUI view as a desktop or lock-screen widget that consumes the image output prepared by Image Kit.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "HmosWorld",
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "localization-kit-location",
+      "name": "本地化位置展示 / Localized Location Display",
+      "when": [
+        "我想获取用户当前位置并按用户语言显示地址 / I want to get the user's current location and display the address in the user's language",
+        "需要在应用中做定位并支持多语言界面 / Need location features in the app with a multilingual UI",
+        "根据用户所在位置显示本地化的地点信息 / Show localized place information based on the user's location",
+        "做一个运动或出行应用，定位结果要适配不同地区语言 / Build a fitness or travel app where location results adapt to different regional languages"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkui",
+        "localization-kit",
+        "location-kit"
+      ],
+      "notes": "Ability Kit initializes the app entry and lifecycle, Location Kit obtains coordinates or reverse-geocoded location data, Localization Kit formats text/resources according to the user's locale, and ArkUI renders the localized location information in the interface.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "localization-kit-sensor-service",
+      "name": "本地化计步器 / Localized Pedometer",
+      "when": [
+        "我想做一个根据系统语言显示步数和运动文案的计步应用 / I want to build a pedometer app that displays step counts and activity text in the system language",
+        "需要读取传感器步行动作并用多语言界面展示结果 / Need to read walking motion from sensors and show the results in a multilingual UI",
+        "开发一个支持国际化的运动计步页面 / Develop an internationalized fitness step-counting page",
+        "想在 HarmonyOS 应用中结合传感器数据和本地化资源 / I want to combine sensor data with localized resources in a HarmonyOS app"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkui",
+        "localization-kit",
+        "sensor-service-kit"
+      ],
+      "notes": "ability-kit starts the UIAbility lifecycle, sensor-service-kit provides motion sensor data for step detection or activity updates, localization-kit formats user-facing strings and locale-specific text, and arkui renders the localized step-count UI and reacts to state changes. The data flows from sensors into app state, then through localized presentation resources into ArkUI components.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "location-kit-sensor-service",
+      "name": "定位计步与运动轨迹 / Location-Aware Step Tracking",
+      "when": [
+        "我想做一个计步器，同时记录用户当前位置或运动路线 / I want to build a pedometer that also records the user’s current location or walking route",
+        "需要在步行、跑步场景中结合传感器步数和定位信息 / I need to combine sensor-based step data with location information for walking or running scenarios",
+        "如何开发一个显示步数、距离和位置状态的运动应用 / How can I develop a fitness app that shows steps, distance, and location status",
+        "想根据用户移动和地理位置更新运动数据界面 / I want to update a fitness UI based on user movement and geographic position"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkui",
+        "location-kit",
+        "sensor-service-kit"
+      ],
+      "notes": "Ability Kit hosts the app lifecycle, ArkUI renders the step/location dashboard, Sensor Service Kit provides motion signals such as accelerometer or step-related sensor data, and Location Kit provides GNSS/location updates that can be combined with sensor data to display walking progress, distance, and position-aware activity status.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-localization",
+      "name": "本地化偏好与数据持久化 / Localized Preferences and Data Persistence",
+      "when": [
+        "我想保存用户设置，并根据系统语言显示对应文案 / I want to save user settings and display text according to the system language",
+        "需要在应用中持久化步数或配置，同时支持多语言界面 / Need to persist steps or configuration in the app while supporting a multilingual UI",
+        "如何把用户偏好存到本地，并在不同地区显示本地化内容 / How to store user preferences locally and show localized content for different regions",
+        "我要做一个卡片或应用，既能保存本地数据，又能按语言环境展示内容 / I want to build a card or app that stores local data and presents content based on locale"
+      ],
+      "skills": [
+        "arkdata",
+        "localization-kit"
+      ],
+      "notes": "ArkData persists user preferences, key-value data, or structured records locally, and Localization Kit reads the current locale and localized resources so the saved data or settings can be presented with language- and region-appropriate labels and formats.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "PedometerApp",
+          "StepsCardJS"
+        ]
+      }
+    },
+    {
+      "id": "image-kit-media",
+      "name": "带封面处理的媒体播放 / Media Playback with Cover Image Processing",
+      "when": [
+        "我想做一个音乐播放器，播放音频时显示并处理专辑封面 / I want to build a music player that plays audio while displaying and processing album artwork",
+        "我需要一个视频播放器页面，能够加载视频并展示缩略图或封面图 / I need a video player page that loads video and shows thumbnails or cover images",
+        "我想在媒体播放应用中解码、裁剪或适配封面图片再显示到播放界面 / I want to decode, crop, or fit cover images before showing them in a media playback UI",
+        "我需要用 ArkUI 做音视频播放界面，并配合图片编解码处理封面资源 / I need to build an audio/video playback UI with ArkUI and process cover assets through image decoding"
+      ],
+      "skills": [
+        "arkts",
+        "arkui",
+        "image-kit",
+        "media-kit"
+      ],
+      "notes": "ArkTS implements the playback and image-processing logic, ArkUI renders the player controls and cover/thumbnail UI, Image Kit decodes or edits cover images and metadata images, and Media Kit provides audio/video playback whose media state and assets drive the displayed image content.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay",
+          "VideoPlayer"
+        ]
+      }
+    },
+    {
+      "id": "basic-services-kit-core-file",
+      "name": "文件传输与本地归档 / File Transfer and Local Archiving",
+      "when": [
+        "我想把用户选择的文件压缩后上传，并在本地保存记录 / I want to compress user-selected files, upload them, and keep local records",
+        "需要下载服务端文件，保存到应用或用户文件目录，并支持后续管理 / Need to download server files, save them to app or user file storage, and manage them later",
+        "实现新闻稿附件的本地存储、压缩打包和上传发布 / Implement local storage, zip packaging, and upload for news-release attachments",
+        "需要在应用内管理文件，并通过复制路径或内容辅助分享和传输 / Need to manage files in-app and use copied paths or content to assist sharing and transfer"
+      ],
+      "skills": [
+        "basic-services-kit",
+        "core-file-kit"
+      ],
+      "notes": "Core File Kit manages app/user files and provides the local file locations or file handles, then Basic Services Kit compresses selected files or transfers them through upload/download and can use clipboard capabilities for copying related file text or paths.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "NewsRelease"
+        ]
+      }
+    },
+    {
+      "id": "form-kit-notification",
+      "name": "卡片联动通知 / Card-Driven Notifications",
+      "when": [
+        "我想在服务卡片上展示健康或任务状态，并在状态变化时发送本地通知 / I want to show health or task status on a service widget and send local notifications when it changes",
+        "需要桌面或锁屏卡片展示实时摘要，同时用通知提醒用户继续操作 / Need a home-screen or lock-screen card to show a live summary while notifications remind users to continue",
+        "如何让 ArkTS 卡片和通知角标一起提示未完成事项 / How can an ArkTS card and notification badge indicate unfinished items together",
+        "想做一个计步或习惯类卡片，并用进度条通知展示目标完成进度 / I want to build a step-count or habit card and use a progress notification to show goal completion"
+      ],
+      "skills": [
+        "form-kit",
+        "notification-kit"
+      ],
+      "notes": "Form Kit provides the service, home-screen, lock-screen, or ArkTS card UI for persistent glanceable status, and Notification Kit sends local notifications, badges, or progress notifications based on the same status updates surfaced by the card.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "Healthy_life",
+          "StepsCardJS"
+        ]
+      }
+    },
+    {
+      "id": "ime-kit-test",
+      "name": "输入法交互测试 / IME Interaction Testing",
+      "when": [
+        "我想测试自定义输入框在键盘弹出、收起和输入文本时的行为 / I want to test how custom input fields behave when the keyboard opens, closes, and enters text",
+        "需要为登录页的账号密码输入和软键盘交互编写 UI 自动化测试 / I need UI automation tests for account/password input and soft-keyboard interaction on a login page",
+        "我要验证文本输入组件在不同输入法状态下是否正确响应 / I want to verify that text input components respond correctly under different IME states",
+        "希望测试输入法触发的文本变更、焦点切换和提交动作 / I want to test text changes, focus switching, and submit actions triggered by the IME"
+      ],
+      "skills": [
+        "ime-kit",
+        "test-kit"
+      ],
+      "notes": "ime-kit provides IME and keyboard-driven text input events for fields, while test-kit drives unit or UI test cases that focus inputs, simulate/observe keyboard interaction, and assert the resulting text, focus, or submit state.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "LoginDemo"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-background-tasks-kit-form",
+      "name": "后台数据同步服务卡片 / Background-Synced Service Widget",
+      "when": [
+        "我想做一个桌面卡片，能在后台定时更新并展示本地数据 / I want a home-screen widget that updates in the background and displays local data",
+        "需要健康、音乐或任务类卡片在应用不打开时刷新状态 / I need a health, music, or task widget to refresh status when the app is not opened",
+        "如何把后台任务获取或计算的数据保存后同步到服务卡片 / How can I save data fetched or computed by a background task and sync it to a service widget",
+        "想用本地数据库或 Preferences 驱动 ArkTS 服务卡片内容 / I want to drive ArkTS service widget content from a local database or Preferences"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "form-kit"
+      ],
+      "notes": "Ability Kit hosts the app lifecycle, ArkTS implements the logic, ArkData persists widget state or records, Background Tasks Kit refreshes or prepares that data while the app is not foregrounded, and Form Kit consumes the stored data to render and update the service card UI built with ArkUI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "Healthy_life",
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-form-kit-image",
+      "name": "数据驱动的图片服务卡片 / Data-driven Image Service Card",
+      "when": [
+        "我想做一个桌面服务卡片，展示应用内保存的图片、封面或状态数据 / I want to build a home-screen service card that shows saved images, covers, or app status data",
+        "需要把数据库或Preferences里的内容同步到卡片，并显示处理后的缩略图 / I need to sync database or Preferences data to a card and display processed thumbnails",
+        "我要为音乐、相册或资讯类应用做带封面图的桌面/锁屏卡片 / I want to create a home-screen or lock-screen card with cover images for a music, gallery, or news app",
+        "应用主界面更新数据后，服务卡片也要刷新图片和文字 / When the main app updates data, the service card should refresh its image and text",
+        "如何用ArkUI和Form Kit实现一个可持久化、可更新的图片卡片 / How can I implement a persistent, refreshable image card with ArkUI and Form Kit"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "form-kit",
+        "image-kit"
+      ],
+      "notes": "Ability Kit hosts the application lifecycle, ArkTS implements the data/update logic, ArkData persists card content such as titles, IDs, image paths or preferences, Image Kit decodes or prepares images into displayable assets, Form Kit renders and updates the desktop or lock-screen card, and ArkUI builds the app/card UI that consumes the stored data and processed images.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "HmosWorld",
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "localization-kit-location-kit-sensor-service",
+      "name": "本地化定位计步 / Localized Location-Aware Pedometer",
+      "when": [
+        "我想做一个能根据当前位置和系统语言显示步数的计步应用 / I want to build a pedometer app that shows step counts according to the current location and system language",
+        "需要用传感器统计步数，并把界面文案、单位和地区信息本地化 / I need to count steps with sensors and localize UI text, units, and regional information",
+        "做一个运动健康页面：获取位置、读取运动传感器数据，并支持多语言显示 / Build a fitness page that gets location, reads motion sensor data, and supports multilingual display",
+        "我需要在 HarmonyOS 中实现带定位上下文的本地化运动统计界面 / I need a localized activity-statistics UI with location context on HarmonyOS"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkui",
+        "localization-kit",
+        "location-kit",
+        "sensor-service-kit"
+      ],
+      "notes": "Ability Kit provides the app lifecycle entry, Sensor Service Kit produces motion data for step/activity counting, Location Kit supplies current geographic context, Localization Kit formats text/locale-sensitive display, and ArkUI renders the localized pedometer interface from those state updates.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "HarmonyOS_NEXT",
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-form-kit-notification",
+      "name": "持久化健康卡片与提醒 / Persistent Health Cards with Reminders",
+      "when": [
+        "我想把步数、喝水或打卡数据保存下来，并同步展示在桌面卡片上 / I want to persist steps, hydration, or check-in data and show it on a home-screen card",
+        "需要一个健康生活服务卡片，能读取本地数据并在目标完成时通知用户 / I need a healthy-life service widget that reads local data and notifies users when goals are reached",
+        "如何做一个带本地存储、桌面卡片展示和提醒通知的习惯追踪功能 / How can I build a habit tracker with local storage, widget display, and reminder notifications",
+        "我要在卡片上展示今日运动进度，并通过本地通知提醒用户继续完成目标 / I want to display today’s activity progress on a card and use local notifications to remind users to continue",
+        "需要把应用里的健康数据持久化，并让服务卡片和角标通知都能使用这些数据 / I need to persist health data so both service cards and badge notifications can use it"
+      ],
+      "skills": [
+        "arkdata",
+        "form-kit",
+        "notification-kit"
+      ],
+      "notes": "ArkData persists user health or habit records in Preferences, KV storage, or a relational database; Form Kit reads that persisted state to render a home-screen/lock-screen ArkTS card, and Notification Kit uses the same stored progress or goal state to send local reminders, progress notifications, or badge updates.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 3,
+        "mined_from": [
+          "Healthy_life",
+          "StepsCardJS"
+        ]
+      }
+    },
+    {
+      "id": "ipc",
+      "name": "跨进程音乐播放控制 / Cross-Process Music Playback Control",
+      "when": [
+        "我想做一个ArkUI界面，通过IPC控制另一个进程里的播放能力 / I want an ArkUI screen that controls playback running in another process via IPC",
+        "应用前台UI需要绑定服务并发送播放、暂停等RPC指令 / The foreground UI needs to bind to a service and send play/pause RPC commands",
+        "如何在UIAbility中管理跨进程连接并把播放状态显示到页面上 / How to manage an inter-process connection in a UIAbility and show playback state on the page",
+        "需要把音乐控制界面和播放逻辑拆到不同进程通信 / I need to split the music control UI and playback logic into different processes that communicate"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkui",
+        "ipc-kit"
+      ],
+      "notes": "Ability Kit provides the application and UIAbility lifecycle that creates the ArkUI page and manages the IPC connection; ArkUI renders controls and playback state, then user actions flow through IPC Kit as RPC/IPC requests to the other process, with returned state updating the UI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "contacts",
+      "name": "联系人选择与通讯录管理 / Contact Selection and Address Book Management",
+      "when": [
+        "需要从系统通讯录中选择一个联系人 / Need to select a contact from the system address book",
+        "想在应用里打开联系人选择器获取手机号 / Want to open a contact picker in the app to get a phone number",
+        "需要读取或管理用户联系人信息 / Need to read or manage user contact information",
+        "想实现联系人新增、删除、修改或查询功能 / Want to implement contact create, delete, update, or query features"
+      ],
+      "skills": [
+        "contacts-kit"
+      ],
+      "notes": "contacts-kit provides access to the system contacts database and contact picker, producing selected or queried contact data that the app can display, use for communication flows, or manage through CRUD operations.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "SelectContact"
+        ]
+      }
+    },
+    {
+      "id": "arkweb-form",
+      "name": "服务卡片打开网页 / Service Card to Web Page",
+      "when": [
+        "我想做一个桌面服务卡片，点击后打开应用内网页 / I want a home-screen service card that opens an in-app web page when tapped",
+        "需要在卡片上展示入口或摘要，并跳转到 WebView 页面 / Need a card showing an entry or summary and navigating to a WebView page",
+        "如何用 ArkTS 卡片作为轻量入口，进入 UIAbility 加载 H5 内容 / How to use an ArkTS form as a lightweight entry into a UIAbility that loads H5 content",
+        "我要把网页功能包装成 HarmonyOS 桌面/锁屏卡片入口 / I want to wrap a web feature with a HarmonyOS home-screen or lock-screen card entry"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "arkweb",
+        "form-kit"
+      ],
+      "notes": "Form Kit provides the desktop or lock-screen ArkTS card, Ability Kit manages the app and UIAbility lifecycle when the card is opened, ArkUI and ArkTS build the card/page UI and state handling, and ArkWeb loads the target web content and handles JavaScript interaction after navigation from the card.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "background-tasks-kit-image",
+      "name": "后台封面图处理 / Background Artwork Processing",
+      "when": [
+        "我想在应用退到后台后继续处理专辑封面或图片缩略图 / I want to keep processing album art or image thumbnails after the app goes to the background",
+        "需要为音乐类页面解码封面图并在后台任务中保持更新 / Need to decode cover images for a music-style page and keep them updated through a background task",
+        "如何在后台长时任务期间处理并展示图片资源 / How to process and display image assets during a long-running background task",
+        "想做一个后台运行的媒体信息页面，包含封面图解码和UI状态刷新 / I want a background-capable media info page with cover decoding and UI state updates"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "image-kit"
+      ],
+      "notes": "Ability Kit starts the app ability lifecycle, ArkTS implements the task and data logic, Background Tasks Kit keeps the relevant work running when the app is backgrounded, Image Kit decodes or edits the image assets, and ArkUI consumes the processed image/state to render the foreground UI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "background-tasks-kit-media",
+      "name": "后台音乐播放 / Background Music Playback",
+      "when": [
+        "我想让音乐在应用退到后台后继续播放 / I want music to keep playing after the app moves to the background",
+        "需要实现带播放界面的音频播放器，并支持后台长时播放 / Need to build an audio player UI with long-running background playback",
+        "做一个音乐播放应用，切到后台也不中断音频 / Build a music app where audio does not stop when switched to background",
+        "如何在HarmonyOS中结合媒体播放和后台任务管理 / How to combine media playback with background task management in HarmonyOS"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit hosts the app lifecycle entry points, ArkUI builds the playback controls and state-driven UI, ArkTS implements the playback and task logic, Media Kit plays the audio stream, and Background Tasks Kit keeps the media playback task active when the app enters the background.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "core-file-kit-network",
+      "name": "网络文件下载与本地缓存 / Network File Download and Local Cache",
+      "when": [
+        "我想从服务器下载新闻、图片或资源文件并保存到应用沙箱中 / I want to download news, images, or resource files from a server and save them in the app sandbox",
+        "需要做一个带进度和结果展示的文件下载页面 / I need a file download page with progress and result display",
+        "应用启动后请求远端内容，缓存到本地文件，下次离线读取 / Fetch remote content on app launch, cache it locally, and read it offline next time",
+        "我要上传或下载文件，并在 ArkUI 页面中展示状态 / I want to upload or download files and show the status in an ArkUI page"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "core-file-kit",
+        "network-kit"
+      ],
+      "notes": "Ability Kit provides the app entry and lifecycle, ArkUI renders the download/upload controls and file status, ArkTS coordinates asynchronous tasks and state, Network Kit transfers remote data over HTTP/WebSocket/Socket, and Core File Kit writes the received data to app or user files and reads cached files back for display.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "HmosWorld",
+          "NewsRelease"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-media-library",
+      "name": "媒体库记录管理 / Media Library Record Management",
+      "when": [
+        "我想做一个相册/视频列表页面，并把用户的筛选、排序或收藏状态保存起来 / I want to build a photo or video list page and persist the user's filters, sorting, or favorites",
+        "需要从系统媒体库读取图片或视频，并用本地数据库保存应用侧的媒体备注或标签 / Need to read photos or videos from the system media library and store app-side notes or tags locally",
+        "我要管理录制后进入媒体库的文件，同时记住上次打开的相册和 UI 状态 / I need to manage files that appear in the media library after recording and remember the last opened album and UI state",
+        "想做一个媒体资源管理界面，媒体来自相册，本地保存元数据和用户偏好 / I want a media asset management UI where assets come from albums and metadata/preferences are stored locally"
+      ],
+      "skills": [
+        "arkdata",
+        "arkui",
+        "media-library-kit"
+      ],
+      "notes": "ArkUI builds the media management interface and binds UI state, Media Library Kit supplies albums/photos/videos and their asset identifiers, and ArkData persists user preferences, KV state, or relational metadata keyed by those media asset identifiers.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "Recorder"
+        ]
+      }
+    },
+    {
+      "id": "arkweb-image",
+      "name": "网页图片处理与展示 / Web Image Processing and Display",
+      "when": [
+        "我想在应用里加载网页，并对网页相关图片进行解码、编辑或读取EXIF后再展示 / I want to load a web page in my app and decode, edit, or read EXIF from related images before displaying them",
+        "需要一个Web组件承载H5内容，同时用原生能力处理图片数据 / I need a Web component for H5 content while using native capabilities to process image data",
+        "想实现网页与应用交互，让网页触发图片处理并返回结果显示 / I want web-to-app interaction where the page triggers image processing and receives the result for display",
+        "需要在ArkUI页面中嵌入网页，并结合图片编解码能力展示处理后的图片 / I need to embed a web page in an ArkUI screen and use image encoding/decoding to show processed images"
+      ],
+      "skills": [
+        "arkui",
+        "arkweb",
+        "image-kit"
+      ],
+      "notes": "ArkUI builds the host page and state-driven layout, ArkWeb loads the web content and handles JavaScript interaction, and Image Kit decodes, edits, or reads metadata from image data requested by the web layer; processed image results can then be passed back to the Web component or rendered in the ArkUI UI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkweb-contacts",
+      "name": "网页选择联系人 / Web Contact Selection",
+      "when": [
+        "在网页表单中调用系统联系人选择器并回填联系人信息 / Call the system contact picker from a web form and fill the selected contact back into the page",
+        "让 Web 页面通过 JS 交互选择通讯录联系人 / Let a Web page select an address-book contact through JavaScript interaction",
+        "在 Web 组件里加载页面，并允许页面请求选择联系人 / Load a page in a Web component and allow it to request contact selection",
+        "把原生通讯录选择结果传回 H5 页面 / Pass native contact-selection results back to an H5 page"
+      ],
+      "skills": [
+        "arkweb",
+        "contacts-kit"
+      ],
+      "notes": "ArkWeb loads the web page and provides the JavaScript bridge; Contacts Kit opens the system contact picker and returns the selected contact data, which the native side sends back into the Web page for display or form submission.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "SelectContact"
+        ]
+      }
+    },
+    {
+      "id": "form-kit-localization",
+      "name": "本地化服务卡片 / Localized Service Widget",
+      "when": [
+        "我想做一个支持多语言的桌面服务卡片 / I want to build a home-screen service widget that supports multiple languages",
+        "需要让锁屏卡片根据系统语言显示不同文案 / I need a lock-screen widget to show text based on the system language",
+        "开发 ArkTS 卡片并接入国际化资源 / Build an ArkTS Form and connect it to i18n resources",
+        "服务卡片的标题、按钮和状态文案要本地化 / Localize the title, buttons, and status text in a service widget"
+      ],
+      "skills": [
+        "form-kit",
+        "localization-kit"
+      ],
+      "notes": "Form Kit provides the ArkTS service-card surface for home-screen or lock-screen display, while Localization Kit supplies locale-aware strings and formatting that the card reads before rendering its UI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "StepsCardJS"
+        ]
+      }
+    },
+    {
+      "id": "localization-kit-notification",
+      "name": "本地化通知 / Localized Notifications",
+      "when": [
+        "需要根据用户语言显示通知标题和内容 / Show notification titles and content according to the user's language",
+        "应用内提醒要支持多语言和本地格式 / Make in-app reminders support multiple languages and local formats",
+        "发送本地通知时使用国际化文案 / Use internationalized text when sending local notifications",
+        "通知里的时间、数字或提示语需要本地化 / Localize time, numbers, or messages inside notifications"
+      ],
+      "skills": [
+        "localization-kit",
+        "notification-kit"
+      ],
+      "notes": "Localization Kit resolves the appropriate language strings and locale-aware formatting first, then Notification Kit consumes that localized text to publish local notifications, badges, or progress notifications to the user.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "StepsCardJS"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-background-tasks-kit-image",
+      "name": "后台媒体封面与状态持久化 / Background Media Artwork and State Persistence",
+      "when": [
+        "我想做一个音乐类页面，保存播放列表和用户偏好，并在后台继续维护播放状态 / I want to build a music-style page that saves playlists and user preferences while maintaining playback state in the background",
+        "需要在后台任务中保持媒体会话，同时把歌曲信息和封面缓存到本地 / I need to keep a media session alive with a background task while caching track metadata and artwork locally",
+        "如何实现应用重启后恢复上次的媒体列表、进度和封面显示 / How can I restore the last media list, progress, and cover images after the app restarts",
+        "想把图片封面解码处理后显示在ArkUI界面，并把相关状态持久化 / I want to decode and process cover images for an ArkUI screen and persist the related state"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "image-kit"
+      ],
+      "notes": "Ability Kit starts the UIAbility lifecycle, ArkUI renders the media list/player UI, ArkTS coordinates async state, ArkData stores preferences/KV or relational metadata, Image Kit decodes and prepares artwork consumed by the UI, and Background Tasks Kit keeps the media-related work running long enough to update and persist state when the app moves to the background.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-background-tasks-kit-media",
+      "name": "后台音乐播放与播放状态持久化 / Background Music Playback with Persistent State",
+      "when": [
+        "我想做一个音乐播放器，支持切到后台后继续播放，并记住上次播放的歌曲和进度 / I want to build a music player that keeps playing in the background and remembers the last track and position",
+        "需要实现播放列表、播放偏好保存，以及后台长时播放任务 / Need playlist and playback preference persistence plus a long-running background playback task",
+        "应用退出或重新打开后恢复音乐播放状态，并在后台维持音频播放 / Restore music playback state after app restart and keep audio playing in the background",
+        "做一个多页面音频播放应用，UI 控制播放，数据本地保存，后台不中断 / Build a multi-page audio app where the UI controls playback, data is stored locally, and background playback is uninterrupted"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit hosts the UIAbility lifecycle, ArkUI renders playback controls, ArkTS implements the state and async logic, ArkData persists playlists/preferences/playback position, Media Kit consumes the selected media source to play audio, and Background Tasks Kit keeps the playback task alive when the app moves to the background.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-form-kit-media",
+      "name": "音乐播放卡片 / Music Playback Widget",
+      "when": [
+        "我要做一个带桌面服务卡片的音乐播放器 / I want to build a music player with a home-screen service widget",
+        "需要在卡片上显示当前歌曲并控制播放暂停 / Need to show the current song on a widget and control play or pause",
+        "实现音乐播放状态持久化，应用和卡片都能读取 / Persist music playback state so both the app and widget can read it",
+        "做一个支持锁屏或桌面卡片的音频播放示例 / Build an audio playback sample with lock-screen or home-screen cards"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "form-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit hosts the app lifecycle, ArkUI builds the player UI, Media Kit performs audio playback and exposes playback state, ArkData persists preferences or music/playback records consumed by both the app and Form Kit card, while ArkTS coordinates the business logic and data flow between playback, storage, UI, and widget updates.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-image-kit-media",
+      "name": "本地音乐播放与封面管理 / Local Music Playback with Cover Art",
+      "when": [
+        "我想做一个本地音乐播放器，能保存播放列表并显示专辑封面 / I want to build a local music player that saves playlists and shows album cover art",
+        "需要实现音乐播放、播放状态记忆和封面图片解码显示 / Need music playback, playback-state persistence, and decoded cover image display",
+        "开发多设备音乐应用，管理歌曲数据并播放音频 / Build a multi-device music app that manages song data and plays audio",
+        "想把媒体播放、偏好设置和图片封面处理组合成一个音乐页面 / I want to combine media playback, preferences, and cover-image processing into a music screen"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "image-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit starts the app ability lifecycle, ArkTS implements the playback and data logic, ArkData stores playlists/preferences/recent playback metadata, Image Kit decodes or processes album-cover images for display, Media Kit consumes the selected media source to play audio, and ArkUI binds the stored state, cover image, and playback controls into the user interface.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "background-tasks-kit-form-kit-image",
+      "name": "后台封面服务卡片 / Background Artwork Service Card",
+      "when": [
+        "我想做一个音乐/媒体类桌面卡片，在应用退到后台后仍能更新封面和状态 / I want a music or media home-screen card that can keep updating artwork and status after the app goes to background",
+        "需要用后台任务刷新服务卡片，并对封面图片做解码、缩放或处理 / I need to refresh a Form card from background tasks and decode, resize, or process cover images",
+        "希望应用有 ArkUI 页面，同时提供桌面/锁屏卡片展示当前内容封面 / I want an ArkUI app UI plus a home-screen or lock-screen card showing the current content artwork",
+        "要实现一个后台维护数据、图片处理后同步到服务卡片的功能 / I need a feature where background-maintained data and processed images are synchronized to a service widget"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "form-kit",
+        "image-kit"
+      ],
+      "notes": "Ability Kit starts the app lifecycle, ArkTS implements the shared state and task logic, ArkUI renders the in-app UI and card components, Background Tasks keeps or schedules work while not foreground, Image Kit decodes/processes artwork, and Form Kit consumes the processed image plus state to publish and update the home-screen or lock-screen card.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "background-tasks-kit-form-kit-media",
+      "name": "后台音乐播放卡片 / Background Music Playback Widget",
+      "when": [
+        "我想做一个桌面或锁屏音乐卡片，并且音乐切到后台后还能继续播放 / I want to build a home-screen or lock-screen music widget that keeps playing after the app goes to background",
+        "需要在服务卡片上显示歌曲信息和播放控制，同时使用后台长时任务保持音频播放 / I need a Form widget showing track info and playback controls while using a background long-running task for audio playback",
+        "如何实现音乐播放器的 UIAbility、ArkUI 页面、服务卡片和后台播放联动 / How can I connect a music player UIAbility, ArkUI pages, Form widget, and background playback",
+        "我要做类似音乐 App 的多入口播放体验：应用内播放、桌面卡片控制、后台不中断 / I want a music-app-like experience with in-app playback, widget controls, and uninterrupted background audio"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "form-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit starts the application entry and lifecycle, ArkTS implements the shared playback/control logic, ArkUI renders the in-app player UI, Media Kit performs audio playback and exposes playback state, Background Tasks Kit keeps playback running when the app leaves foreground, and Form Kit presents a desktop or lock-screen card that consumes the same playback state and sends control actions back to the app.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "background-tasks-kit-image-kit-media",
+      "name": "后台音乐播放与封面展示 / Background Music Playback with Cover Art",
+      "when": [
+        "我想做一个音乐播放器，退到后台后还能继续播放，并显示歌曲封面 / I want to build a music player that keeps playing in the background and shows album cover art",
+        "需要实现音频播放、播放控制界面、专辑图片解码和后台长时任务 / Need audio playback, playback controls UI, album image decoding, and a background long-running task",
+        "如何开发一个支持后台播放的音乐 App，并在界面中展示封面图片 / How to develop a music app that supports background playback and displays cover images",
+        "想在 HarmonyOS 中实现播放列表、歌曲封面和后台持续播放 / I want to implement playlists, song covers, and continuous background playback on HarmonyOS"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "image-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit provides the application and UIAbility lifecycle, ArkTS implements playback state and data logic, ArkUI renders the player controls and cover UI, Image Kit decodes or processes album artwork for display, Media Kit plays the audio stream, and Background Tasks Kit keeps playback running when the app moves to the background.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "form-kit-image-kit-media",
+      "name": "媒体播放服务卡片 / Media Playback Widget",
+      "when": [
+        "想做一个桌面音乐播放卡片，显示封面并控制播放 / Build a home-screen music widget that shows cover art and controls playback",
+        "需要在服务卡片里展示歌曲图片并启动音频播放页面 / Show song artwork in a Form and open an audio playback page",
+        "开发锁屏或桌面媒体控制卡片，支持播放状态同步 / Create a lock-screen or home-screen media control widget with playback state updates",
+        "把音乐播放器的专辑封面处理后显示到 ArkTS 卡片中 / Process album artwork and render it in an ArkTS Form for a music player"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "form-kit",
+        "image-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit hosts the app lifecycle and entry ability, ArkTS implements the typed logic, ArkUI renders the in-app playback UI, Form Kit exposes the media controls and status as a service card, Image Kit decodes or processes album artwork for display, and Media Kit provides the audio/video playback state and control actions consumed by the UI and Form.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-form-kit-localization",
+      "name": "本地化数据卡片 / Localized Data Widget",
+      "when": [
+        "我想把用户的偏好或本地数据展示在桌面服务卡片上，并支持多语言 / I want to show user preferences or local data on a home-screen service widget with multilingual support",
+        "需要一个桌面或锁屏卡片，从本地 KV/数据库读取数据并按系统语言显示 / Need a home-screen or lock-screen widget that reads from local KV/database storage and displays according to the system language",
+        "做一个可国际化的 ArkTS 服务卡片，用于展示应用保存的状态或统计信息 / Build an internationalized ArkTS service widget that displays saved app state or statistics",
+        "希望卡片内容随本地存储数据更新，同时文案适配不同地区语言 / I want widget content to update from local stored data while adapting text to different locales"
+      ],
+      "skills": [
+        "arkdata",
+        "form-kit",
+        "localization-kit"
+      ],
+      "notes": "ArkData stores the app’s local state, preferences, KV entries, or relational data; Form Kit reads or receives that data to render it in a service/home-screen/lock-screen ArkTS card, while Localization Kit formats the card text and locale-sensitive content for the user’s language.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "StepsCardJS"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-localization-kit-notification",
+      "name": "本地化持久通知 / Localized Persistent Notifications",
+      "when": [
+        "需要保存用户的通知设置，并按当前语言发送本地提醒 / Need to save user notification settings and send local reminders in the current language",
+        "应用重启后仍要恢复提醒开关、阈值或状态，并显示本地化通知 / Need to restore reminder toggles, thresholds, or state after app restart and show localized notifications",
+        "想用本地存储记录任务或步数进度，再用角标或进度条通知提示用户 / Want to store task or step progress locally and notify users with badges or progress notifications",
+        "需要根据系统语言切换通知标题和内容，同时保留用户偏好 / Need notification titles and content to follow the system language while preserving user preferences"
+      ],
+      "skills": [
+        "arkdata",
+        "localization-kit",
+        "notification-kit"
+      ],
+      "notes": "ArkData persists notification preferences, counters, or progress state; Localization Kit formats the stored state into locale-specific titles and messages; Notification Kit consumes those localized strings and state values to publish local notifications, badges, or progress notifications.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "StepsCardJS"
+        ]
+      }
+    },
+    {
+      "id": "form-kit-localization-kit-notification",
+      "name": "本地化服务卡片通知 / Localized Service Card Notifications",
+      "when": [
+        "我想做一个支持多语言的桌面或锁屏服务卡片，并在状态变化时发送本地通知 / I want to build a multilingual home-screen or lock-screen service card that sends local notifications when its state changes",
+        "需要服务卡片上的文案跟随系统语言切换，同时用通知提醒用户进度或结果 / I need service card text to follow the system language while notifications remind users of progress or results",
+        "为计步、任务或提醒类卡片增加国际化显示和本地通知能力 / Add internationalized display and local notification capability to a steps, task, or reminder card",
+        "卡片内容要本地化，并且重要更新要通过通知、角标或进度条提示用户 / Card content must be localized, and important updates should be surfaced through notifications, badges, or progress notifications"
+      ],
+      "skills": [
+        "form-kit",
+        "localization-kit",
+        "notification-kit"
+      ],
+      "notes": "Localization Kit provides locale-aware strings and formatting consumed by Form Kit to render the service card UI on the home screen or lock screen; the same localized content is then used by Notification Kit to publish local notifications, badges, or progress updates that match the card state.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "StepsCardJS"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-background-tasks-kit-form-2",
+      "name": "音乐播放服务卡片与后台状态同步 / Music Playback Form with Background State Sync",
+      "when": [
+        "我想做一个桌面音乐卡片，显示歌曲信息和专辑封面，并能跟随后台播放状态更新 / I want to build a home-screen music card that shows track info and album art and updates with background playback state",
+        "需要在音乐应用退出前台后继续维护播放状态，并把最新封面同步到服务卡片 / Need to maintain music playback state after the app leaves the foreground and sync the latest cover image to a service form",
+        "我要实现音乐播放器的桌面或锁屏卡片，读取本地缓存的歌曲数据并展示封面 / I need a desktop or lock-screen music player form that reads cached track data and displays cover art",
+        "如何把音乐播放进度、歌曲名和封面图持久化，并在后台任务中刷新卡片 / How can I persist playback progress, song title, and cover image, then refresh the form from a background task"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "form-kit",
+        "image-kit"
+      ],
+      "notes": "Ability Kit starts the app/form abilities, ArkUI builds the player and form UI in ArkTS, ArkData persists playback metadata and user preferences, Image Kit decodes or prepares album artwork, Background Tasks Kit keeps or schedules playback-state work when appropriate, and Form Kit consumes the stored text/image state to render and update the home-screen or lock-screen card.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-background-tasks-kit-form-3",
+      "name": "后台音乐播放卡片 / Background Music Playback Widget",
+      "when": [
+        "做一个音乐播放器，支持后台播放，并在桌面或锁屏卡片显示当前歌曲 / Build a music player that supports background playback and shows the current track on a home or lock-screen widget",
+        "需要持久化播放列表、播放进度和用户偏好，并让服务卡片同步播放状态 / Persist playlists, playback position, and user preferences while keeping a service widget in sync",
+        "实现音乐播放应用，退出页面后仍能播放，卡片上可查看或触发播放控制 / Implement a music app that keeps playing after leaving the page and exposes playback status or controls on a widget",
+        "开发多设备音乐样例，包含播放器界面、后台任务、数据存储和桌面卡片 / Develop a multi-device music sample with player UI, background task, data storage, and home-screen form"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "form-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit provides the app and UIAbility lifecycle, ArkTS implements the logic and concurrency, ArkUI renders the player UI, Media Kit plays audio and emits playback state, ArkData stores playlists/preferences/progress, Background Tasks keeps eligible playback work alive outside the foreground, and Form Kit reads the stored/current state to render home or lock-screen cards and route user actions back to the ability/player.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-background-tasks-kit-image-2",
+      "name": "后台音乐播放器 / Background Music Player",
+      "when": [
+        "我想做一个支持后台播放、歌单管理和封面显示的音乐播放器 / I want to build a music player with background playback, playlist management, and cover art display",
+        "需要在应用退到后台后继续播放音频，并保存播放进度和用户偏好 / Need audio to keep playing after the app goes to background while saving playback progress and user preferences",
+        "实现本地音乐列表、专辑封面解码、播放控制和持久化播放状态 / Implement a local music list, album cover decoding, playback controls, and persisted playback state",
+        "开发一个 ArkUI 音乐播放页面，支持上一首下一首、封面展示和后台长时任务 / Develop an ArkUI music playback page with previous/next controls, cover display, and a background long-running task"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "image-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit hosts the UIAbility lifecycle, ArkTS implements the playback and state logic, ArkUI renders the player controls, ArkData stores playlists/preferences/playback history, Image Kit decodes or processes album artwork for display, Media Kit consumes the selected media item to play audio, and Background Tasks Kit keeps playback-related work running when the app leaves the foreground.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-form-kit-image-2",
+      "name": "音乐播放卡片 / Music Playback Widget",
+      "when": [
+        "我想做一个带桌面卡片的音乐播放器，能显示封面并控制播放 / I want to build a music player with a home-screen widget that shows cover art and controls playback",
+        "需要在应用内播放音频，同时把播放状态同步到服务卡片 / Need in-app audio playback with playback state synchronized to a service widget",
+        "我要保存歌单和播放进度，并在桌面或锁屏卡片上继续播放 / I need to persist playlists and playback progress and resume from a home or lock-screen card",
+        "如何实现音乐封面解码、播放器界面和卡片控制联动 / How can I connect album-art decoding, player UI, and widget controls",
+        "做一个多设备音乐播放示例，包含本地数据、媒体播放和ArkTS卡片 / Build a multi-device music playback example with local data, media playback, and ArkTS forms"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "form-kit",
+        "image-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit provides the app lifecycle entry points, ArkTS implements the logic, ArkData persists playlists/preferences/playback position, Image Kit decodes or processes album artwork, Media Kit consumes the selected track data for audio playback, ArkUI renders the full player UI, and Form Kit presents a home/lock-screen card that reads the persisted/current playback state and sends control actions back into the app flow.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "background-tasks-kit-form-kit-image-2",
+      "name": "后台音乐播放卡片 / Background Music Playback Widget",
+      "when": [
+        "我想做一个音乐播放器，退出应用后还能继续播放，并在桌面卡片显示播放状态 / I want to build a music player that keeps playing after the app exits and shows playback status in a home-screen widget",
+        "需要实现带专辑封面、播放/暂停控制的桌面或锁屏音乐卡片 / Need a home-screen or lock-screen music card with album art and play/pause controls",
+        "如何把媒体播放状态同步到服务卡片，并支持后台长时播放 / How can I sync media playback state to a Form widget and support long-running background playback",
+        "想开发类似随身听的多设备音乐应用，包含播放界面、后台任务和卡片入口 / I want to develop a Walkman-like multi-device music app with a playback UI, background task, and widget entry"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "form-kit",
+        "image-kit",
+        "media-kit"
+      ],
+      "notes": "ability-kit hosts the UIAbility/Application lifecycle, ArkTS implements the playback/state logic, ArkUI renders the in-app player UI, media-kit plays audio and produces playback metadata/state, image-kit decodes or processes album artwork, background-tasks-kit keeps playback running when the app is backgrounded, and form-kit consumes the current track state and artwork to render interactive home-screen or lock-screen cards.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "MultiDeviceMusic",
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-form-kit-localization-2",
+      "name": "本地化数据卡片与提醒 / Localized Data Card with Notifications",
+      "when": [
+        "我想把用户的进度或状态保存下来，并在桌面服务卡片中按系统语言展示 / I want to persist user progress or status and show it in a home-screen service widget using the system language",
+        "需要一个支持多语言的桌面或锁屏卡片，并能在数据变化时发送本地通知 / Need a multilingual home-screen or lock-screen card that can send local notifications when data changes",
+        "我要做一个目标进度卡片，保存设置和历史数据，并在达成目标时提醒用户 / I want to build a goal-progress card that stores settings and history, then notifies the user when the goal is reached",
+        "应用需要用 Preferences 或数据库保存卡片数据，卡片文案要国际化，还要显示通知角标或进度通知 / The app needs to store widget data with Preferences or a database, localize card text, and show badges or progress notifications"
+      ],
+      "skills": [
+        "arkdata",
+        "form-kit",
+        "localization-kit",
+        "notification-kit"
+      ],
+      "notes": "ArkData persists the user state, settings, or progress records; Localization Kit formats the labels and messages for the current locale; Form Kit reads that stored and localized data to render the service card; Notification Kit uses the same state changes to issue local notifications, badges, or progress updates.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 2,
+        "mined_from": [
+          "StepsCardJS"
+        ]
+      }
+    },
+    {
+      "id": "avsession",
+      "name": "媒体会话播放控制 / Media Session Playback Control",
+      "when": [
+        "我想在应用中接入系统媒体播控和后台播放 / I want to integrate system media controls and background playback in my app",
+        "需要做一个音视频播放器，并让通知栏或系统面板控制播放 / I need to build an audio/video player that can be controlled from the notification or system panel",
+        "如何创建媒体会话并把播放状态同步到界面 / How do I create a media session and sync playback state to the UI",
+        "应用进入后台后仍要响应播放、暂停、上一首、下一首 / The app should keep responding to play, pause, previous, and next actions in the background"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "avsession-kit"
+      ],
+      "notes": "Ability Kit hosts the app lifecycle through UIAbility/AbilityStage, ArkTS implements the media-session logic and event handling, ArkUI renders the playback controls and state, and AVSession Kit exposes the media session so system controls can send commands back to the app while playback metadata/state flows from the app to the session and UI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HarmonyOS_NEXT"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-arkweb",
+      "name": "带本地数据的网页容器 / Data-backed Web Container",
+      "when": [
+        "我想在应用中加载网页，并把用户偏好或会话数据保存在本地 / I want to load web pages in my app and persist user preferences or session data locally",
+        "我需要一个 ArkUI 页面内嵌 Web 组件，同时用 Preferences 或 KV 存储记录网页状态 / I need an ArkUI page with an embedded Web component while using Preferences or KV storage to record web state",
+        "我想让网页与 ArkTS 代码交互，并把交互结果写入本地数据库 / I want the web page to interact with ArkTS code and save interaction results into a local database",
+        "我需要在 UIAbility 中初始化数据存储，再把数据提供给 Web 页面使用 / I need to initialize local storage in UIAbility and provide the data to a Web page"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "arkweb"
+      ],
+      "notes": "ability-kit starts the app lifecycle, ArkUI hosts the visible page and Web component, ArkWeb loads web content and handles JavaScript interaction, ArkTS implements the bridge and business logic, and ArkData persists preferences, key-value data, or relational records produced or consumed by the web interaction flow.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-core-file",
+      "name": "本地数据存储与文件备份 / Local Data Storage and File Backup",
+      "when": [
+        "我想把用户设置或业务数据保存到本地，并支持导出到文件 / I want to save user settings or business data locally and support exporting them to files",
+        "需要在应用启动后加载本地数据库数据，并在界面中展示和编辑 / Need to load local database data after app startup and display or edit it in the UI",
+        "如何实现应用数据的备份、恢复或文件导入导出 / How to implement app data backup, restore, or file import/export",
+        "我要用 Preferences、KV 或关系型数据库保存数据，同时管理应用文件 / I need to store data with Preferences, KV, or RDB while managing app files"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "core-file-kit"
+      ],
+      "notes": "Ability Kit provides the application lifecycle and context, ArkUI presents the data management UI, ArkTS implements the business logic and parsing/serialization, ArkData stores preferences/KV/relational records, and Core File Kit reads or writes app/user files for import, export, backup, and restore; the usual flow is UI action → ability context/file path → file read/write or ArkData query/update → ArkTS transforms data → UI refresh.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-ipc",
+      "name": "跨进程持久化播放数据 / Cross-process Persistent Playback Data",
+      "when": [
+        "我想在播放器UI和后台播放进程之间同步播放列表、播放进度或收藏状态 / I want to sync playlists, playback progress, or favorites between a player UI and a background playback process",
+        "需要把音乐应用的用户偏好保存下来，并通过IPC提供给其他Ability或进程读取 / Need to persist music app user preferences and expose them to other abilities or processes via IPC",
+        "播放器服务在独立进程中运行，界面需要跨进程获取当前歌曲和播放状态 / The playback service runs in a separate process and the UI needs cross-process access to the current song and playback state",
+        "希望用ArkUI展示播放数据，同时数据由本地存储维护并通过RPC更新 / I want to display playback data with ArkUI while local storage maintains it and RPC updates it"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "ipc-kit"
+      ],
+      "notes": "Ability Kit hosts the UIAbility/application lifecycle, ArkUI renders and binds the playback data, ArkTS implements the typed state and async logic, ArkData persists preferences or music-related records, and IPC Kit lets another process request or update that stored playback data through RPC so the UI can refresh from the returned state.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-location",
+      "name": "定位数据持久化 / Location Data Persistence",
+      "when": [
+        "我想在应用中获取当前位置并保存历史记录 / I want to get the current location in my app and save a history log",
+        "需要把定位结果存到本地数据库或Preferences里 / I need to store location results in a local database or Preferences",
+        "做一个可查看最近位置记录的页面 / Build a page that shows recent saved location records",
+        "应用启动后持续读取定位并更新界面与本地缓存 / After app launch, continuously read location and update the UI plus local cache"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "location-kit"
+      ],
+      "notes": "Ability Kit provides the app entry and lifecycle, ArkTS implements the location and storage logic, Location Kit produces coordinates or geocoded location data, ArkData persists the selected/current/history location records, and ArkUI displays the live and stored data to the user.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-network",
+      "name": "网络数据同步与本地缓存 / Network Data Sync with Local Cache",
+      "when": [
+        "我想从 HTTP 接口获取数据并缓存到本地数据库或 Preferences，再在页面展示 / Fetch data from an HTTP API, cache it in a local database or Preferences, and display it on the page",
+        "我需要应用启动后拉取远端配置并持久化，UI 自动读取最新配置 / Pull remote configuration on app startup, persist it locally, and let the UI read the latest values",
+        "我想做一个支持离线查看的列表页，网络成功时更新本地数据，断网时读取缓存 / Build an offline-capable list page that updates local data when the network succeeds and reads cache when offline",
+        "我需要在 UIAbility 中管理网络请求、数据落库和 ArkUI 状态刷新 / Manage network requests, local persistence, and ArkUI state refresh inside a UIAbility"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "network-kit"
+      ],
+      "notes": "Ability Kit provides the app lifecycle entry where ArkTS code runs Network Kit requests, ArkData persists the returned data in Preferences, KV storage, or a relational database, and ArkUI consumes the persisted or freshly fetched data through state-driven components. The typical flow is UIAbility startup or user action → Network Kit fetch → ArkData save/read → ArkUI render/update.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-sensor-service",
+      "name": "本地计步与运动数据记录 / Local Pedometer and Motion Data Logging",
+      "when": [
+        "我想做一个计步器应用，实时读取传感器并保存每日步数 / I want to build a pedometer app that reads sensors in real time and saves daily step counts",
+        "需要在应用中用加速度或陀螺仪检测运动状态，并把结果持久化 / Need to detect motion state with accelerometer or gyroscope and persist the results",
+        "如何实现本地运动统计页面，显示传感器采集并存储的步数数据 / How to implement a local activity statistics page showing sensor-collected and stored step data",
+        "想在 HarmonyOS 中做离线健康步数记录和偏好设置保存 / I want offline health step tracking and preference storage on HarmonyOS"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "sensor-service-kit"
+      ],
+      "notes": "Ability Kit provides the application lifecycle entry, Sensor Service Kit streams accelerometer/gyroscope or vibration-related sensor data, ArkTS processes the readings into step or motion state, ArkData stores counts, history, or preferences locally, and ArkUI renders the real-time and persisted statistics.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "arkweb-core-file",
+      "name": "网页文件交互 / Web File Integration",
+      "when": [
+        "在应用里嵌入网页，并让网页读取或保存应用文件 / Embed a web page in the app and let it read or save app files",
+        "实现 WebView 与本地文件管理联动，例如上传、下载或预览文件 / Connect a WebView with local file management for upload, download, or preview",
+        "让 H5 页面通过 JS 交互访问 ArkTS 提供的文件能力 / Let an H5 page access file capabilities exposed by ArkTS through JavaScript interaction",
+        "在 ArkUI 页面中加载网页，并把用户选择或生成的文件传给网页使用 / Load web content in an ArkUI page and pass selected or generated files to it"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "arkweb",
+        "core-file-kit"
+      ],
+      "notes": "Ability Kit starts the app and UIAbility, ArkUI hosts the Web component, ArkTS implements the page logic and JavaScript bridge, Core File Kit reads or writes app/user files, and ArkWeb loads the web content and exchanges file paths or file data with it.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "avsession-kit-form",
+      "name": "媒体播放服务卡片 / Media Playback Form Widget",
+      "when": [
+        "我想做一个桌面音乐播放卡片，可以显示歌曲信息并控制播放暂停 / I want to build a home-screen music widget that shows track info and controls play or pause",
+        "需要在锁屏或桌面卡片上接入应用的后台播放控制 / I need to expose my app’s background playback controls on a lock-screen or home-screen form",
+        "如何把媒体会话的播放状态同步到服务卡片 / How can I synchronize media session playback state to a service widget",
+        "做一个音视频应用的 ArkTS 卡片，点击按钮能控制当前媒体会话 / Build an ArkTS form for an audio/video app whose buttons control the current media session"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "avsession-kit",
+        "form-kit"
+      ],
+      "notes": "Ability Kit hosts the application lifecycle, ArkTS implements the media/control logic, AVSession Kit publishes playback metadata and accepts transport commands, and Form Kit renders a home-screen or lock-screen card that displays that session state and sends user actions back to the media session; ArkUI is used for the declarative UI structure of the app/card components.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HarmonyOS_NEXT"
+        ]
+      }
+    },
+    {
+      "id": "avsession-kit-media",
+      "name": "后台媒体播放控制 / Background Media Playback Control",
+      "when": [
+        "我想做一个带通知栏/锁屏播控的音乐或视频播放器 / I want to build a music or video player with notification or lock-screen controls",
+        "需要应用退到后台后继续播放，并能响应播放、暂停、上一首、下一首 / I need playback to continue in the background and respond to play, pause, previous, and next actions",
+        "如何把媒体播放器和系统媒体会话联动起来 / How can I connect a media player with the system media session",
+        "想实现 ArkUI 播放界面，同时支持系统级音视频播控 / I want an ArkUI playback screen that also supports system-level audio/video controls"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "avsession-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit hosts the UIAbility lifecycle, ArkTS implements the playback and session logic, ArkUI renders the player controls and state, Media Kit performs audio/video playback and exposes playback state, then AVSession Kit publishes that state as a media session and routes system control commands back to the Media Kit player.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HarmonyOS_NEXT"
+        ]
+      }
+    },
+    {
+      "id": "background-tasks-kit-ipc",
+      "name": "后台播放控制 / Background Playback Control",
+      "when": [
+        "我想做一个音乐播放应用，退出界面后仍能保持播放任务运行 / I want to build a music app that keeps playback-related work running after the UI is left",
+        "需要前台页面通过跨进程通信控制后台长时任务 / I need the foreground UI to control a background long-running task through IPC",
+        "如何把播放按钮、进度状态和后台任务服务连接起来 / How can I connect play controls, progress state, and a background task service",
+        "应用进入后台后仍要执行任务，并把状态同步回界面 / The app must continue work in the background and sync status back to the UI"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "ipc-kit"
+      ],
+      "notes": "Ability Kit starts the application abilities, ArkUI renders the playback controls and status, ArkTS implements the typed state and command logic, IPC Kit sends control commands and status updates across process boundaries, and Background Tasks Kit keeps the long-running task active while the UI is not foregrounded.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "background-tasks-kit-localization",
+      "name": "本地化后台任务界面 / Localized Background Task UI",
+      "when": [
+        "我想做一个支持多语言显示的后台运行功能页面 / I want to build a background-running feature screen with multilingual display",
+        "应用需要启动长时或延迟后台任务，并按用户语言展示任务状态 / The app needs to start long-running or deferred background tasks and show task status in the user’s language",
+        "如何在 HarmonyOS 中把后台任务状态展示成国际化 ArkUI 界面 / How can I present background task status in an internationalized ArkUI interface on HarmonyOS",
+        "我需要后台计时或持续任务，并根据系统区域切换文案 / I need a background timer or continuous task with text that changes according to the system locale"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "localization-kit"
+      ],
+      "notes": "Ability Kit provides the UIAbility/AbilityStage lifecycle entry, ArkTS implements task control and state, Background Tasks Kit starts or manages the long/short/deferred work and produces task status, Localization Kit resolves locale-specific strings or formats, and ArkUI consumes the localized resources plus task state to render the user-facing interface.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "background-tasks-kit-location",
+      "name": "后台定位记录 / Background Location Tracking",
+      "when": [
+        "需要在应用退到后台后继续记录用户位置轨迹 / Continue recording the user's location trail after the app moves to the background",
+        "做运动、步行或户外活动应用，需要后台持续获取定位并在前台展示 / Build a walking, fitness, or outdoor app that keeps location updates in the background and displays them in the foreground",
+        "需要结合长时任务和定位能力实现持续位置采集 / Use a continuous background task together with location APIs for ongoing position collection",
+        "应用启动后获取定位数据，后台保活采集，回到前台刷新界面 / Collect location after launch, keep collecting in the background, and refresh the UI when returning to foreground"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "location-kit"
+      ],
+      "notes": "Ability Kit provides the app and lifecycle entry points, ArkTS implements the location/task logic, Background Tasks Kit keeps the collection running when appropriate in the background, Location Kit produces GNSS/location data, and ArkUI consumes the stored or live location state to render tracking status and results.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "background-tasks-kit-sensor-service",
+      "name": "后台计步与传感器追踪 / Background Pedometer and Sensor Tracking",
+      "when": [
+        "我想做一个计步器，即使应用退到后台也能继续记录步数 / I want to build a pedometer that keeps counting steps after the app goes to the background",
+        "需要在后台读取加速度等传感器数据并更新运动统计 / I need to read accelerometer-like sensor data in the background and update activity stats",
+        "如何实现运动记录应用的长时后台任务和传感器监听 / How can I implement long-running background tasks with sensor listening for a fitness tracker",
+        "我要在ArkUI界面展示实时步数，同时通过后台任务保持采集 / I want to show live step counts in ArkUI while keeping collection alive through a background task"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "sensor-service-kit"
+      ],
+      "notes": "Ability Kit starts the UIAbility lifecycle, ArkUI renders the pedometer/status UI, ArkTS implements the counting and state logic, Sensor Service Kit supplies motion sensor events such as acceleration, and Background Tasks Kit keeps the sensor collection/counting workflow running when the app is not in the foreground.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "basic-services-kit-ime",
+      "name": "登录表单输入与剪贴板粘贴 / Login Form Input with Clipboard Paste",
+      "when": [
+        "我要做一个登录页，支持账号密码输入和从剪贴板粘贴验证码 / I need a login page with account/password input and pasting a verification code from the clipboard",
+        "实现短信验证码登录，输入框弹出键盘并可一键粘贴验证码 / Implement SMS-code login where text fields show the keyboard and can paste the code",
+        "构建基础登录 Demo，管理输入框状态、软键盘和剪贴板内容 / Build a basic login demo managing text-field state, soft keyboard, and clipboard content",
+        "登录表单需要读取剪贴板中的账号或验证码并填入输入框 / The login form should read an account or code from the clipboard and fill it into an input field"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "basic-services-kit",
+        "ime-kit"
+      ],
+      "notes": "Ability Kit hosts the UIAbility, ArkUI builds the login form, IME Kit provides keyboard and text-input behavior for the fields, Basic Services Kit supplies clipboard content that can be consumed by the input fields, and ArkTS ties the state, validation, and event flow together.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "LoginDemo"
+        ]
+      }
+    },
+    {
+      "id": "basic-services-kit-network",
+      "name": "网络文件发布 / Network File Publishing",
+      "when": [
+        "我要在应用里通过 HTTP 上传新闻图片或附件 / I want to upload news images or attachments over HTTP in my app",
+        "需要把本地文件压缩后再上传到服务器 / I need to compress local files before uploading them to a server",
+        "我要实现新闻稿件附件的下载、上传和进度展示 / I want to implement attachment download, upload, and progress display for news releases",
+        "需要在页面中调用网络接口并处理文件传输 / I need a page that calls network APIs and handles file transfer"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "basic-services-kit",
+        "network-kit"
+      ],
+      "notes": "Ability Kit provides the application lifecycle entry, ArkUI builds the upload/download UI, ArkTS implements state and async transfer logic, Basic Services Kit prepares local files through compression or file upload/download helpers, and Network Kit sends the resulting data to or retrieves it from remote HTTP/WebSocket endpoints.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "NewsRelease"
+        ]
+      }
+    },
+    {
+      "id": "basic-services-kit-test",
+      "name": "可测试登录基础服务 / Testable Login Basic Services",
+      "when": [
+        "我要做一个带登录界面并能自动化测试的示例应用 / I want to build a login UI sample app with automated tests",
+        "需要在登录流程中使用剪贴板或文件基础服务，并覆盖单元测试和UI测试 / I need clipboard or file basic services in a login flow with unit and UI test coverage",
+        "实现一个ArkUI登录页，包含应用生命周期入口和测试用例 / Implement an ArkUI login page with app lifecycle entry points and test cases",
+        "给登录Demo接入基础服务能力，并用测试框架验证交互和性能 / Add basic service capabilities to a login demo and verify interactions and performance with the test framework"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "basic-services-kit",
+        "test-kit"
+      ],
+      "notes": "Ability Kit starts the UIAbility/AbilityStage, ArkTS implements the login state and service logic, ArkUI renders and binds the login components, Basic Services Kit supplies clipboard/file upload-download/compression capabilities used by that logic, and Test Kit consumes the UI and ArkTS behaviors to run unit, UI, and performance tests.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "LoginDemo"
+        ]
+      }
+    },
+    {
+      "id": "core-file-kit-form",
+      "name": "文件驱动服务卡片 / File-backed Service Widget",
+      "when": [
+        "我想把应用文件中的内容展示到桌面服务卡片上 / I want to display content from app files on a home-screen service widget",
+        "需要一个读取本地数据并刷新卡片UI的HarmonyOS功能 / I need a HarmonyOS feature that reads local data and refreshes a widget UI",
+        "想做一个卡片入口，展示应用保存的文本、状态或摘要 / I want to build a widget entry that shows saved text, status, or summaries from the app",
+        "需要应用页面和服务卡片共享文件数据 / I need the app page and service widget to share file-based data"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "core-file-kit",
+        "form-kit"
+      ],
+      "notes": "Ability Kit provides the application/UIAbility lifecycle, ArkTS implements the file-reading and update logic, Core File Kit persists or reads the app/user file data, and Form Kit consumes that data to update an ArkUI-rendered service card UI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "form-kit-ipc",
+      "name": "服务卡片跨进程控制 / Cross-Process Service Widget Control",
+      "when": [
+        "我想做一个桌面音乐卡片，点击播放/暂停后控制主应用服务 / I want a home-screen music widget whose play/pause buttons control the main app service",
+        "需要服务卡片和应用进程之间同步状态与命令 / I need to synchronize state and commands between a service widget and the app process",
+        "想让锁屏卡片通过跨进程通信触发应用内操作 / I want a lock-screen widget to trigger in-app actions through cross-process communication",
+        "需要在ArkTS卡片UI中展示应用数据并发送控制事件 / I need an ArkTS widget UI that displays app data and sends control events"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "form-kit",
+        "ipc-kit"
+      ],
+      "notes": "Form Kit provides the desktop/lock-screen ArkTS card UI, ArkUI and ArkTS build the declarative card/application components and state logic, Ability Kit hosts the app abilities/stage, and IPC Kit carries card-triggered commands or status requests across processes to the ability-side logic, which returns updated data for the card to render.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "form-kit-network",
+      "name": "联网服务卡片 / Networked Form Widget",
+      "when": [
+        "我想做一个桌面服务卡片，从网络接口拉取数据并展示最新内容 / I want to build a home-screen form widget that fetches data from an API and shows the latest content",
+        "如何让服务卡片通过 HTTP 更新天气、新闻或待办信息 / How can a form widget update weather, news, or to-do information via HTTP",
+        "需要一个锁屏卡片，定时请求后端并刷新卡片 UI / I need a lock-screen form that periodically requests a backend and refreshes its UI",
+        "想在 HarmonyOS 卡片中调用网络接口并用 ArkUI 渲染结果 / I want to call network APIs inside a HarmonyOS form and render the result with ArkUI"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "form-kit",
+        "network-kit"
+      ],
+      "notes": "Ability Kit hosts the application and form lifecycle, Form Kit defines and updates the ArkTS service card, Network Kit fetches remote data over HTTP/WebSocket/Socket/DNS, ArkTS implements the data logic, and ArkUI renders the fetched state into the card UI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "image-kit-ipc",
+      "name": "跨进程专辑封面显示 / Cross-Process Album Art Display",
+      "when": [
+        "需要从播放服务跨进程获取专辑封面并在页面展示 / Need to fetch album artwork from a playback service across processes and display it in the UI",
+        "音乐播放器前台界面要通过IPC接收封面图片数据并解码渲染 / A music player foreground UI needs to receive cover image data via IPC, decode it, and render it",
+        "想把后台媒体服务提供的图片资源传给UIAbility显示 / Want to pass image resources from a background media service to a UIAbility for display",
+        "需要在ArkUI组件中展示由另一个进程返回的图片或缩略图 / Need to show images or thumbnails returned by another process in ArkUI components"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "image-kit",
+        "ipc-kit"
+      ],
+      "notes": "Ability Kit hosts the UIAbility lifecycle, ArkTS implements the client-side logic and IPC callbacks, IPC Kit transports album-art bytes or image metadata from the media process to the app process, Image Kit decodes or processes that image data, and ArkUI binds the decoded result into declarative music playback components.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "image-kit-network",
+      "name": "网络图片获取与处理 / Network Image Fetching and Processing",
+      "when": [
+        "我想从服务器下载图片并在应用中解码、编辑后展示 / I want to download images from a server, decode or edit them, and display them in the app",
+        "需要实现网络头像加载、EXIF读取和图片预处理 / Need to load profile images from the network, read EXIF, and preprocess them",
+        "应用要通过HTTP获取图片资源，再进行压缩、裁剪或格式转换 / The app needs to fetch image assets via HTTP, then compress, crop, or convert formats",
+        "我要做一个可联网的图片浏览或图片编辑页面 / I want to build a network-enabled image browsing or image editing page"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "image-kit",
+        "network-kit"
+      ],
+      "notes": "Ability Kit hosts the UIAbility lifecycle, ArkTS implements the async networking and image-processing logic, Network Kit fetches image bytes or uploads processed results, Image Kit decodes those bytes into image data and performs EXIF/edit/encode operations, and ArkUI renders the resulting images and editing state in declarative components.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "ipc-kit-media",
+      "name": "跨进程音乐播放控制 / Cross-Process Music Playback Control",
+      "when": [
+        "我想做一个前台界面控制后台播放服务的音乐播放器 / I want to build a music player whose foreground UI controls playback in a background service",
+        "需要通过IPC调用另一个进程里的媒体播放能力 / Need to invoke media playback capabilities running in another process via IPC",
+        "实现播放、暂停、切歌等按钮，并把命令发送到独立播放进程 / Implement play, pause, and next-track buttons that send commands to a separate playback process",
+        "做一个ArkUI音乐播放页，播放逻辑和界面进程解耦 / Build an ArkUI music playback page with playback logic decoupled from the UI process"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "ipc-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit hosts the UIAbility/application lifecycle, ArkTS implements the typed playback commands and IPC client/server logic, ArkUI renders the music controls and state, IPC Kit transports user actions and playback status across processes, and Media Kit consumes those commands to play, pause, or switch audio.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "media-kit-media-library",
+      "name": "媒体录制并保存到媒体库 / Media Recording and Save to Library",
+      "when": [
+        "我想做一个录音或录像应用，并把生成的媒体文件保存到相册/媒体库 / I want to build an audio or video recorder that saves the generated media file to the album/media library",
+        "需要在 HarmonyOS 中实现录制按钮、录制状态展示和录制结果入库 / I need to implement a record button, recording status UI, and store the result in the media library on HarmonyOS",
+        "如何录制音频/视频并让用户在系统相册或媒体库中看到文件 / How can I record audio/video and make the file visible in the system album or media library",
+        "我要开发一个录屏/录制功能，并管理录制完成后的媒体资源 / I want to develop a screen/media recording feature and manage the recorded media asset afterward"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "media-kit",
+        "media-library-kit"
+      ],
+      "notes": "Ability Kit starts the app entry lifecycle, ArkUI builds the recording controls and status display, ArkTS implements the recording logic and state handling, Media Kit captures audio/video/screen content and outputs a media file, and Media Library Kit creates or registers the resulting asset so it can be managed and viewed in the system media library.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "Recorder"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-arkweb-core-file",
+      "name": "带持久化与文件访问的内嵌网页 / Embedded Web with Persistence and File Access",
+      "when": [
+        "我想在应用里嵌入网页，并把网页配置或状态保存到本地 / I want to embed a web page in my app and persist its settings or state locally",
+        "需要 Web 组件和 ArkTS 互通，同时把用户选择或生成的文件保存到应用目录 / I need Web-to-ArkTS interaction and to save user-selected or generated files in the app directory",
+        "做一个混合页面，网页负责展示，原生侧负责缓存数据和管理文件 / Build a hybrid page where the web view renders content while the native side caches data and manages files",
+        "网页里的操作要触发本地数据读写，并支持文件备份或恢复 / Web actions should trigger local data reads/writes and support file backup or restore"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "arkweb",
+        "core-file-kit"
+      ],
+      "notes": "Ability Kit starts the app entry, ArkUI builds the native page that hosts ArkWeb, ArkWeb loads web content and exchanges messages with ArkTS, ArkTS routes those requests to ArkData for preferences/KV/database persistence and to Core File Kit for app or user file read/write, then returns results back to the UI or web page.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-arkweb-form",
+      "name": "网页内容服务卡片 / Web Content Form Widget",
+      "when": [
+        "我想把应用里的网页内容同步展示到桌面服务卡片上 / I want to show web content from my app in a home-screen form widget",
+        "需要一个带 WebView 的应用，并把用户选择或网页数据保存后更新卡片 / Need an app with a WebView that saves user selections or web data and updates a form",
+        "如何用 ArkWeb 加载页面并用本地数据驱动服务卡片显示 / How to load pages with ArkWeb and drive a service widget from local data",
+        "我要做一个可从应用配置、桌面卡片展示的网页信息入口 / I want a web information entry that is configured in the app and displayed as a desktop card"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "arkweb",
+        "form-kit"
+      ],
+      "notes": "Ability Kit starts the app and form abilities, ArkUI builds the configuration screens, ArkWeb loads web pages and exchanges selected content or state with ArkTS logic, ArkData persists that state in preferences/KV/database, and Form Kit reads the stored data to render and refresh the desktop or lock-screen card.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-arkweb-image",
+      "name": "网页图片处理与本地记录 / Web Image Processing with Local Records",
+      "when": [
+        "我想在应用里加载网页，并把用户选中的网页图片解码处理后保存处理记录 / I want to load a web page in my app and decode/process selected web images while saving processing records",
+        "需要一个 WebView 页面，通过 JS 交互获取图片信息，再在原生侧展示处理后的图片 / I need a WebView page that gets image information through JavaScript interaction and shows the processed image natively",
+        "做一个网页内容浏览功能，支持图片解析、EXIF 读取和本地偏好或数据库缓存 / Build a web content browsing feature with image parsing, EXIF reading, and local preference or database caching",
+        "希望把网页里的图片数据传给 ArkTS 处理，并用 ArkUI 展示结果和历史记录 / I want to pass image data from a web page to ArkTS, then display results and history with ArkUI"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "arkweb",
+        "image-kit"
+      ],
+      "notes": "Ability Kit hosts the UIAbility lifecycle, ArkUI renders the native pages and state, ArkWeb loads web content and exposes JavaScript interaction to obtain image-related data, ArkTS coordinates the bridge and processing flow, Image Kit decodes/edits/reads EXIF from the image data, and ArkData persists preferences, KV entries, or relational records for processed images and history.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-arkweb-network",
+      "name": "联网网页数据缓存 / Networked Web Data Cache",
+      "when": [
+        "需要在应用内加载网页，并把接口数据或用户偏好缓存到本地 / Need to load web pages in-app and cache API data or user preferences locally",
+        "想做一个 ArkUI 页面嵌入 Web 组件，同时通过 HTTP 拉取数据并持久化 / Want an ArkUI page embedding a Web component while fetching data over HTTP and persisting it",
+        "需要 Web 页面和原生 ArkTS 代码交互，共享网络请求结果和本地存储数据 / Need Web pages and native ArkTS code to interact and share network results plus local stored data",
+        "想实现离线可用的混合页面，联网更新内容，断网读取缓存 / Want an offline-capable hybrid page that updates online and reads cached content when disconnected"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "arkweb",
+        "network-kit"
+      ],
+      "notes": "Ability Kit provides the app/UIAbility lifecycle, ArkUI hosts the native page and ArkWeb component, Network Kit fetches remote HTTP/WebSocket data, ArkData stores preferences/KV/relational cached results, and ArkTS coordinates state, concurrency, and JavaScript bridge logic so fetched or cached data can be injected into the Web view and reflected in the UI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-background-tasks-kit-ipc",
+      "name": "后台音乐播放状态同步 / Background Music Playback State Sync",
+      "when": [
+        "我想做一个音乐播放器，退出页面后仍能后台播放，并保存播放进度 / I want to build a music player that keeps playing in the background after leaving the page and saves playback progress",
+        "需要前台 UI 和后台播放服务跨进程通信，同步播放、暂停和进度 / I need the foreground UI and background playback service to communicate across processes and sync play, pause, and progress",
+        "希望应用重启后恢复上次播放的歌曲、列表和播放位置 / I want the app to restore the last song, playlist, and playback position after restart",
+        "要实现长时后台任务，并把播放状态持久化给 UI 查询 / I need a long-running background task and persistent playback state that the UI can query"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "ipc-kit"
+      ],
+      "notes": "ArkUI and Ability Kit host the player pages and lifecycle, ArkTS implements the state and command logic, IPC Kit sends playback commands and status between the UI ability and background playback process, Background Tasks Kit keeps playback work running when the app is not foreground, and ArkData persists playlist, preferences, and progress for recovery and UI refresh.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-background-tasks-kit-localization",
+      "name": "后台计步与本地化数据记录 / Background Pedometer with Localized Data Logging",
+      "when": [
+        "我想做一个计步器，在后台持续记录步数并保存历史数据，还要支持多语言界面 / I want to build a pedometer that keeps recording steps in the background, saves history, and supports a multilingual UI",
+        "需要在应用退到后台后继续执行步数统计，并把每日结果持久化显示 / I need step counting to continue after the app goes to the background and persist daily results for display",
+        "想实现带偏好设置和历史记录的运动数据页面，并根据系统语言切换文案 / I want a fitness data page with preferences and history records, with text switching based on the system language",
+        "如何组合后台任务、本地存储和国际化来做健康类记录应用 / How can I combine background tasks, local storage, and localization for a health-tracking app"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "localization-kit"
+      ],
+      "notes": "Ability Kit starts the application lifecycle, ArkTS implements the step-counting and scheduling logic, Background Tasks Kit keeps the counting or periodic aggregation running when appropriate, ArkData stores preferences and step/history data, Localization Kit provides locale-specific strings and formatting, and ArkUI reads the persisted/localized state to render the pedometer UI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-background-tasks-kit-location",
+      "name": "后台运动轨迹记录 / Background Activity Route Tracking",
+      "when": [
+        "我想在应用退到后台后继续记录用户的运动位置并保存轨迹 / I want to keep recording the user's movement location in the background and save the route",
+        "需要做一个计步或运动类应用，能持续获取定位并持久化历史数据 / I need a pedometer or fitness app that continuously gets location and persists history",
+        "如何把后台任务、定位和本地数据库组合起来记录运动过程 / How can I combine background tasks, location, and local storage to record an activity session",
+        "我要在前台展示实时位置，在后台继续采集，并在下次打开时恢复数据 / I want to show live location in the foreground, continue collecting in the background, and restore data on next launch"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "location-kit"
+      ],
+      "notes": "ability-kit hosts the UIAbility lifecycle, arkui renders the tracking screens, arkts implements the state and async logic, location-kit produces location/geofence/reverse-geocode data, background-tasks-kit keeps the collection work running when the app is not foregrounded, and arkdata stores preferences and route/session records for later display.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-background-tasks-kit-sensor-service",
+      "name": "后台计步与历史记录 / Background Pedometer with History",
+      "when": [
+        "我想做一个即使退到后台也能持续记录步数的计步器 / I want to build a pedometer that keeps counting steps even in the background",
+        "需要读取运动传感器数据并保存每日步数统计 / Need to read motion sensor data and save daily step statistics",
+        "开发一个带实时步数界面和本地历史数据的运动应用 / Build a fitness app with a live step-count UI and local history",
+        "如何在 HarmonyOS 中用后台任务维持传感器采集并持久化结果 / How to keep sensor collection running with background tasks and persist the results on HarmonyOS"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "background-tasks-kit",
+        "sensor-service-kit"
+      ],
+      "notes": "Ability Kit starts the app lifecycle, Background Tasks Kit keeps the pedometer collection active when appropriate, Sensor Service Kit produces motion/step-related sensor readings, ArkTS processes and aggregates them, ArkData stores preferences and historical counts, and ArkUI displays the live count and saved records.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-core-file-kit-form",
+      "name": "持久化数据驱动的服务卡片 / Persistent Data-Driven Service Widget",
+      "when": [
+        "我想把应用里的偏好设置或数据库内容同步展示到桌面服务卡片上 / I want to show app preferences or database data on a home-screen service widget",
+        "如何用本地存储的数据刷新 ArkTS 服务卡片 / How can I refresh an ArkTS widget with locally stored data",
+        "需要让卡片读取应用文件和持久化状态并展示给用户 / I need a widget to read app files and persisted state and display them to users",
+        "我想做一个应用内配置、文件保存、桌面卡片展示联动的功能 / I want app configuration, file saving, and home-screen widget display to work together"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "core-file-kit",
+        "form-kit"
+      ],
+      "notes": "Ability Kit hosts the app and form lifecycle, ArkUI builds the in-app configuration UI, ArkTS connects the logic, ArkData persists preferences or structured records, Core File Kit stores or retrieves related app/user files, and Form Kit consumes the persisted data or file-derived content to render and update ArkTS service cards.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-core-file-kit-image",
+      "name": "本地图片管理与持久化 / Local Image Management and Persistence",
+      "when": [
+        "我想做一个应用内图片库，保存图片文件并记录标题、路径和EXIF信息 / I want to build an in-app image library that saves image files and records titles, paths, and EXIF metadata",
+        "需要对本地图片进行解码、编辑或重新编码，并把处理结果和元数据持久化 / Need to decode, edit, or re-encode local images and persist the processed results and metadata",
+        "如何把图片文件存到应用目录，同时用数据库或KV保存图片索引 / How can I store image files in the app directory while saving an image index in a database or KV store",
+        "我要实现一个可恢复的图片管理页面，启动后加载上次保存的图片列表和偏好设置 / I need a recoverable image management page that reloads the previously saved image list and preferences on launch"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "core-file-kit",
+        "image-kit"
+      ],
+      "notes": "ability-kit starts the UIAbility and lifecycle, ArkUI presents the image list/editor, ArkTS coordinates state and background work, core-file-kit reads and writes image files, image-kit decodes/edits/encodes images and extracts EXIF, and arkdata persists file paths, metadata, indexes, and preferences for later reload.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-core-file-kit-network",
+      "name": "离线数据同步与本地缓存 / Offline Data Sync and Local Cache",
+      "when": [
+        "需要从服务器拉取数据并缓存到本地，支持离线查看 / Fetch data from a server and cache it locally for offline viewing",
+        "实现应用启动后同步网络数据、保存文件和记录元数据 / Sync network data on app startup, save files, and persist metadata",
+        "做一个带本地数据库和文件缓存的内容列表页面 / Build a content list page backed by a local database and file cache",
+        "需要管理接口返回的数据、下载文件，并在UI中展示同步结果 / Manage API response data, downloaded files, and show sync results in the UI"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "core-file-kit",
+        "network-kit"
+      ],
+      "notes": "Ability Kit hosts the application lifecycle, ArkUI presents the sync status and cached content, and ArkTS implements the asynchronous control flow; Network Kit fetches remote data or files, Core File Kit stores downloaded file payloads in app/user storage, and ArkData persists preferences, key-value state, or relational metadata that the UI reads back for offline use.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-form-kit-ipc",
+      "name": "音乐播放卡片状态同步 / Music Playback Form State Sync",
+      "when": [
+        "我想做一个桌面音乐卡片，可以显示当前歌曲并控制播放 / I want a home-screen music form that shows the current song and controls playback",
+        "需要让服务卡片和主应用共享播放状态、歌单或偏好设置 / I need a service widget and the main app to share playback state, playlists, or preferences",
+        "如何从桌面卡片跨进程调用音乐播放能力 / How can a desktop form invoke music playback across processes",
+        "做一个音乐应用，主界面和卡片都能读取持久化的播放信息 / Build a music app where both the main UI and form read persisted playback information"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "form-kit",
+        "ipc-kit"
+      ],
+      "notes": "Ability Kit provides the app/UIAbility lifecycle, ArkUI renders the main and form-facing UI, ArkData persists playback state or preferences, Form Kit exposes the desktop/lock-screen music card, IPC Kit sends card control requests across processes back to the app logic, and ArkTS implements the typed state and async glue connecting persistence, UI updates, and IPC calls.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-form-kit-network",
+      "name": "联网数据服务卡片 / Networked Data Widget",
+      "when": [
+        "我想做一个桌面服务卡片，定时从接口拉取数据并展示 / I want to build a home-screen widget that periodically fetches API data and displays it",
+        "需要把网络请求结果缓存到本地，再同步给服务卡片使用 / I need to cache network response data locally and sync it to a service widget",
+        "如何实现一个新闻、天气或行情类服务卡片，支持离线显示上次数据 / How can I implement a news, weather, or market-data widget that shows last cached data offline",
+        "应用启动后拉取数据、存入数据库，并让桌面卡片读取更新 / Fetch data on app launch, store it in a database, and let the home-screen card read updates"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "form-kit",
+        "network-kit"
+      ],
+      "notes": "Ability Kit hosts the app/card lifecycle, Network Kit fetches remote HTTP/WebSocket data, ArkData persists the fetched results in Preferences/KV/RDB for reuse, and Form Kit renders the service card from that cached or refreshed data; ArkTS and ArkUI provide the language, state, and declarative UI used by both the app and card.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-image-kit-ipc",
+      "name": "本地音乐播放与封面缓存 / Local Music Playback with Artwork Cache",
+      "when": [
+        "我想做一个音乐播放器，保存播放列表和播放进度，并显示专辑封面 / I want to build a music player that saves playlists and playback progress and shows album artwork",
+        "需要在前台UI和后台播放进程之间同步歌曲状态 / I need to synchronize song state between the foreground UI and a background playback process",
+        "我要把音乐元数据持久化，并对封面图片进行解码展示 / I want to persist music metadata and decode cover images for display",
+        "如何实现带本地存储、封面处理和跨进程控制的媒体播放页面 / How can I implement a media playback page with local storage, artwork processing, and cross-process controls"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "image-kit",
+        "ipc-kit"
+      ],
+      "notes": "Ability Kit hosts the app lifecycle, ArkUI renders playback and playlist screens, ArkTS structures the state and async logic, ArkData stores preferences/playlists/playback position, Image Kit decodes or edits album artwork consumed by the UI, and IPC Kit connects the UI process with a playback/service process to exchange commands and current playback metadata.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-image-kit-network",
+      "name": "网络图片加载与本地缓存 / Network Image Loading with Local Cache",
+      "when": [
+        "我想从服务器下载图片，处理后展示，并把结果或元数据缓存到本地 / I want to download images from a server, process them, display them, and cache results or metadata locally",
+        "需要做一个带离线缓存的图片列表或画廊 / Need to build an image list or gallery with offline cache",
+        "应用要通过 HTTP 获取图片，读取 EXIF 或解码后在 ArkUI 中显示 / The app needs to fetch images over HTTP, read EXIF or decode them, and show them in ArkUI",
+        "想把网络图片的 URL、状态、缩略图信息保存到 Preferences、KV 或数据库 / I want to save network image URLs, states, and thumbnail metadata in Preferences, KV, or a database"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "image-kit",
+        "network-kit"
+      ],
+      "notes": "Ability Kit starts the UIAbility lifecycle, ArkUI renders the image list/detail UI, Network Kit fetches image bytes or metadata, Image Kit decodes/edits/reads EXIF from the downloaded data, ArkData persists cache records or user preferences, and ArkTS provides the language and concurrency model connecting the asynchronous fetch-process-store-display flow.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-ipc-kit-media",
+      "name": "跨进程音乐播放与状态持久化 / Cross-process music playback with persisted state",
+      "when": [
+        "我要做一个音乐播放器，播放服务在后台进程运行，前台页面通过 IPC 控制播放 / I want to build a music player where playback runs in a background process and the foreground UI controls it via IPC",
+        "需要保存播放列表、播放进度和播放偏好，并在下次打开应用时恢复 / I need to save playlists, playback position, and playback preferences, then restore them when the app is reopened",
+        "想实现 ArkUI 播放控制界面，调用跨进程媒体播放能力 / I want an ArkUI playback control screen that invokes cross-process media playback",
+        "需要前台 UI 与媒体播放服务分离，并同步播放状态到本地存储 / I need to separate the foreground UI from the media playback service and sync playback state to local storage"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "ipc-kit",
+        "media-kit"
+      ],
+      "notes": "Ability Kit provides the app and ability lifecycle, ArkUI builds the playback controls, ArkTS implements the control logic, ArkData stores playlists/preferences/progress, IPC Kit sends play/pause/seek requests and playback-state updates between UI and service processes, and Media Kit consumes the selected media source to perform audio playback.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "MusicPlay"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-localization-kit-location",
+      "name": "本地化位置记录 / Localized Location Logging",
+      "when": [
+        "我想在应用中获取用户当前位置并保存历史记录，同时按系统语言显示 / I want to get the user's current location, save history, and display it in the system language",
+        "需要把定位结果持久化，并在界面上做国际化展示 / Need to persist location results and show them in an internationalized UI",
+        "构建一个记录用户地点、可查看历史、支持多语言的 HarmonyOS 功能 / Build a HarmonyOS feature that records places, shows history, and supports multiple languages",
+        "应用启动后读取本地偏好设置，获取定位信息，并用本地化文本展示 / On app launch, read local preferences, obtain location, and display it with localized text"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "localization-kit",
+        "location-kit"
+      ],
+      "notes": "Ability Kit provides the application lifecycle entry, ArkTS implements the location and persistence logic, Location Kit produces coordinates or reverse-geocoded place data, ArkData stores preferences and location history, Localization Kit formats labels and locale-sensitive text, and ArkUI renders the localized current location and saved records.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-localization-kit-sensor-service",
+      "name": "本地化计步器 / Localized Pedometer",
+      "when": [
+        "我想做一个支持多语言的计步应用，并把步数保存在本地 / I want to build a multilingual pedometer app that saves step counts locally",
+        "需要读取传感器数据统计步数，并用用户语言显示结果 / Need to read sensor data to count steps and display results in the user’s language",
+        "开发运动记录页面：实时步数、历史数据、本地存储和国际化文案 / Build a fitness tracking page with live steps, history, local storage, and localized text",
+        "做一个基于加速度传感器的计步 Demo，步数要持久化并适配不同地区语言 / Create an accelerometer-based pedometer demo with persistent step data and regional language support"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "localization-kit",
+        "sensor-service-kit"
+      ],
+      "notes": "Ability Kit starts the app lifecycle, Sensor Service Kit provides motion sensor data for step detection, ArkTS implements the counting logic, ArkData persists current and historical step values, Localization Kit formats labels/messages for the user locale, and ArkUI renders the live and saved pedometer state.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-location-kit-sensor-service",
+      "name": "运动计步与轨迹记录 / Step Counting and Route Tracking",
+      "when": [
+        "我想做一个计步器，记录步数并显示当前位置 / I want to build a pedometer that records steps and shows the current location",
+        "开发运动打卡应用，需要用传感器统计步数并持久化保存 / Build a fitness check-in app that uses sensors to count steps and persist the results",
+        "实现走路/跑步记录，包含步数、定位和历史数据 / Implement walking/running tracking with steps, location, and history data",
+        "做一个健康运动页面，实时展示步数并保存每日记录 / Create a health activity page that displays live steps and saves daily records"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "location-kit",
+        "sensor-service-kit"
+      ],
+      "notes": "Ability Kit provides the app lifecycle entry, ArkUI renders the live pedometer and history UI, Sensor Service Kit supplies motion sensor data for step counting, Location Kit adds current position or route context, ArkTS coordinates the counting and data transformation logic, and ArkData persists step/location records for later display.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "PedometerApp"
+        ]
+      }
+    },
+    {
+      "id": "arkdata-media-kit-media-library",
+      "name": "媒体录制与入库 / Media Recording and Library Save",
+      "when": [
+        "我要做一个录音或录像应用，录制完成后保存到系统相册/媒体库 / I want to build an audio or video recorder that saves the result to the system media library",
+        "需要在应用里录制音视频，并记录录制参数、文件信息或历史记录 / Need to record audio/video in app and persist recording settings, file info, or history",
+        "实现带录制按钮和状态显示的媒体采集页面，录完后可在相册中查看 / Implement a recording UI with status display, then make the captured media visible in Gallery",
+        "开发一个录屏/录像示例，保存用户偏好并管理生成的媒体文件 / Develop a screen/video recording sample that stores user preferences and manages generated media files"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkdata",
+        "arkts",
+        "arkui",
+        "media-kit",
+        "media-library-kit"
+      ],
+      "notes": "ability-kit hosts the UIAbility lifecycle, arkui builds the recording controls and status UI, arkts implements the app logic and asynchronous flow, media-kit captures audio/video or screen content, media-library-kit creates/saves the resulting media asset into the system library, and arkdata persists preferences, recording metadata, or history for later display.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "Recorder"
+        ]
+      }
+    },
+    {
+      "id": "arkweb-core-file-kit-form",
+      "name": "网页内容服务卡片 / Web Content Service Card",
+      "when": [
+        "我想在应用内加载网页，并把关键内容做成桌面服务卡片 / I want to load web pages in the app and expose key content as a home-screen service card",
+        "需要一个 Web 组件展示 H5 内容，同时支持本地文件缓存和卡片入口 / I need a Web component for H5 content with local file caching and a card entry point",
+        "如何把网页交互结果保存到应用文件，再同步展示到服务卡片 / How can I save web interaction results to app files and display them on a service widget",
+        "我要做一个应用：主界面是网页，数据落盘后由桌面卡片快速查看 / I want an app whose main UI is web-based, with persisted data quickly shown on a desktop card"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "arkweb",
+        "core-file-kit",
+        "form-kit"
+      ],
+      "notes": "Ability Kit defines the app lifecycle and entry abilities, ArkTS implements the logic, ArkUI hosts the UI, ArkWeb loads and interacts with web content, Core File Kit persists downloaded or generated web data, and Form Kit reads that prepared state to render an ArkTS service card. The typical flow is: launch ability → show ArkUI page with ArkWeb → exchange or collect web data → save files/state locally → update the form/card with the saved summary.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkweb-core-file-kit-image",
+      "name": "网页图片文件处理 / Web Image File Processing",
+      "when": [
+        "我想在应用里嵌入网页，并让网页读取本地图片后进行解码、编辑或查看EXIF / I want to embed a web page that can read local image files for decoding, editing, or EXIF viewing",
+        "需要Web组件和ArkTS原生侧互通，把网页里的图片保存到应用文件或用户文件 / I need Web component and ArkTS native code to communicate so images from the page can be saved to app or user files",
+        "做一个H5图片预览/编辑页面，原生侧负责文件读写和图片编解码 / Build an H5 image preview or editing page where native code handles file I/O and image codec work",
+        "网页上传或生成图片后，希望HarmonyOS原生侧处理图片并把结果返回给JS / After a web page uploads or generates an image, I want HarmonyOS native code to process it and return the result to JavaScript"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "arkweb",
+        "core-file-kit",
+        "image-kit"
+      ],
+      "notes": "Ability Kit starts the UIAbility, ArkUI hosts the ArkWeb Web component, ArkWeb loads the page and exchanges image data or file references with JavaScript, ArkTS coordinates the calls, Core File Kit reads/writes the image files, and Image Kit decodes, edits, or extracts metadata before the result is returned to the web UI.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
+    },
+    {
+      "id": "arkweb-core-file-kit-network",
+      "name": "离线网页资源缓存与加载 / Offline Web Resource Caching and Loading",
+      "when": [
+        "我想在应用里加载网页，并把下载的 HTML/CSS/JS 资源缓存到本地以便离线访问 / I want to load web pages in the app and cache downloaded HTML/CSS/JS resources locally for offline access",
+        "如何用 Web 组件展示远程页面，同时把网络返回内容保存到应用文件目录 / How can I display a remote page with Web components while saving network responses into the app file directory",
+        "需要实现一个带本地缓存的内嵌浏览页面，网络可用时更新资源，离线时读取文件 / I need an embedded browser page with local cache that updates resources when online and reads files when offline",
+        "想做 WebView 资源预下载和本地文件回退加载 / I want to implement WebView resource pre-download and local file fallback loading"
+      ],
+      "skills": [
+        "ability-kit",
+        "arkts",
+        "arkui",
+        "arkweb",
+        "core-file-kit",
+        "network-kit"
+      ],
+      "notes": "Ability Kit starts the UIAbility lifecycle, ArkUI builds the page hosting ArkWeb, and ArkTS implements the state and async logic. Network Kit fetches remote web resources, Core File Kit persists or reads the cached files, and ArkWeb consumes either the network URL or local cached file content to render the page.",
+      "lifecycle": {
+        "status": "draft",
+        "authored": {
+          "by": "gpt-5.5",
+          "at": "2026-05-21"
+        },
+        "support": 1,
+        "mined_from": [
+          "HmosWorld"
+        ]
+      }
     }
   ]
 }

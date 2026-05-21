@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:19:22.797Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -57,8 +58,15 @@
       "设备选择、性能模式、优先级、FP16等编译与执行配置 / device selection, performance mode, priority, FP16, and other compilation/execution options"
     ],
     "outputs": [
-      "概述",
-      "开发指导"
+      "NNRt内部模型图对象（OH_NNModel） / NNRt internal model graph object (OH_NNModel)",
+      "模型编译对象（OH_NNCompilation） / model compilation object (OH_NNCompilation)",
+      "离线模型编译对象 / offline-model compilation object",
+      "推理执行器对象（OH_NNExecutor） / inference executor object (OH_NNExecutor)",
+      "推理输出张量或输出缓冲区数据 / inference output tensors or output buffer data",
+      "模型编译缓存文件 / model compilation cache files",
+      "AI硬件设备ID列表 / AI hardware device ID list",
+      "AI硬件设备信息（设备名称、类型、支持能力等） / AI hardware device information, such as device name, type, and capabilities",
+      "共享内存或零拷贝推理数据缓冲区 / shared-memory or zero-copy inference data buffers"
     ],
     "postconditions": [
       {

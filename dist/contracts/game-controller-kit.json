@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:16:17.827Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -56,8 +57,11 @@
       "手柄设备标识或设备信息结构 / controller device identifier or device info structure"
     ],
     "outputs": [
-      "Kit 简介",
-      "功能开发"
+      "设备状态变化事件回调数据（手柄连接/断开、设备ID、设备状态等） / Device status change callback data (controller connected/disconnected, device ID, device status, etc.)",
+      "在线手柄设备信息列表（设备ID、设备类型、厂商信息等） / List of online controller device information (device ID, device type, vendor information, etc.)",
+      "手柄按键事件回调数据（A/B/X/Y、肩键、扳机键、方向键、摇杆按键的键码与按下/抬起状态） / Controller button event callback data (key code and pressed/released state for A/B/X/Y, shoulder buttons, triggers, D-pad, stick buttons)",
+      "手柄轴事件回调数据（左/右摇杆X/Y轴标识与位移值） / Controller axis event callback data (left/right stick X/Y axis identifier and displacement value)",
+      "C/C++接口调用结果码（注册监听、取消监听、查询设备信息等操作的成功或错误码） / C/C++ API result codes (success or error codes for registering listeners, unregistering listeners, querying device information, etc.)"
     ],
     "postconditions": [
       {

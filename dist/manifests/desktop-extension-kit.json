@@ -3,7 +3,7 @@
   "skill": "desktop-extension-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.718Z"
+    "at": "2026-05-21T03:47:44.410Z"
   },
   "references": [
     {
@@ -14,12 +14,12 @@
     {
       "path": "references/应用接入快捷栏.md",
       "title": "应用接入快捷栏",
-      "snippet": "从6.0.2(22)开始，支持应用接入快捷栏。 #### 场景介绍 快捷栏指的是PC/2in1设备的屏幕底部的图标区域，具体如下图。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/03/v3/GUH_yKGNQg2fUrxCPdXXXw/zh-cn_image_0000002543374142.png?HW-CC-KV=V1&HW-CC-Date=20260421T111214Z&HW-CC-Expire=86400&HW-CC-Sign=090597C39F7ED75B443CCB42A63E72D5EC1DB641FEDD49A1DB9C56A3CDB434D9) 应用接入快捷栏之后，快捷栏的应用图标菜单会显示应用自定义的菜单项，应用可以添加、删除、更新、查询菜单项，具体效果如下图。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e7/v3/vrwa9cIqQGeN19kLIhgIkQ/zh-cn_image_0000002543214480.png?HW-CC-KV=V1&HW-CC-Date=20260421T111214Z&HW-C"
+      "snippet": "从6.0.2(22)开始，支持应用接入快捷栏。 #### 场景介绍 快捷栏指的是PC/2in1设备的屏幕底部的图标区域，具体如下图。 应用接入快捷栏之后，快捷栏的应用图标菜单会显示应用自定义的菜单项，应用可以添加、删除、更新、查询菜单项，具体效果如下图。 #### 接口说明 以下列出应用接入快捷栏菜单的相关API，具体API说明详见 接口文档 。 DeskTop Extension Kit相关API仅在2in1设备上生效。 **表1** 应用接入快捷栏菜单相关功能接口介绍 #### 快捷栏菜单分组 1. 导入相关模块。 import { quickBarManager } from '@kit.DeskTopExtensionKit'; import { UIExtensionContentSession, Want, UIAbility } from '@kit.AbilityKit'; import { image } from '@kit.ImageKit'; import { resourceManager } from '@kit.LocalizationKit'; 2. 新建一个TestAbility.ets文件（例如在entry/src/main/ets/entryability文件夹下），同时新建一个TestIndex的页面（例如在entry/src/main/et"
     },
     {
       "path": "references/应用接入状态栏.md",
       "title": "应用接入状态栏",
-      "snippet": "应用接入状态栏之后，状态栏会显示应用自定义的图标，图标提供左键显示自定义弹窗以及右键显示菜单的功能；应用退出时，状态栏图标会随着应用进程的销毁而消失。 从6.0.2(22)版本开始支持更新状态栏图标hover时显示内容。 #### 接口说明 以下列出应用接入状态栏的相关API，具体API说明详见 接口文档 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e8/v3/1qInu6BeQY-CYsiBhuT0rw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111214Z&HW-CC-Expire=86400&HW-CC-Sign=55CF1CADEB8DB985D66BE9BC7587943B2561B11B829BBE5B32364159867A1C4F) DeskTop Extension Kit（桌面拓展服务）相关API仅在2in1设备上生效。 **表1** 应用接入状态栏相关功能接口介绍 #### 开发步骤 1. 导入相关模块。 import { statusBarManager, StatusBarViewExtensionAbility } from '@kit.DeskTopExtensio"
+      "snippet": "应用接入状态栏之后，状态栏会显示应用自定义的图标，图标提供左键显示自定义弹窗以及右键显示菜单的功能；应用退出时，状态栏图标会随着应用进程的销毁而消失。 从6.0.2(22)版本开始支持更新状态栏图标hover时显示内容。 #### 接口说明 以下列出应用接入状态栏的相关API，具体API说明详见 接口文档 。 DeskTop Extension Kit（桌面拓展服务）相关API仅在2in1设备上生效。 **表1** 应用接入状态栏相关功能接口介绍 #### 开发步骤 1. 导入相关模块。 import { statusBarManager, StatusBarViewExtensionAbility } from '@kit.DeskTopExtensionKit'; import { UIExtensionContentSession, Want } from '@kit.AbilityKit'; import { image } from '@kit.ImageKit'; import { resourceManager } from '@kit.LocalizationKit'; import { emitter } from '@kit.BasicServicesKit'; 2. 新建一个MyStatusBarViewAbility.ets文件（例如在entry/src/m"
     }
   ]
 }

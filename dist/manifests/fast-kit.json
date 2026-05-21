@@ -3,7 +3,7 @@
   "skill": "fast-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.778Z"
+    "at": "2026-05-21T03:47:44.457Z"
   },
   "references": [
     {
@@ -14,12 +14,12 @@
     {
       "path": "references/使用RectPartition求解矩形划分.md",
       "title": "使用RectPartition求解矩形划分",
-      "snippet": "矩形划分求解器（Rectangular Partition Solver）用于解决矩形划分问题。其接收若干个彼此不相交的矩形作为输入（主要关注这些矩形共同定义的区域的并集），计算出覆盖相同区域的矩形划分方案，并使输出的矩形数量尽可能少（但不保证最优）。形如下方示意图。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e3/v3/XduGzOTsQqy1e0yt3wp_1Q/zh-cn_image_0000002543374144.png?HW-CC-KV=V1&HW-CC-Date=20260421T111215Z&HW-CC-Expire=86400&HW-CC-Sign=218F5A5F2ED760F6D40B0B448CA6BE228E6778E66373621118F2BDC4467C8783) 其相关定义如下：一个矩形 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/74/v3/6M3Li1jzRhWNEwrsrHb5tw/zh-cn_image_0000002543214482.png?HW-CC-KV=V1&HW-CC-Date=2"
+      "snippet": "矩形划分求解器（Rectangular Partition Solver）用于解决矩形划分问题。其接收若干个彼此不相交的矩形作为输入（主要关注这些矩形共同定义的区域的并集），计算出覆盖相同区域的矩形划分方案，并使输出的矩形数量尽可能少（但不保证最优）。形如下方示意图。 其相关定义如下：一个矩形 为二维网格内横纵坐标满足 的所有单元矩形构成的集合（坐标系说明：X轴从左到右递增，Y轴从上到下递增）。两个矩形相交，当且仅当它们共享至少一个公共的单元矩形。 在矩形划分问题（Rectangular Partition Problem）中，给定N个彼此不相交的矩形，要求输出M个矩形，使其满足如下几点： - 输出的M个矩形彼此不相交。 - 输出的M个矩形的并集与输入的N个矩形的并集完全相同。 - 输出的矩形数量M尽可能少。 矩形划分求解器运行的时间复杂度为 ，可以高效处理大规模输入数据。在网格数据处理和空间几何计算等优化场景中，可以使用矩形划分求解器提升区域处理效率，减少冗余空间。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 首先在CMake脚本中链接相关动态库。 target_link_libraries(entry PUBLIC libfast_ads.so) 2. 调用HMS_FAST_RectPartition_CreateConfig生成矩形划分求解"
     },
     {
       "path": "references/使用SegmentMap查询维护区间信息.md",
       "title": "使用SegmentMap查询维护区间信息",
-      "snippet": "FAST Kit提供Segment Map用于查询维护区间信息，实现数据序列区间段的快速更新和快速查询。线段表（Segment Map）是一种用于高效处理区间段信息的数据结构，适用于需要频繁对数据序列的某个区间段进行统计或修改的场景。其典型操作包括单点修改、区间修改、区间查询等。 线段表有多种实现方式，其中最常见的是使用二分树的方案，也被称为线段树（Segment Tree）。与直接遍历区间相比，线段表能将许多区间操作的时间复杂度从 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6a/v3/I3RfztD0RHW8fIsvplcahw/zh-cn_image_0000002573854395.png?HW-CC-KV=V1&HW-CC-Date=20260421T111214Z&HW-CC-Expire=86400&HW-CC-Sign=B8A69E08B6E8A872188E506294F256D7486EE21E93595400118CBDC761510C8D) 优化至 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d3/v3/AZHbO"
+      "snippet": "FAST Kit提供Segment Map用于查询维护区间信息，实现数据序列区间段的快速更新和快速查询。线段表（Segment Map）是一种用于高效处理区间段信息的数据结构，适用于需要频繁对数据序列的某个区间段进行统计或修改的场景。其典型操作包括单点修改、区间修改、区间查询等。 线段表有多种实现方式，其中最常见的是使用二分树的方案，也被称为线段树（Segment Tree）。与直接遍历区间相比，线段表能将许多区间操作的时间复杂度从 优化至 ，在处理大规模数据时优势显著，为构建高性能、响应迅速的应用程序提供数据结构基础。 #### 接口说明 具体API说明详见 接口文档 。 #### 开发步骤 1. 首先在CMake脚本中链接相关动态库。 target_link_libraries(entry PUBLIC libfast_ads.so) 2. 调用HMS_FAST_SegmentMap_CreateConfig生成线段表配置实例（FAST_SegmentMapConfig）。 3. 调用HMS_FAST_SegmentMap_SetQueryType设置查询类型。 4. 调用HMS_FAST_SegmentMap_SetUpdateType设置更新类型。 5. 调用HMS_FAST_SegmentMap_Create生成线段表实例 （FAST_SegmentMapHandle）。"
     }
   ]
 }

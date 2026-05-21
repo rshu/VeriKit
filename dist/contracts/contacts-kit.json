@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:13:37.796Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -51,8 +52,12 @@
       "联系人标识或查询条件 / contact identifier or query criteria"
     ],
     "outputs": [
-      "服务概述",
-      "联系人管理"
+      "联系人选择器返回的已选联系人对象数组（contact.Contact[]，如姓名、电话号码、邮箱等） / Array of selected contact objects returned by the contact picker (contact.Contact[], such as name, phone numbers, emails)",
+      "联系人查询接口返回的联系人记录或联系人列表（contact.Contact / contact.Contact[]） / Contact record or contact list returned by contact query APIs (contact.Contact / contact.Contact[])",
+      "新建联系人后保存到系统通讯录的联系人数据（contact.Contact，系统可生成联系人标识） / Contact data saved into the system address book after creation (contact.Contact, with a system-generated contact identifier when applicable)",
+      "修改联系人后在系统通讯录中持久化的联系人数据 / Updated contact data persisted in the system address book",
+      "删除联系人后的操作完成结果（通常为Promise<void>，不返回联系人详情） / Deletion completion result, typically Promise<void>, without returning contact details",
+      "通过Picker拉起新建联系人界面后保存的联系人记录 / Contact record saved after launching the new-contact UI through the picker"
     ],
     "postconditions": [
       {

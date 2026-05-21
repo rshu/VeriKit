@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:17:22.033Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -56,14 +57,16 @@
       "目标拉起对象信息（UIAbility、ServiceExtension、UIExtension、Form、srcEntry等） / target invocation object information (UIAbility, ServiceExtension, UIExtension, Form, srcEntry, etc.)"
     ],
     "outputs": [
-      "简介",
-      "习惯推荐",
-      "事件推荐",
-      "位置推荐",
-      "技能调用（小艺对话）",
-      "本地搜索",
-      "上架与附录",
-      "常见问题"
+      "小艺建议中的习惯推荐卡片 / Habit-based recommendation cards in Xiaoyi Suggestions",
+      "小艺建议中的事件推荐卡片或提醒入口 / Event-based recommendation cards or reminder entries in Xiaoyi Suggestions",
+      "基于位置围栏触发的位置推荐卡片 / Location-triggered recommendation cards based on geofences",
+      "小艺对话发起的意图调用请求 / Intent invocation requests initiated by Xiaoyi Voice",
+      "意图执行结果对象 / Intent execution result objects",
+      "功能一步达的应用页面或服务入口 / One-step function entry pages or service entry points",
+      "任务执行类场景的执行结果 / Task-execution scenario results",
+      "小艺搜索中的本地功能搜索结果 / Local function search results in Xiaoyi Search",
+      "小艺搜索中的本地内容搜索结果 / Local content search results in Xiaoyi Search",
+      "应用内容的本地搜索索引条目 / Local search index entries for app content"
     ],
     "postconditions": [
       {

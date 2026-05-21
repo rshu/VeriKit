@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:21:29.627Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -58,10 +59,12 @@
       "图片、视频或扫描结果的接收位置 / Destination for received images, videos, or scan results"
     ],
     "outputs": [
-      "入门与概述",
-      "ArkTS开发",
-      "NDK开发",
-      "常见问题"
+      "远端相机拍摄生成的图片资源（文件/URI） / Image asset captured by a remote device camera (file/URI)",
+      "远端扫描能力返回的扫码/扫描结果（如二维码内容、扫描文本或图像结果） / Scan result returned by a remote device scanner (for example QR-code content, recognized text, or scanned image result)",
+      "远端图库选择返回的媒体资源列表（图片/视频URI） / Media asset list selected from a remote device gallery (image/video URIs)",
+      "跨设备互通控件返回的用户所选远端设备信息 / Remote device information selected by the user from the cross-device collaboration control",
+      "RichEditor中插入的远端拍摄或图库选择图片内容 / Image content inserted into RichEditor from remote camera capture or remote gallery selection",
+      "NDK接口返回的跨设备相机、扫描或图库调用结果数据 / Result data returned by NDK APIs for cross-device camera, scan, or gallery operations"
     ],
     "postconditions": [
       {

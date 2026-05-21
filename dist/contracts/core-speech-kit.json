@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:13:53.331Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -54,10 +55,16 @@
       "识别模式与会话配置 / recognition mode and session configuration"
     ],
     "outputs": [
-      "简介",
-      "语音识别",
-      "文本转语音",
-      "隐私合规"
+      "文本转语音引擎对象 / TextToSpeech engine object",
+      "合成后的语音播报音频 / Synthesized speech playback audio",
+      "文本转语音播报进度与状态回调结果 / Text-to-speech playback progress and status callback results",
+      "语音识别引擎对象 / Speech recognition engine object",
+      "短语音识别文本结果 / Short-audio speech recognition text result",
+      "长语音识别文本结果 / Long-audio speech recognition text result",
+      "实时麦克风语音转写文本 / Real-time microphone speech transcription text",
+      "PCM音频文件识别文本 / Recognized text from PCM audio files",
+      "语音识别中间结果与最终结果回调 / Intermediate and final speech recognition callback results",
+      "语音识别错误码与异常回调信息 / Speech recognition error codes and exception callback information"
     ],
     "postconditions": [
       {

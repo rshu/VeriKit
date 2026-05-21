@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:13:22.479Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -56,12 +57,18 @@
       "预加载配置、资源接口地址或触发模式 / Prefetch configuration, resource endpoint, or trigger mode"
     ],
     "outputs": [
-      "服务概述",
-      "云函数",
-      "云数据库",
-      "云存储",
-      "预加载",
-      "常见问题"
+      "云函数调用返回的业务响应数据 / Business response data returned by a cloud function invocation",
+      "云函数测试或本地调试产生的执行结果与日志 / Execution results and logs produced by cloud function testing or local debugging",
+      "云数据库写入或更新操作结果 / Result of a cloud database write or update operation",
+      "云数据库谓词查询返回的对象记录集合 / Object record collection returned by a cloud database predicate query",
+      "云数据库删除操作结果 / Result of a cloud database delete operation",
+      "上传到云存储后的云端文件对象或文件路径 / Cloud file object or file path produced after uploading to cloud storage",
+      "从云存储下载到本地的文件 / Local file downloaded from cloud storage",
+      "云存储目录下的文件列表 / File list under a cloud storage directory",
+      "云存储文件的下载地址URL / Download URL of a cloud storage file",
+      "云存储文件元数据，包括系统元数据和自定义元数据 / Cloud storage file metadata, including system metadata and custom metadata",
+      "安装预加载、周期性预加载或跳链安装预加载缓存的页面资源数据 / Page resource data cached by install prefetch, periodic prefetch, or deferred deep-link install prefetch",
+      "预加载执行状态、错误码和应用侧诊断日志 / Prefetch execution status, error codes, and app-side diagnostic logs"
     ],
     "postconditions": [
       {

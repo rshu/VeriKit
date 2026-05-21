@@ -3,28 +3,28 @@
   "skill": "ipc-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.917Z"
+    "at": "2026-05-21T03:47:44.554Z"
   },
   "references": [
     {
       "path": "references/IPC Kit简介.md",
       "title": "IPC Kit简介",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/eb/v3/Tm9-l0J5TjK0bYmvOtGDoA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111015Z&HW-CC-Expire=86400&HW-CC-Sign=6FDA09E6E35E8C1E492E2F2606349DE4B642F54D4036B79D34FD3E0F94368D12) - 使用IPC和RPC进行跨进程通信时，需要先调用元能力的连接服务接口获取Proxy对象。IPC和RPC的典型使用场景包括： - IPC典型使用场景是后台服务，后台服务通过IPC机制提供单设备跨进程接口调用与数据传递能力。 - RPC典型使用场景是多端协同，多端协同通过RPC机制提供跨设备远端接口调用与数据传递能力。 #### 实现原理 IPC和RPC用于实现跨进程通信。IPC使用Binder驱动，适用于设备内的跨进程通信；RPC使用软总线驱动，适用于跨设备的跨进程通信。每个进程拥有独立的资源和内存空间，其他进程无法直接访问，因此需要使用IPC和RPC实现跨进程通信。 IPC和RPC采用客户端-服务端（Client-Server）模型。在使用时，Clien"
+      "snippet": "- 使用IPC和RPC进行跨进程通信时，需要先调用元能力的连接服务接口获取Proxy对象。IPC和RPC的典型使用场景包括： - IPC典型使用场景是后台服务，后台服务通过IPC机制提供单设备跨进程接口调用与数据传递能力。 - RPC典型使用场景是多端协同，多端协同通过RPC机制提供跨设备远端接口调用与数据传递能力。 #### 实现原理 IPC和RPC用于实现跨进程通信。IPC使用Binder驱动，适用于设备内的跨进程通信；RPC使用软总线驱动，适用于跨设备的跨进程通信。每个进程拥有独立的资源和内存空间，其他进程无法直接访问，因此需要使用IPC和RPC实现跨进程通信。 IPC和RPC采用客户端-服务端（Client-Server）模型。在使用时，Client进程可以获取Server进程的代理（Proxy），通过Proxy读写数据和发起请求，Stub处理请求并应答结果，实现进程间通信。Proxy和Stub提供了一组由服务/业务自定义的接口，Proxy实现每一个具体的请求方法，Stub实现对应的每一个具体请求的处理方法以及应答数据的内容。 #### 约束与限制 - 单个设备上跨进程通信时，传输的数据量最大为200KB。超过200KB的数据量传输可以使用 匿名共享内存 。 - 不支持在RPC中订阅匿名Stub对象（没有向SAMgr注册的Stub对象）的 死亡通知 。 - 不支持把跨设备的"
     },
     {
       "path": "references/IPC与RPC通信开发指导(ArkTS).md",
       "title": "IPC与RPC通信开发指导(ArkTS)",
-      "snippet": "IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程的Proxy和服务端进程的Stub建立一一对应关系），从而通过Proxy的接口可以和Stub进行IPC/RPC通信。 #### 开发步骤 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/67/v3/UqMr9KpnS9GKTqQ0FQr8bA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111015Z&HW-CC-Expire=86400&HW-CC-Sign=B379C19B8DA8A033DEC292C6FD416F3864B498F1A4B44D7A6E626731D51AF691) - 在进行IPC&RPC跨进程通信前需要通过Ability Kit获取服务端的代理对象。 - 不支持三方应用实现跨进程通信，三方应用仅可通过 connectServiceExtensionAbility 连接系统提供的ServiceExtensionAbility，通过返回的代理对 ServiceExtensionAbility 进行通信从而达到三方应用和系统服务通信的目的。 - 从API version 20开始，在2in1设备上，开发者可使用AppServ"
+      "snippet": "IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程的Proxy和服务端进程的Stub建立一一对应关系），从而通过Proxy的接口可以和Stub进行IPC/RPC通信。 #### 开发步骤 - 在进行IPC&RPC跨进程通信前需要通过Ability Kit获取服务端的代理对象。 - 不支持三方应用实现跨进程通信，三方应用仅可通过 connectServiceExtensionAbility 连接系统提供的ServiceExtensionAbility，通过返回的代理对 ServiceExtensionAbility 进行通信从而达到三方应用和系统服务通信的目的。 - 从API version 20开始，在2in1设备上，开发者可使用AppServiceExtensionAbility组件，为应用提供后台服务能力。三方应用可 connectAppServiceExtensionAbility 连接AppServiceExtensionAbility，通过返回的代理对象和 AppServiceExtensionAbility 进行通信从而达到三方和三方应用通信的目的。详细开发步骤参考 AppServiceExtensionAbility 。 - 三方应用之间也可通过 动态订阅公共事件 进行进程间通信。 - 完整的IPC&RPC通信开发流程涉及系统ServiceExtensio"
     },
     {
       "path": "references/IPC与RPC通信开发指导(C_C++).md",
       "title": "IPC与RPC通信开发指导(C/C++)",
-      "snippet": "IPC让运行在不同进程间的Proxy和Stub实现互相通信。IPC CAPI是IPC Kit提供的C语言接口。 IPC CAPI接口不直接提供获取通信代理对象的能力，该功能由 Ability Kit 提供。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a/v3/nKT_lJeQQzyCXVPANOaQ2w/zh-cn_image_0000002573974241.png?HW-CC-KV=V1&HW-CC-Date=20260421T111015Z&HW-CC-Expire=86400&HW-CC-Sign=AAC507FE0B7F6DF72235DF6E4377A5693026C73B9F9AF43C3BBB0E267F06779B) 进程间IPC通道的建立，请参考 Native子进程开发指导（C/C++） 。本文重点介绍IPC CAPI的使用。 #### 接口说明 **表1** IPC CAPI侧关键接口 详细的接口说明请参考 IPCKit 。 #### 开发步骤 先创建服务端Stub对象，通过元能力获取其客户端代理Proxy对象，然后用Proxy对象与服务端Stub对象进行IPC通信，同时再注册远端对象的死亡通知回调，用于Proxy侧感知服务端Stub对"
+      "snippet": "IPC让运行在不同进程间的Proxy和Stub实现互相通信。IPC CAPI是IPC Kit提供的C语言接口。 IPC CAPI接口不直接提供获取通信代理对象的能力，该功能由 Ability Kit 提供。 进程间IPC通道的建立，请参考 Native子进程开发指导（C/C++） 。本文重点介绍IPC CAPI的使用。 #### 接口说明 **表1** IPC CAPI侧关键接口 详细的接口说明请参考 IPCKit 。 #### 开发步骤 先创建服务端Stub对象，通过元能力获取其客户端代理Proxy对象，然后用Proxy对象与服务端Stub对象进行IPC通信，同时再注册远端对象的死亡通知回调，用于Proxy侧感知服务端Stub对象所在进程的死亡状态。 **动态库文件** CMakeLists.txt中添加以下lib。 # ipc capi libipc_capi.so # 元能力，ability capi libchild_process.so **头文件** #include <IPCKit/ipc_kit.h> #include <AbilityKit/native_child_process.h> **子进程实现** #include <IPCKit/ipc_kit.h> // ... #include <IPCKit/ipc_cremote_object.h> #incl"
     },
     {
       "path": "references/远端状态订阅开发实例.md",
       "title": "远端状态订阅开发实例",
-      "snippet": "IPC/RPC提供了订阅远端Stub对象状态的机制。当远端Stub对象死亡时，可以自动触发本端Proxy注册的死亡通知。这种死亡通知订阅需要调用指定接口 registerDeathRecipient 完成。不再需要订阅时，也需要调用指定接口 unregisterDeathRecipient 取消订阅。 使用这种订阅机制的用户需要继承死亡通知类 DeathRecipient ，并实现 onRemoteDied 方法清理资源。该方法会在远端Stub对象所在进程退出或当前RPC通信依赖的软总线连接断开时被回调。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/32/v3/hsfnmgM5TlqYuvP6nmF-qA/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111015Z&HW-CC-Expire=86400&HW-CC-Sign=4F641166FBFC16C36914A5A03F572F94B45D40087A0BB2107D7CB037D43AE155) - 首先，Proxy订阅Stub死亡通知，若在订阅期间Stub状态正常，则在不再需要时取消订阅。 - 其次，若在订阅期间，Stub所在进程退出或当"
+      "snippet": "IPC/RPC提供了订阅远端Stub对象状态的机制。当远端Stub对象死亡时，可以自动触发本端Proxy注册的死亡通知。这种死亡通知订阅需要调用指定接口 registerDeathRecipient 完成。不再需要订阅时，也需要调用指定接口 unregisterDeathRecipient 取消订阅。 使用这种订阅机制的用户需要继承死亡通知类 DeathRecipient ，并实现 onRemoteDied 方法清理资源。该方法会在远端Stub对象所在进程退出或当前RPC通信依赖的软总线连接断开时被回调。 - 首先，Proxy订阅Stub死亡通知，若在订阅期间Stub状态正常，则在不再需要时取消订阅。 - 其次，若在订阅期间，Stub所在进程退出或当前RPC通信依赖的软总线连接断开，则会自动触发执行业务已向Proxy注册的自定义的onRemoteDied方法。 #### 使用场景 IPC/RPC的订阅机制适用于以下场景： 1. IPC通信，Proxy对象需要感知远端Stub对象所在进程的状态。 2. RPC通信，Proxy对象需要感知远端Stub对象所在进程的状态，或者RPC通信依赖的软总线连接断开。 当Proxy感知到Stub端死亡后，应该清理本地Proxy对象以及相关资源。 RPC不支持匿名Stub对象（没有向SAMgr注册）的死亡通知，IPC支持匿名Stub对象的死亡通知。 "
     }
   ]
 }

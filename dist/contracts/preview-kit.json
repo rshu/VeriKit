@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:20:18.995Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -56,11 +57,11 @@
       "预加载状态监听器或回调 / preload status listener or callback"
     ],
     "outputs": [
-      "概述",
-      "文件预览",
-      "文件打开加速",
-      "文件缓存加速",
-      "常见问题"
+      "文件预览窗口/页面（由 openPreview 拉起的系统预览界面） / File preview window/page (system preview UI launched by openPreview)",
+      "openPreview 调用完成结果或错误对象（Promise<void> / BusinessError） / openPreview completion result or error object (Promise<void> / BusinessError)",
+      "文件预加载状态回调数据（预加载中、完成、失败等状态） / File preload status callback data (loading, completed, failed, etc.)",
+      "文件打开加速产生的预加载数据/加速缓存 / Preloaded data or acceleration cache produced for faster file opening",
+      "通用文件缓存加速产生的解码数据磁盘缓存 / Decoded-data disk cache produced by general file cache acceleration"
     ],
     "postconditions": [
       {

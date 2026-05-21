@@ -5,15 +5,16 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:15:23.175Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
     "use_when": [
       "企业数据保护",
       "文件分类",
-      "安全策略",
+      "为已标识的 KIA 企业敏感文件下发分级管控策略，限制文件外发并叠加水印保护 / Apply classification-based control policies to identified KIA sensitive enterprise files to restrict outbound file sharing and add watermark protection",
       "水印",
       "恢复密钥",
       "如何扫描和分级标识企业敏感文件并设置KIA标签",
@@ -57,9 +58,20 @@
       "企业公钥证书、挑战值或恢复密钥请求参数 / enterprise public-key certificate, challenge value, or recovery-key request parameters"
     ],
     "outputs": [
-      "Kit 简介与开发准备",
-      "文件分级管控",
-      "企业恢复密钥管理"
+      "文件描述符（fd） / File descriptor (fd)",
+      "文件 URI 或路径解析结果 / File URI or resolved path information",
+      "文件属性标签信息（如安全等级、KIA 标识等） / File attribute tag information, such as security level and KIA identifier",
+      "文件扫描结果中的文件列表 / File list returned by a file scan task",
+      "KIA 文件拷贝、重命名、压缩等操作事件数据 / KIA file operation event data for copy, rename, and compression events",
+      "KIA 文件水印保护效果或水印配置结果 / KIA file watermark protection effect or watermark configuration result",
+      "安全管控策略执行结果或外发拦截结果 / Security control policy execution result or outbound-transfer interception result",
+      "挑战值 / Challenge value",
+      "挑战值签名数据 / Signed challenge data",
+      "用于解密硬盘数据的企业恢复密钥 / Enterprise recovery key for decrypting disk data",
+      "用于重置锁屏密码的企业恢复密钥 / Enterprise recovery key for resetting the lock-screen password",
+      "企业公钥证书更新结果 / Enterprise public-key certificate update result",
+      "企业恢复密钥删除结果 / Enterprise recovery key deletion result",
+      "接口调用成功或失败结果及错误码 / API success or failure result and error code"
     ],
     "postconditions": [
       {

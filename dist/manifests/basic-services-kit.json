@@ -3,7 +3,7 @@
   "skill": "basic-services-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.290Z"
+    "at": "2026-05-21T03:47:44.104Z"
   },
   "references": [
     {
@@ -19,12 +19,12 @@
     {
       "path": "references/USB串口通信服务开发概述.md",
       "title": "USB串口通信服务开发概述",
-      "snippet": "USB串口通信服务主要提供USB Host设备转串口协议通信的功能，它提供获取遵循USB Host转串口标准协议的已连接的端口列表，同时提供打开端口、关闭端口、设置参数、获取参数、读取数据、写入数据和设备权限管理这些基本功能。 USB串口通信服务，配置管理请参考 USB串口配置管理 ，通信管理请参考 USB串口通信管理 。 #### 基本概念 在进行USB串口通信服务开发时，开发者应了解以下基本概念： - 串口 即串行接口或串行通信接口，是采用串行通信方式的扩展接口。串行接口中数据是一位一位地顺序传送。串口特点是通信线路简单，只要一对传输线就可以实现双向通信，适用于远距离通信。 #### 实现原理 USB串口服务主要包括两个阶段： - 识别设备并加载驱动。 插入USB转串口设备后，USB Host设备通过USB总线发起枚举过程，获取设备描述符（如厂商ID、设备ID、USB通信设备类标识）。操作系统根据描述符匹配驱动，完成设备初始化和虚拟串口注册。 - 收发数据。 发送方向： 应用层发送数据 → 驱动通过USB通道传输至设备 → 设备解析数据并通过物理串口发送给串口设备。 接收方向： 设备接收物理串口数据 → 数据打包后上传至USB Host设备 → 驱动接收数据并存入串口缓冲区 → 应用层读取数据。 **图1** USB串口收发数据流程 ![](https://contentcen"
+      "snippet": "USB串口通信服务主要提供USB Host设备转串口协议通信的功能，它提供获取遵循USB Host转串口标准协议的已连接的端口列表，同时提供打开端口、关闭端口、设置参数、获取参数、读取数据、写入数据和设备权限管理这些基本功能。 USB串口通信服务，配置管理请参考 USB串口配置管理 ，通信管理请参考 USB串口通信管理 。 #### 基本概念 在进行USB串口通信服务开发时，开发者应了解以下基本概念： - 串口 即串行接口或串行通信接口，是采用串行通信方式的扩展接口。串行接口中数据是一位一位地顺序传送。串口特点是通信线路简单，只要一对传输线就可以实现双向通信，适用于远距离通信。 #### 实现原理 USB串口服务主要包括两个阶段： - 识别设备并加载驱动。 插入USB转串口设备后，USB Host设备通过USB总线发起枚举过程，获取设备描述符（如厂商ID、设备ID、USB通信设备类标识）。操作系统根据描述符匹配驱动，完成设备初始化和虚拟串口注册。 - 收发数据。 发送方向： 应用层发送数据 → 驱动通过USB通道传输至设备 → 设备解析数据并通过物理串口发送给串口设备。 接收方向： 设备接收物理串口数据 → 数据打包后上传至USB Host设备 → 驱动接收数据并存入串口缓冲区 → 应用层读取数据。 **图1** USB串口收发数据流程 #### 约束和限制 - Host设备与串口"
     },
     {
       "path": "references/USB串口通信管理.md",
       "title": "USB串口通信管理",
-      "snippet": "USB串口通信服务中通过Host设备的USB接口连接串口设备的串口进行串行数据传输，通信管理核心目标是实现设备间的高效、稳定数据传输与协同控制。主要使用在工业自动化与远程监控、物联网设备互联、医疗设备管理等场景。 #### 环境准备 请参考USB串口通信服务开发概述 环境准备 。 #### 开发指导 #### 接口说明 #### 开发步骤 开发者可以通过上述接口读取和写入数据： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a2/v3/K09g5robSOSE_97T8LiR4Q/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111210Z&HW-CC-Expire=86400&HW-CC-Sign=7B9A33D97681E8D948D6A935BCD89BF2D293ABCD38AD50EFA41D01D76BE8F159) 以下示例代码只是串口数据传输的必要流程，需要放入具体的方法中执行。 1. 导入模块。 // 导入usbManager模块 import { serialManager } from '@kit.BasicServicesKit'; import { BusinessError } "
+      "snippet": "USB串口通信服务中通过Host设备的USB接口连接串口设备的串口进行串行数据传输，通信管理核心目标是实现设备间的高效、稳定数据传输与协同控制。主要使用在工业自动化与远程监控、物联网设备互联、医疗设备管理等场景。 #### 环境准备 请参考USB串口通信服务开发概述 环境准备 。 #### 开发指导 #### 接口说明 #### 开发步骤 开发者可以通过上述接口读取和写入数据： 以下示例代码只是串口数据传输的必要流程，需要放入具体的方法中执行。 1. 导入模块。 // 导入usbManager模块 import { serialManager } from '@kit.BasicServicesKit'; import { BusinessError } from '@kit.BasicServicesKit' import { buffer } from '@kit.ArkTS'; import { JSON } from '@kit.ArkTS'; 2. 获取设备列表。 // 获取连接主设备的USB设备列表 let portList: serialManager.SerialPort[] = serialManager.getPortList(); console.info(`usbSerial portList: ${portList}`); this.logInfo_ +="
     },
     {
       "path": "references/USB串口配置管理.md",
@@ -54,7 +54,7 @@
     {
       "path": "references/USB服务开发概述.md",
       "title": "USB服务开发概述",
-      "snippet": "USB服务是应用访问底层的一种设备抽象概念，分为主机（Host）、设备（Device）。 在Host模式下，开发者根据提供的USB API，可以获取设备列表、控制设备访问权限以及与连接的设备进行数据传输、控制命令传输等。其中数据传输分为同步和异步两种传输模式，支持中断传输、实时传输、批量传输等传输类型。在进行数据传输之前，需要先进行获取设备列表、通过设备访问权限校验、打开或连接设备、声明占用设备接口等操作。 #### 运作机制 USB服务系统包含USB API、USB Service、USB HAL。 **图1** USB服务运作机制 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b9/v3/OXI8b9LASY6F1yDFKX1O7A/zh-cn_image_0000002543214478.png?HW-CC-KV=V1&HW-CC-Date=20260421T111208Z&HW-CC-Expire=86400&HW-CC-Sign=8D2D89610FD667990D4C7B736DEDDBC21505D38FE3911B1885EF75CC18F7A0A5) - USB API：提供USB的基础API，主要包含查询USB设备列表、批量数据传输、控制命令"
+      "snippet": "USB服务是应用访问底层的一种设备抽象概念，分为主机（Host）、设备（Device）。 在Host模式下，开发者根据提供的USB API，可以获取设备列表、控制设备访问权限以及与连接的设备进行数据传输、控制命令传输等。其中数据传输分为同步和异步两种传输模式，支持中断传输、实时传输、批量传输等传输类型。在进行数据传输之前，需要先进行获取设备列表、通过设备访问权限校验、打开或连接设备、声明占用设备接口等操作。 #### 运作机制 USB服务系统包含USB API、USB Service、USB HAL。 **图1** USB服务运作机制 - USB API：提供USB的基础API，主要包含查询USB设备列表、批量数据传输、控制命令传输、权限控制等。 - USB Service：主要实现HAL层数据的接收、解析、分发以及对设备的管理等。 - USB HAL层：提供给用户态可直接调用的驱动能力接口。"
     },
     {
       "path": "references/USB设备管理.md",
@@ -64,7 +64,7 @@
     {
       "path": "references/使用Emitter进行线程间通信.md",
       "title": "使用Emitter进行线程间通信",
-      "snippet": "Emitter是一种作用在进程内的事件处理机制，为应用程序提供订阅事件、发布事件、取消事件订阅的能力。 #### 场景介绍 Emitter用于同一进程内相同线程或不同线程间的事件处理，事件异步执行。使用时需要先订阅一个事件，然后发布该事件，发布完成后Emitter会将已发布的事件分发给订阅者，订阅者就会执行该事件订阅时设置的回调方法。当不需要订阅该事件时应及时取消订阅释放Emitter资源。 #### 运作机制 Emitter通过维护一个内部事件队列，来进行任务分发。应用需要先订阅某个事件并设置好该事件的回调方法，当应用程序发布事件后，就会往队列里面插入一个事件。任务队列会串行执行队列里面的任务，执行任务时会调用该任务订阅者的回调方法进行事件处理。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d0/v3/VQJsiIvgR4mESVMW9LrUsQ/zh-cn_image_0000002543374140.png?HW-CC-KV=V1&HW-CC-Date=20260421T111207Z&HW-CC-Expire=86400&HW-CC-Sign=FA8388CE5C8C730A111DDE34D3D1D4558C595338BBBDF4D7EA42D46"
+      "snippet": "Emitter是一种作用在进程内的事件处理机制，为应用程序提供订阅事件、发布事件、取消事件订阅的能力。 #### 场景介绍 Emitter用于同一进程内相同线程或不同线程间的事件处理，事件异步执行。使用时需要先订阅一个事件，然后发布该事件，发布完成后Emitter会将已发布的事件分发给订阅者，订阅者就会执行该事件订阅时设置的回调方法。当不需要订阅该事件时应及时取消订阅释放Emitter资源。 #### 运作机制 Emitter通过维护一个内部事件队列，来进行任务分发。应用需要先订阅某个事件并设置好该事件的回调方法，当应用程序发布事件后，就会往队列里面插入一个事件。任务队列会串行执行队列里面的任务，执行任务时会调用该任务订阅者的回调方法进行事件处理。 #### 接口说明 详细请参见 @ohos.events.emitter 。 #### 开发步骤 使用Emitter实现事件订阅、事件发送以及事件删除，开发步骤如下。 1. 导入模块。 import { emitter, Callback } from '@kit.BasicServicesKit'; 2. 订阅事件。 订阅事件使用on（持续订阅）或者once（单次订阅）接口进行订阅，设置要订阅的事件以及接收到事件后的回调函数。 // 定义一个eventId为1的事件。 let event: emitter.InnerEvent = {"
     },
     {
       "path": "references/使用剪贴板进行复制粘贴 (C_C++).md",
@@ -74,7 +74,7 @@
     {
       "path": "references/使用剪贴板进行复制粘贴.md",
       "title": "使用剪贴板进行复制粘贴",
-      "snippet": "剪贴板 为开发者提供数据的复制粘贴能力。当需要使用复制粘贴等功能时，例如：复制文字内容到备忘录中粘贴，复制图库照片到文件管理粘贴，就可以通过剪贴板来完成。 #### 约束限制 - 剪贴板内容包含剪贴板系统服务元数据和应用设置的数据，总大小上限默认为128MB，PC/2in1设备可通过系统配置修改上限，有效范围为128MB~2GB。 - 为保证剪贴板数据的准确性，同一时间只能支持一个复制操作。 - API version 12及之后，系统为提升用户隐私安全保护能力，剪贴板读取接口增加权限管控。 #### 剪贴板接入原理介绍 - 剪贴板为应用提供应用数据的复制粘贴能力，支持在应用内或应用间共享复制或剪切的应用数据。剪贴板默认支持文本、HTML富文本、文件URI、PixelMap通用数据格式类型数据，同时也支持应用自定义扩展类型数据处理。 - 剪贴板数据定义对应PasteData，复制应用通过向剪贴板服务写入PasteData实现数据复制，粘贴应用通过读取剪贴板服务的PasteData实现数据粘贴，PasteData整体结构示意如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/48/v3/d7TvZomXRcyAiNJYU5f1fA/zh-cn_image_000"
+      "snippet": "剪贴板 为开发者提供数据的复制粘贴能力。当需要使用复制粘贴等功能时，例如：复制文字内容到备忘录中粘贴，复制图库照片到文件管理粘贴，就可以通过剪贴板来完成。 #### 约束限制 - 剪贴板内容包含剪贴板系统服务元数据和应用设置的数据，总大小上限默认为128MB，PC/2in1设备可通过系统配置修改上限，有效范围为128MB~2GB。 - 为保证剪贴板数据的准确性，同一时间只能支持一个复制操作。 - API version 12及之后，系统为提升用户隐私安全保护能力，剪贴板读取接口增加权限管控。 #### 剪贴板接入原理介绍 - 剪贴板为应用提供应用数据的复制粘贴能力，支持在应用内或应用间共享复制或剪切的应用数据。剪贴板默认支持文本、HTML富文本、文件URI、PixelMap通用数据格式类型数据，同时也支持应用自定义扩展类型数据处理。 - 剪贴板数据定义对应PasteData，复制应用通过向剪贴板服务写入PasteData实现数据复制，粘贴应用通过读取剪贴板服务的PasteData实现数据粘贴，PasteData整体结构示意如下： - Record对应复制数据的不同内容片段； - Entry对应同一份数据的不同格式； - pasteDataProperty定义了剪贴板中数据内容的属性，包含时间戳、数据类型、可粘贴范围以及一些附加数据等。 为了复制应用和粘贴应用对剪贴板数据内容理解一致"
     },
     {
       "path": "references/使用剪贴板进行延迟复制粘贴.md",
@@ -89,7 +89,7 @@
     {
       "path": "references/动态订阅公共事件.md",
       "title": "动态订阅公共事件",
-      "snippet": "动态订阅是指当应用在运行状态时对某个公共事件进行订阅，在运行期间如果有订阅的事件发布，订阅了这个事件的应用将会收到该事件及其传递的参数。 例如，某应用希望在其运行期间收到电量过低的事件，并根据该事件降低其运行功耗，那么该应用便可动态订阅电量过低事件，收到该事件后关闭一些非必要的任务来降低功耗。 订阅部分系统公共事件需要先 申请权限 ，订阅这些事件所需要的权限请见 系统定义的公共事件 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a3/v3/j1h4o-91QD-Oyg_u70ubLg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111206Z&HW-CC-Expire=86400&HW-CC-Sign=93DAB0C58033C67A5F962A92D6335C80F10B4FB4CF092D05E2AD2455092CE92C) 订阅者对象的生命周期需要接入方管理，不再使用时需 取消动态订阅公共事件 后主动销毁释放，避免进程内订阅者数量超过200个导致其他业务订阅失败以及内存泄漏。 动态订阅的公共事件回调受应用状态影响。当应用处于后台时，无法接收到动态订阅公共事件。当应用从后台切换到前台时，最多可以"
+      "snippet": "动态订阅是指当应用在运行状态时对某个公共事件进行订阅，在运行期间如果有订阅的事件发布，订阅了这个事件的应用将会收到该事件及其传递的参数。 例如，某应用希望在其运行期间收到电量过低的事件，并根据该事件降低其运行功耗，那么该应用便可动态订阅电量过低事件，收到该事件后关闭一些非必要的任务来降低功耗。 订阅部分系统公共事件需要先 申请权限 ，订阅这些事件所需要的权限请见 系统定义的公共事件 。 订阅者对象的生命周期需要接入方管理，不再使用时需 取消动态订阅公共事件 后主动销毁释放，避免进程内订阅者数量超过200个导致其他业务订阅失败以及内存泄漏。 动态订阅的公共事件回调受应用状态影响。当应用处于后台时，无法接收到动态订阅公共事件。当应用从后台切换到前台时，最多可以回调切回前30s内监听的公共事件。 分身应用与主应用之间的公共事件相互隔离，相互无法接收到对方发送的公共事件。 #### 接口说明 详细接口见 @ohos.commonEventManager 。 #### 开发步骤 1. 导入模块。 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; const TAG: string = 'P"
     },
     {
       "path": "references/压缩与解压.md",
@@ -99,7 +99,7 @@
     {
       "path": "references/发布公共事件.md",
       "title": "发布公共事件",
-      "snippet": "当需要发布某个公共事件时，可以通过 publish() 方法发布事件。发布的公共事件可以携带数据，供订阅者解析并进行下一步处理。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ee/v3/9T7XBapZToez_4PcWpFJsg/notice_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111207Z&HW-CC-Expire=86400&HW-CC-Sign=F6E61B63F3DFFB999DC4266D3861D9E89146FAD9B00C18273AA7DC50EEC16818) 已发出的粘性公共事件后来订阅者也可以接收到，其他公共事件都需要先订阅再接收，订阅参考 公共事件订阅章节 。 #### 接口说明 详细接口见 接口文档 。 #### 发布不携带信息的公共事件 不携带信息的公共事件，只能发布无序公共事件。 1. 导入模块。 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; const TAG:"
+      "snippet": "当需要发布某个公共事件时，可以通过 publish() 方法发布事件。发布的公共事件可以携带数据，供订阅者解析并进行下一步处理。 已发出的粘性公共事件后来订阅者也可以接收到，其他公共事件都需要先订阅再接收，订阅参考 公共事件订阅章节 。 #### 接口说明 详细接口见 接口文档 。 #### 发布不携带信息的公共事件 不携带信息的公共事件，只能发布无序公共事件。 1. 导入模块。 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; const TAG: string = 'ProcessModel'; const DOMAIN_NUMBER: number = 0xFF00; 2. 传入需要发布的事件名称和回调函数，发布事件。 // 发布公共事件，其中的event字段需要替换为实际的事件名称。 commonEventManager.publish('event', (err: BusinessError) => { if (err) { hilog.error(DOMAIN_NUMBER, TAG, `Publish failed, code is ${JSON.stringify"
     },
     {
       "path": "references/发布公共事件（C_C++）.md",
@@ -124,7 +124,7 @@
     {
       "path": "references/应用文件上传下载.md",
       "title": "应用文件上传下载",
-      "snippet": "应用支持将文件上传到网络服务器，也支持从网络服务器下载资源文件到本地目录。 #### 上传应用文件 开发者可以使用上传下载模块（ ohos.request ）的上传接口将本地文件上传。文件上传过程通过系统服务代理完成。在API version 12中，request.agent.create接口增加了设置代理地址的参数，支持设置自定义代理地址。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/82/v3/2gOvJG6eRpexUdnPcaFmDw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111212Z&HW-CC-Expire=86400&HW-CC-Sign=49E612C906684C3594C7D5F4EFD72C056859394BA8748DE3BB88FD8EBB142809) · 当前上传应用文件功能，request.uploadFile方式仅支持上传应用缓存文件路径（cacheDir）下的文件，request.agent方式支持上传用户公共文件和应用缓存文件路径下的文件。 · 使用上传下载模块，需 声明权限 ：ohos.permission.INTERNET。 · 上传下载模块不支持C"
+      "snippet": "应用支持将文件上传到网络服务器，也支持从网络服务器下载资源文件到本地目录。 #### 上传应用文件 开发者可以使用上传下载模块（ ohos.request ）的上传接口将本地文件上传。文件上传过程通过系统服务代理完成。在API version 12中，request.agent.create接口增加了设置代理地址的参数，支持设置自定义代理地址。 · 当前上传应用文件功能，request.uploadFile方式仅支持上传应用缓存文件路径（cacheDir）下的文件，request.agent方式支持上传用户公共文件和应用缓存文件路径下的文件。 · 使用上传下载模块，需 声明权限 ：ohos.permission.INTERNET。 · 上传下载模块不支持Charles、Fiddler等代理抓包工具。 · 上传下载模块接口目前暂不支持子线程调用场景，如 TaskPool 等。 以下示例代码展示了两种将缓存文件上传至服务器的方法： async requestUploadFile(fileName: string, callback: (progress: number, isSuccess: boolean) => void, context: common.UIAbilityContext) { // 获取应用文件路径 // 请在组件内获取context，确保this.getUICo"
     },
     {
       "path": "references/打印扩展能力.md",
@@ -134,12 +134,12 @@
     {
       "path": "references/文件打印（C_C++）.md",
       "title": "文件打印（C/C++）",
-      "snippet": "方式一 ：应用通过接口拉起系统打印预览界面。适合没有实现打印预览能力的应用。 方式二 ：应用通过接口指定打印文件和选项直接下发打印任务，适合已经实现打印预览能力的应用。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/39/v3/gpVokQmiTuGxbI2lWSkSig/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111213Z&HW-CC-Expire=86400&HW-CC-Sign=BD43A96EB7B4FEEDCE43ED7E01EC3BEE2CA608797A75E6C25CEC406093CA4F56) 使用打印服务，需 声明权限 ：ohos.permission.PRINT。 当不再使用打印服务时，调用OH_Print_Release()释放打印客户端资源并取消事件订阅。 c++接口需要在NDK工程中使用，请参考 NDK开发导读 。 #### 步骤1. 引用NDK头文件 初始路径为entry/src/main/cpp/types/napi_init.cpp # C++ 源码目录 NAPI 初始化入口（桥接 ArkTS 与 C++）。 #include \"hilog/log.h\" #inc"
+      "snippet": "方式一 ：应用通过接口拉起系统打印预览界面。适合没有实现打印预览能力的应用。 方式二 ：应用通过接口指定打印文件和选项直接下发打印任务，适合已经实现打印预览能力的应用。 使用打印服务，需 声明权限 ：ohos.permission.PRINT。 当不再使用打印服务时，调用OH_Print_Release()释放打印客户端资源并取消事件订阅。 c++接口需要在NDK工程中使用，请参考 NDK开发导读 。 #### 步骤1. 引用NDK头文件 初始路径为entry/src/main/cpp/types/napi_init.cpp # C++ 源码目录 NAPI 初始化入口（桥接 ArkTS 与 C++）。 #include \"hilog/log.h\" #include \"napi/native_api.h\" #include \"BasicServicesKit/ohprint.h\" #undef LOG_TAG #define LOG_TAG \"print c/c++\" #define LOGE(...) OH_LOG_ERROR(LOG_APP, ##__VA_ARGS__) #define LOGI(...) OH_LOG_INFO(LOG_APP, ##__VA_ARGS__) 初始路径为entry/src/main/ets/pages/Index.ets # ArkTS 源码目"
     },
     {
       "path": "references/申请访问剪贴板权限.md",
       "title": "申请访问剪贴板权限",
-      "snippet": "API version 12及之后，系统为提升用户隐私安全保护能力，剪贴板读取接口增加权限管控。 涉及接口如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a5/v3/b18c6gWFQ_WTMv6wdDc7Uw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111211Z&HW-CC-Expire=86400&HW-CC-Sign=4A5E2630B0A9A8CAD0781DE7987437CF755BA83A2C4CA89DB782FE5B2EB66797) 申请访问剪贴板权限前，需提前判断剪贴板上的内容是否包含应用所需数据，包括不限于hasData检查是否有数据、hasDataType/getMimeTypes检查是否有应用所需类型、getChangeCount检查数据是否改变，详见 剪贴板弹窗适配优化 。 #### 访问剪贴板内容 剪贴板为应用提供如下两种访问内容的方式。 - 使用安全控件 使用粘贴控件 访问剪贴板内容的应用，可以无需申请权限。 已经使用了安全控件的应用无需做任何适配就可以访问剪贴板内容。 - 申请ohos.permission.READ_PASTEBOARD权限 ohos.pe"
+      "snippet": "API version 12及之后，系统为提升用户隐私安全保护能力，剪贴板读取接口增加权限管控。 涉及接口如下： 申请访问剪贴板权限前，需提前判断剪贴板上的内容是否包含应用所需数据，包括不限于hasData检查是否有数据、hasDataType/getMimeTypes检查是否有应用所需类型、getChangeCount检查数据是否改变，详见 剪贴板弹窗适配优化 。 #### 访问剪贴板内容 剪贴板为应用提供如下两种访问内容的方式。 - 使用安全控件 使用粘贴控件 访问剪贴板内容的应用，可以无需申请权限。 已经使用了安全控件的应用无需做任何适配就可以访问剪贴板内容。 - 申请ohos.permission.READ_PASTEBOARD权限 ohos.permission.READ_PASTEBOARD是受限的user_grant（用户授权）权限，使用自定义控件的应用申请此权限后，在用户授权场景下可访问剪贴板内容。 权限申请步骤： 1. 查看READ_PASTEBOARD介绍，审视应用是否符合申请该权限的使用场景。 2. 在AGC侧申请Profile文件，将用于后续的应用签名信息配置。 3. 在module.json5配置文件中声明权限。 4. 通过弹窗向用户申请权限。 #### 剪贴板弹窗适配优化 应用申请剪贴板权限需要提前判断剪贴板上的内容是否包含所需数据，避免出现无效弹框。 "
     },
     {
       "path": "references/示例服务器开发指导.md",

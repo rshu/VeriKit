@@ -3,7 +3,7 @@
   "skill": "intents-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.914Z"
+    "at": "2026-05-21T03:47:44.552Z"
   },
   "references": [
     {
@@ -14,17 +14,17 @@
     {
       "path": "references/Intents Kit接入流程.md",
       "title": "Intents Kit接入流程",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/67/v3/C1_KORkTQZS2lV9jrB0wPw/zh-cn_image_0000002543375006.png?HW-CC-KV=V1&HW-CC-Date=20260421T111935Z&HW-CC-Expire=86400&HW-CC-Sign=B9FF9879D8032DF44B6AD81EDAA41158993DA57B114048A0251A70D18EACEFC7) **阶段一：意向** **阶段二：开发** **阶段三：验证** **阶段四：上架**"
+      "snippet": "**阶段一：意向** **阶段二：开发** **阶段三：验证** **阶段四：上架**"
     },
     {
       "path": "references/Intents Kit简介.md",
       "title": "Intents Kit简介",
-      "snippet": "Intents Kit（意图框架服务）是HarmonyOS级的意图标准体系 ，意图连接了应用/元服务内的业务功能。 意图框架能帮开发者将应用/元服务内的业务功能，智能分发到各系统入口，这个过程即智慧分发。其中系统入口包括：小艺对话、小艺搜索、小艺建议。 系统入口、意图框架、鸿蒙生态的关系如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/78/v3/3zAnghZkTLu7WZN_Np5V0Q/zh-cn_image_0000002573855259.png?HW-CC-KV=V1&HW-CC-Date=20260421T111935Z&HW-CC-Expire=86400&HW-CC-Sign=DA15AEEAF1DB025DD36907B98D7BEA2F4A7829C3AE7B4E5F347D0F9027BEA56B) #### Intents Kit优势 利用HarmonyOS的大模型、多维设备感知等AI能力，准确且及时地获取到用户显性、潜在意图，从而实现个性化、多模态、精准的智慧分发。 #### 智慧分发 为方便开发者接入，智慧分发提供了多种特性类别，当前已开放习惯推荐、事件推荐、技能调用-语音、本地搜索，后续会陆续开放其他特性类别。每种特性类型支持"
+      "snippet": "Intents Kit（意图框架服务）是HarmonyOS级的意图标准体系 ，意图连接了应用/元服务内的业务功能。 意图框架能帮开发者将应用/元服务内的业务功能，智能分发到各系统入口，这个过程即智慧分发。其中系统入口包括：小艺对话、小艺搜索、小艺建议。 系统入口、意图框架、鸿蒙生态的关系如下： #### Intents Kit优势 利用HarmonyOS的大模型、多维设备感知等AI能力，准确且及时地获取到用户显性、潜在意图，从而实现个性化、多模态、精准的智慧分发。 #### 智慧分发 为方便开发者接入，智慧分发提供了多种特性类别，当前已开放习惯推荐、事件推荐、技能调用-语音、本地搜索，后续会陆续开放其他特性类别。每种特性类型支持的典型系统入口、分发逻辑见下表： 为了满足更细粒度的分发诉求，每类特性类别下提供多个具体特性，具体特性的分发系统入口、开发依赖见 各垂域的智慧分发特性列表 。具体特性开发依赖的意图相关字段见 各垂域意图Schema 。 #### 意图的运行逻辑 HarmonyOS、应用/元服务的交互中，意图运行方式分为意图调用和意图共享： #### 约束与限制 - 设备限制 本Kit仅适用于Phone、Tablet、PC/2in1。 - 地区限制 本Kit仅支持中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）提供服务。 - 操作系统限制 HarmonyOS 5.0及"
     },
     {
       "path": "references/MCP协议上架指导.md",
       "title": "MCP协议上架指导",
-      "snippet": "1. 账号登录： 1. 通过“ https://developer.huawei.com/consumer/cn/ > 管理中心 > 生态服务 > 智慧服务 > 小艺开放平台（原HarmonyOS服务开放平台） > 意图框架”，进入意图注册入口。 如发布渠道为“智能体/小艺对话”只能使用与应用上架相同的账号登录。反之发布渠道为“插件市场”无特殊账号要求。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/87/v3/0g3CLu_RQf6G_ar8pcjrVQ/zh-cn_image_0000002573855289.png?HW-CC-KV=V1&HW-CC-Date=20260421T111942Z&HW-CC-Expire=86400&HW-CC-Sign=8C6E428664D513461BC1844F9201E26FC4B3B370608844A50AA9E969E5155157) 2. 点击“立即体验”即可进入意图注册入口。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1e/v3/4H5-wyVnQrG89CYwK0GuVA/zh-"
+      "snippet": "1. 账号登录： 1. 通过“ > 管理中心 > 生态服务 > 智慧服务 > 小艺开放平台（原HarmonyOS服务开放平台） > 意图框架”，进入意图注册入口。 如发布渠道为“智能体/小艺对话”只能使用与应用上架相同的账号登录。反之发布渠道为“插件市场”无特殊账号要求。 2. 点击“立即体验”即可进入意图注册入口。 2. 注册意图集 1. 如图，点击“注册意图”。 2. 选择“MCP协议”并填写基本信息创建意图集。 1. 意图集（插件）名称：需唯一标识。 2. 意图集（插件）描述：开发者自定义插件描述信息。 3. 分类：按业务场景选择。 4. MCP服务配置：填写MCP URL（服务器地址信息，不含鉴权信息）。 5. 认证信息配置：对应鉴权信息（注意放在Header/Query）。 6. 协议类型：根据情况选择，提供SSE/Streamable两种。 3. 编辑：创建后自动进入”插件编辑“页面。 1. 编辑基本信息： 1. 开发者品牌：该信息是对外露出的品牌传播名（注意和企业账号，公司名称区别开）。 2. 图标：192*192。 3. 使用描述：需使用Markdown格式。（需对server的功能概述、apikey申请方式表达准确清晰）。 4. 工具检查：保存后切换至\"工具\"页签。若基本信息配置无误，工具列表中会根据基本信息内容自动生成1条/多条信息。 1. 出现工具列表：请检查"
     },
     {
       "path": "references/POI方案.md",
@@ -44,7 +44,7 @@
     {
       "path": "references/任务执行类场景方案（配置文件接入方式）.md",
       "title": "任务执行类场景方案（配置文件接入方式）",
-      "snippet": "开发者需要按照意图定义，进行意图注册并实现意图调用；用户通过对小艺对话进行自然语言输入，小艺理解语义转换成意图调用（含意图参数），执行意图调用实现对应交互体验。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b0/v3/Bs22G_FeQGaoyjJIf7GByA/zh-cn_image_0000002573855269.png?HW-CC-KV=V1&HW-CC-Date=20260421T111938Z&HW-CC-Expire=86400&HW-CC-Sign=25F6F77055105E67AB8CFC5C1DAE833C3D07BE7EF9605605D80526F9BBF14BB3) #### 意图声明 以“搜索旅游攻略”特性为例，开发者首先要注册“查看旅游攻略”（viewTravelGuides），其他意图见 各垂域意图Schema 。 开发者需要编辑对应的意图配置insight_intent.json文件实现意图注册。insight_intent.json文件需要放置在module下面的指定目录：src/main/resources/base/profile/insight_intent.json，并且整个工程中只能存在一个insight_int"
+      "snippet": "开发者需要按照意图定义，进行意图注册并实现意图调用；用户通过对小艺对话进行自然语言输入，小艺理解语义转换成意图调用（含意图参数），执行意图调用实现对应交互体验。 #### 意图声明 以“搜索旅游攻略”特性为例，开发者首先要注册“查看旅游攻略”（viewTravelGuides），其他意图见 各垂域意图Schema 。 开发者需要编辑对应的意图配置insight_intent.json文件实现意图注册。insight_intent.json文件需要放置在module下面的指定目录：src/main/resources/base/profile/insight_intent.json，并且整个工程中只能存在一个insight_intent.json文件。 { // 应用支持的意图列表 // 必须声明应用支持插件包含的必选意图，应用上架时会进行校验 \"insightIntents\": [ { // 意图名称 // 名称应当遵循意图框架规范，当前仅支持预置垂域意图，不允许自定义 // 应用内意图名称唯一，不允许出现相同的名称定义 \"intentName\": \"ViewTravelGuides\", // 意图所属的垂域 \"domain\": \"TravelDomain\", // 意图版本号 // 插件引用意图时会校验该版本号，只有和插件定义的版本号一致才能正常调用 \"intentVersion"
     },
     {
       "path": "references/使用意图框架调试助手Agent进行联调时，小艺拉起应用后，出现闪退情况，应该如何处理？.md",
@@ -54,7 +54,7 @@
     {
       "path": "references/内容搜索方案.md",
       "title": "内容搜索方案",
-      "snippet": "当用户使用应用/元服务时，开发者可以按照标准意图Schema（具体意图详见 各垂域意图Schema ）向系统共享数据（数据包含用户行为和内容实体），并实现意图调用（空调用与传参调用）。已实现用户点击卡片后，可后台执行功能（例如播放指定歌曲）或跳转至指定内容页面（例如指定的歌曲播放页面）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/da/v3/2m3eCr9jQxWCukg1Ek6N5Q/zh-cn_image_0000002543375020.png?HW-CC-KV=V1&HW-CC-Date=20260421T111941Z&HW-CC-Expire=86400&HW-CC-Sign=0DBDC2952116E6236C08BD8AC3F8EF8D7DC4091C1FC32AE60990ACF22D9131BF) #### 意图声明 以歌曲本地搜索特性为例，首先要注册播放歌曲意图（PlayMusic），其他意图见 各垂域意图Schema 。 开发者需要编辑对应的意图配置insight_intent.json文件实现意图注册。insight_intent.json文件需要放置在module下面的指定目录：src/main/resources/base/pr"
+      "snippet": "当用户使用应用/元服务时，开发者可以按照标准意图Schema（具体意图详见 各垂域意图Schema ）向系统共享数据（数据包含用户行为和内容实体），并实现意图调用（空调用与传参调用）。已实现用户点击卡片后，可后台执行功能（例如播放指定歌曲）或跳转至指定内容页面（例如指定的歌曲播放页面）。 #### 意图声明 以歌曲本地搜索特性为例，首先要注册播放歌曲意图（PlayMusic），其他意图见 各垂域意图Schema 。 开发者需要编辑对应的意图配置insight_intent.json文件实现意图注册。insight_intent.json文件需要放置在module下面的指定目录：src/main/resources/base/profile/insight_intent.json，并且整个工程中只能存在一个insight_intent.json文件。 { // 应用支持的意图列表 // 必须声明应用支持插件包含的必选意图，应用上架时会进行校验 \"insightIntents\": [ { // 意图名称 // 名称应当遵循意图框架规范，当前仅支持预置垂域意图，不允许自定义 // 应用内意图名称唯一，不允许出现相同的名称定义 \"intentName\": \"PlayMusic\", // 意图所属的垂域 \"domain\": \"MusicDomain\", // 意图版本号 // 插件引用意图时"
     },
     {
       "path": "references/功能一步达场景方案.md",
@@ -69,17 +69,17 @@
     {
       "path": "references/功能搜索方案.md",
       "title": "功能搜索方案",
-      "snippet": "从5.1.0(18)开始，新增功能搜索接入方案，可通过该方案实现快速打开应用内功能页面。开发者将应用内的功能在意图声明文件中声明，并实现对应的意图调用，即可实现用户在小艺搜索入口直接搜索到应用内功能，点击后可直接拉起应用，直达功能页面。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/55/v3/-H3PADdKSkmIQgUNABPiqg/zh-cn_image_0000002543215374.png?HW-CC-KV=V1&HW-CC-Date=20260421T111941Z&HW-CC-Expire=86400&HW-CC-Sign=15681A93D528A2656B5C05702ADD2EDDA0130F04C293340E7D0AA3EA3310E580) **意图名称：跳转App功能页 JumpFunctionPage（端侧前台意图调用）** #### 意图声明 开发者需要编辑对应的意图配置insight_intent.json文件实现意图注册。insight_intent.json文件需要放置在module下面的指定目录：src/main/resources/base/profile/insight_intent.json，并且整个工程中只能存"
+      "snippet": "从5.1.0(18)开始，新增功能搜索接入方案，可通过该方案实现快速打开应用内功能页面。开发者将应用内的功能在意图声明文件中声明，并实现对应的意图调用，即可实现用户在小艺搜索入口直接搜索到应用内功能，点击后可直接拉起应用，直达功能页面。 **意图名称：跳转App功能页 JumpFunctionPage（端侧前台意图调用）** #### 意图声明 开发者需要编辑对应的意图配置insight_intent.json文件实现意图注册。insight_intent.json文件需要放置在module下面的指定目录：src/main/resources/base/profile/insight_intent.json，并且整个工程中只能存在一个insight_intent.json文件。 { \"insightIntents\": [ { \"intentName\": \"JumpFunctionPage\", // 功能搜意图 \"domain\": \"ToolsDomain\", \"intentVersion\": \"1.0.1\", // 意图版本号 // 意图调用逻辑入口 \"srcEntry\": \"./ets/entryability/InsightIntentExecutorImpl.ets\", \"uiAbility\": { // 意图所在ability \"ability\": \"EntryAbilit"
     },
     {
       "path": "references/场景体验-1.md",
       "title": "场景体验",
-      "snippet": "**事件推荐典型场景包括：** - 关注提醒事件（购物车降价、加追更新） - 订单履行提醒事件（门票、机票、打车、外卖、挂号） - 核销转化事件（会员、优惠券、话费余额） 各垂域也可根据垂域的实际情况定义具体的事件。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/03/v3/YZIk6DXSSee5CcgF0VyiaA/zh-cn_image_0000002543215350.png?HW-CC-KV=V1&HW-CC-Date=20260421T111936Z&HW-CC-Expire=86400&HW-CC-Sign=37B2CD40DADB575A4BC1FCD382BAF4F6A40DDF9F96778CCA63F4C9BE80353330) 以电影开场提醒为例，用户在应用/元服务中购买了电影票，在电影开场前半小时（具体生效时间将根据具体垂域的情况和用户最佳体验确定），用户可在小艺建议入口看到电影取票提醒的卡片，点击卡片可跳转到应用/元服务的订单详情页，用户可在该页面完成电影取票。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/06/"
+      "snippet": "**事件推荐典型场景包括：** - 关注提醒事件（购物车降价、加追更新） - 订单履行提醒事件（门票、机票、打车、外卖、挂号） - 核销转化事件（会员、优惠券、话费余额） 各垂域也可根据垂域的实际情况定义具体的事件。 以电影开场提醒为例，用户在应用/元服务中购买了电影票，在电影开场前半小时（具体生效时间将根据具体垂域的情况和用户最佳体验确定），用户可在小艺建议入口看到电影取票提醒的卡片，点击卡片可跳转到应用/元服务的订单详情页，用户可在该页面完成电影取票。 #### 卡片展示效果 意图框架将提供系统标准的事件模板卡片，无需开发者开发，开发者只需按照具体垂域事件的 意图Schema 将事件推送至智慧分发平台服务器即可。各垂域事件卡片样式的示例如下："
     },
     {
       "path": "references/场景体验-2.md",
       "title": "场景体验",
-      "snippet": "华为意图框架位置感知推荐能力主要支持室内位置推荐、室外近场位置推荐、跨域位置推荐等高确定性场景，结合华为智慧决策能力，在小艺建议入口推荐更贴心、更及时、更满足用户诉求的场景卡片。场景示例： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a3/v3/mAg9J7N6TBWSLiQE_rBf1g/zh-cn_image_0000002573855267.png?HW-CC-KV=V1&HW-CC-Date=20260421T111937Z&HW-CC-Expire=86400&HW-CC-Sign=ECE2F34771D2B821E4B7845F3DF34D4334B95CADC2C3FB323D8BB6AB32784C2B) #### 卡片展示效果 基于POI（Point of interest）和Beacon（蓝牙信标设备）触发的位置推荐场景，由近场服务提供模板卡片的配置入口，开发者开通近场服务权限后自行配置。卡片的尺寸样式可参考： 近场服务-POI接入小艺建议场景-创建全网态服务-创建全网态服务 基于WLAN指纹和Cell触发的位置推荐场景，意图框架提供标准的卡片模板。卡片由华为侧统一配置。 **卡片模板参考：** ![](https://contentcen"
+      "snippet": "华为意图框架位置感知推荐能力主要支持室内位置推荐、室外近场位置推荐、跨域位置推荐等高确定性场景，结合华为智慧决策能力，在小艺建议入口推荐更贴心、更及时、更满足用户诉求的场景卡片。场景示例： #### 卡片展示效果 基于POI（Point of interest）和Beacon（蓝牙信标设备）触发的位置推荐场景，由近场服务提供模板卡片的配置入口，开发者开通近场服务权限后自行配置。卡片的尺寸样式可参考： 近场服务-POI接入小艺建议场景-创建全网态服务-创建全网态服务 基于WLAN指纹和Cell触发的位置推荐场景，意图框架提供标准的卡片模板。卡片由华为侧统一配置。 **卡片模板参考：**"
     },
     {
       "path": "references/场景体验-3.md",
@@ -89,12 +89,12 @@
     {
       "path": "references/场景体验-4.md",
       "title": "场景体验",
-      "snippet": "**功能搜索：** 开发者将应用内的功能接入Intents Kit后，在小艺搜索入口，搜索对应功能名或者应用名，可以将应用内功能直接搜出，比如视频应用接入“会员中心”功能后，用户可通过搜索应用名或功能名搜出具体功能，点击后直接拉起应用中的功能页面。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c8/v3/ztaaGK_HQAas2eeJ3jevxw/zh-cn_image_0000002573855287.png?HW-CC-KV=V1&HW-CC-Date=20260421T111941Z&HW-CC-Expire=86400&HW-CC-Sign=325FDE4627DA1ED0C5D66B486EB7324D3DE6ABC204DBD031911A7A2E98B36F59) **内容搜索：** 以音乐为例，当用户在使用应用时，应用可以将音乐数据通过端侧API共享到意图框架，这里的音乐数据可以是用户收听过的歌曲，或是应用预测用户感兴趣的歌曲，那么后续用户在小艺搜索入口中搜索歌名时，系统将会在应用共享数据中检索对应内容，并使用模板卡片展示内容结果。当用户点击对应卡片热区时，可以跳转进具体音乐播放页或者后台执行播放。 ![](https://contentce"
+      "snippet": "**功能搜索：** 开发者将应用内的功能接入Intents Kit后，在小艺搜索入口，搜索对应功能名或者应用名，可以将应用内功能直接搜出，比如视频应用接入“会员中心”功能后，用户可通过搜索应用名或功能名搜出具体功能，点击后直接拉起应用中的功能页面。 **内容搜索：** 以音乐为例，当用户在使用应用时，应用可以将音乐数据通过端侧API共享到意图框架，这里的音乐数据可以是用户收听过的歌曲，或是应用预测用户感兴趣的歌曲，那么后续用户在小艺搜索入口中搜索歌名时，系统将会在应用共享数据中检索对应内容，并使用模板卡片展示内容结果。当用户点击对应卡片热区时，可以跳转进具体音乐播放页或者后台执行播放。 #### 卡片展示效果 意图框架提供各垂域在小艺搜索展示使用的标准模板卡片，开发者无需开发展示卡片。 模板卡片包含应用/元服务和内容必要信息，比如歌曲名称、歌曲封面图、歌曲描述，这类参数需要开发者共享到系统。各垂域适用的风格卡片不同，以实际特性场景要求为准。以下为歌曲本地搜索的模板卡样式的示例："
     },
     {
       "path": "references/场景体验.md",
       "title": "场景体验",
-      "snippet": "当前习惯推荐可在小艺建议入口分发，在不同垂域中，填充功能详细参数或内容的逻辑不同，主要典型场景可分为常用接续、常用复访、常用推新三类。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/10/v3/GEnm7SZQSse2dol6KziI8g/zh-cn_image_0000002543215346.png?HW-CC-KV=V1&HW-CC-Date=20260421T111935Z&HW-CC-Expire=86400&HW-CC-Sign=CDFEFD711728C69FACCC73283DD0E7E32D1C50639460B23D407EA3AE61112F92) 以常看视频续播为例，系统预测当前用户使用华为视频的播放视频功能概率较高，会选择用户最近观看且还没看完的视频内容来补充功能细节，在小艺建议中以模板卡形式推荐展示，用户点击卡片后，实现一步跳转进应用的视频播放页。 #### 卡片展示效果 意图框架提供各垂域习惯推荐在小艺建议中展示使用的标准模板卡片，开发者无需开发展示卡片。在展示模板上，会展示应用/元服务名称与logo和内容必要信息，比如音乐名、音乐图片，这类参数需要开发者共享到系统。 以下为播放歌曲-习惯推荐的卡片示例。 ![](https://c"
+      "snippet": "当前习惯推荐可在小艺建议入口分发，在不同垂域中，填充功能详细参数或内容的逻辑不同，主要典型场景可分为常用接续、常用复访、常用推新三类。 以常看视频续播为例，系统预测当前用户使用华为视频的播放视频功能概率较高，会选择用户最近观看且还没看完的视频内容来补充功能细节，在小艺建议中以模板卡形式推荐展示，用户点击卡片后，实现一步跳转进应用的视频播放页。 #### 卡片展示效果 意图框架提供各垂域习惯推荐在小艺建议中展示使用的标准模板卡片，开发者无需开发展示卡片。在展示模板上，会展示应用/元服务名称与logo和内容必要信息，比如音乐名、音乐图片，这类参数需要开发者共享到系统。 以下为播放歌曲-习惯推荐的卡片示例。"
     },
     {
       "path": "references/基于Link的装饰器方案.md",
@@ -114,37 +114,37 @@
     {
       "path": "references/开发者测试-1.md",
       "title": "开发者测试",
-      "snippet": "Intents Kit向开发者提供真机测试能力，即开发者可连接设备进行调测。开发者完成代码开发之后，功能正式上架应用市场前，可以在HarmonyOS NEXT设备上面进行自验证，打磨体验。真机测试分为三个步骤：基础信息提供，环境准备，联调验证。 #### 基础信息提供 达成开发意向后，开发者发送邮件到邮箱（hagservice@huawei.com）或者联系华为意图框架接口同事，向华为提供测试应用的信息。 #### 环境准备 准备一台装有HarmonyOS Next版本的手机设备，系统版本最低要求为 Developer Beta 3，并按照以下顺序依次执行，不能更换执行顺序。 1. 保持设备联网，并且设备时间和实际北京时间保持一致。 2. 点击桌面的小艺建议卡片。此时卡片显示的是“欢迎使用小艺建议”，点击卡片打开小艺的隐私页面，并选择“同意”。如果此前已经同意过小艺的隐私协议，此步骤可以跳过。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/44/v3/czIJEwHOS6GGIzMwgPqkew/zh-cn_image_0000002543375008.png?HW-CC-KV=V1&HW-CC-Date=20260421T111936Z&HW-CC-Expir"
+      "snippet": "Intents Kit向开发者提供真机测试能力，即开发者可连接设备进行调测。开发者完成代码开发之后，功能正式上架应用市场前，可以在HarmonyOS NEXT设备上面进行自验证，打磨体验。真机测试分为三个步骤：基础信息提供，环境准备，联调验证。 #### 基础信息提供 达成开发意向后，开发者发送邮件到邮箱（hagservice@huawei.com）或者联系华为意图框架接口同事，向华为提供测试应用的信息。 #### 环境准备 准备一台装有HarmonyOS Next版本的手机设备，系统版本最低要求为 Developer Beta 3，并按照以下顺序依次执行，不能更换执行顺序。 1. 保持设备联网，并且设备时间和实际北京时间保持一致。 2. 点击桌面的小艺建议卡片。此时卡片显示的是“欢迎使用小艺建议”，点击卡片打开小艺的隐私页面，并选择“同意”。如果此前已经同意过小艺的隐私协议，此步骤可以跳过。 3. 打开开发者调试模式：进入设置 > 机型 > 关于手机，连续点击软件版本7次，弹出“开启“开发者模式””，点击“确认开启”。 4. 长按电源键唤醒小艺，将半屏态小艺向上拉升至全屏态，点击左上角返回上层，返回后点击右上角的头像，进入“设置”，找到并进入应用网络设置，打开“WLAN下自动更新”开关。 5. 在上一步页面中下滑，点击“个性化推荐”，进入后打开“个性化推荐”的开关。 6. 进入设"
     },
     {
       "path": "references/开发者测试.md",
       "title": "开发者测试",
-      "snippet": "Intents Kit向开发者提供真机测试能力，即开发者可连接设备进行调测。开发者完成代码开发之后，功能正式上架应用市场前，可以在HarmonyOS 5及以上的设备上面进行自验证，打磨体验。真机测试分为三个步骤：基础信息提供，环境准备，联调验证。 #### 基础信息提供 达成开发意向后，开发者发送邮件到邮箱（hagservice@huawei.com）或者联系华为意图框架接口同事，向华为提供测试应用的信息。 #### 环境准备 准备一台装有HarmonyOS 5及以上版本的手机设备，系统版本最低要求为 Developer Beta 3，并按照以下顺序依次执行，不能更换执行顺序。 1. 保持设备联网，并且设备时间和实际北京时间保持一致。 2. 点击桌面的小艺建议卡片。此时卡片显示的是“欢迎使用小艺建议”，点击卡片打开小艺的隐私页面，并选择“同意”。如果此前已经同意过小艺的隐私协议，此步骤可以跳过。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ee/v3/Rphj2fHdTHOQwrVOf3Ss0w/zh-cn_image_0000002543375008.png?HW-CC-KV=V1&HW-CC-Date=20260421T111936Z&HW-CC-Expi"
+      "snippet": "Intents Kit向开发者提供真机测试能力，即开发者可连接设备进行调测。开发者完成代码开发之后，功能正式上架应用市场前，可以在HarmonyOS 5及以上的设备上面进行自验证，打磨体验。真机测试分为三个步骤：基础信息提供，环境准备，联调验证。 #### 基础信息提供 达成开发意向后，开发者发送邮件到邮箱（hagservice@huawei.com）或者联系华为意图框架接口同事，向华为提供测试应用的信息。 #### 环境准备 准备一台装有HarmonyOS 5及以上版本的手机设备，系统版本最低要求为 Developer Beta 3，并按照以下顺序依次执行，不能更换执行顺序。 1. 保持设备联网，并且设备时间和实际北京时间保持一致。 2. 点击桌面的小艺建议卡片。此时卡片显示的是“欢迎使用小艺建议”，点击卡片打开小艺的隐私页面，并选择“同意”。如果此前已经同意过小艺的隐私协议，此步骤可以跳过。 3. 打开开发者调试模式：进入设置 > 机型 > 关于手机，连续点击软件版本7次，弹出“开启“开发者模式””，点击“确认开启”。 4. 长按电源键唤醒小艺，将半屏态小艺向上拉升至全屏态，点击左上角返回上层，返回后点击右上角的头像，进入“设置”，找到并进入应用网络设置，打开“WLAN下自动更新”开关。 5. 在上一步页面中下滑，点击“个性化推荐”，进入后打开“个性化推荐”的开关。 6. 进入"
     },
     {
       "path": "references/意图标准协议上架指导.md",
       "title": "意图标准协议上架指导",
-      "snippet": "该配置需开发者完成自测后，先将携有对应意图信息的App在AppGallery Connect（以下简称AGC）完成应用上架，具体操作步骤参见 https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/application-dev-overview 。 #### **意图注册配置操作步骤** 1. 账号登录： 1. 通过“ https://developer.huawei.com/consumer/cn/ > 管理中心 > 生态服务 > 智慧服务 > 小艺开放平台（原HarmonyOS服务开放平台） > 意图框架”，进入意图注册入口，需使用与应用上架相同的账号登录。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5c/v3/07OWhpNgSuyPmG2WC956jg/zh-cn_image_0000002543375016.png?HW-CC-KV=V1&HW-CC-Date=20260421T111941Z&HW-CC-Expire=86400&HW-CC-Sign=E4DC9DF979E209BD05E4844384F8821F2D226607BF5BCEB2D4743C00982E0AC0"
+      "snippet": "该配置需开发者完成自测后，先将携有对应意图信息的App在AppGallery Connect（以下简称AGC）完成应用上架，具体操作步骤参见 。 #### **意图注册配置操作步骤** 1. 账号登录： 1. 通过“ > 管理中心 > 生态服务 > 智慧服务 > 小艺开放平台（原HarmonyOS服务开放平台） > 意图框架”，进入意图注册入口，需使用与应用上架相同的账号登录。 2. 点击“立即体验”即可进入意图注册入口。 2. 选择意图集：在“小艺开放平台”首页“意图集（插件）”中，携有意图声明文件的应用在AGC **正式上架** 后可 **自动生成** 一条草稿态的记录，记录中包含开发者在意图配置文件中声明的所有 **端侧意图** （云侧意图需手动新增，见下图）。 3. 基本信息编辑：点击对应的意图集记录的“编辑”按钮，进入基本信息编辑页面，开发者补充完基本信息后点击“保存”即可。 此处的版本号和版本描述为智慧分发配置的版本信息，用于开发者记录和识别智慧分发配置版本变更，与APP软件包版本无关，意图注册名称与APP名称保持一致。 4. 意图检查：切换至“意图”页签，点击“保存”会触发刷新，需检查接入特性所依赖的全量意图是否在此页面都已列出，同时打开意图使用样本中“是否已提供线下样本“开关。 1. 其中，“端云类型”涉及端的意图需在APP软件包中定义，此处会自动呈现。 2. “端"
     },
     {
       "path": "references/接入方案-1.md",
       "title": "接入方案",
-      "snippet": "当开发者有事件想要通知到用户时，可通过应用/元服务的云侧服务器向智慧分发平台推送事件内容（意图共享）。系统通过智慧决策判断事件发生的条件，在满足条件时，向用户推荐事件提醒卡片，当用户点击卡片后，可跳转到应用/元服务的详情页查看事件详情（意图调用）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/47/v3/XskNRWXlQLqHjwrxlhTnRg/zh-cn_image_0000002543375012.png?HW-CC-KV=V1&HW-CC-Date=20260421T111936Z&HW-CC-Expire=86400&HW-CC-Sign=85B015F2576856DD137B2A0D3CC35741C782556443F6F1D4FA8A99CB90654DDB) #### 流程图 1. 开发者获取云侧事件捐赠所需的SID（Service OpenID）。 2. 当用户有订单事件后，开发者云将事件内容和SID同步到业务云。 3. 华为内部会根据事件和具体场景制定事件服务推出规则和时机。 4. 在满足制定规则场景下展示对应用户事件，增加服务曝光率。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/p"
+      "snippet": "当开发者有事件想要通知到用户时，可通过应用/元服务的云侧服务器向智慧分发平台推送事件内容（意图共享）。系统通过智慧决策判断事件发生的条件，在满足条件时，向用户推荐事件提醒卡片，当用户点击卡片后，可跳转到应用/元服务的详情页查看事件详情（意图调用）。 #### 流程图 1. 开发者获取云侧事件捐赠所需的SID（Service OpenID）。 2. 当用户有订单事件后，开发者云将事件内容和SID同步到业务云。 3. 华为内部会根据事件和具体场景制定事件服务推出规则和时机。 4. 在满足制定规则场景下展示对应用户事件，增加服务曝光率。 #### 意图注册 以还款待办事件提醒特性为例，首先要注册查看还款意图（ViewRepayment），详见 各垂域意图Schema 。 开发者需要编辑对应的意图配置insight_intent.json文件实现意图声明。insight_intent.json文件需要放置在任意一个module下面的指定目录：src/main/resources/base/profile/insight_intent.json，并且整个工程中只能存在一个insight_intent.json文件。 { // 应用支持的意图列表 // 必须声明应用支持插件包含的必选意图，应用上架时会进行校验 \"insightIntents\": [ { // 意图名称 // 名称应当遵循意图框"
     },
     {
       "path": "references/接入方案-2.md",
       "title": "接入方案",
-      "snippet": "位置感知推荐能力支持开发者云侧共享位置信息与关联推荐的内容，结合实时位置、设备状态与习惯标签完成系统智慧决策，在小艺建议智慧推荐更符合用户诉求的内容信息。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8d/v3/zucaGK_8TXuE6Qk2MS0YEw/zh-cn_image_0000002543375014.png?HW-CC-KV=V1&HW-CC-Date=20260421T111937Z&HW-CC-Expire=86400&HW-CC-Sign=8AB1D075C193D51FE1124B218F5040906F24A35726096DEEC5EA649F79E24434) #### 开通近场服务权限 近场服务是华为软硬协同解决方案中的关键能力环节，旨在帮助商家触达更多HarmonyOS用户，并为这些用户提供更精准、更优质的服务。开通近场服务的步骤详情参考： 近场服务-申请开通权限 。 #### 意图声明 以“搜索旅游攻略”特性为例，开发者首先要注册“查看旅游攻略”（viewTravelGuides），其他意图见 各垂域意图Schema 。 开发者需要编辑对应的意图配置insight_intent.json文件实现意图声明。insight_int"
+      "snippet": "位置感知推荐能力支持开发者云侧共享位置信息与关联推荐的内容，结合实时位置、设备状态与习惯标签完成系统智慧决策，在小艺建议智慧推荐更符合用户诉求的内容信息。 #### 开通近场服务权限 近场服务是华为软硬协同解决方案中的关键能力环节，旨在帮助商家触达更多HarmonyOS用户，并为这些用户提供更精准、更优质的服务。开通近场服务的步骤详情参考： 近场服务-申请开通权限 。 #### 意图声明 以“搜索旅游攻略”特性为例，开发者首先要注册“查看旅游攻略”（viewTravelGuides），其他意图见 各垂域意图Schema 。 开发者需要编辑对应的意图配置insight_intent.json文件实现意图声明。insight_intent.json文件需要放置在任意一个module下面的指定目录：src/main/resources/base/profile/insight_intent.json，并且整个工程中只能存在一个insight_intent.json文件。 { // 应用支持的意图列表 // 必须声明应用支持插件包含的必选意图，应用上架时会进行校验 \"insightIntents\": [ { // 意图名称 // 名称应当遵循意图框架规范，当前仅支持预置垂域意图，不允许自定义 // 应用内意图名称唯一，不允许出现相同的名称定义 \"intentName\": \"ViewTrav"
     },
     {
       "path": "references/接入方案.md",
       "title": "接入方案",
-      "snippet": "当用户在应用/元服务内使用功能时，开发者需要按照标准意图Schema向系统共享行为数据，并支持意图调用（空调用与传参调用），以实现用户点击模板卡后跳转回对应页面。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/93/v3/qgghGISqQ5ipligMTeYNyA/zh-cn_image_0000002573975241.png?HW-CC-KV=V1&HW-CC-Date=20260421T111935Z&HW-CC-Expire=86400&HW-CC-Sign=0C6105EDAED4DBADAD05672C24BFCEC94567C675FE4E45B3E11CB2F2094E9237) #### 意图注册 以歌曲续听推荐特性为例，首先要注册播放歌曲意图（PlayMusic），其他意图见 各垂域意图Schema 。 开发者需要编辑对应的意图配置insight_intent.json文件实现意图声明。insight_intent.json文件需要放置在任意一个module下面的指定目录：src/main/resources/base/profile/insight_intent.json，并且整个工程中只能存在一个insight_intent.json文"
+      "snippet": "当用户在应用/元服务内使用功能时，开发者需要按照标准意图Schema向系统共享行为数据，并支持意图调用（空调用与传参调用），以实现用户点击模板卡后跳转回对应页面。 #### 意图注册 以歌曲续听推荐特性为例，首先要注册播放歌曲意图（PlayMusic），其他意图见 各垂域意图Schema 。 开发者需要编辑对应的意图配置insight_intent.json文件实现意图声明。insight_intent.json文件需要放置在任意一个module下面的指定目录：src/main/resources/base/profile/insight_intent.json，并且整个工程中只能存在一个insight_intent.json文件。 { // 应用支持的意图列表 // 必须声明应用支持插件包含的必选意图，应用上架时会进行校验 \"insightIntents\": [ { // 意图名称 // 名称应当遵循意图框架规范，当前仅支持预置垂域意图，不允许自定义 // 应用内意图名称唯一，不允许出现相同的名称定义 \"intentName\": \"PlayMusic\", // 意图所属的垂域 \"domain\": \"MusicDomain\", // 意图版本号 // 插件引用意图时会校验该版本号，只有和插件定义的版本号一致才能正常调用 \"intentVersion\": \"1.0.1\", // 意图"
     },
     {
       "path": "references/方案概述.md",
       "title": "方案概述",
-      "snippet": "从6.0.0(20)开始，支持通过装饰器开发意图，支持将现有功能通过装饰器快速集成至系统入口。开发者可自定义意图，通过添加装饰器方式实现意图快速接入，支持Link跳转、Page和函数等意图装饰器，方便开发者快速开放应用内功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/39/v3/x8ganLOoRb-G3LEAIDm8EA/zh-cn_image_0000002573975249.png?HW-CC-KV=V1&HW-CC-Date=20260421T111939Z&HW-CC-Expire=86400&HW-CC-Sign=995D1459A3628F730B9981726829CA29BE7ED639A9ED9DE626B81ECA12974F99) 开发者可根据想要暴露的应用功能，选择不同类型的装饰器进行意图声明： - 基于Link的装饰器：@InsightIntentLink 在开发者已实现的DeepLink，AppLink上添加装饰器，实现功能页面的拉起。 约束：仅支持前台执行。 - 基于Page的装饰器：@InsightIntentPage 在开发者已实现的Page上添加装饰器，实现功能页面的拉起。 约束：仅支持前台执行，仅支持Navigati"
+      "snippet": "从6.0.0(20)开始，支持通过装饰器开发意图，支持将现有功能通过装饰器快速集成至系统入口。开发者可自定义意图，通过添加装饰器方式实现意图快速接入，支持Link跳转、Page和函数等意图装饰器，方便开发者快速开放应用内功能。 开发者可根据想要暴露的应用功能，选择不同类型的装饰器进行意图声明： - 基于Link的装饰器：@InsightIntentLink 在开发者已实现的DeepLink，AppLink上添加装饰器，实现功能页面的拉起。 约束：仅支持前台执行。 - 基于Page的装饰器：@InsightIntentPage 在开发者已实现的Page上添加装饰器，实现功能页面的拉起。 约束：仅支持前台执行，仅支持Navigation架构。 - 基于函数的装饰器：@InsightIntentFunction和@InsightIntentFunctionMethod 在目标执行函数上添加@InsightIntentFunctionMethod装饰器，以及在目标执行函数所属Class上添加@InsightIntentFunction进行意图声明，实现目标函数的执行。 约束：仅支持后台执行。"
     },
     {
       "path": "references/概述-1.md",
@@ -184,17 +184,17 @@
     {
       "path": "references/装饰器接入方式自测试方案.md",
       "title": "装饰器接入方式自测试方案",
-      "snippet": "从6.0.0(20)开始，Intents Kit向开发者提供意图调用调试能力。开发者完成代码开发之后，功能正式上架应用市场前，可以在HarmonyOS 5及以上的设备上面进行自验证，调试分为两个步骤：环境准备和联调验证。 #### 环境准备 1. 登录 https://developer.huawei.com/consumer/cn/ ，通过“管理中心 > 生态服务 > 智慧服务 > 小艺开放平台（原HarmonyOS服务开放平台） > 意图框架”，点击“立即体验”进入意图注册入口，需使用与应用上架相同的账号登录。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0c/v3/3ZGjh-tGTQKL0flBGHE9FQ/zh-cn_image_0000002543375016.png?HW-CC-KV=V1&HW-CC-Date=20260421T111940Z&HW-CC-Expire=86400&HW-CC-Sign=5E079BE9D99134DDDA134AC843F7073993D49ECBE2825A74E85166860D15BDB1) ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/Dev"
+      "snippet": "从6.0.0(20)开始，Intents Kit向开发者提供意图调用调试能力。开发者完成代码开发之后，功能正式上架应用市场前，可以在HarmonyOS 5及以上的设备上面进行自验证，调试分为两个步骤：环境准备和联调验证。 #### 环境准备 1. 登录 ，通过“管理中心 > 生态服务 > 智慧服务 > 小艺开放平台（原HarmonyOS服务开放平台） > 意图框架”，点击“立即体验”进入意图注册入口，需使用与应用上架相同的账号登录。 2. 点击注册意图新增意图集。 1. 点击新增注册意图，填写注册信息进行创建。 2. 编辑意图集基本信息。 3. 添加意图。 1. 切换至意图页签并添加意图。 2. 选择自定义意图并填入意图信息（根据接入方案进行填入）并确定。 3. 展开已创建的意图，并填入自定义输入、输出参数，点击保存。 4. 添加意图使用样本（意图样本用于提升模型对意图识别的准确率）。 1. 意图使用样本可通过新增/批量导入进行上传。 2. 若无需添加意图使用样本，打开是否已提供线下样本开关即可。 5. 添加账号至真机测试用户组。 1. 切换至测试页签，点击编辑用户组。 2. 点击新增组，输入新用户组名称（名称自定义）。 3. 选择已新增用户组，点击查看进入。 4. 点击添加用户，选择账号类型为邮箱/手机号码，填入后点击确定（测试用户须为该项目团队下的成员）。 5. 返回测试页签，"
     },
     {
       "path": "references/配置文件接入方式自测试方案.md",
       "title": "配置文件接入方式自测试方案",
-      "snippet": "Intents Kit向开发者提供意图调用调试能力。开发者完成代码开发之后，功能正式上架应用市场前，可以在HarmonyOS 5及以上的设备上面进行自验证，调试分为三个步骤：基础信息提供，环境准备，联调验证。 #### 基础信息提供 达成开发意向后，开发者发送邮件到邮箱（hagservice@huawei.com）或者联系华为意图框架接口同事，向华为提供测试应用的信息。 #### 环境准备 准备一台装有HarmonyOS Next版本的手机设备，通过应用市场将小艺版本升级至最新，并按照以下顺序依次执行，不能更换执行顺序。 1. 保持设备联网，并且设备时间和实际北京时间保持一致。 2. 安装开发完成并携有意图声明文件的应用。 3. 打开开发者调试模式：进入设置 > 机型 > 关于手机，连续点击软件版本7次，弹出“开启“开发者模式””，点击“确认开启”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/44/v3/cugipm4LTFqzOedn3yj1dw/zh-cn_image_0000002543215348.png?HW-CC-KV=V1&HW-CC-Date=20260421T111940Z&HW-CC-Expire=86400&HW-CC-Sign=596"
+      "snippet": "Intents Kit向开发者提供意图调用调试能力。开发者完成代码开发之后，功能正式上架应用市场前，可以在HarmonyOS 5及以上的设备上面进行自验证，调试分为三个步骤：基础信息提供，环境准备，联调验证。 #### 基础信息提供 达成开发意向后，开发者发送邮件到邮箱（hagservice@huawei.com）或者联系华为意图框架接口同事，向华为提供测试应用的信息。 #### 环境准备 准备一台装有HarmonyOS Next版本的手机设备，通过应用市场将小艺版本升级至最新，并按照以下顺序依次执行，不能更换执行顺序。 1. 保持设备联网，并且设备时间和实际北京时间保持一致。 2. 安装开发完成并携有意图声明文件的应用。 3. 打开开发者调试模式：进入设置 > 机型 > 关于手机，连续点击软件版本7次，弹出“开启“开发者模式””，点击“确认开启”。 4. 长按电源键唤醒小艺，将半屏态小艺向上拉升至全屏态，点击左上角返回上层，返回后点击右上角的头像，进入“设置”，找到并进入应用网络设置，打开“WLAN下自动更新”开关。 5. 进入设置 > 系统 > 开发者选项 > 意图框架调试，打开意图框架调试开关，如果下方显示“已切换至真机模式”，则代表真机模式切换成功。 【提示】如果出现意图框架调试开关打开后，设备长时间无法出现“已切换至真机模式”时，可以尝试以下操作： 登出华为账号，再登录之"
     },
     {
       "path": "references/附录A：获取华为账号对应UID的方式.md",
       "title": "附录A：获取华为账号对应UID的方式",
-      "snippet": "1. 使用需要添加白名单的华为账号登录“ https://developer.huawei.com/consumer/cn/ ”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f9/v3/SHoLt6-FReSaOzg0P39eiQ/zh-cn_image_0000002573855293.png?HW-CC-KV=V1&HW-CC-Date=20260421T111943Z&HW-CC-Expire=86400&HW-CC-Sign=433777FFE015B6E2E01BE070934FBD938CD35C47FD345EDA3019E6F0B9D63E59) 2. 点击右上角我的-头像进入详情页面。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/25/v3/S7ugl_zDQumJaC995eEhkg/zh-cn_image_0000002573975273.png?HW-CC-KV=V1&HW-CC-Date=20260421T111943Z&HW-CC-Expire=86400&HW-CC-Sign=668CCBFF8EBC566"
+      "snippet": "1. 使用需要添加白名单的华为账号登录“ ”。 2. 点击右上角我的-头像进入详情页面。 3. 如图开发者ID即为对应账号UID。"
     }
   ]
 }

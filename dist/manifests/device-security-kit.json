@@ -3,7 +3,7 @@
   "skill": "device-security-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.748Z"
+    "at": "2026-05-21T03:47:44.434Z"
   },
   "references": [
     {
@@ -14,7 +14,7 @@
     {
       "path": "references/URL检测.md",
       "title": "URL检测",
-      "snippet": "应用通过调用Device Security Kit的checkUrlThreat接口检测URL是否为恶意的，并且根据检测结果来提示或拦截该URL。 典型场景：用户访问网址时，判断用户访问的URL是否为恶意网址，对于恶意网址，提示或拦截用户的访问风险。 #### 约束与限制 - URL检测能力支持Phone、Tablet、PC/2in1设备。并且从5.1.0(18)版本开始，新增支持Wearable设备。 - 每个应用在每个设备上每天最多可以调用1万次接口；每个设备上最多支持5个并发调用。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cf/v3/PplTxIehQQ2WqPKE2vpSIw/zh-cn_image_0000002543214418.png?HW-CC-KV=V1&HW-CC-Date=20260421T111107Z&HW-CC-Expire=86400&HW-CC-Sign=C599A1FE9B8C5C26F548E8F2B9F0F6AB81B64B3484C53FFAFA1D8771A083D389) **流程说明：** 1. 开发者应用调用URL检测（checkUrlThreat）接口，传入待检测的URL，并获得URL检"
+      "snippet": "应用通过调用Device Security Kit的checkUrlThreat接口检测URL是否为恶意的，并且根据检测结果来提示或拦截该URL。 典型场景：用户访问网址时，判断用户访问的URL是否为恶意网址，对于恶意网址，提示或拦截用户的访问风险。 #### 约束与限制 - URL检测能力支持Phone、Tablet、PC/2in1设备。并且从5.1.0(18)版本开始，新增支持Wearable设备。 - 每个应用在每个设备上每天最多可以调用1万次接口；每个设备上最多支持5个并发调用。 #### 业务流程 **流程说明：** 1. 开发者应用调用URL检测（checkUrlThreat）接口，传入待检测的URL，并获得URL检测结果。 Device Security Kit将请求发送到华为服务器检测URL风险，并将检测结果返回给开发者应用（NORMAL、PHISHING、MALWARE、OTHERS）。 2. 开发者应用可以根据检测结果来决定业务处理策略。 #### 接口说明 以下是URL检测相关接口，包括ArkTS API，更多接口及使用方法请参见 API参考 。 #### 开发步骤 请确保已打开“ 安全检测服务 ”开关并 申请Profile 。 1. 导入Device Security Kit模块及相关公共模块。 import { safetyDetect } from '@"
     },
     {
       "path": "references/个人数据处理说明.md",
@@ -24,37 +24,37 @@
     {
       "path": "references/交易信息密码认证.md",
       "title": "交易信息密码认证",
-      "snippet": "在交易信息密码认证场景中，可以利用创建的数字盾密码对交易信息进行认证，可通过密钥管理服务提供的签名认证功能来确认交易内容是否被篡改，以确保整个交易过程的安全性。 #### 约束与限制 本功能目前仅在手机设备支持。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/59/v3/88M156FkSIeohBDxO_lfPg/zh-cn_image_0000002573974315.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111110Z&HW-CC-Expire=86400&HW-CC-Sign=7F1A6F68B965E288C8B20F8A7CD0BE1C046BC1646FBF217CC2FFA387134B98FA) #### 接口说明 接口及使用方法请参见 API参考 。 #### 交易信息密码认证界面介绍 如图1、图2、图3为使用数字盾密码进行交易认证时对应的TUI界面示例，其中交易信息密码认证分为两种场景： 1. 当用户交易信息不超过6行时，则以下图1中无翻页形式进行密码认证。 2. 当用户交易信息超过6行时，则以下图2-3中翻页形式进行密码认证，且当交易信息超过19行时，则Device Security "
+      "snippet": "在交易信息密码认证场景中，可以利用创建的数字盾密码对交易信息进行认证，可通过密钥管理服务提供的签名认证功能来确认交易内容是否被篡改，以确保整个交易过程的安全性。 #### 约束与限制 本功能目前仅在手机设备支持。 #### 业务流程 #### 接口说明 接口及使用方法请参见 API参考 。 #### 交易信息密码认证界面介绍 如图1、图2、图3为使用数字盾密码进行交易认证时对应的TUI界面示例，其中交易信息密码认证分为两种场景： 1. 当用户交易信息不超过6行时，则以下图1中无翻页形式进行密码认证。 2. 当用户交易信息超过6行时，则以下图2-3中翻页形式进行密码认证，且当交易信息超过19行时，则Device Security Kit拒绝拉起TUI界面。 **图1** 无翻页密码认证 **图2** 翻页密码认证-1 **图3** 翻页密码认证-2 交易信息格式说明如下： 1. **带标记格式** ，以key:value|flag形式，flag取值如下： - 0：表示不展示该行内容。 - 1：单行截断展示（若内容超出一行则截断）。 - 2：自动换行展示（若内容超出一行则换行）。 如当交易信息为“收款户名：王**|1”，表示key为“收款户名”， value为“王**”，flag为1，该内容若超过一行则截断显示。 - 当行内出现“|”符号时，系统默认按此格式解析，若交易内容格式未全部以"
     },
     {
       "path": "references/修改数字盾密码.md",
       "title": "修改数字盾密码",
-      "snippet": "激活数字盾后，用户可在完成旧密码认证后，修改数字盾密码信息。 #### 约束与限制 本功能目前仅在手机设备支持。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3c/v3/cPt5uULrROWq2hVNN9cMCQ/zh-cn_image_0000002573854337.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111109Z&HW-CC-Expire=86400&HW-CC-Sign=9D7898BC5A01E6309575A0D8BA28455774E05A6853836C44741D720DF1C1CC75) #### 接口说明 接口及使用方法请参见 API参考 。 #### 修改数字盾密码界面介绍 如图1、图2为修改数字盾密码时对应的TUI界面示例，用户需使用旧密码认证通过后，方可设置新密码。密码认证失败时，剩余认证次数减1，当剩余认证次数为0时，则锁定数字盾服务。新密码长度、对应TUI应用图标以及当前应用场景说明均由开发者调用接口时传入。 **图1** 旧密码认证 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAllia"
+      "snippet": "激活数字盾后，用户可在完成旧密码认证后，修改数字盾密码信息。 #### 约束与限制 本功能目前仅在手机设备支持。 #### 业务流程 #### 接口说明 接口及使用方法请参见 API参考 。 #### 修改数字盾密码界面介绍 如图1、图2为修改数字盾密码时对应的TUI界面示例，用户需使用旧密码认证通过后，方可设置新密码。密码认证失败时，剩余认证次数减1，当剩余认证次数为0时，则锁定数字盾服务。新密码长度、对应TUI应用图标以及当前应用场景说明均由开发者调用接口时传入。 **图1** 旧密码认证 **图2** 新密码设置 #### 开发步骤 1. 导入huks 、trustedAuthentication 和相关依赖模块。 import { resourceManager } from '@kit.LocalizationKit' import { huks } from '@kit.UniversalKeystoreKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { trustedAuthentication } from '@kit.DeviceSecurityKit'; import { cryptoFramework } from '@kit.CryptoArchitectureKit';"
     },
     {
       "path": "references/关闭指定生物类型认证能力.md",
       "title": "关闭指定生物类型认证能力",
-      "snippet": "当用户期望关闭指定生物特征认证能力时，可以通过指定已开通的生物特征信息，关闭指定的生物类型认证能力。 #### 约束与限制 本功能目前仅在手机设备支持，且需应用服务器端同步接入配合端云协同认证。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3/v3/IaAYEa9HQWqxU6B87A1a7A/zh-cn_image_0000002573974319.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111110Z&HW-CC-Expire=86400&HW-CC-Sign=40EC649E8A43C23274349A98E315AE999F14F1876E55C1E1AF25FFCFF15DFECF) #### 接口说明 接口及使用方法请参见 API参考 。 #### 开发步骤 1. 导入trustedAuthentication 和相关依赖模块。 import { trustedAuthentication} from '@kit.DeviceSecurityKit'; import { BusinessError} from '@kit.BasicServicesKit'; import { hilog } fr"
+      "snippet": "当用户期望关闭指定生物特征认证能力时，可以通过指定已开通的生物特征信息，关闭指定的生物类型认证能力。 #### 约束与限制 本功能目前仅在手机设备支持，且需应用服务器端同步接入配合端云协同认证。 #### 业务流程 #### 接口说明 接口及使用方法请参见 API参考 。 #### 开发步骤 1. 导入trustedAuthentication 和相关依赖模块。 import { trustedAuthentication} from '@kit.DeviceSecurityKit'; import { BusinessError} from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 首先开发者需要在服务器查询对应账户是否已开通对应生物特征认证能力，在确认开通后方可发起解绑指定生物类型认证能力请求。 3. 发起关闭指定生物类型认证能力请求前，需从服务器获取当前账号在 设置数字盾密码 时获取的authID。 4. 调用数字盾解绑指定生物类型认证能力接口发起关闭对应生物类型认证能力申请。 const TAG = \"TrustedAuthenticationJsTest\"; try { const authID: bigint = 1687413472599354502"
     },
     {
       "path": "references/关闭数字盾服务.md",
       "title": "关闭数字盾服务",
-      "snippet": "当用户不再使用数字盾时，可以通过密码认证主动发起关闭数字盾的操作；若用户忘记密码或连续密码认证失败次数达到最大限制导致数字盾密码锁定，盾应用将在重新激活数字盾时，无需进行密码认证直接关闭最初激活的数字盾，并通过 设置数字盾密码 重新创建新的数字盾密码。 #### 约束与限制 本功能目前仅在手机设备支持。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e5/v3/1TdvKHfoR-a9ElIxIUCYrQ/zh-cn_image_0000002543214424.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111109Z&HW-CC-Expire=86400&HW-CC-Sign=99EA10ADCFC202A0FDEA38125BE6304A68A4D9092070AA8A132F6CEE4DF287F5) 当不需要密码认证进行关闭数字盾申请时，则无需和Universal Keystore Kit交互，使用随机生成的challenge完成关闭数字盾操作。 #### 接口说明 接口及使用方法请参见 API参考 。 #### 关闭数字盾服务界面介绍 如图为需要进行密码认证的方式关闭数字盾服务时对应的TUI界面示例。 "
+      "snippet": "当用户不再使用数字盾时，可以通过密码认证主动发起关闭数字盾的操作；若用户忘记密码或连续密码认证失败次数达到最大限制导致数字盾密码锁定，盾应用将在重新激活数字盾时，无需进行密码认证直接关闭最初激活的数字盾，并通过 设置数字盾密码 重新创建新的数字盾密码。 #### 约束与限制 本功能目前仅在手机设备支持。 #### 业务流程 当不需要密码认证进行关闭数字盾申请时，则无需和Universal Keystore Kit交互，使用随机生成的challenge完成关闭数字盾操作。 #### 接口说明 接口及使用方法请参见 API参考 。 #### 关闭数字盾服务界面介绍 如图为需要进行密码认证的方式关闭数字盾服务时对应的TUI界面示例。 #### 开发步骤 #### 密码认证方式关闭数字盾服务 1. 导入huks 、trustedAuthentication 和相关依赖模块。 import { resourceManager } from '@kit.LocalizationKit' import { huks } from '@kit.UniversalKeystoreKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { trustedAuthentication } from '@kit.DeviceS"
     },
     {
       "path": "references/单客户端订阅场景.md",
       "title": "单客户端订阅场景",
-      "snippet": "提供统一的安全审计数据单客户端订阅与取消订阅接口，应用可以获取设备上的安全审计数据（如下表），以支撑审计相关业务。 #### 约束与限制 当前能力仅支持2in1设备。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/69/v3/mV1fh5aHS_y7p150HQBkXw/zh-cn_image_0000002543214430.png?HW-CC-KV=V1&HW-CC-Date=20260421T111111Z&HW-CC-Expire=86400&HW-CC-Sign=4FD5847C8A529F73CAF32E243BF47CAF90235195767217D7B719160CCD162F24) **流程说明：** 1. 开发者应用订阅安全审计数据。 2. Device Security Kit调用回调函数通知开发者应用，开发者应用根据审计数据进行业务处理。 3. 当开发者应用不需要使用该审计数据时，取消订阅安全审计数据。 #### 接口说明 以下是安全审计数据订阅与取消订阅接口，更多接口及使用方法请参见 API参考 。 #### 开发步骤 ![](https://contentcenter-vali-drcn.dbankcdn.cn/"
+      "snippet": "提供统一的安全审计数据单客户端订阅与取消订阅接口，应用可以获取设备上的安全审计数据（如下表），以支撑审计相关业务。 #### 约束与限制 当前能力仅支持2in1设备。 #### 业务流程 **流程说明：** 1. 开发者应用订阅安全审计数据。 2. Device Security Kit调用回调函数通知开发者应用，开发者应用根据审计数据进行业务处理。 3. 当开发者应用不需要使用该审计数据时，取消订阅安全审计数据。 #### 接口说明 以下是安全审计数据订阅与取消订阅接口，更多接口及使用方法请参见 API参考 。 #### 开发步骤 - 在开发准备过程中，需要申请权限：ohos.permission.QUERY_AUDIT_EVENT。 - 只允许清单内的企业类应用申请该权限，申请方式请参考： 申请使用企业类应用可用权限 。 1. 导入Device Security Kit模块及相关公共模块。 import { securityAudit } from '@kit.DeviceSecurityKit'; import { BusinessError} from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 订阅安全审计事件。 const TAG = \"Security"
     },
     {
       "path": "references/基于服务账号生成鉴权令牌.md",
       "title": "基于服务账号生成鉴权令牌",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4e/v3/c8lKgcgGQSmd1C9XUy5z6A/caution_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111106Z&HW-CC-Expire=86400&HW-CC-Sign=CECF33EFBF80072EFC24F479D48AE6EED55E5499B3E8D445B2E261E7A7E7A4D3) 只有使用应用设备状态检测服务时才需要配置此章节。 #### 概述 服务账号（Service Account）是一种可实现服务器与服务器之间接口鉴权的账号，在华为开发者联盟的 API Console 上创建服务账号，您可根据返回的公私钥在业务应用中生成鉴权令牌，调用支持此类鉴权的华为公开API。 服务账号令牌为JWT（JSON Web Token）格式字符串，JWT数据格式包括三个部分： - Header（头部） - Payload（负载） - Signature（签名） 这三个部分通过“.”进行连接，其中Signature为通过SHA256withRSA算法对Header与Payload拼接的字符串签名生成的字符串。 **示例** eyJra****"
+      "snippet": "只有使用应用设备状态检测服务时才需要配置此章节。 #### 概述 服务账号（Service Account）是一种可实现服务器与服务器之间接口鉴权的账号，在华为开发者联盟的 API Console 上创建服务账号，您可根据返回的公私钥在业务应用中生成鉴权令牌，调用支持此类鉴权的华为公开API。 服务账号令牌为JWT（JSON Web Token）格式字符串，JWT数据格式包括三个部分： - Header（头部） - Payload（负载） - Signature（签名） 这三个部分通过“.”进行连接，其中Signature为通过SHA256withRSA算法对Header与Payload拼接的字符串签名生成的字符串。 **示例** eyJra*****JjNjBjMXXX. eyJhd*****JodHRXXX. BRNss*****7az5oU7-Zp5g9X2WJVXXX 更多JWT的相关知识请参见 Introduction to JSON Web Tokens 。 #### 开发步骤 1. 创建服务账号密钥文件。 开发者需要在华为开发者联盟的 API Console 上创建并下载服务账号的密钥文件，相关创建步骤请参见 API Console操作指南-服务账号密钥 。 您在开发者联盟需要申请开发者级的服务账号凭证。 服务账号密钥样例文件形式可参考： { \"project_id\""
     },
     {
       "path": "references/安全图像压缩、裁剪场景.md",
       "title": "安全图像压缩、裁剪场景",
-      "snippet": "在安全图像支持压缩、裁剪场景中，通过创建证明密钥、打开证明会话的方式，对从 安全摄像头 获取的图像数据进行压缩、裁剪处理并重新签名，降低安全摄像头的原始图像大小，同时也能确保图像数据的真实性和完整性。 #### 约束与限制 该特性需要设备支持安全摄像头功能，其支持的设备范围与安全摄像头场景保持一致。开发者可以参考安全摄像头场景的 约束与限制 ，判断设备是否支持安全摄像头。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0b/v3/DEbtj8lhSbWybXRKJM7h7Q/zh-cn_image_0000002543214420.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111108Z&HW-CC-Expire=86400&HW-CC-Sign=DFCB31ABB82E32862AA0E26DB212B88844F8D08AF05548D6C4442D467DD7CC6C) #### 接口说明 接口及使用方法请参见 API参考 。 #### 开发步骤 1. 参考 安全摄像头开发指导 ，获取安全图像。 2. 创建证明密钥和初始化证明会话。 ![](https://contentcenter-vali-drcn.d"
+      "snippet": "在安全图像支持压缩、裁剪场景中，通过创建证明密钥、打开证明会话的方式，对从 安全摄像头 获取的图像数据进行压缩、裁剪处理并重新签名，降低安全摄像头的原始图像大小，同时也能确保图像数据的真实性和完整性。 #### 约束与限制 该特性需要设备支持安全摄像头功能，其支持的设备范围与安全摄像头场景保持一致。开发者可以参考安全摄像头场景的 约束与限制 ，判断设备是否支持安全摄像头。 #### 业务流程 #### 接口说明 接口及使用方法请参见 API参考 。 #### 开发步骤 1. 参考 安全摄像头开发指导 ，获取安全图像。 2. 创建证明密钥和初始化证明会话。 - 只有创建证明密钥成功后，才能初始化证明会话。 - 证明密钥的有效期为7天，为了避免反复创建证明密钥，建议先调用初始化证明会话，如果初始化失败，再去销毁、创建证明密钥，然后重新初始化证明密钥。 - 调用initializeAttestContext初始化证明会话时，userData的长度必须在16到127 Bytes之间。 // 创建证明密钥的参数 const createProperties: Array<trustedAppService.AttestParam> = [ { tag: trustedAppService.AttestTag.ATTEST_TAG_ALGORITHM, value: trustedAppSer"
     },
     {
       "path": "references/安全地理位置场景.md",
@@ -69,22 +69,22 @@
     {
       "path": "references/应用设备状态检测.md",
       "title": "应用设备状态检测",
-      "snippet": "应用通过调用Device Security Kit的getDeviceToken接口获取到DeviceToken，应用的服务器使用DeviceToken到Device Security服务器查询和管理应用在该设备的使用状态，应用在无法获取到持久化设备标识的情况下也可以对设备的应用状态进行记录和查询。 应用可以根据Device Security服务器返回的使用状态，判断应用是否在该设备上首次安装，或在该设备上用户是否已获取了优惠券等，以支撑业务进行新用户营销活动。 #### 约束与限制 应用设备状态检测（DeviceVerify）能力不支持模拟器。支持设备：Phone、Tablet、PC/2in1、Wearable，从5.1.1(19)版本开始，新增支持设备：TV。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d6/v3/CyJb_iocTiKyf4vN1IzLPg/zh-cn_image_0000002573854331.png?HW-CC-KV=V1&HW-CC-Date=20260421T111107Z&HW-CC-Expire=86400&HW-CC-Sign=4408AE3EBA3F335D48278AD3BAF12BD838341"
+      "snippet": "应用通过调用Device Security Kit的getDeviceToken接口获取到DeviceToken，应用的服务器使用DeviceToken到Device Security服务器查询和管理应用在该设备的使用状态，应用在无法获取到持久化设备标识的情况下也可以对设备的应用状态进行记录和查询。 应用可以根据Device Security服务器返回的使用状态，判断应用是否在该设备上首次安装，或在该设备上用户是否已获取了优惠券等，以支撑业务进行新用户营销活动。 #### 约束与限制 应用设备状态检测（DeviceVerify）能力不支持模拟器。支持设备：Phone、Tablet、PC/2in1、Wearable，从5.1.1(19)版本开始，新增支持设备：TV。 #### 业务流程 流程说明： 1. 开发者应用调用Device Security Kit的getDeviceToken接口获取DeviceToken。 2. Device Security Kit返回DeviceToken。 3. 开发者应用在业务请求（如领取优惠券请求）中把DeviceToken发送到应用的服务器。 4. 应用服务器发送DeviceVerify Rest请求到Device Security服务器，对该设备的标记状态（如是否已领取优惠券）进行查询（getDeviceStatus接口）和更新（setDev"
     },
     {
       "path": "references/开通Device Security服务.md",
       "title": "开通Device Security服务",
-      "snippet": "在开通Device Security服务前，请先参考“ 应用开发准备 ”完成基本准备工作，再继续进行以下开发活动。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b9/v3/RgV1wxLnQo-QrUKD_WXE4w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111106Z&HW-CC-Expire=86400&HW-CC-Sign=59663ADFBE97528406D941913F250DEEC9B0C7D01DEB5A57C3681AB76DA84DDC) Device Security包括应用设备状态检测、安全检测、可信应用服务、业务风险检测能力、数字盾服务，开发者请根据实际使用场景，选择开启某个或者多个能力开关。 1. 登录 AppGallery Connect 网站，选择开发与服务。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7/v3/T_4_USzxTYeYCr4gfNIvBg/zh-cn_image_0000002543214412.png?HW-CC-KV=V"
+      "snippet": "在开通Device Security服务前，请先参考“ 应用开发准备 ”完成基本准备工作，再继续进行以下开发活动。 Device Security包括应用设备状态检测、安全检测、可信应用服务、业务风险检测能力、数字盾服务，开发者请根据实际使用场景，选择开启某个或者多个能力开关。 1. 登录 AppGallery Connect 网站，选择开发与服务。 2. 在项目列表中找到需要开通Device Security服务的项目。 3. 选择“开放能力管理”Tab页，找到需要使用的功能，点击左侧的按钮，开通相应的功能。 - **应用设备状态检测** ：勾选“应用设备状态检测”并点击“保存”，接入“应用设备状态检测”。 - **安全检测** ：勾选“安全检测服务”并点击“保存”，接入“安全检测服务”。 - **可信应用服务** ：勾选“可信应用服务”并点击“保存”，接入“可信应用服务”。 开通“可信应用服务”需要先申请进入允许清单，请将Developer ID、公司名称、应用名称、申请使用的服务和使用该服务的场景，发送到agconnect@huawei.com。AGC运营将审核相关材料，通过后将为您配置受限开放服务使用的名单，审核周期为1-3个工作日，请耐心等待。 - **业务风险检测-涉诈剧本检测** ：点击“涉诈剧本检测”右侧申请按钮，接入“涉诈剧本检测”，审核通过后勾选对应服务并点击“"
     },
     {
       "path": "references/开通生物特征认证能力.md",
       "title": "开通生物特征认证能力",
-      "snippet": "在完成数字盾密码设置后，用户可以在数字盾密码认证成功后，将系统已录入的人脸或指纹信息与账户绑定，即开通生物特征认证能力。此后，用户即可通过已绑定的生物特征（人脸或指纹）快速完成转账交易的身份验证。 #### 约束与限制 本功能目前仅在手机设备支持。人脸认证功能仅支持具备 **3D人脸识别能力** 的设备，目前仅支持绑定一个指纹/人脸用于支付认证，且需应用服务器端同步接入配合端云协同认证。通过用户认证服务提供的接口 查询支持的认证能力 ，可确认设备是否支持3D人脸。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9e/v3/Qy2nqtVySX6rQIAnM-s_Uw/zh-cn_image_0000002573974317.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111110Z&HW-CC-Expire=86400&HW-CC-Sign=660D868FEBBE413A68D95033F7757D9CC1D621E04A75790507127D45449A438D) #### 接口说明 接口及使用方法请参见 API参考 。 #### 开通生物特征认证能力界面介绍 如图表示开通人脸认证时对应的UI界面示例，当密码"
+      "snippet": "在完成数字盾密码设置后，用户可以在数字盾密码认证成功后，将系统已录入的人脸或指纹信息与账户绑定，即开通生物特征认证能力。此后，用户即可通过已绑定的生物特征（人脸或指纹）快速完成转账交易的身份验证。 #### 约束与限制 本功能目前仅在手机设备支持。人脸认证功能仅支持具备 **3D人脸识别能力** 的设备，目前仅支持绑定一个指纹/人脸用于支付认证，且需应用服务器端同步接入配合端云协同认证。通过用户认证服务提供的接口 查询支持的认证能力 ，可确认设备是否支持3D人脸。 #### 业务流程 #### 接口说明 接口及使用方法请参见 API参考 。 #### 开通生物特征认证能力界面介绍 如图表示开通人脸认证时对应的UI界面示例，当密码认证通过后，则会拉起系统人脸认证界面进行人脸信息绑定。 #### 开发步骤 1. 导入huks 、userAuth 、trustedAuthentication和相关依赖模块。 import { resourceManager } from '@kit.LocalizationKit' import { huks } from '@kit.UniversalKeystoreKit'; import { userAuth } from '@kit.UserAuthenticationKit'; import { BusinessError } from '@k"
     },
     {
       "path": "references/支持的国家_地区.md",
       "title": "支持的国家/地区",
-      "snippet": ""
+      "snippet": "支持的国家/地区"
     },
     {
       "path": "references/数字盾服务概述.md",
@@ -94,22 +94,22 @@
     {
       "path": "references/数字盾签名密钥备份与恢复.md",
       "title": "数字盾签名密钥备份与恢复",
-      "snippet": "在数字盾激活前，应用需向密钥管理服务提交密钥生成申请，指定所需密钥的技术参数（如算法、长度等），成功生成的密钥将存储于密钥管理服务侧，应用可申请使用对应密钥进行数字盾服务相关业务数据的签名/验签操作。若应用被卸载，密钥管理服务将自动删除对应的密钥数据，导致应用重新安装后，数字盾功能无法继续使用。 若您希望当应用在原设备上重新安装后仍能通过历史数据恢复数字盾功能，请在激活数字盾后，执行以下操作： 1. 向密钥管理服务发起导出密钥的加密密文（密钥密文）申请。 2. 向数字盾服务发起密钥备份申请，将密钥密文安全存入数字盾系统。 在应用卸载重新安装后，如果您期望继续使用应用卸载前使用的密钥管理服务生成的密钥数据，减少用户重新激活数字盾密码流程，直接恢复历史数字盾功能时，则需要执行以下操作： 1. 向数字盾服务发起密钥恢复申请，用户在数字盾密码认证通过后，将应用卸载前备份的密钥数据导出至应用侧。 2. 将密钥数据发送至密钥管理服务，完成密钥恢复。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ae/v3/mLOuWRDMT96FqWARO8h_hA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111111Z&HW-"
+      "snippet": "在数字盾激活前，应用需向密钥管理服务提交密钥生成申请，指定所需密钥的技术参数（如算法、长度等），成功生成的密钥将存储于密钥管理服务侧，应用可申请使用对应密钥进行数字盾服务相关业务数据的签名/验签操作。若应用被卸载，密钥管理服务将自动删除对应的密钥数据，导致应用重新安装后，数字盾功能无法继续使用。 若您希望当应用在原设备上重新安装后仍能通过历史数据恢复数字盾功能，请在激活数字盾后，执行以下操作： 1. 向密钥管理服务发起导出密钥的加密密文（密钥密文）申请。 2. 向数字盾服务发起密钥备份申请，将密钥密文安全存入数字盾系统。 在应用卸载重新安装后，如果您期望继续使用应用卸载前使用的密钥管理服务生成的密钥数据，减少用户重新激活数字盾密码流程，直接恢复历史数字盾功能时，则需要执行以下操作： 1. 向数字盾服务发起密钥恢复申请，用户在数字盾密码认证通过后，将应用卸载前备份的密钥数据导出至应用侧。 2. 将密钥数据发送至密钥管理服务，完成密钥恢复。 - 一旦用户关闭了数字盾服务，数字盾服务侧将会自动清理对应的密码数据及密钥数据，当应用重新激活数字盾时，需要重新进行密钥数据备份。 - 从密钥导入到数字盾密码关闭之间，密钥导入不支持重复导入到数字盾服务侧。 #### 约束与限制 本功能目前仅在手机设备支持。 #### 业务流程 #### 接口说明 接口及使用方法请参见 API参考 。 #### 开"
     },
     {
       "path": "references/服务配额.md",
       "title": "服务配额",
-      "snippet": ""
+      "snippet": "服务配额"
     },
     {
       "path": "references/本地系统完整性检测.md",
       "title": "本地系统完整性检测",
-      "snippet": "在不接入服务端的场景下，应用通过调用Device Security Kit的checkSysIntegrityOnLocal接口获取系统完整性检测结果，用于判断设备环境是否安全，比如是否被越狱、非真实设备等。 应用可以根据检测结果评估如何进行业务操作。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f0/v3/kPKkYLHkRiufL2ThlKFjwg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111107Z&HW-CC-Expire=86400&HW-CC-Sign=CC3A967DF11E66A083F64633366652EB96B43A68913848FB4BEB0F9747099FDC) - 系统完整性检测结果可以用作系统整体安全的一个环节，需要考虑检测结果误报带来的风险以及给用户带来的影响，不建议将系统完整性检测结果作为判断当前设备是否安全的唯一依据，更好的做法是通过额外的步骤降低风险。 - 该功能仅在无法接入服务端的场景下使用。 #### 约束与限制 - 本地系统完整性检测能力支持Phone、Tablet、PC/2in1、Wearable设备。 #### 业务流程 ![](https:/"
+      "snippet": "在不接入服务端的场景下，应用通过调用Device Security Kit的checkSysIntegrityOnLocal接口获取系统完整性检测结果，用于判断设备环境是否安全，比如是否被越狱、非真实设备等。 应用可以根据检测结果评估如何进行业务操作。 - 系统完整性检测结果可以用作系统整体安全的一个环节，需要考虑检测结果误报带来的风险以及给用户带来的影响，不建议将系统完整性检测结果作为判断当前设备是否安全的唯一依据，更好的做法是通过额外的步骤降低风险。 - 该功能仅在无法接入服务端的场景下使用。 #### 约束与限制 - 本地系统完整性检测能力支持Phone、Tablet、PC/2in1、Wearable设备。 #### 业务流程 **流程说明：** 1. 开发者应用调用checkSysIntegrityOnLocal接口，发起本地系统完整性检测请求。 2. Device Security Kit收到请求后，采集系统完整性检测数据，检测系统完整性。 3. 通过checkSysIntegrityOnLocal接口将检测结果返回给开发者应用。 4. 开发者应用可以根据检测结果进行业务处理。当本地系统完整性检测结果为false时，请进一步判断detail中的具体风险分类，您可以根据风险分类以及自身功能对安全的要求决定是否提醒用户。 - 本地系统完整性检测结果可以用作系统整体安全的一个环"
     },
     {
       "path": "references/查询当前状态场景.md",
       "title": "查询当前状态场景",
-      "snippet": "从6.0.2(22)开始，新增了查询设备当前超级隐私模式状态的功能。 超级隐私模式为用户提供一键关闭敏感器件的能力，管控范围包括位置、相机和麦克风，且随着版本演进，超级隐私模式管控的敏感器件范围会相应调整。应用可通过Device Security Kit提供的接口查询当前超级隐私模式开关状态。 #### 约束与限制 本特性需要设备上存在超级隐私模式选项。开发者可通过在设备上选择“设置 > 隐私和安全 > 超级隐私模式”查看超级隐私模式选项。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/c8/v3/glSwoEQMTw2ntXy5ugeXnw/zh-cn_image_0000002543374100.png?HW-CC-KV=V1&HW-CC-Date=20260421T111114Z&HW-CC-Expire=86400&HW-CC-Sign=6DDE1B534B39911DE8284A4699E00DFB8623EA804AF3CFDAAE84635F17395DB0) **流程说明：** 1. 开发者应用查询当前超级隐私模式状态。 2. Device Security Kit接口同步返回当前超级隐私模式状态给HAP应用。 3. 应用根据"
+      "snippet": "从6.0.2(22)开始，新增了查询设备当前超级隐私模式状态的功能。 超级隐私模式为用户提供一键关闭敏感器件的能力，管控范围包括位置、相机和麦克风，且随着版本演进，超级隐私模式管控的敏感器件范围会相应调整。应用可通过Device Security Kit提供的接口查询当前超级隐私模式开关状态。 #### 约束与限制 本特性需要设备上存在超级隐私模式选项。开发者可通过在设备上选择“设置 > 隐私和安全 > 超级隐私模式”查看超级隐私模式选项。 #### 业务流程 **流程说明：** 1. 开发者应用查询当前超级隐私模式状态。 2. Device Security Kit接口同步返回当前超级隐私模式状态给HAP应用。 3. 应用根据返回的超级隐私模式状态进行业务处理。 #### 接口说明 以下是超级隐私模式状态查询接口，更多接口及使用方法请参见 API参考 。 #### 开发步骤 1. 导入超级隐私模块及相关公共模块。 import { superPrivacyMode } from '@kit.DeviceSecurityKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 查询超级隐私模式状态改变事件。 const DOMAIN = 0x0000; const TAG = \"SuperPrivacyModeTes"
     },
     {
       "path": "references/查询设备安全模式(C_C++).md",
@@ -119,92 +119,92 @@
     {
       "path": "references/模拟点击增强检测.md",
       "title": "模拟点击增强检测",
-      "snippet": "从6.0.2(22) 版本开始，新增支持模拟点击增强检测。 应用通过调用Device Security Kit的detectSimulatedClickRiskEnhanced接口，获取模拟点击增强检测结果，用于自动化点击、设备墙等作弊行为检测。 应用可以根据检测结果评估如何进行业务操作。 #### 约束与限制 每30秒最多可以调用10次，每个应用在每个设备上每天最多可以调用20次。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d7/v3/xroDIzMCT0KUApX3-IK8Ow/zh-cn_image_0000002543374096.png?HW-CC-KV=V1&HW-CC-Date=20260421T111113Z&HW-CC-Expire=86400&HW-CC-Sign=F4C63CB7AFFD2B9A957CDF1242FFD1212E52A53B16C9077677DFFF296042EFC5) **流程说明：** 1. 开发者应用获取nonce。 在调用detectSimulatedClickRiskEnhanced接口时，开发者必须传入一个随机生成的nonce值。在检测结果中会包含这个nonce值，您可以通过校验这个"
+      "snippet": "从6.0.2(22) 版本开始，新增支持模拟点击增强检测。 应用通过调用Device Security Kit的detectSimulatedClickRiskEnhanced接口，获取模拟点击增强检测结果，用于自动化点击、设备墙等作弊行为检测。 应用可以根据检测结果评估如何进行业务操作。 #### 约束与限制 每30秒最多可以调用10次，每个应用在每个设备上每天最多可以调用20次。 #### 业务流程 **流程说明：** 1. 开发者应用获取nonce。 在调用detectSimulatedClickRiskEnhanced接口时，开发者必须传入一个随机生成的nonce值。在检测结果中会包含这个nonce值，您可以通过校验这个nonce值来确定返回结果能够对应您的请求，并且没有被重放攻击。 - nonce值必须为24至80字节之间。 - 建议每次请求都从服务器随机生成新的nonce值。 2. 开发者应用调用detectSimulatedClickRiskEnhanced接口，发起模拟点击增强检测请求。 Device Security Kit收到请求后，首先采集当前设备模拟点击线索数据，然后将线索数据和nonce一起发送到Device Security服务器做检测，最后通过detectSimulatedClickRiskEnhanced接口的返回值将检测结果传递给开发者应用。 3."
     },
     {
       "path": "references/模拟点击检测.md",
       "title": "模拟点击检测",
-      "snippet": "从6.0.0(20) 版本开始，新增支持模拟点击检测。 应用通过调用Device Security Kit的detectSimulatedClickRisk接口，获取模拟点击检测结果，用于自动化点击、设备墙等作弊行为检测。 应用可以根据检测结果评估如何进行业务操作。 #### 约束与限制 每30秒最多可以调用10次，每个应用在每个设备上每天最多可以调用20次。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d7/v3/a6qLAhriT7uXWHmVFogKuQ/zh-cn_image_0000002573974323.png?HW-CC-KV=V1&HW-CC-Date=20260421T111113Z&HW-CC-Expire=86400&HW-CC-Sign=D8CA135EFF4C7E50B1751D1C096BB58B7CC9E09C7CD5EC4362F3B4C90AB578C2) **流程说明：** 1. 开发者应用调用detectSimulatedClickRisk接口，发起模拟点击检测请求。 Device Security Kit收到请求后，首先采集当前设备模拟点击线索数据，然后将线索数据发送到Device Security"
+      "snippet": "从6.0.0(20) 版本开始，新增支持模拟点击检测。 应用通过调用Device Security Kit的detectSimulatedClickRisk接口，获取模拟点击检测结果，用于自动化点击、设备墙等作弊行为检测。 应用可以根据检测结果评估如何进行业务操作。 #### 约束与限制 每30秒最多可以调用10次，每个应用在每个设备上每天最多可以调用20次。 #### 业务流程 **流程说明：** 1. 开发者应用调用detectSimulatedClickRisk接口，发起模拟点击检测请求。 Device Security Kit收到请求后，首先采集当前设备模拟点击线索数据，然后将线索数据发送到Device Security服务器做检测，最后通过detectSimulatedClickRisk接口的返回值将检测结果传递给开发者应用。 2. 获取检测结果，并根据结果做出相应处理。 #### 接口说明 以下是模拟点击检测相关接口，更多接口及使用方法请参见 API参考 。 #### 开发步骤 1. 导入Device Security Kit模块及相关公共模块。 import { businessRiskIntelligentDetection } from '@kit.DeviceSecurityKit'; import { BusinessError } from '@kit.Ba"
     },
     {
       "path": "references/涉诈剧本检测.md",
       "title": "涉诈剧本检测",
-      "snippet": "从5.0.0(12) 版本开始，新增支持涉诈剧本检测。 金融支付类应用在用户转账、支付前，通过调用Device Security Kit的detectFraudRisk接口，检测用户是否受到欺诈威胁。该接口返回一个风险分，以及涉诈行为的线索，例如，接收到涉诈引导信息、设备有被操控风险等，应用可以根据风险分及线索，进行有效提示或拦截。 #### 约束与限制 每个应用在每个设备上每天最多可以调用10次。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f3/v3/QbQzc5xjRBy3L9WHiH5n2g/zh-cn_image_0000002573854347.png?HW-CC-KV=V1&HW-CC-Date=20260421T111113Z&HW-CC-Expire=86400&HW-CC-Sign=6C78A8F18E8CDAE799C643F595475F90DB48F68D235B505B693D45FCF4E89501) **流程说明：** 1. 开发者应用获取nonce。 在调用detectFraudRisk接口时，开发者必须传入一个随机生成的nonce值。在检测结果中会包含这个nonce值，您可以通过校验这个nonce值来确定"
+      "snippet": "从5.0.0(12) 版本开始，新增支持涉诈剧本检测。 金融支付类应用在用户转账、支付前，通过调用Device Security Kit的detectFraudRisk接口，检测用户是否受到欺诈威胁。该接口返回一个风险分，以及涉诈行为的线索，例如，接收到涉诈引导信息、设备有被操控风险等，应用可以根据风险分及线索，进行有效提示或拦截。 #### 约束与限制 每个应用在每个设备上每天最多可以调用10次。 #### 业务流程 **流程说明：** 1. 开发者应用获取nonce。 在调用detectFraudRisk接口时，开发者必须传入一个随机生成的nonce值。在检测结果中会包含这个nonce值，您可以通过校验这个nonce值来确定返回结果能够对应您的请求，并且没有被重放攻击。 - nonce值必须为24至80字节之间。 - 建议每次请求都从服务器随机生成新的nonce值。 2. 开发者应用调用detectFraudRisk接口，发起涉诈剧本检测请求。 Device Security Kit收到请求后，首先采集当前设备涉诈风险线索数据，然后将线索数据与nonce一起发送到Device Security服务器做检测，最后通过detectFraudRisk接口的返回值将检测结果传递给开发者应用。 3. 当开发者应用发起业务请求时，在应用服务器中验证检测结果完整性。 #### 接口说明 以下"
     },
     {
       "path": "references/生物特征认证交易.md",
       "title": "生物特征认证交易",
-      "snippet": "在完成对应生物特征认证能力开通后，用户即可通过已绑定的生物特征（人脸或指纹）完成认证交易。 #### 约束与限制 本功能目前仅在手机设备支持，目前仅支持绑定一个指纹/人脸用于支付认证，且需应用服务器端同步接入配合端云协同认证。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3d/v3/Yc4sEwXkRZqA1poiX6PKBg/zh-cn_image_0000002543214428.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111110Z&HW-CC-Expire=86400&HW-CC-Sign=BDEDE10584C898E38247AA67547EB305F3806A2DD506DE855934EC0CC67D277A) #### 接口说明 接口及使用方法请参见 API参考 。 #### 生物特征认证交易界面介绍 如图表示使用人脸进行交易认证对应的UI界面示例，当用户确认交易信息内容后，则会拉起系统人脸认证界面完成对应生物特征认证交易。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/"
+      "snippet": "在完成对应生物特征认证能力开通后，用户即可通过已绑定的生物特征（人脸或指纹）完成认证交易。 #### 约束与限制 本功能目前仅在手机设备支持，目前仅支持绑定一个指纹/人脸用于支付认证，且需应用服务器端同步接入配合端云协同认证。 #### 业务流程 #### 接口说明 接口及使用方法请参见 API参考 。 #### 生物特征认证交易界面介绍 如图表示使用人脸进行交易认证对应的UI界面示例，当用户确认交易信息内容后，则会拉起系统人脸认证界面完成对应生物特征认证交易。 #### 开发步骤 1. 导入huks 、userAuth 、trustedAuthentication 和相关依赖模块。 import { resourceManager } from '@kit.LocalizationKit' import { huks } from '@kit.UniversalKeystoreKit'; import { userAuth } from '@kit.UserAuthenticationKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { trustedAuthentication } from '@kit.DeviceSecurityKit'; import { cryptoFramework "
     },
     {
       "path": "references/病毒防护服务管理(C_C++).md",
       "title": "病毒防护服务管理(C/C++)",
-      "snippet": "从6.0.0(20)开始，三方EDR（Endpoint Detection and Response）应用在Device Security Kit上注册后，可以调用注册、更新、卸载（删除数据）接口，将自身应用信息提交至HarmonyOS安全防护服务进行统一管理；零信任应用在Device Security Kit上注册后，可以查询所有注册的EDR信息列表（包含包名、当前版本号、上次更新时间、病毒防护开关状态、用户ID）；MDM应用在Device Security Kit上注册后，企业管理员可通过MDM（Mobile Device Management）应用启用或禁用HarmonyOS自带的安全防护服务。 #### 约束与限制 1. 当前能力仅支持2in1设备。 2. 不支持并发场景，同一时间仅允许一个三方EDR应用或MDM应用调用该模块接口。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/91/v3/S7Im0lq_T7iPlLMPWrXIqw/zh-cn_image_0000002543214436.png?HW-CC-KV=V1&HW-CC-Date=20260421T111114Z&HW-CC-Expire=86400&HW-CC-Sig"
+      "snippet": "从6.0.0(20)开始，三方EDR（Endpoint Detection and Response）应用在Device Security Kit上注册后，可以调用注册、更新、卸载（删除数据）接口，将自身应用信息提交至HarmonyOS安全防护服务进行统一管理；零信任应用在Device Security Kit上注册后，可以查询所有注册的EDR信息列表（包含包名、当前版本号、上次更新时间、病毒防护开关状态、用户ID）；MDM应用在Device Security Kit上注册后，企业管理员可通过MDM（Mobile Device Management）应用启用或禁用HarmonyOS自带的安全防护服务。 #### 约束与限制 1. 当前能力仅支持2in1设备。 2. 不支持并发场景，同一时间仅允许一个三方EDR应用或MDM应用调用该模块接口。 #### 业务流程 **流程说明** ： 1. 三方EDR应用注册、更新、卸载时调用该模块接口向HarmonyOS安全防护服务进行应用信息同步。 2. 零信任应用调用该模块接口查询当前注册的所有三方EDR应用的信息。 3. MDM应用调用该模块接口实现HarmonyOS安全防护功能的启停。 #### 接口说明 以下是病毒防护服务管理的相关接口，更多接口及使用方法请参见 API参考 。 #### 开发步骤 - 在开发准备过程中，需要申请权限：oh"
     },
     {
       "path": "references/系统完整性增强检测.md",
       "title": "系统完整性增强检测",
-      "snippet": "应用通过调用Device Security Kit的checkSysIntegrityEnhanced接口获取系统完整性增强检测结果，用于判断设备环境是否安全，比如是否被越狱、非真实设备等。 应用可以根据检测结果评估如何进行业务操作。 #### 约束与限制 - 系统完整性增强检测能力支持Phone、Tablet、PC/2in1、Wearable设备。 - 每个应用在每个设备上每天最多可以调用1万次接口、每分钟最多可以调用5次接口；每个设备上最多支持5个并发调用。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b6/v3/gkV7i5s_QpekyA9ndXXbhA/zh-cn_image_0000002573974307.png?HW-CC-KV=V1&HW-CC-Date=20260421T111107Z&HW-CC-Expire=86400&HW-CC-Sign=467A0576DD577C6BFBC058C97BE68778E4382D9A36203E5304D7898B69D00147) **流程说明：** 1. 开发者应用获取nonce。 在调用checkSysIntegrityEnhanced接口时，您必须传入一个随机生成的non"
+      "snippet": "应用通过调用Device Security Kit的checkSysIntegrityEnhanced接口获取系统完整性增强检测结果，用于判断设备环境是否安全，比如是否被越狱、非真实设备等。 应用可以根据检测结果评估如何进行业务操作。 #### 约束与限制 - 系统完整性增强检测能力支持Phone、Tablet、PC/2in1、Wearable设备。 - 每个应用在每个设备上每天最多可以调用1万次接口、每分钟最多可以调用5次接口；每个设备上最多支持5个并发调用。 #### 业务流程 **流程说明：** 1. 开发者应用获取nonce。 在调用checkSysIntegrityEnhanced接口时，您必须传入一个随机生成的nonce值。在检测结果中会包含这个nonce值，您可以通过校验这个nonce值来确定返回结果能够对应您的请求，并且没有被重放攻击。 - nonce值必须为16至66字节之间，有效值为base64编码范围。 - 推荐的做法是，每次请求都从服务器随机生成新的nonce值。 2. 开发者应用调用checkSysIntegrityEnhanced接口，发起系统完整性增强检测请求。 Device Security Kit收到请求后，首先采集系统完整性增强检测数据，然后将检测数据与nonce一起发送到Device Security服务器做检测，最后通过checkSysInt"
     },
     {
       "path": "references/系统完整性检测.md",
       "title": "系统完整性检测",
-      "snippet": "应用通过调用Device Security Kit的checkSysIntegrity接口获取系统完整性检测结果，用于判断设备环境是否安全，比如是否被越狱、非真实设备等。 应用可以根据检测结果进行适当风险提示、风险控制，谨慎进行业务及阻断操作。 #### 约束与限制 - 系统完整性检测能力支持Phone、Tablet、PC/2in1设备。并且从5.1.0(18)版本开始，新增支持Wearable设备。 - 每个应用在每个设备上每天最多可以调用1万次接口、每分钟最多可以调用5次接口；每个设备上最多支持5个并发调用。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9d/v3/EYUvWw1FQTi7B2lipHdaww/zh-cn_image_0000002543374080.png?HW-CC-KV=V1&HW-CC-Date=20260421T111107Z&HW-CC-Expire=86400&HW-CC-Sign=707AEB0CE4717B0C7C8EE501320B6381FE7D94C7C6B5F7A72193174A3C206C50) **流程说明：** 1. 开发者应用获取nonce。 在调用checkSysIntegrity接"
+      "snippet": "应用通过调用Device Security Kit的checkSysIntegrity接口获取系统完整性检测结果，用于判断设备环境是否安全，比如是否被越狱、非真实设备等。 应用可以根据检测结果进行适当风险提示、风险控制，谨慎进行业务及阻断操作。 #### 约束与限制 - 系统完整性检测能力支持Phone、Tablet、PC/2in1设备。并且从5.1.0(18)版本开始，新增支持Wearable设备。 - 每个应用在每个设备上每天最多可以调用1万次接口、每分钟最多可以调用5次接口；每个设备上最多支持5个并发调用。 #### 业务流程 **流程说明：** 1. 开发者应用获取nonce。 在调用checkSysIntegrity接口时，您必须传入一个随机生成的nonce值。在检测结果中会包含这个nonce值，您可以通过校验这个nonce值来确定返回结果能够对应您的请求，并且没有被重放攻击。 - nonce值必须为16至66字节之间，有效值为base64编码范围。 - 推荐的做法是，每次请求都从服务器随机生成新的nonce值。 2. 开发者应用调用checkSysIntegrity接口，发起系统完整性检测请求。 Device Security Kit收到请求后，首先采集系统完整性检测数据，然后将检测数据与nonce一起发送到Device Security服务器做检测，最后通过check"
     },
     {
       "path": "references/获取诈骗应用.md",
       "title": "获取诈骗应用",
-      "snippet": "应用通过调用Device Security Kit的接口获取诈骗应用信息，用于反诈业务，比如对诈骗应用进行举报。 #### 约束与限制 当前能力仅支持手机、平板设备。仅提供给反诈类应用使用。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/cd/v3/1bI0UYu3SxuC_ymMHfRolw/zh-cn_image_0000002573974325.png?HW-CC-KV=V1&HW-CC-Date=20260421T111114Z&HW-CC-Expire=86400&HW-CC-Sign=A186B8B1047CC531D69E9263B8A9BE0A955416F917335E608C3CA5C152567B1A) **流程说明：** 1. 用户在开发者应用上选择举报诈骗应用功能。 2. 开发者应用调用Device Security Kit的接口拉起诈骗应用选择器。 3. 用户在诈骗应用选择器中选择诈骗应用。 4. Device Security Kit调用回调函数通知开发者应用，开发者应用根据诈骗应用信息进行业务处理。 #### 接口说明 以下是获取诈骗应用相关接口，更多接口及使用方法请参见 API参考 。 #### 开发步骤 !"
+      "snippet": "应用通过调用Device Security Kit的接口获取诈骗应用信息，用于反诈业务，比如对诈骗应用进行举报。 #### 约束与限制 当前能力仅支持手机、平板设备。仅提供给反诈类应用使用。 #### 业务流程 **流程说明：** 1. 用户在开发者应用上选择举报诈骗应用功能。 2. 开发者应用调用Device Security Kit的接口拉起诈骗应用选择器。 3. 用户在诈骗应用选择器中选择诈骗应用。 4. Device Security Kit调用回调函数通知开发者应用，开发者应用根据诈骗应用信息进行业务处理。 #### 接口说明 以下是获取诈骗应用相关接口，更多接口及使用方法请参见 API参考 。 #### 开发步骤 - 在开发准备过程中，需要申请权限：ohos.permission.USE_FRAUD_APP_PICKER。 - 只允许清单内的应用申请该权限，申请方式请参考： 申请使用受限权限 - 开发者需向用户说明数据使用的目的、方式和范围。 1. 导入Device Security Kit模块及相关公共模块。 import { securityAudit } from '@kit.DeviceSecurityKit'; import { BusinessError} from '@kit.BasicServicesKit'; import { hilog } from"
     },
     {
       "path": "references/获取诈骗消息.md",
       "title": "获取诈骗消息",
-      "snippet": "应用通过调用Device Security Kit的接口获取诈骗消息信息，用于反诈业务，比如对诈骗消息进行举报。 #### 约束与限制 当前能力仅支持手机、平板设备。仅提供给反诈类应用使用。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/45/v3/Eo7qsNgVQVuNBog2FUP-Bw/zh-cn_image_0000002543214434.png?HW-CC-KV=V1&HW-CC-Date=20260421T111113Z&HW-CC-Expire=86400&HW-CC-Sign=73B5D85EBF4808CC23EFC661AEB82E2CD134A6C1259604F6EA4BABAD406D770A) **流程说明：** 1. 用户在开发者应用上选择举报诈骗消息功能。 2. 开发者应用调用Device Security Kit的接口拉起诈骗消息选择器。 3. 用户在诈骗消息选择器中选择诈骗消息。 4. Device Security Kit调用回调函数通知开发者应用，开发者应用根据诈骗消息进行业务处理。 #### 接口说明 以下是获取诈骗消息相关接口，更多接口及使用方法请参见 API参考 。 #### 开发步骤 ![]"
+      "snippet": "应用通过调用Device Security Kit的接口获取诈骗消息信息，用于反诈业务，比如对诈骗消息进行举报。 #### 约束与限制 当前能力仅支持手机、平板设备。仅提供给反诈类应用使用。 #### 业务流程 **流程说明：** 1. 用户在开发者应用上选择举报诈骗消息功能。 2. 开发者应用调用Device Security Kit的接口拉起诈骗消息选择器。 3. 用户在诈骗消息选择器中选择诈骗消息。 4. Device Security Kit调用回调函数通知开发者应用，开发者应用根据诈骗消息进行业务处理。 #### 接口说明 以下是获取诈骗消息相关接口，更多接口及使用方法请参见 API参考 。 #### 开发步骤 - 在开发准备过程中，需要申请权限：ohos.permission.USE_FRAUD_MESSAGES_PICKER。 - 只允许清单内的应用申请该权限，申请方式请参考： 申请使用受限权限 - 开发者需向用户说明数据使用的目的、方式和范围。 1. 导入Device Security Kit模块及相关公共模块。 import { antifraudPicker} from '@kit.DeviceSecurityKit'; import { BusinessError} from '@kit.BasicServicesKit'; import { hilog } "
     },
     {
       "path": "references/获取诈骗通话记录.md",
       "title": "获取诈骗通话记录",
-      "snippet": "应用通过调用Device Security Kit的接口获取诈骗通话记录，用于反诈业务，比如对诈骗通话记录进行举报。 #### 约束与限制 当前能力仅支持手机、平板设备。仅提供给反诈类应用使用。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/97/v3/GnyV0YxNQAO7uEAT_tpBEw/zh-cn_image_0000002573854349.png?HW-CC-KV=V1&HW-CC-Date=20260421T111114Z&HW-CC-Expire=86400&HW-CC-Sign=91E7952F94A4FD2B8CCEEEC1F317791C2EE1A18944AA697B4D52F8C24AB0E4A4) **流程说明：** 1. 用户在开发者应用上选择举报诈骗通话记录功能。 2. 开发者应用调用Device Security Kit的接口拉起诈骗通话记录选择器。 3. 用户在诈骗通话记录选择器中选择诈骗通话记录。 4. Device Security Kit调用回调函数通知开发者应用，开发者应用根据诈骗通话记录信息进行业务处理。 #### 接口说明 以下是获取诈骗通话记录相关接口，更多接口及使用方法请参见 API参考"
+      "snippet": "应用通过调用Device Security Kit的接口获取诈骗通话记录，用于反诈业务，比如对诈骗通话记录进行举报。 #### 约束与限制 当前能力仅支持手机、平板设备。仅提供给反诈类应用使用。 #### 业务流程 **流程说明：** 1. 用户在开发者应用上选择举报诈骗通话记录功能。 2. 开发者应用调用Device Security Kit的接口拉起诈骗通话记录选择器。 3. 用户在诈骗通话记录选择器中选择诈骗通话记录。 4. Device Security Kit调用回调函数通知开发者应用，开发者应用根据诈骗通话记录信息进行业务处理。 #### 接口说明 以下是获取诈骗通话记录相关接口，更多接口及使用方法请参见 API参考 。 #### 开发步骤 - 在开发准备过程中，需要申请权限：ohos.permission.USE_FRAUD_CALL_LOG_PICKER。 - 只允许清单内的应用申请该权限，申请方式请参考： 申请使用受限权限 - 开发者需向用户说明数据使用的目的、方式和范围。 1. 导入Device Security Kit模块及相关公共模块。 import { securityAudit } from '@kit.DeviceSecurityKit'; import { BusinessError} from '@kit.BasicServicesKit'; im"
     },
     {
       "path": "references/订阅状态改变事件场景.md",
       "title": "订阅状态改变事件场景",
-      "snippet": "从6.0.2(22)开始，新增订阅超级隐私模式状态改变事件。 超级隐私模式为用户提供一键关闭敏感器件的能力，管控范围包括位置、相机和麦克风，且随着版本演进，超级隐私模式管控的敏感器件范围会相应调整。应用可通过Device Security Kit提供的接口监听当前超级隐私模式开关状态。 #### 约束与限制 本特性需要设备上存在超级隐私模式选项。开发者可通过在设备上选择“设置 > 隐私和安全 > 超级隐私模式”查看超级隐私模式选项。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/15/v3/8crqAxqITd2EAro0fAtJAw/zh-cn_image_0000002543214438.png?HW-CC-KV=V1&HW-CC-Date=20260421T111115Z&HW-CC-Expire=86400&HW-CC-Sign=FEDA3CA15612D8630C839347C5AFACE430B3AF8AFA402AA7187FF46AF8F1B2C2) **流程说明：** 1. 开发者应用订阅超级隐私模式状态改变事件。 2. Device Security Kit调用回调函数通知开发者应用， 3. 开发者应用根据当前超级隐私模式"
+      "snippet": "从6.0.2(22)开始，新增订阅超级隐私模式状态改变事件。 超级隐私模式为用户提供一键关闭敏感器件的能力，管控范围包括位置、相机和麦克风，且随着版本演进，超级隐私模式管控的敏感器件范围会相应调整。应用可通过Device Security Kit提供的接口监听当前超级隐私模式开关状态。 #### 约束与限制 本特性需要设备上存在超级隐私模式选项。开发者可通过在设备上选择“设置 > 隐私和安全 > 超级隐私模式”查看超级隐私模式选项。 #### 业务流程 **流程说明：** 1. 开发者应用订阅超级隐私模式状态改变事件。 2. Device Security Kit调用回调函数通知开发者应用， 3. 开发者应用根据当前超级隐私模式的状态进行业务处理。 4. 当开发者应用不需要使用超级隐私模式状态时，取消订阅超级隐私模式状态改变事件。 #### 接口说明 以下是超级隐私模式状态改变订阅与取消订阅接口，更多接口及使用方法请参见 API参考 。 #### 开发步骤 1. 导入超级隐私模块及相关公共模块。 import { superPrivacyMode } from '@kit.DeviceSecurityKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 订阅超级隐私模式状态改变事件。 const DOMAIN ="
     },
     {
       "path": "references/订阅通知类事件-1.md",
       "title": "订阅通知类事件",
-      "snippet": "从6.0.0(20)开始，新增提供统一的安全审计数据多客户端订阅/取消订阅与添加/删除过滤条件接口，应用可以获取设备上的安全审计数据（如下表），并按需进行过滤，以支撑审计相关业务。 #### 约束与限制 1. 当前能力仅支持2in1设备。 2. 一个进程最大只允许创建2个客户端实例，当前设备最多只允许创建16个客户端实例。 3. 一个客户端实例最大只允许设置256个Filter，每个Filter限制10条过滤value。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7a/v3/VbGWnHdWTV6G4kiwSeu8cg/zh-cn_image_0000002573854345.png?HW-CC-KV=V1&HW-CC-Date=20260421T111112Z&HW-CC-Expire=86400&HW-CC-Sign=7BB312A71D243407D56888CC1AB35C57E95A1309FB85FCE9305612BE53A07A7D) **流程说明：** 1. 开发者创建审计通知类事件(以下统称为事件)订阅客户端实例，需要提供CallBack。 2. 开发者使用1中创建的实例订阅事件，需要提供想要订阅的事件id。 3. 开"
+      "snippet": "从6.0.0(20)开始，新增提供统一的安全审计数据多客户端订阅/取消订阅与添加/删除过滤条件接口，应用可以获取设备上的安全审计数据（如下表），并按需进行过滤，以支撑审计相关业务。 #### 约束与限制 1. 当前能力仅支持2in1设备。 2. 一个进程最大只允许创建2个客户端实例，当前设备最多只允许创建16个客户端实例。 3. 一个客户端实例最大只允许设置256个Filter，每个Filter限制10条过滤value。 #### 业务流程 **流程说明：** 1. 开发者创建审计通知类事件(以下统称为事件)订阅客户端实例，需要提供CallBack。 2. 开发者使用1中创建的实例订阅事件，需要提供想要订阅的事件id。 3. 开发者使用1中创建的实例设置事件过滤条件，需要提供事件id和过滤条件信息。 4. 当事件发生时，审计服务先根据事件过滤条件过滤事件，当事件满足过滤条件时，触发回调通知订阅当前事件的客户端。 5. 开发者根据审计数据处理业务。 6. 当开发者应用不需要过滤/使用该审计数据时，开发者可以使用1中创建的实例解除过滤条件，取消对应的订阅事件。 7. 当开发者应用不需要使用当前实例时，开发者可以删除实例。 支持先设置过滤条件再订阅事件。 删除实例后，被删除的实例所有的订阅以及过滤条件将被全部解除。 #### 接口说明 接口如下表，更多接口及使用方法请参见 API参考 。"
     },
     {
       "path": "references/订阅通知类事件.md",
       "title": "订阅通知类事件",
-      "snippet": "从6.0.0(20)开始，新增提供统一的安全审计数据多客户端订阅/取消订阅与添加/删除过滤条件接口，应用可以获取设备上的安全审计数据（如下表），并按需进行过滤，以支撑审计相关业务。 #### 约束与限制 1. 当前能力仅支持2in1设备。 2. 一个进程最大只允许创建2个客户端实例，当前设备最多只允许创建16个客户端实例。 3. 一个客户端实例最大只允许设置256个Filter，每个Filter限制10条过滤value。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9b/v3/mGVK6mkFSNaAQaHGdkSNSA/zh-cn_image_0000002573854345.png?HW-CC-KV=V1&HW-CC-Date=20260421T111111Z&HW-CC-Expire=86400&HW-CC-Sign=FE6B534F3FCD7F4F8F3250DD6CCFCAFE24F56980D87BBDB9F4D6A88FC9C57CBB) **流程说明：** 1. 开发者创建审计通知类事件(以下统称为事件)订阅客户端实例，需要提供CallBack。 2. 开发者使用1中创建的实例订阅事件，需要提供想要订阅的事件id。 3. 开"
+      "snippet": "从6.0.0(20)开始，新增提供统一的安全审计数据多客户端订阅/取消订阅与添加/删除过滤条件接口，应用可以获取设备上的安全审计数据（如下表），并按需进行过滤，以支撑审计相关业务。 #### 约束与限制 1. 当前能力仅支持2in1设备。 2. 一个进程最大只允许创建2个客户端实例，当前设备最多只允许创建16个客户端实例。 3. 一个客户端实例最大只允许设置256个Filter，每个Filter限制10条过滤value。 #### 业务流程 **流程说明：** 1. 开发者创建审计通知类事件(以下统称为事件)订阅客户端实例，需要提供CallBack。 2. 开发者使用1中创建的实例订阅事件，需要提供想要订阅的事件id。 3. 开发者使用1中创建的实例设置事件过滤条件，需要提供事件id和过滤条件信息。 4. 当事件发生时，审计服务先根据事件过滤条件过滤事件，当事件满足过滤条件时，触发回调通知订阅当前事件的客户端。 5. 开发者根据审计数据处理业务。 6. 当开发者应用不需要过滤/使用该审计数据时，开发者可以使用1中创建的实例解除过滤条件，取消对应的订阅事件。 7. 当开发者应用不需要使用当前实例时，开发者可以删除实例。 支持先设置过滤条件再订阅事件。 删除实例后，被删除的实例所有的订阅以及过滤条件将被全部解除。 #### 接口说明 更多接口及使用方法请参见 API参考 。 #### "
     },
     {
       "path": "references/订阅阻断类事件-1.md",
       "title": "订阅阻断类事件",
-      "snippet": "从6.0.0(20) 开始，新增提供统一的安全审计数据多客户端订阅/取消订阅、添加/删除过滤条件、阻断接口，应用可以获取设备上的安全审计数据（如下表），并按需进行订阅、过滤与阻断，以支撑审计相关业务。 #### 约束与限制 1. 当前能力仅支持2in1设备。 2. 一个进程最大只允许创建2个客户端实例，当前设备最多只允许创建16个客户端实例。 3. 一个客户端实例最大只允许设置256条正过滤的过滤value和256条反过滤的过滤value。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f1/v3/YAj1-vlRRB-jHCsLEipsvA/zh-cn_image_0000002573974321.png?HW-CC-KV=V1&HW-CC-Date=20260421T111112Z&HW-CC-Expire=86400&HW-CC-Sign=16BF93EC8C9CF9197E9F8C3FDF775263F7A5A823286E3E4BBF58189E06A778D1) **流程说明：** 1. 开发者创建审计阻断类事件（以下统称为事件）订阅客户端实例，需要提供CallBack。 2. 开发者使用步骤1中创建的实例订阅事件，需要提供想要订"
+      "snippet": "从6.0.0(20) 开始，新增提供统一的安全审计数据多客户端订阅/取消订阅、添加/删除过滤条件、阻断接口，应用可以获取设备上的安全审计数据（如下表），并按需进行订阅、过滤与阻断，以支撑审计相关业务。 #### 约束与限制 1. 当前能力仅支持2in1设备。 2. 一个进程最大只允许创建2个客户端实例，当前设备最多只允许创建16个客户端实例。 3. 一个客户端实例最大只允许设置256条正过滤的过滤value和256条反过滤的过滤value。 #### 业务流程 **流程说明：** 1. 开发者创建审计阻断类事件（以下统称为事件）订阅客户端实例，需要提供CallBack。 2. 开发者使用步骤1中创建的实例订阅事件，需要提供想要订阅的事件id。 3. 开发者使用步骤1中创建的实例设置事件过滤条件，需要提供事件id和过滤条件信息。 4. 当事件发生时，审计服务先根据事件过滤条件过滤事件，当事件满足过滤条件时，触发回调通知订阅当前事件的客户端。 5. 开发者根据审计数据制定阻断策略。 6. 使用步骤1中创建的实例设置接收到的事件的阻断策略。 7. 当业务结束时，开发者可以使用步骤1中创建的实例解除过滤条件，取消订阅事件。 8. 当业务结束时，开发者可以删除步骤1中创建的实例。 支持先设置过滤条件再订阅事件。 删除实例后，被删除的实例所有的订阅以及过滤条件将被全部解除。 #### 接口说明"
     },
     {
       "path": "references/订阅阻断类事件.md",
       "title": "订阅阻断类事件",
-      "snippet": "从6.0.0(20) 开始，新增提供统一的安全审计数据多客户端订阅/取消订阅、添加/删除过滤条件、阻断接口，应用可以获取设备上的安全审计数据（如下表），并按需进行订阅、过滤与阻断，以支撑审计相关业务。 #### 约束与限制 1. 当前能力仅支持2in1设备。 2. 一个进程最大只允许创建2个客户端实例，当前设备最多只允许创建16个客户端实例。 3. 一个客户端实例最大只允许设置256条正过滤的过滤value和256条反过滤的过滤value。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5a/v3/nLIUkGuTTDWJGyKGb6izbA/zh-cn_image_0000002573974321.png?HW-CC-KV=V1&HW-CC-Date=20260421T111111Z&HW-CC-Expire=86400&HW-CC-Sign=95760CC88F7FA3C42F3E640A36B4472D9EB9D64BD4CE8951403589653640689F) **流程说明：** 1. 开发者创建审计阻断类事件（以下统称为事件）订阅客户端实例，需要提供CallBack。 2. 开发者使用步骤1中创建的实例订阅事件，需要提供想要订"
+      "snippet": "从6.0.0(20) 开始，新增提供统一的安全审计数据多客户端订阅/取消订阅、添加/删除过滤条件、阻断接口，应用可以获取设备上的安全审计数据（如下表），并按需进行订阅、过滤与阻断，以支撑审计相关业务。 #### 约束与限制 1. 当前能力仅支持2in1设备。 2. 一个进程最大只允许创建2个客户端实例，当前设备最多只允许创建16个客户端实例。 3. 一个客户端实例最大只允许设置256条正过滤的过滤value和256条反过滤的过滤value。 #### 业务流程 **流程说明：** 1. 开发者创建审计阻断类事件（以下统称为事件）订阅客户端实例，需要提供CallBack。 2. 开发者使用步骤1中创建的实例订阅事件，需要提供想要订阅的事件id。 3. 开发者使用步骤1中创建的实例设置事件过滤条件，需要提供事件id和过滤条件信息。 4. 当事件发生时，审计服务先根据事件过滤条件过滤事件，当事件满足过滤条件时，触发回调通知订阅当前事件的客户端。 5. 开发者根据审计数据制定阻断策略。 6. 使用步骤1中创建的实例设置接收到的事件的阻断策略。 7. 当业务结束时，开发者可以使用步骤1中创建的实例解除过滤条件，取消订阅事件。 8. 当业务结束时，开发者可以删除步骤1中创建的实例。 支持先设置过滤条件再订阅事件。 删除实例后，被删除的实例所有的订阅以及过滤条件将被全部解除。 #### 接口说明"
     },
     {
       "path": "references/设置数字盾密码.md",
       "title": "设置数字盾密码",
-      "snippet": "用户首次激活数字盾时，需通过可信用户交互（全称Trusted User Interface，下文简称TUI）安全界面设置专用密码，后续进行交易认证时，将通过该密码完成安全验证。 #### 约束与限制 本功能目前仅在手机设备支持。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7d/v3/Vqqlz_bHQ62nw0BjqYaOcg/zh-cn_image_0000002543374084.jpg?HW-CC-KV=V1&HW-CC-Date=20260421T111109Z&HW-CC-Expire=86400&HW-CC-Sign=933145C00F768CFAE279583A7FDC25E9B1799182F5317560555186438DAFD681) #### 接口说明 接口及使用方法请参见 API参考 。 #### 开通数字盾界面介绍 如图为开通数字盾服务时对应的TUI（Trusted User Interface）界面示例，其中密码长度、对应TUI应用图标以及当前应用场景说明均由开发者调用接口时传入，当设置盾密码长度不符合要求、密码强度低、两次密码设置不一致时，均会有对应失败报错提醒。 ![](https://contentc"
+      "snippet": "用户首次激活数字盾时，需通过可信用户交互（全称Trusted User Interface，下文简称TUI）安全界面设置专用密码，后续进行交易认证时，将通过该密码完成安全验证。 #### 约束与限制 本功能目前仅在手机设备支持。 #### 业务流程 #### 接口说明 接口及使用方法请参见 API参考 。 #### 开通数字盾界面介绍 如图为开通数字盾服务时对应的TUI（Trusted User Interface）界面示例，其中密码长度、对应TUI应用图标以及当前应用场景说明均由开发者调用接口时传入，当设置盾密码长度不符合要求、密码强度低、两次密码设置不一致时，均会有对应失败报错提醒。 #### 开发步骤 1. 导入huks 、trustedAuthentication 和相关依赖模块。 import { resourceManager } from '@kit.LocalizationKit' import { huks } from '@kit.UniversalKeystoreKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { trustedAuthentication } from '@kit.DeviceSecurityKit'; import { cryptoFramework }"
     },
     {
       "path": "references/进程信息查询场景.md",
       "title": "进程信息查询场景",
-      "snippet": "从6.0.0(20) 开始，新增提供应用进程信息查询接口，可以获取设备上已启动的应用进程信息。进程信息包括进程ID、指令命令行、父进程PID、用户ID、用户组ID、进程启动时间、进程所有者ID类型、进程所有者ID等相关信息。 #### 约束和限制 1. 当前能力仅支持2in1设备。 2. 支持单次输入要查询的进程数最大限制为16个。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fa/v3/YbpIpk4zTyOnfKyX_AfY7Q/zh-cn_image_0000002543374094.png?HW-CC-KV=V1&HW-CC-Date=20260421T111112Z&HW-CC-Expire=86400&HW-CC-Sign=9901FD0A8483C717F2E16B794368F06850F5BF01C615E76D16B145885B9B3E8C) **流程说明：** 1. 用户在hap应用上调用查询接口获取应用进程信息。 2. Device Security Kit接口同步返回应用进程信息给hap应用，hap应用根据返回的应用进程信息进行业务处理。 #### 接口说明 接口如下表，更多接口及使用方法请参见 API参考 。 "
+      "snippet": "从6.0.0(20) 开始，新增提供应用进程信息查询接口，可以获取设备上已启动的应用进程信息。进程信息包括进程ID、指令命令行、父进程PID、用户ID、用户组ID、进程启动时间、进程所有者ID类型、进程所有者ID等相关信息。 #### 约束和限制 1. 当前能力仅支持2in1设备。 2. 支持单次输入要查询的进程数最大限制为16个。 #### 业务流程 **流程说明：** 1. 用户在hap应用上调用查询接口获取应用进程信息。 2. Device Security Kit接口同步返回应用进程信息给hap应用，hap应用根据返回的应用进程信息进行业务处理。 #### 接口说明 接口如下表，更多接口及使用方法请参见 API参考 。 #### 开发步骤 - 在开发准备过程中，需要申请权限：ohos.permission.QUERY_AUDIT_EVENT。 - 只允许清单内的企业类应用申请该权限，申请方式请参考： 申请使用企业类应用可用权限 。 1. 导入Device Security Kit模块及相关公共模块。 import { securityAudit } from '@kit.DeviceSecurityKit'; import { BusinessError} from '@kit.BasicServicesKit'; import { hilog } from '@kit.P"
     },
     {
       "path": "references/进程信息查询场景（C_C++）.md",
       "title": "进程信息查询场景（C/C++）",
-      "snippet": "从6.0.0(20) 开始，新增提供应用进程信息查询接口，可以获取设备上已启动的应用进程信息。进程信息包括进程ID、指令命令行、父进程PID、用户ID、用户组ID、进程启动时间、进程所有者ID类型、进程所有者ID等相关信息。 #### 约束和限制 1. 当前能力仅支持2in1设备。 2. 支持单次输入要查询的进程数最大限制为16个。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/3d/v3/VKAxa0ZVTxOBdPCwbgKy5Q/zh-cn_image_0000002543214432.png?HW-CC-KV=V1&HW-CC-Date=20260421T111112Z&HW-CC-Expire=86400&HW-CC-Sign=A23EF38ED769E2E6B756D34A096B973A59CE4244D8119574417390F1FF13DE3B) **流程说明：** 1. 用户在hap应用上调用查询接口获取应用进程信息。 2. Device Security Kit接口同步返回应用进程信息给hap应用，hap应用根据返回的应用进程信息进行业务处理。 #### 接口说明 接口如下表，更多接口及使用方法请参见 API参考 。 "
+      "snippet": "从6.0.0(20) 开始，新增提供应用进程信息查询接口，可以获取设备上已启动的应用进程信息。进程信息包括进程ID、指令命令行、父进程PID、用户ID、用户组ID、进程启动时间、进程所有者ID类型、进程所有者ID等相关信息。 #### 约束和限制 1. 当前能力仅支持2in1设备。 2. 支持单次输入要查询的进程数最大限制为16个。 #### 业务流程 **流程说明：** 1. 用户在hap应用上调用查询接口获取应用进程信息。 2. Device Security Kit接口同步返回应用进程信息给hap应用，hap应用根据返回的应用进程信息进行业务处理。 #### 接口说明 接口如下表，更多接口及使用方法请参见 API参考 。 #### 开发步骤 - 在开发准备过程中，需要申请权限：ohos.permission.QUERY_AUDIT_EVENT。 - 只允许清单内的企业类应用申请该权限，申请方式请参考： 申请使用企业类应用可用权限 。 1. 在CMakeLists.txt中导入安全审计共享库，并链接该库。 find_library(dsm-lib libsecurityaudit_ndk.z.so) target_link_libraries(entry PUBLIC libace_napi.z.so ${dsm-lib}) 2. 导入安全审计的头文件。 #include <D"
     },
     {
       "path": "references/防窥保护.md",
@@ -214,12 +214,12 @@
     {
       "path": "references/验证匿名证书链.md",
       "title": "验证匿名证书链",
-      "snippet": "为防止第三方伪造数据，端侧和云侧在对数据进行验签之前，必须先验证匿名证书链的正确性。端侧对匿名证书链的校验处理接口，请参考“ 证书链校验器对象的创建和校验 ”。云侧对匿名证书链的校验处理接口，请参考“ 设备真实性证明 ”的服务器端开发章节。 初始化证明会话时返回的匿名证书链包含三级证书，验证步骤如下： 1. 使用 Universal Keystore Kit 官网提供的根CA证书对匿名证书链的合法性进行校验。（ 根CA证书下载地址 ） ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/e6/v3/Xp31ZrGATpqLXm2B0BSNbw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111108Z&HW-CC-Expire=86400&HW-CC-Sign=F9B0FA4EB4676E761511ABB94F6919E54EE9BF69F9201CCAF633E7B471E1D6E8) 请勿在应用服务器中使用子CA证书对密钥证明证书链进行校验，子CA证书可能会因为有效期结束、证书被吊销等发生变化。 2. 解析三级证书获取应用公钥、AppID、密钥管理部件ID。 1. 应用公钥直接从密钥证明证书的subjec"
+      "snippet": "为防止第三方伪造数据，端侧和云侧在对数据进行验签之前，必须先验证匿名证书链的正确性。端侧对匿名证书链的校验处理接口，请参考“ 证书链校验器对象的创建和校验 ”。云侧对匿名证书链的校验处理接口，请参考“ 设备真实性证明 ”的服务器端开发章节。 初始化证明会话时返回的匿名证书链包含三级证书，验证步骤如下： 1. 使用 Universal Keystore Kit 官网提供的根CA证书对匿名证书链的合法性进行校验。（ 根CA证书下载地址 ） 请勿在应用服务器中使用子CA证书对密钥证明证书链进行校验，子CA证书可能会因为有效期结束、证书被吊销等发生变化。 2. 解析三级证书获取应用公钥、AppID、密钥管理部件ID。 1. 应用公钥直接从密钥证明证书的subjectPublicKeyInfo字段获取。 2. AppID从扩展字段“1.3.6.1.4.1.2011.2.376.2.1.3.1”获取。 3. 密钥管理部件ID从扩展字段“1.3.6.1.4.1.2011.2.376.2.2.2.6”获取。 3. 检查三级证书的扩展字段是否符合预期： 1. 密钥管理部件ID应为“0E01669E9CFF3848A9538568F1A483E3”。 2. AppID的值应为调用创建证明密钥接口的应用AppID。 “应用AppID”指的是HarmonyOS应用的ID，包含bundleName和签名证书"
     },
     {
       "path": "references/验证签名.md",
       "title": "验证签名",
-      "snippet": "如果需要在端侧校验安全图像数据或安全地理位置数据签名的有效性，可以使用 Crypto Architecture Kit ，使用方法请参考“ 使用ECDSA密钥对签名验签 ”章节。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/ea/v3/_WaenwMfTki2uzziAsZYzA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111108Z&HW-CC-Expire=86400&HW-CC-Sign=FE8739476FF89E99A200DCAFFDD8A79B32EB2AF83C44153C33481F5D0DE6B0E4) 推荐开发者在服务器端完成安全图像或安全地理位置的签名验证，请参考“ Device Certificate Kit 设备真实性证明服务器端开发 ”。 #### 获取签名数据 #### 安全摄像头图像数据格式 安全图像数据的结构如下所示： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d9/v3/Q6Y7KmYYTcONQUR9PVLv6A/zh-cn_image"
+      "snippet": "如果需要在端侧校验安全图像数据或安全地理位置数据签名的有效性，可以使用 Crypto Architecture Kit ，使用方法请参考“ 使用ECDSA密钥对签名验签 ”章节。 推荐开发者在服务器端完成安全图像或安全地理位置的签名验证，请参考“ Device Certificate Kit 设备真实性证明服务器端开发 ”。 #### 获取签名数据 #### 安全摄像头图像数据格式 安全图像数据的结构如下所示： 其中，用户数据和图像数据为被签名的原始数据，图像数据长度固定为460800字节，签名数据是Base64编码的签名结果，开发者需要解析出这些数据用来验证安全图像数据签名。参考代码如下： import { util } from '@kit.ArkTS'; // 获取被签名的原始数据 const secureImageBuffer = new ArrayBuffer(461844); // 实际使用时请替换为Camera Kit获取到的安全图像buffer const view = new DataView(secureImageBuffer); const imageBufferLength = 460800; // 安全图像buffer长度固定为460800 const userDataLength = view.getUint32(0, true); // 获取用户数据长"
     },
     {
       "path": "references/（可选）申请使用受限权限.md",

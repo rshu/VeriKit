@@ -3,7 +3,7 @@
   "skill": "telephony-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.208Z"
+    "at": "2026-05-21T03:47:44.771Z"
   },
   "references": [
     {
@@ -14,7 +14,7 @@
     {
       "path": "references/拨打电话.md",
       "title": "拨打电话",
-      "snippet": "开发者可以通过以下方式实现拨打电话的功能： - 对于三方应用，开发者可以使用makeCall接口，拉起系统电话应用，用户可以自行呼出通话。 #### 基本概念 - 通话状态码 将当前的通话状态上报给app，可以根据当前的通话状态去做一些逻辑处理。例如在当前没有正在进行呼叫的时候，可以正常拨打新的一通电话。 #### 约束与限制 1. 仅支持在标准系统上运行。 2. 设备需插入可用的SIM卡。 #### 接口说明 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/47/v3/U6hQs9oSQteqOO9QdyY1Hg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111205Z&HW-CC-Expire=86400&HW-CC-Sign=E56E37BE0096F089B41AA3E1B3EF7968B3B92F68D20C02B4CC1CE6C3407FDE8E) 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用callback函数，更多方式可以查阅 API参考 。 observer模块为开发者提供订阅和取消订阅通话业务状"
+      "snippet": "开发者可以通过以下方式实现拨打电话的功能： - 对于三方应用，开发者可以使用makeCall接口，拉起系统电话应用，用户可以自行呼出通话。 #### 基本概念 - 通话状态码 将当前的通话状态上报给app，可以根据当前的通话状态去做一些逻辑处理。例如在当前没有正在进行呼叫的时候，可以正常拨打新的一通电话。 #### 约束与限制 1. 仅支持在标准系统上运行。 2. 设备需插入可用的SIM卡。 #### 接口说明 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用callback函数，更多方式可以查阅 API参考 。 observer模块为开发者提供订阅和取消订阅通话业务状态的功能。具体API说明详见 接口文档 。 #### 开发步骤 #### 使用makeCall拨打电话 1. 导入call和observer模块。 2. 调用hasVoiceCapability，确认当前设备是否支持拨号。 3. 调用makeCall接口，跳转到拨号界面并显示待拨号的号码。 4. （可选）订阅通话业务状态变化。 // import需要的模块 import { call, observer } from '@kit.TelephonyKit'; import { BusinessError } from '@kit."
     },
     {
       "path": "references/短信服务.md",

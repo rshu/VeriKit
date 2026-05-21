@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:22:35.964Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -58,8 +59,15 @@
       "认证回调或结果处理对象 / authentication callback or result handler"
     ],
     "outputs": [
-      "入门与概述",
-      "开发指导"
+      "用户认证实例 UserAuthInstance（用于启动、监听和取消一次认证请求） / UserAuthInstance authentication request controller for starting, observing, and canceling an authentication session",
+      "用户认证结果 AuthResult（包含成功、失败、取消、锁定等结果码） / AuthResult containing result codes such as success, failure, cancellation, or lockout",
+      "用户认证令牌 AuthToken（认证成功后签发的 Uint8Array Token，可用于 HUKS 密钥访问控制） / AuthToken issued after successful authentication as a Uint8Array token for HUKS key access control",
+      "系统认证控件返回的认证结果 / Authentication result returned by the system authentication widget",
+      "设备认证能力可用性状态（人脸、指纹、锁屏口令在指定 ATL 下是否可用） / Availability status of device authentication capabilities such as face, fingerprint, or lock-screen credential at a specified ATL",
+      "用户已注册凭据状态 EnrolledState（人脸、指纹、口令凭据的注册数量或变更状态） / EnrolledState describing enrolled face, fingerprint, or credential status and changes",
+      "认证冻结状态 AuthLockoutStatus（指定认证类型的冻结状态、剩余尝试次数或冻结时长） / AuthLockoutStatus for a specified authentication type, including lockout state, remaining attempts, or lockout duration",
+      "认证过程提示信息 AuthTipInfo（如识别失败、调整姿态、重试等提示事件） / AuthTipInfo prompt events during authentication, such as recognition failure, posture adjustment, or retry guidance",
+      "自定义认证切换事件（从系统生物认证切换到业务自定义认证界面的回调） / Custom authentication switch event callback from system biometric authentication to an app-defined authentication UI"
     ],
     "postconditions": [
       {

@@ -3,7 +3,7 @@
   "skill": "network-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.016Z"
+    "at": "2026-05-21T03:47:44.632Z"
   },
   "references": [
     {
@@ -19,22 +19,22 @@
     {
       "path": "references/使用DNS解析域名.md",
       "title": "使用DNS解析域名",
-      "snippet": "域名解析（DNS, Domain Name System）功能允许应用将主机名（域名）转换为IP地址。支持中文字符与ASCII码之间的转换、获取指定域名的IP地址列表、以及在不同网络环境下进行域名解析。 当前支持功能如下： #### DNS解析支持中文域名转码 从API version 23开始，DNS解析支持中文转码，支持中文域名与ASCII编码之间的相互转换。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/7f/v3/L9jP3y64QBCfTl0OX6YWfg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111151Z&HW-CC-Expire=86400&HW-CC-Sign=2B72BD40B295EF01B74DC5F91F891D26362885508D76F5D53AA0E7BC38729598) 在本文档的示例中，资源文件中hostName需修改成一个实际的中文域名。 完整示例代码见： DNS_case 1. 导入所需文件。 import { connection } from '@kit.NetworkKit'; import { BusinessError } from '@kit."
+      "snippet": "域名解析（DNS, Domain Name System）功能允许应用将主机名（域名）转换为IP地址。支持中文字符与ASCII码之间的转换、获取指定域名的IP地址列表、以及在不同网络环境下进行域名解析。 当前支持功能如下： #### DNS解析支持中文域名转码 从API version 23开始，DNS解析支持中文转码，支持中文域名与ASCII编码之间的相互转换。 在本文档的示例中，资源文件中hostName需修改成一个实际的中文域名。 完整示例代码见： DNS_case 1. 导入所需文件。 import { connection } from '@kit.NetworkKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 初始化数据成员。 @State hostVal: string = ''; // 转码之后的主机名 @State ipResult: string = ''; // 获取的IP地址结果 private hostName: string = ''; // 初始主机名 3. 获取资源文件中hostName值并赋值。 aboutToAppear() { this.hostName = (t"
     },
     {
       "path": "references/使用HTTP访问网络.md",
       "title": "使用HTTP访问网络",
-      "snippet": "应用通过HTTP发起一个数据请求，支持常见的GET、POST、OPTIONS、HEAD、PUT、DELETE、TRACE、CONNECT方法。当前提供了2种HTTP请求方式，若请求发送或接收的数据量较少，可使用 HttpRequest.request ，若是大文件的上传或者下载，且关注数据发送和接收进度，可使用HTTP请求流式传输 HttpRequest.requestInstream 。从API version 22开始，若是需要在\"HTTP请求-响应\"生命周期中的关键节点插入自定义逻辑，可以使用 HTTP拦截器 。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/1a/v3/l6OZ6Ik_TiSGs48SRHw30w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111150Z&HW-CC-Expire=86400&HW-CC-Sign=6B4117D7BC539B2D9F54C9CCB70AA738A531A857C3E65E533B7471F31C8EB3F0) HTTP模块提供了标准的HTTP网络服务能力，Remote Communication Kit（远场通信服务）提供了场景化的网络服务能力，"
+      "snippet": "应用通过HTTP发起一个数据请求，支持常见的GET、POST、OPTIONS、HEAD、PUT、DELETE、TRACE、CONNECT方法。当前提供了2种HTTP请求方式，若请求发送或接收的数据量较少，可使用 HttpRequest.request ，若是大文件的上传或者下载，且关注数据发送和接收进度，可使用HTTP请求流式传输 HttpRequest.requestInstream 。从API version 22开始，若是需要在\"HTTP请求-响应\"生命周期中的关键节点插入自定义逻辑，可以使用 HTTP拦截器 。 HTTP模块提供了标准的HTTP网络服务能力，Remote Communication Kit（远场通信服务）提供了场景化的网络服务能力，详见 Remote Communication Kit简介 ，应用可根据自己的需要选择使用。 当前HTTP请求支持的场景如下，以下功能对应的选项可以在HTTP请求的 HttpRequestOptions 中进行设置： #### 发起HTTP数据请求 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见 获取UIAbility的上下文信息 。 完整示例代码见： Http"
     },
     {
       "path": "references/使用MDNS访问局域网服务.md",
       "title": "使用MDNS访问局域网服务",
-      "snippet": "MDNS即多播DNS（Multicast DNS），提供局域网内的本地服务添加、移除、发现、解析等能力。 - 本地服务：局域网内服务的提供方，比如打印机、扫描仪等。 MDNS管理的典型场景有： - 管理本地服务，通过对本地服务的创建，删除和解析等管理本地服务。 - 发现本地服务，通过DiscoveryService对象，对指定类型的本地服务状态变化进行监听。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2a/v3/7GWOV8lWQEKTPOLpZ1euCQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111150Z&HW-CC-Expire=86400&HW-CC-Sign=EAAE8FE3EC673CDC90F7FDE9FD6A7028F03D260E29716D3084067FF582E46CE5) 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用promise函数，更多方式可以查阅 @ohos.net.mdns (MDNS管理) 。 以下分别介绍具体开发方式。 ![](https://contentcente"
+      "snippet": "MDNS即多播DNS（Multicast DNS），提供局域网内的本地服务添加、移除、发现、解析等能力。 - 本地服务：局域网内服务的提供方，比如打印机、扫描仪等。 MDNS管理的典型场景有： - 管理本地服务，通过对本地服务的创建，删除和解析等管理本地服务。 - 发现本地服务，通过DiscoveryService对象，对指定类型的本地服务状态变化进行监听。 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用promise函数，更多方式可以查阅 @ohos.net.mdns (MDNS管理) 。 以下分别介绍具体开发方式。 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见 获取UIAbility的上下文信息 。 #### 管理本地服务 1. 设备连接WiFi。 2. 从@kit.NetworkKit里导入mdns、错误码、以及 common命名空间 。 // 从@kit.NetworkKit中导入mdns命名空间。 import { mdns } from '@kit.NetworkKit'; import { BusinessE"
     },
     {
       "path": "references/使用Socket访问网络.md",
       "title": "使用Socket访问网络",
-      "snippet": "Socket连接主要是通过Socket进行数据传输，支持TCP/UDP/Multicast/TLS协议。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2f/v3/sZIKTTQZSvCtJMBW3Sj1-w/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111150Z&HW-CC-Expire=86400&HW-CC-Sign=0BFC89AD840246E0EE25D52A131777DBA9BE226C3DB9490F8BC446935DF278E3) 应用退后台后，Socket可能会断开，当应用重新回到前台，发生通信失败时，需匹配错误码并重新创建新的TCP/UDP Socket。 #### 基本概念 - Socket：套接字，就是对网络中不同主机上的应用进程之间进行双向通信的端点的抽象。 - TCP：传输控制协议(Transmission Control Protocol)，是一种面向连接的、可靠的、基于字节流的传输层通信协议。 - UDP：用户数据报协议(User Datagram Protocol)，是一个简单的面向消息的传输层，不需要连接。 - Multicast：多播，基于UDP的一种通信模"
+      "snippet": "Socket连接主要是通过Socket进行数据传输，支持TCP/UDP/Multicast/TLS协议。 应用退后台后，Socket可能会断开，当应用重新回到前台，发生通信失败时，需匹配错误码并重新创建新的TCP/UDP Socket。 #### 基本概念 - Socket：套接字，就是对网络中不同主机上的应用进程之间进行双向通信的端点的抽象。 - TCP：传输控制协议(Transmission Control Protocol)，是一种面向连接的、可靠的、基于字节流的传输层通信协议。 - UDP：用户数据报协议(User Datagram Protocol)，是一个简单的面向消息的传输层，不需要连接。 - Multicast：多播，基于UDP的一种通信模式，用于实现组内所有设备之间广播形式的通信。 - LocalSocket：本地套接字，IPC(Inter-Process Communication)进程间通信的一种，实现设备内进程之间相互通信，无需网络。 - TLS：安全传输层协议(Transport Layer Security)，用于在两个通信应用程序之间提供保密性和数据完整性。 #### 场景介绍 应用通过Socket进行数据传输，支持TCP/UDP/Multicast/TLS协议。主要场景有： - 在TCP/UDP传输的客户端（UDP本身并没有客户端和服务器端的明确区分"
     },
     {
       "path": "references/使用WebSocket访问网络(C_C++).md",
@@ -49,12 +49,12 @@
     {
       "path": "references/使用网络防火墙.md",
       "title": "使用网络防火墙",
-      "snippet": "网络防火墙提供如下功能： - 防火墙的基础能力，包括防火墙的使能、规则的启用与禁用、审计能力。 - 防火墙规则的配置能力，包括规则的名称、描述、操作、生效应用、协议类型、地址、端口、出站/入站方向等。 - DNS策略的配置能力，包括配置禁止/允许解析的域名、解析使用的DNS服务器（主选/备选）（应用级）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f7/v3/KHVS3ZEsTbOuUDJOBR9r0g/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111152Z&HW-CC-Expire=86400&HW-CC-Sign=4D08D78A1BB5B8189A5E8BC01087FFDED6F5E04071B9FC47CAD819A676F8AEFD) 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多方式可以查阅 @ohos.net.netFirewall (网络防火墙) 。 #### 场景介绍 防火墙的典型场景有： - 针对特定IP联网访问控制 1. 支持限制特定应用访问网络。 2. 支持限制对特定IP、特定协议"
+      "snippet": "网络防火墙提供如下功能： - 防火墙的基础能力，包括防火墙的使能、规则的启用与禁用、审计能力。 - 防火墙规则的配置能力，包括规则的名称、描述、操作、生效应用、协议类型、地址、端口、出站/入站方向等。 - DNS策略的配置能力，包括配置禁止/允许解析的域名、解析使用的DNS服务器（主选/备选）（应用级）。 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多方式可以查阅 @ohos.net.netFirewall (网络防火墙) 。 #### 场景介绍 防火墙的典型场景有： - 针对特定IP联网访问控制 1. 支持限制特定应用访问网络。 2. 支持限制对特定IP、特定协议、特定端口的网络通信。 3. 支持限制特定应用对特定IP、特定协议、特定端口的网络通信。 4. 支持拦截规则下发后立即生效（此点针对TCP协议：需断开已有被拦截的TCP连接）。 - 针对域名联网访问控制支持拦截 1. 支持限制应用对特定域名的DNS解析能力（仅限制非加密标准DNS协议，不限制加密、私有DNS协议）。 2. 支持限制特定应用对特定域名的DNS解析能力（仅限制非加密标准DNS协议，不限制加密、私有DNS协议）。 3. 支持拦截规则下发后立即生效（此点针对TCP协议：需断开已有被拦截的TCP连接）。 以下分别介绍具体开发"
     },
     {
       "path": "references/扩展认证.md",
       "title": "扩展认证",
-      "snippet": "部分企业用户的PC网络接入认证使用802.1X认证方式，认证客户端由第三方厂商提供。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f6/v3/MJfiDMMJR4atNo8kyQG7BA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111152Z&HW-CC-Expire=86400&HW-CC-Sign=12061ADC6ED51392D7B9ECC7C95BD4410BCF4D38670CABF5E72D7575BBF87B6C) 扩展认证能力从API version 20开始支持。 认证客户端有以下定制行为： 1. 在EAP协议报文内封装私有数据，该私有数据遵循客户端与认证服务器约定的数据结构。 2. 在认证过程中，客户端在本地进行安检扫描等定制动作，定制动作结束后，客户端向接入设备回复认证消息。 在这种机制下，需要操作系统提供三方客户端介入802.1X认证流程的机制，支撑客户端的定制认证。 为满足以上需求场景，定制化802.1X认证提供如下功能： 1. 定制化监听与修改802.1X报文交互流程的能力。 2. 对eth网口发起802.1X认证和去认证的能力。 #### 场景介绍 定制化802.1X"
+      "snippet": "部分企业用户的PC网络接入认证使用802.1X认证方式，认证客户端由第三方厂商提供。 扩展认证能力从API version 20开始支持。 认证客户端有以下定制行为： 1. 在EAP协议报文内封装私有数据，该私有数据遵循客户端与认证服务器约定的数据结构。 2. 在认证过程中，客户端在本地进行安检扫描等定制动作，定制动作结束后，客户端向接入设备回复认证消息。 在这种机制下，需要操作系统提供三方客户端介入802.1X认证流程的机制，支撑客户端的定制认证。 为满足以上需求场景，定制化802.1X认证提供如下功能： 1. 定制化监听与修改802.1X报文交互流程的能力。 2. 对eth网口发起802.1X认证和去认证的能力。 #### 场景介绍 定制化802.1X认证流程的典型场景如下： 1. 企业网管应用，需要在企业Wi-Fi的802.1X认证流程中加入自定义的安全校验，来接入企业内网。 - 支持指定要进行定制化处理的报文类型和EAP类型。 - 支持根据自定义的安全校验结果来指定标准认证流程的结果。 2. 企业网管应用，需要支持使用eth网口进行802.1X安全认证流程来接入企业内网。 - 支持标准802.1X认证流程。 - 支持定制化802.1X认证流程。 具体开发方式介绍如下。 #### 802.1X认证流程中加入自定义的安全校验 1. 从@kit.NetworkKit中导入eap命"
     },
     {
       "path": "references/管理网络连接(C_C++).md",
@@ -64,17 +64,17 @@
     {
       "path": "references/管理网络连接.md",
       "title": "管理网络连接",
-      "snippet": "网络连接管理提供管理网络的一些基础能力，包括WiFi/蜂窝/Ethernet等多网络连接优先级管理、网络质量评估、订阅默认/指定网络连接状态变化、查询网络连接信息、DNS解析等功能。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a2/v3/DV1UOHTWTLe3F9sHTkHvZw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111151Z&HW-CC-Expire=86400&HW-CC-Sign=3207F55124ED0D21114CC4CE8096FDF4791758F92D6B325FE05D05CA180D88B3) 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API，均提供了callback和Promise两种方式，以下示例均采用promise函数，更多方式可以查阅 @ohos.net.connection (网络连接管理) 。 #### 基本概念 - 网络生产者：数据网络的提供方。例如WiFi、蜂窝、Ethernet等。 - 网络消费者：数据网络的使用方。例如应用或系统服务。 - 网络探测：检测网络有效性，避免将网络从可用网络切换到不可用网络。包括绑定网络探测、D"
+      "snippet": "网络连接管理提供管理网络的一些基础能力，包括WiFi/蜂窝/Ethernet等多网络连接优先级管理、网络质量评估、订阅默认/指定网络连接状态变化、查询网络连接信息、DNS解析等功能。 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API，均提供了callback和Promise两种方式，以下示例均采用promise函数，更多方式可以查阅 @ohos.net.connection (网络连接管理) 。 #### 基本概念 - 网络生产者：数据网络的提供方。例如WiFi、蜂窝、Ethernet等。 - 网络消费者：数据网络的使用方。例如应用或系统服务。 - 网络探测：检测网络有效性，避免将网络从可用网络切换到不可用网络。包括绑定网络探测、DNS探测、HTTP探测及HTTPS探测。 - 网络优选：处理多网络共存时选择最优网络。在网络状态、网络信息及评分发生变化时被触发。 - 默认网络：系统默认使用的网络。由系统决定，与应用是否指定网络无关，通常为WIFI /蜂窝/以太网/蓝牙其中之一。 - 网络句柄：网络的唯一标识。 #### 场景介绍 网络连接管理的典型场景如下所示。 - 接收指定网络的状态变化通知。 - 获取所有注册的网络。 - 查询默认网络或者指定网络的连接信息。 - 使用默认网络解析域名，获取所有IP。 具体开发方式介绍如下。 #### 接收指定网络的状态变化"
     },
     {
       "path": "references/统计网络流量消耗.md",
       "title": "统计网络流量消耗",
-      "snippet": "流量管理提供了基于物理网络的数据流量统计能力，支持基于网卡/UID 的流量统计。 流量管理主要实现功能有： - 支持基于网卡/UID 的实时流量统计。 - 支持基于网卡/UID 的历史流量统计。 - 支持基于网卡/UID 的流量变化订阅。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4f/v3/iYabcFOFT9mSx8xPpIQnVA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111152Z&HW-CC-Expire=86400&HW-CC-Sign=48D377D15808AFCA0446DD60A1E089ED163363065B13B26BD61A23221893C200) 为了保证应用的运行效率，大部分 API 调用都是异步的，对于异步调用的 API 均提供了 callback 和 Promise 两种方式，以下示例均采用 Promise 函数，更多方式可以查阅 @ohos.net.statistics (流量管理) 。 以下分别介绍具体开发方式。 #### 开发步骤 1. 导入 statistics 、 socket 以及错误码模块。 import { socket, statistic"
+      "snippet": "流量管理提供了基于物理网络的数据流量统计能力，支持基于网卡/UID 的流量统计。 流量管理主要实现功能有： - 支持基于网卡/UID 的实时流量统计。 - 支持基于网卡/UID 的历史流量统计。 - 支持基于网卡/UID 的流量变化订阅。 为了保证应用的运行效率，大部分 API 调用都是异步的，对于异步调用的 API 均提供了 callback 和 Promise 两种方式，以下示例均采用 Promise 函数，更多方式可以查阅 @ohos.net.statistics (流量管理) 。 以下分别介绍具体开发方式。 #### 开发步骤 1. 导入 statistics 、 socket 以及错误码模块。 import { socket, statistics } from '@kit.NetworkKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 获取指定网卡实时流量数据 调用 getIfaceRxBytes 接口传入网卡名获取实时下行流量数据。 // wlan0为主WiFi网卡名，获取主WiFi实时下行流量数据。 statistics.getIfaceRxBytes('wlan0').then((s"
     },
     {
       "path": "references/连接VPN.md",
       "title": "连接VPN",
-      "snippet": "VPN，即虚拟专用网络（Virtual Private Network），是在公用网络上建立专用网络的一种技术。在VPN网络中，任意两个节点间的连接并非依赖传统专用网络所需要的端到端的物理链路，而是构建在公用网络服务商提供的平台（如Internet）之上的逻辑网络。用户数据在这一逻辑链路中进行传输。 HarmonyOS为开发者提供了用于创建VPN的API解决方案。当前提供三方VPN能力主要用于创建虚拟网卡及配置VPN路由信息，连接隧道过程及内部连接的协议需要应用内部自行实现。本文将指导您如何开发自己的VPN客户端。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/12/v3/BE3KN4NJSzOenpYjUaMitQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111151Z&HW-CC-Expire=86400&HW-CC-Sign=273B3DF55BA6DC71A71EA34077C0D2F9378EE4CD410744716B2330E1825D7389) - 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多"
+      "snippet": "VPN，即虚拟专用网络（Virtual Private Network），是在公用网络上建立专用网络的一种技术。在VPN网络中，任意两个节点间的连接并非依赖传统专用网络所需要的端到端的物理链路，而是构建在公用网络服务商提供的平台（如Internet）之上的逻辑网络。用户数据在这一逻辑链路中进行传输。 HarmonyOS为开发者提供了用于创建VPN的API解决方案。当前提供三方VPN能力主要用于创建虚拟网卡及配置VPN路由信息，连接隧道过程及内部连接的协议需要应用内部自行实现。本文将指导您如何开发自己的VPN客户端。 - 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多方式可以查阅@ohos.net.vpnExtension (VPN增强管理)。 - 完整的JS API说明以及示例代码请参考：@ohos.net.vpnExtension (VPN增强管理)。 - 使用该功能需要ohos.permission.INTERNET权限。 #### VPN应用的显示体验 借助系统提供的 VPN Extension 接口开发者可以构建支持不同协议的VPN服务。HarmonyOS系统提供了界面 (UI) 使用户可以了解当前VPN应用服务的启动和连接： - 在VPN应用首次启动连接之前，系统会显示VPN连接授"
     }
   ]
 }

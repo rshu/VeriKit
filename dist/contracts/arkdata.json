@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:11:06.953Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -65,14 +66,23 @@
       "共享或同步目标信息，如URI、设备标识或云端配置 / Sharing or synchronization target info such as URI, device identifiers, or cloud configuration"
     ],
     "outputs": [
-      "Kit简介与术语",
-      "数据持久化",
-      "数据可靠性与安全性",
-      "标准化数据定义",
-      "跨应用数据共享",
-      "跨设备数据同步",
-      "端云数据同步",
-      "调试工具"
+      "用户首选项实例 preferences.Preferences（或 C/C++ OH_Preferences） / Preferences object, preferences.Preferences (or C/C++ OH_Preferences)",
+      "持久化的用户首选项数据文件 / Persisted preferences data file",
+      "键值数据库管理器 distributedKVStore.KVManager / Key-value database manager, distributedKVStore.KVManager",
+      "键值数据库实例 distributedKVStore.SingleKVStore 或 DeviceKVStore / Key-value store object, distributedKVStore.SingleKVStore or DeviceKVStore",
+      "键值数据条目 distributedKVStore.Entry 及 Entry[] 查询结果 / Key-value entries, distributedKVStore.Entry and Entry[] query results",
+      "关系型数据库实例 relationalStore.RdbStore（或 C/C++ OH_Rdb_Store） / Relational database object, relationalStore.RdbStore (or C/C++ OH_Rdb_Store)",
+      "关系型数据库查询结果集 relationalStore.ResultSet（或 C/C++ OH_Cursor） / Relational query result set, relationalStore.ResultSet (or C/C++ OH_Cursor)",
+      "关系型数据库插入返回的行号 rowId、批量插入数量、更新/删除影响行数 / Returned row ID from insert, batch-insert count, and affected row count from update/delete",
+      "加密后的数据库文件或加密数据库句柄 / Encrypted database file or encrypted database handle",
+      "数据库备份文件及恢复后的数据库 / Database backup file and restored database",
+      "向量数据库实例 vectorStore.VectorStore / Vector database object, vectorStore.VectorStore",
+      "向量集合对象及向量相似度检索结果 / Vector collection object and vector similarity-search results",
+      "统一数据对象 UnifiedData 与统一数据记录 UnifiedRecord / UnifiedData object and UnifiedRecord records",
+      "标准化数据类型描述对象 TypeDescriptor / Standardized data type descriptor object, TypeDescriptor",
+      "跨应用数据共享辅助对象 DataShareHelper 与共享查询 ResultSet / Cross-application data sharing helper, DataShareHelper, and shared query ResultSet",
+      "分布式数据对象及跨设备同步后的本地数据副本 / Distributed data object and synchronized local data copies across devices",
+      "端云同步后的关系型数据变更结果 / Relational data changes produced by device-cloud synchronization"
     ],
     "postconditions": [
       {

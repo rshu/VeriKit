@@ -3,7 +3,7 @@
   "skill": "reader-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.132Z"
+    "at": "2026-05-21T03:47:44.715Z"
   },
   "references": [
     {
@@ -19,12 +19,12 @@
     {
       "path": "references/手动触发翻页.md",
       "title": "手动触发翻页",
-      "snippet": "Reader Kit的交互能力已经集成了手指点击和触摸滑动翻页，如果开发者需要增加其它翻页场景时（如：耳机播控翻页），可使用手动翻页接口实现自定义翻页场景。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8f/v3/ZNabAo2qTcG_zS2H30Xuzw/zh-cn_image_0000002543215178.png?HW-CC-KV=V1&HW-CC-Date=20260421T111636Z&HW-CC-Expire=86400&HW-CC-Sign=0E2AD969A1540B25B594F9B91BEE10F62533F9485053E96B777B0D0BF1A5EB7D) #### 接口说明 手动触发场景只涉及1个翻页接口，具体介绍如下表所示。 #### 开发准备 在进行手动触发翻页之前，请先确保已经“ 构建阅读器 ”。 #### 开发步骤 1. 在调用翻页接口之前，需要应用先构建需要手动触发翻页的场景，如耳机播控场景等。 2. 当自定义翻页场景调用触发翻页时，调用flipPage接口即可实现翻页能力。 let isNext: boolean = true; // true为下一页, false为上一页 this.read"
+      "snippet": "Reader Kit的交互能力已经集成了手指点击和触摸滑动翻页，如果开发者需要增加其它翻页场景时（如：耳机播控翻页），可使用手动翻页接口实现自定义翻页场景。 #### 业务流程 #### 接口说明 手动触发场景只涉及1个翻页接口，具体介绍如下表所示。 #### 开发准备 在进行手动触发翻页之前，请先确保已经“ 构建阅读器 ”。 #### 开发步骤 1. 在调用翻页接口之前，需要应用先构建需要手动触发翻页的场景，如耳机播控场景等。 2. 当自定义翻页场景调用触发翻页时，调用flipPage接口即可实现翻页能力。 let isNext: boolean = true; // true为下一页, false为上一页 this.readerComponentController.flipPage(isNext);"
     },
     {
       "path": "references/构建阅读器.md",
       "title": "构建阅读器",
-      "snippet": "Reader Kit提供的阅读页组件ReadPageComponent，支持对标准的txt和富文本内容（html+css）按仿真和横滑方式进行分页排版的能力、支持翻页阅读过程中所需要的进度和行为感知能力。利用ReadPageComponent，开发者可快速实现书籍阅读的能力。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/fb/v3/7_-csAkqQYq5WchOy3lwbg/zh-cn_image_0000002573855091.png?HW-CC-KV=V1&HW-CC-Date=20260421T111635Z&HW-CC-Expire=86400&HW-CC-Sign=DDB1974689540922B8FDC62BBC54AB48E6E1DE626341CF291C34B5ED5738D712) #### 接口说明 构建书籍阅读能力共涉及5个接口，具体介绍如下表所示。 #### 开发步骤 1. 导入相关模块。 // 导入解析能力、页面组件和阅读器控制类 import { bookParser, ReadPageComponent, readerCore } from '@kit.ReaderKit'; import { Busi"
+      "snippet": "Reader Kit提供的阅读页组件ReadPageComponent，支持对标准的txt和富文本内容（html+css）按仿真和横滑方式进行分页排版的能力、支持翻页阅读过程中所需要的进度和行为感知能力。利用ReadPageComponent，开发者可快速实现书籍阅读的能力。 #### 业务流程 #### 接口说明 构建书籍阅读能力共涉及5个接口，具体介绍如下表所示。 #### 开发步骤 1. 导入相关模块。 // 导入解析能力、页面组件和阅读器控制类 import { bookParser, ReadPageComponent, readerCore } from '@kit.ReaderKit'; import { BusinessError } from '@kit.BasicServicesKit'; import { display } from '@kit.ArkUI'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { common } from '@kit.AbilityKit'; 2. 初始化组件控制器、默认设置项，以及定义书籍解析器。 // 组件控制器，用于调用排版相关能力。 private readerComponentController: readerCore.ReaderCompo"
     },
     {
       "path": "references/监听文本缩放因子变化.md",
@@ -34,22 +34,22 @@
     {
       "path": "references/自定义字体.md",
       "title": "自定义字体",
-      "snippet": "当应用需要支持自定义字体时，开发者可通过 ReaderSetting 的fontPath属性，实现对阅读内容字体的实时修改。 自定义字体文件支持两种存放路径： - 工程目录resources/rawfile文件夹。 - 应用沙箱目录 。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/21/v3/WL2XQ9aQR3qIHXct4wJBHA/zh-cn_image_0000002573975073.png?HW-CC-KV=V1&HW-CC-Date=20260421T111635Z&HW-CC-Expire=86400&HW-CC-Sign=4B473C4C8C23A8DD6677206D7E4EA33A1DE9BC9D7ABBA02D475193F55E706CD3) #### 接口说明 自定义字体主要涉及3个接口，具体介绍如下表所示。 #### 开发准备 - 进行自定义字体之前，请先确保已经“ 构建阅读器 ”。 - 已经准备好字体资源，并放在对应的目录当中。 #### 开发步骤 1. 导入相关模块。 import { fileIo as fs } from '@kit.CoreFileKit'; import { common } fro"
+      "snippet": "当应用需要支持自定义字体时，开发者可通过 ReaderSetting 的fontPath属性，实现对阅读内容字体的实时修改。 自定义字体文件支持两种存放路径： - 工程目录resources/rawfile文件夹。 - 应用沙箱目录 。 #### 业务流程 #### 接口说明 自定义字体主要涉及3个接口，具体介绍如下表所示。 #### 开发准备 - 进行自定义字体之前，请先确保已经“ 构建阅读器 ”。 - 已经准备好字体资源，并放在对应的目录当中。 #### 开发步骤 1. 导入相关模块。 import { fileIo as fs } from '@kit.CoreFileKit'; import { common } from '@kit.AbilityKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 定义字体文件存放路径： - let filePath: string = 'fonts/SourceHanSerifCN-VF.ttf'; - 应用沙箱目录 let filePath: string = this.getUIContext().getHostContext()!.filesDir + '/fonts/SourceHanSerifCN-VF.ttf' 3. 通过ReaderSetting的fo"
     },
     {
       "path": "references/自定义页面背景.md",
       "title": "自定义页面背景",
-      "snippet": "当应用需要支持自定义背景时，开发者可通过 ReaderSetting 的themeColor及themeBgImg属性，实现对阅读内容自定义背景色及背景图片的实时修改。 更改页面背景色，可能会涉及到字体颜色和深色模式的适配。比如：设置了白色背景，但是当前是深色模式，字体颜色也是白色，这样会导致内容看不清楚。 自定义页面背景图片支持两种存放路径： - 工程目录resources/rawfile文件夹。 - 应用沙箱目录 。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6b/v3/Az-JrVReSpCfZnRVElePSg/zh-cn_image_0000002543374840.png?HW-CC-KV=V1&HW-CC-Date=20260421T111635Z&HW-CC-Expire=86400&HW-CC-Sign=CD30371D288EB31B0033F006032EB000FED3BD6C1632C6D32E38A4EFC22DD211) #### 接口说明 自定义页面背景主要涉及1个接口，具体介绍如下表所示。 #### 开发准备 - 进行自定义背景之前，请先确保已经“ 构建阅读器 ”。 - 已经准备好自定义背景图片资源，并放"
+      "snippet": "当应用需要支持自定义背景时，开发者可通过 ReaderSetting 的themeColor及themeBgImg属性，实现对阅读内容自定义背景色及背景图片的实时修改。 更改页面背景色，可能会涉及到字体颜色和深色模式的适配。比如：设置了白色背景，但是当前是深色模式，字体颜色也是白色，这样会导致内容看不清楚。 自定义页面背景图片支持两种存放路径： - 工程目录resources/rawfile文件夹。 - 应用沙箱目录 。 #### 业务流程 #### 接口说明 自定义页面背景主要涉及1个接口，具体介绍如下表所示。 #### 开发准备 - 进行自定义背景之前，请先确保已经“ 构建阅读器 ”。 - 已经准备好自定义背景图片资源，并放在对应的目录当中。 #### 开发步骤 1. 导入相关模块。 import { fileIo as fs } from '@kit.CoreFileKit'; import { common } from '@kit.AbilityKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 单独设置背景色。如果有设置背景图片的情况下，背景色通常用于仿真翻页时背面主题色的绘制。否则，背景色还会用于渲染阅读页的背景色。 this.readerSetting.themeColor = '#000000"
     },
     {
       "path": "references/获取书籍信息.md",
       "title": "获取书籍信息",
-      "snippet": "在导入本地书籍到书架时，开发者需通过 DocumentViewPicker 先将书籍文件导入到 应用沙箱目录 ，然后利用解析能力获取书籍信息，包括书封、书名及作者等，以完成书架内容的展示。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/15/v3/7w2dJzQzQ9KXQjvRl5AZcA/zh-cn_image_0000002543374838.png?HW-CC-KV=V1&HW-CC-Date=20260421T111634Z&HW-CC-Expire=86400&HW-CC-Sign=6CCAA4FD75B6D6D71AB1E5613E9F371A767CB351A0479096946EA69BB1A011A8) #### 接口说明 获取书籍信息共涉及3个接口，具体API说明请参考下表。 #### 开发步骤 1. 导入相关模块。 import { common } from '@kit.AbilityKit'; import { bookParser } from '@kit.ReaderKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { image"
+      "snippet": "在导入本地书籍到书架时，开发者需通过 DocumentViewPicker 先将书籍文件导入到 应用沙箱目录 ，然后利用解析能力获取书籍信息，包括书封、书名及作者等，以完成书架内容的展示。 #### 业务流程 #### 接口说明 获取书籍信息共涉及3个接口，具体API说明请参考下表。 #### 开发步骤 1. 导入相关模块。 import { common } from '@kit.AbilityKit'; import { bookParser } from '@kit.ReaderKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; import { image } from '@kit.ImageKit'; 2. 通过提前导入到 应用沙箱目录 中的书籍文件，初始化书籍解析器。 private defaultHandler: bookParser.BookParserHandler | null = null; aboutToAppear(): void { this.init().then(() => { }); } private async init() { let context = this.getUIContext().getHostContext() as common.UIAbilityContex"
     },
     {
       "path": "references/获取目录列表.md",
       "title": "获取目录列表",
-      "snippet": "当应用需要展示书籍目录列表时，开发者可通过解析能力获取目录节点列表，实现目录列表中章节名称按顺序、层级的展示。当用户点击目录节点时，开发者也需要获取目录位置及资源信息，用于跳转到指定位置。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4e/v3/aOOTBFV0SciWBIQNap57WA/zh-cn_image_0000002543215176.png?HW-CC-KV=V1&HW-CC-Date=20260421T111635Z&HW-CC-Expire=86400&HW-CC-Sign=E76A9280E23A0BAFECD624DE69EA311D05A0B57C78364DB19F11A7A4E4BDD552) #### 接口说明 获取目录列表及获取指定目录位置及资源信息共涉及4个接口，具体API说明请参考下表。 #### 开发步骤 1. 导入相关模块。 import { common } from '@kit.AbilityKit'; import { bookParser } from '@kit.ReaderKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; "
+      "snippet": "当应用需要展示书籍目录列表时，开发者可通过解析能力获取目录节点列表，实现目录列表中章节名称按顺序、层级的展示。当用户点击目录节点时，开发者也需要获取目录位置及资源信息，用于跳转到指定位置。 #### 业务流程 #### 接口说明 获取目录列表及获取指定目录位置及资源信息共涉及4个接口，具体API说明请参考下表。 #### 开发步骤 1. 导入相关模块。 import { common } from '@kit.AbilityKit'; import { bookParser } from '@kit.ReaderKit'; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 通过提前导入到 应用沙箱目录 中的书籍文件，初始化书籍解析器。 private defaultHandler: bookParser.BookParserHandler | null = null; aboutToAppear(): void { this.init().then(() => { }); } private async init() { let context = this.getUIContext().getHostContext() as common.UIAbilityContext; let path: string = `${"
     },
     {
       "path": "references/适配深、浅色模式.md",

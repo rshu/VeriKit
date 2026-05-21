@@ -3,7 +3,7 @@
   "skill": "game-controller-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.801Z"
+    "at": "2026-05-21T03:47:44.476Z"
   },
   "references": [
     {
@@ -14,12 +14,12 @@
     {
       "path": "references/监听游戏手柄的轴和按键事件（C_C++）.md",
       "title": "监听游戏手柄的轴和按键事件（C/C++）",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/8f/v3/63JQgRquQj-lhXG0LxzrjQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111520Z&HW-CC-Expire=86400&HW-CC-Sign=047011232213F61FD29334459218330711899FB2ABF395161D436705369F28E3) 须先完成 监听设备上下线 功能的开发后，才能进行游戏手柄轴事件和按键事件的监听注册。 #### 功能介绍 Game Controller Kit提供游戏手柄轴事件和按键事件的监听能力。通过轴事件和按键事件的监听注册，在玩家操作手柄按键和摇杆时可获得对应回调通知。 #### 按键 Game Controller Kit支持的手柄键位参考图如下： ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/2f/v3/Sck9a_mcQUiNULVuXcdSSw/zh-cn_image_0000002573854829.png?HW-CC-KV=V1&H"
+      "snippet": "须先完成 监听设备上下线 功能的开发后，才能进行游戏手柄轴事件和按键事件的监听注册。 #### 功能介绍 Game Controller Kit提供游戏手柄轴事件和按键事件的监听能力。通过轴事件和按键事件的监听注册，在玩家操作手柄按键和摇杆时可获得对应回调通知。 #### 按键 Game Controller Kit支持的手柄键位参考图如下： #### 接口说明 接口详细介绍请参考 API参考 。 #### 开发步骤 #### 链接动态库 target_link_libraries(entry PUBLIC libohgame_controller.z.so) #### 导入模块 #include <GameControllerKit/game_pad.h> #### 注册和取消注册轴事件的监听 调用相应接口注册或取消注册轴事件回调，通过回调函数获取轴值。 物理轴及其对应的轴值获取接口如下： 以LeftThumbstick轴事件为例。 napi_value GamePad::LeftThumbstick_RegisterAxisInputMonitor(napi_env env, napi_callback_info info) { napi_value result; GameController_ErrorCode errorCode = OH_GamePad_LeftThum"
     },
     {
       "path": "references/监听设备上下线（C_C++）.md",
       "title": "监听设备上下线（C/C++）",
-      "snippet": "Game Controller Kit提供设备上下线事件监听和查询在线设备信息的功能。注册监听事件后，设备拔插时可获取实时回调通知，同时支持查询当前所有在线设备的具体信息。 #### 业务流程 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/f4/v3/jn3yRp8GQsKIisuXuZYr_Q/zh-cn_image_0000002543214914.png?HW-CC-KV=V1&HW-CC-Date=20260421T111520Z&HW-CC-Expire=86400&HW-CC-Sign=FF3F6A65E0BC305C5A71418E554FC9787B441F24A71754F378E6B179866B4866) 1. 玩家启动游戏。 2. 游戏调用OH_GameDevice_RegisterDeviceMonitor接口注册设备状态变化事件监听。 3. 玩家插拔设备。 4. 终端系统将设备状态变化通知Game Controller Kit。 5. Game Controller Kit向游戏反馈设备状态变化。 6. 游戏调用OH_GameDevice_GetAllDeviceInfos接口向Game Controller Kit查询所有在线的游戏"
+      "snippet": "Game Controller Kit提供设备上下线事件监听和查询在线设备信息的功能。注册监听事件后，设备拔插时可获取实时回调通知，同时支持查询当前所有在线设备的具体信息。 #### 业务流程 1. 玩家启动游戏。 2. 游戏调用OH_GameDevice_RegisterDeviceMonitor接口注册设备状态变化事件监听。 3. 玩家插拔设备。 4. 终端系统将设备状态变化通知Game Controller Kit。 5. Game Controller Kit向游戏反馈设备状态变化。 6. 游戏调用OH_GameDevice_GetAllDeviceInfos接口向Game Controller Kit查询所有在线的游戏设备信息。 7. Game Controller Kit从终端系统获取所有在线的游戏设备信息。 8. 如果不再需要订阅，游戏可以调用OH_GameDevice_UnregisterDeviceMonitor接口取消设备状态变化事件监听。 #### 接口说明 接口详细介绍请参考 API参考 。 #### 开发步骤 #### 链接动态库 target_link_libraries(entry PUBLIC libohgame_controller.z.so) #### 导入模块 #include <GameControllerKit/game_device.h>"
     }
   ]
 }

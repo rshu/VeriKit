@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:14:33.986Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -55,9 +56,14 @@
       "待添加、更新或删除的快捷任务定义 / dock task definitions to add, update, or remove"
     ],
     "outputs": [
-      "简介与概述",
-      "状态栏接入",
-      "快捷栏接入"
+      "系统状态栏自定义应用图标 / Custom application icon in the system status bar",
+      "状态栏图标左键触发的自定义弹窗 / Custom pop-up window triggered by left-clicking the status bar icon",
+      "状态栏图标右键菜单及其菜单项 / Right-click context menu and menu items for the status bar icon",
+      "状态栏菜单项点击事件回调结果 / Click-event callback result for status bar menu items",
+      "桌面快捷栏自定义菜单项 / Custom menu item in the desktop quick bar",
+      "桌面快捷栏分组菜单 / Grouped menu in the desktop quick bar",
+      "桌面快捷栏任务项 / Task item in the desktop quick bar",
+      "新增、更新或删除后的快捷栏任务状态 / Quick-bar task state after add, update, or delete operations"
     ],
     "postconditions": [
       {

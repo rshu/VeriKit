@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:17:42.415Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -62,14 +63,20 @@
       "排序或索引所需的文本列表 / text list for collation or index creation"
     ],
     "outputs": [
-      "概述",
-      "区域与语言设置",
-      "时间与日期",
-      "数字与格式化",
-      "字符与排序",
-      "本地化名称",
-      "多语言资源与翻译",
-      "伪本地化测试"
+      "系统语言、系统地区和系统区域设置ID字符串 / System language, system region, and locale identifier strings",
+      "用户偏好语言列表和区域偏好信息 / User preferred language lists and regional preference information",
+      "应用级偏好语言设置结果和当前应用语言标识 / Application-level preferred language setting result and current app language identifier",
+      "本地化资源字符串、字符串数组和单复数字符串 / Localized resource strings, string arrays, and pluralized strings",
+      "按区域规则格式化后的日期、时间和日期时间字符串 / Locale-formatted date, time, and date-time strings",
+      "时区ID、时区显示名称、UTC偏移量和夏令时状态信息 / Time zone IDs, time zone display names, UTC offsets, and daylight-saving status information",
+      "日历/历法对象及本地化后的年、月、日、星期等字段值 / Calendar objects and localized year, month, day, weekday, and related field values",
+      "按区域规则格式化后的数字、货币、百分比和度量衡单位字符串 / Locale-formatted number, currency, percent, and measurement unit strings",
+      "国际化电话号码格式化结果字符串 / Internationalized phone number formatting result strings",
+      "字符方向、字符属性、大小写转换和文本边界处理结果 / Character direction, character properties, case conversion, and text boundary processing results",
+      "本地习惯排序比较结果和排序后的多语言字符串列表 / Locale-aware collation comparison results and sorted multilingual string lists",
+      "多语言索引标签和索引分组结果 / Multilingual index labels and indexed grouping results",
+      "本地化语言名称、地区名称、文字名称和货币名称 / Localized language names, region names, script names, and currency names",
+      "伪本地化后的文本、RTL镜像界面效果和国际化问题检测结果 / Pseudolocalized text, RTL mirrored UI effects, and internationalization issue detection results"
     ],
     "postconditions": [
       {

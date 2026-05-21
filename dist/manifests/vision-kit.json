@@ -3,7 +3,7 @@
   "skill": "vision-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.270Z"
+    "at": "2026-05-21T03:47:44.820Z"
   },
   "references": [
     {
@@ -24,17 +24,17 @@
     {
       "path": "references/人脸活体检测.md",
       "title": "人脸活体检测",
-      "snippet": "人脸活体检测支持动作活体检测模式。 动作活体检测支持实时捕捉人脸，需要用户配合做指定动作就可以判断是真实活体，还是非活体攻击（比如：打印图片、人脸翻拍视频以及人脸面具等）。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/d9/v3/z3d46-l4Tgu83CMu_ikCPQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111947Z&HW-CC-Expire=86400&HW-CC-Sign=43638F3965B83715523E331D86B6A0A4FD69071BAEB18F3253E6FF97CAF11279) 活体检测是一项纯端侧算法、试用期免费的系统基础服务，推荐开发者使用在考勤打卡、辅助登录和实名认证等低危业务场景中。 端侧算法在HarmonyOS NEXT/5.0.x已完成权威机构（CFCA）检测认证。鉴于支付和金融应用的高风险性，建议开发者基于现有的安全性，针对不同的功能场景进行风险评估和风控策略评估，并采取必要的安全措施。 **图1** 权威认证 **增强级** 检测报告 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/D"
+      "snippet": "人脸活体检测支持动作活体检测模式。 动作活体检测支持实时捕捉人脸，需要用户配合做指定动作就可以判断是真实活体，还是非活体攻击（比如：打印图片、人脸翻拍视频以及人脸面具等）。 活体检测是一项纯端侧算法、试用期免费的系统基础服务，推荐开发者使用在考勤打卡、辅助登录和实名认证等低危业务场景中。 端侧算法在HarmonyOS NEXT/5.0.x已完成权威机构（CFCA）检测认证。鉴于支付和金融应用的高风险性，建议开发者基于现有的安全性，针对不同的功能场景进行风险评估和风控策略评估，并采取必要的安全措施。 **图1** 权威认证 **增强级** 检测报告 **图2** 活体检测示意图 #### 约束与限制 - 平板仅支持竖屏检测，大折叠屏仅支持折叠时使用，小折叠屏仅支持展开时使用。 - 支持的文本语种类型：简体中文、繁体中文、英文、维吾尔文、藏文。 - 支持的播报语种类型：简体中文、英文。 - 人脸活体检测服务暂不支持横屏、分屏进行检测。 #### 接口说明 以下仅列出demo中调用的部分主要接口，具体API说明详见 API参考 。 #### 开发步骤 1. 将实现人脸活体检测相关的类添加至工程。 import { common, abilityAccessCtrl, Permissions } from '@kit.AbilityKit'; import { interactiveLiv"
     },
     {
       "path": "references/卡证识别.md",
       "title": "卡证识别",
-      "snippet": "从5.1.1(19)开始， CardRecognition 接口中的callback参数废弃，请使用onResult代替。 #### 场景介绍 卡证识别控件提供身份证（目前仅支持中国大陆二代身份证，且不包含民汉双文身份证）、行驶证、驾驶证、护照、银行卡的结构化识别服务，满足卡证的自动分类功能，系统可自动判断所属卡证类型并返回结构化信息和卡证图片信息。 对于需要填充卡证信息的场景，如身份证、银行卡信息等，可使用卡证识别控件读取OCR（Optical Character Recognition）信息，将结果信息返回后进行填充。支持单独识别正面、反面，或同时进行双面识别。 **图1** 银行卡识别示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/6b/v3/9dAf6GONRAqHRNa0i0916Q/zh-cn_image_0000002573855303.png?HW-CC-KV=V1&HW-CC-Date=20260421T111947Z&HW-CC-Expire=86400&HW-CC-Sign=F354DBFC5748ACE84F69305083F8C3E61E765ECEBBA7DFD0DAEF9204A0A5DB5D) #### 约束与限制 - 支持"
+      "snippet": "从5.1.1(19)开始， CardRecognition 接口中的callback参数废弃，请使用onResult代替。 #### 场景介绍 卡证识别控件提供身份证（目前仅支持中国大陆二代身份证，且不包含民汉双文身份证）、行驶证、驾驶证、护照、银行卡的结构化识别服务，满足卡证的自动分类功能，系统可自动判断所属卡证类型并返回结构化信息和卡证图片信息。 对于需要填充卡证信息的场景，如身份证、银行卡信息等，可使用卡证识别控件读取OCR（Optical Character Recognition）信息，将结果信息返回后进行填充。支持单独识别正面、反面，或同时进行双面识别。 **图1** 银行卡识别示意图 #### 约束与限制 - 支持的语种类型：简体中文、英文。 - 卡证识别暂时只支持中国二代身份证、中国国内银行卡、中国护照、中国驾驶证、中国行驶证（暂不支持中国港澳台地区及海外证件）。 - 卡证需要保持与真实证件一致的长宽比、没有形变、正向拍摄角度小于30度。 - 卡证图像清晰、完整。无摩尔纹、无遮挡、无反光、无卡套。 - 不允许被其他组件或窗口遮挡。 #### 接口说明 以下仅列出demo中调用的部分主要接口，具体API说明详见 API参考 。 #### 开发步骤 1. 将卡证识别控件相关的类添加至工程。 import { CardRecognition, CardRecognitio"
     },
     {
       "path": "references/文档扫描.md",
       "title": "文档扫描",
-      "snippet": "文档扫描控件提供拍摄文档并转换为高清扫描件的服务。仅需拍摄文档，即可自动裁剪和优化，并支持图片、PDF格式保存和分享；同时支持拍摄或从图库选择图片识别表格，生成表格文档。 可广泛用于教育办公场景，扫描文档、票据、课堂PPT和书籍等输出图片/PDF供用户完成发送、存档等操作。 **图1** 文档扫描示意图 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/4a/v3/6v3t5AaPR-C-7ekwtsdliQ/zh-cn_image_0000002573855303.png?HW-CC-KV=V1&HW-CC-Date=20260421T111947Z&HW-CC-Expire=86400&HW-CC-Sign=08BFB5223D3548E5065FA1BA0060EBBFCEEE2364080C962B2856F2C667E628A2) #### 约束与限制 - 支持的语种类型：简体中文、英文。 - 文档扫描暂时只支持phone、tablet设备。 - 不允许被其他组件或窗口遮挡。 #### 接口说明 以下仅列出demo中调用的部分主要接口，具体API说明详见 API参考 。 #### 开发步骤 1. 将文档扫描控件相关的类添加至工程。 import { Doc"
+      "snippet": "文档扫描控件提供拍摄文档并转换为高清扫描件的服务。仅需拍摄文档，即可自动裁剪和优化，并支持图片、PDF格式保存和分享；同时支持拍摄或从图库选择图片识别表格，生成表格文档。 可广泛用于教育办公场景，扫描文档、票据、课堂PPT和书籍等输出图片/PDF供用户完成发送、存档等操作。 **图1** 文档扫描示意图 #### 约束与限制 - 支持的语种类型：简体中文、英文。 - 文档扫描暂时只支持phone、tablet设备。 - 不允许被其他组件或窗口遮挡。 #### 接口说明 以下仅列出demo中调用的部分主要接口，具体API说明详见 API参考 。 #### 开发步骤 1. 将文档扫描控件相关的类添加至工程。 import { DocType, DocumentScanner, DocumentScannerConfig, SaveOption, FilterId, ShootingMode } from \"@kit.VisionKit\"; import { hilog } from '@kit.PerformanceAnalysisKit'; 2. 配置布局，根据业务场景配置文档扫描控件的相关属性，获取返回的文档图片uri列表。 const TAG = 'DocumentScanner' @Entry @Component struct Index { private docScanC"
     }
   ]
 }

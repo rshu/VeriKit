@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:11:47.029Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -65,15 +66,21 @@
       "权限与安全策略参数，如Cookie、隐私模式、UA或请求拦截规则 / Permission and security policy parameters such as cookies, private mode, UA, or request interception rules"
     ],
     "outputs": [
-      "Kit简介与架构",
-      "页面加载与管理",
-      "与前端页面交互",
-      "网络与请求",
-      "安全与隐私",
-      "页面显示与交互",
-      "文件与媒体",
-      "渲染与布局",
-      "调试与维测"
+      "可嵌入应用界面的 Web 组件实例及其渲染的网页内容 / Embeddable Web component instance and rendered web page content",
+      "WebviewController 页面控制器对象 / WebviewController page controller object",
+      "WebResourceRequest 网络请求对象 / WebResourceRequest network request object",
+      "WebResourceResponse 自定义网络响应对象 / WebResourceResponse custom network response object",
+      "WebHistoryList 与 WebHistoryItem 浏览历史记录对象 / WebHistoryList and WebHistoryItem browsing history objects",
+      "WebMessagePort 或 WebMessageExt 前端通信消息通道对象 / WebMessagePort or WebMessageExt frontend messaging channel object",
+      "JavaScript 执行结果与回调数据 / JavaScript execution results and callback data",
+      "Cookie 与 Web 数据存储管理结果 / Cookie and web data storage management results",
+      "位置、媒体、文件选择等 Web 权限请求对象 / Web permission request objects for geolocation, media, and file selection",
+      "FileSelectorResult 文件选择结果对象 / FileSelectorResult file selection result object",
+      "下载任务或下载事件对象 / Download task or download event object",
+      "PDF 预览或打印文档适配对象 / PDF preview or print document adapter object",
+      "网页弹框处理对象，如 JsResult 或 JsPromptResult / Web dialog handling objects such as JsResult or JsPromptResult",
+      "全屏、画中画、同层渲染等媒体渲染事件对象 / Media rendering event objects for fullscreen, picture-in-picture, and same-layer rendering",
+      "DevTools 调试会话信息与 Crashpad 崩溃诊断产物 / DevTools debugging session information and Crashpad crash diagnostic artifacts"
     ],
     "postconditions": [
       {

@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:17:28.651Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -57,8 +58,14 @@
       "死亡通知回调对象 / death recipient callback object"
     ],
     "outputs": [
-      "简介",
-      "开发指导"
+      "服务端导出的远程对象句柄（IRemoteObject / RemoteObject / Stub 引用） / Remote object handle exported by the service (IRemoteObject / RemoteObject / Stub reference)",
+      "客户端用于发起调用的 Proxy 代理对象 / Client-side Proxy object used to initiate IPC/RPC calls",
+      "请求数据包与应答数据包（MessageParcel / MessageSequence / IPC Parcel） / Request and reply parcels carrying marshalled data (MessageParcel / MessageSequence / IPC Parcel)",
+      "远程调用返回结果（业务返回值、状态码、错误码） / Remote call result, including business return values, status codes, and error codes",
+      "sendRequest / sendMessageRequest 的应答对象或结果对象 / Response or result object returned by sendRequest / sendMessageRequest",
+      "远端 Stub 对象死亡通知回调（DeathRecipient / 死亡状态通知） / Remote Stub death notification callback (DeathRecipient / death status notification)",
+      "用于大数据传输的匿名共享内存对象或句柄 / Anonymous shared memory object or handle for large data transfer",
+      "C/C++ IPC/RPC 句柄对象（远程代理、远程 Stub、Parcel 等） / C/C++ IPC/RPC handle objects such as remote proxy, remote Stub, and Parcel"
     ],
     "postconditions": [
       {

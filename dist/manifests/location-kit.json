@@ -3,7 +3,7 @@
   "skill": "location-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.937Z"
+    "at": "2026-05-21T03:47:44.569Z"
   },
   "references": [
     {
@@ -19,7 +19,7 @@
     {
       "path": "references/云侧围栏开发指导.md",
       "title": "云侧围栏开发指导",
-      "snippet": "云侧围栏是指开发者直接使用云侧公共围栏，当用户进入这个区域，在移动设备上进行有针对性的提醒。 #### 开通云侧围栏服务 在开通定位服务前，请先参考“ 应用开发准备 ”创建项目和应用工程。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/b0/v3/hz6n5A-2Sz-e04nLw2BCiA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111553Z&HW-CC-Expire=86400&HW-CC-Sign=07CDD66C5654360EB5BE2A67FE83F9A37E4DAEF5FCF34F48113F7005F972FA22) 从HarmonyOS NEXT Developer Beta2起，开发者无需配置公钥指纹和Client ID。 **操作步骤** 1. 登录 AppGallery Connect 网站，选择“开发与服务”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/51/v3/o-b7_s_ESRu7TFONrC2jxA/zh-cn_image_00000025"
+      "snippet": "云侧围栏是指开发者直接使用云侧公共围栏，当用户进入这个区域，在移动设备上进行有针对性的提醒。 #### 开通云侧围栏服务 在开通定位服务前，请先参考“ 应用开发准备 ”创建项目和应用工程。 从HarmonyOS NEXT Developer Beta2起，开发者无需配置公钥指纹和Client ID。 **操作步骤** 1. 登录 AppGallery Connect 网站，选择“开发与服务”。 2. 在项目列表中找到您的项目，在项目下的应用列表中选择需要配置定位服务参数的应用。 3. 在左侧导航栏选择“定位服务”，并点击收藏。 4. 在左侧导航栏选择“构建 > 定位服务”。 #### 使用场景 1. 开发者可以通过该围栏扩展能力来使用云侧公共围栏。 2. 开发者首先需要在AGC（AppGallery Connect）平台定位服务选择右侧“添加围栏组触发”开始创建地理围栏。 3. 可以根据商圈、景点等类别，配置围栏组下发围栏策略。 4. 定位服务在满足围栏触发条件后，通过FenceExtensionAbility把围栏事件通知给APP，APP接收到围栏事件后完成相关的业务处理。 #### 接口介绍 接口详情参见 FenceExtensionAbility 。 #### 开发步骤 要实现一个地理围栏扩展服务，开发者需要实现 FenceExtensionAbility 的能力，具体步骤如"
     },
     {
       "path": "references/地理围栏简介.md",
@@ -29,7 +29,7 @@
     {
       "path": "references/正地理编码与逆地理编码开发指导.md",
       "title": "正地理编码与逆地理编码开发指导",
-      "snippet": "使用经纬度坐标描述一个位置，非常准确，但是并不直观，面向用户表达并不友好。系统向开发者提供了以下两种转化能力。 - 正地理编码：将地理编码转化为具体经纬度坐标。 - 逆地理编码：将具体的经纬度坐标转化为地理编码。 其中地理编码包含多个属性来描述位置信息，包括国家、行政区划、街道、门牌号、地址描述等等，这样的信息更便于用户理解。 #### 接口说明 进行经纬度坐标和地理编码的相互转化，所使用的接口说明如下，详细信息参见Location Kit API参考： @ohos.geoLocationManager (位置服务) 。 #### 开发步骤 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5d/v3/BRhmqUo-TTqOpaZfYcIlsQ/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111553Z&HW-CC-Expire=86400&HW-CC-Sign=7FAD5416FCEBCACBC14BA385D2162FE8023DE3FD6D7C78535F40926A50E20C28) 正地理编码与逆地理编码功能需要访问后端服务，请确保设备联网，以进行信息获取。 1. 导入geoLocationMan"
+      "snippet": "使用经纬度坐标描述一个位置，非常准确，但是并不直观，面向用户表达并不友好。系统向开发者提供了以下两种转化能力。 - 正地理编码：将地理编码转化为具体经纬度坐标。 - 逆地理编码：将具体的经纬度坐标转化为地理编码。 其中地理编码包含多个属性来描述位置信息，包括国家、行政区划、街道、门牌号、地址描述等等，这样的信息更便于用户理解。 #### 接口说明 进行经纬度坐标和地理编码的相互转化，所使用的接口说明如下，详细信息参见Location Kit API参考： @ohos.geoLocationManager (位置服务) 。 #### 开发步骤 正地理编码与逆地理编码功能需要访问后端服务，请确保设备联网，以进行信息获取。 1. 导入geoLocationManager模块，所有与正地理编码和逆地理编码能力相关的功能API，都是通过该模块提供的。 import { geoLocationManager } from '@kit.LocationKit'; 2. 查询正地理编码与逆地理编码服务是否可用。 - 调用isGeocoderAvailable查询正地理编码与逆地理编码服务是否可用，如果服务可用再继续进行步骤3。如果服务不可用，说明该设备不具备地理编码与逆地理编码能力，请勿使用相关接口。 import { geoLocationManager } from '@kit.Locatio"
     },
     {
       "path": "references/申请位置权限开发指导.md",
@@ -39,7 +39,7 @@
     {
       "path": "references/申请开放能力权限指导.md",
       "title": "申请开放能力权限指导",
-      "snippet": "请先参考 应用开发准备 完成基本准备工作，再继续以下开放能力准备项。 #### 室内高精度定位 为了更好的用户体验，系统侧对室内高精度定位服务功能做了权限保护处理，使用相关接口开发者需先提交“室内高精度定位”能力开关的申请，在申请通过后，再使用该能力。 1. 登录 AppGallery Connect ，选择“开发与服务”。 2. 在项目列表选择项目，并在应用列表下选择需要申请室内高精度定位功能的应用。 3. 进入“项目设置 > 开放能力管理”页面，选择能力名称为定位服务（HarmonyOS NEXT），然后点击“室内高精度定位”对应的“申请”。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/9c/v3/4iF1YG96SaOpaLjt-Ee1hQ/zh-cn_image_0000002543215018.png?HW-CC-KV=V1&HW-CC-Date=20260421T111552Z&HW-CC-Expire=86400&HW-CC-Sign=4E62525E89A5E094FF7703DB5D385507A9047D72DC68E97A3FE251F5FC6C7710) 4. 参考“申请原因”中的模板，提供申请必需的相关信息，包括应用介绍、使用场景、申"
+      "snippet": "请先参考 应用开发准备 完成基本准备工作，再继续以下开放能力准备项。 #### 室内高精度定位 为了更好的用户体验，系统侧对室内高精度定位服务功能做了权限保护处理，使用相关接口开发者需先提交“室内高精度定位”能力开关的申请，在申请通过后，再使用该能力。 1. 登录 AppGallery Connect ，选择“开发与服务”。 2. 在项目列表选择项目，并在应用列表下选择需要申请室内高精度定位功能的应用。 3. 进入“项目设置 > 开放能力管理”页面，选择能力名称为定位服务（HarmonyOS NEXT），然后点击“室内高精度定位”对应的“申请”。 4. 参考“申请原因”中的模板，提供申请必需的相关信息，包括应用介绍、使用场景、申请用途，然后点击“提交”按钮。 返回“开放能力管理”页面，原“申请”变为“申请中”，1~3个工作日内反馈申请结果，请留意互动中心的“服务开通申请”信息。 申请通过后，互动中心会发送通知给您，同时“申请中”会变为置灰显示的“申请”，至此，应用已成功开启室内高精度定位开放能力。 #### 长隧道车道级导航 为了更好的用户体验，系统侧对长隧道车道级导航服务功能做了权限保护处理，使用相关接口开发者需先提交“长隧道车道级导航”能力开关的申请，在申请通过后，再使用该能力。 1. 登录 AppGallery Connect ，选择“开发与服务”。 2. 在项目列表选择项目"
     },
     {
       "path": "references/相关实例.md",
@@ -59,12 +59,12 @@
     {
       "path": "references/获取设备的位置信息开发指导(C_C++).md",
       "title": "获取设备的位置信息开发指导(C/C++)",
-      "snippet": "开发者可以调用HarmonyOS位置相关接口，监听设备的位置变化。 #### 函数说明 #### 开发步骤 1. 新建一个Native C++工程。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/0c/v3/A8qlPkhbQ8e1jhp6i_Cfrg/zh-cn_image_0000002543215028.png?HW-CC-KV=V1&HW-CC-Date=20260421T111552Z&HW-CC-Expire=86400&HW-CC-Sign=10549A0664552B4E34458E9728488C039242D72CD7F0F56CE0885A0C52A95684) 2. 获取设备的位置信息，需要有位置权限，位置权限申请的方法和步骤见 申请位置权限开发指导 。 3. CMakeLists.txt文件中引入动态依赖库。 target_link_libraries(entry PUBLIC libace_napi.z.so) target_link_libraries(entry PUBLIC libhilog_ndk.z.so) target_link_libraries(entry PUBLIC liblocation_ndk.so) 4. 在"
+      "snippet": "开发者可以调用HarmonyOS位置相关接口，监听设备的位置变化。 #### 函数说明 #### 开发步骤 1. 新建一个Native C++工程。 2. 获取设备的位置信息，需要有位置权限，位置权限申请的方法和步骤见 申请位置权限开发指导 。 3. CMakeLists.txt文件中引入动态依赖库。 target_link_libraries(entry PUBLIC libace_napi.z.so) target_link_libraries(entry PUBLIC libhilog_ndk.z.so) target_link_libraries(entry PUBLIC liblocation_ndk.so) 4. 在napi_init.cpp文件中编码，首先导入模块。 #include \"napi/native_api.h\" #include \"LocationKit/oh_location.h\" #include \"LocationKit/oh_location_type.h\" #include \"hilog/log.h\" #include <stdlib.h> 5. 调用获取位置接口之前需要先判断位置开关是否打开。 查询当前位置开关状态，返回结果为布尔值，true代表位置开关开启，false代表位置开关关闭，示例代码如下： static napi_value OhL"
     },
     {
       "path": "references/附录.md",
       "title": "附录",
-      "snippet": "![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/37/v3/oYN5ZBwHSveKRtETzCKLNw/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111554Z&HW-CC-Expire=86400&HW-CC-Sign=2AB2A31C8C17AF9740069737E77EC25EC3FFA6C7FECCEEA4E93C707FDB773CFA) 支持的设备中Wearable设备支持以下国家/地区，其他设备仅支持中国境内（不包含中国香港、中国澳门、中国台湾）。"
+      "snippet": "支持的设备中Wearable设备支持以下国家/地区，其他设备仅支持中国境内（不包含中国香港、中国澳门、中国台湾）。"
     }
   ]
 }

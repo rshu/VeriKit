@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:18:31.084Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -57,14 +58,24 @@
       "目标相册信息或媒体筛选条件 / target album information or media filtering criteria"
     ],
     "outputs": [
-      "简介",
-      "开发准备",
-      "媒体资源管理",
-      "相册管理",
-      "Picker与组件",
-      "资源保存与编辑",
-      "动态照片",
-      "其他"
+      "相册管理模块实例 PhotoAccessHelper / PhotoAccessHelper instance for accessing and managing media library resources",
+      "系统图库 Picker 选择结果 PhotoSelectResult（包含所选图片/视频的 photoUris 等） / PhotoSelectResult from the system gallery Picker, including selected image/video photoUris",
+      "媒体资源对象 PhotoAsset（图片、视频等资源的元数据与操作入口） / PhotoAsset object representing a photo or video asset with metadata and operations",
+      "媒体资源查询结果集 FetchResult<PhotoAsset> / FetchResult<PhotoAsset> returned from media asset queries",
+      "相册对象 Album（用户相册或系统相册） / Album object representing a user or system album",
+      "相册查询结果集 FetchResult<Album> / FetchResult<Album> returned from album queries",
+      "媒体资源 URI（图片、视频、动态照片等在媒体库中的访问标识） / Media asset URI identifying photos, videos, moving photos, and other library assets",
+      "缩略图 PixelMap（通过媒体资源生成的缩略图） / PixelMap thumbnail generated from a media asset",
+      "嵌入式 PhotoPicker 组件的已选图片/视频资源结果 / Selected photo or video results emitted by the embedded PhotoPicker component",
+      "AlbumPicker 组件选中的相册对象或相册标识 / Selected Album object or album identifier emitted by AlbumPicker",
+      "RecentPhoto 组件返回的最近一张图片或视频资源信息 / Recent photo or video resource information returned by RecentPhoto",
+      "保存到系统图库后的图片/视频媒体资源或 URI / Saved image or video media asset or URI in the system gallery",
+      "PickerController 编辑替换后更新的原图媒体资源 / Original media asset updated after replacement through PickerController",
+      "动态照片对象 MovingPhoto 及其图片/视频内容资源 / MovingPhoto object and its associated image and video content resources",
+      "MovingPhotoView 可播放的动态照片显示内容 / Playable moving photo content rendered by MovingPhotoView",
+      "媒体资源变更通知数据 ChangeData / ChangeData delivered by media asset change notifications",
+      "C/C++ MediaAssetManager 请求后写入应用沙箱目标路径的媒体文件 / Media file copied to the target app sandbox path by C/C++ MediaAssetManager",
+      "媒体资源重命名或相册重命名后的更新对象 / Updated media asset or album object after rename operations"
     ],
     "postconditions": [
       {

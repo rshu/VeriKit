@@ -3,7 +3,7 @@
   "skill": "online-authentication-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:29.028Z"
+    "at": "2026-05-21T03:47:44.641Z"
   },
   "references": [
     {
@@ -19,7 +19,7 @@
     {
       "path": "references/Online Authentication Kit简介.md",
       "title": "Online Authentication Kit简介",
-      "snippet": "Online Authentication Kit（在线认证服务）遵循FIDO（Fast Identity Online）、FIDO2、IIFAA（互联网可信认证联盟）和SOTER标准免密认证规范，提供免密身份认证的移动端能力。用户应用接入FIDO、FIDO2、IFAA或SOTER服务器后，可以使用相应的移动端能力，用生物特征（例如指纹、3D人脸）代替密码，实现免密登录、免密支付等业务场景。 #### FIDO FIDO是一种国际主流的免密认证标准，几乎所有的设备厂商都支持FIDO免密认证协议，同时众多生态APP厂商也广泛使用依赖该能力，包括中国工商银行，中国银行，农业银行，交通银行等各大行，以及众多证券，金融APP。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/77/v3/NjtnUBsQTwSZsU9KGog8bA/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111119Z&HW-CC-Expire=86400&HW-CC-Sign=EF8291EEBBA8FACC23C03538154D24B53023502F78F584A39E1798EEF1E5E282) 请参考 sample-FIDOcli"
+      "snippet": "Online Authentication Kit（在线认证服务）遵循FIDO（Fast Identity Online）、FIDO2、IIFAA（互联网可信认证联盟）和SOTER标准免密认证规范，提供免密身份认证的移动端能力。用户应用接入FIDO、FIDO2、IFAA或SOTER服务器后，可以使用相应的移动端能力，用生物特征（例如指纹、3D人脸）代替密码，实现免密登录、免密支付等业务场景。 #### FIDO FIDO是一种国际主流的免密认证标准，几乎所有的设备厂商都支持FIDO免密认证协议，同时众多生态APP厂商也广泛使用依赖该能力，包括中国工商银行，中国银行，农业银行，交通银行等各大行，以及众多证券，金融APP。 请参考 sample-FIDOclientdemo （见 网站链接免责声明 ）。 #### IFAA IIFAA互联网可信认证联盟，是2015年由中国信通院、蚂蚁集团、阿里巴巴、华为、中兴、三星联合发起的可信认证生态联盟。联盟致力于推动可信认证技术发展及行业应用，引领行业制定技术规范。其中本地免密技术规范，用于支持免密登录，免密支付等业务场景。 请参考 sample-IFAAclientdemo （见 网站链接免责声明 ）。 #### SOTER SOTER提供一套生物认证平台和标准，使得业务可以采用设备上的传感器（如人脸传感器/指纹传感器）进行安全、高效的免密登录"
     },
     {
       "path": "references/SOTER免密身份认证.md",
@@ -29,12 +29,12 @@
     {
       "path": "references/开发准备.md",
       "title": "开发准备",
-      "snippet": "开发者的业务需要接入符合FIDO UAF标准的协议，并部署符合FIDO UAF标准协议的FIDO服务端。FIDO网址: https://fidoalliance.org/ （见 网站链接免责声明 ）。 #### IFAA开发准备 开发者的业务接入IIFAA联盟，并接入IIFAA中心服务器。IIFAA网址： https://www.iifaa.org.cn/technical#paper （见 网站链接免责声明 ）。 #### SOTER开发准备 开发者的业务接入SOTER服务器。SOTER github： https://github.com/Tencent/soter （见 网站链接免责声明 ）。 #### 通行密钥开发准备 - 开发者基于FIDO2的CAPI接口开发时（调用ArkTs接口时不涉及），需要申请如下通行密钥服务权限。在申请权限前，请保证符合 权限使用的基本原则 。申请方式请参考： 申请受限权限 。 - FIDO2协议基于应用的网址域名开通应用的通行密钥，开发者的应用需要关联网址域名，才可使用通行密钥服务。接入需完成四步： 在AGC开通App Linking服务 > 在开发者网站上关联应用 > 在AGC创建关联的网址域名 > 在module.json5中配置关联的网址域名 。"
+      "snippet": "开发者的业务需要接入符合FIDO UAF标准的协议，并部署符合FIDO UAF标准协议的FIDO服务端。FIDO网址: （见 网站链接免责声明 ）。 #### IFAA开发准备 开发者的业务接入IIFAA联盟，并接入IIFAA中心服务器。IIFAA网址： （见 网站链接免责声明 ）。 #### SOTER开发准备 开发者的业务接入SOTER服务器。SOTER github： （见 网站链接免责声明 ）。 #### 通行密钥开发准备 - 开发者基于FIDO2的CAPI接口开发时（调用ArkTs接口时不涉及），需要申请如下通行密钥服务权限。在申请权限前，请保证符合 权限使用的基本原则 。申请方式请参考： 申请受限权限 。 - FIDO2协议基于应用的网址域名开通应用的通行密钥，开发者的应用需要关联网址域名，才可使用通行密钥服务。接入需完成四步： 在AGC开通App Linking服务 > 在开发者网站上关联应用 > 在AGC创建关联的网址域名 > 在module.json5中配置关联的网址域名 。"
     },
     {
       "path": "references/概述.md",
       "title": "概述",
-      "snippet": "从HarmonyOS 6.0.0(20)开始，在线认证服务提供了通行密钥特性。通行密钥主要提供了以下能力： - 通行密钥注册：支持使用用户身份认证特征（如人脸、指纹、PIN码）作为平台认证器，在本设备上创建应用或网页的通行密钥。 - 本地免密认证：支持使用用户身份认证特征（如人脸、指纹、PIN码）作为平台认证器，使用通行密钥在本设备上进行应用或网页的免密认证。 - 跨设备扫码认证：支持使用已注册通行密钥的移动设备作为漫游认证器，使用跨设备扫码的方式，在其他设备上进行应用或网页的免密认证。 #### 场景介绍 具体应用场景如下： #### 注册通行密钥 需要提供方便、快速、安全的本地应用或网页登录方式时，可以使用通行密钥服务的通行密钥注册能力为用户创建通行密钥。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/a1/v3/-elg2Q-aQjOcJ3cDpkUaJg/zh-cn_image_0000002543214440.png?HW-CC-KV=V1&HW-CC-Date=20260421T111120Z&HW-CC-Expire=86400&HW-CC-Sign=4B80A7D761363F4B104E705181A65BBEC209B2993ABD812B5"
+      "snippet": "从HarmonyOS 6.0.0(20)开始，在线认证服务提供了通行密钥特性。通行密钥主要提供了以下能力： - 通行密钥注册：支持使用用户身份认证特征（如人脸、指纹、PIN码）作为平台认证器，在本设备上创建应用或网页的通行密钥。 - 本地免密认证：支持使用用户身份认证特征（如人脸、指纹、PIN码）作为平台认证器，使用通行密钥在本设备上进行应用或网页的免密认证。 - 跨设备扫码认证：支持使用已注册通行密钥的移动设备作为漫游认证器，使用跨设备扫码的方式，在其他设备上进行应用或网页的免密认证。 #### 场景介绍 具体应用场景如下： #### 注册通行密钥 需要提供方便、快速、安全的本地应用或网页登录方式时，可以使用通行密钥服务的通行密钥注册能力为用户创建通行密钥。 #### 使用通行密钥登录本设备的应用或网页账号 用户在登录应用或者网页时，需要验证用户的身份，可以使用通行密钥服务的本地免密认证能力。 #### 使用跨设备扫码登录其他设备的应用或网页账号 用户在其他设备上登录应用或网页时，需要验证用户的身份，可以使用通行密钥服务的跨设备扫码认证能力。 以上使用场景均需要开发者部署符合FIDO2标准协议的FIDO服务器。 #### 基本概念 通行密钥（Passkey）是基于 FIDO2标准协议 （见 网站链接免责声明 ）实现的一种简单又安全的登录方式。借用通行密钥，用户可使用指纹、人脸或手"
     },
     {
       "path": "references/网站链接免责声明.md",

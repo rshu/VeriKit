@@ -3,7 +3,7 @@
   "skill": "enterprise-data-guard-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.767Z"
+    "at": "2026-05-21T03:47:44.448Z"
   },
   "references": [
     {
@@ -74,7 +74,7 @@
     {
       "path": "references/获取解密硬盘数据的企业恢复密钥.md",
       "title": "获取解密硬盘数据的企业恢复密钥",
-      "snippet": "为应用提供获取企业恢复密钥的能力，在企业公钥证书配置成功后，可直接获取企业恢复密钥，用于解密已加密的硬盘数据。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/5a/v3/4gbmwsLXTnyjbSMiighJkg/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111118Z&HW-CC-Expire=86400&HW-CC-Sign=98D04B48BE221DAE3A66C23B277C41CF39DCD37DC89B4DAA8723E4C4C4A85EAB) 企业恢复密钥仅可被获取一次，获取到企业恢复密钥后，可在持有企业私钥的设备上解密，并进行相应的存储。如果需要再次获取，需要先调用 删除企业恢复密钥 能力，再调用该能力。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入模块。 import { recoveryKey } from '@kit.EnterpriseDataGuardKit'; import { BusinessError, osAccount } from '@kit.BasicServicesKit'; 2. 调用接口 getEnterprise"
+      "snippet": "为应用提供获取企业恢复密钥的能力，在企业公钥证书配置成功后，可直接获取企业恢复密钥，用于解密已加密的硬盘数据。 企业恢复密钥仅可被获取一次，获取到企业恢复密钥后，可在持有企业私钥的设备上解密，并进行相应的存储。如果需要再次获取，需要先调用 删除企业恢复密钥 能力，再调用该能力。 #### 接口说明 详细接口说明可参考 接口文档 。 #### 开发步骤 1. 导入模块。 import { recoveryKey } from '@kit.EnterpriseDataGuardKit'; import { BusinessError, osAccount } from '@kit.BasicServicesKit'; 2. 调用接口 getEnterpriseRecoveryKey ，传入需要获取企业恢复密钥的用户ID，获取企业恢复密钥。 async function testGetEnterpriseRecoveryKey() { try { let accountManager: osAccount.AccountManager = osAccount.getAccountManager(); let userId: number = await accountManager.getOsAccountLocalId(); recoveryKey.getEnterpriseRecov"
     },
     {
       "path": "references/获取重置锁屏密码的企业恢复密钥.md",

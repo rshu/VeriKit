@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:12:31.716Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -63,15 +64,25 @@
       "应用账号标识或账号数据 / App account identifier or account data"
     ],
     "outputs": [
-      "服务概述",
-      "公共事件（进程间通信）",
-      "线程间通信",
-      "剪贴板",
-      "文件处理",
-      "打印服务",
-      "USB管理",
-      "应用账号管理",
-      "其他"
+      "剪贴板数据对象（PasteData） / Clipboard data object (PasteData)",
+      "剪贴板数据记录（文本、HTML、URI、PixelMap 等 PasteDataRecord） / Clipboard data records (text, HTML, URI, PixelMap, etc. PasteDataRecord)",
+      "剪贴板读取结果与内容变更通知 / Clipboard read results and content-change notifications",
+      "公共事件数据（CommonEventData） / Common event data (CommonEventData)",
+      "公共事件订阅者对象与事件回调结果 / Common event subscriber object and event callback result",
+      "Emitter 线程间事件数据（EventData） / Emitter inter-thread event data (EventData)",
+      "上传任务对象、上传进度与服务器响应 / Upload task object, upload progress, and server response",
+      "下载任务对象、下载进度与本地下载文件 / Download task object, download progress, and local downloaded file",
+      "后台传输任务状态与断点续传结果 / Background transfer task status and resumable transfer result",
+      "压缩归档文件（如 ZIP 文件） / Compressed archive file (such as a ZIP file)",
+      "解压后的文件或目录 / Extracted files or directories",
+      "打印任务或打印作业结果 / Print task or print job result",
+      "USB 设备列表与设备信息（USBDevice 等） / USB device list and device information (USBDevice, etc.)",
+      "USB 设备连接或管道对象 / USB device connection or pipe object",
+      "USB 传输读写数据与传输结果（批量、控制、实时、中断） / USB transfer read/write data and transfer results (bulk, control, isochronous, interrupt)",
+      "USB 串口配置、串口连接与收发字节数据 / USB serial configuration, serial connection, and sent/received byte data",
+      "应用账号信息与账号数据 / Application account information and account data",
+      "应用账号鉴权令牌或凭据数据 / Application account authentication tokens or credential data",
+      "闲时防睡眠请求的生效状态或释放结果 / Effective state or release result of idle sleep-prevention request"
     ],
     "postconditions": [
       {

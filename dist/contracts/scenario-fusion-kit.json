@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:21:04.733Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -59,12 +60,33 @@
       "待读取的系统信息键或系统设置属性键 / system info keys or system settings property keys"
     ],
     "outputs": [
-      "入门与概述",
-      "场景化Button组件",
-      "场景化Input组件",
-      "场景化API",
-      "智能填充",
-      "常见问题"
+      "快速验证手机号Button组件 / Quick phone-number verification Button component",
+      "手机号快速验证结果（验证成功/失败及相关手机号信息） / Quick phone-number verification result (success/failure and related phone-number information)",
+      "获取手机号和风险等级Button组件 / Phone number and risk level Button component",
+      "手机号与风险等级结果对象 / Phone number and risk level result object",
+      "选择头像Button组件 / Avatar selection Button component",
+      "用户选择的头像图片资源或文件URI / User-selected avatar image resource or file URI",
+      "打开APP Button组件 / Open app Button component",
+      "第三方应用拉起结果 / Third-party app launch result",
+      "选择收货地址Button组件 / Shipping address selection Button component",
+      "用户选择的收货地址对象（姓名、手机号、地区、详细地址等） / User-selected shipping address object (name, phone number, region, detailed address, etc.)",
+      "选择发票抬头Button组件 / Invoice title selection Button component",
+      "用户选择的发票抬头信息对象 / User-selected invoice title information object",
+      "地图选点Button组件 / Map location picker Button component",
+      "用户选择的地图位置对象（经纬度、地址、位置名称等） / User-selected map location object (latitude/longitude, address, place name, etc.)",
+      "权限设置Button组件 / Permission settings Button component",
+      "权限设置页面跳转或设置结果 / Permission settings page navigation or setting result",
+      "省市区选择器Input组件 / Province-city-district selector Input component",
+      "用户选择的省市区地区对象 / User-selected province-city-district region object",
+      "系统信息属性值 / System information property value",
+      "异步获取的系统信息属性值 / Asynchronously retrieved system information property value",
+      "系统设置属性值 / System settings property value",
+      "关注组件展示结果 / Follow component display result",
+      "转换后的文件路径 / Converted file path",
+      "智能填充推荐项 / Autofill suggestion items",
+      "智能填充后的表单字段值 / Autofilled form field values",
+      "自动补全的地址地区信息 / Autocompleted address region information",
+      "推荐的车牌号信息 / Recommended license plate number information"
     ],
     "postconditions": [
       {

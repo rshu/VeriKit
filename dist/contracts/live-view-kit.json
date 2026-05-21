@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:17:34.910Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -58,11 +59,15 @@
       "远程更新所需的推送消息数据（如适用） / Push message payload for remote updates if applicable"
     ],
     "outputs": [
-      "简介",
-      "准备工作",
-      "开发指导",
-      "设计规范",
-      "常见问题"
+      "实况窗通知请求对象（NotificationRequest，用于发布本地实况窗） / Live View notification request object (NotificationRequest for publishing a local Live View)",
+      "实况窗内容数据（实时状态、进度、时间、标题、业务文案等展示数据） / Live View content data (real-time status, progress, time, title, and business text)",
+      "锁屏实况窗卡片 / Lock-screen Live View card",
+      "通知中心实况窗卡片 / Notification-center Live View card",
+      "状态栏实况窗胶囊 / Status-bar Live View capsule",
+      "实况窗远程更新推送消息 / Remote Live View update push message",
+      "实况窗更新后的展示状态 / Updated rendered Live View state",
+      "实况窗结束态展示（完成、取消、超时等） / Final Live View end-state rendering (completed, canceled, timed out, etc.)",
+      "实况窗点击跳转意图代理（WantAgent） / Tap-to-open intent agent for the Live View (WantAgent)"
     ],
     "postconditions": [
       {

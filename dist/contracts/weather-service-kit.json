@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:23:08.038Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -57,9 +58,15 @@
       "请求上下文（主线程、worker或taskpool） / request context (main thread, worker, or taskpool)"
     ],
     "outputs": [
-      "开发指南",
-      "常见问题",
-      "其他"
+      "经纬度天气数据响应对象 / Weather data response object for a latitude-longitude query",
+      "实况天气数据（当前温度、天气现象、湿度、风力等） / Current weather data (temperature, condition, humidity, wind, etc.)",
+      "48小时逐小时天气预报数据 / 48-hour hourly weather forecast data",
+      "10日逐日天气预报数据 / 10-day daily weather forecast data",
+      "未来2小时分钟级降水预报数据（方圆5km范围） / Minute-level precipitation forecast data for the next 2 hours within a 5 km radius",
+      "天气和环境预警信息（气象局实时发布） / Weather and environmental alert information issued in real time by meteorological authorities",
+      "天气生活指数数据（晾晒、穿衣、紫外线、路况、钓鱼等） / Weather lifestyle index data (drying, dressing, UV, road condition, fishing, etc.)",
+      "天文数据（日出日落、月出月落、月相） / Astronomical data (sunrise, sunset, moonrise, moonset, moon phase)",
+      "潮汐数据（主要港口和城市的潮汐信息） / Tide data for major ports and cities"
     ],
     "postconditions": [
       {

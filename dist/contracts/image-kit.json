@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:16:57.034Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -15,7 +16,7 @@
       "图片编解码",
       "图片编辑",
       "EXIF",
-      "HDR",
+      "在相册或图片编辑应用中对HDR图片进行单层与双层格式转换、色彩空间转换或动态元数据生成 / Convert HDR still images between single-layer and dual-layer formats, perform color space conversion, or generate dynamic metadata in a gallery or photo editing app",
       "ImageProcessing",
       "如何使用ImageSource完成图片解码并获取PixelMap用于显示？",
       "如何使用ImagePacker将PixelMap编码为指定格式的图片文件？",
@@ -59,13 +60,22 @@
       "图像处理参数（裁剪、缩放、旋转、滤镜、EXIF、HDR等） / image processing parameters (crop, resize, rotate, filter, EXIF, HDR, etc.)"
     ],
     "outputs": [
-      "简介",
-      "图片解码",
-      "图片编码",
-      "图片编辑与处理",
-      "图片接收",
-      "HDR与色彩处理",
-      "常见问题与异常处理"
+      "解码后的位图对象（PixelMap） / decoded bitmap object (PixelMap)",
+      "解码后的多图图片对象（Picture，多帧/多图对象） / decoded multi-image object (Picture, multi-frame/multi-picture object)",
+      "编码后的图片二进制数据（ArrayBuffer） / encoded image binary data (ArrayBuffer)",
+      "写入文件描述符的编码图片文件（JPEG/PNG/WebP/HEIF等） / encoded image file written to a file descriptor (JPEG/PNG/WebP/HEIF, etc.)",
+      "经过裁剪、缩放、旋转或翻转处理后的PixelMap / PixelMap after crop, scale, rotate, or flip operations",
+      "像素读写得到的像素缓冲区数据（ArrayBuffer/Buffer） / pixel buffer data produced by pixel read/write operations (ArrayBuffer/Buffer)",
+      "添加滤镜或特效后的图片结果（PixelMap） / image result after filters or effects are applied (PixelMap)",
+      "读取到的EXIF元数据值（如拍摄参数、方向、GPS信息） / extracted EXIF metadata values (such as shooting parameters, orientation, GPS information)",
+      "写入或更新EXIF后的图片文件/图片数据 / image file or image data with written or updated EXIF metadata",
+      "从ImageReceiver接收到的图片帧对象（Image） / image frame object received from ImageReceiver (Image)",
+      "从接收图片帧中获取的图像分量数据（Component/ArrayBuffer） / image component data obtained from a received frame (Component/ArrayBuffer)",
+      "色彩空间转换后的图片对象（PixelMap或Picture） / color-space-converted image object (PixelMap or Picture)",
+      "HDR单双层格式转换后的HDR图片对象/图片数据 / HDR image object or image data after single-layer and dual-layer HDR conversion",
+      "生成的图片动态元数据 / generated image dynamic metadata",
+      "AI超分辨率增强后的图片结果（PixelMap/图片数据） / AI super-resolution enhanced image result (PixelMap/image data)",
+      "C/C++接口生成的原生图片源、位图或图片对象（OH_ImageSourceNative、OH_PixelmapNative、OH_ImageNative等） / native image source, bitmap, or image objects produced by C/C++ APIs (OH_ImageSourceNative, OH_PixelmapNative, OH_ImageNative, etc.)"
     ],
     "postconditions": [
       {

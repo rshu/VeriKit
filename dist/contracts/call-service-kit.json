@@ -5,8 +5,9 @@
   "extracted": {
     "tool": "extract-contracts.ts + refine-contracts.ts",
     "at": "2026-05-20T09:12:49.968Z",
-    "refinement": "auto+llm+gate-2026-05-20",
-    "use_when_bilingual": true
+    "refinement": "auto+llm",
+    "use_when_bilingual": true,
+    "contract_quality_gate": "2026-05-21"
   },
   "contract": {
     "version": "1.0.0",
@@ -56,9 +57,13 @@
       "用于拉起或关联通话流程的应用上下文 / application context used to start or associate the call flow"
     ],
     "outputs": [
-      "服务概述与准备",
-      "来电与去电场景",
-      "常见问题"
+      "来电横幅通知（展示头像、名称/号码、音视频类型及接听/拒接等操作） / Incoming-call banner notification showing avatar, name/number, audio/video type, and answer/decline actions",
+      "锁屏来电通知 / Lock-screen incoming-call notification",
+      "多路来电通知条目 / Multiple incoming-call notification entries",
+      "去电通话胶囊（屏幕左上角显示通话状态/时长） / Outgoing-call capsule showing call status/duration at the top-left of the screen",
+      "去电实况窗通知 / Outgoing-call live activity/window notification",
+      "通话操作事件回调（接听、拒接、静音/解除静音、挂断） / Call action event callbacks for answer, decline, mute/unmute, and hang up",
+      "企业联系人来去电显示信息 / Enterprise contact information displayed on incoming/outgoing call pages"
     ],
     "postconditions": [
       {

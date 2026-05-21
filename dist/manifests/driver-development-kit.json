@@ -3,7 +3,7 @@
   "skill": "driver-development-kit",
   "extracted": {
     "tool": "build-reference-manifests.ts",
-    "at": "2026-05-12T07:49:28.756Z"
+    "at": "2026-05-21T03:47:44.441Z"
   },
   "references": [
     {
@@ -24,7 +24,7 @@
     {
       "path": "references/开发带UI界面基础驱动.md",
       "title": "开发带UI界面基础驱动",
-      "snippet": "开发者开发带UI界面的基础驱动，适用于各种复合设备，需要通过UI界面设置对应的独特驱动能力或者通过UI界面展示从设备侧获取的信息，例如带有侧键的鼠标，手写板，身份证读卡器等设备。 #### 环境搭建 请参考 环境准备 完成开发前的准备工作。 #### 接口说明 扩展外设管理基本能力如下，更多详情请查阅 @ohos.driver.deviceManager 。 **表1** 扩展外设管理基本能力接口 #### 开发步骤 应用可通过查询绑定扩展外设，从而使用扩展外设的定制驱动能力。 开发示例如下（仅供参考）：为开发者提供的示例代码为同时开发客户端和服务端的Demo，并实现IPC通信。 1. 创建新工程，请参考 创建一个新的工程 ，创建一个HarmonyOS工程。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/17/v3/peB2dJANRiyE33KgQHVgog/note_3.0-zh-cn.png?HW-CC-KV=V1&HW-CC-Date=20260421T111223Z&HW-CC-Expire=86400&HW-CC-Sign=8A16B5EDC355906A98809F3510F8A80736510E14DC7CF91EB4369F81F46AA5EE"
+      "snippet": "开发者开发带UI界面的基础驱动，适用于各种复合设备，需要通过UI界面设置对应的独特驱动能力或者通过UI界面展示从设备侧获取的信息，例如带有侧键的鼠标，手写板，身份证读卡器等设备。 #### 环境搭建 请参考 环境准备 完成开发前的准备工作。 #### 接口说明 扩展外设管理基本能力如下，更多详情请查阅 @ohos.driver.deviceManager 。 **表1** 扩展外设管理基本能力接口 #### 开发步骤 应用可通过查询绑定扩展外设，从而使用扩展外设的定制驱动能力。 开发示例如下（仅供参考）：为开发者提供的示例代码为同时开发客户端和服务端的Demo，并实现IPC通信。 1. 创建新工程，请参考 创建一个新的工程 ，创建一个HarmonyOS工程。 - 开发驱动客户端，请选择Empty Ability模板。 - 开发驱动服务端，请选择Native C++模板。 - 同时开发驱动客户端和服务端，请选择Native C++模板。 2. 在文件中导入相关Kit，并声明想要绑定的USB设备的productId、vendorId以及与驱动通信的Code。 以下示例代码均写在entry/src/main/ets/pages/Index.ets文件中。 import { hilog } from '@kit.PerformanceAnalysisKit'; import { devic"
     },
     {
       "path": "references/开发无UI界面基础驱动.md",
@@ -54,7 +54,7 @@
     {
       "path": "references/环境准备.md",
       "title": "环境准备",
-      "snippet": "DevEco Studio作为驱动开发工具，是进行驱动开发的必备条件之一，我们可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考工具概述中的创建一个新的工程进行基本的操作验证，保证DevEco Studio可正常运行。 请使用 华为账号-登录 下载安装该工具，并参考 工具概述 中的 创建一个新的工程 进行基本的操作验证，保证DevEco Studio可正常运行。 #### SDK版本配置 扩展外设管理模块提供的ArkTS接口，所需SDK版本为API10及以上版本才可使用。 基于DDK能力开发专业专用扩展外设驱动或扩展外设增强驱动时，对SDK版本的要求如下： #### 检验环境是否搭建成功 检查DevEco Studio是否已连接上HarmonyOS设备。 ![](https://contentcenter-vali-drcn.dbankcdn.cn/pvt_2/DeveloperAlliance_scene_100_1/df/v3/GDey8EHUQfWfIv9Vdy8KCA/zh-cn_image_0000002543214504.png?HW-CC-KV=V1&HW-CC-Date=20260421T111222Z&HW-CC-Expire=86400&HW-CC-Sign=3EA5C2FD8F79F1F32E4C150A2D035B80FD4C4BE72CE7"
+      "snippet": "DevEco Studio作为驱动开发工具，是进行驱动开发的必备条件之一，我们可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考工具概述中的创建一个新的工程进行基本的操作验证，保证DevEco Studio可正常运行。 请使用 华为账号-登录 下载安装该工具，并参考 工具概述 中的 创建一个新的工程 进行基本的操作验证，保证DevEco Studio可正常运行。 #### SDK版本配置 扩展外设管理模块提供的ArkTS接口，所需SDK版本为API10及以上版本才可使用。 基于DDK能力开发专业专用扩展外设驱动或扩展外设增强驱动时，对SDK版本的要求如下： #### 检验环境是否搭建成功 检查DevEco Studio是否已连接上HarmonyOS设备。 #### HDC配置 HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命令行工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互，详细参考 hdc 配置。 “配置环境变量hdc_server_port”和“全局环境变量”为必须操作。 #### 开发设备 - 当前开发调试及验证，以PC作为开发设备进行说明。 - 开发扩展外设驱动客户端和扩展外设驱动时，需要一个外接USB设备进行调试，**当前仅支持通过USB总线连接的外接设备**。 - 需"
     }
   ]
 }
