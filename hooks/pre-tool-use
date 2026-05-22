@@ -42,12 +42,12 @@ const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
   const routingStr = JSON.stringify(entries[lastIdx]);
   const routed = known.filter(k => routingStr.indexOf(k) !== -1);
   const SCAFF = { arkts: 1, arkui: 1, "ability-kit": 1 };
-  const routedDomain = routed.filter(k => !SCAFF[k]);
-  // The gate is satisfied by naming ANY catalog Kit (not only routed ones),
-  // because the routing ranking can be wrong and the user may select a Kit
-  // VeriKit did not rank -- that human override must count as a selection.
-  const knownDomain = known.filter(k => !SCAFF[k]);
-  const matchSet = (knownDomain.length ? knownDomain : known).map(norm);
+  const routedDomain = routed.filter(k => !SCAFF[k]); // for the suggestion list only
+  // The gate is satisfied by naming ANY catalog Kit -- INCLUDING arkts / arkui /
+  // ability-kit. Scaffolding is only de-emphasised in the suggestion list, never
+  // excluded from a valid selection: e.g. CalendarPickerDialog is an ArkUI API,
+  // so "arkui" is a legitimate choice and must satisfy the gate.
+  const matchSet = known.map(norm);
   if (!matchSet.length) return allow();
   // Allow if a later ASSISTANT message names any catalog Kit.
   function assistantText(e){
