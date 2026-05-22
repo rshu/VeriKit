@@ -60,6 +60,14 @@ fi
 
 node -e "
 const router = process.argv[1];
+// Relevance gate: only engage VeriKit when the prompt is HarmonyOS
+// development-relevant, judged by the router's own confidence. routing.status
+// is 'uncertain' when no recipe matched AND the top Kit is a weak match (a
+// non-dev / off-catalog prompt); in that case pass through silently so VeriKit
+// neither injects routing nor (via the PreToolUse gate) blocks coding.
+let relevant = false;
+try { const o = JSON.parse(router); const st = o && o.routing && o.routing.status; relevant = !!st && st !== 'uncertain'; } catch (e) { relevant = false; }
+if (!relevant) { process.stdout.write(JSON.stringify({ continue: true })); process.exit(0); }
 const payload = {
   hookSpecificOutput: {
     hookEventName: 'UserPromptSubmit',

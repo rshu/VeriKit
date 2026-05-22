@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# VeriKit PreToolUse gate for Claude Code.
+#
+# Enforces explicit Kit selection before the coding agent writes code on a
+# HarmonyOS development task. Fires before Edit/Write/MultiEdit/NotebookEdit
+# (scoped by the matcher in hooks.json). Logic:
+#
+#   1. If VeriKit did NOT engage on the current task (no <verikit-routing>
+#      block was injected by the UserPromptSubmit hook -- i.e. the prompt was
+#      not HarmonyOS-development-relevant), ALLOW. The gate only applies to
+#      dev tasks.
+#   2. If VeriKit engaged but the agent has already Read >=1 routed Kit's doc
+#      (skills/<kit>/SKILL.md or skills/<kit>/references/...) since the
+#      routing was injected, ALLOW -- a Kit has been selected/consulted.
+#   3. Otherwise DENY the edit, telling the agent to consult a routed Kit
+#      first (permissionDecision: deny feeds the reason back to the agent).
+#
+# Fails OPEN on any error (missing/garbled transcript, parse failure): the
+# gate must never wedge the agent on its own bug.
+node -e '
+const fs = require("fs");
+function allow(){ process.stdout.write(JSON.stringify({ continue: true })); process.exit(0); }
+(function main(){
+  let input = ""; try { input = fs.readFileSync(0, "utf8"); } catch (e) { return allow(); }
+  let data; try { data = JSON.parse(input); } catch (e) { return allow(); }
+  const tp = data && data.transcript_path;
+  if (!tp) return allow();
+  let lines; try { lines = fs.readFileSync(tp, "utf8").split(/\r?\n/).filter(Boolean); } catch (e) { return allow(); }
+  const entries = [];
+  for (const ln of lines) { try { entries.push(JSON.parse(ln)); } catch (e) {} }
+  // Most recent VeriKit engagement = last entry carrying the routing block.
+  let lastIdx = -1;
+  for (let i = 0; i < entries.length; i++) { if (JSON.stringify(entries[i]).indexOf("<verikit-routing>") !== -1) lastIdx = i; }
+  if (lastIdx === -1) return allow();   // VeriKit did not engage -> not a dev task
+  // After engagement, has the agent Read a routed Kit doc?
+  const kitDoc = /skills\/[^"\\\/]+\/(SKILL\.md|references\/)/;
+  for (let i = lastIdx + 1; i < entries.length; i++) {
+    const s = JSON.stringify(entries[i]);
+    if (s.indexOf("\"Read\"") !== -1 && kitDoc.test(s)) return allow();   // a Kit was consulted
+  }
+  const reason = "VeriKit: this is a HarmonyOS development task and no Kit has been selected yet. Before writing code, Read at least one reference doc from a routed Kit (see the <verikit-routing> block above: its top Kit and that Kit deep_references), then retry this edit. This enforces explicit Kit selection.";
+  process.stdout.write(JSON.stringify({ hookSpecificOutput: { hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: reason } }));
+})();
+'
