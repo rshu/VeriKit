@@ -68,10 +68,25 @@ const router = process.argv[1];
 let relevant = false;
 try { const o = JSON.parse(router); const st = o && o.routing && o.routing.status; relevant = !!st && st !== 'uncertain'; } catch (e) { relevant = false; }
 if (!relevant) { process.stdout.write(JSON.stringify({ continue: true })); process.exit(0); }
+// Protocol the agent runs proactively, so the Kit menu is a normal chat
+// question (no blocked-tool 'Error' surfaces). The PreToolUse hook is only a
+// silent backstop for the case where the agent ignores this and codes anyway.
+const protocol = [
+  '<verikit-protocol>',
+  'This is a HarmonyOS development task. BEFORE writing or editing ANY code, do this:',
+  '1. Ask the user to choose the Kit(s) to use, presenting three options from the routing above:',
+  '   (1) VeriKit\\'s top Kits (the \"top\" / \"routing.top_k\" entries),',
+  '   (2) the Kits of any matched recipe (the \"compositions\" entries),',
+  '   (3) the user\\'s own Kit list (if the routing looks wrong).',
+  '2. After the user selects, read each selected Kit\\'s reference docs (its entries under \"deep_references\").',
+  '3. Then implement the feature, following those docs.',
+  'Do not edit code until the user has selected Kit(s) and you have read their references.',
+  '</verikit-protocol>'
+].join('\\n');
 const payload = {
   hookSpecificOutput: {
     hookEventName: 'UserPromptSubmit',
-    additionalContext: '<verikit-routing>\\n' + router + '\\n</verikit-routing>'
+    additionalContext: '<verikit-routing>\\n' + router + '\\n</verikit-routing>\\n' + protocol
   }
 };
 process.stdout.write(JSON.stringify(payload));
