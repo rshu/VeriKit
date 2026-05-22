@@ -1,71 +1,91 @@
 #!/usr/bin/env bash
 # VeriKit PreToolUse gate for Claude Code.
 #
-# Enforces explicit Kit selection before the coding agent writes code on a
-# HarmonyOS development task. Fires before Edit/Write/MultiEdit/NotebookEdit
-# (scoped by the matcher in hooks.json). Logic:
+# GUARANTEE: before the agent edits HarmonyOS code, a Kit must be selected.
+# The gate triggers on the EDIT TARGET (file type / project), NOT on whether
+# VeriKit's relevance score engaged -- so a mis-ranked "uncertain" prompt can
+# no longer let coding through ungated. Fires before
+# Edit/Write/MultiEdit/NotebookEdit (scoped by the matcher in hooks.json).
 #
-#   1. If VeriKit did NOT engage on the current task (no <verikit-routing>
-#      block was injected), ALLOW -- the gate only applies to dev tasks.
-#   2. If VeriKit engaged but the agent has, in a later reply, NAMED one of the
-#      routed Kits (the routing surfaced its candidate slugs), ALLOW -- the
-#      agent has selected a Kit. NB: Kit cards are auto-injected Claude Code
-#      skills and reference paths are not directly resolvable, so we key off
-#      the agent *naming* a routed Kit rather than reading a file.
-#   3. Otherwise DENY, listing the routed candidates so the agent can pick.
+#   1. Determine if the edit target is HarmonyOS code: a .ets file, OR any file
+#      inside a HarmonyOS project (an oh-package.json5 / build-profile.json5
+#      found up the directory tree). If not -> ALLOW (non-HarmonyOS edits are
+#      never gated).
+#   2. If it is HarmonyOS code, ALLOW only if the agent has NAMED a catalog Kit
+#      (any of the ~100 Kit slugs, incl. arkui) in a reply since the last user
+#      prompt -- i.e. a Kit was selected. Otherwise DENY with guidance.
 #
-# Fails OPEN on any error (missing transcript, no catalog, parse failure).
+# Fails OPEN on any internal error (bad transcript, missing catalog, crash):
+# the gate must never wedge the agent on its own bug.
 SKILLS_DIR="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "$0")/.." 2>/dev/null && pwd)}/skills"
 export VK_SKILLS_DIR="$SKILLS_DIR"
 node -e '
-const fs = require("fs");
+const fs = require("fs"), path = require("path");
 function allow(){ process.stdout.write(JSON.stringify({ continue: true })); process.exit(0); }
 const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
 (function main(){
   let input = ""; try { input = fs.readFileSync(0, "utf8"); } catch (e) { return allow(); }
   let data; try { data = JSON.parse(input); } catch (e) { return allow(); }
-  const tp = data && data.transcript_path;
-  if (!tp) return allow();
-  let lines; try { lines = fs.readFileSync(tp, "utf8").split(/\r?\n/).filter(Boolean); } catch (e) { return allow(); }
+  const ti = (data && data.tool_input) || {};
+  const fp = ti.file_path || ti.notebook_path || ti.path || "";
+  if (!fp) return allow();
+  const cwd = data.cwd || process.cwd();
+  const abs = path.isAbsolute(fp) ? fp : path.join(cwd, fp);
+  // Is this a HarmonyOS code edit? .ets, or any file inside a HarmonyOS project.
+  function inHarmonyProject(dir){
+    let d = dir;
+    for (let i = 0; i < 40 && d; i++) {
+      for (const m of ["oh-package.json5", "build-profile.json5"]) {
+        try { if (fs.existsSync(path.join(d, m))) return true; } catch (e) {}
+      }
+      const up = path.dirname(d); if (up === d) break; d = up;
+    }
+    return false;
+  }
+  const isHarmony = /\.ets$/i.test(abs) || inHarmonyProject(path.dirname(abs));
+  if (!isHarmony) return allow();   // not HarmonyOS code -> ungated
+  // Gated: require a Kit named since the last user prompt.
+  let lines; try { lines = fs.readFileSync(data.transcript_path, "utf8").split(/\r?\n/).filter(Boolean); } catch (e) { return allow(); }
   const entries = [];
   for (const ln of lines) { try { entries.push(JSON.parse(ln)); } catch (e) {} }
-  // Most recent VeriKit engagement = last entry carrying the routing block.
-  let lastIdx = -1;
-  for (let i = 0; i < entries.length; i++) { if (JSON.stringify(entries[i]).indexOf("<verikit-routing>") !== -1) lastIdx = i; }
-  if (lastIdx === -1) return allow();   // not a dev task / VeriKit did not engage
-  // Known Kit slugs from the shipped catalog.
+  function role(e){ const m = e && e.message; return (m && m.role) || (e && e.role) || (e && e.type); }
+  function isUserPrompt(e){
+    if (role(e) !== "user") return false;
+    const c = e && e.message && e.message.content;
+    if (typeof c === "string") return true;
+    if (Array.isArray(c)) return c.some(p => p && p.type === "text");
+    return false;
+  }
+  let startIdx = -1;
+  for (let i = 0; i < entries.length; i++) { if (isUserPrompt(entries[i])) startIdx = i; }
+  // Catalog Kit slugs.
   let known = [];
-  try { known = fs.readdirSync(process.env.VK_SKILLS_DIR).filter(n => { try { return fs.statSync(process.env.VK_SKILLS_DIR + "/" + n).isDirectory(); } catch (e) { return false; } }); } catch (e) {}
-  if (!known.length) return allow();    // cannot determine the catalog -> fail open
-  // Routed Kits = catalog slugs that appear in the routing block (used only
-  // for the suggestion list in the deny message).
-  const routingStr = JSON.stringify(entries[lastIdx]);
-  const routed = known.filter(k => routingStr.indexOf(k) !== -1);
-  const SCAFF = { arkts: 1, arkui: 1, "ability-kit": 1 };
-  const routedDomain = routed.filter(k => !SCAFF[k]); // for the suggestion list only
-  // The gate is satisfied by naming ANY catalog Kit -- INCLUDING arkts / arkui /
-  // ability-kit. Scaffolding is only de-emphasised in the suggestion list, never
-  // excluded from a valid selection: e.g. CalendarPickerDialog is an ArkUI API,
-  // so "arkui" is a legitimate choice and must satisfy the gate.
+  try { known = fs.readdirSync(process.env.VK_SKILLS_DIR).filter(n => { try { return fs.statSync(path.join(process.env.VK_SKILLS_DIR, n)).isDirectory(); } catch (e) { return false; } }); } catch (e) {}
+  if (!known.length) return allow();   // cannot determine catalog -> fail open
   const matchSet = known.map(norm);
-  if (!matchSet.length) return allow();
-  // Allow if a later ASSISTANT message names any catalog Kit.
   function assistantText(e){
-    const msg = e && e.message;
-    const role = (msg && msg.role) || (e && e.role) || (e && e.type);
-    if (role !== "assistant") return "";
-    const c = msg && msg.content;
+    if (role(e) !== "assistant") return "";
+    const c = e && e.message && e.message.content;
     if (typeof c === "string") return c;
     if (Array.isArray(c)) return c.filter(p => p && p.type === "text" && typeof p.text === "string").map(p => p.text).join(" ");
     return "";
   }
-  for (let i = lastIdx + 1; i < entries.length; i++) {
+  for (let i = startIdx + 1; i < entries.length; i++) {
     const t = norm(assistantText(entries[i]));
     if (!t) continue;
     for (const k of matchSet) { if (k && t.indexOf(k) !== -1) return allow(); }
   }
-  const suggest = (routedDomain.length ? routedDomain : routed).slice(0, 6).join(", ");
-  const reason = "VeriKit: this is a HarmonyOS development task and no Kit has been selected yet. Before writing code, choose a Kit and name it in your reply, then retry this edit. Options (HITL): use one of the routed suggestions (" + suggest + "), or -- if the routing looks wrong -- ask the user which Kit to use and name their choice (any catalog Kit counts). This enforces explicit Kit selection.";
+  // Deny -- suggest routed Kits if a routing block is present.
+  let suggest = "";
+  let lastR = -1;
+  for (let i = 0; i < entries.length; i++) { if (JSON.stringify(entries[i]).indexOf("<verikit-routing>") !== -1) lastR = i; }
+  if (lastR >= 0) {
+    const rs = JSON.stringify(entries[lastR]);
+    const SCAFF = { arkts: 1, arkui: 1, "ability-kit": 1 };
+    suggest = known.filter(k => rs.indexOf(k) !== -1 && !SCAFF[k]).slice(0, 6).join(", ");
+  }
+  const tail = suggest ? " Routed suggestions: " + suggest + "." : " If no VeriKit routing was shown, ask the user which Kit to use.";
+  const reason = "VeriKit: this is a HarmonyOS code edit (" + path.basename(abs) + ") and no Kit has been selected yet. Before editing, name the HarmonyOS Kit(s) you will use in your reply, then retry." + tail + " (Any catalog Kit counts.) This guarantees Kit selection before HarmonyOS coding.";
   process.stdout.write(JSON.stringify({ hookSpecificOutput: { hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: reason } }));
 })();
 '
