@@ -6,20 +6,21 @@
 # (scoped by the matcher in hooks.json). Logic:
 #
 #   1. If VeriKit did NOT engage on the current task (no <verikit-routing>
-#      block was injected by the UserPromptSubmit hook -- i.e. the prompt was
-#      not HarmonyOS-development-relevant), ALLOW. The gate only applies to
-#      dev tasks.
-#   2. If VeriKit engaged but the agent has already Read >=1 routed Kit's doc
-#      (skills/<kit>/SKILL.md or skills/<kit>/references/...) since the
-#      routing was injected, ALLOW -- a Kit has been selected/consulted.
-#   3. Otherwise DENY the edit, telling the agent to consult a routed Kit
-#      first (permissionDecision: deny feeds the reason back to the agent).
+#      block was injected), ALLOW -- the gate only applies to dev tasks.
+#   2. If VeriKit engaged but the agent has, in a later reply, NAMED one of the
+#      routed Kits (the routing surfaced its candidate slugs), ALLOW -- the
+#      agent has selected a Kit. NB: Kit cards are auto-injected Claude Code
+#      skills and reference paths are not directly resolvable, so we key off
+#      the agent *naming* a routed Kit rather than reading a file.
+#   3. Otherwise DENY, listing the routed candidates so the agent can pick.
 #
-# Fails OPEN on any error (missing/garbled transcript, parse failure): the
-# gate must never wedge the agent on its own bug.
+# Fails OPEN on any error (missing transcript, no catalog, parse failure).
+SKILLS_DIR="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "$0")/.." 2>/dev/null && pwd)}/skills"
+export VK_SKILLS_DIR="$SKILLS_DIR"
 node -e '
 const fs = require("fs");
 function allow(){ process.stdout.write(JSON.stringify({ continue: true })); process.exit(0); }
+const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
 (function main(){
   let input = ""; try { input = fs.readFileSync(0, "utf8"); } catch (e) { return allow(); }
   let data; try { data = JSON.parse(input); } catch (e) { return allow(); }
@@ -31,14 +32,40 @@ function allow(){ process.stdout.write(JSON.stringify({ continue: true })); proc
   // Most recent VeriKit engagement = last entry carrying the routing block.
   let lastIdx = -1;
   for (let i = 0; i < entries.length; i++) { if (JSON.stringify(entries[i]).indexOf("<verikit-routing>") !== -1) lastIdx = i; }
-  if (lastIdx === -1) return allow();   // VeriKit did not engage -> not a dev task
-  // After engagement, has the agent Read a routed Kit doc?
-  const kitDoc = /skills\/[^"\\\/]+\/(SKILL\.md|references\/)/;
-  for (let i = lastIdx + 1; i < entries.length; i++) {
-    const s = JSON.stringify(entries[i]);
-    if (s.indexOf("\"Read\"") !== -1 && kitDoc.test(s)) return allow();   // a Kit was consulted
+  if (lastIdx === -1) return allow();   // not a dev task / VeriKit did not engage
+  // Known Kit slugs from the shipped catalog.
+  let known = [];
+  try { known = fs.readdirSync(process.env.VK_SKILLS_DIR).filter(n => { try { return fs.statSync(process.env.VK_SKILLS_DIR + "/" + n).isDirectory(); } catch (e) { return false; } }); } catch (e) {}
+  if (!known.length) return allow();    // cannot determine the catalog -> fail open
+  // Routed Kits = catalog slugs that appear in the routing block (used only
+  // for the suggestion list in the deny message).
+  const routingStr = JSON.stringify(entries[lastIdx]);
+  const routed = known.filter(k => routingStr.indexOf(k) !== -1);
+  const SCAFF = { arkts: 1, arkui: 1, "ability-kit": 1 };
+  const routedDomain = routed.filter(k => !SCAFF[k]);
+  // The gate is satisfied by naming ANY catalog Kit (not only routed ones),
+  // because the routing ranking can be wrong and the user may select a Kit
+  // VeriKit did not rank -- that human override must count as a selection.
+  const knownDomain = known.filter(k => !SCAFF[k]);
+  const matchSet = (knownDomain.length ? knownDomain : known).map(norm);
+  if (!matchSet.length) return allow();
+  // Allow if a later ASSISTANT message names any catalog Kit.
+  function assistantText(e){
+    const msg = e && e.message;
+    const role = (msg && msg.role) || (e && e.role) || (e && e.type);
+    if (role !== "assistant") return "";
+    const c = msg && msg.content;
+    if (typeof c === "string") return c;
+    if (Array.isArray(c)) return c.filter(p => p && p.type === "text" && typeof p.text === "string").map(p => p.text).join(" ");
+    return "";
   }
-  const reason = "VeriKit: this is a HarmonyOS development task and no Kit has been selected yet. Before writing code, Read at least one reference doc from a routed Kit (see the <verikit-routing> block above: its top Kit and that Kit deep_references), then retry this edit. This enforces explicit Kit selection.";
+  for (let i = lastIdx + 1; i < entries.length; i++) {
+    const t = norm(assistantText(entries[i]));
+    if (!t) continue;
+    for (const k of matchSet) { if (k && t.indexOf(k) !== -1) return allow(); }
+  }
+  const suggest = (routedDomain.length ? routedDomain : routed).slice(0, 6).join(", ");
+  const reason = "VeriKit: this is a HarmonyOS development task and no Kit has been selected yet. Before writing code, choose a Kit and name it in your reply, then retry this edit. Options (HITL): use one of the routed suggestions (" + suggest + "), or -- if the routing looks wrong -- ask the user which Kit to use and name their choice (any catalog Kit counts). This enforces explicit Kit selection.";
   process.stdout.write(JSON.stringify({ hookSpecificOutput: { hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: reason } }));
 })();
 '
