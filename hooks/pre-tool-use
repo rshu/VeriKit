@@ -1,26 +1,24 @@
 #!/usr/bin/env bash
-# VeriKit PreToolUse gate for Claude Code.
+# VeriKit PreToolUse Kit-selection monitor for Claude Code.
 #
-# GUARANTEE: before the agent edits HarmonyOS code, a Kit must be selected.
-# The gate triggers on the EDIT TARGET (file type / project), NOT on whether
-# VeriKit's relevance score engaged -- so a mis-ranked "uncertain" prompt can
-# no longer let coding through ungated. Fires before
+# LOG-ONLY: this hook never blocks an edit and never shows a message to the
+# developer. When it observes a Kit-relevant edit that lacks a Kit selection it
+# records a line in ~/.verikit/gate.log for debugging, then ALLOWS. Fires before
 # Edit/Write/MultiEdit/NotebookEdit (scoped by the matcher in hooks.json).
 #
-#   1. Determine if the edit target is HarmonyOS code: a .ets file, OR any file
-#      inside a HarmonyOS project (an oh-package.json5 / build-profile.json5
-#      found up the directory tree). If not -> ALLOW (non-HarmonyOS edits are
-#      never gated).
-#   2. If it is HarmonyOS code, ALLOW only if the agent has NAMED a catalog Kit
-#      (any of the ~100 Kit slugs, incl. arkui) in a reply since the last user
-#      prompt -- i.e. a Kit was selected. Otherwise DENY with guidance.
+#   1. A would-flag edit is an ArkTS (.ets) file whose new content imports a
+#      HarmonyOS SDK module (@kit./@ohos./@hms.). Anything else -- non-.ets,
+#      docs, config, pure ArkTS logic, UI-only scaffolding -- is ignored.
+#   2. If such an edit happens AND no catalog Kit was named (and no
+#      <verikit-no-kit> abstain was declared) in a reply since the last user
+#      prompt, append a debug record. Otherwise nothing is logged.
 #
-# Fails OPEN on any internal error (bad transcript, missing catalog, crash):
-# the gate must never wedge the agent on its own bug.
+# Always ALLOWS. Fails silently on any internal error (bad transcript, missing
+# catalog, unwritable log): the monitor must never wedge or nag the agent.
 SKILLS_DIR="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "$0")/.." 2>/dev/null && pwd)}/skills"
 export VK_SKILLS_DIR="$SKILLS_DIR"
 node -e '
-const fs = require("fs"), path = require("path");
+const fs = require("fs"), path = require("path"), os = require("os");
 function allow(){ process.stdout.write(JSON.stringify({ continue: true })); process.exit(0); }
 const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
 (function main(){
@@ -31,19 +29,21 @@ const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
   if (!fp) return allow();
   const cwd = data.cwd || process.cwd();
   const abs = path.isAbsolute(fp) ? fp : path.join(cwd, fp);
-  // Is this a HarmonyOS code edit? .ets, or any file inside a HarmonyOS project.
-  function inHarmonyProject(dir){
-    let d = dir;
-    for (let i = 0; i < 40 && d; i++) {
-      for (const m of ["oh-package.json5", "build-profile.json5"]) {
-        try { if (fs.existsSync(path.join(d, m))) return true; } catch (e) {}
-      }
-      const up = path.dirname(d); if (up === d) break; d = up;
-    }
-    return false;
+  // Gate only genuinely Kit-relevant edits: an ArkTS (.ets) file whose new
+  // content pulls in a HarmonyOS SDK module (@kit./@ohos./@hms.). Edits with no
+  // Kit to select -- pure ArkTS logic, UI-only scaffolding, docs, config, asset
+  // files inside the project -- are never gated, so the gate stops firing (and
+  // stops nagging) on edits where there is no Kit to choose.
+  function newContent(t){
+    const parts = [];
+    if (typeof t.content === "string") parts.push(t.content);        // Write
+    if (typeof t.new_string === "string") parts.push(t.new_string);  // Edit
+    if (typeof t.new_source === "string") parts.push(t.new_source);  // NotebookEdit
+    if (Array.isArray(t.edits)) for (const e of t.edits) { if (e && typeof e.new_string === "string") parts.push(e.new_string); }
+    return parts.join("\n");
   }
-  const isHarmony = /\.ets$/i.test(abs) || inHarmonyProject(path.dirname(abs));
-  if (!isHarmony) return allow();   // not HarmonyOS code -> ungated
+  const usesKit = /@(kit|ohos|hms)\./i.test(newContent(ti));
+  if (!/\.ets$/i.test(abs) || !usesKit) return allow();   // not a Kit-using ArkTS edit -> ungated
   // Gated: require a Kit named since the last user prompt.
   let lines; try { lines = fs.readFileSync(data.transcript_path, "utf8").split(/\r?\n/).filter(Boolean); } catch (e) { return allow(); }
   const entries = [];
@@ -71,11 +71,15 @@ const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
     return "";
   }
   for (let i = startIdx + 1; i < entries.length; i++) {
-    const t = norm(assistantText(entries[i]));
+    const raw = assistantText(entries[i]);
+    if (/<verikit-no-kit\b/i.test(raw)) return allow();   // explicit abstain: agent declared no applicable Kit
+    const t = norm(raw);
     if (!t) continue;
     for (const k of matchSet) { if (k && t.indexOf(k) !== -1) return allow(); }
   }
-  // Deny -- suggest routed Kits if a routing block is present.
+  // Would-flag: a Kit-relevant edit with no Kit selected. Do not block, do not
+  // message -- append a debug record (with any routed-Kit suggestions for
+  // context) and ALLOW. Best-effort: a log failure must never block the edit.
   let suggest = "";
   let lastR = -1;
   for (let i = 0; i < entries.length; i++) { if (JSON.stringify(entries[i]).indexOf("<verikit-routing>") !== -1) lastR = i; }
@@ -84,8 +88,12 @@ const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
     const SCAFF = { arkts: 1, arkui: 1, "ability-kit": 1 };
     suggest = known.filter(k => rs.indexOf(k) !== -1 && !SCAFF[k]).slice(0, 6).join(", ");
   }
-  const tail = suggest ? " Routed suggestions: " + suggest + "." : " If no VeriKit routing was shown, ask the user which Kit to use.";
-  const reason = "VeriKit: this is a HarmonyOS code edit (" + path.basename(abs) + ") and no Kit has been selected yet. Before editing, name the HarmonyOS Kit(s) you will use in your reply, then retry." + tail + " (Any catalog Kit counts.) This guarantees Kit selection before HarmonyOS coding.";
-  process.stdout.write(JSON.stringify({ hookSpecificOutput: { hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: reason } }));
+  try {
+    const logDir = process.env.VK_LOG_DIR || path.join(os.homedir(), ".verikit");
+    fs.mkdirSync(logDir, { recursive: true });
+    const rec = { ts: new Date().toISOString(), tool: data.tool_name || "", file: abs, suggest: suggest || undefined };
+    fs.appendFileSync(path.join(logDir, "gate.log"), JSON.stringify(rec) + "\n");
+  } catch (e) {}
+  return allow();
 })();
 '
