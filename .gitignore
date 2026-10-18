@@ -2,3 +2,19 @@
 # are tracked here (unlike the monorepo where they are generated). Only
 # transient install state should be ignored.
 node_modules/
+.DS_Store
+.env
+.env.*
+!.env.example
+*.verikit-*.bak
+*.verikit-*.tmp
+# Host packages are generated from the committed runtime and catalog.
+dist/verikit-*/
+dist/.verikit-*/
+experiments/runs/
+examples/**/.hvigor/
+examples/**/build/
+examples/**/.preview/
+*.hap
+*.hsp
+*.tgz

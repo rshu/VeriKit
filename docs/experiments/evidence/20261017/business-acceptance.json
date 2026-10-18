@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-17T08:00:05.815Z",
+  "source": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261017-todolist-reference/workspace/app/entry/src/main/ets/model/TodoModel.ets",
+  "sourceExecuted": "exact pure ArkTS model with types stripped; no replacement business implementation",
+  "passed": 11,
+  "total": 11,
+  "results": [
+    {
+      "name": "empty initial list",
+      "passed": true
+    },
+    {
+      "name": "reject blank titles without mutation",
+      "passed": true
+    },
+    {
+      "name": "trim and preserve Chinese",
+      "passed": true
+    },
+    {
+      "name": "enforce 80 character limit",
+      "passed": true
+    },
+    {
+      "name": "allow repeated titles with unique stable ids",
+      "passed": true
+    },
+    {
+      "name": "complete and reopen selected item",
+      "passed": true
+    },
+    {
+      "name": "all active completed filters",
+      "passed": true
+    },
+    {
+      "name": "delete exactly one item",
+      "passed": true
+    },
+    {
+      "name": "unknown ids do not mutate",
+      "passed": true
+    },
+    {
+      "name": "serialization preserves ids titles and states",
+      "passed": true
+    },
+    {
+      "name": "new ids after restore do not collide",
+      "passed": true
+    }
+  ]
+}

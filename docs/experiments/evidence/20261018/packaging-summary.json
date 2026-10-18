@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-17T20:09:12.115Z",
+  "builds": [
+    {
+      "host": "claude",
+      "files": 3659,
+      "unpackedSize": 32652521,
+      "nestedBuilds": 0,
+      "runtimeMatchesSource": true
+    },
+    {
+      "host": "codeagent",
+      "files": 3659,
+      "unpackedSize": 32652356,
+      "nestedBuilds": 0,
+      "runtimeMatchesSource": true
+    },
+    {
+      "host": "openclaw",
+      "files": 3657,
+      "unpackedSize": 32645443,
+      "nestedBuilds": 0,
+      "runtimeMatchesSource": true
+    }
+  ],
+  "scannerNote": "Host directories matched with a path boundary; dist/verikit-cli.js is the required standalone CLI, not a nested host artifact.",
+  "source": {
+    "entryCount": 3737,
+    "nestedBuilds": 0
+  }
+}

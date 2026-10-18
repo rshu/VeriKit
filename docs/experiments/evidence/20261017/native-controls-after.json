@@ -1,0 +1,138 @@
+{
+  "at": "2026-10-17T15:21:43.623Z",
+  "mode": "deterministic real host SDK controls; no model call",
+  "hostVersion": "2026.7.1-2",
+  "checks": [
+    {
+      "name": "real host loads plugin",
+      "passed": true,
+      "evidence": {
+        "tools": [
+          "verikit_route"
+        ],
+        "hooks": [
+          "before_prompt_build",
+          "before_tool_call"
+        ]
+      }
+    },
+    {
+      "name": "native prompt hook returns complete routing",
+      "passed": true,
+      "evidence": {
+        "status": "agree",
+        "bundle": [
+          "arkdata",
+          "arkts"
+        ],
+        "refs": [
+          "arkdata",
+          "arkts"
+        ]
+      }
+    },
+    {
+      "name": "irrelevant prompt passes silently",
+      "passed": true
+    },
+    {
+      "name": "native conflict remains ask-human",
+      "passed": true,
+      "evidence": {
+        "status": "conflict",
+        "top": {
+          "name": "calendar-kit",
+          "combinedScore": 0.5726,
+          "band": "medium"
+        },
+        "top_k": [],
+        "recipes": [
+          {
+            "id": "notification-with-action",
+            "skills": [
+              "notification-kit",
+              "ability-kit",
+              "arkts"
+            ],
+            "score": 1,
+            "band": "high",
+            "maturity": "validated"
+          }
+        ],
+        "top_in_recipe": false,
+        "directive": "CONFLICT: the curated recipe and the top-ranked Kit disagree. Do NOT silently pick. Ask the human to choose one of:\n  1. Recipe bundle \"notification-with-action\" [notification-kit, ability-kit, arkts] — recommended (curated multi-Kit answer; maturity: validated).\n  2. (no high-confidence single Kit alternative this time.)\n  3. Specify the Kit(s) yourself.\nWait for the human's selection, then proceed with exactly that. Do not override their choice. Note: deep_references below reflect the top-ranked Kit only until the human picks."
+      }
+    },
+    {
+      "name": "native manually resolved tool returns existing references",
+      "passed": true,
+      "evidence": {
+        "skills": 101,
+        "bundle": [
+          "arkdata",
+          "arkts"
+        ]
+      }
+    },
+    {
+      "name": "native tool policy denies verikit_route",
+      "passed": true
+    },
+    {
+      "name": "real session API supports log-only native write",
+      "passed": true,
+      "evidence": [
+        {
+          "ts": "2026-10-17T15:21:28.427Z",
+          "tool": "write",
+          "file": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261017-todolist-native-final/workspace/app/native-probes/missing-kit.ets"
+        }
+      ]
+    },
+    {
+      "name": "Kit mention suppresses log in real transcript",
+      "passed": true
+    },
+    {
+      "name": "native apply_patch SDK edit is observed",
+      "passed": true
+    },
+    {
+      "name": "monitorEdits false suppresses native logging",
+      "passed": true
+    },
+    {
+      "name": "injection opt-out suppresses prompt but retains tool",
+      "passed": true
+    },
+    {
+      "name": "native failure fails open",
+      "passed": true,
+      "evidence": {
+        "elapsedMs": 47
+      }
+    },
+    {
+      "name": "manual routing error is explicit",
+      "passed": true
+    },
+    {
+      "name": "native timeout fails open",
+      "passed": true,
+      "evidence": {
+        "elapsedMs": 15004
+      }
+    },
+    {
+      "name": "fault injection restored exact router bytes",
+      "passed": true,
+      "evidence": "ed46d092533ba79e74e0a3e900a88231049798cc2e3939a91bc7e7be6841bba8"
+    },
+    {
+      "name": "enabled false registers no hooks or tools",
+      "passed": true
+    }
+  ],
+  "passed": 16,
+  "total": 16
+}

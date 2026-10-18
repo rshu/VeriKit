@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-17T20:09:06.249Z",
+  "endpoint": "https://open.bigmodel.cn/api/anthropic/v1/messages",
+  "model": "glm-5.3-flash",
+  "checks": [
+    {
+      "credential": "primary",
+      "status": 200,
+      "model": "glm-5.3-flash",
+      "connected": true
+    }
+  ]
+}

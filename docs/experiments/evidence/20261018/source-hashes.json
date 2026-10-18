@@ -1,0 +1,58 @@
+{
+  "at": "2026-10-17T20:14:57.891Z",
+  "runtime": [
+    {
+      "file": "lib/routing.mjs",
+      "sha256": "357b8ee063589a288751a51aadf8feae6e183a9c58190e49287ba456e445a5b1",
+      "testedSha256": "357b8ee063589a288751a51aadf8feae6e183a9c58190e49287ba456e445a5b1"
+    },
+    {
+      "file": "lib/openclaw/entry.mjs",
+      "sha256": "5fc1254474715a01af7cbf7a4d0c96f658aa8e669b8c0446ea4b65d3fc30417c",
+      "testedSha256": "5fc1254474715a01af7cbf7a4d0c96f658aa8e669b8c0446ea4b65d3fc30417c"
+    },
+    {
+      "file": "lib/kit-monitor.mjs",
+      "sha256": "9882eba28e06a4cbd54b23f90803d1d1c4bf70ce883ed293d2b2d4a70d1aa713",
+      "testedSha256": "9882eba28e06a4cbd54b23f90803d1d1c4bf70ce883ed293d2b2d4a70d1aa713"
+    },
+    {
+      "file": "dist/verikit-cli.js",
+      "sha256": "ed46d092533ba79e74e0a3e900a88231049798cc2e3939a91bc7e7be6841bba8",
+      "testedSha256": "ed46d092533ba79e74e0a3e900a88231049798cc2e3939a91bc7e7be6841bba8"
+    },
+    {
+      "file": "packaging/hosts/openclaw/skills/verikit-route/SKILL.md",
+      "sha256": "5d66460a746e919f4b5026d2b719fa15ebac28eba4acc461745d490999c34481",
+      "testedSha256": "5d66460a746e919f4b5026d2b719fa15ebac28eba4acc461745d490999c34481"
+    }
+  ],
+  "business": [
+    {
+      "file": "model/TodoModel.ets",
+      "sha256": "4814f0ecf750b7e6643caeb9c01ff44a4b84ecbb2f11806406a6f0462b96a5ff",
+      "archivedSha256": "4814f0ecf750b7e6643caeb9c01ff44a4b84ecbb2f11806406a6f0462b96a5ff"
+    },
+    {
+      "file": "model/TodoStore.ets",
+      "sha256": "e263ff7f9a0c03bf3fc2cdbf8c4a7ed1c6c9842e9fcf7605b77ee0141d227c9a",
+      "archivedSha256": "e263ff7f9a0c03bf3fc2cdbf8c4a7ed1c6c9842e9fcf7605b77ee0141d227c9a"
+    },
+    {
+      "file": "pages/Index.ets",
+      "sha256": "7dfb7f9beddf648e0952164abf9f2ee9d622fc0a2ca05458ba4ee2cb4ce04a5f",
+      "archivedSha256": "7dfb7f9beddf648e0952164abf9f2ee9d622fc0a2ca05458ba4ee2cb4ce04a5f"
+    }
+  ],
+  "requirementsUnchanged": true,
+  "entryAbilityUnchanged": true,
+  "frozenAuditSha256": "5827533494c96c4b4ac9ce636873a766fbac86941518a6b50bb6b44c4cc75c38",
+  "currentAuditSha256": "cbc275d52a7a70d3d91e98aade3d0c361db9cf6b90cc403989ac69b1067d7cae",
+  "initialTranscriptSha256": "c992f5694147ca76ef1e4adc82cf88ff2602cdc4930f6f4aeed4148fb711c58c",
+  "hap": {
+    "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-final/workspace/app/entry/build/default/outputs/default/entry-default-unsigned.hap",
+    "sha256": "d5676159840073bae6461c8d8d3b45afc7053b0a4fde5645249b305f319dbc9b",
+    "containsArkTSBytecode": true,
+    "unsigned": true
+  }
+}

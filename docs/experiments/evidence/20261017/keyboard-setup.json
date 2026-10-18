@@ -1,0 +1,12 @@
+{
+  "authorization": "explicit user reply in this chat",
+  "mode": "basic",
+  "fullModeSelected": false,
+  "keyboardLayout": "26-key",
+  "consentActions": [
+    "cancel initial keyboard dialog",
+    "accept basic input mode under explicit user authorization"
+  ],
+  "deviceRoot": "experiments/runs/20261017-todolist-device-final",
+  "evidence": "experiments/runs/20261017-todolist-reference/device-evidence-basic-before-layout"
+}

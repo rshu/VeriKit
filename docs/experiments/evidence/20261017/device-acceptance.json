@@ -1,0 +1,85 @@
+{
+  "at": "2026-10-17T15:08:00.449Z",
+  "root": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261017-todolist-reference",
+  "bundle": "com.verikit.experiment.todolistreference",
+  "target": "127.0.0.1:13017",
+  "mode": "real HarmonyOS API 21 emulator and native UITest commands",
+  "basicInputModeAuthorized": true,
+  "resetApp": true,
+  "consentActions": [],
+  "checks": [
+    {
+      "name": "real ArkUI app loads empty state",
+      "status": "PASS",
+      "passed": true,
+      "evidence": {
+        "rowCount": 0
+      }
+    },
+    {
+      "name": "blank title is rejected on device",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "Chinese title can be added",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "second todo gets a separate row",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "complete selected todo",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "active filter excludes completed todo",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "completed filter shows completed todo only",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "process restart restores actual Preferences data",
+      "status": "PASS",
+      "passed": true,
+      "evidence": {
+        "restoredIds": [
+          "todo-row-todo-1",
+          "todo-row-todo-2"
+        ]
+      }
+    },
+    {
+      "name": "completed todo can be reopened",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "delete targets the selected row",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "deletion and reopened state survive restart",
+      "status": "PASS",
+      "passed": true
+    }
+  ],
+  "passed": 11,
+  "total": 11,
+  "counts": {
+    "PASS": 11,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT_RUN": 0
+  },
+  "status": "PASS"
+}

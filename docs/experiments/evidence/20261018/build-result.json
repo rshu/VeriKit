@@ -1,0 +1,25 @@
+{
+  "startedAt": 1792267782090,
+  "elapsedMs": 5379,
+  "exitCode": 0,
+  "timedOut": false,
+  "sdk": "/Volumes/PortableSSD/Applications/DevEco-Studio.app/Contents/sdk",
+  "tools": "/Volumes/PortableSSD/Applications/DevEco-Studio.app/Contents/tools",
+  "command": [
+    "/Volumes/PortableSSD/Applications/DevEco-Studio.app/Contents/tools/node/bin/node",
+    "/Volumes/PortableSSD/Applications/DevEco-Studio.app/Contents/tools/hvigor/hvigor/bin/hvigor.js",
+    "--mode",
+    "module",
+    "-p",
+    "product=default",
+    "-p",
+    "module=entry@default",
+    "-p",
+    "buildMode=debug",
+    "assembleHap",
+    "--no-daemon",
+    "--no-parallel",
+    "--no-incremental"
+  ],
+  "passed": true
+}

@@ -1,0 +1,229 @@
+{
+  "at": "2026-10-17T20:14:42.973Z",
+  "root": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-final",
+  "hostVersion": "2026.7.1-2",
+  "node": "v26.0.0",
+  "model": "glm-work/glm-5.3-flash",
+  "modelRequest": {
+    "effort": "low",
+    "adapter": "isolated native provider wrapper",
+    "endpoint": "https://open.bigmodel.cn/api/anthropic"
+  },
+  "frozenInputs": {
+    "requirementsSha256": "7a37b26cfc9fd20924000990e472d8f4ab9a7da5a7202d1cf07ca1a5ebc64b05",
+    "acceptanceSha256": "3aa32802c376ec5a18305f6839ee62490b044b221ced8b399665a977e68ee905",
+    "readProofSha256": "5827533494c96c4b4ac9ce636873a766fbac86941518a6b50bb6b44c4cc75c38",
+    "initialPageSha256": "c8f8044e586476526f1bfb583aa0ed59b710059f44e26dc51d2280d1de0138aa",
+    "pluginEntrySha256": "5fc1254474715a01af7cbf7a4d0c96f658aa8e669b8c0446ea4b65d3fc30417c",
+    "routingAdapterSha256": "357b8ee063589a288751a51aadf8feae6e183a9c58190e49287ba456e445a5b1",
+    "routerSha256": "ed46d092533ba79e74e0a3e900a88231049798cc2e3939a91bc7e7be6841bba8"
+  },
+  "originalConfigUnchanged": true,
+  "stages": [
+    {
+      "stage": "main",
+      "port": 55908,
+      "startedAt": 1792267182257,
+      "routingAdapterSha256": "357b8ee063589a288751a51aadf8feae6e183a9c58190e49287ba456e445a5b1",
+      "status": "completed"
+    },
+    {
+      "stage": "no-injection",
+      "port": 57363,
+      "startedAt": 1792267323228,
+      "routingAdapterSha256": "357b8ee063589a288751a51aadf8feae6e183a9c58190e49287ba456e445a5b1",
+      "status": "completed"
+    },
+    {
+      "stage": "monitor-off",
+      "port": 57598,
+      "startedAt": 1792267344254,
+      "routingAdapterSha256": "357b8ee063589a288751a51aadf8feae6e183a9c58190e49287ba456e445a5b1",
+      "status": "completed"
+    },
+    {
+      "stage": "denied",
+      "port": 57713,
+      "startedAt": 1792267354991,
+      "routingAdapterSha256": "357b8ee063589a288751a51aadf8feae6e183a9c58190e49287ba456e445a5b1",
+      "status": "completed"
+    },
+    {
+      "stage": "disabled",
+      "port": 57820,
+      "startedAt": 1792267366150,
+      "routingAdapterSha256": "357b8ee063589a288751a51aadf8feae6e183a9c58190e49287ba456e445a5b1",
+      "status": "completed"
+    },
+    {
+      "stage": "broken",
+      "port": 57936,
+      "startedAt": 1792267378075,
+      "routingAdapterSha256": "357b8ee063589a288751a51aadf8feae6e183a9c58190e49287ba456e445a5b1",
+      "status": "completed"
+    },
+    {
+      "stage": "timeout",
+      "port": 58053,
+      "startedAt": 1792267390032,
+      "routingAdapterSha256": "357b8ee063589a288751a51aadf8feae6e183a9c58190e49287ba456e445a5b1",
+      "status": "completed"
+    },
+    {
+      "stage": "repair",
+      "port": 58858,
+      "startedAt": 1792267469091,
+      "routingAdapterSha256": "357b8ee063589a288751a51aadf8feae6e183a9c58190e49287ba456e445a5b1"
+    },
+    {
+      "stage": "repair",
+      "port": 60394,
+      "startedAt": 1792267624250,
+      "routingAdapterSha256": "357b8ee063589a288751a51aadf8feae6e183a9c58190e49287ba456e445a5b1"
+    },
+    {
+      "stage": "repair",
+      "port": 61624,
+      "startedAt": 1792267750083,
+      "routingAdapterSha256": "357b8ee063589a288751a51aadf8feae6e183a9c58190e49287ba456e445a5b1",
+      "status": "completed"
+    }
+  ],
+  "turns": [
+    {
+      "name": "01-menu",
+      "runId": "4f57240c-82ca-4149-9998-aab9c6386d51",
+      "startedAt": 1792267182258,
+      "finishedAt": 1792267189588,
+      "state": "final",
+      "elapsedMs": 7330
+    },
+    {
+      "name": "02-implement",
+      "runId": "e81dd450-df93-47c5-a011-a67af7f0f27e",
+      "startedAt": 1792267189651,
+      "finishedAt": 1792267295510,
+      "state": "final",
+      "elapsedMs": 105859
+    },
+    {
+      "name": "03-manual-route",
+      "runId": "b34521d0-31ee-43d2-8dd1-6c14cb48dfb4",
+      "startedAt": 1792267295531,
+      "finishedAt": 1792267307191,
+      "state": "final",
+      "elapsedMs": 11660
+    },
+    {
+      "name": "04-conflict",
+      "runId": "4a45b550-acdd-4169-9420-2e08f2300eaf",
+      "startedAt": 1792267307207,
+      "finishedAt": 1792267311927,
+      "state": "final",
+      "elapsedMs": 4720
+    },
+    {
+      "name": "05-unrelated",
+      "runId": "fd27f22c-77cb-414e-8599-5d5434db9ab6",
+      "startedAt": 1792267311945,
+      "finishedAt": 1792267316996,
+      "state": "final",
+      "elapsedMs": 5051
+    },
+    {
+      "name": "no-injection-write",
+      "runId": "8e83f5c6-b284-46da-8008-6ae0d4279cdc",
+      "startedAt": 1792267323229,
+      "finishedAt": 1792267326725,
+      "state": "final",
+      "elapsedMs": 3496
+    },
+    {
+      "name": "no-injection-manual",
+      "runId": "b6565d1b-4577-4562-9d94-d80cadcc0c8a",
+      "startedAt": 1792267326787,
+      "finishedAt": 1792267338000,
+      "state": "final",
+      "elapsedMs": 11213
+    },
+    {
+      "name": "monitor-off-write",
+      "runId": "04d76606-d836-499f-bfaf-a7df32d882be",
+      "startedAt": 1792267344254,
+      "finishedAt": 1792267348717,
+      "state": "final",
+      "elapsedMs": 4463
+    },
+    {
+      "name": "denied",
+      "runId": "a5f303a2-fa06-4794-a4dc-c6df87e4daa8",
+      "startedAt": 1792267354993,
+      "finishedAt": 1792267359857,
+      "state": "final",
+      "elapsedMs": 4864
+    },
+    {
+      "name": "disabled",
+      "runId": "fb6704b5-0231-4b55-abad-3a89f0c27137",
+      "startedAt": 1792267366151,
+      "finishedAt": 1792267371779,
+      "state": "final",
+      "elapsedMs": 5628
+    },
+    {
+      "name": "broken",
+      "runId": "e6c02321-4cf1-4b33-a67d-82993d5281c2",
+      "startedAt": 1792267378076,
+      "finishedAt": 1792267383737,
+      "state": "final",
+      "elapsedMs": 5661
+    },
+    {
+      "name": "timeout",
+      "runId": "9795434e-f619-4343-a997-75742d6a368e",
+      "startedAt": 1792267390033,
+      "finishedAt": 1792267431574,
+      "state": "final",
+      "elapsedMs": 41541
+    },
+    {
+      "name": "repair-12",
+      "runId": "d1b15bb0-f626-4b42-986f-69bc6e90cc0c",
+      "startedAt": 1792267469092,
+      "finishedAt": 1792267545576,
+      "state": "error",
+      "elapsedMs": 76484
+    },
+    {
+      "name": "repair-13",
+      "runId": "929c9395-b600-4c62-911a-9baee25602bd",
+      "startedAt": 1792267624251,
+      "finishedAt": 1792267639854,
+      "state": "error",
+      "elapsedMs": 15603
+    },
+    {
+      "name": "repair-14",
+      "runId": "ebc21990-6fb9-45cb-b486-1facb8a247ba",
+      "startedAt": 1792267750085,
+      "finishedAt": 1792267763709,
+      "state": "final",
+      "elapsedMs": 13624
+    }
+  ],
+  "errors": [
+    {
+      "stage": "repair",
+      "at": 1792267545577,
+      "message": "Error: Host turn error: ⚠️ Agent couldn't generate a response. Note: some tool actions may have already been executed — please verify before retrying.\n    at send (file:///Volumes/PortableSSD/projects/VeriKit/scripts/experiments/todolist-live.mjs:165:41)\n    at async file:///Volumes/PortableSSD/projects/VeriKit/scripts/experiments/todolist-live.mjs:218:5"
+    },
+    {
+      "stage": "repair",
+      "at": 1792267639855,
+      "message": "Error: Host turn error: ⚠️ Agent couldn't generate a response. Note: some tool actions may have already been executed — please verify before retrying.\n    at send (file:///Volumes/PortableSSD/projects/VeriKit/scripts/experiments/todolist-live.mjs:165:41)\n    at async file:///Volumes/PortableSSD/projects/VeriKit/scripts/experiments/todolist-live.mjs:218:5"
+    }
+  ],
+  "repairTerminationReview": "repair-12 and repair-13 submitted identical edit replacements; native tool returned terminate:true, followed by chat error. Actual partial edits and failed builds preserved. repair-14 completed normally.",
+  "auditReplayReview": "Original frozen audit and successful initial result retained. Later session rotation required the current audit to prefer native-main-initial.jsonl; byte matching and ordering predicates unchanged.",
+  "snapshotCapture": "This run manually captured native-main-initial.jsonl before repair. The current driver now performs that same copy automatically after initial development, without overwriting an existing snapshot."
+}

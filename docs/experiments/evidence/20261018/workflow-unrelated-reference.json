@@ -1,0 +1,369 @@
+{
+  "at": "2026-10-17T20:02:25.259Z",
+  "root": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof",
+  "hostVersion": "2026.7.1-2",
+  "model": "glm-work/glm-5.3-flash",
+  "modelRequest": {
+    "effort": "low",
+    "adapter": "isolated native provider wrapper",
+    "endpoint": "https://open.bigmodel.cn/api/anthropic"
+  },
+  "turns": [
+    {
+      "name": "01-menu",
+      "runId": "23cf2859-469d-426d-a039-72a17de88bc5",
+      "state": "final",
+      "elapsedMs": 8389
+    },
+    {
+      "name": "02-implement",
+      "runId": "ecf74dbf-2945-47c4-832d-e522678b09d7",
+      "state": "final",
+      "elapsedMs": 110223
+    },
+    {
+      "name": "03-manual-route",
+      "runId": "d76b7ed6-e774-423e-8097-d65437c2065a",
+      "state": "final",
+      "elapsedMs": 6915
+    },
+    {
+      "name": "04-conflict",
+      "runId": "e8a235b7-d08c-48e1-9c2f-4f2f5f7942b3",
+      "state": "final",
+      "elapsedMs": 8747
+    },
+    {
+      "name": "05-unrelated",
+      "runId": "c72dfbe5-78ac-4f07-a201-f4ce61adfd74",
+      "state": "final",
+      "elapsedMs": 5227
+    },
+    {
+      "name": "no-injection-write",
+      "runId": "eb51740b-0e46-400f-8cbf-d6b607da6e60",
+      "state": "final",
+      "elapsedMs": 9225
+    },
+    {
+      "name": "no-injection-manual",
+      "runId": "d7c5efb1-b19e-44d1-8b10-f24ddaeef6bd",
+      "state": "final",
+      "elapsedMs": 12732
+    },
+    {
+      "name": "monitor-off-write",
+      "runId": "5ed4f439-97f6-4f82-b76f-1de0ca983512",
+      "state": "final",
+      "elapsedMs": 6695
+    },
+    {
+      "name": "denied",
+      "runId": "ffeefca5-203c-42ad-8102-6220549b581c",
+      "state": "final",
+      "elapsedMs": 6614
+    },
+    {
+      "name": "disabled",
+      "runId": "1bd30017-2663-4941-9966-fb396a5f75f9",
+      "state": "final",
+      "elapsedMs": 6090
+    },
+    {
+      "name": "broken",
+      "runId": "a5a115d3-2c08-45fc-b27a-f807cf5f5da4",
+      "state": "final",
+      "elapsedMs": 12147
+    },
+    {
+      "name": "timeout",
+      "runId": "10e5ae1d-a647-4f0b-ba40-25c729c81097",
+      "state": "final",
+      "elapsedMs": 34845
+    }
+  ],
+  "counts": {
+    "PASS": 18,
+    "FAIL": 0,
+    "NOT_RUN": 0
+  },
+  "checks": [
+    {
+      "name": "automatic route enters real host model request",
+      "status": "PASS",
+      "evidence": [
+        {
+          "status": "agree",
+          "bundle": [
+            "arkdata",
+            "arkts"
+          ],
+          "skills": 101
+        }
+      ]
+    },
+    {
+      "name": "model presents Kits and requests a choice",
+      "status": "PASS",
+      "evidence": "根据你的需求（待办事项 App + 重启后数据持久化），路由分析给出以下选项：\n\n## 推荐 Kits\n\n| Kit | 作用 | 匹配度 |\n|---|---|---|\n| **arkdata** | 本地数据持久化（preferences / relationalStore），重启后可读 | 0.527（最高） |\n| **arkts** | 语言/异步支持，配合存储 API | 配套 |\n| form-kit | 可选：添加桌面交互卡片 | 0.366 |\n| asset-store-kit | 可选：重装后恢复敏感凭据（对普通待办非必需） | 0.332 |\n\n## 推荐方案\n\n**Recipe \"local-persistence\"（已验证 validated）**：`arkdata + arkts`\n- 用 `@ohos.data.preferences`（轻量键值）或 `@ohos.data.relationalStore`（结构化记录）保存待办项\n- 重启后从存储读取恢复列表\n- 配合 arkui 渲染界面（默认会加）\n\n## 请选择\n\n1. **基础版**（推荐）：`arkdata + arkts`（+arkui 界面）— 满足你的核心需求\n2. **卡片版**：基础版 + `form-kit`（桌面小组件显示待办）\n3. 其他：告诉我你想组合的 Kits\n\n回复 1、2 或自定义组合，我就开始实现。"
+    },
+    {
+      "name": "no code written before Kit selection",
+      "status": "PASS",
+      "evidence": []
+    },
+    {
+      "name": "menu leaves initial page unchanged",
+      "status": "PASS",
+      "evidence": {
+        "pageFiles": [
+          "Index.ets"
+        ],
+        "indexSha256": "c8f8044e586476526f1bfb583aa0ed59b710059f44e26dc51d2280d1de0138aa"
+      }
+    },
+    {
+      "name": "selected Kit skills read before code",
+      "status": "PASS",
+      "evidence": [
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/.plugins/verikit-openclaw/skills/arkdata/SKILL.md",
+        "app/requirements.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/.plugins/verikit-openclaw/skills/arkts/SKILL.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/.plugins/verikit-openclaw/skills/arkdata/SKILL.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/.plugins/verikit-openclaw/skills/arkts/SKILL.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/.plugins/verikit-openclaw/skills/arkdata/references/通过用户首选项实现数据持久化 (ArkTS).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/.plugins/verikit-openclaw/skills/arkdata/SKILL.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/.plugins/verikit-openclaw/skills/arkts/SKILL.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/.plugins/verikit-openclaw/skills/arkts/references/基础库常见问题.md"
+      ]
+    },
+    {
+      "name": "task reference docs read before code",
+      "status": "PASS",
+      "evidence": [
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/.plugins/verikit-openclaw/skills/arkdata/references/通过用户首选项实现数据持久化 (ArkTS).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/.plugins/verikit-openclaw/skills/arkts/references/基础库常见问题.md"
+      ]
+    },
+    {
+      "name": "SDK app implementation uses native tools",
+      "status": "PASS",
+      "evidence": [
+        {
+          "tool": "apply_patch"
+        },
+        {
+          "tool": "write",
+          "path": "app/entry/src/main/ets/model/TodoModel.ets"
+        },
+        {
+          "tool": "write",
+          "path": "app/entry/src/main/ets/model/TodoStore.ets"
+        },
+        {
+          "tool": "write",
+          "path": "app/entry/src/main/ets/pages/Index.ets"
+        }
+      ]
+    },
+    {
+      "name": "manual routing tool called",
+      "status": "PASS",
+      "evidence": [
+        {
+          "tool": "verikit_route",
+          "params": {
+            "task": "保存应用数据使其在应用重启后仍可读取"
+          }
+        }
+      ]
+    },
+    {
+      "name": "conflict is surfaced without writes",
+      "status": "PASS",
+      "evidence": {
+        "routes": [
+          {
+            "status": "conflict",
+            "top": {
+              "name": "calendar-kit",
+              "combinedScore": 0.5726,
+              "band": "medium"
+            },
+            "top_k": [],
+            "recipes": [
+              {
+                "id": "notification-with-action",
+                "skills": [
+                  "notification-kit",
+                  "ability-kit",
+                  "arkts"
+                ],
+                "score": 1,
+                "band": "high",
+                "maturity": "validated"
+              }
+            ],
+            "top_in_recipe": false,
+            "directive": "CONFLICT: the curated recipe and the top-ranked Kit disagree. Do NOT silently pick. Ask the human to choose one of:\n  1. Recipe bundle \"notification-with-action\" [notification-kit, ability-kit, arkts] — recommended (curated multi-Kit answer; maturity: validated).\n  2. (no high-confidence single Kit alternative this time.)\n  3. Specify the Kit(s) yourself.\nWait for the human's selection, then proceed with exactly that. Do not override their choice. Note: deep_references below reflect the top-ranked Kit only until the human picks."
+          }
+        ],
+        "calls": [],
+        "result": {
+          "runId": "e8a235b7-d08c-48e1-9c2f-4f2f5f7942b3",
+          "sessionKey": "agent:main:verikit-conflict",
+          "agentId": "main",
+          "seq": 206,
+          "state": "final",
+          "stopReason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": [
+              {
+                "type": "text",
+                "text": "这个任务的路由结果存在分歧，需要你确认使用哪套 Kit 方案：\n\n**任务**：添加任务提醒通知，到点弹出并可点击查看\n\n**方案 1（推荐）：组合配方 \"notification-with-action\"**（已验证 validated）\n- Kits：`notification-kit` + `ability-kit` + `arkts`\n- 思路：到点发布本地通知，点击通知通过 WantAgent 跳转到应用详情页/待办页\n\n**方案 2：单个 Kit 路由推荐**\n- 排名最高的是 `calendar-kit`（把待办写成系统日历日程，利用日历提醒 + 一键跳转），相关还有 `background-tasks-kit`（代理提醒，适合应用不在前台时的到点闹钟类提醒）\n\n**方案 3**：你自行指定 Kit 组合（例如 `background-tasks-kit` + `notification-kit`）\n\n请选择 1 / 2 / 3（或指定 Kit），我再开始实现。"
+              }
+            ],
+            "timestamp": 1792267111459
+          }
+        }
+      }
+    },
+    {
+      "name": "unrelated request receives no route",
+      "status": "PASS",
+      "evidence": {
+        "runId": "c72dfbe5-78ac-4f07-a201-f4ce61adfd74",
+        "sessionKey": "agent:main:verikit-unrelated",
+        "agentId": "main",
+        "seq": 45,
+        "state": "final",
+        "stopReason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "text",
+              "text": "巴黎"
+            }
+          ],
+          "timestamp": 1792267116697
+        }
+      }
+    },
+    {
+      "name": "host injection opt-out honored",
+      "status": "PASS",
+      "evidence": [
+        {
+          "tools": [
+            "read",
+            "edit",
+            "write",
+            "apply_patch",
+            "verikit_route"
+          ],
+          "route": false
+        }
+      ]
+    },
+    {
+      "name": "manual tool survives injection opt-out",
+      "status": "PASS",
+      "evidence": [
+        "verikit_route"
+      ]
+    },
+    {
+      "name": "denied tool surface",
+      "status": "PASS",
+      "evidence": [
+        [
+          "read",
+          "edit",
+          "write",
+          "apply_patch"
+        ]
+      ]
+    },
+    {
+      "name": "disabled tool surface",
+      "status": "PASS",
+      "evidence": [
+        [
+          "read",
+          "edit",
+          "write",
+          "apply_patch"
+        ]
+      ]
+    },
+    {
+      "name": "log-only monitor records unselected SDK edit",
+      "status": "PASS",
+      "evidence": [
+        {
+          "ts": "2026-10-17T19:57:21.003Z",
+          "tool": "apply_patch",
+          "file": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/app/entry/src/main/ets/model/TodoStore.ets"
+        },
+        {
+          "ts": "2026-10-17T19:57:38.366Z",
+          "tool": "write",
+          "file": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/app/entry/src/main/ets/model/TodoStore.ets"
+        },
+        {
+          "ts": "2026-10-17T19:58:47.788Z",
+          "tool": "write",
+          "file": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/app/no-injection.ets"
+        }
+      ]
+    },
+    {
+      "name": "monitor opt-out suppresses log",
+      "status": "PASS",
+      "evidence": [
+        {
+          "ts": "2026-10-17T19:57:21.003Z",
+          "tool": "apply_patch",
+          "file": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/app/entry/src/main/ets/model/TodoStore.ets"
+        },
+        {
+          "ts": "2026-10-17T19:57:38.366Z",
+          "tool": "write",
+          "file": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/app/entry/src/main/ets/model/TodoStore.ets"
+        },
+        {
+          "ts": "2026-10-17T19:58:47.788Z",
+          "tool": "write",
+          "file": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-reference-eof/workspace/app/no-injection.ets"
+        }
+      ]
+    },
+    {
+      "name": "broken routing fail-open",
+      "status": "PASS",
+      "evidence": {
+        "marker": "HOST_CONTINUED",
+        "elapsedMs": 12147,
+        "calls": [
+          "verikit_route",
+          "write"
+        ]
+      }
+    },
+    {
+      "name": "timeout routing fail-open",
+      "status": "PASS",
+      "evidence": {
+        "marker": "HOST_CONTINUED",
+        "elapsedMs": 34845,
+        "calls": [
+          "verikit_route",
+          "write"
+        ]
+      }
+    }
+  ],
+  "recovery": []
+}

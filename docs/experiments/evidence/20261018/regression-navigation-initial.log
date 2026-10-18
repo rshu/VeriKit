@@ -1,0 +1,47 @@
+
+> @verikit/claude-code-plugin@0.0.8 test
+> node --test test/plugins.test.mjs
+
+✔ builds three self-contained, mutually exclusive host packages (4424.536792ms)
+✔ rebuild replaces only its own artifact and never copies earlier builds (997.74675ms)
+✔ claude: declared hooks execute from another working directory, with Unicode and shell characters in the install path (1546.30875ms)
+✔ codeagent: declared hooks execute from another working directory, with Unicode and shell characters in the install path (1485.151333ms)
+✔ OpenClaw registers native hooks and optional tool; honors disabled and metadata modes and exact host version (1.644458ms)
+✔ OpenClaw prompt and tool preserve ranking, conflicts, references and fail-open behavior (1577.9195ms)
+✖ per-Kit read plan survives noisy recipes and missing deep hits without approving candidate Kits (311.961875ms)
+✔ read plan paths cannot escape the installed Kit directory (0.575042ms)
+✔ prompt truncation counts Unicode code points and never executes task text in a shell (1986.830125ms)
+✔ Kit edit monitor stays log-only and only examines assistant text after the latest user prompt (2.260875ms)
+✔ native apply_patch monitoring scopes SDK additions to each ArkTS file (0.22925ms)
+✔ OpenClaw native edit monitor reads the session API's direct entry and follows spawnedCwd (1.426625ms)
+✔ configuration helper preserves plugins, tool restrictions and inherited alsoAllow; backs up exact bytes and is idempotent (2.689ms)
+✔ installed OpenClaw 2026.7.1-2 loads the artifact and dispatches native prompt hooks and tools with isolated state (2603.781834ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 13
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15271.677209
+
+✖ failing tests:
+
+test at test/plugins.test.mjs:165:1
+✖ per-Kit read plan survives noisy recipes and missing deep hits without approving candidate Kits (311.961875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '/private/var/folders/81/r2msm9k16ggbsn3kp91_2wv40000gp/T/verikit-插件 $() & G8VyYp/verikit-openclaw/skills/arkts/references/基础库常见问题.md'
+  - '/private/var/folders/81/r2msm9k16ggbsn3kp91_2wv40000gp/T/verikit-插件 $() & G8VyYp/verikit-openclaw/skills/arkts/references/异步并发 (Promise和async_await).md'
+  
+      at TestContext.<anonymous> (file:///Volumes/PortableSSD/projects/VeriKit/test/plugins.test.mjs:191:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '/private/var/folders/81/r2msm9k16ggbsn3kp91_2wv40000gp/T/verikit-插件 $() & G8VyYp/verikit-openclaw/skills/arkts/references/基础库常见问题.md',
+    expected: '/private/var/folders/81/r2msm9k16ggbsn3kp91_2wv40000gp/T/verikit-插件 $() & G8VyYp/verikit-openclaw/skills/arkts/references/异步并发 (Promise和async_await).md',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,29 @@
+
+> @verikit/claude-code-plugin@0.0.8 test
+> node --test test/plugins.test.mjs
+
+✔ builds three self-contained, mutually exclusive host packages (4278.194042ms)
+✔ rebuild replaces only its own artifact and never copies earlier builds (812.722916ms)
+verikit: discovered 1 skill(s) under /var/folders/81/r2msm9k16ggbsn3kp91_2wv40000gp/T/verikit-插件 $() & m2lfNN/foreign-catalog
+verikit: loaded 0/1 sidecar contract(s) from /var/folders/81/r2msm9k16ggbsn3kp91_2wv40000gp/T/verikit-插件 $() & m2lfNN/foreign-catalog/contracts (1 orphaned)
+✔ host routing ignores foreign discovery overrides while the standalone CLI retains them (846.051792ms)
+✔ claude: declared hooks execute from another working directory, with Unicode and shell characters in the install path (1501.029583ms)
+✔ codeagent: declared hooks execute from another working directory, with Unicode and shell characters in the install path (1556.246125ms)
+✔ OpenClaw registers native hooks and optional tool; honors disabled and metadata modes and exact host version (2.54075ms)
+✔ OpenClaw prompt and tool preserve ranking, conflicts, references and fail-open behavior (1678.226458ms)
+✔ per-Kit read plan survives noisy recipes and missing deep hits without approving candidate Kits (315.751084ms)
+✔ read plan paths cannot escape the installed Kit directory (0.336416ms)
+✔ prompt truncation counts Unicode code points and never executes task text in a shell (2061.704375ms)
+✔ Kit edit monitor stays log-only and only examines assistant text after the latest user prompt (3.789ms)
+✔ native apply_patch monitoring scopes SDK additions to each ArkTS file (0.219125ms)
+✔ OpenClaw native edit monitor reads the session API's direct entry and follows spawnedCwd (9.566708ms)
+✔ configuration helper preserves plugins, tool restrictions and inherited alsoAllow; backs up exact bytes and is idempotent (19.435167ms)
+✔ installed OpenClaw 2026.7.1-2 loads the artifact and dispatches native prompt hooks and tools with isolated state (2988.170083ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16430.602875

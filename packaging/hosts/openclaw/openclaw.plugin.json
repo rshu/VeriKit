@@ -1,0 +1,19 @@
+{
+  "id": "verikit",
+  "name": "VeriKit",
+  "main": "./lib/openclaw/entry.mjs",
+  "version": "0.0.8",
+  "description": "HarmonyOS Kit selection for OpenClaw 2026.7.1-2.",
+  "activation": { "onStartup": true },
+  "contracts": { "tools": ["verikit_route"] },
+  "toolMetadata": { "verikit_route": { "optional": true } },
+  "skills": ["./skills"],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "enabled": { "type": "boolean", "default": true },
+      "monitorEdits": { "type": "boolean", "default": true, "description": "Log Kit-using ArkTS edits without a Kit mention; never block edits." }
+    }
+  }
+}

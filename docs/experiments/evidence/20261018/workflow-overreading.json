@@ -1,0 +1,279 @@
+{
+  "at": "2026-10-17T19:56:35.964Z",
+  "root": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan",
+  "hostVersion": "2026.7.1-2",
+  "model": "glm-work/glm-5.3-flash",
+  "modelRequest": {
+    "effort": "low",
+    "adapter": "isolated native provider wrapper",
+    "endpoint": "https://open.bigmodel.cn/api/anthropic"
+  },
+  "turns": [
+    {
+      "name": "01-menu",
+      "runId": "5679517a-76f1-4b1e-9492-8cad3cd6cdf6",
+      "state": "final",
+      "elapsedMs": 10986
+    },
+    {
+      "name": "02-implement",
+      "runId": "7b9db1bb-abba-43da-a885-f0775c624c10",
+      "elapsedMs": null
+    }
+  ],
+  "counts": {
+    "PASS": 4,
+    "FAIL": 0,
+    "NOT_RUN": 14
+  },
+  "checks": [
+    {
+      "name": "automatic route enters real host model request",
+      "status": "PASS",
+      "evidence": [
+        {
+          "status": "agree",
+          "bundle": [
+            "arkdata",
+            "arkts"
+          ],
+          "skills": 101
+        }
+      ]
+    },
+    {
+      "name": "model presents Kits and requests a choice",
+      "status": "PASS",
+      "evidence": "根据路由结果，这个「待办事项 App + 重启后数据持久化」任务推荐以下 Kit 方案：\n\n## 推荐方案（配方 local-persistence，已验证 ✅）\n- **arkdata** — 存储层：`@ohos.data.preferences`（轻量 KV）或 `@ohos.data.relationalStore`（结构化待办记录），实现重启后读回数据\n- **arkts** — 配套的异步/数据处理\n\n这是匹配度最高的组合（评分 1.0，validated 状态，有已构建验证的示例佐证）。\n\n## 可选扩展\n| 选项 | Kit | 用途 |\n|---|---|---|\n| 桌面卡片 | form-kit | 在桌面显示待办、可交互勾选 |\n| 恢复凭据 | asset-store-kit | 重装/换机后恢复敏感数据 |\n| 提醒通知 | notification-kit | 基于持久化的待办发本地提醒 |\n\n请确认你的选择：\n\n1. **最小方案**：arkdata + arkts（推荐，满足「重启后能读回待办」）\n2. **最小方案 + 桌面卡片**：再加 form-kit\n3. 其他组合 — 直接告诉我你想用的 Kit\n\n回复 1、2 或自定义组合，我就开始实现。"
+    },
+    {
+      "name": "no code written before Kit selection",
+      "status": "PASS",
+      "evidence": []
+    },
+    {
+      "name": "menu leaves initial page unchanged",
+      "status": "PASS",
+      "evidence": {
+        "pageFiles": [
+          "Index.ets"
+        ],
+        "indexSha256": "c8f8044e586476526f1bfb583aa0ed59b710059f44e26dc51d2280d1de0138aa"
+      }
+    },
+    {
+      "name": "selected Kit skills read before code",
+      "status": "NOT_RUN",
+      "evidence": [
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkdata/SKILL.md",
+        "app/requirements.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkts/SKILL.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkts/references/JSON扩展库.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkdata/references/通过用户首选项实现数据持久化 (ArkTS).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkts/references/ArkTS运行时概述.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkts/references/异步并发 (Promise和async_await).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkdata/references/ArkData简介.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkts/references/ArkTS简介.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkdata/references/应用数据持久化概述.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/SKILL.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Builder装饰器：自定义构建函数.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Prop装饰器：父子单向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Prop装饰器：父子单向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Prop装饰器：父子单向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/SKILL.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Watch装饰器：状态变量更改通知.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Watch装饰器：状态变量更改通知.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Watch装饰器：状态变量更改通知.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Watch装饰器：状态变量更改通知.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Watch装饰器：状态变量更改通知.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/页面路由.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/页面路由.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md"
+      ]
+    },
+    {
+      "name": "task reference docs read before code",
+      "status": "NOT_RUN",
+      "evidence": [
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkts/references/JSON扩展库.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkdata/references/通过用户首选项实现数据持久化 (ArkTS).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkts/references/ArkTS运行时概述.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkts/references/异步并发 (Promise和async_await).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkdata/references/ArkData简介.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkts/references/ArkTS简介.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkdata/references/应用数据持久化概述.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Builder装饰器：自定义构建函数.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/ForEach：循环渲染.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Prop装饰器：父子单向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Prop装饰器：父子单向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Prop装饰器：父子单向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@State装饰器：组件内状态.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/线性布局 (Row_Column).md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Link装饰器：父子双向同步.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Watch装饰器：状态变量更改通知.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Watch装饰器：状态变量更改通知.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Watch装饰器：状态变量更改通知.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Watch装饰器：状态变量更改通知.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Watch装饰器：状态变量更改通知.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/页面路由.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/页面路由.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md",
+        "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-read-plan/workspace/.plugins/verikit-openclaw/skills/arkui/references/@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化.md"
+      ]
+    },
+    {
+      "name": "SDK app implementation uses native tools",
+      "status": "NOT_RUN",
+      "evidence": [
+        {
+          "tool": "apply_patch"
+        },
+        {
+          "tool": "write",
+          "path": "app/entry/src/main/ets/model/TodoModel.ets"
+        }
+      ]
+    },
+    {
+      "name": "manual routing tool called",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "conflict is surfaced without writes",
+      "status": "NOT_RUN",
+      "evidence": {
+        "routes": [],
+        "calls": []
+      }
+    },
+    {
+      "name": "unrelated request receives no route",
+      "status": "NOT_RUN"
+    },
+    {
+      "name": "host injection opt-out honored",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "manual tool survives injection opt-out",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "denied tool surface",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "disabled tool surface",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "log-only monitor records unselected SDK edit",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "monitor opt-out suppresses log",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "broken routing fail-open",
+      "status": "NOT_RUN",
+      "evidence": {
+        "marker": "",
+        "elapsedMs": null,
+        "calls": []
+      }
+    },
+    {
+      "name": "timeout routing fail-open",
+      "status": "NOT_RUN",
+      "evidence": {
+        "marker": "",
+        "elapsedMs": null,
+        "calls": []
+      }
+    }
+  ],
+  "recovery": []
+}

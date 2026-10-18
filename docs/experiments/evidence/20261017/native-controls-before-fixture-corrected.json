@@ -1,0 +1,140 @@
+{
+  "at": "2026-10-17T14:06:25.617Z",
+  "mode": "deterministic real host SDK controls; no model call",
+  "hostVersion": "2026.7.1-2",
+  "checks": [
+    {
+      "name": "real host loads plugin",
+      "passed": true,
+      "evidence": {
+        "tools": [
+          "verikit_route"
+        ],
+        "hooks": [
+          "before_prompt_build",
+          "before_tool_call"
+        ]
+      }
+    },
+    {
+      "name": "native prompt hook returns complete routing",
+      "passed": true,
+      "evidence": {
+        "status": "agree",
+        "bundle": [
+          "arkdata",
+          "arkts"
+        ],
+        "refs": [
+          "arkdata",
+          "arkts"
+        ]
+      }
+    },
+    {
+      "name": "irrelevant prompt passes silently",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '<verikit-routing>\\n' +\n+   '{\"task\":\"法国的首都是哪里？\",\"skill_count\":101,\"top\":[{\"name\":\"payment-kit\",\"combinedScore\":0.5,\"triggerScore\":0,\"bm25Score\":1,\"disqualified\":false,\"positiveHits\":0,\"totalPositive\":32,\"negativeHits\":[],\"matchedClauses\":[]},{\"name\":\"push-kit\",\"combinedScore\":0.4843,\"triggerScore\":0,\"bm25Score\":0.9687,\"disqualified\":false,\"positiveHits\":0,\"totalPositive\":32,\"negativeHits\":[],\"matchedClauses\":[]},{\"name\":\"cann-kit\",\"combinedScore\":0.2033,\"triggerScore\":0,\"bm25Score\":0.4065,\"disqualified\":false,\"positiveHits\":0,\"totalPositive\":34,\"negativeHits\":[],\"matchedClauses\":[]},{\"name\":\"ability-kit\",\"combinedScore\":0,\"triggerScore\":0,\"bm25Score\":0,\"disqualified\":false,\"positiveHits\":0,\"totalPositive\":39,\"negativeHits\":[],\"matchedClauses\":[]},{\"name\":\"accessibility-kit\",\"combinedScore\":0,\"triggerScore\":0,\"bm25Score\":0,\"disqualified\":false,\"positiveHits\":0,\"totalPositive\":31,\"negativeHits\":[],\"matchedClauses\":[]}],\"provenance\":{\"authored_by\":\"Claude (LLM-authored from training knowledge + the in-session HarmonyOS work). Several recipes are now lifecycle.status=validated — their Kit bundle is corroborated by a building HarmonyOS sample app under DemoApp/HarmonyOS_NEXT/ that uses exactly those APIs (see each recipe\\'s lifecycle.validated.exemplar); the rest are still draft (LLM-authored, unverified).\",\"default_status\":\"draft\",\"catalog_sdk\":\"HarmonyOS SDK as shipped in skill.zip (API ~12+); reference docs in each Kit\\'s references/ are the source of truth for current API names. The DemoApp exemplars\\' build-profiles declare HarmonyOS 4.0.0(10) — older than the catalog, but the corroborated APIs (AVPlayer, notificationManager, formProvider, distributedKVStore, ...) are stable through HarmonyOS NEXT.\",\"policy\":\"Recipes are advisory. The `skills` bundle is curated cross-Kit judgment and is usually right; the API names in `notes` can go stale — always cross-check the headline Kit\\'s current reference docs (run `route --deep` on it) before relying on a recipe\\'s prose. A `validated` recipe has a known good exemplar; bump it to draft if a catalog refresh breaks it (`npm run lint-recipes` catches a removed/renamed Kit). See compositions/RECIPES.md.\"},\"compositions\":[],\"chains\":[{\"skills\":[\"payment-kit\",\"push-kit\"],\"score\":0.4922,\"reason\":\"payment-kit.outputs[message,notification] → push-kit.inputs\"},{\"skills\":[\"push-kit\",\"payment-kit\"],\"score\":0.4922,\"reason\":\"push-kit.outputs[requestid,call] → payment-kit.inputs\"}],\"bundle\":[\"payment-kit\"],\"bundle_source\":\"top-kit\",\"routing\":{\"status\":\"single_kit\",\"top\":{\"name\":\"payment-kit\",\"combinedScore\":0.5,\"band\":\"medium\"},\"top_k\":[],\"recipes\":[],\"top_in_recipe\":false,\"directive\":\"No curated recipe matched; single-Kit task: use payment-kit (score 0.50). Reference docs in `deep_references`.\"},\"recommendation\":\"No curated recipe matched; single-Kit task: use payment-kit (score 0.50). Reference docs in `deep_references`.\",\"deep_references\":{\"payment-kit\":[{\"path\":\"references/请求头PayMercAuth中的callerId和请求体中的mercNo或者combineMercNo是什么关系？.md\",\"title\":\"请求头PayMercAuth中的callerId和请求体中的mercNo或者combineMercNo是什么关系？\",\"score\":1},{\"path\":\"references/华为支付签约的免密代扣在哪里可以解约？.md\",\"title\":\"华为支付签约的免密代扣在哪里可以解约？\",\"score\":0.8832},{\"path\":\"references/App和元服务接口入参除了appId不同，其他如商户号、证书、密钥这些可以使用相同的吗？.md\",\"title\":\"App和元服务接口入参除了appId不同，其他如商户号、证书、密钥这些可以使用相同的吗？\",\"score\":0},{\"path\":\"references/GET请求的bodySign是对谁签名得到的？.md\",\"title\":\"GET请求的bodySign是对谁签名得到的？\",\"score\":0},{\"path\":\"references/Payment Kit的签名公私钥怎么获取？.md\",\"title\":\"Payment Kit的签名公私钥怎么获取？\",\"score\":0}]}}\\n' +\n+   '</verikit-routing>\\n' +\n+   '<verikit-protocol>\\n' +\n+   'This is a HarmonyOS development task. BEFORE writing or editing code:\\n' +\n+   '1. Ask the user to choose Kit(s), showing the top ranked Kits, any matched recipe bundle, and an option to specify their own Kits.\\n' +\n+   'If the user has already selected Kit(s) for this task, honor that selection without asking again.\\n' +\n+   \"2. Read each selected Kit's SKILL.md and its task-relevant reference docs before implementing.\\n\" +\n+   'Catalog root: \"/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261017-todolist/workspace/.plugins/verikit-openclaw/skills\".\\n' +\n+   \"Resolve a Kit's SKILL.md as <catalog root>/<kit>/SKILL.md and each deep_references path relative to <catalog root>/<kit>/.\\n\" +\n+   \"Use the host's native file-reading tool; no Claude-specific Skill tool is required.\\n\" +\n+   '3. Implement using those docs. Respect routing.directive, especially conflicts; never silently substitute Kits.\\n' +\n+   '</verikit-protocol>'\n- undefined\n"
+    },
+    {
+      "name": "native conflict remains ask-human",
+      "passed": true,
+      "evidence": {
+        "status": "conflict",
+        "top": {
+          "name": "calendar-kit",
+          "combinedScore": 0.5726,
+          "band": "medium"
+        },
+        "top_k": [],
+        "recipes": [
+          {
+            "id": "notification-with-action",
+            "skills": [
+              "notification-kit",
+              "ability-kit",
+              "arkts"
+            ],
+            "score": 1,
+            "band": "high",
+            "maturity": "validated"
+          }
+        ],
+        "top_in_recipe": false,
+        "directive": "CONFLICT: the curated recipe and the top-ranked Kit disagree. Do NOT silently pick. Ask the human to choose one of:\n  1. Recipe bundle \"notification-with-action\" [notification-kit, ability-kit, arkts] — recommended (curated multi-Kit answer; maturity: validated).\n  2. (no high-confidence single Kit alternative this time.)\n  3. Specify the Kit(s) yourself.\nWait for the human's selection, then proceed with exactly that. Do not override their choice. Note: deep_references below reflect the top-ranked Kit only until the human picks."
+      }
+    },
+    {
+      "name": "native manually resolved tool returns existing references",
+      "passed": true,
+      "evidence": {
+        "skills": 101,
+        "bundle": [
+          "arkdata",
+          "arkts"
+        ]
+      }
+    },
+    {
+      "name": "native tool policy denies verikit_route",
+      "passed": true
+    },
+    {
+      "name": "real session API supports log-only native write",
+      "passed": true,
+      "evidence": [
+        {
+          "ts": "2026-10-17T14:06:10.429Z",
+          "tool": "write",
+          "file": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261017-todolist/workspace/app/native-probes/missing-kit.ets"
+        }
+      ]
+    },
+    {
+      "name": "Kit mention suppresses log in real transcript",
+      "passed": true
+    },
+    {
+      "name": "native apply_patch SDK edit is observed",
+      "passed": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok((await logRows()).some(row => row.file.endsWith(\"/native-probes/patched.ets\")))\n"
+    },
+    {
+      "name": "monitorEdits false suppresses native logging",
+      "passed": true
+    },
+    {
+      "name": "injection opt-out suppresses prompt but retains tool",
+      "passed": true
+    },
+    {
+      "name": "native failure fails open",
+      "passed": true,
+      "evidence": {
+        "elapsedMs": 43
+      }
+    },
+    {
+      "name": "manual routing error is explicit",
+      "passed": true
+    },
+    {
+      "name": "native timeout fails open",
+      "passed": true,
+      "evidence": {
+        "elapsedMs": 15007
+      }
+    },
+    {
+      "name": "fault injection restored exact router bytes",
+      "passed": true,
+      "evidence": "ed46d092533ba79e74e0a3e900a88231049798cc2e3939a91bc7e7be6841bba8"
+    },
+    {
+      "name": "enabled false registers no hooks or tools",
+      "passed": true
+    }
+  ],
+  "passed": 14,
+  "total": 16
+}

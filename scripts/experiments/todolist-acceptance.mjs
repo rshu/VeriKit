@@ -1,0 +1,30 @@
+import assert from "node:assert/strict";
+import fs from "node:fs/promises";
+import path from "node:path";
+import { stripTypeScriptTypes } from "node:module";
+import { pathToFileURL } from "node:url";
+
+const root = path.resolve(process.argv[2]);
+const file = path.join(root, "workspace/app/entry/src/main/ets/model/TodoModel.ets");
+const source = await fs.readFile(file, "utf8");
+if (/^\s*import\b/m.test(source)) throw new Error("Pure model must not import SDK or external code.");
+const compiled = path.join(root, "accepted-TodoModel.mjs");
+await fs.writeFile(compiled, stripTypeScriptTypes(source, { mode: "strip", sourceUrl: file }));
+const { TodoModel } = await import(pathToFileURL(compiled));
+const results = [];
+function check(name, fn) { try { fn(); results.push({ name, passed: true }); } catch (error) { results.push({ name, passed: false, error: error.message }); } }
+check("empty initial list", () => assert.deepEqual(new TodoModel().items, []));
+check("reject blank titles without mutation", () => { const m = new TodoModel(); for (const title of ["", " ", "\t\n"]) assert.equal(m.add(title), false); assert.equal(m.items.length, 0); });
+check("trim and preserve Chinese", () => { const m = new TodoModel(); assert.equal(m.add("  买牛奶 🥛  "), true); assert.equal(m.items[0].title, "买牛奶 🥛"); assert.equal(m.items[0].completed, false); });
+check("enforce 80 character limit", () => { const m = new TodoModel(); assert.equal(m.add("中".repeat(80)), true); assert.equal(m.add("中".repeat(81)), false); assert.equal(m.items.length, 1); });
+check("allow repeated titles with unique stable ids", () => { const m = new TodoModel(); for (let i = 0; i < 100; i++) assert.equal(m.add("重复"), true); assert.equal(new Set(m.items.map(t => t.id)).size, 100); assert.ok(m.items.every(t => typeof t.id === "string" && t.id)); });
+check("complete and reopen selected item", () => { const m = new TodoModel(); m.add("A"); m.add("B"); const id = m.items[0].id; m.toggle(id); assert.equal(m.items[0].completed, true); assert.equal(m.items[1].completed, false); m.toggle(id); assert.equal(m.items[0].completed, false); assert.equal(m.items[0].id, id); });
+check("all active completed filters", () => { const m = new TodoModel(); m.add("A"); m.add("B"); m.toggle(m.items[0].id); assert.equal(m.visible("all").length, 2); assert.deepEqual(m.visible("active").map(t => t.title), ["B"]); assert.deepEqual(m.visible("completed").map(t => t.title), ["A"]); });
+check("delete exactly one item", () => { const m = new TodoModel(); m.add("same"); m.add("same"); const keep = m.items[1].id; m.remove(m.items[0].id); assert.deepEqual(m.items.map(t => t.id), [keep]); });
+check("unknown ids do not mutate", () => { const m = new TodoModel(); m.add("A"); const before = m.serialize(); m.toggle("unknown"); m.remove("unknown"); assert.equal(m.serialize(), before); });
+check("serialization preserves ids titles and states", () => { const m = new TodoModel(); m.add("中文"); m.add("Second"); m.toggle(m.items[0].id); const restored = new TodoModel(); restored.restore(m.serialize()); assert.deepEqual(restored.items, m.items); });
+check("new ids after restore do not collide", () => { const m = new TodoModel(); m.add("A"); m.add("B"); const restored = new TodoModel(); restored.restore(m.serialize()); restored.add("C"); assert.equal(new Set(restored.items.map(t => t.id)).size, 3); });
+const result = { at: new Date().toISOString(), source: file, sourceExecuted: "exact pure ArkTS model with types stripped; no replacement business implementation", passed: results.filter(r => r.passed).length, total: results.length, results };
+await fs.writeFile(path.join(root, "business-acceptance.json"), JSON.stringify(result, null, 2) + "\n");
+console.log(JSON.stringify(result));
+if (result.passed !== result.total) process.exitCode = 1;

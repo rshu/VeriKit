@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-17T15:35:43.586Z",
+  "command": "npm test",
+  "node": "v26.0.0",
+  "hostVersion": "2026.7.1-2",
+  "tests": 12,
+  "passed": 12,
+  "failed": 0,
+  "skipped": 0,
+  "durationMs": 13761.161417,
+  "includesNativeSystemPromptAndOptOutAssertions": true
+}

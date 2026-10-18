@@ -1,0 +1,261 @@
+{
+  "at": "2026-10-17T20:11:39.891Z",
+  "review": "Native captured layouts show counts changing with add, toggle, reopen, delete and restart; no extra model/app mutation.",
+  "states": [
+    {
+      "file": "layout-1.json",
+      "rows": [],
+      "labels": [
+        "未完成 0",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-2.json",
+      "rows": [],
+      "labels": [
+        "未完成 0",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-3.json",
+      "rows": [],
+      "labels": [
+        "未完成 0",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-4.json",
+      "rows": [],
+      "labels": [
+        "未完成 0",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-5.json",
+      "rows": [],
+      "labels": [
+        "未完成 0",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-6.json",
+      "rows": [],
+      "labels": [
+        "未完成 0",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-7.json",
+      "rows": [],
+      "labels": [
+        "未完成 0",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-8.json",
+      "rows": [
+        "todo-row-t1"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-9.json",
+      "rows": [
+        "todo-row-t1"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-10.json",
+      "rows": [
+        "todo-row-t1"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-11.json",
+      "rows": [
+        "todo-row-t1"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-12.json",
+      "rows": [
+        "todo-row-t1",
+        "todo-row-t2"
+      ],
+      "labels": [
+        "未完成 2",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-13.json",
+      "rows": [
+        "todo-row-t1",
+        "todo-row-t2"
+      ],
+      "labels": [
+        "未完成 2",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-14.json",
+      "rows": [
+        "todo-row-t1",
+        "todo-row-t2"
+      ],
+      "labels": [
+        "未完成 2",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-15.json",
+      "rows": [
+        "todo-row-t1",
+        "todo-row-t2"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 1"
+      ]
+    },
+    {
+      "file": "layout-16.json",
+      "rows": [
+        "todo-row-t1",
+        "todo-row-t2"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 1"
+      ]
+    },
+    {
+      "file": "layout-17.json",
+      "rows": [
+        "todo-row-t2"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 1"
+      ]
+    },
+    {
+      "file": "layout-18.json",
+      "rows": [
+        "todo-row-t2"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 1"
+      ]
+    },
+    {
+      "file": "layout-19.json",
+      "rows": [
+        "todo-row-t1"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 1"
+      ]
+    },
+    {
+      "file": "layout-20.json",
+      "rows": [
+        "todo-row-t1"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 1"
+      ]
+    },
+    {
+      "file": "layout-21.json",
+      "rows": [
+        "todo-row-t1",
+        "todo-row-t2"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 1"
+      ]
+    },
+    {
+      "file": "layout-22.json",
+      "rows": [
+        "todo-row-t1",
+        "todo-row-t2"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 1"
+      ]
+    },
+    {
+      "file": "layout-23.json",
+      "rows": [
+        "todo-row-t1",
+        "todo-row-t2"
+      ],
+      "labels": [
+        "未完成 2",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-24.json",
+      "rows": [
+        "todo-row-t1",
+        "todo-row-t2"
+      ],
+      "labels": [
+        "未完成 2",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-25.json",
+      "rows": [
+        "todo-row-t1"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 0"
+      ]
+    },
+    {
+      "file": "layout-26.json",
+      "rows": [
+        "todo-row-t1"
+      ],
+      "labels": [
+        "未完成 1",
+        "已完成 0"
+      ]
+    }
+  ]
+}

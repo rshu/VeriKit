@@ -8,7 +8,7 @@
 
 ## 1. VeriKit 简介
 
-VeriKit 是一个 Claude Code 插件，在 agent 写代码之前，先帮开发者选好任务该用哪些 **HarmonyOS Kit** 和哪些 **参考文档**。它内置了完整的 100 Kit HarmonyOS SDK 目录，并提供：
+VeriKit 是一个支持 Claude Code、CodeAgent 和 OpenClaw `2026.7.1-2` 的多宿主插件，在 agent 写代码之前，先帮开发者选好任务该用哪些 **HarmonyOS Kit** 和哪些 **参考文档**。它内置了完整的 100 Kit HarmonyOS SDK 目录，并提供：
 
 - **确定性排序器**（BM25 + 人工编写的正负触发子句），对全部 100 个 Kit 打分，返回最相关的候选。
 - **精选组合配方**，用于常见的多 Kit 特性（例如「带跳转的本地通知」→ `notification-kit + ability-kit + arkts`）。
@@ -30,11 +30,41 @@ VeriKit 是一个 Claude Code 插件，在 agent 写代码之前，先帮开发�
 
 如果没有自动重载，重启 Claude Code 即可。`dist/` 和 `skills/` 已提交到仓库，开箱即用——无需克隆到本地或运行构建步骤。
 
+### 多宿主构建
+
+```sh
+npm run build:plugins
+```
+
+一次生成三个独立安装包，共享原有的排序器、合约、组合配方和参考文档：
+
+| 宿主 | 产物目录 | 插件清单 |
+| --- | --- | --- |
+| Claude Code | `dist/verikit-claude/` | `.claude-plugin/plugin.json` |
+| CodeAgent | `dist/verikit-codeagent/` | `.cac-plugin/plugin.json` |
+| OpenClaw 2026.7.1-2 | `dist/verikit-openclaw/` | `openclaw.plugin.json` |
+
+无需安装构建依赖。`npm run build:plugin` 默认只生成 OpenClaw 包；也可使用
+`npm run build:plugin -- --host claude`（或 `codeagent`、`openclaw`）指定宿主。
+生成的目录可独立复制、安装；重建不会把其他宿主产物嵌套打包。
+原仓库根目录仍可按上述方式直接安装到 Claude Code。
+
+OpenClaw 使用原生 `before_prompt_build` 钩子和 `verikit_route` 工具，
+通过原生文件读取工具加载参考文档。安装、MA 配置保留及工具权限说明见
+[OpenClaw 适配说明](docs/openclaw.md)。运行 `npm test` 验证产物、路由和宿主接口；
+检测到目标版本的本地 OpenClaw 时还会进行隔离的实际加载测试。
+
 ### 前置条件
 
 - **Node ≥ 20** 在 `PATH` 中（Windows：`winget install OpenJS.NodeJS`，或使用 DevEco Studio 自带的 `node.exe`）。
+- OpenClaw 产物沿用目标宿主更严格的 Node 版本要求，见 [OpenClaw 适配说明](docs/openclaw.md)。
 
 ## 3. 代表性示例
+
+以下为预期交互示例。2026-10-18 续跑及此前真实 TodoList 实验结果与验收范围见
+[实验报告](docs/experiments/harmonyos-todolist-status.md)，参考工程见 [TodoList 应用](examples/harmonyos-todolist/README.md)。
+最新真实 GLM 版本见 [2026-10-18 模型实验应用](examples/harmonyos-todolist-glm-20261018/README.md)；
+[2026-10-17 版本](examples/harmonyos-todolist-glm/README.md)及其失败记录单独保留。
 
 ### 示例 (i)——端到端：从一句话到能跑的代码
 
@@ -65,9 +95,9 @@ agent 读到该块后会先告诉你接下来要做什么：
 > - **arkdata** 做存储——用 `@ohos.data.preferences` 把待办项序列化为 JSON 持久化；
 > - **arkts** 组织异步存取代码。
 >
-> 我先读 `arkdata` 列出的两篇核心参考，然后开始实现。
+> 你是否选择这个配方，还是希望指定其他 Kit？
 
-随后 agent 自主调用 `Skill(verikit:arkdata)` 加载完整的 SKILL.md（含上面提到的参考链接），读完后直接生成 ArkTS 代码：
+你确认选择后，agent 调用 `Skill(verikit:arkdata)` 加载完整的 SKILL.md（含上面提到的参考链接），读完所选 Kit 的文档后生成 ArkTS 代码：
 
 ```typescript
 import preferences from '@ohos.data.preferences';
@@ -125,7 +155,7 @@ VeriKit 的排序器、CLI、钩子、合约编写、组合配方和构建脚本
 
 ## 1. What VeriKit is
 
-VeriKit is a Claude Code plugin that selects which **HarmonyOS Kit(s)** and **reference docs** to consult for a developer's task, before the agent writes any code. It ships the full 100-Kit HarmonyOS SDK catalog pre-indexed, with:
+VeriKit is a multi-host plugin for Claude Code, CodeAgent, and OpenClaw `2026.7.1-2` that selects which **HarmonyOS Kit(s)** and **reference docs** to consult for a developer's task, before the agent writes any code. It ships the full 100-Kit HarmonyOS SDK catalog pre-indexed, with:
 
 - A **deterministic ranker** (BM25 + authored positive/negative trigger clauses) that scores all 100 Kits against the task and returns the top candidates.
 - **Curated composition recipes** for common multi-Kit features (e.g. "local notification with a tap action" → `notification-kit + ability-kit + arkts`).
@@ -147,11 +177,30 @@ In your Claude Code session:
 
 Restart Claude Code if it doesn't auto-reload. That's it — `dist/` and `skills/` are committed in the repo, so the plugin works immediately, with no local clone or build step required.
 
+### Build for multiple hosts
+
+From a source checkout, run `npm run build:plugins` to generate independent packages in
+`dist/verikit-claude/`, `dist/verikit-codeagent/`, and `dist/verikit-openclaw/`.
+They share the committed ranker and complete catalog; no build dependencies are needed.
+`npm run build:plugin` defaults to OpenClaw, or select a host with
+`npm run build:plugin -- --host claude` (also `codeagent` or `openclaw`).
+The source root remains directly installable as the existing Claude Code plugin.
+
+OpenClaw uses native prompt hooks and the `verikit_route` tool. See the
+[OpenClaw guide](docs/openclaw.md) for installation, MatrixAssistant configuration,
+and tool access. `npm test` checks artifacts, routing, and plugin interfaces,
+including an isolated native loader test when the exact OpenClaw version is installed.
+
 ### Prerequisites
 
 - **Node ≥ 20** on `PATH` (Windows: `winget install OpenJS.NodeJS`, or use the bundled `node.exe` from DevEco Studio).
+- OpenClaw packages follow the target host's stricter Node requirements; see the [OpenClaw guide](docs/openclaw.md).
 
 ## 3. Walkthroughs
+
+These illustrate the intended interaction. The [TodoList experiment report](docs/experiments/harmonyos-todolist-status.md)
+records the actual results and validation scope; the [reference app](examples/harmonyos-todolist/README.md) is a separate local implementation.
+The latest [2026-10-18 GLM app](examples/harmonyos-todolist-glm-20261018/README.md) passed compilation and all 11 emulator checks after model repairs. The [2026-10-17 version](examples/harmonyos-todolist-glm/README.md) and its initial failures are preserved separately.
 
 ### Example (i) — End-to-end: from one sentence to working code
 
@@ -182,9 +231,9 @@ Having read the block, the agent first tells you what it's going to do:
 > - **arkdata** for storage — `@ohos.data.preferences` to persist todos serialized as JSON;
 > - **arkts** for the async-IO code organization.
 >
-> I'll read the two key references arkdata suggests, then start implementing.
+> Would you like to use this recipe, or specify different Kits?
 
-The agent then autonomously calls `Skill(verikit:arkdata)` to load the full SKILL.md (which links the references above), reads them, and produces ArkTS code:
+After you confirm the selection, the agent calls `Skill(verikit:arkdata)` to load the full SKILL.md (which links the references above), reads the selected Kits' docs, and produces ArkTS code:
 
 ```typescript
 import preferences from '@ohos.data.preferences';

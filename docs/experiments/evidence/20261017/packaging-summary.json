@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-17T15:37:37.521Z",
+  "sourceFiles": 3707,
+  "nestedSourceArtifacts": 0,
+  "hosts": [
+    {
+      "name": "claude",
+      "files": 3659,
+      "nestedArtifacts": 0
+    },
+    {
+      "name": "codeagent",
+      "files": 3659,
+      "nestedArtifacts": 0
+    },
+    {
+      "name": "openclaw",
+      "files": 3657,
+      "nestedArtifacts": 0
+    }
+  ],
+  "artifactRuntimeMatchesSource": true
+}

@@ -1,0 +1,153 @@
+{
+  "at": "2026-10-17T14:17:07.934Z",
+  "root": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261017-todolist",
+  "hostVersion": "2026.7.1-2",
+  "model": "glm-work/glm-5.3-flash",
+  "turns": [
+    {
+      "name": "01-menu",
+      "runId": "3ebb66ee-7ed6-47ce-a9a3-6f30ad09b3ac",
+      "state": "error",
+      "elapsedMs": 2633
+    }
+  ],
+  "counts": {
+    "PASS": 1,
+    "FAIL": 0,
+    "NOT_RUN": 17
+  },
+  "checks": [
+    {
+      "name": "automatic route enters real host model request",
+      "status": "PASS",
+      "evidence": [
+        {
+          "status": "agree",
+          "bundle": [
+            "arkdata",
+            "arkts"
+          ],
+          "skills": 101
+        },
+        {
+          "status": "agree",
+          "bundle": [
+            "arkdata",
+            "arkts"
+          ],
+          "skills": 101
+        },
+        {
+          "status": "agree",
+          "bundle": [
+            "arkdata",
+            "arkts"
+          ],
+          "skills": 101
+        },
+        {
+          "status": "agree",
+          "bundle": [
+            "arkdata",
+            "arkts"
+          ],
+          "skills": 101
+        }
+      ]
+    },
+    {
+      "name": "model presents Kits and requests a choice",
+      "status": "NOT_RUN",
+      "evidence": "Error: LLM request failed."
+    },
+    {
+      "name": "no code written before Kit selection",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "menu leaves initial page unchanged",
+      "status": "NOT_RUN"
+    },
+    {
+      "name": "selected Kit skills read before code",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "task reference docs read before code",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "SDK app implementation uses native tools",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "manual routing tool called",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "conflict is surfaced without writes",
+      "status": "NOT_RUN",
+      "evidence": {
+        "routes": [],
+        "calls": []
+      }
+    },
+    {
+      "name": "unrelated request receives no route",
+      "status": "NOT_RUN"
+    },
+    {
+      "name": "host injection opt-out honored",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "manual tool survives injection opt-out",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "denied tool surface",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "disabled tool surface",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "log-only monitor records unselected SDK edit",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "monitor opt-out suppresses log",
+      "status": "NOT_RUN",
+      "evidence": []
+    },
+    {
+      "name": "broken routing fail-open",
+      "status": "NOT_RUN",
+      "evidence": {
+        "marker": "",
+        "elapsedMs": null,
+        "calls": []
+      }
+    },
+    {
+      "name": "timeout routing fail-open",
+      "status": "NOT_RUN",
+      "evidence": {
+        "marker": "",
+        "elapsedMs": null,
+        "calls": []
+      }
+    }
+  ]
+}

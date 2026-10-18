@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-17T20:14:42.971Z",
+  "command": "npm test",
+  "tests": 14,
+  "pass": 14,
+  "fail": 0,
+  "skipped": 0,
+  "durationMs": 13421.640792,
+  "log": "regression.log",
+  "runtimeSourceMatchesTestedArtifact": true
+}

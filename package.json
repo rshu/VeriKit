@@ -4,6 +4,14 @@
   "description": "VeriKit — HarmonyOS Kit selection for LLM agents, packaged as a Claude Code plugin. Ranks the 100 HarmonyOS SDK Kits against the task, surfaces the matched composition-recipe bundle, and lists the top task-relevant reference docs per Kit.",
   "license": "MIT",
   "type": "module",
+  "scripts": {
+    "build:plugin": "node scripts/build-plugin.mjs",
+    "build:plugins": "node scripts/build-plugin.mjs --all",
+    "test": "node --test test/plugins.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "bin": {
     "verikit": "./dist/verikit-cli.js"
   },
@@ -12,6 +20,12 @@
     "bin",
     "commands",
     "hooks",
+    "lib",
+    "scripts",
+    "packaging",
+    "plugin-target.json",
+    "docs",
+    "test",
     "dist",
     "skills",
     "README.md",

@@ -1,0 +1,82 @@
+{
+  "at": "2026-10-17T15:31:53.668Z",
+  "hostVersion": "2026.7.1-2",
+  "model": "glm-work/glm-5.3-flash",
+  "modelRequest": {
+    "effort": "low",
+    "adapter": "isolated native provider wrapper",
+    "endpoint": "https://open.bigmodel.cn/api/anthropic"
+  },
+  "frozenInputs": {
+    "requirementsSha256": "7a37b26cfc9fd20924000990e472d8f4ab9a7da5a7202d1cf07ca1a5ebc64b05",
+    "acceptanceSha256": "3aa32802c376ec5a18305f6839ee62490b044b221ced8b399665a977e68ee905",
+    "initialPageSha256": "c8f8044e586476526f1bfb583aa0ed59b710059f44e26dc51d2280d1de0138aa",
+    "pluginEntrySha256": "4edb8eb056ea6c0311b2e44e90186862b22e36e8f0725ee473ec7b504901d54a",
+    "routingAdapterSha256": "a09308c9fe8a620f6600581eb9c13f68186874b006a7c89bd38106d86edd25a6",
+    "routerSha256": "ed46d092533ba79e74e0a3e900a88231049798cc2e3939a91bc7e7be6841bba8"
+  },
+  "menuAudit": {
+    "codeTools": []
+  },
+  "stages": [
+    {
+      "stage": "main",
+      "port": 52206,
+      "startedAt": 1792250383009,
+      "routingAdapterSha256": "a09308c9fe8a620f6600581eb9c13f68186874b006a7c89bd38106d86edd25a6",
+      "status": "completed"
+    },
+    {
+      "stage": "no-injection",
+      "port": 54097,
+      "startedAt": 1792250578095,
+      "routingAdapterSha256": "a09308c9fe8a620f6600581eb9c13f68186874b006a7c89bd38106d86edd25a6",
+      "status": "completed"
+    },
+    {
+      "stage": "monitor-off",
+      "port": 54387,
+      "startedAt": 1792250603979,
+      "routingAdapterSha256": "a09308c9fe8a620f6600581eb9c13f68186874b006a7c89bd38106d86edd25a6",
+      "status": "completed"
+    },
+    {
+      "stage": "denied",
+      "port": 54540,
+      "startedAt": 1792250617167,
+      "routingAdapterSha256": "a09308c9fe8a620f6600581eb9c13f68186874b006a7c89bd38106d86edd25a6",
+      "status": "completed"
+    },
+    {
+      "stage": "disabled",
+      "port": 54654,
+      "startedAt": 1792250628471,
+      "routingAdapterSha256": "a09308c9fe8a620f6600581eb9c13f68186874b006a7c89bd38106d86edd25a6",
+      "status": "completed"
+    },
+    {
+      "stage": "broken",
+      "port": 54800,
+      "startedAt": 1792250642858,
+      "routingAdapterSha256": "a09308c9fe8a620f6600581eb9c13f68186874b006a7c89bd38106d86edd25a6",
+      "status": "completed"
+    },
+    {
+      "stage": "timeout",
+      "port": 55017,
+      "startedAt": 1792250664303,
+      "routingAdapterSha256": "a09308c9fe8a620f6600581eb9c13f68186874b006a7c89bd38106d86edd25a6",
+      "status": "completed"
+    },
+    {
+      "stage": "repair",
+      "port": 56327,
+      "startedAt": 1792250801917,
+      "routingAdapterSha256": "a09308c9fe8a620f6600581eb9c13f68186874b006a7c89bd38106d86edd25a6",
+      "status": "completed"
+    }
+  ],
+  "originalConfigUnchanged": true,
+  "turnCount": 13,
+  "source": "experiments/runs/20261017-todolist-glm-system"
+}

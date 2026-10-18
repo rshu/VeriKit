@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-17T14:00:49.442Z",
+  "endpoint": "https://open.bigmodel.cn/api/anthropic/v1/messages",
+  "model": "glm-5.3-flash",
+  "checks": [
+    {
+      "providerId": "glm-work",
+      "status": 401,
+      "error": {
+        "message": "身份验证失败。",
+        "type": "1000"
+      }
+    },
+    {
+      "providerId": "review",
+      "status": 401,
+      "error": {
+        "message": "身份验证失败。",
+        "type": "1000"
+      }
+    }
+  ]
+}

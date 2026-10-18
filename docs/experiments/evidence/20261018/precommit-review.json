@@ -1,0 +1,96 @@
+{
+  "at": "2026-10-18T04:12:12.876Z",
+  "scope": "precommit review; original GLM and device evidence preserved unchanged",
+  "resolvedFindings": [
+    {
+      "priority": "P1",
+      "file": "scripts/configure-openclaw.mjs",
+      "fix": "Preserve absent/empty plugin allow policy; append VeriKit only to an existing nonempty allowlist; verified using the real dual-plugin loader."
+    },
+    {
+      "priority": "P2",
+      "file": "lib/routing.mjs",
+      "fix": "Pin four child-process catalog paths to the installed package while preserving standalone CLI overrides."
+    },
+    {
+      "priority": "P3",
+      "file": "lib/openclaw/entry.mjs",
+      "fix": "Resolve log paths using spawnedCwd, spawnedWorkspaceDir, or native per-agent workspace API."
+    }
+  ],
+  "regression": {
+    "tests": 15,
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 16430.602875,
+    "log": "precommit-regression.log"
+  },
+  "nativeControls": {
+    "passed": 16,
+    "total": 16,
+    "evidence": "precommit-native-controls.json"
+  },
+  "archivedExample": {
+    "businessPassed": 11,
+    "businessTotal": 11,
+    "buildPassed": true,
+    "evidence": [
+      "precommit-business-acceptance.json",
+      "precommit-build-result.json"
+    ],
+    "newDeviceRun": false
+  },
+  "modelInputComparison": {
+    "at": "2026-10-18T04:10:19.791Z",
+    "baselineRun": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-todolist-final",
+    "routingResultUnchanged": true,
+    "systemProtocolUnchanged": true,
+    "newModelCall": false
+  },
+  "runtime": [
+    {
+      "path": "lib/routing.mjs",
+      "sha256": "04d5720813c844cb62d83de5c69844b97c4ac1ad3aa94c1eab9f3167f87cc9e4"
+    },
+    {
+      "path": "lib/openclaw/entry.mjs",
+      "sha256": "be5bb570fa517cb7a26d85dbb84beddd82df3a88906cade0fd0b4335fbf0b65d"
+    },
+    {
+      "path": "lib/kit-monitor.mjs",
+      "sha256": "9882eba28e06a4cbd54b23f90803d1d1c4bf70ce883ed293d2b2d4a70d1aa713"
+    },
+    {
+      "path": "scripts/configure-openclaw.mjs",
+      "sha256": "11b0d31cee70dc3d0f25dc732b2ee8c170afecfde1d111da7c33474b712defda"
+    }
+  ],
+  "builds": [
+    {
+      "host": "claude",
+      "entryCount": 3659,
+      "unpackedSize": 32653871,
+      "nestedHostArtifacts": 0,
+      "runtimeMatchesSource": true
+    },
+    {
+      "host": "codeagent",
+      "entryCount": 3659,
+      "unpackedSize": 32653706,
+      "nestedHostArtifacts": 0,
+      "runtimeMatchesSource": true
+    },
+    {
+      "host": "openclaw",
+      "entryCount": 3657,
+      "unpackedSize": 32646906,
+      "nestedHostArtifacts": 0,
+      "runtimeMatchesSource": true
+    }
+  ],
+  "sourcePackage": {
+    "entryCount": 3742,
+    "nestedHostArtifacts": 0
+  }
+}

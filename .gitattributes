@@ -1,0 +1,2 @@
+# Captured test output keeps blank context lines verbatim for auditability.
+docs/experiments/evidence/**/*.log whitespace=-blank-at-eol
