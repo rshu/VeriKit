@@ -57,6 +57,12 @@ await check("native prompt hook returns complete routing", async () => {
   assert.equal(r.skill_count, 101); assert.deepEqual(r.bundle, ["arkdata", "arkts"]); return { status: r.routing.status, bundle: r.bundle, refs: Object.keys(r.deep_references), readPlan };
 });
 await check("irrelevant prompt passes silently", async () => { for (const prompt of ["法国的首都是哪里？", "法国的首都是哪里？只回答城市名称。"]) { const result = await getGlobalHookRunner().runBeforePromptBuild({ prompt, messages: [] }, ctx); assert.equal(result?.prependContext, undefined); } });
+await check("RC private review receives no automatic Kit guidance", async () => {
+  const reviewCtx = { ...ctx, sessionKey: "agent:main:runtime-corrector:5e558ad4-898a-4e51-a9f5-0b74f6a048f3" };
+  const result = await getGlobalHookRunner().runBeforePromptBuild({ prompt: "帮我做一个待办事项 App，重启后还能读到之前保存的待办项。", messages: [] }, reviewCtx);
+  assert.equal(result?.prependContext, undefined);
+  assert.equal(result?.appendSystemContext, undefined);
+});
 await check("native conflict remains ask-human", async () => {
   const result = await getGlobalHookRunner().runBeforePromptBuild({ prompt: "添加任务提醒通知，到点弹出并可点击查看", messages: [] }, ctx);
   const r = JSON.parse(result.prependContext.match(/<verikit-routing>\s*(.+)\s*<\/verikit-routing>/)[1]);

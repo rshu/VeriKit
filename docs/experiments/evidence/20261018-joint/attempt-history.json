@@ -1,0 +1,22 @@
+[
+  {
+    "directory": "20261018-joint-plugins-01",
+    "outcome": "No model workflow; sessions.create rejected unsupported cwd parameter. Isolated Gateway cleaned up."
+  },
+  {
+    "directory": "20261018-joint-plugins-02",
+    "outcome": "Both plugins loaded and RC project bound; configured daily provider credential returned authentication errors. No code generated."
+  },
+  {
+    "directory": "20261018-joint-plugins-03",
+    "outcome": "Original VeriKit injects Kit routing into RC review sessions. Reading audit and pure business passed, RC PASS, actual SDK compile failed."
+  },
+  {
+    "directory": "20261018-joint-plugins-04",
+    "outcome": "VeriKit private-review filter applied. See phase-specific frozen evidence; initial device failed, controlled defect corrected with terminal review UNVERIFIED due network error, external device repair then independent revalidation."
+  },
+  {
+    "directory": "20261018-joint-native-controls",
+    "outcome": "Harness invoked without required fixture; aborted before control checks. Subsequent fresh complete fixture passed 17/17."
+  }
+]

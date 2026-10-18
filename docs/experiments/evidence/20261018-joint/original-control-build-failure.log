@@ -1,0 +1,48 @@
+> hvigor [32mFinished :entry:clean... after 1 ms [39m
+> hvigor [32mFinished :entry:default@PreBuild... after 57 ms [39m
+> hvigor [32mFinished :entry:default@CreateModuleInfo... after 1 ms [39m
+> hvigor [32mFinished :entry:default@GenerateMetadata... after 2 ms [39m
+> hvigor [32mFinished :entry:default@ConfigureCmake... after 1 ms [39m
+> hvigor [32mFinished :entry:default@MergeProfile... after 2 ms [39m
+> hvigor [32mFinished :entry:default@CreateBuildProfile... after 1 ms [39m
+> hvigor [32mFinished :entry:default@PreCheckSyscap... after 1 ms [39m
+> hvigor [32mFinished :entry:default@GeneratePkgContextInfo... after 4 ms [39m
+> hvigor [32mFinished :entry:default@ProcessIntegratedHsp... after 1 ms [39m
+> hvigor [32mFinished :entry:default@BuildNativeWithCmake... after 1 ms [39m
+> hvigor [32mFinished :entry:default@MakePackInfo... after 1 ms [39m
+> hvigor [32mFinished :entry:default@SyscapTransform... after 2 ms [39m
+> hvigor [32mFinished :entry:default@ProcessProfile... after 69 ms [39m
+> hvigor [32mFinished :entry:default@ProcessRouterMap... after 1 ms [39m
+> hvigor [32mFinished :entry:default@ProcessShareConfig... after 1 ms [39m
+> hvigor [32mFinished :entry:default@ProcessStartupConfig... after 1 ms [39m
+> hvigor [32mFinished :entry:default@BuildNativeWithNinja... after 1 ms [39m
+> hvigor [32mFinished :entry:default@ProcessResource... after 2 ms [39m
+> hvigor [32mFinished :entry:default@GenerateLoaderJson... after 2 ms [39m
+> hvigor [32mFinished :entry:default@ProcessLibs... after 3 ms [39m
+> hvigor [32mFinished :entry:default@CompileResource... after 119 ms [39m
+> hvigor [32mFinished :entry:default@DoNativeStrip... after 1 ms [39m
+> hvigor [91mERROR: Failed :entry:default@CompileArkTS... [39m
+> hvigor [33mWARN: 
+[33m1 WARN: [33m[33mArkTS:WARN: For details about ArkTS syntax errors, see FAQs[39m[39m
+[33m2 WARN: [33m[33mArkTS:WARN File: /Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-plugins-03/workspace/app/entry/src/main/ets/entryability/EntryAbility.ets:4:58
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m3 WARN: [33m[33mArkTS:WARN File: /Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-plugins-03/workspace/app/entry/src/main/ets/pages/Index.ets:28:17
+ 'getContext' has been deprecated.
+[39m[39m[39m
+> hvigor [91mERROR: ArkTS Compiler Error
+[31m1 ERROR: [31m10605040 ArkTS Compiler Error
+Error Message: Object literals cannot be used as type declarations (arkts-no-obj-literals-as-types) At File: /Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-plugins-03/workspace/app/entry/src/main/ets/model/TodoModel.ets:58:20
+[39m
+[39m
+[31m2 ERROR: [31m10605038 ArkTS Compiler Error
+Error Message: Object literal must correspond to some explicitly declared class or interface (arkts-no-untyped-obj-literals) At File: /Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-plugins-03/workspace/app/entry/src/main/ets/model/TodoModel.ets:65:12
+[39m
+[39m
+[31mCOMPILE RESULT:FAIL {ERROR:3 WARN:3}[39m
+
+[31m* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+[39m
+> hvigor [91mERROR: BUILD FAILED in 3 s 113 ms [39m

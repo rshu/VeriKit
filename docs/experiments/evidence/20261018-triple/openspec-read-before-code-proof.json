@@ -1,0 +1,138 @@
+{
+  "at": "2026-10-18T07:53:53.961Z",
+  "firstAppCode": {
+    "tool": "write",
+    "id": "call_8bc0482715db49acb36fb1b1",
+    "index": 23,
+    "at": "2026-10-18T07:52:29.302Z",
+    "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/app/entry/src/main/ets/model/TodoModel.ets"
+  },
+  "source": "original native tool results and frozen pre-apply OpenSpec bytes",
+  "reads": [
+    {
+      "path": "openspec/changes/persistent-todo/design.md",
+      "fullyReadBeforeAppCode": true,
+      "reads": [
+        {
+          "toolCallId": "call_d15cdb9ce287466cb50583b4",
+          "returnedAt": "2026-10-18T07:51:02.338Z",
+          "sourceSha256": "80226c5a231177b1d28677d7b867fecedd37f4f67ba39f90687b31489eba854d",
+          "returnedSha256": "80226c5a231177b1d28677d7b867fecedd37f4f67ba39f90687b31489eba854d",
+          "fullyReturned": true
+        }
+      ]
+    },
+    {
+      "path": "openspec/changes/persistent-todo/proposal.md",
+      "fullyReadBeforeAppCode": true,
+      "reads": [
+        {
+          "toolCallId": "call_1aff10c28f354b6c89d038ec",
+          "returnedAt": "2026-10-18T07:51:02.337Z",
+          "sourceSha256": "1023dad57bd7a4c0765011f9f31f1243f07a976121b173561fecc24e0b97e893",
+          "returnedSha256": "1023dad57bd7a4c0765011f9f31f1243f07a976121b173561fecc24e0b97e893",
+          "fullyReturned": true
+        }
+      ]
+    },
+    {
+      "path": "openspec/changes/persistent-todo/specs/todo-filter-stats/spec.md",
+      "fullyReadBeforeAppCode": true,
+      "reads": [
+        {
+          "toolCallId": "call_34be3ce94f314a4aabc7424a",
+          "returnedAt": "2026-10-18T07:51:07.950Z",
+          "sourceSha256": "2833a3f5f36d639aad4002bccbd4c61957ec5e3c3e57bdb541f32f3791485414",
+          "returnedSha256": "2833a3f5f36d639aad4002bccbd4c61957ec5e3c3e57bdb541f32f3791485414",
+          "fullyReturned": true
+        }
+      ]
+    },
+    {
+      "path": "openspec/changes/persistent-todo/specs/todo-item-management/spec.md",
+      "fullyReadBeforeAppCode": true,
+      "reads": [
+        {
+          "toolCallId": "call_8f43a77502764def857d53a1",
+          "returnedAt": "2026-10-18T07:51:07.948Z",
+          "sourceSha256": "238ba828e4b2191465785fe0bb4b7779a0a997d33837fe76555fd8916f5a5346",
+          "returnedSha256": "238ba828e4b2191465785fe0bb4b7779a0a997d33837fe76555fd8916f5a5346",
+          "fullyReturned": true
+        }
+      ]
+    },
+    {
+      "path": "openspec/changes/persistent-todo/specs/todo-persistence/spec.md",
+      "fullyReadBeforeAppCode": true,
+      "reads": [
+        {
+          "toolCallId": "call_602099036d324bd094f8bdaf",
+          "returnedAt": "2026-10-18T07:51:07.949Z",
+          "sourceSha256": "a1fa70136e44c0e64b5a09b90eb3eaa74ff13daf1052ded415ebabddb92e780f",
+          "returnedSha256": "a1fa70136e44c0e64b5a09b90eb3eaa74ff13daf1052ded415ebabddb92e780f",
+          "fullyReturned": true
+        }
+      ]
+    },
+    {
+      "path": "openspec/changes/persistent-todo/tasks.md",
+      "fullyReadBeforeAppCode": true,
+      "reads": [
+        {
+          "toolCallId": "call_91a49f61e0df48b0a82d0d3d",
+          "returnedAt": "2026-10-18T07:51:02.339Z",
+          "sourceSha256": "f1eea9ad808b24ff698b4b81ad138ed6a103d7ebf75816155bc7fa53d563a2b9",
+          "returnedSha256": "f1eea9ad808b24ff698b4b81ad138ed6a103d7ebf75816155bc7fa53d563a2b9",
+          "fullyReturned": true
+        }
+      ]
+    }
+  ],
+  "cliResults": [
+    {
+      "at": "2026-10-18T07:50:52.484Z",
+      "command": "status",
+      "artifact": "apply",
+      "successful": true,
+      "details": {
+        "argv": [
+          "status",
+          "--change",
+          "persistent-todo",
+          "--json"
+        ],
+        "exitCode": 0,
+        "stderr": ""
+      }
+    },
+    {
+      "at": "2026-10-18T07:50:56.941Z",
+      "command": "instructions",
+      "artifact": "apply",
+      "successful": true,
+      "details": {
+        "argv": [
+          "instructions",
+          "apply",
+          "--change",
+          "persistent-todo",
+          "--json"
+        ],
+        "exitCode": 0,
+        "stderr": ""
+      }
+    }
+  ],
+  "requiredCli": [
+    {
+      "label": "status",
+      "successful": true
+    },
+    {
+      "label": "apply instructions",
+      "successful": true
+    }
+  ],
+  "officialApplySkillRead": true,
+  "passed": true
+}

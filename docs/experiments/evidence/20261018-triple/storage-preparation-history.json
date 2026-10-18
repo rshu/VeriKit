@@ -1,0 +1,299 @@
+{
+  "at": "2026-10-18T08:17:37.088Z",
+  "attempts": [
+    {
+      "label": "01-permission-unsupported",
+      "report": {
+        "at": "2026-10-18T08:03:12.861Z",
+        "root": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02",
+        "bundle": "com.verikit.experiment.openspectodo",
+        "target": "127.0.0.1:13017",
+        "scope": "remove write permissions only from this synthetic app module Preferences directory; restore in finally; no root required",
+        "checks": [],
+        "originalMode": "770",
+        "originalFileMode": "660",
+        "status": "FAIL",
+        "error": "Expected values to be strictly equal:\n\n'770' !== '500'\n",
+        "restoredMode": "770",
+        "restoredFileMode": "660",
+        "permissionsRestored": true
+      },
+      "commands": [
+        {
+          "at": 1792310592862,
+          "finishedAt": 1792310593555,
+          "args": [
+            "shell",
+            "uitest",
+            "dumpLayout",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "-p",
+            "/data/local/tmp/verikit-storage-1.json"
+          ],
+          "stdout": "DumpLayout saved to:/data/local/tmp/verikit-storage-1.json\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310593591,
+          "finishedAt": 1792310593620,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "stat",
+            "-c",
+            "%a",
+            "./data/storage/el2/base/haps/entry/preferences"
+          ],
+          "stdout": "770\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310593620,
+          "finishedAt": 1792310593648,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "stat",
+            "-c",
+            "%a",
+            "./data/storage/el2/base/haps/entry/preferences/todoStore"
+          ],
+          "stdout": "660\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310593648,
+          "finishedAt": 1792310593675,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "chmod",
+            "500",
+            "./data/storage/el2/base/haps/entry/preferences"
+          ],
+          "stdout": "chmod: chmod './data/storage/el2/base/haps/entry/preferences' to 40500: Operation not permitted\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310593675,
+          "finishedAt": 1792310593701,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "stat",
+            "-c",
+            "%a",
+            "./data/storage/el2/base/haps/entry/preferences"
+          ],
+          "stdout": "770\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310593701,
+          "finishedAt": 1792310593728,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "chmod",
+            "770",
+            "./data/storage/el2/base/haps/entry/preferences"
+          ],
+          "stdout": "chmod: chmod './data/storage/el2/base/haps/entry/preferences' to 40770: Operation not permitted\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310593728,
+          "finishedAt": 1792310593754,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "chmod",
+            "660",
+            "./data/storage/el2/base/haps/entry/preferences/todoStore"
+          ],
+          "stdout": "chmod: chmod './data/storage/el2/base/haps/entry/preferences/todoStore' to 100660: Operation not permitted\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310593754,
+          "finishedAt": 1792310593779,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "stat",
+            "-c",
+            "%a",
+            "./data/storage/el2/base/haps/entry/preferences"
+          ],
+          "stdout": "770\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310593779,
+          "finishedAt": 1792310593802,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "stat",
+            "-c",
+            "%a",
+            "./data/storage/el2/base/haps/entry/preferences/todoStore"
+          ],
+          "stdout": "660\n",
+          "stderr": ""
+        }
+      ],
+      "classification": "fault preparation failed before any save attempt; not an application defect"
+    },
+    {
+      "label": "02-parent-rename-denied",
+      "report": {
+        "at": "2026-10-18T08:04:29.534Z",
+        "root": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02",
+        "bundle": "com.verikit.experiment.openspectodo",
+        "target": "127.0.0.1:13017",
+        "scope": "replace only this app module Preferences directory with a regular file, producing actual ENOTDIR on flush; restore original directory in finally; no root required",
+        "checks": [],
+        "originalMode": "770",
+        "originalFileMode": "660",
+        "status": "FAIL",
+        "error": "The input did not match the regular expression /No such file|not exist/i. Input:\n\n'directory\\n'\n",
+        "restoreError": "Unexpected path type; do not delete it"
+      },
+      "commands": [
+        {
+          "at": 1792310669535,
+          "finishedAt": 1792310670182,
+          "args": [
+            "shell",
+            "uitest",
+            "dumpLayout",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "-p",
+            "/data/local/tmp/verikit-storage-1.json"
+          ],
+          "stdout": "DumpLayout saved to:/data/local/tmp/verikit-storage-1.json\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310670212,
+          "finishedAt": 1792310670243,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "stat",
+            "-c",
+            "%a",
+            "./data/storage/el2/base/haps/entry/preferences"
+          ],
+          "stdout": "770\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310670243,
+          "finishedAt": 1792310670269,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "stat",
+            "-c",
+            "%a",
+            "./data/storage/el2/base/haps/entry/preferences/todoStore"
+          ],
+          "stdout": "660\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310670269,
+          "finishedAt": 1792310670294,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "stat",
+            "-c",
+            "%F",
+            "./data/storage/el2/base/haps/entry/preferences.verikit-triple-backup"
+          ],
+          "stdout": "stat: './data/storage/el2/base/haps/entry/preferences.verikit-triple-backup': No such file or directory\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310670294,
+          "finishedAt": 1792310670320,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "mv",
+            "./data/storage/el2/base/haps/entry/preferences",
+            "./data/storage/el2/base/haps/entry/preferences.verikit-triple-backup"
+          ],
+          "stdout": "mv: bad './data/storage/el2/base/haps/entry/preferences': Permission denied\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310670320,
+          "finishedAt": 1792310670345,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "stat",
+            "-c",
+            "%F",
+            "./data/storage/el2/base/haps/entry/preferences.verikit-triple-backup"
+          ],
+          "stdout": "stat: './data/storage/el2/base/haps/entry/preferences.verikit-triple-backup': No such file or directory\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310670345,
+          "finishedAt": 1792310670369,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "stat",
+            "-c",
+            "%F",
+            "./data/storage/el2/base/haps/entry/preferences"
+          ],
+          "stdout": "directory\n",
+          "stderr": ""
+        },
+        {
+          "at": 1792310670370,
+          "finishedAt": 1792310670393,
+          "args": [
+            "shell",
+            "-b",
+            "com.verikit.experiment.openspectodo",
+            "stat",
+            "-c",
+            "%F",
+            "./data/storage/el2/base/haps/entry/preferences"
+          ],
+          "stdout": "directory\n",
+          "stderr": ""
+        }
+      ],
+      "classification": "fault preparation failed before any save attempt; not an application defect"
+    }
+  ],
+  "verifiedAfterSecondAttempt": "parent move returned Permission denied; current Preferences and todoStore still present, backup absent; later final real failure test and restart succeeded",
+  "fixtureCorrection": "strict equality for stat file type; error text may contain directory",
+  "finalMethod": "empty backup-path directory only; no original data replacement"
+}

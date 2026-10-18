@@ -63,8 +63,12 @@ OpenClaw 使用原生 `before_prompt_build` 钩子和 `verikit_route` 工具，
 
 以下为预期交互示例。2026-10-18 续跑及此前真实 TodoList 实验结果与验收范围见
 [实验报告](docs/experiments/harmonyos-todolist-status.md)，参考工程见 [TodoList 应用](examples/harmonyos-todolist/README.md)。
-最新真实 GLM 版本见 [2026-10-18 模型实验应用](examples/harmonyos-todolist-glm-20261018/README.md)；
+单插件真实 GLM 版本见 [2026-10-18 模型实验应用](examples/harmonyos-todolist-glm-20261018/README.md)；
 [2026-10-17 版本](examples/harmonyos-todolist-glm/README.md)及其失败记录单独保留。
+与 Runtime Corrector 同时启用的后续真实开发见[联合实验报告](docs/experiments/joint-harmonyos-20261018.md)
+和[联合实验应用](examples/harmonyos-todolist-joint-20261018/README.md)，包含真实纠偏、漏报、网络故障及最终设备复验。
+
+加入官方 OpenSpec Skills/CLI 的[三组件实验](docs/experiments/triple-harmonyos-20261018.md)已完成规范到真实鸿蒙应用的流程：任务 17/17、基础设备 12/12、扩展 4/4，并验证真实保存失败与恢复；原始偏离和接线失败均保留。
 
 ### 示例 (i)——端到端：从一句话到能跑的代码
 
@@ -200,7 +204,10 @@ including an isolated native loader test when the exact OpenClaw version is inst
 
 These illustrate the intended interaction. The [TodoList experiment report](docs/experiments/harmonyos-todolist-status.md)
 records the actual results and validation scope; the [reference app](examples/harmonyos-todolist/README.md) is a separate local implementation.
-The latest [2026-10-18 GLM app](examples/harmonyos-todolist-glm-20261018/README.md) passed compilation and all 11 emulator checks after model repairs. The [2026-10-17 version](examples/harmonyos-todolist-glm/README.md) and its initial failures are preserved separately.
+The separate [2026-10-18 GLM app](examples/harmonyos-todolist-glm-20261018/README.md) passed compilation and all 11 emulator checks after model repairs. The [2026-10-17 version](examples/harmonyos-todolist-glm/README.md) and its initial failures are preserved separately.
+The subsequent [joint experiment](docs/experiments/joint-harmonyos-20261018.md) with Runtime Corrector includes actual native correction, missed defects, a network failure, and final 12/12 emulator checks of its [own generated app](examples/harmonyos-todolist-joint-20261018/README.md).
+
+The [three-component experiment](docs/experiments/triple-harmonyos-20261018.md) adds official OpenSpec Skills/CLI: 17/17 tasks, 12/12 baseline and 4/4 extra device checks, and a real save failure followed by recovery. It preserves the initial deviations and integration failures.
 
 ### Example (i) — End-to-end: from one sentence to working code
 

@@ -1,0 +1,343 @@
+{
+  "at": "2026-10-18T06:54:09.496Z",
+  "mode": "deterministic real host SDK controls; no model call",
+  "hostVersion": "2026.7.1-2",
+  "checks": [
+    {
+      "name": "real host loads plugin",
+      "passed": true,
+      "evidence": {
+        "tools": [
+          "verikit_route"
+        ],
+        "hooks": [
+          "before_prompt_build",
+          "before_tool_call"
+        ]
+      }
+    },
+    {
+      "name": "native prompt hook returns complete routing",
+      "passed": true,
+      "evidence": {
+        "status": "agree",
+        "bundle": [
+          "arkdata",
+          "arkts"
+        ],
+        "refs": [
+          "arkdata",
+          "arkts"
+        ],
+        "readPlan": [
+          {
+            "kit": "arkdata",
+            "skill": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/arkdata/SKILL.md",
+            "skill_reads": [
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/arkdata/SKILL.md",
+                "offset": 1,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/arkdata/SKILL.md",
+                "offset": 101,
+                "limit": 50
+              }
+            ],
+            "task_reference_hints": [],
+            "reference_candidates": [
+              "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/arkdata/references/同应用跨设备数据同步概述.md",
+              "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/arkdata/references/数据库备份与恢复 (C_C++).md"
+            ]
+          },
+          {
+            "kit": "form-kit",
+            "skill": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/form-kit/SKILL.md",
+            "skill_reads": [
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/form-kit/SKILL.md",
+                "offset": 1,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/form-kit/SKILL.md",
+                "offset": 101,
+                "limit": 28
+              }
+            ],
+            "task_reference_hints": [],
+            "reference_candidates": []
+          },
+          {
+            "kit": "asset-store-kit",
+            "skill": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/asset-store-kit/SKILL.md",
+            "skill_reads": [
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/asset-store-kit/SKILL.md",
+                "offset": 1,
+                "limit": 83
+              }
+            ],
+            "task_reference_hints": [],
+            "reference_candidates": []
+          },
+          {
+            "kit": "cann-kit",
+            "skill": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+            "skill_reads": [
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 1,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 101,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 201,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 301,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 401,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 501,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 601,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 701,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 801,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 901,
+                "limit": 91
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 992,
+                "limit": 88
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 1080,
+                "limit": 90
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 1170,
+                "limit": 87
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 1257,
+                "limit": 95
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 1352,
+                "limit": 80
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 1432,
+                "limit": 76
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/cann-kit/SKILL.md",
+                "offset": 1508,
+                "limit": 48
+              }
+            ],
+            "task_reference_hints": [],
+            "reference_candidates": []
+          },
+          {
+            "kit": "push-kit",
+            "skill": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/push-kit/SKILL.md",
+            "skill_reads": [
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/push-kit/SKILL.md",
+                "offset": 1,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/push-kit/SKILL.md",
+                "offset": 101,
+                "limit": 42
+              }
+            ],
+            "task_reference_hints": [],
+            "reference_candidates": []
+          },
+          {
+            "kit": "arkts",
+            "skill": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/arkts/SKILL.md",
+            "skill_reads": [
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/arkts/SKILL.md",
+                "offset": 1,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/arkts/SKILL.md",
+                "offset": 101,
+                "limit": 100
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/arkts/SKILL.md",
+                "offset": 201,
+                "limit": 58
+              },
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/arkts/SKILL.md",
+                "offset": 259,
+                "limit": 12
+              }
+            ],
+            "task_reference_hints": [
+              {
+                "path": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/arkts/references/异步并发 (Promise和async_await).md",
+                "reason": "The local-persistence recipe uses ArkTS Promise/async/await around asynchronous storage and flushing."
+              }
+            ],
+            "reference_candidates": [
+              "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/arkts/references/异步并发 (Promise和async_await).md",
+              "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/.plugins/verikit-openclaw/skills/arkts/references/多线程并发概述.md"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "irrelevant prompt passes silently",
+      "passed": true
+    },
+    {
+      "name": "RC private review receives no automatic Kit guidance",
+      "passed": true
+    },
+    {
+      "name": "native conflict remains ask-human",
+      "passed": true,
+      "evidence": {
+        "status": "conflict",
+        "top": {
+          "name": "calendar-kit",
+          "combinedScore": 0.5726,
+          "band": "medium"
+        },
+        "top_k": [],
+        "recipes": [
+          {
+            "id": "notification-with-action",
+            "skills": [
+              "notification-kit",
+              "ability-kit",
+              "arkts"
+            ],
+            "score": 1,
+            "band": "high",
+            "maturity": "validated"
+          }
+        ],
+        "top_in_recipe": false,
+        "directive": "CONFLICT: the curated recipe and the top-ranked Kit disagree. Do NOT silently pick. Ask the human to choose one of:\n  1. Recipe bundle \"notification-with-action\" [notification-kit, ability-kit, arkts] — recommended (curated multi-Kit answer; maturity: validated).\n  2. (no high-confidence single Kit alternative this time.)\n  3. Specify the Kit(s) yourself.\nWait for the human's selection, then proceed with exactly that. Do not override their choice. Note: deep_references below reflect the top-ranked Kit only until the human picks."
+      }
+    },
+    {
+      "name": "native manually resolved tool returns existing references",
+      "passed": true,
+      "evidence": {
+        "skills": 101,
+        "bundle": [
+          "arkdata",
+          "arkts"
+        ]
+      }
+    },
+    {
+      "name": "native tool policy denies verikit_route",
+      "passed": true
+    },
+    {
+      "name": "real session API supports log-only native write",
+      "passed": true,
+      "evidence": [
+        {
+          "ts": "2026-10-18T06:53:54.320Z",
+          "tool": "write",
+          "file": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-native-controls-02/workspace/app/native-probes/missing-kit.ets"
+        }
+      ]
+    },
+    {
+      "name": "Kit mention suppresses log in real transcript",
+      "passed": true
+    },
+    {
+      "name": "native apply_patch SDK edit is observed",
+      "passed": true
+    },
+    {
+      "name": "monitorEdits false suppresses native logging",
+      "passed": true
+    },
+    {
+      "name": "injection opt-out suppresses prompt but retains tool",
+      "passed": true
+    },
+    {
+      "name": "native failure fails open",
+      "passed": true,
+      "evidence": {
+        "elapsedMs": 43
+      }
+    },
+    {
+      "name": "manual routing error is explicit",
+      "passed": true
+    },
+    {
+      "name": "native timeout fails open",
+      "passed": true,
+      "evidence": {
+        "elapsedMs": 15007
+      }
+    },
+    {
+      "name": "fault injection restored exact router bytes",
+      "passed": true,
+      "evidence": "ed46d092533ba79e74e0a3e900a88231049798cc2e3939a91bc7e7be6841bba8"
+    },
+    {
+      "name": "enabled false registers no hooks or tools",
+      "passed": true
+    }
+  ],
+  "passed": 17,
+  "total": 17
+}

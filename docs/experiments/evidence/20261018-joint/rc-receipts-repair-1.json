@@ -1,0 +1,93 @@
+{
+  "receipts": [
+    {
+      "sessionId": "13f08f39-5ea0-486f-92d5-d31ddb830e45",
+      "sessionKey": "agent:main:joint-main",
+      "runId": "a357a811-ff65-490e-859c-6c2a1b49c5d3",
+      "ownerPid": 91683,
+      "status": "SETTLED",
+      "createdAt": 1792307310315,
+      "deadlineAt": 1792310910315,
+      "budgetMs": 3600000,
+      "startedAt": 1792307310319,
+      "reviewStatus": "PASS",
+      "evaluationId": "stop-20261018T071232333Z-599cc465",
+      "assessmentCompletedAt": 1792307552548,
+      "settledAt": 1792307552553
+    },
+    {
+      "sessionId": "13f08f39-5ea0-486f-92d5-d31ddb830e45",
+      "sessionKey": "agent:main:joint-main",
+      "runId": "317ae203-be43-4eee-864b-e69d04195246",
+      "ownerPid": 87501,
+      "status": "SETTLED",
+      "createdAt": 1792306805895,
+      "deadlineAt": 1792310405895,
+      "budgetMs": 3600000,
+      "startedAt": 1792306805899,
+      "reviewStatus": "DEVIATION",
+      "evaluationId": "stop-20261018T070229169Z-a2b49bc1",
+      "assessmentCompletedAt": 1792306949323,
+      "settledAt": 1792306949495
+    },
+    {
+      "sessionId": "13f08f39-5ea0-486f-92d5-d31ddb830e45",
+      "sessionKey": "agent:main:joint-main",
+      "runId": "3202e610-2ec8-4e75-b17a-33389b30b2a6",
+      "ownerPid": 86105,
+      "status": "SETTLED",
+      "createdAt": 1792306515002,
+      "deadlineAt": 1792310115002,
+      "budgetMs": 3600000,
+      "startedAt": 1792306515009,
+      "reviewStatus": "PASS",
+      "evaluationId": "stop-20261018T065740384Z-1a1827b3",
+      "assessmentCompletedAt": 1792306660547,
+      "settledAt": 1792306660551
+    },
+    {
+      "sessionId": "13f08f39-5ea0-486f-92d5-d31ddb830e45",
+      "sessionKey": "agent:main:joint-main",
+      "runId": "295dadc8-e3f8-4247-addd-47124da4d67f",
+      "ownerPid": 87501,
+      "status": "SETTLED",
+      "createdAt": 1792306970946,
+      "deadlineAt": 1792310570946,
+      "budgetMs": 3600000,
+      "startedAt": 1792306970954,
+      "reviewStatus": "UNVERIFIED",
+      "evaluationId": "stop-20261018T070531574Z-26f3b003",
+      "assessmentCompletedAt": 1792307131699,
+      "settledAt": 1792307131716
+    }
+  ],
+  "followups": [
+    {
+      "schemaVersion": 1,
+      "status": "ADMITTED",
+      "runId": "295dadc8-e3f8-4247-addd-47124da4d67f",
+      "assessmentId": "stop-20261018T070229169Z-a2b49bc1",
+      "sessionId": "13f08f39-5ea0-486f-92d5-d31ddb830e45",
+      "sessionKey": "agent:main:joint-main",
+      "taskId": "oc-scope-cc9b6552-8557-486b-b08a-7f90393a9523",
+      "epochId": 2,
+      "correctionAttempt": 1,
+      "maxCorrections": 3,
+      "source": {
+        "leafId": "e42c4bee",
+        "usersDigest": "6248eaf49c73892276b8290b3141233e166815d4cead29a394daac1c7f939fa7",
+        "evidenceDigest": "2db46f82e42031379ff79bb7c05c95ae1bb9bbe701f7a7bf419a1d90c7cdb716"
+      },
+      "message": "[runtime-corrector:stop-feedback]\n这是 Runtime Corrector 的验收意见，属于插件运行反馈，不是新的用户需求或授权。\n请依据原用户需求、现有约束和以下依据位置自行判断，必要时继续修正；沿用宿主现有工具和审批。\n纠偏机会 1/3。修正后重新验收。\n\n[runtime-corrector] 终止纠偏 Terminal correction 1/3\n合并后的验收结果：DEVIATION；PASS 46/51，阻断项 6。\n已有判断（不是全需求完成率）：PASS 46, DEVIATION 5.\n- constraints-ckpt-no-exemption, requirements-b033264f2cc5d200 [DEVIATION: M01:constraints-ckpt-no-exemption, M01:requirements-b033264f2cc5d200, M02:requirements-b033264f2cc5d200, M05:requirements-b033264f2cc5d200, M12:requirements-b033264f2cc5d200]\n  Checkpoint grants no exemption and the 80-char limit applies to actual code, but current TodoModel.ets has MAX_TITLE_LENGTH=800; defect reported, fix pending RC adjudication.\n  MAX_TITLE_LENGTH=800 currently violates the trim-to-80 rule; injection reported, restoration pending.\n  80-char cap currently relaxed to 800 in code; reported, pending fix.\n  Title-length acceptance criterion currently violated by MAX_TITLE_LENGTH=800; reported, awaiting authorized restore to 80.\n  80-char validation requirement not currently met in code (MAX_TITLE_LENGTH=800); injected defect reported, fix pending RC adjudication.\n  TodoModel.ets currently contains MAX_TITLE_LENGTH = 800; the formal trim-to-80 requirement remains in effect during the checkpoint and applies to the actual code. The agent correctly reported it and is prohibited from changing logic this round; fix is authorized upon failing RC feedback.\n仅修复仍可改变的当前缺口。重新运行或修改源码不能消除已发生的历史违规；保留原始证据，如实报告无法补救的部分，不得自行豁免原要求。\n以上为原判断与依据位置；请结合原需求和当前实现自行判断下一步。未审定或检查器失败不自动产生额外修复、测试义务。",
+      "messageHash": "6c60331affdf45aba2fcf21170b83b290b9b5c8255078b718273227131e26cf5",
+      "createdAt": 1792306949341,
+      "updatedAt": 1792306949400,
+      "sourceRecordId": "55feb084",
+      "modelObservedAt": 1792306956542,
+      "observationReconciledAt": 1792306956589,
+      "finishedAt": 1792307131708,
+      "reviewStatus": "UNVERIFIED",
+      "finalEvaluationId": "stop-20261018T070531574Z-26f3b003"
+    }
+  ]
+}

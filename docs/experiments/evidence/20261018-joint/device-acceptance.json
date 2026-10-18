@@ -1,0 +1,95 @@
+{
+  "at": "2026-10-18T07:09:02.559Z",
+  "root": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-plugins-04",
+  "bundle": "com.verikit.experiment.todolist",
+  "target": "127.0.0.1:13017",
+  "mode": "real HarmonyOS API 21 emulator and native UITest commands",
+  "basicInputModeAuthorized": true,
+  "resetApp": true,
+  "consentActions": [],
+  "checks": [
+    {
+      "name": "real ArkUI app loads empty state",
+      "status": "PASS",
+      "passed": true,
+      "evidence": {
+        "rowCount": 0
+      }
+    },
+    {
+      "name": "blank title is rejected on device",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "Chinese title can be added",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "second todo gets a separate row",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "complete selected todo",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "visible counts reflect completion",
+      "status": "PASS",
+      "passed": true,
+      "evidence": {
+        "text": [
+          "共 2 项，未完成 1 项，已完成 1 项"
+        ]
+      }
+    },
+    {
+      "name": "active filter excludes completed todo",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "completed filter shows completed todo only",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "process restart restores actual Preferences data",
+      "status": "PASS",
+      "passed": true,
+      "evidence": {
+        "restoredIds": [
+          "todo-row-1",
+          "todo-row-2"
+        ]
+      }
+    },
+    {
+      "name": "completed todo can be reopened",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "delete targets the selected row",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "deletion and reopened state survive restart",
+      "status": "PASS",
+      "passed": true
+    }
+  ],
+  "passed": 12,
+  "total": 12,
+  "counts": {
+    "PASS": 12,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT_RUN": 0
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-18T06:59:07.883Z",
+  "scope": "controlled application-only fault; neither plugin nor host implementation changed",
+  "file": "workspace/app/entry/src/main/ets/model/TodoModel.ets",
+  "beforeSha256": "8940820bf6b0c59415f9d61d6174c37d0959ea66fa70e3598c4e7ae5dae186fe",
+  "afterSha256": "7d528ac3ce8b9b27f68358e2ca97e13bd4f3ecb016d7bf0f91792c2f85401c90",
+  "line": 11,
+  "before": "const MAX_TITLE_LENGTH = 80",
+  "after": "const MAX_TITLE_LENGTH = 800",
+  "requirementUnchanged": true,
+  "uncontrolledDefectRateClaim": false
+}

@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-18T08:16:26.454Z",
+  "checks": {
+    "readFrozenAcceptance": true,
+    "workspaceEvidenceUnchanged": true,
+    "onlyTasksMutated": true,
+    "allAppSourcesUnchanged": true,
+    "allSpecsUnchanged": true,
+    "tasksComplete": true,
+    "nativeFinalReview": true
+  },
+  "passed": true,
+  "readEvidence": [
+    {
+      "toolCallId": "call_2b6428b51af0442ebec5c12e",
+      "at": "2026-10-18T08:08:49.879Z",
+      "fullyRead": true,
+      "sha256": "e1a37cfd16261c1687c844d3a35e20fccd4e2aacc0d3cc2bcdd5617ab1c1c54b"
+    }
+  ],
+  "mutations": [
+    {
+      "name": "edit",
+      "id": "call_9374fdda9e424306b538998d",
+      "path": "openspec/changes/persistent-todo/tasks.md",
+      "at": "2026-10-18T08:09:03.503Z"
+    }
+  ],
+  "evidenceSha256": "e1a37cfd16261c1687c844d3a35e20fccd4e2aacc0d3cc2bcdd5617ab1c1c54b",
+  "nativeSnapshotSha256": "46018a4d2b74d7676c7f0773da89da8ccfccf5fa4fc05e97ccc595cb4b5d751c"
+}

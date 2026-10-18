@@ -1,0 +1,88 @@
+{
+  "at": "2026-10-18T07:50:15.345Z",
+  "scope": "independent requirement and source review plus official CLI; requirement mapping is not a formal semantic proof",
+  "validation": "openspec-external-post-drift.json",
+  "checks": {
+    "structurallyReady": true,
+    "externalTasksStillUnchecked": true,
+    "requirementsUnchanged": true,
+    "initialPageUnchanged": true,
+    "noBusinessModelYet": true,
+    "controlledContradictionRemoved": true,
+    "actualPagePathCorrected": true,
+    "countExampleCorrected": true,
+    "traceabilityPresent": true
+  },
+  "traceability": [
+    {
+      "requirement": "add/trim/80/Chinese/duplicates",
+      "path": "openspec/changes/persistent-todo/specs/todo-item-management/spec.md",
+      "line": 4,
+      "present": true
+    },
+    {
+      "requirement": "unique stable and restored IDs",
+      "path": "openspec/changes/persistent-todo/specs/todo-item-management/spec.md",
+      "line": 41,
+      "present": true
+    },
+    {
+      "requirement": "toggle and delete",
+      "path": "openspec/changes/persistent-todo/specs/todo-item-management/spec.md",
+      "line": 33,
+      "present": true
+    },
+    {
+      "requirement": "three filters and reactive counts",
+      "path": "openspec/changes/persistent-todo/specs/todo-filter-stats/spec.md",
+      "line": 27,
+      "present": true
+    },
+    {
+      "requirement": "Preferences put then awaited flush",
+      "path": "openspec/changes/persistent-todo/specs/todo-persistence/spec.md",
+      "line": 4,
+      "present": true
+    },
+    {
+      "requirement": "startup loading and restored state",
+      "path": "openspec/changes/persistent-todo/specs/todo-persistence/spec.md",
+      "line": 15,
+      "present": true
+    },
+    {
+      "requirement": "visible save failure and retained memory state",
+      "path": "openspec/changes/persistent-todo/specs/todo-persistence/spec.md",
+      "line": 30,
+      "present": true
+    },
+    {
+      "requirement": "serialized rapid saves",
+      "path": "openspec/changes/persistent-todo/specs/todo-persistence/spec.md",
+      "line": 37,
+      "present": true
+    },
+    {
+      "requirement": "pure model with no SDK dependencies",
+      "path": "openspec/changes/persistent-todo/design.md",
+      "line": 24,
+      "present": true
+    },
+    {
+      "requirement": "separate actual external verification",
+      "path": "openspec/changes/persistent-todo/tasks.md",
+      "line": 26,
+      "present": true
+    }
+  ],
+  "sources": {
+    "openspec/changes/persistent-todo/.openspec.yaml": "dc08c29816def5c12ac71497ed005c1c0d6d779aa76f03fa6cd1d3ed38d91ec9",
+    "openspec/changes/persistent-todo/design.md": "80226c5a231177b1d28677d7b867fecedd37f4f67ba39f90687b31489eba854d",
+    "openspec/changes/persistent-todo/proposal.md": "1023dad57bd7a4c0765011f9f31f1243f07a976121b173561fecc24e0b97e893",
+    "openspec/changes/persistent-todo/specs/todo-filter-stats/spec.md": "2833a3f5f36d639aad4002bccbd4c61957ec5e3c3e57bdb541f32f3791485414",
+    "openspec/changes/persistent-todo/specs/todo-item-management/spec.md": "238ba828e4b2191465785fe0bb4b7779a0a997d33837fe76555fd8916f5a5346",
+    "openspec/changes/persistent-todo/specs/todo-persistence/spec.md": "a1fa70136e44c0e64b5a09b90eb3eaa74ff13daf1052ded415ebabddb92e780f",
+    "openspec/changes/persistent-todo/tasks.md": "f1eea9ad808b24ff698b4b81ad138ed6a103d7ebf75816155bc7fa53d563a2b9"
+  },
+  "passed": true
+}

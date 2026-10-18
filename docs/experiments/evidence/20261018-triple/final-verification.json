@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-18T08:10:13.189Z",
+  "entrySha256": "a69e0db4b5a8f358f615b3b9ff9783c24f483350e3bd53d3304bed0df06f1e1b",
+  "results": [
+    {
+      "name": "verikit-regression",
+      "startedAt": 1792310994661,
+      "finishedAt": 1792311010231,
+      "exitCode": 0
+    },
+    {
+      "name": "three-host-build",
+      "startedAt": 1792311010231,
+      "finishedAt": 1792311013189,
+      "exitCode": 0
+    }
+  ]
+}

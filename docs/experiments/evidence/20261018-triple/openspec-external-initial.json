@@ -1,0 +1,221 @@
+{
+  "at": "2026-10-18T07:37:22.747Z",
+  "source": "independent execution of original OpenSpec CLI; not a model assertion",
+  "results": [
+    {
+      "argv": [
+        "status",
+        "--change",
+        "persistent-todo",
+        "--json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"changeName\": \"persistent-todo\",\n  \"schemaName\": \"spec-driven\",\n  \"isComplete\": true,\n  \"applyRequires\": [\n    \"tasks\"\n  ],\n  \"artifacts\": [\n    {\n      \"id\": \"proposal\",\n      \"outputPath\": \"proposal.md\",\n      \"status\": \"done\"\n    },\n    {\n      \"id\": \"design\",\n      \"outputPath\": \"design.md\",\n      \"status\": \"done\"\n    },\n    {\n      \"id\": \"specs\",\n      \"outputPath\": \"specs/**/*.md\",\n      \"status\": \"done\"\n    },\n    {\n      \"id\": \"tasks\",\n      \"outputPath\": \"tasks.md\",\n      \"status\": \"done\"\n    }\n  ]\n}\n",
+      "stderr": "",
+      "data": {
+        "changeName": "persistent-todo",
+        "schemaName": "spec-driven",
+        "isComplete": true,
+        "applyRequires": [
+          "tasks"
+        ],
+        "artifacts": [
+          {
+            "id": "proposal",
+            "outputPath": "proposal.md",
+            "status": "done"
+          },
+          {
+            "id": "design",
+            "outputPath": "design.md",
+            "status": "done"
+          },
+          {
+            "id": "specs",
+            "outputPath": "specs/**/*.md",
+            "status": "done"
+          },
+          {
+            "id": "tasks",
+            "outputPath": "tasks.md",
+            "status": "done"
+          }
+        ]
+      }
+    },
+    {
+      "argv": [
+        "validate",
+        "persistent-todo",
+        "--type",
+        "change",
+        "--strict",
+        "--json",
+        "--no-interactive"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"items\": [\n    {\n      \"id\": \"persistent-todo\",\n      \"type\": \"change\",\n      \"valid\": true,\n      \"issues\": [],\n      \"durationMs\": 2\n    }\n  ],\n  \"summary\": {\n    \"totals\": {\n      \"items\": 1,\n      \"passed\": 1,\n      \"failed\": 0\n    },\n    \"byType\": {\n      \"change\": {\n        \"items\": 1,\n        \"passed\": 1,\n        \"failed\": 0\n      }\n    }\n  },\n  \"version\": \"1.0\"\n}\n",
+      "stderr": "",
+      "data": {
+        "items": [
+          {
+            "id": "persistent-todo",
+            "type": "change",
+            "valid": true,
+            "issues": [],
+            "durationMs": 2
+          }
+        ],
+        "summary": {
+          "totals": {
+            "items": 1,
+            "passed": 1,
+            "failed": 0
+          },
+          "byType": {
+            "change": {
+              "items": 1,
+              "passed": 1,
+              "failed": 0
+            }
+          }
+        },
+        "version": "1.0"
+      }
+    },
+    {
+      "argv": [
+        "instructions",
+        "apply",
+        "--change",
+        "persistent-todo",
+        "--json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"changeName\": \"persistent-todo\",\n  \"changeDir\": \"/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo\",\n  \"schemaName\": \"spec-driven\",\n  \"contextFiles\": {\n    \"proposal\": [\n      \"/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo/proposal.md\"\n    ],\n    \"specs\": [\n      \"/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo/specs/todo-filter-stats/spec.md\",\n      \"/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo/specs/todo-item-management/spec.md\",\n      \"/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo/specs/todo-persistence/spec.md\"\n    ],\n    \"design\": [\n      \"/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo/design.md\"\n    ],\n    \"tasks\": [\n      \"/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo/tasks.md\"\n    ]\n  },\n  \"progress\": {\n    \"total\": 17,\n    \"complete\": 0,\n    \"remaining\": 17\n  },\n  \"tasks\": [\n    {\n      \"id\": \"1\",\n      \"description\": \"1.1 创建 `app/entry/src/main/ets/model/TodoModel.ets`：导出 `interface TodoItem { id: string; title: string; completed: boolean }` 与 `export type TodoFilter = 'all' | 'active' | 'completed'`，不引入任何 SDK 或第三方模块\",\n      \"done\": false\n    },\n    {\n      \"id\": \"2\",\n      \"description\": \"1.2 实现 `TodoModel.add(title)`：trim 后为空或长度超 80 字符返回 false；合法（含中文、重复标题）追加并返回 true，id 唯一\",\n      \"done\": false\n    },\n    {\n      \"id\": \"3\",\n      \"description\": \"1.3 实现 `toggle(id)`、`remove(id)`、`visible(filter)`（all/active/completed 三种筛选语义）\",\n      \"done\": false\n    },\n    {\n      \"id\": \"4\",\n      \"description\": \"1.4 实现 `serialize()` 与 `restore(json)`：restore 恢复各条 id 与状态，记录 id 基线保证恢复后新增 id 不碰撞；解析失败或非法条目安全处理\",\n      \"done\": false\n    },\n    {\n      \"id\": \"5\",\n      \"description\": \"2.1 创建存储助手（ability context 获取 `@kit.ArkData` preferences 实例）：`load()` 读取已保存 JSON 字符串，无数据返回空\",\n      \"done\": false\n    },\n    {\n      \"id\": \"6\",\n      \"description\": \"2.2 实现 `save(json)`：put 后 `await flush`；用 promise 链串行化多次保存，避免并发覆盖；put/flush 失败时向外报告错误（供 UI 显示），不中断后续保存\",\n      \"done\": false\n    },\n    {\n      \"id\": \"7\",\n      \"description\": \"3.1 创建/改造单页面：@State 管理 items/filter/loading/saveError，`aboutToAppear` 中 await 加载并 restore，loading 期间禁止新增；UI 实际使用 TodoModel\",\n      \"done\": false\n    },\n    {\n      \"id\": \"8\",\n      \"description\": \"3.2 实现输入与添加：`todo-input`、`add-button`（稳定 id），非法输入不追加并反馈\",\n      \"done\": false\n    },\n    {\n      \"id\": \"9\",\n      \"description\": \"3.3 实现列表渲染与行操作：`todo-row-<id>`、`toggle-<id>`、`delete-<id>`（稳定 id），操作后 @State 刷新并触发保存\",\n      \"done\": false\n    },\n    {\n      \"id\": \"10\",\n      \"description\": \"3.4 实现筛选与统计：`filter-all`、`filter-active`、`filter-completed`（稳定 id），展示全部数与未完成数并随操作即时更新\",\n      \"done\": false\n    },\n    {\n      \"id\": \"11\",\n      \"description\": \"3.5 实现保存失败错误提示显示；确认业务 .ets 文件总数 ≤4，未改动构建配置与 EntryAbility\",\n      \"done\": false\n    },\n    {\n      \"id\": \"12\",\n      \"description\": \"4.1 外部执行 hvigor 构建：ArkTS 编译通过（API 21），无未使用/未声明引用\",\n      \"done\": false\n    },\n    {\n      \"id\": \"13\",\n      \"description\": \"4.2 外部验证应用可安装启动：Preferences 加载完成后从 loading 进入可用状态\",\n      \"done\": false\n    },\n    {\n      \"id\": \"14\",\n      \"description\": \"5.1 验证添加：合法中文/重复标题添加成功；空白与 >80 字符标题被拒绝\",\n      \"done\": false\n    },\n    {\n      \"id\": \"15\",\n      \"description\": \"5.2 验证切换与删除：toggle 完成状态翻转、delete 移除条目，id 稳定\",\n      \"done\": false\n    },\n    {\n      \"id\": \"16\",\n      \"description\": \"5.3 验证筛选与统计：三个筛选视图与数量统计随操作即时正确更新\",\n      \"done\": false\n    },\n    {\n      \"id\": \"17\",\n      \"description\": \"5.4 验证持久化与恢复：变更后重启应用恢复条目（id 与完成状态一致）；快速连续变更后落盘为最终状态；保存失败时出现错误提示\",\n      \"done\": false\n    }\n  ],\n  \"state\": \"ready\",\n  \"instruction\": \"Read context files, work through pending tasks, mark complete as you go.\\nPause if you hit blockers or need clarification.\"\n}\n",
+      "stderr": "",
+      "data": {
+        "changeName": "persistent-todo",
+        "changeDir": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo",
+        "schemaName": "spec-driven",
+        "contextFiles": {
+          "proposal": [
+            "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo/proposal.md"
+          ],
+          "specs": [
+            "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo/specs/todo-filter-stats/spec.md",
+            "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo/specs/todo-item-management/spec.md",
+            "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo/specs/todo-persistence/spec.md"
+          ],
+          "design": [
+            "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo/design.md"
+          ],
+          "tasks": [
+            "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/workspace/openspec/changes/persistent-todo/tasks.md"
+          ]
+        },
+        "progress": {
+          "total": 17,
+          "complete": 0,
+          "remaining": 17
+        },
+        "tasks": [
+          {
+            "id": "1",
+            "description": "1.1 创建 `app/entry/src/main/ets/model/TodoModel.ets`：导出 `interface TodoItem { id: string; title: string; completed: boolean }` 与 `export type TodoFilter = 'all' | 'active' | 'completed'`，不引入任何 SDK 或第三方模块",
+            "done": false
+          },
+          {
+            "id": "2",
+            "description": "1.2 实现 `TodoModel.add(title)`：trim 后为空或长度超 80 字符返回 false；合法（含中文、重复标题）追加并返回 true，id 唯一",
+            "done": false
+          },
+          {
+            "id": "3",
+            "description": "1.3 实现 `toggle(id)`、`remove(id)`、`visible(filter)`（all/active/completed 三种筛选语义）",
+            "done": false
+          },
+          {
+            "id": "4",
+            "description": "1.4 实现 `serialize()` 与 `restore(json)`：restore 恢复各条 id 与状态，记录 id 基线保证恢复后新增 id 不碰撞；解析失败或非法条目安全处理",
+            "done": false
+          },
+          {
+            "id": "5",
+            "description": "2.1 创建存储助手（ability context 获取 `@kit.ArkData` preferences 实例）：`load()` 读取已保存 JSON 字符串，无数据返回空",
+            "done": false
+          },
+          {
+            "id": "6",
+            "description": "2.2 实现 `save(json)`：put 后 `await flush`；用 promise 链串行化多次保存，避免并发覆盖；put/flush 失败时向外报告错误（供 UI 显示），不中断后续保存",
+            "done": false
+          },
+          {
+            "id": "7",
+            "description": "3.1 创建/改造单页面：@State 管理 items/filter/loading/saveError，`aboutToAppear` 中 await 加载并 restore，loading 期间禁止新增；UI 实际使用 TodoModel",
+            "done": false
+          },
+          {
+            "id": "8",
+            "description": "3.2 实现输入与添加：`todo-input`、`add-button`（稳定 id），非法输入不追加并反馈",
+            "done": false
+          },
+          {
+            "id": "9",
+            "description": "3.3 实现列表渲染与行操作：`todo-row-<id>`、`toggle-<id>`、`delete-<id>`（稳定 id），操作后 @State 刷新并触发保存",
+            "done": false
+          },
+          {
+            "id": "10",
+            "description": "3.4 实现筛选与统计：`filter-all`、`filter-active`、`filter-completed`（稳定 id），展示全部数与未完成数并随操作即时更新",
+            "done": false
+          },
+          {
+            "id": "11",
+            "description": "3.5 实现保存失败错误提示显示；确认业务 .ets 文件总数 ≤4，未改动构建配置与 EntryAbility",
+            "done": false
+          },
+          {
+            "id": "12",
+            "description": "4.1 外部执行 hvigor 构建：ArkTS 编译通过（API 21），无未使用/未声明引用",
+            "done": false
+          },
+          {
+            "id": "13",
+            "description": "4.2 外部验证应用可安装启动：Preferences 加载完成后从 loading 进入可用状态",
+            "done": false
+          },
+          {
+            "id": "14",
+            "description": "5.1 验证添加：合法中文/重复标题添加成功；空白与 >80 字符标题被拒绝",
+            "done": false
+          },
+          {
+            "id": "15",
+            "description": "5.2 验证切换与删除：toggle 完成状态翻转、delete 移除条目，id 稳定",
+            "done": false
+          },
+          {
+            "id": "16",
+            "description": "5.3 验证筛选与统计：三个筛选视图与数量统计随操作即时正确更新",
+            "done": false
+          },
+          {
+            "id": "17",
+            "description": "5.4 验证持久化与恢复：变更后重启应用恢复条目（id 与完成状态一致）；快速连续变更后落盘为最终状态；保存失败时出现错误提示",
+            "done": false
+          }
+        ],
+        "state": "ready",
+        "instruction": "Read context files, work through pending tasks, mark complete as you go.\nPause if you hit blockers or need clarification."
+      }
+    }
+  ],
+  "structurallyReady": true,
+  "allTasksComplete": false,
+  "progress": {
+    "total": 17,
+    "complete": 0,
+    "remaining": 17
+  }
+}

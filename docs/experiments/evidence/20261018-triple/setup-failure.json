@@ -1,0 +1,9 @@
+{
+  "at": 1792308629.89446,
+  "reason": "Experimental observer manifest omitted contracts.tools for openspec_cli; real host rejected registration. Model could read skills but CLI was unavailable; no OpenSpec flow counted as passed.",
+  "stoppedOwnedPids": [
+    96968,
+    96964
+  ],
+  "codeChanges": "Fix experiment bridge manifest; no production plugin or RC patch"
+}

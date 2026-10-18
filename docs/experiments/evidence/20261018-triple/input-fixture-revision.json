@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-18T07:56:25.613Z",
+  "cause": "UITest inputText appends; a previous whitespace rejection leaves input contents",
+  "failure": "device-extra-history/01-input-append/device-extra-acceptance.json",
+  "change": "clear with actual Ctrl+A then DEL and assert empty before input",
+  "appModified": false,
+  "initialScriptSha256": "c6402a1b655508c09965296dcbad30a85cc38e37de0a59ad13a0183faec11f78",
+  "revisedScriptSha256": "791a52bfcaf859cdcbe01b887247e49477deb05ed3e2ef534cfead0cd3eefd17"
+}

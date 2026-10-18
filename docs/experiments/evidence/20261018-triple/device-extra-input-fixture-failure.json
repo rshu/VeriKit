@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-18T07:55:13.221Z",
+  "root": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02",
+  "bundle": "com.verikit.experiment.openspectodo",
+  "target": "127.0.0.1:13017",
+  "mode": "real native UI operations; no app or plugin modifications",
+  "checks": [
+    {
+      "name": "duplicate Chinese titles retain different IDs",
+      "status": "PASS",
+      "evidence": {
+        "beforeIds": [
+          "todo-row-t1"
+        ],
+        "afterIds": [
+          "todo-row-t1",
+          "todo-row-t2"
+        ]
+      }
+    },
+    {
+      "name": "whitespace-only native input does not append",
+      "status": "PASS",
+      "evidence": {
+        "unchangedIds": [
+          "todo-row-t1",
+          "todo-row-t2"
+        ]
+      }
+    },
+    {
+      "name": "81-character title is blocked or rejected in the UI",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '   中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中'\n- '中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中'\n"
+    }
+  ],
+  "status": "FAIL",
+  "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '   中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中'\n- '中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中中'\n",
+  "passed": 2,
+  "total": 4
+}

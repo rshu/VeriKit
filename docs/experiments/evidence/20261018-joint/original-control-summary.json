@@ -1,0 +1,3130 @@
+{
+  "at": "2026-10-18T07:01:24.381Z",
+  "root": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-plugins-03",
+  "hostVersion": "2026.7.1-2",
+  "model": "glm-work/glm-5.3-flash",
+  "modelRequest": {
+    "effort": "low",
+    "adapter": "isolated native provider wrapper",
+    "endpoint": "https://open.bigmodel.cn/api/anthropic"
+  },
+  "scope": "VeriKit routing/document reads/edit logging plus RC dynamic requirement extraction and native Stop correction; other RC feature flags disabled explicitly",
+  "sourceBase": {
+    "runtimeCorrector": "e136761395ef295b8218d6a3eddeb5cdb05eb610"
+  },
+  "loading": {
+    "plugins": [
+      "verikit",
+      "runtime-corrector"
+    ],
+    "privateReviewSessions": [
+      "agent:main:runtime-corrector:5e558ad4-898a-4e51-a9f5-0b74f6a048f3",
+      "agent:main:runtime-corrector:efd6b6f6-f52c-4ac4-8593-3431be1ab8f7",
+      "agent:main:runtime-corrector:1cc43ade-2d9d-46df-bc6b-e1f855cdca19"
+    ],
+    "privateReviewWithRouting": 3,
+    "businessWithRouting": 1,
+    "inputs": [
+      {
+        "sessionKey": "agent:main:joint-main",
+        "runId": "ffdbc900-d8d0-4ae1-805f-e7d7f876d734",
+        "systemChars": 40723,
+        "promptChars": 28963,
+        "routingInjected": true
+      },
+      {
+        "sessionKey": "agent:main:runtime-corrector:5e558ad4-898a-4e51-a9f5-0b74f6a048f3",
+        "runId": "33f69aad-124f-4a66-98a7-4f2be23a74c5",
+        "systemChars": 19267,
+        "promptChars": 19895,
+        "routingInjected": true
+      },
+      {
+        "sessionKey": "agent:main:runtime-corrector:efd6b6f6-f52c-4ac4-8593-3431be1ab8f7",
+        "runId": "631bd387-1abb-422d-8ae3-33f578605f2f",
+        "systemChars": 21319,
+        "promptChars": 19895,
+        "routingInjected": true
+      },
+      {
+        "sessionKey": "agent:main:runtime-corrector:1cc43ade-2d9d-46df-bc6b-e1f855cdca19",
+        "runId": "309896e9-3c0c-46a3-b5b1-0515cc4eda71",
+        "systemChars": 21319,
+        "promptChars": 19895,
+        "routingInjected": true
+      }
+    ]
+  },
+  "readProof": {
+    "passed": true,
+    "firstCode": {
+      "tool": "write",
+      "id": "call_d5ddbd3308bf4fc6ab2fb418",
+      "index": 14,
+      "at": "2026-10-18T06:46:26.821Z",
+      "path": "app/entry/src/main/ets/model/TodoModel.ets"
+    },
+    "kits": [
+      {
+        "kit": "arkdata",
+        "skillFullyReadBeforeCode": true,
+        "references": [
+          {
+            "path": "arkdata/references/通过用户首选项实现数据持久化 (ArkTS).md",
+            "fullyReadBeforeCode": true
+          }
+        ],
+        "referenceFullyReadBeforeCode": true
+      },
+      {
+        "kit": "arkts",
+        "skillFullyReadBeforeCode": true,
+        "references": [
+          {
+            "path": "arkts/references/异步并发 (Promise和async_await).md",
+            "fullyReadBeforeCode": true
+          }
+        ],
+        "referenceFullyReadBeforeCode": true
+      }
+    ],
+    "transcriptSha256": "8ae04b9515e6df0ecff86ad6c0fdce51237522d8a68b3354c399315cd11c947a"
+  },
+  "turns": [
+    {
+      "name": "bind-project",
+      "runId": "4166f515-693d-440c-8c84-e5a13558eb11",
+      "state": "final",
+      "startedAt": 1792305923035,
+      "finishedAt": 1792305923451,
+      "elapsedMs": 416
+    },
+    {
+      "name": "project-status",
+      "runId": "12bd7a2d-d233-4147-b52c-5252359c2da2",
+      "state": "final",
+      "startedAt": 1792305923481,
+      "finishedAt": 1792305923565,
+      "elapsedMs": 84
+    },
+    {
+      "name": "02-implement",
+      "runId": "ffdbc900-d8d0-4ae1-805f-e7d7f876d734",
+      "state": "final",
+      "startedAt": 1792305923566,
+      "finishedAt": 1792306051787,
+      "elapsedMs": 128221
+    }
+  ],
+  "terminalReviews": [
+    {
+      "sessionId": "ac93b9ce-28c5-4989-a7ac-76957c6ccac8",
+      "sessionKey": "agent:main:joint-main",
+      "runId": "ffdbc900-d8d0-4ae1-805f-e7d7f876d734",
+      "ownerPid": 85640,
+      "status": "SETTLED",
+      "createdAt": 1792306051808,
+      "deadlineAt": 1792309651808,
+      "budgetMs": 3600000,
+      "startedAt": 1792306051814,
+      "reviewStatus": "PASS",
+      "evaluationId": "stop-20261018T065143628Z-a43ffa14",
+      "assessmentCompletedAt": 1792306303724,
+      "settledAt": 1792306303728
+    }
+  ],
+  "followups": [],
+  "tasks": [
+    {
+      "taskId": "oc-scope-359aab27-51cb-449b-8125-5381459252a7",
+      "status": "COMPLETED",
+      "groundTruth": {
+        "version": 1,
+        "digest": "a3b4572020e285f097e85a1fc00e6be53fb6189c07ac13788929e004a4275421",
+        "sourceCursors": {
+          "stop": "fc91bc19a1864f59a883541e9bfa24125c2fb5a77c264f0754d254c771773c4c"
+        }
+      },
+      "correctionEpoch": {
+        "id": 1,
+        "reason": "TASK_CREATED",
+        "startedAt": "2026-10-18T06:46:26.842Z"
+      },
+      "stop": {
+        "epochId": 1,
+        "correctionAttempts": 0,
+        "lastAssessmentId": "stop-20261018T065143628Z-a43ffa14",
+        "armedAtStart": true,
+        "infrastructureFailures": 0,
+        "infrastructureTotalFailures": 1
+      }
+    }
+  ],
+  "evaluations": [
+    {
+      "path": "workspace/.runtime-correction/tasks/oc-scope-359aab27-51cb-449b-8125-5381459252a7/evaluations/stop-20261018T065001915Z-8cef4919.json",
+      "sha256": "14063e2e203efc3cd986d00802561ce9f1fe582848d57099ede7eeabaf396a46",
+      "evaluationId": "stop-20261018T065001915Z-8cef4919",
+      "summary": "合并后的验收结果：CHECKER_ERROR；PASS 44/58，阻断项 0。",
+      "stopClassification": "TASK_COMPLETE",
+      "findings": [],
+      "correctionAttempt": 0,
+      "sourceCitationCount": 15,
+      "metricReport": {
+        "schemaVersion": "runtime-corrector.metric-report.v2",
+        "catalogVersion": "vp-m01-m15-v1",
+        "populationVersion": 1,
+        "groundTruthVersion": 1,
+        "calculatedAt": "2026-10-18T06:50:01.912Z",
+        "metrics": [
+          {
+            "metricId": "M01",
+            "name": "Requirement decomposition coverage",
+            "status": "MEASURED",
+            "numerator": 17,
+            "denominator": 17,
+            "value": 1,
+            "objects": [
+              {
+                "objectId": "M01:constraints-545b24ab874f98d9",
+                "metricId": "M01",
+                "sourceId": "constraints-545b24ab874f98d9",
+                "sourceRevisionId": "constraints-545b24ab874f98d9@1",
+                "description": "Do not edit build configuration or the existing EntryAbility.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "Only TodoModel.ets and Index.ets were written/edited; no build config or EntryAbility tool calls in transcript.",
+                "evidence": [
+                  "transcript tool calls: Write TodoModel.ets (call_d5ddbd3308bf4fc6ab2fb418), Write Index.ets (call_57cf60bd9181451aa406a5e3), Edit Index.ets (call_afc383067ed049e3a8a1a396); no other write targets"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:constraints-85110c12b4ba077d",
+                "metricId": "M01",
+                "sourceId": "constraints-85110c12b4ba077d",
+                "sourceRevisionId": "constraints-85110c12b4ba077d@1",
+                "description": "Do not add notifications, networking, or accounts.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Scope exclusions",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "No notification, network, or account imports or APIs in either business file.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:1-4 imports only preferences/common/BusinessError/TodoModel"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:constraints-8ccf98861cc99689",
+                "metricId": "M01",
+                "sourceId": "constraints-8ccf98861cc99689",
+                "sourceRevisionId": "constraints-8ccf98861cc99689@1",
+                "description": "Use no more than four .ets business files.",
+                "authority": "USER_EXPLICIT",
+                "hard": false,
+                "evidenceRequired": false,
+                "applicability": "File count",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Exactly 2 .ets business files used, within the four-file limit.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets",
+                  "app/entry/src/main/ets/pages/Index.ets"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:constraints-b854574c2bdbbe83",
+                "metricId": "M01",
+                "sourceId": "constraints-b854574c2bdbbe83",
+                "sourceRevisionId": "constraints-b854574c2bdbbe83@1",
+                "description": "Build and acceptance are performed by an external program; do not claim to have tested.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Verification process",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "No build/test commands run; final message explicitly defers build/acceptance to the external program.",
+                "evidence": [
+                  "transcript entry 993daa41: 未做任何本地构建或真机验证"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-09cb4f99a1db1e68",
+                "metricId": "M01",
+                "sourceId": "requirements-09cb4f99a1db1e68",
+                "sourceRevisionId": "requirements-09cb4f99a1db1e68@1",
+                "description": "Reject titles that are empty after trim; titles max 80 characters after trim; support Chinese and duplicate titles; IDs unique and stable.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "add() rejects blank-after-trim and >80 chars, preserves any content (Chinese/duplicates); ids todo-<n> unique and monotonic.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:22-38"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-15d59f9103e6400d",
+                "metricId": "M01",
+                "sourceId": "requirements-15d59f9103e6400d",
+                "sourceRevisionId": "requirements-15d59f9103e6400d@1",
+                "description": "Do not use browser DOM or localStorage.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "No DOM or localStorage usage; persistence via ArkData Preferences.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:1-64"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-2d217e56a6f42482",
+                "metricId": "M01",
+                "sourceId": "requirements-2d217e56a6f42482",
+                "sourceRevisionId": "requirements-2d217e56a6f42482@1",
+                "description": "Single-page UI whose elements expose stable test ids: todo-input, add-button, filter-all, filter-active, filter-completed, todo-row-<id>, toggle-<id>, delete-<id>.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "All required stable ids present on single page.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:104-230 (todo-input, add-button, filter-all/-active/-completed, todo-row-<id>, toggle-<id>, delete-<id>)"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-44e3aa7a4551274c",
+                "metricId": "M01",
+                "sourceId": "requirements-44e3aa7a4551274c",
+                "sourceRevisionId": "requirements-44e3aa7a4551274c@1",
+                "description": "Implement TodoModel in a standalone pure-logic file entry/src/main/ets/model/TodoModel.ets with no SDK or third-party module imports, and it must actually be used by the UI.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Architecture",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "TodoModel.ets has zero SDK/third-party imports and is imported and instantiated by Index.ets.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:1-19",
+                  "app/entry/src/main/ets/pages/Index.ets:4,26"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-4730f12fc0453f02",
+                "metricId": "M01",
+                "sourceId": "requirements-4730f12fc0453f02",
+                "sourceRevisionId": "requirements-4730f12fc0453f02@1",
+                "description": "UI uses ArkUI @State to trigger refresh; show loading before Preferences is read; adding is allowed only after loading completes.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "@State uiVersion drives refresh; LoadingProgress shown until Preferences read; onAdd blocked while loading.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:16-17,53-56,80-86,100-113"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-4ad44ad03be4307a",
+                "metricId": "M01",
+                "sourceId": "requirements-4ad44ad03be4307a",
+                "sourceRevisionId": "requirements-4ad44ad03be4307a@1",
+                "description": "Export class TodoModel with public items: TodoItem[] (initially empty) and methods add(title: string): boolean (returns false for invalid, appends and returns true for valid), toggle(id: string): void, remove(id: string): void, visible(filter: TodoFilter): TodoItem[], serialize(): string, restore(json: string): void.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "All required public members and method signatures implemented as specified.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:13-128"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-5cf1e0925b14f8c3",
+                "metricId": "M01",
+                "sourceId": "requirements-5cf1e0925b14f8c3",
+                "sourceRevisionId": "requirements-5cf1e0925b14f8c3@1",
+                "description": "Only modify within the app directory; do not modify .plugins.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "All writes confined to app/; no .plugins modifications in transcript.",
+                "evidence": [
+                  "transcript write targets limited to app/entry/src/main/ets/model/TodoModel.ets and app/entry/src/main/ets/pages/Index.ets"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-73a1921ea515b102",
+                "metricId": "M01",
+                "sourceId": "requirements-73a1921ea515b102",
+                "sourceRevisionId": "requirements-73a1921ea515b102@1",
+                "description": "Avoid concurrent save overwrites (serialize saves).",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Saves serialized through a chained Promise queue (saveChain), preventing concurrent flush overwrites.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:26-27,74-77"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-759c9b2d077ba1d4",
+                "metricId": "M01",
+                "sourceId": "requirements-759c9b2d077ba1d4",
+                "sourceRevisionId": "requirements-759c9b2d077ba1d4@1",
+                "description": "Only modify app/entry/src/main/ets/model/ files and pages/Index.ets; do not modify plugins, correction config, requirements, or build files.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "Only model/ file and pages/Index.ets modified; plugins, correction config, requirements, build files untouched.",
+                "evidence": [
+                  "transcript write targets (Write x2, Edit x1) all within allowed paths"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-7a36bcc5f497f0a4",
+                "metricId": "M01",
+                "sourceId": "requirements-7a36bcc5f497f0a4",
+                "sourceRevisionId": "requirements-7a36bcc5f497f0a4@1",
+                "description": "Build a real HarmonyOS Stage ArkTS TodoList app (empty project with existing EntryAbility, SDK API 21) with add, toggle/un-toggle, delete, all/active/completed filtering, and count statistics.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Real Stage ArkTS app using existing EntryAbility with add, toggle/un-toggle, delete, three-way filtering, and count statistics.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:55-64,80-101,160-193,196-229",
+                  "transcript entry 171eb819: existing EntryAbility loaded pages/Index"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-800b9ab519e5cb02",
+                "metricId": "M01",
+                "sourceId": "requirements-800b9ab519e5cb02",
+                "sourceRevisionId": "requirements-800b9ab519e5cb02@1",
+                "description": "Use ArkData Preferences for real storage; after each change persist and await flush; restore persisted state; show an error on save failure.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "ArkData Preferences real storage; each change persists via putSync then awaited flush; state restored at startup; save failure shows save-error text.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:14-15,44-56,74-95,129-136"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-eb575022d49242ce",
+                "metricId": "M01",
+                "sourceId": "requirements-eb575022d49242ce",
+                "sourceRevisionId": "requirements-eb575022d49242ce@1",
+                "description": "Export interface TodoItem { id: string; title: string; completed: boolean } and export type TodoFilter = 'all' | 'active' | 'completed'.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Exported interface TodoItem and union type TodoFilter exactly as specified.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:5-11"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-f70bc094e86c52da",
+                "metricId": "M01",
+                "sourceId": "requirements-f70bc094e86c52da",
+                "sourceRevisionId": "requirements-f70bc094e86c52da@1",
+                "description": "restore uses serialize's format, restores each item's ID and state, and subsequent new IDs must not collide with restored ones.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "restore parses serialize's JSON format, restores each id/completed, and rescans max sequence so new ids cannot collide.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:88-128"
+                ],
+                "reviewer": "stop-reviewer"
+              }
+            ]
+          },
+          {
+            "metricId": "M02",
+            "name": "Requirement decomposition qualification",
+            "status": "MEASURED",
+            "numerator": 13,
+            "denominator": 13,
+            "value": 1,
+            "objects": [
+              {
+                "objectId": "M02:requirements-09cb4f99a1db1e68",
+                "metricId": "M02",
+                "sourceId": "requirements-09cb4f99a1db1e68",
+                "sourceRevisionId": "requirements-09cb4f99a1db1e68@1",
+                "description": "Reject titles that are empty after trim; titles max 80 characters after trim; support Chinese and duplicate titles; IDs unique and stable.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Decomposition covers all sub-clauses: trim rejection, 80-char cap, Chinese/duplicate support, unique stable ids.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:22-38"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-15d59f9103e6400d",
+                "metricId": "M02",
+                "sourceId": "requirements-15d59f9103e6400d",
+                "sourceRevisionId": "requirements-15d59f9103e6400d@1",
+                "description": "Do not use browser DOM or localStorage.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Constraint carried into implementation; no DOM/localStorage.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:1-64"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-2d217e56a6f42482",
+                "metricId": "M02",
+                "sourceId": "requirements-2d217e56a6f42482",
+                "sourceRevisionId": "requirements-2d217e56a6f42482@1",
+                "description": "Single-page UI whose elements expose stable test ids: todo-input, add-button, filter-all, filter-active, filter-completed, todo-row-<id>, toggle-<id>, delete-<id>.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "All eight id patterns implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:104-230"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-44e3aa7a4551274c",
+                "metricId": "M02",
+                "sourceId": "requirements-44e3aa7a4551274c",
+                "sourceRevisionId": "requirements-44e3aa7a4551274c@1",
+                "description": "Implement TodoModel in a standalone pure-logic file entry/src/main/ets/model/TodoModel.ets with no SDK or third-party module imports, and it must actually be used by the UI.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Architecture",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Architecture requirement met and traced to UI usage.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:1-19",
+                  "app/entry/src/main/ets/pages/Index.ets:4"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-4730f12fc0453f02",
+                "metricId": "M02",
+                "sourceId": "requirements-4730f12fc0453f02",
+                "sourceRevisionId": "requirements-4730f12fc0453f02@1",
+                "description": "UI uses ArkUI @State to trigger refresh; show loading before Preferences is read; adding is allowed only after loading completes.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "@State refresh, loading gate, post-load add all implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:16-17,80-86,100-113"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-4ad44ad03be4307a",
+                "metricId": "M02",
+                "sourceId": "requirements-4ad44ad03be4307a",
+                "sourceRevisionId": "requirements-4ad44ad03be4307a@1",
+                "description": "Export class TodoModel with public items: TodoItem[] (initially empty) and methods add(title: string): boolean (returns false for invalid, appends and returns true for valid), toggle(id: string): void, remove(id: string): void, visible(filter: TodoFilter): TodoItem[], serialize(): string, restore(json: string): void.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Class API fully implemented per spec.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:13-128"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-5cf1e0925b14f8c3",
+                "metricId": "M02",
+                "sourceId": "requirements-5cf1e0925b14f8c3",
+                "sourceRevisionId": "requirements-5cf1e0925b14f8c3@1",
+                "description": "Only modify within the app directory; do not modify .plugins.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "File scope respected.",
+                "evidence": [
+                  "transcript write targets within app/"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-73a1921ea515b102",
+                "metricId": "M02",
+                "sourceId": "requirements-73a1921ea515b102",
+                "sourceRevisionId": "requirements-73a1921ea515b102@1",
+                "description": "Avoid concurrent save overwrites (serialize saves).",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Serialized save chain implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:26-27,74-77"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-759c9b2d077ba1d4",
+                "metricId": "M02",
+                "sourceId": "requirements-759c9b2d077ba1d4",
+                "sourceRevisionId": "requirements-759c9b2d077ba1d4@1",
+                "description": "Only modify app/entry/src/main/ets/model/ files and pages/Index.ets; do not modify plugins, correction config, requirements, or build files.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "Only allowed paths modified.",
+                "evidence": [
+                  "transcript write targets"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-7a36bcc5f497f0a4",
+                "metricId": "M02",
+                "sourceId": "requirements-7a36bcc5f497f0a4",
+                "sourceRevisionId": "requirements-7a36bcc5f497f0a4@1",
+                "description": "Build a real HarmonyOS Stage ArkTS TodoList app (empty project with existing EntryAbility, SDK API 21) with add, toggle/un-toggle, delete, all/active/completed filtering, and count statistics.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Full feature set implemented on the existing project.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets whole file"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-800b9ab519e5cb02",
+                "metricId": "M02",
+                "sourceId": "requirements-800b9ab519e5cb02",
+                "sourceRevisionId": "requirements-800b9ab519e5cb02@1",
+                "description": "Use ArkData Preferences for real storage; after each change persist and await flush; restore persisted state; show an error on save failure.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Persistence lifecycle complete with error surfacing.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:44-95,129-136"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-eb575022d49242ce",
+                "metricId": "M02",
+                "sourceId": "requirements-eb575022d49242ce",
+                "sourceRevisionId": "requirements-eb575022d49242ce@1",
+                "description": "Export interface TodoItem { id: string; title: string; completed: boolean } and export type TodoFilter = 'all' | 'active' | 'completed'.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Types exported as specified.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:5-11"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-f70bc094e86c52da",
+                "metricId": "M02",
+                "sourceId": "requirements-f70bc094e86c52da",
+                "sourceRevisionId": "requirements-f70bc094e86c52da@1",
+                "description": "restore uses serialize's format, restores each item's ID and state, and subsequent new IDs must not collide with restored ones.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "restore semantics implemented including id collision avoidance.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:88-128"
+                ],
+                "reviewer": "stop-reviewer"
+              }
+            ]
+          },
+          {
+            "metricId": "M03",
+            "name": "Test contract coverage",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M04",
+            "name": "Test contract qualification",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M05",
+            "name": "Acceptance criteria coverage",
+            "status": "MEASURED",
+            "numerator": 13,
+            "denominator": 13,
+            "value": 1,
+            "objects": [
+              {
+                "objectId": "M05:requirements-09cb4f99a1db1e68",
+                "metricId": "M05",
+                "sourceId": "requirements-09cb4f99a1db1e68",
+                "sourceRevisionId": "requirements-09cb4f99a1db1e68@1",
+                "description": "Reject titles that are empty after trim; titles max 80 characters after trim; support Chinese and duplicate titles; IDs unique and stable.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Acceptance criteria for titles/ids are satisfiable by current implementation.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:22-38"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-15d59f9103e6400d",
+                "metricId": "M05",
+                "sourceId": "requirements-15d59f9103e6400d",
+                "sourceRevisionId": "requirements-15d59f9103e6400d@1",
+                "description": "Do not use browser DOM or localStorage.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "No DOM/localStorage; criterion met by construction.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets imports"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-2d217e56a6f42482",
+                "metricId": "M05",
+                "sourceId": "requirements-2d217e56a6f42482",
+                "sourceRevisionId": "requirements-2d217e56a6f42482@1",
+                "description": "Single-page UI whose elements expose stable test ids: todo-input, add-button, filter-all, filter-active, filter-completed, todo-row-<id>, toggle-<id>, delete-<id>.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "All stable ids present for external acceptance.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:104-230"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-44e3aa7a4551274c",
+                "metricId": "M05",
+                "sourceId": "requirements-44e3aa7a4551274c",
+                "sourceRevisionId": "requirements-44e3aa7a4551274c@1",
+                "description": "Implement TodoModel in a standalone pure-logic file entry/src/main/ets/model/TodoModel.ets with no SDK or third-party module imports, and it must actually be used by the UI.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Architecture",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Pure-logic model used by UI.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:1-19",
+                  "app/entry/src/main/ets/pages/Index.ets:4"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-4730f12fc0453f02",
+                "metricId": "M05",
+                "sourceId": "requirements-4730f12fc0453f02",
+                "sourceRevisionId": "requirements-4730f12fc0453f02@1",
+                "description": "UI uses ArkUI @State to trigger refresh; show loading before Preferences is read; adding is allowed only after loading completes.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "UI behavior criteria implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:16-17,80-86,100-113"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-4ad44ad03be4307a",
+                "metricId": "M05",
+                "sourceId": "requirements-4ad44ad03be4307a",
+                "sourceRevisionId": "requirements-4ad44ad03be4307a@1",
+                "description": "Export class TodoModel with public items: TodoItem[] (initially empty) and methods add(title: string): boolean (returns false for invalid, appends and returns true for valid), toggle(id: string): void, remove(id: string): void, visible(filter: TodoFilter): TodoItem[], serialize(): string, restore(json: string): void.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "API surface matches acceptance criteria.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:13-128"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-5cf1e0925b14f8c3",
+                "metricId": "M05",
+                "sourceId": "requirements-5cf1e0925b14f8c3",
+                "sourceRevisionId": "requirements-5cf1e0925b14f8c3@1",
+                "description": "Only modify within the app directory; do not modify .plugins.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "Scope constraint observed.",
+                "evidence": [
+                  "transcript write targets"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-73a1921ea515b102",
+                "metricId": "M05",
+                "sourceId": "requirements-73a1921ea515b102",
+                "sourceRevisionId": "requirements-73a1921ea515b102@1",
+                "description": "Avoid concurrent save overwrites (serialize saves).",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Concurrent-overwrite avoidance implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:74-77"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-759c9b2d077ba1d4",
+                "metricId": "M05",
+                "sourceId": "requirements-759c9b2d077ba1d4",
+                "sourceRevisionId": "requirements-759c9b2d077ba1d4@1",
+                "description": "Only modify app/entry/src/main/ets/model/ files and pages/Index.ets; do not modify plugins, correction config, requirements, or build files.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "File scope constraint observed.",
+                "evidence": [
+                  "transcript write targets"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-7a36bcc5f497f0a4",
+                "metricId": "M05",
+                "sourceId": "requirements-7a36bcc5f497f0a4",
+                "sourceRevisionId": "requirements-7a36bcc5f497f0a4@1",
+                "description": "Build a real HarmonyOS Stage ArkTS TodoList app (empty project with existing EntryAbility, SDK API 21) with add, toggle/un-toggle, delete, all/active/completed filtering, and count statistics.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Feature acceptance criteria implemented; device acceptance remains external as required.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets whole file"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-800b9ab519e5cb02",
+                "metricId": "M05",
+                "sourceId": "requirements-800b9ab519e5cb02",
+                "sourceRevisionId": "requirements-800b9ab519e5cb02@1",
+                "description": "Use ArkData Preferences for real storage; after each change persist and await flush; restore persisted state; show an error on save failure.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Persistence acceptance criteria implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:44-95"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-eb575022d49242ce",
+                "metricId": "M05",
+                "sourceId": "requirements-eb575022d49242ce",
+                "sourceRevisionId": "requirements-eb575022d49242ce@1",
+                "description": "Export interface TodoItem { id: string; title: string; completed: boolean } and export type TodoFilter = 'all' | 'active' | 'completed'.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Type exports match criteria.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:5-11"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-f70bc094e86c52da",
+                "metricId": "M05",
+                "sourceId": "requirements-f70bc094e86c52da",
+                "sourceRevisionId": "requirements-f70bc094e86c52da@1",
+                "description": "restore uses serialize's format, restores each item's ID and state, and subsequent new IDs must not collide with restored ones.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "restore criteria implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:88-128"
+                ],
+                "reviewer": "stop-reviewer"
+              }
+            ]
+          },
+          {
+            "metricId": "M06",
+            "name": "Acceptance criteria qualification",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M07",
+            "name": "Requirement-artifact traceability completeness",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M08",
+            "name": "Skill step compliance",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M09",
+            "name": "Development standard compliance",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M10",
+            "name": "Mandatory experience-rule compliance",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M11",
+            "name": "Fixed workflow compliance",
+            "status": "MEASURED",
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1,
+            "objects": [
+              {
+                "objectId": "M11:workflowSteps-4334de1e4125d469",
+                "metricId": "M11",
+                "sourceId": "workflowSteps-4334de1e4125d469",
+                "sourceRevisionId": "workflowSteps-4334de1e4125d469@1",
+                "description": "If RC review feedback indicates deviations, fixing business files until the original requirements are met is authorized.",
+                "authority": "USER_EXPLICIT",
+                "hard": false,
+                "evidenceRequired": false,
+                "applicability": "Correction workflow",
+                "verificationTarget": "PROCESS",
+                "judgement": "NOT_APPLICABLE",
+                "reason": "Conditional authorization for fixing RC-indicated deviations; no prior deviations pending fix in this task scope.",
+                "evidence": [
+                  "transcript shows fresh implementation with no preceding RC deviation feedback"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M11:workflowSteps-a51d0ab07dc95b72",
+                "metricId": "M11",
+                "sourceId": "workflowSteps-a51d0ab07dc95b72",
+                "sourceRevisionId": "workflowSteps-a51d0ab07dc95b72@1",
+                "description": "Before writing code, read app/requirements.md, then read each selected Kit's complete SKILL.md and at least one complete task-relevant reference document.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Pre-implementation workflow",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "Reading completed before first write: requirements.md, arkdata SKILL.md + full Preferences reference, arkts SKILL.md full ranges + full async/await reference were all read (indices 5-17) before the first Write at index 18.",
+                "evidence": [
+                  "transcript entries 15018d21-171eb819 (reads, indices 5-17)",
+                  "transcript entry 743834b0 (first Write, index 18)",
+                  "transcript entry 3f408710: full 通过用户首选项实现数据持久化 (ArkTS) content to EOF",
+                  "transcript entry 587dcf19: full 异步并发 (Promise和async/await) content to EOF"
+                ],
+                "reviewer": "stop-reviewer"
+              }
+            ]
+          },
+          {
+            "metricId": "M12",
+            "name": "Requirement execution rate",
+            "status": "CHECKER_ERROR",
+            "numerator": 0,
+            "denominator": 13,
+            "value": null,
+            "objects": [
+              {
+                "objectId": "M12:requirements-09cb4f99a1db1e68",
+                "metricId": "M12",
+                "sourceId": "requirements-09cb4f99a1db1e68",
+                "sourceRevisionId": "requirements-09cb4f99a1db1e68@1",
+                "description": "Reject titles that are empty after trim; titles max 80 characters after trim; support Chinese and duplicate titles; IDs unique and stable.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "TodoModel",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "CHECKER_ERROR",
+                "reason": "Reviewer omitted this population object.",
+                "evidence": [],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-15d59f9103e6400d",
+                "metricId": "M12",
+                "sourceId": "requirements-15d59f9103e6400d",
+                "sourceRevisionId": "requirements-15d59f9103e6400d@1",
+                "description": "Do not use browser DOM or localStorage.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "CHECKER_ERROR",
+                "reason": "Reviewer omitted this population object.",
+                "evidence": [],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-2d217e56a6f42482",
+                "metricId": "M12",
+                "sourceId": "requirements-2d217e56a6f42482",
+                "sourceRevisionId": "requirements-2d217e56a6f42482@1",
+                "description": "Single-page UI whose elements expose stable test ids: todo-input, add-button, filter-all, filter-active, filter-completed, todo-row-<id>, toggle-<id>, delete-<id>.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "CHECKER_ERROR",
+                "reason": "Reviewer omitted this population object.",
+                "evidence": [],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-44e3aa7a4551274c",
+                "metricId": "M12",
+                "sourceId": "requirements-44e3aa7a4551274c",
+                "sourceRevisionId": "requirements-44e3aa7a4551274c@1",
+                "description": "Implement TodoModel in a standalone pure-logic file entry/src/main/ets/model/TodoModel.ets with no SDK or third-party module imports, and it must actually be used by the UI.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "Architecture",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "CHECKER_ERROR",
+                "reason": "Reviewer omitted this population object.",
+                "evidence": [],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-4730f12fc0453f02",
+                "metricId": "M12",
+                "sourceId": "requirements-4730f12fc0453f02",
+                "sourceRevisionId": "requirements-4730f12fc0453f02@1",
+                "description": "UI uses ArkUI @State to trigger refresh; show loading before Preferences is read; adding is allowed only after loading completes.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "CHECKER_ERROR",
+                "reason": "Reviewer omitted this population object.",
+                "evidence": [],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-4ad44ad03be4307a",
+                "metricId": "M12",
+                "sourceId": "requirements-4ad44ad03be4307a",
+                "sourceRevisionId": "requirements-4ad44ad03be4307a@1",
+                "description": "Export class TodoModel with public items: TodoItem[] (initially empty) and methods add(title: string): boolean (returns false for invalid, appends and returns true for valid), toggle(id: string): void, remove(id: string): void, visible(filter: TodoFilter): TodoItem[], serialize(): string, restore(json: string): void.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "CHECKER_ERROR",
+                "reason": "Reviewer omitted this population object.",
+                "evidence": [],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-5cf1e0925b14f8c3",
+                "metricId": "M12",
+                "sourceId": "requirements-5cf1e0925b14f8c3",
+                "sourceRevisionId": "requirements-5cf1e0925b14f8c3@1",
+                "description": "Only modify within the app directory; do not modify .plugins.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "CHECKER_ERROR",
+                "reason": "Reviewer omitted this population object.",
+                "evidence": [],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-73a1921ea515b102",
+                "metricId": "M12",
+                "sourceId": "requirements-73a1921ea515b102",
+                "sourceRevisionId": "requirements-73a1921ea515b102@1",
+                "description": "Avoid concurrent save overwrites (serialize saves).",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "CHECKER_ERROR",
+                "reason": "Reviewer omitted this population object.",
+                "evidence": [],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-759c9b2d077ba1d4",
+                "metricId": "M12",
+                "sourceId": "requirements-759c9b2d077ba1d4",
+                "sourceRevisionId": "requirements-759c9b2d077ba1d4@1",
+                "description": "Only modify app/entry/src/main/ets/model/ files and pages/Index.ets; do not modify plugins, correction config, requirements, or build files.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "CHECKER_ERROR",
+                "reason": "Reviewer omitted this population object.",
+                "evidence": [],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-7a36bcc5f497f0a4",
+                "metricId": "M12",
+                "sourceId": "requirements-7a36bcc5f497f0a4",
+                "sourceRevisionId": "requirements-7a36bcc5f497f0a4@1",
+                "description": "Build a real HarmonyOS Stage ArkTS TodoList app (empty project with existing EntryAbility, SDK API 21) with add, toggle/un-toggle, delete, all/active/completed filtering, and count statistics.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "CHECKER_ERROR",
+                "reason": "Reviewer omitted this population object.",
+                "evidence": [],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-800b9ab519e5cb02",
+                "metricId": "M12",
+                "sourceId": "requirements-800b9ab519e5cb02",
+                "sourceRevisionId": "requirements-800b9ab519e5cb02@1",
+                "description": "Use ArkData Preferences for real storage; after each change persist and await flush; restore persisted state; show an error on save failure.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "CHECKER_ERROR",
+                "reason": "Reviewer omitted this population object.",
+                "evidence": [],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-eb575022d49242ce",
+                "metricId": "M12",
+                "sourceId": "requirements-eb575022d49242ce",
+                "sourceRevisionId": "requirements-eb575022d49242ce@1",
+                "description": "Export interface TodoItem { id: string; title: string; completed: boolean } and export type TodoFilter = 'all' | 'active' | 'completed'.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "CHECKER_ERROR",
+                "reason": "Reviewer omitted this population object.",
+                "evidence": [],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-f70bc094e86c52da",
+                "metricId": "M12",
+                "sourceId": "requirements-f70bc094e86c52da",
+                "sourceRevisionId": "requirements-f70bc094e86c52da@1",
+                "description": "restore uses serialize's format, restores each item's ID and state, and subsequent new IDs must not collide with restored ones.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "CHECKER_ERROR",
+                "reason": "Reviewer omitted this population object.",
+                "evidence": [],
+                "reviewer": "stop-reviewer"
+              }
+            ]
+          },
+          {
+            "metricId": "M13",
+            "name": "Acceptance closure rate",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M14",
+            "name": "Milestone closure rate",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M15",
+            "name": "Critical journey pass rate",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          }
+        ],
+        "blockingObjects": [],
+        "checkerIssues": [],
+        "status": "CHECKER_ERROR"
+      }
+    },
+    {
+      "path": "workspace/.runtime-correction/tasks/oc-scope-359aab27-51cb-449b-8125-5381459252a7/evaluations/stop-20261018T065143628Z-a43ffa14.json",
+      "sha256": "2bd4f54fe5218465ed5f9cb8e654249eeb2d1dd7981aaff9899cedfefdc54c15",
+      "evaluationId": "stop-20261018T065143628Z-a43ffa14",
+      "summary": "合并后的验收结果：PASS；PASS 57/58，阻断项 0。",
+      "stopClassification": "TASK_COMPLETE",
+      "findings": [],
+      "correctionAttempt": 0,
+      "sourceCitationCount": 12,
+      "metricReport": {
+        "schemaVersion": "runtime-corrector.metric-report.v2",
+        "catalogVersion": "vp-m01-m15-v1",
+        "populationVersion": 1,
+        "groundTruthVersion": 1,
+        "calculatedAt": "2026-10-18T06:51:43.624Z",
+        "metrics": [
+          {
+            "metricId": "M01",
+            "name": "Requirement decomposition coverage",
+            "status": "MEASURED",
+            "numerator": 17,
+            "denominator": 17,
+            "value": 1,
+            "objects": [
+              {
+                "objectId": "M01:constraints-545b24ab874f98d9",
+                "metricId": "M01",
+                "sourceId": "constraints-545b24ab874f98d9",
+                "sourceRevisionId": "constraints-545b24ab874f98d9@1",
+                "description": "Do not edit build configuration or the existing EntryAbility.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "Only TodoModel.ets and pages/Index.ets were written; no build config or EntryAbility writes in transcript.",
+                "evidence": [
+                  "processToolEvidence indexes 18,20,22: Write/Edit target only app/entry/src/main/ets/model/TodoModel.ets and app/entry/src/main/ets/pages/Index.ets",
+                  "transcript entry 743834b0/f339106c/1b43122c tool inputs"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:constraints-85110c12b4ba077d",
+                "metricId": "M01",
+                "sourceId": "constraints-85110c12b4ba077d",
+                "sourceRevisionId": "constraints-85110c12b4ba077d@1",
+                "description": "Do not add notifications, networking, or accounts.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Scope exclusions",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Imports are limited to @kit.ArkData, @kit.AbilityKit (common context), @kit.BasicServicesKit (BusinessError); no notification, network, or account APIs.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:1-3"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:constraints-8ccf98861cc99689",
+                "metricId": "M01",
+                "sourceId": "constraints-8ccf98861cc99689",
+                "sourceRevisionId": "constraints-8ccf98861cc99689@1",
+                "description": "Use no more than four .ets business files.",
+                "authority": "USER_EXPLICIT",
+                "hard": false,
+                "evidenceRequired": false,
+                "applicability": "File count",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Exactly 2 .ets business files written, under the soft cap of 4.",
+                "evidence": [
+                  "processToolEvidence indexes 18 and 20"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:constraints-b854574c2bdbbe83",
+                "metricId": "M01",
+                "sourceId": "constraints-b854574c2bdbbe83",
+                "sourceRevisionId": "constraints-b854574c2bdbbe83@1",
+                "description": "Build and acceptance are performed by an external program; do not claim to have tested.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Verification process",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "No build or test commands executed; final message explicitly defers build/acceptance to the external program.",
+                "evidence": [
+                  "transcript entry 993daa41 final text: 未做任何本地构建或真机验证"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-09cb4f99a1db1e68",
+                "metricId": "M01",
+                "sourceId": "requirements-09cb4f99a1db1e68",
+                "sourceRevisionId": "requirements-09cb4f99a1db1e68@1",
+                "description": "Reject titles that are empty after trim; titles max 80 characters after trim; support Chinese and duplicate titles; IDs unique and stable.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "add() rejects empty-after-trim, caps at 80 after trim, preserves Chinese/duplicate titles, IDs todo-<n> monotonic and unique.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:18-32"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-15d59f9103e6400d",
+                "metricId": "M01",
+                "sourceId": "requirements-15d59f9103e6400d",
+                "sourceRevisionId": "requirements-15d59f9103e6400d@1",
+                "description": "Do not use browser DOM or localStorage.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "No DOM or localStorage usage anywhere in the two business files.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets full read",
+                  "app/entry/src/main/ets/pages/Index.ets:1-95"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-2d217e56a6f42482",
+                "metricId": "M01",
+                "sourceId": "requirements-2d217e56a6f42482",
+                "sourceRevisionId": "requirements-2d217e56a6f42482@1",
+                "description": "Single-page UI whose elements expose stable test ids: todo-input, add-button, filter-all, filter-active, filter-completed, todo-row-<id>, toggle-<id>, delete-<id>.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Single page exposes todo-input, add-button, filter-all/-active/-completed, todo-row-<id>, toggle-<id>, delete-<id>.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:99-205"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-44e3aa7a4551274c",
+                "metricId": "M01",
+                "sourceId": "requirements-44e3aa7a4551274c",
+                "sourceRevisionId": "requirements-44e3aa7a4551274c@1",
+                "description": "Implement TodoModel in a standalone pure-logic file entry/src/main/ets/model/TodoModel.ets with no SDK or third-party module imports, and it must actually be used by the UI.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Architecture",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "TodoModel.ets has zero imports and is imported and used by Index.ets (model drives add/toggle/remove/visible/serialize/restore).",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:1-16",
+                  "app/entry/src/main/ets/pages/Index.ets:4,15,41-53,99-146"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-4730f12fc0453f02",
+                "metricId": "M01",
+                "sourceId": "requirements-4730f12fc0453f02",
+                "sourceRevisionId": "requirements-4730f12fc0453f02@1",
+                "description": "UI uses ArkUI @State to trigger refresh; show loading before Preferences is read; adding is allowed only after loading completes.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "@State fields drive refresh (uiVersion); loading state blocks add until getPreferences completes.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:10-17,41-53,99-106,131-134"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-4ad44ad03be4307a",
+                "metricId": "M01",
+                "sourceId": "requirements-4ad44ad03be4307a",
+                "sourceRevisionId": "requirements-4ad44ad03be4307a@1",
+                "description": "Export class TodoModel with public items: TodoItem[] (initially empty) and methods add(title: string): boolean (returns false for invalid, appends and returns true for valid), toggle(id: string): void, remove(id: string): void, visible(filter: TodoFilter): TodoItem[], serialize(): string, restore(json: string): void.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Public items: TodoItem[] initialized empty; add returns boolean, toggle/remove/visible/serialize/restore present with required signatures.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:15-110"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-5cf1e0925b14f8c3",
+                "metricId": "M01",
+                "sourceId": "requirements-5cf1e0925b14f8c3",
+                "sourceRevisionId": "requirements-5cf1e0925b14f8c3@1",
+                "description": "Only modify within the app directory; do not modify .plugins.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "All writes are within app/entry/src/main/ets/; no .plugins modifications in transcript.",
+                "evidence": [
+                  "processToolEvidence indexes 18,20,22"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-73a1921ea515b102",
+                "metricId": "M01",
+                "sourceId": "requirements-73a1921ea515b102",
+                "sourceRevisionId": "requirements-73a1921ea515b102@1",
+                "description": "Avoid concurrent save overwrites (serialize saves).",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Saves are serialized through a Promise chain (saveChain) so flushes cannot overlap.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:16-17,78-82"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-759c9b2d077ba1d4",
+                "metricId": "M01",
+                "sourceId": "requirements-759c9b2d077ba1d4",
+                "sourceRevisionId": "requirements-759c9b2d077ba1d4@1",
+                "description": "Only modify app/entry/src/main/ets/model/ files and pages/Index.ets; do not modify plugins, correction config, requirements, or build files.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "Only model/ and pages/Index.ets modified; plugins, correction config, requirements, build files untouched.",
+                "evidence": [
+                  "processToolEvidence indexes 18,20,22"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-7a36bcc5f497f0a4",
+                "metricId": "M01",
+                "sourceId": "requirements-7a36bcc5f497f0a4",
+                "sourceRevisionId": "requirements-7a36bcc5f497f0a4@1",
+                "description": "Build a real HarmonyOS Stage ArkTS TodoList app (empty project with existing EntryAbility, SDK API 21) with add, toggle/un-toggle, delete, all/active/completed filtering, and count statistics.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Real Stage ArkTS app with add, toggle/un-toggle, delete, three-way filtering, and count statistics shown on filter buttons.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:99-205",
+                  "app/entry/src/main/ets/model/TodoModel.ets:17-72"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-800b9ab519e5cb02",
+                "metricId": "M01",
+                "sourceId": "requirements-800b9ab519e5cb02",
+                "sourceRevisionId": "requirements-800b9ab519e5cb02@1",
+                "description": "Use ArkData Preferences for real storage; after each change persist and await flush; restore persisted state; show an error on save failure.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "ArkData Preferences real storage; each change putSync + await flush; state restored at load; save failure shows error text.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:41-95,135-143"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-eb575022d49242ce",
+                "metricId": "M01",
+                "sourceId": "requirements-eb575022d49242ce",
+                "sourceRevisionId": "requirements-eb575022d49242ce@1",
+                "description": "Export interface TodoItem { id: string; title: string; completed: boolean } and export type TodoFilter = 'all' | 'active' | 'completed'.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Exports interface TodoItem {id,title,completed} and export type TodoFilter union exactly as specified.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:6-13"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M01:requirements-f70bc094e86c52da",
+                "metricId": "M01",
+                "sourceId": "requirements-f70bc094e86c52da",
+                "sourceRevisionId": "requirements-f70bc094e86c52da@1",
+                "description": "restore uses serialize's format, restores each item's ID and state, and subsequent new IDs must not collide with restored ones.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "restore parses serialize's JSON format, restores each item's id and completed state, and rescans max sequence so subsequent add() IDs do not collide.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:96-160"
+                ],
+                "reviewer": "stop-reviewer"
+              }
+            ]
+          },
+          {
+            "metricId": "M02",
+            "name": "Requirement decomposition qualification",
+            "status": "MEASURED",
+            "numerator": 13,
+            "denominator": 13,
+            "value": 1,
+            "objects": [
+              {
+                "objectId": "M02:requirements-09cb4f99a1db1e68",
+                "metricId": "M02",
+                "sourceId": "requirements-09cb4f99a1db1e68",
+                "sourceRevisionId": "requirements-09cb4f99a1db1e68@1",
+                "description": "Reject titles that are empty after trim; titles max 80 characters after trim; support Chinese and duplicate titles; IDs unique and stable.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Same evidence as M01: add() enforces trim, 80-char cap, Chinese/duplicate support, unique stable IDs.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:18-32"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-15d59f9103e6400d",
+                "metricId": "M02",
+                "sourceId": "requirements-15d59f9103e6400d",
+                "sourceRevisionId": "requirements-15d59f9103e6400d@1",
+                "description": "Do not use browser DOM or localStorage.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "No DOM/localStorage usage.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets full read",
+                  "app/entry/src/main/ets/pages/Index.ets:1-95"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-2d217e56a6f42482",
+                "metricId": "M02",
+                "sourceId": "requirements-2d217e56a6f42482",
+                "sourceRevisionId": "requirements-2d217e56a6f42482@1",
+                "description": "Single-page UI whose elements expose stable test ids: todo-input, add-button, filter-all, filter-active, filter-completed, todo-row-<id>, toggle-<id>, delete-<id>.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "All required stable test ids present in single-page UI.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:99-205"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-44e3aa7a4551274c",
+                "metricId": "M02",
+                "sourceId": "requirements-44e3aa7a4551274c",
+                "sourceRevisionId": "requirements-44e3aa7a4551274c@1",
+                "description": "Implement TodoModel in a standalone pure-logic file entry/src/main/ets/model/TodoModel.ets with no SDK or third-party module imports, and it must actually be used by the UI.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Architecture",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Standalone zero-import pure-logic model, actually used by UI.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:1-16",
+                  "app/entry/src/main/ets/pages/Index.ets:4"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-4730f12fc0453f02",
+                "metricId": "M02",
+                "sourceId": "requirements-4730f12fc0453f02",
+                "sourceRevisionId": "requirements-4730f12fc0453f02@1",
+                "description": "UI uses ArkUI @State to trigger refresh; show loading before Preferences is read; adding is allowed only after loading completes.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "@State refresh, loading gate before Preferences read completes, add blocked while loading.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:10-17,41-53,99-106"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-4ad44ad03be4307a",
+                "metricId": "M02",
+                "sourceId": "requirements-4ad44ad03be4307a",
+                "sourceRevisionId": "requirements-4ad44ad03be4307a@1",
+                "description": "Export class TodoModel with public items: TodoItem[] (initially empty) and methods add(title: string): boolean (returns false for invalid, appends and returns true for valid), toggle(id: string): void, remove(id: string): void, visible(filter: TodoFilter): TodoItem[], serialize(): string, restore(json: string): void.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Class API matches specification exactly.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:15-110"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-5cf1e0925b14f8c3",
+                "metricId": "M02",
+                "sourceId": "requirements-5cf1e0925b14f8c3",
+                "sourceRevisionId": "requirements-5cf1e0925b14f8c3@1",
+                "description": "Only modify within the app directory; do not modify .plugins.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "Writes confined to app directory.",
+                "evidence": [
+                  "processToolEvidence indexes 18,20,22"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-73a1921ea515b102",
+                "metricId": "M02",
+                "sourceId": "requirements-73a1921ea515b102",
+                "sourceRevisionId": "requirements-73a1921ea515b102@1",
+                "description": "Avoid concurrent save overwrites (serialize saves).",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Serialized save chain prevents concurrent overwrite.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:16-17,78-82"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-759c9b2d077ba1d4",
+                "metricId": "M02",
+                "sourceId": "requirements-759c9b2d077ba1d4",
+                "sourceRevisionId": "requirements-759c9b2d077ba1d4@1",
+                "description": "Only modify app/entry/src/main/ets/model/ files and pages/Index.ets; do not modify plugins, correction config, requirements, or build files.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "Only permitted files modified.",
+                "evidence": [
+                  "processToolEvidence indexes 18,20,22"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-7a36bcc5f497f0a4",
+                "metricId": "M02",
+                "sourceId": "requirements-7a36bcc5f497f0a4",
+                "sourceRevisionId": "requirements-7a36bcc5f497f0a4@1",
+                "description": "Build a real HarmonyOS Stage ArkTS TodoList app (empty project with existing EntryAbility, SDK API 21) with add, toggle/un-toggle, delete, all/active/completed filtering, and count statistics.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "All TodoList features implemented on existing scaffold.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:99-205"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-800b9ab519e5cb02",
+                "metricId": "M02",
+                "sourceId": "requirements-800b9ab519e5cb02",
+                "sourceRevisionId": "requirements-800b9ab519e5cb02@1",
+                "description": "Use ArkData Preferences for real storage; after each change persist and await flush; restore persisted state; show an error on save failure.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Preferences persistence with putSync+await flush, restore on load, error display on failure.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:41-95"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-eb575022d49242ce",
+                "metricId": "M02",
+                "sourceId": "requirements-eb575022d49242ce",
+                "sourceRevisionId": "requirements-eb575022d49242ce@1",
+                "description": "Export interface TodoItem { id: string; title: string; completed: boolean } and export type TodoFilter = 'all' | 'active' | 'completed'.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Exports match specification.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:6-13"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M02:requirements-f70bc094e86c52da",
+                "metricId": "M02",
+                "sourceId": "requirements-f70bc094e86c52da",
+                "sourceRevisionId": "requirements-f70bc094e86c52da@1",
+                "description": "restore uses serialize's format, restores each item's ID and state, and subsequent new IDs must not collide with restored ones.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "restore format/state/id preservation and collision-free new IDs verified.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:96-160"
+                ],
+                "reviewer": "stop-reviewer"
+              }
+            ]
+          },
+          {
+            "metricId": "M03",
+            "name": "Test contract coverage",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M04",
+            "name": "Test contract qualification",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M05",
+            "name": "Acceptance criteria coverage",
+            "status": "MEASURED",
+            "numerator": 13,
+            "denominator": 13,
+            "value": 1,
+            "objects": [
+              {
+                "objectId": "M05:requirements-09cb4f99a1db1e68",
+                "metricId": "M05",
+                "sourceId": "requirements-09cb4f99a1db1e68",
+                "sourceRevisionId": "requirements-09cb4f99a1db1e68@1",
+                "description": "Reject titles that are empty after trim; titles max 80 characters after trim; support Chinese and duplicate titles; IDs unique and stable.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Acceptance-relevant title validation behavior present in code.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:18-32"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-15d59f9103e6400d",
+                "metricId": "M05",
+                "sourceId": "requirements-15d59f9103e6400d",
+                "sourceRevisionId": "requirements-15d59f9103e6400d@1",
+                "description": "Do not use browser DOM or localStorage.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "No DOM/localStorage.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets full read"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-2d217e56a6f42482",
+                "metricId": "M05",
+                "sourceId": "requirements-2d217e56a6f42482",
+                "sourceRevisionId": "requirements-2d217e56a6f42482@1",
+                "description": "Single-page UI whose elements expose stable test ids: todo-input, add-button, filter-all, filter-active, filter-completed, todo-row-<id>, toggle-<id>, delete-<id>.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "All required test ids present.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:99-205"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-44e3aa7a4551274c",
+                "metricId": "M05",
+                "sourceId": "requirements-44e3aa7a4551274c",
+                "sourceRevisionId": "requirements-44e3aa7a4551274c@1",
+                "description": "Implement TodoModel in a standalone pure-logic file entry/src/main/ets/model/TodoModel.ets with no SDK or third-party module imports, and it must actually be used by the UI.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Architecture",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Architecture constraint satisfied.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:1-16",
+                  "app/entry/src/main/ets/pages/Index.ets:4"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-4730f12fc0453f02",
+                "metricId": "M05",
+                "sourceId": "requirements-4730f12fc0453f02",
+                "sourceRevisionId": "requirements-4730f12fc0453f02@1",
+                "description": "UI uses ArkUI @State to trigger refresh; show loading before Preferences is read; adding is allowed only after loading completes.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "UI refresh/loading behavior implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:10-17,41-53"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-4ad44ad03be4307a",
+                "metricId": "M05",
+                "sourceId": "requirements-4ad44ad03be4307a",
+                "sourceRevisionId": "requirements-4ad44ad03be4307a@1",
+                "description": "Export class TodoModel with public items: TodoItem[] (initially empty) and methods add(title: string): boolean (returns false for invalid, appends and returns true for valid), toggle(id: string): void, remove(id: string): void, visible(filter: TodoFilter): TodoItem[], serialize(): string, restore(json: string): void.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Model API matches spec.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:15-110"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-5cf1e0925b14f8c3",
+                "metricId": "M05",
+                "sourceId": "requirements-5cf1e0925b14f8c3",
+                "sourceRevisionId": "requirements-5cf1e0925b14f8c3@1",
+                "description": "Only modify within the app directory; do not modify .plugins.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "File scope respected.",
+                "evidence": [
+                  "processToolEvidence indexes 18,20,22"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-73a1921ea515b102",
+                "metricId": "M05",
+                "sourceId": "requirements-73a1921ea515b102",
+                "sourceRevisionId": "requirements-73a1921ea515b102@1",
+                "description": "Avoid concurrent save overwrites (serialize saves).",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Serialized saves implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:16-17,78-82"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-759c9b2d077ba1d4",
+                "metricId": "M05",
+                "sourceId": "requirements-759c9b2d077ba1d4",
+                "sourceRevisionId": "requirements-759c9b2d077ba1d4@1",
+                "description": "Only modify app/entry/src/main/ets/model/ files and pages/Index.ets; do not modify plugins, correction config, requirements, or build files.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "File scope respected.",
+                "evidence": [
+                  "processToolEvidence indexes 18,20,22"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-7a36bcc5f497f0a4",
+                "metricId": "M05",
+                "sourceId": "requirements-7a36bcc5f497f0a4",
+                "sourceRevisionId": "requirements-7a36bcc5f497f0a4@1",
+                "description": "Build a real HarmonyOS Stage ArkTS TodoList app (empty project with existing EntryAbility, SDK API 21) with add, toggle/un-toggle, delete, all/active/completed filtering, and count statistics.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Feature set complete.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:99-205"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-800b9ab519e5cb02",
+                "metricId": "M05",
+                "sourceId": "requirements-800b9ab519e5cb02",
+                "sourceRevisionId": "requirements-800b9ab519e5cb02@1",
+                "description": "Use ArkData Preferences for real storage; after each change persist and await flush; restore persisted state; show an error on save failure.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Persistence requirements met.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:41-95"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-eb575022d49242ce",
+                "metricId": "M05",
+                "sourceId": "requirements-eb575022d49242ce",
+                "sourceRevisionId": "requirements-eb575022d49242ce@1",
+                "description": "Export interface TodoItem { id: string; title: string; completed: boolean } and export type TodoFilter = 'all' | 'active' | 'completed'.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Type exports match spec.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:6-13"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M05:requirements-f70bc094e86c52da",
+                "metricId": "M05",
+                "sourceId": "requirements-f70bc094e86c52da",
+                "sourceRevisionId": "requirements-f70bc094e86c52da@1",
+                "description": "restore uses serialize's format, restores each item's ID and state, and subsequent new IDs must not collide with restored ones.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "restore semantics implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:96-160"
+                ],
+                "reviewer": "stop-reviewer"
+              }
+            ]
+          },
+          {
+            "metricId": "M06",
+            "name": "Acceptance criteria qualification",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M07",
+            "name": "Requirement-artifact traceability completeness",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M08",
+            "name": "Skill step compliance",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M09",
+            "name": "Development standard compliance",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M10",
+            "name": "Mandatory experience-rule compliance",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M11",
+            "name": "Fixed workflow compliance",
+            "status": "MEASURED",
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1,
+            "objects": [
+              {
+                "objectId": "M11:workflowSteps-4334de1e4125d469",
+                "metricId": "M11",
+                "sourceId": "workflowSteps-4334de1e4125d469",
+                "sourceRevisionId": "workflowSteps-4334de1e4125d469@1",
+                "description": "If RC review feedback indicates deviations, fixing business files until the original requirements are met is authorized.",
+                "authority": "USER_EXPLICIT",
+                "hard": false,
+                "evidenceRequired": false,
+                "applicability": "Correction workflow",
+                "verificationTarget": "PROCESS",
+                "judgement": "NOT_APPLICABLE",
+                "reason": "No RC review feedback requiring fixes arose in this run; the conditional authorization was never triggered.",
+                "evidence": [
+                  "transcript: no RC feedback entries between 774a77ea and 993daa41"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M11:workflowSteps-a51d0ab07dc95b72",
+                "metricId": "M11",
+                "sourceId": "workflowSteps-a51d0ab07dc95b72",
+                "sourceRevisionId": "workflowSteps-a51d0ab07dc95b72@1",
+                "description": "Before writing code, read app/requirements.md, then read each selected Kit's complete SKILL.md and at least one complete task-relevant reference document.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": false,
+                "applicability": "Pre-implementation workflow",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "requirements.md read first (index 5), then full arkdata/arkts SKILL.md and two complete task-relevant references; first Write occurred only after all reads returned (index 18 after indexes 5-17).",
+                "evidence": [
+                  "processToolEvidence indexes 5-17 (reads) precede index 18 (first Write)",
+                  "transcript entries 15018d21, ef8d351d, 4ec4d1af, b5fb060b, 743834b0"
+                ],
+                "reviewer": "stop-reviewer"
+              }
+            ]
+          },
+          {
+            "metricId": "M12",
+            "name": "Requirement execution rate",
+            "status": "MEASURED",
+            "numerator": 13,
+            "denominator": 13,
+            "value": 1,
+            "objects": [
+              {
+                "objectId": "M12:requirements-09cb4f99a1db1e68",
+                "metricId": "M12",
+                "sourceId": "requirements-09cb4f99a1db1e68",
+                "sourceRevisionId": "requirements-09cb4f99a1db1e68@1",
+                "description": "Reject titles that are empty after trim; titles max 80 characters after trim; support Chinese and duplicate titles; IDs unique and stable.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "TodoModel",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Implemented and evidenced in current file content.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:18-32"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-15d59f9103e6400d",
+                "metricId": "M12",
+                "sourceId": "requirements-15d59f9103e6400d",
+                "sourceRevisionId": "requirements-15d59f9103e6400d@1",
+                "description": "Do not use browser DOM or localStorage.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "No prohibited APIs used.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets full read"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-2d217e56a6f42482",
+                "metricId": "M12",
+                "sourceId": "requirements-2d217e56a6f42482",
+                "sourceRevisionId": "requirements-2d217e56a6f42482@1",
+                "description": "Single-page UI whose elements expose stable test ids: todo-input, add-button, filter-all, filter-active, filter-completed, todo-row-<id>, toggle-<id>, delete-<id>.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Test ids implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:99-205"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-44e3aa7a4551274c",
+                "metricId": "M12",
+                "sourceId": "requirements-44e3aa7a4551274c",
+                "sourceRevisionId": "requirements-44e3aa7a4551274c@1",
+                "description": "Implement TodoModel in a standalone pure-logic file entry/src/main/ets/model/TodoModel.ets with no SDK or third-party module imports, and it must actually be used by the UI.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "Architecture",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Architecture requirement met.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:1-16",
+                  "app/entry/src/main/ets/pages/Index.ets:4"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-4730f12fc0453f02",
+                "metricId": "M12",
+                "sourceId": "requirements-4730f12fc0453f02",
+                "sourceRevisionId": "requirements-4730f12fc0453f02@1",
+                "description": "UI uses ArkUI @State to trigger refresh; show loading before Preferences is read; adding is allowed only after loading completes.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "UI",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "UI behavior requirement met.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:10-17,41-53"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-4ad44ad03be4307a",
+                "metricId": "M12",
+                "sourceId": "requirements-4ad44ad03be4307a",
+                "sourceRevisionId": "requirements-4ad44ad03be4307a@1",
+                "description": "Export class TodoModel with public items: TodoItem[] (initially empty) and methods add(title: string): boolean (returns false for invalid, appends and returns true for valid), toggle(id: string): void, remove(id: string): void, visible(filter: TodoFilter): TodoItem[], serialize(): string, restore(json: string): void.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Model API implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:15-110"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-5cf1e0925b14f8c3",
+                "metricId": "M12",
+                "sourceId": "requirements-5cf1e0925b14f8c3",
+                "sourceRevisionId": "requirements-5cf1e0925b14f8c3@1",
+                "description": "Only modify within the app directory; do not modify .plugins.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "Scope respected with attributable tool evidence.",
+                "evidence": [
+                  "processToolEvidence indexes 18,20,22"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-73a1921ea515b102",
+                "metricId": "M12",
+                "sourceId": "requirements-73a1921ea515b102",
+                "sourceRevisionId": "requirements-73a1921ea515b102@1",
+                "description": "Avoid concurrent save overwrites (serialize saves).",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Serialized saves implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:16-17,78-82"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-759c9b2d077ba1d4",
+                "metricId": "M12",
+                "sourceId": "requirements-759c9b2d077ba1d4",
+                "sourceRevisionId": "requirements-759c9b2d077ba1d4@1",
+                "description": "Only modify app/entry/src/main/ets/model/ files and pages/Index.ets; do not modify plugins, correction config, requirements, or build files.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "File scope",
+                "verificationTarget": "PROCESS",
+                "judgement": "PASS",
+                "reason": "Scope respected.",
+                "evidence": [
+                  "processToolEvidence indexes 18,20,22"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-7a36bcc5f497f0a4",
+                "metricId": "M12",
+                "sourceId": "requirements-7a36bcc5f497f0a4",
+                "sourceRevisionId": "requirements-7a36bcc5f497f0a4@1",
+                "description": "Build a real HarmonyOS Stage ArkTS TodoList app (empty project with existing EntryAbility, SDK API 21) with add, toggle/un-toggle, delete, all/active/completed filtering, and count statistics.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "Whole task",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Full feature set implemented; build/acceptance delegated externally as required.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:99-205",
+                  "transcript entry 993daa41"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-800b9ab519e5cb02",
+                "metricId": "M12",
+                "sourceId": "requirements-800b9ab519e5cb02",
+                "sourceRevisionId": "requirements-800b9ab519e5cb02@1",
+                "description": "Use ArkData Preferences for real storage; after each change persist and await flush; restore persisted state; show an error on save failure.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "Persistence layer",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Persistence requirement met.",
+                "evidence": [
+                  "app/entry/src/main/ets/pages/Index.ets:41-95"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-eb575022d49242ce",
+                "metricId": "M12",
+                "sourceId": "requirements-eb575022d49242ce",
+                "sourceRevisionId": "requirements-eb575022d49242ce@1",
+                "description": "Export interface TodoItem { id: string; title: string; completed: boolean } and export type TodoFilter = 'all' | 'active' | 'completed'.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Type exports implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:6-13"
+                ],
+                "reviewer": "stop-reviewer"
+              },
+              {
+                "objectId": "M12:requirements-f70bc094e86c52da",
+                "metricId": "M12",
+                "sourceId": "requirements-f70bc094e86c52da",
+                "sourceRevisionId": "requirements-f70bc094e86c52da@1",
+                "description": "restore uses serialize's format, restores each item's ID and state, and subsequent new IDs must not collide with restored ones.",
+                "authority": "USER_EXPLICIT",
+                "hard": true,
+                "evidenceRequired": true,
+                "applicability": "TodoModel.ets",
+                "verificationTarget": "IMPLEMENTATION",
+                "judgement": "PASS",
+                "reason": "Restore semantics implemented.",
+                "evidence": [
+                  "app/entry/src/main/ets/model/TodoModel.ets:96-160"
+                ],
+                "reviewer": "stop-reviewer"
+              }
+            ]
+          },
+          {
+            "metricId": "M13",
+            "name": "Acceptance closure rate",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M14",
+            "name": "Milestone closure rate",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          },
+          {
+            "metricId": "M15",
+            "name": "Critical journey pass rate",
+            "status": "NOT_COMPUTABLE",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "objects": []
+          }
+        ],
+        "blockingObjects": [],
+        "checkerIssues": [],
+        "status": "PASS"
+      }
+    }
+  ],
+  "journalEventCounts": {
+    "HOOK_EVENT": 8,
+    "NATIVE_STOP_REVIEW_RETRY": 1,
+    "OPENCLAW_ARTIFACT_SNAPSHOT": 3,
+    "OPENCLAW_FILE_CHANGED": 3,
+    "REVIEWER_ENVELOPE": 3,
+    "STOP_ASSESSMENT_RETRY": 1
+  },
+  "controlledFault": null,
+  "usage": {
+    "input": 74837,
+    "output": 4531,
+    "cacheRead": 276416,
+    "cacheWrite": 0,
+    "responses": 10,
+    "errorResponses": 0
+  },
+  "independent": {
+    "business": {
+      "passed": 11,
+      "total": 11
+    },
+    "build": {
+      "passed": false,
+      "elapsedMs": 3874
+    },
+    "device": null
+  },
+  "integrity": {
+    "originalConfigUnchanged": true,
+    "referenceRepositoryClean": true,
+    "referenceStatus": "",
+    "runtimeComparison": [
+      {
+        "path": "verikit/lib/routing.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "verikit/lib/kit-monitor.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "verikit/lib/openclaw/entry.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/result-processing.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/json-schema-validator.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/simple-yaml.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/json-pointer.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/path-template.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/result-store.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/semantic-review.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/diagnostic-status.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/default-runtime.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/result-contract.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/plugin-root.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/hook-handler.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/ground-truth.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/candidate-diff.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-plan.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/result-finalizer.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/messages.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/feedback.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/path-utils.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/review-graph.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/artifact-checker.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/simple-mode.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/evidence-distinctness.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-service.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/unified-diff.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/artifact-pipeline.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/review-timeout.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-corrector.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/reviewer-launcher.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/plugin-bootstrap.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/stage-specification.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/native-stop-review.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/native-followup.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/entry.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/reviewer-policy.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/compat-2026.10.3.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/control-entry.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/hook-timeout.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/native-transcript.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/native-query.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/evidence.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/reviewer.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/transient-model.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/project-compat.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/report.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/skills.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/review-activity.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/native-config.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/interaction-router.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/runtime.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/compat-2026.7.1-2.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/interaction-store.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/internal-context.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/supervised.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/stop-work-owner.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/sources.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/native-summary.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/delivery.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/native-runs.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/reviewer-progress.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/control-service.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/tools.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/controller-store.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/session-projects.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/transcript.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/native-evidence.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/ui/index.html",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/ui/style.css",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/openclaw/ui/app.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/stages/catalog.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/protocol/claude-core-hooks.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/protocol/core-hooks.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/decision-scope.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/onboarding.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/session-end.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/device-verify.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/metrics.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/skill-source.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/stop-feedback.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/reviewer-evidence.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/derive.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/reviewer.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/utils.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/process-checks.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/review-routing.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/impl-review.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/fail-open.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/ground-truth-provenance.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/paths.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/event-identity.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/deviations.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/platform-adapter.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/config.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/orchestrator.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/internal-run.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/transcript.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/task-store.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/ground-truth-ledger.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/runtime-v2/transaction-journal.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/rules/file-digest-manifest-provider.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/rules/generic-provider.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/rules/legacy-knowledge.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/rules/engine.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/rules/markdown-records-provider.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/rules/generic-validator.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/rules/default-registry.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/rules/registry.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/rules/graph-provider.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/hosts/openclaw.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/policy/policy-path.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/policy/rules-loader.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/policy/policy-values.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/policy/reviewer-loader.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/policy/config-loader.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/policy/compiler.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/policy/validator.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/lib/policy/project-policy.mjs",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/config/runtime.yaml",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/config/stop-defaults.json",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/config/checklist-vocabulary.v1.json",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/config/root-cause-catalog.v1.json",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/config/reviewer-defaults.json",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/config/platforms/harmonyos.json",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/config/schemas/project-config.schema.json",
+        "matchesFrozenSource": true
+      },
+      {
+        "path": "runtime-corrector/config/schemas/correction-result.schema.json",
+        "matchesFrozenSource": true
+      }
+    ],
+    "allInstalledRuntimeMatchesFrozenSource": true,
+    "sources": {
+      "entry/src/main/ets/entryability/EntryAbility.ets": "416248d2ddd8c4b173c086a5d64137359091ef91d83c9d5ec7726cca3694a9d9",
+      "entry/src/main/ets/model/TodoModel.ets": "4329eae2a2d87bc1f14e0f49cc4bff4732af88242b5065161a9a49df0e6da0e4",
+      "entry/src/main/ets/pages/Index.ets": "e73a833fb61772f7742623a5c95166c91b8c7ec8da7d7133646af3df19057772"
+    }
+  },
+  "finalReviewStatus": "PASS",
+  "allIndependentChecksPassed": false,
+  "limitations": [
+    "Single synthetic app and controlled fault, not a defect-rate or load benchmark.",
+    "RC semantic PASS does not establish SDK compilation or device correctness.",
+    "RC source unchanged; skillCorrection, artifactCorrection and implementationCorrection disabled explicitly.",
+    "Both execution and review use GLM-5.3-Flash; sessions are independent but model families are not heterogeneous."
+  ]
+}

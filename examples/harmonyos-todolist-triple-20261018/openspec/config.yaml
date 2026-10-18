@@ -1,0 +1,17 @@
+schema: spec-driven
+context: |
+  This is an isolated HarmonyOS API 21 ArkTS TodoList experiment.
+  The approved task and hard requirements are in app/requirements.md.
+  Use ArkData Preferences and ArkTS; existing ArkUI foundation is allowed.
+  The app is under app/. Never change the installed plugins or RC configuration.
+  Propose artifacts before implementation; leave external verification tasks unchecked until evidence is supplied.
+  No accounts, network, notifications, third-party libraries, or fabricated test results.
+rules:
+  proposal:
+    - Keep the complete feature scope and the 80-character title limit.
+  specs:
+    - Use SHALL or MUST and exactly four-hash Scenario headers with WHEN and THEN.
+  design:
+    - Describe Preferences flush serialization and reactive ArkUI list and statistics updates.
+  tasks:
+    - Separate implementation tasks from external business, SDK build, and emulator verification.

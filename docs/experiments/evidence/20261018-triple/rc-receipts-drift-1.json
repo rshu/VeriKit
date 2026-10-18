@@ -1,0 +1,35 @@
+{
+  "receipts": [
+    {
+      "sessionId": "09a55f9d-704a-4cc1-8b87-95f9612dcad4",
+      "sessionKey": "agent:main:triple-spec",
+      "runId": "cf6c9dd5-b45f-454e-ad16-a5a62186d746",
+      "ownerPid": 97648,
+      "status": "SETTLED",
+      "createdAt": 1792309525656,
+      "deadlineAt": 1792313125656,
+      "budgetMs": 3600000,
+      "startedAt": 1792309525663,
+      "reviewStatus": "PASS",
+      "evaluationId": "stop-20261018T075008491Z-107b42fa",
+      "assessmentCompletedAt": 1792309808649,
+      "settledAt": 1792309808657
+    },
+    {
+      "sessionId": "09a55f9d-704a-4cc1-8b87-95f9612dcad4",
+      "sessionKey": "agent:main:triple-spec",
+      "runId": "f790ea87-20a6-41de-8159-ecd227c669b1",
+      "ownerPid": 97190,
+      "status": "SETTLED",
+      "createdAt": 1792309019052,
+      "deadlineAt": 1792312619052,
+      "budgetMs": 3600000,
+      "startedAt": 1792309019059,
+      "reviewStatus": "PASS",
+      "evaluationId": "stop-20261018T073916791Z-5a3e346f",
+      "assessmentCompletedAt": 1792309156894,
+      "settledAt": 1792309156897
+    }
+  ],
+  "followups": []
+}

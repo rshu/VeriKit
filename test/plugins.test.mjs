@@ -186,6 +186,20 @@ test("OpenClaw prompt and tool preserve ranking, conflicts, references and fail-
   await assert.rejects(routeTask(temporary, task));
 });
 
+test("OpenClaw keeps Runtime Corrector private reviews free of Kit selection prompts", async () => {
+  const { hooks } = await registration();
+  const prompt = hooks.get("before_prompt_build").fn;
+  const event = { prompt: task, messages: [] };
+  const review = { sessionKey: "agent:main:runtime-corrector:5e558ad4-898a-4e51-a9f5-0b74f6a048f3" };
+  assert.equal(await prompt(event, review), undefined);
+  assert.equal(await hooks.get("before_tool_call").fn({ toolName: "write", params: { path: "file.ets", content: "import { preferences } from '@kit.ArkData';" } }, review), undefined);
+  const business = await prompt(event, { sessionKey: "agent:main:joint-main" });
+  assert.ok(business.prependContext.includes("<verikit-routing>"));
+  assert.ok(business.appendSystemContext.includes("<verikit-protocol>"));
+  // Mentioning the reviewer name in a normal task does not suppress routing.
+  assert.ok((await prompt({ prompt: task + " 与 runtime-corrector 联合验证" }, { sessionKey: "agent:main:other" })).prependContext);
+});
+
 test("per-Kit read plan survives noisy recipes and missing deep hits without approving candidate Kits", async () => {
   const { hooks } = await registration();
   const result = await hooks.get("before_prompt_build").fn({ prompt: "我选择 local-persistence 配方的 arkdata、arkts；界面使用现有 ArkUI 基础组件。现在请开发真实鸿蒙 TodoList。先阅读 app/requirements.md，严格满足其中功能与公开 TodoModel 接口；然后按 VeriKit 结果先读取所选 Kit 的 SKILL.md 和本任务参考文档，再编写代码。已确认 Kit，不必再次提问。工程目录是 app，禁止修改 .plugins。不要声称已编译或已运行，外部实验程序会独立验证。尽量在本轮完成。" }, {});

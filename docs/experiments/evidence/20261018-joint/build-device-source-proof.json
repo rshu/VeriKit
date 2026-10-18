@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-18T07:09:59.475Z",
+  "buildStartedAt": 1792307309370,
+  "buildFinishedAt": 1792307315092,
+  "lastModelCodeToolAt": 1792307292489,
+  "modelCodeToolsDuringBuild": 0,
+  "sourceSnapshot": "sources-repair-1-initial.json",
+  "currentSourceMatchesSnapshot": true,
+  "sources": {
+    "entry/src/main/ets/entryability/EntryAbility.ets": "416248d2ddd8c4b173c086a5d64137359091ef91d83c9d5ec7726cca3694a9d9",
+    "entry/src/main/ets/model/TodoModel.ets": "4e49d8cbf88cad8280ee77c725f777ec7533da7023e6335aab30082a2a48c7b7",
+    "entry/src/main/ets/pages/Index.ets": "7c8de70a9ad9c5b4b3a649528f1416c61efa8c08d63f50927c7353bc0a0b143c"
+  },
+  "hapSha256": "b3cd28302be10ee5eb0920ffc71b9347e2dfcbcfe9a7995befa0211663214328",
+  "deviceReportSha256": "6f9fbebc9e0a3b64f34eb4781e20396957f2d200bf042396cac1d2484a3434c0",
+  "sourceAndHapAssociation": "real SDK build starts after last model write; source matches model-completion snapshot; no model code tools during build; device uses the resulting local HAP"
+}

@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-18T08:04:11.374Z",
+  "rootDebugAttempt": "Cannot set root run mode in undebuggable version; no privilege change",
+  "debugSandboxWriteProbe": "touch created a zero-byte file belonging to this app; probe removed",
+  "chmodAttempt": "stat remained 770 after chmod 500; test stopped before triggering a save; original 770/660 confirmed",
+  "appDefect": false,
+  "nextMethod": "replace only this app module preferences directory with a temporary regular file, then restore original directory inode"
+}

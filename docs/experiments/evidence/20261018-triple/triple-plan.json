@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-18T07:31:12.339Z",
+  "components": [
+    "official @fission-ai/openspec 1.3.1 Skills and CLI",
+    "current VeriKit",
+    "unmodified Runtime Corrector"
+  ],
+  "changeName": "persistent-todo",
+  "phases": [
+    "propose: complete proposal/specs/design/tasks, no app code",
+    "strict official validation and independent requirement traceability",
+    "controlled design drift: official structural validator vs real RC semantic check and host repair",
+    "apply: read all context and selected Kit references, implement real ArkTS",
+    "business/SDK/emulator acceptance and evidence-driven model repair",
+    "finalize: mark only independently verified tasks complete and validate again"
+  ],
+  "passCriteria": [
+    "actual CLI outputs and tool calls, not handwritten stand-ins",
+    "official Skills actually advertised and read",
+    "RC design review and native Stop evidence",
+    "full selected Kit reads before first app code",
+    "actual app tests, SDK and emulator checks",
+    "original profiles and RC source unchanged"
+  ],
+  "archiveInScope": false,
+  "modelShellAccess": false,
+  "telemetryDisabled": true,
+  "originalProfilesModified": false,
+  "rcSourceModified": false
+}

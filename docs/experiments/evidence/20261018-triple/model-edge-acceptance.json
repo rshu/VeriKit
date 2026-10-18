@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-18T07:53:41.727Z",
+  "sourceExecuted": "actual generated pure ArkTS model with types stripped",
+  "sourceSha256": "9f51c764d856c9f4b2c3aa705a88aff8cae2a8a3bbae76cda6001d0d89e498ae",
+  "checks": [
+    {
+      "name": "malformed persisted JSON is safely handled",
+      "status": "PASS"
+    },
+    {
+      "name": "non-array persisted JSON is safely handled",
+      "status": "PASS"
+    },
+    {
+      "name": "restore skips invalid field types and retains valid item state",
+      "status": "PASS"
+    }
+  ],
+  "passed": 3,
+  "total": 3
+}

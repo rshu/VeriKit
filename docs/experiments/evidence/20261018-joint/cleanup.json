@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-18T07:14:40.993Z",
+  "gatewayPorts": [
+    {
+      "port": 54881,
+      "listening": false,
+      "error": "ECONNREFUSED"
+    },
+    {
+      "port": 54961,
+      "listening": false,
+      "error": "ECONNREFUSED"
+    },
+    {
+      "port": 55077,
+      "listening": false,
+      "error": "ECONNREFUSED"
+    },
+    {
+      "port": 55739,
+      "listening": false,
+      "error": "ECONNREFUSED"
+    },
+    {
+      "port": 57323,
+      "listening": false,
+      "error": "ECONNREFUSED"
+    },
+    {
+      "port": 61517,
+      "listening": false,
+      "error": "ECONNREFUSED"
+    }
+  ],
+  "ownedEmulatorPidsRemaining": [],
+  "emulatorExit": {
+    "pid": 86315,
+    "directory": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-plugins-04/emulator/VeriKitTodoExperiment",
+    "imageRoot": "/Users/id02271616/Library/Huawei/Sdk",
+    "startedAt": 1792306578858,
+    "originalDeviceDataCopied": false,
+    "reusedExperimentData": false,
+    "target": "127.0.0.1:13017",
+    "state": "booted",
+    "bootedAt": 1792306591665,
+    "exitCode": null,
+    "signal": "SIGABRT",
+    "exitedAt": 1792307661010
+  },
+  "originalConfigUnchanged": true,
+  "referenceRepositoryClean": true,
+  "rawDirectoriesRemainLocalAndIgnored": true
+}

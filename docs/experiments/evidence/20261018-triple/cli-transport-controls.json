@@ -1,0 +1,25 @@
+{
+  "actualOfficialCli": true,
+  "modelCalls": false,
+  "positive": {
+    "argv": [
+      "schemas",
+      "--json"
+    ],
+    "exitCode": 0,
+    "stderr": ""
+  },
+  "negative": {
+    "argv": [
+      "status",
+      "--change",
+      "persistent-todo",
+      "--json"
+    ],
+    "exitCode": 1,
+    "stderr": "✖ Error: Change 'persistent-todo' not found. No changes exist. Create one with: openspec new change <name>\n"
+  },
+  "unsupportedCommandBlocked": true,
+  "passed": 3,
+  "total": 3
+}

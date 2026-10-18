@@ -1,0 +1,20 @@
+// Explicit controlled fault, confined to the generated disposable app.
+import fs from "node:fs/promises";
+import path from "node:path";
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+const root=path.resolve(process.argv[2]);
+assert(root.includes(path.join("experiments","runs")),"Only a raw experiment directory may receive this controlled fault");
+const file=path.join(root,"workspace/app/entry/src/main/ets/model/TodoModel.ets");
+const record=path.join(root,"controlled-fault.json");
+await fs.access(record).then(()=>{throw Error("Controlled fault already recorded; do not overwrite");},()=>{});
+const before=await fs.readFile(file,"utf8");
+const matches=[...before.matchAll(/(?:\.length\s*>\s*|const\s+MAX_TITLE_LENGTH(?:\s*:\s*number)?\s*=\s*)80\b/g)];
+assert.equal(matches.length,1,"Expected one actual 80-character rejection guard");
+const after=before.slice(0,matches[0].index)+matches[0][0].replace(/80$/,"800")+before.slice(matches[0].index+matches[0][0].length);
+const hash=v=>createHash("sha256").update(v).digest("hex");
+await fs.writeFile(path.join(root,"TodoModel-before-controlled-fault.ets"),before,{flag:"wx"});
+await fs.writeFile(file,after);
+const result={at:new Date().toISOString(),scope:"controlled application-only fault; neither plugin nor host implementation changed",file:path.relative(root,file),beforeSha256:hash(before),afterSha256:hash(after),line:before.slice(0,matches[0].index).split("\n").length,before:matches[0][0],after:matches[0][0].replace(/80$/,"800"),requirementUnchanged:true,uncontrolledDefectRateClaim:false};
+await fs.writeFile(record,JSON.stringify(result,null,2)+"\n",{flag:"wx"});
+console.log(JSON.stringify(result));

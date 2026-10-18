@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-18T07:40:51.171Z",
+  "file": "workspace/openspec/changes/persistent-todo/design.md",
+  "beforeSha256": "5597514f6458b9da9620652fcedb778dadb4f55f16e4ae0818916fb90e73438c",
+  "afterSha256": "31e77cd0aa88d9e6cdd1a10191385d29263df3ced84631feff32f0f4e8103f02",
+  "insertedText": "\n\n## Controlled storage design decision\n\nFor this implementation, todos SHALL be stored only in memory. Every application process restart SHALL clear all todos and completion states. ArkData Preferences, persistent writes, and flush are not required.\n",
+  "scope": "controlled design-only contradiction; requirements, proposal and delta specs unchanged",
+  "beforeOfficialValidation": {
+    "exitCode": 0,
+    "stdout": "{\n  \"items\": [\n    {\n      \"id\": \"persistent-todo\",\n      \"type\": \"change\",\n      \"valid\": true,\n      \"issues\": [],\n      \"durationMs\": 3\n    }\n  ],\n  \"summary\": {\n    \"totals\": {\n      \"items\": 1,\n      \"passed\": 1,\n      \"failed\": 0\n    },\n    \"byType\": {\n      \"change\": {\n        \"items\": 1,\n        \"passed\": 1,\n        \"failed\": 0\n      }\n    }\n  },\n  \"version\": \"1.0\"\n}\n",
+    "stderr": ""
+  },
+  "afterOfficialValidation": {
+    "exitCode": 0,
+    "stdout": "{\n  \"items\": [\n    {\n      \"id\": \"persistent-todo\",\n      \"type\": \"change\",\n      \"valid\": true,\n      \"issues\": [],\n      \"durationMs\": 2\n    }\n  ],\n  \"summary\": {\n    \"totals\": {\n      \"items\": 1,\n      \"passed\": 1,\n      \"failed\": 0\n    },\n    \"byType\": {\n      \"change\": {\n        \"items\": 1,\n        \"passed\": 1,\n        \"failed\": 0\n      }\n    }\n  },\n  \"version\": \"1.0\"\n}\n",
+    "stderr": ""
+  },
+  "claim": "structural validation vs semantic consistency, not natural defect detection rate"
+}

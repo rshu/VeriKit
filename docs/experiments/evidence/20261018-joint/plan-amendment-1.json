@@ -1,0 +1,6 @@
+{
+  "at": "2026-10-18T06:59:07.820315+00:00",
+  "reason": "RC native Stop is armed by write/edit/exec; a pure read-only turn would not schedule terminal review. Generated title limit is a named constant rather than an inline literal.",
+  "checkpoint": "The model adds one inert comment in TodoModel.ets before stopping, leaves the controlled 800-character defect in place, and receives no independent boundary-test result.",
+  "scope": "Only harness and disposable app; no RC or host implementation changed."
+}

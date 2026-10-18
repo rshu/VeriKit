@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-18T06:57:23.919Z",
+  "root": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-joint-plugins-04",
+  "bundle": "com.verikit.experiment.todolist",
+  "target": "127.0.0.1:13017",
+  "mode": "real HarmonyOS API 21 emulator and native UITest commands",
+  "basicInputModeAuthorized": true,
+  "resetApp": false,
+  "consentActions": [
+    "cancel initial keyboard dialog",
+    "accept basic input mode under explicit user authorization",
+    "choose 26-key layout and finish basic keyboard setup"
+  ],
+  "checks": [
+    {
+      "name": "real ArkUI app loads empty state",
+      "status": "PASS",
+      "passed": true,
+      "evidence": {
+        "rowCount": 0
+      }
+    },
+    {
+      "name": "blank title is rejected on device",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "Chinese title can be added",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "second todo gets a separate row",
+      "status": "PASS",
+      "passed": true
+    },
+    {
+      "name": "complete selected todo",
+      "status": "FAIL",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\n'○' !== '✓'\n"
+    }
+  ],
+  "error": "Expected values to be strictly equal:\n\n'○' !== '✓'\n",
+  "status": "FAIL",
+  "passed": 4,
+  "total": 12,
+  "counts": {
+    "PASS": 4,
+    "FAIL": 1,
+    "BLOCKED": 0,
+    "NOT_RUN": 7
+  }
+}

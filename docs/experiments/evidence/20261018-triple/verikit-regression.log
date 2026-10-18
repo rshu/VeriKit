@@ -1,0 +1,30 @@
+
+> @verikit/claude-code-plugin@0.0.8 test
+> node --test test/plugins.test.mjs
+
+✔ builds three self-contained, mutually exclusive host packages (3830.599917ms)
+✔ rebuild replaces only its own artifact and never copies earlier builds (789.260959ms)
+verikit: discovered 1 skill(s) under /var/folders/81/r2msm9k16ggbsn3kp91_2wv40000gp/T/verikit-插件 $() & AgwtCz/foreign-catalog
+verikit: loaded 0/1 sidecar contract(s) from /var/folders/81/r2msm9k16ggbsn3kp91_2wv40000gp/T/verikit-插件 $() & AgwtCz/foreign-catalog/contracts (1 orphaned)
+✔ host routing ignores foreign discovery overrides while the standalone CLI retains them (819.011917ms)
+✔ claude: declared hooks execute from another working directory, with Unicode and shell characters in the install path (1297.230083ms)
+✔ codeagent: declared hooks execute from another working directory, with Unicode and shell characters in the install path (1298.9025ms)
+✔ OpenClaw registers native hooks and optional tool; honors disabled and metadata modes and exact host version (1.5185ms)
+✔ OpenClaw prompt and tool preserve ranking, conflicts, references and fail-open behavior (1479.30775ms)
+✔ OpenClaw keeps Runtime Corrector private reviews free of Kit selection prompts (399.875958ms)
+✔ per-Kit read plan survives noisy recipes and missing deep hits without approving candidate Kits (312.330542ms)
+✔ read plan paths cannot escape the installed Kit directory (0.369375ms)
+✔ prompt truncation counts Unicode code points and never executes task text in a shell (1983.607208ms)
+✔ Kit edit monitor stays log-only and only examines assistant text after the latest user prompt (2.142416ms)
+✔ native apply_patch monitoring scopes SDK additions to each ArkTS file (0.245458ms)
+✔ OpenClaw native edit monitor reads the session API's direct entry and follows spawnedCwd (1.937292ms)
+✔ configuration helper preserves plugins, tool restrictions and inherited alsoAllow; backs up exact bytes and is idempotent (4.023375ms)
+✔ installed OpenClaw 2026.7.1-2 loads the artifact and dispatches native prompt hooks and tools with isolated state (2827.053791ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15372.9915

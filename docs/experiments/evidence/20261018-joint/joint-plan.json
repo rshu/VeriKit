@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-18T06:53:15.061Z",
+  "phases": [
+    "fresh model development",
+    "native Stop review and bounded host correction",
+    "independent model/business and real SDK build",
+    "controlled 80-to-800 title-limit fault in disposable app",
+    "native Stop feedback -> host-only repair -> independent boundary verification",
+    "real emulator acceptance and cleanup"
+  ],
+  "passCriteria": [
+    "both exact source plugin packages loaded with granted hooks",
+    "both Kit entry and task reference documents fully read before first code",
+    "actual GLM reviewers, distinct native sessions, not test doubles",
+    "RC feedback tied to real source and observed by host before repair",
+    "independent business/build/device evidence; UNVERIFIED never treated as PASS"
+  ],
+  "productionProfilesModified": false,
+  "rcSourceModified": false,
+  "controlledFault": {
+    "appOnly": true,
+    "intended": "change generated 80-character guard to 800, preserving immutable requirements; first turn read-only, subsequent RC feedback may authorize original task repair",
+    "claim": "control-flow efficacy, not natural defect incidence"
+  }
+}

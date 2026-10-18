@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-18T08:17:37.097Z",
+  "files": [
+    {
+      "path": "openspec/changes/persistent-todo/.openspec.yaml",
+      "sha256": "dc08c29816def5c12ac71497ed005c1c0d6d779aa76f03fa6cd1d3ed38d91ec9",
+      "matchesOriginal": true
+    },
+    {
+      "path": "openspec/changes/persistent-todo/design.md",
+      "sha256": "80226c5a231177b1d28677d7b867fecedd37f4f67ba39f90687b31489eba854d",
+      "matchesOriginal": true
+    },
+    {
+      "path": "openspec/changes/persistent-todo/proposal.md",
+      "sha256": "1023dad57bd7a4c0765011f9f31f1243f07a976121b173561fecc24e0b97e893",
+      "matchesOriginal": true
+    },
+    {
+      "path": "openspec/changes/persistent-todo/specs/todo-filter-stats/spec.md",
+      "sha256": "2833a3f5f36d639aad4002bccbd4c61957ec5e3c3e57bdb541f32f3791485414",
+      "matchesOriginal": true
+    },
+    {
+      "path": "openspec/changes/persistent-todo/specs/todo-item-management/spec.md",
+      "sha256": "238ba828e4b2191465785fe0bb4b7779a0a997d33837fe76555fd8916f5a5346",
+      "matchesOriginal": true
+    },
+    {
+      "path": "openspec/changes/persistent-todo/specs/todo-persistence/spec.md",
+      "sha256": "a1fa70136e44c0e64b5a09b90eb3eaa74ff13daf1052ded415ebabddb92e780f",
+      "matchesOriginal": true
+    },
+    {
+      "path": "openspec/changes/persistent-todo/tasks.md",
+      "sha256": "5b58c19ef498beda613f79dd14b7c1868461cb4a3753fe3cb76a48260772925f",
+      "matchesOriginal": true
+    },
+    {
+      "path": "openspec/config.yaml",
+      "sha256": "3c11db3878a1dc1e34f901d67f384a1634869add934de67ad9500fcb1a936e29",
+      "matchesOriginal": true
+    }
+  ],
+  "allMatch": true,
+  "tasksComplete": 17,
+  "archivedByOpenSpec": false
+}

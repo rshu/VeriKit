@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-18T07:14:40.993Z",
+  "regression": {
+    "passed": 16,
+    "total": 16
+  },
+  "nativeHostControls": {
+    "passed": 17,
+    "total": 17
+  },
+  "threeHostBuildPassed": true,
+  "runtimeHash": "a69e0db4b5a8f358f615b3b9ff9783c24f483350e3bd53d3304bed0df06f1e1b",
+  "experimentRuntimeMatchesCurrentSourceAndFinalBuild": true,
+  "newRawDirectoriesInGit": false,
+  "secretOrCacheInSelectedFiles": false,
+  "gitCommitCreatedThisTurn": false
+}

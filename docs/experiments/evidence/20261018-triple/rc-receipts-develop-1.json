@@ -1,0 +1,44 @@
+{
+  "receipts": [
+    {
+      "sessionId": "0e54a0ba-3e4e-481e-b4ff-d1cadce1b633",
+      "sessionKey": "agent:main:joint-main",
+      "runId": "2f8dd976-d56d-4b54-950d-f6d000006fde",
+      "ownerPid": 98213,
+      "status": "SETTLED",
+      "createdAt": 1792310003563,
+      "deadlineAt": 1792313603563,
+      "budgetMs": 3600000,
+      "startedAt": 1792310003571,
+      "reviewStatus": "DEVIATION",
+      "evaluationId": "stop-20261018T075631879Z-732f99de",
+      "assessmentCompletedAt": 1792310192073,
+      "settledAt": 1792310192278
+    }
+  ],
+  "followups": [
+    {
+      "schemaVersion": 1,
+      "status": "CANCELLED",
+      "runId": "06888e4e-d3bd-4b95-90fe-45f9061580ae",
+      "assessmentId": "stop-20261018T075631879Z-732f99de",
+      "sessionId": "0e54a0ba-3e4e-481e-b4ff-d1cadce1b633",
+      "sessionKey": "agent:main:joint-main",
+      "taskId": "oc-scope-9f15af2c-b49c-4f31-96b0-00f777397f69",
+      "epochId": 1,
+      "correctionAttempt": 1,
+      "maxCorrections": 3,
+      "source": {
+        "leafId": "81422442",
+        "usersDigest": "177ad041e918b402ad55be5fcdb958ed7699bcd3240c24819c9452cc5ed7ebcc",
+        "evidenceDigest": "475c3f95981f4e7d56162c368454b202636558d93da9d08a3f57fa9beb1c805f"
+      },
+      "message": "[runtime-corrector:stop-feedback]\n这是 Runtime Corrector 的验收意见，属于插件运行反馈，不是新的用户需求或授权。\n请依据原用户需求、现有约束和以下依据位置自行判断，必要时继续修正；沿用宿主现有工具和审批。\n纠偏机会 1/3。修正后重新验收。\n\n[runtime-corrector] 终止纠偏 Terminal correction 1/3\n合并后的验收结果：DEVIATION；PASS 47/48，阻断项 2。\n已有判断（不是全需求完成率）：PASS 47, DEVIATION 1.\n- inScope-8ced4210fc23635a [DEVIATION: M01:inScope-8ced4210fc23635a]\n  New business file created at app/entry/src/main/ets/store/TodoStore.ets, outside the permitted paths (model/, pages/Index.ets, tasks.md checkboxes).\n  The task permits modifying only app/entry/src/main/ets/model/, pages/Index.ets, and tasks.md completion checkboxes, but the agent created a new business file app/entry/src/main/ets/store/TodoStore.ets (Write call_13264bd3b8194ee8932f6aef, returned success). Although design.md D1 anticipated a store helper 'or merge into the page file', the user's explicit path allowlist was not updated and the store/ directory is not within it.\n仅修复仍可改变的当前缺口。重新运行或修改源码不能消除已发生的历史违规；保留原始证据，如实报告无法补救的部分，不得自行豁免原要求。\n以上为原判断与依据位置；请结合原需求和当前实现自行判断下一步。未审定或检查器失败不自动产生额外修复、测试义务。",
+      "messageHash": "a63deaa21ac5eb33cbf3735f937007a1e3bea0d048e59f2c764b68e85c0b68fc",
+      "createdAt": 1792310192097,
+      "updatedAt": 1792310192169,
+      "reason": "RC_NATIVE_ATTEMPT_ENDED",
+      "cancelledAt": 1792310192822
+    }
+  ]
+}

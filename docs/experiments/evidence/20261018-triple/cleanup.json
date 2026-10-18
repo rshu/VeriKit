@@ -1,0 +1,132 @@
+{
+  "at": "2026-10-18T08:14:57.845Z",
+  "originalConfigUnchanged": true,
+  "globalOpenSpecConfigUnchanged": true,
+  "rcRepositoryClean": true,
+  "rcCommitUnchanged": true,
+  "rcStatus": "",
+  "ports": [
+    {
+      "port": 52283,
+      "closed": true,
+      "error": "ECONNREFUSED"
+    },
+    {
+      "port": 51325,
+      "closed": true,
+      "error": "ECONNREFUSED"
+    },
+    {
+      "port": 63168,
+      "closed": true,
+      "error": "ECONNREFUSED"
+    },
+    {
+      "port": 56932,
+      "closed": true,
+      "error": "ECONNREFUSED"
+    },
+    {
+      "port": 50753,
+      "closed": true,
+      "error": "ECONNREFUSED"
+    },
+    {
+      "port": 50494,
+      "closed": true,
+      "error": "ECONNREFUSED"
+    },
+    {
+      "port": 13017,
+      "closed": true,
+      "error": "ECONNREFUSED"
+    }
+  ],
+  "processes": [
+    {
+      "pid": 98213,
+      "exited": true,
+      "error": "ESRCH"
+    },
+    {
+      "pid": 98201,
+      "exited": true,
+      "error": "ESRCH"
+    },
+    {
+      "pid": 97648,
+      "exited": true,
+      "error": "ESRCH"
+    },
+    {
+      "pid": 97631,
+      "exited": true,
+      "error": "ESRCH"
+    },
+    {
+      "pid": 8370,
+      "exited": true,
+      "error": "ESRCH"
+    },
+    {
+      "pid": 8340,
+      "exited": true,
+      "error": "ESRCH"
+    },
+    {
+      "pid": 2692,
+      "exited": true,
+      "error": "ESRCH"
+    },
+    {
+      "pid": 2669,
+      "exited": true,
+      "error": "ESRCH"
+    },
+    {
+      "pid": 97190,
+      "exited": true,
+      "error": "ESRCH"
+    },
+    {
+      "pid": 97186,
+      "exited": true,
+      "error": "ESRCH"
+    },
+    {
+      "pid": 96968,
+      "exited": true,
+      "error": "ESRCH"
+    },
+    {
+      "pid": 96964,
+      "exited": true,
+      "error": "ESRCH"
+    },
+    {
+      "pid": 98038,
+      "exited": true,
+      "error": "ESRCH"
+    }
+  ],
+  "allPortsClosed": true,
+  "allTrackedProcessesExited": true,
+  "emulator": {
+    "pid": 98038,
+    "directory": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02/emulator/VeriKitTodoExperiment",
+    "imageRoot": "/Users/id02271616/Library/Huawei/Sdk",
+    "startedAt": 1792309779443,
+    "originalDeviceDataCopied": false,
+    "reusedExperimentData": false,
+    "target": "127.0.0.1:13017",
+    "state": "booted",
+    "bootedAt": 1792309788049,
+    "exitCode": null,
+    "signal": "SIGABRT",
+    "exitedAt": 1792310956059
+  },
+  "emulatorRequestedSignal": "SIGTERM",
+  "actualEmulatorSignal": "SIGABRT",
+  "globalHdcServiceStopped": false,
+  "reason": "shared HDC service left untouched; only the owned emulator was stopped"
+}

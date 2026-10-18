@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-18T08:07:23.861Z",
+  "root": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02",
+  "bundle": "com.verikit.experiment.openspectodo",
+  "target": "127.0.0.1:13017",
+  "scope": "create only an empty todoStore.bak directory inside this synthetic app Preferences directory, obstructing the native backup rename; remove only that empty directory in finally; original data is not moved or replaced; no root required",
+  "methodReference": "https://github.com/openharmony/distributeddatamgr_preferences/blob/master/frameworks/native/src/preferences_xml_utils.cpp",
+  "checks": [
+    {
+      "name": "real Preferences path-conflict failure is visible and preserves memory",
+      "status": "PASS",
+      "errors": [
+        "保存失败，数据可能未落盘"
+      ],
+      "id": "todo-row-t3"
+    },
+    {
+      "name": "queue recovers after real failure and persists subsequent state across restart",
+      "status": "PASS",
+      "restoredIds": [
+        "todo-row-t1",
+        "todo-row-t2",
+        "todo-row-t3"
+      ],
+      "completedId": "t3"
+    }
+  ],
+  "originalMode": "770",
+  "originalFileMode": "660",
+  "blockerType": "directory",
+  "failedAdditionId": "todo-row-t3",
+  "restoredMode": "770",
+  "restoredFileMode": "660",
+  "permissionsRestored": true,
+  "blockerRemoved": true,
+  "originalDataNotReplaced": true,
+  "status": "PASS"
+}

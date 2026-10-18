@@ -1,0 +1,69 @@
+{
+  "at": "2026-10-18T08:02:10.628Z",
+  "root": "/Volumes/PortableSSD/projects/VeriKit/experiments/runs/20261018-triple-02",
+  "bundle": "com.verikit.experiment.openspectodo",
+  "target": "127.0.0.1:13017",
+  "mode": "real native UI operations; no app or plugin modifications",
+  "checks": [
+    {
+      "name": "duplicate Chinese titles retain different IDs",
+      "status": "PASS",
+      "evidence": {
+        "beforeIds": [
+          "todo-row-t1"
+        ],
+        "afterIds": [
+          "todo-row-t1",
+          "todo-row-t2"
+        ]
+      }
+    },
+    {
+      "name": "whitespace-only native input does not append",
+      "status": "PASS",
+      "evidence": {
+        "unchangedIds": [
+          "todo-row-t1",
+          "todo-row-t2"
+        ]
+      }
+    },
+    {
+      "name": "81-character title is blocked or rejected in the UI",
+      "status": "PASS",
+      "evidence": {
+        "sentLength": 81,
+        "inputLength": 81,
+        "mechanism": "actual add rejected oversized input",
+        "addAttempted": true
+      }
+    },
+    {
+      "name": "rapid consecutive toggles persist the final state and stable IDs",
+      "status": "PASS",
+      "evidence": {
+        "id": "t1",
+        "toggles": 7,
+        "initial": false,
+        "final": true,
+        "restoredIds": [
+          "todo-row-t1",
+          "todo-row-t2"
+        ],
+        "clickTimes": [
+          1792310555221,
+          1792310555384,
+          1792310555547,
+          1792310555714,
+          1792310555879,
+          1792310556049,
+          1792310556213
+        ],
+        "scope": "sequential native commands without intentional delays; no claim of concurrent flushes or a load benchmark"
+      }
+    }
+  ],
+  "status": "PASS",
+  "passed": 4,
+  "total": 4
+}

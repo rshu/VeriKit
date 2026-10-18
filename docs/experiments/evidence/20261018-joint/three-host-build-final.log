@@ -1,0 +1,7 @@
+
+> @verikit/claude-code-plugin@0.0.8 build:plugins
+> node scripts/build-plugin.mjs --all
+
+/Volumes/PortableSSD/projects/VeriKit/dist/verikit-claude
+/Volumes/PortableSSD/projects/VeriKit/dist/verikit-codeagent
+/Volumes/PortableSSD/projects/VeriKit/dist/verikit-openclaw
