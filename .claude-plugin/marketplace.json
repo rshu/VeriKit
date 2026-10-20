@@ -1,6 +1,6 @@
 {
   "name": "verikit-local",
-  "description": "Local-development marketplace for the VeriKit Claude Code plugin (HarmonyOS Kit selection). Add by absolute path (e.g. /plugin marketplace add /abs/path/to/packages/verikit-claude-code-plugin) then /plugin install verikit@verikit-local. Build it first with `npm run build` so dist/ + skills/ are populated.",
+  "description": "Local-development marketplace for the VeriKit Claude Code plugin (HarmonyOS Kit selection). Add by absolute path, then /plugin install verikit@verikit-local. The committed runtime/ and skills/ work without a build; dist/ is only generated host packages.",
   "owner": {
     "name": "VeriKit"
   },

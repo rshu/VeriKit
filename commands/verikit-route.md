@@ -5,11 +5,11 @@ description: Run the full VeriKit selection strategy against a task — top-K Ha
 
 You are about to run the VeriKit router against the user's task description.
 
-Invoke the bundled `verikit` CLI with the full default selection strategy: top-K Kits, matched composition recipe bundle, and second-stage references for every relevant Kit. Prefer the built bundle (`dist/verikit-cli.js`, plain `node`); fall back to the TS source via `npx tsx` only if the bundle is absent (a dev checkout that hasn't run `npm run build`):
+Invoke the bundled `verikit` CLI with the full default selection strategy: top-K Kits, matched composition recipe bundle, and second-stage references for every relevant Kit. Prefer the committed bundle (`runtime/verikit-cli.js`, plain `node`); fall back to the TS source via `npx tsx` only if the bundle is absent:
 
 ```bash
-if [ -f "${CLAUDE_PLUGIN_ROOT}/dist/verikit-cli.js" ]; then
-  node "${CLAUDE_PLUGIN_ROOT}/dist/verikit-cli.js" route --task "$ARGUMENTS" --top 5 --compose --deep --refs 5
+if [ -f "${CLAUDE_PLUGIN_ROOT}/runtime/verikit-cli.js" ]; then
+  node "${CLAUDE_PLUGIN_ROOT}/runtime/verikit-cli.js" route --task "$ARGUMENTS" --top 5 --compose --deep --refs 5
 else
   npx --yes tsx "${CLAUDE_PLUGIN_ROOT}/bin/verikit-cli.ts" route --task "$ARGUMENTS" --top 5 --compose --deep --refs 5
 fi

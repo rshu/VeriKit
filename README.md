@@ -28,7 +28,7 @@ VeriKit 是一个支持 Claude Code、CodeAgent 和 OpenClaw `2026.7.1-2` 的多
 /plugin list                             # 应显示: verikit
 ```
 
-如果没有自动重载，重启 Claude Code 即可。`dist/` 和 `skills/` 已提交到仓库，开箱即用——无需克隆到本地或运行构建步骤。
+如果没有自动重载，重启 Claude Code 即可。`runtime/` 和 `skills/` 已提交到仓库，开箱即用——无需克隆到本地或运行构建步骤。
 
 ### 多宿主构建
 
@@ -48,11 +48,34 @@ npm run build:plugins
 `npm run build:plugin -- --host claude`（或 `codeagent`、`openclaw`）指定宿主。
 生成的目录可独立复制、安装；重建不会把其他宿主产物嵌套打包。
 原仓库根目录仍可按上述方式直接安装到 Claude Code。
+`dist/` 初始为空（不存在也可以），仅存放生成的安装包，可以随时清空后重新构建。
+排序器、合约、参考索引和配方保存在 `runtime/`，构建不依赖已有 `dist/` 内容。
 
 OpenClaw 使用原生 `before_prompt_build` 钩子和 `verikit_route` 工具，
 通过原生文件读取工具加载参考文档。安装、MA 配置保留及工具权限说明见
 [OpenClaw 适配说明](docs/openclaw.md)。运行 `npm test` 验证产物、路由和宿主接口；
 检测到目标版本的本地 OpenClaw 时还会进行隔离的实际加载测试。
+
+**MatrixAssistant 已通过原生 CLI 安装：最小配置方式。** 完全退出 MA 后，在 CMD
+中补执行一次下面的命令即可，`%NODE%` 沿用安装时设置的 `node.exe` 路径：
+
+```bat
+"%NODE%" "%USERPROFILE%\.openclaw\extensions\verikit\scripts\configure-openclaw.mjs" --config "%USERPROFILE%\.openclaw\openclaw.json" --tool-agent main
+```
+
+助手会先备份配置，再登记加载路径、启用提示注入，并给 `main` Agent 追加工具授权，
+保留其他配置。完成后再启动 MA，无需重新安装插件。
+
+**首次安装也可使用统一入口**：完成构建并完全退出 MA 后执行：
+
+```powershell
+npm run install:ma -- --host-root "C:/path/to/MatrixAssistant" --config "$env:USERPROFILE/.openclaw/openclaw.json"
+```
+
+该命令先调用 MA 内置 CLI 安装，再自动登记加载路径、提示注入和 `main` Agent 的工具授权。
+已有安装需追加 `--force`；全部完成才报告成功。详见 [MA 安装步骤](docs/openclaw.md#matrixassistant-安装必做)。
+兼容登记只需做一次；以后在同一路径更新可继续使用原生 `plugins install` / `plugins enable`。
+仅在加载路径或授权被清理、插件目录移动时，才需要重新登记。
 
 ### 前置条件
 
@@ -179,7 +202,7 @@ In your Claude Code session:
 /plugin list                             # should show: verikit
 ```
 
-Restart Claude Code if it doesn't auto-reload. That's it — `dist/` and `skills/` are committed in the repo, so the plugin works immediately, with no local clone or build step required.
+Restart Claude Code if it doesn't auto-reload. That's it — `runtime/` and `skills/` are committed in the repo, so the plugin works immediately, with no local clone or build step required.
 
 ### Build for multiple hosts
 
@@ -189,6 +212,8 @@ They share the committed ranker and complete catalog; no build dependencies are 
 `npm run build:plugin` defaults to OpenClaw, or select a host with
 `npm run build:plugin -- --host claude` (also `codeagent` or `openclaw`).
 The source root remains directly installable as the existing Claude Code plugin.
+`dist/` starts empty (or absent) and contains only generated packages. It can be deleted
+and rebuilt at any time; committed build inputs live in `runtime/`.
 
 OpenClaw uses native prompt hooks and the `verikit_route` tool. See the
 [OpenClaw guide](docs/openclaw.md) for installation, MatrixAssistant configuration,

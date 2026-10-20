@@ -7,13 +7,14 @@
   "scripts": {
     "build:plugin": "node scripts/build-plugin.mjs",
     "build:plugins": "node scripts/build-plugin.mjs --all",
+    "install:ma": "node scripts/install-ma.mjs",
     "test": "node --test test/plugins.test.mjs"
   },
   "engines": {
     "node": ">=20"
   },
   "bin": {
-    "verikit": "./dist/verikit-cli.js"
+    "verikit": "./runtime/verikit-cli.js"
   },
   "files": [
     ".claude-plugin",
@@ -26,7 +27,7 @@
     "plugin-target.json",
     "docs",
     "test",
-    "dist",
+    "runtime",
     "skills",
     "README.md",
     "LICENSE"

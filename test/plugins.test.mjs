@@ -1,14 +1,17 @@
 import assert from "node:assert/strict";
 import { spawnSync, execFileSync } from "node:child_process";
 import { promises as fs } from "node:fs";
+import syncFs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import vm from "node:vm";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import test, { before, after } from "node:test";
 import { buildPlugin, HOSTS } from "../lib/plugin-builder.mjs";
 import { routeTask, routingContext, referenceReadPlan } from "../lib/routing.mjs";
 import { isKitEdit, nativeKitEdits, observeKitEdit } from "../lib/kit-monitor.mjs";
 import { configureOpenClaw } from "../scripts/configure-openclaw.mjs";
+import { installMA } from "../scripts/install-ma.mjs";
 
 const sourceRoot = fileURLToPath(new URL("../", import.meta.url));
 const task = "帮我做一个待办事项 App，重启后还能读到之前保存的待办项。";
@@ -40,7 +43,8 @@ test("builds three self-contained, mutually exclusive host packages", async () =
     assert.deepEqual(dist, ["compositions", "contracts", "manifests", "verikit-cli.js"]);
     assert.equal((await fs.readdir(path.join(root, "dist/contracts"))).length, 100);
     assert.equal((await fs.readdir(path.join(root, "dist/manifests"))).length, 100);
-    assert.equal(await fs.readFile(path.join(root, "dist/verikit-cli.js"), "utf8"), await fs.readFile(path.join(sourceRoot, "dist/verikit-cli.js"), "utf8"));
+    assert.equal(await fs.readFile(path.join(root, "dist/verikit-cli.js"), "utf8"), await fs.readFile(path.join(sourceRoot, "runtime/verikit-cli.js"), "utf8"));
+    assert.deepEqual(pkg.bin, { verikit: "./dist/verikit-cli.js" });
     assert.equal(await exists(path.join(root, ".claude-plugin")), host === "claude");
     assert.equal(await exists(path.join(root, ".cac-plugin")), host === "codeagent");
     assert.equal(await exists(path.join(root, "openclaw.plugin.json")), host === "openclaw");
@@ -58,6 +62,20 @@ test("builds three self-contained, mutually exclusive host packages", async () =
   assert.deepEqual(manifest.contracts.tools, ["verikit_route"]);
   assert.equal(await exists(path.join(outputs.openclaw, "host-skills/verikit-route/SKILL.md")), true);
   assert.equal(await exists(path.join(outputs.openclaw, "skills/verikit-route")), false);
+});
+
+test("source CLI and root hook work without dist runtime inputs", async () => {
+  assert.equal(await exists(path.join(sourceRoot, "dist/verikit-cli.js")), false);
+  const pkg = await readJson(path.join(sourceRoot, "package.json"));
+  assert.deepEqual(pkg.bin, { verikit: "./runtime/verikit-cli.js" });
+  const listed = execFileSync(process.execPath, [path.join(sourceRoot, pkg.bin.verikit), "list-skills"], { env: cleanEnv(), encoding: "utf8" });
+  assert.equal(listed.trim().split("\n").length, 101);
+  const result = spawnSync(process.execPath, [path.join(sourceRoot, "hooks/run-hook.mjs"), "user-prompt-submit"], {
+    env: cleanEnv(), input: JSON.stringify({ prompt: task }), encoding: "utf8", timeout: 20000,
+  });
+  assert.equal(result.status, 0, result.stderr);
+  const context = JSON.parse(result.stdout).hookSpecificOutput.additionalContext;
+  assert.deepEqual(JSON.parse(context.match(/<verikit-routing>\n(.+)\n<\/verikit-routing>/)[1]), baseline);
 });
 
 test("rebuild replaces only its own artifact and never copies earlier builds", async () => {
@@ -80,7 +98,7 @@ test("host routing ignores foreign discovery overrides while the standalone CLI 
   await fs.mkdir(path.join(foreign, "skills/foreign-kit"), { recursive: true });
   await fs.writeFile(path.join(foreign, "skills/foreign-kit/SKILL.md"), "---\nname: foreign-kit\ndescription: foreign catalog\n---\nForeign content.\n");
   await fs.mkdir(path.join(foreign, "contracts"));
-  const contract = await readJson(path.join(sourceRoot, "dist/contracts/arkdata.json"));
+  const contract = await readJson(path.join(sourceRoot, "runtime/contracts/arkdata.json"));
   contract.contract.use_when = ["foreign override only"];
   await fs.writeFile(path.join(foreign, "contracts/arkdata.json"), JSON.stringify(contract));
   await fs.mkdir(path.join(foreign, "manifests"));
@@ -115,7 +133,7 @@ for (const [host, variable, manifestDir] of [["claude", "CLAUDE_PLUGIN_ROOT", ".
     assert.equal(result.status, 0, result.stderr);
     const context = JSON.parse(result.stdout).hookSpecificOutput.additionalContext;
     assert.ok(context.includes("<verikit-routing>\n"));
-    assert.ok(context.includes(root));
+    assert.ok(context.includes(`Catalog root: ${JSON.stringify(path.join(root, "skills"))}.`));
     assert.deepEqual(JSON.parse(context.match(/<verikit-routing>\n(.+)\n<\/verikit-routing>/)[1]), baseline);
     assert.deepEqual(JSON.parse(run("invalid").stdout), { continue: true });
     assert.deepEqual(JSON.parse(run('{"prompt":""}').stdout), { continue: true });
@@ -336,7 +354,7 @@ test("configuration helper preserves plugins, tool restrictions and inherited al
   assert.deepEqual(updated.plugins.entries.other, config.plugins.entries.other);
   assert.equal(updated.plugins.entries.verikit.config.monitorEdits, false);
   assert.equal(updated.plugins.entries.verikit.hooks.allowPromptInjection, true);
-  assert.deepEqual(updated.plugins.load.paths, ["/host/other", outputs.openclaw]);
+  assert.deepEqual(updated.plugins.load.paths, ["/host/other", outputs.openclaw.replaceAll("\\", "/")]);
   assert.equal((await configureOpenClaw(params)).changed, false);
   const before = await fs.readFile(configPath, "utf8");
   await assert.rejects(configureOpenClaw({ ...params, toolAgent: "absent" }), /not found/);
@@ -354,6 +372,120 @@ test("configuration helper preserves plugins, tool restrictions and inherited al
     assert.equal(updatedOpen.plugins.entries.other.enabled, true);
     assert.equal((await configureOpenClaw({ configPath, pluginRoot: outputs.openclaw })).changed, false);
   }
+});
+
+test("unified MA install stops on native install failure and reports registration failure", async () => {
+  const hostRoot = path.join(temporary, "failed-ma");
+  const cliRoot = path.join(hostRoot, "resources/openclaw");
+  const stateDir = path.join(temporary, "failed-profile");
+  await fs.mkdir(cliRoot, { recursive: true });
+  await fs.mkdir(stateDir);
+  await fs.writeFile(path.join(cliRoot, "package.json"), JSON.stringify({ version: "2026.7.1-2" }));
+  const configPath = path.join(stateDir, "openclaw.json");
+  const original = JSON.stringify({ agents: { list: [{ id: "main" }] }, tools: { deny: ["exec"] } });
+  await fs.writeFile(configPath, original);
+  const attempted = path.join(stateDir, "attempt.json");
+  await fs.writeFile(path.join(cliRoot, "openclaw.mjs"), `
+import fs from 'node:fs';
+import path from 'node:path';
+fs.writeFileSync(path.join(process.env.OPENCLAW_STATE_DIR, 'attempt.json'), JSON.stringify({ args: process.argv.slice(2), config: process.env.OPENCLAW_CONFIG_PATH }));
+process.exit(7);
+`);
+  const options = { hostRoot, configPath, packageRoot: outputs.openclaw, force: true };
+  await assert.rejects(installMA(options), /installation failed \(7\).*registration was not run/);
+  assert.equal(await fs.readFile(configPath, "utf8"), original);
+  assert.deepEqual(await readJson(attempted), { args: ["plugins", "install", "--force", outputs.openclaw], config: configPath });
+  await fs.rm(attempted);
+  await assert.rejects(installMA({ ...options, toolAgent: "absent" }), /agent not found/);
+  assert.equal(await exists(attempted), false, "missing agents must fail before installing");
+  await fs.writeFile(path.join(cliRoot, "openclaw.mjs"), "process.exit(0);\n");
+  await assert.rejects(installMA(options), /files were installed, but configuration registration failed/);
+  assert.equal(await fs.readFile(configPath, "utf8"), original);
+  assert.deepEqual((await fs.readdir(stateDir)).sort(), ["openclaw.json"]);
+});
+
+test("unified install with real MA CLI survives two actual startup cleanups and preserves agent tools", {
+  skip: !process.env.VERIKIT_MA_HOST_ROOT && "Set VERIKIT_MA_HOST_ROOT to the packaged MA directory.",
+}, async () => {
+  const hostRoot = process.env.VERIKIT_MA_HOST_ROOT;
+  // Read the installed startup code; all writes below target temporary state.
+  const archive = await fs.open(path.join(hostRoot, "resources/app.asar"), "r");
+  let source;
+  try {
+    const prefix = Buffer.alloc(16);
+    await archive.read(prefix, 0, prefix.length, 0);
+    const header = Buffer.alloc(prefix.readUInt32LE(12));
+    await archive.read(header, 0, header.length, 16);
+    const files = JSON.parse(header).files["dist-electron"].files.main.files;
+    for (const [name, entry] of Object.entries(files)) {
+      if (!name.endsWith(".js") || entry.unpacked) continue;
+      const bytes = Buffer.alloc(entry.size);
+      await archive.read(bytes, 0, bytes.length, 8 + prefix.readUInt32LE(4) + Number(entry.offset));
+      const text = bytes.toString("utf8");
+      if (text.includes("function cleanupStalePluginConfigs(")) { source = text; break; }
+    }
+  } finally { await archive.close(); }
+  assert.ok(source, "installed MA startup code must be present");
+  const functions = ["pluginEntryExists", "scanPluginManifestIds", "collectKnownPluginIds",
+    "ensureDefaultPluginPaths", "cleanupStalePluginConfigs", "forceTemplateValues", "getPathValue", "ensureDefaults"].map(name => {
+    const start = source.indexOf(`function ${name}(`);
+    const end = source.indexOf("function ", start + 9);
+    assert.ok(start >= 0 && end > start, `installed ${name} must be extractable`);
+    return source.slice(start, end);
+  }).join("\n");
+  const defaults = await readJson(path.join(hostRoot, "resources/openclaw-defaults.json"));
+  const configPath = path.join(temporary, "ma-openclaw.json");
+  let config = {
+    plugins: { allow: ["verikit"], entries: { verikit: { enabled: true } } },
+    tools: { profile: "coding", alsoAllow: [...defaults.tools.alsoAllow, "verikit_route"], deny: ["exec"] },
+    agents: { list: [{ id: "main", tools: { deny: ["write"] } },
+      { id: "other", tools: { alsoAllow: ["read"], deny: ["verikit_route"] } }] },
+  };
+  const errors = [];
+  const context = vm.createContext({
+    u: syncFs, path$2: path, DEFAULT_PLUGIN_ENTRY: "dist/index.js", SEMVER_SUFFIX_REGEX: /[.-]\d+\.\d+.*/,
+    electron: { app: { isPackaged: true, getPath: () => temporary } },
+    getResourcesDirPath$1: () => path.join(hostRoot, "resources"),
+    readPluginRegistry: () => ({}), readAllPluginStates: () => ({}), isYellowMode: () => false,
+    readConfig$2: () => config, writeConfig$2: next => { config = next; },
+    performBackup: () => "isolated-test-only", cleanupOldBackups() {},
+    loadDefaults: () => defaults, readConfigFile: () => config, writeConfig$3: next => { config = next; },
+    CONFIG_PATH: configPath, ConfigParseError: class extends Error {}, KNOWN_INVALID_KEYS: {},
+    getDefaultAgentEntries: () => [], DEFAULT_CRON_MAX_CONCURRENT_RUNS: 3,
+    EXACT_TOOLS_ARRAY_PATHS: new Set(["tools.alsoAllow", "tools.deny", "tools.media.image.models"]),
+    logger$2: { info() {}, warn: (...args) => errors.push(args), error: (...args) => errors.push(args) },
+  });
+  vm.runInContext(functions, context);
+  const startup = () => vm.runInContext("ensureDefaults(); ensureDefaultPluginPaths(); cleanupStalePluginConfigs();", context);
+  startup();
+  assert.equal(config.plugins.entries.verikit, undefined, "install/enable alone is removed");
+  assert.ok(!config.plugins.allow.includes("verikit"));
+  assert.ok(!config.tools.alsoAllow.includes("verikit_route"), "global tool opt-in is overwritten");
+
+  await fs.writeFile(configPath, JSON.stringify(config));
+  const installed = spawnSync(process.execPath, [path.join(outputs.openclaw, "scripts/install-ma.mjs"),
+    "--host-root", hostRoot, "--config", configPath], {
+    encoding: "utf8", timeout: 120000, windowsHide: true,
+    env: { ...cleanEnv(), OPENCLAW_HOME: temporary, OPENCLAW_NO_RESPAWN: "1" },
+  });
+  assert.equal(installed.status, 0, installed.stderr + installed.stdout);
+  assert.match(installed.stdout, /VeriKit installed and registered for MA/);
+  config = await readJson(configPath);
+  const entry = structuredClone(config.plugins.entries.verikit);
+  const mainTools = structuredClone(config.agents.list[0].tools);
+  const otherAgent = structuredClone(config.agents.list[1]);
+  assert.equal(entry.hooks.allowPromptInjection, true);
+  assert.ok(mainTools.alsoAllow.includes("verikit_route"));
+  assert.deepEqual(mainTools.deny, ["write"]);
+  for (let restart = 0; restart < 2; restart++) {
+    startup();
+    assert.deepEqual(config.plugins.entries.verikit, entry);
+    assert.ok(config.plugins.allow.includes("verikit"));
+    assert.ok(config.plugins.load.paths.includes(path.join(temporary, "extensions/verikit").replaceAll("\\", "/")));
+    assert.deepEqual(config.agents.list[0].tools, mainTools);
+    assert.deepEqual(config.agents.list[1], otherAgent);
+  }
+  assert.deepEqual(errors, [], "real startup functions must complete without swallowed errors");
 });
 
 test("installed OpenClaw 2026.7.1-2 loads the artifact and dispatches native prompt hooks and tools with isolated state", async t => {
