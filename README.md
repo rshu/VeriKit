@@ -56,7 +56,7 @@ OpenClaw 使用原生 `before_prompt_build` 钩子和 `verikit_route` 工具，
 [OpenClaw 适配说明](docs/openclaw.md)。运行 `npm test` 验证产物、路由和宿主接口；
 检测到目标版本的本地 OpenClaw 时还会进行隔离的实际加载测试。
 
-**MatrixAssistant 已通过原生 CLI 安装：最小配置方式。** 完全退出 MA 后，在 CMD
+**MA 已通过原生 CLI 安装：最小配置方式。** 完全退出 MA 后，在 CMD
 中补执行一次下面的命令即可，`%NODE%` 沿用安装时设置的 `node.exe` 路径：
 
 ```bat
@@ -69,11 +69,11 @@ OpenClaw 使用原生 `before_prompt_build` 钩子和 `verikit_route` 工具，
 **首次安装也可使用统一入口**：完成构建并完全退出 MA 后执行：
 
 ```powershell
-npm run install:ma -- --host-root "C:/path/to/MatrixAssistant" --config "$env:USERPROFILE/.openclaw/openclaw.json"
+npm run install:ma -- --host-root "<MA安装目录>" --config "$env:USERPROFILE/.openclaw/openclaw.json"
 ```
 
 该命令先调用 MA 内置 CLI 安装，再自动登记加载路径、提示注入和 `main` Agent 的工具授权。
-已有安装需追加 `--force`；全部完成才报告成功。详见 [MA 安装步骤](docs/openclaw.md#matrixassistant-安装必做)。
+已有安装需追加 `--force`；全部完成才报告成功。详见 [MA 安装步骤](docs/openclaw.md#ma-安装必做)。
 兼容登记只需做一次；以后在同一路径更新可继续使用原生 `plugins install` / `plugins enable`。
 仅在加载路径或授权被清理、插件目录移动时，才需要重新登记。
 
@@ -216,7 +216,7 @@ The source root remains directly installable as the existing Claude Code plugin.
 and rebuilt at any time; committed build inputs live in `runtime/`.
 
 OpenClaw uses native prompt hooks and the `verikit_route` tool. See the
-[OpenClaw guide](docs/openclaw.md) for installation, MatrixAssistant configuration,
+[OpenClaw guide](docs/openclaw.md) for installation, MA configuration,
 and tool access. `npm test` checks artifacts, routing, and plugin interfaces,
 including an isolated native loader test when the exact OpenClaw version is installed.
 

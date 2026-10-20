@@ -30,7 +30,7 @@ npm run build:plugin -- --host openclaw
 构建输入保存在源码的 `runtime/`；生成的独立安装包内部布局保持不变。
 
 普通 OpenClaw 使用其 CLI 安装生成的目录（路径换成你的实际路径）；
-MatrixAssistant 请使用下一节的统一安装入口：
+MA 请使用下一节的统一安装入口：
 
 ```sh
 openclaw plugins install /absolute/path/to/VeriKit/dist/verikit-openclaw
@@ -39,7 +39,7 @@ openclaw plugins install /absolute/path/to/VeriKit/dist/verikit-openclaw
 或将完整目录复制到当前 OpenClaw profile 的 `extensions/verikit`，并按下面配置
 显式加入 `plugins.load.paths`。移动插件后需要同步更新该路径。
 
-### MatrixAssistant 安装（必做）
+### MA 安装（必做）
 
 MA `1.8.160` 启动时不扫描标准的 `~/.openclaw/extensions`，会把未登记加载路径的
 VeriKit 从 `plugins.allow` 和 `plugins.entries` 删除。**首次安装或缺少登记时，推荐
@@ -50,13 +50,13 @@ VeriKit 从 `plugins.allow` 和 `plugins.entries` 删除。**首次安装或缺�
 PowerShell：
 
 ```powershell
-npm run install:ma -- --host-root "C:/path/to/MatrixAssistant" --config "$env:USERPROFILE/.openclaw/openclaw.json"
+npm run install:ma -- --host-root "<MA安装目录>" --config "$env:USERPROFILE/.openclaw/openclaw.json"
 ```
 
 命令提示符（CMD）：
 
 ```bat
-npm run install:ma -- --host-root "C:/path/to/MatrixAssistant" --config "%USERPROFILE%/.openclaw/openclaw.json"
+npm run install:ma -- --host-root "<MA安装目录>" --config "%USERPROFILE%/.openclaw/openclaw.json"
 ```
 
 直接运行原生 `plugins install` 不会调用此入口。其 `Installed plugin` 只表示原生安装完成，
@@ -74,7 +74,7 @@ npm run install:ma -- --host-root "C:/path/to/MatrixAssistant" --config "%USERPR
 独立安装包也包含同一入口，无需保留源码仓库：
 
 ```powershell
-node /absolute/path/to/verikit-openclaw/scripts/install-ma.mjs --host-root "C:/path/to/MatrixAssistant" --config "$env:USERPROFILE/.openclaw/openclaw.json"
+node /absolute/path/to/verikit-openclaw/scripts/install-ma.mjs --host-root "<MA安装目录>" --config "$env:USERPROFILE/.openclaw/openclaw.json"
 ```
 
 已安装但配置被清理时，可直接运行已安装包的配置助手修复，无需重新安装：
@@ -87,7 +87,7 @@ node "$env:USERPROFILE/.openclaw/extensions/verikit/scripts/configure-openclaw.m
 直接删除已安装目录会留下失效的 `plugins.load.paths`，使安装和卸载都在配置校验时被拦截。
 如果已经手动删除，可先将构建包恢复到原安装目录，让原生卸载或重装命令恢复可用。
 
-## OpenClaw / MatrixAssistant 配置
+## OpenClaw / MA 配置
 
 参考适配仓库 `runtime-corrector-toy` 的 `codex/ma-plugin-compatibility`
 分支，阅读基线为 `e136761395ef295b8218d6a3eddeb5cdb05eb610`，并参考其
