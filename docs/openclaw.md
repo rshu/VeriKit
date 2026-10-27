@@ -2,7 +2,7 @@
 
 此包使用 OpenClaw 原生插件接口，在 `before_prompt_build` 中运行 VeriKit 排序器，
 为 HarmonyOS 开发任务提供 Kit 候选、组合配方和参考文档。非相关请求静默通过；
-路由故障或超时也不会阻塞宿主。会话默认关闭 VeriKit，可用 `/verikit on` 开启；
+路由故障或超时也不会阻塞宿主。新会话默认关闭 VeriKit，可用 `/verikit-session on` 开启；
 开启后 `verikit_route` 工具可以手动重跑路由。
 选择流程同时通过宿主的 `appendSystemContext` 提供系统级指导，要求未确认 Kit 时
 只展示选项并等待，已有选择则继续。它是模型指导，不是阻止编辑的权限检查。
@@ -141,26 +141,29 @@ node /absolute/path/to/installed/verikit/scripts/configure-openclaw.mjs \
 
 | 命令 | 行为 |
 | --- | --- |
-| `/verikit on` | 开启当前会话的自动路由、提示注入、手动路由工具及编辑监测 |
-| `/verikit off` | 关闭当前会话的上述功能 |
-| `/verikit status` | 显示当前状态、状态来源和 `defaultSession` 值；省略子命令同样查询状态 |
-| `/verikit default` | 删除当前会话的显式设置，恢复跟随 `defaultSession` |
+| `/verikit-session on` | 开启当前会话的自动路由、提示注入、手动路由工具及编辑看护 |
+| `/verikit-session off` | 关闭当前会话的上述功能，不再路由、注入新提示或看护；手动路由工具也不执行 |
+| `/verikit-session status` | 显示当前会话是否可用、状态来源和当前配置的 `defaultSession` 值；省略子命令同样查询状态 |
 
 `plugins.entries.verikit.config.defaultSession` 为布尔值，**缺省为 `false`**：
-`false` 表示没有显式设置的会话默认关闭，`true` 表示默认开启。升级前自动开启的
-行为需要显式配置 `defaultSession: true` 才能保留。配置助手仅在字段缺失时补充
-`false`，保留已有的 `true` 或 `false`。修改配置后按宿主的配置加载流程重新加载或重启。
-显式执行过 `on`/`off` 的会话不受默认值变更影响，执行 `default` 后重新跟随默认值。
+`false` 表示新会话默认关闭，`true` 表示新会话默认开启。会话创建时保存初始开关，
+之后修改默认值不会改变已打开会话的状态，即使该会话从未执行过 `on`/`off`。
+配置助手仅在字段缺失时补充 `false`，保留已有的 `true` 或 `false`。
+修改配置后按宿主的配置加载流程重新加载或重启；新会话使用加载后的默认值。
+`on`/`off` 只修改当前会话，不修改 `openclaw.json`，也不影响其他会话。
+升级前已有的显式开关继续保留；没有保存过开关的旧会话，在首次使用时保存当时的默认值。
 
 会话设置保存在当前 OpenClaw profile 状态目录的 `verikit/sessions/` 下，文件名由
 `sessionKey` 和 `sessionId` 共同生成，独立文件采用原子替换保存。插件重载、宿主重启后
-同一会话继续使用已有设置；不同会话和不同 profile 相互隔离。`/new`、`/reset`
+同一会话继续使用已有设置，包括未手动切换过的初始开关；不同会话和不同 profile 相互隔离。`/new`、`/reset`
 后恢复默认值，重置钩子也会删除旧设置。命令缺少会话标识且宿主无法解析时会返回错误，
 不会把开关应用到其他会话。读写失败会明确报告；自动路由和监测故障时静默通过。
-上下文压缩若更换会话 ID，压缩后钩子会延续原会话的显式开关，并保留新会话已经设置的覆盖值。
+上下文压缩若更换会话 ID，压缩后钩子会延续原会话的初始或手动开关，并保留新会话已经手动设置的开关。
 
 全局 `plugins.entries.verikit.enabled: false` 或 `config.enabled: false` 的优先级
-高于会话开关，仍会禁用插件；`/verikit on` 不能绕过全局禁用或宿主工具权限。
+高于会话开关，仍会禁用插件；`/verikit-session on` 不能绕过全局禁用或宿主工具权限。
+插件必须保持全局加载，才能接收会话命令。全局禁用时，宿主可能不注册该命令；
+已注册命令检测到全局禁用时会报告不可用。缺少会话标识或状态文件不可读写时，也不会执行路由或看护。
 会话关闭后不再注入新指导，但不会撤回历史提示，也不会隐藏已经安装的技能目录。
 编辑监测仅在会话开启且 `monitorEdits` 未设为 `false` 时运行，原有日志判定逻辑保持不变。
 

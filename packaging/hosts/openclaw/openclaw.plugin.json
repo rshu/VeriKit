@@ -13,7 +13,7 @@
     "additionalProperties": false,
     "properties": {
       "enabled": { "type": "boolean", "default": true },
-      "defaultSession": { "type": "boolean", "default": false, "description": "Enable VeriKit in sessions without an explicit /verikit on or off override." },
+      "defaultSession": { "type": "boolean", "default": false, "description": "Initial VeriKit state for new sessions. Existing sessions keep their saved state; use /verikit-session on or off to change it." },
       "monitorEdits": { "type": "boolean", "default": true, "description": "Log Kit-using ArkTS edits without a Kit mention; never block edits." }
     }
   }

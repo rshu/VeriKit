@@ -52,8 +52,9 @@ npm run build:plugins
 排序器、合约、参考索引和配方保存在 `runtime/`，构建不依赖已有 `dist/` 内容。
 
 OpenClaw 使用原生 `before_prompt_build` 钩子和 `verikit_route` 工具，
-通过原生文件读取工具加载参考文档。会话默认关闭，可用 `/verikit on|off|status|default`
-管理并持久化当前会话开关；`config.defaultSession: true` 可设置为默认开启。
+通过原生文件读取工具加载参考文档。新会话默认关闭，可用 `/verikit-session on|off|status`
+管理并持久化当前会话开关；`plugins.entries.verikit.config.defaultSession: true` 可让新会话默认开启。
+修改默认值不改变已有会话的开关；`off` 后当前会话停止自动路由、提示注入、编辑看护和手动路由工具执行。
 安装、MA 配置保留及工具权限说明见
 [OpenClaw 适配说明](docs/openclaw.md)。运行 `npm test` 验证产物、路由和宿主接口；
 检测到目标版本的本地 OpenClaw 时还会进行隔离的实际加载测试。
@@ -218,8 +219,10 @@ The source root remains directly installable as the existing Claude Code plugin.
 and rebuilt at any time; committed build inputs live in `runtime/`.
 
 OpenClaw uses native prompt hooks and the `verikit_route` tool. Sessions default to off;
-`/verikit on|off|status|default` manages the persisted session setting.
-Set `config.defaultSession: true` to enable sessions by default. See the
+`/verikit-session on|off|status` manages the persisted session setting.
+New sessions default to off; set `plugins.entries.verikit.config.defaultSession: true`
+to enable new sessions. Changing this default leaves existing sessions unchanged.
+`off` stops automatic routing, prompt injection, edit monitoring, and manual routing in that session. See the
 [OpenClaw guide](docs/openclaw.md) for installation, MA configuration,
 and tool access. `npm test` checks artifacts, routing, and plugin interfaces,
 including an isolated native loader test when the exact OpenClaw version is installed.
