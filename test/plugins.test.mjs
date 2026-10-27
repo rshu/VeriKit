@@ -56,6 +56,9 @@ test("builds three self-contained, mutually exclusive host packages", async () =
   assert.deepEqual(pkg.openclaw.extensions, [manifest.main]);
   assert.equal(await exists(path.join(outputs.openclaw, manifest.main)), true);
   assert.deepEqual(manifest.contracts.tools, ["verikit_route"]);
+  assert.equal(manifest.configSchema.properties.defaultSession.type, "boolean");
+  assert.equal(manifest.configSchema.properties.defaultSession.default, false);
+  assert.equal(await exists(path.join(outputs.openclaw, "lib/openclaw/session-control.mjs")), true);
   assert.equal(await exists(path.join(outputs.openclaw, "host-skills/verikit-route/SKILL.md")), true);
   assert.equal(await exists(path.join(outputs.openclaw, "skills/verikit-route")), false);
 });
@@ -139,28 +142,169 @@ for (const [host, variable, manifestDir] of [["claude", "CLAUDE_PLUGIN_ROOT", ".
   });
 }
 
-async function registration(config = {}) {
-  const hooks = new Map(), tools = [];
+async function registration(config = {}, stateDir) {
+  stateDir ??= await fs.mkdtemp(path.join(temporary, "session-state-"));
+  const hooks = new Map(), tools = [], commands = [];
   const entry = (await import(pathToFileURL(path.join(outputs.openclaw, "lib/openclaw/entry.mjs")))).default;
-  const api = { runtime: { version: "2026.7.1-2" }, pluginConfig: config,
-    on: (name, fn, options) => hooks.set(name, { fn, options }), registerTool: (tool, options) => tools.push({ tool, options }) };
+  const api = { runtime: { version: "2026.7.1-2", state: { resolveStateDir: () => stateDir } }, pluginConfig: config,
+    on: (name, fn, options) => hooks.set(name, { fn, options }),
+    registerTool: (factory, options) => tools.push({ factory, tool: factory({}), options }),
+    registerCommand: command => commands.push(command) };
   entry.register(api);
-  return { api, entry, hooks, tools };
+  return { api, entry, hooks, tools, commands, stateDir };
 }
 
 test("OpenClaw registers native hooks and optional tool; honors disabled and metadata modes and exact host version", async () => {
-  const { entry, api, hooks, tools } = await registration();
-  assert.deepEqual([...hooks.keys()], ["before_prompt_build", "before_tool_call"]);
+  const { entry, api, hooks, tools, commands } = await registration();
+  assert.deepEqual([...hooks.keys()], ["before_reset", "after_compaction", "before_prompt_build", "before_tool_call"]);
   assert.equal(tools[0].tool.name, "verikit_route");
   assert.equal(tools[0].options.optional, true);
+  assert.equal(commands[0].name, "verikit");
+  assert.equal(commands[0].acceptsArgs, true);
+  assert.equal(commands[0].requireAuth, true);
   assert.equal((await registration({ enabled: false })).hooks.size, 0);
   assert.equal((await registration({ enabled: false })).tools.length, 0);
+  assert.equal((await registration({ enabled: false })).commands.length, 0);
   assert.doesNotThrow(() => entry.register({ registrationMode: "cli-metadata" }));
   assert.throws(() => entry.register({ ...api, runtime: { version: "2026.7.1" } }), /requires OpenClaw 2026.7.1-2/);
 });
 
+test("OpenClaw session commands default off, gate prompts and existing tools, and restore the configured default", async () => {
+  const { hooks, tools, commands, api, stateDir } = await registration();
+  const ctx = { sessionKey: "agent:main:toggle", sessionId: "toggle-1" };
+  const command = args => commands[0].handler({ ...ctx, args });
+  const prompt = hooks.get("before_prompt_build").fn;
+  const tool = tools[0].factory(ctx);
+  assert.match((await command("status")).text, /关闭.*defaultSession=false/);
+  assert.equal(await prompt({ prompt: task }, ctx), undefined);
+  assert.equal((await tool.execute("off", { task })).isError, true);
+  assert.equal(await exists(path.join(stateDir, "verikit")), false, "status must not create state");
+
+  assert.match((await command("on")).text, /开启.*当前会话设置/);
+  assert.ok((await prompt({ prompt: task }, ctx)).prependContext);
+  assert.equal((await tool.execute("on", { task })).isError, undefined);
+  assert.match((await command("off")).text, /关闭.*当前会话设置/);
+  assert.equal(await prompt({ prompt: task }, ctx), undefined);
+  assert.equal((await tool.execute("off-again", { task })).isError, true);
+
+  api.pluginConfig.defaultSession = true;
+  assert.match((await command("status")).text, /关闭.*当前会话设置.*defaultSession=true/);
+  assert.match((await command("default")).text, /开启.*来源：defaultSession/);
+  api.pluginConfig.defaultSession = false;
+  assert.match((await command()).text, /关闭.*来源：defaultSession/);
+  assert.match((await command("on extra")).text, /用法/);
+  assert.match((await commands[0].handler({ args: "on" })).text, /无法识别/);
+  assert.deepEqual(await fs.readdir(path.join(stateDir, "verikit/sessions")), []);
+});
+
+test("OpenClaw session switches persist, isolate concurrent sessions and profiles, and reset without affecting a successor", async () => {
+  const first = await registration();
+  const a = { sessionKey: "agent:main:shared", sessionId: "generation-1" };
+  const b = { sessionKey: "agent:other:shared", sessionId: "generation-1" };
+  const c = { sessionKey: "agent:main:third", sessionId: "generation-3" };
+  await Promise.all([a, b, c].map((ctx, i) => first.commands[0].handler({ ...ctx, args: i === 1 ? "off" : "on" })));
+  const reloaded = await registration({ defaultSession: true }, first.stateDir);
+  const status = ctx => reloaded.commands[0].handler({ ...ctx, args: "status" });
+  assert.match((await status(a)).text, /开启.*当前会话设置/);
+  assert.match((await status(b)).text, /关闭.*当前会话设置/);
+  assert.match((await status(c)).text, /开启.*当前会话设置/);
+  const otherProfile = await registration();
+  assert.match((await otherProfile.commands[0].handler({ ...a, args: "status" })).text, /关闭.*来源：defaultSession/);
+
+  reloaded.api.pluginConfig.defaultSession = false;
+  const successor = { ...a, sessionId: "generation-2" };
+  assert.match((await status(successor)).text, /关闭.*来源：defaultSession/);
+  await reloaded.commands[0].handler({ ...successor, args: "on" });
+  await reloaded.hooks.get("before_reset").fn({ reason: "new" }, a);
+  assert.match((await status(a)).text, /关闭.*来源：defaultSession/);
+  assert.match((await status(successor)).text, /开启.*当前会话设置/);
+  await reloaded.hooks.get("before_reset").fn({ reason: "reset" }, successor);
+  assert.match((await status(successor)).text, /关闭.*来源：defaultSession/);
+  assert.match((await status(b)).text, /关闭.*当前会话设置/);
+  const directory = path.join(first.stateDir, "verikit/sessions");
+  const files = await fs.readdir(directory);
+  assert.equal(files.length, 2);
+  assert.ok(files.every(file => /^[a-f0-9]{64}\.json$/.test(file)));
+  if (process.platform !== "win32") assert.equal((await fs.stat(path.join(directory, files[0]))).mode & 0o777, 0o600);
+});
+
+test("OpenClaw resolves a missing session ID through the owning agent and honors live defaults and global disable", async () => {
+  const { api, commands, hooks, tools } = await registration();
+  const ctx = { sessionKey: "agent:other:resolve" };
+  api.runtime.agent = { session: {
+    resolveStorePath: (_store, options) => { assert.equal(options.agentId, "other"); return "/isolated/sessions.json"; },
+    getSessionEntry: options => {
+      assert.equal(options.agentId, "other");
+      assert.equal(options.readConsistency, "latest");
+      return { sessionId: "resolved-1" };
+    },
+  } };
+  let config = { plugins: { entries: { verikit: { config: { defaultSession: true } } } } };
+  api.runtime.config = { current: () => config };
+  assert.match((await commands[0].handler({ ...ctx, args: "off" })).text, /关闭.*当前会话设置/);
+  assert.match((await commands[0].handler({ ...ctx, args: "default" })).text, /开启.*来源：defaultSession/);
+  await commands[0].handler({ ...ctx, args: "on" });
+  for (const disable of [
+    () => { config.plugins.enabled = false; },
+    () => { config.plugins.entries.verikit.enabled = false; },
+    () => { config.plugins.entries.verikit.config.enabled = false; },
+  ]) {
+    config = { plugins: { entries: { verikit: { config: { defaultSession: true } } } } };
+    disable();
+    assert.match((await commands[0].handler({ ...ctx, args: "on" })).text, /关闭.*全局禁用/);
+    assert.equal(await hooks.get("before_prompt_build").fn({ prompt: task }, ctx), undefined);
+    assert.equal((await tools[0].factory(ctx).execute("global-off", { task })).isError, true);
+  }
+});
+
+test("OpenClaw preserves on and off across compaction without replacing a successor's explicit setting", async () => {
+  const { commands, hooks } = await registration({ defaultSession: true });
+  const old = { sessionKey: "agent:main:compact", sessionId: "before-compaction" };
+  const next = { ...old, sessionId: "after-compaction" };
+  const command = (ctx, args) => commands[0].handler({ ...ctx, args });
+  const compact = () => hooks.get("after_compaction").fn({ previousSessionId: old.sessionId }, next);
+  await command(old, "off");
+  await compact();
+  assert.match((await command(next, "status")).text, /关闭.*当前会话设置/);
+  await command(next, "on");
+  await compact();
+  assert.match((await command(next, "status")).text, /开启.*当前会话设置/);
+  await command(next, "default");
+  await command(old, "on");
+  await compact();
+  assert.match((await command(next, "status")).text, /开启.*当前会话设置/);
+  const reset = { ...old, sessionId: "after-new" };
+  await command(old, "off");
+  assert.match((await command(reset, "status")).text, /开启.*来源：defaultSession/);
+});
+
+test("OpenClaw reports corrupt or unwritable session state without injecting prompts or claiming a saved switch", async () => {
+  const { stateDir, commands, hooks, tools } = await registration({ defaultSession: true });
+  const ctx = { sessionKey: "agent:main:broken", sessionId: "broken-1" };
+  await commands[0].handler({ ...ctx, args: "on" });
+  const directory = path.join(stateDir, "verikit/sessions");
+  const [file] = await fs.readdir(directory);
+  await fs.writeFile(path.join(directory, file), "invalid JSON");
+  assert.match((await commands[0].handler({ ...ctx, args: "status" })).text, /失败/);
+  assert.equal(await hooks.get("before_prompt_build").fn({ prompt: task }, ctx), undefined);
+  assert.equal((await tools[0].factory(ctx).execute("corrupt", { task })).isError, true);
+  assert.match((await commands[0].handler({ ...ctx, args: "default" })).text, /开启.*来源：defaultSession/);
+  await fs.rm(directory, { recursive: true });
+  await fs.writeFile(directory, "not a directory");
+  assert.match((await commands[0].handler({ ...ctx, args: "on" })).text, /失败/);
+});
+
+test("OpenClaw discards a routing result if the session is disabled while routing", async () => {
+  const { api, hooks, tools } = await registration({ defaultSession: true });
+  let reads = 0;
+  api.runtime.config = { current: () => ({ plugins: { entries: { verikit: { config: { defaultSession: ++reads === 1 } } } } }) };
+  assert.equal(await hooks.get("before_prompt_build").fn({ prompt: task }, {}), undefined);
+  reads = 0;
+  assert.equal((await tools[0].tool.execute("in-flight", { task })).isError, true);
+});
+
 test("OpenClaw prompt and tool preserve ranking, conflicts, references and fail-open behavior", async () => {
-  const { hooks, tools } = await registration();
+  const { hooks, tools } = await registration({ defaultSession: true });
   const prompt = hooks.get("before_prompt_build").fn;
   const result = await prompt({ prompt: task, messages: [] }, {});
   assert.ok(result.prependContext.includes("catalog root"));
@@ -187,7 +331,7 @@ test("OpenClaw prompt and tool preserve ranking, conflicts, references and fail-
 });
 
 test("OpenClaw keeps Runtime Corrector private reviews free of Kit selection prompts", async () => {
-  const { hooks } = await registration();
+  const { hooks } = await registration({ defaultSession: true });
   const prompt = hooks.get("before_prompt_build").fn;
   const event = { prompt: task, messages: [] };
   const review = { sessionKey: "agent:main:runtime-corrector:5e558ad4-898a-4e51-a9f5-0b74f6a048f3" };
@@ -201,7 +345,7 @@ test("OpenClaw keeps Runtime Corrector private reviews free of Kit selection pro
 });
 
 test("per-Kit read plan survives noisy recipes and missing deep hits without approving candidate Kits", async () => {
-  const { hooks } = await registration();
+  const { hooks } = await registration({ defaultSession: true });
   const result = await hooks.get("before_prompt_build").fn({ prompt: "我选择 local-persistence 配方的 arkdata、arkts；界面使用现有 ArkUI 基础组件。现在请开发真实鸿蒙 TodoList。先阅读 app/requirements.md，严格满足其中功能与公开 TodoModel 接口；然后按 VeriKit 结果先读取所选 Kit 的 SKILL.md 和本任务参考文档，再编写代码。已确认 Kit，不必再次提问。工程目录是 app，禁止修改 .plugins。不要声称已编译或已运行，外部实验程序会独立验证。尽量在本轮完成。" }, {});
   const plan = JSON.parse(result.appendSystemContext.match(/<verikit-read-plan>\n(.+)\n<\/verikit-read-plan>/)[1]);
   for (const kit of ["arkdata", "arkts"]) {
@@ -277,7 +421,7 @@ test("native apply_patch monitoring scopes SDK additions to each ArkTS file", ()
 });
 
 test("OpenClaw native edit monitor reads the session API's direct entry and follows spawnedCwd", async () => {
-  const { hooks, api } = await registration();
+  const { hooks, api, commands } = await registration({ defaultSession: true });
   const transcript = path.join(temporary, "native-session.jsonl");
   await fs.writeFile(transcript, JSON.stringify({ type: "message", message: { role: "user", content: task } }) + "\n");
   const store = path.join(temporary, "sessions.json");
@@ -312,6 +456,19 @@ test("OpenClaw native edit monitor reads the session API's direct entry and foll
     const mainLog = (await fs.readFile(path.join(logDir, "gate.log"), "utf8")).trim().split("\n").map(JSON.parse);
     assert.equal(mainLog.at(-1).file, path.join(mainWorkspace, "Main.ets"));
     assert.equal(await monitor({ toolName: "write", params: { path: "Index.ets", content: "import '@kit.ArkData';" } }, { sessionKey: "agent:main:session-1", sessionId: "replaced" }), undefined);
+    const ctx = { sessionKey: "agent:main:session-1", sessionId: "session-1" };
+    const edit = { toolName: "write", params: { path: "Toggled.ets", content: "import '@kit.ArkData';" } };
+    const before = await fs.readFile(path.join(logDir, "gate.log"), "utf8");
+    await commands[0].handler({ ...ctx, args: "off" });
+    assert.equal(await monitor(edit, ctx), undefined);
+    assert.equal(await fs.readFile(path.join(logDir, "gate.log"), "utf8"), before);
+    await commands[0].handler({ ...ctx, args: "on" });
+    api.pluginConfig.monitorEdits = false;
+    assert.equal(await monitor(edit, ctx), undefined);
+    assert.equal(await fs.readFile(path.join(logDir, "gate.log"), "utf8"), before);
+    api.pluginConfig.monitorEdits = true;
+    assert.equal(await monitor(edit, ctx), undefined);
+    assert.notEqual(await fs.readFile(path.join(logDir, "gate.log"), "utf8"), before);
   } finally {
     if (priorLog === undefined) delete process.env.VK_LOG_DIR; else process.env.VK_LOG_DIR = priorLog;
   }
@@ -335,9 +492,14 @@ test("configuration helper preserves plugins, tool restrictions and inherited al
   assert.deepEqual(updated.agents.list[0].tools, { deny: ["write"], alsoAllow: ["browser", "verikit_route"] });
   assert.deepEqual(updated.plugins.entries.other, config.plugins.entries.other);
   assert.equal(updated.plugins.entries.verikit.config.monitorEdits, false);
+  assert.equal(updated.plugins.entries.verikit.config.defaultSession, false);
   assert.equal(updated.plugins.entries.verikit.hooks.allowPromptInjection, true);
   assert.deepEqual(updated.plugins.load.paths, ["/host/other", outputs.openclaw]);
   assert.equal((await configureOpenClaw(params)).changed, false);
+  updated.plugins.entries.verikit.config.defaultSession = true;
+  await fs.writeFile(configPath, JSON.stringify(updated));
+  await configureOpenClaw(params);
+  assert.equal((await readJson(configPath)).plugins.entries.verikit.config.defaultSession, true);
   const before = await fs.readFile(configPath, "utf8");
   await assert.rejects(configureOpenClaw({ ...params, toolAgent: "absent" }), /not found/);
   assert.equal(await fs.readFile(configPath, "utf8"), before);
@@ -379,7 +541,7 @@ process.argv[1] = path.join(hostRoot, 'openclaw.mjs');
 const config = {
   agents: { defaults: { workspace: workspaceDir } },
   plugins: { allow: ['verikit'], load: { paths: [pluginRoot] }, slots: { memory: 'none' },
-    entries: { verikit: { enabled: true, hooks: { allowPromptInjection: true } } } }
+    entries: { verikit: { enabled: true, hooks: { allowPromptInjection: true }, config: { defaultSession: true } } } }
 };
 await fs.writeFile(process.env.OPENCLAW_CONFIG_PATH, JSON.stringify(config));
 const { loadOpenClawPlugins } = await import(pathToFileURL(path.join(hostRoot, 'dist/plugins/loader.js')));
@@ -389,7 +551,7 @@ const registry = loadOpenClawPlugins({ config, workspaceDir, onlyPluginIds: ['ve
 const record = registry.plugins.find(p => p.id === 'verikit');
 assert.equal(record?.status, 'loaded', JSON.stringify({ record, diagnostics: registry.diagnostics }));
 assert.deepEqual(record.toolNames, ['verikit_route']);
-assert.deepEqual(registry.typedHooks.filter(h => h.pluginId === 'verikit').map(h => h.hookName), ['before_prompt_build', 'before_tool_call']);
+assert.deepEqual(registry.typedHooks.filter(h => h.pluginId === 'verikit').map(h => h.hookName), ['before_reset', 'after_compaction', 'before_prompt_build', 'before_tool_call']);
 const runner = getGlobalHookRunner();
 const result = await runner.runBeforePromptBuild({ prompt: ${JSON.stringify(task)}, messages: [] }, { sessionKey: 'agent:main:verikit-test', agentId: 'main', workspaceDir });
 assert.ok(result?.prependContext?.includes('<verikit-routing>'), 'native host must accept and merge routing context');
@@ -445,4 +607,84 @@ console.log('NATIVE_OPENCLAW_PASS');
       OPENCLAW_CONFIG_PATH: path.join(isolated, "openclaw.json"), OPENCLAW_NO_RESPAWN: "1" } });
   assert.equal(result.status, 0, result.stderr + result.stdout);
   assert.match(result.stdout, /NATIVE_OPENCLAW_PASS/);
+});
+
+test("installed OpenClaw dispatches /verikit with authorization and persists switches across fresh processes", async t => {
+  const hostRoot = process.env.VERIKIT_OPENCLAW_HOST_ROOT ?? "/opt/homebrew/lib/node_modules/openclaw";
+  const hostPackage = await readJson(path.join(hostRoot, "package.json")).catch(() => null);
+  if (hostPackage?.version !== "2026.7.1-2") {
+    if (process.env.VERIKIT_OPENCLAW_HOST_ROOT) assert.fail("VERIKIT_OPENCLAW_HOST_ROOT must point to OpenClaw 2026.7.1-2.");
+    t.skip("Install the pinned OpenClaw host for native command validation.");
+    return;
+  }
+  const isolated = path.join(temporary, "native-session-commands");
+  await fs.mkdir(isolated);
+  const configPath = path.join(isolated, "openclaw.json");
+  await fs.writeFile(configPath, JSON.stringify({
+    agents: { defaults: { workspace: isolated } },
+    plugins: { allow: ["verikit"], load: { paths: [outputs.openclaw] }, slots: { memory: "none" },
+      entries: { verikit: { enabled: true, hooks: { allowPromptInjection: true } } } },
+  }));
+  const script = path.join(isolated, "commands.mjs");
+  await fs.writeFile(script, `
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { pathToFileURL } from 'node:url';
+const phase = process.argv[2];
+const hostRoot = ${JSON.stringify(hostRoot)};
+const workspaceDir = ${JSON.stringify(isolated)};
+process.argv[1] = path.join(hostRoot, 'openclaw.mjs');
+const config = JSON.parse(await fs.readFile(process.env.OPENCLAW_CONFIG_PATH, 'utf8'));
+const { loadOpenClawPlugins } = await import(pathToFileURL(path.join(hostRoot, 'dist/plugins/loader.js')));
+const { executePluginCommand, matchPluginCommand, getGlobalHookRunner } = await import(pathToFileURL(path.join(hostRoot, 'dist/plugin-sdk/plugin-runtime.js')));
+const { resolvePluginTools } = await import(pathToFileURL(path.join(hostRoot, 'dist/plugins/tools.js')));
+const registry = loadOpenClawPlugins({ config, workspaceDir, onlyPluginIds: ['verikit'], cache: false, activate: true });
+assert.equal(registry.plugins.find(p => p.id === 'verikit')?.status, 'loaded');
+const a = { agentId: 'main', sessionKey: 'agent:main:command-a', sessionId: 'native-a' };
+const b = { agentId: 'main', sessionKey: 'agent:main:command-b', sessionId: 'native-b' };
+async function command(ctx, action, authorized = true) {
+  const commandBody = '/verikit ' + action;
+  const match = matchPluginCommand(commandBody);
+  assert.equal(match?.command.pluginId, 'verikit');
+  return executePluginCommand({ ...ctx, command: match.command, args: match.args, commandBody,
+    channel: 'webchat', isAuthorizedSender: authorized, config });
+}
+const runner = getGlobalHookRunner();
+const event = { prompt: ${JSON.stringify(task)}, messages: [] };
+if (phase === 'write') {
+  assert.match((await command(a, 'status')).text, /关闭.*defaultSession=false/);
+  assert.equal((await runner.runBeforePromptBuild(event, a))?.prependContext, undefined);
+  assert.match((await command(a, 'on', false)).text, /authorization/);
+  assert.match((await command(a, 'status')).text, /关闭.*来源：defaultSession/);
+  assert.match((await command(a, 'on')).text, /开启.*当前会话设置/);
+  await command(b, 'off');
+  assert.ok((await runner.runBeforePromptBuild(event, a)).prependContext.includes('<verikit-routing>'));
+  const [tool] = resolvePluginTools({ context: { ...a, config, workspaceDir }, runtimeRegistry: registry, toolAllowlist: ['verikit_route'] });
+  assert.equal((await tool.execute('before-off', { task: ${JSON.stringify(task)} })).isError, undefined);
+  await command(a, 'off');
+  assert.equal((await tool.execute('after-off', { task: ${JSON.stringify(task)} })).isError, true);
+  await command(a, 'on');
+  const files = await fs.readdir(path.join(process.env.OPENCLAW_STATE_DIR, 'verikit/sessions'));
+  assert.equal(files.length, 2);
+} else if (phase === 'reset') {
+  assert.match((await command(a, 'status')).text, /开启.*当前会话设置/);
+  assert.match((await command(b, 'status')).text, /关闭.*当前会话设置/);
+  assert.match((await command({ ...a, sessionId: 'new-a' }, 'status')).text, /关闭.*来源：defaultSession/);
+  await runner.runBeforeReset({ reason: 'reset' }, a);
+  assert.match((await command(a, 'status')).text, /关闭.*来源：defaultSession/);
+  await command(b, 'default');
+} else {
+  assert.match((await command(a, 'status')).text, /关闭.*来源：defaultSession/);
+  assert.match((await command(b, 'status')).text, /关闭.*来源：defaultSession/);
+}
+console.log('NATIVE_SESSION_' + phase + '_PASS');
+`);
+  for (const phase of ["write", "reset", "verify"]) {
+    const result = spawnSync(process.execPath, [script, phase], { cwd: isolated, encoding: "utf8", timeout: 60000,
+      env: { ...cleanEnv(), OPENCLAW_HOME: isolated, OPENCLAW_STATE_DIR: path.join(isolated, "state"),
+        OPENCLAW_CONFIG_PATH: configPath, OPENCLAW_NO_RESPAWN: "1" } });
+    assert.equal(result.status, 0, result.stderr + result.stdout);
+    assert.match(result.stdout, new RegExp(`NATIVE_SESSION_${phase}_PASS`));
+  }
 });

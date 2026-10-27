@@ -50,7 +50,9 @@ npm run build:plugins
 原仓库根目录仍可按上述方式直接安装到 Claude Code。
 
 OpenClaw 使用原生 `before_prompt_build` 钩子和 `verikit_route` 工具，
-通过原生文件读取工具加载参考文档。安装、MA 配置保留及工具权限说明见
+通过原生文件读取工具加载参考文档。会话默认关闭，可用 `/verikit on|off|status|default`
+管理并持久化当前会话开关；`config.defaultSession: true` 可设置为默认开启。
+安装、MA 配置保留及工具权限说明见
 [OpenClaw 适配说明](docs/openclaw.md)。运行 `npm test` 验证产物、路由和宿主接口；
 检测到目标版本的本地 OpenClaw 时还会进行隔离的实际加载测试。
 
@@ -190,7 +192,9 @@ They share the committed ranker and complete catalog; no build dependencies are 
 `npm run build:plugin -- --host claude` (also `codeagent` or `openclaw`).
 The source root remains directly installable as the existing Claude Code plugin.
 
-OpenClaw uses native prompt hooks and the `verikit_route` tool. See the
+OpenClaw uses native prompt hooks and the `verikit_route` tool. Sessions default to off;
+`/verikit on|off|status|default` manages the persisted session setting.
+Set `config.defaultSession: true` to enable sessions by default. See the
 [OpenClaw guide](docs/openclaw.md) for installation, MatrixAssistant configuration,
 and tool access. `npm test` checks artifacts, routing, and plugin interfaces,
 including an isolated native loader test when the exact OpenClaw version is installed.

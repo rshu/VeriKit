@@ -46,6 +46,7 @@ export async function configureOpenClaw({ configPath, pluginRoot = fileURLToPath
   if (!object(entry.hooks) || !object(entry.config)) throw new Error("VeriKit hooks/config must be objects.");
   entry.enabled = true;
   entry.config.enabled = true;
+  entry.config.defaultSession ??= false;
   entry.hooks.allowPromptInjection = true;
 
   if (toolAgent !== undefined) {

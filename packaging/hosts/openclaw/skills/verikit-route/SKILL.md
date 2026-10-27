@@ -4,6 +4,11 @@ description: Select HarmonyOS Kits and reference docs for a development task usi
 ---
 
 Call the `verikit_route` tool with `{"task":"<the user's HarmonyOS development task>"}`.
+VeriKit is disabled by default unless `config.defaultSession` is true or the user
+has enabled this session with `/verikit on`. If the tool reports that VeriKit is
+disabled, respect that setting: do not retry or impose the Kit-selection workflow.
+The user can inspect it with `/verikit status` or restore the configured default
+with `/verikit default`.
 
 The result contains ranked `top` Kits, matched `compositions`, the `routing` decision,
 `bundle`, and `deep_references`. The `catalog_root` is the installed plugin's Kit directory.

@@ -2,13 +2,14 @@
 
 此包使用 OpenClaw 原生插件接口，在 `before_prompt_build` 中运行 VeriKit 排序器，
 为 HarmonyOS 开发任务提供 Kit 候选、组合配方和参考文档。非相关请求静默通过；
-路由故障或超时也不会阻塞宿主。`verikit_route` 工具可以手动重跑路由。
+路由故障或超时也不会阻塞宿主。会话默认关闭 VeriKit，可用 `/verikit on` 开启；
+开启后 `verikit_route` 工具可以手动重跑路由。
 选择流程同时通过宿主的 `appendSystemContext` 提供系统级指导，要求未确认 Kit 时
 只展示选项并等待，已有选择则继续。它是模型指导，不是阻止编辑的权限检查。
 
 与 Runtime Corrector 同时启用时，RC 的独立内部评审会话不执行自动 Kit 路由或
-编辑监测，避免把评审请求当作新的开发任务。RC 在原业务会话中发起的修复仍正常
-获得 VeriKit 指导；手动 `verikit_route` 工具的权限保持由宿主控制。
+编辑监测，避免把评审请求当作新的开发任务。RC 在原业务会话中发起的修复，
+在会话开启 VeriKit 时正常获得指导；手动 `verikit_route` 工具同时受会话开关和宿主权限控制。
 
 支持的宿主版本固定为 **2026.7.1-2**；运行时会拒绝其他版本。
 Node 版本要求沿用该宿主：`>=22.22.3 <23 || >=24.15.0 <25 || >=25.9.0`。
@@ -55,7 +56,7 @@ openclaw plugins install /absolute/path/to/VeriKit/dist/verikit-openclaw
       "verikit": {
         "enabled": true,
         "hooks": { "allowPromptInjection": true },
-        "config": { "enabled": true, "monitorEdits": true }
+        "config": { "enabled": true, "defaultSession": false, "monitorEdits": true }
       }
     }
   }
@@ -81,6 +82,35 @@ node /absolute/path/to/installed/verikit/scripts/configure-openclaw.mjs \
 提示注入，工具权限按上述方式手动配置。助手只接受标准 JSON 配置；JSON5
 配置请手动合并。构建和测试不会改动正在使用的宿主配置。完成后重启宿主，
 通过 `openclaw plugins inspect verikit --runtime --json` 检查注册情况。
+
+## 会话开关
+
+在当前 OpenClaw 会话中发送以下独立命令，无需调用模型：
+
+| 命令 | 行为 |
+| --- | --- |
+| `/verikit on` | 开启当前会话的自动路由、提示注入、手动路由工具及编辑监测 |
+| `/verikit off` | 关闭当前会话的上述功能 |
+| `/verikit status` | 显示当前状态、状态来源和 `defaultSession` 值；省略子命令同样查询状态 |
+| `/verikit default` | 删除当前会话的显式设置，恢复跟随 `defaultSession` |
+
+`plugins.entries.verikit.config.defaultSession` 为布尔值，**缺省为 `false`**：
+`false` 表示没有显式设置的会话默认关闭，`true` 表示默认开启。升级前自动开启的
+行为需要显式配置 `defaultSession: true` 才能保留。配置助手仅在字段缺失时补充
+`false`，保留已有的 `true` 或 `false`。修改配置后按宿主的配置加载流程重新加载或重启。
+显式执行过 `on`/`off` 的会话不受默认值变更影响，执行 `default` 后重新跟随默认值。
+
+会话设置保存在当前 OpenClaw profile 状态目录的 `verikit/sessions/` 下，文件名由
+`sessionKey` 和 `sessionId` 共同生成，独立文件采用原子替换保存。插件重载、宿主重启后
+同一会话继续使用已有设置；不同会话和不同 profile 相互隔离。`/new`、`/reset`
+后恢复默认值，重置钩子也会删除旧设置。命令缺少会话标识且宿主无法解析时会返回错误，
+不会把开关应用到其他会话。读写失败会明确报告；自动路由和监测故障时静默通过。
+上下文压缩若更换会话 ID，压缩后钩子会延续原会话的显式开关，并保留新会话已经设置的覆盖值。
+
+全局 `plugins.entries.verikit.enabled: false` 或 `config.enabled: false` 的优先级
+高于会话开关，仍会禁用插件；`/verikit on` 不能绕过全局禁用或宿主工具权限。
+会话关闭后不再注入新指导，但不会撤回历史提示，也不会隐藏已经安装的技能目录。
+编辑监测仅在会话开启且 `monitorEdits` 未设为 `false` 时运行，原有日志判定逻辑保持不变。
 
 ## 行为和限制
 
@@ -110,14 +140,21 @@ node /absolute/path/to/installed/verikit/scripts/configure-openclaw.mjs \
   删除和非 `.ets` 文件不触发记录。
   监测使用宿主 session API 解析当前会话，优先使用 `spawnedCwd`、
   `spawnedWorkspaceDir`，普通会话通过原生 agent API 解析工作目录。
-  不保存跨会话状态。
+  编辑监测不保存跨会话状态；会话开关单独持久化。
 - `config.monitorEdits: false` 关闭日志监测；`config.enabled: false` 关闭
-  插件注册的自动路由、日志监测及工具。宿主的 `allowPromptInjection: false`
+  插件注册的会话命令、自动路由、日志监测及工具。宿主的 `allowPromptInjection: false`
   会阻止自动提示注入，手动工具仍受宿主工具权限控制。
 - OpenClaw 包不包含 Claude/CodeAgent 的清单、命令钩子或 Shell 包装器。
   自动路由最多处理 4000 个 Unicode 码点，排序进程上限 15 秒，故障静默通过。
 
-## 验证记录（2026-10-18）
+## 验证记录（2026-10-27）
+
+macOS、本地 OpenClaw `2026.7.1-2`：`npm test` 的 23 项测试全部通过，无跳过。
+新增覆盖默认关闭、四个会话子命令、会话与 profile 隔离、原子保存、损坏状态处理、
+全局开关优先级、重置与压缩、已有工具实例的动态开关，以及编辑监测逻辑保持不变。
+真实宿主验证包含命令授权和三个独立进程间的状态保存、恢复及重置；未调用模型服务。
+
+## 先前验证记录（2026-10-18）
 
 macOS、Node `26.0.0`、本地 OpenClaw `2026.7.1-2`：提交前 `npm test` 的 15 项测试
 全部通过，无跳过。测试覆盖三宿主产物隔离及排序一致性、实际命令钩子、
