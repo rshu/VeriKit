@@ -27,8 +27,11 @@ npm run build:plugin -- --host openclaw
 
 生成 `dist/verikit-openclaw/`。Claude Code 和 CodeAgent 的独立产物分别是
 `dist/verikit-claude/`、`dist/verikit-codeagent/`。
+`dist/` 仅存放生成的安装包，可以从空目录开始构建，也可以整体清空后重建。
+构建输入保存在源码的 `runtime/`；生成的独立安装包内部布局保持不变。
 
-使用 OpenClaw CLI 安装生成的目录（路径换成你的实际路径）：
+普通 OpenClaw 使用其 CLI 安装生成的目录（路径换成你的实际路径）；
+MA 请使用下一节的统一安装入口：
 
 ```sh
 openclaw plugins install /absolute/path/to/VeriKit/dist/verikit-openclaw
@@ -37,7 +40,55 @@ openclaw plugins install /absolute/path/to/VeriKit/dist/verikit-openclaw
 或将完整目录复制到当前 OpenClaw profile 的 `extensions/verikit`，并按下面配置
 显式加入 `plugins.load.paths`。移动插件后需要同步更新该路径。
 
-## OpenClaw / MatrixAssistant 配置
+### MA 安装（必做）
+
+MA `1.8.160` 启动时不扫描标准的 `~/.openclaw/extensions`，会把未登记加载路径的
+VeriKit 从 `plugins.allow` 和 `plugins.entries` 删除。**首次安装或缺少登记时，推荐
+使用下面的统一入口，一次完成原生安装和配置登记。**
+
+完全退出 MA，在本仓库完成构建后执行（将 MA 路径换成实际位置）：
+
+PowerShell：
+
+```powershell
+npm run install:ma -- --host-root "<MA安装目录>" --config "$env:USERPROFILE/.openclaw/openclaw.json"
+```
+
+命令提示符（CMD）：
+
+```bat
+npm run install:ma -- --host-root "<MA安装目录>" --config "%USERPROFILE%/.openclaw/openclaw.json"
+```
+
+直接运行原生 `plugins install` 不会调用此入口。其 `Installed plugin` 只表示原生安装完成，
+不包含 MA 所需的配置登记；统一入口最后还会输出 `VeriKit installed and registered for MA`。
+登记成功后，只要已安装目录不变且相关配置仍保留，后续更新可继续使用原生
+`plugins install --force` 和 `plugins enable verikit`，无需每次重跑统一入口。
+
+已有安装需追加 `--force`。命令调用 MA 内置 OpenClaw `2026.7.1-2` CLI 安装，
+随后复用配置助手，登记已安装插件的绝对加载路径、启用设置、提示注入和
+现有 `main` Agent 的 `verikit_route` 工具授权。安装失败时停止；登记失败时返回错误，
+只有两步均完成才报告成功。原有配置、其他 Agent 和拒绝规则保留，登记前自动备份。
+其他助手可传 `--tool-agent <实际 Agent ID>`；安装使用的状态目录固定为 `--config` 的父目录，
+安装和登记始终使用同一 profile。成功后再启动 MA。
+
+独立安装包也包含同一入口，无需保留源码仓库：
+
+```powershell
+node /absolute/path/to/verikit-openclaw/scripts/install-ma.mjs --host-root "<MA安装目录>" --config "$env:USERPROFILE/.openclaw/openclaw.json"
+```
+
+已安装但配置被清理时，可直接运行已安装包的配置助手修复，无需重新安装：
+
+```powershell
+node "$env:USERPROFILE/.openclaw/extensions/verikit/scripts/configure-openclaw.mjs" --config "$env:USERPROFILE/.openclaw/openclaw.json" --tool-agent main
+```
+
+卸载请使用宿主原生的 `plugins uninstall verikit`，让宿主同步清理配置。
+直接删除已安装目录会留下失效的 `plugins.load.paths`，使安装和卸载都在配置校验时被拦截。
+如果已经手动删除，可先将构建包恢复到原安装目录，让原生卸载或重装命令恢复可用。
+
+## OpenClaw / MA 配置
 
 参考适配仓库 `runtime-corrector-toy` 的 `codex/ma-plugin-compatibility`
 分支，阅读基线为 `e136761395ef295b8218d6a3eddeb5cdb05eb610`，并参考其
@@ -64,8 +115,9 @@ openclaw plugins install /absolute/path/to/VeriKit/dist/verikit-openclaw
 ```
 
 `verikit_route` 是可选工具。需要手动调用时，在相应 agent 的
-`tools.alsoAllow` 中追加 `verikit_route`。若 agent 没有单独的工具设置，可在
-全局 `tools.alsoAllow` 中追加。保留已有列表和 `deny` 规则；agent 自己的
+`tools.alsoAllow` 中追加 `verikit_route`。**MA 会在启动时覆盖全局 `tools.alsoAllow`，
+必须使用 Agent 级配置**，推荐通过上述 `--tool-agent main` 完成。
+普通 OpenClaw 也可配置全局列表。保留已有列表和 `deny` 规则；agent 自己的
 `alsoAllow` 会替代全局列表，应继承原列表后追加。
 
 包内提供配置助手，可对**明确指定**的配置文件执行以上合并。它保留其他设置，
@@ -172,8 +224,20 @@ TodoList 真实 GLM 完整流程为 18/18。首次代码工具调用前，两个
 此前漏读、片段读取、无关 FAQ 和过量阅读的试验单独保留，未算作完整文档通过。
 提示仍是模型指导，一次场景通过不能保证所有模型和任务的行为。详细记录保存在源码仓库的
 `docs/experiments/harmonyos-todolist-status.md`。
-MA 桌面界面和 Windows 宿主尚未实测。`VERIKIT_OPENCLAW_HOST_ROOT` 可指定其他机器上目标
-版本的安装目录；未检测到目标版本时，只有真实宿主测试会跳过。
+上述 2026-10-18 记录未覆盖 MA 桌面界面与 Windows 宿主。
+`VERIKIT_OPENCLAW_HOST_ROOT` 可指定目标版本的 OpenClaw 安装目录；未检测到时，
+真实 OpenClaw 加载测试会跳过。
+
+MA 启动回归可通过 `VERIKIT_MA_HOST_ROOT` 指定 MA 安装目录后运行 `npm test`。
+测试读取 `app.asar` 中的真实配置清理和默认值函数，在临时配置上复现删除，
+再从独立安装包执行统一入口，调用真实 MA CLI 安装并登记，检查连续两轮启动
+保留插件、Agent 工具授权和拒绝规则。
+此测试不启动 MA 界面，也不修改正式配置；未指定 MA 目录时跳过。
+2026-10-20 在 Windows、Node `24.16.0`、MA `1.8.160` / OpenClaw `2026.7.1-2`
+上指定两个宿主目录运行，19 项测试全部通过、无跳过，包含无 `dist` 输入时的源码
+CLI/钩子、统一安装入口的真实 MA CLI 安装与启动清理回归、失败中止检查及真实
+OpenClaw 加载。另已从空 `dist/` 实际执行 `npm run build:plugins`，三个宿主均构建成功。
+MA 桌面界面的完整重启流程尚未实测。
 
 接口实现以目标版本已安装代码为准；在线接口说明可参阅
 [OpenClaw 提示与会话钩子](https://docs.openclaw.ai/plugins/hooks/prompt-and-session)。

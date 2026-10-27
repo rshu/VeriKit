@@ -1,3 +1,0 @@
-# Generated host packages must never be nested in the source npm package.
-verikit-*/
-.verikit-*/

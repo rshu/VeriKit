@@ -38,15 +38,14 @@ fi
 #   --deep       second-stage references for top-1 Kit AND every bundle Kit
 #   --refs 5     top-5 task-relevant reference docs per Kit
 #
-# Prefer the built bundle (dist/verikit-cli.js — plain `node`, fully
+# Prefer the committed bundle (runtime/verikit-cli.js — plain `node`, fully
 # self-contained, the only form that survives a copy to another machine).
-# Fall back to this plugin's own TS source via `npx tsx` on a dev checkout
-# that hasn't run `npm run build`. Timeout via the node wrapper (GNU
-# `timeout` is absent on macOS).
+# Fall back to this plugin's own TS source via `npx tsx` in development.
+# Timeout via the node wrapper (GNU `timeout` is absent on macOS).
 TIMEOUT_CLI="${PLUGIN_ROOT}/hooks/run-with-timeout.cjs"
 ROUTER_JSON=""
-if [ -f "${PLUGIN_ROOT}/dist/verikit-cli.js" ]; then
-  ROUTER_JSON="$(node "${TIMEOUT_CLI}" 15000 node "${PLUGIN_ROOT}/dist/verikit-cli.js" \
+if [ -f "${PLUGIN_ROOT}/runtime/verikit-cli.js" ]; then
+  ROUTER_JSON="$(node "${TIMEOUT_CLI}" 15000 node "${PLUGIN_ROOT}/runtime/verikit-cli.js" \
     route --task "$PROMPT_TRIMMED" --top 5 --compose --deep --refs 5 2>/dev/null)" || ROUTER_JSON=""
 elif [ -f "${PLUGIN_ROOT}/bin/verikit-cli.ts" ]; then
   ROUTER_JSON="$(node "${TIMEOUT_CLI}" 30000 npx --yes tsx "${PLUGIN_ROOT}/bin/verikit-cli.ts" \
